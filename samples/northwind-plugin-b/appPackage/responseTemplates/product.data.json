@@ -1,0 +1,13 @@
+{
+    "ProductID": 1,
+    "ProductName": "Chai",
+    "ImageUrl": "https://picsum.photos/id/431/200/300",
+    "SupplierName": "Contoso Beverage Company",
+    "CategoryName": "Beverages",
+    "QuantityPerUnit": "10 boxes x 20 bags",
+    "UnitPrice": 18,
+    "UnitsInStock": 350,
+    "UnitsOnOrder": 0,
+    "ReorderLevel": 25,
+    "Discontinued": false
+  }
