@@ -28,3 +28,6 @@ local.settings.json
 
 # Local data
 .localConfigs
+
+# Azurite storage
+_storage_emulator

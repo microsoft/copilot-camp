@@ -5,6 +5,33 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Start Azurite emulator",
+            "type": "shell",
+            "command": "npm run storage",
+            "isBackground": true,
+            "problemMatcher": {
+                "pattern": [
+                    {
+                        "regexp": "^.*$",
+                        "file": 0,
+                        "location": 1,
+                        "message": 2
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Azurite",
+                    "endsPattern": "successfully listening"
+                }
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
@@ -35,6 +62,9 @@
             // Start the local tunnel service to forward public URL to local port and inspect traffic.
             // See https://aka.ms/teamsfx-tasks/local-tunnel for the detailed args definitions.
             "label": "Start local tunnel",
+            "dependsOn": [
+                "Start Azurite emulator"
+            ],
             "type": "teamsfx",
             "command": "debug-start-local-tunnel",
             "args": {
@@ -54,6 +84,7 @@
             "isBackground": true,
             "problemMatcher": "$teamsfx-local-tunnel-watch"
         },
+     
         {
             "label": "Create resources",
             "type": "teamsfx",
