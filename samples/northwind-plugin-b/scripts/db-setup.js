@@ -60,10 +60,10 @@ const path = require("path");
         }
     }
 
-    const tables = ["Categories", "Products", "Suppliers"];
-    const rowKeyColumnNames = ["CategoryID", "ProductID", "SupplierID"];
-    const generateImage = [false,  true, true];
-    const generateFlag = [false, false, true];
+    const tables = ["Categories", "Customers", "Employees", "Orders", "OrderDetails", "Products", "Suppliers"];
+    const rowKeyColumnNames = ["CategoryID", "CustomerID", "EmployeeID", "OrderID", null, "ProductID", "SupplierID"];
+    const generateImage = [false, true, false, false, false, true, true];
+    const generateFlag = [false, true, false, false, false, false, true];
 
     tables.forEach(async (table, index) => {
         const tables = await getTables(tableServiceClient);
