@@ -31,11 +31,17 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     },
   };
 
-  // Get the query parameters
-  const productName = req.query?.productName || "";
-  const categoryName = req.query?.categoryName || "";
+  // Get the query parameter
+  const productIdOrName = req.params?.id;
 
-  const results = await productService.searchProducts(productName, categoryName, "","","");
+  let results = await productService.searchProducts("", "", "","","");
+
+  // Fix me  
+  if (productIdOrName) {
+    results = results.filter(r => r.productId == productIdOrName ||
+                                  r.productName.toLowerCase() == productIdOrName.toLocaleLowerCase());
+  }
+
   if (results) {
     res.body.results = results;
   }
