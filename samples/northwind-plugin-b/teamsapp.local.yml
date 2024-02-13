@@ -4,6 +4,8 @@
 version: 1.0.0
 
 provision:
+
+
   # Creates a Teams app
   - uses: teamsApp/create
     with:
@@ -71,9 +73,21 @@ deploy:
     # file for the specified environment variable(s).
     writeToEnvironmentFile:
       funcPath: FUNC_PATH
+    # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./.localConfigs
+      envs:
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
 
   # Run npm command
   - uses: cli/runNpmCommand
     name: install dependencies
     with:
       args: install --no-audit
+
+  - uses: script
+    name: Ensure database
+    with:
+      run: node db-setup.js
+      workingDirectory: scripts
