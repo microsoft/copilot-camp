@@ -1,0 +1,155 @@
+{
+    "version": "devPreview",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.ResponseRenderingTemplate.schema.json",
+    "jsonPath": "results",
+    "responseLayout": "list",
+    "responseCardTemplate": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.5",
+        "body": [
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "${CategoryName}",
+                                        "horizontalAlignment": "Left",
+                                        "color": "Accent",                                       
+                                        "size": "Small"
+                                      
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "bleed": true,
+                "style": "emphasis",
+                "spacing": "None",
+                "size": "Small"
+            },
+            {
+                "type": "ColumnSet",
+                "columns": [
+                    {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                            {
+                                "type": "Image",
+                                "url": "${ImageUrl}",
+                                "size": "Medium",
+                                "altText": "${ProductName}"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Column",
+                        "width": "stretch",
+                        "items": [
+                            {
+                                "type": "ColumnSet",
+                                "columns": [
+                                    {
+                                        "type": "Column",
+                                        "width": "stretch",
+                                        "items": [
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "${ProductName}",
+                                                "weight": "Bolder",
+                                                "size": "Large",
+                                                "spacing": "Medium"
+                                            },
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "${UnitsInStock} units left in stock!",
+                                                "isSubtle": true,
+                                                "weight": "Lighter",
+                                                "spacing": "Small"
+                                            },
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "by ${SupplierName}",
+                                                "isSubtle": true,
+                                                "weight": "Lighter",
+                                                "spacing": "Small"
+                                            }                                           
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "TextBlock",
+                                "text": "$${UnitPrice}",
+                                "weight": "Bolder",
+                                "size": "Medium",
+                                "color": "Good",
+                                "spacing": "Small"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "spacing": "medium",
+                "items": [
+                    {
+                        "type": "TextBlock",
+                        "text": "One unit contains ${QuantityPerUnit}",
+                        "isSubtle": true,                        
+                        "spacing": "Small"
+                    }     
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "type": "Action.ShowCard",
+                "title": "Edit price",
+                "card": {
+                    "type": "AdaptiveCard",
+                    "version": "1.5",
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "body": [
+                        {
+                            "type": "Container",
+                            "items": [
+                                {
+                                    "type": "Input.Text",
+                                    "label": "Price",
+                                    "isRequired": "false",
+                                    "id": "txtPrice",
+                                    "value": "${UnitPrice}"
+                                }
+                            ]
+                        }
+                    ],
+                    "actions": [
+                        {
+                            "type": "Action.Submit",
+                            "title": "Save"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "previewCardTemplate": {
+        "title": "${ProductName}",
+        "subtitle": "Supplied by: ${SupplierName}",
+        "image": {
+            "url": "${Image}",
+            "alt": "${ProductName}"
+        }
+    }
+}
