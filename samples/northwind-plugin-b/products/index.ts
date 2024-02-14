@@ -35,10 +35,20 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   const productName = req.query?.productName || "";
   const categoryName = req.query?.categoryName || "";
 
-  const results = await productService.searchProducts(productName, categoryName, "","","");
-  if (results) {
-    res.body.results = results;
+  // Get the route parameters
+  const productIdOrName = req.params?.id;
+
+  let results = [];
+  if (productIdOrName) {
+    results = await productService.searchProducts("", "", "", "", "");
+    results = results.filter(r => r.productId == productIdOrName ||
+      r.productName.toLowerCase() == productIdOrName.toLocaleLowerCase());
+    console.log(`Returning ${results.length} rows in search for ${productIdOrName}`);
+  } else {
+    results = await productService.searchProducts(productName, categoryName, "", "", "");
+    console.log(`Returning ${results.length} rows in search for ${productName}, ${categoryName}`);
   }
 
+  res.body.results = results;
   return res;
 }
