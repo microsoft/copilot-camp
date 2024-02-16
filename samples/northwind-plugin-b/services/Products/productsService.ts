@@ -1,12 +1,13 @@
 import { IProduct, IProductsService } from '../serviceModel';
+import NorthwindDbService from '../NorthwindDB/dbService';
 
-class ProductsServiceMock implements IProductsService {
+class ProductsService implements IProductsService {
 
     public async getProducts(productName: string, categoryName: string, supplierName: string,
         supplierLocation: string, inventoryStatus: string, inventoryRange: string,
         discontinued: string, revenueRange: string): Promise<IProduct[]> {
 
-        let results: IProduct[] = mockResults;
+        let results: IProduct[] = await NorthwindDbService.getAllProducts();
         if (productName) {
             results = results.filter(r => r.productName.toLowerCase().indexOf(productName.toLowerCase()) >= 0);
         }
@@ -46,13 +47,13 @@ class ProductsServiceMock implements IProductsService {
         if (parseInt(productIdOrName) >= 0) {
 
             // We have a product ID
-            results = mockResults.filter(r => r.productId === productIdOrName);
+            // results = mockResults.filter(r => r.productId === productIdOrName);
 
         } else {
 
             // We have a product name
-            const nameQuery = productIdOrName.toLowerCase().trim();
-            results = mockResults.filter(r => r.productName.toLowerCase().indexOf(nameQuery) >= 0);
+            // const nameQuery = productIdOrName.toLowerCase().trim();
+            // results = mockResults.filter(r => r.productName.toLowerCase().indexOf(nameQuery) >= 0);
         }
         return results?.length > 0 ? results[0] : null;
     }
@@ -67,50 +68,4 @@ class ProductsServiceMock implements IProductsService {
     }
 }
 
-const mockResults: IProduct[] =
-    [
-        {
-            productId: "1",
-            productName: "Chai",
-            supplierId: "1",
-            categoryId: "1",
-            quantityPerUnit: "10 boxes x 20 bags",
-            unitPrice: 18,
-            unitsInStock: 350,
-            unitsOnOrder: 0,
-            reorderLevel: 25,
-            discontinued: false,
-            imageUrl: "https://picsum.photos/seed/1/200/300",
-            categoryName: "Beverages",
-            supplierName: "Contoso Beverage Company",
-            supplierCity: "London",
-            inventoryStatus: "In stock",
-            valueOfInventory: 6300,
-            unitSales: 828,
-            revenue: 12788,
-            averageDiscount: 8.6
-        },
-        {
-            productId: "14",
-            productName: "Tofu",
-            supplierId: "6",
-            categoryId: "7",
-            quantityPerUnit: "40 - 100 g pkgs.",
-            unitPrice: 23.25,
-            unitsInStock: 35,
-            unitsOnOrder: 0,
-            reorderLevel: 20,
-            discontinued: false,
-            imageUrl: "https://picsum.photos/seed/14/200/300",
-            categoryName: "Produce",
-            supplierName: "Mayumi's",
-            supplierCity: "Osaka",
-            inventoryStatus: "In stock",
-            valueOfInventory: 814,
-            unitSales: 404,
-            revenue: 7991,
-            averageDiscount: 12.5,
-        }
-    ];
-
-export default new ProductsServiceMock;
+export default new ProductsService();

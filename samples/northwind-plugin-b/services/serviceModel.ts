@@ -19,7 +19,7 @@ export interface IProduct {
     supplierCity: string,
     // Generated from order details during augmentation
     inventoryStatus: string,
-    inventoryValue: number,
+    valueOfInventory: number,
     unitSales: number,
     revenue: number,
     averageDiscount: number
