@@ -3,7 +3,7 @@
  * developer guide.
  */
 
-import { Context, HttpRequest } from "@azure/functions";
+import { Context, HttpRequest, HttpRequestQuery } from "@azure/functions";
 
 import productService from "../services/Products/productsService";
 import { HttpError } from "../utilities";
@@ -47,6 +47,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
           // /products?productName=x&categoryName=x&supplierName=x&supplierLocation=x&
           //                         inventoryStatus=x&inventoryRange=x&discounted=x&
           //                         revenueRange=x
+          checkInvalidQueryStrings(req.query);
           const productName = req.query?.productName || "";
           const categoryName = req.query?.categoryName || "";
           const supplierName = req.query?.supplierName || "";
@@ -113,5 +114,17 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     res.status = status;
     res.body.results = [{ error: error.message }];
     return res;
+  }
+
+  function checkInvalidQueryStrings(query: HttpRequestQuery): void {
+    const validQueryStrings = [
+      "productName", "categoryName", "supplierName", "supplierLocation",
+      "inventoryStatus", "inventoryRange", "discontinued", "revenueRange"
+    ];
+    for (const key in query) {
+      if (!validQueryStrings.includes(key)) {
+        throw new HttpError(400, `Invalid query string: ${key}. Choices are ${validQueryStrings}`);
+      }
+    }
   }
 }
