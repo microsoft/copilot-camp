@@ -1,4 +1,4 @@
-import { IProductResult } from '../model';
+import { IProductResult } from '../serviceModel';
 import IProductsService from './IProductsService';
 
 class ProductsServiceMock implements IProductsService {

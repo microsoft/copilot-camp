@@ -5,7 +5,7 @@
 
 import { Context, HttpRequest } from "@azure/functions";
 
-import productService from "../services/productsServiceMock";
+import productService from "../services/Products/productsServiceMock";
 
 // Define a Response interface.
 interface Response {

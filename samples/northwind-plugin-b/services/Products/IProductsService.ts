@@ -1,4 +1,4 @@
-import { IProductResult } from '../model';
+import { IProductResult } from '../serviceModel';
 
 export default interface IProductsService {
     searchProducts (productName: string, categoryName: string, inventoryStatus: string,
