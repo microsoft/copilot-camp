@@ -21,7 +21,7 @@ class ProductsService implements IProductsService {
             results = results.filter(r => r.supplierCity.toLowerCase().indexOf(supplierLocation.toLowerCase()) >= 0);
         }
         if (inventoryStatus) {
-            results = results.filter(r => r.inventoryStatus.toLowerCase().indexOf(inventoryStatus.toLowerCase()) >= 0);
+            results = results.filter(r => this.isMatchingStatus(inventoryStatus, r));
         }
         if (inventoryRange) {
             const range = inventoryRange.split("-");
@@ -39,6 +39,27 @@ class ProductsService implements IProductsService {
             results = results.filter(r => r.revenue >= min && r.revenue <= max);
         }
         return results;
+    }
+
+    // Returns true if the inventory status in a product matches the query
+    // Note the inventory status calculated field won't work because more than one
+    // status may apply (e.g. a product could be low on stock and on order at the same time)
+    private isMatchingStatus(inventoryStatusQuery: string, product: IProduct): boolean {
+
+        const query = inventoryStatusQuery.toLowerCase();
+        if (query.startsWith("out")) {
+            // Out of stock
+            return product.unitsInStock === 0;
+        } else if (query.startsWith("low")) {
+            // Low stock
+            return product.unitsInStock <= product.reorderLevel;
+        } else if (query.startsWith("on")) {
+            // On order
+            return product.unitsOnOrder > 0;
+        } else {
+            // In stock
+            return product.unitsInStock > 0;
+        }
     }
 
     public async getProduct(productIdOrName: string): Promise<IProduct> {
