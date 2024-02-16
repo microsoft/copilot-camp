@@ -1,3 +1,5 @@
+// Data model for the Northwind database
+
 export const TABLE_NAME = {
     CATEGORY: "Categories",
     CUSTOMER: "Customers",
@@ -8,21 +10,22 @@ export const TABLE_NAME = {
     SUPPLIER: "Suppliers"
 }
 
-interface Row {
+// Interfaces for Northwind database entities
+interface DbRow {
     etag: string;
     partitionKey: string;
     rowKey: string;
     timestamp: Date;
 }
 
-export interface Category extends Row {
+export interface DbCategory extends DbRow {
     CategoryID: string;
     CategoryName: string;
     Description: string;
     Picture: string;
 }
 
-export interface Customer extends Row {
+export interface DbCustomer extends DbRow {
     CustomerID: string;
     CompanyName: string;
     ContactName: string;
@@ -38,7 +41,7 @@ export interface Customer extends Row {
     FlagUrl: string;
 }
 
-export interface Employee extends Row {
+export interface DbEmployee extends DbRow {
     EmployeeID: number;
     LastName: string;
     FirstName: string;
@@ -61,7 +64,7 @@ export interface Employee extends Row {
     FlagUrl: string;
 }
 
-export interface OrderDetail extends Row {
+export interface DbOrderDetail extends DbRow {
     OrderID: number;
     ProductID: string;
     UnitPrice: number;
@@ -69,14 +72,14 @@ export interface OrderDetail extends Row {
     Discount: number;
 }
 
-export interface Order extends Row {
+export interface DbOrder extends DbRow {
     OrderID: number,
     CustomerID: string,
     EmployeeID: number,
     OrderDate: string,
     RequiredDate?: string,
     ShippedDate?: string,
-    OrderDetails: OrderDetail[],
+    OrderDetails: DbOrderDetail[],
     ShipVia: string,
     Freight: 11.61,
     ShipName: "Toms Spezialitäten",
@@ -87,7 +90,7 @@ export interface Order extends Row {
     ShipCountry: "Germany"
 }
 
-export interface Product extends Row {
+export interface DbProduct extends DbRow {
     ProductID: string;
     ProductName: string;
     SupplierID: string;
@@ -101,7 +104,7 @@ export interface Product extends Row {
     ImageUrl: string;
 }
 
-export interface Supplier extends Row {
+export interface DbSupplier extends DbRow {
     SupplierID: string;
     CompanyName: string;
     ContactName: string;

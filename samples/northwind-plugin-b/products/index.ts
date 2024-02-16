@@ -5,6 +5,7 @@
 
 import { Context, HttpRequest } from "@azure/functions";
 
+import { IProduct } from "../services/serviceModel";
 import productService from "../services/Products/productsServiceMock";
 
 // Define a Response interface.
@@ -23,32 +24,68 @@ interface Response {
  * @returns {Promise<Response>} - A promise that resolves with the HTTP response containing the repair information.
  */
 export default async function run(context: Context, req: HttpRequest): Promise<Response> {
+
   // Initialize response.
+  let results = [];
   const res: Response = {
     status: 200,
     body: {
-      results: [],
+      results: results,
     },
   };
 
-  // Get the query parameters
-  const productName = req.query?.productName || "";
-  const categoryName = req.query?.categoryName || "";
-
-  // Get the route parameters
   const productIdOrName = req.params?.id;
+  switch (req.method) {
+    case 'GET': {
+      if (!productIdOrName) {
 
-  let results = [];
-  if (productIdOrName) {
-    results = await productService.searchProducts("", "", "", "", "");
-    results = results.filter(r => r.productId == productIdOrName ||
-      r.productName.toLowerCase() == productIdOrName.toLocaleLowerCase());
-    console.log(`Returning ${results.length} rows in search for ${productIdOrName}`);
-  } else {
-    results = await productService.searchProducts(productName, categoryName, "", "", "");
-    console.log(`Returning ${results.length} rows in search for ${productName}, ${categoryName}`);
+        // Request is a query of products by attribute:
+        // /products?productName=x&categoryName=x&supplierName=x&supplierLocation=x&
+        //                         inventoryStatus=x&inventoryRange=x&discounted=x&
+        //                         revenueRange=x
+        const productName = req.query?.productName || "";
+        const categoryName = req.query?.categoryName || "";
+        const supplierName = req.query?.supplierName || "";
+        const supplierLocation = req.query?.supplierLocation || "";
+        const inventoryStatus = req.query?.inventoryStatus || "";
+        const inventoryRange = req.query?.inventoryRange || "";
+        const discontinued = req.query?.discontinued || "";
+        const revenueRange = req.query?.revenueRange || "";
+        results = await productService.getProducts(productName, categoryName, supplierName,
+          supplierLocation, inventoryStatus, inventoryRange, discontinued, revenueRange)
+        console.log(`Returning ${results.length} rows in search for ${productIdOrName}`);
+
+      } else {
+
+        // Request for an individual product by ID or name
+        // /products/idOrName
+
+        const product = await productService.getProduct(productIdOrName);
+        results = product ? [product] : [];
+
+      }
+      break;
+    }
+
+    case 'POST': {
+
+      const product = req.body;
+      if (!productIdOrName) {
+        // Request to create a product
+        const newProduct = await productService.createProduct(product);
+        results = [newProduct];
+      } else {
+        // Request to update a product by ID or name
+        const updatedProduct = await productService.updateProduct(productIdOrName, product);
+        results = [updatedProduct];
+      }
+      break;
+    }
+    default: {
+      break;
+    }
   }
 
-  res.body.results = results;
+    res.body.results = results;
   return res;
 }
