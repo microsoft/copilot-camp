@@ -76,8 +76,8 @@ const mockResults: IProduct[] =
         {
             productId: 1,
             productName: "Chai",
-            supplierId: "1",
-            categoryId: "1",
+            supplierId: 1,
+            categoryId: 1,
             quantityPerUnit: "10 boxes x 20 bags",
             unitPrice: 18,
             unitsInStock: 350,
@@ -97,8 +97,8 @@ const mockResults: IProduct[] =
         {
             productId: 14,
             productName: "Tofu",
-            supplierId: "6",
-            categoryId: "7",
+            supplierId: 6,
+            categoryId: 7,
             quantityPerUnit: "40 - 100 g pkgs.",
             unitPrice: 23.25,
             unitsInStock: 35,

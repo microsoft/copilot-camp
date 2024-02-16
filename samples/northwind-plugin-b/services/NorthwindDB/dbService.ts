@@ -24,8 +24,8 @@ class NorthwindDbService {
             const p: IProduct = {
                 productId: entity.ProductID as number,
                 productName: entity.ProductName as string,
-                supplierId: entity.SupplierID as string,
-                categoryId: entity.CategoryID as string,
+                supplierId: entity.SupplierID as number,
+                categoryId: entity.CategoryID as number,
                 quantityPerUnit: entity.QuantityPerUnit as string,
                 unitPrice: entity.UnitPrice as number,
                 unitsInStock: entity.UnitsInStock as number,

@@ -19,7 +19,7 @@ interface DbRow {
 }
 
 export interface DbCategory extends DbRow {
-    CategoryID: string;
+    CategoryID: number;
     CategoryName: string;
     Description: string;
     Picture: string;
@@ -66,7 +66,7 @@ export interface DbEmployee extends DbRow {
 
 export interface DbOrderDetail extends DbRow {
     OrderID: number;
-    ProductID: string;
+    ProductID: number;
     UnitPrice: number;
     Quantity: number;
     Discount: number;
@@ -93,8 +93,8 @@ export interface DbOrder extends DbRow {
 export interface DbProduct extends DbRow {
     ProductID: number;
     ProductName: string;
-    SupplierID: string;
-    CategoryID: string;
+    SupplierID: number;
+    CategoryID: number;
     QuantityPerUnit: string;
     UnitPrice: number;
     UnitsInStock: number;
@@ -105,7 +105,7 @@ export interface DbProduct extends DbRow {
 }
 
 export interface DbSupplier extends DbRow {
-    SupplierID: string;
+    SupplierID: number;
     CompanyName: string;
     ContactName: string;
     ContactTitle: string;

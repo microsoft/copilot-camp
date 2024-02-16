@@ -4,8 +4,8 @@ export interface IProduct {
     // Mapped directly to database fields:
     productId: number;
     productName: string;
-    supplierId: string;
-    categoryId: string;
+    supplierId: number;
+    categoryId: number;
     quantityPerUnit: string;
     unitPrice: number;
     unitsInStock: number;
