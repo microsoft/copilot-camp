@@ -38,5 +38,5 @@ export interface IProductsService {
         discontinued: string,
         revenueRange: string
         ) : Promise<IProduct[]>;
-    updateProduct(productIdOrName: string, product: IProduct);
+    updateProduct(productId: number, product: IProduct);
 }

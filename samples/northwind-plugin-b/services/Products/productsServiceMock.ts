@@ -61,12 +61,7 @@ class ProductsServiceMock implements IProductsService {
         return results?.length > 0 ? results[0] : null;
     }
 
-    public async createProduct(product: IProduct) {
-        product.productId = 999;
-        return product;
-    }
-
-    public async updateProduct(productIdOrName: string, product: IProduct) {
+    public async updateProduct(productId: number, product: IProduct) {
         return product;
     }
 }

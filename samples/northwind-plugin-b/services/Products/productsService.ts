@@ -1,5 +1,6 @@
 import { IProduct, IProductsService } from '../serviceModel';
 import NorthwindDbService from '../NorthwindDB/dbService';
+import { HttpError } from "../../utilities";
 
 class ProductsService implements IProductsService {
 
@@ -65,30 +66,13 @@ class ProductsService implements IProductsService {
         }
     }
 
-    public async getProduct(productIdOrName: string): Promise<IProduct> {
+    public async updateProduct(productId: number, product: IProduct) {
 
-        let results: IProduct[] = [];
-        if (parseInt(productIdOrName) >= 0) {
-
-
-            // We have a product ID
-            // results = mockResults.filter(r => r.productId === productIdOrName);
-
-        } else {
-
-            // We have a product name
-            // const nameQuery = productIdOrName.toLowerCase().trim();
-            // results = mockResults.filter(r => r.productName.toLowerCase().indexOf(nameQuery) >= 0);
+        // First check to be sure we're updating the right product
+        if (product.productId !== productId {
+            throw new HttpError(400, "Product ID or name in URL does not match product ID in body");
         }
-        return results?.length > 0 ? results[0] : null;
-    }
 
-    public async createProduct(product: IProduct) {
-        product.productId = 999;
-        return product;
-    }
-
-    public async updateProduct(productIdOrName: string, product: IProduct) {
         return product;
     }
 }
