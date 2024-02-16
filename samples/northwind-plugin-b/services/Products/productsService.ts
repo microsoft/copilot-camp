@@ -1,6 +1,7 @@
 import { IProduct, IProductsService } from '../serviceModel';
 import NorthwindDbService from '../NorthwindDB/dbService';
 import { HttpError } from "../../utilities";
+import dbService from '../NorthwindDB/dbService';
 
 class ProductsService implements IProductsService {
 
@@ -69,9 +70,10 @@ class ProductsService implements IProductsService {
     public async updateProduct(productId: number, product: IProduct) {
 
         // First check to be sure we're updating the right product
-        if (product.productId !== productId {
-            throw new HttpError(400, "Product ID or name in URL does not match product ID in body");
+        if (product.productId !== productId) {
+            throw new HttpError(400, "Product ID in URL does not match product ID in body");
         }
+        await dbService.updateProduct(product);
 
         return product;
     }

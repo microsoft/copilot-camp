@@ -25,16 +25,16 @@ interface Response {
  */
 export default async function run(context: Context, req: HttpRequest): Promise<Response> {
 
-  try {
+  // Initialize response.
+  let results = [];
+  const res: Response = {
+    status: 200,
+    body: {
+      results: results,
+    },
+  };
 
-    // Initialize response.
-    let results = [];
-    const res: Response = {
-      status: 200,
-      body: {
-        results: results,
-      },
-    };
+  try {
 
     const productIdOrName = req.params?.id;
     switch (req.method) {
@@ -81,10 +81,10 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       case 'POST': {
 
         const product = req.body;
-        if (!productIdOrName) {
+        if (!productIdOrName || isNaN(parseInt(productIdOrName))) {
 
           // Invalid request to update an unidentified product
-          throw new HttpError(400, "Product ID or name is required in the URL");
+          throw new HttpError(400, "A numeric product ID is required in the URL");
 
         } else {
 
@@ -107,12 +107,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   }
 
   catch (error) {
-    console.log(`Error: ${error.message}`);
-    return {
-      status: error.status || 500,
-      body: {
-        results: [{ error: error.message }],
-      },
-    };
+    const status = error.status || error.response?.status || 500;
+    console.log(`Returning error status code ${status.status}: ${error.message}`);
+
+    res.status = status;
+    res.body.results = [{ error: error.message }];
+    return res;
   }
 }
