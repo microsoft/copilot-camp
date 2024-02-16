@@ -43,38 +43,42 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
         if (!productIdOrName) {
 
-          // Request is a query of products by attribute:
-          // /products?productName=x&categoryName=x&supplierName=x&supplierLocation=x&
-          //                         inventoryStatus=x&inventoryRange=x&discounted=x&
-          //                         revenueRange=x
+          // Request for all products matching the specified query strings
           checkInvalidQueryStrings(req.query);
           const productName = req.query?.productName || "";
           const categoryName = req.query?.categoryName || "";
           const supplierName = req.query?.supplierName || "";
-          const supplierLocation = req.query?.supplierLocation || "";
+          const supplierCity = req.query?.supplierCity || "";
           const inventoryStatus = req.query?.inventoryStatus || "";
           const inventoryRange = req.query?.inventoryRange || "";
           const discontinued = req.query?.discontinued || "";
           const revenueRange = req.query?.revenueRange || "";
           results = await productService.getProducts(null, productName, categoryName, supplierName,
-            supplierLocation, inventoryStatus, inventoryRange, discontinued, revenueRange)
-          console.log(`Returning ${results.length} rows in search for ${productIdOrName}`);
-
-        } else if (parseInt(productIdOrName) >= 0) {
-
-          // Request for a product by ID
-          const productId = parseInt(productIdOrName);
-          results = await productService.getProducts(productId, null, null, null, null, null, null, null, null);
-          results = results.length > 0 ? [results[0]] : [];
-          console.log(`Found product with id ${productIdOrName}`);
+            supplierCity, inventoryStatus, inventoryRange, discontinued, revenueRange)
+          console.log(`Returning ${results.length} rows in search for ${JSON.stringify(req.query)}`);
 
         } else {
 
-          // Request for a product by name
-          results = await productService.getProducts(null, productIdOrName, null, null, null, null, null, null, null);
-          results = results.length > 0 ? [results[0]] : [];
-          console.log(`Found product with name ${productIdOrName}`);
+          for (const key in req.query) {
+            throw new HttpError(400, "Query strings are not allowed with a product ID or name");
+          } 
+          if (!isNaN(parseInt(productIdOrName))) {
 
+            // Request for a product by ID
+            const productId = parseInt(productIdOrName);
+            results = await productService.getProducts(productId, null, null, null, null, null, null, null, null);
+            results = results.length > 0 ? [results[0]] : [];
+            console.log(`Found product with id ${productIdOrName}`);
+
+          } else {
+
+            // Request for a product by name
+            results = await productService.getProducts(null, productIdOrName, null, null, null, null, null, null, null);
+            results = results.length > 0 ? [results[0]] : [];
+            console.log(`Found product with name ${productIdOrName}`);
+
+          }
+          
         }
         break;
       }
@@ -118,7 +122,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   function checkInvalidQueryStrings(query: HttpRequestQuery): void {
     const validQueryStrings = [
-      "productName", "categoryName", "supplierName", "supplierLocation",
+      "productName", "categoryName", "supplierName", "supplierCity",
       "inventoryStatus", "inventoryRange", "discontinued", "revenueRange"
     ];
     for (const key in query) {
