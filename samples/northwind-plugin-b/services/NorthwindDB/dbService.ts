@@ -22,7 +22,7 @@ class NorthwindDbService {
             const calculatedProperties = await CalculatedDataManager.getCalculatedPropertiesForProduct(entity);
         
             const p: IProduct = {
-                productId: entity.ProductID as string,
+                productId: entity.ProductID as number,
                 productName: entity.ProductName as string,
                 supplierId: entity.SupplierID as string,
                 categoryId: entity.CategoryID as string,

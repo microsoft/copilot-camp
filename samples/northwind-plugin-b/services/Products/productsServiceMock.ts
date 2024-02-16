@@ -2,11 +2,14 @@ import { IProduct, IProductsService } from '../serviceModel';
 
 class ProductsServiceMock implements IProductsService {
 
-    public async getProducts(productName: string, categoryName: string, supplierName: string,
+    public async getProducts(productId: number, productName: string, categoryName: string, supplierName: string,
         supplierLocation: string, inventoryStatus: string, inventoryRange: string,
         discontinued: string, revenueRange: string): Promise<IProduct[]> {
 
         let results: IProduct[] = mockResults;
+        if (productId) {
+            results = results.filter(r => r.productId === productId);
+        }
         if (productName) {
             results = results.filter(r => r.productName.toLowerCase().indexOf(productName.toLowerCase()) >= 0);
         }
@@ -46,7 +49,8 @@ class ProductsServiceMock implements IProductsService {
         if (parseInt(productIdOrName) >= 0) {
 
             // We have a product ID
-            results = mockResults.filter(r => r.productId === productIdOrName);
+            const productId = parseInt(productIdOrName);
+            results = mockResults.filter(r => r.productId === productId);
 
         } else {
 
@@ -58,7 +62,7 @@ class ProductsServiceMock implements IProductsService {
     }
 
     public async createProduct(product: IProduct) {
-        product.productId = "999";
+        product.productId = 999;
         return product;
     }
 
@@ -70,7 +74,7 @@ class ProductsServiceMock implements IProductsService {
 const mockResults: IProduct[] =
     [
         {
-            productId: "1",
+            productId: 1,
             productName: "Chai",
             supplierId: "1",
             categoryId: "1",
@@ -91,7 +95,7 @@ const mockResults: IProduct[] =
             averageDiscount: 8.6
         },
         {
-            productId: "14",
+            productId: 14,
             productName: "Tofu",
             supplierId: "6",
             categoryId: "7",

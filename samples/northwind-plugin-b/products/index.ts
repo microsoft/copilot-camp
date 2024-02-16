@@ -35,7 +35,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   const productIdOrName = req.params?.id;
   switch (req.method) {
+
     case 'GET': {
+
       if (!productIdOrName) {
 
         // Request is a query of products by attribute:
@@ -50,48 +52,55 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         const inventoryRange = req.query?.inventoryRange || "";
         const discontinued = req.query?.discontinued || "";
         const revenueRange = req.query?.revenueRange || "";
-        results = await productService.getProducts(productName, categoryName, supplierName,
+        results = await productService.getProducts(null, productName, categoryName, supplierName,
           supplierLocation, inventoryStatus, inventoryRange, discontinued, revenueRange)
         console.log(`Returning ${results.length} rows in search for ${productIdOrName}`);
 
+      } else if (parseInt(productIdOrName) >= 0) {
+
+        // Request for a product by ID
+        const productId = parseInt(productIdOrName);
+        results = await productService.getProducts(productId, null, null, null, null, null, null, null, null);
+        results = results.length > 0 ? [results[0]] : [];
+        console.log(`Found product with id ${productIdOrName}`);
+
       } else {
 
-        // Request for an individual product by ID or name
-        // /products/idOrName
+        // Request for a product by name
+        results = await productService.getProducts(null, productIdOrName, null, null, null, null, null, null, null);  
+        results = results.length > 0 ? [results[0]] : [];
+        console.log(`Found product with name ${productIdOrName}`);
 
-        const product = await productService.getProduct(productIdOrName);
-        results = product ? [product] : [];
-
-      }
+      }    
       break;
-    }
+  }
 
     case 'POST': {
 
-      const product = req.body;
-      if (!productIdOrName) {
-        // Request to create a product
-        const newProduct = await productService.createProduct(product);
-        results = [newProduct];
-      } else {
-        // Request to update a product by ID or name
-        // First check to be sure the request path is for the object in the body
-        if (product.productId !== productIdOrName && product.productName.toLowerCase().indexOf(productIdOrName.toLocaleLowerCase()) < 0) {
-          res.status = 400;
-          res.body.results = [{ error: "Product ID or name in URL does not match product ID in body" }];
-          return res;
-        }
-        const updatedProduct = await productService.updateProduct(productIdOrName, product);
-        results = [updatedProduct];
+    const product = req.body;
+    if (!productIdOrName) {
+      // Request to create a product
+      const newProduct = await productService.createProduct(product);
+      results = [newProduct];
+    } else {
+      // Request to update a product by ID or name
+      // First check to be sure the request path is for the object in the body
+      if (product.productId !== productIdOrName && product.productName.toLowerCase().indexOf(productIdOrName.toLocaleLowerCase()) < 0) {
+        res.status = 400;
+        res.body.results = [{ error: "Product ID or name in URL does not match product ID in body" }];
+        return res;
       }
-      break;
+      const updatedProduct = await productService.updateProduct(productIdOrName, product);
+      results = [updatedProduct];
     }
-
-    default: {
-      break;
-    }
+    break;
   }
 
-    res.body.results = results;
-  return res;
+    default: {
+    break;
+  }
+}
+
+res.body.results = results;
+return res;
 }

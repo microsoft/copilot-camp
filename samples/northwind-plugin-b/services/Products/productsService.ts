@@ -3,11 +3,14 @@ import NorthwindDbService from '../NorthwindDB/dbService';
 
 class ProductsService implements IProductsService {
 
-    public async getProducts(productName: string, categoryName: string, supplierName: string,
+    public async getProducts(productId: number, productName: string, categoryName: string, supplierName: string,
         supplierLocation: string, inventoryStatus: string, inventoryRange: string,
         discontinued: string, revenueRange: string): Promise<IProduct[]> {
 
         let results: IProduct[] = await NorthwindDbService.getAllProducts();
+        if (productId) {
+            results = results.filter(r => r.productId === productId);
+        }
         if (productName) {
             results = results.filter(r => r.productName.toLowerCase().indexOf(productName.toLowerCase()) >= 0);
         }
@@ -67,6 +70,7 @@ class ProductsService implements IProductsService {
         let results: IProduct[] = [];
         if (parseInt(productIdOrName) >= 0) {
 
+
             // We have a product ID
             // results = mockResults.filter(r => r.productId === productIdOrName);
 
@@ -80,7 +84,7 @@ class ProductsService implements IProductsService {
     }
 
     public async createProduct(product: IProduct) {
-        product.productId = "999";
+        product.productId = 999;
         return product;
     }
 

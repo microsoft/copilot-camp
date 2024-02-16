@@ -91,7 +91,7 @@ export interface DbOrder extends DbRow {
 }
 
 export interface DbProduct extends DbRow {
-    ProductID: string;
+    ProductID: number;
     ProductName: string;
     SupplierID: string;
     CategoryID: string;

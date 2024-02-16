@@ -2,7 +2,7 @@
 
 export interface IProduct {
     // Mapped directly to database fields:
-    productId: string;
+    productId: number;
     productName: string;
     supplierId: string;
     categoryId: string;
@@ -27,9 +27,16 @@ export interface IProduct {
 
 export interface IProductsService {
 
-    getProducts (productName: string, categoryName: string, supplierName: string,
-        supplierLocation: string, inventoryStatus: string, inventoryRange: string,
-        discontinued: string, revenueRange: string) : Promise<IProduct[]>;
-    getProduct (productIdOrName: string): Promise <IProduct>;
+    getProducts (
+        productId: number,
+        productName: string,
+        categoryName: string,
+        supplierName: string,
+        supplierLocation: string,
+        inventoryStatus: string,
+        inventoryRange: string,
+        discontinued: string,
+        revenueRange: string
+        ) : Promise<IProduct[]>;
     updateProduct(productIdOrName: string, product: IProduct);
 }
