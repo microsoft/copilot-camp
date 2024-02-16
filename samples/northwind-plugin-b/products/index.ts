@@ -76,11 +76,18 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         results = [newProduct];
       } else {
         // Request to update a product by ID or name
+        // First check to be sure the request path is for the object in the body
+        if (product.productId !== productIdOrName && product.productName.toLowerCase().indexOf(productIdOrName.toLocaleLowerCase()) < 0) {
+          res.status = 400;
+          res.body.results = [{ error: "Product ID or name in URL does not match product ID in body" }];
+          return res;
+        }
         const updatedProduct = await productService.updateProduct(productIdOrName, product);
         results = [updatedProduct];
       }
       break;
     }
+
     default: {
       break;
     }
