@@ -44,7 +44,7 @@ class ProductsService implements IProductsService {
             results = results.filter(r => r.revenue >= min && r.revenue <= max);
         }
         return results;
-    }
+    }   
 
     // Returns true if the inventory status in a product matches the query
     // Note the inventory status calculated field won't work because more than one

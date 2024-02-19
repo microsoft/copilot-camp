@@ -52,3 +52,8 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 ## Addition information and references
 
 - [Extend Teams platform with APIs](https://aka.ms/teamsfx-api-plugin)
+
+## Prompts
+- Find product Chai from Northwind Traders
+- Find product Chai from Northwind Traders Inventory Management
+- Get supplier of product Chai from Northwind Inventory Management

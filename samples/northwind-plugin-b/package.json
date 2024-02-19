@@ -4,22 +4,25 @@
     "scripts": {
         "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
         "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
-        "build": "tsc",
+        "build": "tsc  && npm run copy-files",
         "watch:teamsfx": "tsc --watch",
         "watch": "tsc -w",
-        "prestart": "npm run build",
+        "prestart": "npm run build ",
         "start": "npx func start",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log"
+        "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
+        "copy-files": "cpy ./files/*.{png,yml} dist/files/assets"
     },
     "dependencies": {
-        "@azure/functions": "^1.2.2",
         "@azure/data-tables": "^13.2.2",
-        "azurite": "^3.26.0"
+        "@azure/functions": "^1.2.2",
+        "azurite": "^3.26.0",
+        "js-yaml": "^4.1.0"
     },
     "devDependencies": {
-        "env-cmd": "^10.1.0",
         "@types/node": "^20.8.10",
+        "cpy-cli": "^5.0.0",
+        "env-cmd": "^10.1.0",
         "typescript": "^5.2.2"
     }
 }
