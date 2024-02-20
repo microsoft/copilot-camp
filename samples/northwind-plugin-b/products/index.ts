@@ -54,7 +54,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
           const discontinued = req.query?.discontinued || "";
           const revenueRange = req.query?.revenueRange || "";
           results = await productService.getProducts(null, productName, categoryName, supplierName,
-            supplierCity, inventoryStatus, inventoryRange, discontinued, revenueRange)
+            supplierCity, inventoryStatus, inventoryRange, discontinued, revenueRange);
           console.log(`Returning ${results.length} rows in search for ${JSON.stringify(req.query)}`);
 
         } else {
