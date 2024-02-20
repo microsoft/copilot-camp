@@ -18,8 +18,6 @@
 
 ## Running the solution (after each build)
 
-1. Run `npm run copy-files` from the command line to copy static assets to the **/dist** folder (working on automating this step)
-
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
 
 1. In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL (such as https://xxxxxxxx-7071.xxx.devtunnels.ms/). 
@@ -27,6 +25,10 @@
    a. (optional) Test the web service in Postman with a request such as https://xxxxxxxx-7071.xxx.devtunnels.ms/api/products/ (using your forwarding URL)
 
    b. Replace the generic forwarding URLs with your forwarding URL in **openai-plugins.json** file (2 instances) and **swagger.json** file (1 instance)
+
+   c. Replace the forwarding URL in **/files/openapi.yml** with your tunnel URL
+
+1. Run `npm run copy-files` from the command line to copy static assets to the **/dist** folder (working on automating this step)
 
 1. Zip up the files in your **pluginPackage-LOCAL** folder, placing the files at the root of the Zip archive.
 
