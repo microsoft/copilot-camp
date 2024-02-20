@@ -8,13 +8,17 @@
   * Teams Toolkit CLI (`npm install -g @microsoft/teamsapp-cli`)
   * (optional) [Postman](https://www.postman.com/downloads/)
 
-## Setup instructions
+## Setup instructions (one-time setup)
 
 1. Copy the pluginPackage folder to a new folder called "pluginPackage LOCAL". This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
 
 1. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **manifest.json**.
 
 1. Log into Teams Toollkit using any tenant for now, as we will be uploading manually.
+
+## Running the solution (after each build)
+
+1. Run `npm run copy-files` from the command line to copy static assets to the **/dist** folder (working on automating this step)
 
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
 
@@ -37,6 +41,7 @@
 1. Go to the Copilot app in Teams and enable your plugin in the plugin panel.
 
 1. Try some of the sample prompts. Use `-developer on` and view the application log to try and understand what's going on. The application log can be viewed under the Debug Console tab by selecting "Attach to Backend" from the dropdown on the top right of the debug console window.
+
 
 ## Sample prompts
 - Find product Chai from Northwind Traders
