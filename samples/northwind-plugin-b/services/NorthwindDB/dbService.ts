@@ -48,8 +48,7 @@ class NorthwindDbService {
         }
 
         return result;
-    }
-
+    }   
     async updateProduct(updatedProduct: IProduct): Promise<IProduct> {
 
         const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);

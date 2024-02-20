@@ -1,0 +1,26 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.15/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.15",
+    "version": "1.0.1",
+    "id": "135faad3-2f6e-441a-9232-3a32c519499f",
+    "name": {
+        "short": "Northwind Traders",
+        "full": "Northwind Traders Inventory Management"
+    },
+    "developer": {
+        "name": "M365 developer advocates",
+        "websiteUrl": "https://www.m365dev.com",
+        "privacyUrl": "https://privacy.m365dev/en-us/data-privacy-notice",
+        "termsOfUseUrl": "https://www.m365dev.com/servicesagreement"
+    },
+    "description": {
+        "short": "Find and update products in the Northwind Traders system.",
+        "full": "Plugin for finding and updating products in the Northwind Traders system.. Use it whenever a user asks about products from Northwind. This plugin can be used to search or update products. Usually updated properties are unit of stock, price etc."
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#FFFFFF",
+    "showLoadingIndicator": true
+}
