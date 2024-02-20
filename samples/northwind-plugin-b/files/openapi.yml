@@ -33,6 +33,75 @@ paths:
           description: Product not found
         '500':
           description: Internal server error
+  /products/:
+    get:
+      summary: Get a list of products matching the specified criteria
+      description: Returns a list of products optionally filtered by providing 
+      parameters:
+        - name: productName
+          in: query
+          description: Name of the product to retrieve
+          required: false
+          schema:
+            type: string
+        - name: categoryName
+          in: query
+          description: The category name to filter by like Beverages, Condiments, Confections, Dairy Products, Grains/Cereals, Meat/Poultry, Produce, Seafood
+          required: false
+          schema:
+            type: string
+        - name: supplierName
+          in: query
+          description: The name of the supplier of the product name to filter by like Exotic Liquids, New Orleans Cajun Delights, Grandma Kelly's Homestead, Tokyo Traders, Cooperativa de Quesos 'Las Cabras', Mayumi's, Pavlova, Gai Pâturage. Omit if not explicitly requested.
+          required: false
+          schema:
+            type: string
+        - name: supplierCity
+          in: query
+          description: The city of the supplier is to filter by e.g Seattle, Tacoma, Kirkland, London, New York, San Francisco, Los Angeles, New Orleans, Anchorage. Omit if not explicitly requested.
+          required: false
+          schema:
+            type: string
+        - name: inventoryStatus
+          in: query
+          description: The inventory status of the product e.g status indicating Out, low, On order. Omit if not explicitly requested.
+          required: false
+          schema:
+            type: string
+        - name: inventoryRange
+          in: query
+          description: The range of inventory to filter by e.g 0-10, 11-20, 21-30. Omit if not explicitly requested.
+          required: false
+          schema:
+            type: string
+        - name: discontinued
+          in: query
+          description: Indicates if the product is discontinued,default is false
+          required: false
+          schema:
+            type: boolean
+        - name: revenueRange
+          in: query
+          description: The range of revenue to filter by e.g 0-1000, 1001-2000, 2001-3000. Omit if not explicitly requested.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+        '500':
+          description: Internal server error
 components:
   schemas:
     Product:

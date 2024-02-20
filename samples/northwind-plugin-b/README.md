@@ -59,3 +59,6 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 - Get supplier of product Chai from Northwind Inventory Management
 - What is the price of Protein Shake in Northwind Inventory Management?
 - For the product Chai who is the supplier?
+- What are the beverages available in Northwind Traders Management System
+- Find Condiments available in Northwind Traders Management System
+- Write me a one paragraph summary detailing the number and types of condiments that are supplied by New Orleans Cajun Delights
