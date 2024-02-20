@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: API for managing inventory in the Northwind Traders system
 servers:
-  - url: https://hhgr1djn-7071.aue.devtunnels.ms/api/
+  - url: https://xxxxxxxx-7071.xxx.devtunnels.ms/api/
 paths:
   /products/{*id}:
     get:

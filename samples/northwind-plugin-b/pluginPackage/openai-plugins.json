@@ -12,10 +12,10 @@
         },
         "api": {
             "type": "openapi",
-            "url": "https://hhgr1djn-7071.aue.devtunnels.ms/api/files/openapi.yml",
+            "url": "https://xxxxxxxx-7071.xxx.devtunnels.ms/api/files/openapi.yml",
             "is_user_authenticated": false
         },
-        "logo_url": "https://hhgr1djn-7071.aue.devtunnels.ms/api/files/logo.png",
+        "logo_url": "https://xxxxxxxx-7071.xxx.devtunnels.ms/api/files/logo.png",
         "contact_email": "m365dev@microsoft.com",
         "legal_info_url": "http://m365dev.com"
       },

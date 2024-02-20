@@ -47,14 +47,22 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
           checkInvalidQueryStrings(req.query);
           const productName = req.query?.productName || "";
           const categoryName = req.query?.categoryName || "";
-          const supplierName = req.query?.supplierName || "";
+          let supplierName = req.query?.supplierName || "";
           const supplierCity = req.query?.supplierCity || "";
           const inventoryStatus = req.query?.inventoryStatus || "";
           const inventoryRange = req.query?.inventoryRange || "";
           const discontinued = req.query?.discontinued || "";
           const revenueRange = req.query?.revenueRange || "";
+
+          // HACKS
+          if (supplierName.toLowerCase().indexOf("northwind") >= 0) {
+            console.log(`HACK: Removing requested supplier name "${supplierName}" from API query`);
+            supplierName = "";
+          }
+          // END HACKS
+          
           results = await productService.getProducts(null, productName, categoryName, supplierName,
-            supplierCity, inventoryStatus, inventoryRange, discontinued, revenueRange)
+            supplierCity, inventoryStatus, inventoryRange, discontinued, revenueRange);
           console.log(`Returning ${results.length} rows in search for ${JSON.stringify(req.query)}`);
 
         } else {

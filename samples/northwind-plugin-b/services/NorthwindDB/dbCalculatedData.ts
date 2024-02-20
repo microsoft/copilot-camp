@@ -21,15 +21,27 @@ interface ICalculatedProperties extends ICalculatedOrderProperties {
 }
 
 class CalculatedDataManager {
+ 
+    constructor() {
+        // Warm up the cache
+        this.loadCalculatedOrderPropertyValues();
+    }
 
-    private _calculatedOrderProperties: ICalculatedOrderPropertyValues;
-    private async loadCalculatedOrderPropertyValues(): Promise<ICalculatedOrderPropertyValues> {
+    // Cache the promise so we only load the data once
+    private _calculatedOrderPropertiesPromise: Promise<ICalculatedOrderPropertyValues>;
+    private loadCalculatedOrderPropertyValues(): Promise<ICalculatedOrderPropertyValues> {
+        if (!this._calculatedOrderPropertiesPromise) {
+            this._calculatedOrderPropertiesPromise = this.loadCalculatedOrderPropertyValues2();
+        }
+        return this._calculatedOrderPropertiesPromise;
+    }
+
+    private async loadCalculatedOrderPropertyValues2(): Promise<ICalculatedOrderPropertyValues> {
 
         const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.ORDER_DETAIL);
-
         const entities = tableClient.listEntities();
-
         let result: ICalculatedOrderPropertyValues = {};
+
         for await (const entity of entities) {
             const p = entity.ProductID as string;
             if (!result[p]) {
@@ -45,17 +57,17 @@ class CalculatedDataManager {
             }
         }
 
+        console.log ("Order Details loaded from DB for calculated properties");
+
         return result;
 
     }
 
     public async getCalculatedPropertiesForProduct(product: TableEntityResult<Record<string, unknown>>): Promise<ICalculatedProperties> {
 
-        if (!this._calculatedOrderProperties) {
-            this._calculatedOrderProperties = await this.loadCalculatedOrderPropertyValues();
-        }
+        const calculatedOrderProperties = await this.loadCalculatedOrderPropertyValues();
 
-        const orderProperties = this._calculatedOrderProperties[product.ProductID as string];
+        const orderProperties = calculatedOrderProperties[product.ProductID as string];
         const inventoryStatus = this.getInventoryStatus(product.UnitsInStock as number, product.UnitsOnOrder as number, product.ReorderLevel as number);
         const valueOfInventory = Math.round((product.UnitsInStock as number) * (product.UnitPrice as number));
 
@@ -79,7 +91,6 @@ class CalculatedDataManager {
           return "Unknown"; //fall back
         }
       }
-
 }
 
 export default new CalculatedDataManager();
