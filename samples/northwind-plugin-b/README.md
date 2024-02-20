@@ -57,3 +57,5 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 - Find product Chai from Northwind Traders
 - Find product Chai from Northwind Traders Inventory Management
 - Get supplier of product Chai from Northwind Inventory Management
+- What is the price of Protein Shake in Northwind Inventory Management?
+- For the product Chai who is the supplier?
