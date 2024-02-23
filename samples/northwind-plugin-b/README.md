@@ -10,7 +10,7 @@
 
 ## Setup instructions (one-time setup)
 
-1. Copy the pluginPackage folder to a new folder called "pluginPackage-LOCAL". This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
+1. Copy the pluginPackage folder to a new folder called `pluginPackage-LOCAL`. This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
 
 1. Copy this line from env/.env.local.user.sample to env/.env.local.user
 
