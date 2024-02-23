@@ -29,10 +29,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   try {
 
     const fileName = req.params?.name;
-    const filePath = path.resolve(`${__dirname}/assets/files`, fileName);
+    const filePath = path.resolve(`${__dirname}/assets`, fileName);
     let fileContent;
     let contentType;
     const fileExtension = path.extname(fileName).toLowerCase();
+    console.log(`Received request for file ${fileName}`);
 
     if (fileExtension === '.yml') {
       contentType = 'application/yaml';
@@ -48,12 +49,13 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     res.body = fileContent;
     res.headers = { 'Content-Type': contentType };
 
+    console.log(`Responding successfully with file ${fileName} (${fileContent.length} bytes) and content type ${contentType}`);
     return res;
   }
 
   catch (error) {
     const status = error.status || error.response?.status || 500;
-    console.log(`Returning error status code ${status.status}: ${error.message}`);
+    console.log(`Responding with error status code ${status.status}: ${error.message}`);
 
     res.status = status;
     res.body = error.message;
