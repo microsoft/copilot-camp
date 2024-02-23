@@ -40,7 +40,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 1. Log into the target tenant with Teams Toolkit CLI:
 
-    `teamapp account login m365`
+    `teamsapp account login m365`
 
 1. Upload the package using the Teams Toolkit CLI:
 
