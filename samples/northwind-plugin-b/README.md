@@ -4,7 +4,7 @@
 
   * Visual Studio Code
   * NodeJS 18.x
-  * Teams Toolkit extension for VS Code
+  * [Teams Toolkit extension for VS Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
   * Teams Toolkit CLI (`npm install -g @microsoft/teamsapp-cli`)
   * (optional) [Postman](https://www.postman.com/downloads/)
 
