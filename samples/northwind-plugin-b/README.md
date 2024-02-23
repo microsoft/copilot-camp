@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-  * Visual Studio Code
-  * NodeJS 18.x
-  * Teams Toolkit extension for VS Code
-  * Teams Toolkit CLI (`npm install -g @microsoft/teamsapp-cli`)
+  * [Visual Studio Code](https://code.visualstudio.com/Download)
+  * [NodeJS 18.x](https://nodejs.org/en/download)
+  * [Teams Toolkit extension for VS Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
+  * [Teams Toolkit CLI](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three) (`npm install -g @microsoft/teamsapp-cli`)
   * (optional) [Postman](https://www.postman.com/downloads/)
 
 ## Setup instructions (one-time setup)
