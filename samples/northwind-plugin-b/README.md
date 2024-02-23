@@ -78,18 +78,14 @@
   - categoryName: Filters products by category name, which may be partial
   - supplierName: Filters products by supplier name, which may be partial
   - inventoryStatus: Filters products by inventory status where possible values are:
-	- out of stock
-	- low on stock
-	- on order
-	- in stock
-
- - supplierCity: Filters products by supplier city, which may be partial
-
-- inventoryRange: Filters products by the inventory (stock) level as a range in the form 0-300 to obtain products with 300 or less in stock, or 400- to obtain products with more than 400 in stock
-
-- discontinued: Filters products that have been discontinued (true or false)
-
-- revenueRange: Filters by the revenue during the last period in the form 0-100 or 50000-. Keywords “high” and “low” are also accepted by this query string
+    - out of stock
+    - low on stock
+    - on order
+    - in stock
+  - supplierCity: Filters products by supplier city, which may be partial
+  - inventoryRange: Filters products by the inventory (stock) level as a range in the form 0-300 to obtain products with 300 or less in stock, or 400- to obtain products with more than 400 in stock
+  - discontinued: Filters products that have been discontinued (true or false)
+  - revenueRange: Filters by the revenue during the last period in the form 0-100 or 50000-. Keywords “high” and “low” are also accepted by this query string
 
 - Success Response:
   - Code: 200 OK
