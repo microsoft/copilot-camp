@@ -12,6 +12,12 @@
 
 1. Copy the pluginPackage folder to a new folder called "pluginPackage-LOCAL". This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
 
+1. Copy this line from env/.env.local.user.sample to env/.env.local.user
+
+~~~text
+SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+~~~
+
 1. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **manifest.json**.
 
 1. Log into Teams Toollkit using any tenant for now, as we will be uploading manually.
