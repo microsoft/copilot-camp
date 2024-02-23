@@ -18,8 +18,8 @@
         "full": "Plugin for finding and updating products in the Northwind Traders system.. Use it whenever a user asks about products from Northwind. This plugin can be used to search or update products. Usually updated properties are unit of stock, price etc."
     },
     "icons": {
-        "outline": "outline.png",
-        "color": "color.png"
+        "outline": "Northwind3-32.png",
+        "color": "Northwind3-Red-192.png"
     },
     "accentColor": "#FFFFFF",
     "showLoadingIndicator": true
