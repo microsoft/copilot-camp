@@ -32,5 +32,5 @@ local.settings.json
 # Azurite storage
 _storage_emulator
 
-# Working folder for local packaging
-pluginPackage-LOCAL
+# Working folder(s) for local packaging
+pluginPackage-*

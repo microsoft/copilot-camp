@@ -29,10 +29,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   try {
 
     const fileName = req.params?.name;
-    const filePath = path.resolve(`${__dirname}/assets/files`, fileName);
+    const filePath = path.resolve(`${__dirname}/assets`, fileName);
     let fileContent;
     let contentType;
     const fileExtension = path.extname(fileName).toLowerCase();
+    console.log(`Received request to get file ${fileName}`);
 
     if (fileExtension === '.yml') {
       contentType = 'application/yaml';
