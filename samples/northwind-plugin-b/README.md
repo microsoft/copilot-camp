@@ -12,7 +12,7 @@
 
 1. Copy the pluginPackage folder to a new folder called `pluginPackage-LOCAL`. This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
 
-1. Copy this line from env/.env.local.user.sample to env/.env.local.user
+1. Copy the `env/.env.local.user.sample` file to a new file called `env/.env.local.user`
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
