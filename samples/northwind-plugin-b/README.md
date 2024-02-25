@@ -12,17 +12,15 @@
 
 1. Copy the pluginPackage folder to a new folder called `pluginPackage-LOCAL`. This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
 
-2. Copy the **env/.env.local.user.sample** file to **env/.env.local.user**. If **env/.env.local.user** already exists, ensure it includes this line, which allows the app to find the Northwind database in Azurite.
+1. Copy this line from env/.env.local.user.sample to env/.env.local.user
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-3. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **\appPackage\manifest.json**.
+1. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **\appPackage\manifest.json**.
 
-4. Log into Teams Toollkit using any tenant for now, as we will be uploading manually.
-
-5. In the **northwind-plugin-b** folder run the command `npm install` (may not be necessary but Teams Toolkit would have to do it anyway)
+1. Log into Teams Toollkit using any tenant for now, as we will be uploading manually.
 
 ## Running the solution (after each build)
 
@@ -36,7 +34,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
    c. Replace the forwarding URL in **/files/openapi.yml** with your tunnel URL
 
-1. Run `npm run copy-files` from the command line to copy static assets to the **/dist** folder (working on automating this step)
+1. Add a new Terminal window. Run `npm run copy-files` from the command line to copy static assets to the **/dist** folder (working on automating this step)
 
 1. Zip up the files in your **pluginPackage-LOCAL** folder, placing the files at the root of the Zip archive.
 
