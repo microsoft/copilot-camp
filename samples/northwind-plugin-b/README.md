@@ -10,12 +10,12 @@
 
 ## Setup instructions (one-time setup)
 
-1. Copy the pluginPackage folder to a new folder called `pluginPackage-LOCAL`. This is where you will manually build your package (for now). This folder is ignored by Github so you won't be tempted to check in your local App ID and tunnel URL
 
-1. Copy this line from env/.env.local.user.sample to env/.env.local.user
+1. Copy these lines from env/.env.local.user.sample to env/.env.local.user. You will replace the domain value to your actual port forwarding URL in the coming steps.
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+DOMAIN=xxxxxx.aue.devtunnels.ms
 ~~~
 
 1. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **\appPackage\manifest.json**.
@@ -26,17 +26,11 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
 
-1. In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL (such as https://xxxxxxxx-7071.xxx.devtunnels.ms/). 
+1. In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL (such as https://xxxxxxxx-7071.xxx.devtunnels.ms/). Replace the value for key DOMAIN in `.env.local.user` file with the forwarding URL's domain (do not copy the `https://`).
 
    a. (optional) Test the web service in Postman with a request such as https://xxxxxxxx-7071.xxx.devtunnels.ms/api/products/ (using your forwarding URL)
 
-   b. Replace the generic forwarding URLs with your forwarding URL in **openai-plugins.json** file (2 instances) and **swagger.json** file (1 instance)
-
-   c. Replace the forwarding URL in **/files/openapi.yml** with your tunnel URL
-
-1. Add a new Terminal window. Run `npm run copy-files` from the command line to copy static assets to the **/dist** folder (working on automating this step)
-
-1. Zip up the files in your **pluginPackage-LOCAL** folder, placing the files at the root of the Zip archive.
+1. Zip up the 5 files in the local folder  **pluginPackage-Local** which was automatically created for you.
 
 1. Log into the target tenant with Teams Toolkit CLI:
 
@@ -44,7 +38,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 1. Upload the package using the Teams Toolkit CLI:
 
-   `teamsapp m365 sideloading -file-path ./pluginPackage-LOCAL/<zip filename>`
+   `teamsapp m365 sideloading -file-path ./pluginPackage-Local/<zip filename>`
 
 1. Go to the Copilot app in Teams and enable your plugin in the plugin panel.
 
