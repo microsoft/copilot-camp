@@ -34,7 +34,19 @@
         {
             "label": "Package local",
             "type": "shell",
-            "command": "npm run local-package && npm run copy-files",
+            "command": "npm run local-package",
+            "isBackground": true,          
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "Copy files",
+            "type": "shell",
+            "command": "npm run copy-files",
             "isBackground": true,          
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -51,6 +63,7 @@
                 "Create resources",
                 "Build project",
                 "Start application",
+                "Copy files",
                 "Package local"
 
             ],

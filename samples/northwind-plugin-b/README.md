@@ -11,7 +11,9 @@
 ## Setup instructions (one-time setup)
 
 
-1. Copy these lines from env/.env.local.user.sample to env/.env.local.user. You will replace the domain value to your actual port forwarding URL in the coming steps.
+1. Copy the `env/.env.local.user.sample` file to a new file called `env/.env.local.user`
+
+1. You will replace the domain value to your actual port forwarding URL in the coming steps
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
