@@ -13,7 +13,7 @@
 
 1. Copy the `env/.env.local.user.sample` file to a new file called `env/.env.local.user`
 
-1. You will replace the domain value to your actual port forwarding URL in the coming steps
+1. You will replace the domain value to your actual port forwarding URL in the coming steps. The file will have values as shown here.
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
