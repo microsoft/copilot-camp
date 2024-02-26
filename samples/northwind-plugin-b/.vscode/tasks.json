@@ -32,13 +32,27 @@
             }
         },
         {
+            "label": "Package local",
+            "type": "shell",
+            "command": "npm run local-package && npm run copy-files",
+            "isBackground": true,          
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
                 "Start local tunnel",
                 "Create resources",
                 "Build project",
-                "Start application"
+                "Start application",
+                "Package local"
+
             ],
             "dependsOrder": "sequence"
         },
