@@ -4,14 +4,15 @@
     "scripts": {
         "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
         "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
-        "build": "tsc  && npm run copy-files",
+        "build": "tsc",
         "watch:teamsfx": "tsc --watch",
         "watch": "tsc -w",
         "prestart": "npm run build ",
         "start": "npx func start",
         "test": "echo \"Error: no test specified\" && exit 1",
         "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
-        "copy-files": "cpy ./files/*.{png,yml} dist/files/assets"
+        "copy-files": "cpy ./files/*.{png,yml} dist/files/assets",
+        "local-package":"node replace-domain.js "
     },
     "dependencies": {
         "@azure/data-tables": "^13.2.2",
@@ -23,6 +24,7 @@
         "@types/node": "^20.8.10",
         "cpy-cli": "^5.0.0",
         "env-cmd": "^10.1.0",
+        "fs-extra": "^11.2.0",
         "typescript": "^5.2.2"
     }
 }

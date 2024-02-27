@@ -32,13 +32,46 @@
             }
         },
         {
+            "label": "Package local",
+            "dependsOn": [
+                "Start local tunnel"
+            ],
+            "type": "shell",
+            "command": "npm run local-package",
+            "isBackground": true,          
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "Copy files",
+            "type": "shell",
+            "dependsOn": [
+                "Start local tunnel"
+            ],
+            "command": "npm run copy-files",
+            "isBackground": true,          
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
                 "Start local tunnel",
                 "Create resources",
                 "Build project",
-                "Start application"
+                "Start application",
+                "Copy files",
+                "Package local"
+
             ],
             "dependsOrder": "sequence"
         },
