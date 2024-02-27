@@ -33,6 +33,9 @@
         },
         {
             "label": "Package local",
+            "dependsOn": [
+                "Start local tunnel"
+            ],
             "type": "shell",
             "command": "npm run local-package",
             "isBackground": true,          
@@ -46,6 +49,9 @@
         {
             "label": "Copy files",
             "type": "shell",
+            "dependsOn": [
+                "Start local tunnel"
+            ],
             "command": "npm run copy-files",
             "isBackground": true,          
             "options": {

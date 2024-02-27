@@ -79,7 +79,7 @@ deploy:
       target: ./.localConfigs
       envs:
         STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
-        DOMAIN: ${{DOMAIN}}
+        OPENAPI_SERVER_URL: ${{OPENAPI_SERVER_URL}}
 
   # Run npm command
   - uses: cli/runNpmCommand

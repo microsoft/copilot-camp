@@ -13,11 +13,8 @@
 
 1. Copy the `env/.env.local.user.sample` file to a new file called `env/.env.local.user`
 
-1. You will replace the domain value to your actual port forwarding URL in the coming steps. The file will have values as shown here.
-
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
-DOMAIN=xxxxxx.aue.devtunnels.ms
 ~~~
 
 1. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **\appPackage\manifest.json**.
@@ -28,9 +25,7 @@ DOMAIN=xxxxxx.aue.devtunnels.ms
 
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
 
-1. In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL (such as https://xxxxxxxx-7071.xxx.devtunnels.ms/). Replace the value for key DOMAIN in `.env.local.user` file with the forwarding URL's domain (do not copy the `https://`).
-
-   a. (optional) Test the web service in Postman with a request such as https://xxxxxxxx-7071.xxx.devtunnels.ms/api/products/ (using your forwarding URL)
+   a. (optional) In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL to test the web service in Postman with a request such as https://xxxxxxxx-7071.xxx.devtunnels.ms/api/products/ (using your forwarding URL)
 
 1. Zip up the 5 files in the local folder  **pluginPackage-Local** which was automatically created for you.
 

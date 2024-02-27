@@ -2,7 +2,10 @@ const fs = require('fs-extra');
 const configFilePath = './.localConfigs';
 const path = require('path');
 let configData = fs.readFileSync(configFilePath, 'utf8');
-const domain = getConfigValue(configData, 'DOMAIN');
+const domainUrl = getConfigValue(configData, 'OPENAPI_SERVER_URL');
+const domain=getDomainFromUrl(domainUrl);
+
+
 
 // Define the source and destination directories
 const sourceDir = './pluginPackage';
@@ -94,6 +97,16 @@ function copyPngFiles() {
         });
     });
 }
+
+//get domain from a url 
+function getDomainFromUrl(url) {
+    let domain;
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    } 
+    return domain;
+}
+
 
 
 
