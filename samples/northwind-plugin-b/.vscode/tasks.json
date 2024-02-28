@@ -62,6 +62,21 @@
             }
         },
         {
+            "label": "Zip local package",
+            "dependsOn": [
+                "Package local"
+            ],
+            "type": "shell",
+            "command": "npm run zip-package",
+            "isBackground": true,          
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
@@ -70,8 +85,8 @@
                 "Build project",
                 "Start application",
                 "Copy files",
-                "Package local"
-
+                "Package local",
+                "Zip local package"
             ],
             "dependsOrder": "sequence"
         },

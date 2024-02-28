@@ -27,15 +27,13 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
    a. (optional) In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL to test the web service in Postman with a request such as https://xxxxxxxx-7071.xxx.devtunnels.ms/api/products/ (using your forwarding URL)
 
-1. Zip up the 5 files in the local folder  **pluginPackage-Local** which was automatically created for you.
-
 1. Log into the target tenant with Teams Toolkit CLI:
 
     `teamsapp account login m365`
 
 1. Upload the package using the Teams Toolkit CLI:
 
-   `teamsapp m365 sideloading -file-path ./pluginPackage-Local/<zip filename>`
+   `teamsapp m365 sideloading -file-path ./pluginPackage-Local/build/pluginPackage.zip`
 
 1. Go to the Copilot app in Teams and enable your plugin in the plugin panel.
 
