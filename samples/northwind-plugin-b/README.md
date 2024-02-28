@@ -33,7 +33,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 1. Upload the package using the Teams Toolkit CLI:
 
-   `teamsapp m365 sideloading -file-path ./pluginPackage-Local/pluginPackage.zip`
+   `teamsapp m365 sideloading -file-path ./pluginPackage-Local/build/pluginPackage.zip`
 
 1. Go to the Copilot app in Teams and enable your plugin in the plugin panel.
 
