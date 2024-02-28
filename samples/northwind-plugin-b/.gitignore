@@ -5,6 +5,7 @@ env/.env.local
 .DS_Store
 build
 appPackage/build
+pluginPackage/build
 .deployment
 
 # dependencies

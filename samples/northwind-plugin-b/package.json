@@ -12,7 +12,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
         "copy-files": "cpy ./files/*.{png,yml} dist/files/assets",
-        "local-package":"node replace-domain.js "
+        "local-package":"node replace-domain.js",
+        "zip-package":"node zip.js "
     },
     "dependencies": {
         "@azure/data-tables": "^13.2.2",
@@ -25,6 +26,7 @@
         "cpy-cli": "^5.0.0",
         "env-cmd": "^10.1.0",
         "fs-extra": "^11.2.0",
-        "typescript": "^5.2.2"
+        "typescript": "^5.2.2",
+        "archiver": "^6.0.2"
     }
 }
