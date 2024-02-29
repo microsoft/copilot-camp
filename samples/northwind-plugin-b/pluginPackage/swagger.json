@@ -13,6 +13,7 @@
   "paths": {
     "/products/{*id}": {
       "get": {
+        "operationId": "getProductByIdOrName",
         "summary": "Get product information by productId or productName",
         "description": "Returns detailed information about a product identified by productId or productName.",
         "parameters": [
@@ -56,6 +57,7 @@
     },
     "/products/": {
       "get": {
+        "operationId": "getProducts",
         "summary": "Get a list of products matching the specified criteria",
         "description": "Returns a list of products optionally filtered by providing",
         "parameters": [
