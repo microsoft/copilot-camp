@@ -10,22 +10,17 @@
 
 ## Setup instructions (one-time setup)
 
+1. Log into Teams Toollkit using any tenant for now, as we will be uploading manually.
 
-1. Copy the `env/.env.local.user.sample` file to a new file called `env/.env.local.user`
+1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes this line:
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-1. Browse to https://dev.teams.microsoft.com/apps and log into the tenant where you plan to test. Create a new app and copy the App ID to the `id` property in **\appPackage\manifest.json**.
-
-1. Log into Teams Toollkit using any tenant for now, as we will be uploading manually.
-
 ## Running the solution (after each build)
 
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
-
-   a. (optional) In the Terminal tab, find the "Start local tunnel" terminal and copy the forwarding URL to test the web service in Postman with a request such as https://xxxxxxxx-7071.xxx.devtunnels.ms/api/products/ (using your forwarding URL)
 
 1. Log into the target tenant with Teams Toolkit CLI:
 
@@ -35,13 +30,16 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
    `teamsapp m365 sideloading -file-path ./pluginPackage-Local/build/pluginPackage.zip`
 
+1. Wait 15 minutes
+
 1. Go to the Copilot app in Teams and enable your plugin in the plugin panel.
 
 1. Try some of the sample prompts. Use `-developer on` and view the application log to try and understand what's going on. The application log can be viewed under the Debug Console tab by selecting "Attach to Backend" from the dropdown on the top right of the debug console window.
 
 
 ## Sample prompts
-- Find product Chai from Northwind Traders
+- Find Chai from Northwind Traders
+- Please find products low on stock in northwind traders
 - Find product Chai from Northwind Traders Inventory Management
 - Get supplier of product Chai from Northwind Inventory Management
 - What is the price of Protein Shake in Northwind Inventory Management?
