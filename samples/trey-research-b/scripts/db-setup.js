@@ -2,34 +2,12 @@ const { TableClient, TableServiceClient } = require("@azure/data-tables");
 const { randomUUID } = require("crypto");
 const fs = require("fs");
 const path = require("path");
+const { json } = require("stream/consumers");
 
 (async () => {
     const connectionString = process.argv[2] ? process.argv[2] : "UseDevelopmentStorage=true";
-    const reset = process.argv[3] === "--reset" || process.argv[3] === "-r" ? true : false;
-
-    const COUNTRY_CODES = {
-        "australia": "au",
-        "brazil": "br",
-        "canada": "ca",
-        "denmark": "dk",
-        "france": "fr",
-        "germany": "de",
-        "finland": "fi",
-        "italy": "it",
-        "japan": "jp",
-        "netherlands": "nl",
-        "norway": "no",
-        "singapore": "sg",
-        "spain": "es",
-        "sweden": "se",
-        "uk": "gb",
-        "usa": "us"
-    };
-    // Get a flag image URL given a country name
-    // Thanks to https://flagpedia.net for providing flag images
-    function getFlagUrl(country) {
-        return `https://flagcdn.com/32x24/${COUNTRY_CODES[country.toLowerCase()]}.png`;
-    };
+    // const reset = process.argv[3] === "--reset" || process.argv[3] === "-r" ? true : false;
+    const reset = true;
 
     async function getTables(tableServiceClient) {
         let tables = [];
@@ -60,10 +38,8 @@ const path = require("path");
         }
     }
 
-    const tables = ["Categories", "Customers", "Employees", "Orders", "OrderDetails", "Products", "Suppliers"];
-    const rowKeyColumnNames = ["CategoryID", "CustomerID", "EmployeeID", "OrderID", null, "ProductID", "SupplierID"];
-    const generateImage = [false, true, false, false, false, true, true];
-    const generateFlag = [false, true, false, false, false, false, true];
+    const tables = [ "Consultants", "Projects" ];
+    const rowKeyColumnNames = ["id", "id"];
 
     tables.forEach(async (table, index) => {
         const tables = await getTables(tableServiceClient);
@@ -91,24 +67,19 @@ const path = require("path");
         const tableClient = TableClient.fromConnectionString(connectionString, table);
         const jsonString = fs.readFileSync(path.resolve(__dirname, "db", `${table}.json`), "utf8");
         const entities = JSON.parse(jsonString);
+
         for (const entity of entities[table]) {
+            console.log(entity);
             const rowKeyColumnName = rowKeyColumnNames[index];
             const rowKey = rowKeyColumnName ? entity[rowKeyColumnName].toString() : randomUUID();
-            console.log(`Added entity to ${table} with key ${rowKey}`);
-
-            // If we're on a table that needs an image and one wasn't in the JSON, make a random one
-            if (generateImage[index] && !("ImageURL" in entity)) {
-                entity["ImageUrl"] = `https://picsum.photos/seed/${rowKey}/200/300`;
-            }
-            // If we're on a table that needs a flag image, make it here
-            if (generateFlag[index]) {
-                entity["FlagUrl"] = getFlagUrl(entity["Country"]);
-            }
             await tableClient.createEntity({
                 partitionKey: table,
                 rowKey,
                 ...entity
             });
+
+            console.log(`Added entity to ${table} with key ${rowKey}`);
+
         }
     });
 
