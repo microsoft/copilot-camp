@@ -26,9 +26,9 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
     `teamsapp account login m365`
 
-1. Upload the package using the Teams Toolkit CLI:
+1. Upload the package using the Teams Toolkit CLI. Run below command while in the root folder of the project:
 
-   `teamsapp m365 sideloading -file-path ./pluginPackage-Local/build/pluginPackage.zip`
+   `teamsapp install -file-path ./pluginPackage-Local/build/pluginPackage.zip`
 
 1. Wait 15 minutes
 
