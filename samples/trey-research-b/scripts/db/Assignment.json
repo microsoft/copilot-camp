@@ -1,9 +1,10 @@
 {
     "rows": [
         {
-            "id": "4,1",
-            "projectId": "4",
+            "id": "10,1",
+            "projectId": "10",
             "consultantId": "1",
+            "role": "Architect",
             "billable": true,
             "rate": 100,
             "forecast": [
@@ -51,9 +52,10 @@
             "delivered": [ ]
         },
         {
-            "id": "9,1",
-            "projectId": "9",
+            "id": "4,1",
+            "projectId": "4",
             "consultantId": "1",
+            "role": "Developer",
             "billable": true,
             "rate": 100,
             "forecast": [

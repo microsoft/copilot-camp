@@ -1,14 +1,9 @@
-import { Project, Consultant, Assignment } from './baseModel';
+import { BaseProject, BaseConsultant, BaseAssignment } from './baseModel';
 
-export interface DbRow {
-    etag: string;
-    partitionKey: string;
-    rowKey: string;
-    timestamp: Date;
-}
+export interface Project extends BaseProject {
 
-export interface DbProject extends DbRow, Project { }
+ }
 
-export interface DbConsultant extends DbRow, Consultant { } 
+export interface Consultant extends BaseConsultant { } 
 
-export interface DbAssignment extends DbRow, Assignment { }
+export interface Assignment extends BaseAssignment { }

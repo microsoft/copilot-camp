@@ -1,4 +1,4 @@
-export interface Project {
+export interface BaseProject {
     id: string;
     name: string;
     description: string;
@@ -16,7 +16,7 @@ export interface Project {
     }
 }
 
-export interface Consultant {
+export interface BaseConsultant {
     id: string;
     name: string;
     email: string;
@@ -35,10 +35,11 @@ export interface Consultant {
     roles: string[];
 }
 
-export interface Assignment {
+export interface BaseAssignment {
     id: string;         // The assignment ID is "projectid,consultantid"
     projectId: string;
     consultantId: string;
+    role: string;
     billable: boolean;
     rate: number;
     forecast: [

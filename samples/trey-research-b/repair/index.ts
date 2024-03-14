@@ -6,6 +6,8 @@
 import { Context, HttpRequest } from "@azure/functions";
 import repairRecords from "../repairsData.json";
 
+import ConsultantService from "../services/ConsultantService";
+
 // Define a Response interface.
 interface Response {
   status: number;
@@ -30,6 +32,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     },
   };
 
+
+
+
   // Get the assignedTo query parameter.
   const assignedTo = req.query.assignedTo;
 
@@ -37,6 +42,10 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   if (!assignedTo) {
     return res;
   }
+
+  const consultants = await ConsultantService.getConsultantById(assignedTo);
+  res.body.results = [ consultants ];
+  return res;
 
   // Filter the repair information by the assignedTo query parameter.
   const repairs = repairRecords.filter((item) => {
