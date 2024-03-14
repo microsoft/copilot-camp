@@ -36,11 +36,9 @@ export interface Consultant {
 }
 
 export interface Assignment {
-    id: string;
+    id: string;         // The assignment ID is "projectid,consultantid"
     projectId: string;
     consultantId: string;
-    startDate: Date;
-    endDate: Date;
     billable: boolean;
     rate: number;
     forecast: [

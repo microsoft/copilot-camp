@@ -2,7 +2,11 @@ const { TableClient, TableServiceClient } = require("@azure/data-tables");
 const { randomUUID } = require("crypto");
 const fs = require("fs");
 const path = require("path");
-const { json } = require("stream/consumers");
+
+// Import these tables from JSON files
+const TABLE_NAMES = [ "Consultants", "Projects", "Assignments" ];
+// Use this JSON property for the rowkey. If not provided, a random UUID will be used.
+const ROWKEY_PROPERTY = ["id", "id", "id"];
 
 (async () => {
 
@@ -51,10 +55,7 @@ const { json } = require("stream/consumers");
         }
     }
 
-    const tables = [ "Consultants", "Projects" ];
-    const rowKeyColumnNames = ["id", "id"];
-
-    tables.forEach(async (table, index) => {
+    TABLE_NAMES.forEach(async (table, index) => {
         const tables = await getTables(tableServiceClient);
         if (tables.includes(table)) {
             console.log(`Table ${table} already exists, skipping...`);
@@ -82,7 +83,7 @@ const { json } = require("stream/consumers");
         const entities = JSON.parse(jsonString);
 
         for (const entity of entities[table]) {
-            const rowKeyColumnName = rowKeyColumnNames[index];
+            const rowKeyColumnName = ROWKEY_PROPERTY[index];
             const rowKey = rowKeyColumnName ? entity[rowKeyColumnName].toString() : randomUUID();
             // Convert any nested objects to JSON strings
             for (const key in entity) {

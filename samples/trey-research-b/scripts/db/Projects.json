@@ -53,8 +53,8 @@
         },
         {
             "id": 4,
-            "name": "SharePoint migration",
-            "description": "Migrate Consolidated Messenger's SharePoint 2013 environment to SharePoint Online",
+            "name": "Copilot Development and Training",
+            "description": "Extend LOB applications to integrate with Microsoft Copilot and train key personnel on its use",
             "clientName": "Consolidated Messenger",
             "clientContact": "Camelia Banica",
             "clientEmail": "cambanica@consolidatedmessenger.com",

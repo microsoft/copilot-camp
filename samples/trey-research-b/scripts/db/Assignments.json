@@ -1,14 +1,105 @@
 {
     "Assignments": [
         {
-            "id": "1,1",
-            "projectId": "1",
+            "id": "4,1",
+            "projectId": "4",
             "consultantId": "1",
-            "startDate": "2019-01-01",
-            "endDate": "2019-12-31",
             "billable": true,
             "rate": 100,
-            "hours": "{ \"forecast\": [ {\"month\": 6, \"year\": 2024, \"hours\": 160}, {\"month\": 7, \"year\": 2024, \"hours\": 20}], \"delivered\": [ {\"month\": 3, \"year\": 2024, \"hours\": 160}, {\"month\": 4, \"year\": 2024, \"hours\": 20}]}"
+            "forecast": [
+                {
+                    "month": 3,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 4,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 5,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 6,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 7,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 8,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 9,
+                    "year": 2024,
+                    "hours": 120
+                },
+                {
+                    "month": 10,
+                    "year": 2024,
+                    "hours": 120
+                }
+            ],
+            "delivered": [ ]
+        },
+        {
+            "id": "9,1",
+            "projectId": "9",
+            "consultantId": "1",
+            "billable": true,
+            "rate": 100,
+            "forecast": [
+                {
+                    "month": 3,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 4,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 5,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 6,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 7,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 8,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 9,
+                    "year": 2024,
+                    "hours": 40
+                },
+                {
+                    "month": 10,
+                    "year": 2024,
+                    "hours": 40
+                }
+            ],
+            "delivered": [ ]
         }
     ]
 }
+
