@@ -1,4 +1,4 @@
-import { Project, Consultant, Assignment } from './baseModel';
+import { Project, Consultant, Assignment } from "./baseModel";
 
 export interface DbRow {
     etag: string;

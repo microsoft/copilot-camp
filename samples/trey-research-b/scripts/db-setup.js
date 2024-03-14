@@ -3,10 +3,7 @@ const { randomUUID } = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
-// Import these tables from JSON files
-const TABLE_NAMES = ["Consultants", "Projects", "Assignments"];
-// Use this JSON property for the rowkey. If not provided, a random UUID will be used.
-const ROWKEY_PROPERTY = ["id", "id", "id"];
+const TABLE_NAMES = [ "Project", "Consultant", "Assignment" ];
 
 (async () => {
 
@@ -52,21 +49,21 @@ const ROWKEY_PROPERTY = ["id", "id", "id"];
     }
 
     // Create and populate tables
-    TABLE_NAMES.forEach(async (table, index) => {
+    TABLE_NAMES.forEach(async (tableName, index) => {
 
         // Skip if table already exists
         const tables = await getTables(tableServiceClient);
-        if (tables.includes(table)) {
-            console.log(`Table ${table} already exists, skipping...`);
+        if (tables.includes(tableName)) {
+            console.log(`Table ${tableName} already exists, skipping...`);
             return;
         }
 
         // Create table if needed
-        console.log(`Creating table: ${table}`);
+        console.log(`Creating table: ${tableName}`);
         let tableCreated = false;
         while (!tableCreated) {
             try {
-                await tableServiceClient.createTable(table);
+                await tableServiceClient.createTable(tableName);
                 tableCreated = true;
             } catch (err) {
                 if (err.statusCode === 409) {
@@ -79,13 +76,12 @@ const ROWKEY_PROPERTY = ["id", "id", "id"];
         }
 
         // Add entities to table
-        const tableClient = TableClient.fromConnectionString(connectionString, table);
-        const jsonString = fs.readFileSync(path.resolve(__dirname, "db", `${table}.json`), "utf8");
+        const tableClient = TableClient.fromConnectionString(connectionString, tableName);
+        const jsonString = fs.readFileSync(path.resolve(__dirname, "db", `${tableName}.json`), "utf8");
         const entities = JSON.parse(jsonString);
 
-        for (const entity of entities[table]) {
-            const rowKeyColumnName = ROWKEY_PROPERTY[index];
-            const rowKey = rowKeyColumnName ? entity[rowKeyColumnName].toString() : randomUUID();
+        for (const entity of entities["rows"]) {
+            const rowKey = entity["id"].toString() || randomUUID();
             // Convert any nested objects to JSON strings
             for (const key in entity) {
                 if (typeof (entity[key] === "object")) {
@@ -93,12 +89,12 @@ const ROWKEY_PROPERTY = ["id", "id", "id"];
                 }
             }
             await tableClient.createEntity({
-                partitionKey: table,
+                partitionKey: tableName,
                 rowKey,
                 ...entity
             });
 
-            console.log(`Added entity to ${table} with key ${rowKey}`);
+            console.log(`Added entity to ${tableName} with key ${rowKey}`);
 
         }
     });
