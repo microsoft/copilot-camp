@@ -1,0 +1,14 @@
+{
+    "Assignments": [
+        {
+            "id": "1,1",
+            "projectId": "1",
+            "consultantId": "1",
+            "startDate": "2019-01-01",
+            "endDate": "2019-12-31",
+            "billable": true,
+            "rate": 100,
+            "hours": "{ \"forecast\": [ {\"month\": 6, \"year\": 2024, \"hours\": 160}, {\"month\": 7, \"year\": 2024, \"hours\": 20}], \"delivered\": [ {\"month\": 3, \"year\": 2024, \"hours\": 160}, {\"month\": 4, \"year\": 2024, \"hours\": 20}]}"
+        }
+    ]
+}

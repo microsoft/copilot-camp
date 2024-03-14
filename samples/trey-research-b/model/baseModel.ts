@@ -5,13 +5,15 @@ export interface Project {
     clientName: string;
     clientContact: string;
     clientEmail: string;
-    street: string;
-    city: string;
-    state: string;
-    country: string;
-    postalCode: string;
-    latitude: number;
-    longitude: number;
+    location: {
+        street: string;
+        city: string;
+        state: string;
+        country: string;
+        postalCode: string;
+        latitude: number;
+        longitude: number;
+    }
 }
 
 export interface Consultant {
@@ -19,19 +21,28 @@ export interface Consultant {
     name: string;
     email: string;
     phone: string;
-    street: string;
-    city: string;
-    state: string;
-    country: string;
-    postalCode: string;
-    latitude: number;
-    longitude: number;
-    skills: string;
-    certifications: string;
-    roles: string;
+    location: {
+        street: string;
+        city: string;
+        state: string;
+        country: string;
+        postalCode: string;
+        latitude: number;
+        longitude: number;
+    }
+    skills: string[];
+    certifications: string[];
+    roles: string[];
 }
 
-export interface HoursJson {
+export interface Assignment {
+    id: string;
+    projectId: string;
+    consultantId: string;
+    startDate: Date;
+    endDate: Date;
+    billable: boolean;
+    rate: number;
     forecast: [
         {
             month: number;
@@ -46,15 +57,4 @@ export interface HoursJson {
             hours: number;
         }
     ]
-}
-
-export interface Assignment {
-    id: string;
-    projectId: string;
-    consultantId: string;
-    startDate: Date;
-    endDate: Date;
-    billable: boolean;
-    rate: number;
-    hours: HoursJson;              // Serialized HoursJSON
 }
