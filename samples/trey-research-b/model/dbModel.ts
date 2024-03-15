@@ -1,6 +1,7 @@
+import { TableEntity } from "@azure/data-tables";
 import { BaseProject, BaseConsultant, BaseAssignment } from "./baseModel";
 
-export interface DbRow {
+export interface DbRow extends TableEntity {
     etag: string;
     partitionKey: string;
     rowKey: string;

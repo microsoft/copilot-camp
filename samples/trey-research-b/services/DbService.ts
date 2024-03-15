@@ -53,18 +53,12 @@ export default class DbService<DbEntityType> {
         return result;
     }
 
-    async updateEntity(tableName: string, id: string, updatedEntity: DbEntityType,
-        copyFields: (from: DbEntityType, to: DbEntityType) => void): Promise<DbEntityType> {
+    async updateEntity(tableName: string, updatedEntity: DbEntityType): Promise<void> {
+
+        const e = this.compressPropertyValues(updatedEntity);
         const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
-        const foundEntity: DbEntityType = <DbEntityType>await tableClient.getEntity(tableName, id);
-        if (!foundEntity) {
-            throw new HttpError(401, `Entity ${id} not found`);
-        } else {
-            copyFields(updatedEntity, foundEntity as DbEntityType);
-            await tableClient.updateEntity(foundEntity as TableEntity, "Replace");
-            console.log(`Updated ${tableName} entity id=${id}`);
-            return foundEntity;
-        }
+            await tableClient.updateEntity(e as TableEntity, "Replace");
+        
     }
 
     private expandPropertyValues(entity: DbEntityType): DbEntityType {
@@ -87,4 +81,21 @@ export default class DbService<DbEntityType> {
             return v;
         }
     };
+
+    private compressPropertyValues(entity: DbEntityType): DbEntityType {
+        const result = {} as DbEntityType;
+        for (const key in entity) {
+            result[key] = this.compressPropertyValue(entity[key]);
+        }
+        return result;
+    }
+
+    private compressPropertyValue(v: any): any {
+        if (typeof v === "object") {
+            return JSON.stringify(v);
+        } else {
+            return v;
+        }
+    };
+    
 }

@@ -34,37 +34,46 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     },
   };
 
+  try {
 
+    // Get the assignedTo query parameter.
+    const assignedTo = req.query.assignedTo;
 
+    // If the assignedTo query parameter is not provided, return the response.
+    if (!assignedTo) {
+      return res;
+    }
 
-  // Get the assignedTo query parameter.
-  const assignedTo = req.query.assignedTo;
+    // *** TEST TEST TEST ***
 
-  // If the assignedTo query parameter is not provided, return the response.
-  if (!assignedTo) {
+    // const r = await ConsultantService.getConsultantById(assignedTo);
+    // const r = await ProjectService.getProjectById(assignedTo);
+    // const r = await ProjectService.getProjects(() => true);
+
+    // Get assignments for consultant
+    // const r = await AssignmentService.getAssignments((a) => a.consultantId === assignedTo);
+
+    const r = await AssignmentService.chargeHoursToProject("11", "1", 3, 2024, 10);
+    res.body.results = [r];
+    return res;
+
+    // // Filter the repair information by the assignedTo query parameter.
+    // const repairs = repairRecords.filter((item) => {
+    //   const fullName = item.assignedTo.toLowerCase();
+    //   const query = assignedTo.trim().toLowerCase();
+    //   const [firstName, lastName] = fullName.split(" ");
+    //   return fullName === query || firstName === query || lastName === query;
+    // });
+
+    // // Return filtered repair records, or an empty array if no records were found.
+    // res.body.results = repairs ?? [];
+    // return res;
+  } catch (error) {
+    const status = error.status || error.response?.status || 500;
+    console.log(`Returning error status code ${status.status}: ${error.message}`);
+
+    res.status = status;
+    res.body.results = [{ error: error.message }];
     return res;
   }
-
-  // *** TEST TEST TEST ***
-
-  // const r = await ConsultantService.getConsultantById(assignedTo);
-  // const r = await ProjectService.getProjectById(assignedTo);
-  // const r = await ProjectService.getProjects(() => true);
-  
-  // Get assignments for consultant
-  const r = await AssignmentService.getAssignments((a) => a.consultantId === assignedTo);
-  res.body.results = [ r ];
-  return res;
-
-  // // Filter the repair information by the assignedTo query parameter.
-  // const repairs = repairRecords.filter((item) => {
-  //   const fullName = item.assignedTo.toLowerCase();
-  //   const query = assignedTo.trim().toLowerCase();
-  //   const [firstName, lastName] = fullName.split(" ");
-  //   return fullName === query || firstName === query || lastName === query;
-  // });
-
-  // // Return filtered repair records, or an empty array if no records were found.
-  // res.body.results = repairs ?? [];
-  // return res;
 }
