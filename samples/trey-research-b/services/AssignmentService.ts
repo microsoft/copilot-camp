@@ -2,13 +2,12 @@ import DbService from './DbService';
 import { DbAssignment } from '../model/dbModel';
 import { Assignment } from '../model/apiModel';
 
-// NOTE: Assignments are READ-WRITE so we always need to re-read the database
-// in case another instance has updated the data.
 const TABLE_NAME = "Assignment";
 
 class AssignmentService {
 
-    private dbService = new DbService<DbAssignment>();
+    // NOTE: Assignments are READ-WRITE so disable local caching
+    private dbService = new DbService<DbAssignment>(false);
 
     async getAssignments(filter: (entity: DbAssignment) => boolean): Promise<Assignment[]> {
         const dbConsultants = await this.dbService.getEntities(TABLE_NAME, filter);
@@ -26,7 +25,7 @@ class AssignmentService {
             forecast: dbAssignment.forecast,
             delivered: dbAssignment.delivered
         };
-        // Insert any augmentation here
+        // Insert augmentation here
 
         return result;
     }

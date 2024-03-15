@@ -2,15 +2,15 @@ import DbService from './DbService';
 import { DbConsultant } from '../model/dbModel';
 import { Consultant } from '../model/apiModel';
 
-// NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
 const TABLE_NAME = "Consultant";
 
 class ConsultantService {
 
-    private dbService = new DbService<DbConsultant>();
+    // NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
+    private dbService = new DbService<DbConsultant>(true);
 
     async getConsultantById(id: string): Promise<Consultant> {
-        const dbConsultant = await this.dbService.getEntityById(TABLE_NAME, id);
+        const dbConsultant = await this.dbService.getEntityByRowKey(TABLE_NAME, id);
         return this.convertDbConsultant(dbConsultant);
     }
 
@@ -30,7 +30,7 @@ class ConsultantService {
             certifications: dbConsultant.certifications,
             roles: dbConsultant.roles
         };
-        // Insert any augmentation here
+        // Insert augmentation here
 
         return result;
     }

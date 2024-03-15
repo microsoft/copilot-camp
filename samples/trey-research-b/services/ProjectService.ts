@@ -2,15 +2,15 @@ import DbService from './DbService';
 import { DbProject } from '../model/dbModel';
 import { Project } from '../model/apiModel';
 
-// NOTE: Projects are READ ONLY in this demo app, so we are free to cache them in memory.
 const TABLE_NAME = "Project";
 
 class ProjectService {
 
-    private dbService = new DbService<DbProject>();
+    // NOTE: Projects are READ ONLY in this demo app, so we are free to cache them in memory.
+    private dbService = new DbService<DbProject>(true);
 
     async getProjectById(id: string): Promise<Project> {
-        const dbConsultant = await this.dbService.getEntityById(TABLE_NAME, id);
+        const dbConsultant = await this.dbService.getEntityByRowKey(TABLE_NAME, id);
         return this.convertDbProject(dbConsultant);
     }
 
@@ -29,7 +29,7 @@ class ProjectService {
             clientEmail: dbProject.clientEmail,
             location: dbProject.location
         };
-        // Insert any augmentation here
+        // Insert augmentation here
 
         return result;
     }
