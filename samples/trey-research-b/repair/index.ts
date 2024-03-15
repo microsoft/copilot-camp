@@ -7,6 +7,7 @@ import { Context, HttpRequest } from "@azure/functions";
 import repairRecords from "../repairsData.json";
 
 import ConsultantService from "../services/ConsultantService";
+import ProjectService from "../services/ProjectService";
 
 // Define a Response interface.
 interface Response {
@@ -43,8 +44,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     return res;
   }
 
-  const consultants = await ConsultantService.getConsultantById(assignedTo);
-  res.body.results = [ consultants ];
+  // const r = await ConsultantService.getConsultantById(assignedTo);
+  const r = await ProjectService.getProjectById(assignedTo);
+  res.body.results = [ r ];
   return res;
 
   // Filter the repair information by the assignedTo query parameter.

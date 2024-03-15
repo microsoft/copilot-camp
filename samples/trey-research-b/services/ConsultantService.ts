@@ -5,7 +5,7 @@ import { Consultant } from '../model/apiModel';
 // NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
 const TABLE_NAME = "Consultant";
 
-class ConsultantService extends DbService<DbConsultant> {
+class ConsultantService {
 
     private dbConsultantService = new DbService<DbConsultant>();
 

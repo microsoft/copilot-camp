@@ -41,16 +41,16 @@ export default class DbService<DbEntityType> {
     private expandPropertyValues(entity: DbEntityType): DbEntityType {
         const result = {} as DbEntityType;
         for (const key in entity) {
-            if (key === 'timestamp') {
-                console.log(`key=${key}`);
-            }
+            console.log(`Converting key ${key}`);
             result[key] = this.expandPropertyValue(entity[key]);
+            console.log(`Converted key ${key}`);
         }
         return result;
     }
 
     private expandPropertyValue(v: any): any {
-        if (v.charAt(0) === '{' || v.charAt(0) === '[') {
+        console.log (`Converting value ${v}`);
+        if (typeof v === "string" && (v.charAt(0) === '{' || v.charAt(0) === '[')) {
             try {
                 return JSON.parse(v);
             }
