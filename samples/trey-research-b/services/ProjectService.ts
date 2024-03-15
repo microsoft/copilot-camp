@@ -2,7 +2,7 @@ import DbService from './DbService';
 import { DbProject } from '../model/dbModel';
 import { Project } from '../model/apiModel';
 
-// NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
+// NOTE: Projects are READ ONLY in this demo app, so we are free to cache them in memory.
 const TABLE_NAME = "Project";
 
 class ProjectService {
