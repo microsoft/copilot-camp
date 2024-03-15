@@ -1,6 +1,7 @@
 import DbService from './DbService';
+import ProjectService from './ProjectService';
 import { DbAssignment } from '../model/dbModel';
-import { Assignment } from '../model/apiModel';
+import { Assignment, Project } from '../model/apiModel';
 import { HttpError } from '../utilities';
 
 const TABLE_NAME = "Assignment";
@@ -12,7 +13,7 @@ class AssignmentService {
 
     async getAssignments(filter: (entity: DbAssignment) => boolean): Promise<Assignment[]> {
         const dbConsultants = await this.dbService.getEntities(TABLE_NAME, filter);
-        return dbConsultants.map(this.convertDbAssignment);
+        return Promise.all(dbConsultants.map(await this.convertDbAssignment));
     }
 
     async chargeHoursToProject(projectId: string, consultantId: string, month: number, year: number, hours: number): Promise<Assignment> {
@@ -33,14 +34,14 @@ class AssignmentService {
             }
             dbAssignment.delivered.sort((a, b) => a.year - b.year || a.month - b.month);
             await this.dbService.updateEntity(TABLE_NAME, dbAssignment)
-            return this.convertDbAssignment(dbAssignment);
+            return await this.convertDbAssignment(dbAssignment);
         } catch (e) {
             throw new HttpError(404, "Assignment not found");
         }
     }
 
-    private convertDbAssignment(dbAssignment: DbAssignment): Assignment {
-        const result = {
+    private async convertDbAssignment(dbAssignment: DbAssignment): Promise<Assignment> {
+        const result: Assignment = {
             id: dbAssignment.id,
             projectId: dbAssignment.projectId,
             consultantId: dbAssignment.consultantId,

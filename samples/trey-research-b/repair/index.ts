@@ -73,7 +73,10 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     console.log(`Returning error status code ${status.status}: ${error.message}`);
 
     res.status = status;
-    res.body.results = [{ error: error.message }];
+    res.body.results = [{
+      status: status,
+      error: error.message
+     }];
     return res;
   }
 }
