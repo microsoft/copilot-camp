@@ -19,14 +19,12 @@ export default class DbService<DbEntityType> {
         if (!this.okToCacheLocally) {
             const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
             const result = this.expandPropertyValues(await tableClient.getEntity(tableName, rowKey) as DbEntityType);
-            console.log(`Retrieved ${tableName} entity id=${rowKey}`);
             return result as DbEntityType;
         } else {
             const entities = await this.getEntities(tableName, (entity: any) => entity.rowKey === rowKey);
             if (entities.length === 0) {
                 throw new HttpError(401, `Entity ${rowKey} not found`);
             } else {
-                console.log(`Retrieved cached ${tableName} entity id=${rowKey}`);
                 return entities[0];
             }
         }
@@ -42,10 +40,8 @@ export default class DbService<DbEntityType> {
         } else {
             const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
             entities = tableClient.listEntities();
-            if (this.okToCacheLocally) {
-                for await (const entity of entities) {
-                    this.entityCache.push(entity as DbEntityType);
-                }
+            for await (const entity of entities) {
+                this.entityCache.push(entity as DbEntityType);
             }
         }
 

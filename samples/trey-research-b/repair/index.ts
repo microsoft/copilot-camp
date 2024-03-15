@@ -48,9 +48,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   // *** TEST TEST TEST ***
 
   // const r = await ConsultantService.getConsultantById(assignedTo);
-  const r = await ProjectService.getProjectById(assignedTo);
+  // const r = await ProjectService.getProjectById(assignedTo);
   // const r = await ProjectService.getProjects(() => true);
-  // const r = await AssignmentService.getAssignments(() => true);
+  
+  // Get assignments for consultant
+  const r = await AssignmentService.getAssignments((a) => a.consultantId === assignedTo);
   res.body.results = [ r ];
   return res;
 
