@@ -2,6 +2,7 @@ import DbService from './DbService';
 import { DbConsultant } from '../model/dbModel';
 import { Consultant } from '../model/apiModel';
 
+// NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
 const TABLE_NAME = "Consultant";
 
 class ConsultantService extends DbService<DbConsultant> {
@@ -17,15 +18,6 @@ class ConsultantService extends DbService<DbConsultant> {
         const dbConsultants = await this.dbConsultantService.getEntities(TABLE_NAME, () => true);
         return dbConsultants.map(this.convertDbConsultant);
     }
-
-    // async updateConsultant(id: string, updatedConsultant: Consultant): Promise<Consultant> {
-    //     const dbConsultant = await this.dbConsultantService.getEntityById(TABLE_NAME, id);
-    //     const updatedDbConsultant = await this.dbConsultantService.updateEntity(TABLE_NAME, id, dbConsultant, (from: DbConsultant, to: DbConsultant) => ({
-    //         id: from.id,
-
-    // }));
-    //     return this.convertDbConsultant(updatedDbConsultant);
-    // }
 
     private convertDbConsultant(dbConsultant: DbConsultant): Consultant {
         const result = {

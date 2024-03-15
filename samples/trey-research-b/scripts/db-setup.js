@@ -84,7 +84,8 @@ const TABLE_NAMES = [ "Project", "Consultant", "Assignment" ];
             const rowKey = entity["id"].toString() || randomUUID();
             // Convert any nested objects to JSON strings
             for (const key in entity) {
-                if (typeof (entity[key] === "object")) {
+                const valueType = Object.prototype.toString.call(entity[key]);
+                if (valueType === "[object Object]" || valueType === "[object Array]") {
                     entity[key] = JSON.stringify(entity[key]);
                 }
             }
