@@ -44,20 +44,23 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     return res;
   }
 
+  // *** TEST TEST TEST ***
+
   // const r = await ConsultantService.getConsultantById(assignedTo);
-  const r = await ProjectService.getProjectById(assignedTo);
+  // const r = await ProjectService.getProjectById(assignedTo);
+  const r = await ConsultantService.getConsultants(() => true);
   res.body.results = [ r ];
   return res;
 
-  // Filter the repair information by the assignedTo query parameter.
-  const repairs = repairRecords.filter((item) => {
-    const fullName = item.assignedTo.toLowerCase();
-    const query = assignedTo.trim().toLowerCase();
-    const [firstName, lastName] = fullName.split(" ");
-    return fullName === query || firstName === query || lastName === query;
-  });
+  // // Filter the repair information by the assignedTo query parameter.
+  // const repairs = repairRecords.filter((item) => {
+  //   const fullName = item.assignedTo.toLowerCase();
+  //   const query = assignedTo.trim().toLowerCase();
+  //   const [firstName, lastName] = fullName.split(" ");
+  //   return fullName === query || firstName === query || lastName === query;
+  // });
 
-  // Return filtered repair records, or an empty array if no records were found.
-  res.body.results = repairs ?? [];
-  return res;
+  // // Return filtered repair records, or an empty array if no records were found.
+  // res.body.results = repairs ?? [];
+  // return res;
 }

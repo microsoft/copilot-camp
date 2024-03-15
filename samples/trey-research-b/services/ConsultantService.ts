@@ -14,8 +14,8 @@ class ConsultantService {
         return this.convertDbConsultant(dbConsultant);
     }
 
-    async getConsultants(): Promise<Consultant[]> {
-        const dbConsultants = await this.dbConsultantService.getEntities(TABLE_NAME, () => true);
+    async getConsultants(filter: (entity: DbConsultant) => boolean): Promise<Consultant[]> {
+        const dbConsultants = await this.dbConsultantService.getEntities(TABLE_NAME, filter);
         return dbConsultants.map(this.convertDbConsultant);
     }
 
