@@ -7,15 +7,15 @@ const TABLE_NAME = "Consultant";
 
 class ConsultantService {
 
-    private dbConsultantService = new DbService<DbConsultant>();
+    private dbService = new DbService<DbConsultant>();
 
     async getConsultantById(id: string): Promise<Consultant> {
-        const dbConsultant = await this.dbConsultantService.getEntityById(TABLE_NAME, id);
+        const dbConsultant = await this.dbService.getEntityById(TABLE_NAME, id);
         return this.convertDbConsultant(dbConsultant);
     }
 
     async getConsultants(filter: (entity: DbConsultant) => boolean): Promise<Consultant[]> {
-        const dbConsultants = await this.dbConsultantService.getEntities(TABLE_NAME, filter);
+        const dbConsultants = await this.dbService.getEntities(TABLE_NAME, filter);
         return dbConsultants.map(this.convertDbConsultant);
     }
 

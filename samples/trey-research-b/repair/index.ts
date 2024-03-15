@@ -8,6 +8,7 @@ import repairRecords from "../repairsData.json";
 
 import ConsultantService from "../services/ConsultantService";
 import ProjectService from "../services/ProjectService";
+import AssignmentService from "../services/AssignmentService";
 
 // Define a Response interface.
 interface Response {
@@ -48,7 +49,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   // const r = await ConsultantService.getConsultantById(assignedTo);
   // const r = await ProjectService.getProjectById(assignedTo);
-  const r = await ConsultantService.getConsultants(() => true);
+  const r = await AssignmentService.getAssignments(() => true);
   res.body.results = [ r ];
   return res;
 
