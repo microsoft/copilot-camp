@@ -2,6 +2,7 @@
 
 # API Specification
 
+~~~javascript
 GET /api/me/ - get my consulting profile and projects
 
 GET /api/projects/ - get all projects
@@ -18,18 +19,30 @@ GET /api/consultants/?role=Foo - get consultants who can serve the "Foo" role on
 GET /api/consultants/?availability=x - get consultants with x hours availability this month or next month
 
 POST /api/me/chargeTime - Add hours to project with "Foo" in the name
+Request body:
 {
   projectName: "foo",
   hours: 5
 }
+Response body:
+{
+    success: true,
+    message: "OK";
+}
 
-POST /api/projects/addConsultantToProject - Add consultant to project with "Foo" in the name
+POST /api/projects/addConsultant - Add consultant to project with "Foo" in the name
+Request body:
 {
     projectName: "foo",
     consultant: "avery",
     role: "architect"
 }
-
+Response body:
+{
+    success: true,
+    message: "OK";
+}
+~~~
 
 
 

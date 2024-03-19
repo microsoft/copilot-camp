@@ -14,7 +14,7 @@ interface ApiProjectAssignment {
     };
 }
 
-// Returned by all /api//projects GET requests
+// Returned by all /api/projects GET requests
 export interface ApiProject extends Project {
     consultants: ApiProjectAssignment[];
  }
@@ -55,7 +55,7 @@ export interface ApiChargeTimeResponse {
 }
  //#endregion
 
- //#region POST request to /api/projects/addConsultantToProject ---
+ //#region POST request to /api/projects/addConsultant ---
 export interface ApiAddConsultantToProjectRequest {
     projectName: string;
     consultantName: string;
