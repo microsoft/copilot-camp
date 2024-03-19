@@ -4,7 +4,7 @@ import { Project } from '../model/baseModel';
 
 const TABLE_NAME = "Project";
 
-class ProjectService {
+class ProjectDbService {
 
     // NOTE: Projects are READ ONLY in this demo app, so we are free to cache them in memory.
     private dbService = new DbService<DbProject>(true);
@@ -35,4 +35,4 @@ class ProjectService {
     }
 }
 
-export default new ProjectService();
+export default new ProjectDbService();

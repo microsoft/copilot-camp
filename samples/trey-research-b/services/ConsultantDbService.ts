@@ -4,7 +4,7 @@ import { Consultant } from '../model/baseModel';
 
 const TABLE_NAME = "Consultant";
 
-class ConsultantService {
+class ConsultantDbService {
 
     // NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
     private dbService = new DbService<DbConsultant>(true);
@@ -36,4 +36,4 @@ class ConsultantService {
     }
 }
 
-export default new ConsultantService();
+export default new ConsultantDbService();

@@ -6,9 +6,9 @@
 import { Context, HttpRequest } from "@azure/functions";
 // import repairRecords from "../repairsData.json";
 
-import ConsultantService from "../services/ConsultantService";
-import ProjectService from "../services/ProjectService";
-import AssignmentService from "../services/AssignmentService";
+import ConsultantDbService from "../services/ConsultantDbService";
+import ProjectDbService from "../services/ProjectDbService";
+import AssignmentDbService from "../services/AssignmentDbService";
 
 // Define a Response interface.
 interface Response {
@@ -45,9 +45,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     switch (command) {
       case "getmyprojects": {
         const results = [];
-        const a = await AssignmentService.getAssignments((a) => a.consultantId === consultantId);
+        const a = await AssignmentDbService.getAssignments((a) => a.consultantId === consultantId);
         for (const assignment of a) {
-          const p = await ProjectService.getProjectById(assignment.projectId);
+          const p = await ProjectDbService.getProjectById(assignment.projectId);
           results.push(p);
         }
         res.body.results = results;
@@ -55,9 +55,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       }
       case "getmybilledhours": {
         const results = [];
-        const a = await AssignmentService.getAssignments((a) => a.consultantId === consultantId);
+        const a = await AssignmentDbService.getAssignments((a) => a.consultantId === consultantId);
         for (const assignment of a) {
-          const p: any = await ProjectService.getProjectById(assignment.projectId);
+          const p: any = await ProjectDbService.getProjectById(assignment.projectId);
           const thisMonth = new Date().getMonth() + 1;
           const thisYear = new Date().getFullYear();
           const lastMonth = thisMonth === 1 ? 12 : thisMonth - 1;
@@ -73,11 +73,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       }
       case "getprojectsforconsultant": {
         const results = [];
-        const consultants = await ConsultantService.getConsultants((c) => c.name.toLowerCase().indexOf(consultantNameOrId) >= 0 || c.id === consultantNameOrId);
+        const consultants = await ConsultantDbService.getConsultants((c) => c.name.toLowerCase().indexOf(consultantNameOrId) >= 0 || c.id === consultantNameOrId);
         if (consultants.length > 0) {
-          const a = await AssignmentService.getAssignments((a) => a.consultantId === consultants[0].id);
+          const a = await AssignmentDbService.getAssignments((a) => a.consultantId === consultants[0].id);
           for (const assignment of a) {
-            const p = await ProjectService.getProjectById(assignment.projectId);
+            const p = await ProjectDbService.getProjectById(assignment.projectId);
             results.push(p);
           }
           res.body.results = results;
@@ -86,11 +86,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       }
       case "getbilledhoursforconsultant": {
         const results = [];
-        const consultants = await ConsultantService.getConsultants((c) => c.name.toLowerCase().indexOf(consultantNameOrId) >= 0 || c.id === consultantNameOrId);
+        const consultants = await ConsultantDbService.getConsultants((c) => c.name.toLowerCase().indexOf(consultantNameOrId) >= 0 || c.id === consultantNameOrId);
         if (consultants.length > 0) {
-          const a = await AssignmentService.getAssignments((a) => a.consultantId === consultants[0].id);
+          const a = await AssignmentDbService.getAssignments((a) => a.consultantId === consultants[0].id);
           for (const assignment of a) {
-            const p: any = await ProjectService.getProjectById(assignment.projectId);
+            const p: any = await ProjectDbService.getProjectById(assignment.projectId);
             const thisMonth = new Date().getMonth() + 1;
             const thisYear = new Date().getFullYear();
             const lastMonth = thisMonth === 1 ? 12 : thisMonth - 1;

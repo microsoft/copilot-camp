@@ -2,43 +2,28 @@
 
 # API Specification
 
-/api/timeTracking/getMyProjects
-becomes
-/api/me/projects
-
-/api/timeTracking/getProjectsForConsultant
-becomes
-/api/projects?consultantName=Avery
-
-/api/consultants?projectName=Foo
-/api/consultants
-/api/consultants?certification=Azure
-
------------------------
-
-GET /api/me/ - get my personal information as a consultant
-GET /api/me/projects - get projects I am assigned to
+GET /api/me/ - get my consulting profile and projects
 
 GET /api/projects/ - get all projects
-GET /api/projects/1 - get project ID 1
+// Query string params can be used in any combination to filter result
 GET /api/projects/?projectName=Foo - get projects with "Foo" in the name
 GET /api/projects/?consultantName=Avery - get projects where a consultant containing "Avery" is assigned
 
 GET /api/consultants/ - get all consultants
-GET /api/consultants/1 - get consultant ID 1
+// Query string params can be used in any combination to filter result
 GET /api/consultants/?projectName=Foo - get consultants on projects with "Foo" in the name
 GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills list
 GET /api/consultants/?certification=Foo - get consultants with "Foo" in their certifications list
 GET /api/consultants/?role=Foo - get consultants who can serve the "Foo" role on a project
 GET /api/consultants/?availability=x - get consultants with x hours availability this month or next month
 
-POST /api/projects/hours - Add hours to project with "Foo" in the name
+POST /api/me/chargeTime - Add hours to project with "Foo" in the name
 {
   projectName: "foo",
-  hours: 5,
-  consultant: "avery"       // optional, default to the logged in user
+  hours: 5
 }
-POST /api/projects/consultants - Add consultant to project with "Foo" in the name
+
+POST /api/projects/addConsultantToProject - Add consultant to project with "Foo" in the name
 {
     projectName: "foo",
     consultant: "avery",

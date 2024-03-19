@@ -1,12 +1,11 @@
 import DbService from './DbService';
-import ProjectService from './ProjectService';
 import { DbAssignment } from '../model/dbModel';
-import { Assignment, Project } from '../model/baseModel';
+import { Assignment } from '../model/baseModel';
 import { HttpError } from '../utilities';
 
 const TABLE_NAME = "Assignment";
 
-class AssignmentService {
+class AssignmentDbService {
 
     // NOTE: Assignments are READ-WRITE so disable local caching
     private dbService = new DbService<DbAssignment>(false);
@@ -57,4 +56,4 @@ class AssignmentService {
     }
 }
 
-export default new AssignmentService();
+export default new AssignmentDbService();
