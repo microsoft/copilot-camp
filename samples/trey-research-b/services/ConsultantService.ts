@@ -1,6 +1,6 @@
 import DbService from './DbService';
 import { DbConsultant } from '../model/dbModel';
-import { Consultant } from '../model/apiModel';
+import { Consultant } from '../model/baseModel';
 
 const TABLE_NAME = "Consultant";
 

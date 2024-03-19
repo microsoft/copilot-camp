@@ -1,5 +1,5 @@
 import { TableEntity } from "@azure/data-tables";
-import { BaseProject, BaseConsultant, BaseAssignment } from "./baseModel";
+import { Project, Consultant, Assignment } from "./baseModel";
 
 export interface DbRow extends TableEntity {
     etag: string;
@@ -8,8 +8,8 @@ export interface DbRow extends TableEntity {
     timestamp: Date;
 }
 
-export interface DbProject extends DbRow, BaseProject { }
+export interface DbProject extends DbRow, Project { }
 
-export interface DbConsultant extends DbRow, BaseConsultant { } 
+export interface DbConsultant extends DbRow, Consultant { } 
 
-export interface DbAssignment extends DbRow, BaseAssignment { }
+export interface DbAssignment extends DbRow, Assignment { }

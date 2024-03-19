@@ -4,7 +4,7 @@
  */
 
 import { Context, HttpRequest } from "@azure/functions";
-import repairRecords from "../repairsData.json";
+// import repairRecords from "../repairsData.json";
 
 import ConsultantService from "../services/ConsultantService";
 import ProjectService from "../services/ProjectService";

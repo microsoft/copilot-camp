@@ -1,7 +1,5 @@
-import { BaseProject, BaseConsultant, BaseAssignment } from './baseModel';
+import { Project, Consultant } from './baseModel';
 
-export interface Project extends BaseProject { }
+export interface ApiProject extends Project { }
 
-export interface Consultant extends BaseConsultant { } 
-
-export interface Assignment extends BaseAssignment { }
+export interface ApiConsultant extends Consultant { }
