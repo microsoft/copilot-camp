@@ -1,5 +1,5 @@
 import { Project, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiProject, ApiChargeTimeResponse } from '../model/apiModel';
+import { ApiProject, ApiProjectAssignment, ApiChargeTimeResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
@@ -37,7 +37,7 @@ class ProjectApiService {
             result = result.filter(
                 (p) => {
                     const name = consultantName.toLowerCase();
-                    return p.consultants.find((n) => n.consultant.name.toLowerCase().includes(name));
+                    return p.consultants.find((n) => n.consultantName.toLowerCase().includes(name));
                 });
             };
             
@@ -66,16 +66,15 @@ class ProjectApiService {
                     nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
 
             result.consultants.push({
-                consultant: {
-                    name: consultant.name,
-                    details: consultant,
+                    consultantName: consultant.name,
+                    consultantLocation: consultant.location,
                     role: assignment.role,
                     forecastThisMonth: forecastThisMonth,
                     forecastNextMonth: forecastNextMonth,
                     deliveredLastMonth: deliveredLastMonth,
                     deliveredThisMonth: deliveredThisMonth
-                }
             });
+
             result.forecastThisMonth += forecastThisMonth;
             result.forecastNextMonth += forecastNextMonth;
             result.deliveredLastMonth += deliveredLastMonth;

@@ -14,7 +14,9 @@ class ConsultantApiService {
         return result;
     }
 
-    async getApiConsultants(consultantName: string, projectOrClientName: string): Promise<ApiConsultant[]> {
+    async getApiConsultants(
+        consultantName: string, projectName: string, skill: string,
+        certification: string, role: string, hoursBilled: string, hoursAvailable: string): Promise<ApiConsultant[]> {
 
         let consultants = await ConsultantDbService.getConsultants();
         let assignments = await AssignmentDbService.getAssignments();
@@ -29,14 +31,17 @@ class ConsultantApiService {
         let result = await Promise.all(consultants.map((c) => this.getApiConsultant(c, assignments)));
 
         // Filter on augmented properties
-        // if (result && consultantName) {
-        //     result = result.filter(
-        //         (p) => {
-        //             const name = consultantName.toLowerCase();
-        //             return p.consultants.find((n) => n.consultant.name.toLowerCase().includes(name));
-        //         });
-        //     };
-            
+        if (result && projectName) {
+            result = result.filter(
+                (c) => {
+                    let project = c.projects.find((p) => {
+                        let x = p.projectName.toLowerCase();
+                        return x.includes(projectName);
+                    });
+                    return project;
+                });
+        };
+
         return result;
     }
 
@@ -55,22 +60,21 @@ class ConsultantApiService {
         for (let assignment of assignments) {
             const project = await ProjectDbService.getProjectById(assignment.projectId);
             const { lastMonthHours: forecastLastMonth,
-                    thisMonthHours: forecastThisMonth,
-                    nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
+                thisMonthHours: forecastThisMonth,
+                nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
             const { lastMonthHours: deliveredLastMonth,
-                    thisMonthHours: deliveredThisMonth,
-                    nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
+                thisMonthHours: deliveredThisMonth,
+                nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
 
             result.projects.push({
-                project: {
-                    name: consultant.name,
-                    details: project,
-                    role: assignment.role,
-                    forecastThisMonth: forecastThisMonth,
-                    forecastNextMonth: forecastNextMonth,
-                    deliveredLastMonth: deliveredLastMonth,
-                    deliveredThisMonth: deliveredThisMonth
-                }
+                projectName: project.name,
+                projectDescription: project.description,
+                projectLocation: project.location,
+                role: assignment.role,
+                forecastThisMonth: forecastThisMonth,
+                forecastNextMonth: forecastNextMonth,
+                deliveredLastMonth: deliveredLastMonth,
+                deliveredThisMonth: deliveredThisMonth
             });
             result.forecastThisMonth += forecastThisMonth;
             result.forecastNextMonth += forecastNextMonth;
@@ -94,9 +98,9 @@ class ConsultantApiService {
         const nextYear = thisMonth === 11 ? thisYear + 1 : thisYear;
 
         const result = {
-            lastMonthHours: hours.find((h) => h.month === lastMonth+1 && h.year === lastYear)?.hours || 0,
-            thisMonthHours: hours.find((h) => h.month === thisMonth+1 && h.year === thisYear)?.hours || 0,
-            nextMonthHours: hours.find((h) => h.month === nextMonth+1 && h.year === nextYear)?.hours || 0
+            lastMonthHours: hours.find((h) => h.month === lastMonth + 1 && h.year === lastYear)?.hours || 0,
+            thisMonthHours: hours.find((h) => h.month === thisMonth + 1 && h.year === thisYear)?.hours || 0,
+            nextMonthHours: hours.find((h) => h.month === nextMonth + 1 && h.year === nextYear)?.hours || 0
         };
         return result;
     }

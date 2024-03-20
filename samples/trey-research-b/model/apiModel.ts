@@ -1,17 +1,15 @@
-import { Project, Consultant } from './baseModel';
+import { Project, Consultant, Location } from './baseModel';
 
 //#region GET requests for /projects --------------------
 
 export interface ApiProjectAssignment {
-    consultant: {
-        name: string;
-        details: Consultant;
-        role: string;
-        forecastThisMonth: number;
-        forecastNextMonth: number;
-        deliveredLastMonth: number;
-        deliveredThisMonth: number;
-        };
+    consultantName: string;
+    consultantLocation: Location;
+    role: string;
+    forecastThisMonth: number;
+    forecastNextMonth: number;
+    deliveredLastMonth: number;
+    deliveredThisMonth: number;
 }
 
 // Returned by all /api/projects GET requests
@@ -27,15 +25,14 @@ export interface ApiProject extends Project {
 //#region GET requests for /me and /consultants ---
 
 export interface ApiConsultantAssignment {
-    project: {
-        name: string;
-        details: Project;
-        role: string;
-        forecastThisMonth: number;
-        forecastNextMonth: number;
-        deliveredLastMonth: number;
-        deliveredThisMonth: number;
-    };
+    projectName: string;
+    projectDescription: string;
+    projectLocation: Location;
+    role: string;
+    forecastThisMonth: number;
+    forecastNextMonth: number;
+    deliveredLastMonth: number;
+    deliveredThisMonth: number;
 }
 
 // Returned by all /api/consultants GET requests
