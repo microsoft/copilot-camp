@@ -34,7 +34,6 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     const certification = req.query.certification?.toString().toLowerCase() || "";
     const role = req.query.role?.toString().toLowerCase() || "";
     const hoursAvailable = req.query.hoursAvailable?.toString().toLowerCase() || "";
-    const hoursDelivered = req.query.hoursDelivered?.toString().toLowerCase() || "";
 
     const id = req.params.id?.toLowerCase();
 
@@ -45,7 +44,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     }
 
     const result = await ConsultantApiService.getApiConsultants(
-      consultantName, projectName, skill, certification, role, hoursAvailable, hoursDelivered
+      consultantName, projectName, skill, certification, role, hoursAvailable
     );
     res.body.results = result;
     return res;

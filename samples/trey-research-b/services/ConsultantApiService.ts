@@ -4,6 +4,8 @@ import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 
+const AVAILABLE_HOURS_PER_MONTH = 160;
+
 class ConsultantApiService {
 
     async getApiConsultantById(consultantId: string): Promise<ApiConsultant> {
@@ -16,7 +18,7 @@ class ConsultantApiService {
 
     async getApiConsultants(
         consultantName: string, projectName: string, skill: string,
-        certification: string, role: string, hoursBilled: string, hoursAvailable: string): Promise<ApiConsultant[]> {
+        certification: string, role: string, hoursAvailable: string): Promise<ApiConsultant[]> {
 
         let consultants = await ConsultantDbService.getConsultants();
         let assignments = await AssignmentDbService.getAssignments();
@@ -26,11 +28,23 @@ class ConsultantApiService {
             consultants = consultants.filter(
                 (c) => c.name.toLowerCase().includes(consultantName));
         }
+        if (skill) {
+            consultants = consultants.filter(
+                (c) => c.skills.find((s) => s.toLowerCase().includes(skill)));
+        }
+        if (certification) {
+            consultants = consultants.filter(
+                (c) => c.certifications.find((s) => s.toLowerCase().includes(certification)));
+        }
+        if (role) {
+            consultants = consultants.filter(
+                (c) => c.roles.find((s) => s.toLowerCase().includes(role)));
+        }
 
         // Augment the base properties with assignment information
         let result = await Promise.all(consultants.map((c) => this.getApiConsultant(c, assignments)));
 
-        // Filter on augmented properties
+        // Filter on project name
         if (result && projectName) {
             result = result.filter(
                 (c) => {
@@ -39,6 +53,14 @@ class ConsultantApiService {
                         return x.includes(projectName);
                     });
                     return project;
+                });
+        };
+        // Filter on available hours
+        if (result && hoursAvailable) {
+            result = result.filter(
+                (c) => {
+                    let availableHours = AVAILABLE_HOURS_PER_MONTH*2 - c.forecastThisMonth - c.forecastNextMonth;
+                    return availableHours >= parseInt(hoursAvailable);
                 });
         };
 
