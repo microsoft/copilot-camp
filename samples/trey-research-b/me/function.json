@@ -6,7 +6,7 @@
         "direction": "in",
         "name": "req",
         "methods": [
-          "get"
+          "get", "post"
         ],
         "route": "me/{*command}"
       },
@@ -16,5 +16,5 @@
         "name": "$return"
       }
     ],
-    "scriptFile": "../dist/consultants/index.js"
+    "scriptFile": "../dist/me/index.js"
   }

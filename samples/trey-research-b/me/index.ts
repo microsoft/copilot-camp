@@ -28,27 +28,31 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   };
 
   const MY_CONSULTANT_ID = '1';
-  
-  try {
 
-    const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
-    const projectName = req.query.projectName?.toString().toLowerCase() || "";
-    const skill = req.query.skill?.toString().toLowerCase() || "";
-    const certification = req.query.certification?.toString().toLowerCase() || "";
-    const role = req.query.role?.toString().toLowerCase() || "";
-    const hoursAvailable = req.query.hoursAvailable?.toString().toLowerCase() || "";
+  try {
 
     const command = req.params.command?.toLowerCase();
 
-    if (command) {
-      throw new HttpError(400, `Invalid command: ${command}`);
+    switch (req.method) {
+      case "GET": {
+
+        if (command) {
+          throw new HttpError(400, `Invalid command: ${command}`);
+        }
+
+        const result = [await ConsultantApiService.getApiConsultantById(MY_CONSULTANT_ID)];
+        res.body.results = result;
+        return res;
+      }
+      case "POST": {
+        throw new HttpError(405, `Method not allowed: ${req.method}`);
+      }
+      default:
+        throw new HttpError(405, `Method not allowed: ${req.method}`);
     }
 
-    const result = [ await ConsultantApiService.getApiConsultantById(MY_CONSULTANT_ID) ];
-    res.body.results = result;
-    return res;
-
   } catch (error) {
+
     const status = <number>error.status || <number>error.response?.status || 500;
     console.log(`Returning error status code ${status}: ${error.message}`);
 

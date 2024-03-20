@@ -28,22 +28,36 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   try {
 
-    const projectName = req.query.projectName?.toString().toLowerCase() || "";
-    const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
+    const command = req.params.command?.toLowerCase();
 
-    const id = req.params.id?.toLowerCase();
+    switch (req.method) {
+      case "GET": {
 
-    if (id) {
-      const result = await ProjectApiService.getApiProjectById(id);
-      res.body.results = [ result ];
-      return res;
+        const projectName = req.query.projectName?.toString().toLowerCase() || "";
+        const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
+
+        const id = req.params.id?.toLowerCase();
+
+        if (id) {
+          const result = await ProjectApiService.getApiProjectById(id);
+          res.body.results = [result];
+          return res;
+        }
+
+        const result = await ProjectApiService.getApiProjects(projectName, consultantName);
+        res.body.results = result;
+        return res;
+      }
+      case "POST": {
+        throw new Error(`Method not allowed: ${req.method}`);
+      }
+      default: {
+        throw new Error(`Method not allowed: ${req.method}`);
+      }
     }
 
-      const result = await ProjectApiService.getApiProjects(projectName, consultantName);
-      res.body.results = result;
-      return res;
-
   } catch (error) {
+
     const status = <number>error.status || <number>error.response?.status || 500;
     console.log(`Returning error status code ${status}: ${error.message}`);
 
@@ -54,4 +68,5 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     };
     return res;
   }
+  
 }
