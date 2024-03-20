@@ -1,3 +1,19 @@
+export interface Location {
+    street: string;
+    city: string;
+    state: string;
+    country: string;
+    postalCode: string;
+    latitude: number;
+    longitude: number;
+}
+
+export interface HoursEntry {
+    month: number;
+    year: number;
+    hours: number;
+}
+
 export interface Project {
     id: string;
     name: string;
@@ -5,15 +21,7 @@ export interface Project {
     clientName: string;
     clientContact: string;
     clientEmail: string;
-    location: {
-        street: string;
-        city: string;
-        state: string;
-        country: string;
-        postalCode: string;
-        latitude: number;
-        longitude: number;
-    }
+    location: Location;
 }
 
 export interface Consultant {
@@ -21,15 +29,7 @@ export interface Consultant {
     name: string;
     email: string;
     phone: string;
-    location: {
-        street: string;
-        city: string;
-        state: string;
-        country: string;
-        postalCode: string;
-        latitude: number;
-        longitude: number;
-    }
+    location: Location;
     skills: string[];
     certifications: string[];
     roles: string[];
@@ -42,18 +42,6 @@ export interface Assignment {
     role: string;
     billable: boolean;
     rate: number;
-    forecast: [
-        {
-            month: number;
-            year: number;
-            hours: number;
-        }
-    ];
-    delivered: [
-        {
-            month: number;
-            year: number;
-            hours: number;
-        }
-    ]
+    forecast: HoursEntry [];
+    delivered: HoursEntry[];
 }

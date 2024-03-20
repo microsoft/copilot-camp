@@ -10,13 +10,13 @@ class ConsultantDbService {
     private dbService = new DbService<DbConsultant>(true);
 
     async getConsultantById(id: string): Promise<Consultant> {
-        const dbConsultant = await this.dbService.getEntityByRowKey(TABLE_NAME, id);
-        return this.convertDbConsultant(dbConsultant);
+        const consultant = await this.dbService.getEntityByRowKey(TABLE_NAME, id) as DbConsultant;
+        return this.convertDbConsultant(consultant);
     }
 
-    async getConsultants(filter: (entity: DbConsultant) => boolean): Promise<Consultant[]> {
-        const dbConsultants = await this.dbService.getEntities(TABLE_NAME, filter);
-        return dbConsultants.map(this.convertDbConsultant);
+    async getConsultants(): Promise<Consultant[]> {
+        const consultants = await this.dbService.getEntities(TABLE_NAME) as DbConsultant[];
+        return consultants.map<Consultant>((c) => this.convertDbConsultant(c));
     }
 
     private convertDbConsultant(dbConsultant: DbConsultant): Consultant {
@@ -30,8 +30,6 @@ class ConsultantDbService {
             certifications: dbConsultant.certifications,
             roles: dbConsultant.roles
         };
-        // Insert augmentation here
-
         return result;
     }
 }
