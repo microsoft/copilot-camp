@@ -19,6 +19,7 @@ class ProjectApiService {
         let projects = await ProjectDbService.getProjects();
         let assignments = await AssignmentDbService.getAssignments();
 
+        // Filter on base properties
         if (projectOrClientName) {
             projects = projects.filter(
                 (p) => {
@@ -27,16 +28,16 @@ class ProjectApiService {
                     return name.includes(projectOrClientName) || clientName.includes(projectOrClientName);
                 });
         }
-        let result: ApiProject[] = [];
-        for (let project of projects) {
-            const apiProject = await this.getApiProject(project, assignments);
-            result.push(apiProject);
-        }
+
+        // Augment the base properties with consultant information
+        let result = await Promise.all(projects.map((p) => this.getApiProject(p, assignments)));
+
+        // Filter on consultant information
         if (result) {
             result = result.filter(
                 (p) => {
                     const name = consultantName.toLowerCase();
-                    return p.consultants.find((n) => n.consultant.name.toLowerCase().includes(name);
+                    return p.consultants.find((n) => n.consultant.name.toLowerCase().includes(name));
                 });
             };
             
@@ -50,11 +51,16 @@ class ProjectApiService {
         assignments = assignments.filter((a) => a.projectId === project.id);
 
         result.consultants = [];
+        result.forecastThisMonth = 0;
+        result.forecastNextMonth = 0;
+        result.deliveredThisMonth = 0;
+        result.deliveredNextMonth = 0;
+
         for (let assignment of assignments) {
             const consultant = await ConsultantDbService.getConsultantById(assignment.consultantId);
             const { thisMonthHours: forecastThisMonth,
                     nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
-            const { thisMonthHours: thisMonthDelivered,
+            const { thisMonthHours: deliveredThisMonth,
                     nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
 
             result.consultants.push({
@@ -64,10 +70,15 @@ class ProjectApiService {
                     role: assignment.role,
                     forecastThisMonth: forecastThisMonth,
                     forecastNextMonth: forecastNextMonth,
-                    deliveredThisMonth: thisMonthDelivered,
+                    deliveredThisMonth: deliveredThisMonth,
                     deliveredNextMonth: deliveredNextMonth
                 }
             });
+            result.forecastThisMonth += forecastThisMonth;
+            result.forecastNextMonth += forecastNextMonth;
+            result.deliveredThisMonth += deliveredThisMonth;
+            result.deliveredNextMonth += deliveredNextMonth;
+
         }
         return result;
     }

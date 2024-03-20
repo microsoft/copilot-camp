@@ -26,7 +26,7 @@
                 {
                     "month": 6,
                     "year": 2024,
-                    "hours": 110
+                    "hours": 1
                 },
                 {
                     "month": 7,
@@ -47,6 +47,57 @@
                     "month": 10,
                     "year": 2024,
                     "hours": 120
+                }
+            ],
+            "delivered": [ ]
+        },
+        {
+            "id": "10,2",
+            "projectId": "10",
+            "consultantId": "2",
+            "role": "Designer",
+            "billable": true,
+            "rate": 100,
+            "forecast": [
+                {
+                    "month": 3,
+                    "year": 2024,
+                    "hours": 100
+                },
+                {
+                    "month": 4,
+                    "year": 2024,
+                    "hours": 20
+                },
+                {
+                    "month": 5,
+                    "year": 2024,
+                    "hours": 20
+                },
+                {
+                    "month": 6,
+                    "year": 2024,
+                    "hours": 20
+                },
+                {
+                    "month": 7,
+                    "year": 2024,
+                    "hours": 20
+                },
+                {
+                    "month": 8,
+                    "year": 2024,
+                    "hours": 10
+                },
+                {
+                    "month": 9,
+                    "year": 2024,
+                    "hours": 10
+                },
+                {
+                    "month": 10,
+                    "year": 2024,
+                    "hours": 10
                 }
             ],
             "delivered": [ ]
