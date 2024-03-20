@@ -49,11 +49,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       return res;
     }
 
-    if (projectName || consultantName) {
       const result = await ProjectApiService.getApiProjects(projectName, consultantName);
       res.body.results = result;
       return res;
-    }
 
     // // Refactor these to remove duplicated code and make things more compact
     // switch (command) {

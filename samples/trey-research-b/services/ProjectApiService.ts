@@ -33,7 +33,7 @@ class ProjectApiService {
         let result = await Promise.all(projects.map((p) => this.getApiProject(p, assignments)));
 
         // Filter on consultant information
-        if (result) {
+        if (result && consultantName) {
             result = result.filter(
                 (p) => {
                     const name = consultantName.toLowerCase();
