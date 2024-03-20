@@ -12,6 +12,7 @@ GET /api/projects/?consultantName=Avery - get projects where a consultant contai
 
 GET /api/consultants/ - get all consultants
 // Query string params can be used in any combination to filter result
+GET /api/projects/?consultantName=Avery - get consultants with names containing "Avery"
 GET /api/consultants/?projectName=Foo - get consultants on projects with "Foo" in the name
 GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills list
 GET /api/consultants/?certification=Foo - get consultants with "Foo" in their certifications list

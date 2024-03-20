@@ -2,7 +2,7 @@ import { Project, Consultant } from './baseModel';
 
 //#region GET requests for /projects --------------------
 
-interface ApiProjectAssignment {
+export interface ApiProjectAssignment {
     consultant: {
         name: string;
         details: Consultant;
@@ -26,7 +26,7 @@ export interface ApiProject extends Project {
 
 //#region GET requests for /me and /consultants ---
 
-interface ApiConsultantAssignment {
+export interface ApiConsultantAssignment {
     project: {
         name: string;
         details: Project;
@@ -43,8 +43,8 @@ export interface ApiConsultant extends Consultant {
     projects: ApiConsultantAssignment[];
     forecastThisMonth: number;
     forecastNextMonth: number;
+    deliveredLastMonth: number;
     deliveredThisMonth: number;
-    deliveredNextMonth: number;
 }
 //#endregion
 

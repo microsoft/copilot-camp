@@ -1,63 +1,59 @@
-import { Project, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiProject, ApiChargeTimeResponse } from '../model/apiModel';
+import { Consultant, Project, HoursEntry, Assignment } from '../model/baseModel';
+import { ApiConsultant, ApiProject, ApiChargeTimeResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 
-class ProjectApiService {
+class ConsultantApiService {
 
-    async getApiProjectById(projectId: string): Promise<ApiProject> {
-        const project = await ProjectDbService.getProjectById(projectId);
+    async getApiConsultantById(consultantId: string): Promise<ApiConsultant> {
+        const consultant = await ConsultantDbService.getConsultantById(consultantId);
         let assignments = await AssignmentDbService.getAssignments();
 
-        const result = await this.getApiProject(project, assignments);
+        const result = await this.getApiConsultant(consultant, assignments);
         return result;
     }
 
-    async getApiProjects(projectOrClientName: string, consultantName: string): Promise<ApiProject[]> {
+    async getApiConsultants(consultantName: string, projectOrClientName: string): Promise<ApiConsultant[]> {
 
-        let projects = await ProjectDbService.getProjects();
+        let consultants = await ConsultantDbService.getConsultants();
         let assignments = await AssignmentDbService.getAssignments();
 
         // Filter on base properties
-        if (projectOrClientName) {
-            projects = projects.filter(
-                (p) => {
-                    const name = p.name?.toLowerCase();
-                    const clientName = p.clientName?.toLowerCase();
-                    return name.includes(projectOrClientName) || clientName.includes(projectOrClientName);
-                });
+        if (consultantName) {
+            consultants = consultants.filter(
+                (c) => c.name.toLowerCase().includes(consultantName));
         }
 
         // Augment the base properties with assignment information
-        let result = await Promise.all(projects.map((p) => this.getApiProject(p, assignments)));
+        let result = await Promise.all(consultants.map((c) => this.getApiConsultant(c, assignments)));
 
         // Filter on augmented properties
-        if (result && consultantName) {
-            result = result.filter(
-                (p) => {
-                    const name = consultantName.toLowerCase();
-                    return p.consultants.find((n) => n.consultant.name.toLowerCase().includes(name));
-                });
-            };
+        // if (result && consultantName) {
+        //     result = result.filter(
+        //         (p) => {
+        //             const name = consultantName.toLowerCase();
+        //             return p.consultants.find((n) => n.consultant.name.toLowerCase().includes(name));
+        //         });
+        //     };
             
         return result;
     }
 
-    // Augment a project to get an ApiProject
-    async getApiProject(project: Project, assignments: Assignment[]): Promise<ApiProject> {
+    // Augment a consultant to get an ApiConsultant
+    async getApiConsultant(consultant: Consultant, assignments: Assignment[]): Promise<ApiConsultant> {
 
-        const result = project as ApiProject;
-        assignments = assignments.filter((a) => a.projectId === project.id);
+        const result = consultant as ApiConsultant;
+        assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
-        result.consultants = [];
+        result.projects = [];
         result.forecastThisMonth = 0;
         result.forecastNextMonth = 0;
         result.deliveredLastMonth = 0;
         result.deliveredThisMonth = 0;
 
         for (let assignment of assignments) {
-            const consultant = await ConsultantDbService.getConsultantById(assignment.consultantId);
+            const project = await ProjectDbService.getProjectById(assignment.projectId);
             const { lastMonthHours: forecastLastMonth,
                     thisMonthHours: forecastThisMonth,
                     nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
@@ -65,10 +61,10 @@ class ProjectApiService {
                     thisMonthHours: deliveredThisMonth,
                     nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
 
-            result.consultants.push({
-                consultant: {
+            result.projects.push({
+                project: {
                     name: consultant.name,
-                    details: consultant,
+                    details: project,
                     role: assignment.role,
                     forecastThisMonth: forecastThisMonth,
                     forecastNextMonth: forecastNextMonth,
@@ -113,4 +109,4 @@ class ProjectApiService {
     }
 }
 
-export default new ProjectApiService();
+export default new ConsultantApiService();
