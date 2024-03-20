@@ -1,22 +1,22 @@
 import DbService from './DbService';
 import { DbProject } from '../model/dbModel';
-import { Project } from '../model/apiModel';
+import { Project } from '../model/baseModel';
 
 const TABLE_NAME = "Project";
 
-class ProjectService {
+class ProjectDbService {
 
     // NOTE: Projects are READ ONLY in this demo app, so we are free to cache them in memory.
     private dbService = new DbService<DbProject>(true);
 
     async getProjectById(id: string): Promise<Project> {
-        const dbConsultant = await this.dbService.getEntityByRowKey(TABLE_NAME, id);
-        return this.convertDbProject(dbConsultant);
+        const project = await this.dbService.getEntityByRowKey(TABLE_NAME, id) as DbProject;
+        return this.convertDbProject(project);
     }
 
-    async getProjects(filter: (entity: DbProject) => boolean): Promise<Project[]> {
-        const dbConsultants = await this.dbService.getEntities(TABLE_NAME, filter);
-        return dbConsultants.map(this.convertDbProject);
+    async getProjects(): Promise<Project[]> {
+        const projects = await this.dbService.getEntities(TABLE_NAME) as DbProject[];
+        return projects.map<Project>((p) => this.convertDbProject(p));
     }
 
     private convertDbProject(dbProject: DbProject): Project {
@@ -29,10 +29,8 @@ class ProjectService {
             clientEmail: dbProject.clientEmail,
             location: dbProject.location
         };
-        // Insert augmentation here
-
         return result;
     }
 }
 
-export default new ProjectService();
+export default new ProjectDbService();

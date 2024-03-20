@@ -1,24 +1,24 @@
 import DbService from './DbService';
-import ProjectService from './ProjectService';
 import { DbAssignment } from '../model/dbModel';
-import { Assignment, Project } from '../model/apiModel';
+import { Assignment } from '../model/baseModel';
 import { HttpError } from '../utilities';
 
 const TABLE_NAME = "Assignment";
 
-class AssignmentService {
+class AssignmentDbService {
 
     // NOTE: Assignments are READ-WRITE so disable local caching
     private dbService = new DbService<DbAssignment>(false);
 
-    async getAssignments(filter: (entity: DbAssignment) => boolean): Promise<Assignment[]> {
-        const dbConsultants = await this.dbService.getEntities(TABLE_NAME, filter);
-        return Promise.all(dbConsultants.map(await this.convertDbAssignment));
+    async getAssignments(): Promise<Assignment[]> {
+        const assignments = await this.dbService.getEntities(TABLE_NAME) as DbAssignment[];
+        const result = assignments.map((e) => this.convertDbAssignment(e));
+        return result;
     }
 
     async chargeHoursToProject(projectId: string, consultantId: string, month: number, year: number, hours: number): Promise<Assignment> {
         try {
-            const dbAssignment = await this.dbService.getEntityByRowKey(TABLE_NAME, projectId + "," + consultantId);
+            const dbAssignment = await this.dbService.getEntityByRowKey(TABLE_NAME, projectId + "," + consultantId) as DbAssignment;
             if (!dbAssignment) {
                 throw new HttpError(404, "Assignment not found");
             }
@@ -34,13 +34,13 @@ class AssignmentService {
             }
             dbAssignment.delivered.sort((a, b) => a.year - b.year || a.month - b.month);
             await this.dbService.updateEntity(TABLE_NAME, dbAssignment)
-            return await this.convertDbAssignment(dbAssignment);
+            return this.convertDbAssignment(dbAssignment);
         } catch (e) {
             throw new HttpError(404, "Assignment not found");
         }
     }
 
-    private async convertDbAssignment(dbAssignment: DbAssignment): Promise<Assignment> {
+    private convertDbAssignment(dbAssignment: DbAssignment): Assignment {
         const result: Assignment = {
             id: dbAssignment.id,
             projectId: dbAssignment.projectId,
@@ -51,10 +51,9 @@ class AssignmentService {
             forecast: dbAssignment.forecast,
             delivered: dbAssignment.delivered
         };
-        // Insert augmentation here
 
         return result;
     }
 }
 
-export default new AssignmentService();
+export default new AssignmentDbService();

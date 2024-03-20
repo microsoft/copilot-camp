@@ -8,7 +8,7 @@
         "methods": [
           "get"
         ],
-        "route": "repair"
+        "route": "consultants/{*id}"
       },
       {
         "type": "http",
@@ -16,5 +16,5 @@
         "name": "$return"
       }
     ],
-    "scriptFile": "../dist/repair/index.js"
+    "scriptFile": "../dist/consultants/index.js"
   }

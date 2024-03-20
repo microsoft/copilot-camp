@@ -6,9 +6,9 @@
         "direction": "in",
         "name": "req",
         "methods": [
-          "get"
+          "get", "post"
         ],
-        "route": "timeTracking/{*command}"
+        "route": "me/{*command}"
       },
       {
         "type": "http",
@@ -16,5 +16,5 @@
         "name": "$return"
       }
     ],
-    "scriptFile": "../dist/timeTracking/index.js"
+    "scriptFile": "../dist/me/index.js"
   }

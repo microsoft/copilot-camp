@@ -1,11 +1,12 @@
 import { TableClient, TableEntity } from "@azure/data-tables";
 import { HttpError } from '../utilities';
+import { DbEntity } from '../model/dbModel';
 
 export default class DbService<DbEntityType> {
 
     private storageAccountConnectionString = process.env.STORAGE_ACCOUNT_CONNECTION_STRING;
     private okToCacheLocally = false;
-    private entityCache: DbEntityType[] = [];
+    private entityCache: DbEntity[] = [];
 
     constructor(okToCacheLocally: boolean) {
         if (!this.storageAccountConnectionString) {
@@ -15,47 +16,46 @@ export default class DbService<DbEntityType> {
     }
 
 
-    async getEntityByRowKey(tableName: string, rowKey: string): Promise<DbEntityType> {
+    async getEntityByRowKey(tableName: string, rowKey: string): Promise<DbEntity> {
         if (!this.okToCacheLocally) {
             const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
             const result = this.expandPropertyValues(await tableClient.getEntity(tableName, rowKey) as DbEntityType);
-            return result as DbEntityType;
+            return result as DbEntity;
         } else {
-            const entities = await this.getEntities(tableName, (entity: any) => entity.rowKey === rowKey);
-            if (entities.length === 0) {
+            let result = await this.getEntities(tableName);
+            result = result.filter((e) => 
+            {
+                return e.rowKey === rowKey
+            });
+            if (result.length === 0) {
                 throw new HttpError(401, `Entity ${rowKey} not found`);
             } else {
-                return entities[0];
+                return result[0];
             }
         }
     }
 
-    async getEntities(tableName: string, filter: (entity: DbEntityType) => boolean): Promise<DbEntityType[]> {
+    async getEntities(tableName: string): Promise<DbEntity[]> {
 
         let entities;
-        let result: DbEntityType[] = [];
 
         if (this.okToCacheLocally && this.entityCache.length > 0) {
             entities = this.entityCache;
         } else {
             const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
             entities = tableClient.listEntities();
+            this.entityCache = [];
             for await (const entity of entities) {
-                this.entityCache.push(entity as DbEntityType);
+                const e = this.expandPropertyValues(entity as DbEntityType);
+                this.entityCache.push(e as DbEntity);
             }
         }
-
-        for await (const entity of this.entityCache) {
-            if (filter(entity as DbEntityType)) {
-                result.push(this.expandPropertyValues(entity as DbEntityType));
-            }
-        }
-        return result;
+        return this.entityCache;
     }
 
     async updateEntity(tableName: string, updatedEntity: DbEntityType): Promise<void> {
 
-        const e = this.compressPropertyValues(updatedEntity);
+        const e = this.compressPropertyValues(updatedEntity) as DbEntityType;
         const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
             await tableClient.updateEntity(e as TableEntity, "Replace");
         

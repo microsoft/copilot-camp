@@ -1,5 +1,53 @@
 # Overview of Custom Search Results app template
 
+# API Specification
+
+~~~javascript
+GET /api/me/ - get my consulting profile and projects
+
+GET /api/projects/ - get all projects
+// Query string params can be used in any combination to filter results
+GET /api/projects/?projectName=Foo - get projects with "Foo" in the name
+GET /api/projects/?consultantName=Avery - get projects where a consultant containing "Avery" is assigned
+
+GET /api/consultants/ - get all consultants
+// Query string params can be used in any combination to filter results
+GET /api/projects/?consultantName=Avery - get consultants with names containing "Avery"
+GET /api/consultants/?projectName=Foo - get consultants on projects with "Foo" in the name
+GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills list
+GET /api/consultants/?certification=Foo - get consultants with "Foo" in their certifications list
+GET /api/consultants/?role=Foo - get consultants who can serve the "Foo" role on a project
+GET /api/consultants/?availability=x - get consultants with x hours availability this month or next month
+
+POST /api/me/chargeTime - Add hours to project with "Foo" in the name
+Request body:
+{
+  projectName: "foo",
+  hours: 5
+}
+Response body:
+{
+    success: true,
+    message: "OK";
+}
+
+POST /api/projects/addConsultant - Add consultant to project with "Foo" in the name
+Request body:
+{
+    projectName: "foo",
+    consultant: "avery",
+    role: "architect"
+}
+Response body:
+{
+    success: true,
+    message: "OK";
+}
+~~~
+
+
+
+
 ## Build a message extension from a new API with Azure Functions
 
 This app template allows Teams to interact directly with third-party data, apps, and services, enhancing its capabilities and broadening its range of capabilities. It allows Teams to:
