@@ -6,12 +6,12 @@
 GET /api/me/ - get my consulting profile and projects
 
 GET /api/projects/ - get all projects
-// Query string params can be used in any combination to filter result
+// Query string params can be used in any combination to filter results
 GET /api/projects/?projectName=Foo - get projects with "Foo" in the name
 GET /api/projects/?consultantName=Avery - get projects where a consultant containing "Avery" is assigned
 
 GET /api/consultants/ - get all consultants
-// Query string params can be used in any combination to filter result
+// Query string params can be used in any combination to filter results
 GET /api/projects/?consultantName=Avery - get consultants with names containing "Avery"
 GET /api/consultants/?projectName=Foo - get consultants on projects with "Foo" in the name
 GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills list
