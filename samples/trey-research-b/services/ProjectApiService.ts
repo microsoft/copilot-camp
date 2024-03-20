@@ -53,14 +53,16 @@ class ProjectApiService {
         result.consultants = [];
         result.forecastThisMonth = 0;
         result.forecastNextMonth = 0;
+        result.deliveredLastMonth = 0;
         result.deliveredThisMonth = 0;
-        result.deliveredNextMonth = 0;
 
         for (let assignment of assignments) {
             const consultant = await ConsultantDbService.getConsultantById(assignment.consultantId);
-            const { thisMonthHours: forecastThisMonth,
+            const { lastMonthHours: forecastLastMonth,
+                    thisMonthHours: forecastThisMonth,
                     nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
-            const { thisMonthHours: deliveredThisMonth,
+            const { lastMonthHours: deliveredLastMonth,
+                    thisMonthHours: deliveredThisMonth,
                     nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
 
             result.consultants.push({
@@ -70,30 +72,35 @@ class ProjectApiService {
                     role: assignment.role,
                     forecastThisMonth: forecastThisMonth,
                     forecastNextMonth: forecastNextMonth,
-                    deliveredThisMonth: deliveredThisMonth,
-                    deliveredNextMonth: deliveredNextMonth
+                    deliveredLastMonth: deliveredLastMonth,
+                    deliveredThisMonth: deliveredThisMonth
                 }
             });
             result.forecastThisMonth += forecastThisMonth;
             result.forecastNextMonth += forecastNextMonth;
+            result.deliveredLastMonth += deliveredLastMonth;
             result.deliveredThisMonth += deliveredThisMonth;
-            result.deliveredNextMonth += deliveredNextMonth;
 
         }
         return result;
     }
 
-    private findHours(hours: HoursEntry[]): { thisMonthHours: number, nextMonthHours: number } {
+    // Extract this and next month's hours from an array of HoursEntry
+    private findHours(hours: HoursEntry[]): { lastMonthHours: number, thisMonthHours: number, nextMonthHours: number } {
         const now = new Date();
-        const thisMonth = now.getMonth() + 1;
+        const thisMonth = now.getMonth();
         const thisYear = now.getFullYear();
+
+        const lastMonth = thisMonth === 0 ? 11 : thisMonth - 1;
+        const lastYear = thisMonth === 0 ? thisYear - 1 : thisYear;
 
         const nextMonth = thisMonth === 11 ? 0 : thisMonth + 1;
         const nextYear = thisMonth === 11 ? thisYear + 1 : thisYear;
 
         const result = {
-            thisMonthHours: hours.find((h) => h.month === thisMonth && h.year === thisYear)?.hours || 0,
-            nextMonthHours: hours.find((h) => h.month === nextMonth && h.year === nextYear)?.hours || 0
+            lastMonthHours: hours.find((h) => h.month === lastMonth+1 && h.year === lastYear)?.hours || 0,
+            thisMonthHours: hours.find((h) => h.month === thisMonth+1 && h.year === thisYear)?.hours || 0,
+            nextMonthHours: hours.find((h) => h.month === nextMonth+1 && h.year === nextYear)?.hours || 0
         };
         return result;
     }

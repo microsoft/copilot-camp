@@ -9,9 +9,9 @@ interface ApiProjectAssignment {
         role: string;
         forecastThisMonth: number;
         forecastNextMonth: number;
+        deliveredLastMonth: number;
         deliveredThisMonth: number;
-        deliveredNextMonth: number;
-    };
+        };
 }
 
 // Returned by all /api/projects GET requests
@@ -19,8 +19,8 @@ export interface ApiProject extends Project {
     consultants: ApiProjectAssignment[];
     forecastThisMonth: number;
     forecastNextMonth: number;
+    deliveredLastMonth: number;
     deliveredThisMonth: number;
-    deliveredNextMonth: number;
 }
 //#endregion
 
@@ -33,8 +33,8 @@ interface ApiConsultantAssignment {
         role: string;
         forecastThisMonth: number;
         forecastNextMonth: number;
+        deliveredLastMonth: number;
         deliveredThisMonth: number;
-        deliveredNextMonth: number;
     };
 }
 
