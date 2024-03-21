@@ -16,12 +16,13 @@ class AssignmentDbService {
         return result;
     }
 
-    async chargeHoursToProject(projectId: string, consultantId: string, month: number, year: number, hours: number): Promise<Assignment> {
+    async chargeHoursToProject(projectId: string, consultantId: string, month: number, year: number, hours: number): Promise<number> {
         try {
             const dbAssignment = await this.dbService.getEntityByRowKey(TABLE_NAME, projectId + "," + consultantId) as DbAssignment;
             if (!dbAssignment) {
                 throw new HttpError(404, "Assignment not found");
             }
+            // Add the hours delivered
             if (!dbAssignment.delivered) {
                 dbAssignment.delivered = [{ month: month, year: year, hours: hours }];
             } else {
@@ -33,8 +34,25 @@ class AssignmentDbService {
                 }
             }
             dbAssignment.delivered.sort((a, b) => a.year - b.year || a.month - b.month);
+
+            // Subtract the hours from the forecast
+            let remainingForecast = -hours;
+            if (!dbAssignment.forecast) {
+                dbAssignment.forecast = [{ month: month, year: year, hours: -hours }];
+            } else {
+                let a = dbAssignment.forecast.find(d => d.month === month && d.year === year);
+                if (a) {
+                    a.hours -= hours;
+                    remainingForecast = a.hours;
+                } else {
+                    dbAssignment.forecast.push({ month: month, year: year, hours: -hours });
+                }
+            }
+            dbAssignment.forecast.sort((a, b) => a.year - b.year || a.month - b.month);
+
             await this.dbService.updateEntity(TABLE_NAME, dbAssignment)
-            return this.convertDbAssignment(dbAssignment);
+            
+            return remainingForecast;
         } catch (e) {
             throw new HttpError(404, "Assignment not found");
         }

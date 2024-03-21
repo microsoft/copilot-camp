@@ -45,7 +45,30 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         return res;
       }
       case "POST": {
-        throw new HttpError(405, `Method not allowed: ${req.method}`);
+        switch (command) {
+          case "chargetime": {
+            const projectName = req.body.projectName;
+            if (!projectName) {
+              throw new HttpError(400, `Missing project name`);
+            }
+            const hours = req.body.hours;
+            if (!hours) {
+              throw new HttpError(400, `Missing hours`);
+            }
+            if (typeof hours !== 'number' || hours < 0 || hours > 24) {
+              throw new HttpError(400, `Invalid hours: ${hours}`);
+            }
+            const message = await ConsultantApiService.addConsultantToProject(projectName, MY_CONSULTANT_ID, hours);
+            res.body.results = {
+              status: 200,
+              message
+            };
+            return res;
+          }
+          default: {
+            throw new HttpError(400, `Invalid command: ${command}`);
+          }
+        }
       }
       default:
         throw new HttpError(405, `Method not allowed: ${req.method}`);
@@ -59,7 +82,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     res.status = status;
     res.body.results = {
       status: status,
-      error: error.message
+      message: error.message
     };
     return res;
   }

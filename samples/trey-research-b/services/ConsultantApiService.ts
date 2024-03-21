@@ -3,6 +3,8 @@ import { ApiConsultant, ApiProject, ApiChargeTimeResponse } from '../model/apiMo
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
+import { HttpError } from '../utilities';
+import ProjectApiService from './ProjectApiService';
 
 const AVAILABLE_HOURS_PER_MONTH = 160;
 
@@ -59,7 +61,7 @@ class ConsultantApiService {
         if (result && hoursAvailable) {
             result = result.filter(
                 (c) => {
-                    let availableHours = AVAILABLE_HOURS_PER_MONTH*2 - c.forecastThisMonth - c.forecastNextMonth;
+                    let availableHours = AVAILABLE_HOURS_PER_MONTH * 2 - c.forecastThisMonth - c.forecastNextMonth;
                     return availableHours >= parseInt(hoursAvailable);
                 });
         };
@@ -127,11 +129,24 @@ class ConsultantApiService {
         return result;
     }
 
-    async addConsultantToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
-        return {
-            success: false,
-            message: "Not implemented"
-        };
+    async addConsultantToProject(projectName: string, consultantId: string, hours: number): Promise<string> {
+        let projects = await ProjectApiService.getApiProjects(projectName, "");
+        if (projects.length === 0) {
+            throw new HttpError(400, `Project not found: ${projectName}`);
+        } else if (projects.length > 1) {
+            throw new HttpError(400, `Multiple projects found with the name: ${projectName}`);
+        } else {
+            const project = projects[0];
+            // Always charge to the current month
+            const month = new Date().getMonth() + 1;
+            const year = new Date().getFullYear();
+            const remainingForecast = await AssignmentDbService.chargeHoursToProject(project.id, consultantId, month, year, hours);
+            if (remainingForecast < 0) {
+                return `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You are ${-remainingForecast} hours over your forecast this month.`;
+            } else {
+                return `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You have ${remainingForecast} hours remaining this month.`;
+            }
+        }
     }
 }
 

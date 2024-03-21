@@ -25,7 +25,7 @@ class ProjectApiService {
                 (p) => {
                     const name = p.name?.toLowerCase();
                     const clientName = p.clientName?.toLowerCase();
-                    return name.includes(projectOrClientName) || clientName.includes(projectOrClientName);
+                    return name.includes(projectOrClientName.toLowerCase()) || clientName.includes(projectOrClientName.toLowerCase());
                 });
         }
 

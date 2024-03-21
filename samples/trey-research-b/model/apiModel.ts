@@ -70,5 +70,5 @@ export interface ApiAddConsultantToProjectResponse {
 
 export interface ErrorResult {
     status: number;
-    error: string;
+    message: string;
 }

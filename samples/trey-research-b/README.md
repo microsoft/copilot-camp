@@ -28,7 +28,7 @@ Request body:
 Response body:
 {
     success: true,
-    message: "OK";
+    message: "Charged x hours to project y";
 }
 
 POST /api/projects/addConsultant - Add consultant to project with "Foo" in the name
