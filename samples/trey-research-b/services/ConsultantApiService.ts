@@ -73,6 +73,7 @@ class ConsultantApiService {
     async getApiConsultant(consultant: Consultant, assignments: Assignment[]): Promise<ApiConsultant> {
 
         const result = consultant as ApiConsultant;
+        result.consultantPhotoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
         result.projects = [];

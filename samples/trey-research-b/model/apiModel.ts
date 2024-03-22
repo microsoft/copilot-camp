@@ -15,6 +15,7 @@ export interface ApiProjectAssignment {
 // Returned by all /api/projects GET requests
 export interface ApiProject extends Project {
     consultants: ApiProjectAssignment[];
+    clientLogoUrl: string;
     mapUrl: string;
     forecastThisMonth: number;
     forecastNextMonth: number;
@@ -39,6 +40,7 @@ export interface ApiConsultantAssignment {
 // Returned by all /api/consultants GET requests
 export interface ApiConsultant extends Consultant {
     projects: ApiConsultantAssignment[];
+    consultantPhotoUrl: string;
     forecastThisMonth: number;
     forecastNextMonth: number;
     deliveredLastMonth: number;

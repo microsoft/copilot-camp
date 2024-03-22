@@ -50,6 +50,7 @@ class ProjectApiService {
     async getApiProject(project: Project, assignments: Assignment[]): Promise<ApiProject> {
 
         const result = project as ApiProject;
+        result.clientLogoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.projectId === project.id);
 
         result.consultants = [];
