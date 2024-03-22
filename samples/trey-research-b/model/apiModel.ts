@@ -15,6 +15,8 @@ export interface ApiProjectAssignment {
 // Returned by all /api/projects GET requests
 export interface ApiProject extends Project {
     consultants: ApiProjectAssignment[];
+    clientLogoUrl: string;
+    mapUrl: string;
     forecastThisMonth: number;
     forecastNextMonth: number;
     deliveredLastMonth: number;
@@ -38,6 +40,7 @@ export interface ApiConsultantAssignment {
 // Returned by all /api/consultants GET requests
 export interface ApiConsultant extends Consultant {
     projects: ApiConsultantAssignment[];
+    consultantPhotoUrl: string;
     forecastThisMonth: number;
     forecastNextMonth: number;
     deliveredLastMonth: number;
@@ -50,10 +53,6 @@ export interface ApiChargeTimeRequest {
     projectName: string;
     hours: number;
 }
-export interface ApiChargeTimeResponse {
-    success: boolean;
-    message: string;
-}
 //#endregion
 
 //#region POST request to /api/projects/addConsultant ---
@@ -61,14 +60,11 @@ export interface ApiAddConsultantToProjectRequest {
     projectName: string;
     consultantName: string;
     role: string;
-}
-export interface ApiAddConsultantToProjectResponse {
-    success: boolean;
-    message: string;
+    hours: number;
 }
 //#endregion
 
 export interface ErrorResult {
     status: number;
-    error: string;
+    message: string;
 }

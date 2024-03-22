@@ -56,7 +56,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     res.status = status;
     res.body.results = {
       status: status,
-      error: error.message
+      message: error.message
     };
     return res;
   }

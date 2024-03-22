@@ -1,6 +1,7 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ProjectApiService from "../services/ProjectApiService";
 import { ApiProject, ErrorResult } from "../model/apiModel";
+import { HttpError } from "../utilities";
 
 // Define a Response interface.
 interface Response {
@@ -28,15 +29,13 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   try {
 
-    const command = req.params.command?.toLowerCase();
+    const id = req.params.id?.toLowerCase();
 
     switch (req.method) {
       case "GET": {
 
         const projectName = req.query.projectName?.toString().toLowerCase() || "";
         const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
-
-        const id = req.params.id?.toLowerCase();
 
         if (id) {
           const result = await ProjectApiService.getApiProjectById(id);
@@ -49,7 +48,42 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         return res;
       }
       case "POST": {
-        throw new Error(`Method not allowed: ${req.method}`);
+        //   {
+        //     projectName: "foo",
+        //     consultantName: "avery",
+        //     role: "architect",
+        //     forecast: number,
+        // }
+        switch (id) {
+          case "addconsultant": {
+            const projectName = req.body.projectName;
+            if (!projectName) {
+              throw new HttpError(400, `Missing project name`);
+            }
+            const consultantName = req.body.consultantName;
+            if (!consultantName) {
+              throw new HttpError(400, `Missing consultant name`);
+            }
+            const role = req.body.role;
+            if (!role) {
+              throw new HttpError(400, `Missing role`);
+            }
+            const forecast = req.body.forecast;
+            if (!forecast) {
+              throw new HttpError(400, `Missing forecast this month`);
+            }
+            const message = await ProjectApiService.addConsultantToProject(projectName, consultantName, role, forecast);
+            res.body.results = {
+              status: 200,
+              message
+            };
+            return res;
+          }
+          default: {
+            throw new HttpError(400, `Invalid command: ${id}`);
+          }
+        }
+
       }
       default: {
         throw new Error(`Method not allowed: ${req.method}`);
@@ -64,9 +98,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     res.status = status;
     res.body.results = {
       status: status,
-      error: error.message
+      message: error.message
     };
     return res;
   }
-  
+
 }

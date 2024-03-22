@@ -27,25 +27,34 @@ Request body:
 }
 Response body:
 {
-    success: true,
-    message: "OK";
+    status: 200,
+    message: "Charged 3 hours to Woodgrove Bank on project \"Financial data plugin for Microsoft Copilot\". You have 17 hours remaining this month";
 }
 
 POST /api/projects/addConsultant - Add consultant to project with "Foo" in the name
 Request body:
 {
     projectName: "foo",
-    consultant: "avery",
-    role: "architect"
+    consultantName: "avery",
+    role: "architect",
+    hours: number
 }
 Response body:
 {
-    success: true,
-    message: "OK";
+    status: 200
+    message: "Added Alice to the \"Financial data plugin for Microsoft Copilot\" project at Woodgrove Bank. She has 100 hours remaining this month.";
 }
 ~~~
 
+## API Design considerations
 
+To make the service work better with Copilot, the following features were chosen:
+
+    1. Remove the need for sequences of calls 
+        - accept names or partial names that might be stated in a user prompt rather than requiring IDs which must be looked up
+        - return enough information to allow for richer responses; err on the side of providing more detail including related entities
+    
+    2. Return human readable messages
 
 
 ## Build a message extension from a new API with Azure Functions
