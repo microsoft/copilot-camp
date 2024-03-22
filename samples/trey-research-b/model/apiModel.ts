@@ -50,10 +50,6 @@ export interface ApiChargeTimeRequest {
     projectName: string;
     hours: number;
 }
-export interface ApiChargeTimeResponse {
-    success: boolean;
-    message: string;
-}
 //#endregion
 
 //#region POST request to /api/projects/addConsultant ---
@@ -61,10 +57,7 @@ export interface ApiAddConsultantToProjectRequest {
     projectName: string;
     consultantName: string;
     role: string;
-}
-export interface ApiAddConsultantToProjectResponse {
-    success: boolean;
-    message: string;
+    hours: number;
 }
 //#endregion
 

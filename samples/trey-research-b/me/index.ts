@@ -58,7 +58,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
             if (typeof hours !== 'number' || hours < 0 || hours > 24) {
               throw new HttpError(400, `Invalid hours: ${hours}`);
             }
-            const message = await ConsultantApiService.addConsultantToProject(projectName, MY_CONSULTANT_ID, hours);
+            const message = await ConsultantApiService.chargeTimeToProject(projectName, MY_CONSULTANT_ID, hours);
             res.body.results = {
               status: 200,
               message

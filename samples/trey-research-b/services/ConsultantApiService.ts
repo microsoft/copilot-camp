@@ -1,5 +1,5 @@
-import { Consultant, Project, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiConsultant, ApiProject, ApiChargeTimeResponse } from '../model/apiModel';
+import { Consultant, HoursEntry, Assignment } from '../model/baseModel';
+import { ApiConsultant } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
@@ -129,7 +129,7 @@ class ConsultantApiService {
         return result;
     }
 
-    async addConsultantToProject(projectName: string, consultantId: string, hours: number): Promise<string> {
+    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<string> {
         let projects = await ProjectApiService.getApiProjects(projectName, "");
         if (projects.length === 0) {
             throw new HttpError(400, `Project not found: ${projectName}`);

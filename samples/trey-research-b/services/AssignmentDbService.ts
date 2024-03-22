@@ -51,8 +51,45 @@ class AssignmentDbService {
             dbAssignment.forecast.sort((a, b) => a.year - b.year || a.month - b.month);
 
             await this.dbService.updateEntity(TABLE_NAME, dbAssignment)
-            
+
             return remainingForecast;
+        } catch (e) {
+            throw new HttpError(404, "Assignment not found");
+        }
+    }
+
+    async addConsultantToProject(projectId: string, consultantId: string, role: string, hours: number): Promise<number> {
+        try {
+            const month = new Date().getMonth() + 1;
+            const year = new Date().getFullYear();
+
+            let dbAssignment = null;
+            try {
+                dbAssignment = await this.dbService.getEntityByRowKey(TABLE_NAME, projectId + "," + consultantId) as DbAssignment;
+            } catch { }
+            
+            if (dbAssignment) {
+                throw new HttpError(401, "Assignment already exists");
+            }
+
+            const newAssignment: DbAssignment = {
+                etag: "",
+                partitionKey: TABLE_NAME,
+                rowKey: projectId + "," + consultantId,
+                timestamp: new Date(),
+                id: projectId + "," + consultantId,
+                projectId: projectId,
+                consultantId: consultantId,
+                role: role,
+                billable: true,
+                rate: 100,
+                forecast: [{ month: month, year: year, hours: hours }],
+                delivered: []
+            };
+
+            await this.dbService.createEntity(TABLE_NAME, newAssignment.id, newAssignment)
+
+            return hours;
         } catch (e) {
             throw new HttpError(404, "Assignment not found");
         }

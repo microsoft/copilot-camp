@@ -1,8 +1,10 @@
 import { Project, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiProject, ApiProjectAssignment, ApiChargeTimeResponse } from '../model/apiModel';
+import { ApiProject } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
+import ConsultantApiService from './ConsultantApiService';
+import { HttpError } from '../utilities';
 
 class ProjectApiService {
 
@@ -39,8 +41,8 @@ class ProjectApiService {
                     const name = consultantName.toLowerCase();
                     return p.consultants.find((n) => n.consultantName.toLowerCase().includes(name));
                 });
-            };
-            
+        };
+
         return result;
     }
 
@@ -59,20 +61,20 @@ class ProjectApiService {
         for (let assignment of assignments) {
             const consultant = await ConsultantDbService.getConsultantById(assignment.consultantId);
             const { lastMonthHours: forecastLastMonth,
-                    thisMonthHours: forecastThisMonth,
-                    nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
+                thisMonthHours: forecastThisMonth,
+                nextMonthHours: forecastNextMonth } = this.findHours(assignment.forecast);
             const { lastMonthHours: deliveredLastMonth,
-                    thisMonthHours: deliveredThisMonth,
-                    nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
+                thisMonthHours: deliveredThisMonth,
+                nextMonthHours: deliveredNextMonth } = this.findHours(assignment.delivered);
 
             result.consultants.push({
-                    consultantName: consultant.name,
-                    consultantLocation: consultant.location,
-                    role: assignment.role,
-                    forecastThisMonth: forecastThisMonth,
-                    forecastNextMonth: forecastNextMonth,
-                    deliveredLastMonth: deliveredLastMonth,
-                    deliveredThisMonth: deliveredThisMonth
+                consultantName: consultant.name,
+                consultantLocation: consultant.location,
+                role: assignment.role,
+                forecastThisMonth: forecastThisMonth,
+                forecastNextMonth: forecastNextMonth,
+                deliveredLastMonth: deliveredLastMonth,
+                deliveredThisMonth: deliveredThisMonth
             });
 
             result.forecastThisMonth += forecastThisMonth;
@@ -97,18 +99,33 @@ class ProjectApiService {
         const nextYear = thisMonth === 11 ? thisYear + 1 : thisYear;
 
         const result = {
-            lastMonthHours: hours.find((h) => h.month === lastMonth+1 && h.year === lastYear)?.hours || 0,
-            thisMonthHours: hours.find((h) => h.month === thisMonth+1 && h.year === thisYear)?.hours || 0,
-            nextMonthHours: hours.find((h) => h.month === nextMonth+1 && h.year === nextYear)?.hours || 0
+            lastMonthHours: hours.find((h) => h.month === lastMonth + 1 && h.year === lastYear)?.hours || 0,
+            thisMonthHours: hours.find((h) => h.month === thisMonth + 1 && h.year === thisYear)?.hours || 0,
+            nextMonthHours: hours.find((h) => h.month === nextMonth + 1 && h.year === nextYear)?.hours || 0
         };
         return result;
     }
 
-    async addConsultantToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
-        return {
-            success: false,
-            message: "Not implemented"
-        };
+    async addConsultantToProject(projectName: string, consultantName: string, role: string, hours: number): Promise<string> {
+        let projects = await this.getApiProjects(projectName, "");
+        let consultants = await ConsultantApiService.getApiConsultants(consultantName, "", "", "", "", "");
+
+        if (projects.length === 0) {
+            throw new HttpError(400, `Project not found: ${projectName}`);
+        } else if (projects.length > 1) {
+            throw new HttpError(400, `Multiple projects found with the name: ${projectName}`);
+        } else if (consultants.length === 0) {
+            throw new HttpError(400, `Consultant not found: ${consultantName}`);
+        } else if (consultants.length > 1) {
+            throw new HttpError(400, `Multiple consultants found with the name: ${consultantName}`);
+        }
+        const project = projects[0];
+        const consultantId = consultants[0].id;
+
+        // Always charge to the current month
+        const remainingForecast = await AssignmentDbService.addConsultantToProject(project.id, consultantId, role, hours);
+        return `Added consultant ${consultantId} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
+
     }
 }
 
