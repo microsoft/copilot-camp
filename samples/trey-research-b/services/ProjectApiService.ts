@@ -58,6 +58,10 @@ class ProjectApiService {
         result.deliveredLastMonth = 0;
         result.deliveredThisMonth = 0;
 
+        const bingKey = process.env.BING_MAPS_KEY;
+        const coord = `${result.location.latitude},${result.location.longitude}`;
+        result.mapUrl = `https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?${coord}mapSize=450,600&pp=${coord}&key=${bingKey}`;
+
         for (let assignment of assignments) {
             const consultant = await ConsultantDbService.getConsultantById(assignment.consultantId);
             const { lastMonthHours: forecastLastMonth,
