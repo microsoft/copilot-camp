@@ -54,8 +54,8 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         //     role: "architect",
         //     forecast: number,
         // }
-        switch (id) {
-          case "addconsultant": {
+        switch (id.toLocaleLowerCase()) {
+          case "assignconsultant": {
             const projectName = req.body.projectName;
             if (!projectName) {
               throw new HttpError(400, `Missing project name`);

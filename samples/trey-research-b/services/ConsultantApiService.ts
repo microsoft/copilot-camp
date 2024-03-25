@@ -28,15 +28,15 @@ class ConsultantApiService {
         // Filter on base properties
         if (consultantName) {
             consultants = consultants.filter(
-                (c) => c.name.toLowerCase().includes(consultantName));
+                (c) => c.name.toLowerCase().includes(consultantName.toLocaleLowerCase()));
         }
         if (skill) {
             consultants = consultants.filter(
-                (c) => c.skills.find((s) => s.toLowerCase().includes(skill)));
+                (c) => c.skills.find((s) => s.toLowerCase().includes(skill.toLocaleLowerCase())));
         }
         if (certification) {
             consultants = consultants.filter(
-                (c) => c.certifications.find((s) => s.toLowerCase().includes(certification)));
+                (c) => c.certifications.find((s) => s.toLowerCase().includes(certification.toLocaleLowerCase())));
         }
         if (role) {
             consultants = consultants.filter(
