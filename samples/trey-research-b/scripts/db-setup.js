@@ -15,8 +15,8 @@ const TABLE_NAMES = [ "Project", "Consultant", "Assignment" ];
         connectionString = process.argv[3] ? process.argv[3] : "UseDevelopmentStorage=true";
     } else if (process.argv[3] && [process.argv[3] === "--reset" || process.argv[3] === "-r"]) {
         reset = true;
-        connectionString = process.argv[2] ? process.argv[2] : "UseDevelopmentStorage=true";
     }
+    connectionString = process.argv[2] ? process.argv[2] : "UseDevelopmentStorage=true";
     const tableServiceClient = TableServiceClient.fromConnectionString(connectionString);
 
     // Function returns an array of table names in the storage account

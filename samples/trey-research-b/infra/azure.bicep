@@ -19,6 +19,17 @@ resource functionStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
   }
 }
 
+// Storage account for database table storage
+resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: resourceBaseName
+  location: location
+  kind: 'StorageV2'
+  sku: {
+    name: 'Standard_LRS'
+  }
+}
+var storageAccountConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${storageAccount.listKeys().keys[0].value}'
+
 // Compute resources for Azure Functions
 resource serverfarms 'Microsoft.Web/serverfarms@2021-02-01' = {
   name: serverfarmsName
@@ -67,6 +78,10 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
           value: '~18' // Set NodeJS version to 18.x
         }
+        {
+          name: 'STORAGE_ACCOUNT_CONNECTION_STRING'
+          value: storageAccountConnectionString
+        }
       ]
       ftpsState: 'FtpsOnly'
     }
@@ -79,3 +94,4 @@ var apiEndpoint = 'https://${functionApp.properties.defaultHostName}'
 output API_FUNCTION_ENDPOINT string = apiEndpoint
 output API_FUNCTION_RESOURCE_ID string = functionApp.id
 output OPENAPI_SERVER_URL string = apiEndpoint
+output SECRET_STORAGE_ACCOUNT_CONNECTION_STRING string = storageAccountConnectionString
