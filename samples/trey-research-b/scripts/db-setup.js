@@ -7,16 +7,9 @@ const TABLE_NAMES = [ "Project", "Consultant", "Assignment" ];
 
 (async () => {
 
-    // Handle command line arguments and get the table service client
-    let connectionString = "UseDevelopmentStorage=true";
-    let reset = false;
-    if (process.argv[2] && [process.argv[2] === "--reset" || process.argv[2] === "-r"]) {
-        reset = true;
-        connectionString = process.argv[3] ? process.argv[3] : "UseDevelopmentStorage=true";
-    } else if (process.argv[3] && [process.argv[3] === "--reset" || process.argv[3] === "-r"]) {
-        reset = true;
-    }
-    connectionString = process.argv[2] ? process.argv[2] : "UseDevelopmentStorage=true";
+    const connectionString = process.argv[2] ? process.argv[2] : "UseDevelopmentStorage=true";
+    const reset = process.argv[3] === "--reset" || process.argv[3] === "-r" ? true : false;
+
     const tableServiceClient = TableServiceClient.fromConnectionString(connectionString);
 
     // Function returns an array of table names in the storage account
