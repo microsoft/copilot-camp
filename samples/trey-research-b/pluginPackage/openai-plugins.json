@@ -1,0 +1,25 @@
+{
+    "components": [
+      {
+        "openAIDefinition": {
+          "schema_version": "v1",
+          "name_for_human": "Trey Research",
+          "name_for_model": "Trey Research",
+          "description_for_human": "Streamlines consultant assignment and project management.",
+          "description_for_model": "Trey Research Management streamlines the process of managing consultants and their assignments to various projects. It provides functionalities to assign consultants to specific projects, define their roles, and forecast their hours, enhancing project management efficiency and organization.",
+          "auth": {
+            "type": "none"
+          },
+          "api": {
+            "type": "openapi",
+            "url": "https://{{DOMAIN}}/api/files/openapi.yml",
+            "is_user_authenticated": false
+          },
+          "logo_url": "https://{{DOMAIN}}/api/files/logo.png",
+          "contact_email": "m365dev@microsoft.com",
+          "legal_info_url": "http://m365dev.com"
+        },
+        "swaggerFileName": "swagger.json"
+      }
+    ]
+  }

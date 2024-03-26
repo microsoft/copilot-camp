@@ -3,7 +3,7 @@
     "info": {
       "version": "1.0.0",
       "title": "Trey Research API",
-      "description": "API to managing resource billing at Trey research"
+      "description": "API to streamline consultant assignment and project management."
     },
     "servers": [
       {
