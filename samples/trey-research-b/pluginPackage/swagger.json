@@ -158,21 +158,12 @@
         }
       }
     },
-    "/consultants/{*id}": {
+    "/consultants/": {
       "get": {
         "operationId": "getConsultants",
-        "summary": "Get consultants information by id or from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
-        "description": "Returns detailed information about a consultants identified by id or from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of consultant to retrieve",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
+        "summary": "Get consultants information  from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
+        "description": "Returns detailed information about a consultants identified  from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
+        "parameters": [          
           {
             "name": "consultantName",
             "in": "query",
@@ -248,6 +239,55 @@
           },
           "404": {
             "description": "Consultant not found"
+          }
+        }
+      }
+    },
+    "/projects/": {
+      "get": {
+        "operationId": "getProjects",
+        "summary": "Get project information from filters like name of the consultant, name of the project",
+        "description": "Returns detailed information about a project identified from filters like name of the consultant, name of project",
+        "parameters": [          
+          {
+            "name": "consultantName",
+            "in": "query",
+            "description": "Return all projects and its information where it is assigned to the consultant",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectName",
+            "in": "query",
+            "description": "Retrieve information of the projects with this project name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                },
+                "status": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Project not found"
           }
         }
       }
