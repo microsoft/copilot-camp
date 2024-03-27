@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.0.1",
   "info": {
     "version": "1.0.0",
     "title": "Trey Research API",
@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://{{DOMAIN}}/api",
+      "url": "https://{{DOMAIN}}/api/",
       "description": "Production server"
     }
   ],

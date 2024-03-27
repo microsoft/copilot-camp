@@ -1,10 +1,10 @@
-openapi: "3.0.0"
+openapi: "3.0.1"
 info:
   version: "1.0.0"
   title: "Trey Research API"
   description: "API to streamline consultant assignment and project management."
 servers:
-  - url: "https://{{DOMAIN}}/api"
+  - url: "https://{{DOMAIN}}/api/"
     description: "Production server"
 paths:
   /me:
@@ -13,7 +13,7 @@ paths:
       summary: "Get user profile of a fixed person when consultant name is not specified."
       description: "Retrieve user profile of a fixed person when consultant name is not specified."
       responses:
-        '200':
+        "200":
           description: "Successful response"
           content:
             application/json:
@@ -44,7 +44,7 @@ paths:
                 - "projectName"
                 - "hours"
       responses:
-        '200':
+        "200":
           description: "Successful charge"
           content:
             application/json:
@@ -84,7 +84,7 @@ paths:
                 - "role"
                 - "forecast"
       responses:
-        '200':
+        "200":
           description: "Successful assignment"
           content:
             application/json:
@@ -143,7 +143,7 @@ paths:
           schema:
             type: "string"
       responses:
-        '200':
+        "200":
           description: "Successful response"
           content:
             application/json:
@@ -156,7 +156,7 @@ paths:
                       $ref: "#/components/schemas/Consultant"
                   status:
                     type: "integer"
-        '404':
+        "404":
           description: "Consultant not found"
   /projects/:
     get:
@@ -177,7 +177,7 @@ paths:
           schema:
             type: "string"
       responses:
-        '200':
+        "200":
           description: "Successful response"
           content:
             application/json:
@@ -190,7 +190,7 @@ paths:
                       $ref: "#/components/schemas/Project"
                   status:
                     type: "integer"
-        '404':
+        "404":
           description: "Project not found"
 components:
   schemas:

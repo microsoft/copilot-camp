@@ -43,7 +43,25 @@ fs.readdir(sourceDir, async (err, files) => {
         
         console.log(`Domain value replaced and file copied successfully: ${file}`);
     });
+    //do same for yml
+    const ymlFiles = files.filter(file => path.extname(file).toLowerCase() === '.yml');
+    ymlFiles.forEach(file => {
+        const filePath = path.join(sourceDir, file);
+        // Read content from .yml file
+        fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) {
+                console.error(`Error reading file ${file}:`, err);
+                return;
+            }
+            // Replace {{DOMAIN}} with constant domain value
+            const updatedData = data.replace(/\{\{DOMAIN\}\}/g, domain);
+            const destinationFilePath = path.join(destinationDir, file);
+            fs.ensureFileSync(destinationFilePath);
+        fs.writeFileSync(destinationFilePath, updatedData);
+        console.log(`Domain value replaced and file copied successfully: ${file}`);
+        });
    
+});
 });
 
 copyPngFiles();
