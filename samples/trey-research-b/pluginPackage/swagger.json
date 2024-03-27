@@ -1,275 +1,376 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Trey Research API",
-      "description": "API to streamline consultant assignment and project management."
-    },
-    "servers": [
-      {
-        "url": "https://{{DOMAIN}}/api",
-        "description": "Production server"
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Trey Research API",
+    "description": "API to streamline consultant assignment and project management."
+  },
+  "servers": [
+    {
+      "url": "https://{{DOMAIN}}/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/me": {
+      "get": {
+        "operationId": "getUserInformation",
+        "summary": "Get user profile of a fixed person when consultant name is not specified.",
+        "description": "Retrieve user profile of a fixed person when consultant name is not specified.",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Consultant"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-    ],
-    "paths": {
-      "/me": {
-        "get": {
-          "operationId": "getUserInformation",
-          "summary": "Get user profile",
-          "description": "Retrieve the user profile information",
-          "responses": {
-            "200": {
-              "description": "Successful response",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "results": {
-                        "type": "array",
-                        "items": {
-                          "$ref": "#/components/schemas/Consultant"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/me/chargeTime": {
-        "post": {
-          "operationId": "postBillhours",
-          "summary": "Charge time to a project",
-          "description": "Charge time to a specific project",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "projectName": {
-                      "type": "string"
-                    },
-                    "hours": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": ["projectName", "hours"]
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successful charge",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "results": {
-                        "type": "object",
-                        "properties": {
-                          "status": {
-                            "type": "integer"
-                          },
-                          "message": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/projects/assignConsultant": {
-        "post": {
-          "operationId": "postAssignConsultant",
-          "summary": "Assign consultant to a project",
-          "description": "Assign a consultant to a specific project",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "projectName": {
-                      "type": "string"
-                    },
-                    "consultantName": {
-                      "type": "string"
-                    },
-                    "role": {
-                      "type": "string"
-                    },
-                    "forecast": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": ["projectName", "consultantName", "role", "forecast"]
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successful assignment",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "results": {
-                        "type": "object",
-                        "properties": {
-                          "status": {
-                            "type": "integer"
-                          },
-                          "message": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "status":{
-                        "type": "integer"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }  
     },
-    "components": {
-      "schemas": {
-        "Location": {
-          "type": "object",
-          "properties": {
-            "street": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            },
-            "state": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "latitude": {
-              "type": "number"
-            },
-            "longitude": {
-              "type": "number"
+    "/me/chargeTime": {
+      "post": {
+        "operationId": "postBillhours",
+        "summary": "Charge time to a project when consultant name is not specified.",
+        "description": "Charge time to a specific project when consultant name is not specified.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "hours": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "projectName",
+                  "hours"
+                ]
+              }
             }
           }
         },
-        "Project": {
-          "type": "object",
-          "properties": {
-            "projectName": {
-              "type": "string"
-            },
-            "projectDescription": {
-              "type": "string"
-            },
-            "projectLocation": {
-              "$ref": "#/components/schemas/Location"
-            },
-            "role": {
-              "type": "string"
-            },
-            "forecastThisMonth": {
-              "type": "integer"
-            },
-            "forecastNextMonth": {
-              "type": "integer"
-            },
-            "deliveredLastMonth": {
-              "type": "integer"
-            },
-            "deliveredThisMonth": {
-              "type": "integer"
+        "responses": {
+          "200": {
+            "description": "Successful charge",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/assignConsultant": {
+      "post": {
+        "operationId": "postAssignConsultant",
+        "summary": "Assign consultant to a project when name, role and project name is specified.",
+        "description": "Assign consultant to a project when name, role and project name is specified.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "consultantName": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "forecast": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "projectName",
+                  "consultantName",
+                  "role",
+                  "forecast"
+                ]
+              }
             }
           }
         },
-        "Consultant": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string",
-              "format": "email"
-            },
-            "phone": {
-              "type": "string"
-            },
-            "location": {
-              "$ref": "#/components/schemas/Location"
-            },
-            "skills": {
-              "type": "array",
-              "items": {
-                "type": "string"
+        "responses": {
+          "200": {
+            "description": "Successful assignment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                }
               }
-            },
-            "certifications": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "roles": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "consultantPhotoUrl": {
-              "type": "string",
-              "format": "uri"
-            },
-            "projects": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/Project"
-              }
-            },
-            "forecastThisMonth": {
-              "type": "integer"
-            },
-            "forecastNextMonth": {
-              "type": "integer"
-            },
-            "deliveredLastMonth": {
-              "type": "integer"
-            },
-            "deliveredThisMonth": {
-              "type": "integer"
             }
+          }
+        }
+      }
+    },
+    "/consultants/{*id}": {
+      "get": {
+        "operationId": "getConsultants",
+        "summary": "Get consultants information by id or from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
+        "description": "Returns detailed information about a consultants identified by id or from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of consultant to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "consultantName",
+            "in": "query",
+            "description": "Name of the consultant to retrieve",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectName",
+            "in": "query",
+            "description": "Retrieve consultants assigned to this project name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "skill",
+            "in": "query",
+            "description": "Skills for a consultant. Retrieve consultants with this skill",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "certification",
+            "in": "query",
+            "description": "Certification for a consultant. Retrieve consultants with this certification",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "description": "Role of a consultant. Retrieve consultants with this role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hoursAvailable",
+            "in": "query",
+            "description": "HoursAvailable for a consultant. Retrieve consultants this many hours available",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Consultant"
+                  }
+                },
+                "status": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Consultant not found"
           }
         }
       }
     }
+  },
+"components": {
+"schemas": {
+  "Location": {
+    "type": "object",
+    "properties": {
+      "street": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "country": {
+        "type": "string"
+      },
+      "postalCode": {
+        "type": "string"
+      },
+      "latitude": {
+        "type": "number"
+      },
+      "longitude": {
+        "type": "number"
+      }
+    }
+  },
+  "Project": {
+    "type": "object",
+    "properties": {
+      "projectName": {
+        "type": "string"
+      },
+      "projectDescription": {
+        "type": "string"
+      },
+      "projectLocation": {
+        "$ref": "#/components/schemas/Location"
+      },
+      "role": {
+        "type": "string"
+      },
+      "forecastThisMonth": {
+        "type": "integer"
+      },
+      "forecastNextMonth": {
+        "type": "integer"
+      },
+      "deliveredLastMonth": {
+        "type": "integer"
+      },
+      "deliveredThisMonth": {
+        "type": "integer"
+      }
+    }
+  },
+  "Consultant": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "location": {
+        "$ref": "#/components/schemas/Location"
+      },
+      "skills": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "certifications": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "roles": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "consultantPhotoUrl": {
+        "type": "string",
+        "format": "uri"
+      },
+      "projects": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Project"
+        }
+      },
+      "forecastThisMonth": {
+        "type": "integer"
+      },
+      "forecastNextMonth": {
+        "type": "integer"
+      },
+      "deliveredLastMonth": {
+        "type": "integer"
+      },
+      "deliveredThisMonth": {
+        "type": "integer"
+      }
+    }
   }
-  
+}
+}
+}
