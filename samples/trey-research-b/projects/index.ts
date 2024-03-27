@@ -54,13 +54,13 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         //     role: "architect",
         //     forecast: number,
         // }
-        switch (id.toLocaleLowerCase()) {
+        switch (id.toLocaleLowerCase()) {      
           case "assignconsultant": {
             const projectName = req.body.projectName;
             if (!projectName) {
               throw new HttpError(400, `Missing project name`);
             }
-            const consultantName = req.body.consultantName;
+            const consultantName = req.body.consultantName?.toString() || (req.body.consultant.name?.toString()||"");
             if (!consultantName) {
               throw new HttpError(400, `Missing consultant name`);
             }
@@ -68,9 +68,10 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
             if (!role) {
               throw new HttpError(400, `Missing role`);
             }
-            const forecast = req.body.forecast;
+            let forecast = req.body.forecast;
             if (!forecast) {
-              throw new HttpError(400, `Missing forecast this month`);
+              forecast = 0;
+              //throw new HttpError(400, `Missing forecast this month`);
             }
             const message = await ProjectApiService.addConsultantToProject(projectName, consultantName, role, forecast);
             res.body.results = {

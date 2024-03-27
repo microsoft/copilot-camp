@@ -14,6 +14,7 @@
     "paths": {
       "/me": {
         "get": {
+          "operationId": "getUserInformation",
           "summary": "Get user profile",
           "description": "Retrieve the user profile information",
           "responses": {
@@ -40,6 +41,7 @@
       },
       "/me/chargeTime": {
         "post": {
+          "operationId": "postBillhours",
           "summary": "Charge time to a project",
           "description": "Charge time to a specific project",
           "requestBody": {
@@ -90,6 +92,7 @@
       },
       "/projects/assignConsultant": {
         "post": {
+          "operationId": "postAssignConsultant",
           "summary": "Assign consultant to a project",
           "description": "Assign a consultant to a specific project",
           "requestBody": {
@@ -135,6 +138,9 @@
                             "type": "string"
                           }
                         }
+                      },
+                      "status":{
+                        "type": "integer"
                       }
                     }
                   }
