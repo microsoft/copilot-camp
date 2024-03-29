@@ -28,12 +28,12 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   try {
 
-    const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
-    const projectName = req.query.projectName?.toString().toLowerCase() || "";
-    const skill = req.query.skill?.toString().toLowerCase() || "";
-    const certification = req.query.certification?.toString().toLowerCase() || "";
-    const role = req.query.role?.toString().toLowerCase() || "";
-    const hoursAvailable = req.query.hoursAvailable?.toString().toLowerCase() || "";
+    let consultantName = req.query.consultantName?.toString().toLowerCase() || "";
+    let projectName = req.query.projectName?.toString().toLowerCase() || "";
+    let skill = req.query.skill?.toString().toLowerCase() || "";
+    let certification = req.query.certification?.toString().toLowerCase() || "";
+    let role = req.query.role?.toString().toLowerCase() || "";
+    let hoursAvailable = req.query.hoursAvailable?.toString().toLowerCase() || "";
 
     const id = req.params.id?.toLowerCase();
 
@@ -44,6 +44,20 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     }
 
     console.log(`➡️ GET /api/consultants: request for consultantName=${consultantName}, projectName=${projectName}, skill=${skill}, certification=${certification}, role=${role}, hoursAvailable=${hoursAvailable}`);
+
+    // *** Tweak parameters for the AI ***
+    if (consultantName === "<user_name>") {
+      console.log(`   ❗ Invalid consultantName '${consultantName}'; replacing with 'avery'.`);
+      consultantName = "avery";
+    }
+    if (consultantName.toLowerCase().includes("trey")){
+      console.log(`   ❗ Invalid consultantName '${consultantName}'; replacing with blank (matches any consultant).`);
+      consultantName = "";
+    }
+    if (projectName.toLowerCase().includes("trey")){
+      console.log(`   ❗ Invalid projectName '${projectName}'; replacing with blank (matches any project).`);
+      projectName = "";
+    }
 
     const result = await ConsultantApiService.getApiConsultants(
       consultantName, projectName, skill, certification, role, hoursAvailable
