@@ -58,6 +58,10 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       console.log(`   ❗ Invalid projectName '${projectName}'; replacing with blank (matches any project).`);
       projectName = "";
     }
+    if (role.toLowerCase() === 'research') {
+      console.log(`   ❗ Invalid role '${role}'; replacing with blank (matches any project).`);
+      role = "";
+    }
 
     const result = await ConsultantApiService.getApiConsultants(
       consultantName, projectName, skill, certification, role, hoursAvailable
