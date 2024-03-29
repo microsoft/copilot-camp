@@ -43,15 +43,18 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       return res;
     }
 
+    console.log(`➡️ GET /api/consultants: request for consultantName=${consultantName}, projectName=${projectName}, skill=${skill}, certification=${certification}, role=${role}, hoursAvailable=${hoursAvailable}`);
+
     const result = await ConsultantApiService.getApiConsultants(
       consultantName, projectName, skill, certification, role, hoursAvailable
     );
     res.body.results = result;
+    console.log(`   ✅ GET /api/consultants: response status ${res.status}; ${result.length} consultants returned`);
     return res;
 
   } catch (error) {
     const status = <number>error.status || <number>error.response?.status || 500;
-    console.log(`Returning error status code ${status}: ${error.message}`);
+    console.log(`   ⛔ Returning error status code ${status}: ${error.message}`);
 
     res.status = status;
     res.body.results = {

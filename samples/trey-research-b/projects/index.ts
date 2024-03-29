@@ -37,14 +37,18 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         const projectName = req.query.projectName?.toString().toLowerCase() || "";
         const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
 
+        console.log (`➡️ GET /api/projects: request for projectName=${projectName}, consultantName=${consultantName}, id=${id}`);
+
         if (id) {
           const result = await ProjectApiService.getApiProjectById(id);
           res.body.results = [result];
+          console.log (`   ✅ GET /api/projects: response status ${res.status}; 1 projects returned`);
           return res;
         }
 
         const result = await ProjectApiService.getApiProjects(projectName, consultantName);
         res.body.results = result;
+        console.log (`   ✅ GET /api/projects: response status ${res.status}; ${result.length} projects returned`);
         return res;
       }
       case "POST": {
@@ -73,11 +77,13 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
               forecast = 0;
               //throw new HttpError(400, `Missing forecast this month`);
             }
+            console.log (`➡️ POST /api/projects: assignconsultant request, projectName=${projectName}, consultantName=${consultantName}, role=${role}, forecast=${forecast}`);
             const message = await ProjectApiService.addConsultantToProject(projectName, consultantName, role, forecast);
             res.body.results = {
               status: 200,
               message
             };
+            console.log (`   ✅ POST /api/projects: response status ${res.status} - ${message}`);
             return res;
           }
           default: {
@@ -94,7 +100,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   } catch (error) {
 
     const status = <number>error.status || <number>error.response?.status || 500;
-    console.log(`Returning error status code ${status}: ${error.message}`);
+    console.log(`   ⛔ Returning error status code ${status}: ${error.message}`);
 
     res.status = status;
     res.body.results = {
