@@ -1,0 +1,26 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.15/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.15",
+    "version": "1.0.1",
+    "id": "36224021-8ee3-43de-8c54-a94a6a2597f2",
+    "name": {
+        "short": "Trey Research",
+        "full": "Trey Research Management"
+    },
+    "developer": {
+        "name": "M365 developer advocates",
+        "websiteUrl": "https://www.m365dev.com",
+        "privacyUrl": "https://privacy.m365dev/en-us/data-privacy-notice",
+        "termsOfUseUrl": "https://www.m365dev.com/servicesagreement"
+    },
+    "description": {
+        "short": "Streamlines consultant assignment and project management.",
+        "full": "Trey Research Management streamlines the process of managing consultants and their assignments to various projects. It provides functionalities to assign consultants to specific projects, define their roles, and forecast their hours, enhancing project management efficiency and organization."
+    },
+    "icons": {
+        "outline": "Trey-dev-32.png",
+        "color": "Trey-dev-192.png"
+    },
+    "accentColor": "#FFFFFF",
+    "showLoadingIndicator": true
+}

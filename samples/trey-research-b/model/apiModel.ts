@@ -55,7 +55,7 @@ export interface ApiChargeTimeRequest {
 }
 //#endregion
 
-//#region POST request to /api/projects/addConsultant ---
+//#region POST request to /api/projects/assignConsultant ---
 export interface ApiAddConsultantToProjectRequest {
     projectName: string;
     consultantName: string;

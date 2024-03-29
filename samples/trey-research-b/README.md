@@ -31,7 +31,7 @@ Response body:
     message: "Charged 3 hours to Woodgrove Bank on project \"Financial data plugin for Microsoft Copilot\". You have 17 hours remaining this month";
 }
 
-POST /api/projects/addConsultant - Add consultant to project with "Foo" in the name
+POST /api/projects/assignConsultant - Add consultant to project with "Foo" in the name
 Request body:
 {
     projectName: "foo",
