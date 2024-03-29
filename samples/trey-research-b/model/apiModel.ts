@@ -26,10 +26,14 @@ export interface ApiProject extends Project {
 
 //#region GET requests for /me and /consultants ---
 
+// Information about a project that a consultant is assigned to
 export interface ApiConsultantAssignment {
     projectName: string;
     projectDescription: string;
     projectLocation: Location;
+    clientName: string;
+    clientContact: string;
+    clientEmail: string;
     role: string;
     forecastThisMonth: number;
     forecastNextMonth: number;

@@ -1,7 +1,7 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ProjectApiService from "../services/ProjectApiService";
 import { ApiProject, ErrorResult } from "../model/apiModel";
-import { HttpError } from "../utilities";
+import { HttpError, cleanUpParameter } from "../utilities";
 
 // Define a Response interface.
 interface Response {
@@ -34,10 +34,13 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     switch (req.method) {
       case "GET": {
 
-        const projectName = req.query.projectName?.toString().toLowerCase() || "";
-        const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
+        let projectName = req.query.projectName?.toString().toLowerCase() || "";
+        let consultantName = req.query.consultantName?.toString().toLowerCase() || "";
 
         console.log (`➡️ GET /api/projects: request for projectName=${projectName}, consultantName=${consultantName}, id=${id}`);
+        
+        projectName = cleanUpParameter("projectName", projectName);
+        consultantName = cleanUpParameter("consultantName", consultantName);
 
         if (id) {
           const result = await ProjectApiService.getApiProjectById(id);

@@ -1,6 +1,7 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ErrorResult } from "../model/apiModel";
+import { cleanUpParameter } from "../utilities";
 
 // Define a Response interface.
 interface Response {
@@ -28,6 +29,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   try {
 
+    // Get the input parameters
     let consultantName = req.query.consultantName?.toString().toLowerCase() || "";
     let projectName = req.query.projectName?.toString().toLowerCase() || "";
     let skill = req.query.skill?.toString().toLowerCase() || "";
@@ -38,31 +40,23 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     const id = req.params.id?.toLowerCase();
 
     if (id) {
+      console.log(`➡️ GET /api/consultants/${id}: request for consultant ${id}`);
       const result = await ConsultantApiService.getApiConsultantById(id);
       res.body.results = [result];
+      console.log(`   ✅ GET /api/consultants/${id}: response status 1 consultant returned`);
       return res;
     }
 
     console.log(`➡️ GET /api/consultants: request for consultantName=${consultantName}, projectName=${projectName}, skill=${skill}, certification=${certification}, role=${role}, hoursAvailable=${hoursAvailable}`);
 
     // *** Tweak parameters for the AI ***
-    if (consultantName === "<user_name>") {
-      console.log(`   ❗ Invalid consultantName '${consultantName}'; replacing with 'avery'.`);
-      consultantName = "avery";
-    }
-    if (consultantName.toLowerCase().includes("trey")){
-      console.log(`   ❗ Invalid consultantName '${consultantName}'; replacing with blank (matches any consultant).`);
-      consultantName = "";
-    }
-    if (projectName.toLowerCase().includes("trey")){
-      console.log(`   ❗ Invalid projectName '${projectName}'; replacing with blank (matches any project).`);
-      projectName = "";
-    }
-    if (role.toLowerCase() === 'research') {
-      console.log(`   ❗ Invalid role '${role}'; replacing with blank (matches any project).`);
-      role = "";
-    }
-
+    consultantName = cleanUpParameter("consultantName", consultantName);
+    projectName = cleanUpParameter("projectName", projectName);
+    skill = cleanUpParameter("skill", skill);
+    certification = cleanUpParameter("certification", certification);
+    role = cleanUpParameter("role", role);
+    hoursAvailable = cleanUpParameter("hoursAvailable", hoursAvailable);
+    
     const result = await ConsultantApiService.getApiConsultants(
       consultantName, projectName, skill, certification, role, hoursAvailable
     );

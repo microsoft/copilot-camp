@@ -51,7 +51,7 @@ class ConsultantApiService {
             result = result.filter(
                 (c) => {
                     let project = c.projects.find((p) => {
-                        let x = p.projectName.toLowerCase();
+                        let x = p.projectName.toLowerCase() + p.clientName.toLowerCase();
                         return x.includes(projectName);
                     });
                     return project;
@@ -95,6 +95,9 @@ class ConsultantApiService {
                 projectName: project.name,
                 projectDescription: project.description,
                 projectLocation: project.location,
+                clientName: project.clientName,
+                clientContact: project.clientContact,
+                clientEmail: project.clientEmail,
                 role: assignment.role,
                 forecastThisMonth: forecastThisMonth,
                 forecastNextMonth: forecastNextMonth,
