@@ -80,6 +80,15 @@
                         "status": {
                           "type": "integer"
                         },
+                        "clientName": {
+                          "type": "string"
+                        },
+                        "projectName": {
+                          "type": "string"
+                        },
+                        "remainingForecast": {
+                          "type": "integer"
+                        },
                         "message": {
                           "type": "string"
                         }
@@ -140,6 +149,18 @@
                       "type": "object",
                       "properties": {
                         "status": {
+                          "type": "integer"
+                        },
+                        "clientName": {
+                          "type": "string"
+                        },
+                        "projectName": {
+                          "type": "string"
+                        },
+                        "consultantName": {
+                          "type": "string"
+                        },
+                        "remainingForecast": {
                           "type": "integer"
                         },
                         "message": {

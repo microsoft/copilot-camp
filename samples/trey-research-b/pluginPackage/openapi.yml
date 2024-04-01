@@ -54,10 +54,16 @@ paths:
                   results:
                     type: "object"
                     properties:
+                      status:
+                        type: "integer"
+                      clientName:
+                        type: "string"
                       projectName:
                         type: "string"
-                      hours:
+                      remainingForecast:
                         type: "integer"
+                      message:
+                        type: "string"
   /projects/assignConsultant:
     post:
       operationId: "postAssignConsultant"
@@ -95,6 +101,14 @@ paths:
                     type: "object"
                     properties:
                       status:
+                        type: "integer"
+                      clientName:
+                        type: "string"
+                      projectName:
+                        type: "string"
+                      consultantName:
+                        type: "string"
+                      remainingForecast:
                         type: "integer"
                       message:
                         type: "string"
