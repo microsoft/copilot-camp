@@ -4,7 +4,7 @@ import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 import ConsultantApiService from './ConsultantApiService';
-import { HttpError, getLocationWithMap } from '../utilities';
+import { HttpError, getLocationWithMap } from './Utilities';
 
 class ProjectApiService {
 

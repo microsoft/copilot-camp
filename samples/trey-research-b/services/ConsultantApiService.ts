@@ -3,7 +3,7 @@ import { ApiConsultant } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
-import { HttpError, getLocationWithMap } from '../utilities';
+import { HttpError, getLocationWithMap } from './Utilities';
 import ProjectApiService from './ProjectApiService';
 
 const AVAILABLE_HOURS_PER_MONTH = 160;

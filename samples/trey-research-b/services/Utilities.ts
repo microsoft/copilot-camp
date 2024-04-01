@@ -1,5 +1,6 @@
-import { Location } from "./model/baseModel";
+import { Location } from "../model/baseModel";
 
+// Throw this object to return an HTTP error
 export class HttpError extends Error {
   status: number;
   constructor(status: number, message: string) {
@@ -8,6 +9,7 @@ export class HttpError extends Error {
   }
 }
 
+// Clean up common issues with Copilot parameters
 export function cleanUpParameter(name: string, value: string): string {
 
   let val = value.toLowerCase();
@@ -24,6 +26,7 @@ export function cleanUpParameter(name: string, value: string): string {
 
 }
 
+// Augment a location with a map URL
 export function getLocationWithMap(location: Location): Location {
 
   const result = location;

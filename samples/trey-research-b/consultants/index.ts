@@ -1,7 +1,7 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ErrorResult } from "../model/apiModel";
-import { cleanUpParameter } from "../utilities";
+import { cleanUpParameter } from "../services/Utilities";
 
 // Define a Response interface.
 interface Response {
