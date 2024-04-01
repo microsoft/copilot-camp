@@ -3,7 +3,7 @@ import { ApiConsultant } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
-import { HttpError } from '../utilities';
+import { HttpError, getLocationWithMap } from '../utilities';
 import ProjectApiService from './ProjectApiService';
 
 const AVAILABLE_HOURS_PER_MONTH = 160;
@@ -73,6 +73,7 @@ class ConsultantApiService {
     async getApiConsultant(consultant: Consultant, assignments: Assignment[]): Promise<ApiConsultant> {
 
         const result = consultant as ApiConsultant;
+        result.location = getLocationWithMap(consultant.location);
         result.consultantPhotoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
@@ -94,7 +95,7 @@ class ConsultantApiService {
             result.projects.push({
                 projectName: project.name,
                 projectDescription: project.description,
-                projectLocation: project.location,
+                projectLocation: getLocationWithMap(project.location),
                 clientName: project.clientName,
                 clientContact: project.clientContact,
                 clientEmail: project.clientEmail,
