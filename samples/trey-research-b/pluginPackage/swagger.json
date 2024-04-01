@@ -318,6 +318,10 @@
       },
       "longitude": {
         "type": "number"
+      },
+      "mapUrl": {
+        "type": "string",
+        "format": "uri"
       }
     }
   },

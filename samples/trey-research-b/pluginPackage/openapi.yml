@@ -211,6 +211,9 @@ components:
           type: number
         longitude:
           type: number
+        mapUrl:
+          type: string
+          format: uri
     Project:
       type: object
       properties:
