@@ -1,13 +1,13 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ProjectApiService from "../services/ProjectApiService";
-import { ApiProject, ErrorResult } from "../model/apiModel";
+import { ApiProject, ApiAddConsultantToProjectResponse, ErrorResult } from "../model/apiModel";
 import { HttpError, cleanUpParameter } from "../services/Utilities";
 
 // Define a Response interface.
 interface Response {
   status: number;
   body: {
-    results: ApiProject[] | ErrorResult;
+    results: ApiProject[] | ApiAddConsultantToProjectResponse | ErrorResult;
   };
 }
 
@@ -84,7 +84,11 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
             const message = await ProjectApiService.addConsultantToProject(projectName, consultantName, role, forecast);
             res.body.results = {
               status: 200,
-              message
+              clientName: message.clientName,
+              projectName: message.projectName,
+              consultantName: message.consultantName,
+              remainingForecast: message.remainingForecast,
+              message: message.message
             };
             console.log (`   ✅ POST /api/projects: response status ${res.status} - ${message}`);
             return res;

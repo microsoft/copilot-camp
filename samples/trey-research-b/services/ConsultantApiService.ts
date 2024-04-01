@@ -1,5 +1,5 @@
 import { Consultant, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiConsultant } from '../model/apiModel';
+import { ApiConsultant, ApiChargeTimeResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
@@ -134,7 +134,7 @@ class ConsultantApiService {
         return result;
     }
 
-    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<string> {
+    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
         let projects = await ProjectApiService.getApiProjects(projectName, "");
         if (projects.length === 0) {
             throw new HttpError(400, `Project not found: ${projectName}`);
@@ -146,11 +146,18 @@ class ConsultantApiService {
             const month = new Date().getMonth() + 1;
             const year = new Date().getFullYear();
             const remainingForecast = await AssignmentDbService.chargeHoursToProject(project.id, consultantId, month, year, hours);
+            let message = "";
             if (remainingForecast < 0) {
-                return `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You are ${-remainingForecast} hours over your forecast this month.`;
+                message = `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You are ${-remainingForecast} hours over your forecast this month.`;
             } else {
-                return `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You have ${remainingForecast} hours remaining this month.`;
+                message = `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You have ${remainingForecast} hours remaining this month.`;
             }
+            return {
+                clientName: project.clientName,
+                projectName: project.name,
+                remainingForecast,
+                message
+            };
         }
     }
 }

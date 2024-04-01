@@ -56,6 +56,12 @@ export interface ApiChargeTimeRequest {
     projectName: string;
     hours: number;
 }
+export interface ApiChargeTimeResponse {
+    clientName: string;
+    projectName: string;
+    remainingForecast: number;
+    message: string;
+}
 //#endregion
 
 //#region POST request to /api/projects/assignConsultant ---
@@ -64,6 +70,13 @@ export interface ApiAddConsultantToProjectRequest {
     consultantName: string;
     role: string;
     hours: number;
+}
+export interface ApiAddConsultantToProjectResponse {
+    clientName: string;
+    projectName: string;
+    consultantName: string;
+    remainingForecast: number;
+    message: string;
 }
 //#endregion
 

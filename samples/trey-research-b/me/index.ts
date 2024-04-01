@@ -1,13 +1,13 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ConsultantApiService from "../services/ConsultantApiService";
-import { ApiConsultant, ErrorResult } from "../model/apiModel";
+import { ApiConsultant, ApiChargeTimeResponse, ErrorResult } from "../model/apiModel";
 import { HttpError } from "../services/Utilities";
 
 // Define a Response interface.
 interface Response {
   status: number;
   body: {
-    results: ApiConsultant[] | ErrorResult;
+    results: ApiConsultant[] | ApiChargeTimeResponse | ErrorResult;
   };
 }
 
@@ -23,8 +23,8 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   const res: Response = {
     status: 200,
     body: {
-      results: [],
-    },
+      results: []
+    }
   };
 
   const MY_CONSULTANT_ID = '1';
@@ -61,13 +61,18 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
             if (typeof hours !== 'number' || hours < 0 || hours > 24) {
               throw new HttpError(400, `Invalid hours: ${hours}`);
             }
+
             console.log(`➡️ POST /api/me/chargetime request for project ${projectName}, hours ${hours}`);
-            const message = await ConsultantApiService.chargeTimeToProject(projectName, MY_CONSULTANT_ID, hours);
+            const result = await ConsultantApiService.chargeTimeToProject(projectName, MY_CONSULTANT_ID, hours);
+
             res.body.results = {
               status: 200,
-              message
+              clientName: result.clientName,
+              projectName: result.projectName,
+              remainingForecast: result.remainingForecast,
+              message: result.message
             };
-            console.log(`   ✅ POST /api/me/chargetime response status ${res.status}; ${message}`);
+            console.log(`   ✅ POST /api/me/chargetime response status ${res.status}; ${result.message}`);
             return res;
           }
           default: {

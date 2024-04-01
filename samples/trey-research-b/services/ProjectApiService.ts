@@ -1,5 +1,5 @@
 import { Project, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiProject } from '../model/apiModel';
+import { ApiProject, ApiAddConsultantToProjectResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
@@ -108,7 +108,7 @@ class ProjectApiService {
         return result;
     }
 
-    async addConsultantToProject(projectName: string, consultantName: string, role: string, hours: number): Promise<string> {
+    async addConsultantToProject(projectName: string, consultantName: string, role: string, hours: number): Promise<ApiAddConsultantToProjectResponse> {
         let projects = await this.getApiProjects(projectName, "");
         let consultants = await ConsultantApiService.getApiConsultants(consultantName, "", "", "", "", "");
 
@@ -126,8 +126,15 @@ class ProjectApiService {
 
         // Always charge to the current month
         const remainingForecast = await AssignmentDbService.addConsultantToProject(project.id, consultantId, role, hours);
-        return `Added consultant ${consultantId} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
+        const message = `Added consultant ${consultantId} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
 
+        return {
+            clientName: project.clientName,
+            projectName: project.name,
+            consultantName: consultants[0].name,
+            remainingForecast,
+            message
+        }
     }
 }
 
