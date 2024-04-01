@@ -15,8 +15,8 @@
     "/me": {
       "get": {
         "operationId": "getUserInformation",
-        "summary": "Get user profile of a fixed person when consultant name is not specified.",
-        "description": "Retrieve user profile of a fixed person when consultant name is not specified.",
+        "summary": "Get consultant profile of the logged in user.",
+        "description": "Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.",
         "responses": {
           "200": {
             "description": "Successful response",
@@ -42,8 +42,8 @@
     "/me/chargeTime": {
       "post": {
         "operationId": "postBillhours",
-        "summary": "Charge time to a project when consultant name is not specified.",
-        "description": "Charge time to a specific project when consultant name is not specified.",
+        "summary": "Charge time to a project on behalf of the logged in user.",
+        "description": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.",
         "requestBody": {
           "required": true,
           "content": {
@@ -161,8 +161,8 @@
     "/consultants/": {
       "get": {
         "operationId": "getConsultants",
-        "summary": "Get consultants information  from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
-        "description": "Returns detailed information about a consultants identified  from filters like name of the consultant, name of project, certifications, skills, roles and hours available",
+        "summary": "Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available",
+        "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
         "parameters": [          
           {
             "name": "consultantName",
@@ -212,7 +212,7 @@
           {
             "name": "hoursAvailable",
             "in": "query",
-            "description": "HoursAvailable for a consultant. Retrieve consultants this many hours available",
+            "description": "Hours a consultant is available for new work over this and next month. Please provide an integer value; for example 0 if no hours are available, 1 if any hours are available, or 20 if 20 or more hours are available",
             "required": false,
             "schema": {
               "type": "string"
@@ -246,8 +246,8 @@
     "/projects/": {
       "get": {
         "operationId": "getProjects",
-        "summary": "Get project information from filters like name of the consultant, name of the project",
-        "description": "Returns detailed information about a project identified from filters like name of the consultant, name of project",
+        "summary": "Get projects matching a specified project name and/or consultant name",
+        "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
         "parameters": [          
           {
             "name": "consultantName",
