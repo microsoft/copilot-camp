@@ -5,7 +5,7 @@
     "id": "36224021-8ee3-43de-8c54-a94a6a2597f2",
     "name": {
         "short": "Trey Research",
-        "full": "Trey Research Management"
+        "full": "Trey Research Consulting Management"
     },
     "developer": {
         "name": "M365 developer advocates",
@@ -14,8 +14,8 @@
         "termsOfUseUrl": "https://www.m365dev.com/servicesagreement"
     },
     "description": {
-        "short": "Streamlines consultant assignment and project management.",
-        "full": "Trey Research Management streamlines the process of managing consultants and their assignments to various projects. It provides functionalities to assign consultants to specific projects, define their roles, and forecast their hours, enhancing project management efficiency and organization."
+        "short": "Manage Trey Research consultants, projects, time, and assignments",
+        "full": "The Trey Research plugin allows locating consultants by skills, roles, certifications, and availability, as well as charging hours and assigning consultants to projects."
     },
     "icons": {
         "outline": "Trey-dev-32.png",

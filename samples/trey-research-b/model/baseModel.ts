@@ -6,6 +6,7 @@ export interface Location {
     postalCode: string;
     latitude: number;
     longitude: number;
+    mapUrl: string;
 }
 
 export interface HoursEntry {

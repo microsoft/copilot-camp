@@ -1,10 +1,10 @@
 import { Project, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiProject } from '../model/apiModel';
+import { ApiProject, ApiAddConsultantToProjectResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 import ConsultantApiService from './ConsultantApiService';
-import { HttpError } from '../utilities';
+import { HttpError, getLocationWithMap } from './Utilities';
 
 class ProjectApiService {
 
@@ -50,6 +50,7 @@ class ProjectApiService {
     async getApiProject(project: Project, assignments: Assignment[]): Promise<ApiProject> {
 
         const result = project as ApiProject;
+        result.location = getLocationWithMap(project.location);
         result.clientLogoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.projectId === project.id);
 
@@ -58,10 +59,6 @@ class ProjectApiService {
         result.forecastNextMonth = 0;
         result.deliveredLastMonth = 0;
         result.deliveredThisMonth = 0;
-
-        const bingKey = process.env.BING_MAPS_KEY;
-        const coord = `${result.location.latitude},${result.location.longitude}`;
-        result.mapUrl = `https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?${coord}mapSize=450,600&pp=${coord}&key=${bingKey}`;
 
         for (let assignment of assignments) {
             const consultant = await ConsultantDbService.getConsultantById(assignment.consultantId);
@@ -74,7 +71,7 @@ class ProjectApiService {
 
             result.consultants.push({
                 consultantName: consultant.name,
-                consultantLocation: consultant.location,
+                consultantLocation: getLocationWithMap(consultant.location),
                 role: assignment.role,
                 forecastThisMonth: forecastThisMonth,
                 forecastNextMonth: forecastNextMonth,
@@ -111,7 +108,7 @@ class ProjectApiService {
         return result;
     }
 
-    async addConsultantToProject(projectName: string, consultantName: string, role: string, hours: number): Promise<string> {
+    async addConsultantToProject(projectName: string, consultantName: string, role: string, hours: number): Promise<ApiAddConsultantToProjectResponse> {
         let projects = await this.getApiProjects(projectName, "");
         let consultants = await ConsultantApiService.getApiConsultants(consultantName, "", "", "", "", "");
 
@@ -129,8 +126,15 @@ class ProjectApiService {
 
         // Always charge to the current month
         const remainingForecast = await AssignmentDbService.addConsultantToProject(project.id, consultantId, role, hours);
-        return `Added consultant ${consultantId} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
+        const message = `Added consultant ${consultantId} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
 
+        return {
+            clientName: project.clientName,
+            projectName: project.name,
+            consultantName: consultants[0].name,
+            remainingForecast,
+            message
+        }
     }
 }
 

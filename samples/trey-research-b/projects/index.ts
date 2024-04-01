@@ -1,13 +1,13 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ProjectApiService from "../services/ProjectApiService";
-import { ApiProject, ErrorResult } from "../model/apiModel";
-import { HttpError } from "../utilities";
+import { ApiProject, ApiAddConsultantToProjectResponse, ErrorResult } from "../model/apiModel";
+import { HttpError, cleanUpParameter } from "../services/Utilities";
 
 // Define a Response interface.
 interface Response {
   status: number;
   body: {
-    results: ApiProject[] | ErrorResult;
+    results: ApiProject[] | ApiAddConsultantToProjectResponse | ErrorResult;
   };
 }
 
@@ -34,17 +34,24 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     switch (req.method) {
       case "GET": {
 
-        const projectName = req.query.projectName?.toString().toLowerCase() || "";
-        const consultantName = req.query.consultantName?.toString().toLowerCase() || "";
+        let projectName = req.query.projectName?.toString().toLowerCase() || "";
+        let consultantName = req.query.consultantName?.toString().toLowerCase() || "";
+
+        console.log (`➡️ GET /api/projects: request for projectName=${projectName}, consultantName=${consultantName}, id=${id}`);
+        
+        projectName = cleanUpParameter("projectName", projectName);
+        consultantName = cleanUpParameter("consultantName", consultantName);
 
         if (id) {
           const result = await ProjectApiService.getApiProjectById(id);
           res.body.results = [result];
+          console.log (`   ✅ GET /api/projects: response status ${res.status}; 1 projects returned`);
           return res;
         }
 
         const result = await ProjectApiService.getApiProjects(projectName, consultantName);
         res.body.results = result;
+        console.log (`   ✅ GET /api/projects: response status ${res.status}; ${result.length} projects returned`);
         return res;
       }
       case "POST": {
@@ -73,11 +80,17 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
               forecast = 0;
               //throw new HttpError(400, `Missing forecast this month`);
             }
+            console.log (`➡️ POST /api/projects: assignconsultant request, projectName=${projectName}, consultantName=${consultantName}, role=${role}, forecast=${forecast}`);
             const message = await ProjectApiService.addConsultantToProject(projectName, consultantName, role, forecast);
             res.body.results = {
               status: 200,
-              message
+              clientName: message.clientName,
+              projectName: message.projectName,
+              consultantName: message.consultantName,
+              remainingForecast: message.remainingForecast,
+              message: message.message
             };
+            console.log (`   ✅ POST /api/projects: response status ${res.status} - ${message}`);
             return res;
           }
           default: {
@@ -94,7 +107,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   } catch (error) {
 
     const status = <number>error.status || <number>error.response?.status || 500;
-    console.log(`Returning error status code ${status}: ${error.message}`);
+    console.log(`   ⛔ Returning error status code ${status}: ${error.message}`);
 
     res.status = status;
     res.body.results = {

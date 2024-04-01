@@ -5,8 +5,8 @@
           "schema_version": "v1",
           "name_for_human": "Trey Research",
           "name_for_model": "Trey Research",
-          "description_for_human": "Streamlines consultant assignment and project management.",
-          "description_for_model": "Trey Research Management streamlines the process of managing consultants and their assignments to various projects and also finding project information. It provides functionalities to assign consultants to specific projects, define their roles, and forecast their hours, enhancing project management efficiency and organization.It also gets consultant and project information based on various filters",
+          "description_for_human": "Streamlines consultant assignment and time management.",
+          "description_for_model": "The Trey Research plugin allows locating consultants by skills, roles, certifications, and availability, as well as charging hours and assigning consultants to projects.",
           "auth": {
             "type": "none"
           },

@@ -1,9 +1,9 @@
 import { Consultant, HoursEntry, Assignment } from '../model/baseModel';
-import { ApiConsultant } from '../model/apiModel';
+import { ApiConsultant, ApiChargeTimeResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
-import { HttpError } from '../utilities';
+import { HttpError, getLocationWithMap } from './Utilities';
 import ProjectApiService from './ProjectApiService';
 
 const AVAILABLE_HOURS_PER_MONTH = 160;
@@ -51,7 +51,7 @@ class ConsultantApiService {
             result = result.filter(
                 (c) => {
                     let project = c.projects.find((p) => {
-                        let x = p.projectName.toLowerCase();
+                        let x = p.projectName.toLowerCase() + p.clientName.toLowerCase();
                         return x.includes(projectName);
                     });
                     return project;
@@ -73,6 +73,7 @@ class ConsultantApiService {
     async getApiConsultant(consultant: Consultant, assignments: Assignment[]): Promise<ApiConsultant> {
 
         const result = consultant as ApiConsultant;
+        result.location = getLocationWithMap(consultant.location);
         result.consultantPhotoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
@@ -94,7 +95,10 @@ class ConsultantApiService {
             result.projects.push({
                 projectName: project.name,
                 projectDescription: project.description,
-                projectLocation: project.location,
+                projectLocation: getLocationWithMap(project.location),
+                clientName: project.clientName,
+                clientContact: project.clientContact,
+                clientEmail: project.clientEmail,
                 role: assignment.role,
                 forecastThisMonth: forecastThisMonth,
                 forecastNextMonth: forecastNextMonth,
@@ -130,7 +134,7 @@ class ConsultantApiService {
         return result;
     }
 
-    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<string> {
+    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
         let projects = await ProjectApiService.getApiProjects(projectName, "");
         if (projects.length === 0) {
             throw new HttpError(400, `Project not found: ${projectName}`);
@@ -142,11 +146,18 @@ class ConsultantApiService {
             const month = new Date().getMonth() + 1;
             const year = new Date().getFullYear();
             const remainingForecast = await AssignmentDbService.chargeHoursToProject(project.id, consultantId, month, year, hours);
+            let message = "";
             if (remainingForecast < 0) {
-                return `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You are ${-remainingForecast} hours over your forecast this month.`;
+                message = `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You are ${-remainingForecast} hours over your forecast this month.`;
             } else {
-                return `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You have ${remainingForecast} hours remaining this month.`;
+                message = `Charged ${hours} hours to ${project.clientName} on project "${project.name}". You have ${remainingForecast} hours remaining this month.`;
             }
+            return {
+                clientName: project.clientName,
+                projectName: project.name,
+                remainingForecast,
+                message
+            };
         }
     }
 }

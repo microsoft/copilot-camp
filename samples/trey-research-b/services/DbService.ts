@@ -1,5 +1,5 @@
 import { TableClient, TableEntity } from "@azure/data-tables";
-import { HttpError } from '../utilities';
+import { HttpError } from './Utilities';
 import { DbEntity } from '../model/dbModel';
 
 export default class DbService<DbEntityType> {

@@ -1,7 +1,7 @@
 import DbService from './DbService';
 import { DbAssignment } from '../model/dbModel';
 import { Assignment } from '../model/baseModel';
-import { HttpError } from '../utilities';
+import { HttpError } from './Utilities';
 
 const TABLE_NAME = "Assignment";
 

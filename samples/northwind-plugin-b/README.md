@@ -26,9 +26,13 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
     `teamsapp account login m365`
 
+    You can check your login with this command:
+
+    `teamsapp account show`
+
 1. Upload the package using the Teams Toolkit CLI. Run below command while in the root folder of the project:
 
-   `teamsapp install -file-path ./pluginPackage-Local/build/pluginPackage.zip`
+   `teamsapp m365 install -file-path ./pluginPackage-Local/build/pluginPackage.zip`
 
 1. Wait 15 minutes
 
