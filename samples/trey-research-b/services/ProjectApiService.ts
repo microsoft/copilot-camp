@@ -30,6 +30,13 @@ class ProjectApiService {
                     return name.includes(projectOrClientName.toLowerCase()) || clientName.includes(projectOrClientName.toLowerCase());
                 });
         }
+        //remove duplicates
+        projects = projects.filter(
+            (project, index, self) => 
+                index === self.findIndex((p) => (
+                    p.id === project.id
+                ))
+        );
 
         // Augment the base properties with assignment information
         let result = await Promise.all(projects.map((p) => this.getApiProject(p, assignments)));
@@ -113,13 +120,13 @@ class ProjectApiService {
         let consultants = await ConsultantApiService.getApiConsultants(consultantName, "", "", "", "", "");
 
         if (projects.length === 0) {
-            throw new HttpError(400, `Project not found: ${projectName}`);
+            throw new HttpError(404, `Project not found: ${projectName}`);
         } else if (projects.length > 1) {
-            throw new HttpError(400, `Multiple projects found with the name: ${projectName}`);
+            throw new HttpError(406, `Multiple projects found with the name: ${projectName}`);
         } else if (consultants.length === 0) {
-            throw new HttpError(400, `Consultant not found: ${consultantName}`);
+            throw new HttpError(404, `Consultant not found: ${consultantName}`);
         } else if (consultants.length > 1) {
-            throw new HttpError(400, `Multiple consultants found with the name: ${consultantName}`);
+            throw new HttpError(406, `Multiple consultants found with the name: ${consultantName}`);
         }
         const project = projects[0];
         const consultantId = consultants[0].id;
