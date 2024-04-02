@@ -1,7 +1,7 @@
 import { Context, HttpRequest } from "@azure/functions";
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ApiChargeTimeResponse, ErrorResult } from "../model/apiModel";
-import { HttpError } from "../services/Utilities";
+import { HttpError, cleanUpParameter } from "../services/Utilities";
 
 // Define a Response interface.
 interface Response {
@@ -50,7 +50,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
       case "POST": {
         switch (command) {
           case "chargetime": {
-            const projectName = req.body.projectName;
+            const projectName = cleanUpParameter("projectName", req.body.projectName);
             if (!projectName) {
               throw new HttpError(400, `Missing project name`);
             }
