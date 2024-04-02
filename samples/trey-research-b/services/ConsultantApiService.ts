@@ -137,9 +137,9 @@ class ConsultantApiService {
     async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
         let projects = await ProjectApiService.getApiProjects(projectName, "");
         if (projects.length === 0) {
-            throw new HttpError(400, `Project not found: ${projectName}`);
+            throw new HttpError(404, `Project not found: ${projectName}`);
         } else if (projects.length > 1) {
-            throw new HttpError(400, `Multiple projects found with the name: ${projectName}`);
+            throw new HttpError(406, `Multiple projects found with the name: ${projectName}`);
         } else {
             const project = projects[0];
             // Always charge to the current month

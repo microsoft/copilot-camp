@@ -69,7 +69,7 @@ class AssignmentDbService {
         } catch { }
 
         if (dbAssignment) {
-            throw new HttpError(401, "Assignment already exists");
+            throw new HttpError(403, "Assignment already exists");
         }
 
         try {

@@ -28,7 +28,7 @@ export default class DbService<DbEntityType> {
                 return e.rowKey === rowKey
             });
             if (result.length === 0) {
-                throw new HttpError(401, `Entity ${rowKey} not found`);
+                throw new HttpError(404, `Entity ${rowKey} not found`);
             } else {
                 return result[0];
             }
