@@ -22,6 +22,14 @@ export function cleanUpParameter(name: string, value: string): string {
     console.log(`   ❗ Invalid name '${val}'; replacing with 'avery'.`);
     val = "avery";
   }
+  if (name==="role" && val === "consultant") {
+    console.log(`   ❗ Invalid role name '${val}'; replacing with ''.`);
+    val = "";
+  }
+  if (val === "null") {
+    console.log(`   ❗ Invalid value '${val}'; replacing with ''.`);
+    val = "";
+  }
   return val;
 
 }

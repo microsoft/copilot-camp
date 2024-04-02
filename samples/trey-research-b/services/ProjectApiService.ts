@@ -30,6 +30,13 @@ class ProjectApiService {
                     return name.includes(projectOrClientName.toLowerCase()) || clientName.includes(projectOrClientName.toLowerCase());
                 });
         }
+        //remove duplicates
+        projects = projects.filter(
+            (project, index, self) => 
+                index === self.findIndex((p) => (
+                    p.id === project.id
+                ))
+        );
 
         // Augment the base properties with assignment information
         let result = await Promise.all(projects.map((p) => this.getApiProject(p, assignments)));
