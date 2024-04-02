@@ -3,35 +3,51 @@
 > NOTE: This plugin is still Type A; working on Type B packaging
 
 Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries.
+The vision for this demo is to show the full potential of Copilot plugins in a relatable business environment.
 
-## Prompts that work
+### Prompts that work
 
-* what trey research projects is domi assigned to?
-* what trey research projects is avery working with?
-* do we have any trey research consultants with azure certifications?
-* what trey projects are we doing for relecloud?
-* which trey consultants are working with woodgrove bank?
-* in trey research, how many hours has avery delivered this month?
-* does trey research have any architects with javascript skills? (multi-parameter!)
-* what trey research designers are working at woodgrove bank? (multi-parameter!)
+  * what trey research projects am i assigned to?
+    (NOTE: Since there is no SSO, the logged in user is hard coded to be consultant Avery Howard)
+  * what trey research projects is domi working on?
+  * do we have any trey research consultants with azure certifications?
+  * what trey projects are we doing for relecloud?
+  * which trey consultants are working with woodgrove bank?
+  * in trey research, how many hours has avery delivered this month?
+  * please find a trey consultant with python skills who is available immediately
+  * are any trey research consultants available who are AWS certified? (multi-parameter!)
+  * does trey research have any architects with javascript skills? (multi-parameter!)
+  * what trey research designers are working at woodgrove bank? (multi-parameter!)
 
-## Prompts that we're working on
+### Prompts that sometimes work (seems random)
 
-* please charge 10 hours to woodgrove bank
-* please add sanjay to the contoso project
-* what trey project leads are have availability this month?
-* what are my current trey research projects?  (assumes Entra ID SSO)
-* how far does avery work from the woodgrove project site?  (can the AI do this or does the service need to calculate it?)
+   * please charge 10 hours to woodgrove bank in trey research
+     (POST request)
+   * please add sanjay to the contoso project for trey research
+     (POST request with easy to forget entities, hoping to prompt the user; for now they are defaulted)
+   * please find trey consultants from the USA
+     (NOTE: There is no query param for country, it's filtering the results itself!)
 
-## Planned content
+## Plugin Features
 
-* Trey Research Assistant - A Copilot GPT to facilitate the use of this plugin
-* Adaptive cards - note the data is ready with images and maps to make the cards look good!
-* We plan to generate sample documents and/or other Microsoft 365 content to show how Copilot can work with both
-* MAYBE a Graph Connector with related data
-* MAYBE a public facing version which only supports limited read-only features such as consultants
+The sample aims to showcase the following plugin features:
 
-## Prerequisites
+  1. √ API based plugin works with any platform that supports REST requests
+  1. √ Construct queries for specific data using GET requests
+  1. √ Multi-parameter queries
+  1. Allow updating and adding data using POST requests **
+  1. Prompt users before POSTing data; capture missing parameters *
+  1. Invoke from Copilot GPT, allowing general instructions and knowledge, and removing the need to name the plugin on every prompt *
+  1. Entra ID SSO with /me path support *
+  1. Display rich adaptive cards *
+  
+ \* Not yet supported in Copilot
+
+ \*\* Sometimes works 
+
+## Setup
+
+### Prerequisites
 
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [NodeJS 18.x](https://nodejs.org/en/download)
@@ -39,7 +55,7 @@ Trey Research is a fictitious consulting company that supplies talent in the sof
 * [Teams Toolkit CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three) (`npm install -g @microsoft/teamsapp-cli`)
 * (optional) [Postman](https://www.postman.com/downloads/)
 
-## Setup instructions (one-time setup)
+### Setup instructions (one-time setup)
 
 1. Log into Teams Toolkit using any tenant for now, as we will be uploading manually.
 
@@ -49,7 +65,7 @@ Trey Research is a fictitious consulting company that supplies talent in the sof
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-## Running the solution (after each build)
+### Running the solution (after each build)
 
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
 
@@ -148,55 +164,4 @@ The process began with a bunch of sample prompts that serve as simple use cases 
 
 4. In POST requests, use a command style such as `/me/chargeTime`, as opposed to asking the API to update a data structure
 
-## Build a message extension from a new API with Azure Functions
-
-This app template allows Teams to interact directly with third-party data, apps, and services, enhancing its capabilities and broadening its range of capabilities. It allows Teams to:
-
-* Retrieve real-time information, for example, latest news coverage on a product launch.
-* Retrieve knowledge-based information, for example, my team's design files in Figma.
-
-## Get started with the template
-
-> **Prerequisites**
->
-> To run this app template in your local dev machine, you will need:
->
-> * [Node.js](https://nodejs.org/), supported versions: 16, 18
-> * A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
-> * [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
-
-1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
-3. Select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)` from the launch configuration dropdown.
-4. When Teams launches in the browser, you can navigate to a chat message and [trigger your search commands from compose message area](https://learn.microsoft.com/microsoftteams/platform/messaging-extensions/what-are-messaging-extensions?tabs=dotnet#search-commands).
-
-## What's included in the template
-
-| Folder       | Contents                                                                                                    |
-| ------------ | ----------------------------------------------------------------------------------------------------------- |
-| `.vscode`    | VSCode files for debugging                                                                                  |
-| `appPackage` | Templates for the Teams application manifest, the API specification and response template for API responses |
-| `env`        | Environment files                                                                                           |
-| `infra`      | Templates for provisioning Azure resources                                                                  |
-| `repair`     | The source code for the repair API                                                                          |
-
-The following files can be customized and demonstrate an example implementation to get you started.
-
-| File                                          | Contents                                                                     |
-| --------------------------------------------- | ---------------------------------------------------------------------------- |
-| `repair/function.json`                        | A configuration file that defines the function's trigger and other settings. |
-| `repair/index.ts`                             | The main file of a function in Azure Functions.                              |
-| `appPackage/apiSpecificationFile/repair.yml` | A file that describes the structure and behavior of the repair API.          |
-| `appPackage/responseTemplates/repair.json`    | A generated Adaptive Card that used to render API response.                  |
-| `repairsData.json`                            | The data source for the repair API                                           |
-
-The following are Teams Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Teams Toolkit works.
-
-| File                 | Contents                                                                                                                                  |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `teamsapp.yml`       | This is the main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
-| `teamsapp.local.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging.                                                     |
-
-## Addition information and references
-
-* [Extend Teams platform with APIs](https://aka.ms/teamsfx-api-plugin)
+5. Don't expect Copilot to filter data; instead provide parameters and filter it server side. (I have seen some filtering by Copilot however - this is for further study)
