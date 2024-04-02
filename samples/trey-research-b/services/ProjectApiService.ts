@@ -120,13 +120,13 @@ class ProjectApiService {
         let consultants = await ConsultantApiService.getApiConsultants(consultantName, "", "", "", "", "");
 
         if (projects.length === 0) {
-            throw new HttpError(400, `Project not found: ${projectName}`);
+            throw new HttpError(404, `Project not found: ${projectName}`);
         } else if (projects.length > 1) {
-            throw new HttpError(400, `Multiple projects found with the name: ${projectName}`);
+            throw new HttpError(406, `Multiple projects found with the name: ${projectName}`);
         } else if (consultants.length === 0) {
-            throw new HttpError(400, `Consultant not found: ${consultantName}`);
+            throw new HttpError(404, `Consultant not found: ${consultantName}`);
         } else if (consultants.length > 1) {
-            throw new HttpError(400, `Multiple consultants found with the name: ${consultantName}`);
+            throw new HttpError(406, `Multiple consultants found with the name: ${consultantName}`);
         }
         const project = projects[0];
         const consultantId = consultants[0].id;
