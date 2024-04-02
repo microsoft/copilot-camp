@@ -63,15 +63,15 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         // }
         switch (id.toLocaleLowerCase()) {      
           case "assignconsultant": {
-            const projectName = req.body.projectName;
+            const projectName = cleanUpParameter("projectName", req.body.projectName);
             if (!projectName) {
               throw new HttpError(400, `Missing project name`);
             }
-            const consultantName = req.body.consultantName?.toString() || (req.body.consultant.name?.toString()||"");
+            const consultantName = cleanUpParameter("consultantName", req.body.consultantName?.toString() || "");
             if (!consultantName) {
               throw new HttpError(400, `Missing consultant name`);
             }
-            const role = req.body.role;
+            const role = cleanUpParameter("Role", req.body.role);
             if (!role) {
               throw new HttpError(400, `Missing role`);
             }

@@ -59,19 +59,20 @@ class AssignmentDbService {
     }
 
     async addConsultantToProject(projectId: string, consultantId: string, role: string, hours: number): Promise<number> {
+
+        const month = new Date().getMonth() + 1;
+        const year = new Date().getFullYear();
+
+        let dbAssignment = null;
         try {
-            const month = new Date().getMonth() + 1;
-            const year = new Date().getFullYear();
+            dbAssignment = await this.dbService.getEntityByRowKey(TABLE_NAME, projectId + "," + consultantId) as DbAssignment;
+        } catch { }
 
-            let dbAssignment = null;
-            try {
-                dbAssignment = await this.dbService.getEntityByRowKey(TABLE_NAME, projectId + "," + consultantId) as DbAssignment;
-            } catch { }
-            
-            if (dbAssignment) {
-                throw new HttpError(401, "Assignment already exists");
-            }
+        if (dbAssignment) {
+            throw new HttpError(401, "Assignment already exists");
+        }
 
+        try {
             const newAssignment: DbAssignment = {
                 etag: "",
                 partitionKey: TABLE_NAME,
@@ -91,7 +92,7 @@ class AssignmentDbService {
 
             return hours;
         } catch (e) {
-            throw new HttpError(404, "Assignment not found");
+            throw new HttpError(500, "Unable to add assignment");
         }
     }
 
