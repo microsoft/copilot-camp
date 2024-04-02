@@ -7,7 +7,7 @@ Trey Research is a fictitious consulting company that supplies talent in the sof
 ## Prompts that work
 
   * what trey research projects is domi assigned to?
-  * what trey research clients is avery working with?
+  * what trey research projects is avery working with?
   * do we have any trey research consultants with azure certifications?
   * what trey projects are we doing for relecloud?
   * which trey consultants are working with woodgrove bank?

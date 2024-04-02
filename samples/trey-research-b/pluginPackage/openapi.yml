@@ -128,7 +128,7 @@ paths:
             type: "string"
         - name: "projectName"
           in: "query"
-          description: "Retrieve consultants assigned to this project name"
+          description: "The name of the project"
           required: false
           schema:
             type: "string"
@@ -180,13 +180,13 @@ paths:
       parameters:
         - name: "consultantName"
           in: "query"
-          description: "Return all projects assigned to the consultant"
+          description: "The name of the consultant assigned to the project"
           required: false
           schema:
             type: "string"
         - name: "projectName"
           in: "query"
-          description: "Retrieve information of the projects with this project name"
+          description: "The name of the project or name of the client"
           required: false
           schema:
             type: "string"
