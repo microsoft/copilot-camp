@@ -1,0 +1,35 @@
+{
+  "schema_version": "v2",
+  "name_for_human": "Trey Research",
+  "description_for_human": "Streamlines consultant assignment and time management.",
+  "description_for_model": "The Trey Research plugin allows locating consultants by skills, roles, certifications, and availability, as well as charging hours and assigning consultants to projects.",
+  "namespace": "trey",
+  "functions": [
+    {
+      "name": "getUserInformation",
+      "description": "Retrieve the consultant profile including skills, roles, certifications, location, availability, and project assignments.",     
+      "states": {
+        "reasoning": {
+          "description": "\n# `getUserInformation() -> str` Returns the consultant object.",
+          "instructions": "\n- Decide whether to invoke `getUserInformation()`:\n    - Check the last user message in the `conversation_memory` and the tool invocation history in the `turn_memory`:\n    - Based on the `result` from `turn_memory`, do I need to return a consultant information to answer the user message accurately? If so, invoke `getUserInformation()`. If no parameters are available, invoke `getUserInformation()` without any parameters."
+        },
+        "responding": {
+          "description": "",
+          "instructions": "\n  - Always show results in a paragraph with following columns: name, email, phone, skills, roles, certifications."
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "none"
+      },
+      "spec": {
+        "url": "openapi.yml"
+      },
+      "run_for_functions": ["getUserInformation"]
+    }
+  ]
+}
