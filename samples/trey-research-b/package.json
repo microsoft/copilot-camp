@@ -13,7 +13,7 @@
         "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
         "copy-files": "cpy ./files/*.{png,yml} dist/files/assets",
         "local-package": "node replace-domain.js",
-        "zip-package": "node zip.js "
+        "zip-package": "node zip.js"
     },
     "dependencies": {
         "@azure/data-tables": "^13.2.2",
