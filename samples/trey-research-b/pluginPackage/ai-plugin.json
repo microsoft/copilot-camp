@@ -18,6 +18,33 @@
           "instructions": "\n  - Always show results in a paragraph with following columns: name, email, phone, skills, roles, certifications."
         }
       }
+    },
+    {
+      "name": "getProjects",
+      "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "consultantName": {
+            "type": "string",
+            "description": "The name of the consultant assigned to the project"
+          },
+          "projectName": {
+            "type": "string",
+            "description": "The name of the project or name of the client."
+          }        
+        }
+      },
+      "states": {
+        "reasoning": {
+          "description": "\n# `getProjects(consultantName: str, projectName: str) -> str` Returns detailed information about projects matching the specified project name and/or consultant name.",
+          "instructions": "\n- Decide whether to invoke `getProjects(consultantName: str, projectName: str)`:\n    - Check the last user message in the `conversation_memory` and the tool invocation history in the `turn_memory`:\n    - Based on the `result` from `turn_memory`, do I need to return a list of projects to answer the user message accurately? If so, invoke `getProjects(consultantName: str, projectName: str) `. If any of the parameters is not available do not pass the specific parameter. All parameters are optional. If no parameters are available, invoke `getProjects()` without any parameters.\n* here are the descriptions for parameters:\n   - consultantName (str): The name of the consultant assigned to the project\n   - projectName (str): The name of the project or name of the client.\n"
+        },
+        "responding": {
+          "description": "",
+          "instructions": "\n  - Always show results in a tabular form with following columns: name,description, clientName, clientContact, location"
+        }
+      }
     }
   ],
   "runtimes": [
@@ -29,7 +56,7 @@
       "spec": {
         "url": "openapi.yml"
       },
-      "run_for_functions": ["getUserInformation"]
+      "run_for_functions": ["getUserInformation","getProjects"]
     }
   ]
 }
