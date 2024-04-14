@@ -7,7 +7,7 @@
   "functions": [
     {
       "name": "getUserInformation",
-      "description": "Retrieve the consultant profile including skills, roles, certifications, location, availability, and project assignments.",     
+      "description": "Retrieve the consultant profile including skills, roles, certifications, location, availability, and project assignments.",
       "states": {
         "reasoning": {
           "description": "\n# `getUserInformation() -> str` Returns the consultant object.",
@@ -32,7 +32,7 @@
           "projectName": {
             "type": "string",
             "description": "The name of the project or name of the client."
-          }        
+          }
         }
       },
       "states": {
@@ -45,6 +45,86 @@
           "instructions": "\n  - Always show results in a tabular form with following columns: name,description, clientName, clientContact, location"
         }
       }
+    },
+    {
+      "name": "getConsultants",
+      "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "consultantName": {
+            "type": "string",
+            "description": "Name of the consultant to retrieve"
+          },
+          "projectName": {
+            "type": "string",
+            "description": "The name of the project"
+          },
+          "skill": {
+            "type": "string",
+            "description": "Skills for a consultant. Retrieve consultants with this skill"
+          },
+          "certification": {
+            "type": "string",
+            "description": "Certification for a consultant. Retrieve consultants with this certification"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role of a consultant. Retrieve consultants with this role"
+          },
+          "hoursAvailable": {
+            "type": "string",
+            "description": "Hours a consultant is available for new work over this and next month. Please provide an integer value; for example 0 if no hours are available, 1 if any hours are available, or 20 if 20 or more hours are available."
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "postBillhours",
+      "description": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "projectName": {
+            "type": "string"
+          },
+          "hours": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "projectName",
+          "hours"
+        ]
+      }
+    },
+    {
+      "name": "postAssignConsultant",
+      "description": "Assign (add) consultant to a project when name, role and project name is specified.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "projectName": {
+            "type": "string"
+          },
+          "consultantName": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "forecast": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "projectName",
+          "consultantName",
+          "role",
+          "forecast"
+        ]
+      }
     }
   ],
   "runtimes": [
@@ -56,7 +136,13 @@
       "spec": {
         "url": "openapi.yml"
       },
-      "run_for_functions": ["getUserInformation","getProjects"]
+      "run_for_functions": [
+        "getUserInformation",
+        "getProjects",
+        "getConsultants",
+        "postBillhours",
+        "postAssignConsultant"
+      ]
     }
   ]
 }
