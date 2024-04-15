@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const archiver = require('archiver');
 
 // Constants
-const targetFolderName = './pluginPackage-Local/build';
+const targetFolderName = './build';
 const sourceFolderName = './pluginPackage-Local';
 const archiveName = 'pluginPackage';
 
