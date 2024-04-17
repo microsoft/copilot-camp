@@ -5,28 +5,30 @@ import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 import { HttpError, getLocationWithMap } from './Utilities';
 import ProjectApiService from './ProjectApiService';
+import Identity from "../services/IdentityService";
 
 const AVAILABLE_HOURS_PER_MONTH = 160;
 
 class ConsultantApiService {
 
-    async getApiConsultantById(consultantId: string): Promise<ApiConsultant> {
-        const consultant = await ConsultantDbService.getConsultantById(consultantId);
+    async getApiConsultantById(identity: Identity, consultantId: string): Promise<ApiConsultant> {
+        const consultant = await ConsultantDbService.getConsultantById(identity, consultantId);
         let assignments = await AssignmentDbService.getAssignments();
 
         const result = await this.getApiConsultant(consultant, assignments);
         return result;
     }
 
-    async getApiConsultants(
+    async getApiConsultants(identity: Identity,
         consultantName: string, projectName: string, skill: string,
         certification: string, role: string, hoursAvailable: string): Promise<ApiConsultant[]> {
 
-        let consultants = await ConsultantDbService.getConsultants();
+        let consultants = await ConsultantDbService.getConsultants(identity);
         let assignments = await AssignmentDbService.getAssignments();
 
         // Filter on base properties
         if (consultantName) {
+            const dbConsultantName = identity.getDbConsultantName(consultantName);
             consultants = consultants.filter(
                 (c) => c.name.toLowerCase().includes(consultantName.toLocaleLowerCase()));
         }
@@ -134,8 +136,8 @@ class ConsultantApiService {
         return result;
     }
 
-    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
-        let projects = await ProjectApiService.getApiProjects(projectName, "");
+    async chargeTimeToProject(identity: Identity, projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
+        let projects = await ProjectApiService.getApiProjects(identity, projectName, "");
         if (projects.length === 0) {
             throw new HttpError(404, `Project not found: ${projectName}`);
         } else if (projects.length > 1) {
