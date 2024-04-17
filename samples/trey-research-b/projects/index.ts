@@ -2,6 +2,7 @@ import { Context, HttpRequest } from "@azure/functions";
 import ProjectApiService from "../services/ProjectApiService";
 import { ApiProject, ApiAddConsultantToProjectResponse, ErrorResult } from "../model/apiModel";
 import { HttpError, cleanUpParameter } from "../services/Utilities";
+import Identity from "../services/IdentityService";
 
 // Define a Response interface.
 interface Response {
@@ -29,6 +30,8 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
   try {
 
+    const identity = new Identity(req);
+
     const id = req.params.id?.toLowerCase();
 
     switch (req.method) {
@@ -43,24 +46,18 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
         consultantName = cleanUpParameter("consultantName", consultantName);
 
         if (id) {
-          const result = await ProjectApiService.getApiProjectById(id);
+          const result = await ProjectApiService.getApiProjectById(identity, id);
           res.body.results = [result];
           console.log (`   ✅ GET /api/projects: response status ${res.status}; 1 projects returned`);
           return res;
         }
 
-        const result = await ProjectApiService.getApiProjects(projectName, consultantName);
+        const result = await ProjectApiService.getApiProjects(identity, projectName, consultantName);
         res.body.results = result;
         console.log (`   ✅ GET /api/projects: response status ${res.status}; ${result.length} projects returned`);
         return res;
       }
       case "POST": {
-        //   {
-        //     projectName: "foo",
-        //     consultantName: "avery",
-        //     role: "architect",
-        //     forecast: number,
-        // }
         switch (id.toLocaleLowerCase()) {      
           case "assignconsultant": {
             const projectName = cleanUpParameter("projectName", req.body.projectName);
@@ -81,7 +78,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
               //throw new HttpError(400, `Missing forecast this month`);
             }
             console.log (`➡️ POST /api/projects: assignconsultant request, projectName=${projectName}, consultantName=${consultantName}, role=${role}, forecast=${forecast}`);
-            const message = await ProjectApiService.addConsultantToProject(projectName, consultantName, role, forecast);
+            const message = await ProjectApiService.addConsultantToProject
+              (identity, projectName, consultantName, role, forecast);
+              
             res.body.results = {
               status: 200,
               clientName: message.clientName,
