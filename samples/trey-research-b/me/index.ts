@@ -2,6 +2,7 @@ import { Context, HttpRequest } from "@azure/functions";
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ApiChargeTimeResponse, ErrorResult } from "../model/apiModel";
 import { HttpError, cleanUpParameter } from "../services/Utilities";
+import Identity from "../services/IdentityService";
 
 // Define a Response interface.
 interface Response {
@@ -27,9 +28,9 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     }
   };
 
-  const MY_CONSULTANT_ID = '1';
-
   try {
+
+    const identity = new Identity(req);
 
     const command = req.params.command?.toLowerCase();
 
@@ -42,7 +43,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
         console.log(`➡️ GET /api/me request`);
 
-        const result = [await ConsultantApiService.getApiConsultantById(MY_CONSULTANT_ID)];
+        const result = [await ConsultantApiService.getApiConsultantById(identity, identity.id)];
         res.body.results = result;
         console.log(`   ✅ GET /me response status ${res.status}; ${result.length} consultants returned`);
         return res;
@@ -63,7 +64,8 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
             }
 
             console.log(`➡️ POST /api/me/chargetime request for project ${projectName}, hours ${hours}`);
-            const result = await ConsultantApiService.chargeTimeToProject(projectName, MY_CONSULTANT_ID, hours);
+            const result = await ConsultantApiService.chargeTimeToProject
+              (identity, projectName, identity.id, hours);
 
             res.body.results = {
               status: 200,

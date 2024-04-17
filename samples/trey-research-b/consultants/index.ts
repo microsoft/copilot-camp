@@ -2,6 +2,7 @@ import { Context, HttpRequest } from "@azure/functions";
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ErrorResult } from "../model/apiModel";
 import { cleanUpParameter } from "../services/Utilities";
+import Identity from "../services/IdentityService";
 
 // Define a Response interface.
 interface Response {
@@ -28,6 +29,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
   };
 
   try {
+    const identity = new Identity(req);
 
     // Get the input parameters
     let consultantName = req.query.consultantName?.toString().toLowerCase() || "";
@@ -41,7 +43,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
 
     if (id) {
       console.log(`➡️ GET /api/consultants/${id}: request for consultant ${id}`);
-      const result = await ConsultantApiService.getApiConsultantById(id);
+      const result = await ConsultantApiService.getApiConsultantById(identity, id);
       res.body.results = [result];
       console.log(`   ✅ GET /api/consultants/${id}: response status 1 consultant returned`);
       return res;
@@ -57,7 +59,7 @@ export default async function run(context: Context, req: HttpRequest): Promise<R
     role = cleanUpParameter("role", role);
     hoursAvailable = cleanUpParameter("hoursAvailable", hoursAvailable);
     
-    const result = await ConsultantApiService.getApiConsultants(
+    const result = await ConsultantApiService.getApiConsultants(identity,
       consultantName, projectName, skill, certification, role, hoursAvailable
     );
     res.body.results = result;
