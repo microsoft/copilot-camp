@@ -1,0 +1,32 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "0.0.1",
+    "id": "216f0fcd-a729-410e-b59c-bed2fc234e14",
+    "name": {
+      "short": "Bart the Bartender Bot",
+      "full": "Bart the Bartender Bot explains how to make delicious cocktails"
+    },
+    "developer": {
+      "name": "Bob German",
+      "websiteUrl": "https://bob1german.com",
+      "privacyUrl": "https://www.example.com/termofuse",
+      "termsOfUseUrl": "https://www.example.com/privacy"
+    },
+    "description": {
+      "short": "This is a friendly chatbot that dispenses cocktail recipes and advice.",
+      "full": "This is a friendly and affable chatbot that dispenses cocktail recipes and advice."
+    },
+    "icons": {
+      "color": "Pablow192.png",
+      "outline": "Pablow32.png"
+    },
+    "accentColor": "#FFFFFF",
+    "showLoadingIndicator": true,
+    "copilotGpts": [
+      {
+        "file": "gpt1.json",
+        "id": "gpt1"
+      }
+    ]
+  }
