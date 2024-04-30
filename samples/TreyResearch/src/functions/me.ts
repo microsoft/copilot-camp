@@ -38,10 +38,9 @@ export async function me(
   };
 
   try {
-
     const identity = new Identity(req);
-    const command = req.params.command?.toLowerCase();
-    let body = req.json ? await req.json() : null;
+    const command = req.params.command?.toLowerCase();   
+    let body=null; 
     switch (req.method) {
       case "GET": {
 
@@ -59,8 +58,14 @@ export async function me(
       case "POST": {
         switch (command) {
           case "chargetime": {  
+            try {
+              const bd = await req.text();
+              body = JSON.parse(bd);
+            } catch (error) {
+              throw new HttpError(400, `No body to process this request.`);
+            }
             if (body) {              
-                
+            
             const projectName = cleanUpParameter("projectName", body["projectName"]);
             if (!projectName) {
               throw new HttpError(400, `Missing project name`);
@@ -117,6 +122,6 @@ export async function me(
 app.http("me", {
   methods: ["GET","POST"],
   authLevel: "anonymous",
-  route: "me/{command}",
+  route: "me/{*command}",
   handler: me,
 });
