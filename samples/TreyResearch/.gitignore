@@ -25,7 +25,6 @@ out
 bin
 obj
 appsettings.json
-local.settings.json
 
 # Local data
 .localConfigs
