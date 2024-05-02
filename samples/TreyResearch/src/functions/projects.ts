@@ -4,10 +4,10 @@
  */
 
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import ProjectApiService from "../../services/ProjectApiService";
-import { ApiProject, ApiAddConsultantToProjectResponse, ErrorResult } from "../../model/apiModel";
-import { HttpError, cleanUpParameter } from "../../services/Utilities";
-import Identity from "../../services/IdentityService";
+import ProjectApiService from "../services/ProjectApiService";
+import { ApiProject, ApiAddConsultantToProjectResponse, ErrorResult } from "../model/apiModel";
+import { HttpError, cleanUpParameter } from "../services/Utilities";
+import Identity from "../services/IdentityService";
 
 /**
  * This function handles the HTTP request and returns the repair information.
