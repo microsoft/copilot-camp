@@ -79,7 +79,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 1. Upload the package using the Teams Toolkit CLI. Run below command while in the root folder of the project:
 
-   `teamsapp install -file-path ./pluginPackage-Local/build/pluginPackage.zip`
+   `teamsapp install -file-path ./build/pluginPackage.zip`
 
 1. Wait 15 minutes
 
