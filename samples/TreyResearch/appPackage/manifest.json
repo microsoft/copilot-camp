@@ -11,16 +11,16 @@
     "termsOfUseUrl": "https://www.example.com/termsofuse"
   },
   "icons": {
-    "color": "color.png",
-    "outline": "outline.png"
+    "color": "TreyResearch-blue-192.png",
+    "outline": "TreyResearch-blue-32.png"
   },
   "name": {
-    "short": "TreyResearch${{APP_NAME_SUFFIX}}",
-    "full": "Full name for TreyResearch"
+    "short": "Trey Research ${{APP_NAME_SUFFIX}}",
+    "full": "Trey Research consulting management"
   },
   "description": {
-    "short": "Track and monitor car repair records for stress-free maintenance management.",
-    "full": "The ultimate solution for hassle-free car maintenance management makes tracking and monitoring your car repair records a breeze."
+    "short": "Everyday management of Trey Research projects and consultants",
+    "full": "This application allows you to find Trey Research projects and consultants, to bill time to a project, and to assign a consultant to a project."
   },
   "accentColor": "#FFFFFF",
   "plugins": [
