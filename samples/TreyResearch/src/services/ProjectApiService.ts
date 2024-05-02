@@ -130,11 +130,11 @@ class ProjectApiService {
             throw new HttpError(406, `Multiple consultants found with the name: ${consultantName}`);
         }
         const project = projects[0];
-        const consultantId = consultants[0].id;
+        const consultant = consultants[0];
 
         // Always charge to the current month
-        const remainingForecast = await AssignmentDbService.addConsultantToProject(project.id, consultantId, role, hours);
-        const message = `Added consultant ${consultantId} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
+        const remainingForecast = await AssignmentDbService.addConsultantToProject(project.id, consultant.id, role, hours);
+        const message = `Added consultant ${consultant.name} to ${project.clientName} on project "${project.name}" with ${remainingForecast} hours forecast this month.`;
 
         return {
             clientName: project.clientName,
