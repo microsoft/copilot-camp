@@ -1,3 +1,8 @@
+# Added steps:
+
+1. Install .NET SDK from https://dotnet.microsoft.com/en-us/download
+
+
 # Overview of the Copilot Plugin template
 
 ## Build a Copilot Plugin from a new API with Azure Functions
