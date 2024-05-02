@@ -37,13 +37,10 @@ export default class DbService<DbEntityType> {
 
     async getEntities(tableName: string): Promise<DbEntity[]> {
 
-        let entities;
-
-        if (this.okToCacheLocally && this.entityCache.length > 0) {
-            entities = this.entityCache;
-        } else {
+        if (!this.okToCacheLocally || this.entityCache.length === 0) {
+            // Rebuild cache for this entity
             const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
-            entities = tableClient.listEntities();
+            const entities = tableClient.listEntities();
             this.entityCache = [];
             for await (const entity of entities) {
                 const e = this.expandPropertyValues(entity as DbEntityType);
