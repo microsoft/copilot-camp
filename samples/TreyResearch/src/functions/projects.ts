@@ -93,19 +93,19 @@ export async function projects(
                                 //throw new HttpError(400, `Missing forecast this month`);
                             }
                             console.log(`➡️ POST /api/projects: assignconsultant request, projectName=${projectName}, consultantName=${consultantName}, role=${role}, forecast=${forecast}`);
-                            const message = await ProjectApiService.addConsultantToProject
+                            const result = await ProjectApiService.addConsultantToProject
                                 (identity, projectName, consultantName, role, forecast);
 
                             res.jsonBody.results = {
                                 status: 200,
-                                clientName: message.clientName,
-                                projectName: message.projectName,
-                                consultantName: message.consultantName,
-                                remainingForecast: message.remainingForecast,
-                                message: message.message
+                                clientName: result.clientName,
+                                projectName: result.projectName,
+                                consultantName: result.consultantName,
+                                remainingForecast: result.remainingForecast,
+                                message: result.message
                             };
                         
-                        console.log(`   ✅ POST /api/projects: response status ${res.status} - ${message}`);
+                        console.log(`   ✅ POST /api/projects: response status ${res.status} - ${result.message}`);
                         } else {
                             throw new HttpError(400, `Missing request body`);
                           }
