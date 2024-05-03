@@ -772,19 +772,19 @@
     "localization": {},
     "conversation_starters": [
       {
-        "text": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned"
+        "text": "What projects am i working on?"
       },
       {
-        "text": "Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments."
+        "text": "Charge 5 hours to the Contoso project."
       },
       {
-        "text": "Returns detailed information about projects matching the specified project name and/or consultant name"
+        "text": "Which Trey consultants are Azure certified?"
       },
       {
-        "text": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast."
+        "text": "Find a Trey consultant who is available now and has Python skills"
       },
       {
-        "text": "Assign (add) consultant to a project when name, role and project name is specified."
+        "text": "Add Avery as a developer on the Contoso project."
       }
     ]
   }
