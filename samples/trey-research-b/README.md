@@ -1,16 +1,16 @@
 # Trey Research Plugin
 
-> NOTE: This plugin is still Type A; working on Type B packaging
+> This is now a proper API Plugin (not Type A)!
 
 Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries.
 The vision for this demo is to show the full potential of Copilot plugins in a relatable business environment.
 
 ### Prompts that work
 
-  * what trey research projects am i assigned to?
+  * what trey projects am i assigned to?
     (NOTE: Since there is no SSO, the logged in user is hard coded to be consultant Avery Howard)
-  * what trey research projects is domi working on?
-  * do we have any trey research consultants with azure certifications?
+  * what trey projects is domi working on?
+  * do we have any trey consultants with azure certifications?
   * what trey projects are we doing for relecloud?
   * which trey consultants are working with woodgrove bank?
   * in trey research, how many hours has avery delivered this month?
@@ -35,8 +35,8 @@ The sample aims to showcase the following plugin features:
   1. √ API based plugin works with any platform that supports REST requests
   1. √ Construct queries for specific data using GET requests
   1. √ Multi-parameter queries
-  1. Allow updating and adding data using POST requests **
-  1. Prompt users before POSTing data; capture missing parameters *
+  1. √ Allow updating and adding data using POST requests
+  1. √ Prompt users before POSTing data; capture missing parameters
   1. Invoke from Copilot GPT, allowing general instructions and knowledge, and removing the need to name the plugin on every prompt *
   1. Entra ID SSO with /me path support *
   1. Display rich adaptive cards *
@@ -52,22 +52,37 @@ The sample aims to showcase the following plugin features:
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [NodeJS 18.x](https://nodejs.org/en/download)
 * [Teams Toolkit extension for VS Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
-* [Teams Toolkit CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three) (`npm install -g @microsoft/teamsapp-cli`)
+  NOTE: If you want to build new projects of this nature, you'll need Teams Toolkit v5.6.1-alpha.039039fab.0 or newer
+* [Teams Toolkit CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three)
+  (`npm install -g @microsoft/teamsapp-cli`)
 * (optional) [Postman](https://www.postman.com/downloads/)
 
 ### Setup instructions (one-time setup)
 
 1. Log into Teams Toolkit using any tenant for now, as we will be uploading manually.
 
-1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes this line:
+1. Optional: Obtain a Bing Maps API key. The app works with any string value, but map URLs will be invalid unless you provide a valid API key.
+
+1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes these lines:
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 ~~~
+
+1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint
 
 ### Running the solution (after each build)
 
 1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
+
+2. Wait 15 minutes
+
+3. Go to Copilot; ensure Avalon is enabled with the required flags and settings to run API Plugins
+
+4. Enable the plugin in the Copilot plugin panel. For best results, mention "trey" with each prompt.
+
+### Manual installation (should no longer be needed)
 
 1. Log into the target tenant with Teams Toolkit CLI:
 
