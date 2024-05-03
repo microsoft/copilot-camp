@@ -1,69 +1,182 @@
-# Added steps:
+# Trey Research Plugin
 
-1. Install .NET SDK from https://dotnet.microsoft.com/en-us/download
+> This is now a proper API Plugin (not Type A)!
 
+Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries.
+The vision for this demo is to show the full potential of Copilot plugins in a relatable business environment.
 
-# Overview of the Copilot Plugin template
+### Prompts that work
 
-## Build a Copilot Plugin from a new API with Azure Functions
+  * what trey projects am i assigned to?
+    (NOTE: Since there is no SSO, the logged in user is hard coded to be consultant Avery Howard)
+  * what trey projects is domi working on?
+  * do we have any trey consultants with azure certifications?
+  * what trey projects are we doing for relecloud?
+  * which trey consultants are working with woodgrove bank?
+  * in trey research, how many hours has avery delivered this month?
+  * please find a trey consultant with python skills who is available immediately
+  * are any trey research consultants available who are AWS certified? (multi-parameter!)
+  * does trey research have any architects with javascript skills? (multi-parameter!)
+  * what trey research designers are working at woodgrove bank? (multi-parameter!)
 
-With Copilot extensibility, you can augment Copilot for Microsoft 365 with custom skills and organizational knowledge specific to your enterprise and users to enable truly spectacular AI scenarios. For example:
+### Prompts that sometimes work (seems random)
 
-- Retrieve real-time information, for example, latest news coverage on a product launch.
-- Retrieve knowledge-based information, for example, my team’s design files in Figma.
+   * please charge 10 hours to woodgrove bank in trey research
+     (POST request)
+   * please add sanjay to the contoso project for trey research
+     (POST request with easy to forget entities, hoping to prompt the user; for now they are defaulted)
+   * please find trey consultants from the USA
+     (NOTE: There is no query param for country, it's filtering the results itself!)
 
-When you extend Copilot for Microsoft 365, you maximize the efficiency of your apps and data with AI, by:
+## Plugin Features
 
-- Enriching the data estate of your enterprise with industry-leading AI.
-- Keeping your users in the flow of their work, start to finish.
-- Inheriting world-class security, compliance, and privacy policies.
+The sample aims to showcase the following plugin features:
 
-## Get started with the template
+  1. √ API based plugin works with any platform that supports REST requests
+  1. √ Construct queries for specific data using GET requests
+  1. √ Multi-parameter queries
+  1. √ Allow updating and adding data using POST requests
+  1. √ Prompt users before POSTing data; capture missing parameters
+  1. Invoke from Copilot GPT, allowing general instructions and knowledge, and removing the need to name the plugin on every prompt *
+  1. Entra ID SSO with /me path support *
+  1. Display rich adaptive cards *
+  
+ \* Not yet supported in Copilot
 
-> **Prerequisites**
->
-> To run this app template in your local dev machine, you will need:
->
-> - [Node.js](https://nodejs.org/), supported versions: 18
-> - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
-> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-cli)
-> - [Copilot for Microsoft 365 license](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites#prerequisites)
+ \*\* Sometimes works 
 
-1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
-3. Select `Debug in Copilot (Edge)` or `Debug in Copilot (Chrome)` from the launch configuration dropdown.
-4. Send a message to Copilot to find a repair record.
+## Setup
 
-## What's included in the template
+### Prerequisites
 
-| Folder       | Contents                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------- |
-| `.vscode`    | VSCode files for debugging                                                                  |
-| `appPackage` | Templates for the Teams application manifest, the plugin manifest and the API specification |
-| `env`        | Environment files                                                                           |
-| `infra`      | Templates for provisioning Azure resources                                                  |
-| `src`        | The source code for the repair API                                                          |
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [NodeJS 18.x](https://nodejs.org/en/download)
+* [Teams Toolkit extension for VS Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
+  NOTE: If you want to build new projects of this nature, you'll need Teams Toolkit v5.6.1-alpha.039039fab.0 or newer
+* [Teams Toolkit CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three)
+  (`npm install -g @microsoft/teamsapp-cli`)
+* (optional) [Postman](https://www.postman.com/downloads/)
 
-The following files can be customized and demonstrate an example implementation to get you started.
+### Setup instructions (one-time setup)
 
-| File                                         | Contents                                                                                          |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `src/functions/repair.ts`                    | The main file of a function in Azure Functions.                                                   |
-| `src/repairsData.json`                       | The data source for the repair API.                                                               |
-| `appPackage/apiSpecificationFile/repair.yml` | A file that describes the structure and behavior of the repair API.                               |
-| `appPackage/manifest.json`                   | Teams application manifest that defines metadata for your plugin inside Microsoft Teams.          |
-| `appPackage/ai-plugin.json`                  | The manifest file for your Copilot Plugin that contains information for your API and used by LLM. |
+1. Log into Teams Toolkit using any tenant for now, as we will be uploading manually.
 
-The following are Teams Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Teams Toolkit works.
+1. Optional: Obtain a Bing Maps API key. The app works with any string value, but map URLs will be invalid unless you provide a valid API key.
 
-| File                 | Contents                                                                                                                                  |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `teamsapp.yml`       | This is the main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
-| `teamsapp.local.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging.                                                     |
+1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes these lines:
 
-## Addition information and references
+~~~text
+SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
+~~~
 
-- [Extend Microsoft Copilot for Microsoft 365](https://aka.ms/teamsfx-copilot-plugin)
-- [Message extensions for Microsoft Copilot for Microsoft 365](https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-message-extension-bot)
-- [Microsoft Graph Connectors for Microsoft Copilot for Microsoft 365](https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-graph-connector)
-- [Microsoft Copilot for Microsoft 365 extensibility samples](https://learn.microsoft.com/microsoft-365-copilot/extensibility/samples)
+1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint
+
+### Running the solution (after each build)
+
+1. Press F5 to start the application. Eventually a browser window should open up; this is from the Teams Toolkit API Message Extension we used to start the project. Please minimize the browser window - i.e. leave it running, but don't use it.
+
+2. Wait 15 minutes
+
+3. Go to Copilot; ensure Avalon is enabled with the required flags and settings to run API Plugins
+
+4. Enable the plugin in the Copilot plugin panel. For best results, mention "trey" with each prompt.
+
+### Manual installation (should no longer be needed)
+
+1. Log into the target tenant with Teams Toolkit CLI:
+
+    `teamsapp account login m365`
+
+    You can check your login with this command:
+
+    `teamsapp account show`
+
+1. Upload the package using the Teams Toolkit CLI. Run below command while in the root folder of the project:
+
+   `teamsapp install -file-path ./build/pluginPackage.zip`
+
+1. Wait 15 minutes
+
+1. Go to the Copilot app in Teams and enable your plugin in the plugin panel.
+
+1. Try some of the sample prompts. Use `-developer on` and view the application log to try and understand what's going on. The application log can be viewed under the Debug Console tab by selecting "Attach to Backend" from the dropdown on the top right of the debug console window.
+
+## API Summary
+
+### GET Requests
+
+~~~javascript
+
+ GET /api/me/ - get my consulting profile and projects
+
+GET /api/consultants/ - get all consultants
+// Query string params can be used in any combination to filter results
+GET /api/projects/?consultantName=Avery - get consultants with names containing "Avery"
+GET /api/consultants/?projectName=Foo - get consultants on projects with "Foo" in the name
+GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills list
+GET /api/consultants/?certification=Foo - get consultants with "Foo" in their certifications list
+GET /api/consultants/?role=Foo - get consultants who can serve the "Foo" role on a project
+GET /api/consultants/?availability=x - get consultants with x hours availability this month or next month
+
+~~~
+
+The above requests all return an array of consultant objects, which are defined in the ApiConsultant interface in /model/apiModel.ts.
+
+~~~javascript
+GET /api/projects/ - get all projects
+// Query string params can be used in any combination to filter results
+GET /api/projects/?projectName=Foo - get projects with "Foo" in the name
+GET /api/projects/?consultantName=Avery - get projects where a consultant containing "Avery" is assigned
+
+~~~
+
+The above requests all return an array of project objects, which are defined in the ApiProject interface in /model/apiModel.ts.
+
+### POST Requests
+
+~~~javascript
+POST /api/me/chargeTime - Add hours to project with "Foo" in the name
+
+Request body:
+{
+  projectName: "foo",
+  hours: 5
+}
+Response body:
+{
+    status: 200,
+    message: "Charged 3 hours to Woodgrove Bank on project \"Financial data plugin for Microsoft Copilot\". You have 17 hours remaining this month";
+}
+
+POST /api/projects/assignConsultant - Add consultant to project with "Foo" in the name
+Request body:
+{
+    projectName: "foo",
+    consultantName: "avery",
+    role: "architect",
+    hours: number
+}
+Response body:
+{
+    status: 200
+    message: "Added Alice to the \"Financial data plugin for Microsoft Copilot\" project at Woodgrove Bank. She has 100 hours remaining this month.";
+}
+~~~
+
+## API Design considerations
+
+The process began with a bunch of sample prompts that serve as simple use cases for the service. The API is designed specifically to serve those use cases and likely prompts. In order to make it easier for use in the RAG orchestration, the service:
+
+1. Completes each prompt / use case in a single HTTP request
+
+    * accept names or partial names that might be stated in a user prompt rather than requiring IDs which must be looked up
+    * return enough information to allow for richer responses; err on the side of providing more detail including related entities
+
+2. Return human readable messages
+
+3. In GET requests, use the resource that corresponds to the entity the user is asking for. Don't expect Copilot to figure out that some data is buried in another entity.
+
+4. In POST requests, use a command style such as `/me/chargeTime`, as opposed to asking the API to update a data structure
+
+5. Don't expect Copilot to filter data; instead provide parameters and filter it server side. (I have seen some filtering by Copilot however - this is for further study)
