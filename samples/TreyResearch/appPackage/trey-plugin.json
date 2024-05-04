@@ -757,7 +757,7 @@
         "type": "None"
       },
       "spec": {
-        "url": "apiSpecificationFile/openapi.yaml"
+        "url": "trey-definition.json"
       },
       "run_for_functions": [
         "getConsultants",
