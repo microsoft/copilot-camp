@@ -36,7 +36,7 @@ export default class Identity {
         } else {
             this.name = DEFAULT_CONSULTANT_NAME;
             this.email = DEFAULT_CONSULTANT_EMAIL;
-            console.log(`🔓 Request ${this.requestNumber} not authenticated`);
+            console.log(`⭐ Request ${this.requestNumber}`);
         }
     }
 

@@ -757,7 +757,7 @@
         "type": "None"
       },
       "spec": {
-        "url": "apiSpecificationFile/openapi.yaml"
+        "url": "trey-definition.json"
       },
       "run_for_functions": [
         "getConsultants",
@@ -772,10 +772,10 @@
     "localization": {},
     "conversation_starters": [
       {
-        "text": "What projects am i working on?"
+        "text": "What Trey projects am i assigned to?"
       },
       {
-        "text": "Charge 5 hours to the Contoso project."
+        "text": "Charge 5 hours to the Contoso project for Trey Research"
       },
       {
         "text": "Which Trey consultants are Azure certified?"
@@ -784,7 +784,7 @@
         "text": "Find a Trey consultant who is available now and has Python skills"
       },
       {
-        "text": "Add Avery as a developer on the Contoso project."
+        "text": "Add Avery as a developer on the Contoso project for Trey"
       }
     ]
   }
