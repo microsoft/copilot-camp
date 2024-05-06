@@ -5,6 +5,7 @@
             "name": "Avery Howard",
             "email": "avery@treyresearch.com",
             "phone": "1-555-456-7890",
+            "imageUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
             "location": {
                 "street": "5 Wayside Rd.",
                 "city": "Burlington",
@@ -23,6 +24,7 @@
             "name": "Dominique Dutertre",
             "email": "dominique@treyresearch.com",
             "phone": "1-555-567-7890",
+            "imageUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Dominique.jpg",
             "location": {
                 "street": "39 Quai du Président Roosevelt, Issy-les-Moulineaux",
                 "city": "Paris",
@@ -41,6 +43,7 @@
             "name": "Robin Zupanc",
             "email": "robin@treyresearch.com",
             "phone": "1-555-344-7890",
+            "imageUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Robin.jpg",
             "location": {
                 "street": "11 Times Square",
                 "city": "New York",
@@ -59,6 +62,7 @@
             "name": "Sanjay Puranik",
             "email": "sanjay@treyresearch.com",
             "phone": "1-555-562-7890",
+            "imageUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Sanjay.jpg",
             "location": {
                 "street": "2 Kingdom St.",
                 "city": "Paddington, London",
@@ -77,6 +81,7 @@
             "name": "Lois Wyn",
             "email": "lois@treyresearch.com",
             "phone": "1-555-664-7890",
+            "imageUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Lois.jpg",
             "location": {
                 "street": "4220 Duncan Ave., Suite 501",
                 "city": "St. Louis",
