@@ -99,6 +99,10 @@
                                                     "phone": {
                                                         "type": "string"
                                                     },
+                                                    "imageUrl": {
+                                                        "type": "string",
+                                                        "format": "uri"
+                                                    },
                                                     "location": {
                                                         "type": "object",
                                                         "properties": {
@@ -269,6 +273,10 @@
                                                     },
                                                     "phone": {
                                                         "type": "string"
+                                                    },
+                                                    "imageUrl": {
+                                                        "type": "string",
+                                                        "format": "uri"
                                                     },
                                                     "location": {
                                                         "type": "object",
@@ -754,6 +762,10 @@
                     },
                     "phone": {
                         "type": "string"
+                    },
+                    "imageUrl": {
+                        "type": "string",
+                        "format": "uri"
                     },
                     "location": {
                         "type": "object",

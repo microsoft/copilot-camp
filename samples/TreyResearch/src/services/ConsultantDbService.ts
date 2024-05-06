@@ -26,6 +26,7 @@ class ConsultantDbService {
             name: dbConsultant.name,
             email: dbConsultant.email,
             phone: dbConsultant.phone,
+            imageUrl: dbConsultant.imageUrl,
             location: dbConsultant.location,
             skills: dbConsultant.skills,
             certifications: dbConsultant.certifications,
