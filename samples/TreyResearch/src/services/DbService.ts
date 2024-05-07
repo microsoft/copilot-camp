@@ -23,8 +23,7 @@ export default class DbService<DbEntityType> {
             return result as DbEntity;
         } else {
             let result = await this.getEntities(tableName);
-            result = result.filter((e) => 
-            {
+            result = result.filter((e) => {
                 return e.rowKey === rowKey
             });
             if (result.length === 0) {
@@ -43,8 +42,11 @@ export default class DbService<DbEntityType> {
             const entities = tableClient.listEntities();
             this.entityCache = [];
             for await (const entity of entities) {
-                const e = this.expandPropertyValues(entity as DbEntityType);
-                this.entityCache.push(e as DbEntity);
+                // Remove any duplicates which sometimes occur after a watch restart
+                if (this.entityCache.find((e) => e.rowKey === entity.rowKey) === undefined) {
+                    const e = this.expandPropertyValues(entity as DbEntityType);
+                    this.entityCache.push(e as DbEntity);
+                }
             }
         }
         return this.entityCache;
@@ -64,8 +66,8 @@ export default class DbService<DbEntityType> {
 
         const e = this.compressPropertyValues(updatedEntity) as DbEntityType;
         const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
-            await tableClient.updateEntity(e as TableEntity, "Replace");
-        
+        await tableClient.updateEntity(e as TableEntity, "Replace");
+
     }
 
     private expandPropertyValues(entity: DbEntityType): DbEntityType {
@@ -104,5 +106,5 @@ export default class DbService<DbEntityType> {
             return v;
         }
     };
-    
+
 }
