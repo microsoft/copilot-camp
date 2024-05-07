@@ -104,7 +104,16 @@ SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 
 ## API Summary
 
-### GET Requests
+![postman](https://voyager.postman.com/logo/postman-logo-icon-orange.svg) 
+
+We have a [Postman collection](https://documenter.getpostman.com/view/5938178/2sA3JJ8hfn) for you to try out the APIs. 
+All API operations are prepared with parameters and body pregenerated to make it easier for you to test our GET and POST calls. 
+
+> Make sure you have [Postman desktop](https://www.postman.com/downloads/) to be able to test urls with `localhost` domain. 
+Or simply replace part of the URL `http://localhost:7071` with your tunnel/host URL.
+
+
+#### GET Requests
 
 ~~~javascript
 
@@ -112,7 +121,7 @@ SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 
 GET /api/consultants/ - get all consultants
 // Query string params can be used in any combination to filter results
-GET /api/projects/?consultantName=Avery - get consultants with names containing "Avery"
+GET /api/consultants/?consultantName=Avery - get consultants with names containing "Avery"
 GET /api/consultants/?projectName=Foo - get consultants on projects with "Foo" in the name
 GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills list
 GET /api/consultants/?certification=Foo - get consultants with "Foo" in their certifications list
@@ -133,7 +142,7 @@ GET /api/projects/?consultantName=Avery - get projects where a consultant contai
 
 The above requests all return an array of project objects, which are defined in the ApiProject interface in /model/apiModel.ts.
 
-### POST Requests
+#### POST Requests
 
 ~~~javascript
 POST /api/me/chargeTime - Add hours to project with "Foo" in the name
@@ -155,7 +164,7 @@ Request body:
     projectName: "foo",
     consultantName: "avery",
     role: "architect",
-    hours: number
+    forecast: number
 }
 Response body:
 {
