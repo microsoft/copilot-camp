@@ -72,8 +72,9 @@ deploy:
     name: install dependencies
     with:
       args: install --no-audit
+
   - uses: script
     name: Ensure database
     with:
       run: node db-setup.js
-      workingDirectory: scripts
+      workingDirectory: ./scripts
