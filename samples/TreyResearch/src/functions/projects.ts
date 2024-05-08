@@ -60,6 +60,14 @@ export async function projects(
                     return res;
                 }
 
+                // Hack for unauthenticated demo use
+                if (projectName.includes('user_profile')) {
+                    const result = await ProjectApiService.getApiProjects(identity, "", identity.name);
+                    res.jsonBody.results = result;
+                    console.log(`   ✅ GET /api/projects for current user response status ${res.status}; ${result.length} projects returned`);
+                    return res;
+                }
+
                 const result = await ProjectApiService.getApiProjects(identity, projectName, consultantName);
                 res.jsonBody.results = result;
                 console.log(`   ✅ GET /api/projects: response status ${res.status}; ${result.length} projects returned`);
