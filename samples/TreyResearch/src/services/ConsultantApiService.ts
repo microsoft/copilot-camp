@@ -76,7 +76,6 @@ class ConsultantApiService {
 
         const result = consultant as ApiConsultant;
         result.location = getLocationWithMap(consultant.location);
-        result.consultantPhotoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
         result.projects = [];
