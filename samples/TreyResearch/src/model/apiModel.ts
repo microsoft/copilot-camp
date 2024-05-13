@@ -43,7 +43,6 @@ export interface ApiConsultantAssignment {
 // Returned by all /api/consultants GET requests
 export interface ApiConsultant extends Consultant {
     projects: ApiConsultantAssignment[];
-    consultantPhotoUrl: string;
     forecastThisMonth: number;
     forecastNextMonth: number;
     deliveredLastMonth: number;

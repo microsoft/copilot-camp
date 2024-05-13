@@ -30,7 +30,7 @@ export interface Consultant {
     name: string;
     email: string;
     phone: string;
-    imageUrl: string;
+    consultantPhotoUrl: string;
     location: Location;
     skills: string[];
     certifications: string[];
