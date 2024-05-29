@@ -457,8 +457,8 @@
             "subtitle": "$.description"
           },
           "static_template": {
-            "type": "AdaptiveCard",
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
             "version": "1.5",
             "body": [
               {
@@ -467,18 +467,77 @@
                 "items": [
                   {
                     "type": "TextBlock",
-                    "text": "name: ${if(name, name, 'N/A')}",
-                    "wrap": true
+                    "text": "Project Details",
+                    "weight": "Bolder",
+                    "size": "Medium"
                   },
                   {
-                    "type": "TextBlock",
-                    "text": "description: ${if(description, description, 'N/A')}",
-                    "wrap": true
-                  }                 
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                          {
+                            "type": "Image",
+                            "url": "${clientLogoUrl}",
+                            "size": "Small",
+                            "style": "Person"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "width": "stretch",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "Bolder",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientName}",
+                            "spacing": "None"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${description}",
+                            "spacing": "None",
+                            "wrap": true,
+                            "isSubtle": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "FactSet",
+                    "facts": [
+                      {
+                        "title": "Contact:",
+                        "value": "${clientContact} - ${clientEmail}"
+                      },
+                      {
+                        "title": "Location:",
+                        "value": "${location.street}, ${location.city}, ${location.state}, ${location.country}, ${location.postalCode}"
+                      }
+                    ]
+                  }
                 ]
+              }
+            
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "View Map",
+                "url": "${location.mapUrl}"
               }
             ]
           }
+          
         }
       }
     },
