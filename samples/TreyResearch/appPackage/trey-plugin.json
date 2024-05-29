@@ -453,8 +453,8 @@
         "response_semantics": {
           "data_path": "$.results",
           "properties": {
-            "title": "$.projectName",
-            "subtitle": "$.projectDescription"
+            "title": "$.name",
+            "subtitle": "$.description"
           },
           "static_template": {
             "type": "AdaptiveCard",
@@ -467,79 +467,14 @@
                 "items": [
                   {
                     "type": "TextBlock",
-                    "text": "projectName: ${if(projectName, projectName, 'N/A')}",
+                    "text": "name: ${if(name, name, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectDescription: ${if(projectDescription, projectDescription, 'N/A')}",
+                    "text": "description: ${if(description, description, 'N/A')}",
                     "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.street: ${if(projectLocation.street, projectLocation.street, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.city: ${if(projectLocation.city, projectLocation.city, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.state: ${if(projectLocation.state, projectLocation.state, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.country: ${if(projectLocation.country, projectLocation.country, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.postalCode: ${if(projectLocation.postalCode, projectLocation.postalCode, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.latitude: ${if(projectLocation.latitude, projectLocation.latitude, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.longitude: ${if(projectLocation.longitude, projectLocation.longitude, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.mapUrl: ${if(projectLocation.mapUrl, projectLocation.mapUrl, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "role: ${if(role, role, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "forecastThisMonth: ${if(forecastThisMonth, forecastThisMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "forecastNextMonth: ${if(forecastNextMonth, forecastNextMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "deliveredLastMonth: ${if(deliveredLastMonth, deliveredLastMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "deliveredThisMonth: ${if(deliveredThisMonth, deliveredThisMonth, 'N/A')}",
-                    "wrap": true
-                  }
+                  }                 
                 ]
               }
             ]

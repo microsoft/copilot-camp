@@ -23,18 +23,20 @@
     "full": "This application allows you to find Trey Research projects and consultants, to bill time to a project, and to assign a consultant to a project."
   },
   "accentColor": "#FFFFFF",
-  "copilotGpts": [
-    {
-      "id": "treygenie",
+  "copilotExtensions": {
+    "declarativeCopilots": [
+      {
+        "id": "treygenie",
       "file": "trey-declarative-copilot.json"
-    }
-  ],
-  "plugins": [
-    {
-      "id": "treyresearch",
-      "file": "trey-plugin.json"
-    }
-  ],
+      }
+    ],
+    "plugins": [
+      {
+        "id": "treyresearch",
+        "file": "trey-plugin.json"
+      }
+    ]
+  }, 
   "permissions": [
     "identity",
     "messageTeamMembers"

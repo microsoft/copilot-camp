@@ -442,13 +442,13 @@
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "projectName": {
+                                                    "name": {
                                                         "type": "string"
                                                     },
-                                                    "projectDescription": {
+                                                    "description": {
                                                         "type": "string"
                                                     },
-                                                    "projectLocation": {
+                                                    "location": {
                                                         "type": "object",
                                                         "properties": {
                                                             "street": {
@@ -686,13 +686,13 @@
             "Project": {
                 "type": "object",
                 "properties": {
-                    "projectName": {
+                    "name": {
                         "type": "string"
                     },
-                    "projectDescription": {
+                    "description": {
                         "type": "string"
                     },
-                    "projectLocation": {
+                    "location": {
                         "type": "object",
                         "properties": {
                             "street": {
