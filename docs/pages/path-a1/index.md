@@ -10,5 +10,6 @@ During Path A of the Copilot Camp, learners will construct a customised assistan
     In this lab, you'll set up Teams Toolkit and create a Teams message extension.
   
 
-<a href="/copilot-camp/pages/path-a1/declarative-copilot/">Start here
+<a href="./declarative-copilot/">Start here
 </a> with Lab 1, where you'll set up a Declarative copilot for Microsoft 365
+/pages/path-a1/declarative-copilot/
