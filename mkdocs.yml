@@ -6,7 +6,11 @@ edit_uri: ''                    # Disable edit button
 extra_css:
     - assets/labStyles.css
 nav: 
-- Home: 'pages/index.md'
+- Home: 'index.md'
+- Path A1 Extend Copilot: 
+  - Welcome : 'pages/path-a1/index.md'
+  - Lab 01: 'pages/path-a1/declarative-copilot.md'
+
 theme:
   name: 'material'
   palette: 

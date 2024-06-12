@@ -1,6 +1,6 @@
 # Project
 
-![GitHub Pages](https://github.com/microsoft/copilot-camp/actions/workflows/jekyll-gh-pages.yml/badge.svg)
+Go to [https://fuzzy-adventure-4g2n9vm.pages.github.io/](https://fuzzy-adventure-4g2n9vm.pages.github.io/)
 
 > This repo has been populated by an initial template to help get you started. Please
 > make sure to update the content to build a great experience for community-building.
