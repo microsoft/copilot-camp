@@ -104,4 +104,4 @@ Now you are all set to create your first declarative copilot.
 ### Step 2: Update declarative manifest to include files
 ### Step 3: Test the app
 
-You have successfully created a Declarative Copilot! Now let's add a <a href="/copilot-camp/pages/path-a1/api-plugin/">skill</a> to it. 
+You have successfully created a Declarative Copilot! Now let's add a <a href="./api-plugin/">skill</a> to it. 
