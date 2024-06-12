@@ -1,0 +1,120 @@
+.video {
+    max-width: 640px;
+    min-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.video > iframe,
+.video > img {
+    width: 32vw;
+    height: 18vw;
+}
+
+.tinyVideo {
+    max-width: 16vw;
+    min-width: 9vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.videoHeading {
+    padding: 6pt;
+    font-weight: 700;
+    background-color: rgba(0,184,212,.1);
+}
+
+.videoDescription {
+    font-style: italic;
+}
+
+.headingWithSubtitle {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.subtitle {
+    padding: 0 !important;
+    margin: 0 0 40t 0 !important;
+    font-style: italic;
+}
+
+button {
+    background-color: #795649;
+    font-size: xx-large;
+    color: white;
+    font-weight: bold;
+    padding: 3pt 6pt;
+}
+
+.largeButton {
+    padding: 30pt 36pt;
+}
+
+
+/* Style the top label on side nav */
+
+.md-nav__item:not(.md-nav__item .md-nav__item) > a, 
+.md-nav__item:not(.md-nav__item .md-nav__item) > label {
+    border-bottom: solid;
+    border-bottom-color: brown;
+    font-size: large;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 50%;
+    float: right;
+    padding: 10px;
+    margin-left: 10px;
+    border: 2px solid black;
+}
+
+.sidebar b {
+    color: #3F2274;
+}
+
+.sidebar h2 {
+    margin: 0;
+    background-color: #3F2274;
+    color: white;
+    text-align: center;
+    padding: 6pt;
+}
+
+.sidebar h3 {
+    color: #3F2274;
+    font-size: x-large;
+    margin: 0;
+    padding-bottom: 6pt;
+    line-height: 0.9;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 4pt;
+    padding-left: 0;
+}
+
+.sidebar li {
+    border: 2px solid black;
+    margin-left: -7pt !important;
+    padding: 10pt;
+}
+.md-header{
+    background-color: #3F2274;
+}
+.md-tabs{
+    background-color: #3F2274;
+}
+/*
+.md-nav__link--active {
+    font-weight: bold;
+    color: black !important;
+}
+*/
