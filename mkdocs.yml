@@ -10,6 +10,7 @@ nav:
 - Path A1 Extend Copilot: 
   - Welcome : 'pages/path-a1/index.md'
   - Lab 01: 'pages/path-a1/declarative-copilot.md'
+  - Lab 02: 'pages/path-a1/api-plugin.md'
 
 theme:
   name: 'material'
