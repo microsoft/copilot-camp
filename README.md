@@ -1,16 +1,16 @@
+# Samples
+
+If you're used to coming here for samples, they have moved!
+
+ * The [Trey Research API Plugin and Declarative Copilot is now here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-trey-research) in our public samples repo
+ * The [Geo-locator Declarative Copilot is now here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) in our public samples repo
+ * The [Northwind API Plugin sample is now here](https://github.com/microsoft/copilot-camp/tree/TypeB-Samples/samples/northwind-plugin-b), archived in a branch of this repo
+
 # Project
 
-Go to [https://fuzzy-adventure-4g2n9vm.pages.github.io/](https://fuzzy-adventure-4g2n9vm.pages.github.io/)
+We have started working on "Copilot Camp", a virtual workshop for professional developers who want to learn how to build Copilot for Microsoft 365 extensions including plugins, declarative copilots, and custom engine copilots!
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
-
-As the maintainer of this project, please make a few updates:
-
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Go to [https://fuzzy-adventure-4g2n9vm.pages.github.io/](https://fuzzy-adventure-4g2n9vm.pages.github.io/) to see how it's going...
 
 ## Contributing
 
