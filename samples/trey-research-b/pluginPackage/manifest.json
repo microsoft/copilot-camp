@@ -1,7 +1,7 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.15/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.15",
-    "version": "1.0.2",
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.0.3",
     "id": "36224021-8ee3-43de-8c54-a94a6a2597f2",
     "name": {
         "short": "Trey Research",
@@ -19,8 +19,14 @@
     },
     "icons": {
         "outline": "Trey-dev-32.png",
-        "color": "Trey-dev-192.png"
+        "color": "Trey-gold-192.png"
     },
     "accentColor": "#FFFFFF",
-    "showLoadingIndicator": true
+    "showLoadingIndicator": true,
+    "plugins": [
+        {
+            "file": "ai-plugin.json",
+            "id":"treyPlugin"
+        }
+    ]
 }

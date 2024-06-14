@@ -4,7 +4,7 @@ const path = require('path');
 let configData = fs.readFileSync(configFilePath, 'utf8');
 const domainUrl = getConfigValue(configData, 'OPENAPI_SERVER_URL');
 const domain=getDomainFromUrl(domainUrl);
-
+const yaml = require('js-yaml');
 
 
 // Define the source and destination directories
@@ -20,7 +20,7 @@ fs.readdir(sourceDir, async (err, files) => {
 
     // Filter out only JSON files
     const jsonFiles = files.filter(file => path.extname(file).toLowerCase() === '.json');  
-   
+    const yamlFiles = files.filter(file => path.extname(file).toLowerCase() === '.yml');  
     
     // Iterate over each JSON file
     jsonFiles.forEach(file => {
@@ -43,25 +43,28 @@ fs.readdir(sourceDir, async (err, files) => {
         
         console.log(`Domain value replaced and file copied successfully: ${file}`);
     });
-    //do same for yml
-    const ymlFiles = files.filter(file => path.extname(file).toLowerCase() === '.yml');
-    ymlFiles.forEach(file => {
-        const filePath = path.join(sourceDir, file);
-        // Read content from .yml file
-        fs.readFile(filePath, 'utf8', (err, data) => {
-            if (err) {
-                console.error(`Error reading file ${file}:`, err);
-                return;
-            }
-            // Replace {{DOMAIN}} with constant domain value
-            const updatedData = data.replace(/\{\{DOMAIN\}\}/g, domain);
+    // Iterate over each YAML file
+        yamlFiles.forEach(file => {
+            // Read the YAML file
+            const filePath = path.join(sourceDir, file);
+            let yamlData = fs.readFileSync(filePath, 'utf8');
+
+            // Parse YAML string into an object
+            let yamlObject = yaml.load(yamlData);
+
+            // Replace all occurrences of {{DOMAIN}} with the value from config
+            recursiveReplace(yamlObject, "{{DOMAIN}}", domain);
+
+            // Write the updated YAML to the destination directory with the same filename
             const destinationFilePath = path.join(destinationDir, file);
+            
+            // Create file and directory if not exist
             fs.ensureFileSync(destinationFilePath);
-        fs.writeFileSync(destinationFilePath, updatedData);
-        console.log(`Domain value replaced and file copied successfully: ${file}`);
+            fs.writeFileSync(destinationFilePath, yaml.dump(yamlObject, { indent: 2, noCompatMode: true }));
+
+            console.log(`Domain value replaced and file copied successfully: ${file}`);
         });
    
-});
 });
 
 copyPngFiles();
