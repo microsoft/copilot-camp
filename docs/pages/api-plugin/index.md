@@ -6,9 +6,9 @@ During Path A of the Copilot Camp, learners will construct a customised assistan
 
 ???+ info "Here are the labs"
 
-    * __[Lab 1 - Declarative Copilots](./declarative-copilot.md)__
-    In this lab, you'll set up Teams Toolkit and create a Teams message extension.
+    * __[Lab 00 - Prerequisites](./00-prerequisites.md)__
+    In this lab, you'll set your environment to build plugins and other extensions.
   
 
-<a href="./declarative-copilot">Start here
-</a> with Lab 1, where you'll set up a Declarative copilot for Microsoft 365.
+<a href="./00-prerequisites">Start here
+</a> with Lab 00, where you'll set up development your environment.

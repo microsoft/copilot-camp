@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/path-a1/declarative-copilot/">
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/api-plugin/01-declarative-copilot/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../00-prerequisites/">
       
       
-        <link rel="next" href="../api-plugin/">
+        <link rel="next" href="../02-api-plugin/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-1-declarative-copilots-using-grounding-data-from-sharepoint-files" class="md-skip">
+        <a href="#lab-01-declarative-copilots-using-grounding-data-from-sharepoint-files" class="md-skip">
           Skip to content
         </a>
       
@@ -360,6 +360,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 00
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -418,88 +439,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-1-set-up-your-microsoft-365-subscription" class="md-nav__link">
+  <a href="#exercise-1-scaffold-a-declarative-copilot-from-template" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 1: Set up your Microsoft 365 Subscription
+      Exercise 1: Scaffold a declarative copilot from template
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exercise 1: Set up your Microsoft 365 Subscription">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-get-a-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Get a tenant
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-enable-teams-application-uploads" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Enable Teams application uploads
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-2-install-teams-toolkit-and-prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 2: Install Teams Toolkit and prerequisites
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exercise 2: Install Teams Toolkit and prerequisites">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-install-visual-studio-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: Install Visual Studio Code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-install-nodejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Install NodeJS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-install-teams-toolkit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Install Teams Toolkit
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-3-scaffold-a-declarative-copilot-from-template" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 3: Scaffold a declarative copilot from template
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Exercise 3: Scaffold a declarative copilot from template">
+    <nav class="md-nav" aria-label="Exercise 1: Scaffold a declarative copilot from template">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -535,13 +481,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-4-add-grounding-data-from-sharepoint" class="md-nav__link">
+  <a href="#exercise-2-add-grounding-data-from-sharepoint" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 4: Add grounding data from SharePoint
+      Exercise 2: Add grounding data from SharePoint
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exercise 4: Add grounding data from SharePoint">
+    <nav class="md-nav" aria-label="Exercise 2: Add grounding data from SharePoint">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -592,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api-plugin/" class="md-nav__link">
+      <a href="../02-api-plugin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,7 +574,7 @@
                   
 
 
-<h1 id="lab-1-declarative-copilots-using-grounding-data-from-sharepoint-files">Lab 1 - Declarative copilots using grounding data from SharePoint files.</h1>
+<h1 id="lab-01-declarative-copilots-using-grounding-data-from-sharepoint-files">Lab 01 - Declarative copilots using grounding data from SharePoint files.</h1>
 <p>In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. </p>
 <p>In this lab you will learn:</p>
 <ul>
@@ -670,68 +616,15 @@
 <blockquote>
 <p>In this lab we will have not have the plugin manifest but you can find it in the next as we add more features to the basic app. </p>
 </blockquote>
-<h2 id="exercise-1-set-up-your-microsoft-365-subscription">Exercise 1: Set up your Microsoft 365 Subscription</h2>
-<p>To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
-You will also need Copilot License to test the app.</p>
-<h3 id="step-1-get-a-tenant">Step 1: Get a tenant</h3>
-<p>If you don't yet have a tenant, please join the <a href="https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=m365-58890-cxa" target="_blank">Microsoft 365 Developer Program</a> to get a free one. Your tenant includes 25 <a href="https://www.microsoft.com/microsoft-365/enterprise/compare-office-365-plans?WT.mc_id=m365-58890-cxa" target="_blank">E5 user licenses</a> and can be renewed as long as you keep developing!</p>
-<p>Select "Join now" to begin.
-Log in with any Microsoft personal or work and school account, enter your information, and select "Next". You will have an opportunity to choose what kind of "sandbox" you want; the "Instant sandbox" is recommended.</p>
-<p>Follow the wizard and select your administrator username and password, tenant domain name, etc. The domain name you choose is just the left-most portion - for example if you enter "Contoso" your domain will be "Contoso.onmicrosoft.com".</p>
-<p>Remember this information as you'll need it throughout the labs! You will log in as &gt;username&lt;@&gt;domain&lt;.onmicrosoft.com with the password you chose. You'll be prompted for your phone number and then the system will set up your subscription.</p>
-<p>Eventually you'll be prompted to log into your new tenant. Be sure to use the new administrator credentials you just created, not the ones you used when you signed up for the developer program.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip: Navigating many tenants</p>
-<p>Consider creating a browser profile for each tenant that will have its own favorites, stored credentials, and cookies so you can easily swtch between tenants as you work.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">You may be asked to enable multi-factor authentication (MFA)</p>
-<p><a href="https://www.microsoft.com/security/blog/2019/08/20/one-simple-action-you-can-take-to-prevent-99-9-percent-of-account-attacks/" target="_blank">This is certainly a good idea!</a> Just follow the instructions. If you really must turn off MFA, <a href="https://docs.microsoft.com/en-us/answers/questions/101179/how-to-disable-the-two-factor-authentication-from.html" target="_blank">here are instructions</a>. </p>
-</div>
-<details class="info">
-<summary>More tips on setting up your Microsoft 365 Development Tenant!</summary>
-<p><div class="tinyVideo">
-  <iframe src="//www.youtube.com/embed/DhhpJ1UjbJ0" frameborder="0" allowfullscreen></iframe>
-  <div>Setting up your Microsoft 365 Development tenant</div>
-</div></p>
-</details>
-<h3 id="step-2-enable-teams-application-uploads">Step 2: Enable Teams application uploads</h3>
-<p>By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
-a. Navigate to <a href="https://admin.microsoft.com/{target=_blank}">https://admin.microsoft.com/}</a>, which is the Microsoft 365 Admin Center.
-b. In the left panel of the admin center, select "Show all" to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
-c. In the left of the Microsoft Teams admin center, open the Teams apps accordion 1️⃣ and select Setup Policies 2️⃣. You will see a list of App setup policies. Select the Global (Org-wide default) policy 3️⃣.
-d. Ensure the first switch, "Upload custom apps" is turned On.
-e. Be sure to scroll down and select the "Save" button to persist your change.</p>
-<blockquote>
-<p>The change can take up to 24 hours to take effect, but usually it's much faster.</p>
-</blockquote>
-<h2 id="exercise-2-install-teams-toolkit-and-prerequisites">Exercise 2: Install Teams Toolkit and prerequisites</h2>
-<p>You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.</p>
-<h3 id="step-1-install-visual-studio-code">Step 1: Install Visual Studio Code</h3>
-<p>It should be no surprise that <a href="" target="_blank">Teams Toolkit for Visual Studio Code</a> requires Visual Studio Code! You can download it here: <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code</a>.</p>
-<h3 id="step-2-install-nodejs">Step 2: Install NodeJS</h3>
-<p>NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.</p>
-<p>Browse to <a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a> and install version 18.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.16.0. If you already have another version of NodeJS installed, you may want to set up the <a href="https://github.com/nvm-sh/nvm" target="_blank">Node Version Manager</a> (or <a href="https://github.com/coreybutler/nvm-windows" target="_blank">this variation</a> for Microsoft Windows), which allows you to easily switch Node versions on the same computer.</p>
-<h3 id="step-3-install-teams-toolkit">Step 3: Install Teams Toolkit</h3>
-<p>These labs are based on <a href="https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension" target="_blank">Teams Toolkit version 5.0</a>.
-Follow the steps as shown in the screen shot below.</p>
-<p>1️⃣ Open Visual Studio Code and click on the Extensions toolbar button</p>
-<p>2️⃣ Search for "Teams" and locate Teams Toolkit</p>
-<p>3️⃣ Click "Install"</p>
-<div class="admonition note">
-<p class="admonition-title">If you have Teams Toolkit installed but hidden</p>
-<p>If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.</p>
-</div>
-<p>Now you are all set to create your first declarative copilot.</p>
-<h2 id="exercise-3-scaffold-a-declarative-copilot-from-template">Exercise 3: Scaffold a declarative copilot from template</h2>
+<h2 id="exercise-1-scaffold-a-declarative-copilot-from-template">Exercise 1: Scaffold a declarative copilot from template</h2>
 <h3 id="step-1-use-teams-toolkit-to-create-a-new-app">Step 1: Use Teams Toolkit to create a new app</h3>
 <h3 id="step-2-understanding-the-files-in-the-app">Step 2: Understanding the files in the app</h3>
 <h3 id="step-3-test-the-app">Step 3: Test the app</h3>
-<h2 id="exercise-4-add-grounding-data-from-sharepoint">Exercise 4: Add grounding data from SharePoint</h2>
+<h2 id="exercise-2-add-grounding-data-from-sharepoint">Exercise 2: Add grounding data from SharePoint</h2>
 <h3 id="step-1-upload-pre-made-files-into-your-sharepoint-site">Step 1: Upload pre-made files into your SharePoint site</h3>
 <h3 id="step-2-update-declarative-manifest-to-include-files">Step 2: Update declarative manifest to include files</h3>
 <h3 id="step-3-test-the-app_1">Step 3: Test the app</h3>
-<p>You have successfully created a Declarative Copilot! Now let's add a <a href="../api-plugin/">skills</a>to it. </p>
+<p>You have successfully created a Declarative Copilot!</p>
 
 
 

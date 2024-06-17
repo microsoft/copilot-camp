@@ -2,37 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://microsoft.github.io/copilot-camp/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://microsoft.github.io/copilot-camp/pages/build/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://microsoft.github.io/copilot-camp/pages/extend/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://microsoft.github.io/copilot-camp/pages/resources/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microsoft.github.io/copilot-camp/pages/path-a1/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <loc>https://microsoft.github.io/copilot-camp/pages/api-plugin/</loc>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microsoft.github.io/copilot-camp/pages/path-a1/api-plugin/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <loc>https://microsoft.github.io/copilot-camp/pages/api-plugin/00-prerequisites/</loc>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microsoft.github.io/copilot-camp/pages/path-a1/declarative-copilot/</loc>
-         <lastmod>2024-06-12</lastmod>
+         <loc>https://microsoft.github.io/copilot-camp/pages/api-plugin/01-declarative-copilot/</loc>
+         <lastmod>2024-06-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://microsoft.github.io/copilot-camp/pages/api-plugin/02-api-plugin/</loc>
+         <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

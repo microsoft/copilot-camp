@@ -8,9 +8,10 @@ extra_css:
 nav: 
 - Home: 'index.md'
 - Path A1 Extend Copilot: 
-  - Welcome : 'pages/path-a1/index.md'
-  - Lab 01: 'pages/path-a1/declarative-copilot.md'
-  - Lab 02: 'pages/path-a1/api-plugin.md'
+  - Welcome : 'pages/api-plugin/index.md'
+  - Lab 00: 'pages/api-plugin/00-prerequisites.md'
+  - Lab 01: 'pages/api-plugin/01-declarative-copilot.md'
+  - Lab 02: 'pages/api-plugin/02-api-plugin.md'
 
 theme:
   name: 'material'
