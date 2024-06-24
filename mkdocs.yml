@@ -12,7 +12,10 @@ nav:
   - Lab 00: 'pages/api-plugin/00-prerequisites.md'
   - Lab 01: 'pages/api-plugin/01-declarative-copilot.md'
   - Lab 02: 'pages/api-plugin/02-api-plugin.md'
-
+- Path B Build Your Own Copilot: 
+  - Lab 00: 'pages/custom-engine/00-prerequisites.md'
+  - Lab 01: 'pages/custom-engine/01-custom-engine-copilot.md'
+  - Lab 02: 'pages/api-plugin/02-sso-custom-engine.md'
 theme:
   name: 'material'
   palette: 
