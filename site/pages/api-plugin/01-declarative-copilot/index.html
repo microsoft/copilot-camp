@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-01-declarative-copilots-using-grounding-data-from-sharepoint-files" class="md-skip">
+        <a href="#lab-01-customise-copilot-by-building-a-declarative-copilot" class="md-skip">
           Skip to content
         </a>
       
@@ -457,6 +457,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#anatomy-of-the-app-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anatomy of the app package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise-1-scaffold-a-declarative-copilot-from-template" class="md-nav__link">
     <span class="md-ellipsis">
       Exercise 1: Scaffold a declarative copilot from template
@@ -467,9 +476,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-use-teams-toolkit-to-create-a-new-app" class="md-nav__link">
+  <a href="#step-1-use-teams-toolkit-cli-to-create-a-new-app" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Use Teams Toolkit to create a new app
+      Step 1: Use Teams Toolkit CLI to create a new app
     </span>
   </a>
   
@@ -484,50 +493,32 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#step-3-test-the-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Test the app
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-2-add-grounding-data-from-sharepoint" class="md-nav__link">
+  <a href="#exercise-2-update-with-instructions-for-geo-locator-game" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 2: Add grounding data from SharePoint
+      Exercise 2: Update with instructions for Geo Locator game
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Exercise 2: Add grounding data from SharePoint">
+    <nav class="md-nav" aria-label="Exercise 2: Update with instructions for Geo Locator game">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-upload-pre-made-files-into-your-sharepoint-site" class="md-nav__link">
+  <a href="#step-2-update-declarative-manifest" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Upload pre-made files into your SharePoint site
+      Step 2: Update declarative manifest
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-update-declarative-manifest-to-include-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Update declarative manifest to include files
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-test-the-app_1" class="md-nav__link">
+  <a href="#step-3-test-the-app" class="md-nav__link">
     <span class="md-ellipsis">
       Step 3: Test the app
     </span>
@@ -702,19 +693,20 @@
                   
 
 
-<h1 id="lab-01-declarative-copilots-using-grounding-data-from-sharepoint-files">Lab 01 - Declarative copilots using grounding data from SharePoint files.</h1>
+<h1 id="lab-01-customise-copilot-by-building-a-declarative-copilot">Lab 01 - Customise Copilot by building a declarative copilot</h1>
 <p>In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. </p>
 <p>In this lab you will learn:</p>
 <ul>
 <li>What is a declarative copilot for Microsoft 365</li>
-<li>Install and configure Teams toolkit for Visual Studio Code</li>
-<li>Create a basic declarative copilot using Teams toolkit</li>
-<li>Add SharePoint grounding data to the declarative copilot</li>
+<li>Install <a href="https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three#get-started">Teams toolkit CLI</a></li>
+<li>Create a basic declarative copilot using Teams toolkit CLI</li>
+<li>Customise the basic app to create the geo locator game</li>
 <li>Learn how to run and test your app</li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Welcome on board to building your own declarative copilot! Extend your Microsoft 365 Copilot by simply declaring instructions and by adding skills, and knowledge. Using the same powerful AI as Microsoft Copilot, these copilots enhance collaboration, boost productivity, and streamline workflows. Tailor your Copilot to automate complex tasks and create consistent, personalized experiences. Let's dive in and make your Copilot work magic!</p>
-<p>The app package of a declarative copilot is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app. </p>
+<p>Welcome on board to building your own declarative copilot! This is the easiest way to customise Copilot for Microsoft 365 by simply declaring instructions or by adding skills and knowledge to craft your own Copilot with the power of everything you like about Copilot for Microsoft 365. These copilots enhance collaboration, boost productivity, and streamline workflows and most importantly they tailor your Copilot to automate complex tasks and create consistent, personalised experiences. Let's dive in and make your Copilot work magic!</p>
+<h2 id="anatomy-of-the-app-package">Anatomy of the app package</h2>
+<p>You will see as we develop more and more extensions to Copilot,  that in the end what you will build is collection of few file in a zip file which we will refer to has an <code>app package</code> that you will  then install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a declarative copilot is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app. </p>
 <table>
 <thead>
 <tr>
@@ -742,16 +734,33 @@
 </tbody>
 </table>
 <blockquote>
-<p>In this lab we will have not have the plugin manifest but you can find it in the next as we add more features to the basic app. </p>
+<p>In this lab we will have not have the plugin manifest but you can find it in more advanced labs in copilot camp.</p>
 </blockquote>
 <h2 id="exercise-1-scaffold-a-declarative-copilot-from-template">Exercise 1: Scaffold a declarative copilot from template</h2>
-<h3 id="step-1-use-teams-toolkit-to-create-a-new-app">Step 1: Use Teams Toolkit to create a new app</h3>
+<p>You can use just an editor to create a declarative copilot if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
+So to keep things as simple as possible we will install <code>Teams Toolkit CLI</code> to create declarative copilot with a base template for the app.</p>
+<h3 id="step-1-use-teams-toolkit-cli-to-create-a-new-app">Step 1: Use Teams Toolkit CLI to create a new app</h3>
+<p>Go to your terminal of choice and type <code>teamsapp new</code> and select Enter. </p>
+<p><img alt="start creating the base app" src="../../../assets/images/api-plugin-01/teamsapp-new-01.png" /></p>
+<details class="info">
+<summary>Confused if you are really creating a teams app?</summary>
+<p>While it may appear that this command is used to create a new Teams application, it’s important to note that the process of packaging a declarative copilot shares similarities with that of a Teams app as mentioned in the introduction. So in the coming steps it will be a lot clear as you choose options to scaffold the base app. </p>
+</details>
+<p>Next, you can select the type of project you want to create. Select <code>Declarative Copilot</code> as shown in the screen and select Enter. Note that <code>Declarative Copilot</code> is the default new project option auto selected, so you can just select Enter.</p>
+<p><img alt="select type of project" src="../../../assets/images/api-plugin-01/teamsapp-new.png" /></p>
+<p>Next, you will be asked to choose the type of declarative copilot. Choose <code>Basic Declarative Copilot</code> and select Enter. </p>
+<p><img alt="select the type of declarative copilot" src="../../../assets/images/api-plugin-01/teamsapp-new-02.png" /></p>
+<p>Next, type in the directory where the project folder has to be created.</p>
+<p><img alt="choose the folder" src="../../../assets/images/api-plugin-01/teamsapp-new-03.png" /></p>
+<p>Next, give it an application name <code>Geo Locator Game</code> and select Enter. </p>
+<p><img alt="type in application name" src="../../../assets/images/api-plugin-01/teamsapp-new-04.png" /></p>
+<p>The project will be created in a few seconds in the folder you mentioned with indication in the terminal that it is done as shown below. </p>
+<p><img alt="project created" src="../../../assets/images/api-plugin-01/teamsapp-new-05.png" /></p>
+<p>Congratulations! You have successfully set up the base application! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. </p>
 <h3 id="step-2-understanding-the-files-in-the-app">Step 2: Understanding the files in the app</h3>
+<h2 id="exercise-2-update-with-instructions-for-geo-locator-game">Exercise 2: Update with instructions for Geo Locator game</h2>
+<h3 id="step-2-update-declarative-manifest">Step 2: Update declarative manifest</h3>
 <h3 id="step-3-test-the-app">Step 3: Test the app</h3>
-<h2 id="exercise-2-add-grounding-data-from-sharepoint">Exercise 2: Add grounding data from SharePoint</h2>
-<h3 id="step-1-upload-pre-made-files-into-your-sharepoint-site">Step 1: Upload pre-made files into your SharePoint site</h3>
-<h3 id="step-2-update-declarative-manifest-to-include-files">Step 2: Update declarative manifest to include files</h3>
-<h3 id="step-3-test-the-app_1">Step 3: Test the app</h3>
 <p>You have successfully created a Declarative Copilot!</p>
 
 
