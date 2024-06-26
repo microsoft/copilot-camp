@@ -18,7 +18,7 @@ Welcome aboard to the exciting journey of building your own custom engine copilo
 
 You'll need to complete the Azure subscription pre-requisite before starting with this exercise.
 
-### Step 1: Create Azure OpenAI Service
+### Step 1: Create Azure OpenAI service resource
 
 1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com).
 1. Select **Create a resource**, then search for `Azure OpenAI`. Select the Azure OpenAI service and then **Create**.
@@ -43,7 +43,7 @@ In your Azure OpenAI service, navigate to **Model deployments** from the left si
 
 From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
 
-- **Select a model:** Select either one of the `gpt-35-turbo`, `gpt-4`, `gpt-4-32k` or `gpt-4o`.
+- **Select a model:** Select `gpt-35-turbo`.
 - **Model version:** Auto update to default.
 - **Deployment type:** Provisioned-Managed.
 - **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
@@ -56,7 +56,7 @@ From the **Deployments** tab, select **Create a new deployment**. Fill out the f
 
 Once your model is successfully created, you can navigate to **Chat**, and test your model by selecting one of the available templates in **Prompt** section and asking relevant questions in the chat playground.
 
-![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/azure-openai-studio-chat.png)
+![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 ## Exercise 2: Scaffold a custom engine copilot from template
 
@@ -114,12 +114,12 @@ To test the behavior of your app quickly, you can use Teams App Test Tool. Later
 ??? info "More information about the Teams App Test Tool"
     Teams App Test Tool (or short as Test Tool) is a component integrated into Teams Toolkit. This component helps developers to debug, test, and iterate on the app design of a Teams bot application in a web-based chat environment that emulates the behavior, look, and feel of Microsoft Teams.
 
-Start debugging our app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Test Tool**. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine copilot right away! Some of the recommended questions you can ask to test the behavior:
+Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Test Tool**. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine copilot right away! Some of the recommended questions you can ask to test the behavior:
 
 - "Can you help me write a job post for a Senior Developer role?"
 - "What would be the list of required skills for a Project Manager role?"
 - "Can you share a job template?"
 
-![Test Career Genie in App Test Tool](../../assets/images/teams-app-test-tool.png)
+![Test Career Genie in App Test Tool](../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
-Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Configure single sign on](02-sso-custom-engine.md).
+Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Configure single sign on](02-rag.md).
