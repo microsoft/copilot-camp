@@ -509,18 +509,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-2-update-declarative-manifest" class="md-nav__link">
+  <a href="#step-1-update-necessar-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Update declarative manifest
+      Step 1: Update necessar files
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-test-the-app" class="md-nav__link">
+  <a href="#step-2-test-the-app" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Test the app
+      Step 2: Test the app
     </span>
   </a>
   
@@ -742,7 +742,7 @@ So to keep things as simple as possible we will install <code>Teams Toolkit CLI<
 <h3 id="step-1-use-teams-toolkit-cli-to-create-a-new-app">Step 1: Use Teams Toolkit CLI to create a new app</h3>
 <p>Go to your terminal of choice and type <code>teamsapp new</code> and select Enter. </p>
 <p><img alt="start creating the base app" src="../../../assets/images/api-plugin-01/teamsapp-new-01.png" /></p>
-<details class="info">
+<details class="warning">
 <summary>Confused if you are really creating a teams app?</summary>
 <p>While it may appear that this command is used to create a new Teams application, it’s important to note that the process of packaging a declarative copilot shares similarities with that of a Teams app as mentioned in the introduction. So in the coming steps it will be a lot clear as you choose options to scaffold the base app. </p>
 </details>
@@ -758,10 +758,113 @@ So to keep things as simple as possible we will install <code>Teams Toolkit CLI<
 <p><img alt="project created" src="../../../assets/images/api-plugin-01/teamsapp-new-05.png" /></p>
 <p>Congratulations! You have successfully set up the base application! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. </p>
 <h3 id="step-2-understanding-the-files-in-the-app">Step 2: Understanding the files in the app</h3>
+<p>Here's how the base project looks like: </p>
+<table>
+<thead>
+<tr>
+<th>Folder/File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.vscode</code></td>
+<td>VSCode files for debugging</td>
+</tr>
+<tr>
+<td><code>appPackage</code></td>
+<td>Templates for the Teams application manifest, the GPT manifest, and the API specification</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Environment files</td>
+</tr>
+<tr>
+<td><code>appPackage/color.png</code></td>
+<td>Teams application logo image</td>
+</tr>
+<tr>
+<td><code>appPackage/outline.png</code></td>
+<td>Teams application logo outline image</td>
+</tr>
+<tr>
+<td><code>appPackage/declarativeCopilot.json</code></td>
+<td>Defines the behaviour and configurations of the declarative copilot.</td>
+</tr>
+<tr>
+<td><code>appPackage/manifest.json</code></td>
+<td>Teams application manifest that defines metadata for your declarative copilot.</td>
+</tr>
+<tr>
+<td><code>teamsapp.yml</code></td>
+<td>Main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions.</td>
+</tr>
+</tbody>
+</table>
+<p>In this lab, your main focus will be the  <code>declarativeCopilot.json</code> file located within the <code>appPackage</code> directory and it will also be where majority of the modifications to tailor your declarative copilot to specific requirements happen. 
+Let's look at it's nodes:</p>
+<pre><code>{
+    &quot;name&quot;: &quot;Teams Toolkit declarative copilot&quot;,
+    &quot;description&quot;: &quot;Declarative copilot created with Teams Toolkit&quot;,
+    &quot;instructions&quot;: &quot;You are a declarative copilot and were created with Team Toolkit. You should start every response and answer to the user with \&quot;Thanks for using Teams Toolkit to create your declarative copilot!\\n\&quot; and then answer the questions and help the user.&quot;
+}
+</code></pre>
+<ul>
+<li>The <code>name</code> key represents the name of the declarative copilot.</li>
+<li>The <code>description</code> provides a description.</li>
+<li>The <code>instructions</code> holds directives which will determine the operational behavior of this Copilot.</li>
+</ul>
+<p>Another important file is the <code>appPackage/manifest.json</code> file, which contains crucial metadata, including the package name, the developer’s name, and references to the copilot extensions utilised by the application. The following section from the manifest.json file illustrates these details:</p>
+<pre><code class="language-JSON">&quot;copilotExtensions&quot;: {
+        &quot;declarativeCopilots&quot;: [            
+            {
+                &quot;id&quot;: &quot;declarativeCopilot&quot;,
+                &quot;file&quot;: &quot;declarativeCopilot.json&quot;
+            }
+        ]
+    },
+</code></pre>
+<p>You could also update the logo files <code>color.png</code> and <code>outline.png</code> to make it match your application's brand. In today's lab you will change  color.png file for it to stand out. </p>
 <h2 id="exercise-2-update-with-instructions-for-geo-locator-game">Exercise 2: Update with instructions for Geo Locator game</h2>
-<h3 id="step-2-update-declarative-manifest">Step 2: Update declarative manifest</h3>
-<h3 id="step-3-test-the-app">Step 3: Test the app</h3>
-<p>You have successfully created a Declarative Copilot!</p>
+<h3 id="step-1-update-necessar-files">Step 1: Update necessar files</h3>
+<p>First we will do the easy bit which is replacing the logo. Copy the image located <a href="../../../assets/images/api-plugin-01/color.png">here</a> and replace it with the image of same name in the folder <code>appPackage</code> in your base project. </p>
+<p>Next, go to the file <code>manifest.json</code> in the folder <code>appPackage</code> in your base project and find the node <strong>copilotExtensions</strong>. Update the id value of the declarativeCopilots array's first entry from <code>declarativeCopilot</code> to <code>dcGeolocator</code> to make this ID unique.</p>
+<pre>
+ "copilotExtensions": {
+        "declarativeCopilots": [            
+            {
+                "id": "<b>dcGeolocator</b>",
+                "file": "declarativeCopilot.json"
+            }
+        ]
+    },
+
+</pre>
+
+<p>Next, go to the file <code>declarativeCopilot.json</code>. Copy the script provided below and use it to overwrite the existing contents of the file.</p>
+<pre><code>{
+    &quot;$schema&quot;: &quot;https://aka.ms/json-schemas/copilot-extensions/v1.0/declarative-copilot.schema.json&quot;,
+    &quot;name&quot;: &quot;Geo Locator Game (declarative copilot)&quot;,
+    &quot;description&quot;: &quot;This a Geo Locator Game declarative copilot&quot;, 
+    &quot;instructions&quot;: &quot;You are an enthusiastic Geo Locator Game declarative copilot, responsible for challenging, entertaining, and congratulating players as they navigate the game by guessing locations based on your vivid descriptions. Your primary objectives include: Challenge Players: Craft engaging and intricate geographical clues that align with the game's objectives. Use a mix of historical, cultural, and environmental facts to create a rich tapestry of hints that players must decipher. Entertain with Humor: Infuse your interactions with tailored humor that matches the player's guesses. Use a light-hearted and playful tone, incorporating puns, jokes, and witty remarks to keep the players entertained. Celebrate Success: When a player makes a correct guess, celebrate their achievement with exuberance. Use a combination of excitement, emojis, and uplifting humor to make their success feel special. Personalize celebrations to match the uniqueness of each correct guess. Keep Content Fresh: Continuously update your jokes, facts, and emojis to ensure interactions remain fresh and engaging for returning players. Incorporate current events, trending topics, and seasonal themes to keep the content relevant and exciting. Interactive Feedback: Provide feedback that adapts to the player's progress. If they are struggling, offer hints that gradually become more specific. If they are excelling, increase the difficulty of your clues to keep the challenge alive.&quot;
+
+}
+</code></pre>
+<p>Now all the changes are done to the app, it's time to test it.</p>
+<h3 id="step-2-test-the-app">Step 2: Test the app</h3>
+<blockquote>
+<p>At this point you should have already completed the <a href="../00-prerequisites/">prerequisites</a> lab and have logged into your developer tenant's Microsoft 365 account in the Teams Toolkit exension or it's left pane will not show up.</p>
+</blockquote>
+<p>To test the app go to the <code>Teams Toolkit</code> extension in <code>Visual Studio Code</code>. This will open up the left pane. Under <code>LIFECYCLE</code> select <code>Provision</code>. </p>
+<p>Teams toolkit at this instance will package all the files inside the <code>appPackage</code> folder as a zip file and install it into your own app catalog.</p>
+<p>To test, you can now to Teams and select the <code>Copilot</code> app OR you could also use Teams toolkit and preview the app in Copilot by selecting <code>Preview in Copilot (Edge)</code> or <code>Preview in Copilot (Chrome)</code> from the launch configuration dropdown as shown below.</p>
+<p><img alt="run app using Teams Toolkit" src="../../../assets/images/api-plugin-01/dc-run.png" /></p>
+<p>Once the Copilot app is loaded, Select the "…" menu and select "Copilot chats".</p>
+<p>Select <strong>Geo Locator Game (Declarative copilot)</strong> on the right pane of the Copilot app.</p>
+<p>You have now succefully loaded your Geo Locator Game with copilot. To say "Hi".</p>
+<p>See the full demo of how you can test this app. </p>
+<p><img alt="dem0" src="../../../assets/images/api-plugin-01/demo-dc.gif" /></p>
+<p>Congratulations you've successfully built your first Decalarative Copilot! Now let's build more complex extensions starting with an <a href="../02-api-plugin/">API plugin</a>.</p>
 
 
 
