@@ -1,9 +1,9 @@
 import { MemoryStorage } from "botbuilder";
 import * as path from "path";
 import config from "../config";
-import { AzureAISearchDataSource } from "./azureAISearchDataSource";
 // See https://aka.ms/teams-ai-library to learn more about the Teams AI library.
 import { Application, ActionPlanner, OpenAIModel, PromptManager } from "@microsoft/teams-ai";
+import fs from 'fs';
 
 // Create AI components
 const model = new OpenAIModel({
@@ -13,28 +13,33 @@ const model = new OpenAIModel({
 
   useSystemMessages: true,
   logRequests: true,
+  azureApiVersion: '2024-02-15-preview'
 });
+
 const prompts = new PromptManager({
   promptsFolder: path.join(__dirname, "../prompts"),
 });
+
 const planner = new ActionPlanner({
   model,
   prompts,
-  defaultPrompt: "chat",
-});
+  defaultPrompt: async () => {
+    const template = await prompts.getPrompt('chat');
+    const skprompt = fs.readFileSync(path.join(__dirname, '..', 'prompts', 'chat', 'skprompt.txt'));
 
-// Register your data source with planner
-planner.prompts.addDataSource(
-  new AzureAISearchDataSource({
-    name: "azure-ai-search",
-    indexName: "resumes",
-    azureAISearchApiKey: config.azureSearchKey!,
-    azureAISearchEndpoint: config.azureSearchEndpoint!,
-    azureOpenAIApiKey: config.azureOpenAIKey!,
-    azureOpenAIEndpoint: config.azureOpenAIEndpoint!,
-    azureOpenAIEmbeddingDeploymentName: config.azureOpenAIEmbeddingDeploymentName!
-  })
-);
+    const dataSources = (template.config.completion as any)['data_sources'];
+
+    dataSources.forEach((dataSource: any) => {
+      if (dataSource.type === 'azure_search') {
+        dataSource.parameters.authentication.key = config.azureSearchKey;
+        dataSource.parameters.endpoint = config.azureSearchEndpoint;
+        dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
+      }
+    });
+
+    return template;
+  }
+});
 
 // Define storage and application
 const storage = new MemoryStorage();

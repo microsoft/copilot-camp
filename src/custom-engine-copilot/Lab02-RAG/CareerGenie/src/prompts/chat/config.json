@@ -11,11 +11,27 @@
     "temperature": 0.9,
     "top_p": 0.0,
     "presence_penalty": 0.6,
-    "frequency_penalty": 0.0
-  },
-  "augmentation": {
-    "data_sources": {
-        "azure-ai-search": 1200
-    }
-}
+    "frequency_penalty": 0.0,
+    "data_sources": [
+      {
+          "type": "azure_search",
+          "parameters": {
+              "endpoint": "$searchEndpoint",
+              "index_name": "resumes",
+              "authentication": {
+                  "type": "api_key",
+                  "key": "$searchApiKey"
+              },
+              "query_type":"vector",
+              "in_scope": true,
+              "strictness": 3,
+              "top_n_documents": 5,
+              "embedding_dependency": {
+                "type": "deployment_name",
+                "deployment_name": "text-embeddings"
+              }
+          }
+      }
+    ]
+  }
 }
