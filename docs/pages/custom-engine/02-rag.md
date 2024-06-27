@@ -1,4 +1,4 @@
-# Lab 02 - Bring your data with Azure AI Search
+# Lab 02 - Bring your data from Azure AI Search to your app
 
 In this lab you will enable Retrieval-Augmented Generation for your custom engine copilot and integrate with Azure AI Search to chat with your data.
 
@@ -167,14 +167,30 @@ For this exercise, ensure that you obtain Azure OpenAI text embedding deployment
 
 ### Step 2: Configure Azure AI Search in your source code
 
-1. Open `src/prompts/chat/config.json` in your project, then add the following property inside your prompt configuration:
+1. Open `src/prompts/chat/config.json` in your project, then add `data_sources` inside the `completion` brackets:
 
     ```json
-      "augmentation": {
-        "data_sources": {
-            "azure-ai-search": 1200
+    "data_sources": [
+    {
+        "type": "azure_search",
+        "parameters": {
+            "endpoint": "$searchEndpoint",
+            "index_name": "resumes",
+            "authentication": {
+                "type": "api_key",
+                "key": "$searchApiKey"
+            },
+            "query_type":"vector",
+            "in_scope": true,
+            "strictness": 3,
+            "top_n_documents": 5,
+            "embedding_dependency": {
+            "type": "deployment_name",
+            "deployment_name": "text-embeddings"
+            }
         }
-      }
+    }
+    ]
     ```
 
 1. Open `src/prompts/chat/skprompt.txt` and add the following line in your prompt:
@@ -183,172 +199,43 @@ For this exercise, ensure that you obtain Azure OpenAI text embedding deployment
     Use the context provided in the `<context></context>` tags as the source for your answers.
     ```
 
-1. Open the terminal from the project root, then run the following command:
+1. Open the terminal in Visual Studio Code, and run the following script from the project root:
 
-    ```node
-    npm install @azure/search-documents
-    ```
-    
-1. Create a new file named `azureAISearchDataSource.ts` under `src/app` folder and copy the following code snippet inside this file:
-
-    ```typescript
-    import { DataSource, Memory, OpenAIEmbeddings, RenderedPromptSection, Tokenizer } from "@microsoft/teams-ai";
-    import { TurnContext } from "botbuilder";
-    import { AzureKeyCredential, SearchClient } from "@azure/search-documents";
-    
-    /**
-     * Defines the Document Interface.
-     */
-    export interface MyDocument {
-        id?: string;
-        title?: string | null;
-        content?: string | null;
-        filepath?: string | null;
-        url?: string | null;
-        contentVector?: number[] | null;
-    }
-    
-    /**
-     * Options for creating a `AzureAISearchDataSource`.
-     */
-    export interface AzureAISearchDataSourceOptions {
-        name: string;
-        indexName: string;
-        azureOpenAIApiKey: string;
-        azureOpenAIEndpoint: string;
-        azureOpenAIEmbeddingDeploymentName: string;
-        azureAISearchApiKey: string;
-        azureAISearchEndpoint: string;
-    }
-    
-    export class AzureAISearchDataSource implements DataSource {
-        public readonly name: string;
-        private readonly options: AzureAISearchDataSourceOptions;
-        private readonly searchClient: SearchClient<MyDocument>;
-    
-        /**
-         * Creates a new `AzureAISearchDataSource` instance.
-         * @param {AzureAISearchDataSourceOptions} options Options for creating the data source.
-         */
-        public constructor(options: AzureAISearchDataSourceOptions) {
-            this.name = options.name;
-            this.options = options;
-            this.searchClient = new SearchClient<MyDocument>(
-                options.azureAISearchEndpoint,
-                options.indexName,
-                new AzureKeyCredential(options.azureAISearchApiKey),
-                {}
-            );
-        }
-    
-        /**
-         * Renders the data source as a string of text.
-         * @remarks
-         * The returned output should be a string of text that will be injected into the prompt at render time.
-         * @param context Turn context for the current turn of conversation with the user.
-         * @param memory An interface for accessing state values.
-         * @param tokenizer Tokenizer to use when rendering the data source.
-         * @param maxTokens Maximum number of tokens allowed to be rendered.
-         * @returns A promise that resolves to the rendered data source.
-         */
-        public async renderData(context: TurnContext, memory: Memory, tokenizer: Tokenizer, maxTokens: number): Promise<RenderedPromptSection<string>> {
-            const query = memory.getValue("temp.input") as string;
-            if(!query) {
-                return { output: "", length: 0, tooLong: false };
-            }
-            
-            const selectedFields = [
-                "id",
-                "title",
-                "content",
-            ];
-    
-            // hybrid search
-            const queryVector: number[] = await this.getEmbeddingVector(query);
-            const searchResults = await this.searchClient.search(query, {
-                searchFields: ["title", "content"],
-                select: selectedFields as any,
-                vectorSearchOptions: {
-                    queries: [
-                        {
-                            kind: "vector",
-                            fields: ["contentVector"],
-                            kNearestNeighborsCount: 2,
-                            // The query vector is the embedding of the user's input
-                            vector: queryVector
-                        }
-                    ]
-                },
-            });
-    
-            if (!searchResults.results) {
-                return { output: "", length: 0, tooLong: false };
-            }
-    
-            let usedTokens = 0;
-            let doc = "";
-            for await (const result of searchResults.results) {
-                const formattedResult = this.formatDocument(result.document.content);
-                const tokens = tokenizer.encode(formattedResult).length;
-    
-                if (usedTokens + tokens > maxTokens) {
-                    break;
-                }
-    
-                doc += formattedResult;
-                usedTokens += tokens;
-            }
-    
-            return { output: doc, length: usedTokens, tooLong: usedTokens > maxTokens };
-        }
-    
-        /**
-         * Formats the result string 
-         * @param result 
-         * @returns 
-         */
-        private formatDocument(result: string): string {
-            return `<context>${result}</context>`;
-        }
-    
-        /**
-         * Generate embeddings for the user's input.
-         * @param {string} text - The user's input.
-         * @returns {Promise<number[]>} The embedding vector for the user's input.
-         */
-        private async getEmbeddingVector(text: string): Promise<number[]> {
-            const embeddings = new OpenAIEmbeddings({
-                azureApiKey: this.options.azureOpenAIApiKey,
-                azureEndpoint: this.options.azureOpenAIEndpoint,
-                azureDeployment: this.options.azureOpenAIEmbeddingDeploymentName,
-            });
-    
-            const result = await embeddings.createEmbeddings(this.options.azureOpenAIEmbeddingDeploymentName, text);
-    
-            if (result.status !== "success" || !result.output) {
-                throw new Error(`Failed to generate embeddings for description: ${text}`);
-            }
-    
-            return result.output[0];
-        }
-    }
+    ```powershell
+    npm install fs
     ```
 
-1. Open `src/app/app.ts` and add the following code snippet right after the planner:
+1. Go to `src/app/app.ts` and add the following parameter in your  `OpenAIModel`:
 
     ```typescript
-    // Register your data source with planner
-    planner.prompts.addDataSource(
-      new AzureAISearchDataSource({
-        name: "azure-ai-search",
-        indexName: "resumes",
-        azureAISearchApiKey: config.azureSearchKey!,
-        azureAISearchEndpoint: config.azureSearchEndpoint!,
-        azureOpenAIApiKey: config.azureOpenAIKey!,
-        azureOpenAIEndpoint: config.azureOpenAIEndpoint!,
-        azureOpenAIEmbeddingDeploymentName: config.azureOpenAIEmbeddingDeploymentName!
-      })
-    );
+    azureApiVersion: '2024-02-15-preview'
+    ```
+
+1. Add the following import on top of the `src/app/app.ts` file:
+
+    ```typescript
+    import fs from 'fs';
+    ```
+    
+1. In `src/app/app.ts`, replace the `defaultPrompt` inside the `ActionPlanner` with the following code snippet:
+
+    ```typescript
+    defaultPrompt: async () => {
+        const template = await prompts.getPrompt('chat');
+        const skprompt = fs.readFileSync(path.join(__dirname, '..', 'prompts', 'chat', 'skprompt.txt'));
+    
+        const dataSources = (template.config.completion as any)['data_sources'];
+    
+        dataSources.forEach((dataSource: any) => {
+          if (dataSource.type === 'azure_search') {
+            dataSource.parameters.authentication.key = config.azureSearchKey;
+            dataSource.parameters.endpoint = config.azureSearchEndpoint;
+            dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
+          }
+        });
+    
+        return template;
+    }
     ```
 
 ### Step 3: Debug your app and chat with your data
