@@ -43,7 +43,7 @@ In your Azure OpenAI service, navigate to **Model deployments** from the left si
 
 From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
 
-- **Select a model:** Select `gpt-35-turbo`.
+- **Select a model:** Select `gpt-35-turbo` or higher model.
 - **Model version:** Auto update to default.
 - **Deployment type:** Provisioned-Managed.
 - **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
