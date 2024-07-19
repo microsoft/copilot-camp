@@ -15,7 +15,7 @@ nav:
 - Path B Build Your Own Copilot: 
   - Lab 00: 'pages/custom-engine/00-prerequisites.md'
   - Lab 01: 'pages/custom-engine/01-custom-engine-copilot.md'
-  - Lab 02: 'pages/api-plugin/02-rag.md'
+  - Lab 02: 'pages/custom-engine/02-rag.md'
 theme:
   name: 'material'
   palette: 

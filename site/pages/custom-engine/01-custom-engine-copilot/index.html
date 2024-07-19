@@ -14,6 +14,8 @@
         <link rel="prev" href="../00-prerequisites/">
       
       
+        <link rel="next" href="../02-rag/">
+      
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
@@ -575,9 +577,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-create-azure-openai-service" class="md-nav__link">
+  <a href="#step-1-create-azure-openai-service-resource" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Create Azure OpenAI Service
+      Step 1: Create Azure OpenAI service resource
     </span>
   </a>
   
@@ -655,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-plugin/02-sso-custom-engine.md" class="md-nav__link">
+      <a href="../02-rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -705,7 +707,7 @@
 <p>Welcome aboard to the exciting journey of building your own custom engine copilot! In this path, you'll create a personalized copilot for Microsoft Teams using cutting-edge Azure OpenAI models. You'll be able to define specific prompts, integrate complex data, and add advanced skills to make your copilot truly unique. By using custom models and orchestration, your copilot will tackle advanced tasks, complex conversations, and workflows, delivering an exceptional, personalized experience. Let's dive in and start building your first custom engine copilot!</p>
 <h2 id="exercise-1-create-azure-openai-service-and-models">Exercise 1: Create Azure OpenAI service and models</h2>
 <p>You'll need to complete the Azure subscription pre-requisite before starting with this exercise.</p>
-<h3 id="step-1-create-azure-openai-service">Step 1: Create Azure OpenAI Service</h3>
+<h3 id="step-1-create-azure-openai-service-resource">Step 1: Create Azure OpenAI service resource</h3>
 <ol>
 <li>Open the browser of your choice and navigate to <a href="https://portal.azure.com">Azure Portal</a>.</li>
 <li>Select <strong>Create a resource</strong>, then search for <code>Azure OpenAI</code>. Select the Azure OpenAI service and then <strong>Create</strong>.</li>
@@ -730,7 +732,7 @@
 </details>
 <p>From the <strong>Deployments</strong> tab, select <strong>Create a new deployment</strong>. Fill out the following details and select <strong>Create</strong>:</p>
 <ul>
-<li><strong>Select a model:</strong> Select either one of the <code>gpt-35-turbo</code>, <code>gpt-4</code>, <code>gpt-4-32k</code> or <code>gpt-4o</code>.</li>
+<li><strong>Select a model:</strong> Select <code>gpt-35-turbo</code> or higher model.</li>
 <li><strong>Model version:</strong> Auto update to default.</li>
 <li><strong>Deployment type:</strong> Provisioned-Managed.</li>
 <li><strong>Deployment name:</strong> Recommended to use the same name with the selected deployment model, such as <code>gpt-4</code>.</li>
@@ -743,7 +745,7 @@
 1. Free up the resources on other deployments by requesting for <a href="https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota">more quota or adjust the existing quota</a></p>
 </div>
 <p>Once your model is successfully created, you can navigate to <strong>Chat</strong>, and test your model by selecting one of the available templates in <strong>Prompt</strong> section and asking relevant questions in the chat playground.</p>
-<p><img alt="Testing the model in Azure OpenAI Studio Chat Playground" src="../../../assets/images/azure-openai-studio-chat.png" /></p>
+<p><img alt="Testing the model in Azure OpenAI Studio Chat Playground" src="../../../assets/images/custom-engine-01/azure-openai-studio-chat.png" /></p>
 <h2 id="exercise-2-scaffold-a-custom-engine-copilot-from-template">Exercise 2: Scaffold a custom engine copilot from template</h2>
 <p>You'll need to complete all the required pre-requisites before starting with this exercise.</p>
 <h3 id="step-1-use-teams-toolkit-to-create-a-new-custom-engine-copilot">Step 1: Use Teams Toolkit to create a new custom engine copilot</h3>
@@ -792,14 +794,14 @@ You like using emojis where appropriate.
 <summary>More information about the Teams App Test Tool</summary>
 <p>Teams App Test Tool (or short as Test Tool) is a component integrated into Teams Toolkit. This component helps developers to debug, test, and iterate on the app design of a Teams bot application in a web-based chat environment that emulates the behavior, look, and feel of Microsoft Teams.</p>
 </details>
-<p>Start debugging our app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Test Tool</strong>. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine copilot right away! Some of the recommended questions you can ask to test the behavior:</p>
+<p>Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Test Tool</strong>. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine copilot right away! Some of the recommended questions you can ask to test the behavior:</p>
 <ul>
 <li>"Can you help me write a job post for a Senior Developer role?"</li>
 <li>"What would be the list of required skills for a Project Manager role?"</li>
 <li>"Can you share a job template?"</li>
 </ul>
-<p><img alt="Test Career Genie in App Test Tool" src="../../../assets/images/teams-app-test-tool.png" /></p>
-<p>Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab <a href="../02-sso-custom-engine/">Configure single sign on</a>.</p>
+<p><img alt="Test Career Genie in App Test Tool" src="../../../assets/images/custom-engine-01/teams-app-test-tool.png" /></p>
+<p>Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab <a href="../02-rag/">Configure single sign on</a>.</p>
 
 
 
