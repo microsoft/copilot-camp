@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -706,6 +706,36 @@
 <h2 id="introduction">Introduction</h2>
 <p>Welcome aboard to the exciting journey of building your own custom engine copilot! In this path, you'll create a personalized copilot for Microsoft Teams using cutting-edge Azure OpenAI models. You'll be able to define specific prompts, integrate complex data, and add advanced skills to make your copilot truly unique. By using custom models and orchestration, your copilot will tackle advanced tasks, complex conversations, and workflows, delivering an exceptional, personalized experience. Let's dive in and start building your first custom engine copilot!</p>
 <h2 id="exercise-1-create-azure-openai-service-and-models">Exercise 1: Create Azure OpenAI service and models</h2>
+<div class="admonition warning">
+<p class="admonition-title">Follow the exercise or choose your own model</p>
+<p>This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine copilots. However, Custom engine copilots are not limited to using GPT models only. You can also test the lab with any other model you prefer use.</p>
+</div>
+<details class="info">
+<summary>Choosing Between Small and Large Language Models</summary>
+<p>When choosing between Small Language Models (SLMs) and Large Language Models (LLMs), as well as among various GPT models, it's important to consider the specific needs of your project in terms of complexity, computational resources, and efficiency.</p>
+<ul>
+<li>
+<p><strong>LLMs:</strong> Best for complex and nuanced tasks requiring deep capabilities. They have billions of parameters and excel in understanding and generating human language. GPT-4, LLaMA 2, BERT or PaLM can be examples for LLMs. 
+<em><strong>Example scenarios:</strong> Handling intricate customer inquiries, offering detailed and context-aware responses, generating high-quality articles from brief prompts, summarizing large volumes of academic papers, extracting key insights, and answering detailed questions.</em></p>
+</li>
+<li>
+<p><strong>SLMs:</strong> Better for quick tasks with limited resources where speed and efficiency are key. They have fewer parameters and are optimized for specific tasks with lower computational needs. Phi-3 by Microsoft, ALBERT by Google or DistilBERT by HuggingFace can be examples for SLMs. 
+<em><strong>Example scenarios:</strong> Providing efficient text analysis without needing cloud resources, enabling accurate and responsive voice commands with minimal latency, smart home automation and control with natural speech.</em></p>
+</li>
+</ul>
+<p>OpenAI's GPT models are popular examples for LLMs. When choosing between OpenAI's models you may consider the following benefits:</p>
+<ul>
+<li>
+<p><strong>gpt-4:</strong> The most advanced model, suitable for highly complex tasks that require extensive understanding and generation capabilities.</p>
+</li>
+<li>
+<p><strong>gpt-4o:</strong> An optimized version for specific tasks, offering faster and more efficient performance in those areas.</p>
+</li>
+<li>
+<p><strong>gpt-35-turbo:</strong> A balanced model that provides good performance at a lower cost, ideal for a wide range of applications.</p>
+</li>
+</ul>
+</details>
 <p>You'll need to complete the Azure subscription pre-requisite before starting with this exercise.</p>
 <h3 id="step-1-create-azure-openai-service-resource">Step 1: Create Azure OpenAI service resource</h3>
 <ol>
@@ -728,14 +758,14 @@
 <p>In your Azure OpenAI service, navigate to <strong>Model deployments</strong> from the left side panel, then select <strong>Manage deployments</strong>. This will direct you to <code>Azure OpenAI Studio</code> where you can create your deployment model.</p>
 <details class="info">
 <summary>What is Azure OpenAI Studio?</summary>
-<p>Azure OpenAI Studio is a playground to explore the generative AI models, craft unique prompts for your use cases, and fine-tune select models.</p>
+<p>Azure OpenAI Studio is a playground to explore OpenAI models like <code>gpt-35-turbo</code>, <code>gpt-4</code> or <code>Dall-e</code> that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as <code>Phi-3</code>, <code>Llama 3.1</code> or models from <code>HuggingFace</code>, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.</p>
 </details>
 <p>From the <strong>Deployments</strong> tab, select <strong>Create a new deployment</strong>. Fill out the following details and select <strong>Create</strong>:</p>
 <ul>
 <li><strong>Select a model:</strong> Select <code>gpt-35-turbo</code> or higher model.</li>
 <li><strong>Model version:</strong> Auto update to default.</li>
 <li><strong>Deployment type:</strong> Provisioned-Managed.</li>
-<li><strong>Deployment name:</strong> Recommended to use the same name with the selected deployment model, such as <code>gpt-4</code>.</li>
+<li><strong>Deployment name:</strong> Recommended to use the same name with the selected deployment model, such as <code>gpt-35-turbo</code>.</li>
 <li><strong>Content Filter:</strong> Default.</li>
 </ul>
 <div class="admonition tip">
@@ -749,8 +779,12 @@
 <h2 id="exercise-2-scaffold-a-custom-engine-copilot-from-template">Exercise 2: Scaffold a custom engine copilot from template</h2>
 <p>You'll need to complete all the required pre-requisites before starting with this exercise.</p>
 <h3 id="step-1-use-teams-toolkit-to-create-a-new-custom-engine-copilot">Step 1: Use Teams Toolkit to create a new custom engine copilot</h3>
+<details class="info" open="open">
+<summary>What is a custom engine copilot?</summary>
+<p>Custom engine copilots are chat bots built with Teams AI library that utilizes Language Model of your choice for enhanced conversational interactions. With all the UI components in the Teams AI library, you can build custom engine copilots that look and feel like a Microsoft experience while leveraging all the enhanced AI capabilities from Azure AI.</p>
+</details>
 <ol>
-<li>Open Teams Toolkit on Visual Studio Code and select <strong>Create a New App</strong> &gt; <strong>Custom Copilot</strong> &gt; <strong>Basic AI Chatbot</strong>.</li>
+<li>Open Teams Toolkit on Visual Studio Code and select <strong>Create a New App</strong> &gt; <strong>Custom Engine Copilot</strong> &gt; <strong>Basic AI Chatbot</strong>.</li>
 <li>Select <strong>TypeScript</strong> as a programming language choice and <strong>Azure OpenAI</strong> as Large Language model of your choice.<ol>
 <li>Paste the Azure OpenAI key and press enter.</li>
 <li>Paste the Azure OpenAI endpoint and press enter. (Endpoint shouldn't include forward slash at the end of its URL.)</li>
@@ -782,7 +816,7 @@
 <li><code>src/app/app.ts</code>: Handles business logics for the Basic AI Chatbot.</li>
 </ul>
 <h3 id="step-3-customize-prompt-and-test-the-app">Step 3: Customize prompt and test the app</h3>
-<p>Prompts are essential for interacting with AI language models (LLMs) and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine copilot and define the behavior of Career Genie!</p>
+<p>Prompts are essential for interacting with AI language models and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine copilot and define the behavior of Career Genie!</p>
 <p>In your project folder, navigate to <code>src/prompts/chat/skprompt.txt</code> and replace the existing text with the following prompt:</p>
 <pre><code class="language-html">You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team for writing job posts.
 You are friendly and professional.
@@ -851,7 +885,7 @@ You like using emojis where appropriate.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
