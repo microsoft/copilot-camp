@@ -32,7 +32,7 @@ In the previous exercise, you learned how to create a custom engine copilot and 
 
 Finally, you'll integrate your custom engine copilot with Azure AI Search to chat with your data and obtain the best results.
 
-!!! tip "What is Vector search and why use it?"
+!!! tip "Benefits of using Vector Search"
     Vector search is an advanced technique used to find information quickly and accurately based on its meaning rather than just matching exact words. Unlike traditional text-based search, which relies on exact keyword matches, vector search uses numeric vectors to find content that is similar to your query. This enables Vector search to handle:
 
     - **Semantic or conceptual similarity:** Matching concepts that are similar in meaning even if they use different words (e.g., "pastry" and "croissant").
