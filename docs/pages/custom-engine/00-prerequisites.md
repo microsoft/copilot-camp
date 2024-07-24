@@ -1,15 +1,16 @@
 
 # Lab 00 - Prerequisites
 
-In this lab you set up for development environment to build, test and deploy the custom engine copilot you'll develop throughout the path A.
+In this lab you set up for development environment to build, test and deploy the custom engine copilot you'll develop throughout the path B.
 
 In this lab you will learn:
 
 - Make your developer tenant for Microsoft 365 ready
 - Install and configure Teams toolkit for Visual Studio Code
-
+- Prepare your Azure environment to create required resources
 
 ## Exercise 1: Set up your Microsoft 365 Subscription
+
 To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
 You will also need Copilot License to test the app.
 
@@ -17,8 +18,8 @@ You will also need Copilot License to test the app.
 
 If you don't yet have a tenant, please join the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=m365-58890-cxa){target=_blank} to get a free one. Your tenant includes 25 [E5 user licenses](https://www.microsoft.com/microsoft-365/enterprise/compare-office-365-plans?WT.mc_id=m365-58890-cxa){target=_blank} and can be renewed as long as you keep developing!
 
-Select "Join now" to begin.
-Log in with any Microsoft personal or work and school account, enter your information, and select "Next". You will have an opportunity to choose what kind of "sandbox" you want; the "Instant sandbox" is recommended.
+Select **Join now** to begin.
+Log in with any Microsoft personal or work and school account, enter your information, and select **Next**. You will have an opportunity to choose what kind of sandbox you want; the **Instant sandbox** is recommended.
 
 Follow the wizard and select your administrator username and password, tenant domain name, etc. The domain name you choose is just the left-most portion - for example if you enter "Contoso" your domain will be "Contoso.onmicrosoft.com".
 
@@ -41,19 +42,26 @@ Eventually you'll be prompted to log into your new tenant. Be sure to use the ne
 ### Step 2: Enable Teams application uploads
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
-a. Navigate to [https://admin.microsoft.com/}](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
-b. In the left panel of the admin center, select "Show all" to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
-c. In the left of the Microsoft Teams admin center, open the Teams apps accordion 1️⃣ and select Setup Policies 2️⃣. You will see a list of App setup policies. Select the Global (Org-wide default) policy 3️⃣.
-d. Ensure the first switch, "Upload custom apps" is turned On.
-e. Be sure to scroll down and select the "Save" button to persist your change.
+
+1️⃣ Navigate to [https://admin.microsoft.com/}](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
+
+2️⃣ In the left panel of the admin center, select **Show all** to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
+
+3️⃣ In the left of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup Policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default) policy**.
+
+4️⃣ Ensure the first switch, **Upload custom apps** is turned **On**.
+
+5️⃣ Be sure to scroll down and select the **Save** button to persist your change.
+
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
 ## Exercise 2: Install Teams Toolkit and prerequisites
+
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
 
 ### Step 1: Install Visual Studio Code
 
-It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_blank} requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+It should be no surprise that **Teams Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
 
 ### Step 2: Install NodeJS
 
@@ -70,12 +78,10 @@ Follow the steps as shown in the screen shot below.
 
 2️⃣ Search for "Teams" and locate Teams Toolkit
 
-3️⃣ Click "Install"
+3️⃣ Click **Install**
 
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
-
-Now you are all set to create your first plugin. Proceed to create a [Declarative Copilot](./01-declarative-copilot) or  an [API plugin/skill](./02-api-plugin)to it.
 
 ## Exercise 3: Get an Azure subscription
 
@@ -84,7 +90,7 @@ To complete the exercises in Path B, you'll need an Azure subscription to create
 ### Step 1: Create an Azure free account
 
 Follow the steps to activate an Azure free account:
- 
+
 1️⃣ Navigate to [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p) page and select **Activate**.
 
 2️⃣ Login with an account of your choice, it's recommended to use the Microsoft 365 tenant account you would like to use in the exercises.
@@ -102,4 +108,4 @@ Follow the steps to activate an Azure free account:
 
 In the path B exercises, you'll need to create Azure OpenAI service and models. Before starting with the exercises, make sure you have access granted to Azure OpenAI in the desired Azure subscription and have required permissions to create Azure OpenAI resources and to deploy models. If you don't have access to Azure OpenAI, you must submit an application to access Azure OpenAI Service. To apply for access, complete [this form](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7en2Ais5pxKtso_Pz4b1_xUNTZBNzRKNlVQSFhZMU9aV09EVzYxWFdORCQlQCN0PWcu).
 
-Now you are all set to create your first custom engine copilot! Proceed to create a [Custom engine copilot](./01-custom-engine-copilot.md). 
+Now you are all set to create your first custom engine copilot! Proceed to create a [Custom engine copilot](./01-custom-engine-copilot.md).
