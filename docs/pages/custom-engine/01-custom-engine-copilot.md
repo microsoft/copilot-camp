@@ -146,4 +146,4 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 ![Test Career Genie in App Test Tool](../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
-Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Configure single sign on](02-rag.md).
+Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Bring your data from Azure AI Search to your app](02-rag.md).
