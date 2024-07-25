@@ -16,6 +16,27 @@ Welcome aboard to the exciting journey of building your own custom engine copilo
 
 ## Exercise 1: Create Azure OpenAI service and models
 
+!!! warning "Follow the exercise or choose your own model"
+    This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine copilots. However, Custom engine copilots are not limited to using GPT models only. You can also test the lab with any other model you prefer use.
+
+??? info "Choosing Between Small and Large Language Models"
+    When choosing between Small Language Models (SLMs) and Large Language Models (LLMs), as well as among various GPT models, it's important to consider the specific needs of your project in terms of complexity, computational resources, and efficiency.
+
+    - **LLMs:** Best for complex and nuanced tasks requiring deep capabilities. They have billions of parameters and excel in understanding and generating human language. GPT-4, LLaMA 2, BERT or PaLM can be examples for LLMs. 
+    ***Example scenarios:** Handling intricate customer inquiries, offering detailed and context-aware responses, generating high-quality articles from brief prompts, summarizing large volumes of academic papers, extracting key insights, and answering detailed questions.*
+
+    - **SLMs:** Better for quick tasks with limited resources where speed and efficiency are key. They have fewer parameters and are optimized for specific tasks with lower computational needs. Phi-3 by Microsoft, ALBERT by Google or DistilBERT by HuggingFace can be examples for SLMs. 
+    ***Example scenarios:** Providing efficient text analysis without needing cloud resources, enabling accurate and responsive voice commands with minimal latency, smart home automation and control with natural speech.*
+    
+    OpenAI's GPT models are popular examples for LLMs. When choosing between OpenAI's models you may consider the following benefits:
+    
+    - **gpt-4:** The most advanced model, suitable for highly complex tasks that require extensive understanding and generation capabilities.
+
+    - **gpt-4o:** An optimized version for specific tasks, offering faster and more efficient performance in those areas.
+
+    - **gpt-35-turbo:** A balanced model that provides good performance at a lower cost, ideal for a wide range of applications.
+
+
 You'll need to complete the Azure subscription pre-requisite before starting with this exercise.
 
 ### Step 1: Create Azure OpenAI service resource
@@ -39,14 +60,14 @@ Once your Azure OpenAI service is created successfully, navigate to your resourc
 In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure OpenAI Studio` where you can create your deployment model.
 
 ??? info "What is Azure OpenAI Studio?"
-    Azure OpenAI Studio is a playground to explore the generative AI models, craft unique prompts for your use cases, and fine-tune select models.
+    Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.
 
 From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
 
 - **Select a model:** Select `gpt-35-turbo` or higher model.
 - **Model version:** Auto update to default.
 - **Deployment type:** Provisioned-Managed.
-- **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
+- **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-35-turbo`.
 - **Content Filter:** Default.
 
 !!! tip "Tip: Handling no quota available message"
@@ -64,7 +85,10 @@ You'll need to complete all the required pre-requisites before starting with thi
 
 ### Step 1: Use Teams Toolkit to create a new custom engine copilot
 
-1. Open Teams Toolkit on Visual Studio Code and select **Create a New App** > **Custom Copilot** > **Basic AI Chatbot**.
+???+ info "What is a custom engine copilot?"
+    Custom engine copilots are chat bots built with Teams AI library that utilizes Language Model of your choice for enhanced conversational interactions. With all the UI components in the Teams AI library, you can build custom engine copilots that look and feel like a Microsoft experience while leveraging all the enhanced AI capabilities from Azure AI.
+
+1. Open Teams Toolkit on Visual Studio Code and select **Create a New App** > **Custom Engine Copilot** > **Basic AI Chatbot**.
 1. Select **TypeScript** as a programming language choice and **Azure OpenAI** as Large Language model of your choice.
     1. Paste the Azure OpenAI key and press enter.
     1. Paste the Azure OpenAI endpoint and press enter. (Endpoint shouldn't include forward slash at the end of its URL.)
@@ -98,7 +122,7 @@ Diving into the application folder `src` that includes the main app files:
 
 ### Step 3: Customize prompt and test the app
 
-Prompts are essential for interacting with AI language models (LLMs) and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine copilot and define the behavior of Career Genie!
+Prompts are essential for interacting with AI language models and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine copilot and define the behavior of Career Genie!
 
 In your project folder, navigate to `src/prompts/chat/skprompt.txt` and replace the existing text with the following prompt:
 
@@ -122,4 +146,4 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 ![Test Career Genie in App Test Tool](../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
-Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Configure single sign on](02-rag.md).
+Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Bring your data from Azure AI Search to your app](02-rag.md).
