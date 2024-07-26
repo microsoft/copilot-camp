@@ -32,4 +32,6 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.details
+  - pymdownx.snippets:
+      base_path: docs/includes
   - attr_list
