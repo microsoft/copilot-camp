@@ -1,13 +1,19 @@
 
-# Lab 00 - Prerequisites
+# Lab A0 - Prerequisites
 
 In this lab you set up for developement environment to build, test and deploy the plugins you will develop throught the lab.
+
+???+ "Navigating the Extending Copilot labs (A Path)"
+    - Lab A0 - Prerequisites (📍You are here)
+    - [Lab A1 - Declarative Copilot](/copilot-camp/pages/api-plugin/01-declarative-copilot)
+    - [Lab A2 - First API Plugin](/copilot-camp/pages/api-plugin/02-api-plugin)
+    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/api-plugin/03-add-to-api-plugin)
+    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/api-plugin/04-add-declarative-copilot)
 
 In this lab you will learn:
 
 - Make your developer tenant for Microsoft 365 ready
 - Install and configure Teams toolkit for Visual Studio Code
-
 
 ## Exercise 1: Set up your Microsoft 365 Subscription
 To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
@@ -75,4 +81,4 @@ Follow the steps as shown in the screen shot below.
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
 
-Now you are all set to create your first plugin. Proceed to create a [Declarative Copilot](./01-declarative-copilot) or  an [API plugin/skill](./02-api-plugin)to it. 
+Now you are all set to create your first plugin. Proceed to create a [Declarative Copilot](../01-declarative-copilot) or  an [API plugin/skill](../02-api-plugin)to it.

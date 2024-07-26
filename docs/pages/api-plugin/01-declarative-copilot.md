@@ -1,6 +1,13 @@
-# Lab 01 - Customise Copilot by building a declarative copilot
+# Lab A1 - Customise Copilot by building a declarative copilot
 
 In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. 
+
+???+ "Navigating the Extending Copilot labs (A Path)"
+    - [Lab A0 - Prerequisites](/copilot-camp/pages/api-plugin/00-prerequisites)
+    - Lab A1 - Declarative Copilot (📍You are here)
+    - [Lab A2 - First API Plugin](/copilot-camp/pages/api-plugin/02-api-plugin)
+    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/api-plugin/03-add-to-api-plugin)
+    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/api-plugin/04-add-declarative-copilot)
 
 In this lab you will learn:
 
