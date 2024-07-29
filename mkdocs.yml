@@ -7,7 +7,7 @@ extra_css:
     - assets/labStyles.css
 nav: 
 - Home: 'index.md'
-- Path A1 Extend Copilot: 
+- Path A Extend Copilot: 
   - Welcome : 'pages/api-plugin/index.md'
   - Lab 00: 'pages/api-plugin/00-prerequisites.md'
   - Lab 01: 'pages/api-plugin/01-declarative-copilot.md'
