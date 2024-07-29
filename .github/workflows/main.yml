@@ -19,6 +19,3 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install mkdocs mkdocs-material  # Add any other mkdocs plugins you need
-
-    - name: Deploy to GitHub Pages
-      run: mkdocs gh-deploy --force
