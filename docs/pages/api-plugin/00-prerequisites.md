@@ -1,7 +1,7 @@
 
 # Lab A0 - Prerequisites
 
-In this lab you set up for developement environment to build, test and deploy the plugins you will develop throught the lab.
+In this lab, you will set up the development environment to build, test, and deploy the plugins that will extend the capabilities of Copilot for Microsoft 365.
 
 ???+ "Navigating the Extending Copilot labs (A Path)"
     - Lab A0 - Prerequisites (📍You are here)
@@ -12,8 +12,8 @@ In this lab you set up for developement environment to build, test and deploy th
 
 In this lab you will learn:
 
-- Make your developer tenant for Microsoft 365 ready
-- Install and configure Teams toolkit for Visual Studio Code
+- How to set up your developer tenant for Microsoft 365
+- How to install and configure Teams toolkit for Visual Studio Code
 
 ## Exercise 1: Set up your Microsoft 365 Subscription
 To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
@@ -65,11 +65,11 @@ It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_b
 
 NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
 
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 18.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.16.0. If you already have another version of NodeJS installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
+Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 20.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version LTS.
 
 ### Step 3: Install Teams Toolkit
 
-These labs are based on [Teams Toolkit version 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
+These labs are based on the latest general available version of [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
 Follow the steps as shown in the screen shot below.
 
 1️⃣ Open Visual Studio Code and click on the Extensions toolbar button
