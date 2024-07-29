@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-plugin" class="md-skip">
+        <a href="#lab-a2-first-api-plugin" class="md-skip">
           Skip to content
         </a>
       
@@ -432,6 +432,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab 02
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -441,6 +452,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-install-additional-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Install additional prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-configure-and-run-the-starting-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Configure and run the starting application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 2: Configure and run the starting application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-download-the-starting-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Download the starting application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -579,7 +651,35 @@
                   
 
 
-<h1 id="api-plugin">API Plugin</h1>
+<h1 id="lab-a2-first-api-plugin">Lab A2 - First API Plugin</h1>
+<p>In this lab you will set up an API based on Azure Functions and install it as an API plugin for Copilot for Microsoft 365.</p>
+<details open="open">
+<summary>Navigating the Extending Copilot labs (A Path)</summary>
+<ul>
+<li><a href="/copilot-camp/pages/api-plugin/00-prerequisites">Lab A0 - Prerequisites</a></li>
+<li><a href="/copilot-camp/pages/01-declarative-copilot.md">Lab A1 - Declarative Copilot</a></li>
+<li>Lab A2 - First API Plugin (📍You are here)</li>
+<li><a href="/copilot-camp/pages/api-plugin/03-add-to-api-plugin">Lab A3 - Extend an API Plugin</a></li>
+<li><a href="/copilot-camp/pages/api-plugin/04-add-declarative-copilot">Lab A4 - Add a Declarative Copilot</a></li>
+</ul>
+</details>
+<h2 id="introduction">Introduction</h2>
+<p>In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in <a href="#">Lab ??</a> you will add authentication and the ability to access the logged in user.</p>
+<p>The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.</p>
+<h2 id="exercise-1-install-additional-prerequisites">Exercise 1: Install additional prerequisites</h2>
+<p>This lab calls for a couple of additional prerequisites; please install them now.</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">REST Client add-in for Visual Studio Code</a> - You will use this to test your API locally</li>
+<li>(optional)<a href="https://azure.microsoft.com/products/storage/storage-explorer">Azure Storage Explorer</a> - This will allow you to view and modify the Trey Research database</li>
+</ul>
+<h2 id="exercise-2-configure-and-run-the-starting-application">Exercise 2: Configure and run the starting application</h2>
+<h3 id="step-1-download-the-starting-application">Step 1: Download the starting application</h3>
+<p>Begin by downloading the Copilot Camp repository at https://github.com/microsoft/copilot-camp. Select the "Code" button and clone or download the content to your computer.</p>
+<ol>
+<li>npm install</li>
+<li>F5</li>
+<li></li>
+</ol>
 
 
 
