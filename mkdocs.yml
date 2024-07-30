@@ -17,9 +17,9 @@ nav:
   - Lab A5 - Add a Declarative Copilot: 'pages/extend-m365-copilot/05-add-declarative-copilot/'
   - Lab A6 - Add authentication: 'pages/extend-m365-copilot/06-add-authentication/'
 - Path B Build Your Own Copilot: 
-  - Lab 00: 'pages/custom-engine/00-prerequisites.md'
-  - Lab 01: 'pages/custom-engine/01-custom-engine-copilot.md'
-  - Lab 02: 'pages/custom-engine/02-rag.md'
+  - Lab B0 - Prerequisites: 'pages/custom-engine/00-prerequisites.md'
+  - Lab B1 - Custom engine copilot: 'pages/custom-engine/01-custom-engine-copilot.md'
+  - Lab B2 - Retrieval Augmented Generation (RAG): 'pages/custom-engine/02-rag.md'
 theme:
   name: 'material'
   palette: 
