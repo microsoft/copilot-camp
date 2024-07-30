@@ -3,11 +3,11 @@
 In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. 
 
 ???+ "Navigating the Extending Copilot labs (A Path)"
-    - [Lab A0 - Prerequisites](/copilot-camp/pages/api-plugin/00-prerequisites)
+    - [Lab A0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites)
     - Lab A1 - Declarative Copilot (📍You are here)
-    - [Lab A2 - First API Plugin](/copilot-camp/pages/api-plugin/02-api-plugin)
-    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/api-plugin/03-add-to-api-plugin)
-    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/api-plugin/04-add-declarative-copilot)
+    - [Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin)
+    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/extend-m365-copilot/03-add-to-api-plugin)
+    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/04-add-declarative-copilot)
 
 In this lab you will learn:
 
@@ -44,30 +44,30 @@ So to keep things as simple as possible we will install `Teams Toolkit CLI` to c
 
 Go to your terminal of choice and type `teamsapp new` and select Enter. 
 
-![start creating the base app](../../assets/images/api-plugin-01/teamsapp-new-01.png)
+![start creating the base app](../../assets/images/extend-m365-copilot-01/teamsapp-new-01.png)
 
 ??? warning "Confused if you are really creating a teams app?"
     While it may appear that this command is used to create a new Teams application, it’s important to note that the process of packaging a declarative copilot shares similarities with that of a Teams app as mentioned in the introduction. So in the coming steps it will be a lot clear as you choose options to scaffold the base app. 
 
 Next, you can select the type of project you want to create. Select `Declarative Copilot` as shown in the screen and select Enter. Note that `Declarative Copilot` is the default new project option auto selected, so you can just select Enter.
 
-![select type of project](../../assets/images/api-plugin-01/teamsapp-new.png)
+![select type of project](../../assets/images/extend-m365-copilot-01/teamsapp-new.png)
 
 Next, you will be asked to choose the type of declarative copilot. Choose `Basic Declarative Copilot` and select Enter. 
 
-![select the type of declarative copilot](../../assets/images/api-plugin-01/teamsapp-new-02.png)
+![select the type of declarative copilot](../../assets/images/extend-m365-copilot-01/teamsapp-new-02.png)
 
 Next, type in the directory where the project folder has to be created.
 
-![choose the folder](../../assets/images/api-plugin-01/teamsapp-new-03.png)
+![choose the folder](../../assets/images/extend-m365-copilot-01/teamsapp-new-03.png)
 
 Next, give it an application name `Geo Locator Game` and select Enter. 
 
-![type in application name](../../assets/images/api-plugin-01/teamsapp-new-04.png)
+![type in application name](../../assets/images/extend-m365-copilot-01/teamsapp-new-04.png)
 
 The project will be created in a few seconds in the folder you mentioned with indication in the terminal that it is done as shown below. 
 
-![project created](../../assets/images/api-plugin-01/teamsapp-new-05.png)
+![project created](../../assets/images/extend-m365-copilot-01/teamsapp-new-05.png)
 
 Congratulations! You have successfully set up the base application! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
@@ -119,7 +119,7 @@ You could also update the logo files `color.png` and `outline.png` to make it ma
 ## Exercise 2: Update with instructions for Geo Locator game
 
 ### Step 1: Update necessar files
-First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/api-plugin-01/color.png) and replace it with the image of same name in the folder `appPackage` in your base project. 
+First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png) and replace it with the image of same name in the folder `appPackage` in your base project. 
 
 Next, go to the file `manifest.json` in the folder `appPackage` in your base project and find the node **copilotExtensions**. Update the id value of the declarativeCopilots array's first entry from `declarativeCopilot` to `dcGeolocator` to make this ID unique.
 
@@ -153,7 +153,7 @@ Now all the changes are done to the app, it's time to test it.
 
 ### Step 2: Test the app
 
-> At this point you should have already completed the [prerequisites](../api-plugin/00-prerequisites.md) lab and have logged into your developer tenant's Microsoft 365 account in the Teams Toolkit exension or it's left pane will not show up.
+> At this point you should have already completed the [prerequisites](../extend-m365-copilot/00-prerequisites.md) lab and have logged into your developer tenant's Microsoft 365 account in the Teams Toolkit exension or it's left pane will not show up.
 
 To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under `LIFECYCLE` select `Provision`. 
 
@@ -161,7 +161,7 @@ Teams toolkit at this instance will package all the files inside the `appPackage
 
 To test, you can now to Teams and select the `Copilot` app OR you could also use Teams toolkit and preview the app in Copilot by selecting `Preview in Copilot (Edge)` or `Preview in Copilot (Chrome)` from the launch configuration dropdown as shown below.
 
-![run app using Teams Toolkit](../../assets/images/api-plugin-01/dc-run.png)
+![run app using Teams Toolkit](../../assets/images/extend-m365-copilot-01/dc-run.png)
 
 Once the Copilot app is loaded, Select the "…" menu and select "Copilot chats".
 
@@ -171,8 +171,8 @@ You have now succefully loaded your Geo Locator Game with copilot. To say "Hi".
 
 See the full demo of how you can test this app. 
 
-![dem0](../../assets/images/api-plugin-01/demo-dc.gif)
+![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
 
 
 
-Congratulations you've successfully built your first Decalarative Copilot! Now let's build more complex extensions starting with an [API plugin](../api-plugin/02-api-plugin.md).
+Congratulations you've successfully built your first Decalarative Copilot! Now let's build more complex extensions starting with an [API plugin](../extend-m365-copilot/02-api-plugin.md).
