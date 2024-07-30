@@ -8,5 +8,6 @@ Our labs are a work in progress.
 
 ---8<--- "a-path-links.md"
 
-
 ### Path B - Build your own Copilot
+
+---8<--- "b-path-links.md"
