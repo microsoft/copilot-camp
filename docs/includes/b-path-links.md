@@ -1,3 +1,3 @@
-- [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-- [Lab B1 - Custom Engine Copilot](/copilot-camp/pages/custom-engine/01-custom-enging-copilot)
-- [Lab B2 - Retrievel Augmented Generation (RAG)](/copilot-camp/pages/custom-engine/02-rag)
+- [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) - DRAFT READY FOR TESTING
+- [Lab B1 - Custom Engine Copilot](/copilot-camp/pages/custom-engine/01-custom-enging-copilot) - DRAFT READY FOR TESTING
+- [Lab B2 - Retrievel Augmented Generation (RAG)](/copilot-camp/pages/custom-engine/02-rag) - DRAFT READY FOR TESTING
