@@ -8,12 +8,12 @@ extra_css:
 nav: 
 - Home: 'index.md'
 - Path A Extend Copilot: 
-  - Welcome : 'pages/api-plugin/index.md'
-  - Lab A0 - Prerequisites: 'pages/api-plugin/00-prerequisites.md'
-  - Lab A1 - Declarative Copilot: 'pages/api-plugin/01-declarative-copilot.md'
-  - Lab A2 - First API Plugin: 'pages/api-plugin/02-api-plugin.md'
-  - Lab A3 - Extend an API Plugin: 'pages/api-plugin/03-add-to-api-plugin/'
-  - Lab A4 - Add a Declarative Copilot: 'pages/api-plugin/04-add-declarative-copilot/'
+  - Welcome : 'pages/extend-m365-copilot/index.md'
+  - Lab A0 - Prerequisites: 'pages/extend-m365-copilot/00-prerequisites.md'
+  - Lab A1 - Declarative Copilot: 'pages/extend-m365-copilot/01-declarative-copilot.md'
+  - Lab A2 - First API Plugin: 'pages/extend-m365-copilot/02-api-plugin.md'
+  - Lab A3 - Extend an API Plugin: 'pages/extend-m365-copilot/03-add-to-api-plugin/'
+  - Lab A4 - Add a Declarative Copilot: 'pages/extend-m365-copilot/04-add-declarative-copilot/'
 - Path B Build Your Own Copilot: 
   - Lab 00: 'pages/custom-engine/00-prerequisites.md'
   - Lab 01: 'pages/custom-engine/01-custom-engine-copilot.md'
