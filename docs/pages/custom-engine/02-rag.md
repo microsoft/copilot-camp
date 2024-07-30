@@ -106,7 +106,7 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 
 ## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
 
-For this exercise, download [resumes.zip]() and unzip the folder.
+For this exercise, download [fictitious_resumes.zip](../../src/custom-engine-copilot/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
