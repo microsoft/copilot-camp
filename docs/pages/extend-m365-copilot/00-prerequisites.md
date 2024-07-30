@@ -50,8 +50,17 @@ By default, end users can't upload applications directly; instead an administrat
 a. Navigate to [https://admin.microsoft.com/}](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
 b. In the left panel of the admin center, select "Show all" to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
 c. In the left of the Microsoft Teams admin center, open the Teams apps accordion 1️⃣ and select Setup Policies 2️⃣. You will see a list of App setup policies. Select the Global (Org-wide default) policy 3️⃣.
+
+![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-007-TeamsAdmin1.png)
+
 d. Ensure the first switch, "Upload custom apps" is turned On.
+
+![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-008-TeamsAdmin2.png)
+
 e. Be sure to scroll down and select the "Save" button to persist your change.
+
+![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-008-TeamsAdmin2b.png)
+
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
 ## Exercise 2: Install Teams Toolkit and prerequisites
@@ -67,6 +76,9 @@ NodeJS is a program that allows you to run JavaScript on your computer; it uses 
 
 Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 20.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version LTS.
 
+???+ tip "If you need more than one version of NodeJS"
+    Browse to https://nodejs.org/en/download/ and install the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 14.17.4 and 16.14.0. If you already have another version of NodeJS installed, you may want to set up the Node Version Manager (or this variation for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
+
 ### Step 3: Install Teams Toolkit
 
 These labs are based on the latest general available version of [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
@@ -77,6 +89,8 @@ Follow the steps as shown in the screen shot below.
 2️⃣ Search for "Teams" and locate Teams Toolkit
 
 3️⃣ Click "Install"
+
+![Open the App setup policies](../../assets/images/extend-m365-copilot-00/install-ttk.png)
 
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
