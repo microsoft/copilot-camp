@@ -5,10 +5,10 @@ In this lab, you will set up the development environment to build, test, and dep
 
 ???+ "Navigating the Extending Copilot labs (A Path)"
     - Lab A0 - Prerequisites (📍You are here)
-    - [Lab A1 - Declarative Copilot](/copilot-camp/pages/api-plugin/01-declarative-copilot)
-    - [Lab A2 - First API Plugin](/copilot-camp/pages/api-plugin/02-api-plugin)
-    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/api-plugin/03-add-to-api-plugin)
-    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/api-plugin/04-add-declarative-copilot)
+    - [Lab A1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot)
+    - [Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin)
+    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/extend-m365-copilot/03-add-to-api-plugin)
+    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/04-add-declarative-copilot)
 
 In this lab you will learn:
 
