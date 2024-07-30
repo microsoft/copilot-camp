@@ -10,7 +10,8 @@ If you're used to coming here for samples, they have moved!
 
 We have started working on "Copilot Camp", a virtual workshop for professional developers who want to learn how to build Copilot for Microsoft 365 extensions including plugins, declarative copilots, and custom engine copilots!
 
-Go to [https://fuzzy-adventure-4g2n9vm.pages.github.io/](https://fuzzy-adventure-4g2n9vm.pages.github.io/) to see how it's going...
+Go to [https://microsoft.github.io/copilot-camp/](https://microsoft.github.io/copilot-camp/) to see how it's going.
+We really appreciate your feedback!! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues!
 
 ## Contributing
 
