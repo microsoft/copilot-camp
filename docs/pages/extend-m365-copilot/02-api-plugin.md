@@ -121,18 +121,20 @@ Click the "Try it now" link 1️⃣ to show suggested prompts, and select the pr
 
 ![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot03.png)
 
-You may be asked to consent to call the web service; click "Always allow" or "Allow" to proceed.
+You may be asked to consent to call the web service; if so, click "Always allow" or "Allow" to proceed.
 
 ![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot04.png)
 
 Finally, you should see a list of Avery's projects!
 
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot05.png)
+![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot05b.png)
+
+Notice that even though Copilot addressed the user as "Robert" (since that's who made the screen shot), it still thinks the user is "Avery Howard". That's because we haven't implemented authentication yet; that will be handled in [Lab A6](06-add-authentication.md).
 
 ## CONGRATULATIONS
 
 You have completed Lab A2 - First API Plugin!
-You are now ready to proceed to [Lab A3 - Extend an API Plugin](/copilot-camp/pages/extend-m365-copilot/03-add-to-api-plugin).
+You are now ready to proceed to [Lab A3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin).
 
 
 
