@@ -4,10 +4,13 @@ In this lab you will set up an API based on Azure Functions and install it as an
 
 ???+ "Navigating the Extending Copilot labs (A Path)"
     - [Lab A0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites)
-    - [Lab A1 - Declarative Copilot](/copilot-camp/pages/01-declarative-copilot.md)
-    - Lab A2 - First API Plugin (📍You are here)
-    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/extend-m365-copilot/03-add-to-api-plugin)
-    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/04-add-declarative-copilot)
+    - [Lab A1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot)
+    - [Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin) (📍You are here)
+    - [Lab A3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) 
+    - [Lab A4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card)
+    - [Lab A5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
+    - [Lab A6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
+
 
 ## Introduction
 

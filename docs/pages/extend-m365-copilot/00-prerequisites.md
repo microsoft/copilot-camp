@@ -4,11 +4,13 @@
 In this lab, you will set up the development environment to build, test, and deploy the plugins that will extend the capabilities of Copilot for Microsoft 365.
 
 ???+ "Navigating the Extending Copilot labs (A Path)"
-    - Lab A0 - Prerequisites (📍You are here)
+    - [Lab A0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites) (📍You are here)
     - [Lab A1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot)
     - [Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin)
-    - [Lab A3 - Extend an API Plugin](/copilot-camp/pages/extend-m365-copilot/03-add-to-api-plugin)
-    - [Lab A4 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/04-add-declarative-copilot)
+    - [Lab A3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) 
+    - [Lab A4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card)
+    - [Lab A5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
+    - [Lab A6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
 
 In this lab you will learn:
 
