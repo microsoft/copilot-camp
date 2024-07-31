@@ -3,4 +3,4 @@
 - [Lab B2 - Bring your data (RAG)](/copilot-camp/pages/custom-engine/02-rag) - DRAFT READY FOR TESTING
 - [Lab B3 - Powered by AI Kit](/copilot-camp/pages/custom-engine/03-powered-by-ai) - COMING SOON
 - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions) - COMING SOON
-- [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/045add-authentication) - COMING SOON
+- [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/05add-authentication) - COMING SOON
