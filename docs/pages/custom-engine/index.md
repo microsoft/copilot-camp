@@ -13,4 +13,4 @@ During Path B of the Copilot Camp, learners will develop a custom AI chatbot spe
     - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions) Add actions to handle complex tasks
     - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/04-add-authentication) Secure your solution using Entra ID authentication
   
-## <a href="./00-prerequisites">Start here</a> with Lab 00, where you'll set up development your environment.
+## <a href="./00-prerequisites">Start here</a> with Lab B0, where you'll set up development your environment.
