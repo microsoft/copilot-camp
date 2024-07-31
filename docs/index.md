@@ -22,7 +22,7 @@ _Note: These labs require the "Private Preview" for Copilot for M365 extensibili
 
 We're starting with the hands-on labs because those require the most testing. We expect them to require some updates as the products move to Public Preview.
 
-We aspire to release this in mid-September 2024 to coincide with the [Microsoft AI Tour](https://envision.microsoft.com/home#festivalblade1){target=_blank}. Between now and then we want to add a lot of cool fetures remininscent of [https://aka.ms/app-camp](Teams App Camp), including:
+We aspire to release this in mid-September 2024 to coincide with the [Microsoft AI Tour](https://envision.microsoft.com/home#festivalblade1){target=_blank}. Between now and then we want to add a lot of cool fetures remininscent of [App Camp](https://aka.ms/app-camp){target=_blank}, including:
 
  * Lots of videos to help people choose the right approach, understand the concepts, and provide a walk-through of each lab
  * Written details and explanations users can open up to view if they wish
