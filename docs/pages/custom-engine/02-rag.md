@@ -8,7 +8,7 @@ In this lab you will enable Retrieval-Augmented Generation for your custom engin
     - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag) (📍 You are here)
     - [Lab B3 - Enhance user experience](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions)
-    - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/05-add-authentication)
+    - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/05-authentication)
 
 In this lab you will learn:
 
