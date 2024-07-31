@@ -21,7 +21,7 @@
             "name": "SharePoint",
             "file_containers": [
                 {
-                    "path": "https://testtestcp36599.sharepoint.com/sites/TreyResearchLegalDocuments"
+                    "path": "https://<your-tenant>.sharepoint.com/sites/TreyResearchLegalDocuments"
                 }
             ]
         }
