@@ -3,11 +3,12 @@
 In this lab you will enable Retrieval-Augmented Generation for your custom engine copilot and integrate with Azure AI Search to chat with your data.
 
 ???+ info "Navigating the Building your own copilot labs (B Path)"
-    - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) Set up your development environment
-    - [Lab B1 - Build custom engine copilots](/copilot-camp/pages/custom-engine/01-custom-engine-copilot) Build custom engine copilots using Azure OpenAI and Teams Toolkit
-    - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag) Set up a local Bring your data from Azure AI Search to your app  (📍 You are here)
-    - [Lab B3 - Enhance user experience](/copilot-camp/pages/custom-engine/03-powered-by-ai) Enhance user experience with Powered by AI kit
-    - [Lab B4 - Add authentication](/copilot-camp/pages/custom-engine/04-add-authentication) Secure your solution using Entra ID authentication
+    - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
+    - [Lab B1 - Build custom engine copilots](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
+    - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag) (📍 You are here)
+    - [Lab B3 - Enhance user experience](/copilot-camp/pages/custom-engine/03-powered-by-ai)
+    - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions)
+    - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/05-add-authentication)
 
 In this lab you will learn:
 

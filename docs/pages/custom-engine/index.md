@@ -8,8 +8,9 @@ During Path B of the Copilot Camp, learners will develop a custom AI chatbot spe
 ???+ info "Here are the labs"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) Set up your development environment
     - [Lab B1 - Build custom engine copilots](/copilot-camp/pages/custom-engine/01-custom-engine-copilot) Build custom engine copilots using Azure OpenAI and Teams Toolkit
-    - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag) Set up a local Bring your data from Azure AI Search to your app
+    - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag) Bring your data from Azure AI Search to your app
     - [Lab B3 - Enhance user experience](/copilot-camp/pages/custom-engine/03-powered-by-ai) Enhance user experience with Powered by AI kit
-    - [Lab B4 - Add authentication](/copilot-camp/pages/custom-engine/04-add-authentication) Secure your solution using Entra ID authentication
+    - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions) Add actions to handle complex tasks
+    - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/04-add-authentication) Secure your solution using Entra ID authentication
   
 ## <a href="./00-prerequisites">Start here</a> with Lab 00, where you'll set up development your environment.
