@@ -6,9 +6,11 @@ Welcome to Copilot Camp! This is a work in progress, but some of the labs are re
 
 Copilot Camp is a virtual workshop for professional developers who want to learn how to build Copilot for Microsoft 365 extensions including plugins, declarative copilots, and custom engine copilots. It all begins with hands-on labs, but over time we will add instructional material, videos, graphics, and more!
 
-We really appreciate your feedback!! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues!
+We really appreciate your feedback!! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot Camp Early Testers" chat in Microsoft Teams.
 
 ### Path A - Extend Copilot for Microsoft 365
+
+_Note: These labs require the "Private Preview" for Copilot for M365 extensibility. There may be some changes for "Public Preview" when it's available._
 
 ---8<--- "a-path-links.md"
 
