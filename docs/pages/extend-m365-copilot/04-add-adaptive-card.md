@@ -491,10 +491,11 @@ You will be brought into Microsoft Teams, where you will be prompted to install 
 ![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot02.png)
 
 Now try a prompt such as "what projects are we doing for adatum?"
+This time instead of just the text response you will also get a rich card with information of the project.
 
+![Adaptive card in response](../../assets/images/extend-m365-copilot-04/project-adaptive.png)
 
-
-You may see a confirmation card, even for the GET request. If you do, allow the request to view the project details.
+You can now test other prompts as well to see the improved responses from Copilot for Microsoft 365.
 
 ## CONGRATULATIONS
 

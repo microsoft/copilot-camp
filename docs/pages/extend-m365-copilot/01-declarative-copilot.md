@@ -44,7 +44,7 @@ You can use just an editor to create a declarative copilot if you know the struc
 So to keep things as simple as possible we will install `Teams Toolkit CLI` to create declarative copilot with a base template for the app.
 
 
-!!! warning "Warning: The prerequisites are currently quite extensive, but this will change with the public preview of Teams toolkit"
+!!! warning "Warning: The prerequisites are currently quite extensive, but this will change with the public preview of Declarative Copilots"
     
 
 ### Step 1: Software Pre-Requisites 
