@@ -147,7 +147,8 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
 
 - Locate the function **getUserInformation** and after the `properties` node add below `static_template` node.
 
-```JSON
+```
+
   "static_template":{
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
             "type": "AdaptiveCard",
@@ -209,7 +210,8 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
              
             ]
   }
-  ```
+```
+
 - Locate the function **getProjects** and after the `properties` node add below `static_template` node.
 
 ```JSON
@@ -397,6 +399,7 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
 ```
 
 - Locate the function **postBillhours** and after the `properties` node add below `static_template` node.
+
 ```JSON
 "static_template": {
             "type": "AdaptiveCard",
@@ -431,7 +434,6 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
             ]
 }
 ```
-
 
 - Locate the function **postAssignConsultant** and after the `properties` node add below `static_template` node.
 
@@ -476,9 +478,11 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
                 "text": "status: ${if(status, status, 'N/A')}",
                 "wrap": true
               }
-            ]
+        ]
  }
- ```
+
+```
+
 
 ## Exercise 3: Test the plugin in Copilot
 
@@ -490,8 +494,11 @@ You will be brought into Microsoft Teams, where you will be prompted to install 
 
 ![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot02.png)
 
-Now try a prompt such as "what projects are we doing for adatum?"
-This time instead of just the text response you will also get a rich card with information of the project.
+Now try a prompt such below
+
+ *what projects are we doing for adatum?*
+
+Instead of just the text response you will also get a rich card with information of the project.
 
 ![Adaptive card in response](../../assets/images/extend-m365-copilot-04/project-adaptive.png)
 
