@@ -29,7 +29,7 @@ theme:
   palette: 
     primary: '#35258F'
     accent: '#091F2C'
-  #logo: 'assets/microsoftteams_appcamp-webheader3.png'
+  logo: 'assets/images/logo-copilot-camp.jpg'
   icon:
     repo: fontawesome/brands/github
   features:
