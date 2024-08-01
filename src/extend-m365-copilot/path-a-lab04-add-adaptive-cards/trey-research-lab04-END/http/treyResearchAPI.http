@@ -62,7 +62,7 @@ Content-Type: application/json
 
 {
     "projectName": "contoso",
-    "consultantName": "lois",
+    "consultantName": "sanjay",
     "role": "architect",
     "forecast": 30
 }

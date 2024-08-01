@@ -43,7 +43,45 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 You can use just an editor to create a declarative copilot if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
 So to keep things as simple as possible we will install `Teams Toolkit CLI` to create declarative copilot with a base template for the app.
 
-### Step 1: Use Teams Toolkit CLI to create a new app
+
+!!! warning "Warning: The prerequisites are currently quite extensive, but this will change with the public preview of Teams toolkit"
+    
+
+### Step 1: Software Pre-Requisites 
+
+- Install Teams Toolkit
+
+```
+npm i -g @microsoft/teamsapp-cli@3.0.1-rc-hotfix.1 
+```
+
+- Download VSIX from [Download Teams Toolkit for declartive copilot](https://github.com/OfficeDev/TeamsFx/actions/runs/8997694267/artifacts/1483128080) 
+- Unzip the downloaded zip and make sure VSIX file is in the folder 
+- Open Visual Studio Code 
+- Click "View" -> "Extensions" 
+- Click "..." and "Install from VSIX" 
+- Set these Environment Variables (Refer to this website)	 
+```
+"TEAMSFX_DECLARATIVE_COPILOT" = "true"
+
+"API_COPILOT_PLUGIN" = "true"
+```
+- Run the following steps when opening a project in Visual Studio Code (These steps are not required for future use) 
+- In vscode command-palette: configure runtime argument (Ctrl+Shift+P) 
+- Add a new property: "enable-proposed-api": ["teamsdevapp.ms-teams-vscode-extension"] 
+- Restart Visual Studio Code 
+
+### Step 2: Environment Pre-Requisites 
+
+- You need to be on the private preview tenant 
+- Your mailbox needs to be in SDFv2
+- You will need to turn on specific flights to get access to all the features 
+- Access [Office chat](https://office.com/chat) 
+- Once Office chat is available, click on the … menu  
+- To persist the changes between browser sessions, enable "Use local storage"
+
+
+### Step 3: Use Teams Toolkit CLI to create a new app
 
 Go to your terminal of choice and type `teamsapp new` and select Enter. 
 
@@ -74,7 +112,7 @@ The project will be created in a few seconds in the folder you mentioned with in
 
 Congratulations! You have successfully set up the base application! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
-### Step 2: Understanding the files in the app
+### Step 4: Understanding the files in the app
 
 Here's how the base project looks like: 
 
@@ -121,7 +159,7 @@ You could also update the logo files `color.png` and `outline.png` to make it ma
 
 ## Exercise 2: Update with instructions for Geo Locator game
 
-### Step 1: Update necessar files
+### Step 1: Update necessary files
 First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png) and replace it with the image of same name in the folder `appPackage` in your base project. 
 
 Next, go to the file `manifest.json` in the folder `appPackage` in your base project and find the node **copilotExtensions**. Update the id value of the declarativeCopilots array's first entry from `declarativeCopilot` to `dcGeolocator` to make this ID unique.
@@ -177,5 +215,4 @@ See the full demo of how you can test this app.
 ![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
 
 
-
-Congratulations you've successfully built your first Decalarative Copilot! Now let's build more complex extensions starting with an [API plugin](../extend-m365-copilot/02-api-plugin.md).
+Congratulations you've successfully built your first Decalarative Copilot! With your basic understanding of declarative copilot, you can now learn how to integrate an API plugin. To get started, first create your API plugin[Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin).
