@@ -49,32 +49,22 @@ So to keep things as simple as possible we will install `Teams Toolkit CLI` to c
 
 ### Step 1: Software Pre-Requisites 
 
-- Install Teams Toolkit Command Line Interface (CLI) 3.0.2 or newer
+- Install Teams Toolkit Command Line Interface (CLI) latest stable version
 
 ```
 npm i -g @microsoft/teamsapp-cli
 ```
-Teams Toolkit 5.8.1 or newer
 
-- Set these Environment Variables (Refer to this website)	 
+- Set these Environment Variables [(Refer to this article)](https://chlee.co/how-to-setup-environment-variables-for-windows-mac-and-linux/)	 
 ```
 "TEAMSFX_DECLARATIVE_COPILOT" = "true"
 
-"API_COPILOT_PLUGIN" = "true"
 ```
-- Run the following steps when opening a project in Visual Studio Code (These steps are not required for future use) 
-- In vscode command-palette: configure runtime argument (Ctrl+Shift+P) 
-- Add a new property: "enable-proposed-api": ["teamsdevapp.ms-teams-vscode-extension"] 
-- Restart Visual Studio Code 
 
 ### Step 2: Environment Pre-Requisites 
 
 - You need to be on the private preview tenant 
-- Your mailbox needs to be in SDFv2
-- You will need to turn on specific flights to get access to all the features 
-- Access [Office chat](https://office.com/chat) 
-- Once Office chat is available, click on the … menu  
-- To persist the changes between browser sessions, enable "Use local storage"
+- To test you'll need to go to [https://microsoft365.com/chat](https://microsoft365.com/chat) 
 
 
 ### Step 3: Use Teams Toolkit CLI to create a new app
