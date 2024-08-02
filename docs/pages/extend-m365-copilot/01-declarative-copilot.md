@@ -49,17 +49,13 @@ So to keep things as simple as possible we will install `Teams Toolkit CLI` to c
 
 ### Step 1: Software Pre-Requisites 
 
-- Install Teams Toolkit
+- Install Teams Toolkit Command Line Interface (CLI) 3.0.2 or newer
 
 ```
-npm i -g @microsoft/teamsapp-cli@3.0.1-rc-hotfix.1 
+npm i -g @microsoft/teamsapp-cli
 ```
+Teams Toolkit 5.8.1 or newer
 
-- Download VSIX from [Download Teams Toolkit for declartive copilot](https://github.com/OfficeDev/TeamsFx/actions/runs/8997694267/artifacts/1483128080) 
-- Unzip the downloaded zip and make sure VSIX file is in the folder 
-- Open Visual Studio Code 
-- Click "View" -> "Extensions" 
-- Click "..." and "Install from VSIX" 
 - Set these Environment Variables (Refer to this website)	 
 ```
 "TEAMSFX_DECLARATIVE_COPILOT" = "true"
