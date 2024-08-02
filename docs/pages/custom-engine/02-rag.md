@@ -1,14 +1,14 @@
-# Lab B2 - Bring your data from Azure AI Search to your app
+# Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot
 
 In this lab you will enable Retrieval-Augmented Generation for your custom engine copilot and integrate with Azure AI Search to chat with your data.
 
 ???+ info "Navigating the Building your own copilot labs (B Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build custom engine copilots](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag) (📍 You are here)
-    - [Lab B3 - Enhance user experience](/copilot-camp/pages/custom-engine/03-powered-by-ai)
-    - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions)
-    - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/05-authentication)
+    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag) (📍 You are here)
+    - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
+    - [Lab B4 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/04-actions)
+    - [Lab B5 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/05-authentication)
 
 In this lab you will learn:
 
@@ -78,9 +78,9 @@ You'll need to complete the Azure subscription pre-requisite before starting wit
     - **Resource group:** Select the pre-existing resource group you created earlier for Azure OpenAI service.
     - **Name:** A descriptive name for your Azure OpenAI Service resource, such as `copilotcamp-ai-search`.
     - **Location:** The location of your instance.
-    - **Pricing Tier:** Standard
+    - **Pricing Tier:** Basic
 
-Once your Azure AI Search service resource is created successfully, navigate to your resource, In **Overview**, copy and save `Url`. Then, navigate to **Keys**, copy and save `Primary admin key`. Both of them will be required later in the following exercises.
+Once your Azure AI Search service resource is created successfully, navigate to your resource, In **Overview**, copy and save `Url`. Then, navigate to **Keys** tab under the **Settings**, copy and save `Primary admin key`. Both of them will be required later in the following exercises.
 
 ### Step 2: Create a storage account service resource
 
@@ -114,7 +114,7 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 
 ## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
 
-For this exercise, download [fictitious_resumes.zip](../../../src/custom-engine-copilot/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
+For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-copilot/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
@@ -136,6 +136,8 @@ For this exercise, download [fictitious_resumes.zip](../../../src/custom-engine-
 1. Select **Browse for a file** and select the pdf documents from the `resumes` folder. Then, select **Upload files** and **Next**.
 1. Select Search type as `Vector` and chunk size as `1024(Default)`, then **Next**.
 1. Select `API Key` as Azure resource authentication type, then **Next**.
+
+It takes couple of minutes to complete the data ingestion. Once the data is ready, you can proceed with testing.
 
 ### Step 2: Test your data on Azure OpenAI Studio
 
@@ -271,6 +273,11 @@ defaultPrompt: async () => {
 Let's test Career Genie on Teams this time. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
 !!! tip "Tip: Asking questions about your data"
-    Ensure your questions are related to your dataset. Go through pdf documents in the `resumes` folder to understand more about your data. Challenge your custom engine copilot by combining requirements and asking complex questions!
+    Ensure your questions are related to your dataset. Go through pdf documents in the `resumes` folder to understand more about your data. Challenge your custom engine copilot by combining requirements and asking complex questions! Some suggestions would be:
+
+    - *Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?*
+    - *Who are the other good candidates?*
+    - *Who would be suitable for a position that requires 5+ python development experience?*
+    - *Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?*
 
 ![Chat with your data on Teams](../../assets/images/custom-engine-02/byod-teams.gif)
