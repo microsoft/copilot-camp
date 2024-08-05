@@ -104,10 +104,8 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 - **Select a model:** `text-embedding-ada-002`.
 - **Model version:** Default.
 - **Deployment type:** Standard.
-- **Deployment name:** Choose a memorable name, such as `text-embeddings`, and make note of it
+- **Deployment name:** Choose a memorable name, such as `text-embeddings`
 - **Content Filter:** Default.
-
-Make note of the deployment name; later you will use this as the EMBEDDING_DEPLOYMENT_NAME environment variable.
 
 !!! tip "Tip: Handling no quota available message"
     When you select a model, you may see **No quota available** message pop-up on top of the configuration page. To handle this, you have two options:
@@ -182,7 +180,6 @@ AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='<Your-Text-Embedding-Model-Name>'
 SECRET_AZURE_SEARCH_KEY='<Your-Azure-AI-Search-Key>'
 AZURE_SEARCH_ENDPOINT='<Your-Azure-AI-Search-Endpoint>'
 INDEX_NAME='<Your-index-name>'
-EMBEDDING_DEPLOYMENT_NAME='<Your-embeddiing-deployment-name>'
 ```
 
 Open `teamsapp.local.yml` and add the following snippet at the bottom of the file, under `uses: file/createOrUpdateEnvironmentFile`:
@@ -192,7 +189,6 @@ AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAM
 AZURE_SEARCH_KEY: ${{SECRET_AZURE_SEARCH_KEY}}
 AZURE_SEARCH_ENDPOINT: ${{AZURE_SEARCH_ENDPOINT}}
 INDEX_NAME: ${{INDEX_NAME}}
-EMBEDDING_DEPLOYMENT_NAME: ${{EMBEDDING_DEPLOYMENT_NAME}}
 ```
 
 Navigate to `src/config.ts` and add the following snippet inside `config`:
@@ -202,7 +198,6 @@ azureOpenAIEmbeddingDeploymentName: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMEN
 azureSearchKey: process.env.AZURE_SEARCH_KEY,
 azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
 indexName: process.env.INDEX_NAME,
-embeddingDeploymentName: process.env.EMBEDDING_DEPLOYMENT_NAME
 ```
 
 ### Step 2: Configure Azure AI Search in your source code
@@ -226,7 +221,7 @@ Open `src/prompts/chat/config.json` in your project, then add `data_sources` ins
         "top_n_documents": 5,
         "embedding_dependency": {
         "type": "deployment_name",
-        "deployment_name": "$embeddingDeploymentName"
+        "deployment_name": "$azureOpenAIEmbeddingDeploymentName"
         }
     }
 }
@@ -267,13 +262,14 @@ defaultPrompt: async () => {
     const dataSources = (template.config.completion as any)['data_sources'];
 
     dataSources.forEach((dataSource: any) => {
-        if (dataSource.type === 'azure_search') {
+      if (dataSource.type === 'azure_search') {
         dataSource.parameters.authentication.key = config.azureSearchKey;
         dataSource.parameters.endpoint = config.azureSearchEndpoint;
         dataSource.parameters.indexName = config.indexName;
-        dataSource.parameters.embedding_dependency.deployment_name = config.embeddingDeploymentName;
+        dataSource.parameters.embedding_dependency.deployment_name =
+          config.azureOpenAIEmbeddingDeploymentName;
         dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
-        }
+      }
     });
 
     return template;
