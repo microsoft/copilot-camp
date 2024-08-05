@@ -104,8 +104,10 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 - **Select a model:** `text-embedding-ada-002`.
 - **Model version:** Default.
 - **Deployment type:** Standard.
-- **Deployment name:** Recommended to use a memorable name, such as `text-embeddings`.
+- **Deployment name:** Choose a memorable name, such as `text-embeddings`, and make note of it
 - **Content Filter:** Default.
+
+Make note of the deployment name; later you will use this as the EMBEDDING_DEPLOYMENT_NAME environment variable.
 
 !!! tip "Tip: Handling no quota available message"
     When you select a model, you may see **No quota available** message pop-up on top of the configuration page. To handle this, you have two options:
@@ -127,11 +129,13 @@ For this exercise, download [fictitious_resumes.zip](https://github.com/microsof
     - **Subscription:** Select the subscription you created your Azure resources.
     - **Select Azure Blob storage resource:** Select your storage resource, `copilotcampstorage`. (You'll see a message *Azure OpenAI needs your permission to access this resource*, select **Turn on CORS**.)
     - **Select Azure AI Search resource:** Select your Azure AI Search resournce, `copilotcamp-ai-search`.
-    - **Enter the index name:** Index name, such as `resumes`.
+    - **Enter the index name:** Index name, such as `resumes`; make note of this
     - Select the box for **Add vector search to this search resource**.
     - **Select an embedding model:** Select your text-embedding-ada-002 model, `text-embeddings`.
 
-    ![Upload your data source](../../assets/images/custom-engine-02/add-data-source-aoai.png)
+Take note of the index name as you will use this in the INDEX_NAME environment variable.
+
+![Upload your data source](../../assets/images/custom-engine-02/add-data-source-aoai.png)
 
 1. Select **Browse for a file** and select the pdf documents from the `resumes` folder. Then, select **Upload files** and **Next**.
 1. Select Search type as `Vector` and chunk size as `1024(Default)`, then **Next**.
@@ -177,6 +181,8 @@ In your Career Genie project, navigate to `env/.env.local.user` and paste the fo
 AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='<Your-Text-Embedding-Model-Name>'
 SECRET_AZURE_SEARCH_KEY='<Your-Azure-AI-Search-Key>'
 AZURE_SEARCH_ENDPOINT='<Your-Azure-AI-Search-Endpoint>'
+INDEX_NAME='<Your-index-name>'
+EMBEDDING_DEPLOYMENT_NAME='<Your-embeddiing-deployment-name>'
 ```
 
 Open `teamsapp.local.yml` and add the following snippet at the bottom of the file, under `uses: file/createOrUpdateEnvironmentFile`:
@@ -185,6 +191,8 @@ Open `teamsapp.local.yml` and add the following snippet at the bottom of the fil
 AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}}
 AZURE_SEARCH_KEY: ${{SECRET_AZURE_SEARCH_KEY}}
 AZURE_SEARCH_ENDPOINT: ${{AZURE_SEARCH_ENDPOINT}}
+INDEX_NAME: ${{INDEX_NAME}}
+EMBEDDING_DEPLOYMENT_NAME: ${{EMBEDDING_DEPLOYMENT_NAME}}
 ```
 
 Navigate to `src/config.ts` and add the following snippet inside `config`:
@@ -192,7 +200,9 @@ Navigate to `src/config.ts` and add the following snippet inside `config`:
 ```typescript
 azureOpenAIEmbeddingDeploymentName: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME,
 azureSearchKey: process.env.AZURE_SEARCH_KEY,
-azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT
+azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
+indexName: process.env.INDEX_NAME,
+embeddingDeploymentName: process.env.EMBEDDING_DEPLOYMENT_NAME
 ```
 
 ### Step 2: Configure Azure AI Search in your source code
@@ -205,7 +215,7 @@ Open `src/prompts/chat/config.json` in your project, then add `data_sources` ins
     "type": "azure_search",
     "parameters": {
         "endpoint": "$searchEndpoint",
-        "index_name": "resumes",
+        "index_name": "$indexName",
         "authentication": {
             "type": "api_key",
             "key": "$searchApiKey"
@@ -216,7 +226,7 @@ Open `src/prompts/chat/config.json` in your project, then add `data_sources` ins
         "top_n_documents": 5,
         "embedding_dependency": {
         "type": "deployment_name",
-        "deployment_name": "text-embeddings"
+        "deployment_name": "$embeddingDeploymentName"
         }
     }
 }
@@ -260,6 +270,8 @@ defaultPrompt: async () => {
         if (dataSource.type === 'azure_search') {
         dataSource.parameters.authentication.key = config.azureSearchKey;
         dataSource.parameters.endpoint = config.azureSearchEndpoint;
+        dataSource.parameters.indexName = config.indexName;
+        dataSource.parameters.embedding_dependency.deployment_name = config.embeddingDeploymentName;
         dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
         }
     });
