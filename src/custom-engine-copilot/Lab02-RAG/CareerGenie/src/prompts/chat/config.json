@@ -28,7 +28,7 @@
               "top_n_documents": 5,
               "embedding_dependency": {
                 "type": "deployment_name",
-                "deployment_name": "$embeddingDeploymentName"
+                "deployment_name": "$azureOpenAIEmbeddingDeploymentName"
               }
           }
       }
