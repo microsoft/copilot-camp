@@ -6,7 +6,9 @@ const config = {
   azureOpenAIDeploymentName: process.env.AZURE_OPENAI_DEPLOYMENT_NAME,
   azureOpenAIEmbeddingDeploymentName: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME,
   azureSearchKey: process.env.AZURE_SEARCH_KEY,
-  azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT
+  azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
+  indexName: process.env.INDEX_NAME,
+  embeddingDeploymentName: process.env.EMBEDDING_DEPLOYMENT_NAME
 };
 
 export default config;
