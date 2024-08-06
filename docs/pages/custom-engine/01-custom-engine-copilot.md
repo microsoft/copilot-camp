@@ -10,9 +10,9 @@ In this lab you will build a custom engine copilot using Teams Toolkit for Visua
     - [Lab B4 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/04-actions)
     - [Lab B5 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/05-authentication)
 
-In this lab you will learn:
+In this lab you will:
 
-- What is a custom engine copilot
+- Learn what is a custom engine copilot
 - Create Azure OpenAI service and a deployment model
 - Create a custom engine copilot using Teams toolkit
 - Define a prompt in your custom engine copilot
