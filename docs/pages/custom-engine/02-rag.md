@@ -218,7 +218,7 @@ Open `src/prompts/chat/config.json` in your project, then add `data_sources` ins
         "query_type":"vector",
         "in_scope": true,
         "strictness": 3,
-        "top_n_documents": 5,
+        "top_n_documents": 3,
         "embedding_dependency": {
         "type": "deployment_name",
         "deployment_name": "$azureOpenAIEmbeddingDeploymentName"
@@ -228,10 +228,14 @@ Open `src/prompts/chat/config.json` in your project, then add `data_sources` ins
 ]
 ```
 
-Open `src/prompts/chat/skprompt.txt` and add the following line in your prompt:
+Open `src/prompts/chat/skprompt.txt` and update the prompt as the following:
 
 ```
-Use the context provided in the `<context></context>` tags as the source for your answers.
+You are a career specialist named "Career Genie" that helps Human Resources team for finding the right candidate for the jobs. 
+You are friendly and professional.
+You always greet users with excitement and introduce yourself first.
+You like using emojis where appropriate.
+Always mention all citations in your content.
 ```
 
 Open the terminal in Visual Studio Code, and run the following script from the project root:
