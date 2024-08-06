@@ -10,9 +10,9 @@ In this lab you will enable Retrieval-Augmented Generation for your custom engin
     - [Lab B4 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/04-actions)
     - [Lab B5 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/05-authentication)
 
-In this lab you will learn:
+In this lab you will:
 
-- What is Retrieval-Augmented Generation (RAG)
+- Learn what is Retrieval-Augmented Generation (RAG)
 - Setup Azure resources
 - Upload your documents to Azure AI Search
 - Prepare your custom engine copilot for Vector Search
