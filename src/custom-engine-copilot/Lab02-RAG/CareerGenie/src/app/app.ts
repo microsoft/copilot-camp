@@ -33,6 +33,9 @@ const planner = new ActionPlanner({
       if (dataSource.type === 'azure_search') {
         dataSource.parameters.authentication.key = config.azureSearchKey;
         dataSource.parameters.endpoint = config.azureSearchEndpoint;
+        dataSource.parameters.indexName = config.indexName;
+        dataSource.parameters.embedding_dependency.deployment_name =
+          config.azureOpenAIEmbeddingDeploymentName;
         dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
       }
     });
