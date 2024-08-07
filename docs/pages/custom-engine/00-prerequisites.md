@@ -1,17 +1,17 @@
 
 # Lab B0 - Prerequisites
 
-In this lab you set up for development environment to build, test and deploy the custom engine copilot you'll develop throughout the path B.
+In this lab you will set up your development environment to build, test, and deploy the custom engine copilot you will develop throughout the path.
 
 ???+ info "Navigating the Building your own copilot labs (B Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) (📍 You are here)
-    - [Lab B1 - Build custom engine copilots](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Bring your data](/copilot-camp/pages/custom-engine/02-rag)
-    - [Lab B3 - Enhance user experience](/copilot-camp/pages/custom-engine/03-powered-by-ai)
-    - [Lab B4 - Add actions](/copilot-camp/pages/custom-engine/04-actions)
-    - [Lab B5 - Add authentication](/copilot-camp/pages/custom-engine/05-authentication)
+    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
+    - [Lab B4 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/04-actions)
+    - [Lab B5 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/05-authentication)
 
-In this lab you will learn:
+In this lab you will learn how to:
 
 - Make your developer tenant for Microsoft 365 ready
 - Install and configure Teams toolkit for Visual Studio Code
@@ -19,7 +19,7 @@ In this lab you will learn:
 
 ## Exercise 1: Set up your Microsoft 365 Subscription
 
-To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
+To install and run your own custom engine copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
 You will also need Copilot License to test the app.
 
 ### Step 1: Get a tenant
@@ -75,7 +75,7 @@ It should be no surprise that **Teams Toolkit for Visual Studio Code** requires 
 
 NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
 
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 18.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.16.0. If you already have another version of NodeJS installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
+Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 20.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.16.0. If you already have another version of NodeJS installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
 
 ### Step 3: Install Teams Toolkit
 
@@ -111,9 +111,5 @@ Follow the steps to activate an Azure free account:
 
 !!! tip "Tip: Managing Azure resources after 30 days"
     Azure free account will be available only for 30 days. Make sure you don't have any services running in your free subscription at the end of 30 days. If you want to continue using Azure services at the end of 30 days, you must upgrade to a pay-as-you-go subscription by removing the spending limit. This allows continued use of the Azure free account and select free services for the term.
-
-### Step 2: Obtain access to create Azure OpenAI service
-
-In the path B exercises, you'll need to create Azure OpenAI service and models. Before starting with the exercises, make sure you have access granted to Azure OpenAI in the desired Azure subscription and have required permissions to create Azure OpenAI resources and to deploy models. If you don't have access to Azure OpenAI, you must submit an application to access Azure OpenAI Service. To apply for access, complete [this form](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7en2Ais5pxKtso_Pz4b1_xUNTZBNzRKNlVQSFhZMU9aV09EVzYxWFdORCQlQCN0PWcu).
 
 Now you are all set to create your first custom engine copilot! Proceed to create a [Custom engine copilot](./01-custom-engine-copilot.md).

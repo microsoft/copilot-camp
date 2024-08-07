@@ -17,7 +17,7 @@
           "type": "azure_search",
           "parameters": {
               "endpoint": "$searchEndpoint",
-              "index_name": "resumes",
+              "index_name": "$indexName",
               "authentication": {
                   "type": "api_key",
                   "key": "$searchApiKey"
@@ -28,7 +28,7 @@
               "top_n_documents": 5,
               "embedding_dependency": {
                 "type": "deployment_name",
-                "deployment_name": "text-embeddings"
+                "deployment_name": "$azureOpenAIEmbeddingDeploymentName"
               }
           }
       }
