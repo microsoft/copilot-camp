@@ -143,4 +143,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 After successfully completing your testing, end your debugging session and close the terminals in Visual Studio Code.
 
-Congratulations you've successfully built your first custom engine copilot, Career Genie! To advance the skills of the Career Genie, continue with the next lab [Bring your data from Azure AI Search to your app](02-rag.md).
+## CONGRATULATIONS
+
+You have completed Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit!
+You are now ready to proceed to [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag).

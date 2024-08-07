@@ -293,3 +293,8 @@ Let's test Career Genie on Teams this time. Start debugging your app by selectin
     - *Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?*
 
 ![Chat with your data on Teams](../../assets/images/custom-engine-02/byod-teams.gif)
+
+## CONGRATULATIONS
+
+You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot!
+You are now ready to proceed to [Lab B3 - Enhance User Experience with the Powered by AI kit!](/copilot-camp/pages/custom-engine/03-powered-by-ai).
