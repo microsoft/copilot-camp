@@ -1,0 +1,1065 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/01-custom-engine-copilot/">
+      
+      
+        <link rel="prev" href="../00-prerequisites/">
+      
+      
+        <link rel="next" href="../02-rag/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit - Copilot camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-b1-build-a-custom-engine-copilot-using-azure-openai-and-teams-toolkit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot camp" class="md-header__button md-logo" aria-label="Copilot camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo-copilot-camp.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Copilot for Microsoft 365
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Build Path - Build your own copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot camp" class="md-nav__button md-logo" aria-label="Copilot camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo-copilot-camp.jpg" alt="logo">
+
+    </a>
+    Copilot camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Copilot for Microsoft 365
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Copilot for Microsoft 365
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - Declarative Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - First API Plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Enhanced API Plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Add Adaptive Cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add a Declarative Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-create-azure-openai-service-and-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Create Azure OpenAI service and models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 1: Create Azure OpenAI service and models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-azure-openai-service-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create Azure OpenAI service resource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-deployment-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create a deployment model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-scaffold-a-custom-engine-copilot-from-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Scaffold a custom engine copilot from template
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 2: Scaffold a custom engine copilot from template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-use-teams-toolkit-to-create-a-new-custom-engine-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Use Teams Toolkit to create a new custom engine copilot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-customize-prompt-and-test-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Customize prompt and test the app
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONGRATULATIONS
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience with the Powered by AI kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Secure your solution using authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="lab-b1-build-a-custom-engine-copilot-using-azure-openai-and-teams-toolkit">Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit</h1>
+<p>In this lab you will build a custom engine copilot using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine copilot and define your first prompt.</p>
+<details class="info" open="open">
+<summary>Navigating the Build your own copilot labs (Build Path)</summary>
+<ul>
+<li><a href="/copilot-camp/pages/custom-engine/00-prerequisites">Lab B0 - Prerequisites</a></li>
+<li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-copilot">Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit</a> (📍 You are here)</li>
+<li><a href="/copilot-camp/pages/custom-engine/02-rag">Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot</a></li>
+<li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai">Lab B3 - Enhance user experience with the Powered by AI kit</a></li>
+<li><a href="/copilot-camp/pages/custom-engine/04-actions">Lab B4 - Add actions to handle complex tasks</a></li>
+<li><a href="/copilot-camp/pages/custom-engine/05-authentication">Lab B5 - Secure your solution using authentication</a></li>
+</ul>
+</details>
+<p>In this lab you will:</p>
+<ul>
+<li>Learn what is a custom engine copilot</li>
+<li>Create Azure OpenAI service and a deployment model</li>
+<li>Create a custom engine copilot using Teams toolkit</li>
+<li>Define a prompt in your custom engine copilot</li>
+<li>Learn how to run and test your app</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Welcome aboard to the exciting journey of building your own custom engine copilot! In this path, you'll create a custom engine copilot for Microsoft Teams using cutting-edge Azure OpenAI models. You'll be able to define specific prompts, integrate complex data, and add advanced skills to make your copilot truly unique. By using custom models and orchestration, your copilot will tackle advanced tasks, complex conversations, and workflows, delivering an exceptional, personalized experience. Let's dive in and start building your first custom engine copilot!</p>
+<div class="admonition tip">
+<p class="admonition-title">Before everything else, lets remember... What is a custom engine copilot?</p>
+<p>Custom engine copilots are chatbots powered by Generative AI, designed to provide sophisticated conversational experiences. Custom engine copilots are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.</p>
+</div>
+<h2 id="exercise-1-create-azure-openai-service-and-models">Exercise 1: Create Azure OpenAI service and models</h2>
+<div class="admonition warning">
+<p class="admonition-title">Follow the exercise or choose your own model</p>
+<p>This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine copilots. However, Custom engine copilots are not limited to using GPT models only. You can also test the lab with any other model you prefer use.</p>
+</div>
+<details class="info">
+<summary>Choosing Between Small and Large Language Models</summary>
+<p>When choosing between Small Language Models (SLMs) and Large Language Models (LLMs), as well as among various GPT models, it's important to consider the specific needs of your project in terms of complexity, computational resources, and efficiency.</p>
+<ul>
+<li>
+<p><strong>LLMs:</strong> Best for complex and nuanced tasks requiring deep capabilities. They have billions of parameters and excel in understanding and generating human language. GPT-4, LLaMA 2, BERT or PaLM can be examples for LLMs. 
+<em><strong>Example scenarios:</strong> Handling intricate customer inquiries, offering detailed and context-aware responses, generating high-quality articles from brief prompts, summarizing large volumes of academic papers, extracting key insights, and answering detailed questions.</em></p>
+</li>
+<li>
+<p><strong>SLMs:</strong> Better for quick tasks with limited resources where speed and efficiency are key. They have fewer parameters and are optimized for specific tasks with lower computational needs. Phi-3 by Microsoft, ALBERT by Google or DistilBERT by HuggingFace can be examples for SLMs. 
+<em><strong>Example scenarios:</strong> Providing efficient text analysis without needing cloud resources, enabling accurate and responsive voice commands with minimal latency, smart home automation and control with natural speech.</em></p>
+</li>
+</ul>
+<p>OpenAI's GPT models are popular examples for LLMs. When choosing between OpenAI's models you may consider the following benefits:</p>
+<ul>
+<li>
+<p><strong>gpt-4:</strong> The most advanced model, suitable for highly complex tasks that require extensive understanding and generation capabilities.</p>
+</li>
+<li>
+<p><strong>gpt-4o:</strong> An optimized version for specific tasks, offering faster and more efficient performance in those areas.</p>
+</li>
+<li>
+<p><strong>gpt-35-turbo:</strong> A balanced model that provides good performance at a lower cost, ideal for a wide range of applications.</p>
+</li>
+</ul>
+</details>
+<p>You'll need to complete the Azure subscription pre-requisite before starting with this exercise.</p>
+<h3 id="step-1-create-azure-openai-service-resource">Step 1: Create Azure OpenAI service resource</h3>
+<ol>
+<li>Open the browser of your choice and navigate to <a href="https://portal.azure.com">Azure Portal</a>.</li>
+<li>Select <strong>Create a resource</strong>, then search for <code>Azure OpenAI</code>. Select the Azure OpenAI service and then <strong>Create</strong>.</li>
+<li>Fill out the following details and select <strong>Next</strong>:<ul>
+<li><strong>Subscription:</strong> The Azure subscription for your Azure OpenAI Service</li>
+<li><strong>Resource group:</strong> The Azure resource group to contain your Azure OpenAI resource. You can create a new group or use a pre-existing group.</li>
+<li><strong>Region:</strong> The location of your instance.</li>
+<li><strong>Name:</strong> A descriptive name for your Azure OpenAI Service resource, such as <code>MyOpenAIResource</code>.</li>
+<li><strong>Pricing Tier:</strong> The pricing tier for the resource. Currently, only the <code>Standard</code> tier is available for the Azure OpenAI Service.</li>
+</ul>
+</li>
+<li>Select the network configuration of your choice and select <strong>Next</strong>.</li>
+<li>Leave the Tags section as default and select <strong>Next</strong>.</li>
+<li>Finally, review your Azure OpenAI service details and select <strong>Create</strong>.</li>
+</ol>
+<p>Once your Azure OpenAI service is created successfully, navigate to your resource, select <strong>Keys and Endpoint</strong> from the left side panel. Copy and save <code>KEY 1</code> and <code>Endpoint</code>that will be required later in Exercise 2.</p>
+<h3 id="step-2-create-a-deployment-model">Step 2: Create a deployment model</h3>
+<p>In your Azure OpenAI service, navigate to <strong>Model deployments</strong> from the left side panel, then select <strong>Manage deployments</strong>. This will direct you to <code>Azure OpenAI Studio</code> where you can create your deployment model.</p>
+<details class="info">
+<summary>What is Azure OpenAI Studio?</summary>
+<p>Azure OpenAI Studio is a playground to explore OpenAI models like <code>gpt-35-turbo</code>, <code>gpt-4</code> or <code>Dall-e</code> that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as <code>Phi-3</code>, <code>Llama 3.1</code> or models from <code>HuggingFace</code>, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.</p>
+</details>
+<p>From the <strong>Deployments</strong> tab, select <strong>Create a new deployment</strong>. Fill out the following details and select <strong>Create</strong>:</p>
+<ul>
+<li><strong>Deployment name:</strong> Recommended to use the same name with the selected deployment model, such as <code>gpt-35-turbo</code>.</li>
+<li><strong>Select a model:</strong> Select <code>gpt-35-turbo</code> or higher model.</li>
+<li><strong>Model version:</strong> Auto update to default.</li>
+<li><strong>Deployment type:</strong> Provisioned-Managed.</li>
+<li><strong>Content Filter:</strong> Default.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Handling no quota available message</p>
+<p>When you select a model, you may see <strong>No quota available</strong> message pop-up on top of the configuration page. To handle this, you have two options:
+1. Select a different version or deployment type
+1. Free up the resources on other deployments by requesting for <a href="https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota">more quota or adjust the existing quota</a></p>
+</div>
+<p>Once your model is successfully created, you can navigate to <strong>Chat</strong>, and test your model by selecting one of the available templates in <strong>Prompt</strong> section and asking relevant questions in the chat playground.</p>
+<p>For example, choose "Shakespeare writing assistant" and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.</p>
+<p><img alt="Testing the model in Azure OpenAI Studio Chat Playground" src="../../../assets/images/custom-engine-01/azure-openai-studio-chat.png" /></p>
+<h2 id="exercise-2-scaffold-a-custom-engine-copilot-from-template">Exercise 2: Scaffold a custom engine copilot from template</h2>
+<p>You'll need to complete all the required pre-requisites before starting with this exercise.</p>
+<h3 id="step-1-use-teams-toolkit-to-create-a-new-custom-engine-copilot">Step 1: Use Teams Toolkit to create a new custom engine copilot</h3>
+<ol>
+<li>Open Teams Toolkit on Visual Studio Code and select <strong>Create a New App</strong> &gt; <strong>Custom Engine Copilot</strong> &gt; <strong>Basic AI Chatbot</strong>.</li>
+<li>Select <strong>TypeScript</strong> as a programming language choice and <strong>Azure OpenAI</strong> as Large Language model of your choice.<ol>
+<li>Paste the Azure OpenAI key and press enter.</li>
+<li>Paste the Azure OpenAI endpoint and press enter. (Endpoint shouldn't include forward slash at the end of its URL.)</li>
+<li>Type Azure OpenAI deployment model name and press enter.</li>
+</ol>
+</li>
+<li>Select a folder for your project root.</li>
+<li>Provide a name for your project such as <code>CareerGenie</code> and press enter.</li>
+</ol>
+<p>After providing all the details mentioned above, your project will be scaffolded successfully in seconds.</p>
+<h3 id="step-2-customize-prompt-and-test-the-app">Step 2: Customize prompt and test the app</h3>
+<p>Prompts are essential for interacting with AI language models and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine copilot and define the behavior of Career Genie!</p>
+<p>In your project folder, navigate to <code>src/prompts/chat/skprompt.txt</code> and replace the existing text with the following prompt:</p>
+<pre><code class="language-html">You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team for writing job posts.
+You are friendly and professional.
+You always greet users with excitement and introduce yourself first.
+You like using emojis where appropriate.
+</code></pre>
+<p>To test the behavior of your app quickly, you can use Teams App Test Tool. Later in the exercise, you'll run and debug your custom engine copilot on Microsoft Teams.</p>
+<details class="info">
+<summary>More information about the Teams App Test Tool</summary>
+<p>The Teams App Test Tool, or simply Test Tool, is a feature within Teams Toolkit that enables developers to debug, test, and refine their Teams bot applications in a web-based chat environment that mimics the behavior, look, and feel of Microsoft Teams. This tool eliminates the need for a Microsoft 365 tenant or a dev tunnel, streamlining the development process.</p>
+</details>
+<p>Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Test Tool</strong>. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine copilot right away! Some of the recommended questions you can ask to test the behavior:</p>
+<ul>
+<li>"Can you help me write a job post for a Senior Developer role?"</li>
+<li>"What would be the list of required skills for a Project Manager role?"</li>
+<li>"Can you share a job template?"</li>
+</ul>
+<p><img alt="Test Career Genie in App Test Tool" src="../../../assets/images/custom-engine-01/teams-app-test-tool.png" /></p>
+<details class="info">
+<summary>What does Teams Toolkit do behind the scene?</summary>
+<p>When you start debugging your app, Teams Toolkit completes some required tasks for you behind the scene, such as:</p>
+<ul>
+<li>Checking the required prerequisites such as Node.js, Microsoft 365 Account (If debugging in local or dev), ports occupancy.</li>
+<li>Starting local tunneling service (If debugging in local) to forward public URL to local port.</li>
+<li>Executing the lifecycle stage provision, available in <code>teamsapp.yml</code>, <code>teamsapp.local.user</code> or <code>teamsapp.testtool.user</code> files for creating Teams App ID, completing bot registration, executing the app manifest and creating the app package, available in <code>appPackage/</code> folder.</li>
+<li>Create or update variables to env file, available in <code>env/</code> folder.</li>
+</ul>
+</details>
+<p>After successfully completing your testing, end your debugging session and close the terminals in Visual Studio Code.</p>
+<h2 id="congratulations">CONGRATULATIONS</h2>
+<p>You have completed Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab01-From-TTK-template/CareerGenie">Copilot Camp repo</a>.</p>
+<p>You are now ready to proceed to <a href="/copilot-camp/pages/custom-engine/02-rag">Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+    
+  </body>
+</html>
