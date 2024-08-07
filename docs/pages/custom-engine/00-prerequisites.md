@@ -112,4 +112,7 @@ Follow the steps to activate an Azure free account:
 !!! tip "Tip: Managing Azure resources after 30 days"
     Azure free account will be available only for 30 days. Make sure you don't have any services running in your free subscription at the end of 30 days. If you want to continue using Azure services at the end of 30 days, you must upgrade to a pay-as-you-go subscription by removing the spending limit. This allows continued use of the Azure free account and select free services for the term.
 
-Now you are all set to create your first custom engine copilot! Proceed to create a [Custom engine copilot](./01-custom-engine-copilot.md).
+## CONGRATULATIONS
+
+You have completed Lab B0 - Prerequisites!
+You are now ready to proceed to [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot).
