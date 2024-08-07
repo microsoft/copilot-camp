@@ -2,7 +2,7 @@
 
 In this lab you will build a custom engine copilot using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine copilot and define your first prompt.
 
-???+ info "Navigating the Building your own copilot labs (B Path)"
+???+ info "Navigating the Build your own copilot labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
     - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot) (📍 You are here)
     - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)

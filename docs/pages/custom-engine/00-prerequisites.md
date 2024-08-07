@@ -3,7 +3,7 @@
 
 In this lab you will set up your development environment to build, test, and deploy the custom engine copilot you will develop throughout the path.
 
-???+ info "Navigating the Building your own copilot labs (B Path)"
+???+ info "Navigating the Build your own copilot labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) (📍 You are here)
     - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
     - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
