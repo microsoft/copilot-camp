@@ -1,7 +1,7 @@
-- [Lab A0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites) - DRAFT READY FOR TESTING
-- [Lab A1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot) - DRAFT READY FOR TESTING
-- [Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin) - DRAFT READY FOR TESTING
-- [Lab A3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) - DRAFT READY FOR TESTING
-- [Lab A4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card) - DRAFT READY FOR TESTING
-- [Lab A5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot) - DRAFT READY FOR TESTING
-- [Lab A6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication) - COMING SOON
+- [Lab E0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites) - DRAFT READY FOR TESTING
+- [Lab E1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot) - DRAFT READY FOR TESTING
+- [Lab E2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin) - DRAFT READY FOR TESTING
+- [Lab E3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) - DRAFT READY FOR TESTING
+- [Lab E4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card) - DRAFT READY FOR TESTING
+- [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot) - DRAFT READY FOR TESTING
+- [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication) - COMING SOON
