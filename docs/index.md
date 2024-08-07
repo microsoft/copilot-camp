@@ -11,13 +11,13 @@ The labs are divided into two pathways, allowing you to choose based on what you
 ![pathways](./assets/images/pathways.png)
 
 
-### Path A - Extend Copilot for Microsoft 365
+### Extend Path - Extend Copilot for Microsoft 365
 
 _Note: These labs require the "Private Preview" for Copilot for M365 extensibility. There may be some changes for "Public Preview" when it's available._
 
 ---8<--- "a-path-links.md"
 
-### Path B - Build your own Copilot
+### Build Path - Build your own Copilot
 
 ---8<--- "b-path-links.md"
 

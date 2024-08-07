@@ -7,16 +7,16 @@ extra_css:
     - assets/labStyles.css
 nav: 
 - Home: 'index.md'
-- Path A - Extend Copilot: 
+- Extend Path - Extend Copilot: 
   - Welcome : 'pages/extend-m365-copilot/index.md'
-  - Lab A0 - Prerequisites: 'pages/extend-m365-copilot/00-prerequisites.md'
-  - Lab A1 - Declarative Copilot: 'pages/extend-m365-copilot/01-declarative-copilot.md'
-  - Lab A2 - First API Plugin: 'pages/extend-m365-copilot/02-api-plugin.md'
-  - Lab A3 - Enhanced API Plugin: 'pages/extend-m365-copilot/03-enhance-api-plugin.md'
-  - Lab A4 - Add Adaptive Cards: 'pages/extend-m365-copilot/04-add-adaptive-card.md'
-  - Lab A5 - Add a Declarative Copilot: 'pages/extend-m365-copilot/05-add-declarative-copilot.md'
-  - Lab A6 - Add authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
-- Path B Build Your Own Copilot: 
+  - Lab E0 - Prerequisites: 'pages/extend-m365-copilot/00-prerequisites.md'
+  - Lab E1 - Declarative Copilot: 'pages/extend-m365-copilot/01-declarative-copilot.md'
+  - Lab E2 - First API Plugin: 'pages/extend-m365-copilot/02-api-plugin.md'
+  - Lab E3 - Enhanced API Plugin: 'pages/extend-m365-copilot/03-enhance-api-plugin.md'
+  - Lab E4 - Add Adaptive Cards: 'pages/extend-m365-copilot/04-add-adaptive-card.md'
+  - Lab E5 - Add a Declarative Copilot: 'pages/extend-m365-copilot/05-add-declarative-copilot.md'
+  - Lab E6 - Add authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
+- Build Path - Build Your Own Copilot: 
   - Welcome : 'pages/custom-engine/index.md'
   - Lab B0 - Prerequisites: 'pages/custom-engine/00-prerequisites.md'
   - Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit: 'pages/custom-engine/01-custom-engine-copilot.md'
