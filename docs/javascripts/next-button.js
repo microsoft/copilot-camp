@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const navInner = document.querySelector('.md-nav--primary');
     const navUls = navInner.querySelector('ul.md-nav__list');
     const activelistItem = Array.from(navUls.children).filter(child => child.classList.contains('md-nav__item--active'))[0];
-    const activeNav = activelistItem.querySelector('ul.md-nav__list');    
-    const items = activeNav.querySelectorAll('li');   
+    const activeNav = activelistItem.querySelector('ul.md-nav__list');
+    const items = activeNav.querySelectorAll('li');
     let currentIndex = -1
     for (let i = 0; i < items.length; i++) {
         if (items[i].classList.contains('md-nav__item--active')) {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     nextButton.textContent = 'Next';
     nextButton.className = 'github-button';
     if (currentIndex !== -1 && currentIndex < navItems.length - 1) {
-        const nextUrl = navItems[currentIndex + 1].getAttribute('href');       
+        const nextUrl = navItems[currentIndex + 1].getAttribute('href');
         nextButton.onclick = () => { window.location.href = nextUrl; };
     } else {
         nextButton.disabled = true;
