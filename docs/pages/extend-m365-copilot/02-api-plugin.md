@@ -133,8 +133,7 @@ Notice that even though Copilot addressed the user as "Robert" (since that's who
 
 ## CONGRATULATIONS
 
-You have completed Lab A2 - First API Plugin!
-You are now ready to proceed to [Lab A3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin).
+You've successfully built your first API Plugin! You are now ready to proceed to enhance this API Plugin with more API calls. 
 
 
 

@@ -96,5 +96,5 @@ Follow the steps as shown in the screen shot below.
 
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
-
-Now you are all set to create your first plugin. Proceed to create a [Declarative Copilot](../01-declarative-copilot) or  an [API plugin/skill](../02-api-plugin)to it.
+    
+Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Copilot in the next lab. 

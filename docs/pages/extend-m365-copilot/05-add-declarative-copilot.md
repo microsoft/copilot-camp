@@ -138,7 +138,6 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 ## CONGRATULATIONS
 
-You have completed Lab A5 - Declarative Copilot
-You are now ready to proceed to [Lab A6 - Add Authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication/).
+You've completed adding a Declarative Copilot to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 
 
