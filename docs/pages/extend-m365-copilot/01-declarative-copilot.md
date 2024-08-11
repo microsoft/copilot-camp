@@ -201,4 +201,4 @@ See the full demo of how you can test this app.
 ![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
 
 
-Congratulations you've successfully built your first Decalarative Copilot! With your basic understanding of declarative copilot, you can now learn how to integrate an API plugin. To get started, first create your API plugin[Lab A2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin).
+Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab.

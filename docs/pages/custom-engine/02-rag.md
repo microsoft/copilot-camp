@@ -298,4 +298,4 @@ Let's test Career Genie on Teams this time. Start debugging your app by selectin
 
 You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot! If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab02-RAG/CareerGenie).
 
-You are now ready to proceed to [Lab B3 - Enhance User Experience with the Powered by AI kit!](/copilot-camp/pages/custom-engine/03-powered-by-ai).
+You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 

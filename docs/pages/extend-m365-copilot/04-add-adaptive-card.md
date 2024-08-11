@@ -506,5 +506,4 @@ You can now test other prompts as well to see the improved responses from Copilo
 
 ## CONGRATULATIONS
 
-You have completed Lab A4 - Add adaptive cards
-You are now ready to proceed to [Lab A4 - Add a declarative copilot to your API plugin](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot).
+You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add a declarative copilot to the same API plugin. 

@@ -318,4 +318,4 @@ Notice that the sensitivity label appears right next to the "AI Generated" label
 
 You have completed Lab B3 - Enhance User Experience with the Powered by AI kit!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab03-Powered-by-AI/CareerGenie).
 
-You are now ready to proceed to [Lab A4 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/04-actions).
+You are now ready to proceed to Lab A4 - Add actions to handle complex tasks. Select Next. 

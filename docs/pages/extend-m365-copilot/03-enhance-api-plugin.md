@@ -336,6 +336,5 @@ You may see a confirmation card, even for the GET request. If you do, allow the 
 
 ## CONGRATULATIONS
 
-You have completed Lab A3 - Enhanced API plugin
-You are now ready to proceed to [Lab A4 - Add adaptive cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card).
+You've now completed enhancing your API plugin. You are now ready to proceed to the next lab to add rich card responses using adaptive cards. 
 
