@@ -84,11 +84,10 @@ type ApplicationTurnState = TurnState<ConversationState>;
 app.authentication.get('graph').onUserSignInSuccess(async (context: TurnContext, state: ApplicationTurnState) => {
   // Successfully logged in
   await context.sendActivity('Successfully logged in');
-  await context.sendActivity(`Token string length: ${state.temp.authTokens['graph']!.length}`);
-  await context.sendActivity(`This is what you said before the AuthFlow started: ${context.activity.text}`);
-  
+  const token = state.temp.authTokens['graph'];
+  await context.sendActivity(`Hello ${await getUserDisplayName(token)}`);  
+  await context.sendActivity(`You said before the AuthFlow started: ${context.activity.text}`);  
 });
-
 app.authentication
     .get('graph')
     .onUserSignInFailure(async (context: TurnContext, _state: ApplicationTurnState, error: AuthError) => {
@@ -96,6 +95,19 @@ app.authentication
         await context.sendActivity('Failed to login');
         await context.sendActivity(`Error message: ${error.message}`);
     });
+
+    // Listen for user to say '/reset' and then delete conversation state
+app.message('/reset', async (context: TurnContext, state: ApplicationTurnState) => {
+  state.deleteConversationState();
+  await context.sendActivity(`Ok I've deleted the current conversation state.`);
+});
+
+app.message('/signout', async (context: TurnContext, state: ApplicationTurnState) => {
+  await app.authentication.signOutUser(context, state);
+
+  // Echo back users request
+  await context.sendActivity(`You have signed out`);
+});
 
 // feedback loop handler
 app.feedbackLoop(async (_context, _state, feedbackLoopData) => {
@@ -143,5 +155,30 @@ app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, stat
   return "success";
  
 });
+const getUserDisplayName = async (token) => {
+  let displayName = '';
+  try {
+    const graphResponse = await fetch(`https://graph.microsoft.com/v1.0/me/?$select=displayName`,
+      {
+        "method": "GET",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      });
+    if (graphResponse.ok) {
+      const profile = await graphResponse.json();
+      displayName = profile.displayName;
+
+    } else {
+      console.log(`Error ${graphResponse.status} calling Graph in getUserDisplayName: ${graphResponse.statusText}`);
+    }
+  }
+  catch (error) {
+    console.log(`Error calling MSAL in getUserDisplayName: ${error}`);
+  }
+  return displayName;
+}
 
 export default app;
