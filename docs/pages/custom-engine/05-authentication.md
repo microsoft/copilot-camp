@@ -145,14 +145,14 @@ Open the teamsapp.local.yml file. This is a YAML file that defines the steps Tea
 
 - Publish - In this phase, the app package is published to Microsoft Teams
 
-To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You can put them directly below the provision: line
+To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You can put them directly below the `provision`: line
 
 ```yml
   - uses: aadApp/create # Creates a new Azure Active Directory (AAD) app to authenticate users if the environment variable that stores clientId is empty
     with:
       name: CareerGenieBot-aad # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
-      signInAudience: "AzureADMultipleOrgs" # Authenticate users with a Microsoft work or school account in your organization's Azure AD tenant (for example, single tenant).
+      signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Azure AD tenant (for example, single tenant).
     writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
       clientId: AAD_APP_CLIENT_ID
       clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
@@ -161,6 +161,10 @@ To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You c
       authority: AAD_APP_OAUTH_AUTHORITY
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 
+```
+And after `botFramework/create` add below to update the existing AAD app.
+
+```yml
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:
       manifestPath: ./aad.manifest.json # Relative path to teamsfx folder. Environment variables in manifest will be replaced before apply to AAD app
@@ -214,7 +218,7 @@ The first time a user accesses your application, they may need to consent to giv
 
 ??? info "The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public)"
 
-Create a new folder at the project root called **public**.
+Create a new folder called **public** inside the **src** folder of the project.
 
 Create a file **auth-start.html** and paste in the contents below:
 ```html
@@ -497,7 +501,7 @@ const adapter = new TeamsAdapter(
   {},
   new ConfigurationServiceClientCredentialFactory({
     MicrosoftAppId: config.botId,
-    MicrosoftAppPassword: process.env.BOT_PASSWORD,
+    MicrosoftAppPassword: config.botPassword,
     MicrosoftAppType: 'MultiTenant',
   })
 );
