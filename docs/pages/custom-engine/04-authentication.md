@@ -1,4 +1,4 @@
-# B5 - Secure your custom copilot using authentication
+# B4 - Secure your custom copilot using authentication
  In this lab, you'll learn how to authenticate users with Azure AD Single Sign-On in CareerGenie, and to call the Microsoft Graph API using the token to get logged in user informaton. 
 
 ???+ info "Navigating the Build your own copilot labs (Build Path)"
@@ -6,8 +6,9 @@
     - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
     - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
-    - [Lab B4 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/04-actions)
-    - [Lab B5 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/05-authentication) (📍 You are here)
+    - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)(📍 You are here)
+    - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
+   
     
   
 
@@ -635,7 +636,7 @@ Now we are code complete for Teams SSO in CareerGenie. Let's take it for a ride.
 
 ### Step 1: App installation in Teams
 
-Click F5, use the "Run" menu, or click the Run arrow in Teams Toolkit. When the browser opens and the installation dialog opens, add the application.
+ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
 
 ### Step 2: Giving consent
 
@@ -644,17 +645,33 @@ To start a conversation with the CareerGenie bot, simply type a message. For exa
 !!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions." 
 
 You will see a small dialog box with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**. 
+
+![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
+
 Since you're running locally with Developer Tunnels, you'll see a warning screen. Users won't see this when your app is deployed.
 
-You'll be redirected to Azure AD, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented). Since you're a Microsoft 365 administrator, you're also given the option to "Consent on behalf of your organization" which will consent for every user in your tenant. Ignore this option for now. 
+![consent dev tunnels](../../assets/images/custom-engine-04/consent-devtunnel.png)
+
+
+You'll be redirected to Azure AD, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented). 
+
+![consent graph](../../assets/images/custom-engine-04/consent-graph.png)
+
+!!! tip "If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant."
 
 Select **Accept** to consent to the permissions and run CarrieGenie.
 
 You will now get this message from the bot with your logged in name showing successful authentication.
+
+![success message](../../assets/images/custom-engine-04/success-message.png)
+
+
 You can start chatting with your custom engine copilot. 
 
 ## CONGRATULATIONS
 
-You have completed Lab B5 - Secure your custom copilot using authentication!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Authentication-SSO/CareerGenie).
+You have completed Lab B4 - Secure your custom copilot using authentication!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab04-Authentication-SSO/CareerGenie).
+
+You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
 
 
