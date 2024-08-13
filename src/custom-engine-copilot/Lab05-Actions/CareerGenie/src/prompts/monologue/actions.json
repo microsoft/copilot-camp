@@ -1,0 +1,113 @@
+[
+    {
+        "name": "createList",
+        "description": "Creates a new list with an optional set of initial Candidates",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "string",
+                    "description": "The name of the list to create"
+                },
+                "Candidates": {
+                    "type": "array",
+                    "description": "The Candidates to add to the list",
+                    "Candidates": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "list"
+            ]
+        }
+    },
+    {
+        "name": "deleteList",
+        "description": "Deletes a list",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "string",
+                    "description": "The name of the list to delete"
+                }
+            },
+            "required": [
+                "list"
+            ]
+        }
+    },
+    {
+        "name": "addCandidates",
+        "description": "Adds one or more Candidates to a list",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "string",
+                    "description": "The name of the list to add the item to"
+                },
+                "Candidates": {
+                    "type": "array",
+                    "description": "The Candidates to add to the list",
+                    "Candidates": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "list",
+                "Candidates"
+            ]
+        }
+    },
+    {
+        "name": "removeCandidates",
+        "description": "Removes one or more Candidates from a list",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "string",
+                    "description": "The name of the list to remove the item from"
+                },
+                "Candidates": {
+                    "type": "array",
+                    "description": "The Candidates to remove from the list",
+                    "Candidates": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "list",
+                "Candidates"
+            ]
+        }
+    },
+    {
+        "name": "sendLists",
+        "description": "Send list of Candidates to Human Resources, aka HR for scheduling interviews",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "string",
+                    "description": "The name of the list to send Human Resources, aka HR for scheduling interviews"
+                },
+                "Candidates": {
+                    "type": "array",
+                    "description": "The Candidates in the list to send Human Resources, aka HR for scheduling interviews",
+                    "Candidates": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "list",
+                "Candidates"
+            ]
+        }
+    }
+]
