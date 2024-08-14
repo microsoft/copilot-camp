@@ -347,18 +347,18 @@ Let's test Career Genie with the new actions. Start debugging your app by select
 To understand how to flow works, you may ask the following questions in order:
 
 - Hello
-- Can you suggest any developers experienced in .NET?
-- Add {Candidate 1} in the .NET Dev Candidates list
-- Can you add {Candidate 2} in the same list with {Candidate 1}?
-- Can you suggest python developers who can speak Spanish?
-- Great, add {Candidate 3} in the Python Dev Candidates list
-- Can you find candidates who have developer experience more than 10 years?
-- Add {Candidate 4} in the Talent list
+- Can you suggest candidates who have experience in .NET?
+- Great, add Isaac Talbot in the .NET Developer Candidates list
+- Add Anthony Ivanov in the same list with Isaac
+- Can you summarize my lists
+- Suggest candidates who have experience in Python and are able to speak Spanish
+- Nice! Add Sara Folgueroles in the Python Developer Candidates (Spanish speaking) list
+- Can you suggest candidates who have 10+ years of experience
+- Ok, remove Anthony from the .NET Developer Candidates list
+- Add Anthony Ivanov in the Talent list
 - Summarize my lists
-- Remove {Candidate 3} from the Python Dev Candidates list
-- Summarize my lists
-- Remove .NET Dev Candidates list
-- Summarize my lists
+
+![Actions in Career Genie](../../assets/images/custom-engine-05/actions.gif)
 
 ## Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
 
@@ -538,22 +538,24 @@ You will now get this message from the Career Genie with your logged in name sho
 To understand how to flow works, you may ask the following questions in order:
 
 - Hello
-- Can you suggest any developers experienced in .NET?
-- Add {Candidate 1} in the .NET Dev Candidates list
-- Can you add {Candidate 2} in the same list with {Candidate 1}?
-- Can you suggest python developers who can speak Spanish?
-- Great, add {Candidate 3} in the Python Dev Candidates list
-- Can you find candidates who have developer experience more than 10 years?
-- Add {Candidate 4} in the Talent list
+- Can you suggest candidates who have experience in .NET?
+- Great, add Isaac Talbot in the .NET Developer Candidates list
+- Add Anthony Ivanov in the same list with Isaac
+- Can you summarize my lists
+- Suggest candidates who have experience in Python and are able to speak Spanish
+- Nice! Add Sara Folgueroles in the Python Developer Candidates (Spanish speaking) list
+- Can you suggest candidates who have 10+ years of experience
+- Ok, remove Anthony from the .NET Developer Candidates list
+- Add Anthony Ivanov in the Talent list
 - Summarize my lists
-- Remove {Candidate 3} from the Python Dev Candidates list
+- Add Pedro Armijo in the same list with Sara
 - Summarize my lists
-- Remove .NET Dev Candidates list
-- Summarize my lists
-- Send my lists to HR for scheduling
+- Send my lists to HR
 
 !!! tip "Check your mailbox"
     After the last step, check your mailbox to see if you receive any email for the lists of candidates. In an ideal scenario, this email will be received by the Career Genie HR Team. Only for testing purposes, you are using your email address.
+
+![Career Genie full experience](../../assets/images/custom-engine-05/career-genie-full.gif)
 
 ## CONGRATULATIONS
 
