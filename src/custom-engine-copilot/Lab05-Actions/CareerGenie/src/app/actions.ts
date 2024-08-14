@@ -78,7 +78,7 @@ const email ={
     "toRecipients": [
         {
         "emailAddress": {
-            "address": "aycabas@m365advocates.onmicrosoft.com"
+            "address": "<YOUR-EMAIL-ADDRESS>"
         }
         }
     ]
