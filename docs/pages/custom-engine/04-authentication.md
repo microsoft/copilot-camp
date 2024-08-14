@@ -14,7 +14,7 @@ In this lab you will learn to:
 
 - Add Entra ID single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams
 - Use Teams AI library and Bot Framework to implement the single sign on.
-- Acquire and utilize tokens for app users to enhance security and user experience.
+- Acquire and use tokens for app users to enhance security and user experience.
 
 ## Introduction
 
