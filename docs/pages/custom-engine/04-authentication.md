@@ -1,6 +1,6 @@
 # B4 - Secure your custom copilot using authentication
 
-In this lab, you'll learn how to authenticate users with Azure AD Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
+In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 
 ???+ info "Navigating the Build your own copilot labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
@@ -12,21 +12,21 @@ In this lab, you'll learn how to authenticate users with Azure AD Single Sign-On
 
 In this lab you will learn to:
 
-- Add Azure Active Directory single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams
+- Add Entra ID single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams
 - Use Teams AI library and Bot Framework to implement the single sign on.
 - Acquire and utilize tokens for app users to enhance security and user experience.
 
 ## Introduction
 
-Get ready to update Career Genie that you've built so far to leverages Azure Active Directory (AAD) single sign-on (SSO) to acquire a token for app users to get Microsoft 365 data using Microsoft Graph. This token will enable seamless authentication and authorization within your application. You will integrate this functionality into a Microsoft Teams application using the Teams AI library and the Bot Framework, focusing on a single-tenant setup.
+Get ready to update Career Genie that you've built so far to leverages Entra ID (AAD) single sign-on (SSO) to acquire a token for app users to get Microsoft 365 data using Microsoft Graph. This token will enable seamless authentication and authorization within your application. You will integrate this functionality into a Microsoft Teams application using the Teams AI library and the Bot Framework, focusing on a single-tenant setup.
 
-## Exercise 1: Set up your project for Azure AD Single Sign-on
+## Exercise 1: Set up your project for Entra ID Single Sign-on
 
-Applications secured with Azure Active Directory must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Azure AD.
+Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.
 
 In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab03-Powered-by-AI/CareerGenie) as the base project and proceed to next steps.
 
-### Step 1: Add an Azure AD App manifest file to define the Azure AD Application
+### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
 In this step, you'll add a file that defines the application that Teams Toolkit will register for your application. The AAD manifest allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
 Create a file **aad.manifest.json** in the root of your project folder, and paste in this JSON:
@@ -135,24 +135,24 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 }
 ```
 
-### Step 2: Update Teams Toolkit configuration file to create the Azure AD App
+### Step 2: Update Teams Toolkit configuration file to create the Entra ID App
 
 Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
 
-- Provision - In this phase, any infrastructure needed by your app is provisioned. This includes things like the bot registration, the Teams app package, and, in this case, the Azure AD app registration
+- Provision - In this phase, any infrastructure needed by your app is provisioned. This includes things like the bot registration, the Teams app package, and, in this case, the Entra ID app registration
 
 - Deploy - In this phase, the code is built and run locally, or uploaded to Azure for environments other than "local"
 
 - Publish - In this phase, the app package is published to Microsoft Teams
 
-To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You can put them directly below the `provision`:
+To provision your Entra ID app, add these lines to **teamsapp.local.yml**. You can put them directly below the `provision`:
 
 ```yml
-  - uses: aadApp/create # Creates a new Azure Active Directory (AAD) app to authenticate users if the environment variable that stores clientId is empty
+  - uses: aadApp/create # Creates a new Entra ID (AAD) app to authenticate users if the environment variable that stores clientId is empty
     with:
       name: CareerGenieBot-aad # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
-      signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Azure AD tenant (for example, single tenant).
+      signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Entra ID tenant (for example, single tenant).
     writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
       clientId: AAD_APP_CLIENT_ID
       clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
@@ -186,7 +186,7 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
 
 ## Exercise 2: Update your Teams app manifest for SSO
 
-In the single sign-on process, Teams will hand your code an Azure AD access token for your application. Teams can't provide this access token, however, unless it knows about your application; specifically, it needs to know the application (client) ID and the ID of the bot that's connected to Teams. So you need to add this information to your Teams app manifest.
+In the single sign-on process, Teams will hand your code an Entra ID access token for your application. Teams can't provide this access token, however, unless it knows about your application; specifically, it needs to know the application (client) ID and the ID of the bot that's connected to Teams. So you need to add this information to your Teams app manifest.
 
 Find the Teams app manifest template in **./appPackage/manifest.json** and add the following:
 
@@ -216,7 +216,7 @@ In this exercise, you'll modify the code to accommodate the SSO process.
 
 ### Step 1: Provide HTML pages for the consent dialog
 
-The first time a user accesses your application, they may need to consent to giving the app permission to read their personal contacts. This is performed by the TeamsFx library, which we'll add shortly. TeamsFx will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Azure AD to do the actual consent.
+The first time a user accesses your application, they may need to consent to giving the app permission to read their personal contacts. This is performed by the TeamsFx library, which we'll add shortly. TeamsFx will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.
 
 ??? info "The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public)"
 
@@ -658,7 +658,7 @@ Since you're running locally with Developer Tunnels, you'll see a warning screen
 
 ![consent dev tunnels](../../assets/images/custom-engine-04/consent-devtunnel.png)
 
-You'll be redirected to Azure AD, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).
+You'll be redirected to Entra ID, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).
 
 ![consent graph](../../assets/images/custom-engine-04/consent-graph.png)
 
