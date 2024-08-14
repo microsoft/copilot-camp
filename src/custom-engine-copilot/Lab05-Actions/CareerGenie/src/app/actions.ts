@@ -88,4 +88,4 @@ const email ={
 return await email;
 }
 
-export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists, createEmailContent };
+export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };

@@ -46,7 +46,7 @@ In this exercise, you can continue using the same source code you developed in t
 
 ### Step 1: Integrate Feedback Loop in your app
 
-1. In your project, open `src/app/app.ts`, locate your application instance and add `enable_feedback_loop: true` inside the **ai** property brackets. The updated application instance will look like the following:
+In your project, open `src/app/app.ts`, locate your application instance and add `enable_feedback_loop: true` inside the **ai** property brackets. The updated application instance will look like the following:
 
 ```javascript
 const app = new Application({
@@ -59,7 +59,7 @@ const app = new Application({
 });
 ```
 
-1. To handle the feedback responses, add the following code snippet in the `src/app/app.ts`:
+To handle the feedback responses, add the following code snippet in the `src/app/app.ts`:
 
 ```javascript
 app.feedbackLoop(async (_context, _state, feedbackLoopData) => {
@@ -167,25 +167,25 @@ This Adaptive Card allows you to list citations as `Action.ShowCard` buttons whi
 ??? info "What does `PredictedSayCommand` do?"
     A **PredictedSayCommand** is a response directive that the AI system executes. By customizing PredictedSayCommand, you gain granular control over integrating Powered by AI features like citations, feedback loops into the custom engine copilot's activities. This allows you to precisely tailor the AI responses to meet your application needs.
 
-1. Go to `src/app/app.ts` and add the following snippet on top of your code to import your adaptive card:
+Go to `src/app/app.ts` and add the following snippet on top of your code to import your adaptive card:
 
 ```javascript
 import { createResponseCard } from './card';
 ```
 
-1. Add `CardFactory` and `MessageFactory` inside the "botbuilder" import,  the updated version of the import will look like the following:
+Add `CardFactory` and `MessageFactory` inside the "botbuilder" import,  the updated version of the import will look like the following:
 
 ```javascript
 import { CardFactory, MemoryStorage, MessageFactory } from "botbuilder";
 ```
 
-1. Add `AI` and `PredictedSayCommand` inside the "@microsoft/teams-ai" import, the updated version of the import will look like the following:
+Add `AI` and `PredictedSayCommand` inside the "@microsoft/teams-ai" import, the updated version of the import will look like the following:
 
 ```javascript
 import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand} from "@microsoft/teams-ai";
 ```
 
-1. Add the following PredictedSayCommand action in the `src/app/app.ts` to customize the citation:
+Add the following PredictedSayCommand action in the `src/app/app.ts` to customize the citation:
 
 ```javascript
 app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, state, data, action) => {
@@ -318,4 +318,4 @@ Notice that the sensitivity label appears right next to the "AI Generated" label
 
 You have completed Lab B3 - Enhance User Experience with the Powered by AI kit!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab03-Powered-by-AI/CareerGenie).
 
-You are now ready to proceed to Lab A4 - Secure your solution using authentication. Select Next. 
+You are now ready to proceed to Lab A4 - Secure your solution using authentication. Select Next.
