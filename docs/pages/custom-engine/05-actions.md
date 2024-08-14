@@ -408,6 +408,20 @@ export const getUserDisplayName = async (token) => {
 }
 ```
 
+Locate `app` in the `src/app/app.ts` and update the scope with **'Mail.Send'**. The final version of the app will look like below:
+
+```javascript
+const app = new Application({
+  storage,
+  authentication: {settings: {
+    graph: {
+      scopes: ['User.Read', 'Mail.Send'],
+        ...
+        ...
+    }
+  }}});
+```
+
 Go to `src/app/actions.ts` and add the following import on top of the code:
 
 ```javascript
@@ -505,22 +519,38 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 
 Let's test Career Genie with the new **sendLists** actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
+To start a conversation with Career Genie, simply type a message. For example, you can begin with 'Hi'.
+
+!!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions."
+
+You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**. 
+
+![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
+
+Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed. You'll be redirected to login and consent to the app's permissions.
+
+!!! tip "If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant."
+
+Select **Accept** to consent to the permissions.
+
+You will now get this message from the Career Genie with your logged in name showing successful authentication. Now, you can start testing the new action in Career Genie!
+
 To understand how to flow works, you may ask the following questions in order:
 
-    - Hello
-    - Can you suggest any developers experienced in .NET?
-    - Add {Candidate 1} in the .NET Dev Candidates list
-    - Can you add {Candidate 2} in the same list with {Candidate 1}?
-    - Can you suggest python developers who can speak Spanish?
-    - Great, add {Candidate 3} in the Python Dev Candidates list
-    - Can you find candidates who have developer experience more than 10 years?
-    - Add {Candidate 4} in the Talent list
-    - Summarize my lists
-    - Remove {Candidate 3} from the Python Dev Candidates list
-    - Summarize my lists
-    - Remove .NET Dev Candidates list
-    - Summarize my lists
-    - Send my lists to HR for scheduling
+- Hello
+- Can you suggest any developers experienced in .NET?
+- Add {Candidate 1} in the .NET Dev Candidates list
+- Can you add {Candidate 2} in the same list with {Candidate 1}?
+- Can you suggest python developers who can speak Spanish?
+- Great, add {Candidate 3} in the Python Dev Candidates list
+- Can you find candidates who have developer experience more than 10 years?
+- Add {Candidate 4} in the Talent list
+- Summarize my lists
+- Remove {Candidate 3} from the Python Dev Candidates list
+- Summarize my lists
+- Remove .NET Dev Candidates list
+- Summarize my lists
+- Send my lists to HR for scheduling
 
 !!! tip "Check your mailbox"
     After the last step, check your mailbox to see if you receive any email for the lists of candidates. In an ideal scenario, this email will be received by the Career Genie HR Team. Only for testing purposes, you are using your email address.

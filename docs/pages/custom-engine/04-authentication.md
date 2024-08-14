@@ -1,5 +1,6 @@
 # B4 - Secure your custom copilot using authentication
- In this lab, you'll learn how to authenticate users with Azure AD Single Sign-On in CareerGenie, and to call the Microsoft Graph API using the token to get logged in user informaton. 
+
+In this lab, you'll learn how to authenticate users with Azure AD Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 
 ???+ info "Navigating the Build your own copilot labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
@@ -11,13 +12,13 @@
 
 In this lab you will learn to:
 
-- Add Azure Active Directory single sign-on (SSO) to your app so users can seamlessly log into your app with the same account they use in Microsoft Teams
-- Use the Bot Framework and Teams AI SDK to create a basic conversational flow.
-- Acquire and utilise tokens for app users to enhance security and user experience.
+- Add Azure Active Directory single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams
+- Use Teams AI library and Bot Framework to implement the single sign on.
+- Acquire and utilize tokens for app users to enhance security and user experience.
 
 ## Introduction
 
-Get ready to update the CareerGenie bot that you've built so far to leverages Azure Active Directory (AAD) single sign-on (SSO) to acquire a token for app users to get Microsoft 365 data using Microsoft Graph. This token will enable seamless authentication and authorization within your application. You will integrate this functionality into a Microsoft Teams application using the Bot Framework and the Teams AI SDK, focusing on a single-tenant setup.
+Get ready to update Career Genie that you've built so far to leverages Azure Active Directory (AAD) single sign-on (SSO) to acquire a token for app users to get Microsoft 365 data using Microsoft Graph. This token will enable seamless authentication and authorization within your application. You will integrate this functionality into a Microsoft Teams application using the Teams AI library and the Bot Framework, focusing on a single-tenant setup.
 
 ## Exercise 1: Set up your project for Azure AD Single Sign-on
 
@@ -136,7 +137,7 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 
 ### Step 2: Update Teams Toolkit configuration file to create the Azure AD App
 
-Open the teamsapp.local.yml file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. These steps are done 3 steps, as shown in the "LIFECYCLE" section of the Teams Toolkit user interface.
+Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
 
 - Provision - In this phase, any infrastructure needed by your app is provisioned. This includes things like the bot registration, the Teams app package, and, in this case, the Azure AD app registration
 
@@ -144,7 +145,7 @@ Open the teamsapp.local.yml file. This is a YAML file that defines the steps Tea
 
 - Publish - In this phase, the app package is published to Microsoft Teams
 
-To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You can put them directly below the `provision`: line
+To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You can put them directly below the `provision`:
 
 ```yml
   - uses: aadApp/create # Creates a new Azure Active Directory (AAD) app to authenticate users if the environment variable that stores clientId is empty
@@ -161,6 +162,7 @@ To provision your Azure AD app, add these lines to **teamsapp.local.yml**. You c
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 
 ```
+
 And after `botFramework/create` add below to update the existing AAD app.
 
 ```yml
@@ -194,9 +196,10 @@ Find the Teams app manifest template in **./appPackage/manifest.json** and add t
         "resource": "api://botid-${{BOT_ID}}"
     }
 ```
+
 Add it below the `validDomains` object, with a comma in between.
 
-While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom copilot.
+While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine copilot.
 
 So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the validDomains array. After making these changes, the end of your `manifest.json` file should look like this:
 
@@ -209,7 +212,7 @@ So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the validDomains ar
 
 ## Exercise 3: Update the application code for SSO
 
-In this exercise, you'll modify the code to accomodate the SSO process.
+In this exercise, you'll modify the code to accommodate the SSO process.
 
 ### Step 1: Provide HTML pages for the consent dialog
 
@@ -220,6 +223,7 @@ The first time a user accesses your application, they may need to consent to giv
 Create a new folder called **public** inside the **src** folder of the project.
 
 Create a file **auth-start.html** and paste in the contents below:
+
 ```html
 <!--This file is used during the Teams Bot authentication flow to assist with retrieval of the access token.-->
 <!--If you're not familiar with this, do not alter or remove this file from your project.-->
@@ -396,6 +400,7 @@ Create a file **auth-start.html** and paste in the contents below:
 ```
 
 Create a file **auth-end.html** and paste in the contents below:
+
 ```html
 <html lang="en">
     <head>
@@ -468,7 +473,7 @@ Create a file **auth-end.html** and paste in the contents below:
 
 ### Step 2: Update code to handle SSO
 
-- Changes to **index.ts** file is as follows: 
+- Changes to **index.ts** file is as follows:
 
 To serve static files from the public folder, include the following import for `path`:
 
@@ -493,6 +498,7 @@ Import the TeamsAdapter from teams-ai library.
 ```TypeScript
 import { TeamsAdapter } from '@microsoft/teams-ai';
 ```
+
 Replace the adapter definition with `TeamsAdapter` instead of `CloudAdapter` for Teams SSO.
 
 ```JavaScript
@@ -506,19 +512,20 @@ const adapter = new TeamsAdapter(
 );
 
 ```
+
 Comment out the definition for `botFrameworkAuthentication` which is not needed anymore.
 
 - Changes to **config.ts** file is as follows:
 Add below properties to the constant `config`. Add a comma and after `process.env.INDEX_NAME` and append below snippet:
 
 ```
-  aadAppClientId: process.env.AAD_APP_CLIENT_ID,
-  aadAppClientSecret: process.env.AAD_APP_CLIENT_SECRET,
-  aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
-  aadAppTenantId: process.env.AAD_APP_TENANT_ID,
-  botDomain: process.env.BOT_DOMAIN,
-
+aadAppClientId: process.env.AAD_APP_CLIENT_ID,
+aadAppClientSecret: process.env.AAD_APP_CLIENT_SECRET,
+aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
+aadAppTenantId: process.env.AAD_APP_TENANT_ID,
+botDomain: process.env.BOT_DOMAIN,
 ```
+
 - Changes to **app.ts** file is as follows:
 
 We will be using the `TurnContext` module so include it in your import statement from the `botbuilder` library as shown below:
@@ -559,9 +566,10 @@ const app = new Application({
   },
 });
 ```
-Teams AI library handles exhange of token between your application and Microsoft Teams, so you can just call Microsoft Graph immediatley upon recieving the token.
-Now let's add code to define and handle various authentication and messaging events using the Teams AI library. 
-Paste below code after the app definition method: 
+
+Teams AI library handles exchange of token between your custom engine copilot and Microsoft Teams, so you can just call Microsoft Graph immediately upon receiving the token.
+Now let's add code to define and handle various authentication and messaging events using the Teams AI library.
+Paste below code after the app definition method:
 
 ```TypeScript
 interface ConversationState {
@@ -594,7 +602,7 @@ app.message('/signout', async (context: TurnContext, state: ApplicationTurnState
 
 ```
 
-The above code called a function `getUserDisplayName()` after token is successfully recieved with which we can now call Microsoft Graph to get user information. So let's add the function definition.
+The above code called a function `getUserDisplayName()` after token is successfully received with which we can now call Microsoft Graph to get user information. So let's add the function definition.
 
 !!! warning "This code will be moved to use Graph SDK."
 
@@ -630,46 +638,42 @@ const getUserDisplayName = async (token) => {
 
 ## Exercise 4: Run the application
 
-Now we are code complete for Teams SSO in CareerGenie. Let's take it for a ride.
+Now we are code complete for Teams SSO in Career Genie. Let's take it for a ride.
 
 ### Step 1: App installation in Teams
 
- Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
+Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
 
 ### Step 2: Giving consent
 
-To start a conversation with the CareerGenie bot, simply type a message. For example, you can begin by typing and sending 'Hi'.
+To start a conversation with the Career Genie bot, simply type a message. For example, you can begin by typing and sending 'Hi'.
 
-!!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions." 
+!!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions."
 
-You will see a small dialog box with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**. 
+You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
 ![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
 
-Since you're running locally with Developer Tunnels, you'll see a warning screen. Users won't see this when your app is deployed.
+Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed.
 
 ![consent dev tunnels](../../assets/images/custom-engine-04/consent-devtunnel.png)
 
-
-You'll be redirected to Azure AD, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented). 
+You'll be redirected to Azure AD, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).
 
 ![consent graph](../../assets/images/custom-engine-04/consent-graph.png)
 
 !!! tip "If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant."
 
-Select **Accept** to consent to the permissions and run CarrieGenie.
+Select **Accept** to consent to the permissions and run Career Genie.
 
 You will now get this message from the bot with your logged in name showing successful authentication.
 
 ![success message](../../assets/images/custom-engine-04/success-message.png)
 
-
-You can start chatting with your custom engine copilot. 
+You can start chatting with your custom engine copilot.
 
 ## CONGRATULATIONS
 
 You have completed Lab B4 - Secure your custom copilot using authentication!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab04-Authentication-SSO/CareerGenie).
 
 You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
-
-
