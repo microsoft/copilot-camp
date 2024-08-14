@@ -18,7 +18,7 @@ In this lab you will learn to:
 
 ## Introduction
 
-Get ready to update Career Genie that you've built so far to leverages Entra ID (AAD) single sign-on (SSO) to acquire a token for app users to get Microsoft 365 data using Microsoft Graph. This token will enable seamless authentication and authorization within your application. You will integrate this functionality into a Microsoft Teams application using the Teams AI library and the Bot Framework, focusing on a single-tenant setup.
+Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD) single sign-on (SSO). This will allow your app to seamlessly acquire tokens for accessing Microsoft 365 data via Microsoft Graph, ensuring smooth authentication and authorization. You'll be incorporating this SSO capability using the Teams AI library and the Bot Framework, specifically focusing on a single-tenant configuration.
 
 ## Exercise 1: Set up your project for Entra ID Single Sign-on
 
