@@ -8,9 +8,6 @@
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)(📍 You are here)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
-   
-    
-  
 
 In this lab you will learn to:
 
@@ -136,7 +133,8 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
     ]
 }
 ```
-## Step 2: Update Teams Toolkit configuration file to create the Azure AD App
+
+### Step 2: Update Teams Toolkit configuration file to create the Azure AD App
 
 Open the teamsapp.local.yml file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. These steps are done 3 steps, as shown in the "LIFECYCLE" section of the Teams Toolkit user interface.
 
