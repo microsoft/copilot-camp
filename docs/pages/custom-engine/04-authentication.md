@@ -28,7 +28,8 @@ In this exercise, use the [source code for Lab B3](https://github.com/microsoft/
 
 ### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
-In this step, you'll add a file that defines the application that Teams Toolkit will register for your application. The AAD manifest allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
+In this step, you'll add a file that defines the application that Teams Toolkit will register for your application in Entra ID. This manifest file allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
+
 Create a file **aad.manifest.json** in the root of your project folder, and paste in this JSON:
 
 ```JSON
@@ -197,11 +198,11 @@ Find the Teams app manifest template in **./appPackage/manifest.json** and add t
     }
 ```
 
-Add it below the `validDomains` object, with a comma in between.
+Add it below the `validDomains` node, with a comma in between.
 
 While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine copilot.
 
-So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the validDomains array. After making these changes, the end of your `manifest.json` file should look like this:
+So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` array. After making these changes, the end of your `manifest.json` file should look like this:
 
 ```JSON
   "validDomains": [
@@ -216,7 +217,7 @@ In this exercise, you'll modify the code to accommodate the SSO process.
 
 ### Step 1: Provide HTML pages for the consent dialog
 
-The first time a user accesses your application, they may need to consent to giving the app permission to read their personal contacts. This is performed by the TeamsFx library, which we'll add shortly. TeamsFx will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.
+The first time a user accesses your application, they may need to consent to giving the app permission to read their profile information. This is performed by the Teams AI library. It will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.
 
 ??? info "The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public)"
 
