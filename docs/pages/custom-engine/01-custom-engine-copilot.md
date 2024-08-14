@@ -28,8 +28,7 @@ Welcome aboard to the exciting journey of building your own custom engine copilo
 
 ## Exercise 1: Create Azure OpenAI service and models
 
-!!! warning "Follow the exercise or choose your own model"
-    This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine copilots. However, Custom engine copilots are not limited to using GPT models only. You can also test the lab with any other model you prefer use.
+This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine copilots. However, Custom engine copilots are not limited to using GPT models only. You can also test the lab with any other model you prefer use.
 
 ??? info "Choosing Between Small and Large Language Models"
     When choosing between Small Language Models (SLMs) and Large Language Models (LLMs), as well as among various GPT models, it's important to consider the specific needs of your project in terms of complexity, computational resources, and efficiency.
@@ -70,8 +69,11 @@ Once your Azure OpenAI service is created successfully, navigate to your resourc
 
 In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure OpenAI Studio` where you can create your deployment model.
 
-??? info "What is Azure OpenAI Studio?"
+!!! tip "What is Azure OpenAI Studio?"
     Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.
+    
+    *Learn more about the Generative AI, prompting and Azure OpenAI Studio by watching this Doodle to Code video!*
+    <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
 From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
 
@@ -92,7 +94,7 @@ For example, choose "Shakespeare writing assistant" and ask questions such as "t
 
 ![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
-## Exercise 2: Scaffold a custom engine copilot from template
+## Exercise 2: Scaffold a custom engine copilot from a template
 
 You'll need to complete all the required pre-requisites before starting with this exercise.
 
