@@ -64,7 +64,7 @@ const app = new Application({
         auth: {
           clientId: config.aadAppClientId!,
           clientSecret: config.aadAppClientSecret!,
-          authority: config.aadAppOauthAuthority
+          authority: `${config.aadAppOauthAuthorityHost}/common`
         }
       },
       signInLink: `https://${config.botDomain}/auth-start.html`,
