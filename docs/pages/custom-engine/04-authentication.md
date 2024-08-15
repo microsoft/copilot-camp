@@ -605,36 +605,38 @@ app.message('/signout', async (context: TurnContext, state: ApplicationTurnState
 
 ```
 
-The above code called a function `getUserDisplayName()` after token is successfully received with which we can now call Microsoft Graph to get user information. So let's add the function definition.
+The above code called a function `getUserDisplayName()` after token is successfully received with which we can now call Microsoft Graph to get user information. So let's add the function definition. You will install the [Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript) first. 
 
-!!! warning "This code will be moved to use Graph SDK."
+Run below script in the terminal to install the npm package:
+
+```PowerShell
+npm install @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
+```
+Now, import module needed from the package in **app.ts** file.
+
+```TypeScript
+import { Client } from "@microsoft/microsoft-graph-client";
+```
 
 Paste below code snippet after `app.message` method:
 
 ```TypeScript
-const getUserDisplayName = async (token) => {
-  let displayName = '';
-  try {
-    const graphResponse = await fetch(`https://graph.microsoft.com/v1.0/me/?$select=displayName`,
-      {
-        "method": "GET",
-        "headers": {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      });
-    if (graphResponse.ok) {
-      const profile = await graphResponse.json();
-      displayName = profile.displayName;
+async function getUserDisplayName(token: string): Promise<string | undefined> {
+  let displayName: string | undefined;
 
-    } else {
-      console.log(`Error ${graphResponse.status} calling Graph in getUserDisplayName: ${graphResponse.statusText}`);
+  const client = Client.init({
+    authProvider: (done) => {
+      done(null, token);
     }
+  });
+
+  try {
+    const user = await client.api('/me').get();
+    displayName = user.displayName;
+  } catch (error) {
+    console.log(`Error calling Graph SDK in getUserDisplayName: ${error}`);
   }
-  catch (error) {
-    console.log(`Error calling MSAL in getUserDisplayName: ${error}`);
-  }
+
   return displayName;
 }
 ```
@@ -643,7 +645,8 @@ const getUserDisplayName = async (token) => {
     - Go to `aad.manifest.json` and update signInAudience node as `  "signInAudience": "AzureADMyOrg"`
     - Got to `teamsapp.local.yml` and update signInAudience node for the aadApp\create as ` "signInAudience: "AzureADMyOrg" `
     - Got to `src\app\app.ts` and update application definition's auth setting's authority as ` authority: config.aadAppOauthAuthority`
-    - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`           
+    - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`        
+    - Go to `src\adapter.ts` and update the adapter definition ` MicrosoftAppType: 'SingleTenant'`   
 
 
 ## Exercise 4: Run the application

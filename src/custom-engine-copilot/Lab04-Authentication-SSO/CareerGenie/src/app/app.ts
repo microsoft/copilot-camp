@@ -5,6 +5,7 @@ import config from "../config";
 import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState } from "@microsoft/teams-ai";
 import fs from 'fs';
 import { createResponseCard } from './card';
+import { Client } from "@microsoft/microsoft-graph-client";
 
 // Create AI components
 const model = new OpenAIModel({
@@ -155,29 +156,22 @@ app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, stat
   return "success";
  
 });
-const getUserDisplayName = async (token) => {
-  let displayName = '';
-  try {
-    const graphResponse = await fetch(`https://graph.microsoft.com/v1.0/me/?$select=displayName`,
-      {
-        "method": "GET",
-        "headers": {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      });
-    if (graphResponse.ok) {
-      const profile = await graphResponse.json();
-      displayName = profile.displayName;
+async function getUserDisplayName(token: string): Promise<string | undefined> {
+  let displayName: string | undefined;
 
-    } else {
-      console.log(`Error ${graphResponse.status} calling Graph in getUserDisplayName: ${graphResponse.statusText}`);
+  const client = Client.init({
+    authProvider: (done) => {
+      done(null, token);
     }
+  });
+
+  try {
+    const user = await client.api('/me').get();
+    displayName = user.displayName;
+  } catch (error) {
+    console.log(`Error calling Graph SDK in getUserDisplayName: ${error}`);
   }
-  catch (error) {
-    console.log(`Error calling MSAL in getUserDisplayName: ${error}`);
-  }
+
   return displayName;
 }
 
