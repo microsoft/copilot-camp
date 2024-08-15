@@ -18,7 +18,7 @@ In this lab you will learn to:
 
 ## Introduction
 
-Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD) single sign-on (SSO). This will allow your app to seamlessly acquire tokens for accessing Microsoft 365 data via Microsoft Graph, ensuring smooth authentication and authorization. You'll be incorporating this SSO capability using the Teams AI library and the Bot Framework, specifically focusing on a single-tenant configuration.
+Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD) single sign-on (SSO). This will allow your app to seamlessly acquire tokens for accessing Microsoft 365 data via Microsoft Graph, ensuring smooth authentication and authorization. You'll be incorporating this SSO capability using the Teams AI library and the Bot Framework, specifically focusing on a multi-tenant configuration.
 
 ## Exercise 1: Set up your project for Entra ID Single Sign-on
 
@@ -38,7 +38,7 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
     "appId": "${{AAD_APP_CLIENT_ID}}",
     "name": "CareerGenieBot-aad",
     "accessTokenAcceptedVersion": 2,
-    "signInAudience": "AzureADMyOrg",
+    "signInAudience": "AzureADMultipleOrgs",
     "optionalClaims": {
         "idToken": [],
         "accessToken": [
@@ -153,7 +153,7 @@ To provision your Entra ID app, add these lines to **teamsapp.local.yml**. You c
     with:
       name: CareerGenieBot-aad # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
-      signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Entra ID tenant (for example, single tenant).
+      signInAudience: "AzureADMultipleOrgs" # Authenticate users with a Microsoft work or school account in your organization's Entra ID tenant (for example, single tenant).
     writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
       clientId: AAD_APP_CLIENT_ID
       clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
@@ -269,7 +269,7 @@ Create a file **auth-start.html** and paste in the contents below:
                 code_challenge: codeChallenge,
                 code_challenge_method: 'S256'
             };
-            let authorizeEndpoint = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`;
+            let authorizeEndpoint = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?${toQueryString(queryParams)}`;     
             window.location.assign(authorizeEndpoint);
         }
 
@@ -555,7 +555,7 @@ const app = new Application({
         auth: {
           clientId: config.aadAppClientId!,
           clientSecret: config.aadAppClientSecret!,
-          authority: config.aadAppOauthAuthority
+          authority: `${config.aadAppOauthAuthorityHost}/common`
         }
       },
       signInLink: `https://${config.botDomain}/auth-start.html`,
@@ -638,6 +638,13 @@ const getUserDisplayName = async (token) => {
   return displayName;
 }
 ```
+
+???+ "To make this app only work in single tenant, make below changes"         
+    - Go to `aad.manifest.json` and update signInAudience node as `  "signInAudience": "AzureADMyOrg"`
+    - Got to `teamsapp.local.yml` and update signInAudience node for the aadApp\create as ` "signInAudience: "AzureADMyOrg" `
+    - Got to `src\app\app.ts` and update application definition's auth setting's authority as ` authority: config.aadAppOauthAuthority`
+    - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`           
+
 
 ## Exercise 4: Run the application
 
