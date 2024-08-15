@@ -140,7 +140,7 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 
 Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
 
-- Provision - In this phase, any infrastructure needed by your app is provisioned. This includes things like the bot registration, the Teams app package, and, in this case, the Entra ID app registration
+- Provision - In this phase, any infrastructure needed by your app is created. This includes things like the bot registration, the Teams app package, and, in this case, the Entra ID app registration
 
 - Deploy - In this phase, the code is built and run locally, or uploaded to Azure for environments other than "local"
 
