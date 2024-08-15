@@ -13,6 +13,7 @@ const config = {
   aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
   aadAppTenantId: process.env.AAD_APP_TENANT_ID,
   botDomain: process.env.BOT_DOMAIN,
+  aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
 };
 
 export default config;
