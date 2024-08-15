@@ -659,7 +659,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 ### Step 2: Giving consent
 
-To start a conversation with the Career Genie bot, simply type a message. For example, you can begin by typing and sending 'Hi'.
+To start a conversation with the Career Genie, simply type a message. For example, you can begin by typing and sending 'Hi'.
 
 !!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions."
 
@@ -682,9 +682,9 @@ You'll be redirected to Entra ID, where you'll be asked to consent to the app's 
 
 Select **Accept** to consent to the permissions and run Career Genie.
 
-You will now get this message from the bot with your logged in name showing successful authentication.
+You will now get this message from the custom engine copilot with your logged in name showing successful authentication.
 
-![success message](../../assets/images/custom-engine-04/success-message.png)
+![success message](../../assets/images/custom-engine-04/auth.gif)
 
 You can start chatting with your custom engine copilot.
 
