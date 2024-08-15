@@ -478,7 +478,7 @@ Create a file **auth-end.html** and paste in the contents below:
 
 To serve static files from the public folder, include the following import for `path`:
 
-```
+```TypeScript
 import * as path from 'path';
 
 ```
