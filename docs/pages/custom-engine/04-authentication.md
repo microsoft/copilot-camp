@@ -183,6 +183,7 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
  AAD_APP_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
  AAD_APP_TENANT_ID: ${{AAD_APP_TENANT_ID}}
  AAD_APP_OAUTH_AUTHORITY_HOST: ${{AAD_APP_OAUTH_AUTHORITY_HOST}}
+ AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
 ```
 
 ## Exercise 2: Update your Teams app manifest for SSO
@@ -519,12 +520,13 @@ Comment out the definition for `botFrameworkAuthentication` which is not needed 
 - Changes to **config.ts** file is as follows:
 Add below properties to the constant `config`. Add a comma and after `process.env.INDEX_NAME` and append below snippet:
 
-```
+```TypeScript
 aadAppClientId: process.env.AAD_APP_CLIENT_ID,
 aadAppClientSecret: process.env.AAD_APP_CLIENT_SECRET,
 aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
 aadAppTenantId: process.env.AAD_APP_TENANT_ID,
 botDomain: process.env.BOT_DOMAIN,
+aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
 ```
 
 - Changes to **app.ts** file is as follows:
