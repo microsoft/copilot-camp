@@ -667,6 +667,9 @@ You will see a small dialog box for the additional permissions with ‘Cancel’
 
 ![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
 
+!!! warning "Known issues"
+    - There is a delay for the consent dialog to show up in Teams chat. This has been identified as a platform issue and we are monitoring. Keep pinging 2-3 times.
+
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed.
 
 ![consent dev tunnels](../../assets/images/custom-engine-04/consent-devtunnel.png)
@@ -685,8 +688,12 @@ You will now get this message from the bot with your logged in name showing succ
 
 You can start chatting with your custom engine copilot.
 
+
+
 ## CONGRATULATIONS
 
 You have completed Lab B4 - Secure your custom copilot using authentication!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab04-Authentication-SSO/CareerGenie).
 
 You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
+
+
