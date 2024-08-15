@@ -219,7 +219,7 @@ In this exercise, you'll modify the code to accommodate the SSO process.
 
 The first time a user accesses your application, they may need to consent to giving the app permission to read their profile information. This is performed by the Teams AI library. It will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.
 
-??? info "The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public)"
+> The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public)
 
 Create a new folder called **public** inside the **src** folder of the project.
 
