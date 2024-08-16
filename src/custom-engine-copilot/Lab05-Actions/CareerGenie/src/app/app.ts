@@ -7,7 +7,7 @@ import fs from 'fs';
 import { createResponseCard } from './card';
 import { ApplicationTurnState } from "./state";
 import { ensureListExists, getCandidates, setCandidates, deleteList, sendLists } from "./actions";
-
+import { Client } from "@microsoft/microsoft-graph-client";
 // Create AI components
 const model = new OpenAIModel({
   azureApiKey: config.azureOpenAIKey,
@@ -57,7 +57,6 @@ async function choosePrompt(context){
 
 // Define storage and application
 const storage = new MemoryStorage();
-
 const app = new Application({
   storage,
   authentication: {settings: {
@@ -67,7 +66,7 @@ const app = new Application({
         auth: {
           clientId: config.aadAppClientId!,
           clientSecret: config.aadAppClientSecret!,
-          authority: `${config.aadAppOauthAuthorityHost}/${config.aadAppTenantId}`
+          authority: `${config.aadAppOauthAuthorityHost}/common`
         }
       },
       signInLink: `https://${config.botDomain}/auth-start.html`,
@@ -157,31 +156,25 @@ app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, stat
  
 });
 
-export const getUserDisplayName = async (token) => {
-  let displayName = '';
-  try {
-    const graphResponse = await fetch(`https://graph.microsoft.com/v1.0/me/?$select=displayName`,
-      {
-        "method": "GET",
-        "headers": {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      });
-    if (graphResponse.ok) {
-      const profile = await graphResponse.json();
-      displayName = profile.displayName;
+export async function getUserDisplayName(token: string): Promise<string | undefined> {
+  let displayName: string | undefined;
 
-    } else {
-      console.log(`Error ${graphResponse.status} calling Graph in getUserDisplayName: ${graphResponse.statusText}`);
+  const client = Client.init({
+    authProvider: (done) => {
+      done(null, token);
     }
+  });
+
+  try {
+    const user = await client.api('/me').get();
+    displayName = user.displayName;
+  } catch (error) {
+    console.log(`Error calling Graph SDK in getUserDisplayName: ${error}`);
   }
-  catch (error) {
-    console.log(`Error calling MSAL in getUserDisplayName: ${error}`);
-  }
+
   return displayName;
 }
+
 
 // Register action handlers
 interface ListOnly {

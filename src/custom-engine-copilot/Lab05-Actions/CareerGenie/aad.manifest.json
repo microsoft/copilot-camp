@@ -3,7 +3,7 @@
     "appId": "${{AAD_APP_CLIENT_ID}}",
     "name": "CareerGenieBot-aad",
     "accessTokenAcceptedVersion": 2,
-    "signInAudience": "AzureADMyOrg",
+    "signInAudience": "AzureADMultipleOrgs",
     "optionalClaims": {
         "idToken": [],
         "accessToken": [
@@ -22,6 +22,10 @@
             "resourceAccess": [
                 {
                     "id": "User.Read",
+                    "type": "Scope"
+                },
+                {
+                    "id": "Mail.Read",
                     "type": "Scope"
                 }
             ]
