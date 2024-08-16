@@ -289,13 +289,14 @@ defaultPrompt: async () => {
 
 Let's test Career Genie on Teams this time. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
-!!! tip "Tip: Asking questions about your data"
-    Ensure your questions are related to your dataset. Go through pdf documents in the `resumes` folder to understand more about your data. Challenge your custom engine copilot by combining requirements and asking complex questions! Some suggestions would be:
+!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
 
-    - *Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?*
-    - *Who are the other good candidates?*
-    - *Who would be suitable for a position that requires 5+ python development experience?*
-    - *Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?*
+Ensure your questions are related to your dataset. Go through pdf documents in the `resumes` folder to understand more about your data. Challenge your custom engine copilot by combining requirements and asking complex questions! Some suggestions would be:
+
+- Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?
+- Who are the other good candidates?
+- Who would be suitable for a position that requires 5+ python development experience?
+- Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?
 
 ![Chat with your data on Teams](../../assets/images/custom-engine-02/byod-teams.gif)
 
