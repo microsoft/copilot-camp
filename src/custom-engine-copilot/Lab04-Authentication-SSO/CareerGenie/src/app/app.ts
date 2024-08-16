@@ -48,14 +48,6 @@ const planner = new ActionPlanner({
 
 // Define storage and application
 const storage = new MemoryStorage();
-// const app = new Application({
-//   storage,
-//   ai: {
-//     planner,
-//     //feedback loop is enabled
-//     enable_feedback_loop: true
-//   },
-// });
 const app = new Application({
   storage,
   authentication: {settings: {

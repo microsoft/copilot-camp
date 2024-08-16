@@ -40,7 +40,7 @@
                 code_challenge: codeChallenge,
                 code_challenge_method: 'S256'
             };
-            let authorizeEndpoint = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`;
+            let authorizeEndpoint = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?${toQueryString(queryParams)}`;         
             window.location.assign(authorizeEndpoint);
         }
 
