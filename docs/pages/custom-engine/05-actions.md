@@ -286,10 +286,20 @@ export { getCandidates, setCandidates, ensureListExists, deleteList };
 
 ### Step 2: Register action handlers in the app
 
-In`src/app/app.ts`, add the following code on top of the file to import the action functions:
+In`src/app/app.ts`, add the following code on top of the file to imports the action functions:
 
 ```javascript
+import { ApplicationTurnState } from "./state";
 import { ensureListExists, getCandidates, setCandidates, deleteList } from "./actions";
+```
+
+Find and remove these lines from **app.ts** just before `app.authentication.get('graph').onUserSignInSuccess` method. 
+
+```TypeScript
+interface ConversationState {
+  count: number;
+}
+type ApplicationTurnState = TurnState<ConversationState>;
 ```
 
 Then add the following code snippet in the `src/app/app.ts` to register action handlers in the AI System:
@@ -401,11 +411,12 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
 In your project, go to `src/app/app.ts`, locate the `getUserDisplayName` and add **export** in front of the function. The final version of the function will look like below:
 
 ```javascript
-export const getUserDisplayName = async (token) => {
+export async function getUserDisplayName
 ...
 ...
 ...
 }
+
 ```
 
 Locate `app` in the `src/app/app.ts` and update the scope with **'Mail.Send'**. The final version of the app will look like below:
@@ -422,37 +433,36 @@ const app = new Application({
   }}});
 ```
 
-Go to `src/app/actions.ts` and add the following import on top of the code:
+Go to `src/app/actions.ts` and add the following imports on top of the code:
 
 ```javascript
 import {getUserDisplayName} from './app';
+import { Client } from "@microsoft/microsoft-graph-client";
 ```
 
 Then, add the following functions in the `actions.ts`:
 
 ```javascript
 async function sendLists(state: ApplicationTurnState, token): Promise<string> {
-
     const email = await createEmailContent(state.conversation.lists, token);
-
-    const sendEmail = await fetch(`https://graph.microsoft.com/v1.0/me/sendMail`,
-        {
-        "method": "POST",
-        "headers": {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-        "body": JSON.stringify(email)
+    try {
+        const client = Client.init({
+            authProvider: (done) => {
+                done(null, token);
+            }
         });
-
-        if(sendEmail.ok){
+        const sendEmail = await client.api('/me/sendMail').post(JSON.stringify(email));
+        if (sendEmail.ok) {
             return email.message.body.content;
         }
         else {
             console.log(`Error ${sendEmail.status} calling Graph in sendToHR: ${sendEmail.statusText}`);
             return 'Error sending email';
         }
+    } catch (error) {
+        console.error('Error in sendLists:', error);
+        throw error;
+    }
 }
    
 async function createEmailContent(lists, token) {
@@ -515,7 +525,18 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 });
 ```
 
-### Step 4: Test your app and the new `sendLists` action
+### Step 4: Update your Entra ID app registration
+
+Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **aad.manifest.json** and inside the node `requiredResourceAccess` find `  "resourceAppId": "Microsoft Graph",`. In the `resourceAccess` array add below scope after adding a comma.
+
+```JSON
+ {
+    "id": "Mail.Read",
+    "type": "Scope"
+}
+```
+
+### Step 5: Test your app and the new `sendLists` action
 
 Let's test Career Genie with the new **sendLists** actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
