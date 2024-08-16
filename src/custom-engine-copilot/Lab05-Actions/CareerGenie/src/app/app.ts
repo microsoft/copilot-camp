@@ -2,10 +2,9 @@ import { CardFactory, MemoryStorage, MessageFactory,TurnContext } from "botbuild
 import * as path from "path";
 import config from "../config";
 // See https://aka.ms/teams-ai-library to learn more about the Teams AI library.
-import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState, DefaultConversationState, Memory } from "@microsoft/teams-ai";
+import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState, DefaultConversationState } from "@microsoft/teams-ai";
 import fs from 'fs';
 import { createResponseCard } from './card';
-import { ApplicationTurnState } from "./state";
 import { ensureListExists, getCandidates, setCandidates, deleteList, sendLists } from "./actions";
 import { Client } from "@microsoft/microsoft-graph-client";
 // Create AI components
@@ -79,6 +78,11 @@ const app = new Application({
     enable_feedback_loop: true
   },
 });
+// Strongly type the applications turn state
+interface ConversationState extends DefaultConversationState {
+  lists: Record<string, string[]>;
+}
+export type ApplicationTurnState = TurnState<ConversationState>;
 
 app.authentication.get('graph').onUserSignInSuccess(async (context: TurnContext, state: ApplicationTurnState) => {
   // Successfully logged in

@@ -657,6 +657,8 @@ Now we are code complete for Teams SSO in Career Genie. Let's take it for a ride
 
 Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
 
+!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+
 ### Step 2: Giving consent
 
 To start a conversation with the Career Genie, simply type a message. For example, you can begin by typing and sending 'Hi'.

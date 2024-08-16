@@ -233,9 +233,15 @@ const planner = new ActionPlanner({
 
 In this exercise, you'll create functions for your actions and register the action handlers in the app.
 
-### Step 1: Add `ConversationState` and define functions for each action
+### Step 1: Update `ConversationState` and define functions for each action
 
-In your project, go to `src/app/` and create a new file with a name **state.ts** and add the following source code for the "ConversationState":
+In `src/app/app.ts`, update the `@microsoft/teams-ai` with **DefaultConversationState**. The final version of the import will look as below:
+
+```javascript
+import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState, DefaultConversationState } from "@microsoft/teams-ai";
+```
+
+In `src/app/app.ts`, find the **ConversationState** and **ApplicationTurnState**, replace them with the following code:
 
 ```javascript
 import { TurnState, DefaultConversationState } from "@microsoft/teams-ai";
@@ -250,7 +256,7 @@ export type ApplicationTurnState = TurnState<ConversationState>;
 In `src/app/`, create another file with a name **actions.ts** and add the following source code to define functions for the actions:
 
 ```javascript
-import { ApplicationTurnState } from "./state";
+import { ApplicationTurnState } from './app';
 
 function getCandidates(state: ApplicationTurnState, list: string): string[] {
     ensureListExists(state, list);
@@ -286,20 +292,10 @@ export { getCandidates, setCandidates, ensureListExists, deleteList };
 
 ### Step 2: Register action handlers in the app
 
-In`src/app/app.ts`, add the following code on top of the file to imports the action functions:
+In`src/app/app.ts`, add the following action imports on top of the file:
 
 ```javascript
-import { ApplicationTurnState } from "./state";
 import { ensureListExists, getCandidates, setCandidates, deleteList } from "./actions";
-```
-
-Find and remove these lines from **app.ts** just before `app.authentication.get('graph').onUserSignInSuccess` method. 
-
-```TypeScript
-interface ConversationState {
-  count: number;
-}
-type ApplicationTurnState = TurnState<ConversationState>;
 ```
 
 Then add the following code snippet in the `src/app/app.ts` to register action handlers in the AI System:
@@ -353,6 +349,8 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 ### Step 3: Test your app with the new actions
 
 Let's test Career Genie with the new actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
+
+!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
 
 To understand how to flow works, you may ask the following questions in order:
 
@@ -411,7 +409,7 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
 In your project, go to `src/app/app.ts`, locate the `getUserDisplayName` and add **export** in front of the function. The final version of the function will look like below:
 
 ```javascript
-export async function getUserDisplayName
+export async function getUserDisplayName {
 ...
 ...
 ...
@@ -433,11 +431,33 @@ const app = new Application({
   }}});
 ```
 
-Go to `src/app/actions.ts` and add the following imports on top of the code:
+Go to `env/.env.local.user` and add the following HR email as an environment variable:
+
+```
+HR_EMAIL=<YOUR-EMAIL-ADDRESS>
+```
+
+!!! tip "using your own email for testing only"
+    In an ideal scenario, you'll use an email address of an HR Team to send interview scheduling emails. This time, only for testing purposes, please place your own email address.
+
+Go to `teamsapp.local.yml` and add the following line under the `file/createOrUpdateEnvironmentFile`, **envs** list:
+
+```
+HR_EMAIL: ${{HR_EMAIL}}
+```
+
+Go to `src/config.ts` and add the following line in the config:
 
 ```javascript
-import {getUserDisplayName} from './app';
+HR_EMAIL: process.env.HR_EMAIL
+```
+
+Go to `src/app/actions.ts` and update the imports on top of the code as below:
+
+```javascript
+import { getUserDisplayName, ApplicationTurnState } from './app';
 import { Client } from "@microsoft/microsoft-graph-client";
+import config from '../config';
 ```
 
 Then, add the following functions in the `actions.ts`:
@@ -489,7 +509,7 @@ const email ={
     "toRecipients": [
         {
         "emailAddress": {
-            "address": "<YOUR-EMAIL-ADDRESS>"
+            "address": `${config.HR_EMAIL}`
         }
         }
     ]
@@ -500,9 +520,7 @@ return await email;
 }
 ```
 
-Make sure to replace `<YOUR-EMAIL-ADDRESS>` with your email address in the email's **toRecipients** section.
-
-Update the export of `actions.ts` and add **sendLists** in the list. The final version of the export will look like below:
+Finally in `src/app/actions.ts`m add **sendLists** in the`actions.ts` exports. The final version of the exports will look like below:
 
 ```javascript
 export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
@@ -540,6 +558,8 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
 
 Let's test Career Genie with the new **sendLists** actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
+!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+
 To start a conversation with Career Genie, simply type a message. For example, you can begin with 'Hi'.
 
 !!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions."
@@ -574,7 +594,7 @@ To understand how to flow works, you may ask the following questions in order:
 - Send my lists to HR
 
 !!! tip "Check your mailbox"
-    After the last step, check your mailbox to see if you receive any email for the lists of candidates. In an ideal scenario, this email will be received by the Career Genie HR Team. Only for testing purposes, you are using your email address.
+    After the last step, check your mailbox to see if you receive any email for the lists of candidates.
 
 ![Career Genie full experience](../../assets/images/custom-engine-05/career-genie-full.gif)
 

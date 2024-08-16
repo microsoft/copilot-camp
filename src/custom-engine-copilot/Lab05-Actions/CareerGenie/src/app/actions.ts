@@ -1,6 +1,6 @@
-import { ApplicationTurnState } from "./state";
-import { getUserDisplayName } from './app';
+import { getUserDisplayName, ApplicationTurnState } from './app';
 import { Client } from "@microsoft/microsoft-graph-client";
+import config from '../config';
 
 function getCandidates(state: ApplicationTurnState, list: string): string[] {
     ensureListExists(state, list);
@@ -77,7 +77,7 @@ async function createEmailContent(lists, token) {
             "toRecipients": [
                 {
                     "emailAddress": {
-                         "address": "<YOUR-EMAIL-ADDRESS>"
+                         "address": `${config.HR_EMAIL}`
                     }
                 }
             ]
