@@ -15,3 +15,5 @@ During Extend Path of the Copilot Camp, learners will construct a customized ass
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication) Secure your solution using Entra ID authentication
   
 ## <a href="./00-prerequisites">Start here</a> with Lab 00, where you'll set up development your environment.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />

@@ -603,3 +603,5 @@ To understand how to flow works, you may ask the following questions in order:
 You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie).
 
 This is the end of the **Build your own copilot** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/05-actions" />

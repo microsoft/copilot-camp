@@ -135,5 +135,4 @@ Notice that even though Copilot addressed the user as "Robert" (since that's who
 
 You've successfully built your first API Plugin! You are now ready to proceed to enhance this API Plugin with more API calls. 
 
-
-
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/02-api-plugin" />

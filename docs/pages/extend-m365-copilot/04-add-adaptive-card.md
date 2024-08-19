@@ -507,3 +507,5 @@ You can now test other prompts as well to see the improved responses from Copilo
 ## CONGRATULATIONS
 
 You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add a declarative copilot to the same API plugin. 
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />
