@@ -463,7 +463,8 @@
     {
       "type": "OpenApi",
       "auth": {
-        "type": "None"
+        "type": "OAuthPluginVault",
+        "reference_id": "ODgzYTMwZDQtY2E5MS00Y2JiLWIwMjUtOWMwZjZkNzgyMGEwIyM4OGZmM2M2Ni1lM2MwLTQ5OGQtYTZhMi05MjI0NGVhMjBmOGQ="
       },
       "spec": {
         "url": "trey-definition.json"

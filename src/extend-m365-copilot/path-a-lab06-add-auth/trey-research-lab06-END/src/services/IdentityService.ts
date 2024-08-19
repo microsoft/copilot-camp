@@ -24,6 +24,12 @@ export default class Identity {
         this.requestNumber = ++requestCounter;
         this.id = DEFAULT_CONSULTANT_ID;
 
+        //#region DEBUG CODE
+        req.headers.forEach((value, name) => {
+            console.log(`🤯 Header: ${name} = ${value}`);
+        });
+        //#endregion
+
         // Check for auth header from Easy Auth
         let clientPrincipal = req.headers['x-ms-client-principal'];
         // TEST TOKEN:  (uncomment this to test authenticated access locally)

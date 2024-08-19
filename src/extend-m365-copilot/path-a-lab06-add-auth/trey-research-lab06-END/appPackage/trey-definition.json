@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "${{OPENAPI_SERVER_URL}}/api/",
+            "url": "https://yourdomainhere.ngrok.io/api/",
             "description": "Production server"
         }
     ],
