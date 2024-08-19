@@ -1,0 +1,1 @@
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/resources" />

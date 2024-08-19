@@ -19,3 +19,5 @@ The journey starts with building a basic custom engine copilot using Teams Toolk
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
   
 ## <a href="./00-prerequisites">Start here</a> with Lab B0, where you'll set up development your environment.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/index" />

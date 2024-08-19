@@ -202,3 +202,5 @@ See the full demo of how you can test this app.
 
 
 Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />

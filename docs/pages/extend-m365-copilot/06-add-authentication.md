@@ -13,3 +13,5 @@ In this lab you will add a Declarative Copilot which is grounded in the API plug
 
 
 ## WORK IN PROGRESS
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />
