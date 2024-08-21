@@ -17,4 +17,4 @@ In this path of Extend, you will learn how to use Teams Message Extensions as pl
 
 ## <a href="./00-prerequisites">Start here</a> with Lab, where you'll set up development your environment.
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/index" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-message-ext/index" />

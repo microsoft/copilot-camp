@@ -306,4 +306,4 @@ You have completed Lab B2 - Index your data in Azure AI Search and bring it into
 
 You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/02-rag" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/02-rag" />
