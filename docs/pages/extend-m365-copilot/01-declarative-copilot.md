@@ -36,7 +36,7 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 | **Declarative copilot manifest** | Describes copilot configuration, required fields, capabilities, conversation starters, and actions. |
 | **Plugin manifest (Optional)**   | Describes plugin configuration, required fields, and capabilities.                         |
 
-> In this lab we will have not have the plugin manifest but you can find it in more advanced labs in copilot camp.
+> In this lab we will have not have the plugin manifest but you can find it in more advanced labs in Copilot developer camp.
 
 
 ## Exercise 1: Scaffold a declarative copilot from template
