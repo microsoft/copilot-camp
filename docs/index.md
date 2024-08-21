@@ -6,9 +6,15 @@ Welcome to Copilot developer camp! Copilot developer camp is a virtual workshop 
 !!! warning "Copilot developer camp is still work in progress, but some of the labs are ready for testing."
     We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot developer camp Early Testers" chat in Microsoft Teams.
 
-The labs are divided into two pathways, allowing you to choose based on what you want to create.
+The labs are divided into three pathways, allowing you to choose based on what you want to create.
 
 ![pathways](./assets/images/pathways.png)
+
+## Extend Path - Extend Message Extension as Plugin
+
+_Note: These labs require the "Private Preview" for Copilot for M365 extensibility. There may be some changes for "Public Preview" when it's available._
+
+---8<--- "m-path-links.md"
 
 
 ## Extend Path - Extend Copilot for Microsoft 365
