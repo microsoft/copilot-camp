@@ -1,0 +1,1 @@
+# Lab M3 - Enhance plugin with new search command

@@ -1,0 +1,1 @@
+# Lab M2 - Run app in Microsoft Copilot for Microsoft 365
