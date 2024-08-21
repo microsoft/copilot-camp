@@ -1,0 +1,6 @@
+  - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) COMING SOON
+  - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) COMING SOON
+  - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) COMING SOON
+  - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) COMING SOON
+  - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) COMING SOON
+  - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) COMING SOON

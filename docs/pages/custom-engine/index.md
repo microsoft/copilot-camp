@@ -1,7 +1,7 @@
 
-# Welcome to Copilot Camp's Build Path: Build your own copilot
+# Welcome to Copilot developer camp's Build Path: Build your own copilot
 
-During Build Path of the Copilot Camp, you will develop a custom engine copilot specifically designed to help Human Resources departments manage resumes, create new job posts and more.
+During Build Path of the Copilot developer camp, you will develop a custom engine copilot specifically designed to help Human Resources departments manage resumes, create new job posts and more.
 
 !!! tip "What is a custom engine copilot?"
     Custom engine copilots are chatbots powered by Generative AI, designed to provide sophisticated conversational experiences. Custom engine copilots are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.

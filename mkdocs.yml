@@ -1,4 +1,4 @@
-site_name: Copilot camp
+site_name: Copilot developer camp
 site_url: https://microsoft.github.io/copilot-camp
 repo_url: https://github.com/microsoft/copilot-camp
 repo_name: microsoft/copilot-camp
@@ -7,6 +7,15 @@ extra_css:
     - assets/labStyles.css
 nav: 
 - Home: 'index.md'
+- Register: 'register.md'
+- Extend Path - Extend Teams Message Extension as plugin: 
+  - Welcome : 'pages/extend-message-ext/index.md'
+  - Lab M0 - Prerequisites: 'pages/extend-message-ext/00-prerequisites.md'
+  - Lab M1 - Get to know Northwind message extension: 'pages/extend-message-ext/01-nw-teams-app.md'
+  - Lab M2 - Run app in Microsoft Copilot for Microsoft 365: 'pages/extend-message-ext/02-nw-plugin.md'
+  - Lab M3 - Enhance plugin with new search command: 'pages/extend-message-ext/03-enhance-nw-plugin.md'
+  - Lab M4 - Add authentication: 'pages/extend-message-ext/04-add-authentication.md'
+  - Lab M5 - Enhance plugin with an action command: '/pages/extend-message-ext/05-add-action.md'
 - Extend Path - Extend Copilot for Microsoft 365: 
   - Welcome : 'pages/extend-m365-copilot/index.md'
   - Lab E0 - Prerequisites: 'pages/extend-m365-copilot/00-prerequisites.md'
