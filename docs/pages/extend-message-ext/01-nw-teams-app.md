@@ -1,0 +1,1 @@
+# Lab M1 - Get to know Northwind message extension
