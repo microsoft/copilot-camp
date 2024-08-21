@@ -21,7 +21,7 @@ _Note: These labs require the "Private Preview" for Copilot for M365 extensibili
 
 _Note: These labs require the "Private Preview" for Copilot for M365 extensibility. There may be some changes for "Public Preview" when it's available._
 
----8<--- "a-path-links.md"
+---8<--- "e-path-links.md"
 
 ### Build Path - Build your own copilot
 
