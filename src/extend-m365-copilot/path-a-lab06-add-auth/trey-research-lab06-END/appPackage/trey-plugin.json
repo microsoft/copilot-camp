@@ -464,7 +464,7 @@
       "type": "OpenApi",
       "auth": {
         "type": "OAuthPluginVault",
-        "reference_id": "ODgzYTMwZDQtY2E5MS00Y2JiLWIwMjUtOWMwZjZkNzgyMGEwIyM4OGZmM2M2Ni1lM2MwLTQ5OGQtYTZhMi05MjI0NGVhMjBmOGQ="
+        "reference_id":  "<your oauth plugin vault reference id>"
       },
       "spec": {
         "url": "trey-definition.json"
