@@ -317,7 +317,7 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 
 ## Exercise 3: Test the plugin in Copilot
 
-## Step 1: Install the plugin
+### Step 1: Install the plugin
 
 Now restore the web browser you minimized back in Exercise 1 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
 
