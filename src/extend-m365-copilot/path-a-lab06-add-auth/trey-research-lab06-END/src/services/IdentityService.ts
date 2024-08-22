@@ -7,34 +7,18 @@ import { ApiConsultant } from '../model/apiModel';
 import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 import ConsultantApiService from "./ConsultantApiService";
 
-interface UserInfo {
-    id: string;
-    name: string;
-    email: string;
-}
-
 class Identity {
     private requestNumber = 1;  // Number the requests for logging purposes
 
-    public async validateAndGetConsultantForUser(req: HttpRequest): Promise<ApiConsultant> {
-        const userInfo = await this.validateRequest(req);
-        let consultant = await ConsultantApiService.getApiConsultantById(userInfo.id);
-        if (!consultant) {
-            consultant = await this.createConsultantForUser(userInfo);
-        }
 
-        return consultant;
-    }
+    public async validateRequest(req: HttpRequest): Promise<ApiConsultant> {
 
-    public async validateRequest(req: HttpRequest): Promise<UserInfo> {
-        // Anonymous version:
-        // return {
-        //     id: "1",
-        //     name: "Avery Howard",
-        //     email: "avery@treyresearch.com"
-        // }
+        // Default user used for unauthenticated testing
+        let userId = "1";
+        let userName = "Avery Howard";
+        let userEmail = "avery@treyresearch.com";
 
-        // Auth version:
+        // Try to validate the token and get user's basic information
         try {
             const token = req.headers.get("Authorization")?.split(" ")[1];
             if (!token) {
@@ -69,28 +53,38 @@ class Identity {
 
             // validate the token
             const validToken = await validator.validateToken(token, options);
-            console.log(`Request ${this.requestNumber++}: Token is valid for user ${validToken.preferred_username} (${validToken.name})`);
 
-            return {
-                id: validToken.oid,
-                name: validToken.name,
-                email: validToken.upn
-            };
+            userId = validToken.oid;
+            userName = validToken.name;
+            userEmail = validToken.upn;
+            console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
         }
         catch (ex) {
             // Token is missing or invalid - return a 401 error
             console.error(ex);
             throw new HttpError(404, "Unauthorized");
         }
+
+        // Get the consultant record for this user; create one if necessary
+        let consultant: ApiConsultant = null;
+        try {
+            consultant = await ConsultantApiService.getApiConsultantById(userId);
+        }
+        catch (ex) {
+            consultant = await this.createConsultantForUser(userId, userName, userEmail);
+        }
+
+        return consultant;
     }
 
-    private async createConsultantForUser(userInfo: UserInfo): Promise<ApiConsultant> {
-        
+    private async createConsultantForUser(userId: string, userName: string,
+        userEmail: string): Promise<ApiConsultant> {
+
         // Create a new consultant record for this user with default values
         const consultant: Consultant = {
-            id: userInfo.id,
-            name: userInfo.name,
-            email: userInfo.email,
+            id: userId,
+            name: userName,
+            email: userEmail,
             phone: "1-555-123-4567",
             consultantPhotoUrl: "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
             location: {
@@ -103,9 +97,9 @@ class Identity {
                 longitude: -71.081257,
                 mapUrl: ""
             },
-            skills: [ "JavaScript", "TypeScript" ],
-            certifications: [ "Azure Development" ],
-            roles: [ "Architect", "Project Lead" ]
+            skills: ["JavaScript", "TypeScript"],
+            certifications: ["Azure Development"],
+            roles: ["Architect", "Project Lead"]
         };
         const result = await ConsultantApiService.createApiConsultant(consultant);
         return result;

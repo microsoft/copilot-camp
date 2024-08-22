@@ -20,7 +20,18 @@ class ConsultantDbService {
     }
 
     async createConsultant(consultant: Consultant): Promise<Consultant> {
-        console.log ('CREATE CONSULTANT HERE');
+
+        const newDbConsultant: DbConsultant =
+        {
+            ...consultant,
+            etag: "",
+            partitionKey: TABLE_NAME,
+            rowKey: consultant.id,
+            timestamp: new Date()
+        };
+        await this.dbService.createEntity(TABLE_NAME, newDbConsultant.id, newDbConsultant)
+
+        console.log (`Added new consultant ${newDbConsultant.name} (${newDbConsultant.id}) to the Consultant table`);
         return null;
     }
 

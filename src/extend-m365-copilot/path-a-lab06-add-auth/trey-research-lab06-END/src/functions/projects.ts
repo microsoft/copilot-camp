@@ -42,7 +42,7 @@ export async function projects(
         // Will throw an exception if the request is not valid
         const userInfo = await IdentityService.validateRequest(req);
 
-        const id = req.params.id?.toLowerCase();
+        const id = req.params?.id?.toLowerCase();
         let body = null;
         switch (req.method) {
             case "GET": {

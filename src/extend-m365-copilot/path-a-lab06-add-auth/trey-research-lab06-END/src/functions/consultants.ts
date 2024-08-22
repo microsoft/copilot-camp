@@ -49,7 +49,7 @@ export async function consultants(
     let role = req.query.get("role")?.toString().toLowerCase() || "";
     let hoursAvailable = req.query.get("hoursAvailable")?.toString().toLowerCase() || "";
 
-    const id = req.params.id?.toLowerCase();
+    const id = req.params?.id?.toLowerCase();
 
     if (id) {
       console.log(`➡️ GET /api/consultants/${id}: request for consultant ${id}`);

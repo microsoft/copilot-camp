@@ -38,7 +38,7 @@ export async function me(
   };
 
   try {
-    const me = await IdentityService.validateAndGetConsultantForUser(req);
+    const me = await IdentityService.validateRequest(req);
     const command = req.params.command?.toLowerCase();   
     let body=null; 
     switch (req.method) {
@@ -56,7 +56,7 @@ export async function me(
         return res;
       }
       case "POST": {
-        const me = await IdentityService.validateAndGetConsultantForUser(req);
+        const me = await IdentityService.validateRequest(req);
         switch (command) {
           case "chargetime": {  
             try {
