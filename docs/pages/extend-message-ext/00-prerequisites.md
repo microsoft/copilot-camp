@@ -4,12 +4,12 @@ In this lab, you will set up the development environment to build, test, and dep
 
 
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
-    - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) Set up your development environment (📍You are here)
-    - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) Get to know Northwind message extension
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) Run Northwind message extension as a plugin in Microsoft Copilot for Microsoft 365
-    - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) Enhance the plugin with a new search command
-    - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) Secure your plugin in Authentication
-    - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) Enhance the plugin with a new action command
+    - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) (📍You are here)
+    - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
+    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
+    - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
+    - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
 
 In this lab you will learn:
@@ -110,12 +110,12 @@ Now you are all set to create your first extensibility feature for Copilot for M
 
 ## Exercise 3 - Set up your project and developer tenant data
 
-## Step 1 - Download the sample code
+### Step 1 - Download the sample code
 
 Please download [sample source code here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind) and open the project root folder **Northwind** in Teams Toolkit
 These labs will refer to this as your "root folder" since this is where you'll be working.
 
-## Step 2 - Copy sample documents to your test user's OneDrive
+### Step 2 - Copy sample documents to your test user's OneDrive
 
 The sample application includes some documents for Copilot to reference during the labs. In this step you will copy these files to your user's OneDrive so Copilot can find them. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
 

@@ -2,25 +2,24 @@
 In this lab, you’ll run the Northwind message extension, your base app. The initial exercises will make you familiar with the source code. Finally, you’ll run the application in Teams.
 
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
-    - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) Set up your development environment 
-    - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) Get to know Northwind message extension (📍You are here)
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) Run Northwind message extension as a plugin in Microsoft Copilot for Microsoft 365
-    - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) Enhance the plugin with a new search command
-    - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) Secure your plugin in Authentication
-    - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) Enhance the plugin with a new action command
-
+    - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
+    - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) (📍You are here)
+    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
+    - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
+    - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
 In this lab you will:
 
 - Do a quick code tour of the Northwind Message extension
 - Run the application on Teams
 
-
 ## Exercise 1 - Code tour
 
-In this exercise, you'll review the application code so that you can understand how a Message Extension works.
+Let's examine the code in the base app called Northwind.
 
-## Step 1 - Examine the manifest
+
+### Step 1 - Examine the manifest
 
 The core of any Microsoft 365 application is its application manifest. This is where you provide the information Microsoft 365 needs to access your application.
 
@@ -137,7 +136,7 @@ OK now let's move back to the first command, "inventorySearch". It has 5 paramet
 
 
 
-## Step 2 - Examine the "Bot" code
+### Step 2 - Examine the "Bot" code
 
 Now open the file **src/searchApp.ts**. This application contains the "bot" code, which communicates with the Azure Bot Framework using the [Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0).
 
@@ -240,7 +239,7 @@ export class SearchApp extends TeamsActivityHandler {
     } ...
 ~~~
 
-## Step 3 - Examine the message extension command code
+### Step 3 - Examine the message extension command code
 
 In an effort to make the code more modular, readable, and reusable, each message extension command has been placed in its own TypeScript module. Have a look at **src/messageExtensions/discountSearchCommand.ts** as an example.
 
@@ -291,7 +290,7 @@ Then it iterates through the products and creates two cards for each:
 
 In the next step, we'll review the adaptive card code and check out the Adaptive Card designer.
 
-## Step 4 - Examine the adaptive cards and related code
+### Step 4 - Examine the adaptive cards and related code
 
 The project's adaptive cards are in the **src/adaptiveCards** folder. There are 3 cards, each implemented as a JSON file.
 
@@ -374,7 +373,7 @@ As you can see, the code obtains these two values, updates the database, and the
 
 ## Exercise 2 - Run the sample as a Message Extension
 
-## Step 1 - Set up the project for first use
+### Step 1 - Set up the project for first use
 
 Open your working folder in Visual Studio Code.
 
@@ -396,7 +395,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 (OK it's not a secret! But it could be; if you deploy the project to Azure it will be!)
 
-## Step 2 - Run the application locally
+### Step 2 - Run the application locally
 
 Click F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.
 
@@ -413,7 +412,7 @@ It may take a while the first time as it's loading all the npm packages. Eventua
 ![Browser window opens with a login form](../../assets/images/extend-message-ext-01/02-02-Run-Project-03.png)
 
 Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
-Take note of the information displayed; which is from the [app manifest](../../assets/images/extend-message-ext-01/appPackage/manifest.json).
+Take note of the information displayed; which is from the [app manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json).
 
 Click "Add" to add Northwind Inventory as a personal application.
 
@@ -421,7 +420,7 @@ Click "Add" to add Northwind Inventory as a personal application.
 
 You should be directed to a chat within the application, however you could use the app in any chat.
 
-## Step 3 - Test in Microsoft Teams
+### Step 3 - Test in Microsoft Teams
 
 In any Teams chat - including the Northwind Inventory chat - begin typing a message 1️⃣ that refers to a product. Then, to insert an adaptive card for the product, click the + 2️⃣ . In the fly-up panel, select the Northwind Inventory application you just installed 3️⃣ .
 
@@ -447,7 +446,7 @@ Notice that there is no chai on order 1️⃣ . The authors of this lab are big 
 
 You can cancel the order or modify the stock levels using the other two buttons.
 
-## Step 4 - Advanced queries
+### Step 4 - Advanced queries
 
 Back in Visual Studio Code, have a look at the app manifest, which is in a file called **manifest.json** in the **appPackage** directory. You'll notice that the app information that was displayed when you installed the app is all here.
 
@@ -549,7 +548,7 @@ Read the descriptions in the JSON above carefully when entering a query. Try ent
 
 Each query term filters the list of products down. The format of each query term is arbitrary - just be sure to explain it to Copilot in the description of each parameter.
 
-## Step 5 - Test in Microsoft Outlook (Optional)
+### Step 5 - Test in Microsoft Outlook (Optional)
 
 Let's take a brief detour so you can see how message extensions work in Microsoft Outlook.
 
@@ -577,7 +576,7 @@ Note that the adaptive card won't work until you send the message. If the recipi
 
 ![Taking action on a message in Outlook](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-07a.png)
 
-## Step 6 (optional) - View Northwind database in Azure Storage Explorer
+### Step 6 (optional) - View Northwind database in Azure Storage Explorer
 
 The Northwind Database isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. (Running the app starts Azurite automatically).
 
