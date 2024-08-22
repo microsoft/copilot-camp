@@ -115,7 +115,24 @@ Now you are all set to create your first extensibility feature for Copilot for M
 Please download [sample source code here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind) and open the project root folder **Northwind** in Teams Toolkit
 These labs will refer to this as your "root folder" since this is where you'll be working.
 
-### Step 2 - Copy sample documents to your test user's OneDrive
+### Step 3 - Set up accounts in Teams Toolkit
+
+Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **Northwind** folder. You should see sections for Accounts, Environment, etc. as shown below.
+
+Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your own Microsoft 365 account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
+
+> [!NOTE]
+> The Microsoft 365 Developer Program doesn't include Copilot for Microsoft 365 licenses. As such, if you decide to use a developer tenant, you will be able to test the sample only as a Message Extension.
+
+![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-m365-copilot-00/01-04-Setup-TTK-01.png)
+
+A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
+
+Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
+
+![Checking that sideloading is enabled](../../assets/images/extend-m365-copilot-00/01-04-Setup-TTK-03.png)
+
+### Step 4 - Copy sample documents to your test user's OneDrive
 
 The sample application includes some documents for Copilot to reference during the labs. In this step you will copy these files to your user's OneDrive so Copilot can find them. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
 

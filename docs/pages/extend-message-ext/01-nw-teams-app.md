@@ -16,7 +16,7 @@ In this lab you will:
 
 ## Exercise 1 - Code tour
 
-Let's examine the code in the base app called Northwind.
+Let's examine the code in the base app called Northwind. 
 
 
 ### Step 1 - Examine the manifest

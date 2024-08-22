@@ -11,8 +11,8 @@ In this lab you will build a declarative copilot using Teams Toolkit for Visual 
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
 
-!!! tip "Reminder"
-    To perform the following exercise, your account must have a valid license for Copilot for Microsoft 365.
+!!! warning "Reminder"
+    To perform the following exercise, your developer tenant should be under private preview program and your account must have a valid license for Copilot for Microsoft 365 as well.
 
 In this lab you will learn:
 
@@ -87,13 +87,30 @@ Next, give it an application name `Geo Locator Game` and select Enter.
 
 ![type in application name](../../assets/images/extend-m365-copilot-01/name.png)
 
-The project will be created in a few seconds in the folder you mentioned and will open up in a new project window of Visual Studio Code. 
+The project will be created in a few seconds in the folder you mentioned and will open up in a new project window of Visual Studio Code. This is your working folder.
 
 ![project created](../../assets/images/extend-m365-copilot-01/project-scffolded.png)
 
-Congratulations! You have successfully set up the base decllarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
+Well done! You have successfully set up the base decllarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
-### Step 4: Understanding the files in the app
+### Step 4 - Set up accounts in Teams Toolkit
+
+Now select the Teams Toolkit icon in the left 1️⃣ from your working folder . If it offers options to create a new project, you're probably in the wrong folder. 
+
+Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your own Microsoft 365 account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
+
+> [!NOTE]
+> The Microsoft 365 Developer Program doesn't include Copilot for Microsoft 365 licenses. As such, if you decide to use a developer tenant, you will be able to test the sample only as a Message Extension.
+
+![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-01.png)
+
+A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
+
+Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here is [instructions for enabling users to upload custom apps in previous lab](/copilot-camp//pages/extend-m365-copilot/00-prerequisites)
+
+![Checking that sideloading is enabled](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-03.png)
+
+### Step 5 : Understanding the files in the app
 
 Here's how the base project looks like: 
 
@@ -179,6 +196,9 @@ Now all the changes are done to the app, it's time to test it.
 
 To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under `LIFECYCLE` select `Provision`. 
 
+!!! warning "Private Preview not enabled"
+    Provision step will fail if the user is using a Tenant without Private Preview enabled. 
+
 Teams toolkit at this instance will package all the files inside the `appPackage` folder as a zip file and install it into your own app catalog.
 
 To test, you can now to Teams and select the `Copilot` app OR you could also use Teams toolkit and preview the app in Copilot by selecting `Preview in Copilot (Edge)` or `Preview in Copilot (Chrome)` from the launch configuration dropdown as shown below.
@@ -196,6 +216,6 @@ See the full demo of how you can test this app.
 ![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
 
 
-Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab.
+Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab. Select **Next**
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
