@@ -124,13 +124,13 @@ Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your ow
 > [!NOTE]
 > The Microsoft 365 Developer Program doesn't include Copilot for Microsoft 365 licenses. As such, if you decide to use a developer tenant, you will be able to test the sample only as a Message Extension.
 
-![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-m365-copilot-00/01-04-Setup-TTK-01.png)
+![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
 Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
 
-![Checking that sideloading is enabled](../../assets/images/extend-m365-copilot-00/01-04-Setup-TTK-03.png)
+![Checking that sideloading is enabled](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-03.png)
 
 ### Step 4 - Copy sample documents to your test user's OneDrive
 
