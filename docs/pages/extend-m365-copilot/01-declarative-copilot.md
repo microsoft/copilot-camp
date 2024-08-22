@@ -11,14 +11,16 @@ In this lab you will build a declarative copilot using Teams Toolkit for Visual 
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
 
+!!! tip "Reminder"
+    To perform the following exercise, your account must have a valid license for Copilot for Microsoft 365.
 
 In this lab you will learn:
 
 - What is a declarative copilot for Microsoft 365
-- Install [Teams toolkit CLI](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-cli?pivots=version-three#get-started)
-- Create a basic declarative copilot using Teams toolkit CLI
+- Install [Teams toolkit for VS Code prerelease version](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/install-teams-toolkit?tabs=vscode#install-a-prerelease-version)
+- Create a basic declarative copilot using Teams Toolkit 
 - Customise the basic app to create the geo locator game
-- Learn how to run and test your app
+- Learn how to run and test your app 
 
 ## Introduction
 
@@ -40,63 +42,56 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 
 
 ## Exercise 1: Scaffold a declarative copilot from template
-You can use just an editor to create a declarative copilot if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
-So to keep things as simple as possible we will install `Teams Toolkit CLI` to create declarative copilot with a base template for the app.
+You can use just any editor to create a declarative copilot if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
+So to keep things as simple as possible  you have will be installing Teams Toolkit.
 
 
-!!! warning "Warning: The prerequisites are currently quite extensive, but this will change with the public preview of Declarative Copilots"
-    
+### Step 1: Install Teams Toolkit's prerelease version
 
-### Step 1: Software Pre-Requisites 
+Go to extensions tab of your Visual Studio Code and type **team** as in step 1 in the image below.
+Select **Teams Toolkit** as step 2. 
+Select **Switch to Pre-Release Version** 
 
-- Install Teams Toolkit Command Line Interface (CLI) latest stable version
+![prerelease version install](../../assets/images/extend-m365-copilot-01/prerelease-ttk.png)
 
-```
-npm i -g @microsoft/teamsapp-cli
-```
+!!! tip "Teams Toolkit Prerelease"
+     Only this lab uses prerelease version of Teams Toolkit. You can switch back to release version after this lab is completed. The steps are similar to above.
 
-- Set these Environment Variables [(Refer to this article)](https://chlee.co/how-to-setup-environment-variables-for-windows-mac-and-linux/)	 
-```
-"TEAMSFX_DECLARATIVE_COPILOT" = "true"
+### Step 2: Use Teams Toolkit to create a declarative copilot app
 
-```
+Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Create a New App**
 
-### Step 2: Environment Pre-Requisites 
+![start creating the base app](../../assets/images/extend-m365-copilot-01/create-new-app.png)
 
-- You need to be on the private preview tenant 
-- To test you'll need to go to [https://microsoft365.com/chat](https://microsoft365.com/chat) 
+A panel opens up where you need to select **Copilot Extension** from the list of project types.
+
+![project types](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
+
+Next, you will be asked to choose the app feature of Copilot extension. Choose `Declarative Copilot` and select Enter. 
+
+![app feature types](../../assets/images/extend-m365-copilot-01/app-feature.png)
 
 
-### Step 3: Use Teams Toolkit CLI to create a new app
+Next, you will be asked to choose want to create a basic declarative Copilot or one with an API plugin.  Choose the **No Plugin** option.
 
-Go to your terminal of choice and type `teamsapp new` and select Enter. 
+![select the type of declarative copilot](../../assets/images/extend-m365-copilot-01/type.png)
 
-![start creating the base app](../../assets/images/extend-m365-copilot-01/teamsapp-new-01.png)
-
-??? warning "Confused if you are really creating a teams app?"
-    While it may appear that this command is used to create a new Teams application, it’s important to note that the process of packaging a declarative copilot shares similarities with that of a Teams app as mentioned in the introduction. So in the coming steps it will be a lot clear as you choose options to scaffold the base app. 
-
-Next, you can select the type of project you want to create. Select `Declarative Copilot` as shown in the screen and select Enter. Note that `Declarative Copilot` is the default new project option auto selected, so you can just select Enter.
-
-![select type of project](../../assets/images/extend-m365-copilot-01/teamsapp-new.png)
-
-Next, you will be asked to choose the type of declarative copilot. Choose `Basic Declarative Copilot` and select Enter. 
-
-![select the type of declarative copilot](../../assets/images/extend-m365-copilot-01/teamsapp-new-02.png)
+!!! tip "Why not create one with API plugin here? "
+     You will build API plugins in the next lab and you will also learn how to integrate an API plugin with a declarative Copilot in the following one in this same path. Here we are just going to create a declarative Copilot. Baby steps!
 
 Next, type in the directory where the project folder has to be created.
 
-![choose the folder](../../assets/images/extend-m365-copilot-01/teamsapp-new-03.png)
+![choose the folder](../../assets/images/extend-m365-copilot-01/folder.png)
 
 Next, give it an application name `Geo Locator Game` and select Enter. 
 
-![type in application name](../../assets/images/extend-m365-copilot-01/teamsapp-new-04.png)
+![type in application name](../../assets/images/extend-m365-copilot-01/name.png)
 
-The project will be created in a few seconds in the folder you mentioned with indication in the terminal that it is done as shown below. 
+The project will be created in a few seconds in the folder you mentioned and will open up in a new project window of Visual Studio Code. 
 
-![project created](../../assets/images/extend-m365-copilot-01/teamsapp-new-05.png)
+![project created](../../assets/images/extend-m365-copilot-01/project-scffolded.png)
 
-Congratulations! You have successfully set up the base application! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
+Congratulations! You have successfully set up the base decllarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
 ### Step 4: Understanding the files in the app
 
