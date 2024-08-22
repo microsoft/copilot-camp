@@ -32,11 +32,14 @@ class Identity {
             });
 
             // Use these options for single-tenant applications
-            const API_CLIENT_ID = '2f7a0770-4301-4dc3-b812-6315b8d51379';
-            const API_TENANT_ID = '883a30d4-ca91-4cbb-b025-9c0f6d7820a0';
+            const API_APPLICATION_ID = process.env.API_APPLICATION_ID;
+            const API_TENANT_ID = process.env.API_TENANT_ID;
             const options: ValidateTokenOptions = {
-                audience: `api://${API_CLIENT_ID}`,
+                audience: `api://${API_APPLICATION_ID}`,
                 issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
+                // NOTE: If this is a multi-tenant app you may wish to manage a list
+                // of allowed tenants and test them as well
+                //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
                 scp: ["access_as_user"]
             };
 
@@ -44,9 +47,6 @@ class Identity {
             // const options: ValidateTokenOptions = {
             //   audience: process.env["AAD_APP_CLIENT_ID"],
             //   issuer: `https://login.microsoftonline.com/${process.env["AAD_APP_TENANT_ID"]}/v2.0`,
-            //   // You need to manage the list of allowed tenants on your own!
-            //   // For this sample, we only allow the tenant that the app is registered in
-            //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
             //   scp: ["access_as_user"]
             // };
 
