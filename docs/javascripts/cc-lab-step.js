@@ -14,10 +14,10 @@
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
-                margin: 10pt 8pt 8pt 8pt;
+                margin: 22pt 8pt 8pt 8pt;
                 float: left;
             }  
-            .lab-step h3 {
+            h3 {
                 border-top: 5px solid gray;
                 border-bottom: 5px solid gray;
             }      
@@ -31,10 +31,10 @@
     // cc-lab-step web component
     class LabStep extends HTMLElement {
 
-        checked;        // True if the checkbox is checked
-        lab;            // lab="..."
-        exercise;       // exercise=""
-        step;           // step="..."
+        checked;
+        lab;
+        exercise;
+        step;
 
         constructor() {
             super();
@@ -54,13 +54,8 @@
             checkBoxElement.checked =
                 this.#getStepStatus(this.lab, this.exercise, this.step) === 'true';
             this.checked = checkBoxElement.checked;
+            checkBoxElement.id = `ex-${this.exercise}-step-${this.step}`;
             containerElement.appendChild(checkBoxElement);
-
-            const headingElement = document.createElement('h3');
-            headingElement.id = `ex-${this.exercise}-step-${this.step}`;
-            headingElement.innerText =
-                `Step ${this.step} - ${this.innerText}`;
-            containerElement.appendChild(headingElement);
 
             this.replaceChildren(containerElement);
         }
@@ -104,28 +99,6 @@
         }
     }
 
-    // cc-lab-exercise web component
-    class LabExercise extends HTMLElement {
-
-        lab;
-        exercise;
-
-        constructor() {
-            super();
-
-            ensureCss();
-
-            this.lab = this.getAttribute('lab');
-            this.exercise = this.getAttribute('exercise');
-
-            const headingElement = document.createElement('h2');
-            headingElement.innerText = `Exercise ${this.exercise} - ${this.innerText}`;
-            headingElement.className = 'lab-exercise';
-
-            this.replaceChildren(headingElement);
-        }
-    }
-
     // cc-last-completed-step web component
     class LastCompletedStep extends HTMLElement {
 
@@ -156,13 +129,13 @@
                     if (elt.checked) {
                         lastCompletedExercise = elt.exercise;
                         lastCompletedStep = elt.step;
-                        lastCompletedStepTitle = elt.innerText;
+                        lastCompletedStepTitle = elt.parentElement.nextElementSibling.innerText;
                     }
                 }
                 if (lastCompletedExercise === 0) {
                     this.displayElement.innerText = 'You have not completed any steps in this lab. Use the ☑ checkbox on each step to track your progress.';
                 } else {
-                    this.displayElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}, ${lastCompletedStep}: ${lastCompletedStepTitle}`;
+                    this.displayElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
                     this.displayElement.href = `#ex-${lastCompletedExercise}-step-${lastCompletedStep}`;
                 }
             }
@@ -171,7 +144,6 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         window.customElements.define('cc-lab-step', LabStep);
-        window.customElements.define('cc-lab-exercise', LabExercise);
         window.customElements.define('cc-last-completed-step', LastCompletedStep);
     });
 
