@@ -53,6 +53,9 @@ class LabStep extends HTMLElement {
         this.#setStepStatus(this.lab, this.exercise, this.step, e.target.checked);
         this.checked = !this.checked;
         this.#changeListeners.forEach(listener => listener());
+        if (this.checked) {
+            this.#updateTelemetry(this.lab, this.exercise, this.step);
+        }
     }
     async connectedCallback() {
         this.onclick = this.#clickHandler;
@@ -62,6 +65,16 @@ class LabStep extends HTMLElement {
     #changeListeners = [];
     set onChange(value) {
         this.#changeListeners.push(value);
+    }
+
+    // Telemetry
+    #updateTelemetry(lab, exercise, step) {
+        const url = `https://m365-visitor-stats.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
+        fetch(url, {
+            method: 'GET',
+            mode: 'no-cors'
+        });
+
     }
 
     // Storage functions
