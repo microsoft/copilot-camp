@@ -23,11 +23,11 @@ _Note: These labs require the "Private Preview" for Copilot for M365 extensibili
 
 ---8<--- "e-path-links.md"
 
-### Build Path - Build your own copilot
+## Build Path - Build your own copilot
 
 ---8<--- "b-path-links.md"
 
-### It's still early ... so what's next?
+## It's still early ... so what's next?
 
 We're starting with the hands-on labs because those require the most testing. We expect them to require some updates as the products move to Public Preview.
 
@@ -43,7 +43,7 @@ Labs are only useful if students understand what they did! And we aspire to make
 
 Do you have ideas? Please let us know in the Teams chat or in the Github issues!
 
-### Code of Conduct
+## Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 

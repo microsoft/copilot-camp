@@ -119,7 +119,7 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 ## Exercise 4: Run the plugin in Copilot
 
 <cc-lab-step lab="E2" exercise="4" step="1" />
-## Step 1: Install the plugin
+### Step 1: Install the plugin
 
 Now restore the web browser you minimized back in Exercise 2 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
 
