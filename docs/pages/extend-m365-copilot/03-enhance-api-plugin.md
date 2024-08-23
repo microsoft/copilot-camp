@@ -25,7 +25,7 @@ This will implement a new Azure function to provide access to Trey Research proj
 
 Let's take a moment to review the code.
 
-This is a version 4 Azure function, so the code looks a lot like traditional [Express](https://expressjs.com/){target=_blank} code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab A6](./06-add-authentication.md).
+This is a version 4 Azure function, so the code looks a lot like traditional [Express](https://expressjs.com/){target=_blank} code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab E6](./06-add-authentication.md).
 
 ~~~typescript
 export async function projects(

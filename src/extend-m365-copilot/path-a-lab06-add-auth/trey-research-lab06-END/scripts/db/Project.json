@@ -1,0 +1,174 @@
+{
+    "rows": [
+        {
+            "id": "1",
+            "name": "CRM Cloud Migration",
+            "description": "Migrate Adatum's CRM system to Dynamics 365",
+            "clientName": "Adatum Corporation",
+            "clientContact": "Natasha Jones",
+            "clientEmail": "natjones@adatum.com",
+            "location": {
+                "street": "700 Bellevue Way NE - 22nd Floor",
+                "city": "Bellevue",
+                "state": "WA",
+                "country": "USA",
+                "postalCode": "98004",
+                "latitude": 47.617068,
+                "longitude": -122.200898
+            }
+        },
+        {
+            "id": "2",
+            "name": "Supply Chain Optimization",
+            "description": "Develop supply chain automation solution in Azure",
+            "clientName": "Alpine Ski House",
+            "clientContact": "Felix Henderson",
+            "clientEmail": "fhenderson@alpineskihouse.com",
+            "location": {
+                "street": "3601 West 76th Street, Suite 600",
+                "city": "Edina",
+                "state": "MN",
+                "country": "USA",
+                "postalCode": "55435",
+                "latitude": 44.877582,
+                "longitude": -93.328504
+            }
+        },
+        {
+            "id": "3",
+            "name": "Network security review",
+            "description": "Review campus network security and develop a plan to mitigate vulnerabilities",
+            "clientName": "Bellows College",
+            "clientContact": "Jordan Mitchell",
+            "clientEmail": "jordanm@bellowscollege",
+            "location": {
+                "street": "1 Memorial Dr.",
+                "city": "Cambridge",
+                "state": "MA",
+                "country": "USA",
+                "postalCode": "02142",
+                "latitude": 42.3626,
+                "longitude": -71.0843
+            }
+        },
+        {
+            "id": "4",
+            "name": "Copilot Development and Training",
+            "description": "Extend LOB applications to integrate with Microsoft Copilot and train key personnel on its use",
+            "clientName": "Consolidated Messenger",
+            "clientContact": "Camelia Banica",
+            "clientEmail": "cambanica@consolidatedmessenger.com",
+            "location": {
+                "street": "Regeringsgatan 25",
+                "city": "Stockholm",
+                "state": "Södermanland",
+                "country": "SWE",
+                "postalCode": "111 53 Stockholm",
+                "latitude": 59.3293,
+                "longitude": 18.0686
+            }
+        },
+        {
+            "id": "5",
+            "name": "Project Alpha Clinical Trial Inspection Reporting",
+            "description": "Review and report on results from Project Alpha 2nd phase clinical trials",
+            "clientName": "Contoso Pharmaceuticals",
+            "clientContact": "Kiana Anderson",
+            "clientEmail": "kianaa@contoso.com",
+            "location": {
+                "street": "1 Campus Martius",
+                "city": "Detroit",
+                "state": "MI",
+                "country": "USA",
+                "postalCode": "48226",
+                "latitude": 42.3314,
+                "longitude": -83.0458
+            }
+        },
+        {
+            "id": "6",
+            "name": "Cybersecurity Awareness Program",
+            "description": "Develop and deliver a cybersecurity awareness program for Humongous Insurance employees",
+            "clientName": "Humongous Insurance",
+            "clientContact": "Parker McLean",
+            "clientEmail": "parkerm@humongousinsurance.com",
+            "location": {
+                "street": "280 Trumbull Street, 21st floor",
+                "city": "Hartford",
+                "state": "CT",
+                "country": "USA",
+                "postalCode": "06103",
+                "latitude": 41.7658,
+                "longitude": -72.6734
+            }
+        },
+        {
+            "id": "7",
+            "name": "Patient data retention SOP analysis and update",
+            "description": "Review existing standard operating procedures for patient data retention and update as necessary",
+            "clientName": "Lamna Healthcare Company",
+            "clientContact": "Nayan Mittal",
+            "clientEmail": "nmittal@lamnahealthcare.com",
+            "location": {
+                "street": "45 Liberty Blvd.",
+                "city": "Malvern",
+                "state": "PA",
+                "country": "USA",
+                "postalCode": "19355",
+                "latitude": 40.0412,
+                "longitude": -75.5336
+            }
+        },
+        {
+            "id": "8",
+            "name": "Disaster Recovery Planning",
+            "description": "Update risk assessment and develop a disaster recovery plan for Relecloud's datacenter operations",
+            "clientName": "Relecloud",
+            "clientContact": "Shakti Menon",
+            "clientEmail": "shakti@relecloud.com",
+            "location": {
+                "street": "6/18, Bellandur Gate Rd.",
+                "city": "Bengaluru",
+                "state": "Karnataka",
+                "country": "India",
+                "postalCode": "56103",
+                "latitude": 12.9716,
+                "longitude": 77.5946
+            }
+        },
+        {
+            "id": "9",
+            "name": "Video distribution platform migration",
+            "description": "Implement a new video distribution platform in Microsoft Azure",
+            "clientName": "Southridge Video",
+            "clientContact": "Tomo Takahashi",
+            "clientEmail": "tomot@southridgevideo.com",
+            "location": {
+                "street": "1 Martin Place, Level 15",
+                "city": "Sydney",
+                "state": "New South Wales",
+                "country": "Australia",
+                "postalCode": "NSW 2000",
+                "latitude": -33.8679,
+                "longitude": 151.2073
+            }
+        },
+        {
+            "id": "10",
+            "name": "Financial data plugin for Microsoft Copilot",
+            "description": "Extend Woodgrove's financial analytics platform to integrate with Microsoft Copilot",
+            "clientName": "Woodgrove Bank",
+            "clientContact": "Bi Gao",
+            "clientEmail": "bigao@woodgrovebank.com",
+            "location": {
+                "street": "1 Microsoft Way",
+                "city": "Redmond",
+                "state": "WA",
+                "country": "USA",
+                "postalCode": "98052",
+                "latitude": 47.6396,
+                "longitude": -122.1295
+            }
+        }
+    ]
+}

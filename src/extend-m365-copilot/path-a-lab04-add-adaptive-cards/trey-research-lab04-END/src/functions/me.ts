@@ -7,7 +7,7 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/fu
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ApiChargeTimeResponse, ErrorResult } from "../model/apiModel";
 import { HttpError, cleanUpParameter } from "../services/Utilities";
-import Identity from "../services/IdentityService";
+import IdentityService from "../services/IdentityService";
 /**
  * This function handles the HTTP request and returns my information.
  *
@@ -38,7 +38,7 @@ export async function me(
   };
 
   try {
-    const identity = new Identity(req);
+    const me = await IdentityService.validateRequest(req);
     const command = req.params.command?.toLowerCase();   
     let body=null; 
     switch (req.method) {
@@ -50,12 +50,13 @@ export async function me(
 
         console.log(`➡️ GET /api/me request`);
 
-        const result = [await ConsultantApiService.getApiConsultantById(identity, identity.id)];
+        const result = [ me ];
         res.jsonBody.results = result;
         console.log(`   ✅ GET /me response status ${res.status}; ${result.length} consultants returned`);
         return res;
       }
       case "POST": {
+        const me = await IdentityService.validateRequest(req);
         switch (command) {
           case "chargetime": {  
             try {
@@ -79,8 +80,7 @@ export async function me(
             }
 
             console.log(`➡️ POST /api/me/chargetime request for project ${projectName}, hours ${hours}`);
-            const result = await ConsultantApiService.chargeTimeToProject
-              (identity, projectName, identity.id, hours);
+            const result = await ConsultantApiService.chargeTimeToProject (projectName, me.id, hours);
 
             res.jsonBody.results = {
               status: 200,

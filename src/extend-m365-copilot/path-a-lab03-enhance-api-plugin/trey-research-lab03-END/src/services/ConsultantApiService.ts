@@ -5,30 +5,31 @@ import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 import { HttpError, getLocationWithMap } from './Utilities';
 import ProjectApiService from './ProjectApiService';
-import Identity from "../services/IdentityService";
 
 const AVAILABLE_HOURS_PER_MONTH = 160;
 
 class ConsultantApiService {
 
-    async getApiConsultantById(identity: Identity, consultantId: string): Promise<ApiConsultant> {
-        const consultant = await ConsultantDbService.getConsultantById(identity, consultantId);
-        let assignments = await AssignmentDbService.getAssignments();
+    async getApiConsultantById(consultantId: string): Promise<ApiConsultant> {
 
-        const result = await this.getApiConsultant(consultant, assignments);
+        let result = null;
+        let consultant = await ConsultantDbService.getConsultantById(consultantId);
+        if (consultant) {
+            let assignments = await AssignmentDbService.getAssignments();
+            result = await this.getApiConsultantForBaseConsultant(consultant, assignments);
+        }
         return result;
     }
 
-    async getApiConsultants(identity: Identity,
+    async getApiConsultants(
         consultantName: string, projectName: string, skill: string,
         certification: string, role: string, hoursAvailable: string): Promise<ApiConsultant[]> {
 
-        let consultants = await ConsultantDbService.getConsultants(identity);
+        let consultants = await ConsultantDbService.getConsultants();
         let assignments = await AssignmentDbService.getAssignments();
 
         // Filter on base properties
         if (consultantName) {
-            const dbConsultantName = identity.getDbConsultantName(consultantName);
             consultants = consultants.filter(
                 (c) => c.name.toLowerCase().includes(consultantName.toLocaleLowerCase()));
         }
@@ -46,7 +47,7 @@ class ConsultantApiService {
         }
 
         // Augment the base properties with assignment information
-        let result = await Promise.all(consultants.map((c) => this.getApiConsultant(c, assignments)));
+        let result = await Promise.all(consultants.map((c) => this.getApiConsultantForBaseConsultant(c, assignments)));
 
         // Filter on project name
         if (result && projectName) {
@@ -71,14 +72,37 @@ class ConsultantApiService {
         return result;
     }
 
-    // Augment a consultant to get an ApiConsultant
-    async getApiConsultant(consultant: Consultant, assignments: Assignment[]): Promise<ApiConsultant> {
+    public async createApiConsultant(consultant: Consultant): Promise<ApiConsultant> {
+        const newDbConsultant = await ConsultantDbService.createConsultant(consultant);
+        const assignments = await AssignmentDbService.getAssignments();
 
-        const result = consultant as ApiConsultant;
+        const newApiConsultant = 
+            this.getApiConsultantForBaseConsultant(newDbConsultant, assignments);
+        return newApiConsultant;
+    }
+
+    // Augment a base consultant to get an ApiConsultant
+    async getApiConsultantForBaseConsultant(consultant: Consultant, assignments: Assignment[]): Promise<ApiConsultant> {
+
+        const result = {
+            id: consultant.id,
+            name: consultant.name,
+            email: consultant.email,
+            phone: consultant.phone,
+            consultantPhotoUrl: consultant.consultantPhotoUrl,
+            location: consultant.location,
+            skills: consultant.skills,
+            certifications: consultant.certifications,
+            roles: consultant.roles,
+            projects: [],
+            forecastThisMonth: 0,
+            forecastNextMonth: 0,
+            deliveredLastMonth: 0,
+            deliveredThisMonth: 0
+        }
         result.location = getLocationWithMap(consultant.location);
         assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
-        result.projects = [];
         result.forecastThisMonth = 0;
         result.forecastNextMonth = 0;
         result.deliveredLastMonth = 0;
@@ -135,8 +159,8 @@ class ConsultantApiService {
         return result;
     }
 
-    async chargeTimeToProject(identity: Identity, projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
-        let projects = await ProjectApiService.getApiProjects(identity, projectName, "");
+    async chargeTimeToProject(projectName: string, consultantId: string, hours: number): Promise<ApiChargeTimeResponse> {
+        let projects = await ProjectApiService.getApiProjects(projectName, "");
         if (projects.length === 0) {
             throw new HttpError(404, `Project not found: ${projectName}`);
         } else if (projects.length > 1) {
