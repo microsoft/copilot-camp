@@ -3,23 +3,18 @@
     function ensureCss() {
 
         const css = `
-            h2.lab-exercise {
-                color: white;
-                background-color: #404040;
-                padding: 5pt 10pt;
-            }
             .lab-step input[type=checkbox] {
                 -ms-transform: scale(1.5);  /* IE */
                 -moz-transform: scale(1.5); /* FF */
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
-                margin: 22pt 8pt 8pt 8pt;
+                margin: 23pt 8pt 8pt 8pt;
                 float: left;
             }  
             h3 {
-                border-top: 5px solid gray;
-                border-bottom: 5px solid gray;
+                border-top: 4px solid gray;
+                border-bottom: 4px solid gray;
             }      
         `;
         const sheet = new CSSStyleSheet();
@@ -102,7 +97,7 @@
     // cc-last-completed-step web component
     class LastCompletedStep extends HTMLElement {
 
-        displayElement; // HTML element to display the last completed step
+        anchorElement; // HTML element to display the last completed step
 
         constructor() {
             super();
@@ -113,14 +108,14 @@
                 elt.onChange = this.#updateText.bind(this);
             }
 
-            this.displayElement = document.createElement('a');
-            this.replaceChildren(this.displayElement);
+            this.anchorElement = document.createElement('a');
+            this.replaceChildren(this.anchorElement);
 
             this.#updateText();
         }
 
         #updateText() {
-            if (this.displayElement) {
+            if (this.anchorElement) {
                 let lastCompletedExercise = 0;
                 let lastCompletedStep = 0;
                 let lastCompletedStepTitle = '';
@@ -133,10 +128,13 @@
                     }
                 }
                 if (lastCompletedExercise === 0) {
-                    this.displayElement.innerText = 'You have not completed any steps in this lab. Use the ☑ checkbox on each step to track your progress.';
+                    this.anchorElement.innerText = 'You have not completed any steps in this lab. Use the ☑ checkbox on each step to track your progress.';
+                    this.anchorElement.href = '#';
+                    this.anchorElement.style = 'pointer-events: none; color: black;';
                 } else {
-                    this.displayElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
-                    this.displayElement.href = `#ex-${lastCompletedExercise}-step-${lastCompletedStep}`;
+                    this.anchorElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
+                    this.anchorElement.href = `#ex-${lastCompletedExercise}-step-${lastCompletedStep}`;
+                    this.anchorElement.style = '';
                 }
             }
         }
