@@ -11,7 +11,6 @@ In this lab you will add a Declarative Copilot which is grounded in the API plug
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication) (📍You are here)
 
-
 ## WORK IN PROGRESS
 
 ## Exercise 0: Set up a persistent developer tunnel
