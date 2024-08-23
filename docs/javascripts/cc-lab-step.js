@@ -9,9 +9,12 @@
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
-                margin: 23pt 8pt 8pt 8pt;
+                margin: 32pt 8pt 8pt 8pt;
                 float: left;
             }  
+            .lab-step .spacer {
+                height: 0.5pt;
+            }
             h3 {
                 border-top: 4px solid gray;
                 border-bottom: 4px solid gray;
@@ -43,6 +46,10 @@
             // Build out child elements
             let containerElement = document.createElement('div');
             containerElement.className = 'lab-step';
+
+            let fillerElement = document.createElement('div');
+            fillerElement.className = 'spacer';
+            containerElement.appendChild(fillerElement);
 
             const checkBoxElement = document.createElement('input');
             checkBoxElement.setAttribute('type', 'checkbox');
