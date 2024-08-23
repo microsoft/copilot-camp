@@ -11,6 +11,8 @@ In this lab you will set up an API based on Azure Functions and install it as an
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
 
+!!! info "Where did I leave off?"
+    <cc-last-completed-step />
 
 ## Introduction
 
@@ -18,23 +20,25 @@ In this lab you will set up a REST API for Trey Research, a hypothetical consult
 
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
-## Exercise 1: Install additional prerequisites
+## Exercise 1 - Install additional prerequisites
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
 * [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) - You will use this to test your API locally
 * (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer) - This will allow you to view and modify the Trey Research database
 
-## Exercise 2: Configure and run the starting application
+## Exercise 2 - Configure and run the starting application
 
-### Step 1: Download the starting application
+<cc-lab-step lab="E1" exercise="2" step="1" />
+### Step 1 - Download the starting application
 
 Begin by downloading the Copilot developer camp repository at https://github.com/microsoft/copilot-camp. Select the "Code" button and clone or download the content to your computer.
 
 Find starting code in the repo at **/src/extend-m365-copilot/path-a-lab02-first-api-plugin/trey-research**.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
-### Step 2: Set up the local environment files
+<cc-lab-step lab="E1" exercise="2" step="2" />
+### Step 2 - Set up the local environment files
 
 Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure these lines are present:
 
