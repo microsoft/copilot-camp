@@ -7,7 +7,7 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/fu
 import ConsultantApiService from "../services/ConsultantApiService";
 import { ApiConsultant, ErrorResult } from "../model/apiModel";
 import { cleanUpParameter } from "../services/Utilities";
-import Identity from "../services/IdentityService";
+import IdentityService from "../services/IdentityService";
 
 /**
  * This function handles the HTTP request and returns the consultant information.
@@ -38,7 +38,8 @@ export async function consultants(
     },
   };
   try {
-    const identity = new Identity(req);
+    // Will throw an exception if the request is not valid
+    await IdentityService.validateRequest(req);
 
     // Get the input parameters
     let consultantName = req.query.get("consultantName")?.toString().toLowerCase() || "";
@@ -48,11 +49,11 @@ export async function consultants(
     let role = req.query.get("role")?.toString().toLowerCase() || "";
     let hoursAvailable = req.query.get("hoursAvailable")?.toString().toLowerCase() || "";
 
-    const id = req.params.id?.toLowerCase();
+    const id = req.params?.id?.toLowerCase();
 
     if (id) {
       console.log(`➡️ GET /api/consultants/${id}: request for consultant ${id}`);
-      const result = await ConsultantApiService.getApiConsultantById(identity, id);
+      const result = await ConsultantApiService.getApiConsultantById(id);
       res.jsonBody.results = [result];
       console.log(`   ✅ GET /api/consultants/${id}: response status 1 consultant returned`);
       return res;
@@ -68,7 +69,7 @@ export async function consultants(
     role = cleanUpParameter("role", role);
     hoursAvailable = cleanUpParameter("hoursAvailable", hoursAvailable);
     
-    const result = await ConsultantApiService.getApiConsultants(identity,
+    const result = await ConsultantApiService.getApiConsultants(
       consultantName, projectName, skill, certification, role, hoursAvailable
     );
     res.jsonBody.results = result;

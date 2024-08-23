@@ -7,7 +7,7 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/fu
 import ProjectApiService from "../services/ProjectApiService";
 import { ApiProject, ApiAddConsultantToProjectResponse, ErrorResult } from "../model/apiModel";
 import { HttpError, cleanUpParameter } from "../services/Utilities";
-import Identity from "../services/IdentityService";
+import IdentityService from "../services/IdentityService";
 
 /**
  * This function handles the HTTP request and returns the project information.
@@ -39,9 +39,11 @@ export async function projects(
 
     try {
 
-        const identity = new Identity(req);
-        const id = req.params.id?.toLowerCase();
-        let body =null;
+        // Will throw an exception if the request is not valid
+        const userInfo = await IdentityService.validateRequest(req);
+
+        const id = req.params?.id?.toLowerCase();
+        let body = null;
         switch (req.method) {
             case "GET": {
 
@@ -54,21 +56,21 @@ export async function projects(
                 consultantName = cleanUpParameter("consultantName", consultantName);
 
                 if (id) {
-                    const result = await ProjectApiService.getApiProjectById(identity, id);
+                    const result = await ProjectApiService.getApiProjectById(id);
                     res.jsonBody.results = [result];
                     console.log(`   ✅ GET /api/projects: response status ${res.status}; 1 projects returned`);
                     return res;
                 }
 
-                // Hack for unauthenticated demo use
+                // Use current user if the project name is user_profile
                 if (projectName.includes('user_profile')) {
-                    const result = await ProjectApiService.getApiProjects(identity, "", identity.name);
+                    const result = await ProjectApiService.getApiProjects("", userInfo.name);
                     res.jsonBody.results = result;
                     console.log(`   ✅ GET /api/projects for current user response status ${res.status}; ${result.length} projects returned`);
                     return res;
                 }
 
-                const result = await ProjectApiService.getApiProjects(identity, projectName, consultantName);
+                const result = await ProjectApiService.getApiProjects(projectName, consultantName);
                 res.jsonBody.results = result;
                 console.log(`   ✅ GET /api/projects: response status ${res.status}; ${result.length} projects returned`);
                 return res;
@@ -79,9 +81,9 @@ export async function projects(
                         try {
                             const bd = await req.text();
                             body = JSON.parse(bd);
-                          } catch (error) {
+                        } catch (error) {
                             throw new HttpError(400, `No body to process this request.`);
-                          }
+                        }
                         if (body) {
                             const projectName = cleanUpParameter("projectName", body["projectName"]);
                             if (!projectName) {
@@ -102,7 +104,7 @@ export async function projects(
                             }
                             console.log(`➡️ POST /api/projects: assignconsultant request, projectName=${projectName}, consultantName=${consultantName}, role=${role}, forecast=${forecast}`);
                             const result = await ProjectApiService.addConsultantToProject
-                                (identity, projectName, consultantName, role, forecast);
+                                (projectName, consultantName, role, forecast);
 
                             res.jsonBody.results = {
                                 status: 200,
@@ -112,11 +114,11 @@ export async function projects(
                                 remainingForecast: result.remainingForecast,
                                 message: result.message
                             };
-                        
-                        console.log(`   ✅ POST /api/projects: response status ${res.status} - ${result.message}`);
+
+                            console.log(`   ✅ POST /api/projects: response status ${res.status} - ${result.message}`);
                         } else {
                             throw new HttpError(400, `Missing request body`);
-                          }
+                        }
                         return res;
                     }
                     default: {
