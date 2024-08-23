@@ -107,13 +107,19 @@
     // cc-lab-exercise web component
     class LabExercise extends HTMLElement {
 
+        lab;
+        exercise;
+
         constructor() {
             super();
 
             ensureCss();
 
+            this.lab = this.getAttribute('lab');
+            this.exercise = this.getAttribute('exercise');
+
             const headingElement = document.createElement('h2');
-            headingElement.innerText = this.innerText;
+            headingElement.innerText = `Exercise ${this.exercise} - ${this.innerText}`;
             headingElement.className = 'lab-exercise';
 
             this.replaceChildren(headingElement);
@@ -154,7 +160,7 @@
                     }
                 }
                 if (lastCompletedExercise === 0) {
-                    this.displayElement.innerText = 'You have not checked off any steps in this lab';
+                    this.displayElement.innerText = 'You have not completed any steps in this lab. Use the ☑ checkbox on each step to track your progress.';
                 } else {
                     this.displayElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}, ${lastCompletedStep}: ${lastCompletedStepTitle}`;
                     this.displayElement.href = `#ex-${lastCompletedExercise}-step-${lastCompletedStep}`;
