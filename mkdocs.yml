@@ -55,3 +55,5 @@ markdown_extensions:
   - attr_list
 extra_javascript:
   - javascripts/next-button.js
+  - javascripts/cc-lab-step.js
+
