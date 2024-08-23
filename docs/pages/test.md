@@ -1,8 +1,9 @@
 # Lab Title
 
-<cc-last-completed-step />
+!!! info "Where did I leave off?"
+    <cc-last-completed-step />
 
-## Exercise 1
+<cc-lab-exercise>Exercise 1 - Begin now</cc-lab-exercice>
 
 Here is some introductory text
 
@@ -15,7 +16,7 @@ let x=x;
 
 <cc-lab-step lab="e1" exercise="1" step="2">Do the second thing</cc-lab-step>
 
-## Exercise 2
+<cc-lab-exercise>Exercise 2 - Stop beginning start doing</cc-lab-exercice>
 
 <cc-lab-step lab="e1" exercise="2" step="1">Do another first thing</cc-lab-step>
 
