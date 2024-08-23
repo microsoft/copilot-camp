@@ -43,14 +43,6 @@ class Identity {
                 scp: ["access_as_user"]
             };
 
-            // Use these options for multi-tenant applications
-            // const options: ValidateTokenOptions = {
-            //   audience: process.env["AAD_APP_CLIENT_ID"],
-            //   issuer: `https://login.microsoftonline.com/${process.env["AAD_APP_TENANT_ID"]}/v2.0`,
-            //   scp: ["access_as_user"]
-            // };
-
-
             // validate the token
             const validToken = await validator.validateToken(token, options);
 
