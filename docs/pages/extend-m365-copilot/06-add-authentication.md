@@ -11,22 +11,46 @@ In this lab you will add a Declarative Copilot which is grounded in the API plug
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication) (📍You are here)
 
-
 ## WORK IN PROGRESS
 
-## Exercise 0: Set up a persistent developer tunnel
+## Exercise 1: Set up a persistent developer tunnel
 
-## Exercise 1: Register an Entra ID application for your API
+## Exercise 2: Register an Entra ID application for your API
 
-## Exercise 2: Register an Entra ID application for your plugin
+![](../../assets/images/extend-m365-copilot-06/oauth-A1.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A2.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A4.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A7.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A11.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A12.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A13a.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A13b.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A14.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A15.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A17.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-A17b.png)
 
-## Exercise 3: Update the API app registration with the plugin application ID
+## Exercise 3: Register an Entra ID application for your plugin
 
-## Exercise 4: Register the OAuth information in the Teams Developer Portal
+![](../../assets/images/extend-m365-copilot-06/oauth-B11.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-B12.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-B5.png)
 
-## Exercise 5: Update your plugin manifest
+## Exercise 4: Update the API app registration with the plugin application ID
 
-## Exercise 6: Update the application code
+![](../../assets/images/extend-m365-copilot-06/oauth-C2.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-C2b.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-C3a.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-C4.png)
+
+## Exercise 5: Register the OAuth information in the Teams Developer Portal
+
+![](../../assets/images/extend-m365-copilot-06/oauth-D3.png)
+![](../../assets/images/extend-m365-copilot-06/oauth-E1.png)
+
+## Exercise 6: Update your plugin manifest
+
+## Exercise 7: Update the application code
 
 ~~~sh
 npm i jwt-validate
