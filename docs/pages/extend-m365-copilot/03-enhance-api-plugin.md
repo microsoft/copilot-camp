@@ -317,7 +317,7 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 
 ## Exercise 3: Test the plugin in Copilot
 
-## Step 1: Install the plugin
+### Step 1: Install the plugin
 
 Now restore the web browser you minimized back in Exercise 1 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
 
@@ -338,4 +338,4 @@ You may see a confirmation card, even for the GET request. If you do, allow the 
 
 You've now completed enhancing your API plugin. You are now ready to proceed to the next lab to add rich card responses using adaptive cards. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-enhance-api-plugin" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/03-enhance-api-plugin" />

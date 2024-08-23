@@ -140,4 +140,4 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 You've completed adding a Declarative Copilot to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/05-add-declarative-copilot" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/05-add-declarative-copilot" />

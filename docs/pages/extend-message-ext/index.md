@@ -15,6 +15,6 @@ In this path of Extend, you will learn how to use Teams Message Extensions as pl
   - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) Secure your plugin in Authentication
   - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) Enhance the plugin with a new action command
 
-## <a href="./00-prerequisites">Start here</a> with Lab, where you'll set up development your environment.
+## <a href="./00-prerequisites">Start here</a> with Lab M0, where you'll set up development your environment.
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/index" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-message-ext/index" />

@@ -153,4 +153,4 @@ You have completed Lab B1 - Build a custom engine copilot using Azure OpenAI and
 You are now ready to proceed to Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot. Select Next.
 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-copilot" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-copilot" />
