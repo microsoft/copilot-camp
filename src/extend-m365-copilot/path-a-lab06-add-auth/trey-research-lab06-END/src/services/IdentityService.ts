@@ -54,7 +54,7 @@ class Identity {
         catch (ex) {
             // Token is missing or invalid - return a 401 error
             console.error(ex);
-            throw new HttpError(404, "Unauthorized");
+            throw new HttpError(401, "Unauthorized");
         }
 
         // Get the consultant record for this user; create one if necessary
@@ -78,7 +78,7 @@ class Identity {
             name: userName,
             email: userEmail,
             phone: "1-555-123-4567",
-            consultantPhotoUrl: "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
+            consultantPhotoUrl: "https://microsoft.github.io/copilot-camp/demo-assets/images/consultants/Unknown.png",
             location: {
                 street: "One Memorial Drive",
                 city: "Cambridge",
@@ -86,8 +86,7 @@ class Identity {
                 country: "USA",
                 postalCode: "02142",
                 latitude: 42.361366,
-                longitude: -71.081257,
-                mapUrl: ""
+                longitude: -71.081257
             },
             skills: ["JavaScript", "TypeScript"],
             certifications: ["Azure Development"],
