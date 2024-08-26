@@ -184,7 +184,7 @@
                                                                         }
                                                                     }
                                                                 },
-                                                                "projectMapUrl": {
+                                                                "mapUrl": {
                                                                     "type": "string",
                                                                     "format": "uri"
                                                                 },
@@ -351,7 +351,7 @@
                                                                         }
                                                                     }
                                                                 },
-                                                                "projectMapUrl": {
+                                                                "mapUrl": {
                                                                     "type": "string",
                                                                     "format": "uri"
                                                                 },
@@ -466,7 +466,7 @@
                                                             }
                                                         }
                                                     },
-                                                    "projectMapUrl": {
+                                                    "mapUrl": {
                                                         "type": "string",
                                                         "format": "uri"
                                                     },

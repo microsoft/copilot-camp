@@ -120,7 +120,7 @@ class ConsultantApiService {
                 projectName: project.name,
                 projectDescription: project.description,
                 projectLocation: project.location,
-                projectMapUrl: project.mapUrl,
+                mapUrl: project.mapUrl,
                 clientName: project.clientName,
                 clientContact: project.clientContact,
                 clientEmail: project.clientEmail,
