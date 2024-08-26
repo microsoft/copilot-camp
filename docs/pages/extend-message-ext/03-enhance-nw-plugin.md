@@ -49,9 +49,19 @@ We will use a lot of the code created for the other handlers.
 
 1. In VS Code copy '**productSearchCommand.ts**' and paste into the same folder to create a copy. Rename this file **customerSearchCommand.ts**.
 
-2. Change line 10 to:
+2. Change value of COMMAND_ID constant to:
 ```javascript
 const COMMAND_ID = "companySearch";
+```
+3. Replace below import statement
+
+```JavaScript
+import { searchProducts } from "../northwindDB/products";`
+```
+to 
+
+```JavaScript
+import { searchProductsByCustomer } from "../northwindDB/products";
 ```
 
 2. Replace the content of **handleTeamsMessagingExtensionQuery** with:
