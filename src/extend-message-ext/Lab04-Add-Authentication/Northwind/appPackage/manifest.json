@@ -119,7 +119,7 @@
             "compose", 
             "commandBox" 
         ], 
-        "description": "Search for a contact in the user's Outlook contacts list", 
+        "description": "Search for a contact in the user's Outlook contacts list for Northwind", 
         "title": "Contact search", 
         "type": "query", 
         "parameters": [ 

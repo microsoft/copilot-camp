@@ -28,11 +28,11 @@ const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
 
 const initialLoginEndpoint = config.initiateLoginEndpoint;
 
-
+let queryCount = 0;
 async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
 
     let name = '';
-    let queryCount = 0;
+  
 
     if (query.parameters.length === 1 && query.parameters[0]?.name === "name") {
         [name] = (query.parameters[0]?.value.split(','));
