@@ -44,7 +44,7 @@ Spare 3
 
 ## Maps
 
-![Adatum Corporation](./images/maps/adatum-corp.jpg)
+![Adatum Corporation](./images/maps/adatum-corporation.jpg)
 Adatum Corporation
 
 ![Alpine Ski House](./images/maps/alpine-ski-house.jpg)
@@ -62,8 +62,8 @@ Contoso Pharmaceuticals
 ![Humongous Insurace](./images/maps/humongous-insurance.jpg)
 Humongous Insurance
 
-![Lamna Healthcare](./images/maps/lamna-healthcare.jpg)
-Lamna Healthcare
+![Lamna Healthcare](./images/maps/lamna-healthcare-company.jpg)
+Lamna Healthcare Company
 
 ![Relecloud](./images/maps/relecloud.jpg)
 Relecloud
