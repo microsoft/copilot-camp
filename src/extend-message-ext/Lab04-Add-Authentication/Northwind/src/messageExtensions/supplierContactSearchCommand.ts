@@ -30,17 +30,21 @@ const initialLoginEndpoint = config.initiateLoginEndpoint;
 
 
 async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
-    // eslint-disable-next-line no-secrets/no-secrets
-    /**
-     * User Code Here.
-     * If query without token, no need to implement handleMessageExtensionQueryWithSSO;
-     * Otherwise, just follow the sample code below to modify the user code.
-     */
+
+    let name = '';
+    let queryCount = 0;
+
+    if (query.parameters.length === 1 && query.parameters[0]?.name === "name") {
+        [name] = (query.parameters[0]?.value.split(','));
+    } else {
+        name = cleanupParam(query.parameters.find((element) => element.name === "name")?.value);
+    }
+    console.log(`🍽️ Query #${++queryCount}:\name of contact=${name}`);    
     return await handleMessageExtensionQueryWithSSO(
         context,
         oboAuthConfig,
         initialLoginEndpoint,
-        "User.Read",
+        ["User.Read","Contacts.Read"],
         async (token: MessageExtensionTokenResponse) => {
             // User Code
 
@@ -49,7 +53,7 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
 
             // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
             const authProvider = new TokenCredentialAuthenticationProvider(credential, {
-                scopes: ["User.Read"],
+                scopes: ["User.Read", "Contacts.Read"],
             });
 
             // Initialize Graph client instance with authProvider
@@ -57,35 +61,44 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
                 authProvider: authProvider,
             });
 
-            // Call graph api use `graph` instance to get user profile information.
-            const profile = await graphClient.api("/me").get();
+            // Call graph api use `graph` instance to get contacts information.
+            const profile = await graphClient.api("/me/contacts?$select=id,displayName,emailAddresses").get();
 
-            // Organize thumbnailCard to display User's profile info.
-            const thumbnailCard = CardFactory.thumbnailCard(profile.displayName, profile.mail);
+            //filter out contacts that match either display name or email address with query parameter
+            const filteredProfile = profile.value.filter((contact) => {
+                return contact.displayName.toLowerCase().includes(name.toLocaleLowerCase()) ||
+                    contact.emailAddresses[0]?.address.toLowerCase().includes(name.toLowerCase());
+            });
 
-            // Message Extension return the user profile info to user.
+            const attachments = [];
+            filteredProfile.forEach((prof) => {
+                const preview = CardFactory.heroCard(prof.displayName,
+                    `with email ${prof.emailAddresses[0]?.address}`);
+                
+                const resultCard = cardHandler.getEditCard(filteredProfile);
+                const attachment = { ...resultCard, preview };
+                attachments.push(attachment);
+            });
             return {
                 composeExtension: {
                     type: "result",
                     attachmentLayout: "list",
-                    attachments: [thumbnailCard],
+                    attachments: attachments,
                 },
             };
+        });
+    }
+
+    function cleanupParam(value: string): string {
+
+        if (!value) {
+            return "";
+        } else {
+            let result = value.trim();
+            result = result.split(',')[0];          // Remove extra data
+            result = result.replace("*", "");       // Remove wildcard characters from Copilot
+            return result;
         }
-    );
-}
+    }
 
-async function handleTeamsMessagingExtensionSelectItem(
-    context: TurnContext,
-    obj: any
-): Promise<any> {
-    return {
-        composeExtension: {
-            type: "result",
-            attachmentLayout: "list",
-            attachments: [CardFactory.heroCard(obj.name, obj.description)],
-        },
-    };
-}
-
-export default { COMMAND_ID, handleTeamsMessagingExtensionQuery, handleTeamsMessagingExtensionSelectItem }
+export default { COMMAND_ID, handleTeamsMessagingExtensionQuery }

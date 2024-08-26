@@ -119,14 +119,14 @@
             "compose", 
             "commandBox" 
         ], 
-        "description": "Share a contact", 
+        "description": "Search for a contact in the user's Outlook contacts list", 
         "title": "Contact search", 
         "type": "query", 
         "parameters": [ 
             { 
                 "name": "name", 
                 "title": "Contact search", 
-                "description": "Type name or company", 
+                "description": "Type name of the contact or company which forms the domain for email address of the contact, to search my Outlook contacts list", 
                 "inputType": "text" 
             } 
         ] 
