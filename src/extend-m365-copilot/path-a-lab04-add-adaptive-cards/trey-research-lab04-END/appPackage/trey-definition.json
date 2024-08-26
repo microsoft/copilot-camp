@@ -122,10 +122,6 @@
                                                             },
                                                             "longitude": {
                                                                 "type": "number"
-                                                            },
-                                                            "mapUrl": {
-                                                                "type": "string",
-                                                                "format": "uri"
                                                             }
                                                         }
                                                     },
@@ -185,12 +181,12 @@
                                                                         },
                                                                         "longitude": {
                                                                             "type": "number"
-                                                                        },
-                                                                        "mapUrl": {
-                                                                            "type": "string",
-                                                                            "format": "uri"
                                                                         }
                                                                     }
+                                                                },
+                                                                "mapUrl": {
+                                                                    "type": "string",
+                                                                    "format": "uri"
                                                                 },
                                                                 "role": {
                                                                     "type": "string"
@@ -293,10 +289,6 @@
                                                             },
                                                             "longitude": {
                                                                 "type": "number"
-                                                            },
-                                                            "mapUrl": {
-                                                                "type": "string",
-                                                                "format": "uri"
                                                             }
                                                         }
                                                     },
@@ -356,12 +348,12 @@
                                                                         },
                                                                         "longitude": {
                                                                             "type": "number"
-                                                                        },
-                                                                        "mapUrl": {
-                                                                            "type": "string",
-                                                                            "format": "uri"
                                                                         }
                                                                     }
+                                                                },
+                                                                "mapUrl": {
+                                                                    "type": "string",
+                                                                    "format": "uri"
                                                                 },
                                                                 "role": {
                                                                     "type": "string"
@@ -471,12 +463,12 @@
                                                             },
                                                             "longitude": {
                                                                 "type": "number"
-                                                            },
-                                                            "mapUrl": {
-                                                                "type": "string",
-                                                                "format": "uri"
                                                             }
                                                         }
+                                                    },
+                                                    "mapUrl": {
+                                                        "type": "string",
+                                                        "format": "uri"
                                                     },
                                                     "role": {
                                                         "type": "string"
@@ -646,237 +638,6 @@
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "Location": {
-                "type": "object",
-                "properties": {
-                    "street": {
-                        "type": "string"
-                    },
-                    "city": {
-                        "type": "string"
-                    },
-                    "state": {
-                        "type": "string"
-                    },
-                    "country": {
-                        "type": "string"
-                    },
-                    "postalCode": {
-                        "type": "string"
-                    },
-                    "latitude": {
-                        "type": "number"
-                    },
-                    "longitude": {
-                        "type": "number"
-                    },
-                    "mapUrl": {
-                        "type": "string",
-                        "format": "uri"
-                    }
-                }
-            },
-            "Project": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "location": {
-                        "type": "object",
-                        "properties": {
-                            "street": {
-                                "type": "string"
-                            },
-                            "city": {
-                                "type": "string"
-                            },
-                            "state": {
-                                "type": "string"
-                            },
-                            "country": {
-                                "type": "string"
-                            },
-                            "postalCode": {
-                                "type": "string"
-                            },
-                            "latitude": {
-                                "type": "number"
-                            },
-                            "longitude": {
-                                "type": "number"
-                            },
-                            "mapUrl": {
-                                "type": "string",
-                                "format": "uri"
-                            }
-                        }
-                    },
-                    "role": {
-                        "type": "string"
-                    },
-                    "forecastThisMonth": {
-                        "type": "integer"
-                    },
-                    "forecastNextMonth": {
-                        "type": "integer"
-                    },
-                    "deliveredLastMonth": {
-                        "type": "integer"
-                    },
-                    "deliveredThisMonth": {
-                        "type": "integer"
-                    }
-                }
-            },
-            "Consultant": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "email": {
-                        "type": "string",
-                        "format": "email"
-                    },
-                    "phone": {
-                        "type": "string"
-                    },
-                    "location": {
-                        "type": "object",
-                        "properties": {
-                            "street": {
-                                "type": "string"
-                            },
-                            "city": {
-                                "type": "string"
-                            },
-                            "state": {
-                                "type": "string"
-                            },
-                            "country": {
-                                "type": "string"
-                            },
-                            "postalCode": {
-                                "type": "string"
-                            },
-                            "latitude": {
-                                "type": "number"
-                            },
-                            "longitude": {
-                                "type": "number"
-                            },
-                            "mapUrl": {
-                                "type": "string",
-                                "format": "uri"
-                            }
-                        }
-                    },
-                    "skills": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "certifications": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "roles": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "consultantPhotoUrl": {
-                        "type": "string",
-                        "format": "uri"
-                    },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "projectName": {
-                                    "type": "string"
-                                },
-                                "projectDescription": {
-                                    "type": "string"
-                                },
-                                "projectLocation": {
-                                    "type": "object",
-                                    "properties": {
-                                        "street": {
-                                            "type": "string"
-                                        },
-                                        "city": {
-                                            "type": "string"
-                                        },
-                                        "state": {
-                                            "type": "string"
-                                        },
-                                        "country": {
-                                            "type": "string"
-                                        },
-                                        "postalCode": {
-                                            "type": "string"
-                                        },
-                                        "latitude": {
-                                            "type": "number"
-                                        },
-                                        "longitude": {
-                                            "type": "number"
-                                        },
-                                        "mapUrl": {
-                                            "type": "string",
-                                            "format": "uri"
-                                        }
-                                    }
-                                },
-                                "role": {
-                                    "type": "string"
-                                },
-                                "forecastThisMonth": {
-                                    "type": "integer"
-                                },
-                                "forecastNextMonth": {
-                                    "type": "integer"
-                                },
-                                "deliveredLastMonth": {
-                                    "type": "integer"
-                                },
-                                "deliveredThisMonth": {
-                                    "type": "integer"
-                                }
-                            }
-                        }
-                    },
-                    "forecastThisMonth": {
-                        "type": "integer"
-                    },
-                    "forecastNextMonth": {
-                        "type": "integer"
-                    },
-                    "deliveredLastMonth": {
-                        "type": "integer"
-                    },
-                    "deliveredThisMonth": {
-                        "type": "integer"
                     }
                 }
             }

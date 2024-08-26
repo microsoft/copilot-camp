@@ -1,5 +1,3 @@
-import { Location } from "../model/baseModel";
-
 // Throw this object to return an HTTP error
 export class HttpError extends Error {
   status: number;
@@ -31,16 +29,5 @@ export function cleanUpParameter(name: string, value: string): string {
     val = "";
   }
   return val;
-
-}
-
-// Augment a location with a map URL
-export function getLocationWithMap(location: Location): Location {
-
-  const result = location;
-  const bingKey = process.env.BING_MAPS_KEY;
-  const coord = `${location.latitude},${location.longitude}`;
-  result.mapUrl = `https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?${coord}mapSize=450,600&pp=${coord}&key=${bingKey}`;
-  return result;
 
 }

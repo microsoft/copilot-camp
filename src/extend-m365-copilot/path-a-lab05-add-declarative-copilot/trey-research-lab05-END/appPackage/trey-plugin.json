@@ -228,7 +228,7 @@
                         "items": [
                           {
                             "type": "Image",
-                            "url": "${location.mapUrl}",
+                            "url": "${mapUrl}",
                             "altText": "${location.street}"
                           }
                         ]
@@ -341,7 +341,7 @@
               {
                 "type": "Action.OpenUrl",
                 "title": "View map",
-                "url": "${location.mapUrl}"
+                "url": "${mapUrl}"
               }
             ]
           }
