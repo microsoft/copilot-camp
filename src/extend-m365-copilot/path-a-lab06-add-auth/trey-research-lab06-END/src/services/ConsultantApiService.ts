@@ -3,7 +3,7 @@ import { ApiConsultant, ApiChargeTimeResponse } from '../model/apiModel';
 import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
-import { HttpError, getLocationWithMap } from './Utilities';
+import { HttpError } from './Utilities';
 import ProjectApiService from './ProjectApiService';
 
 const AVAILABLE_HOURS_PER_MONTH = 160;
@@ -100,7 +100,6 @@ class ConsultantApiService {
             deliveredLastMonth: 0,
             deliveredThisMonth: 0
         }
-        result.location = getLocationWithMap(consultant.location);
         assignments = assignments.filter((a) => a.consultantId === consultant.id);
 
         result.forecastThisMonth = 0;
@@ -120,7 +119,8 @@ class ConsultantApiService {
             result.projects.push({
                 projectName: project.name,
                 projectDescription: project.description,
-                projectLocation: getLocationWithMap(project.location),
+                projectLocation: project.location,
+                mapUrl: project.mapUrl,
                 clientName: project.clientName,
                 clientContact: project.clientContact,
                 clientEmail: project.clientEmail,

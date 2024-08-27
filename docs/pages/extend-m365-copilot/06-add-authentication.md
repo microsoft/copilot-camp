@@ -301,7 +301,22 @@ To make these values available inside your code running in Teams Toolkit, you al
 <cc-lab-step lab="e6" exercise="7" step="3" />
 ### Step 3: Update the identity service
 
-In the **src/services** folder, open **IdentityService.ts**. Look for the comment
+In the **src/services** folder, open **IdentityService.ts**. 
+At the top of the file along with the other `import` statements, add this one:
+
+~~~typescript
+import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
+~~~
+
+Then, right under the `class Identity` statement, add these lines:
+
+~~~typescript
+    private lastKeyUpdateTime = 0;
+    private validator: TokenValidator;
+    private readonly KEY_CACHE_DURATION_MS = 1000 * 60 * 60 * 24;
+~~~
+
+Now look for the comment
 
 ~~~typescript
 // ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
@@ -312,31 +327,39 @@ Replace the comment with this code:
 ~~~typescript
 // Try to validate the token and get user's basic information
 try {
+    const { API_APPLICATION_ID, API_TENANT_ID } = process.env;
     const token = req.headers.get("Authorization")?.split(" ")[1];
     if (!token) {
-        throw new HttpError(401, "Auth token not found");
+        throw new HttpError(401, "Authorization token not found");
     }
 
     // create a new token validator for the Microsoft Entra common tenant
-    const entraJwksUri = await getEntraJwksUri();
-    const validator = new TokenValidator({
-        jwksUri: entraJwksUri
-    });
+    if (!this.validator ||
+        Date.now() - this.lastKeyUpdateTime > this.KEY_CACHE_DURATION_MS) {
+        // This obtains signing keys for this tenant; for multitenant, use:
+        // const entraJwksUri = await getEntraJwksUri();
+        const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
+        this.validator = new TokenValidator({
+            jwksUri: entraJwksUri
+        });
+        console.log('🔑 Refreshed Entra ID signing key');
+        this.lastKeyUpdateTime = Date.now();
+    }
 
     // Use these options for single-tenant applications
-    const API_APPLICATION_ID = process.env.API_APPLICATION_ID;
-    const API_TENANT_ID = process.env.API_TENANT_ID;
     const options: ValidateTokenOptions = {
         audience: `api://${API_APPLICATION_ID}`,
         issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
-        // NOTE: If this is a multi-tenant app you may wish to manage a list
-        // of allowed tenants and test them as well
+        // NOTE: If this is a multi-tenant app, look for 
+        // issuer: "https://sts.windows.net/common/",
+        // Also you may wish to manage a list of allowed tenants
+        // and test them as well
         //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
         scp: ["access_as_user"]
     };
 
     // validate the token
-    const validToken = await validator.validateToken(token, options);
+    const validToken = await this.validator.validateToken(token, options);
 
     userId = validToken.oid;
     userName = validToken.name;
@@ -346,12 +369,24 @@ try {
 catch (ex) {
     // Token is missing or invalid - return a 401 error
     console.error(ex);
-    throw new HttpError(404, "Unauthorized");
+    throw new HttpError(401, "Unauthorized");
+}       
+
+// Get the consultant record for this user; create one if necessary
+let consultant: ApiConsultant = null;
+try {
+    consultant = await ConsultantApiService.getApiConsultantById(userId);
+}
+catch (ex) {
+    consultant = await this.createConsultantForUser(userId, userName, userEmail);
+}
+
+return consultant;
 }
 ~~~
 
 !!! Note "Learn from the code"
-    Have a look at the new source code. First, it obtains the token from the `Authorization` header in the HTTPs request. This header comtains the word "Bearer", a space, and then the token, so a JavaScript `split(" ")` is used to obtain only the token.
+    Have a look at the new source code. First, it obtains the token from the `Authorization` header in the HTTPs request. This header contains the word "Bearer", a space, and then the token, so a JavaScript `split(" ")` is used to obtain only the token.
 
     Also note that the code will throw an exception if authentication should fail for any reason; the Azure function will then return
     the appropriate error.
@@ -368,7 +403,10 @@ catch (ex) {
 
     If the token is valid, the library returns an object with all the "claims" that were inside, including the user's unique ID, name, and email. We will use these values instead of relying on the fictitious "Avery Howard".
 
-Notice that below this, the code will look for a Consultant record based on the `userId`, which was hard-coded to Avery Howard's ID in the original code. Now it will use the user ID for the logged in user, and it will create a new Consultant record if it doesn't find one in the database.
+!!! Note "If your app will be multi-tenant"
+    Check the comments for notes about validating tokens for a multi-tenant app
+
+Once the code has a `userId` it will look for a Consultant record for the user. This was hard-coded to Avery Howard's ID in the original code. Now it will use the user ID for the logged in user, and create a new Consultant record if it doesn't find one in the database.
 
 As a result, when you run the app for the first time, it should create a new Consultant for your logged-in user with a default set of skills, roles, etc. If you want to change them to make your own demo, you can do that using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank}
 

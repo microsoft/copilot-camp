@@ -6,7 +6,6 @@ export interface Location {
     postalCode: string;
     latitude: number;
     longitude: number;
-    mapUrl: string;
 }
 
 export interface HoursEntry {
@@ -23,6 +22,7 @@ export interface Project {
     clientContact: string;
     clientEmail: string;
     location: Location;
+    mapUrl: string;
 }
 
 export interface Consultant {

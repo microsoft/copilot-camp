@@ -4,7 +4,7 @@ import ProjectDbService from './ProjectDbService';
 import AssignmentDbService from './AssignmentDbService';
 import ConsultantDbService from './ConsultantDbService';
 import ConsultantApiService from './ConsultantApiService';
-import { HttpError, getLocationWithMap } from './Utilities';
+import { HttpError } from './Utilities';
 
 class ProjectApiService {
 
@@ -57,8 +57,6 @@ class ProjectApiService {
     async getApiProject(project: Project, assignments: Assignment[]): Promise<ApiProject> {
 
         const result = project as ApiProject;
-        result.location = getLocationWithMap(project.location);
-        result.clientLogoUrl = `http://via.placeholder.com/320x320`;
         assignments = assignments.filter((a) => a.projectId === project.id);
 
         result.consultants = [];
@@ -78,7 +76,7 @@ class ProjectApiService {
 
             result.consultants.push({
                 consultantName: consultant.name,
-                consultantLocation: getLocationWithMap(consultant.location),
+                consultantLocation: consultant.location,
                 role: assignment.role,
                 forecastThisMonth: forecastThisMonth,
                 forecastNextMonth: forecastNextMonth,

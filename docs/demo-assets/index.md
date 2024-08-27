@@ -30,7 +30,7 @@ Sanjay Puranik
 ![Lous](./images/consultants/Lois.jpg)
 Lois Wyn
 
-![Unknown](./images/consultants/Unknown.png)
+![Unknown](./images/consultants/Unknown.jpg)
 The Unknown Consultant
 
 ![Spare image](./images/consultants/Spare1.jpg)

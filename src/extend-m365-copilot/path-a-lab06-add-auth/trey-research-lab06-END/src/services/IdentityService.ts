@@ -8,8 +8,11 @@ import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-valid
 import ConsultantApiService from "./ConsultantApiService";
 
 class Identity {
-    private requestNumber = 1;  // Number the requests for logging purposes
+    private lastKeyUpdateTime = 0;
+    private validator: TokenValidator;
+    private readonly KEY_CACHE_DURATION_MS = 1000 * 60 * 60 * 24;   // 24 hours
 
+    private requestNumber = 1;  // Number the requests for logging purposes
 
     public async validateRequest(req: HttpRequest): Promise<ApiConsultant> {
 
@@ -20,31 +23,39 @@ class Identity {
 
         // Try to validate the token and get user's basic information
         try {
+            const { API_APPLICATION_ID, API_TENANT_ID } = process.env;
             const token = req.headers.get("Authorization")?.split(" ")[1];
             if (!token) {
-                throw new HttpError(404, "Assignment not found");
+                throw new HttpError(401, "Authorization token not found");
             }
 
             // create a new token validator for the Microsoft Entra common tenant
-            const entraJwksUri = await getEntraJwksUri();
-            const validator = new TokenValidator({
-                jwksUri: entraJwksUri
-            });
+            if (!this.validator ||
+                Date.now() - this.lastKeyUpdateTime > this.KEY_CACHE_DURATION_MS) {
+                // This obtains signing keys for this tenant; for multitenant, use:
+                // const entraJwksUri = await getEntraJwksUri();
+                const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
+                this.validator = new TokenValidator({
+                    jwksUri: entraJwksUri
+                });
+                console.log('🔑 Refreshed Entra ID signing key');
+                this.lastKeyUpdateTime = Date.now();
+            }
 
             // Use these options for single-tenant applications
-            const API_APPLICATION_ID = process.env.API_APPLICATION_ID;
-            const API_TENANT_ID = process.env.API_TENANT_ID;
             const options: ValidateTokenOptions = {
                 audience: `api://${API_APPLICATION_ID}`,
                 issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
-                // NOTE: If this is a multi-tenant app you may wish to manage a list
-                // of allowed tenants and test them as well
+                // NOTE: If this is a multi-tenant app, look for 
+                // issuer: "https://sts.windows.net/common/",
+                // Also you may wish to manage a list of allowed tenants
+                // and test them as well
                 //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
                 scp: ["access_as_user"]
             };
 
             // validate the token
-            const validToken = await validator.validateToken(token, options);
+            const validToken = await this.validator.validateToken(token, options);
 
             userId = validToken.oid;
             userName = validToken.name;
@@ -54,9 +65,9 @@ class Identity {
         catch (ex) {
             // Token is missing or invalid - return a 401 error
             console.error(ex);
-            throw new HttpError(404, "Unauthorized");
+            throw new HttpError(401, "Unauthorized");
         }
-
+        
         // Get the consultant record for this user; create one if necessary
         let consultant: ApiConsultant = null;
         try {
@@ -78,7 +89,7 @@ class Identity {
             name: userName,
             email: userEmail,
             phone: "1-555-123-4567",
-            consultantPhotoUrl: "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
+            consultantPhotoUrl: "https://microsoft.github.io/copilot-camp/demo-assets/images/consultants/Unknown.jpg",
             location: {
                 street: "One Memorial Drive",
                 city: "Cambridge",
@@ -86,8 +97,7 @@ class Identity {
                 country: "USA",
                 postalCode: "02142",
                 latitude: 42.361366,
-                longitude: -71.081257,
-                mapUrl: ""
+                longitude: -71.081257
             },
             skills: ["JavaScript", "TypeScript"],
             certifications: ["Azure Development"],

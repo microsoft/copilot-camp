@@ -1,10 +1,8 @@
 import { HttpRequest } from "@azure/functions";
-import { HttpError } from './Utilities';
 import { Consultant } from '../model/baseModel';
 import { ApiConsultant } from '../model/apiModel';
 
 // This is a DEMO ONLY identity solution.
-import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 import ConsultantApiService from "./ConsultantApiService";
 
 class Identity {

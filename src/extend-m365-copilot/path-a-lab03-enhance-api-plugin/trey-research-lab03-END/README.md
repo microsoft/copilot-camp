@@ -56,13 +56,10 @@ The sample aims to showcase the following plugin features:
 
 1. Log into Teams Toolkit using any tenant for now, as we will be uploading manually.
 
-1. Optional: Obtain a Bing Maps API key. The app works with any string value, but map URLs will be invalid unless you provide a valid API key.
-
 1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes these lines.
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
-SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 ~~~
 
 1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint. Add the location of these files in the `file_containers` capability in the declarative copilot (**/appPackage/trey-declarative-copilot.json**).

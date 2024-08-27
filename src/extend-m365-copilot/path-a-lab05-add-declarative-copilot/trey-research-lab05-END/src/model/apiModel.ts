@@ -15,7 +15,6 @@ export interface ApiProjectAssignment {
 // Returned by all /api/projects GET requests
 export interface ApiProject extends Project {
     consultants: ApiProjectAssignment[];
-    clientLogoUrl: string;
     forecastThisMonth: number;
     forecastNextMonth: number;
     deliveredLastMonth: number;
