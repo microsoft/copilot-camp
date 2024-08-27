@@ -78,7 +78,7 @@ class Identity {
             name: userName,
             email: userEmail,
             phone: "1-555-123-4567",
-            consultantPhotoUrl: "https://microsoft.github.io/copilot-camp/demo-assets/images/consultants/Unknown.png",
+            consultantPhotoUrl: "https://microsoft.github.io/copilot-camp/demo-assets/images/consultants/Unknown.jpg",
             location: {
                 street: "One Memorial Drive",
                 city: "Cambridge",
