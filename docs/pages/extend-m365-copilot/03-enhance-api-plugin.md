@@ -93,7 +93,7 @@ In this exercise, you'll add information about the new /projects resource to the
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
 To begin, in the **/appPackage** folder, open the file **trey-definition.json**. 
-Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/appPackage/trey-definition.json) and save the new trey-definition.sjon. In the steps that follow, you can review and understand the changes.
+Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/appPackage/trey-definition.json) and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
 
 ### Step 2: Review the updates (optional)
 
