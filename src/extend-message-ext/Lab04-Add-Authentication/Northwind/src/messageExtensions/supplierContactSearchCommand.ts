@@ -44,7 +44,7 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
         context,
         oboAuthConfig,
         initialLoginEndpoint,
-        ["User.Read","Contacts.Read"],
+        ["Contacts.Read"],
         async (token: MessageExtensionTokenResponse) => {
             // User Code
 
@@ -53,7 +53,7 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
 
             // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
             const authProvider = new TokenCredentialAuthenticationProvider(credential, {
-                scopes: ["User.Read", "Contacts.Read"],
+                scopes:  ["Contacts.Read"],
             });
 
             // Initialize Graph client instance with authProvider

@@ -141,7 +141,7 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": ["${{BOT_DOMAIN}}"],
+    "validDomains": ["${{BOT_DOMAIN}}","*.botframework.com"],
     "webApplicationInfo": {
         "id": "${{AAD_APP_CLIENT_ID}}",
         "resource": "api://botid-${{BOT_ID}}"
