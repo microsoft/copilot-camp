@@ -1,5 +1,4 @@
 import { HttpRequest } from "@azure/functions";
-import { HttpError } from './Utilities';
 import { Consultant } from '../model/baseModel';
 import { ApiConsultant } from '../model/apiModel';
 
