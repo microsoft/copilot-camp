@@ -113,24 +113,24 @@
                         }
                     ]
                 },
-                { 
-        "id": "supplierContactSearch", 
-        "context": [ 
-            "compose", 
-            "commandBox" 
-        ], 
-        "description": "Search for a contact in the user's Outlook contacts list for Northwind", 
-        "title": "Contact search", 
-        "type": "query", 
-        "parameters": [ 
-            { 
-                "name": "name", 
-                "title": "Contact search", 
-                "description": "Type name of the contact or company which forms the domain for email address of the contact, to search my Outlook contacts list", 
-                "inputType": "text" 
-            } 
-        ] 
-} 
+                {
+                    "id": "supplierContactSearch",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Search for a contact in the user's Outlook contacts list for Northwind",
+                    "title": "Contact search",
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "name",
+                            "title": "Contact search",
+                            "description": "Type name of the contact or company which forms the domain for email address of the contact, to search my Outlook contacts list",
+                            "inputType": "text"
+                        }
+                    ] 
+         } 
             ]
         }
         
@@ -141,9 +141,12 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": ["${{BOT_DOMAIN}}","*.botframework.com"],
     "webApplicationInfo": {
-        "id": "${{AAD_APP_CLIENT_ID}}",
-        "resource": "api://botid-${{BOT_ID}}"
-      }
+        "id": "${{BOT_ID}}",
+        "resource": "api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}"
+    },
+    "validDomains": [
+        "token.botframework.com",
+        "${{BOT_DOMAIN}}"
+    ]
 }

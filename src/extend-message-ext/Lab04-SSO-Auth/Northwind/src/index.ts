@@ -9,7 +9,6 @@ import {
   ConfigurationBotFrameworkAuthentication,
   TurnContext,
 } from "botbuilder";
-import path from 'path';
 
 // This bot's main dialog.
 import { SearchApp } from "./searchApp";
@@ -67,17 +66,5 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
 server.post("/api/messages", async (req, res) => {
   await adapter.process(req, res, async (context) => {
     await searchApp.run(context);
-  }).catch((err) => {
-  // Error message including "412" means it is waiting for user's consent, which is a normal process of SSO, shouldn't throw this error.
-  if(!err.message.includes("412")) {
-      throw err;
-      }
-  })
+  });
 });
-
-server.get(
-  '/auth-:name(start|end).html',
-  restify.plugins.serveStatic({
-      directory: path.join(__dirname, 'public')
-  })
-);

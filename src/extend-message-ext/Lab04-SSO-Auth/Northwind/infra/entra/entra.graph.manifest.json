@@ -1,0 +1,39 @@
+{
+    "id": "${{GRAPH_AAD_APP_OBJECT_ID}}",
+    "appId": "${{GRAPH_AAD_APP_ID}}",
+    "name": "${{APP_INTERNAL_NAME}}-graph-${{TEAMSFX_ENV}}",
+    "accessTokenAcceptedVersion": 2,
+    "signInAudience": "AzureADMultipleOrgs",
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "idtyp",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+    "requiredResourceAccess": [
+        {
+            "resourceAppId": "Microsoft Graph",
+            "resourceAccess": [
+                {
+                    "id": "Sites.ReadWrite.All",
+                    "type": "Scope"
+                }
+            ]
+        }
+    ],
+    "oauth2Permissions": [],
+    "preAuthorizedApplications": [],
+    "identifierUris": [],
+    "replyUrlsWithType": [
+        {
+            "url": "https://token.botframework.com/.auth/web/redirect",
+            "type": "Web"
+        }
+    ]
+}

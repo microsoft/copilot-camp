@@ -1,7 +1,7 @@
 {
-    "id": "${{AAD_APP_OBJECT_ID}}",
-    "appId": "${{AAD_APP_CLIENT_ID}}",
-    "name": "NorthwindSuppliers-AAD",
+    "id": "${{BOT_AAD_APP_OBJECT_ID}}",
+    "appId": "${{BOT_ID}}",
+    "name": "${{APP_INTERNAL_NAME}}-bot-${{TEAMSFX_ENV}}",
     "accessTokenAcceptedVersion": 2,
     "signInAudience": "AzureADMultipleOrgs",
     "optionalClaims": {
@@ -16,21 +16,7 @@
         ],
         "saml2Token": []
     },
-    "requiredResourceAccess": [
-        {
-            "resourceAppId": "Microsoft Graph",
-            "resourceAccess": [
-                {
-                    "id": "Contacts.Read",
-                    "type": "Scope"
-                },
-                {
-                    "id": "User.Read",
-                    "type": "Scope"
-                }
-            ]
-        }
-    ],
+    "requiredResourceAccess": [],
     "oauth2Permissions": [
         {
             "adminConsentDescription": "Allows Teams to call the app's web APIs as the current user.",
@@ -94,13 +80,7 @@
         }
     ],
     "identifierUris": [
-      "api://botid-${{BOT_ID}}"
+        "api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}"
     ],
-    "replyUrlsWithType": [
-      {
-        "url": "https://${{BOT_DOMAIN}}/auth-end.html",
-        "type": "Web"
-      }
-    ]
-  }
-  
+    "replyUrlsWithType": []
+}
