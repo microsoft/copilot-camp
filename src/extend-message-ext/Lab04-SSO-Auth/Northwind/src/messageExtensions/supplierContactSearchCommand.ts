@@ -3,10 +3,9 @@ import {
     TurnContext
 } from "botbuilder";
 
-import config from "../config";
 import { AuthService } from "../services/AuthService";
 import { GraphService } from "../services/GraphService";
-import { cleanupParam } from "../utils";
+
 
 const COMMAND_ID = "supplierContactSearch";
 
@@ -54,6 +53,17 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
         },
     };
 
+}
+function cleanupParam(value: string): string {
+
+    if (!value) {
+        return "";
+    } else {
+        let result = value.trim();
+        result = result.split(',')[0];          // Remove extra data
+        result = result.replace("*", "");       // Remove wildcard characters from Copilot
+        return result;
+    }
 }
 
 

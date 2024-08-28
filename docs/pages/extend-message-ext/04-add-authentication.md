@@ -1,5 +1,5 @@
 # Lab M4 - Add authentication
-In this lab you will secure your Northwind plugin from the previous lab with authentication using Entra ID SSO (single sign-on) and your own contacts information of suppliers to share in a conversation. 
+In this lab you will secure your Northwind plugin from the previous lab with authentication using Entra ID SSO (single sign-on) to search and find your own contacts like suppliers information from Outlook.  
 
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
     - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
@@ -16,9 +16,9 @@ In this lab you will secure your Northwind plugin from the previous lab with aut
 
 In this lab you will learn to:
 
-- Add Entra ID single sign-on (SSO) to your app so users can seamlessly log into your app with the same account they use in Microsoft Teams
+- how to add Entra ID single sign-on (SSO) to your plugin so users can seamlessly log into your app with the same account they use in Microsoft Teams
 
-- Access the Microsoft Graph API to access user content in Microsoft 365. Your app will act on behalf of the logged-in user so they can securely access their own content within your application.
+- Access the Microsoft Graph API to access user data in Microsoft 365. Your app will act on behalf of the logged-in user so they can securely access their own content within your application like contacts from Outlook in this lab.
 
 ## Introduction : Tasks involved to implement SSO (brief)
 
@@ -29,10 +29,10 @@ Implementing SSO for your plugin (Message extension app) involves several steps.
 - Configure the app with necessary permissions and scopes.
 - Generate a client secret for your app.
 - Create a bot in the Azure Bot Service.
-- Add the Teams channel to your bot.
+- Add the Microsoft 365 channel to your bot.
 - Set up OAuth connection settings in the Azure portal.
 ### Enable SSO in Your Teams App
-- Update your bot code to handle authentication and token exchange.
+- Update your message extension's bot code to handle authentication and token exchange.
 - Use the Bot Framework SDK to integrate SSO capabilities.
 - Implement the OAuth flow to obtain access tokens for the user.
 ### Configure Authentication in Teams
@@ -40,21 +40,19 @@ Implementing SSO for your plugin (Message extension app) involves several steps.
 
 ## Exercise 1: Register Your App in Microsoft Entra ID and Configure Your Bot in Azure Bot Service
 
-Luckily for you, we’ve streamlined everything so that it’s ready to go as soon as you hit **F5**. However, let’s go over the specific changes you’ll need to make in the project
+Luckily for you, we’ve streamlined everything so that it’s ready to go as soon as you hit **F5**. However, let’s go over the specific changes you’ll need to make in the project for registering and configuring these resources. 
 
 ### Step 1: Copy files and folders
 
-Copy the folder [entra](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/) into the folder **infra** of your [base project](../../../src/extend-message-ext/Lab03-Enhance-NW-Teams/Northwind/). This will provision the Entra IDs needed for the bot as well as the one for generating appID and application ID URI.
+Copy the entire folder [entra](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/) and its contents **entra.bot.manifest.json** and  **entra.graph.manifest.json**  into the folder **infra** of your current working project folder from the previous lab. These files are needed to provision the Entra IDs needed for the bot as well as the one for graph for token exchange between them. 
 
-Next copy over the files [azure.local.bicep](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep) and [azure.parameters.local.json](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json) to help with the bot registration on F5 into the same **infra** folder
+Next copy over the files [azure.local.bicep](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep) and [azure.parameters.local.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json) to help with the bot registration on F5 into the same **infra** folder. This will ensure the bot service is provisioned in Azure even on local run of projec. This is required for this authentication flow.
 
 > When Teams Toolkit prepares the app it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
 
 ### Step 2: Update existing code
 
-Next, open file **azurebot.bicep** under **botRegistration** folder which is under **infra** folder.
-
-Add below code snippet after declaration of *param botAppDomain*
+Next, open file **azurebot.bicep** under **botRegistration** folder which is under **infra** folder and add below code snippet after declaration of *param botAppDomain*
 
 ```bicep
 param graphAadAppClientId string
@@ -91,7 +89,13 @@ resource botServicesMicrosoftGraphConnection 'Microsoft.BotService/botServices/c
 }
 
 ```
-Next, open the **teamsapp.local.yml** file and replace its content with the code snippet below. This will rewire parts of the infrastructure, including deploying a bot service in Azure for our lab
+
+This will create a new OAUTH connection for token exchange between bot service and the graph entra ID app.
+
+!!! Tip "Changes to infrastructure for plugin"
+    We require a different infrastructure to run this setup compared to the non-authenticated plugins we've previously built in this path and hence we need to rewire. Next steps will help you with this. 
+
+Next, open the **teamsapp.local.yml** file and replace its content with the code snippet below. This will rewire parts of the infrastructure, including deploying a bot service in Azure for our lab. 
 
 ```yaml
 # yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
@@ -219,7 +223,7 @@ deploy:
 
 ```
 
-Open **.env.local** file under **env** folder and completely remove all variable and add below
+Open **.env.local** file under **env** folder and completely remove all variable and add below for a fresh start. 
 
 ```
 APP_INTERNAL_NAME=Northwind
@@ -227,7 +231,7 @@ APP_DISPLAY_NAME=Northwind
 CONNECTION_NAME=MicrosoftGraph
 
 ```
-Open **.env.local.user** file under **env** folder and completely remove all variable and add below
+Open **.env.local.user** file under **env** folder and completely remove all variable and add below for a fresh start. 
 ```
 SECRET_BOT_PASSWORD=
 SECRET_GRAPH_AAD_APP_CLIENT_SECRET=
@@ -235,125 +239,11 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ```
 
 
-## Exercise 2: Add new command into plugin and add authentication
+## Exercise 2: New search command for Contacts 
 
 ### Step 1: Add a command to search contacts (suppliers)
-First step, you need to add a new command to search for contacts. We will get the contact details from Microsoft Graph but for now will use mock data to make sure the message extension command works.
 
-Go to **src** folder and create a file called **utils.ts** and copy the content from below. We will reuse this for other parts of code later.
-
-```JavaScript
-import {
-    AdaptiveCardInvokeResponse,
-    InvokeResponse,
-    MessagingExtensionActionResponse,
-  } from "botbuilder";
-  
-  export const CreateInvokeResponse = (
-    status: number,
-    body?: unknown
-  ): InvokeResponse => {
-    return { status, body };
-  };
-  
-  export const CreateAdaptiveCardInvokeResponse = (
-    statusCode: number,
-    body?: Record<string, unknown>
-  ): AdaptiveCardInvokeResponse => {
-    return {
-      statusCode: statusCode,
-      type: "application/vnd.microsoft.card.adaptive",
-      value: body,
-    };
-  };
-  
-  export const CreateActionErrorResponse = (
-    statusCode: number,
-    errorCode = -1,
-    errorMessage = "Unknown error"
-  ): AdaptiveCardInvokeResponse => {
-    return {
-      statusCode: statusCode,
-      type: "application/vnd.microsoft.error",
-      value: {
-        error: {
-          code: errorCode,
-          message: errorMessage,
-        },
-      },
-    };
-  };
-  
-  export const CreateInvokeErrorResponse = (
-    statusCode: number,
-    errorCode = -1,
-    errorMessage = "Unknown error"
-  ): InvokeResponse => {
-    return CreateInvokeResponse(statusCode, {
-      error: {
-        code: errorCode,
-        message: errorMessage,
-      },
-    });
-  };
-  
-  export const setTaskInfo = (taskInfo) => {
-    taskInfo.height = 350;
-    taskInfo.width = 800;
-    taskInfo.title = "";
-  };
-  
-  export const CreateErrorResponseActionResponse = (
-    error: string
-  ): MessagingExtensionActionResponse => {
-    const cardAttachment = {
-      contentType: `application/vnd.microsoft.card.adaptive`,
-      card: JSON.parse(`{ 
-      "type": "AdaptiveCard",
-      "version": "1.6",
-      "body": [
-          {
-              "type": "TextBlock",
-              "text": "Error",
-              "weight": "Bolder",
-              "size": "Medium"
-          },
-          {
-              "type": "TextBlock",
-              "text": "An error has occurred. ${error}.",
-              "wrap": true
-          }
-      ]
-    }`),
-    };
-  
-    const response: MessagingExtensionActionResponse = {
-      task: {
-        type: "continue",
-        value: cardAttachment,
-      },
-    };
-  
-    return response;
-  };
-  
-  export const cleanupParam = (value: string): string => {
-    if (!value) {
-      return "";
-    } else {
-      let result = value.trim();
-      result = result.split(",")[0];
-      result = result.replace("*", "");
-      return result;
-    }
-  };
-  
-  export const getFileNameFromUrl = (url: string): string => {
-    const urlParts = url.split("/");
-    return urlParts[urlParts.length - 1];
-  };
-```
-
+To start, add a new command for searching contacts. We’ll eventually retrieve contact details from Microsoft Graph, but for now, we’ll use mock data to ensure the message extension command functions correctly.
 Go to **src** folder > **messageExtensions** and add an new file **supplierContactSearchCommand.ts** in it.
 
 Copy the content from below into the new file.
@@ -364,8 +254,6 @@ import {
     TurnContext
 } from "botbuilder";
 
-import config from "../config";
-import { cleanupParam } from "../utils";
 
 const COMMAND_ID = "supplierContactSearch";
 
@@ -427,6 +315,17 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
     };
 
 }
+function cleanupParam(value: string): string {
+
+    if (!value) {
+        return "";
+    } else {
+        let result = value.trim();
+        result = result.split(',')[0];          // Remove extra data
+        result = result.replace("*", "");       // Remove wildcard characters from Copilot
+        return result;
+    }
+}
 
 export default { COMMAND_ID, handleTeamsMessagingExtensionQuery }
 ```
@@ -467,9 +366,51 @@ Now to go **appPackage** > **manifest.json** and add the command inside the *com
                     ] 
          } 
 ```
-### Step 2: Run the application 
-Next, you'll test the new command using mock contacts, which requires running the app. When you press F5 to run the application, it will also provision all the necessary resources for the authenticated flow, as we configured everything using the Team Toolkit's deploy process in Exercise 1. We can then keep the app running for our next exercise, where we will integrate SSO to call contacts from Microsoft Graph.
+So you have now added a new non authenticated command to search contacts from a mock list. 
 
+### Step 2: Run the application in Teams to test new command
+To test the new command you need to run the app locally.
+
+Click F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.
+
+![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
+
+
+!!! tip "F5 in this lab"
+       When you press F5 to run the application, it will also provision all the necessary resources for the authenticated flow, as we configured everything using the Team Toolkit's actions in Exercise 1. 
+
+Since you cleared the environments variable, you will install all Entra ID apps and bot services in Azure. During the first run, you'll need to select a resource group in your Azure subscription, which you logged into via the Teams toolkit, for provisioning resources.
+
+![resource group selection](../../assets/images/extend-message-ext-04/new-resource-group.png)
+
+Choose **+ New resource group** to keep things tidy.And choose the default name teams toolkit has suggested and select Enter.
+
+Next, choose a Location. For this lab just choose **Central US**
+
+![resource group selection](../../assets/images/extend-message-ext-04/new-resource-group2.png)
+
+Next Teams Toolkit will go ahead and provision the resources but will also ask you a confirmation before doing so.
+
+![provision](../../assets/images/extend-message-ext-04/provision.png)
+
+Select **Provision**.
+
+Once it's provisioned all the resources, you will get the Northwind app install dialog in a browser, select **Add**.
+
+
+![provision](../../assets/images/extend-message-ext-04/app-install.png)
+
+Once installed, you will be given another dialog to open the app. This will open the app as a message extension in a personal chat. Select **Open**.
+
+
+![app open](../../assets/images/extend-message-ext-04/app-open.png)
+
+Since we only need to test if the command works or not, we will only test the app in Teams chat.
+In the personal chat with the app, select the **Contacrt search** and type *a*. 
+
+![app open](../../assets/images/extend-message-ext-04/contacts-non-auth.png)
+
+If it lists the contacts as shown above, the command is working, but with mock data. We will fix this in the next exercise.
 
 ## Exercise 3 : Enable authentication for new command
 
@@ -489,7 +430,7 @@ Add the files **AuthService.ts** and **GraphService.ts** as is into the **servic
 
 - **GraphService** : defines a class that interacts with the Microsoft Graph API. It initializes a Graph client using an authentication token and provides a method getContacts to fetch the user's contacts, selecting specific fields (displayName and emailAddresses).
 
-- Here is the code for **AuthService.ts**
+Here is the code for **AuthService.ts**
 
 ```JavaScript
 import {
@@ -578,7 +519,7 @@ export class AuthService {
 
 ```
 
-- Here is the code for **GraphService.ts**
+Here is the code for **GraphService.ts**
 
 ```JavaScript
 import { Client } from '@microsoft/microsoft-graph-client';
@@ -625,7 +566,7 @@ Now append a node for *connectionName* into the **config.ts** file in the **src*
 export default config;
 </pre>
 
-Now, go back to the **supplierContactSearchCommand.ts** file and import these two services.
+Now, go back to the **supplierContactSearchCommand.ts** file and import these two services we just added.
 
 ```JavaScript
 import { AuthService } from "../services/AuthService";
@@ -633,7 +574,7 @@ import { GraphService } from "../services/GraphService";
 ```
 Next, add the code that initializes authentication, retrieves a user token, checks its validity, and then sets up a service to interact with the Microsoft Graph API if the token is valid. If the token is invalid, it prompts the user to sign in.
 
-Copy this into the *handleTeamsMessagingExtensionQuery* function above the mock definition of *allContacts** constant.
+Copy below code into the *handleTeamsMessagingExtensionQuery* function above the mock definition of **allContacts** constant.
 
 ```JavaScript
   const credentials = new AuthService(context);
@@ -644,13 +585,13 @@ Copy this into the *handleTeamsMessagingExtensionQuery* function above the mock 
   const graphService = new GraphService(token);
 ```
 
-Next, replace the mock definition of *allContacts** constant with below code:
+Next, replace the mock definition of **allContacts** constant with below code:
 
 ```JavaScript
 const allContacts = await graphService.getContacts();
 ```
 
-Next go to **appPackage/manifest.json** file. And update the node *validDomains* as below
+Next go to **appPackage/manifest.json** file and update the node *validDomains* as below
 
 ```JSON
 "validDomains": [
@@ -667,6 +608,7 @@ Also add a node for *webApplicationInfo* and update it with below value
         "resource": "api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}"
     },
 ```
+These manifest changes will make sure the sign-in url is correctly formed and sent to the user for consent.
 
 ## Exercise 4:  Test authentication
 
@@ -686,10 +628,27 @@ So let us first ensure we have some contacts in Microsoft 365.
 
 The app is simple, and will only display the person or company name and email address. If you want to play along with the business scenario, make them sound like suppliers.
 
-![outlook](../../assets/images/extend-message-ext-04/Lab05-002-EnterTestData2.png)
+![outlook](../../assets/images/extend-message-ext-04/Lab05-003-EnterTestData2.png)
 
 ### Step 2: Test in Copilot
 
-Open a new chat in Copilot for Microsoft 365.
-Let's re run the project since we made changes to the appPackage.
+Let's re run the project since we made changes to the appPackage that is the manifest.json file. We'll need to repackage and sideload. Once you select **F5**, you will see the **provision** dialog again, just proceed to do so as it is only going to ignore if resources exist.
+Now install the app as explained in Exercise 2, Step 2 but instead of testing the app in the Teams personal chat, open Copilot for Microsoft 365.
 
+Make sure the plugin is enabled in the chat. 
+
+![toggler](../../assets/images/extend-message-ext-04/toggler.png)
+
+Now ask Copilot for contacts by using this prompt- **Find my conacts with name {first name} in Northwind** (Replace {first name} with what name you have given for your contacts in Exercise 4, Step 1)
+
+You will get a sign-in button to authenticate (one time only) as shown in the screen. 
+
+![prompt](../../assets/images/extend-message-ext-04/prompt.png)
+
+This is the indication that you have an some sort of an authentication set in place to call this feature of the plugin. Select **Sign in to Northwind Inventory**
+
+You will now get a dialog to interact and provide consent as show in the GIF below. Once consented you should be able to get back results form Copilot for Microsoft 365.
+![working gif](../../assets/images/extend-message-ext-04/working.gif)
+
+## Congratulations
+This was a hard one, but you ACED it! You are now ready add an action command. Proceed to the next lab. Select **Next**.
