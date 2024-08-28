@@ -467,8 +467,11 @@ Now to go **appPackage** > **manifest.json** and add the command inside the *com
                     ] 
          } 
 ```
+### Step 2: Run the application 
+Next, you'll test the new command using mock contacts, which requires running the app. When you press F5 to run the application, it will also provision all the necessary resources for the authenticated flow, as we configured everything using the Team Toolkit's deploy process in Exercise 1. We can then keep the app running for our next exercise, where we will integrate SSO to call contacts from Microsoft Graph.
 
-### Step 2 : Enable authentication for new command
+
+## Exercise 3 : Enable authentication for new command
 
 In the previous step, you have laid the foundation for the new command. Next you will add authentication on top of the command, replace the mock contact list and replace it with actual contact list from the logged in user's Outlook contacts.
 
@@ -480,11 +483,134 @@ npm i @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
 ```
 
 Now create a folder called **services** under **src** folder of your base project.
-Copy the files [AuthService.ts] and [GraphService.ts] as is into the **services** folder. 
+Add the files **AuthService.ts** and **GraphService.ts** as is into the **services** folder. 
 
 - **AuthService** : contains a class that provides authentication services. It includes a method **getSignInLink** which asynchronously retrieves a sign-in URL from a client using specific connection details and returns this URL.
 
 - **GraphService** : defines a class that interacts with the Microsoft Graph API. It initializes a Graph client using an authentication token and provides a method getContacts to fetch the user's contacts, selecting specific fields (displayName and emailAddresses).
+
+- Here is the code for **AuthService.ts**
+
+```JavaScript
+import {
+  AdaptiveCardInvokeResponse,
+  CloudAdapter,
+  MessagingExtensionQuery,
+  MessagingExtensionResponse,
+  TurnContext,
+} from 'botbuilder';
+import { UserTokenClient } from 'botframework-connector';
+import { Activity } from 'botframework-schema';
+import config from '../config';
+
+export class AuthService {
+  private client: UserTokenClient;
+  private activity: Activity;
+  private connectionName: string;
+
+  constructor(context: TurnContext) {
+    const adapter = context.adapter as CloudAdapter;
+    this.client = context.turnState.get<UserTokenClient>(
+      adapter.UserTokenClientKey
+    );
+    this.activity = context.activity;
+    this.connectionName = config.connectionName;
+  }
+
+  async getUserToken(
+    query?: MessagingExtensionQuery
+  ): Promise<string | undefined> {
+    const magicCode =
+      query?.state && Number.isInteger(Number(query.state)) ? query.state : '';
+
+    const tokenResponse = await this.client.getUserToken(
+      this.activity.from.id,
+      this.connectionName,
+      this.activity.channelId,
+      magicCode
+    );
+
+    return tokenResponse?.token;
+  }
+
+  async getSignInComposeExtension(): Promise<MessagingExtensionResponse> {
+    const signInLink = await this.getSignInLink();
+
+    return {
+      composeExtension: {
+        type: 'auth',
+        suggestedActions: {
+          actions: [
+            {
+              type: 'openUrl',
+              value: signInLink,
+              title: 'SignIn',
+            },
+          ],
+        },
+      },
+    };
+  }
+
+  async getSignInAdaptiveCardInvokeResponse(): Promise<AdaptiveCardInvokeResponse> {
+    const signInLink = await this.getSignInLink();
+
+    return {
+      statusCode: 401,
+      type: 'application/vnd.microsoft.card.signin',
+
+      value: {
+        signinurl: signInLink,
+      },
+    };
+  }
+
+  async getSignInLink(): Promise<string> {
+    const { signInLink } = await this.client.getSignInResource(
+      this.connectionName,
+      this.activity,
+      ''
+    );
+
+    return signInLink;
+  }
+}
+
+```
+
+- Here is the code for **GraphService.ts**
+
+```JavaScript
+import { Client } from '@microsoft/microsoft-graph-client';
+
+
+export class GraphService {
+  private _token: string;
+  private graphClient: Client;
+
+  constructor(token: string) {
+    if (!token || !token.trim()) {
+      throw new Error('SimpleGraphClient: Invalid token received.');
+    }
+    this._token = token;
+
+    this.graphClient = Client.init({
+      authProvider: done => {
+        done(null, this._token);
+      },
+    });
+  }
+  async getContacts(): Promise<any> {
+    const response = await this.graphClient
+      .api(`me/contacts`)
+      .select('displayName,emailAddresses')
+      .get();
+
+    return response.value;
+  }
+}
+
+```
 
 Now append a node for *connectionName* into the **config.ts** file in the **src** folder, we will use this configuration value late. 
 
@@ -492,8 +618,8 @@ Now append a node for *connectionName* into the **config.ts** file in the **src*
  const config = {
   botId: process.env.BOT_ID,
   botPassword: process.env.BOT_PASSWORD,
-  storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING,
-  <b>connectionName: process.env.CONNECTION_NAME</b>
+  storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING<b>,
+  connectionName: process.env.CONNECTION_NAME</b>
 };
 
 export default config;
@@ -523,5 +649,47 @@ Next, replace the mock definition of *allContacts** constant with below code:
 ```JavaScript
 const allContacts = await graphService.getContacts();
 ```
-## Exercise 3: Run the application
+
+Next go to **appPackage/manifest.json** file. And update the node *validDomains* as below
+
+```JSON
+"validDomains": [
+        "token.botframework.com",
+        "${{BOT_DOMAIN}}"
+    ]
+```
+
+Also add a node for *webApplicationInfo* and update it with below value
+
+```JSON
+    "webApplicationInfo": {
+        "id": "${{BOT_ID}}",
+        "resource": "api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}"
+    },
+```
+
+## Exercise 4:  Test authentication
+
+### Step 1: Enter test data
+Before we test the plugin to bring actual contacts, we'll need to add some contact information.
+So let us first ensure we have some contacts in Microsoft 365.
+
+1️⃣ From Microsoft Teams, click the "waffle" menu
+
+2️⃣ Select Microsoft Outlook
+
+![outlook](../../assets/images/extend-message-ext-04/Lab05-002-EnterTestData1.png)
+
+1️⃣ Within Outlook, click the "Contacts" button
+
+2️⃣ Enter some new contacts
+
+The app is simple, and will only display the person or company name and email address. If you want to play along with the business scenario, make them sound like suppliers.
+
+![outlook](../../assets/images/extend-message-ext-04/Lab05-002-EnterTestData2.png)
+
+### Step 2: Test in Copilot
+
+Open a new chat in Copilot for Microsoft 365.
+Let's re run the project since we made changes to the appPackage.
 
