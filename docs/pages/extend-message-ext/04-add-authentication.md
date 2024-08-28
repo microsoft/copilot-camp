@@ -46,7 +46,7 @@ Luckily for you, we’ve streamlined everything so that it’s ready to go as so
 
 Copy the folder [entra](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/) into the folder **infra** of your [base project](../../../src/extend-message-ext/Lab03-Enhance-NW-Teams/Northwind/). This will provision the Entra IDs needed for the bot as well as the one for generating appID and application ID URI.
 
-Next copy over the files [azure.local.bicep](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep) and [azure.parameters.local.json](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json) to help with the bot registration on F5.
+Next copy over the files [azure.local.bicep](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep) and [azure.parameters.local.json](../../../src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json) to help with the bot registration on F5 into the same **infra** folder
 
 > When Teams Toolkit prepares the app it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
 
@@ -219,12 +219,28 @@ deploy:
 
 ```
 
+Open **.env.local** file under **env** folder and completely remove all variable and add below
+
+```
+APP_INTERNAL_NAME=Northwind
+APP_DISPLAY_NAME=Northwind
+CONNECTION_NAME=MicrosoftGraph
+
+```
+Open **.env.local.user** file under **env** folder and completely remove all variable and add below
+```
+SECRET_BOT_PASSWORD=
+SECRET_GRAPH_AAD_APP_CLIENT_SECRET=
+SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+```
+
+
 ## Exercise 2: Add new command into plugin and add authentication
 
 ### Step 1: Add a command to search contacts (suppliers)
 First step, you need to add a new command to search for contacts. We will get the contact details from Microsoft Graph but for now will use mock data to make sure the message extension command works.
 
-Go to **src** folder and create a file called **Utils.ts** and copy the content from below. We will reuse this for other parts of code later.
+Go to **src** folder and create a file called **utils.ts** and copy the content from below. We will reuse this for other parts of code later.
 
 ```JavaScript
 import {
@@ -369,19 +385,19 @@ async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: a
     const allContacts = [
     {
         displayName: "John Doe",
-        emailAddress: [
+        emailAddresses: [
         { address: "john.doe@example.com" }
         ]
     },
     {
         displayName: "Jane Smith",
-        emailAddress: [
+        emailAddresses: [
         { address: "jane.smith@example.com" }
         ]
     },
     {
         displayName: "Alice Johnson",
-        emailAddress: [
+        emailAddresses: [
         { address: "alice.johnson@example.com" }
         ]
     }
