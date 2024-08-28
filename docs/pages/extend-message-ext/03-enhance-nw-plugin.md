@@ -11,7 +11,7 @@ In this lab, you will enhance the Northwind plugin by adding a new command. Whil
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
 !!! tip "NOTE"
-    The completed exercise with all of the code changes can be downloaded [from here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/). This can be useful for troubleshooting purposes.
+    The completed exercise with all of the code changes can be downloaded [from here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab03-Enhance-NW-Teams/Northwind/). This can be useful for troubleshooting purposes.
     If you ever need to reset your edits, you can clone again the repository and start over.
 
 
