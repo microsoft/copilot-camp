@@ -11,7 +11,7 @@ import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
 import actionHandler from "./adaptiveCards/cardHandler";
 import { CreateActionErrorResponse } from "./adaptiveCards/utils";
 import customerSearchCommand from "./messageExtensions/customerSearchCommand";
-
+import supplierContactSearchCommand from "./messageExtensions/supplierContactSearchCommand";
 
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
@@ -34,6 +34,9 @@ export class SearchApp extends TeamsActivityHandler {
       case customerSearchCommand.COMMAND_ID: {
         return customerSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
       }
+      case supplierContactSearchCommand.COMMAND_ID: {
+        return supplierContactSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      } 
     }
 
   }

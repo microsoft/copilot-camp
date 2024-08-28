@@ -21,27 +21,50 @@ provision:
     writeToEnvironmentFile:
       teamsAppId: TEAMS_APP_ID
 
-  # Create or reuse an existing Azure Active Directory application for bot.
-  - uses: botAadApp/create
+  - uses: aadApp/create
     with:
-      # The Azure Active Directory application's display name
-      name: NorthwindProducts-${{TEAMSFX_ENV}}
+      name: ${{APP_INTERNAL_NAME}}-bot-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMultipleOrgs
     writeToEnvironmentFile:
-      # The Azure Active Directory application's client id created for bot.
-      botId: BOT_ID
-      # The Azure Active Directory application's client secret created for bot.
-      botPassword: SECRET_BOT_PASSWORD
+      clientId: BOT_ID
+      clientSecret: SECRET_BOT_PASSWORD
+      objectId: BOT_AAD_APP_OBJECT_ID
+      tenantId: BOT_AAD_APP_TENANT_ID
+      authority: BOT_AAD_APP_OAUTH_AUTHORITY
+      authorityHost: BOT_AAD_APP_OAUTH_AUTHORITY_HOST
 
-  # Create or update the bot registration on dev.botframework.com
-  - uses: botFramework/create
+  - uses: aadApp/update
     with:
-      botId: ${{BOT_ID}}
-      name: NorthwindProducts
-      messagingEndpoint: ${{BOT_ENDPOINT}}/api/messages
-      description: ""
-      channels:
-        - name: msteams
-        - name: m365extensions
+      manifestPath: "./infra/entra/entra.bot.manifest.json"
+      outputFilePath : "./build/entra.bot.manifest.${{TEAMSFX_ENV}}.json"
+  - uses: aadApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-graph-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMultipleOrgs
+    writeToEnvironmentFile:
+      clientId: GRAPH_AAD_APP_ID
+      clientSecret: SECRET_GRAPH_AAD_APP_CLIENT_SECRET
+      objectId: GRAPH_AAD_APP_OBJECT_ID
+      tenantId: GRAPH_AAD_APP_TENANT_ID
+      authority: GRAPH_AAD_APP_OAUTH_AUTHORITY
+      authorityHost: GRAPH_AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: "./infra/entra/entra.graph.manifest.json"
+      outputFilePath : "./build/entra.graph.manifest.${{TEAMSFX_ENV}}.json"
+
+  - uses: arm/deploy
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+      templates:
+        - path: ./infra/azure.local.bicep
+          parameters: ./infra/azure.parameters.local.json
+          deploymentName: Create-resources-for-${{APP_INTERNAL_NAME}}-${{TEAMSFX_ENV}}
+      bicepCliVersion: v0.9.1
 
   # Validate using manifest schema
   - uses: teamsApp/validateManifest
@@ -82,6 +105,11 @@ provision:
       appId: M365_APP_ID
 
 deploy:
+# Run npm command
+  - uses: cli/runNpmCommand
+    name: install dependencies
+    with:
+      args: install --no-audit
 
   # Generate runtime environment variables
   - uses: file/createOrUpdateEnvironmentFile
@@ -91,3 +119,4 @@ deploy:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
         STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
+        CONNECTION_NAME: ${{CONNECTION_NAME}}
