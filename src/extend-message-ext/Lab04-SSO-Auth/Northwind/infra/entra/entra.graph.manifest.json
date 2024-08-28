@@ -21,7 +21,7 @@
             "resourceAppId": "Microsoft Graph",
             "resourceAccess": [
                 {
-                    "id": "Sites.ReadWrite.All",
+                    "id": "Contacts.Read",
                     "type": "Scope"
                 }
             ]

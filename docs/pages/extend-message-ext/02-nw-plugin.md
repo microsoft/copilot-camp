@@ -9,6 +9,10 @@ In this lab, you’ll run the Northwind app as a plugin in Microsoft Copilot for
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
+    !!! tip "NOTE"
+    The completed exercise with all of the code changes can be downloaded [from here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/). This can be useful for troubleshooting purposes.
+    If you ever need to reset your edits, you can clone again the repository and start over.
+
 In this lab you will:
 
 - Run the plugin on Microsoft Copilot for Microsoft 365 using prompts for both single and multiparameter search
