@@ -60,7 +60,7 @@ Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.shar
 
 ### Step1: Add the declarative copilot JSON to your project
 
-Create a new file called **trey-declarative-copilot.json** within your **appPackage** folder. Copy the contents of the [solution file](https://github.com/BobGerman/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab05-add-declarative-copilot/trey-research-lab05-END/appPackage/trey-declarative-copilot.json) into this file and save it.
+Create a new file called **trey-declarative-copilot.json** within your **appPackage** folder. Copy the contents of the [solution file](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab05-add-declarative-copilot/trey-research-lab05-END/appPackage/trey-declarative-copilot.json) into this file and save it.
 
 Notice that the file includes a name, description, and instructions for the declarative copilot. Notice that as part of the instructions, Copilot is instructed to "Always remind users of the Trey motto, 'Always be Billing!'." You should see this when you prompt Copilot in the next exercise.
 
@@ -71,10 +71,10 @@ Under "Capabilities" you will notice a SharePoint file container. While Microsof
 ~~~json
 "capabilities": [
     {
-        "name": "SharePoint",
-        "file_containers": [
+        "name": "OneDriveAndSharePoint",
+        "items_by_url": [
             {
-                "path": "https://<your-tenant>.sharepoint.com/sites/TreyResearchLegalDocuments"
+                "url": "https://<your-tenant-name>.sharepoint.com/sites/TreyResearchLegalDocuments"
             }
         ]
     }
@@ -140,4 +140,4 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 You've completed adding a Declarative Copilot to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/05-add-declarative-copilot" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/05-add-declarative-copilot" />

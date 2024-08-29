@@ -1,0 +1,99 @@
+{
+    "rows": [
+        {
+            "id": "1",
+            "name": "Avery Howard",
+            "email": "avery@treyresearch.com",
+            "phone": "1-555-456-7890",
+            "consultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
+            "location": {
+                "street": "5 Wayside Rd.",
+                "city": "Burlington",
+                "state": "MA",
+                "country": "USA",
+                "postalCode": "01803",
+                "latitude": 42.5048,
+                "longitude": -71.1956
+            },
+            "skills": [ "C#", "JavaScript", "TypeScript", "React", "Node.js" ],
+            "certifications": [ "MCSADA", "Azure Developer Associate", "MCAAF", "Azure AI Fundamentals" ],
+            "roles": [ "Project lead", "Developer", "Architect", "DevOps" ]
+        },
+        {
+            "id": "2",
+            "name": "Dominique Dutertre",
+            "email": "dominique@treyresearch.com",
+            "phone": "1-555-567-7890",
+            "consultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Dominique.jpg",
+            "location": {
+                "street": "39 Quai du Président Roosevelt, Issy-les-Moulineaux",
+                "city": "Paris",
+                "state": "Île-de-France",
+                "country": "France",
+                "postalCode": "IdF 92130",
+                "latitude": 48.8264,
+                "longitude": 2.2675
+            },
+            "skills": [ "Figma", "Adobe Creative Swuite", "Visual design" ],
+            "certifications": [ ],
+            "roles": [ "Designer", "Project lead" ]
+        },
+        {
+            "id": "3",
+            "name": "Robin Zupanc",
+            "email": "robin@treyresearch.com",
+            "phone": "1-555-344-7890",
+            "consultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Robin.jpg",
+            "location": {
+                "street": "11 Times Square",
+                "city": "New York",
+                "state": "NY",
+                "country": "USA",
+                "postalCode": "10036",
+                "latitude": 40.7580,
+                "longitude": -73.9855
+            },
+            "skills": [ "Python", "Java" ],
+            "certifications": [ "MCSADA", "Azure Developer Associate", "MCAAF", "Azure AI Fundamentals", "AWS Certified Developer", "Google Professional Cloud Developer" ],
+            "roles": [ "Project lead", "Developer", "Architect, DevOps" ]
+        },
+        {
+            "id": "4",
+            "name": "Sanjay Puranik",
+            "email": "sanjay@treyresearch.com",
+            "phone": "1-555-562-7890",
+            "consultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Sanjay.jpg",
+            "location": {
+                "street": "2 Kingdom St.",
+                "city": "Paddington, London",
+                "state": "EN",
+                "country": "GBR",
+                "postalCode": "W2 6BD",
+                "latitude": 51.5194,
+                "longitude": -0.1781
+            },
+            "skills": [ "TypeScript", "JavaScript", "Angular", "React", "Node.js" ],
+            "certifications": [ "MCPPSAE", "Power Platform Solution Architect Expert", "MCAF", "Azure Fundamentals" ],
+            "roles": [ "Project lead", "Developer" ]
+        },
+        {
+            "id": "5",
+            "name": "Lois Wyn",
+            "email": "lois@treyresearch.com",
+            "phone": "1-555-664-7890",
+            "consultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Lois.jpg",
+            "location": {
+                "street": "4220 Duncan Ave., Suite 501",
+                "city": "St. Louis",
+                "state": "MO",
+                "country": "USA",
+                "postalCode": "63110",
+                "latitude": 38.6283,
+                "longitude": -90.2545
+            },
+            "skills": [ "Project management", "Agile" ],
+            "certifications": [ "Project Management Professional", "PMP", "Agile Leader" ],
+            "roles": [ "Project lead" ]
+       }
+    ]
+}

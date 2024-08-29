@@ -55,12 +55,19 @@ export default class DbService<DbEntityType> {
     async createEntity(tableName: string, rowKey: string, newEntity: DbEntityType): Promise<void> {
         const entity = this.compressPropertyValues(newEntity) as DbEntityType;
         const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
-        await tableClient.createEntity({
-            partitionKey: tableName,
-            rowKey,
-            ...entity
-        });
-    }
+        try {
+
+            await tableClient.createEntity({
+                partitionKey: tableName,
+                rowKey,
+                ...entity
+            });
+        } catch (ex) {
+            if (ex.response?.status !== 409) {
+                throw new HttpError(500, ex.message);
+            }
+        }
+}
 
     async updateEntity(tableName: string, updatedEntity: DbEntityType): Promise<void> {
 

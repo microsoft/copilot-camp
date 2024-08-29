@@ -1,7 +1,7 @@
 
-# Welcome to Copilot Camp's Extend Path: Extend Copilot for Microsoft 365
+# Welcome to Copilot developer camp's Extend Path: Extend Copilot for Microsoft 365
 
-During Extend Path of the Copilot Camp, learners will construct a customized assistant tailored for a Human Resource department. The process will begin with the creation of a basic declarative Copilot and progress towards developing fully skilled assistant. This advanced assistant will be equipped with security features, including authentication mechanism linked to the Microsoft 365 tenant to get organizational data.
+During Extend Path of the Copilot developer camp, learners will construct a customized assistant tailored for a Human Resource department. The process will begin with the creation of a basic declarative Copilot and progress towards developing fully skilled assistant. This advanced assistant will be equipped with security features, including authentication mechanism linked to the Microsoft 365 tenant to get organizational data.
 
 <hr />
 
@@ -14,6 +14,6 @@ During Extend Path of the Copilot Camp, learners will construct a customized ass
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot) Add a declarative copilot to the API plugin for a more complete user experience
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication) Secure your solution using Entra ID authentication
   
-## <a href="./00-prerequisites">Start here</a> with Lab 00, where you'll set up development your environment.
+## <a href="./00-prerequisites">Start here</a> with Lab E0, where you'll set up development your environment.
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />

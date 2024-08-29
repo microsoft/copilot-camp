@@ -11,6 +11,8 @@ In this lab you will set up an API based on Azure Functions and install it as an
     - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
     - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
 
+!!! info "Where did I leave off?"
+    <cc-last-completed-step />
 
 ## Introduction
 
@@ -18,23 +20,25 @@ In this lab you will set up a REST API for Trey Research, a hypothetical consult
 
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
-## Exercise 1: Install additional prerequisites
+## Exercise 1 - Install additional prerequisites
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
 * [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) - You will use this to test your API locally
 * (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer) - This will allow you to view and modify the Trey Research database
 
-## Exercise 2: Configure and run the starting application
+## Exercise 2 - Configure and run the starting application
 
-### Step 1: Download the starting application
+<cc-lab-step lab="E2" exercise="2" step="1" />
+### Step 1 - Download the starting application
 
-Begin by downloading the Copilot Camp repository at https://github.com/microsoft/copilot-camp. Select the "Code" button and clone or download the content to your computer.
+Begin by downloading the Copilot developer camp repository at https://github.com/microsoft/copilot-camp. Select the "Code" button and clone or download the content to your computer.
 
 Find starting code in the repo at **/src/extend-m365-copilot/path-a-lab02-first-api-plugin/trey-research**.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
-### Step 2: Set up the local environment files
+<cc-lab-step lab="E2" exercise="2" step="2" />
+### Step 2 - Set up the local environment files
 
 Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure these lines are present:
 
@@ -45,6 +49,7 @@ SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 
 If you want Bing maps to work correctly in future labs, you will need to [obtain a Bing Maps developer key](https://learn.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) and include it here in place of "xxxxxxxxxxxxxxxxxxxxxxx". If you skip this, the app will still work but the maps won't show up.
 
+<cc-lab-step lab="E2" exercise="2" step="3" />
 ### Step 3: Install the dependencies
 
 !!! question "Testers -- Is this step necessary?"
@@ -56,6 +61,7 @@ Open a command line in your working folder and type:
 npm install
 ~~~
 
+<cc-lab-step lab="E2" exercise="2" step="4" />
 ### Step 4: Run the application
 
 In Visual Studio Code, click the Teams logo in the left sidebar to open Teams Toolkit. Ensure you are logged into Microsoft 365 1️⃣ and that Custom App Uploads and Copilot Access Enabled indicators 2️⃣ are both showing green checkmarks.
@@ -74,6 +80,7 @@ Eventually a browser will open (it's faster after the first time). You'll log in
 
 The Trey Resarch project is an API plugin, so naturally it includes an API. In this exercise you'll test the API manually and, in the process, learn about what it does. 
 
+<cc-lab-step lab="E2" exercise="3" step="1" />
 ### Step 1: GET the /me resource
 
 With the debugger still running 1️⃣, switch to the code view in Visual Studio Code 2️⃣. Open the **http** folder and select the **treyResearchAPI.http** file 3️⃣.
@@ -88,12 +95,14 @@ You should see the response in the right panel, and a log of the request in the 
 
 ![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
 
+<cc-lab-step lab="E2" exercise="3" step="2" />
 ### Step 2: Try the other methods and resources
 
 Now try sending the POST request for `{{base_url}}/me/chargeTime`. This will charge 3 hours of Avery's time to the Woodgrove Bank project. This is stored in the project database, which is a locally hosted emulation of Azure Table Storage, so the system will remember that Avery has delivered these hours. (To test this, call the `/me` resource again and look at the `"deliveredThisMonth"` property under the Woodgrove project).
 
 Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to Copilot so it can answer user prompts.
 
+<cc-lab-step lab="E2" exercise="3" step="3" />
 ### Step 3: Examine the database (optional)
 
 If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer), you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
@@ -109,7 +118,8 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 ## Exercise 4: Run the plugin in Copilot
 
-## Step 1: Install the plugin
+<cc-lab-step lab="E2" exercise="4" step="1" />
+### Step 1: Install the plugin
 
 Now restore the web browser you minimized back in Exercise 2 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
 
@@ -135,4 +145,4 @@ Notice that even though Copilot addressed the user as "Robert" (since that's who
 
 You've successfully built your first API Plugin! You are now ready to proceed to enhance this API Plugin with more API calls. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/02-api-plugin" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/02-api-plugin" />

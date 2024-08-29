@@ -118,4 +118,4 @@ Follow the steps to activate an Azure free account:
 You have completed Lab B0 - Prerequisites!
 You are now ready to proceed to lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit. Select Next. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/00-prerequisites" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/00-prerequisites" />

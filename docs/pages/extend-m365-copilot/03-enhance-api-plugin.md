@@ -25,7 +25,7 @@ This will implement a new Azure function to provide access to Trey Research proj
 
 Let's take a moment to review the code.
 
-This is a version 4 Azure function, so the code looks a lot like traditional [Express](https://expressjs.com/){target=_blank} code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab A6](./06-add-authentication.md).
+This is a version 4 Azure function, so the code looks a lot like traditional [Express](https://expressjs.com/){target=_blank} code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab E6](./06-add-authentication.md).
 
 ~~~typescript
 export async function projects(
@@ -93,7 +93,7 @@ In this exercise, you'll add information about the new /projects resource to the
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
 To begin, in the **/appPackage** folder, open the file **trey-definition.json**. 
-Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/appPackage/trey-definition.json) and save the new trey-definition.sjon. In the steps that follow, you can review and understand the changes.
+Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/appPackage/trey-definition.json) and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
 
 ### Step 2: Review the updates (optional)
 
@@ -317,7 +317,7 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 
 ## Exercise 3: Test the plugin in Copilot
 
-## Step 1: Install the plugin
+### Step 1: Install the plugin
 
 Now restore the web browser you minimized back in Exercise 1 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
 
@@ -338,4 +338,4 @@ You may see a confirmation card, even for the GET request. If you do, allow the 
 
 You've now completed enhancing your API plugin. You are now ready to proceed to the next lab to add rich card responses using adaptive cards. 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-enhance-api-plugin" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/03-enhance-api-plugin" />

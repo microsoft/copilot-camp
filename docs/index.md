@@ -1,27 +1,33 @@
 
-# Copilot Camp
+# Copilot developer camp
 
-Welcome to Copilot Camp! Copilot Camp is a virtual workshop for professional developers who want to learn how to extend Copilot for Microsoft 365 or build their own copilots.
+Welcome to Copilot developer camp! Copilot developer camp is a virtual workshop for professional developers who want to learn how to extend Copilot for Microsoft 365 or build their own copilots.
 
-!!! warning "Copilot Camp is still work in progress, but some of the labs are ready for testing."
-    We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot Camp Early Testers" chat in Microsoft Teams.
+!!! warning "Copilot developer camp is still work in progress, but some of the labs are ready for testing."
+    We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot developer camp Early Testers" chat in Microsoft Teams.
 
-The labs are divided into two pathways, allowing you to choose based on what you want to create.
+The labs are divided into three pathways, allowing you to choose based on what you want to create.
 
 ![pathways](./assets/images/pathways.png)
+
+## Extend Path - Extend Message Extension as Plugin
+
+_Note: These labs require the "Private Preview" for Copilot for M365 extensibility. There may be some changes for "Public Preview" when it's available._
+
+---8<--- "m-path-links.md"
 
 
 ## Extend Path - Extend Copilot for Microsoft 365
 
 _Note: These labs require the "Private Preview" for Copilot for M365 extensibility. There may be some changes for "Public Preview" when it's available._
 
----8<--- "a-path-links.md"
+---8<--- "e-path-links.md"
 
-### Build Path - Build your own copilot
+## Build Path - Build your own copilot
 
 ---8<--- "b-path-links.md"
 
-### It's still early ... so what's next?
+## It's still early ... so what's next?
 
 We're starting with the hands-on labs because those require the most testing. We expect them to require some updates as the products move to Public Preview.
 
@@ -37,7 +43,7 @@ Labs are only useful if students understand what they did! And we aspire to make
 
 Do you have ideas? Please let us know in the Teams chat or in the Github issues!
 
-### Code of Conduct
+## Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
@@ -47,4 +53,4 @@ Resources:
 - [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
 - Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with questions or concerns
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/index" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/index" />

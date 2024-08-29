@@ -1,7 +1,6 @@
 import DbService from './DbService';
 import { DbConsultant } from '../model/dbModel';
 import { Consultant } from '../model/baseModel';
-import Identity from "../services/IdentityService";
 
 const TABLE_NAME = "Consultant";
 
@@ -10,35 +9,32 @@ class ConsultantDbService {
     // NOTE: Consultants are READ ONLY in this demo app, so we are free to cache them in memory.
     private dbService = new DbService<DbConsultant>(true);
 
-    async getConsultantById(identity: Identity, id: string): Promise<Consultant> {
+    async getConsultantById(id: string): Promise<Consultant> {
         const consultant = await this.dbService.getEntityByRowKey(TABLE_NAME, id) as DbConsultant;
-        return this.convertDbConsultant(identity, consultant);
+        return consultant;
     }
 
-    async getConsultants(identity: Identity): Promise<Consultant[]> {
+    async getConsultants(): Promise<Consultant[]> {
         const consultants = await this.dbService.getEntities(TABLE_NAME) as DbConsultant[];
-        return consultants.map<Consultant>((c) => this.convertDbConsultant(identity, c));
+        return consultants;
     }
 
-    private convertDbConsultant(identity: Identity, dbConsultant: DbConsultant): Consultant {
-        const result = {
-            id: dbConsultant.id,
-            name: dbConsultant.name,
-            email: dbConsultant.email,
-            phone: dbConsultant.phone,
-            consultantPhotoUrl: dbConsultant.consultantPhotoUrl,
-            location: dbConsultant.location,
-            skills: dbConsultant.skills,
-            certifications: dbConsultant.certifications,
-            roles: dbConsultant.roles
+    async createConsultant(consultant: Consultant): Promise<Consultant> {
+
+        const newDbConsultant: DbConsultant =
+        {
+            ...consultant,
+            etag: "",
+            partitionKey: TABLE_NAME,
+            rowKey: consultant.id,
+            timestamp: new Date()
         };
-        if (dbConsultant.id === identity.id) {
-            // If this is the current user, return the actual name and email
-            result.name = identity.name;
-            result.email = identity.email;
-        }
-        return result;
+        await this.dbService.createEntity(TABLE_NAME, newDbConsultant.id, newDbConsultant)
+
+        console.log (`Added new consultant ${newDbConsultant.name} (${newDbConsultant.id}) to the Consultant table`);
+        return null;
     }
+
 }
 
 export default new ConsultantDbService();

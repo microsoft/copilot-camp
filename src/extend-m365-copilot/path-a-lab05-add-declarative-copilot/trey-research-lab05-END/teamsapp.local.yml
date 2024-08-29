@@ -64,8 +64,7 @@ deploy:
     with:
       target: ./.localConfigs
       envs:
-        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
-        BING_MAPS_KEY: ${{SECRET_BING_MAPS_KEY}}
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
 
   # Run npm command
   - uses: cli/runNpmCommand
