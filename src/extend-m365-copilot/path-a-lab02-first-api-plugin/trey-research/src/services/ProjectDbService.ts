@@ -27,9 +27,15 @@ class ProjectDbService {
             clientName: dbProject.clientName,
             clientContact: dbProject.clientContact,
             clientEmail: dbProject.clientEmail,
-            location: dbProject.location
+            location: dbProject.location,
+            mapUrl: this.getMapUrl(dbProject)
         };
         return result;
+    }
+
+    private getMapUrl(project: Project): string {
+        let companyNameKabobCase = project.clientName.toLowerCase().replace(/ /g, "-");
+        return `https://microsoft.github.io/copilot-camp/demo-assets/images/maps/${companyNameKabobCase}.jpg`;
     }
 }
 

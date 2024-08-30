@@ -73,11 +73,11 @@ class ConsultantApiService {
     }
 
     public async createApiConsultant(consultant: Consultant): Promise<ApiConsultant> {
-        const newDbConsultant = await ConsultantDbService.createConsultant(consultant);
+        await ConsultantDbService.createConsultant(consultant);
         const assignments = await AssignmentDbService.getAssignments();
 
         const newApiConsultant = 
-            this.getApiConsultantForBaseConsultant(newDbConsultant, assignments);
+            this.getApiConsultantForBaseConsultant(consultant, assignments);
         return newApiConsultant;
     }
 

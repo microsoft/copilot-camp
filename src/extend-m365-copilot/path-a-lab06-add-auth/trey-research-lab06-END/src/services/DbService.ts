@@ -15,7 +15,6 @@ export default class DbService<DbEntityType> {
         this.okToCacheLocally = okToCacheLocally;
     }
 
-
     async getEntityByRowKey(tableName: string, rowKey: string): Promise<DbEntity> {
         if (!this.okToCacheLocally) {
             const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
@@ -53,11 +52,12 @@ export default class DbService<DbEntityType> {
     }
 
     async createEntity(tableName: string, rowKey: string, newEntity: DbEntityType): Promise<void> {
+
+        this.entityCache = [];
         const entity = this.compressPropertyValues(newEntity) as DbEntityType;
         const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
         try {
-
-            await tableClient.createEntity({
+             await tableClient.createEntity({
                 partitionKey: tableName,
                 rowKey,
                 ...entity
@@ -71,6 +71,7 @@ export default class DbService<DbEntityType> {
 
     async updateEntity(tableName: string, updatedEntity: DbEntityType): Promise<void> {
 
+        this.entityCache = [];
         const e = this.compressPropertyValues(updatedEntity) as DbEntityType;
         const tableClient = TableClient.fromConnectionString(this.storageAccountConnectionString, tableName);
         await tableClient.updateEntity(e as TableEntity, "Replace");
