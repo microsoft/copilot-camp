@@ -1,4 +1,5 @@
 import { HttpRequest } from "@azure/functions";
+import { HttpError } from './Utilities';
 import { Consultant } from '../model/baseModel';
 import { ApiConsultant } from '../model/apiModel';
 
@@ -24,8 +25,13 @@ class Identity {
             consultant = await ConsultantApiService.getApiConsultantById(userId);
         }
         catch (ex) {
-            consultant = await this.createConsultantForUser(userId, userName, userEmail);
+            if (ex.status !== 404) {
+                throw ex;
+            }
+            // Consultant was not found, so we'll create one below
+            consultant = null;
         }
+        if (!consultant) consultant = await this.createConsultantForUser(userId, userName, userEmail);
 
         return consultant;
     }
@@ -39,7 +45,7 @@ class Identity {
             name: userName,
             email: userEmail,
             phone: "1-555-123-4567",
-            consultantPhotoUrl: "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
+            consultantPhotoUrl: "https://microsoft.github.io/copilot-camp/demo-assets/images/consultants/Unknown.jpg",
             location: {
                 street: "One Memorial Drive",
                 city: "Cambridge",
@@ -47,8 +53,7 @@ class Identity {
                 country: "USA",
                 postalCode: "02142",
                 latitude: 42.361366,
-                longitude: -71.081257,
-                mapUrl: ""
+                longitude: -71.081257
             },
             skills: ["JavaScript", "TypeScript"],
             certifications: ["Azure Development"],
