@@ -73,6 +73,7 @@ In your Azure OpenAI service, navigate to **Model deployments** from the left si
     Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.
     
     *Learn more about the Generative AI, prompting and Azure OpenAI Studio by watching this Doodle to Code video!*
+    
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
 From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
