@@ -24,6 +24,12 @@
   },
   "accentColor": "#FFFFFF",
   "copilotExtensions": {
+    "declarativeCopilots": [
+      {
+        "id": "treygenie",
+      "file": "trey-declarative-copilot.json"
+      }
+    ],
     "plugins": [
       {
         "id": "treyresearch",
