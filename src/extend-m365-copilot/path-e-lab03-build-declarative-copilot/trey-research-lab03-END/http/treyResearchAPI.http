@@ -41,29 +41,3 @@ Content-Type: application/json
 ### Get consultants by hours available this month
 {{base_url}}/consultants/?hoursAvailable=100
 
-
-########## /api/projects - working with projects ##########
-
-### Get all projects
-{{base_url}}/projects
-
-### Get project by id
-{{base_url}}/projects/1
-
-### Get project by project or client name
-{{base_url}}/projects/?projectName=supply
-
-### Get project by consultant name
-{{base_url}}/projects/?consultantName=dominique
-
-### Add consultant to project
-POST {{base_url}}/projects/assignConsultant
-Content-Type: application/json
-
-{
-    "projectName": "contoso",
-    "consultantName": "sanjay",
-    "role": "architect",
-    "forecast": 30
-}
-
