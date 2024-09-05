@@ -215,6 +215,27 @@ See the full demo of how you can test this app.
 
 ![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
 
+### Step 3: Add conversation starters
+
+You can enhance user engagement with the declarative copilot by adding conversation starters to it. These initial prompts act as ice breakers and can be added by updating the declarativeCopilot.json file.
+
+Open file `declarativeCopilot.json`. and paste below node after the `instructions` node followed by a `,`.
+
+```JSON
+ "conversation_starters": [
+        { 
+            "title": "Getting Started",
+            "text": "Let us play"
+        },
+        {
+            "title": "Getting Help",
+            "text": "I am ready"
+        }
+    ]
+```
+
+![conversation starters](../../assets/images/extend-m365-copilot-01/cstarters.png)
+
 
 Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab. Select **Next**
 
