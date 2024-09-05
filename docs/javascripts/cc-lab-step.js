@@ -3,17 +3,17 @@
     function ensureCss() {
 
         const css = `
-            .lab-step input[type=checkbox] {
+            .lab-end-step {
+                background-color: gray;
+                color: white;
+                padding: 4pt;
+            }
+            .lab-end-step input[type=checkbox] {
                 -ms-transform: scale(1.5);  /* IE */
                 -moz-transform: scale(1.5); /* FF */
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
-                margin: 32pt 8pt 8pt 8pt;
-                float: left;
-            }  
-            .lab-step .spacer {
-                height: 0.5pt;
             }
             h3 {
                 border-top: 4px solid gray;
@@ -26,13 +26,14 @@
     };
 
 
-    // cc-lab-step web component
-    class LabStep extends HTMLElement {
+    // cc-lab-end-step web component
+    class LabEndStep extends HTMLElement {
 
         checked;
         lab;
         exercise;
         step;
+        label;
 
         constructor() {
             super();
@@ -45,11 +46,7 @@
 
             // Build out child elements
             let containerElement = document.createElement('div');
-            containerElement.className = 'lab-step';
-
-            let fillerElement = document.createElement('div');
-            fillerElement.className = 'spacer';
-            containerElement.appendChild(fillerElement);
+            containerElement.className = 'lab-end-step';
 
             const checkBoxElement = document.createElement('input');
             checkBoxElement.setAttribute('type', 'checkbox');
@@ -59,6 +56,10 @@
             checkBoxElement.id = `ex-${this.exercise}-step-${this.step}`;
             containerElement.appendChild(checkBoxElement);
 
+            const labelElement = document.createElement('label');
+            labelElement.innerText = ` Completed exercise ${this.exercise} ${this.#updateSectionHeader()}`;
+            containerElement.appendChild(labelElement);
+
             this.replaceChildren(containerElement);
         }
 
@@ -66,6 +67,7 @@
         #clickHandler(e) {
             this.#setStepStatus(this.lab, this.exercise, this.step, e.target.checked);
             this.checked = e.target.checked;
+            this.#updateSectionHeader();
             this.#changeListeners.forEach(listener => listener());
             if (this.checked) {
                 this.#updateTelemetry(this.lab, this.exercise, this.step);
@@ -81,6 +83,25 @@
             this.#changeListeners.push(value);
         }
 
+        // Finds the section header text
+        #updateSectionHeader() {
+            let elt = this.previousSibling?.parentElement || this.parentElement;
+            while (elt && elt.tagName !== 'H3') {
+                elt = elt.previousElementSibling;
+            }
+            if (elt) {
+                this.label = elt.innerText.replace('✔', '').trim();
+                console.log(`found element with text: ${this.label}`);
+                if (this.checked) {
+                    elt.innerText = '✔ ' + this.label;
+                } else {
+                    elt.innerText = this.label;
+                }
+                return this.label;
+            }
+            return ''
+        }
+    
         // Telemetry
         #updateTelemetry(lab, exercise, step) {
             const url = `https://m365-visitor-stats.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
@@ -110,7 +131,7 @@
             super();
 
             // Set up an event listener for all cc-lab-step elements on the page
-            const elts = document.querySelectorAll('cc-lab-step');
+            const elts = document.querySelectorAll('cc-lab-end-step');
             for (let elt of elts) {
                 elt.onChange = this.#updateText.bind(this);
             }
@@ -126,12 +147,12 @@
                 let lastCompletedExercise = 0;
                 let lastCompletedStep = 0;
                 let lastCompletedStepTitle = '';
-                const elts = document.querySelectorAll('cc-lab-step');
+                const elts = document.querySelectorAll('cc-lab-end-step');
                 for (let elt of elts) {
                     if (elt.checked) {
                         lastCompletedExercise = elt.exercise;
                         lastCompletedStep = elt.step;
-                        lastCompletedStepTitle = elt.parentElement.nextElementSibling.innerText;
+                        lastCompletedStepTitle = elt.label;
                     }
                 }
                 if (lastCompletedExercise === 0) {
@@ -148,7 +169,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        window.customElements.define('cc-lab-step', LabStep);
+        window.customElements.define('cc-lab-end-step', LabEndStep);
         window.customElements.define('cc-last-completed-step', LastCompletedStep);
     });
 

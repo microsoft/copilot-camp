@@ -7,27 +7,30 @@ In this lab, you, the Copilot Camp content developer, will learn how to use cust
 
 ## Exercise 1: Learn the controls
 
-In this exercise, you'll learn how to use the `<cc-lab-step>` web control.
+In this exercise, you'll learn how to use the `<cc-lab-end-step>` web control.
 
-<cc-lab-step lab="t1" exercise="1" step="1" />
 ### Step 1: Write the markup
 
-For each step, insert the `<cc-lab-step>` control immediately before the h3 element for your step, like this:
+For each step, insert the `<cc-lab-end-step>` control at the end of the step. The step must begin with an h3 tag as follows:
 
 ~~~html
-<cc-lab-step lab="t1" exercise="1" step="1" />
 ### Step 1: Write the markup
+
+...
+
+<cc-lab-end-step lab="t1" exercise="1" step="1" />
 ~~~
 
 The control needs your lab, exercise, and step so it can store the checkbox state uniquely across page refreshes.
 
-<cc-lab-step lab="t1" exercise="1" step="2" />
+<cc-lab-end-step lab="t1" exercise="1" step="1" />
+
 ### Step 2: Test the checkboxes and step tracking
 
 Notice the checkbox to the left of each step. Users are invited to check the box when they complete each step.
 Try it out, and notice that the "Where did I leave off" message at the top of the page is updated
 
-<cc-lab-step lab="t1" exercise="1" step="2" />
+<cc-lab-end-step lab="t1" exercise="1" step="2" />
 ### Step 3: Test the last completed step control
 
 Now, with some checkboxes checked, notice that the "Where did I leave off" message is now a hyperlink that brings you directly to the last step that you completed. Here is the markup if you want to include one of these:
@@ -38,17 +41,18 @@ Now, with some checkboxes checked, notice that the "Where did I leave off" messa
 
 Notice that the last step completed is a hyperlink that brings you back to that step.
 
-These are written using standard web components. Checkbox state is kept in local storage so it will persist across lab sessions so long as the user returns with the same browser and profile, the checkboxes will be as they left them. If you're curious, [here is the code](https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/cc-lab-step.js){target=_blank}.
+These are written using standard web components. Checkbox state is kept in local storage so it will persist across lab sessions so long as the user returns with the same browser and profile, the checkboxes will be as they left them. If you're curious, [here is the code](https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/cc-lab-end-step.js){target=_blank}.
 
+<cc-lab-end-step lab="t1" exercise="1" step="2" />
 
 ## Exercise 2: Give feedback
 
-<cc-lab-step lab="t1" exercise="2" step="1" />
 ### Step 1: Do you like it?
 
 Is it useful? Whow could it be improved?
 
-<cc-lab-step lab="t1" exercise="2" step="2" />
+<cc-lab-end-step lab="t1" exercise="2" step="1" />
+
 ### Step 2: Usability concerns
 
 I am a little concerned if a step is really long, like this one, that people won't scroll up to check it off. What do you think?
@@ -74,7 +78,8 @@ Sed sit amet convallis massa, vehicula auctor justo. Aliquam ultricies porttitor
 
 Nunc massa velit, gravida a nunc in, efficitur viverra sapien. Sed viverra ullamcorper hendrerit. Quisque cursus felis tortor, ut facilisis lectus volutpat vel. Sed scelerisque auctor tempor. Duis ante diam, pretium vitae rhoncus id, mollis vitae lorem. Mauris pretium lorem sem, sit amet iaculis sem ullamcorper ac. Fusce vel arcu aliquet, vulputate leo at, aliquet massa. Ut at imperdiet eros. Mauris gravida mi rutrum mi egestas, sit amet varius tellus pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius nunc in arcu posuere, suscipit fringilla erat commodo. Aenean vitae nisi non felis semper commodo. Donec eget neque ornare, lobortis augue nec, pharetra est. Sed accumsan semper diam, eget pharetra mauris feugiat id. Pellentesque ac velit vitae purus sollicitudin dapibus. Mauris posuere interdum nisi sed pellentesque.
 
-<cc-lab-step lab="t1" exercise="2" step="3" />
+<cc-lab-end-step lab="t1" exercise="2" step="2" />
+
 ### Step 3: More ideas
 
 OK this is fun but I need to write another lab now :)
@@ -84,3 +89,4 @@ However - I do have more ideas including:
 
 2. Path navigation control that will list the labs in a path, with a "you are here". This will need to be separate from the others because the exercise and step controls depend on sharing the same web page.
 
+<cc-lab-end-step lab="t1" exercise="2" step="3" />
