@@ -1,12 +1,16 @@
 (() => {
 
+    // Web controls for Copilot Camp lab step tracking
+
     function ensureCss() {
 
         const css = `
             .lab-end-step {
                 background-color: gray;
                 color: white;
-                padding: 4pt;
+                padding: 4pt 20pt 4pt 4pt;
+                display: inline-block;
+                border-radius: 0 22pt 22pt 0;
             }
             .lab-end-step input[type=checkbox] {
                 -ms-transform: scale(1.5);  /* IE */
@@ -14,6 +18,12 @@
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
+            }
+            .lab-end-step .subtext {
+                font-size: 0.8em;
+                font-style: italic;
+                padding-left: 18pt;
+                margin-top -9pt;
             }
             h3 {
                 border-top: 4px solid gray;
@@ -27,13 +37,19 @@
 
 
     // cc-lab-end-step web component
+    // Goes at the end of a step in a lab to track completion
     class LabEndStep extends HTMLElement {
 
-        checked;
-        lab;
-        exercise;
-        step;
-        label;
+        checked;    // True if the checkbox is checked
+        lab;        // Lab number   
+        exercise;   // Exercise number
+        step;       // Step number
+        label;      // Step header text
+
+        // Child controls
+        #containerElement; // Div container
+        #subLabelElement;  // Subtext element
+        #telemetrySent = false; // True if telemetry has been sent
 
         constructor() {
             super();
@@ -44,9 +60,8 @@
 
             ensureCss();
 
-            // Build out child elements
-            let containerElement = document.createElement('div');
-            containerElement.className = 'lab-end-step';
+            this.#containerElement = document.createElement('div');
+            this.#containerElement.className = 'lab-end-step';
 
             const checkBoxElement = document.createElement('input');
             checkBoxElement.setAttribute('type', 'checkbox');
@@ -54,24 +69,31 @@
                 this.#getStepStatus(this.lab, this.exercise, this.step) === 'true';
             this.checked = checkBoxElement.checked;
             checkBoxElement.id = `ex-${this.exercise}-step-${this.step}`;
-            containerElement.appendChild(checkBoxElement);
+            this.#containerElement.appendChild(checkBoxElement);
 
             const labelElement = document.createElement('label');
-            labelElement.innerText = ` Completed exercise ${this.exercise} ${this.#updateSectionHeader()}`;
-            containerElement.appendChild(labelElement);
+            labelElement.innerText = ` End of Exercise ${this.exercise}, ${this.#getSectionLabelAndUpdateHeader()}`;
+            this.#containerElement.appendChild(labelElement);
 
-            this.replaceChildren(containerElement);
+            const breakElement = document.createElement('br');
+            this.#containerElement.appendChild(breakElement);
+
+            this.#subLabelElement = document.createElement('label');
+            this.#subLabelElement.className = 'subtext';
+            this.#subLabelElement.innerText = this.#getSubtext();
+            this.#containerElement.appendChild(this.#subLabelElement);
+
+            this.replaceChildren(this.#containerElement);
         }
 
         // Checkbox click event handler
         #clickHandler(e) {
-            this.#setStepStatus(this.lab, this.exercise, this.step, e.target.checked);
             this.checked = e.target.checked;
-            this.#updateSectionHeader();
+            this.#setStepStatus(this.lab, this.exercise, this.step, this.checked);
+            this.#getSectionLabelAndUpdateHeader();
             this.#changeListeners.forEach(listener => listener());
-            if (this.checked) {
-                this.#updateTelemetry(this.lab, this.exercise, this.step);
-            }
+            this.#subLabelElement.innerText = this.#getSubtext();
+            this.#updateTelemetry(this.lab, this.exercise, this.step);
         }
         async connectedCallback() {
             this.onclick = this.#clickHandler;
@@ -83,15 +105,15 @@
             this.#changeListeners.push(value);
         }
 
-        // Finds the section header text
-        #updateSectionHeader() {
+        // Finds the section header text, adds a checkbox if needed, and returns
+        // the section header text
+        #getSectionLabelAndUpdateHeader() {
             let elt = this.previousSibling?.parentElement || this.parentElement;
             while (elt && elt.tagName !== 'H3') {
                 elt = elt.previousElementSibling;
             }
             if (elt) {
                 this.label = elt.innerText.replace('✔', '').trim();
-                console.log(`found element with text: ${this.label}`);
                 if (this.checked) {
                     elt.innerText = '✔ ' + this.label;
                 } else {
@@ -101,15 +123,46 @@
             }
             return ''
         }
-    
+
+        // Subtext generator
+        #getSubtext() {
+            if (this.checked) {
+                switch (this.step) {
+                    case '1':
+                        return 'Great start! Now move on to the next step.';
+                    case '2':
+                        return 'Good job, keep going!';
+                    case '3':
+                        return 'Nice one!';
+                    case '4':
+                        return 'Well done!';
+                    case '5':
+                        return 'Alright, you did it!';
+                    case '6':
+                        return 'Keep up the good work!';
+                    case '7':
+                        return 'Woo-hoo!!';
+                    case '8':
+                        return 'Can you believe this exercise has so many steps?';
+                    case '9':
+                        return 'Nine steps was a lot but you did it!';
+                    default:
+                        return `Congratulations!`;
+                }
+            } else {
+                return 'Check the box when you have completed this step.';
+            }
+        }
+
         // Telemetry
         #updateTelemetry(lab, exercise, step) {
-            const url = `https://m365-visitor-stats.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
-            fetch(url, {
-                method: 'GET',
-                mode: 'no-cors'
-            });
-
+            if (this.checked && !this.#telemetrySent) {
+                const url = `https://pnptelemetry.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
+                const img = new Image();
+                img.src = url;
+                this.#containerElement.appendChild(img);
+                this.#telemetrySent = true;
+            }
         }
 
         // Storage functions

@@ -43,7 +43,7 @@ Notice that the last step completed is a hyperlink that brings you back to that 
 
 These are written using standard web components. Checkbox state is kept in local storage so it will persist across lab sessions so long as the user returns with the same browser and profile, the checkboxes will be as they left them. If you're curious, [here is the code](https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/cc-lab-end-step.js){target=_blank}.
 
-<cc-lab-end-step lab="t1" exercise="1" step="2" />
+<cc-lab-end-step lab="t1" exercise="1" step="3" />
 
 ## Exercise 2: Give feedback
 
