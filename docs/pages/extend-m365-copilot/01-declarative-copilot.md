@@ -3,16 +3,15 @@
 In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. 
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites)
-    - [Lab E1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot) (📍You are here)
-    - [Lab E2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin)
-    - [Lab E3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) 
-    - [Lab E4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card)
-    - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
-    - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
+    - [Lab E0 - Prerequisites](./00-prerequisites.md)
+    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md) (📍You are here)
+    - [Lab E2 - Build an API](./02-build-the-api.md)
+    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+    - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
+    - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
+    - [Lab E6 - Add authentication](./06-add-authentication.md)
 
-!!! warning "Reminder"
-    To perform the following exercise, your developer tenant should be under private preview program and your account must have a valid license for Copilot for Microsoft 365 as well.
+---8<--- "e-path-prelude.md"
 
 In this lab you will learn:
 
@@ -57,6 +56,8 @@ Select **Switch to Pre-Release Version**
 !!! tip "Teams Toolkit Prerelease"
      Only this lab uses prerelease version of Teams Toolkit. You can switch back to release version after this lab is completed. The steps are similar to above.
 
+<cc-lab-end-step lab="e1" exercise="1" step="1" />
+
 ### Step 2: Use Teams Toolkit to create a declarative copilot app
 
 Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Create a New App**
@@ -70,7 +71,6 @@ A panel opens up where you need to select **Copilot Extension** from the list of
 Next, you will be asked to choose the app feature of Copilot extension. Choose `Declarative Copilot` and select Enter. 
 
 ![app feature types](../../assets/images/extend-m365-copilot-01/app-feature.png)
-
 
 Next, you will be asked to choose want to create a basic declarative Copilot or one with an API plugin.  Choose the **No Plugin** option.
 
@@ -93,7 +93,10 @@ The project will be created in a few seconds in the folder you mentioned and wil
 
 Well done! You have successfully set up the base decllarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
-### Step 4 - Set up accounts in Teams Toolkit
+<cc-lab-end-step lab="e1" exercise="1" step="2" />
+
+
+### Step 3 - Set up accounts in Teams Toolkit
 
 Now select the Teams Toolkit icon in the left 1️⃣ from your working folder . If it offers options to create a new project, you're probably in the wrong folder. 
 
@@ -110,7 +113,9 @@ Now verify that the "Sideloading enabled" checker has a green checkmark. If it d
 
 ![Checking that sideloading is enabled](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-03.png)
 
-### Step 5 : Understanding the files in the app
+<cc-lab-end-step lab="e1" exercise="1" step="3" />
+
+### Step 4 : Understanding the files in the app
 
 Here's how the base project looks like: 
 
@@ -155,6 +160,8 @@ Another important file is the `appPackage/manifest.json` file, which contains cr
 ```
 You could also update the logo files `color.png` and `outline.png` to make it match your application's brand. In today's lab you will change  color.png file for it to stand out. 
 
+<cc-lab-end-step lab="e1" exercise="1" step="4" />
+
 ## Exercise 2: Update with instructions for Geo Locator game
 
 ### Step 1: Update necessary files
@@ -174,8 +181,6 @@ Next, go to the file `manifest.json` in the folder `appPackage` in your base pro
 
 </pre>
 
-
-
 Next, go to the file `declarativeCopilot.json`. Copy the script provided below and use it to overwrite the existing contents of the file.
 
 ```
@@ -189,6 +194,8 @@ Next, go to the file `declarativeCopilot.json`. Copy the script provided below a
 ```
 
 Now all the changes are done to the app, it's time to test it.
+
+<cc-lab-end-step lab="e1" exercise="2" step="1" />
 
 ### Step 2: Test the app
 
@@ -215,6 +222,8 @@ See the full demo of how you can test this app.
 
 ![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
 
+<cc-lab-end-step lab="e1" exercise="2" step="2" />
+
 ### Step 3: Add conversation starters
 
 You can enhance user engagement with the declarative copilot by adding conversation starters to it. These initial prompts act as ice breakers and can be added by updating the declarativeCopilot.json file.
@@ -236,6 +245,7 @@ Open file `declarativeCopilot.json`. and paste below node after the `instruction
 
 ![conversation starters](../../assets/images/extend-m365-copilot-01/cstarters.png)
 
+<cc-lab-end-step lab="e1" exercise="2" step="3" />
 
 Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab. Select **Next**
 
