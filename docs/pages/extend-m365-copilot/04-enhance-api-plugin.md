@@ -11,18 +11,19 @@ In this lab you will add additional REST calls to the API and add them to the AP
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
 
-
 ---8<--- "e-path-prelude.md"
 
 ## Exercise 1: Add /projects resource
 
-In this exercise you will add a /projects resource to the Trey Research API. This will allow you to request information about projects using GET requests, and to assign a consultant to a project using a POST request.
+In this exercise you will add a /projects resource to the Trey Research API. This will allow you to request information about projects using GET requests, and to assign a consultant to a project using a POST request. In the process, you'll learn about the **appPackage/trey-Plugin.json** and **trey-definition.json** files as you modify them to add the new projects API calls.
 
 ### Step 1: Add Azure function code
 
 To begin, create a new file, **projects.ts** in the **/src/functions** folder of your solution from Lab 2. Then [copy the code from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/src/functions/projects.ts).
 
 This will implement a new Azure function to provide access to Trey Research projects
+
+<cc-lab-end-step lab="e4" exercise="1" step="1" />
 
 ### Step 2: Review the Azure function code (optional)
 
@@ -46,6 +47,8 @@ app.http("projects", {
 ~~~
 
 The class includes a switch statement for handling GET vs. POST requests, and obtains the parameters from the URL path (in the case of a project ID), query strings (such as ?projectName=foo, in the case of a GET), and the request body (in the case of a POST). It then accesses the project data using the [ProjectApiService](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/src/services/ProjectApiService.ts), which was part of the starting solution. It also sends responses for each request and logging of requests to the debug console.
+
+<cc-lab-end-step lab="e4" exercise="1" step="2" />
 
 ### Step 3: Add HTTP test requests
 
@@ -78,6 +81,8 @@ Content-Type: application/json
 }
 ~~~
 
+<cc-lab-end-step lab="e4" exercise="1" step="3" />
+
 ### Step 4: Test the new resource
 
 If your app is still running from Lab 2, stop the debugger and restart it. Or, just start the debugger normally and wait for the app to start. When everything is ready, Teams Toolkit will display a web browser wanting you to log into Microsoft 365. Minimize this browser as you don't need it yet, but closing it would stop the debugger.
@@ -85,6 +90,8 @@ If your app is still running from Lab 2, stop the debugger and restart it. Or, j
 Now try sending the new requestsm and you should be able to see Trey Research project details or assign a new consultant to a project using the POST request.
 
 ![Click link to send an HTTP POST request](../../assets/images/extend-m365-copilot-03/test-projects-2.png)
+
+<cc-lab-end-step lab="e4" exercise="1" step="4" />
 
 ## Exercise 2: Add projects to the application package
 
@@ -96,7 +103,9 @@ In this exercise, you'll add information about the new /projects resource to the
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
 To begin, in the **/appPackage** folder, open the file **trey-definition.json**. 
-Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/appPackage/trey-definition.json) and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
+Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json) and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
+
+<cc-lab-end-step lab="e4" exercise="2" step="1" />
 
 ### Step 2: Review the updates (optional)
 
@@ -219,9 +228,13 @@ You will also find that a path has been added at `/projects/assignConsultant` to
     artificial, but it's still intelligent enough to read the descriptions! You can help Copilot properly use
     your API by using descriptive names and descriptions in this and all the application package files!
 
+<cc-lab-end-step lab="e4" exercise="2" step="2" />
+
 ### Step 3: Add projects to the plugin definition file
 
-Now open the file **trey-plugin.json** within the **/appPackage** folder. This file contains extra information not included in the OAS definition file. Replace the contents of **trey-plugin.json** with [this updaed JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/appPackage/trey-plugin.json).
+Now open the file **trey-plugin.json** within the **/appPackage** folder. This file contains extra information not included in the OAS definition file. Replace the contents of **trey-plugin.json** with [this updaed JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json).
+
+<cc-lab-end-step lab="e4" exercise="2" step="3" />
 
 ### Step 4: Review the changes to the plugin definition file (optional)
 
@@ -318,15 +331,20 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 }
 ~~~
 
+<cc-lab-end-step lab="e4" exercise="2" step="4" />
+
 ## Exercise 3: Test the plugin in Copilot
 
-### Step 1: Install the plugin
+### Step 1: Restart the application
 
-Now restore the web browser you minimized back in Exercise 1 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
+Stop and restart your project to force it to re-deploy the application package.
+You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative copilots and select the Trey Genie Local copilot 2️⃣.
 
-You will be brought into Microsoft Teams, where you will be prompted to install the app. Go ahead and do this; it should bring you to the Copilot screen. Open the plugin panel 1️⃣, which is the small icon of 4 boxes to the left of the send button in the message compose box. Turn off all the plugins except for the green "Trey" icon 2️⃣, which should be turned on. If you previously deployed the app to Azure, you may see a 2nd (red) Trey icon; turn that off to test the local instance.
+![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot02.png)
+<cc-lab-end-step lab="e4" exercise="3" step="1" />
+
+### Step 2: Prompt the Trey Genie
 
 Now try a prompt such as "what projects are we doing for adatum?"
 
@@ -336,9 +354,10 @@ You may see a confirmation card, even for the GET request. If you do, allow the 
 
 ![Run in Copilot](../../assets/images/extend-m365-copilot-03/test-projects-copilot-2.png)
 
+<cc-lab-end-step lab="e4" exercise="3" step="2" />
 
 ## CONGRATULATIONS
 
 You've now completed enhancing your API plugin. You are now ready to proceed to the next lab to add rich card responses using adaptive cards. 
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/03-enhance-api-plugin" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/04-enhance-api-plugin" />

@@ -15,44 +15,44 @@ In this lab you will set up an API based on Azure Functions and install it as an
 
 ## Introduction
 
-In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab ??](#) you will add authentication and the ability to access the logged in user.
+In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6](./06-add-authentication.md) you will add authentication and the ability to access the logged in user.
 
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
-## Exercise 1 - Install additional prerequisites
+???+ Question "How did you create this API?"
+    The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new project and select "Copilot Extensions", then "Declarative Copilot" and "Declarative Copilot with a new API". The wording may change as the platform becomes generally available.
+
+## Exercise 1 - Configure and run the starting application
+
+### Step 1 - Install additional prerequisites
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
 * [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) - You will use this to test your API locally
 * (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer) - This will allow you to view and modify the Trey Research database
 
-## Exercise 2 - Configure and run the starting application
+<cc-lab-end-step lab="e2" exercise="1" step="1" />
 
-<cc-lab-step lab="E2" exercise="2" step="1" />
-### Step 1 - Download the starting application
+### Step 2 - Download the starting application
 
-Begin by downloading the Copilot developer camp repository at https://github.com/microsoft/copilot-camp. Select the "Code" button and clone or download the content to your computer.
+Begin by downloading the Copilot developer camp repository at [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}. Select the "Code" button and clone or download the content to your computer.
 
 Find starting code in the repo at **/src/extend-m365-copilot/path-a-lab02-first-api-plugin/trey-research**.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
-<cc-lab-step lab="E2" exercise="2" step="2" />
-### Step 2 - Set up the local environment files
+<cc-lab-end-step lab="e2" exercise="1" step="2" />
 
-Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure these lines are present:
+### Step 3 - Set up the local environment files
+
+Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure this line is present:
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
-SECRET_BING_MAPS_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 ~~~
 
-If you want Bing maps to work correctly in future labs, you will need to [obtain a Bing Maps developer key](https://learn.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) and include it here in place of "xxxxxxxxxxxxxxxxxxxxxxx". If you skip this, the app will still work but the maps won't show up.
+<cc-lab-end-step lab="e2" exercise="1" step="3" />
 
-<cc-lab-step lab="E2" exercise="2" step="3" />
-### Step 3: Install the dependencies
-
-!!! question "Testers -- Is this step necessary?"
-    I don't think this should be necessary but I had a problem with spinning up the database when just hitting F5 on the first run; it looked like the Azurite dependencies were missing so they must be used before TTK does its initial `npm install`
+### Step 4: Install the dependencies
 
 Open a command line in your working folder and type:
 
@@ -60,8 +60,9 @@ Open a command line in your working folder and type:
 npm install
 ~~~
 
-<cc-lab-step lab="E2" exercise="2" step="4" />
-### Step 4: Run the application
+<cc-lab-end-step lab="e2" exercise="1" step="4" />
+
+### Step 5: Run the application
 
 In Visual Studio Code, click the Teams logo in the left sidebar to open Teams Toolkit. Ensure you are logged into Microsoft 365 1️⃣ and that Custom App Uploads and Copilot Access Enabled indicators 2️⃣ are both showing green checkmarks.
 
@@ -71,15 +72,16 @@ Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the
 
 ![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk02.png)
 
-Eventually a browser will open (it's faster after the first time). You'll log into this later to test your app in Copilot, but for now just minimize the browser so we can test the project's web service.
+Eventually a browser will open (it's faster after the first time). You'll log into this in the next lab to test with Copilot, but for now just minimize the browser so your app keeps running, and we'll proceed to test the API.
 
 ![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk03.png)
 
-## Exercise 3: Test the app's web services
+<cc-lab-end-step lab="e2" exercise="1" step="5" />
+
+## Exercise 2: Test the app's web services
 
 The Trey Resarch project is an API plugin, so naturally it includes an API. In this exercise you'll test the API manually and, in the process, learn about what it does. 
 
-<cc-lab-step lab="E2" exercise="3" step="1" />
 ### Step 1: GET the /me resource
 
 With the debugger still running 1️⃣, switch to the code view in Visual Studio Code 2️⃣. Open the **http** folder and select the **treyResearchAPI.http** file 3️⃣.
@@ -94,14 +96,16 @@ You should see the response in the right panel, and a log of the request in the 
 
 ![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
 
-<cc-lab-step lab="E2" exercise="3" step="2" />
+<cc-lab-end-step lab="e2" exercise="2" step="1" />
+
 ### Step 2: Try the other methods and resources
 
 Now try sending the POST request for `{{base_url}}/me/chargeTime`. This will charge 3 hours of Avery's time to the Woodgrove Bank project. This is stored in the project database, which is a locally hosted emulation of Azure Table Storage, so the system will remember that Avery has delivered these hours. (To test this, call the `/me` resource again and look at the `"deliveredThisMonth"` property under the Woodgrove project).
 
 Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to Copilot so it can answer user prompts.
 
-<cc-lab-step lab="E2" exercise="3" step="3" />
+<cc-lab-end-step lab="e2" exercise="2" step="2" />
+
 ### Step 3: Examine the database (optional)
 
 If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer), you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
@@ -114,34 +118,10 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 ![Azure Storage Explorer](../../assets/images/extend-m365-copilot-02/azure-storage-explorer01.png)
 
-
-## Exercise 4: Run the plugin in Copilot
-
-<cc-lab-step lab="E2" exercise="4" step="1" />
-### Step 1: Install the plugin
-
-Now restore the web browser you minimized back in Exercise 2 Step 4. If you get an error that your sign-in has timed out, close the browser and restart the debugger and log in when the browser appears.
-
-You will be brought into Microsoft Teams, where you will be prompted to install the app. Go ahead and do this; it should bring you to the Copilot screen. Open the plugin panel 1️⃣, which is the small icon of 4 boxes to the left of the send button in the message compose box. Turn off all the plugins except for the green "Trey" icon 2️⃣, which should be turned on. If you previously deployed the app to Azure, you may see a 2nd (red) Trey icon; turn that off to test the local instance.
-
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot02.png)
-
-Click the "Try it now" link 1️⃣ to show suggested prompts, and select the prompt "What Trey projects am I assigned to?" 2️⃣.
-
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot03.png)
-
-You may be asked to consent to call the web service; if so, click "Always allow" or "Allow" to proceed.
-
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot04.png)
-
-Finally, you should see a list of Avery's projects!
-
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot05b.png)
-
-Notice that even though Copilot addressed the user as "Robert" (since that's who made the screen shot), it still thinks the user is "Avery Howard". That's because we haven't implemented authentication yet; that will be handled in [Lab A6](06-add-authentication.md).
+<cc-lab-end-step lab="e2" exercise="2" step="3" />
 
 ## CONGRATULATIONS
 
 You've successfully built your first API Plugin! You are now ready to proceed to enhance this API Plugin with more API calls. 
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/02-api-plugin" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/02-build-the-api" />

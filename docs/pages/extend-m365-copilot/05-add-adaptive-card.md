@@ -11,7 +11,6 @@ In this lab you will further enhance the reponse from Copilot for Microsoft 365 
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md) (📍You are here)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
 
-
 ---8<--- "e-path-prelude.md"
 
 In this lab you will learn:
@@ -33,11 +32,11 @@ Adaptive Cards are platform-independent UI snippets authored in JSON that can be
 </details>
 
 
-### Exercise 1: Create and test a simple Adaptive Card
+## Exercise 1: Create and test a simple Adaptive Card
 
 Let's dive in and discover how fun it is to create adaptive cards.
 
-#### Step 1: Define Your Adaptive Card in JSON
+### Step 1: Define Your Adaptive Card in JSON
 
 Create a new file named `adaptiveCard.json` and add the following JSON content:
 
@@ -65,7 +64,9 @@ Create a new file named `adaptiveCard.json` and add the following JSON content:
 
 This JSON defines a simple Adaptive Card with a text block and a button.
 
-#### Step 2: Test Your Adaptive Card
+<cc-lab-end-step lab="e5" exercise="1" step="1" />
+
+### Step 2: Test Your Adaptive Card
 
 To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://adaptivecards.io/designer/).
 
@@ -76,11 +77,13 @@ To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://ad
 
 Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
 
+<cc-lab-end-step lab="e5" exercise="1" step="1" />
+
 ## Exercise 2: Update the plugin manifest 
 
-We are going to update the plugin manifest file called `trey-plugin.json` with response template using adaptive cards. We will find each function or API call and update the templates.
+We are going to update the plugin manifest file called **trey-plugin.json** in the **appPackage** folder with a response template using adaptive cards. We will find each function or API call and update the templates.
 
-### Step 1: Update the plugin manifest with adaptive card response templates
+### Step 1: Add an adaptive card for GET /api/consultants requests
 
 - Locate the function **getConsultants** and after the `properties` node add below `static_template` node.
 
@@ -148,9 +151,13 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
  }
 ```
 
+<cc-lab-end-step lab="e5" exercise="2" step="1" />
+
+### Step 2: Add an adaptive card for GET /api/me requests:
+
 - Locate the function **getUserInformation** and after the `properties` node add below `static_template` node.
 
-```
+```json
 
   "static_template":{
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -214,6 +221,10 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
             ]
   }
 ```
+
+<cc-lab-end-step lab="e5" exercise="2" step="2" />
+
+### Step 3: Add an adaptive card for GET /api/projects requests:
 
 - Locate the function **getProjects** and after the `properties` node add below `static_template` node.
 
@@ -401,6 +412,10 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
   }
 ```
 
+<cc-lab-end-step lab="e5" exercise="2" step="3" />
+
+### Step 4: Add an adaptive card for POST /api/billHours requests:
+
 - Locate the function **postBillhours** and after the `properties` node add below `static_template` node.
 
 ```JSON
@@ -437,6 +452,10 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
             ]
 }
 ```
+
+<cc-lab-end-step lab="e5" exercise="2" step="4" />
+
+### Step 5: Add an adaptive card for POST /api/assignConsultant requests:
 
 - Locate the function **postAssignConsultant** and after the `properties` node add below `static_template` node.
 
@@ -486,16 +505,20 @@ We are going to update the plugin manifest file called `trey-plugin.json` with r
 
 ```
 
+<cc-lab-end-step lab="e5" exercise="2" step="5" />
 
 ## Exercise 3: Test the plugin in Copilot
 
-## Step 1: Install the plugin
+### Step 1: Install the plugin
 
-Close the browser and restart the debugger and log in when the browser appears.
+Stop and restart your project to force it to re-deploy the application package.
+You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative copilots and select the Trey Genie Local copilot 2️⃣.
 
-You will be brought into Microsoft Teams, where you will be prompted to install the app. Go ahead and do this; it should bring you to the Copilot screen. Open the plugin panel 1️⃣, which is the small icon of 4 boxes to the left of the send button in the message compose box. Turn off all the plugins except for the green "Trey" icon 2️⃣, which should be turned on. If you previously deployed the app to Azure, you may see a 2nd (red) Trey icon; turn that off to test the local instance.
+![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
-![Run in Copilot](../../assets/images/extend-m365-copilot-02/run-in-copilot02.png)
+<cc-lab-end-step lab="e5" exercise="3" step="1" />
+
+### Step 2: Display an adaptive card
 
 Now try a prompt such below
 
@@ -506,6 +529,8 @@ Instead of just the text response you will also get a rich card with information
 ![Adaptive card in response](../../assets/images/extend-m365-copilot-04/project-adaptive.png)
 
 You can now test other prompts as well to see the improved responses from Copilot for Microsoft 365.
+
+<cc-lab-end-step lab="e5" exercise="3" step="2" />
 
 ## CONGRATULATIONS
 
