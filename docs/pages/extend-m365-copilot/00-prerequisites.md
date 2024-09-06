@@ -20,17 +20,13 @@ In this lab you will learn:
 - How to install and configure Teams toolkit for Visual Studio Code
 
 ## Exercise 1: Set up your Microsoft 365 Subscription
-To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
-You will also need Copilot License to test the app.
+To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. You will also need Copilot License to test the app.
 
 ### Step 1: Get a tenant
 
-If you don't yet have a tenant, please join the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=m365-58890-cxa){target=_blank} to get a free one. Your tenant includes 25 [E5 user licenses](https://www.microsoft.com/microsoft-365/enterprise/compare-office-365-plans?WT.mc_id=m365-58890-cxa){target=_blank} and can be renewed as long as you keep developing!
+The lowest cost option at the moment is to purchase a [Microsoft 365 Business Basic](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-d){target=_blank} subscription and add Copilot to it.
 
-Select "Join now" to begin.
-Log in with any Microsoft personal or work and school account, enter your information, and select "Next". You will have an opportunity to choose what kind of "sandbox" you want; the "Instant sandbox" is recommended.
-
-Follow the wizard and select your administrator username and password, tenant domain name, etc. The domain name you choose is just the left-most portion - for example if you enter "Contoso" your domain will be "Contoso.onmicrosoft.com".
+When you set up the tenant, you will select your administrator username and password, tenant domain name, etc. The domain name you choose is just the left-most portion - for example if you enter "Contoso" your domain will be "Contoso.onmicrosoft.com".
 
 Remember this information as you'll need it throughout the labs! You will log in as &gt;username&lt;@&gt;domain&lt;.onmicrosoft.com with the password you chose. You'll be prompted for your phone number and then the system will set up your subscription.
 
@@ -47,6 +43,8 @@ Eventually you'll be prompted to log into your new tenant. Be sure to use the ne
       <iframe src="//www.youtube.com/embed/DhhpJ1UjbJ0" frameborder="0" allowfullscreen></iframe>
       <div>Setting up your Microsoft 365 Development tenant</div>
     </div>
+
+<cc-lab-end-step lab="e0" exercise="1" step="1" />
 
 ### Step 2: Enable Teams application uploads
 
@@ -67,12 +65,16 @@ e. Be sure to scroll down and select the "Save" button to persist your change.
 
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
+<cc-lab-end-step lab="e0" exercise="1" step="2" />
+
 ## Exercise 2: Install Teams Toolkit and prerequisites
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
 
 ### Step 1: Install Visual Studio Code
 
 It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_blank} requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+
+<cc-lab-end-step lab="e0" exercise="2" step="1" />
 
 ### Step 2: Install NodeJS
 
@@ -82,6 +84,8 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 
 ???+ tip "If you need more than one version of NodeJS"
     Browse to https://nodejs.org/en/download/ and install the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.x and 20.x. If you already have another version of NodeJS installed, or want future flexibility to change Node versions, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows) for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
+
+<cc-lab-end-step lab="e0" exercise="2" step="2" />
 
 ### Step 3: Install Teams Toolkit
 
@@ -98,6 +102,8 @@ Follow the steps as shown in the screen shot below.
 
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
+
+<cc-lab-end-step lab="e0" exercise="2" step="3" />
     
 Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Copilot in the next lab. 
 
