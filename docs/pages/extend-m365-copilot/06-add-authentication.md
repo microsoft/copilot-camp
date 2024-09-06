@@ -3,7 +3,7 @@
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](./00-prerequisites)
+    - [Lab E0 - Prerequisites](./00-prerequisites.md)
     - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
     - [Lab E2 - Build an API](./02-build-the-api.md)
     - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
@@ -11,12 +11,12 @@ In this lab you will add authentication to your API plugin using OAuth 2.0 with 
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md) (📍You are here)
 
+
+---8<--- "e-path-prelude.md"
+
 !!! note
     There are many detailed setup steps for Entra ID in this lab.
     A preview version of Teams Toolkit is available which will automate many of these steps for you; we hope to provide a more streamlined version of the lab when it's released. However this could still be useful for those wishing to understand exactly what needs to be provisioned to get OAuth working.
-
-!!! info "Where did I leave off?"
-    <cc-last-completed-step />
 
 In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. You will be saving:
 

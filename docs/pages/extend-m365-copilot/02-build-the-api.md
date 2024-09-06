@@ -3,7 +3,7 @@
 In this lab you will set up an API based on Azure Functions and install it as an API plugin for Copilot for Microsoft 365.
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](./00-prerequisites)
+    - [Lab E0 - Prerequisites](./00-prerequisites.md)
     - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
     - [Lab E2 - Build an API](./02-build-the-api.md) (📍You are here)
     - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
@@ -11,8 +11,7 @@ In this lab you will set up an API based on Azure Functions and install it as an
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
 
-!!! info "Where did I leave off?"
-    <cc-last-completed-step />
+---8<--- "e-path-prelude.md"
 
 ## Introduction
 

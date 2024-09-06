@@ -3,7 +3,7 @@
 In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. 
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](./00-prerequisites)
+    - [Lab E0 - Prerequisites](./00-prerequisites.md)
     - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md) (📍You are here)
     - [Lab E2 - Build an API](./02-build-the-api.md)
     - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
@@ -11,8 +11,7 @@ In this lab you will build a declarative copilot using Teams Toolkit for Visual 
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
 
-!!! warning "Reminder"
-    To perform the following exercise, your developer tenant should be under private preview program and your account must have a valid license for Copilot for Microsoft 365 as well.
+---8<--- "e-path-prelude.md"
 
 In this lab you will learn:
 
