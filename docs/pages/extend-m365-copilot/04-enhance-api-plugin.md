@@ -3,13 +3,13 @@
 In this lab you will add additional REST calls to the API and add them to the API Plugin packaging so Copilot can call them. In the process you will learn all the places where an API needs to be defined for Copilot.
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites)
-    - [Lab E1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot)
-    - [Lab E2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin)
-    - [Lab E3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) (📍You are here)
-    - [Lab E4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card)
-    - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
-    - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
+    - [Lab E0 - Prerequisites](./00-prerequisites)
+    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
+    - [Lab E2 - Build an API](./02-build-the-api.md)
+    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+    - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md) (📍You are here)
+    - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
+    - [Lab E6 - Add authentication](./06-add-authentication.md)
 
 ## Exercise 1: Add /projects resource
 

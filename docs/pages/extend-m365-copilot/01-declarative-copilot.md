@@ -3,13 +3,13 @@
 In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. 
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](/copilot-camp/pages/extend-m365-copilot/00-prerequisites)
-    - [Lab E1 - Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot) (📍You are here)
-    - [Lab E2 - First API Plugin](/copilot-camp/pages/extend-m365-copilot/02-api-plugin)
-    - [Lab E3 - Enhance the API Plugin](/copilot-camp/pages/extend-m365-copilot/03-enhance-api-plugin) 
-    - [Lab E4 - Add Adaptive Cards](/copilot-camp/pages/extend-m365-copilot/04-add-adaptive-card)
-    - [Lab E5 - Add a Declarative Copilot](/copilot-camp/pages/extend-m365-copilot/05-add-declarative-copilot)
-    - [Lab E6 - Add authentication](/copilot-camp/pages/extend-m365-copilot/06-add-authentication)
+    - [Lab E0 - Prerequisites](./00-prerequisites)
+    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md) (📍You are here)
+    - [Lab E2 - Build an API](./02-build-the-api.md)
+    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+    - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
+    - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
+    - [Lab E6 - Add authentication](./06-add-authentication.md)
 
 !!! warning "Reminder"
     To perform the following exercise, your developer tenant should be under private preview program and your account must have a valid license for Copilot for Microsoft 365 as well.
