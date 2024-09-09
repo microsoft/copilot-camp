@@ -122,6 +122,6 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 ## CONGRATULATIONS
 
-You've successfully built your first API Plugin! You are now ready to proceed to enhance this API Plugin with more API calls. 
+You've successfully built the lab sample API! You can now proceed to make it into a Copilot plugin, and expose it via a Declarateive Copilot.
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/02-build-the-api" />

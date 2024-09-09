@@ -16,7 +16,7 @@ In this lab you will build a declarative copilot using Teams Toolkit for Visual 
 In this lab you will learn:
 
 - What is a declarative copilot for Microsoft 365
-- Install [Teams toolkit for VS Code prerelease version](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/install-teams-toolkit?tabs=vscode#install-a-prerelease-version)
+- Install [Teams toolkit for VS Code prerelease version](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/install-teams-toolkit?tabs=vscode#install-a-prerelease-version){target=_blank}
 - Create a basic declarative copilot using Teams Toolkit 
 - Customise the basic app to create the geo locator game
 - Learn how to run and test your app 
@@ -117,7 +117,7 @@ Now verify that the "Sideloading enabled" checker has a green checkmark. If it d
 
 ### Step 4 : Understanding the files in the app
 
-Here's how the base project looks like: 
+Here's how the base project looks: 
 
 | Folder/File                          | Contents                                                                                                            |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
@@ -247,6 +247,6 @@ Open file `declarativeCopilot.json`. and paste below node after the `instruction
 
 <cc-lab-end-step lab="e1" exercise="2" step="3" />
 
-Congratulations you've successfully built your extensibility feature for Copilot for Microsoft 365 called Decalarative Copilots! Proceed to create an API Plugin in the next lab. Select **Next**
+Congratulations you've successfully built your a Declarative Copilot! In the next lab, you'll make a REST API, which you'll use to make an API plugin so Copilot can access and update business data. Select **Next**
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
