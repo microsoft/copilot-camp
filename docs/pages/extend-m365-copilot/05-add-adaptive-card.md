@@ -68,9 +68,9 @@ This JSON defines a simple Adaptive Card with a text block and a button.
 
 ### Step 2: Test Your Adaptive Card
 
-To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://adaptivecards.io/designer/).
+To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"}.
 
-1. Open the [Adaptive Cards Designer](https://adaptivecards.io/designer/).
+1. Open the [Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"}	.
 2. Copy the JSON content from your `adaptiveCard.json` file.
 3. Paste the JSON content into the "Card Payload Editor" section on the left side of the designer.
 4. You will see a live preview of your Adaptive Card on the right side of the designer.

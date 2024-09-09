@@ -19,7 +19,7 @@ In this exercise you will add a /projects resource to the Trey Research API. Thi
 
 ### Step 1: Add Azure function code
 
-To begin, create a new file, **projects.ts** in the **/src/functions** folder of your solution from Lab 2. Then [copy the code from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/src/functions/projects.ts).
+To begin, create a new file, **projects.ts** in the **/src/functions** folder of your solution from Lab 2. Then [copy the code from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/functions/projects.ts){target=_blank}.
 
 This will implement a new Azure function to provide access to Trey Research projects
 
@@ -29,7 +29,7 @@ This will implement a new Azure function to provide access to Trey Research proj
 
 Let's take a moment to review the code.
 
-This is a version 4 Azure function, so the code looks a lot like traditional [Express](https://expressjs.com/){target=_blank} code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab E6](./06-add-authentication.md).
+This is a version 4 Azure function, so the code looks a lot like traditional Express code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab E6](./06-add-authentication.md).
 
 ~~~typescript
 export async function projects(
@@ -46,13 +46,13 @@ app.http("projects", {
 });
 ~~~
 
-The class includes a switch statement for handling GET vs. POST requests, and obtains the parameters from the URL path (in the case of a project ID), query strings (such as ?projectName=foo, in the case of a GET), and the request body (in the case of a POST). It then accesses the project data using the [ProjectApiService](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/src/services/ProjectApiService.ts), which was part of the starting solution. It also sends responses for each request and logging of requests to the debug console.
+The class includes a switch statement for handling GET vs. POST requests, and obtains the parameters from the URL path (in the case of a project ID), query strings (such as ?projectName=foo, in the case of a GET), and the request body (in the case of a POST). It then accesses the project data using the [ProjectApiService](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/services/ProjectApiService.ts){target=_blank}, which was part of the starting solution. It also sends responses for each request and logging of requests to the debug console.
 
 <cc-lab-end-step lab="e4" exercise="1" step="2" />
 
 ### Step 3: Add HTTP test requests
 
-Now let's add the new requests to the **http/treyResearchAPI.http** file so we can try them out. Open the file and add this text to the bottom, then save your changes, or [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-a-lab03-enhance-api-plugin/trey-research-lab03-END/http/treyResearchAPI.http)
+Now let's add the new requests to the **http/treyResearchAPI.http** file so we can try them out. Open the file and add this text to the bottom, then save your changes, or [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/http/treyResearchAPI.http){target="_blank"}	
 
 ~~~text
 ########## /api/projects - working with projects ##########
@@ -232,7 +232,7 @@ You will also find that a path has been added at `/projects/assignConsultant` to
 
 ### Step 3: Add projects to the plugin definition file
 
-Now open the file **trey-plugin.json** within the **/appPackage** folder. This file contains extra information not included in the OAS definition file. Replace the contents of **trey-plugin.json** with [this updaed JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json).
+Now open the file **trey-plugin.json** within the **/appPackage** folder. This file contains extra information not included in the OAS definition file. Replace the contents of **trey-plugin.json** with [this updated JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json).
 
 <cc-lab-end-step lab="e4" exercise="2" step="3" />
 

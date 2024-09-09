@@ -20,7 +20,7 @@ In this step you will upload sample documents which will be used by your declara
 
 ### Step 1: Create a SharePoint site
 
-Within the [Microsoft 365 app](https://www.office.com/), or elsewhere in Microsoft 365, click the "waffle" menu 1️⃣ and select "SharePoint" 2️⃣.
+Within the [Microsoft 365 app](https://www.office.com/){target=_blank}, or elsewhere in Microsoft 365, click the "waffle" menu 1️⃣ and select "SharePoint" 2️⃣.
 
 ![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-01.png)
 
@@ -104,47 +104,47 @@ And there's an "actions" section which tells the Declarative Copilot to access t
 
 ### Step 3: Examine the API Plugin files
 
-Two files have been here all along and are essential for Copilot to understand and call the Trey Research API:
+Two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
- * **appPackage/trey-definition.json** - This is the [Open API Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
- * **appPackage/trey-plugin.json** - This file contains all the Copilot-specific details that aren't described in the OAS file
+ * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [Open API Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
+ * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
 
- In **appPackage/trey-definition.json**, you'll find the general description of the aplication. This includes the server URL; Teams Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/) to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
+ In **appPackage/trey-definition.json**, you'll find the general description of the aplication. This includes the server URL; Teams Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
 
- ~~~json
- {
-    "openapi": "3.0.1",
-    "info": {
-        "version": "1.0.0",
-        "title": "Trey Research API",
-        "description": "API to streamline consultant assignment and project management."
-    },
-    "servers": [
-        {
-            "url": "${{OPENAPI_SERVER_URL}}/api/",
-            "description": "Production server"
-        }
-    ],
-    "paths": {
-        "/consultants/": {
-            "get": {
-                "operationId": "getConsultants",
-                "summary": "Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available",
-                "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
-                "parameters": [
-                    {
-                        "name": "consultantName",
-                        "in": "query",
-                        "description": "Name of the consultant to retrieve",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-        ...
- ~~~
+~~~json
+{
+  "openapi": "3.0.1",
+  "info": {
+      "version": "1.0.0",
+      "title": "Trey Research API",
+      "description": "API to streamline consultant assignment and project management."
+  },
+  "servers": [
+      {
+          "url": "${{OPENAPI_SERVER_URL}}/api/",
+          "description": "Production server"
+      }
+  ],
+  "paths": {
+      "/consultants/": {
+          "get": {
+              "operationId": "getConsultants",
+              "summary": "Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available",
+              "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+              "parameters": [
+                  {
+                      "name": "consultantName",
+                      "in": "query",
+                      "description": "Name of the consultant to retrieve",
+                      "required": false,
+                      "schema": {
+                          "type": "string"
+                      }
+                  },
+      ...
+~~~
 
 The **appPackage/trey-plugin.json** file has the Copilot-specific details. This includes breaking the API calls down into _functions_ which can be called when Copilot has a particular use case. For example, all GET requests for `/consultants` look up one or more consultants with various parameter options, and they are grouped into a function `getConsultants`:
 
