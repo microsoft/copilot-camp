@@ -426,31 +426,77 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
             "body": [
               {
                 "type": "TextBlock",
-                "text": "results.status: ${if(results.status, results.status, 'N/A')}",
-                "wrap": true
+                "text": "Project Status Summary",
+                "weight": "Bolder",
+                "size": "Large",
+                "separator": true
+              },              
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Client Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.clientName, results.clientName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
               },
               {
-                "type": "TextBlock",
-                "text": "results.clientName: ${if(results.clientName, results.clientName, 'N/A')}",
-                "wrap": true
-              },
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Project Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.projectName, results.projectName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },  
               {
-                "type": "TextBlock",
-                "text": "results.projectName: ${if(results.projectName, results.projectName, 'N/A')}",
-                "wrap": true
-              },
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Remaining Forecast",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },           
               {
-                "type": "TextBlock",
-                "text": "results.remainingForecast: ${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
-                "wrap": true
-              },
-              {
-                "type": "TextBlock",
-                "text": "results.message: ${if(results.message, results.message, 'N/A')}",
-                "wrap": true
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Message",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.message, results.message, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
               }
             ]
-}
+          }
 ```
 
 <cc-lab-end-step lab="e5" exercise="2" step="4" />
@@ -467,41 +513,94 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
             "body": [
               {
                 "type": "TextBlock",
-                "text": "results.status: ${if(results.status, results.status, 'N/A')}",
-                "wrap": true
+                "text": "Project Overview",
+                "weight": "Bolder",
+                "size": "Large",
+                "separator": true,
+                "spacing": "Medium"
+              },              
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Client Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.clientName, results.clientName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
               },
               {
-                "type": "TextBlock",
-                "text": "results.clientName: ${if(results.clientName, results.clientName, 'N/A')}",
-                "wrap": true
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Project Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.projectName, results.projectName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
               },
               {
-                "type": "TextBlock",
-                "text": "results.projectName: ${if(results.projectName, results.projectName, 'N/A')}",
-                "wrap": true
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Consultant Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.consultantName, results.consultantName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
               },
               {
-                "type": "TextBlock",
-                "text": "results.consultantName: ${if(results.consultantName, results.consultantName, 'N/A')}",
-                "wrap": true
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Remaining Forecast",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
               },
               {
-                "type": "TextBlock",
-                "text": "results.remainingForecast: ${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
-                "wrap": true
-              },
-              {
-                "type": "TextBlock",
-                "text": "results.message: ${if(results.message, results.message, 'N/A')}",
-                "wrap": true
-              },
-              {
-                "type": "TextBlock",
-                "text": "status: ${if(status, status, 'N/A')}",
-                "wrap": true
-              }
-        ]
- }
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Message",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.message, results.message, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              }            
+            ]          
+          }
 
 ```
 
@@ -527,6 +626,14 @@ Now try a prompt such below
 Instead of just the text response you will also get a rich card with information of the project.
 
 ![Adaptive card in response](../../assets/images/extend-m365-copilot-04/project-adaptive.png)
+
+Now try a POST operation prompt such below
+
+ *please charge 1 hour to woodgrove bank in trey research*
+
+Instead of just the text response you will also get a rich card with information of the project.
+
+![Adaptive card in response](../../assets/images/extend-m365-copilot-04/bill-hours.png)
 
 You can now test other prompts as well to see the improved responses from Copilot for Microsoft 365.
 
