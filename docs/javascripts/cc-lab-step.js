@@ -2,7 +2,7 @@
 
     // Web controls for Copilot Camp lab step tracking
 
-    //#region web component styles
+    //#region CSS
     function ensureCss() {
 
         const css = `
@@ -34,9 +34,14 @@
                 font-size: large;
             }
             .cc-table-of-contents {
-                font-size: medium;
             }
-            .cc-table-of-contents li {
+            .cc-table-of-contents li ul {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .cc-table-of-contents li ul li {
+                padding: 0 !important;
+                margin: 0 !important;
                 list-style-type: none;
             }
         `;
@@ -287,10 +292,7 @@
                         const li = document.createElement('li');
                         const a = document.createElement('a');
 
-                        // mkdocs sets the id of the h2 element to the kabab case of the text
-                        const exercise = elt.innerText;
-                        const kabab = exercise.toLowerCase().replace(':', '').replace(/ /g, '-');
-                        a.href = `#${kabab}`;
+                        a.href = this.#getFragment(elt.innerText);
                         a.innerText = elt.innerText;
                         li.appendChild(a);
                         li.appendChild(this.#getListForSteps(endStepElements, exerciseNumber++));
@@ -309,15 +311,24 @@
                 if (elt.exercise == exercise) {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
-                    a.href = `#ex-${elt.exercise}-step-${elt.step}`;
+                    a.href = this.#getFragment(elt.label);
                     const checkmark = elt.checked ? '✔ ' : '\u00A0\u00A0\u00A0\u00A0';
                     a.innerText = `${checkmark} ${elt.label}`;
                     li.appendChild(a);
-                    result.appendChild(li);    
+                    result.appendChild(li);
                 }
             }
 
             return result;
+        }
+
+        #getFragment(innerText) {
+            // mkdocs sets the id of each h2 or h3 element to the kabab case of the text
+            return '#' +
+                   innerText.toLowerCase()
+                            .replace(':', '')
+                            .replace("'", '')
+                            .replace(/ /g, '-');
         }
     }
 

@@ -2,10 +2,10 @@
 
 In this lab, you, the Copilot Camp content developer, will learn how to use custom web controls to provide an enhanced user experience.
 
-!!! info "Where did I leave off?"
+!!! abstract "Where did I leave off?"
     <cc-last-completed-step />
 
-!!! info "Table of Contents"
+!!! abstract "Table of Contents"
     <cc-table-of-contents />
 
 ## Exercise 1: Learn the controls
@@ -29,9 +29,17 @@ For example,
 
 The control needs your lab, exercise, and step so it can store the checkbox state uniquely across page refreshes.
 
-<cc-lab-end-step lab="t1" exercise="1" step="1" />
+For a Table of Contents, use
+~~~html
+!!! abstract "Table of Contents"
+    <cc-table-of-contents />
+~~~
 
-### Step 2: Test the checkboxes and step tracking
+To show the most recent step completed use
+~~~html
+!!! abstract "Where did I leave off?"
+    <cc-last-completed-step />
+~~~
 
 Notice the checkbox at the bottom of each step. When users check it, several things happen:
 
@@ -41,6 +49,17 @@ Notice the checkbox at the bottom of each step. When users check it, several thi
 * Telemetry logs the completion (anonymously)
 
 Try it out now!
+
+<cc-lab-end-step lab="t1" exercise="1" step="1" />
+
+### Step 2: Make sure your h2 and h3 elements are in order
+
+The controls are poking around in the DOM, and they depend on you having:
+
+ - an h2 (##) for each exercise beginning with the word "Exercise"
+ - an h3 (###) for each section 
+ - at least one section in each exercise
+ - the last thing in the section is the `<cc-lab-end-step />`
 
 <cc-lab-end-step lab="t1" exercise="1" step="2" />
 
