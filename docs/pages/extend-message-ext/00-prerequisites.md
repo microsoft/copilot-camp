@@ -14,44 +14,21 @@ In this lab, you will set up the development environment to build, test, and dep
 
 In this lab you will learn:
 
-- How to get a developer tenant for Microsoft 365
 - How to set up your developer tenant for the entire lab exercises
 - How to install and configure Teams toolkit for Visual Studio Code and other tools
 - How to set up your development environment with a base project
 
 
+> [!IMPORTANT]
+> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
+
+> [!IMPORTANT]  
+> To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
 
-## Exercise 1: Set up your Microsoft 365 Subscription
-To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. Fortunately you can get one for free through the Microsoft 365 Developer Program! In the labs which follow, you'll also use this tenant to run Microsoft Teams where you can test this lab.
-You will also need Copilot License to test the app.
 
-### Step 1: Get a tenant
-
-If you don't yet have a tenant, please join the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=m365-58890-cxa){target=_blank} to get a free one. Your tenant includes 25 [E5 user licenses](https://www.microsoft.com/microsoft-365/enterprise/compare-office-365-plans?WT.mc_id=m365-58890-cxa){target=_blank} and can be renewed as long as you keep developing!
-
-Select "Join now" to begin.
-Log in with any Microsoft personal or work and school account, enter your information, and select "Next". You will have an opportunity to choose what kind of "sandbox" you want; the "Instant sandbox" is recommended.
-
-Follow the wizard and select your administrator username and password, tenant domain name, etc. The domain name you choose is just the left-most portion - for example if you enter "Contoso" your domain will be "Contoso.onmicrosoft.com".
-
-Remember this information as you'll need it throughout the labs! You will log in as &gt;username&lt;@&gt;domain&lt;.onmicrosoft.com with the password you chose. You'll be prompted for your phone number and then the system will set up your subscription.
-
-Eventually you'll be prompted to log into your new tenant. Be sure to use the new administrator credentials you just created, not the ones you used when you signed up for the developer program.
-
-!!! tip "Tip: Navigating many tenants"
-    Consider creating a browser profile for each tenant that will have its own favorites, stored credentials, and cookies so you can easily swtch between tenants as you work.
-
-!!! note "You may be asked to enable multi-factor authentication (MFA)"
-    [This is certainly a good idea!](https://www.microsoft.com/security/blog/2019/08/20/one-simple-action-you-can-take-to-prevent-99-9-percent-of-account-attacks/){target=_blank} Just follow the instructions. If you really must turn off MFA, [here are instructions](https://docs.microsoft.com/en-us/answers/questions/101179/how-to-disable-the-two-factor-authentication-from.html){target=_blank}. 
-
-??? info "More tips on setting up your Microsoft 365 Development Tenant!"
-    <div class="tinyVideo">
-      <iframe src="//www.youtube.com/embed/DhhpJ1UjbJ0" frameborder="0" allowfullscreen></iframe>
-      <div>Setting up your Microsoft 365 Development tenant</div>
-    </div>
-
-### Step 2: Enable Teams application uploads
+## Exercise 1: Enable Teams application uploads
+You will need a Microsoft work or school account with permissions to upload custom Teams applications. 
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 a. Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
@@ -112,10 +89,22 @@ Now you are all set to create your first extensibility feature for Copilot for M
 
 ### Step 1 - Download the sample code
 
-Please download [sample source code here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind) and open the project root folder **Northwind** in Teams Toolkit
+In a web browser navigate to [sample source code selecting this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind). You get a prompt to download a ZIP file with the sample project. 
+
+Save the ZIP file on your computer. 
+
+Extract the ZIP file contents. 
+
+Open Visual Studio Code. 
+In Visual Studio Code: 
+
+From the File menu choose the Open folder... option 
+
+Open the project root folder **Northwind** in Teams Toolkit
+
 These labs will refer to this as your "root folder" since this is where you'll be working.
 
-### Step 3 - Set up accounts in Teams Toolkit
+### Step 2 - Set up accounts in Teams Toolkit
 
 Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **Northwind** folder. You should see sections for Accounts, Environment, etc. as shown below.
 
@@ -128,11 +117,13 @@ Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your ow
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
-Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
+Now verify that the "Custom App Upload Enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
 
-![Checking that sideloading is enabled](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-03.png)
+Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account license for Copilot. This is required to continue the labs.
 
-### Step 4 - Copy sample documents to your test user's OneDrive
+![Checker](../../assets/images/extend-message-ext-00/checker.png)
+
+### Step 3 - Copy sample documents to your test user's OneDrive
 
 The sample application includes some documents for Copilot to reference during the labs. In this step you will copy these files to your user's OneDrive so Copilot can find them. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
 
