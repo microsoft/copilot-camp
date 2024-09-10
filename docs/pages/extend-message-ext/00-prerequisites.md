@@ -19,11 +19,11 @@ In this lab you will learn:
 - How to set up your development environment with a base project
 
 
-> [!IMPORTANT]
-> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
+!!! pied-piper "Disclaimer"
+    These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
-> [!IMPORTANT]  
-> To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
+!!! warning inline "Attention"
+    To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
 
 
@@ -58,7 +58,7 @@ It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_b
 
 NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
 
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 20.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version LTS.
+Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 20.
 
 ???+ tip "If you need more than one version of NodeJS"
     Browse to https://nodejs.org/en/download/ and install the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.x and 20.x. If you already have another version of NodeJS installed, or want future flexibility to change Node versions, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows) for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
@@ -82,27 +82,28 @@ Follow the steps as shown in the screen shot below.
 Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Copilot in the next lab. 
 
 
-
->  [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (OPTIONAL) - Download this if you want to view and edit the Northwind database used in this sample
+!!! tip "Azure Storage Explorer"
+    [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (OPTIONAL) - Download this if you want to view and edit the Northwind database used in this sample
 
 ## Exercise 3 - Set up your project and developer tenant data
 
 ### Step 1 - Download the sample code
 
-In a web browser navigate to [sample source code selecting this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind). You get a prompt to download a ZIP file with the sample project. 
+In a web browser navigate to [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind). You will get a prompt to download a ZIP file with the sample project. 
 
-Save the ZIP file on your computer. 
+- Save the ZIP file on your computer. 
 
-Extract the ZIP file contents. 
+- Extract the ZIP file contents. 
 
-Open Visual Studio Code. 
+- Open Visual Studio Code. 
+
 In Visual Studio Code: 
 
-From the File menu choose the Open folder... option 
+- From the File menu choose the Open folder... option 
 
-Open the project root folder **Northwind** in Teams Toolkit
+- Open the project root folder **Northwind**
 
-These labs will refer to this as your "root folder" since this is where you'll be working.
+These labs will refer to this **Northwind** folder as your "root folder" since this is where you'll be working.
 
 ### Step 2 - Set up accounts in Teams Toolkit
 
@@ -110,8 +111,6 @@ Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to 
 
 Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your own Microsoft 365 account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
 
-> [!NOTE]
-> The Microsoft 365 Developer Program doesn't include Copilot for Microsoft 365 licenses. As such, if you decide to use a developer tenant, you will be able to test the sample only as a Message Extension.
 
 ![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
 
