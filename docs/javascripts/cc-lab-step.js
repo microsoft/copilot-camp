@@ -6,21 +6,21 @@
     function ensureCss() {
 
         const css = `
-            .lab-end-step {
+            .cc-end-step {
                 background-color: gray;
                 color: white;
                 padding: 4pt 20pt 4pt 4pt;
                 display: inline-block;
                 border-radius: 0 22pt 22pt 0;
             }
-            .lab-end-step input[type=checkbox] {
+            .cc-end-step input[type=checkbox] {
                 -ms-transform: scale(1.5);  /* IE */
                 -moz-transform: scale(1.5); /* FF */
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
             }
-            .lab-end-step .subtext {
+            .cc-end-step .subtext {
                 font-size: 0.8em;
                 font-style: italic;
                 padding-left: 18pt;
@@ -29,7 +29,16 @@
             h3 {
                 border-top: 4px solid gray;
                 border-bottom: 4px solid gray;
-            }      
+            }
+            .cc-last-completed-step {
+                font-size: large;
+            }
+            .cc-table-of-contents {
+                font-size: medium;
+            }
+            .cc-table-of-contents li {
+                list-style-type: none;
+            }
         `;
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(css);
@@ -61,7 +70,7 @@
             ensureCss();
 
             this.#containerElement = document.createElement('div');
-            this.#containerElement.className = 'lab-end-step';
+            this.#containerElement.className = 'cc-end-step';
 
             const checkBoxElement = document.createElement('input');
             checkBoxElement.setAttribute('type', 'checkbox');
@@ -209,6 +218,7 @@
             });
 
             this.anchorElement = document.createElement('a');
+            this.anchorElement.className = 'cc-last-completed-step';
             this.replaceChildren(this.anchorElement);
             this.#updateText();
         }
@@ -227,11 +237,11 @@
                     }
                 }
                 if (lastCompletedExercise === 0) {
-                    this.anchorElement.innerText = 'You have not completed any steps in this lab. Use the ☑ checkbox on each step to track your progress.';
+                    this.anchorElement.innerText = 'You have not completed any steps in this lab.\nUse the ☑ checkbox on each step to track your progress.';
                     this.anchorElement.href = '#';
                     this.anchorElement.style = 'pointer-events: none; color: black;';
                 } else {
-                    this.anchorElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
+                    this.anchorElement.innerText = `✔ Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
                     this.anchorElement.href = `#ex-${lastCompletedExercise}-step-${lastCompletedStep}`;
                     this.anchorElement.style = '';
                 }
@@ -241,7 +251,7 @@
 
     //#endregion
 
-    //#region cc-last-completed-step web component
+    //#region cc-table-of-contents web component
 
     class TableOfContents extends UpdatingComponent {
 
@@ -254,6 +264,7 @@
             });
 
             this.containerElement = document.createElement('div');
+            this.containerElement.className = 'cc-table-of-contents';
             this.replaceChildren(this.containerElement);
 
             this.listElement = document.createElement('ul');
@@ -264,19 +275,49 @@
 
         #updateToc() {
             if (this.listElement) {
-                const elts = document.querySelectorAll('cc-lab-end-step');
+
                 this.listElement.innerHTML = '';
-                for (let elt of elts) {
+
+                const exerciseElements = document.querySelectorAll('h2');
+                const endStepElements = document.querySelectorAll('cc-lab-end-step');
+                let exerciseNumber = 1;
+
+                for (let elt of exerciseElements) {
+                    if (elt.innerText.startsWith('Exercise')) {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+
+                        // mkdocs sets the id of the h2 element to the kabab case of the text
+                        const exercise = elt.innerText;
+                        const kabab = exercise.toLowerCase().replace(':', '').replace(/ /g, '-');
+                        a.href = `#${kabab}`;
+                        a.innerText = elt.innerText;
+                        li.appendChild(a);
+                        li.appendChild(this.#getListForSteps(endStepElements, exerciseNumber++));
+                        this.listElement.appendChild(li);
+                    }
+                }
+
+
+            }
+        }
+
+        #getListForSteps(stepElements, exercise) {
+            const result = document.createElement('ul');
+
+            for (let elt of stepElements) {
+                if (elt.exercise == exercise) {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
                     a.href = `#ex-${elt.exercise}-step-${elt.step}`;
-                    const checkmark = elt.checked ? '✔ ' : '';
-                    a.innerText = `${checkmark} Exercise ${elt.exercise}: ${elt.label}`;
+                    const checkmark = elt.checked ? '✔ ' : '\u00A0\u00A0\u00A0\u00A0';
+                    a.innerText = `${checkmark} ${elt.label}`;
                     li.appendChild(a);
-                    this.listElement.appendChild(li);
-
+                    result.appendChild(li);    
                 }
             }
+
+            return result;
         }
     }
 
