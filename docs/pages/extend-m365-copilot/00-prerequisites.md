@@ -16,37 +16,16 @@ In this lab, you will set up the development environment to build, test, and dep
 
 In this lab you will learn:
 
-- How to set up your developer tenant for Microsoft 365
+- How to set up your developer tenant for the entire lab exercises
 - How to install and configure Teams toolkit for Visual Studio Code
 
-## Exercise 1: Set up your Microsoft 365 Subscription
-To install and run your own declarative copilot, you'll need a Microsoft 365 tenant where you have administrator permission. You will also need Copilot License to test the app.
+> [!IMPORTANT]
+> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
-### Step 1: Get a tenant
+> [!IMPORTANT]  
+> To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
-The lowest cost option at the moment is to purchase a [Microsoft 365 Business Basic](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-d){target=_blank} subscription and add Copilot to it.
-
-When you set up the tenant, you will select your administrator username and password, tenant domain name, etc. The domain name you choose is just the left-most portion - for example if you enter "Contoso" your domain will be "Contoso.onmicrosoft.com".
-
-Remember this information as you'll need it throughout the labs! You will log in as &gt;username&lt;@&gt;domain&lt;.onmicrosoft.com with the password you chose. You'll be prompted for your phone number and then the system will set up your subscription.
-
-Eventually you'll be prompted to log into your new tenant. Be sure to use the new administrator credentials you just created, not the ones you used when you signed up for the developer program.
-
-!!! tip "Tip: Navigating many tenants"
-    Consider creating a browser profile for each tenant that will have its own favorites, stored credentials, and cookies so you can easily swtch between tenants as you work.
-
-!!! note "You may be asked to enable multi-factor authentication (MFA)"
-    [This is certainly a good idea!](https://www.microsoft.com/security/blog/2019/08/20/one-simple-action-you-can-take-to-prevent-99-9-percent-of-account-attacks/){target=_blank} Just follow the instructions. If you really must turn off MFA, [here are instructions](https://docs.microsoft.com/en-us/answers/questions/101179/how-to-disable-the-two-factor-authentication-from.html){target=_blank}. 
-
-??? info "More tips on setting up your Microsoft 365 Development Tenant!"
-    <div class="tinyVideo">
-      <iframe src="//www.youtube.com/embed/DhhpJ1UjbJ0" frameborder="0" allowfullscreen></iframe>
-      <div>Setting up your Microsoft 365 Development tenant</div>
-    </div>
-
-<cc-lab-end-step lab="e0" exercise="1" step="1" />
-
-### Step 2: Enable Teams application uploads
+## Exercise 1: Enable Teams application uploads
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 a. Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
