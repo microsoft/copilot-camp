@@ -5,6 +5,9 @@ In this lab, you, the Copilot Camp content developer, will learn how to use cust
 !!! info "Where did I leave off?"
     <cc-last-completed-step />
 
+!!! info "Table of Contents"
+    <cc-table-of-contents />
+
 ## Exercise 1: Learn the controls
 
 In this exercise, you'll learn how to use the `<cc-lab-end-step>` web control, which allows users to log their process at the end of each step.
