@@ -2,7 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const navInner = document.querySelector('.md-nav--primary');
     const navUls = navInner.querySelector('ul.md-nav__list');
     const activelistItem = Array.from(navUls.children).filter(child => child.classList.contains('md-nav__item--active'))[0];
+
+    if (!activelistItem) {
+        return;
+    }
     const activeNav = activelistItem.querySelector('ul.md-nav__list');
+
     const items = activeNav.querySelectorAll('li');
     let currentIndex = -1
     for (let i = 0; i < items.length; i++) {
@@ -25,5 +30,3 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.md-content__inner');
     container.appendChild(nextButton);
 });
-
-//add other telemetry code here
