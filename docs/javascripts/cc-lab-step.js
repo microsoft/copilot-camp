@@ -2,24 +2,25 @@
 
     // Web controls for Copilot Camp lab step tracking
 
+    //#region CSS
     function ensureCss() {
 
         const css = `
-            .lab-end-step {
+            .cc-end-step {
                 background-color: gray;
                 color: white;
                 padding: 4pt 20pt 4pt 4pt;
                 display: inline-block;
                 border-radius: 0 22pt 22pt 0;
             }
-            .lab-end-step input[type=checkbox] {
+            .cc-end-step input[type=checkbox] {
                 -ms-transform: scale(1.5);  /* IE */
                 -moz-transform: scale(1.5); /* FF */
                 -webkit-transform: scale(1.5); /* Safari and Chrome */
                 -o-transform: scale(1.5);  /* Opera */
                 transform: scale(1.5);
             }
-            .lab-end-step .subtext {
+            .cc-end-step .subtext {
                 font-size: 0.8em;
                 font-style: italic;
                 padding-left: 18pt;
@@ -28,16 +29,31 @@
             h3 {
                 border-top: 4px solid gray;
                 border-bottom: 4px solid gray;
-            }      
+            }
+            .cc-last-completed-step {
+                font-size: large;
+            }
+            .cc-table-of-contents {
+            }
+            .cc-table-of-contents li ul {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .cc-table-of-contents li ul li {
+                padding: 0 !important;
+                margin: 0 !important;
+                list-style-type: none;
+            }
         `;
         const sheet = new CSSStyleSheet();
         sheet.replaceSync(css);
         document.adoptedStyleSheets = [sheet];
     };
+    //#endregion
 
+    //#region cc-lab-end-step web component
 
-    // cc-lab-end-step web component
-    // Goes at the end of a step in a lab to track completion
+    // This web component goes at the end of a step in a lab to track completion
     class LabEndStep extends HTMLElement {
 
         checked;    // True if the checkbox is checked
@@ -46,10 +62,8 @@
         step;       // Step number
         label;      // Step header text
 
-        // Child controls
         #containerElement; // Div container
         #subLabelElement;  // Subtext element
-        #telemetrySent = false; // True if telemetry has been sent
 
         constructor() {
             super();
@@ -61,7 +75,7 @@
             ensureCss();
 
             this.#containerElement = document.createElement('div');
-            this.#containerElement.className = 'lab-end-step';
+            this.#containerElement.className = 'cc-end-step';
 
             const checkBoxElement = document.createElement('input');
             checkBoxElement.setAttribute('type', 'checkbox');
@@ -95,6 +109,8 @@
             this.#subLabelElement.innerText = this.#getSubtext();
             this.#updateTelemetry(this.lab, this.exercise, this.step);
         }
+
+        // Run when the element is added to the DOM
         async connectedCallback() {
             this.onclick = this.#clickHandler;
         }
@@ -155,6 +171,7 @@
         }
 
         // Telemetry
+        #telemetrySent = false; // True if telemetry has been sent
         #updateTelemetry(lab, exercise, step) {
             if (this.checked && !this.#telemetrySent) {
                 const url = `https://pnptelemetry.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
@@ -174,24 +191,40 @@
             localStorage.setItem(`step-${lab}-${exercise}-${step}`, status);
         }
     }
+    //#endregion
 
-    // cc-last-completed-step web component
-    class LastCompletedStep extends HTMLElement {
+    //#region Base class for components that update when steps are checked
+
+    class UpdatingComponent extends HTMLElement {
+
+        constructor(updateUI) {
+            super();
+
+            const elts = document.querySelectorAll('cc-lab-end-step');
+            for (let elt of elts) {
+                elt.onChange = updateUI.bind(this);
+            }
+
+            // this.attachShadow({mode: 'open'});
+        }
+    }
+
+    //#endregion
+
+    //#region cc-last-completed-step web component
+
+    class LastCompletedStep extends UpdatingComponent {
 
         anchorElement; // HTML element to display the last completed step
 
         constructor() {
-            super();
-
-            // Set up an event listener for all cc-lab-step elements on the page
-            const elts = document.querySelectorAll('cc-lab-end-step');
-            for (let elt of elts) {
-                elt.onChange = this.#updateText.bind(this);
-            }
+            super(() => {
+                this.#updateText();
+            });
 
             this.anchorElement = document.createElement('a');
+            this.anchorElement.className = 'cc-last-completed-step';
             this.replaceChildren(this.anchorElement);
-
             this.#updateText();
         }
 
@@ -209,11 +242,11 @@
                     }
                 }
                 if (lastCompletedExercise === 0) {
-                    this.anchorElement.innerText = 'You have not completed any steps in this lab. Use the ☑ checkbox on each step to track your progress.';
+                    this.anchorElement.innerText = 'You have not completed any steps in this lab.\nUse the ☑ checkbox on each step to track your progress.';
                     this.anchorElement.href = '#';
                     this.anchorElement.style = 'pointer-events: none; color: black;';
                 } else {
-                    this.anchorElement.innerText = `✔ You last completed Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
+                    this.anchorElement.innerText = `✔ Exercise ${lastCompletedExercise}: ${lastCompletedStepTitle}`;
                     this.anchorElement.href = `#ex-${lastCompletedExercise}-step-${lastCompletedStep}`;
                     this.anchorElement.style = '';
                 }
@@ -221,9 +254,90 @@
         }
     }
 
+    //#endregion
+
+    //#region cc-table-of-contents web component
+
+    class TableOfContents extends UpdatingComponent {
+
+        containerElement; // HTML element to display the table of contents
+        listElement;      // Unordered list element
+
+        constructor() {
+            super(() => {
+                this.#updateToc();
+            });
+
+            this.containerElement = document.createElement('div');
+            this.containerElement.className = 'cc-table-of-contents';
+            this.replaceChildren(this.containerElement);
+
+            this.listElement = document.createElement('ul');
+            this.containerElement.appendChild(this.listElement);
+
+            this.#updateToc();
+        }
+
+        #updateToc() {
+            if (this.listElement) {
+
+                this.listElement.innerHTML = '';
+
+                const exerciseElements = document.querySelectorAll('h2');
+                const endStepElements = document.querySelectorAll('cc-lab-end-step');
+                let exerciseNumber = 1;
+
+                for (let elt of exerciseElements) {
+                    if (elt.innerText.startsWith('Exercise')) {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+
+                        a.href = this.#getFragment(elt.innerText);
+                        a.innerText = elt.innerText;
+                        li.appendChild(a);
+                        li.appendChild(this.#getListForSteps(endStepElements, exerciseNumber++));
+                        this.listElement.appendChild(li);
+                    }
+                }
+
+
+            }
+        }
+
+        #getListForSteps(stepElements, exercise) {
+            const result = document.createElement('ul');
+
+            for (let elt of stepElements) {
+                if (elt.exercise == exercise) {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = this.#getFragment(elt.label);
+                    const checkmark = elt.checked ? '✔ ' : '\u00A0\u00A0\u00A0\u00A0';
+                    a.innerText = `${checkmark} ${elt.label}`;
+                    li.appendChild(a);
+                    result.appendChild(li);
+                }
+            }
+
+            return result;
+        }
+
+        #getFragment(innerText) {
+            // mkdocs sets the id of each h2 or h3 element to the kabab case of the text
+            return '#' +
+                   innerText.toLowerCase()
+                            .replace(':', '')
+                            .replace("'", '')
+                            .replace(/ /g, '-');
+        }
+    }
+
+    //#endregion
+
     document.addEventListener('DOMContentLoaded', function () {
         window.customElements.define('cc-lab-end-step', LabEndStep);
         window.customElements.define('cc-last-completed-step', LastCompletedStep);
+        window.customElements.define('cc-table-of-contents', TableOfContents);
     });
 
 })();

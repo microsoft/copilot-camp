@@ -25,7 +25,9 @@ In this lab you will learn:
 > [!IMPORTANT]  
 > To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
-## Exercise 1: Enable Teams application uploads
+## Exercise 1: Configure Teams upload policy
+
+### Step 1: Enable Teams application uploads
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 a. Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
@@ -44,7 +46,7 @@ e. Be sure to scroll down and select the "Save" button to persist your change.
 
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
-<cc-lab-end-step lab="e0" exercise="1" step="2" />
+<cc-lab-end-step lab="e0" exercise="1" step="1" />
 
 ## Exercise 2: Install Teams Toolkit and prerequisites
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
