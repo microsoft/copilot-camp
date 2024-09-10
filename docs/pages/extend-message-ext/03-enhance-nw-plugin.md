@@ -18,7 +18,7 @@ In this lab, you will enhance the Northwind plugin by adding a new command. Whil
 
 ## Exercise 1 - Extend the Message Extension / plugin User Interface 
 
-1. Open **manifest.json** and add the following json immediately after the `discountSearch` command. Here you're adding to the `commands` array which defines the list of commands supported by the ME / plugin.
+1. In your working directory called **Northwind** from previous lab , open **manifest.json** in the  **appPackage** folder and add the following json immediately after the `discountSearch` command followed by a `,`. Here you're adding to the `commands` array which defines the list of commands supported by the ME / plugin.
 
 ```json
 {
@@ -40,14 +40,13 @@ In this lab, you will enhance the Northwind plugin by adding a new command. Whil
     ]
 }
 ```
-```
-Note: The "id" is the connection between the UI and the code. This value is defined as COMMAND_ID in the discount/product/SearchCommand.ts files. See how each of these files has a unique COMMAND_ID that corresponds to the value of "id".
-```
+!!! tip "COMMAND_ID"
+    The "id" is the connection between the UI and the code. This value is defined as COMMAND_ID in the discount/product/SearchCommand.ts files. See how each of these files has a unique COMMAND_ID that corresponds to the value of "id".
 
 ## Exercise 2 - Create a handler for the 'companySearch' command
 We will use a lot of the code created for the other handlers. 
 
-1. In VS Code copy '**productSearchCommand.ts**' and paste into the same folder to create a copy. Rename this file **customerSearchCommand.ts**.
+1. In VS Code copy **productSearchCommand.ts** under folder `src/messageExtensions` and paste into the same folder to create a copy. Rename this file **customerSearchCommand.ts**.
 
 2. Change value of COMMAND_ID constant to:
 ```javascript
@@ -64,7 +63,8 @@ to
 import { searchProductsByCustomer } from "../northwindDB/products";
 ```
 
-2. Replace the content of **handleTeamsMessagingExtensionQuery** with:
+2. I nside the existing brackets of **handleTeamsMessagingExtensionQuery** , replace exisiting code with below snippet:
+
 ```javascript
  {
     let companyName;
@@ -99,36 +99,9 @@ import { searchProductsByCustomer } from "../northwindDB/products";
     };
 }
 ```
-Note that you will implement `searchProductsByCustomer` in Step 4.
+Note that you will implement `searchProductsByCustomer` in Step 5.
 
-## Exercise 3 - Update the command routing
-In this step you will route the `companySearch` command to the handler you implemented in the previous step.
-
-2. Open **searchApp.ts** and add the following. Underneath this line:
-```javascript
-import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
-```
-Add this line:
-```javascript
-import customerSearchCommand from "./messageExtensions/customerSearchCommand";
-```
-
-3. Underneath this statement:
-```javascript
-      case discountedSearchCommand.COMMAND_ID: {
-        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-```
-Add this statement:
-```javascript
-      case customerSearchCommand.COMMAND_ID: {
-        return customerSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-```
-```text
-Note that in the UI-based operation of the Message Extension / plugin, this command is explicitly called. However, when invoked by Microsoft 365 Copilot, the command is triggered by the Copilot orchestrator.
-```
-## Exercise 4 - Implement Product Search by Company
+## Exercise 3 - Implement Product Search by Company
  You will implement a product search by Company name and return a list of the company's ordered products. Find this information using the tables below:
 
 | Table         | Find        | Look Up By    |
@@ -201,6 +174,37 @@ export async function searchProductsByCustomer(companyName: string): Promise<Pro
     return result;
 }
 ```
+
+
+
+## Exercise 4 - Update the command routing
+In this step you will route the `companySearch` command to the handler you implemented in the previous step.
+
+2. Open **searchApp.ts** in the `src` folder and add the following. Underneath this line:
+```javascript
+import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
+```
+Add this line:
+```javascript
+import customerSearchCommand from "./messageExtensions/customerSearchCommand";
+```
+
+3. Underneath this statement:
+```javascript
+      case discountedSearchCommand.COMMAND_ID: {
+        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
+```
+Add this statement:
+```javascript
+      case customerSearchCommand.COMMAND_ID: {
+        return customerSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
+```
+
+!!! tip "Note"
+    in the UI-based operation of the Message Extension / plugin, this command is explicitly called. However, when invoked by Microsoft 365 Copilot, the command is triggered by the Copilot orchestrator.
+
 ## Exercise 5 - Run the App! Search for product by company name
 
 Now you're ready to test the sample as a plugin for Copilot for Microsoft 365.

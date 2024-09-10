@@ -25,12 +25,6 @@ In this lab you will:
 
 ## Step 1 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
 
-Begin by clicking the "Try the new Teams" switch to move to the new Teams client application.
-
-
-!!! tip "Microsoft Copilot for Microsoft 365 only works in the "New" Teams. Please don't miss this step!"
-    If you restart your debugger after switching to "New" teams, you may get an error message after the debugger starts. This is a known problem; please just close the error dialog and continue testing.
-
 In the left navigation, click on "Copilot" to open Copilot.
 
 Check the lower left of the chat user interface, below the compose box. You should see a plugin icon 1️⃣ . Click this and enable the Northwind Inventory plugin 2️⃣ .

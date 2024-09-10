@@ -23,7 +23,7 @@ Let's examine the code in the base app called Northwind.
 
 The core of any Microsoft 365 application is its application manifest. This is where you provide the information Microsoft 365 needs to access your application.
 
-In your working directory, open the [manifest.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) file. This JSON file is placed in a zip archive with two icon files to create the application package. The "icons" property includes paths to these icons.
+In your working directory called **Northwind** from previous lab , open the [manifest.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) file in the **appPackage** folder. This JSON file is placed in a zip archive with two icon files to create the application package. The "icons" property includes paths to these icons.
 
 ~~~json
 "icons": {
@@ -414,9 +414,7 @@ It may take a while the first time as it's loading all the npm packages. Eventua
 Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
 Take note of the information displayed; which is from the [app manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json).
 
-Click "Add" to add Northwind Inventory as a personal application.
-
-![App installation screen with large Add button](../../assets/images/extend-message-ext-01/02-02-Run-Project-04.png)
+Select "Open" to add Northwind Inventory as a personal application.
 
 You should be directed to a chat within the application, however you could use the app in any chat.
 
