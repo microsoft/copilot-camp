@@ -2,10 +2,7 @@
 
 This repo is for hosting a virtual workshop for coders who want to build agents and connectors for Microsoft 365 Copilot. The content is still in development but our labs are ready for testing; please check it out!
 
-<div style="font-size: large; border-style: solid; padding: 20px; text-align:center; margin-bottom:8pt;">
-Please visit Copilot Camp at<br/>
-<a href="https://aka.ms/copilot-camp"> https://aka.ms/copilot-camp!</a>
-</div>
+Please visit Copilot Camp at [https://aka.ms/copilot-camp](https://aka.ms/copilot-camp!)
 
 The samples that were hosted here have turned into labs, and the plain samples have moved.
 
