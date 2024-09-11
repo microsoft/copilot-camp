@@ -30,19 +30,12 @@ In this lab you will learn:
 ### Step 1: Enable Teams application uploads
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
-a. Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
-b. In the left panel of the admin center, select "Show all" to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
-c. In the left of the Microsoft Teams admin center, open the Teams apps accordion 1️⃣ and select Setup Policies 2️⃣. You will see a list of App setup policies. Select the Global (Org-wide default) policy 3️⃣.
 
-![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-007-TeamsAdmin1.png)
+- Sign in to [Microsoft Teams admin center](https://admin.teams.microsoft.com/dashboard) with your admin credentials.
+- Go to **Teams apps** > **Setup Policies** > **Global**.
+- Toggle **Upload custom apps** to the "On" position.
+- Select "Save". Your test tenant can permit custom app upload.
 
-d. Ensure the first switch, "Upload custom apps" is turned On.
-
-![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-008-TeamsAdmin2.png)
-
-e. Be sure to scroll down and select the "Save" button to persist your change.
-
-![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-008-TeamsAdmin2b.png)
 
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
@@ -59,7 +52,7 @@ It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_b
 
 ### Step 2: Install NodeJS
 
-NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
+Node.js is a runtime that allows you to run JavaScript on your computer. It uses the open-source V8 engine, which is used in popular web browsers like Google Chrome (and the Chromium-based version of Microsoft Edge). You will need Node.js to run the web server code used throughout this workshop.
 
 Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 20.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version LTS.
 

@@ -10,7 +10,7 @@ In this lab, you will set up the development environment to build, test, and dep
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
-
+    
 
 In this lab you will learn:
 
@@ -18,32 +18,20 @@ In this lab you will learn:
 - How to install and configure Teams toolkit for Visual Studio Code and other tools
 - How to set up your development environment with a base project
 
-
-!!! pied-piper "Disclaimer"
-    These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
-
-!!! warning inline "Attention"
+!!! warning   "Attention"
     To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
-
 
 
 ## Exercise 1: Enable Teams application uploads
 You will need a Microsoft work or school account with permissions to upload custom Teams applications. 
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
-a. Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
-b. In the left panel of the admin center, select "Show all" to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
-c. In the left of the Microsoft Teams admin center, open the Teams apps accordion 1️⃣ and select Setup Policies 2️⃣. You will see a list of App setup policies. Select the Global (Org-wide default) policy 3️⃣.
 
-![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-007-TeamsAdmin1.png)
 
-d. Ensure the first switch, "Upload custom apps" is turned On.
-
-![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-008-TeamsAdmin2.png)
-
-e. Be sure to scroll down and select the "Save" button to persist your change.
-
-![Open the App setup policies](../../assets/images/extend-m365-copilot-00/01-008-TeamsAdmin2b.png)
+- Sign in to [Microsoft Teams admin center](https://admin.teams.microsoft.com/dashboard) with your admin credentials.
+- Go to **Teams apps** > **Setup Policies** > **Global**.
+- Toggle **Upload custom apps** to the "On" position.
+- Select "Save". Your test tenant can permit custom app upload.
 
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
@@ -56,10 +44,9 @@ It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_b
 
 ### Step 2: Install NodeJS
 
-NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
+Node.js is a runtime that allows you to run JavaScript on your computer. It uses the open-source V8 engine, which is used in popular web browsers like Google Chrome (and the Chromium-based version of Microsoft Edge). You will need Node.js to run the web server code used throughout this workshop.
 
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 20.
-
+Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install the "LTS" (Long Term Support) version for your operating system. 
 ???+ tip "If you need more than one version of NodeJS"
     Browse to https://nodejs.org/en/download/ and install the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.x and 20.x. If you already have another version of NodeJS installed, or want future flexibility to change Node versions, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows) for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
 
@@ -79,8 +66,6 @@ Follow the steps as shown in the screen shot below.
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
     
-Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Copilot in the next lab. 
-
 
 !!! tip "Azure Storage Explorer"
     [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (OPTIONAL) - Download this if you want to view and edit the Northwind database used in this sample
@@ -89,34 +74,33 @@ Now you are all set to create your first extensibility feature for Copilot for M
 
 ### Step 1 - Download the sample code
 
-In a web browser navigate to [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind). You will get a prompt to download a ZIP file with the sample project. 
+In a web browser navigate to [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/&filename=Northwind){target=_blank}. You will get a prompt to download a ZIP file called **Northwind.zip**. 
 
 - Save the ZIP file on your computer. 
 
-- Extract the ZIP file contents. 
+- Extract the ZIP file contents, it will extract into a folder called **Northwind** . 
 
-- Open Visual Studio Code. 
+- Open **Visual Studio Code**. 
 
 In Visual Studio Code: 
 
-- From the File menu choose the Open folder... option 
+- From the "File" menu choose the "Open folder"... option 
 
-- Open the project root folder **Northwind**
+- Open the folder **Northwind**.
 
-These labs will refer to this **Northwind** folder as your "root folder" since this is where you'll be working.
+These labs will refer to this **Northwind** folder as your "root folder" or "working folder" since this is where you'll be working.
 
 ### Step 2 - Set up accounts in Teams Toolkit
 
 Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **Northwind** folder. You should see sections for Accounts, Environment, etc. as shown below.
 
-Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your own Microsoft 365 account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
-
+Under "Accounts" click "Sign in to Microsoft 365" 2️⃣ and log in with your own Microsoft 365 account.
 
 ![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
-Now verify that the "Custom App Upload Enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
+Now verify that the "Custom App Upload Enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. Follow steps in Exercise 1 of this lab. 
 
 Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account license for Copilot. This is required to continue the labs.
 
@@ -157,7 +141,7 @@ By doing this step early, there's a good chance that the Microsoft 365 search en
 
 ## Congratulations
 
-You have completed the prerequisites lab. You are now ready to proceed to run your app. Select Next.
+You have completed the prerequisites lab. You are now ready to proceed to run your app. Select "Next" button below.
 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-message-ext/00-prerequisites" />
