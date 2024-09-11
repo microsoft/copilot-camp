@@ -1,17 +1,22 @@
-# Samples
+# Welcome to Copilot Developer Camp!
 
-If you're used to coming here for samples, they have moved!
+This repo is for hosting a virtual workshop for coders who want to build agents and connectors for Microsoft 365 Copilot. The content is still in development but our labs are ready for testing; please check it out!
 
- * The [Trey Research API Plugin and Declarative Copilot is now here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-trey-research) in our public samples repo
- * The [Geo-locator Declarative Copilot is now here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) in our public samples repo
- * The [Northwind API Plugin sample is now here](https://github.com/microsoft/copilot-camp/tree/TypeB-Samples/samples/northwind-plugin-b), archived in a branch of this repo
+<div style="font-size: large; border-style: solid; padding: 20px; text-align:center; margin-bottom:8pt;">
+Please visit Copilot Camp at<br/>
+<a href="https://aka.ms/copilot-camp"> https://aka.ms/copilot-camp!</a>
+</div>
 
-# Project
+The samples that were hosted here have turned into labs, and the plain samples have moved.
 
-We have started working on "Copilot developer camp", a virtual workshop for professional developers who want to learn how to build Copilot for Microsoft 365 extensions including plugins, declarative copilots, and custom engine copilots!
+| | Sample | Lab |
+|---|---|---|
+| Trey Research Copilot Agent with API Plugin | typescript:<br />- [anonymous](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research)<br />- [with auth](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research-auth) | [labs E0-E1](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
+| Geo-locator Game | [instructions only](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) | [labs E0, E2-E6](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
+ | Northwind Inventory Message Extension Plugin | [typescript](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-ts) <br /> [C#](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-csharp) <br />[Python](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-python)  | [labs M0-M5](https://microsoft.github.io/copilot-camp/pages/extend-message-ext/) |
 
-Go to [https://microsoft.github.io/copilot-camp/](https://microsoft.github.io/copilot-camp/) to see how it's going.
-We really appreciate your feedback!! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues!
+
+We'd love it if you would test out the [Copilot Camp](https://aka.ms/copilot-camp) labs, and very much appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues.
 
 ## Contributing
 
