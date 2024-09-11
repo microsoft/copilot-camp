@@ -10,7 +10,7 @@ In this lab, you will set up the development environment to build, test, and dep
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
-
+    
 
 In this lab you will learn:
 
@@ -18,13 +18,8 @@ In this lab you will learn:
 - How to install and configure Teams toolkit for Visual Studio Code and other tools
 - How to set up your development environment with a base project
 
-
-!!! pied-piper "Disclaimer"
-    These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
-
-!!! warning inline "Attention"
+!!! warning   "Attention"
     To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
-
 
 
 ## Exercise 1: Enable Teams application uploads
@@ -146,7 +141,7 @@ By doing this step early, there's a good chance that the Microsoft 365 search en
 
 ## Congratulations
 
-You have completed the prerequisites lab. You are now ready to proceed to run your app. Select Next.
+You have completed the prerequisites lab. You are now ready to proceed to run your app. Select "Next" button below.
 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-message-ext/00-prerequisites" />

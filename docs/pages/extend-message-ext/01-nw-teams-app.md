@@ -23,7 +23,7 @@ Let's examine the code in the base app called Northwind.
 
 The core of any Microsoft 365 application is its application manifest. This is where you provide the information Microsoft 365 needs to access your application.
 
-In your working directory called **Northwind** from previous lab , open the [manifest.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) file in the **appPackage** folder. This JSON file is placed in a zip archive with two icon files to create the application package. The "icons" property includes paths to these icons.
+In your working directory called **Northwind** from previous lab , open the [manifest.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) file in the **appPackage** folder. This JSON file is placed in a zip archive with icon files to create the application package. The "icons" property includes paths to these icons.
 
 ~~~json
 "icons": {
@@ -138,7 +138,7 @@ OK now let's move back to the first command, "inventorySearch". It has 5 paramet
 
 ### Step 2 - Examine the "Bot" code
 
-Now open the file **src/searchApp.ts**. This application contains the "bot" code, which communicates with the Azure Bot Framework using the [Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0).
+Now open the file **searchApp.ts** in folder **src** in the root folder. This application contains the "bot" code, which communicates with the Azure Bot Framework using the [Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0).
 
 Notice that the bot extends an SDK class **TeamsActivityHandler**.
 
@@ -375,7 +375,7 @@ As you can see, the code obtains these two values, updates the database, and the
 
 ### Step 1 - Set up the project for first use
 
-Open your working folder in Visual Studio Code.
+Open your working folder in Visual Studio Code. If you have already opened it for the code tour, you can continue from there.
 
 Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
 
@@ -409,42 +409,42 @@ The first time your app runs, you may be prompted to allow NodeJS to go through 
 
 It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.
 
-![Browser window opens with a login form](../../assets/images/extend-message-ext-01/02-02-Run-Project-03.png)
+Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
 
-Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
-Take note of the information displayed; which is from the [app manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json).
+![Open](../../assets/images/extend-message-ext-01/nw-open.png)
 
-Select "Open" to add Northwind Inventory as a personal application.
+Once opened it immediately ask you where you want to open the app in. By default it's personal chat. You could also select it in a channel or group chat as shown. Select "Open".
 
-You should be directed to a chat within the application, however you could use the app in any chat.
+![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
+
+Now you are in a personal chat with the app.
+
 
 ### Step 3 - Test in Microsoft Teams
 
-In any Teams chat - including the Northwind Inventory chat - begin typing a message 1️⃣ that refers to a product. Then, to insert an adaptive card for the product, click the + 2️⃣ . In the fly-up panel, select the Northwind Inventory application you just installed 3️⃣ .
+To test the app on the teams, select the "+" sign in the chat message compose area. And select "+ Get more apps" button to open the dialog to search apps. Choose "Northwind Inventory" app with a blue background. See the process below.
 
-![Clicking the "+" to open the message extension panel](../../assets/images/extend-message-ext-01/02-03-TestME-Teams-take2-01.png)
+![select app](../../assets/images/extend-message-ext-01/choose-app.gif)
 
-You will see a search dialog with 3 tabs 1️⃣. The "Product Inventory" tab allows searching for products by name; for now, just type a product name, or the beginning of a product name such as "chai" into the search box 2️⃣ . If you pause as you type the first letters, you'll be given more choices of products that begin with the same characters.
+Once the app is opened from the compose area, you will see a search box in the default tab "Products Inventory". You will also find the "Discount" search tab greyed out.
+Continue searching for a product, type in "Chai" which is a product available in Northwind database to see if the item is displayed as shown below.
 
-Click Chai 3️⃣ to insert an adaptive card into the conversation along with your comment.
+![search app](../../assets/images/extend-message-ext-01/nw-me-working.png)
 
-![Selecting Chai from the results](../../assets/images/extend-message-ext-01/02-03-TestME-Teams-take2-02.png)
+You can select the card for Chai and send it in the conversation. 
 
-You can see the card, but you can't use it until you send it. Make any final edits to your message and click "Send".
+You could also test the button actions in the adaptive card as demonstrated below. 
 
-![Sending the card](../../assets/images/extend-message-ext-01/02-03-TestME-Teams-take2-03.png)
+![search app](../../assets/images/extend-message-ext-01/action-working.gif)
 
-> NOTE: Card actions won't work until you send the card. If you get an error, please check and make sure you've sent the message and are working with the card after it has been sent.
+
+This will confirm that the message extension is working and ready to be used as a plugin, which we will see in the next lab.
+
 
 > NOTE: This is really only useful in conversations with other users; the chat in the Northwind Inventory app is just for testing.
 
-Notice that there is no chai on order 1️⃣ . The authors of this lab are big chai drinkers and they may be stopping by so you'd better order more! Click the "take action" button 2️⃣ to open a child card. Enter a quantity 3️⃣ and click the "Restock" button 4️⃣ . The card will refresh with (hopefully) a success message and an updated number of units on order.
 
-![Update the quantity of Chai in the adaptive card](../../assets/images/extend-message-ext-01/02-03-TestME-Teams-take2-04.png)
-
-You can cancel the order or modify the stock levels using the other two buttons.
-
-### Step 4 - Advanced queries
+### Step 4 - Advanced queries 
 
 Back in Visual Studio Code, have a look at the app manifest, which is in a file called **manifest.json** in the **appPackage** directory. You'll notice that the app information that was displayed when you installed the app is all here.
 
@@ -546,33 +546,6 @@ Read the descriptions in the JSON above carefully when entering a query. Try ent
 
 Each query term filters the list of products down. The format of each query term is arbitrary - just be sure to explain it to Copilot in the description of each parameter.
 
-### Step 5 - Test in Microsoft Outlook (Optional)
-
-Let's take a brief detour so you can see how message extensions work in Microsoft Outlook.
-
-First, click the "Waffle" menu 1️⃣ and select "Outlook" 2️⃣ .
-
-![Opening Outlook for Microsoft 365](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-01.png)
-
-Click the "New mail" button to begin composing a message.
-
-![Creating a new email in Outlook](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-02.png)
-
-Add a recipient 1️⃣ and a subject 2️⃣ , and position your cursor in the body of the message 3️⃣ . You can even type something. When you're ready, click the app button in the toolbar 4️⃣ .
-
-![Clicking the App button while composing an Outlook message](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-03.png)
-
-Select the Northwind Inventory application, searching if necessary to find it.
-
-![Clicking the Northwind Inventory application](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-04.png)
-
-Now you can search for "Chai" 1️⃣ as before and select it to insert the adaptive card 2️⃣ .
-
-![Entering a search for Chai](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-05.png)
-
-Note that the adaptive card won't work until you send the message. If the recipient doesn't have Microsoft Outlook, they won't be able to view the card, and if they don't have the Northwind Inventory app installed, they won't be able to take action on it.
-
-![Taking action on a message in Outlook](../../assets/images/extend-message-ext-01/02-04-Test-ME-Outlook-07a.png)
 
 ### Step 6 (optional) - View Northwind database in Azure Storage Explorer
 
