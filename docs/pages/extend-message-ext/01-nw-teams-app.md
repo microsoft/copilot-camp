@@ -409,6 +409,7 @@ The first time your app runs, you may be prompted to allow NodeJS to go through 
 
 It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.
 
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
 Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
