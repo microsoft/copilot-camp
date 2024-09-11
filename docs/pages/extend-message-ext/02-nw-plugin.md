@@ -21,9 +21,26 @@ In this lab you will:
 
 ## Exercise 1 - Run the sample as a Copilot plugin
 
+If you are coming from previous lab, you can keep the debugger running and skip Step 1 and go to Step 2 or if it had stopped, go to Step 1. 
 
+### Step 1 : Run the app locally
 
-## Step 1 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
+Restart by clicking F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.
+
+![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
+
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
+
+![Open](../../assets/images/extend-message-ext-01/nw-open.png)
+
+Once opened it immediately ask you where you want to open the app in. By default it's personal chat. You could also select it in a channel or group chat as shown. Select "Open".
+
+![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
+
+Now you are in a personal chat with the app.
+
+## Step 2 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
 !!! tip inline "Reminder"
     To perform the following exercise, your account must have a valid license for Copilot for Microsoft 365.
 Go to Teams in browser [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) logged into your developer tenant.
@@ -69,7 +86,7 @@ You should be able to see when Copilot calls your plugin. For example, after the
 
 
 
-## Step 2 - Test in Microsoft Copilot for Microsoft 365 (multiple parameters)
+## Step 3 - Test in Microsoft Copilot for Microsoft 365 (multiple parameters)
 
 In this exercise, you'll try some prompts that exercise the multi-parameter feature in the sample plugin. These prompts will request data that can be retrieved by name, category, inventory status, supplier city, and stock level, as defined in [the manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json).
 
