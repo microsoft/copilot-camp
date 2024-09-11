@@ -1,4 +1,4 @@
-# Lab E4 - Add adaptive cards
+# Lab E5 - Add adaptive cards
 
 In this lab you will further enhance the reponse from Copilot for Microsoft 365 from text to rich cards using Adaptive Cards. 
 
