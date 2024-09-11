@@ -8,8 +8,8 @@ The samples that were hosted here have turned into labs, and the plain samples h
 
 | | Sample | Lab |
 |---|---|---|
-| Trey Research Copilot Agent with API Plugin | typescript:<br />- [anonymous](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research)<br />- [with auth](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research-auth) | [labs E0-E1](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
-| Geo-locator Game | [instructions only](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) | [labs E0, E2-E6](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
+| Trey Research Copilot Agent with API Plugin | typescript:<br />- [anonymous](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research)<br />- [with auth](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research-auth) | [labs E0, E2-E8](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
+| Geo-locator Game | [instructions only](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) | [labs E0-E1](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
  | Northwind Inventory Message Extension Plugin | [typescript](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-ts) <br /> [C#](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-csharp) <br />[Python](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-python)  | [labs M0-M5](https://microsoft.github.io/copilot-camp/pages/extend-message-ext/) |
 
 
