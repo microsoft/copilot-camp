@@ -9,8 +9,10 @@ In this lab you will secure your Northwind plugin from the previous lab with aut
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) (📍You are here)
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
+!!! warning   "Attention"
+    This lab requires you to have an Azure Subscripton to provision bot services.
 
-    !!! tip "NOTE"
+!!! tip "NOTE"
     The completed exercise with all of the code changes can be downloaded [from here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/). This can be useful for troubleshooting purposes.
     If you ever need to reset your edits, you can clone again the repository and start over.
 
@@ -44,15 +46,24 @@ Luckily for you, we’ve streamlined everything so that it’s ready to go as so
 
 ### Step 1: Copy files and folders
 
-Copy the entire folder [entra](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/) and its contents **entra.bot.manifest.json** and  **entra.graph.manifest.json**  into the folder **infra** of your current working project folder from the previous lab. These files are needed to provision the Entra IDs needed for the bot as well as the one for graph for token exchange between them. 
+Create a new folder called **entra** inside folder **infra** in your root folder. 
 
-Next copy over the files [azure.local.bicep](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep) and [azure.parameters.local.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json) to help with the bot registration on F5 into the same **infra** folder. This will ensure the bot service is provisioned in Azure even on local run of projec. This is required for this authentication flow.
+Create two new files in the **entra** folder called **entra.bot.manifest.json** and **entra.graph.manifest.json** 
 
-> When Teams Toolkit prepares the app it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
+Copy code from this [file](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.bot.manifest.json){target=_blank} into **entra.bot.manifest.json** and same for **entra.graph.manifest.json** from this [file](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.graph.manifest.json){target=_blank}.
+
+These files are needed to provision the Entra ID app registrations (previously know as Azure Active Directory app registrations) needed for the bot as well as the one for graph for token exchange between them. 
+
+Next in the **infra** folder create files **azure.local.bicep** and copy code from this [file](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep){target=_blank} and create file **azure.parameters.local.json** in the same folder **infra** and copy code from this [file](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json){target=_blank}
+
+These file help with the bot registration. This will ensure the bot service is provisioned in Azure even when you run app locally. This is required for this authentication flow.
+
+!!! note "What is happening with these files?"
+    When Teams Toolkit runs the app locally, it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
 
 ### Step 2: Update existing code
 
-Next, open file **azurebot.bicep** under **botRegistration** folder which is under **infra** folder and add below code snippet after declaration of *param botAppDomain*
+Next, open file **azurebot.bicep** under **botRegistration** folder which is under **infra** folder and add below code snippet after declaration of "param botAppDomain"
 
 ```bicep
 param graphAadAppClientId string
@@ -368,7 +379,24 @@ Now to go **appPackage** > **manifest.json** and add the command inside the *com
 ```
 So you have now added a new non authenticated command to search contacts from a mock list. 
 
-### Step 2: Run the application in Teams to test new command
+### Step 2: Sign in to Azure in Teams Toolkit
+
+Teams Toolkit requires you to sign in to an Azure account and have a subscription before you can provision the resource instances. You'll then use these resources to deploy your app to host it in Azure.
+
+On the Activity Bar of your project editor, select the Microsoft Teams icon 1️⃣. This will open the Teams Toolkit extension panel.
+
+On the Teams Toolkit panel, under Accounts, select "Sign in to Azure" 2️⃣.
+
+![Sign into azure](../../assets/images/extend-message-ext-04/03-sign-into-azure.png)
+
+In the dialog that appears, select "Sign in".
+
+![Sign in dialog](../../assets/images/extend-message-ext-04/03-sign-into-azure-alert.png)
+
+
+### Step 3: Run the application in Teams to test new command
+
+
 To test the new command you need to run the app locally.
 
 Click F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.
@@ -416,21 +444,32 @@ If it lists the contacts as shown above, the command is working, but with mock d
 
 In the previous step, you have laid the foundation for the new command. Next you will add authentication on top of the command, replace the mock contact list and replace it with actual contact list from the logged in user's Outlook contacts.
 
-You will first install some npm packages needed for the plugin.
+You will first install some npm packages needed for the plugin. Create a new terminal window in the project.
+
 Run below script in the terminal :
 
 ```CLI
 npm i @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
 ```
+Locate **config.ts** file in the **src** folder. Add a "," after `storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING` and add the new property and value for `connectionName` as below.
+
+<pre>
+ const config = {
+  botId: process.env.BOT_ID,
+  botPassword: process.env.BOT_PASSWORD,
+  storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING<b>,
+  connectionName: process.env.CONNECTION_NAME</b>
+};
+</pre>
 
 Now create a folder called **services** under **src** folder of your base project.
-Add the files **AuthService.ts** and **GraphService.ts** as is into the **services** folder. 
+Create two files **AuthService.ts** and **GraphService.ts** in the **services** folder. 
 
 - **AuthService** : contains a class that provides authentication services. It includes a method **getSignInLink** which asynchronously retrieves a sign-in URL from a client using specific connection details and returns this URL.
 
 - **GraphService** : defines a class that interacts with the Microsoft Graph API. It initializes a Graph client using an authentication token and provides a method getContacts to fetch the user's contacts, selecting specific fields (displayName and emailAddresses).
 
-Here is the code for **AuthService.ts**
+Next, copy paste below code into **AuthService.ts**
 
 ```JavaScript
 import {
@@ -519,7 +558,7 @@ export class AuthService {
 
 ```
 
-Here is the code for **GraphService.ts**
+Next, copy paste below code into **GraphService.ts**
 
 ```JavaScript
 import { Client } from '@microsoft/microsoft-graph-client';
@@ -553,18 +592,7 @@ export class GraphService {
 
 ```
 
-Now append a node for *connectionName* into the **config.ts** file in the **src** folder, we will use this configuration value late. 
 
-<pre>
- const config = {
-  botId: process.env.BOT_ID,
-  botPassword: process.env.BOT_PASSWORD,
-  storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING<b>,
-  connectionName: process.env.CONNECTION_NAME</b>
-};
-
-export default config;
-</pre>
 
 Now, go back to the **supplierContactSearchCommand.ts** file and import these two services we just added.
 
@@ -600,7 +628,7 @@ Next go to **appPackage/manifest.json** file and update the node *validDomains* 
     ]
 ```
 
-Also add a node for *webApplicationInfo* and update it with below value
+Also add comma "," after `validDomains` array and add a node for *webApplicationInfo* and update it with below value
 
 ```JSON
     "webApplicationInfo": {
@@ -608,11 +636,39 @@ Also add a node for *webApplicationInfo* and update it with below value
         "resource": "api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}"
     },
 ```
+Next, upgrade the manifest version from "1.0.10" to "1.0.11" so the changes are reflected. 
+
 These manifest changes will make sure the sign-in url is correctly formed and sent to the user for consent.
 
 ## Exercise 4:  Test authentication
 
-### Step 1: Enter test data
+### Step 1: Run app locally 
+Stop the local debugger if it is kept running. Since you have updated the manifest with a new command, you will want to re install the app with the new package. 
+
+Restart debugger by clicking F5, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.
+
+![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
+
+!!! pied-piper "Provision"
+    Here you will again get a dialog confirming if you want to provision the resources. Select "Provision". This is not actually provisioning new resources just overwriting existing resources. 
+
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
+
+![Open](../../assets/images/extend-message-ext-01/nw-open.png)
+
+Once opened it immediately ask you where you want to open the app in. By default it's personal chat. You could also select it in a channel or group chat as shown. Select "Open".
+
+![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
+
+Now you are in a personal chat with the app. But we are testing in Copilt so follow next instruction. 
+
+
+In Teams click on **Chat** and then **Copilot**. Copilot should be the top-most option.
+Click on the **Plugin icon** and select **Northwind Inventory** to enable the plugin.
+
+
+### Step 2 : Enter test data
 Before we test the plugin to bring actual contacts, we'll need to add some contact information.
 So let us first ensure we have some contacts in Microsoft 365.
 
@@ -632,14 +688,7 @@ The app is simple, and will only display the person or company name and email ad
 
 ### Step 2: Test in Copilot
 
-Let's re run the project since we made changes to the appPackage that is the manifest.json file. We'll need to repackage and sideload. Once you select **F5**, you will see the **provision** dialog again, just proceed to do so as it is only going to ignore if resources exist.
-Now install the app as explained in Exercise 2, Step 2 but instead of testing the app in the Teams personal chat, open Copilot for Microsoft 365.
-
-Make sure the plugin is enabled in the chat. 
-
-![toggler](../../assets/images/extend-message-ext-04/toggler.png)
-
-Now ask Copilot for contacts by using this prompt- **Find my conacts with name {first name} in Northwind** (Replace {first name} with what name you have given for your contacts in Exercise 4, Step 1)
+Ask Copilot for contacts by using this prompt- **Find my conacts with name {first name} in Northwind** (Replace {first name} with what name you have given for your contacts in Exercise 4, Step 1)
 
 You will get a sign-in button to authenticate (one time only) as shown in the screen. 
 
