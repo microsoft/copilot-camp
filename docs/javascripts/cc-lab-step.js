@@ -326,8 +326,7 @@
             // mkdocs sets the id of each h2 or h3 element to the kabab case of the text
             return '#' +
                    innerText.toLowerCase()
-                            .replace(':', '')
-                            .replace("'", '')
+                            .replace(/[.,\/#!$%\^&\*;:{}?=\-_`~()]/g,'')
                             .replace(/ /g, '-');
         }
     }
