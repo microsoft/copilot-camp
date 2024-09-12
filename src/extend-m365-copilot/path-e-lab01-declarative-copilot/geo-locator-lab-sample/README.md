@@ -24,9 +24,8 @@ Ensure you have the following prerequisites:
 3. Copy file **.env.dev.sample** and paste in folder **env** and rename to `.env.dev`. Populate your tenant name for the `TENANT_NAME` value of the env file. Eg if you have a SharePoint site `https://XYZ.sharepoint.com/sites/contoso`, **XYZ** is the TENANT_NAME.
 4. Create a new Teams app by clicking `Provision` in the "Lifecycle" section.
 5. From the launch configuration dropdown, choose either `Preview in Copilot (Edge)` or `Preview in Copilot (Chrome)`.
-6. When the Copilot app loads in the browser, click the "…" menu and select "Copilot chats." Your declarative agent will appear in the right rail.
-7. Click on your declarative agent to customize the experience, showcasing its logo and name.
-8. Interact with your copilot by asking questions or issuing commands, and observe its responses based on the configurations.
+6. When the Copilot app loads in the browser. Your declarative agent will appear in the right rail under "Extensions".
+7. Interact with your agent and observe its responses based on the configurations.
 
 ## Template Contents
 
