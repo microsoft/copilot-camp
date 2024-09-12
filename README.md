@@ -2,7 +2,7 @@
 
 This repo is for hosting a virtual workshop for coders who want to build agents and connectors for Microsoft 365 Copilot. The content is still in development but our labs are ready for testing; please check it out!
 
-Please visit Copilot Camp at [https://aka.ms/copilot-camp](https://aka.ms/copilot-camp!)
+Please visit Copilot Camp at [https://aka.ms/copilotdevcamp](https://aka.ms/copilotdevcamp)
 
 The samples that were hosted here have turned into labs, and the plain samples have moved.
 
@@ -10,7 +10,7 @@ The samples that were hosted here have turned into labs, and the plain samples h
 |---|---|---|
 | Trey Research Copilot Agent with API Plugin | typescript:<br />- [anonymous](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research)<br />- [with auth](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research-auth) | [labs E0, E2-E8](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
 | Geo-locator Game | [instructions only](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) | [labs E0-E1](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
- | Northwind Inventory Message Extension Plugin | [typescript](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-ts) <br /> [C#](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-csharp) <br />[Python](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/msgext-northwind-inventory-python)  | [labs M0-M5](https://microsoft.github.io/copilot-camp/pages/extend-message-ext/) |
+ | Custom copilot agent with authentication (SSO) and actions | [typescript](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie)  | [labs B0-B5](https://microsoft.github.io/copilot-camp/pages/custom-engine/) |
 
 
 We'd love it if you would test out the [Copilot Camp](https://aka.ms/copilot-camp) labs, and very much appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues.
