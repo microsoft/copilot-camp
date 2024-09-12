@@ -25,7 +25,7 @@
             "name": "OneDriveAndSharePoint",
             "items_by_url": [
             {
-                "url": "https://<tenant-name>.sharepoint.com/sites/contoso"
+                "url": "https://${{TENANT_NAME}}.sharepoint.com/sites/contoso"
             }
         ]
         }
