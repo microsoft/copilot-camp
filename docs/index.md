@@ -21,21 +21,74 @@ _Note: These labs require the "Private Preview" for Copilot for M365 extensibili
 
 ---8<--- "b-path-links.md"
 
-## It's still early ... so what's next?
+## Video Briefing
 
-We're starting with the hands-on labs because those require the most testing. We expect them to require some updates as the products move to Public Preview.
+???+ info "Where do I start?"
+    <div class="video">
+      <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
+      <div>Building Copilot agents and plugins: when to use what (for professional devs)</div>
+    </div>
 
-We aspire to release this in mid-September 2024 to coincide with the [Microsoft AI Tour](https://envision.microsoft.com/home#festivalblade1){target=_blank}. Between now and then we want to add a lot of cool fetures remininscent of [App Camp](https://aka.ms/app-camp){target=_blank}, including:
 
- * Lots of videos to help people choose the right approach, understand the concepts, and provide a walk-through of each lab
- * Written details and explanations users can open up to view if they wish
- * Fun branding and graphics
- * "Train the trainer" decks so our field and MVPs can deliver the workshop in person
- * Possibly alternate instructions for in-person labs if we are able to provide pre-configured tenants for users
+???+ info "BUILD Path - Developing Custom Agents for Microsoft 365 Copilot"
+    <div class="tinyVideo">
+      <img src="/copilot-camp/assets/images/video-coming-soon.png" style="height:150px;"></img>
+      <div>Building Custom Agents for Microsoft 365 Copilot</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/VLP32Ci02M0" frameborder="0" allowfullscreen></iframe>
+      <div>Chat over your data with Azure OpenAI and Teams AI Library</div>
+    </div>
 
-Labs are only useful if students understand what they did! And we aspire to make this a comprehensive experience where professional devs can learn everything they need to build world-class, production level Copilot solutions.
 
-Do you have ideas? Please let us know in the Teams chat or in the Github issues!
+???+ info "EXTEND Path - Developing Copilot Agents for Microsoft 365 Copilot"
+    <div class="tinyVideo">
+      <img src="/copilot-camp/assets/images/video-coming-soon.png" style="height:150px;"></img>
+      <div>Building Copilot Agents for Microsoft 365 Copilot</div>
+    </div>
+    <div class="tinyVideo">
+      <img src="/copilot-camp/assets/images/video-coming-soon.png" style="height:150px;"></img>
+      <div>Building Copilot Agents with API Plugins</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/hJX25MZJes8" frameborder="0" allowfullscreen></iframe>
+      <div>Making the right choice: Copilot plugins vs. Graph connectors</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/NwqOX_Wz024" frameborder="0" allowfullscreen></iframe>
+      <div>Troubleshoot your Copilot plugins with Developer mode</div>
+    </div>
+
+
+???+ info "Learn the basics with Doodle to Code!"
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/PGI6oxbcYDc" frameborder="0" allowfullscreen></iframe>
+      <div>What is Generative AI?</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/1k4XGgsqfTM" frameborder="0" allowfullscreen></iframe>
+      <div>What is Retrieval Augmented Generation (RAG)?</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/1fC8HCVwYpk" frameborder="0" allowfullscreen></iframe>
+      <div>Create an AI Powered Chatbot in Microsoft Teams with Teams AI Library</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/xAXlFGSH1II" frameborder="0" allowfullscreen></iframe>
+      <div>Bring your AI App to Microsoft Teams from Azure OpenAI Studio</div>
+    </div>
+
+???+ info "Microsoft 365 Developer Essentials"
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/pYe2NqKhJoM" frameborder="0" allowfullscreen></iframe>
+      <div>Adaptive cards are everywhere</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/0rSTPGC9iYI" frameborder="0" allowfullscreen></iframe>
+      <div>Where is the Microsoft 365 API?</div>
+    </div>
+
+    
 
 ## Code of Conduct
 

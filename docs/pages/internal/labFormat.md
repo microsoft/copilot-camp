@@ -53,7 +53,7 @@ Please add this query string to links to Microsoft documentation: ?WT.mc_id=m365
 
 ???+ info "Video briefing"
     <div class="video">
-      <img src="/app-camp/assets/video-coming-soon.png"></img>
+      <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
       <div>Caption</div>
     </div>
 
@@ -67,7 +67,7 @@ Please add this query string to links to Microsoft documentation: ?WT.mc_id=m365
       <div>Caption 2</div>
     </div>
     <div class="tinyVideo">
-      <img src="/app-camp/assets/video-coming-soon.png"></img>
+      <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
       <div>Caption 3</div>
     </div>
 
