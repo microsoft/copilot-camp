@@ -1,15 +1,15 @@
-# Lab E2 - First API Plugin
+# Lab E2: First API Plugin
 
 In this lab you will set up an API based on Azure Functions and install it as an API plugin for Copilot for Microsoft 365.
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](./00-prerequisites.md)
-    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
-    - [Lab E2 - Build an API](./02-build-the-api.md) (📍You are here)
-    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
-    - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
-    - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
-    - [Lab E6 - Add authentication](./06-add-authentication.md)
+   : [Lab E0: Prerequisites](./00-prerequisites.md)
+   : [Lab E1: Declarative Copilot](./01-declarative-copilot.md)
+   : [Lab E2: Build an API](./02-build-the-api.md) (📍You are here)
+   : [Lab E3: Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+   : [Lab E4: Enhance the API and Plugin](./04-enhance-api-plugin.md)
+   : [Lab E5: Add Adaptive Cards](./05-add-adaptive-card.md)
+   : [Lab E6: Add authentication](./06-add-authentication.md)
 
 ---8<--- "e-path-prelude.md"
 
@@ -22,18 +22,18 @@ The code consists of Azure Functions written in TypeScript, backed by a database
 ???+ Question "How did you create this API?"
     The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new project and select "Copilot Extensions", then "Declarative Copilot" and "Declarative Copilot with a new API". The wording may change as the platform becomes generally available.
 
-## Exercise 1 - Configure and run the starting application
+## Exercise 1: Configure and run the starting application
 
-### Step 1 - Install additional prerequisites
+### Step 1: Install additional prerequisites
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
-* [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) - You will use this to test your API locally
-* (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer) - This will allow you to view and modify the Trey Research database
+* [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): You will use this to test your API locally
+* (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer): This will allow you to view and modify the Trey Research database
 
 <cc-lab-end-step lab="e2" exercise="1" step="1" />
 
-### Step 2 - Download the starting application
+### Step 2: Download the starting application
 
 Begin by downloading the Copilot developer camp repository at [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}. Select the "Code" button and clone or download the content to your computer.
 
@@ -42,7 +42,7 @@ Copy this folder to a location on your computer where you want to do your work. 
 
 <cc-lab-end-step lab="e2" exercise="1" step="2" />
 
-### Step 3 - Set up the local environment files
+### Step 3: Set up the local environment files
 
 Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure this line is present:
 
@@ -110,7 +110,7 @@ Continue to try the various GET requests in the .http file to find consultants w
 
 If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer), you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
 
-Within the Azure Storage Explorer, open the "Emulator & Attached" selection and pick the "(Emulator - Default Ports)" collection; then drill down to "Tables". You shold see 3 tables:
+Within the Azure Storage Explorer, open the "Emulator & Attached" selection and pick the "(Emulator: Default Ports)" collection; then drill down to "Tables". You shold see 3 tables:
 
   * **Consultant:** This table stores details about Trey Research consultants
   * **Project:** This table stores details about Trey Research projects
