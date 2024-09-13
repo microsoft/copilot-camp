@@ -1,6 +1,7 @@
 # Lab E1 - Customize Copilot by building a declarative agent
 
-In this lab, you'll build a declarative agent using Teams Toolkit for Visual Studio Code. While the toolkit isn't required, it simplifies scaffolding, packaging, and deploying your app by managing manifest files and icons.
+In this lab, you'll build a simple declarative agent using Teams Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
+
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md)
@@ -51,12 +52,11 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 
 >You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
 
-## Exercise 1: Scaffold a declarative agent from template
+## Exercise 1 :Scaffold a declarative agent from template
 You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
 So to keep things as simple as possible you have will be installing Teams Toolkit.
 
-
-### Step 1: Install Teams Toolkit's prerelease version
+### Step 1 :Install Teams Toolkit's prerelease version
 
 Go to extensions tab of your Visual Studio Code and type **team** as in step 1 in the image below.
 Select **Teams Toolkit** as step 2. 
@@ -69,7 +69,7 @@ Select **Switch to Pre-Release Version**
 
 <cc-lab-end-step lab="e1" exercise="1" step="1" />
 
-### Step 2: Use Teams Toolkit to create a declarative agent app
+### Step 2 :Use Teams Toolkit to create a declarative agent app
 
 Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Create a New App**
 
@@ -107,7 +107,7 @@ Well done! You have successfully set up the base decllarative Copilot app! Now, 
 <cc-lab-end-step lab="e1" exercise="1" step="2" />
 
 
-### Step 3 - Set up accounts in Teams Toolkit
+### Step 3 :Set up accounts in Teams Toolkit
 
 Now select the Teams Toolkit icon in the left 1️⃣ from your working folder . If it offers options to create a new project, you're probably in the wrong folder. 
 
@@ -126,7 +126,7 @@ Now verify that the "Sideloading enabled" checker has a green checkmark. If it d
 
 <cc-lab-end-step lab="e1" exercise="1" step="3" />
 
-### Step 4 : Understanding the files in the app
+### Step 4 :Understanding the files in the app
 
 Here's how the base project looks: 
 
@@ -167,9 +167,9 @@ You could also update the logo files `color.png` and `outline.png` to make it ma
 
 <cc-lab-end-step lab="e1" exercise="1" step="4" />
 
-## Exercise 2: Update instructions and icons
+## Exercise 2 :Update instructions and icons
 
-### Step 1: Update necessary files
+### Step 1 :Update necessary files
 First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png){target=_blank} and replace it with the image of same name in the folder **appPackage** in your base project. 
 
 Next, go to the file **appPackage/manifest.json**  in your root project and find the node **copilotExtensions**. Update the id value of the declarativeCopilots array's first entry from `declarativeCopilot` to `dcGeolocator` to make this ID unique.
@@ -228,7 +228,7 @@ Would you like to play another round, try a special challenge?
 ```
 There is one important enhancement we will do to make sure our agent is perfect and will give the user some tips on starting the game. Follow the next step. 
 
-### Step 2 - Add conversation starters
+### Step 2  :Add conversation starters
 
 You can enhance user engagement with the declarative agent by adding conversation starters to it. These initial prompts act as ice breakers and can be added by updating the declarativeCopilot.json file.
 
@@ -256,7 +256,7 @@ Now all the changes are done to the agent, it's time to test it.
 
 <cc-lab-end-step lab="e1" exercise="2" step="1" />
 
-### Step 2: Test the app
+### Step 3 :Test the app
 
 To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision". 
 In this step Teams toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
@@ -285,13 +285,13 @@ Check out the demo of the game.
 
 <cc-lab-end-step lab="e1" exercise="2" step="2" />
 
-## Bonus Exercise 3: Add files for reference
-
+## Exercise 3 :Add files for reference
+(Bonus exercise) 
 Repeating the same game can get boring. To keep things interesting, the game needs access to data that can be regularly updated. Think of it as a small knowledge pool for your agent to refresh the game and increase the level of challenge.
-
 Today, declarative agents can refer to websites, SharePoint sites and OneDrive to become these little focus data pools for it to work with. And you will see much more in the coming labs where you will maximise it's capabilities with plugins and connectors. 
 
-### Step 1 - Upload files to SharePoint.
+### Step 1 :Upload files to SharePoint.
+
 Download this zip file consisting of two PDF file by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
 
 Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
@@ -299,7 +299,7 @@ These documents are **historical_map.pdf** and **travelers_diary** to help make 
 
 Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso`
 
-### Step 2 - Upload agent manifest
+### Step 2 :Upload agent manifest
 
 Go to the environment file called **.env.dev** and create a new variable called "SP_SITE_URL" and paste the absolute url of the SharePoint site as its value.
 Next, go to the agent manifest **appPackage/declarativeCopilot.json** and add a comma `,` after conversation_starters array and paste the belwo new array object for extending the agent's capability to refer to SharePoint data to a particular site.
@@ -320,12 +320,12 @@ Next, go to the agent manifest **appPackage/declarativeCopilot.json** and add a 
 This makes sure the declarative agent now gets to read documents in this SharePoint site specifically to help spice up the game. 
 There is no limit to how many URLs you can add 💪🏼
 
-### Step 3 - Upgrade app manifest
+### Step 3 :Upgrade app manifest
 
 Next, go to the file **appPackage/manifest.json** and upgrade the manifest version from "1.0.0"" to "1.0.1" so the changes are reflected. 
 These manifest changes will make sure the sign-in url is correctly formed and sent to the user for consent.
 
-### Step 4: Test the app
+### Step 4 :Test the app
 
 - To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision" for packaging and installing the upgraded declarative agent to your own app catalog.
 
