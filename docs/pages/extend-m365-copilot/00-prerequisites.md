@@ -1,7 +1,7 @@
 
 # Lab E0 - Prerequisites
 
-In this lab, you will set up the development environment to build, test, and deploy the plugins that will extend the capabilities of Copilot for Microsoft 365.
+In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md) (📍You are here)
@@ -16,14 +16,12 @@ In this lab, you will set up the development environment to build, test, and dep
 
 In this lab you will learn:
 
-- How to set up your developer tenant for the entire lab exercises
+- How to set up your Microsoft 365 tenant to run the entire lab exercise for this path
 - How to install and configure Teams toolkit for Visual Studio Code
 
-> [!IMPORTANT]
-> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
+!!! pied-piper "Disclaimer"
+    These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
-> [!IMPORTANT]  
-> To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
 ## Exercise 1: Configure Teams upload policy
 
