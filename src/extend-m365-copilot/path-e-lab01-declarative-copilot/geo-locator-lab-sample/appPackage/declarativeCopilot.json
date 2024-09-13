@@ -11,11 +11,11 @@
 
          },
         {
-            "title": "Getting Help",
+            "title": "Ready for a Challenge",
             "text": "Let us try something different. Can we play a round using the travelers diary?"
         },
         { 
-            "title": "Getting Started",
+            "title": "Feeling More Adventurous",
             "text": "I am in the mood for a challenge! Can we play the game using the historical map? I want to see if I can figure out the city from those ancient clues."
         }
     ],
@@ -25,7 +25,7 @@
             "name": "OneDriveAndSharePoint",
             "items_by_url": [
             {
-                "url": "https://${{TENANT_NAME}}.sharepoint.com/sites/contoso"
+                "url": "${{SP_SITE_URL}}"
             }
         ]
         }

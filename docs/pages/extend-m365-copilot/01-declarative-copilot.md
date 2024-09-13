@@ -1,12 +1,12 @@
-# Lab E1 - Customize Copilot by building a declarative copilot
+# Lab E1 - Customize Copilot by building a declarative agent
 
-In this lab you will build a declarative copilot using Teams Toolkit for Visual Studio Code. This tool is not mandatory for you to create a declarative copilot but it makes it so much easier to scaffold, package and deploy your app. 
+In this lab, you'll build a declarative agent using Teams Toolkit for Visual Studio Code. While the toolkit isn't required, it simplifies scaffolding, packaging, and deploying your app by managing manifest files and icons.
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md)
-    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md) (📍You are here)
+    - [Lab E1 - declarative agent](./01-declarative-copilot.md) (📍You are here)
     - [Lab E2 - Build an API](./02-build-the-api.md)
-    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+    - [Lab E3 - Add a declarative agent and API Plugin](./03-add-declarative-copilot.md) 
     - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
@@ -15,34 +15,45 @@ In this lab you will build a declarative copilot using Teams Toolkit for Visual 
 
 In this lab you will learn:
 
-- What is a declarative copilot for Microsoft 365
+- What is a declarative agent for Microsoft 365 Copilot
 - Install [Teams toolkit for VS Code prerelease version](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/install-teams-toolkit?tabs=vscode#install-a-prerelease-version){target=_blank}
-- Create a basic declarative copilot using Teams Toolkit 
-- Customise the basic app to create the geo locator game
+- Create a declarative agent using Teams Toolkit template
+- Customise the agent to create the geo locator game using instructions 
 - Learn how to run and test your app 
+- For bonus exercise, you will need a SharePoint teams site
 
 ## Introduction
 
-Welcome on board to building your own declarative copilot! This is the easiest way to customise Copilot for Microsoft 365 by simply declaring instructions or by adding skills and knowledge to craft your own Copilot with the power of everything you like about Copilot for Microsoft 365. These copilots enhance collaboration, boost productivity, and streamline workflows and most importantly they tailor your Copilot to automate complex tasks and create consistent, personalised experiences. Let's dive in and make your Copilot work magic!
+Welcome on board to building your own declarative agent! This is the easiest way to get a tailor made AI assistant supported by Microsoft 365 Copilot by just giving instructions or the necessary data for it to focus on. These specilist agents are here to give you the focused experience you need in your workspace. 
+Let's dive in and make your Copilot work magic!
 
-## Anatomy of the app package
+In this lab you will start out building a declarative agent using Teams Toolkit with a default template used in the tool. This is to help you get started with something.
+Next, you will modify your agent to be focused on a geo location game. 
 
-You will see as we develop more and more extensions to Copilot,  that in the end what you will build is collection of few file in a zip file which we will refer to has an `app package` that you will  then install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a declarative copilot is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app. 
+The goal of your AI is to provide a fun break from work while helping you learn about different cities around the world. It offers abstract clues for you to identify a city. The more clues you need, the fewer points you earn. At the end of the game, it will reveal your final score.
+
+![game](../../assets/images/extend-m365-copilot-01/game.png)
+
+As a bonus you will also give your agent some files to refer to a secret diary 🕵🏽 and a map 🗺️ to give more challenges to the player. 
+
+So let's begin 💪🏼
+
+## Anatomy of a Declarative agent app
+
+You will see as we develop more and more extensions to Copilot,  that in the end what you will build is collection of few file in a zip file which we will refer to has an `app package` that you will  then install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a declarative agent is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app. 
 
 
-| Element                | Description                                                                                 |
-|-----------------------------|---------------------------------------------------------------------------------------------|
-| **App manifest**            | Describes app configuration, capabilities, required resources, and important attributes.    |
-| **App icons**               | Requires a color and outline icon for your declarative copilot.                             |
-| **Declarative copilot manifest** | Describes copilot configuration, required fields, capabilities, conversation starters, and actions. |
-| **Plugin manifest (Optional)**   | Describes plugin configuration, required fields, and capabilities.                         |
+| Element                | Description                                                                                 |Name of file                                                                                
+|-----------------------------|---------------------------------------------------------------------------------------------|---|
+| **App manifest**            | Describes app configuration, capabilities, required resources, and important attributes.    |manifest.json|
+| **App icons**               | Requires a color (192x192) and outline (32x32) icon for your declarative agent.                             |icon.png, color.png|
+| **Declarative agent manifest** | Describes agent configuration, instructions, required fields, capabilities, conversation starters, and actions. |declarativeCopilot.json|
 
-> In this lab we will have not have the plugin manifest but you can find it in more advanced labs in Copilot developer camp.
+>You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
 
-
-## Exercise 1: Scaffold a declarative copilot from template
-You can use just any editor to create a declarative copilot if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
-So to keep things as simple as possible  you have will be installing Teams Toolkit.
+## Exercise 1: Scaffold a declarative agent from template
+You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
+So to keep things as simple as possible you have will be installing Teams Toolkit.
 
 
 ### Step 1: Install Teams Toolkit's prerelease version
@@ -58,7 +69,7 @@ Select **Switch to Pre-Release Version**
 
 <cc-lab-end-step lab="e1" exercise="1" step="1" />
 
-### Step 2: Use Teams Toolkit to create a declarative copilot app
+### Step 2: Use Teams Toolkit to create a declarative agent app
 
 Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Create a New App**
 
@@ -68,16 +79,16 @@ A panel opens up where you need to select **Copilot Extension** from the list of
 
 ![project types](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
 
-Next, you will be asked to choose the app feature of Copilot extension. Choose `Declarative Copilot` and select Enter. 
+Next, you will be asked to choose the app feature of Copilot extension. Choose `declarative agent` and select Enter. 
 
 ![app feature types](../../assets/images/extend-m365-copilot-01/app-feature.png)
 
-Next, you will be asked to choose want to create a basic declarative Copilot or one with an API plugin.  Choose the **No Plugin** option.
+Next, you will be asked to choose want to create a basic declarative agent or one with an API plugin.  Choose the **No Plugin** option.
 
-![select the type of declarative copilot](../../assets/images/extend-m365-copilot-01/type.png)
+![select the type of declarative agent](../../assets/images/extend-m365-copilot-01/type.png)
 
 !!! tip "Why not create one with API plugin here? "
-     You will build API plugins in the next lab and you will also learn how to integrate an API plugin with a declarative Copilot in the following one in this same path. Here we are just going to create a declarative Copilot. Baby steps!
+     You will build API plugins in the next lab and you will also learn how to integrate an API plugin with a declarative agent in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
 
 Next, type in the directory where the project folder has to be created.
 
@@ -126,25 +137,19 @@ Here's how the base project looks:
 | `env`                                | Environment files              
 | `appPackage/color.png`           | Teams application logo image                        |
 | `appPackage/outline.png`           | Teams application logo outline image                        |
-| `appPackage/declarativeCopilot.json` | Defines the behaviour and configurations of the declarative copilot.                                                |
-| `appPackage/manifest.json`           | Teams application manifest that defines metadata for your declarative copilot.                                      |
+| `appPackage/declarativeCopilot.json` | Defines settings and configurations of the declarative agent.                                                |
+| `appPackage/instruction.txt` | Defines the behaviour declarative agent.                                                |
+| `appPackage/manifest.json`           | Teams application manifest that defines metadata for your declarative agent.                                      |
 | `teamsapp.yml`                       | Main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
 
-In this lab, your main focus will be the  `declarativeCopilot.json` file located within the `appPackage` directory and it will also be where majority of the modifications to tailor your declarative copilot to specific requirements happen. 
-Let's look at it's nodes:
+The file that needs major update is the **appPackage/instruction.txt** file which is the core directives needed for your agent.
+It's a plain text file and you can write natural language instructions in it. 
 
-```
-{
-    "name": "Teams Toolkit declarative copilot",
-    "description": "Declarative copilot created with Teams Toolkit",
-    "instructions": "You are a declarative copilot and were created with Team Toolkit. You should start every response and answer to the user with \"Thanks for using Teams Toolkit to create your declarative copilot!\\n\" and then answer the questions and help the user."
-}
-```
+Another important file is **appPackage/declarativeCopilot.json** where there is a schema to be followed. Let's look at what the current schema has. 
 
-
-- The `name` key represents the name of the declarative copilot.
+- The `name` key represents the name of the declarative agent.
 - The `description` provides a description.
-- The `instructions` holds directives which will determine the operational behavior of this Copilot.
+- The `instructions` the path to the **instructions.txt** file which holds directives which will determine the operational behavior. You can also put your instructions as plain text as a value here. But for this lab we will use the **instructions.txt** file.
 
 Another important file is the `appPackage/manifest.json` file, which contains crucial metadata, including the package name, the developer’s name, and references to the copilot extensions utilised by the application. The following section from the manifest.json file illustrates these details:
 
@@ -158,16 +163,16 @@ Another important file is the `appPackage/manifest.json` file, which contains cr
         ]
     },
 ```
-You could also update the logo files `color.png` and `outline.png` to make it match your application's brand. In today's lab you will change  color.png file for it to stand out. 
+You could also update the logo files `color.png` and `outline.png` to make it match your application's brand. In today's lab you will change  color.png icon for the agent to stand out. 
 
 <cc-lab-end-step lab="e1" exercise="1" step="4" />
 
-## Exercise 2: Update with instructions for Geo Locator game
+## Exercise 2: Update instructions and icons
 
 ### Step 1: Update necessary files
-First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png) and replace it with the image of same name in the folder `appPackage` in your base project. 
+First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png){target=_blank} and replace it with the image of same name in the folder **appPackage** in your base project. 
 
-Next, go to the file `manifest.json` in the folder `appPackage` in your base project and find the node **copilotExtensions**. Update the id value of the declarativeCopilots array's first entry from `declarativeCopilot` to `dcGeolocator` to make this ID unique.
+Next, go to the file **appPackage/manifest.json**  in your root project and find the node **copilotExtensions**. Update the id value of the declarativeCopilots array's first entry from `declarativeCopilot` to `dcGeolocator` to make this ID unique.
 
 <pre>
  "copilotExtensions": {
@@ -181,72 +186,167 @@ Next, go to the file `manifest.json` in the folder `appPackage` in your base pro
 
 </pre>
 
-Next, go to the file `declarativeCopilot.json`. Copy the script provided below and use it to overwrite the existing contents of the file.
+Next, go to the file **appPackage/instruction.txt** and copy paste the below instruction to overwrite the existing contents of the file.
+
+```txt
+System Role: You are the game host for a geo-location guessing game. Your goal is to provide the player with clues about a specific city and guide them through the game until they guess the correct answer. You will progressively offer more detailed clues if the player guesses incorrectly. You will also reference PDF files in special rounds to create a clever and immersive game experience.
+
+Game play Instructions:
+Game Introduction Prompt
+Use the following prompt to welcome the player and explain the rules:
+Welcome to the Geo Location Game! I’ll give you clues about a city, and your task is to guess the name of the city. After each wrong guess, I’ll give you a more detailed clue. The fewer clues you use, the more points you score! Let’s get started. Here’s your first clue:
+Clue Progression Prompts
+Start with vague clues and become progressively specific if the player guesses incorrectly. Use the following structure:
+Clue 1: Provide a general geographical clue about the city (e.g., continent, climate, latitude/longitude).
+Clue 2: Offer a hint about the city’s landmarks or natural features (e.g., a famous monument, a river).
+Clue 3: Give a historical or cultural clue about the city (e.g., famous events, cultural significance).
+Clue 4: Offer a specific clue related to the city’s cuisine, local people, or industry.
+Response Handling
+After the player’s guess, respond accordingly:
+
+If the player guesses correctly, say:
+That’s correct! You’ve guessed the city in [number of clues] clues and earned [score] points. Would you like to play another round?
+If the guess is wrong, say:
+That’s correct! You’ve guessed the city in [number of clues] clues and earned [score] points. Would you like to play another round?
+PDF-Based Scenario
+For special rounds, use a PDF file to provide clues from a historical document, traveler's diary, or ancient map:
+This round is different! I’ve got a secret document to help us. I’ll read clues from this [historical map/traveler’s diary] and guide you to guess the city. Here’s the first clue:
+Reference the specific PDF to extract details:
+Traveler's Diary PDF,Historical Map PDF.
+Use emojis where necessary to have friendly tone. 
+Scorekeeping System
+Track how many clues the player uses and calculate points:
+
+1 clue: 10 points
+2 clues: 8 points
+3 clues: 5 points
+4 clues: 3 points
+End of Game Prompt
+After the player guesses the city or exhausts all clues, prompt:
+Would you like to play another round, try a special challenge?
 
 ```
-{
-    "$schema": "https://aka.ms/json-schemas/copilot-extensions/v1.0/declarative-copilot.schema.json",
-    "name": "Geo Locator Game (declarative copilot)",
-    "description": "This a Geo Locator Game declarative copilot", 
-    "instructions": "You are an enthusiastic Geo Locator Game declarative copilot, responsible for challenging, entertaining, and congratulating players as they navigate the game by guessing locations based on your vivid descriptions. Your primary objectives include: Challenge Players: Craft engaging and intricate geographical clues that align with the game's objectives. Use a mix of historical, cultural, and environmental facts to create a rich tapestry of hints that players must decipher. Entertain with Humor: Infuse your interactions with tailored humor that matches the player's guesses. Use a light-hearted and playful tone, incorporating puns, jokes, and witty remarks to keep the players entertained. Celebrate Success: When a player makes a correct guess, celebrate their achievement with exuberance. Use a combination of excitement, emojis, and uplifting humor to make their success feel special. Personalize celebrations to match the uniqueness of each correct guess. Keep Content Fresh: Continuously update your jokes, facts, and emojis to ensure interactions remain fresh and engaging for returning players. Incorporate current events, trending topics, and seasonal themes to keep the content relevant and exciting. Interactive Feedback: Provide feedback that adapts to the player's progress. If they are struggling, offer hints that gradually become more specific. If they are excelling, increase the difficulty of your clues to keep the challenge alive."
+There is one important enhancement we will do to make sure our agent is perfect and will give the user some tips on starting the game. Follow the next step. 
 
-}
+### Step 2 - Add conversation starters
+
+You can enhance user engagement with the declarative agent by adding conversation starters to it. These initial prompts act as ice breakers and can be added by updating the declarativeCopilot.json file.
+
+Open file `declarativeCopilot.json` and right after the `instructions` node add a comma `,` and paste below code.
+
+```JSON
+ "conversation_starters": [
+      { 
+            "title": "Getting Started",
+            "text":"I am ready to play the Geo Location Game! Give me a city to guess, and start with the first clue."          
+
+         },
+        {
+            "title": "Ready for a Challenge",
+            "text": "Let us try something different. Can we play a round using the travelers diary?"
+        },
+        { 
+            "title": "Feeling More Adventurous",
+            "text": "I am in the mood for a challenge! Can we play the game using the historical map? I want to see if I can figure out the city from those ancient clues."
+        }
+    ]
 ```
 
-Now all the changes are done to the app, it's time to test it.
+Now all the changes are done to the agent, it's time to test it.
 
 <cc-lab-end-step lab="e1" exercise="2" step="1" />
 
 ### Step 2: Test the app
 
-> At this point you should have already completed the [prerequisites](../extend-m365-copilot/00-prerequisites.md) lab and have logged into your developer tenant's Microsoft 365 account in the Teams Toolkit exension or it's left pane will not show up.
-
-To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under `LIFECYCLE` select `Provision`. 
+To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision". 
+In this step Teams toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
 
 !!! warning "Private Preview not enabled"
     Provision step will fail if the user is using a Tenant without Private Preview enabled. 
 
-Teams toolkit at this instance will package all the files inside the `appPackage` folder as a zip file and install it into your own app catalog.
+Go to Teams in browser [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) logged into your developer tenant.
+If you have a Copilot for Microsoft 365, the new app will be automatically pinned above your chats. Just open Teams, select “chats” and you’ll see Copilot.
 
-To test, you can now to Teams and select the `Copilot` app OR you could also use Teams toolkit and preview the app in Copilot by selecting `Preview in Copilot (Edge)` or `Preview in Copilot (Chrome)` from the launch configuration dropdown as shown below.
+Once the Copilot app is loaded, Find the "Geo Locator Game" from the right panel as shown. 
 
-![run app using Teams Toolkit](../../assets/images/extend-m365-copilot-01/dc-run.png)
+![launch](../../assets/images/extend-m365-copilot-01/launch-geo.png)
 
-Once the Copilot app is loaded, Select the "…" menu and select "Copilot chats".
+If you can't find it, this may be a long list and you can find your agent by expanding the list by selecting "see more"
 
-Select **Geo Locator Game (Declarative copilot)** on the right pane of the Copilot app.
+Once launched, you will be in this focused chat window with the agent. And you will see the conversation starters as marked below:
 
-You have now succefully loaded your Geo Locator Game with copilot. To say "Hi".
+![launched](../../assets/images/extend-m365-copilot-01/launched-geo.png)
 
-See the full demo of how you can test this app. 
+Select one of the conversation starters and it will fill your compose message box with the starter prompt, just waiting for you to hit "Enter" 'cause it's still only a your assistant and you to give the green light 🟢
 
-![dem0](../../assets/images/extend-m365-copilot-01/demo-dc.gif)
+Check out the demo of the game. 
+
+![demo](../../assets/images/extend-m365-copilot-01/demo.gif)
 
 <cc-lab-end-step lab="e1" exercise="2" step="2" />
 
-### Step 3: Add conversation starters
+## Bonus Exercise 3: Add files for reference
 
-You can enhance user engagement with the declarative copilot by adding conversation starters to it. These initial prompts act as ice breakers and can be added by updating the declarativeCopilot.json file.
+Repeating the same game can get boring. To keep things interesting, the game needs access to data that can be regularly updated. Think of it as a small knowledge pool for your agent to refresh the game and increase the level of challenge.
 
-Open file `declarativeCopilot.json`. and paste below node after the `instructions` node followed by a `,`.
+Today, declarative agents can refer to websites, SharePoint sites and OneDrive to become these little focus data pools for it to work with. And you will see much more in the coming labs where you will maximise it's capabilities with plugins and connectors. 
+
+### Step 1 - Upload files to SharePoint.
+Download this zip file consisting of two PDF file by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
+
+Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
+These documents are **historical_map.pdf** and **travelers_diary** to help make the game more challenging. 
+
+Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso`
+
+### Step 2 - Upload agent manifest
+
+Go to the environment file called **.env.dev** and create a new variable called "SP_SITE_URL" and paste the absolute url of the SharePoint site as its value.
+Next, go to the agent manifest **appPackage/declarativeCopilot.json** and add a comma `,` after conversation_starters array and paste the belwo new array object for extending the agent's capability to refer to SharePoint data to a particular site.
 
 ```JSON
- "conversation_starters": [
-        { 
-            "title": "Getting Started",
-            "text": "Let us play"
-        },
+ "capabilities": [
         {
-            "title": "Getting Help",
-            "text": "I am ready"
+
+            "name": "OneDriveAndSharePoint",
+            "items_by_url": [
+            {
+                "url": "${{SP_SITE_URL}}"
+            }
+        ]
         }
     ]
 ```
+This makes sure the declarative agent now gets to read documents in this SharePoint site specifically to help spice up the game. 
+There is no limit to how many URLs you can add 💪🏼
 
-![conversation starters](../../assets/images/extend-m365-copilot-01/cstarters.png)
+### Step 3 - Upgrade app manifest
+
+Next, go to the file **appPackage/manifest.json** and upgrade the manifest version from "1.0.0"" to "1.0.1" so the changes are reflected. 
+These manifest changes will make sure the sign-in url is correctly formed and sent to the user for consent.
+
+### Step 4: Test the app
+
+- To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision" for packaging and installing the upgraded declarative agent to your own app catalog.
+
+- Go to Teams in browser [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) logged into your developer tenant.
+
+- Open the Copilot app and launch the "Geo Locator Game" again.
+
+![launched](../../assets/images/extend-m365-copilot-01/launched-geo.png)
+
+This time, try the challenge which will be based on the travel diary or historical map clues. Choose the second converation starter.
+
+![traveller](../../assets/images/extend-m365-copilot-01/traveller.png)
+
+## Resources
+- [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot)
+- [Supported content types](https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot#supported-content-types)
 
 <cc-lab-end-step lab="e1" exercise="2" step="3" />
 
-Congratulations you've successfully built your a Declarative Copilot! In the next lab, you'll make a REST API, which you'll use to make an API plugin so Copilot can access and update business data. Select **Next**
+Congratulations you've successfully built your a declarative agent! In the next lab, you'll make a REST API, which you'll use to make an API plugin so Copilot can access and update business data. Select **Next**
+
+
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
