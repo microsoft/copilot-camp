@@ -324,12 +324,10 @@ At the top of the file along with the other `import` statements, add this one:
 import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 ~~~
 
-Then, right under the `class Identity` statement, add these lines:
+Then, right under the `class Identity` statement, add this line:
 
 ~~~typescript
-    private lastKeyUpdateTime = 0;
     private validator: TokenValidator;
-    private readonly KEY_CACHE_DURATION_MS = 1000 * 60 * 60 * 24;
 ~~~
 
 Now look for the comment
@@ -350,16 +348,16 @@ try {
     }
 
     // create a new token validator for the Microsoft Entra common tenant
-    if (!this.validator ||
-        Date.now() - this.lastKeyUpdateTime > this.KEY_CACHE_DURATION_MS) {
-        // This obtains signing keys for this tenant; for multitenant, use:
+    if (!this.validator) {
+        // We need a new validator object which we will continue to use on subsequent
+        // requests so it can cache the Entra ID signing keys
+        // For multitenant, use:
         // const entraJwksUri = await getEntraJwksUri();
         const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
         this.validator = new TokenValidator({
             jwksUri: entraJwksUri
         });
-        console.log('🔑 Refreshed Entra ID signing key');
-        this.lastKeyUpdateTime = Date.now();
+        console.log ("Token validator created");
     }
 
     // Use these options for single-tenant applications
@@ -386,18 +384,6 @@ catch (ex) {
     // Token is missing or invalid - return a 401 error
     console.error(ex);
     throw new HttpError(401, "Unauthorized");
-}       
-
-// Get the consultant record for this user; create one if necessary
-let consultant: ApiConsultant = null;
-try {
-    consultant = await ConsultantApiService.getApiConsultantById(userId);
-}
-catch (ex) {
-    consultant = await this.createConsultantForUser(userId, userName, userEmail);
-}
-
-return consultant;
 }
 ~~~
 
