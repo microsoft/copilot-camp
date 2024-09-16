@@ -8,9 +8,7 @@ import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-valid
 import ConsultantApiService from "./ConsultantApiService";
 
 class Identity {
-    private lastKeyUpdateTime = 0;
     private validator: TokenValidator;
-    private readonly KEY_CACHE_DURATION_MS = 1000 * 60 * 60 * 24;   // 24 hours
 
     private requestNumber = 1;  // Number the requests for logging purposes
 
@@ -30,16 +28,16 @@ class Identity {
             }
 
             // create a new token validator for the Microsoft Entra common tenant
-            if (!this.validator ||
-                Date.now() - this.lastKeyUpdateTime > this.KEY_CACHE_DURATION_MS) {
-                // This obtains signing keys for this tenant; for multitenant, use:
+            if (!this.validator) {
+                // We need a new validator object which we will continue to use on subsequent
+                // requests so it can cache the Entra ID signing keys
+                // For multitenant, use:
                 // const entraJwksUri = await getEntraJwksUri();
                 const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
                 this.validator = new TokenValidator({
                     jwksUri: entraJwksUri
                 });
-                console.log('🔑 Refreshed Entra ID signing key');
-                this.lastKeyUpdateTime = Date.now();
+                console.log ("Token validator created");
             }
 
             // Use these options for single-tenant applications
