@@ -106,7 +106,7 @@ You'll need to complete all the required pre-requisites before starting with thi
 
 ### Step 1: Use Teams Toolkit to create a new custom engine agent
 
-1. Open Teams Toolkit on Visual Studio Code and select **Create a New App** > **Custom Engine Copilot** > **Basic AI Chatbot**.
+1. Open Teams Toolkit on Visual Studio Code and select **Create a New App** > **Custom Engine Agent** > **Basic AI Chatbot**.
 1. Select **TypeScript** as a programming language choice and **Azure OpenAI** as Large Language model of your choice.
     1. Paste the Azure OpenAI key and press enter.
     1. Paste the Azure OpenAI endpoint and press enter. (Endpoint shouldn't include forward slash at the end of its URL.)
