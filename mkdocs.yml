@@ -19,7 +19,7 @@ nav:
 - Build Path - Build your own copilot: 
   - Welcome : 'pages/custom-engine/index.md'
   - Lab B0 - Prerequisites: 'pages/custom-engine/00-prerequisites.md'
-  - Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit: 'pages/custom-engine/01-custom-engine-copilot.md'
+  - Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit: 'pages/custom-engine/01-custom-engine-agent.md'
   - Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot: 'pages/custom-engine/02-rag.md'
   - Lab B3 - Enhance user experience with the Powered by AI kit: 'pages/custom-engine/03-powered-by-ai.md'
   - Lab B4 - Secure your solution using authentication: 'pages/custom-engine/04-authentication.md'
