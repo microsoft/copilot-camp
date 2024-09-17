@@ -1,25 +1,27 @@
 # B5 - Add actions to handle complex tasks
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) 
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)(📍 You are here)
 
+---8<--- "b-path-prelude.md"
+
 In this lab you will:
 
 - Learn what actions are and how to handle complex tasks with them
-- Integrate multi-prompt in your custom engine copilot to handle actions
-- Implement actions in your custom engine copilot
+- Integrate multi-prompt in your custom engine agent to handle actions
+- Implement actions in your custom engine agent
 - Utilize Microsoft Graph and actions together to automate workflows
 
 ## Introduction
 
 It's time to add some actions for Career Genie to handle complex tasks and workflows! In this lab, you'll integrate a new prompt in Career Genie's logic that can handle lists of candidates. That basically means that when you are searching for candidates with Career Genie, you can also create lists for candidates and add their names in. Once you are done, you can also send these lists to HR for scheduling interviews. All these will be handled by actions you'll implement in Career Genie! Let's get started.
 
-???+ info "What are actions in Custom engine copilots?"
+??? check "What are actions in Custom engine agents?"
     An action in an AI system is like a basic function or method in your code—it's a specific task that the system can perform. Actions are the building blocks that the AI uses to accomplish various tasks based on the user’s input. The AI system decides which action to execute depending on what the user asks for.
 
     For example, actions could include:
@@ -180,6 +182,8 @@ In `src/prompts/monologue/` folder, create a new file with a name **actions.json
 ]
 ```
 
+<cc-lab-end-step lab="b5" exercise="1" step="1" />
+
 ## Exercise 2: Implement a logic in the planner to choose between prompts
 
 In this exercise, you'll write a function that checks the user prompt and decides between "chat" or "monologue" prompts.
@@ -228,6 +232,8 @@ const planner = new ActionPlanner({
   defaultPrompt: choosePrompt,
 });
 ```
+
+<cc-lab-end-step lab="b4" exercise="2" step="1" />
 
 ## Exercise 3: Implement actions in the app
 
@@ -290,6 +296,8 @@ if (
 export { getCandidates, setCandidates, ensureListExists, deleteList };
 ```
 
+<cc-lab-end-step lab="b5" exercise="3" step="1" />
+
 ### Step 2: Register action handlers in the app
 
 In`src/app/app.ts`, add the following action imports on top of the file:
@@ -346,6 +354,8 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 ```
 
+<cc-lab-end-step lab="b5" exercise="3" step="2" />
+
 ### Step 3: Test your app with the new actions
 
 Let's test Career Genie with the new actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
@@ -367,6 +377,8 @@ To understand how to flow works, you may ask the following questions in order:
 - Summarize my lists
 
 ![Actions in Career Genie](../../assets/images/custom-engine-05/actions.gif)
+
+<cc-lab-end-step lab="b5" exercise="3" step="3" />
 
 ## Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
 
@@ -404,6 +416,8 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
 }
 ```
 
+<cc-lab-end-step lab="b5" exercise="4" step="1" />
+
 ### Step 2: Create a new function for the new `sendLists` action
 
 In your project, go to `src/app/app.ts`, locate the `getUserDisplayName` and add **export** in front of the function. The final version of the function will look like below:
@@ -437,8 +451,7 @@ Go to `env/.env.local.user` and add the following HR email as an environment var
 HR_EMAIL=<YOUR-EMAIL-ADDRESS>
 ```
 
-!!! tip "using your own email for testing only"
-    In an ideal scenario, you'll use an email address of an HR Team to send interview scheduling emails. This time, only for testing purposes, please place your own email address.
+!!! warning "Please enter your own account email address in `HR_EMAIL` to test this lab. In an ideal scenario, you'll use an email address of a Human Resources Team to send interview scheduling emails. Note that this lab is only for prototyping purposes and shouldn't be used in production."
 
 Go to `teamsapp.local.yml` and add the following line under the `file/createOrUpdateEnvironmentFile`, **envs** list:
 
@@ -543,6 +556,8 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 });
 ```
 
+<cc-lab-end-step lab="b5" exercise="4" step="3" />
+
 ### Step 4: Update your Entra ID app registration
 
 Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **aad.manifest.json** and inside the node `requiredResourceAccess` find `  "resourceAppId": "Microsoft Graph",`. In the `resourceAccess` array add below scope after adding a comma.
@@ -553,6 +568,8 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
     "type": "Scope"
 }
 ```
+
+<cc-lab-end-step lab="b5" exercise="4" step="4" />
 
 ### Step 5: Test your app and the new `sendLists` action
 
@@ -598,10 +615,12 @@ To understand how to flow works, you may ask the following questions in order:
 
 ![Career Genie full experience](../../assets/images/custom-engine-05/career-genie-full.gif)
 
+<cc-lab-end-step lab="b5" exercise="4" step="5" />
+
 ## CONGRATULATIONS
 
-You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie).
+You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie).
 
-This is the end of the **Build your own copilot** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
+This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/05-actions" />

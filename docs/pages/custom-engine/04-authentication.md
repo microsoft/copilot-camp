@@ -1,14 +1,16 @@
-# B4 - Secure your custom copilot using authentication
+# B4 - Secure your custom engine agent using authentication
 
 In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)(📍 You are here)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
+
+---8<--- "b-path-prelude.md"
 
 In this lab you will learn to:
 
@@ -24,7 +26,7 @@ Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD
 
 Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.
 
-In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab03-Powered-by-AI/CareerGenie) as the base project and proceed to next steps.
+In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie) as the base project and proceed to next steps.
 
 ### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
@@ -136,6 +138,8 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 }
 ```
 
+<cc-lab-end-step lab="b4" exercise="1" step="1" />
+
 ### Step 2: Update Teams Toolkit configuration file to create the Entra ID App
 
 Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
@@ -186,7 +190,13 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
  AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
 ```
 
-## Exercise 2: Update your Teams app manifest for SSO
+<cc-lab-end-step lab="b4" exercise="1" step="2" />
+
+## Exercise 2: Add SSO in Teams app manifest
+
+In this exercise, you'll update the Teams app manifest to add single sign on.
+
+### Step 1: Update your Teams app manifest for SSO
 
 In the single sign-on process, Teams will hand your code an Entra ID access token for your application. Teams can't provide this access token, however, unless it knows about your application; specifically, it needs to know the application (client) ID and the ID of the bot that's connected to Teams. So you need to add this information to your Teams app manifest.
 
@@ -201,7 +211,7 @@ Find the Teams app manifest template in **./appPackage/manifest.json** and add t
 
 Add it below the `validDomains` node, with a comma in between.
 
-While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine copilot.
+While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine agent.
 
 So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` array. After making these changes, the end of your `manifest.json` file should look like this:
 
@@ -211,6 +221,8 @@ So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` 
         "*.botframework.com"
     ],
 ```
+
+<cc-lab-end-step lab="b4" exercise="2" step="1" />
 
 ## Exercise 3: Update the application code for SSO
 
@@ -473,6 +485,8 @@ Create a file **auth-end.html** and paste in the contents below:
 
 ```
 
+<cc-lab-end-step lab="b4" exercise="3" step="1" />
+
 ### Step 2: Update code to handle SSO
 
 - Changes to **index.ts** file is as follows:
@@ -570,7 +584,7 @@ const app = new Application({
 });
 ```
 
-Teams AI library handles exchange of token between your custom engine copilot and Microsoft Teams, so you can just call Microsoft Graph immediately upon receiving the token.
+Teams AI library handles exchange of token between your custom engine agent and Microsoft Teams, so you can just call Microsoft Graph immediately upon receiving the token.
 Now let's add code to define and handle various authentication and messaging events using the Teams AI library.
 Paste below code after the app definition method:
 
@@ -648,6 +662,7 @@ async function getUserDisplayName(token: string): Promise<string | undefined> {
     - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`        
     - Go to `src\adapter.ts` and update the adapter definition ` MicrosoftAppType: 'SingleTenant'`   
 
+<cc-lab-end-step lab="b4" exercise="3" step="2" />
 
 ## Exercise 4: Run the application
 
@@ -658,6 +673,8 @@ Now we are code complete for Teams SSO in Career Genie. Let's take it for a ride
 Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
 
 !!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+
+<cc-lab-end-step lab="b4" exercise="4" step="1" />
 
 ### Step 2: Giving consent
 
@@ -684,17 +701,17 @@ You'll be redirected to Entra ID, where you'll be asked to consent to the app's 
 
 Select **Accept** to consent to the permissions and run Career Genie.
 
-You will now get this message from the custom engine copilot with your logged in name showing successful authentication.
+You will now get this message from the custom engine agent with your logged in name showing successful authentication.
 
 ![success message](../../assets/images/custom-engine-04/auth.gif)
 
-You can start chatting with your custom engine copilot.
+You can start chatting with your custom engine agent.
 
-
+<cc-lab-end-step lab="b4" exercise="4" step="2" />
 
 ## CONGRATULATIONS
 
-You have completed Lab B4 - Secure your custom copilot using authentication!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab04-Authentication-SSO/CareerGenie).
+You have completed Lab B4 - Secure your custom engine agent using authentication!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie).
 
 You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
 

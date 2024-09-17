@@ -1,36 +1,37 @@
-# Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit
+# Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit
 
-In this lab you will build a custom engine copilot using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine copilot and define your first prompt.
+In this lab you will build a custom engine agent using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot) (📍 You are here)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent) (📍 You are here)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
    
+---8<--- "b-path-prelude.md"
 
 In this lab you will:
 
-- Learn what is a custom engine copilot
+- Learn what is a custom engine agent
 - Create Azure OpenAI service and a deployment model
-- Create a custom engine copilot using Teams toolkit
-- Define a prompt in your custom engine copilot
+- Create a custom engine agent using Teams toolkit
+- Define a prompt in your custom engine agent
 - Learn how to run and test your app
 
 ## Introduction
 
-Welcome aboard to the exciting journey of building your own custom engine copilot! In this path, you'll create a custom engine copilot for Microsoft Teams using cutting-edge Azure OpenAI models. You'll be able to define specific prompts, integrate complex data, and add advanced skills to make your copilot truly unique. By using custom models and orchestration, your copilot will tackle advanced tasks, complex conversations, and workflows, delivering an exceptional, personalized experience. Let's dive in and start building your first custom engine copilot!
+Welcome aboard to the exciting journey of building your own custom engine agent! In this path, you'll create a custom engine agent for Microsoft Teams using cutting-edge Azure OpenAI models. You'll be able to define specific prompts, integrate complex data, and add advanced skills to make your agent truly unique. By using custom models and orchestration, your agent will tackle advanced tasks, complex conversations, and workflows, delivering an exceptional, personalized experience. Let's dive in and start building your first custom engine agent!
 
-!!! tip "Before everything else, lets remember... What is a custom engine copilot?"
-    Custom engine copilots are chatbots powered by Generative AI, designed to provide sophisticated conversational experiences. Custom engine copilots are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.
+!!! tip "Before everything else, lets remember... What is a custom engine agent?"
+    Custom engine agents are chatbots powered by Generative AI, designed to provide sophisticated conversational experiences. Custom engine agents are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.
 
 ## Exercise 1: Create Azure OpenAI service and models
 
-This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine copilots. However, Custom engine copilots are not limited to using GPT models only. You can also test the lab with any other model you prefer use.
+This exercise particularly demonstrates how to create and utilize Azure OpenAI's GPT models in custom engine agents. However, Custom engine agents are not limited to using GPT models only. You can also test the lab with any other model you prefer use.
 
-??? info "Choosing Between Small and Large Language Models"
+??? check "Choosing Between Small and Large Language Models"
     When choosing between Small Language Models (SLMs) and Large Language Models (LLMs), as well as among various GPT models, it's important to consider the specific needs of your project in terms of complexity, computational resources, and efficiency.
 
     - **LLMs:** Best for complex and nuanced tasks requiring deep capabilities. They have billions of parameters and excel in understanding and generating human language. GPT-4, LLaMA 2, BERT or PaLM can be examples for LLMs. 
@@ -65,11 +66,13 @@ You'll need to complete the Azure subscription pre-requisite before starting wit
 
 Once your Azure OpenAI service is created successfully, navigate to your resource, select **Keys and Endpoint** from the left side panel. Copy and save `KEY 1` and `Endpoint`that will be required later in Exercise 2.
 
+<cc-lab-end-step lab="b1" exercise="1" step="1" />
+
 ### Step 2: Create a deployment model
 
 In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure OpenAI Studio` where you can create your deployment model.
 
-!!! tip "What is Azure OpenAI Studio?"
+??? check "What is Azure OpenAI Studio?"
     Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.
     
     *Learn more about the Generative AI, prompting and Azure OpenAI Studio by watching this Doodle to Code video!*
@@ -95,11 +98,13 @@ For example, choose "Shakespeare writing assistant" and ask questions such as "t
 
 ![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
-## Exercise 2: Scaffold a custom engine copilot from a template
+<cc-lab-end-step lab="b1" exercise="1" step="2" />
+
+## Exercise 2: Scaffold a custom engine agent from a template
 
 You'll need to complete all the required pre-requisites before starting with this exercise.
 
-### Step 1: Use Teams Toolkit to create a new custom engine copilot
+### Step 1: Use Teams Toolkit to create a new custom engine agent
 
 1. Open Teams Toolkit on Visual Studio Code and select **Create a New App** > **Custom Engine Copilot** > **Basic AI Chatbot**.
 1. Select **TypeScript** as a programming language choice and **Azure OpenAI** as Large Language model of your choice.
@@ -111,9 +116,11 @@ You'll need to complete all the required pre-requisites before starting with thi
 
 After providing all the details mentioned above, your project will be scaffolded successfully in seconds.
 
+<cc-lab-end-step lab="b1" exercise="2" step="1" />
+
 ### Step 2: Customize prompt and test the app
 
-Prompts are essential for interacting with AI language models and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine copilot and define the behavior of Career Genie!
+Prompts are essential for interacting with AI language models and directing their behavior. They serve as the inputs or questions we provide to the model to obtain specific responses. By crafting prompts carefully, we can guide the AI to generate desired outputs. Let's customize the prompt of our custom engine agent and define the behavior of Career Genie!
 
 In your project folder, navigate to `src/prompts/chat/skprompt.txt` and replace the existing text with the following prompt:
 
@@ -124,12 +131,12 @@ You always greet users with excitement and introduce yourself first.
 You like using emojis where appropriate.
 ```
 
-To test the behavior of your app quickly, you can use Teams App Test Tool. Later in the exercise, you'll run and debug your custom engine copilot on Microsoft Teams.
+To test the behavior of your app quickly, you can use Teams App Test Tool. Later in the exercise, you'll run and debug your custom engine agent on Microsoft Teams.
 
-??? info "More information about the Teams App Test Tool"
+??? check "More information about the Teams App Test Tool"
     The Teams App Test Tool, or simply Test Tool, is a feature within Teams Toolkit that enables developers to debug, test, and refine their Teams bot applications in a web-based chat environment that mimics the behavior, look, and feel of Microsoft Teams. This tool eliminates the need for a Microsoft 365 tenant or a dev tunnel, streamlining the development process.
 
-Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Test Tool**. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine copilot right away! Some of the recommended questions you can ask to test the behavior:
+Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Test Tool**. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine agent right away! Some of the recommended questions you can ask to test the behavior:
 
 - "Can you help me write a job post for a Senior Developer role?"
 - "What would be the list of required skills for a Project Manager role?"
@@ -147,11 +154,12 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 After successfully completing your testing, end your debugging session and close the terminals in Visual Studio Code.
 
+<cc-lab-end-step lab="b1" exercise="2" step="2" />
+
 ## CONGRATULATIONS
 
-You have completed Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab01-From-TTK-template/CareerGenie).
+You have completed Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie).
 
-You are now ready to proceed to Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot. Select Next.
+You are now ready to proceed to Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent. Select Next.
 
-
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-copilot" />
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-agent" />
