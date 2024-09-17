@@ -3,7 +3,7 @@
 
 In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop throughout the path.
 
-???+ info "Navigating the Build your own agent labs (Build Path)"
+???+ "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) (📍 You are here)
     - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
     - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
@@ -18,11 +18,9 @@ In this lab you will learn how to:
 - Install and configure Teams toolkit for Visual Studio Code
 - Prepare your Azure environment to create required resources
 
-> [!IMPORTANT]
-> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
+!!! warning "These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality."
 
-> [!IMPORTANT]  
-> To install and run your own custom engine agent, you'll need a Microsoft 365 tenant where you have administrator permission. You won't need Microsoft 365 Copilot License to test your custom engine agent.
+!!! note "To install and run your own custom engine agent, you'll need a Microsoft 365 tenant where you have administrator permission. You won't need Microsoft 365 Copilot License to test your custom engine agent."
 
 
 ## Exercise 1 : Setup Microsoft Teams

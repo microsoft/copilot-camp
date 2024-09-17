@@ -1,6 +1,6 @@
 # B5 - Add actions to handle complex tasks
 
-???+ info "Navigating the Build your own agent labs (Build Path)"
+???+ "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) 
     - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
     - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
@@ -21,7 +21,7 @@ In this lab you will:
 
 It's time to add some actions for Career Genie to handle complex tasks and workflows! In this lab, you'll integrate a new prompt in Career Genie's logic that can handle lists of candidates. That basically means that when you are searching for candidates with Career Genie, you can also create lists for candidates and add their names in. Once you are done, you can also send these lists to HR for scheduling interviews. All these will be handled by actions you'll implement in Career Genie! Let's get started.
 
-???+ info "What are actions in Custom engine agents?"
+??? check "What are actions in Custom engine agents?"
     An action in an AI system is like a basic function or method in your code—it's a specific task that the system can perform. Actions are the building blocks that the AI uses to accomplish various tasks based on the user’s input. The AI system decides which action to execute depending on what the user asks for.
 
     For example, actions could include:
@@ -451,8 +451,7 @@ Go to `env/.env.local.user` and add the following HR email as an environment var
 HR_EMAIL=<YOUR-EMAIL-ADDRESS>
 ```
 
-!!! tip "using your own email for testing only"
-    In an ideal scenario, you'll use an email address of an HR Team to send interview scheduling emails. This time, only for testing purposes, please place your own email address.
+!!! warning "Please enter your own account email address in `HR_EMAIL` to test this lab. In an ideal scenario, you'll use an email address of a Human Resources Team to send interview scheduling emails. Note that this lab is only for prototyping purposes and shouldn't be used in production."
 
 Go to `teamsapp.local.yml` and add the following line under the `file/createOrUpdateEnvironmentFile`, **envs** list:
 

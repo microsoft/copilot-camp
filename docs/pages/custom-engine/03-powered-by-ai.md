@@ -2,7 +2,7 @@
 
 In this lab you will learn about the Powered by AI, a set of features Teams AI library provides and utilize them in your custom engine agent to enhance the user experience.
 
-???+ info "Navigating the Build your own agent labs (Build Path)"
+???+ "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
     - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
     - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
@@ -22,7 +22,7 @@ In this lab you will:
 
 ## Introduction
 
-???+ info "What is Powered by AI?"
+??? check "What is Powered by AI?"
     Powered by AI is a set of features provided by the Teams AI library that enhances interactions with custom engine agents, making them more engaging and user-friendly. These features include:
 
     * **Feedback Loop:** Users can rate AI responses with a thumbs up or down. This feedback helps refine the AI's accuracy and usefulness over time.
