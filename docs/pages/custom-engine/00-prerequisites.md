@@ -1,12 +1,12 @@
 
 # Lab B0 - Prerequisites
 
-In this lab you will set up your development environment to build, test, and deploy the custom engine copilot you will develop throughout the path.
+In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop throughout the path.
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ info "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) (📍 You are here)
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
@@ -21,14 +21,14 @@ In this lab you will learn how to:
 > These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
 > [!IMPORTANT]  
-> To install and run your own custom engine copilot, you'll need a Microsoft 365 tenant where you have administrator permission. You will also need Copilot License to test the app.
+> To install and run your own custom engine agent, you'll need a Microsoft 365 tenant where you have administrator permission. You won't need Microsoft 365 Copilot License to test your custom engine agent.
 
 
 ## Exercise 1 : Enable Teams application uploads
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 
-1️⃣ Navigate to [https://admin.microsoft.com/}](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
+1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
 
 2️⃣ In the left panel of the admin center, select **Show all** to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
 
@@ -92,6 +92,6 @@ Follow the steps to activate an Azure free account:
 ## CONGRATULATIONS
 
 You have completed Lab B0 - Prerequisites!
-You are now ready to proceed to lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit. Select Next. 
+You are now ready to proceed to lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit. Select Next. 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/00-prerequisites" />

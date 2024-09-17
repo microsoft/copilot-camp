@@ -1,9 +1,9 @@
 # B5 - Add actions to handle complex tasks
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ info "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites) 
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)(📍 You are here)
@@ -11,15 +11,15 @@
 In this lab you will:
 
 - Learn what actions are and how to handle complex tasks with them
-- Integrate multi-prompt in your custom engine copilot to handle actions
-- Implement actions in your custom engine copilot
+- Integrate multi-prompt in your custom engine agent to handle actions
+- Implement actions in your custom engine agent
 - Utilize Microsoft Graph and actions together to automate workflows
 
 ## Introduction
 
 It's time to add some actions for Career Genie to handle complex tasks and workflows! In this lab, you'll integrate a new prompt in Career Genie's logic that can handle lists of candidates. That basically means that when you are searching for candidates with Career Genie, you can also create lists for candidates and add their names in. Once you are done, you can also send these lists to HR for scheduling interviews. All these will be handled by actions you'll implement in Career Genie! Let's get started.
 
-???+ info "What are actions in Custom engine copilots?"
+???+ info "What are actions in Custom engine agents?"
     An action in an AI system is like a basic function or method in your code—it's a specific task that the system can perform. Actions are the building blocks that the AI uses to accomplish various tasks based on the user’s input. The AI system decides which action to execute depending on what the user asks for.
 
     For example, actions could include:
@@ -600,8 +600,8 @@ To understand how to flow works, you may ask the following questions in order:
 
 ## CONGRATULATIONS
 
-You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie).
+You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie).
 
-This is the end of the **Build your own copilot** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
+This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/05-actions" />

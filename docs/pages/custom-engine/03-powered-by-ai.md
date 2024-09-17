@@ -1,11 +1,11 @@
 # B3 - Enhance User Experience with the Powered by AI kit
 
-In this lab you will learn about the Powered by AI, a set of features Teams AI library provides and utilize them in your custom engine copilot to enhance the user experience.
+In this lab you will learn about the Powered by AI, a set of features Teams AI library provides and utilize them in your custom engine agent to enhance the user experience.
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ info "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai) (📍 You are here)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
@@ -21,7 +21,7 @@ In this lab you will:
 ## Introduction
 
 ???+ info "What is Powered by AI?"
-    Powered by AI is a set of features provided by the Teams AI library that enhances interactions with custom engine copilots, making them more engaging and user-friendly. These features include:
+    Powered by AI is a set of features provided by the Teams AI library that enhances interactions with custom engine agents, making them more engaging and user-friendly. These features include:
 
     * **Feedback Loop:** Users can rate AI responses with a thumbs up or down. This feedback helps refine the AI's accuracy and usefulness over time.
 
@@ -31,14 +31,14 @@ In this lab you will:
     
     * **Sensitivity Information:** If the information shared is sensitive, a sensitivity label will appear, advising whether it can be shared outside your organization.
 
-In the previous exercise, you explored Retrieval-Augmented Generation (RAG) and its integration into your custom engine copilot. In this exercise, you'll enhance the user experience by leveraging "Powered by AI" features. Follow these steps:
+In the previous exercise, you explored Retrieval-Augmented Generation (RAG) and its integration into your custom engine agent. In this exercise, you'll enhance the user experience by leveraging "Powered by AI" features. Follow these steps:
 
 - Implement the Feedback Loop
 - Customize Citations
 - Label AI-Generated messages
 - Display Sensitivity information
 
-By incorporating these "Powered by AI" features, you'll make your custom engine copilot more transparent, reliable, and user-friendly, which will enhance the overall user experience.
+By incorporating these "Powered by AI" features, you'll make your custom engine agent more transparent, reliable, and user-friendly, which will enhance the overall user experience.
 
 ## Exercise 1: Enable Feedback Loop
 
@@ -77,7 +77,7 @@ Let's test Career Genie with the Feedback Loop feature. Start debugging your app
 
 !!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
 
-Before testing the Feedback Loop, type "Hi" or ask a question similar to "Suggest me .NET developers who can speak Spanish." You'll notice that the response from your custom engine copilot includes thumbs up and down buttons at the bottom left corner.
+Before testing the Feedback Loop, type "Hi" or ask a question similar to "Suggest me .NET developers who can speak Spanish." You'll notice that the response from your custom engine agent includes thumbs up and down buttons at the bottom left corner.
 
 ![Feedback Loop](../../assets/images/custom-engine-03/thumbs-up-down.png)
 
@@ -94,7 +94,7 @@ To verify that your feedback was recorded, return to Visual Studio Code and chec
 
 ## Exercise 2: Customize citations with Adaptive Cards
 
-When you define a data source in a custom engine copilot, the Teams AI library dynamically enables citations to reference related documents. Recognize the current experience in your custom engine copilot, ask a question similar to "Suggest me .NET developers who can speak Spanish.". You will realize that you can hover over the citation to see the beginning of the document.
+When you define a data source in a custom engine agent, the Teams AI library dynamically enables citations to reference related documents. Recognize the current experience in your custom engine agent, ask a question similar to "Suggest me .NET developers who can speak Spanish.". You will realize that you can hover over the citation to see the beginning of the document.
 
 ![Default citation](../../assets/images/custom-engine-03/current-citation.png)
 
@@ -167,7 +167,7 @@ This Adaptive Card allows you to list citations as `Action.ShowCard` buttons whi
 ### Step 2: Use PredictedSayCommand to customize the citation experience
 
 ??? info "What does `PredictedSayCommand` do?"
-    A **PredictedSayCommand** is a response directive that the AI system executes. By customizing PredictedSayCommand, you gain granular control over integrating Powered by AI features like citations, feedback loops into the custom engine copilot's activities. This allows you to precisely tailor the AI responses to meet your application needs.
+    A **PredictedSayCommand** is a response directive that the AI system executes. By customizing PredictedSayCommand, you gain granular control over integrating Powered by AI features like citations, feedback loops into the custom engine agent's activities. This allows you to precisely tailor the AI responses to meet your application needs.
 
 Go to `src/app/app.ts` and add the following snippet on top of your code to import your adaptive card:
 
@@ -235,7 +235,7 @@ Now, recognize that the customized citation experience with Adaptive Cards provi
 
 ## Exercise 3: Enable the Generated by AI label
 
-In this exercise, you will continue customizing the user experience of your custom engine copilot using `PredictedSayCommand`. To help users differentiate between AI and human responses, you'll enable the "AI generated" label that appears on top of the messages created by the AI system.
+In this exercise, you will continue customizing the user experience of your custom engine agent using `PredictedSayCommand`. To help users differentiate between AI and human responses, you'll enable the "AI generated" label that appears on top of the messages created by the AI system.
 
 ### Step 1: Use PredictedSayCommand to enable the Generated by AI label
 
@@ -324,7 +324,7 @@ Notice that the sensitivity label appears right next to the "AI Generated" label
 
 ## CONGRATULATIONS
 
-You have completed Lab B3 - Enhance User Experience with the Powered by AI kit!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab03-Powered-by-AI/CareerGenie).
+You have completed Lab B3 - Enhance User Experience with the Powered by AI kit!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie).
 
 You are now ready to proceed to Lab A4 - Secure your solution using authentication. Select Next.
 

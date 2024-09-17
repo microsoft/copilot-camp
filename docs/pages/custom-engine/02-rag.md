@@ -1,11 +1,11 @@
-# Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot
+# Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent
 
-In this lab you will enable Retrieval-Augmented Generation for your custom engine copilot and integrate with Azure AI Search to chat with your data.
+In this lab you will enable Retrieval-Augmented Generation for your custom engine agent and integrate with Azure AI Search to chat with your data.
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ info "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag) (📍 You are here)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag) (📍 You are here)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
@@ -16,7 +16,7 @@ In this lab you will:
 - Learn what is Retrieval-Augmented Generation (RAG)
 - Setup Azure resources
 - Upload your documents to Azure AI Search
-- Prepare your custom engine copilot for Vector Search
+- Prepare your custom engine agent for Vector Search
 - Learn how to run and test your app
 
 ## Introduction
@@ -37,13 +37,13 @@ In this lab you will:
 
     <iframe src="//www.youtube.com/embed/1k4XGgsqfTM?si=P6O9baroreDKizb" frameborder="0" allowfullscreen></iframe>
 
-In the previous exercise, you learned how to create a custom engine copilot and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure OpenAI Studio on your data" feature to:
+In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure OpenAI Studio on your data" feature to:
 
 - Create an index on Azure AI Search.
 - Generate vector embeddings for the resumes (PDF documents).
 - Upload the data in chunks to Azure AI Search.
 
-Finally, you'll integrate your custom engine copilot with Azure AI Search to chat with your data and obtain the best results.
+Finally, you'll integrate your custom engine agent with Azure AI Search to chat with your data and obtain the best results.
 
 ??? info "Benefits of using Vector Search"
     Vector search is an advanced technique used to find information quickly and accurately based on its meaning rather than just matching exact words. Unlike traditional text-based search, which relies on exact keyword matches, vector search uses numeric vectors to find content that is similar to your query. This enables Vector search to handle:
@@ -119,7 +119,7 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 
 ## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
 
-For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-copilot/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
+For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
@@ -291,7 +291,7 @@ Let's test Career Genie on Teams this time. Start debugging your app by selectin
 
 !!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
 
-Ensure your questions are related to your dataset. Go through pdf documents in the `resumes` folder to understand more about your data. Challenge your custom engine copilot by combining requirements and asking complex questions! Some suggestions would be:
+Ensure your questions are related to your dataset. Go through pdf documents in the `resumes` folder to understand more about your data. Challenge your custom engine agent by combining requirements and asking complex questions! Some suggestions would be:
 
 - Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?
 - Who are the other good candidates?
@@ -302,7 +302,7 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 
 ## CONGRATULATIONS
 
-You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot! If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab02-RAG/CareerGenie).
+You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie).
 
 You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 
 

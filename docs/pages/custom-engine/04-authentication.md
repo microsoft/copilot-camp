@@ -1,11 +1,11 @@
-# B4 - Secure your custom copilot using authentication
+# B4 - Secure your custom engine agent using authentication
 
 In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 
-???+ info "Navigating the Build your own copilot labs (Build Path)"
+???+ info "Navigating the Build your own agent labs (Build Path)"
     - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build a custom engine copilot using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-copilot)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine copilot](/copilot-camp/pages/custom-engine/02-rag)
+    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent)
+    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
     - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)(📍 You are here)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
@@ -24,7 +24,7 @@ Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD
 
 Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.
 
-In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab03-Powered-by-AI/CareerGenie) as the base project and proceed to next steps.
+In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie) as the base project and proceed to next steps.
 
 ### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
@@ -201,7 +201,7 @@ Find the Teams app manifest template in **./appPackage/manifest.json** and add t
 
 Add it below the `validDomains` node, with a comma in between.
 
-While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine copilot.
+While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the `auth-start.html` and `auth-end.html` pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine agent.
 
 So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` array. After making these changes, the end of your `manifest.json` file should look like this:
 
@@ -570,7 +570,7 @@ const app = new Application({
 });
 ```
 
-Teams AI library handles exchange of token between your custom engine copilot and Microsoft Teams, so you can just call Microsoft Graph immediately upon receiving the token.
+Teams AI library handles exchange of token between your custom engine agent and Microsoft Teams, so you can just call Microsoft Graph immediately upon receiving the token.
 Now let's add code to define and handle various authentication and messaging events using the Teams AI library.
 Paste below code after the app definition method:
 
@@ -684,17 +684,17 @@ You'll be redirected to Entra ID, where you'll be asked to consent to the app's 
 
 Select **Accept** to consent to the permissions and run Career Genie.
 
-You will now get this message from the custom engine copilot with your logged in name showing successful authentication.
+You will now get this message from the custom engine agent with your logged in name showing successful authentication.
 
 ![success message](../../assets/images/custom-engine-04/auth.gif)
 
-You can start chatting with your custom engine copilot.
+You can start chatting with your custom engine agent.
 
 
 
 ## CONGRATULATIONS
 
-You have completed Lab B4 - Secure your custom copilot using authentication!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab04-Authentication-SSO/CareerGenie).
+You have completed Lab B4 - Secure your custom engine agent using authentication!  If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie).
 
 You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
 
