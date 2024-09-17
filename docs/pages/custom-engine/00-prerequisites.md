@@ -11,6 +11,7 @@ In this lab you will set up your development environment to build, test, and dep
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
    
+---8<--- "b-path-prelude.md"
 
 In this lab you will learn how to:
 
@@ -24,7 +25,9 @@ In this lab you will learn how to:
 > To install and run your own custom engine agent, you'll need a Microsoft 365 tenant where you have administrator permission. You won't need Microsoft 365 Copilot License to test your custom engine agent.
 
 
-## Exercise 1 : Enable Teams application uploads
+## Exercise 1 : Setup Microsoft Teams
+
+### Step 1: Enable Teams custom application uploads
 
 By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 
@@ -40,6 +43,8 @@ By default, end users can't upload applications directly; instead an administrat
 
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
+<cc-lab-end-step lab="b0" exercise="1" step="1" />
+
 ## Exercise 2: Install Teams Toolkit and prerequisites
 
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
@@ -48,11 +53,15 @@ You can complete these labs on a Windows, Mac, or Linux machine, but you do need
 
 It should be no surprise that **Teams Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
 
+<cc-lab-end-step lab="b0" exercise="2" step="1" />
+
 ### Step 2: Install NodeJS
 
 NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
 
 Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 20.x, the "LTS" (Long Term Support) version for your operating system. This lab has been tested using NodeJS version 18.16.0. If you already have another version of NodeJS installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
+
+<cc-lab-end-step lab="b0" exercise="2" step="2" />
 
 ### Step 3: Install Teams Toolkit
 
@@ -67,6 +76,8 @@ Follow the steps as shown in the screen shot below.
 
 !!! note "If you have Teams Toolkit installed but hidden"
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
+
+<cc-lab-end-step lab="b0" exercise="2" step="3" />
 
 ## Exercise 3: Get an Azure subscription
 
@@ -88,6 +99,8 @@ Follow the steps to activate an Azure free account:
 
 !!! tip "Tip: Managing Azure resources after 30 days"
     Azure free account will be available only for 30 days. Make sure you don't have any services running in your free subscription at the end of 30 days. If you want to continue using Azure services at the end of 30 days, you must upgrade to a pay-as-you-go subscription by removing the spending limit. This allows continued use of the Azure free account and select free services for the term.
+
+<cc-lab-end-step lab="b0" exercise="3" step="1" />
 
 ## CONGRATULATIONS
 

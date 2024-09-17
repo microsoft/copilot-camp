@@ -10,6 +10,8 @@ In this lab, you'll learn how to authenticate users with Entra Single Sign-On in
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)(📍 You are here)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
 
+---8<--- "b-path-prelude.md"
+
 In this lab you will learn to:
 
 - Add Entra ID single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams
@@ -136,6 +138,8 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 }
 ```
 
+<cc-lab-end-step lab="b4" exercise="1" step="1" />
+
 ### Step 2: Update Teams Toolkit configuration file to create the Entra ID App
 
 Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
@@ -186,7 +190,13 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
  AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
 ```
 
-## Exercise 2: Update your Teams app manifest for SSO
+<cc-lab-end-step lab="b4" exercise="1" step="2" />
+
+## Exercise 2: Add SSO in Teams app manifest
+
+In this exercise, you'll update the Teams app manifest to add single sign on.
+
+### Step 1: Update your Teams app manifest for SSO
 
 In the single sign-on process, Teams will hand your code an Entra ID access token for your application. Teams can't provide this access token, however, unless it knows about your application; specifically, it needs to know the application (client) ID and the ID of the bot that's connected to Teams. So you need to add this information to your Teams app manifest.
 
@@ -211,6 +221,8 @@ So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` 
         "*.botframework.com"
     ],
 ```
+
+<cc-lab-end-step lab="b4" exercise="2" step="1" />
 
 ## Exercise 3: Update the application code for SSO
 
@@ -473,6 +485,8 @@ Create a file **auth-end.html** and paste in the contents below:
 
 ```
 
+<cc-lab-end-step lab="b4" exercise="3" step="1" />
+
 ### Step 2: Update code to handle SSO
 
 - Changes to **index.ts** file is as follows:
@@ -648,6 +662,7 @@ async function getUserDisplayName(token: string): Promise<string | undefined> {
     - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`        
     - Go to `src\adapter.ts` and update the adapter definition ` MicrosoftAppType: 'SingleTenant'`   
 
+<cc-lab-end-step lab="b4" exercise="3" step="2" />
 
 ## Exercise 4: Run the application
 
@@ -658,6 +673,8 @@ Now we are code complete for Teams SSO in Career Genie. Let's take it for a ride
 Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
 
 !!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+
+<cc-lab-end-step lab="b4" exercise="4" step="1" />
 
 ### Step 2: Giving consent
 
@@ -690,7 +707,7 @@ You will now get this message from the custom engine agent with your logged in n
 
 You can start chatting with your custom engine agent.
 
-
+<cc-lab-end-step lab="b4" exercise="4" step="2" />
 
 ## CONGRATULATIONS
 

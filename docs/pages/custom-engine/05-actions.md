@@ -8,6 +8,8 @@
     - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
     - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)(📍 You are here)
 
+---8<--- "b-path-prelude.md"
+
 In this lab you will:
 
 - Learn what actions are and how to handle complex tasks with them
@@ -180,6 +182,8 @@ In `src/prompts/monologue/` folder, create a new file with a name **actions.json
 ]
 ```
 
+<cc-lab-end-step lab="b5" exercise="1" step="1" />
+
 ## Exercise 2: Implement a logic in the planner to choose between prompts
 
 In this exercise, you'll write a function that checks the user prompt and decides between "chat" or "monologue" prompts.
@@ -228,6 +232,8 @@ const planner = new ActionPlanner({
   defaultPrompt: choosePrompt,
 });
 ```
+
+<cc-lab-end-step lab="b4" exercise="2" step="1" />
 
 ## Exercise 3: Implement actions in the app
 
@@ -290,6 +296,8 @@ if (
 export { getCandidates, setCandidates, ensureListExists, deleteList };
 ```
 
+<cc-lab-end-step lab="b5" exercise="3" step="1" />
+
 ### Step 2: Register action handlers in the app
 
 In`src/app/app.ts`, add the following action imports on top of the file:
@@ -346,6 +354,8 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 ```
 
+<cc-lab-end-step lab="b5" exercise="3" step="2" />
+
 ### Step 3: Test your app with the new actions
 
 Let's test Career Genie with the new actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
@@ -367,6 +377,8 @@ To understand how to flow works, you may ask the following questions in order:
 - Summarize my lists
 
 ![Actions in Career Genie](../../assets/images/custom-engine-05/actions.gif)
+
+<cc-lab-end-step lab="b5" exercise="3" step="3" />
 
 ## Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
 
@@ -403,6 +415,8 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
     }
 }
 ```
+
+<cc-lab-end-step lab="b5" exercise="4" step="1" />
 
 ### Step 2: Create a new function for the new `sendLists` action
 
@@ -543,6 +557,8 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 });
 ```
 
+<cc-lab-end-step lab="b5" exercise="4" step="3" />
+
 ### Step 4: Update your Entra ID app registration
 
 Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **aad.manifest.json** and inside the node `requiredResourceAccess` find `  "resourceAppId": "Microsoft Graph",`. In the `resourceAccess` array add below scope after adding a comma.
@@ -553,6 +569,8 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
     "type": "Scope"
 }
 ```
+
+<cc-lab-end-step lab="b5" exercise="4" step="4" />
 
 ### Step 5: Test your app and the new `sendLists` action
 
@@ -597,6 +615,8 @@ To understand how to flow works, you may ask the following questions in order:
     After the last step, check your mailbox to see if you receive any email for the lists of candidates.
 
 ![Career Genie full experience](../../assets/images/custom-engine-05/career-genie-full.gif)
+
+<cc-lab-end-step lab="b5" exercise="4" step="5" />
 
 ## CONGRATULATIONS
 
