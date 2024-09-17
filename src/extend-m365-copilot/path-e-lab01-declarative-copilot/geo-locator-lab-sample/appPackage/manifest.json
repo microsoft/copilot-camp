@@ -32,7 +32,7 @@
         "declarativeCopilots": [            
             {
                 "id": "dcGeolocator",
-                "file": "declarativeCopilot.json"
+                "file": "declarativeAgent.json"
             }
         ]
     },

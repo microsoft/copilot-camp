@@ -42,7 +42,7 @@ The template includes the following structure:
 
 | File                                 | Description                                                                                   |
 | ------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `appPackage/declarativeCopilot.json` | Configuration file defining settings of the declarative agent.            |
+| `appPackage/declarativeAgent.json` | Configuration file defining settings of the declarative agent.            |
 | `appPackage/instruction.txt` | Instruction file defining system prompt          |
 | `appPackage/manifest.json`           | Teams application manifest outlining metadata for your declarative agent.                  |
 
