@@ -1,12 +1,12 @@
-# Lab E3 - Add a declarative agent to your API plugin
+# Lab E3 - Add a declarative copilot to your API plugin
 
-In this lab you will add a Declarative Agent which is grounded in the API plugin you created in the previous lab, as well as in specific SharePoint files
+In this lab you will add a Declarative Copilot which is grounded in the API plugin you created in the previous lab, as well as in specific SharePoint files
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md)
-    - [Lab E1 - Declarative Agent](./01-declarative-copilot.md)
+    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
     - [Lab E2 - Build an API](./02-build-the-api.md)
-    - [Lab E3 - Add a Declarative Agent and API Plugin](./03-add-declarative-copilot.md) (📍You are here)
+    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) (📍You are here)
     - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
@@ -16,7 +16,7 @@ In this lab you will add a Declarative Agent which is grounded in the API plugin
 
 ## Exercise 1: Upload sample documents
 
-In this step you will upload sample documents which will be used by your declarative agent to respond to user prompts. These include some consulting documents such as Statements of Work, and a simple spreadsheet containing your hours as a consultant.
+In this step you will upload sample documents which will be used by your declarative copilot to respond to user prompts. These include some consulting documents such as Statements of Work, and a simple spreadsheet containing your hours as a consultant.
 
 ### Step 1: Create a SharePoint site
 
@@ -62,19 +62,19 @@ Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.shar
 
 <cc-lab-end-step lab="e3" exercise="1" step="2" />
 
-## Exercise 2: Create the declarative agent
+## Exercise 2: Create the declarative copilot
 
-### Step 1: Add the declarative agent JSON to your project
+### Step 1: Add the declarative copilot JSON to your project
 
 Create a new file called **trey-declarative-copilot.json** within your **appPackage** folder. Copy the contents of the [solution file](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-declarative-copilot.json) into this file and save it.
 
-Notice that the file includes a name, description, and instructions for the declarative agent. Notice that as part of the instructions, Copilot is instructed to "Always remind users of the Trey motto, 'Always be Billing!'." You should see this when you prompt Copilot in the next exercise.
+Notice that the file includes a name, description, and instructions for the declarative copilot. Notice that as part of the instructions, Copilot is instructed to "Always remind users of the Trey motto, 'Always be Billing!'." You should see this when you prompt Copilot in the next exercise.
 
 <cc-lab-end-step lab="e3" exercise="2" step="1" />
 
-### Step 2: Add the URL of your SharePoint site to the declarative agent
+### Step 2: Add the URL of your SharePoint site to the declarative copilot
 
-Under "Capabilities" you will notice a SharePoint file container. While Microsoft 365 Copilot may reference any documents in SharePoint or OneDrive, this declarative agent will only access files in the Trey Research Legal Documents site you created in Exercise 1. To set that up, replace the SharePoint URL with yours.
+Under "Capabilities" you will notice a SharePoint file container. While Microsoft 365 Copilot may reference any documents in SharePoint or OneDrive, this declarative copilot will only access files in the Trey Research Legal Documents site you created in Exercise 1. To set that up, replace the SharePoint URL with yours.
 
 ~~~json
 "capabilities": [
@@ -89,7 +89,7 @@ Under "Capabilities" you will notice a SharePoint file container. While Microsof
 ],
 ~~~
 
-And there's an "actions" section which tells the Declarative Agent to access the Trey Research API. In the next step we'll look at **trey-plugin.json** and how it and another file describe the API to Copilot so it can make the REST calls.
+And there's an "actions" section which tells the Declarative Copilot to access the Trey Research API. In the next step we'll look at **trey-plugin.json** and how it and another file describe the API to Copilot so it can make the REST calls.
 
 ~~~json
 "actions": [
@@ -191,9 +191,9 @@ They include a pointer to the **trey-definition.json** file, and an enumeration 
 
 <cc-lab-end-step lab="e3" exercise="2" step="4" />
 
-### Step 4: Add the declarative agent to your app manifest
+### Step 4: Add the declarative copilot to your app manifest
 
-Now open the **manifest.json** file within the **appPackage** directory. Add a new `declarativeCopilots` object to the `copilotExtensions` object as follows, so it references the declarative agent JSON file you created in the previous step.
+Now open the **manifest.json** file within the **appPackage** directory. Add a new `declarativeCopilots` object to the `copilotExtensions` object as follows, so it references the declarative copilot JSON file you created in the previous step.
 
 ~~~json
   "copilotExtensions": {
@@ -214,11 +214,11 @@ Now open the **manifest.json** file within the **appPackage** directory. Add a n
 
 Be sure to save your work. 
 
-By leaving the "plugins" object in place, you are enabling the direct use of the API plugin _or_ the declarative agent.
+By leaving the "plugins" object in place, you are enabling the direct use of the API plugin _or_ the declarative copilot.
 
 <cc-lab-end-step lab="e3" exercise="2" step="4" />
 
-## Exercise 3: Run and test the declarative agent
+## Exercise 3: Run and test the declarative copilot
 
 ### Step 1: Run the new project
 
@@ -228,22 +228,22 @@ Then start the debugger by clicking the arrow or pressing F5 and return to the C
 
 <cc-lab-end-step lab="e3" exercise="3" step="1" />
 
-### Step 2: Test the declarative agent
+### Step 2: Test the declarative copilot
 
 Open the Copilot chat and the right flyout 1️⃣ to show your previous chats and declarative copilots and select the Trey Genie Local copilot 2️⃣.
 
-![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 Try a prompt such as "Please list my projects along with details from the Statement of Work doc". 
 You should see a list of your projects from the API plugin, enhanced with details from each project's Statement of Work 1️⃣. Notice that Copilot includes the Trey Research motto 2️⃣ and references to the documents 3️⃣. Click one of the references to check out the document.
 
-![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
+![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
 
 <cc-lab-end-step lab="e3" exercise="3" step="2" />
 
 
 ## CONGRATULATIONS
 
-You've completed adding a Declarative Agent to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
+You've completed adding a Declarative Copilot to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />

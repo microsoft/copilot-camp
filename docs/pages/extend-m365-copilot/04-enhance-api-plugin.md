@@ -4,9 +4,9 @@ In this lab you will add additional REST calls to the API and add them to the AP
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md)
-    - [Lab E1 - Declarative Agent](./01-declarative-copilot.md)
+    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
     - [Lab E2 - Build an API](./02-build-the-api.md)
-    - [Lab E3 - Add a Declarative Agent and API Plugin](./03-add-declarative-copilot.md) 
+    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
     - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md) (📍You are here)
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
@@ -340,7 +340,7 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 Stop and restart your project to force it to re-deploy the application package.
 You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative copilots and select the Trey Genie Local copilot 2️⃣.
 
-![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 <cc-lab-end-step lab="e4" exercise="3" step="1" />
 
