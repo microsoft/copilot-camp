@@ -16,7 +16,7 @@ nav:
   - Lab E4 - Add Adaptive Cards: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
   - Lab E5 - Add a Declarative Copilot: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
   - Lab E6 - Add authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
-- Build Path - Build your own copilot: 
+- Build Path - Build your own agent: 
   - Welcome : 'pages/custom-engine/index.md'
   - Lab B0 - Prerequisites: 'pages/custom-engine/00-prerequisites.md'
   - Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit: 'pages/custom-engine/01-custom-engine-agent.md'

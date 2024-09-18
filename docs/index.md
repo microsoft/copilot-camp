@@ -1,7 +1,7 @@
 
 # Copilot developer camp
 
-Welcome to Copilot developer camp! Copilot developer camp is a virtual workshop for professional developers who want to learn how to extend Copilot for Microsoft 365 or build their own copilots.
+Welcome to Copilot developer camp! Copilot developer camp is a virtual workshop for professional developers who want to learn how to extend Copilot for Microsoft 365 or build their own agents.
 
 !!! warning "Copilot developer camp is still work in progress, but some of the labs are ready for testing."
     We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot developer camp Early Testers" chat in Microsoft Teams.
@@ -17,7 +17,7 @@ _Note: These labs require the "Private Preview" for Copilot for M365 extensibili
 
 ---8<--- "e-path-links.md"
 
-## Build Path - Build your own copilot
+## Build Path - Build your own agent
 
 ---8<--- "b-path-links.md"
 
