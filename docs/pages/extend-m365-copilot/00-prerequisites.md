@@ -5,9 +5,9 @@ In this lab, you will set up the development environment to build, test, and dep
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md) (📍You are here)
-    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
+    - [Lab E1 - Declarative Agent](./01-declarative-copilot.md)
     - [Lab E2 - Build an API](./02-build-the-api.md)
-    - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+    - [Lab E3 - Add a Declarative Agent and API Plugin](./03-add-declarative-copilot.md) 
     - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
     - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
     - [Lab E6 - Add authentication](./06-add-authentication.md)
@@ -77,6 +77,6 @@ Follow the steps as shown in the screen shot below.
 
 <cc-lab-end-step lab="e0" exercise="2" step="3" />
     
-Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Copilot in the next lab. 
+Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Agent in the next lab. 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/00-prerequisites" />

@@ -34,7 +34,7 @@ The sample aims to showcase the following plugin features:
   1. √ Multi-parameter queries
   1. √ Allow updating and adding data using POST requests
   1. √ Prompt users before POSTing data; capture missing parameters
-  1. √ Invoke from Declarative Copilot, allowing general instructions and knowledge, and removing the need to name the plugin on every prompt
+  1. √ Invoke from Declarative Agent, allowing general instructions and knowledge, and removing the need to name the plugin on every prompt
   1. Entra ID SSO with /me path support *
   1. Display rich adaptive cards *
   
@@ -62,7 +62,7 @@ The sample aims to showcase the following plugin features:
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint. Add the location of these files in the `file_containers` capability in the declarative copilot (**/appPackage/trey-declarative-copilot.json**).
+1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint. Add the location of these files in the `file_containers` capability in the declarative agent (**/appPackage/trey-declarative-copilot.json**).
 
 ### Running the solution (after each build)
 

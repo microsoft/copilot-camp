@@ -10,11 +10,11 @@ nav:
 - Extend Path - Extend Copilot for Microsoft 365: 
   - Welcome : 'pages/extend-m365-copilot/index.md'
   - Lab E0 - Prerequisites: 'pages/extend-m365-copilot/00-prerequisites.md'
-  - Lab E1 - Declarative Copilot: 'pages/extend-m365-copilot/01-declarative-copilot.md'
+  - Lab E1 - Declarative Agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
   - Lab E2 - First API Plugin: 'pages/extend-m365-copilot/02-build-the-api.md'
   - Lab E3 - Enhanced API Plugin: 'pages/extend-m365-copilot/03-add-declarative-copilot.md'
   - Lab E4 - Add Adaptive Cards: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
-  - Lab E5 - Add a Declarative Copilot: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
+  - Lab E5 - Add a Declarative Agent: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
   - Lab E6 - Add authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
 - Build Path - Build your own copilot: 
   - Welcome : 'pages/custom-engine/index.md'

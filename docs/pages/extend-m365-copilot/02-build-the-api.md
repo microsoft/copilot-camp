@@ -4,9 +4,9 @@ In this lab you will set up an API based on Azure Functions and install it as an
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
    : [Lab E0: Prerequisites](./00-prerequisites.md)
-   : [Lab E1: Declarative Copilot](./01-declarative-copilot.md)
+   : [Lab E1: Declarative Agent](./01-declarative-copilot.md)
    : [Lab E2: Build an API](./02-build-the-api.md) (📍You are here)
-   : [Lab E3: Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
+   : [Lab E3: Add a Declarative Agent and API Plugin](./03-add-declarative-copilot.md) 
    : [Lab E4: Enhance the API and Plugin](./04-enhance-api-plugin.md)
    : [Lab E5: Add Adaptive Cards](./05-add-adaptive-card.md)
    : [Lab E6: Add authentication](./06-add-authentication.md)
@@ -20,7 +20,7 @@ In this lab you will set up a REST API for Trey Research, a hypothetical consult
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
 ???+ Question "How did you create this API?"
-    The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new project and select "Copilot Extensions", then "Declarative Copilot" and "Declarative Copilot with a new API". The wording may change as the platform becomes generally available.
+    The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new project and select "Copilot Extensions", then "Declarative Agent" and "Declarative Agent with a new API". The wording may change as the platform becomes generally available.
 
 ## Exercise 1: Configure and run the starting application
 
