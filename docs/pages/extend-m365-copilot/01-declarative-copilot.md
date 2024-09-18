@@ -69,8 +69,7 @@ They are called capabilities and there are three types of capabilities supported
 ![capabilities of declarative agents](../../assets/images/extend-m365-copilot-01/capabiltities-da.png)
 
 !!! tip "OnDrive and SharePoint"
-    URLs should be full path to SharePoint items (site, document library, folder, or file). You can use the "Copy direct link" option in SharePoint to get the full path or files and folders. To achieve this, right-click on the file or folder and select Details. Navigate to Path and click on the copy icon. 
-    Not specifying the URLs, the entire corpus of OneDrive and SharePoint content available to the logged in user will be used by the agent.
+    URLs should be full path to SharePoint items (site, document library, folder, or file). You can use the "Copy direct link" option in SharePoint to get the full path or files and folders. To achieve this, right-click on the file or folder and select Details. Navigate to Path and click on the copy icon.<mark> Not specifying the URLs, the entire corpus of OneDrive and SharePoint content available to the logged in user will be used by the agent.</mark>
 
 !!! tip "Microsoft Graph Connector"
     Not specifying the connections, the entire corpus of Graph Connectors content available to the logged in user will be used by the agent.
