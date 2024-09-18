@@ -41,7 +41,7 @@ As a bonus you will also give your agent some files to refer to a secret diary �
 
 So let's begin 💪🏼
 
-## Anatomy of a Declarative agent app
+## Anatomy of a Declarative agent 
 
 You will see as we develop more and more extensions to Copilot,  that in the end what you will build is collection of few files in a zip file which we will refer to as an `app package` that you will  then install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a declarative agent is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app. 
 
@@ -50,10 +50,33 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 |-----------------------------|---------------------------------------------------------------------------------------------|---|
 | **App manifest**            | Describes app configuration, capabilities, required resources, and important attributes.    |manifest.json|
 | **App icons**               | Requires a color (192x192) and outline (32x32) icon for your declarative agent.                             |icon.png, color.png|
-| **Declarative agent manifest** | Describes agent configuration, instructions, required fields, capabilities, conversation starters, and actions. |declarativeCopilot.json|
+| **Declarative agent manifest** | Describes agent configuration, instructions, required fields, capabilities, conversation starters, and actions. |declarativeAgent.json|
+
 
 !!! note 
      You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
+
+
+## Capabilities of a Declarative agent 
+
+You can enhance the agent's focus on context and data by not only adding instructions but also specifying the knowledge base it should access.
+They are called capabilities and there are three types of capabilities supported.
+
+- **Microsoft Graph Connectors** - Pass connections of Graph connectors into the agent, allowing the agent to access and utilize the connector's knowledge.
+- **OneDrive and SharePoint** - Provides URLs of files and sites to agent, for it to gain access to those contents.
+- **Web search** - Enables or disables web content as part of the agent's knowledge base.
+
+![capabilities of declarative agents](../../assets/images/extend-m365-copilot-01/capabiltities-da.png)
+
+!!! tip "OnDrive and SharePoint"
+    URLs should be full path to SharePoint items (site, document library, folder, or file). You can use the "Copy direct link" option in SharePoint to get the full path or files and folders. To achieve this, right-click on the file or folder and select Details. Navigate to Path and click on the copy icon. 
+    Not specifying the URLs, the entire corpus of OneDrive and SharePoint content available to the logged in user will be used by the agent.
+
+!!! tip "Microsoft Graph Connector"
+    Not specifying the connections, the entire corpus of Graph Connectors content available to the logged in user will be used by the agent.
+
+!!! tip "Web search"
+    At the moment you cannot pass specific websites or domains and this acts only as a toggle on and off to use web. 
 
 ## Exercise 1: Scaffold a declarative agent from template
 You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
@@ -78,11 +101,11 @@ Go to the Teams Toolkit extension in your Visual Studio Code editor and select *
 
 ![start creating the base app](../../assets/images/extend-m365-copilot-01/create-new-app.png)
 
-A panel opens up where you need to select **Copilot Extension** from the list of project types.
+A panel opens up where you need to select **Copilot Agent** from the list of project types.
 
 ![project types](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
 
-Next, you will be asked to choose the app feature of Copilot extension. Choose `declarative agent` and select Enter. 
+Next, you will be asked to choose the app feature of Copilot Agent. Choose `declarative agent` and select Enter. 
 
 ![app feature types](../../assets/images/extend-m365-copilot-01/app-feature.png)
 
@@ -105,7 +128,7 @@ The project will be created in a few seconds in the folder you mentioned and wil
 
 ![project created](../../assets/images/extend-m365-copilot-01/project-scffolded.png)
 
-Well done! You have successfully set up the base decllarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
+Well done! You have successfully set up the base declarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
 <cc-lab-end-step lab="e1" exercise="1" step="2" />
 
@@ -113,7 +136,7 @@ Well done! You have successfully set up the base decllarative Copilot app! Now, 
 ### Step 3: Set up accounts in Teams Toolkit
 Now select the Teams Toolkit icon in the left 1️⃣ . Under "Accounts" click "Sign in to Microsoft 365" 2️⃣ and log in with your own Microsoft 365 account.
 
-![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
+![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-01.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
@@ -141,7 +164,7 @@ Here's how the base project looks:
 | `env`                                | Environment files with a default  `.env.dev`    file        
 | `appPackage/color.png`               | Application logo image                        |
 | `appPackage/outline.png`             | Application logo outline image                        |
-| `appPackage/declarativeCopilot.json` | Defines settings and configurations of the declarative agent.                                                |
+| `appPackage/declarativeAgent.json` | Defines settings and configurations of the declarative agent.                                                |
 | `appPackage/instruction.txt`         | Defines the behaviour of declarative agent.                                                |
 | `appPackage/manifest.json`           | Teams application manifest that defines metadata for your declarative agent.                                      |
 | `teamsapp.yml`                       | Main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
@@ -149,7 +172,7 @@ Here's how the base project looks:
 The file of interest for our lab is primarily the **appPackage/instruction.txt** file which is the core directives needed for your agent.
 It's a plain text file and you can write natural language instructions in it. 
 
-Another important file is **appPackage/declarativeCopilot.json** where there is a schema to be followed to extend Microsoft 365 Copilot with the new declarative agent. Let's look at what propertis the schema of this file has. 
+Another important file is **appPackage/declarativeAgent.json** where there is a schema to be followed to extend Microsoft 365 Copilot with the new declarative agent. Let's look at what propertis the schema of this file has. 
 
 - The `$schema` is the schema reference 
 - The `version` is the schema version 
@@ -163,8 +186,8 @@ Another important file is the `appPackage/manifest.json` file, which contains cr
 "copilotExtensions": {
         "declarativeCopilots": [            
             {
-                "id": "declarativeCopilot",
-                "file": "declarativeCopilot.json"
+                "id": "declarativeAgent",
+                "file": "declarativeAgent.json"
             }
         ]
     },
@@ -179,14 +202,14 @@ You could also update the logo files `color.png` and `outline.png` to make it ma
 
 First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png){target=_blank} and replace it with the image of same name in the folder **appPackage** in your root project. 
 
-Next, go to the file **appPackage/manifest.json**  in your root project and find the node **copilotExtensions**. Update the id value of the declarativeCopilots array's first entry from `declarativeCopilot` to `dcGeolocator` to make this ID unique.
+Next, go to the file **appPackage/manifest.json**  in your root project and find the node **copilotExtensions**. Update the id value of the declarativeAgents array's first entry from `declarativeAgent` to `dcGeolocator` to make this ID unique.
 
 <pre>
  "copilotExtensions": {
         "declarativeCopilots": [            
             {
                 "id": "<b>dcGeolocator</b>",
-                "file": "declarativeCopilot.json"
+                "file": "declarativeAgent.json"
             }
         ]
     },
@@ -258,7 +281,7 @@ Some of the benefits of having conversation starters are:
 
 - **User Retention**: Well-designed starters keep users interested, encouraging repeat interactions with the AI.
 
-Open file `declarativeCopilot.json` and right after the `instructions` node add a comma `,` and paste below code.
+Open file `declarativeAgent.json` and right after the `instructions` node add a comma `,` and paste below code.
 
 ```JSON
  "conversation_starters": [
@@ -294,7 +317,7 @@ In this step Teams toolkit will package up all the files inside the `appPackage`
     Provision step will fail if the user is using a Tenant without Private Preview enabled. 
 
 Go to Teams in browser [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) logged into your developer tenant.
-If you have a Copilot for Microsoft 365, the new app will be automatically pinned above your chats. Just open Teams, select “chats” and you’ll see Copilot.
+If you have a Microsoft 365 Copilot, the new app will be automatically pinned above your chats. Just open Teams, select “chats” and you’ll see Copilot.
 
 Once the Copilot app is loaded, Find the "Geo Locator Game" from the right panel as shown. 
 
@@ -312,12 +335,11 @@ Check out the demo of the game.
 
 ![demo](../../assets/images/extend-m365-copilot-01/demo.gif)
 
-<cc-lab-end-step lab="e1" exercise="2" step="2" />
+<cc-lab-end-step lab="e1" exercise="2" step="3" />
 
 ## Exercise 3: Add files for reference (Bonus exercise) 
 
-Repeating the same game can get boring. To keep things interesting, the game needs access to data that can be regularly updated. Think of it as a small knowledge pool for your agent to refresh the game and increase the level of challenge.
-Today, declarative agents can refer to websites, SharePoint sites and OneDrive to become these little focus data pools for it to work with. And you will see much more in the coming labs where you will maximise it's capabilities with plugins and connectors. 
+Playing the same game over and over can get dull. To keep things fun and engaging, the game needs access to data that’s regularly updated. Let’s give the agent a new ability to refresh the game and ramp up the challenge. As we covered earlier, declarative agents can have three main capabilities, one of which is referencing SharePoint sites and OneDrive. So, let's go ahead and add the ability for your agent to access a couple of files.
 
 ### Step 1: Upload files to SharePoint.
 
@@ -326,16 +348,15 @@ Download this zip file consisting of two PDF file by selecting this [link](https
 Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
 These documents are **historical_map.pdf** and **travelers_diary** to help make the game more challenging. 
 
-Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso`
+Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso` and proceed to next step.
 
-!!! warning "SharePoint Teams site"
-    Use a SharePoint Teams site instead of Communication site. The index is currently picking up in SharePoint Teams site.
+<cc-lab-end-step lab="e1" exercise="3" step="1" />
 
 ### Step 2: Update declarative agent manifest
 
 Go to the environment file called **.env.dev** and create a new variable called "SP_SITE_URL" and paste the absolute url of the SharePoint site as its value.
 
-Next, go to the agent manifest **appPackage/declarativeCopilot.json** and add a comma `,` after conversation_starters array and paste the belwo new array object for extending the agent's capability to refer to SharePoint data of a particular site.
+Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a comma `,` after conversation_starters array and paste the belwo new array object for extending the agent's capability to refer to SharePoint data of a particular site.
 
 ```JSON
  "capabilities": [
@@ -353,9 +374,13 @@ Next, go to the agent manifest **appPackage/declarativeCopilot.json** and add a 
 This widens declarative agent's knowledge to read documents in this SharePoint site specifically to help spice up the game. 
 There is no limit to how many URLs you can add 💪🏼
 
+<cc-lab-end-step lab="e1" exercise="3" step="2" />
+
 ### Step 3: Upgrade app manifest
 
 Next, go to the file **appPackage/manifest.json** and upgrade the manifest version from "1.0.0"" to "1.0.1" so the changes are reflected when you install. 
+
+<cc-lab-end-step lab="e1" exercise="3" step="3" />
 
 ### Step 4: Test the app
 
@@ -375,11 +400,14 @@ You have basically become a declarative agent boss. Find out more from this vide
 
 [place holder for video]
 
+<cc-lab-end-step lab="e1" exercise="3" step="4" />
+
 ## Resources
 - [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot)
+- [Declarative agent manifest schema](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-manifest)
 - [Supported content types](https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot#supported-content-types)
+- [Capabilities of Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-capabilities-ids?tabs=explorer)
 
-<cc-lab-end-step lab="e1" exercise="2" step="3" />
 
 Great job on building your game agent 🎉 ! In the next lab, you’ll create a REST API, use it to build a plugin, and dive into a real-world business scenario solved by another agent. Exciting stuff ahead. Select **Next**
 
