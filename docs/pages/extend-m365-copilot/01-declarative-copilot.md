@@ -82,16 +82,21 @@ They are called capabilities and there are three types of capabilities supported
 You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
 So to keep things as simple as possible you will use Teams Toolkit.
 
-### Step 1: Install Teams Toolkit's prerelease version
+### Step 1: Install Teams Toolkit 
 
-Go to extensions tab of your Visual Studio Code and type **team** as in step 1 in the image below.
-Select **Teams Toolkit** as step 2. 
-Select **Switch to Pre-Release Version** 
+!!! warning "This step is temporary"
+     For now you will need to use this hotfix version until the feature is available in Teams Toolkit as either Preview or Stable Release
 
-![prerelease version install](../../assets/images/extend-m365-copilot-01/prerelease-ttk.png)
+- Go to this [link](https://github.com/OfficeDev/teams-toolkit/actions/runs/10846087381)
+- Download **release** file at the bottom of the page under **Artifacts** into your machine
+- Extract the **release.zip** file into **release** folder
+- Go to Visual Studio Code and open the **Extensions** 1️⃣ and select **...** 2️⃣ and select "Install from VSIX" 3️⃣
 
-!!! tip "Teams Toolkit Prerelease"
-     Only this lab uses prerelease version of Teams Toolkit. You can switch back to release version after this lab is completed. The steps are similar to above.
+![select the type of declarative agent](../../assets/images/extend-m365-copilot-01/steps-ttk-extension.png)
+
+- Select the vsix file from the extracted release folder. 
+
+This will install the needed version of Teams Toolkit to test this lab.
 
 <cc-lab-end-step lab="e1" exercise="1" step="1" />
 
