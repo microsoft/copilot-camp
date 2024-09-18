@@ -4,7 +4,7 @@ In this lab you will further enhance the reponse from Copilot for Microsoft 365 
 
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md)
-    - [Lab E1 - Declarative Copilot](./01-declarative-copilot.md)
+    - [Lab E1 - Declarative Agent](./01-declarative-copilot.md)
     - [Lab E2 - Build an API](./02-build-the-api.md)
     - [Lab E3 - Add a Declarative Copilot and API Plugin](./03-add-declarative-copilot.md) 
     - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
