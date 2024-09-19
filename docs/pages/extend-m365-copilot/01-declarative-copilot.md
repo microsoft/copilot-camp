@@ -83,19 +83,19 @@ So to keep things as simple as possible you will use Teams Toolkit.
 
 ### Step 1: Install Teams Toolkit 
 
+https://aka.ms/json-schemas/copilot/declarative-agent/v1.0/schema.json
+
 !!! warning "This step is temporary"
      For now you will need to use this hotfix version until the feature is available in Teams Toolkit as either Preview or Stable Release
 
-- Go to this [link](https://github.com/OfficeDev/teams-toolkit/actions/runs/10846087381)
-- Download **release** file at the bottom of the page under **Artifacts** into your machine
-- Extract the **release.zip** file into **release** folder
-- Go to Visual Studio Code and open the **Extensions** 1️⃣ and select **...** 2️⃣ and select "Install from VSIX" 3️⃣
+- Go to extensions tab of your Visual Studio Code and type **team** as in step 1️⃣ in the image below.
+- Select **Teams Toolkit** as step 2️⃣. 
+- Select **Switch to Pre-Release Version**  3️⃣ <mark>v5.9.2024091405 (pre-release)</mark>
 
-![select the type of declarative agent](../../assets/images/extend-m365-copilot-01/steps-ttk-extension.png)
+![prerelease version install](../../assets/images/extend-m365-copilot-01/prerelease-ttk.png)
 
-- Select the vsix file from the extracted release folder. 
-
-This will install the needed version of Teams Toolkit to test this lab.
+!!! tip "Teams Toolkit Prerelease"
+     Only this lab uses prerelease version of Teams Toolkit. You can switch back to release version after this lab is completed. The steps are similar to above.
 
 <cc-lab-end-step lab="e1" exercise="1" step="1" />
 
