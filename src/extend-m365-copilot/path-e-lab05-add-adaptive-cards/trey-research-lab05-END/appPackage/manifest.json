@@ -29,12 +29,6 @@
         "id": "treygenie",
       "file": "trey-declarative-copilot.json"
       }
-    ],
-    "plugins": [
-      {
-        "id": "treyresearch",
-        "file": "trey-plugin.json"
-      }
     ]
   }, 
   "permissions": [
