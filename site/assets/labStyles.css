@@ -106,11 +106,14 @@ button {
     margin-left: -7pt !important;
     padding: 10pt;
 }
-.md-header{
+.old-md-header {
     background-color: #3F2274;
 }
+.md-header{
+    background-color: #6D33A0;
+}
 .md-tabs{
-    background-color: #3F2274;
+    background-color: #6D33A0;
 }
 /*
 .md-nav__link--active {

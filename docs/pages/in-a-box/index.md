@@ -1,7 +1,7 @@
 
-# Copilot Camp In a Box
+# Copilot Developer Camp In a Box
 
-Here are presentation materials for running your own Copilot Camp workshop!!
+Here are presentation materials for running your own Copilot Developer Camp workshop!!
 
 |  | title  | deck with video demos | deck for sharing |
 |---|--|---|---|
