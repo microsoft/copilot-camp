@@ -1,6 +1,6 @@
 # Lab T1 - Test Bob's new Web Controls
 
-In this lab, you, the Copilot Camp content developer, will learn how to use custom web controls to provide an enhanced user experience.
+In this lab, you, the Copilot Developer Camp content developer, will learn how to use custom web controls to provide an enhanced user experience.
 
 !!! abstract "Where did I leave off?"
     <cc-last-completed-step />

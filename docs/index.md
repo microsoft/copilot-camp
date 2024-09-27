@@ -1,10 +1,10 @@
 
-# Copilot developer camp
+# Copilot Developer Camp
 
-Welcome to Copilot developer camp! Copilot developer camp is a virtual workshop for professional developers who want to learn how to extend Copilot for Microsoft 365 or build their own agents.
+Welcome to Copilot Developer Camp! Copilot Developer Camp is a virtual workshop for professional developers who want to learn how to extend Copilot for Microsoft 365 or build their own agents.
 
-!!! warning "Copilot developer camp is still work in progress, but some of the labs are ready for testing."
-    We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot developer camp Early Testers" chat in Microsoft Teams.
+!!! warning "Copilot Developer Camp is still work in progress, but some of the labs are ready for testing."
+    We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or let us know in the "Copilot Developer Camp Early Testers" chat in Microsoft Teams.
 
 The labs are divided into two pathways, allowing you to choose based on what you want to create.
 

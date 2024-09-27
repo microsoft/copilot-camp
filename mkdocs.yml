@@ -1,4 +1,4 @@
-site_name: Copilot developer camp
+site_name: Copilot Developer Camp
 site_url: https://microsoft.github.io/copilot-camp
 repo_url: https://github.com/microsoft/copilot-camp
 repo_name: microsoft/copilot-camp
@@ -30,7 +30,7 @@ theme:
   palette: 
     primary: '#35258F'
     accent: '#091F2C'
-  logo: 'assets/images/logo-copilot-camp.jpg'
+  logo: 'assets/images/CopilotCamp-Tent-Clean.png'
   icon:
     repo: fontawesome/brands/github
   features:

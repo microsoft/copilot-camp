@@ -1,6 +1,6 @@
 (() => {
 
-    // Web controls for Copilot Camp lab step tracking
+    // Web controls for Copilot Developer Camp lab step tracking
 
     //#region CSS
     function ensureCss() {

@@ -320,7 +320,7 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 
 ## CONGRATULATIONS
 
-You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie).
+You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie).
 
 You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 
 

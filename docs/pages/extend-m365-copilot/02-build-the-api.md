@@ -35,7 +35,7 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the Copilot developer camp repository at [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}. Select the "Code" button and clone or download the content to your computer.
+Begin by downloading the Copilot Developer Camp repository at [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}. Select the "Code" button and clone or download the content to your computer.
 
 Find starting code in the repo at **/src/extend-m365-copilot/path-a-lab02-first-api-plugin/trey-research**.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
