@@ -63,6 +63,10 @@ button {
 
 /* Lab path rendering */
 
+hr {
+    border-top: 1px solid black;
+}
+
 .cc-lab-toc-container img {
     width: 100%;
 }
@@ -76,7 +80,7 @@ button {
 @media screen and (min-width: 800px) {
     .cc-lab-toc-container {
         border: 3px solid #fff;
-        padding: 10px;
+        padding: 0 10px;
     }
 
     .cc-lab-toc-container .e-path {
@@ -94,8 +98,16 @@ button {
 
 .cc-lab-toc {
     color: black;
-    padding: 10pt;
+    padding: 0 10pt;
     font-size: 11pt;
+    max-width: 400pt;
+}
+
+.cc-lab-toc img {
+    height: 35pt;
+    border-radius: 18pt 10pt 10pt 18pt / 10pt 10pt 10pt 10pt;
+    width: 100%;
+    object-fit: cover;
 }
 
 .cc-lab-toc li a:link,
@@ -133,7 +145,7 @@ button {
 }
 
 .cc-lab-toc ul li span {
-    padding: 8pt 16pt 8pt 8pt;
+    padding: 4pt 8pt 4pt 8pt;
     border-radius: 20pt;
     margin: 0 0 0 10pt;
     background-color: #6D33A0;

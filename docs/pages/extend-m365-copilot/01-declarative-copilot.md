@@ -2,16 +2,7 @@
 
 In this lab, you'll build a simple declarative agent using Teams Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
 
-
-???+ "Navigating the Extend Copilot labs (Extend Path)"
-    - [Lab E0 - Prerequisites](./00-prerequisites.md)
-    - [Lab E1 - Declarative agent](./01-declarative-copilot.md) (📍You are here)
-    - [Lab E2 - Build an API](./02-build-the-api.md)
-    - [Lab E3 - Add a declarative agent and API Plugin](./03-add-declarative-copilot.md) 
-    - [Lab E4 - Enhance the API and Plugin](./04-enhance-api-plugin.md)
-    - [Lab E5 - Add Adaptive Cards](./05-add-adaptive-card.md)
-    - [Lab E6 - Add authentication](./06-add-authentication.md)
-
+---8<--- "e-labs-toc.md"
 ---8<--- "e-path-prelude.md"
 
 In this lab you will learn:
