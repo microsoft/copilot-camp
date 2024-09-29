@@ -3,6 +3,9 @@
 
 In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
+---8<--- "e-labs-toc.md"
+
+
 ???+ "Navigating the Extend Copilot labs (Extend Path)"
     - [Lab E0 - Prerequisites](./00-prerequisites.md) (📍You are here)
     - [Lab E1 - Declarative Agent](./01-declarative-copilot.md)

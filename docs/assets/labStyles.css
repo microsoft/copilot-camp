@@ -63,74 +63,78 @@ button {
 
 /* Lab path rendering */
 
-
-.lab-path-container img {
+.cc-lab-toc-container img {
     width: 100%;
 }
 
-.lab-path-container:after {
+.cc-lab-toc-container:after {
     content: "";
     display: table;
     clear: both;
 }
 
 @media screen and (min-width: 800px) {
-    .lab-path-container {
+    .cc-lab-toc-container {
         border: 3px solid #fff;
         padding: 10px;
     }
 
-    .lab-path-container .e-path {
+    .cc-lab-toc-container .e-path {
         width: 50%;
         float: left;
         padding: 10px;
     }
 
-    .lab-path-container .b-path {
+    .cc-lab-toc-container .b-path {
         width: 50%;
         float: right;
         padding: 10px;
     }
 }
 
-.lab-path {
+.cc-lab-toc {
     color: black;
     padding: 10pt;
     font-size: 11pt;
 }
 
-.lab-path li a:link,
-.lab-path li a:visited {
+.cc-lab-toc li a:link,
+.cc-lab-toc li a:visited {
     color: black;
 }
 
-.lab-path img {
+.cc-lab-toc img {
     padding-left: 8pt;
 }
 
-.lab-path div {
+.cc-lab-toc div {
     margin: 0 0 0 10pt;
     border: black 2px solid;
     border-radius: 10pt;
 }
 
-.lab-path div p {
+.cc-lab-toc div p {
     padding-left: 8pt;
     margin: 6pt 6pt -12pt 6pt;
     border-bottom: 2px solid;
 }
 
-.lab-path ul {
+.cc-lab-toc ul {
     padding-top: 8pt;
 }
 
-.lab-path ul li {
+.cc-lab-toc ul li {
 	margin: 0;
 	padding: 8pt 0 8pt 40pt;
 	list-style: none;
 	background-repeat: no-repeat;
 	background-position: left center;
 	background-size: 30pt;
+}
+
+.cc-lab-toc-active {
+    background-color: yellow;
+    color: green;
 }
 
 .e-path div,

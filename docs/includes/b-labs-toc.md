@@ -1,4 +1,4 @@
-<div class="lab-path b-path">
+<div class="cc-lab-toc b-path">
   <img src="/copilot-camp/assets/images/path-icons/B-path-heading.png"></img>
   <div>
     <p>Do these labs if you want to build a Custom engine agent using Azure OpenAI and Teams Toolkit</p>
