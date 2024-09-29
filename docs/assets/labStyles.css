@@ -132,9 +132,13 @@ button {
 	background-size: 30pt;
 }
 
-.cc-lab-toc-active {
-    background-color: yellow;
-    color: green;
+.cc-lab-toc ul li span {
+    padding: 8pt 16pt 8pt 8pt;
+    border-radius: 20pt;
+    margin: 0 0 0 10pt;
+    background-color: #6D33A0;
+    color: white;
+    font-weight: bold;
 }
 
 .e-path div,

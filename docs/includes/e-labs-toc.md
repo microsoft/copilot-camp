@@ -25,7 +25,9 @@ for (const div of toc) {
     for (const li of lis) {
         const anchor = li.querySelector('a');
         if (location.href.includes(anchor.href)) {
-            li.classList.add('cc-lab-toc-active');
+            const span = document.createElement("span");
+            span.innerHTML = "◄◄◄ YOU ARE HERE";
+            li.appendChild(span);
         }
     }    
 }
