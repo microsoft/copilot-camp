@@ -28,7 +28,7 @@ The labs are divided into two pathways, allowing you to choose based on what you
 <div class="lab-path e-path">
   <img src="./assets/images/path-icons/E-path-heading.png"></img>
   <div>
-    <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and orchestration</p>
+    <p>Start with these labs if you want to build a Declarative Agent where Microsoft 365 provides the AI model and orchestration</p>
     <ul>
       <li><a href="./pages/extend-m365-copilot/00-prerequisites/">E0 - Set up your development environment</a></li>
       <li><a href="./pages/extend-m365-copilot/01-declarative-copilot/">E1 - Build your first declarative agent</a></li>
@@ -44,10 +44,10 @@ The labs are divided into two pathways, allowing you to choose based on what you
   <div class="lab-path b-path">
   <img src="./assets/images/path-icons/B-path-heading.png"></img>
   <div>
-    <p>Do these labs if you want to build a Custom engine agent using Azure OpenAI and Teams Toolkit</p>
+    <p>Start with these labs if you want to build a Custom Engine Agent using Azure OpenAI, Teams Toolkit and Teams AI library</p>
     <ul>
       <li><a href="./pages/custom-engine/00-prerequisites/">B0 - Set up your development environment</a></li>
-      <li><a href="./pages/custom-engine/01-custom-engine-agent/">B1 - Build a custom engine agent using Azure OpenAI</a></li>
+      <li><a href="./pages/custom-engine/01-custom-engine-agent/">B1 - Build your first custom engine agent</a></li>
       <li><a href="./pages/custom-engine/02-rag/">B2 - Index your data and bring it into your agent</a></li>
       <li><a href="./pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>
       <li><a href="./pages/custom-engine/04-authentication/">B4 - Secure your solution using authentication</a></li>

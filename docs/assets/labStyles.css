@@ -83,13 +83,13 @@ button {
     .lab-path-container .e-path {
         width: 50%;
         float: left;
-        padding: 10px;
+        padding: 3px;
     }
 
     .lab-path-container .b-path {
         width: 50%;
         float: right;
-        padding: 10px;
+        padding: 3px;
     }
 }
 
