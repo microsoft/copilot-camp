@@ -114,6 +114,14 @@ hr {
     border: #B06CF4 2px solid;
 }
 
+@media screen and (max-width: 550px) {
+    .cc-e-lab-steps,
+    .cc-b-lab-steps {
+        border-width: 0;
+        width: 100%;
+    }
+}
+
 @media screen and (min-width: 800px) {
     .floatwide {
         float: right;
