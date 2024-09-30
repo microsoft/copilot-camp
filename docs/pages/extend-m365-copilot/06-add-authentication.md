@@ -1,4 +1,4 @@
-# Lab E6 - Add authentication to the API plugin
+# Lab E6 - Add Entra ID authentication
 
 ---8<--- "e-labs-prelude.md"
 

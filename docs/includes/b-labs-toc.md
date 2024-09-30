@@ -3,7 +3,7 @@
   <div>
     <p>Do these labs if you want to build a Custom engine agent using Azure OpenAI and Teams Toolkit</p>
     <ul>
-      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Set up your development environment</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Setup</a></li>
       <li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-agent/">B1 - Build a custom engine agent using Azure OpenAI</a></li>
       <li><a href="/copilot-camp/pages/custom-engine/02-rag/">B2 - Index your data and bring it into your agent</a></li>
       <li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>

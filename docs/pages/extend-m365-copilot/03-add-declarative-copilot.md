@@ -1,5 +1,5 @@
 
-# Lab E3 - Add a declarative copilot to your API plugin
+# Lab E3 - Add a declarative agent and API plugin
 
 ---8<--- "e-labs-prelude.md"
 
