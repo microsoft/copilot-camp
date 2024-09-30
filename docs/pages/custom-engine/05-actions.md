@@ -1,7 +1,7 @@
-# B5 - Add actions to handle complex tasks
 
----8<--- "b-labs-toc.md"
----8<--- "b-path-prelude.md"
+---8<--- "b-labs-prelude.md"
+
+# B5 - Add actions to handle complex tasks
 
 In this lab you will:
 

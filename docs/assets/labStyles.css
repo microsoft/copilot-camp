@@ -96,6 +96,32 @@ hr {
     }
 }
 
+.cc-e-lab-steps,
+.cc-b-lab-steps {
+    color: black;
+    margin: 0 20pt;
+    padding: 0 10pt;
+    font-size: 11pt;
+    width: 494px;
+    border-radius: 10pt;
+}
+
+.cc-e-lab-steps {
+    border: #1EA6F3 2px solid;
+}
+
+.cc-b-lab-steps {
+    border: #B06CF4 2px solid;
+}
+
+@media screen and (min-width: 800px) {
+    .floatwide {
+        float: right;
+        background-color: white;
+        z-index: 1;
+     }
+}
+
 .cc-lab-toc {
     color: black;
     padding: 0 10pt;

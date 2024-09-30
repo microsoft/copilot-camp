@@ -1,10 +1,9 @@
+
+---8<--- "e-labs-prelude.md"
+
 # Lab E3 - Add a declarative copilot to your API plugin
 
 In this lab you will add a Declarative Copilot which is grounded in the API plugin you created in the previous lab, as well as in specific SharePoint files
-
----8<--- "e-labs-toc.md"
----8<--- "e-path-prelude.md"
-
 
 ## Exercise 1: Upload sample documents
 

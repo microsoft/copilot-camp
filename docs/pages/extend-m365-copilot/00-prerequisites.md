@@ -1,10 +1,9 @@
+---8<--- "e-labs-prelude.md"
 
 # Lab E0 - Prerequisites
 
 In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
----8<--- "e-labs-toc.md"
----8<--- "e-path-prelude.md"
 
 In this lab you will learn:
 

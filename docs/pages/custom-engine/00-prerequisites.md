@@ -1,7 +1,5 @@
-<div style="float:right;">
----8<--- "b-labs-toc.md"
+
 ---8<--- "b-labs-prelude.md"
-</div>
 
 # Lab B0 - Prerequisites
 
