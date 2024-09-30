@@ -86,13 +86,13 @@ hr {
     .cc-lab-toc-container .e-path {
         width: 50%;
         float: left;
-        padding: 10px;
+        padding: 3px;
     }
 
     .cc-lab-toc-container .b-path {
         width: 50%;
         float: right;
-        padding: 10px;
+        padding: 3px;
     }
 }
 
