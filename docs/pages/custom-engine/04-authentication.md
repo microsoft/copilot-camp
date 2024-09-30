@@ -702,7 +702,7 @@ You can start chatting with your custom engine agent.
 
 <cc-end-step lab="b4" exercise="4" step="2" />
 
-## CONGRATULATIONS
+---8<--- "b-congratulations.md"
 
 You have completed Lab B4 - Secure your custom engine agent using authentication!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie).
 

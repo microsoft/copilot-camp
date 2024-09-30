@@ -630,7 +630,7 @@ You can now test other prompts as well to see the improved responses from Copilo
 
 <cc-end-step lab="e5" exercise="3" step="2" />
 
-## CONGRATULATIONS
+---8<--- "e-congratulations.md"
 
 You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add a declarative copilot to the same API plugin. 
 

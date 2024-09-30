@@ -232,8 +232,7 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
-
-## CONGRATULATIONS
+---8<--- "e-congratulations.md"
 
 You've completed adding a Declarative Copilot to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 

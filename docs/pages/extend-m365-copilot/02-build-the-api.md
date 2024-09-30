@@ -112,7 +112,7 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 <cc-end-step lab="e2" exercise="2" step="3" />
 
-## CONGRATULATIONS
+---8<--- "e-congratulations.md"
 
 You've successfully built the lab sample API! You can now proceed to make it into a Copilot plugin, and expose it via a Declarateive Copilot.
 
