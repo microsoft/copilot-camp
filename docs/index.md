@@ -2,10 +2,16 @@
 <img class="heading-image" src="./assets/images/CopilotCamp-Tent-Clean.png"></img>
 # Copilot Developer Camp
 
-Welcome to Copilot Developer Camp! Copilot Developer Camp is a virtual workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot.
+Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot. 
+
+??? info "Learn about Microsoft 365 Copilot 'Wave 2'"
+    <div class="video">
+      <iframe src="//www.youtube.com/embed/Gz0jPfCuvsM" frameborder="0" allowfullscreen></iframe>
+      <div>Microsoft 365 Copilot Wave 2 announcement with Satya Nadella and Jared Spataro</div>
+    </div>
 
 
-???+ info "Building agents for Microsoft 365 Copilot"
+???+ info "Video briefing: Building Agents for Microsoft 365 Copilot"
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/t9h8tacx28o" frameborder="0" allowfullscreen></iframe>
       <div>Introducing Custom engine agents</div>
@@ -22,13 +28,15 @@ Welcome to Copilot Developer Camp! Copilot Developer Camp is a virtual workshop 
 
 ## Hands-on Labs
 
-The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent, choose the "Build" labs.
+The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Studio (or any AI of your choice), choose the "Build" labs.
 
 ---8<--- "all-labs-toc.md"
 
 ## More videos!
 
-???+ info "Learn the basics with Doodle to Code!"
+Here are some relevant videos from the [Microsoft 365 Developer Channel](https://www.youtube.com/@Microsoft365Developer){target=_blank}. Please subscribe to keep up with all our latest videos on Microsoft 365 development!
+
+???+ info "Learn AI concepts with Doodle to Code!"
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/PGI6oxbcYDc" frameborder="0" allowfullscreen></iframe>
       <div>What is Generative AI?</div>
@@ -61,19 +69,6 @@ The labs are divided into two pathways, allowing you to choose based on what you
       <iframe src="//www.youtube.com/embed/VLP32Ci02M0" frameborder="0" allowfullscreen></iframe>
       <div>Chat over your data with Azure OpenAI and Teams AI Library</div>
     </div>
-
-
-???+ info "More on building Declarative agents and API plugins"
-    <div class="tinyVideo">
-      <iframe src="//www.youtube.com/embed/hJX25MZJes8" frameborder="0" allowfullscreen></iframe>
-      <div>Making the right choice: Copilot plugins vs. Graph connectors</div>
-    </div>
-    <div class="tinyVideo">
-      <iframe src="//www.youtube.com/embed/NwqOX_Wz024" frameborder="0" allowfullscreen></iframe>
-      <div>Troubleshoot your Copilot plugins with Developer mode</div>
-    </div>
-
-Please subscribe to the [Microsoft 365 Developer Channel](https://www.youtube.com/@Microsoft365Developer){target=_blank} to keep up with all our latest videos on Microsoft 365 development!
 
 ## Copilot Camp in a Box
 
