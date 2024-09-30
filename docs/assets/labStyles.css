@@ -63,74 +63,120 @@ button {
 
 /* Lab path rendering */
 
+hr {
+    border-top: 1px solid black;
+}
 
-.lab-path-container img {
+.cc-lab-toc-container img {
     width: 100%;
 }
 
-.lab-path-container:after {
+.cc-lab-toc-container:after {
     content: "";
     display: table;
     clear: both;
 }
 
 @media screen and (min-width: 800px) {
-    .lab-path-container {
+    .cc-lab-toc-container {
         border: 3px solid #fff;
-        padding: 10px;
+        padding: 0 10px;
     }
 
-    .lab-path-container .e-path {
+    .cc-lab-toc-container .e-path {
         width: 50%;
         float: left;
         padding: 3px;
     }
 
-    .lab-path-container .b-path {
+    .cc-lab-toc-container .b-path {
         width: 50%;
         float: right;
         padding: 3px;
     }
 }
 
-.lab-path {
+.cc-e-lab-steps,
+.cc-b-lab-steps {
     color: black;
-    padding: 10pt;
+    margin: 0 20pt;
+    padding: 0 10pt;
     font-size: 11pt;
+    width: 494px;
+    border-radius: 10pt;
 }
 
-.lab-path li a:link,
-.lab-path li a:visited {
+.cc-e-lab-steps {
+    border: #1EA6F3 2px solid;
+}
+
+.cc-b-lab-steps {
+    border: #B06CF4 2px solid;
+}
+
+@media screen and (min-width: 800px) {
+    .floatwide {
+        float: right;
+        background-color: white;
+        z-index: 1;
+     }
+}
+
+.cc-lab-toc {
+    color: black;
+    padding: 0 10pt;
+    font-size: 11pt;
+    max-width: 400pt;
+}
+
+.cc-lab-toc img {
+    height: 35pt;
+    border-radius: 18pt 10pt 10pt 18pt / 10pt 10pt 10pt 10pt;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cc-lab-toc li a:link,
+.cc-lab-toc li a:visited {
     color: black;
 }
 
-.lab-path img {
+.cc-lab-toc img {
     padding-left: 8pt;
 }
 
-.lab-path div {
+.cc-lab-toc div {
     margin: 0 0 0 10pt;
     border: black 2px solid;
     border-radius: 10pt;
 }
 
-.lab-path div p {
+.cc-lab-toc div p {
     padding-left: 8pt;
     margin: 6pt 6pt -12pt 6pt;
     border-bottom: 2px solid;
 }
 
-.lab-path ul {
+.cc-lab-toc ul {
     padding-top: 8pt;
 }
 
-.lab-path ul li {
+.cc-lab-toc ul li {
 	margin: 0;
 	padding: 8pt 0 8pt 40pt;
 	list-style: none;
 	background-repeat: no-repeat;
 	background-position: left center;
 	background-size: 30pt;
+}
+
+.cc-lab-toc ul li span {
+    padding: 4pt 8pt 4pt 8pt;
+    border-radius: 20pt;
+    margin: 0 0 0 10pt;
+    background-color: #6D33A0;
+    color: white;
+    font-weight: bold;
 }
 
 .e-path div,
