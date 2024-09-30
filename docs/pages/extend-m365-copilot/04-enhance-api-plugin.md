@@ -1,7 +1,6 @@
+# Lab E4 - Enhance the API Plugin
 
 ---8<--- "e-labs-prelude.md"
-
-# Lab E4 - Enhance the API Plugin
 
 In this lab you will add additional REST calls to the API and add them to the API Plugin packaging so Copilot can call them. In the process you will learn all the places where an API needs to be defined for Copilot.
 

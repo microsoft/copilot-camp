@@ -1,7 +1,6 @@
+# Lab B0 - Prerequisites
 
 ---8<--- "b-labs-prelude.md"
-
-# Lab B0 - Prerequisites
 
 In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop throughout the path.
 

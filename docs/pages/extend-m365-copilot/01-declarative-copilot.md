@@ -1,7 +1,6 @@
+# Lab E1 - Customize Copilot by building a declarative agent
 
 ---8<--- "e-labs-prelude.md"
-
-# Lab E1 - Customize Copilot by building a declarative agent
 
 In this lab, you'll build a simple declarative agent using Teams Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
 

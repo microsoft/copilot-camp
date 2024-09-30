@@ -1,7 +1,7 @@
 
----8<--- "b-labs-prelude.md"
-
 # B5 - Add actions to handle complex tasks
+
+---8<--- "b-labs-prelude.md"
 
 In this lab you will:
 

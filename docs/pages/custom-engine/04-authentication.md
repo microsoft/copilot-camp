@@ -1,7 +1,7 @@
 
----8<--- "b-labs-prelude.md"
-
 # B4 - Secure your custom engine agent using authentication
+
+---8<--- "b-labs-prelude.md"
 
 In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 

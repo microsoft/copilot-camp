@@ -1,7 +1,7 @@
 
----8<--- "e-labs-prelude.md"
-
 # Lab E2: First API Plugin
+
+---8<--- "e-labs-prelude.md"
 
 In this lab you will set up an API based on Azure Functions and install it as an API plugin for Copilot for Microsoft 365.
 

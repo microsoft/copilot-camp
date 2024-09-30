@@ -1,7 +1,6 @@
+# Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent
 
 ---8<--- "b-labs-prelude.md"
-
-# Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent
 
 In this lab you will enable Retrieval-Augmented Generation for your custom engine agent and integrate with Azure AI Search to chat with your data.
 

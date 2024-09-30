@@ -1,7 +1,6 @@
+# Lab E5 - Add adaptive cards
 
 ---8<--- "e-labs-prelude.md"
-
-# Lab E5 - Add adaptive cards
 
 In this lab you will further enhance the reponse from Copilot for Microsoft 365 from text to rich cards using Adaptive Cards. 
 

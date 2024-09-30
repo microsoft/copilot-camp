@@ -1,7 +1,6 @@
+# Lab E6 - Add authentication to the API plugin
 
 ---8<--- "e-labs-prelude.md"
-
-# Lab E6 - Add authentication to the API plugin
 
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 

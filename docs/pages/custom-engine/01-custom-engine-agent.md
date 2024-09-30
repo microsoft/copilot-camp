@@ -1,7 +1,6 @@
+# Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit
 
 ---8<--- "b-labs-prelude.md"
-
-# Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit
 
 In this lab you will build a custom engine agent using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
 

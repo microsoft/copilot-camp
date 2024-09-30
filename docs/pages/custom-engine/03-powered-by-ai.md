@@ -1,7 +1,6 @@
+# B3 - Enhance User Experience with the Powered by AI kit
 
 ---8<--- "b-labs-prelude.md"
-
-# B3 - Enhance User Experience with the Powered by AI kit
 
 In this lab you will learn about the Powered by AI, a set of features Teams AI library provides and utilize them in your custom engine agent to enhance the user experience.
 
