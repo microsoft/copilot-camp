@@ -130,6 +130,12 @@ hr {
      }
 }
 
+@media screen and (max-width: 799px) {
+    .cc-lab-toc {
+        margin-top: 10pt;
+    }
+}
+
 .cc-lab-toc {
     color: black;
     padding: 0 10pt;
