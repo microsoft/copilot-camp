@@ -37,7 +37,7 @@ theme:
     - navigation.tabs         # Top nav
     - navigation.tabs.sticky  # Make top nav stay vaisible
     - navigation.sections
-    # - toc.integrate           # Integrate sections into left nav
+    - toc.integrate           # Integrate sections into left nav
 markdown_extensions:
   - admonition
   - pymdownx.details
