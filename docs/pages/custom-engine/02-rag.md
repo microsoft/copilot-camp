@@ -81,7 +81,7 @@ You'll need to complete the Azure subscription pre-requisite before starting wit
 
 Once your Azure AI Search service resource is created successfully, navigate to your resource, In **Overview**, copy and save `Url`. Then, navigate to **Keys** tab under the **Settings**, copy and save `Primary admin key`. Both of them will be required later in the following exercises.
 
-<cc-lab-end-step lab="b2" exercise="1" step="1" />
+<cc-end-step lab="b2" exercise="1" step="1" />
 
 ### Step 2: Create a storage account service resource
 
@@ -95,7 +95,7 @@ Once your Azure AI Search service resource is created successfully, navigate to 
     - **Performance:** Standard
     - **Redundancy:** Geo-redundant storage (GRS)
 
-<cc-lab-end-step lab="b2" exercise="1" step="2" />
+<cc-end-step lab="b2" exercise="1" step="2" />
 
 ### Step 3: Create a `text-embedding-ada-002` model
 
@@ -115,7 +115,7 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
     1. Select a different version or deployment type
     1. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota)
 
-<cc-lab-end-step lab="b2" exercise="1" step="3" />
+<cc-end-step lab="b2" exercise="1" step="3" />
 
 ## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
 
@@ -146,7 +146,7 @@ Take note of the index name as you will use this in the INDEX_NAME environment v
 
 It takes couple of minutes to complete the data ingestion. Once the data is ready, you can proceed with testing.
 
-<cc-lab-end-step lab="b2" exercise="2" step="1" />
+<cc-end-step lab="b2" exercise="2" step="1" />
 
 ### Step 2: Test your data on Azure OpenAI Studio
 
@@ -157,7 +157,7 @@ Once your data  ingestion is completed, use Chat playground to ask questions abo
 
 ![Chat with your data on Azure OpenAI Studio](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
 
-<cc-lab-end-step lab="b2" exercise="2" step="2" />
+<cc-end-step lab="b2" exercise="2" step="2" />
 
 ### Step 3: Sneak peek to your index on Azure AI Search
 
@@ -175,7 +175,7 @@ Go back to **Search explorer** tab, select **Query options** in your Resumes ind
 
 ![contentVector in data](../../assets/images/custom-engine-02/contentvector-in-your-data.png)
 
-<cc-lab-end-step lab="b2" exercise="2" step="3" />
+<cc-end-step lab="b2" exercise="2" step="3" />
 
 ## Exercise 3: Integrate your app with Azure AI Search
 
@@ -210,7 +210,7 @@ azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
 indexName: process.env.INDEX_NAME,
 ```
 
-<cc-lab-end-step lab="b2" exercise="3" step="1" />
+<cc-end-step lab="b2" exercise="3" step="1" />
 
 ### Step 2: Configure Azure AI Search as a data source
 
@@ -292,7 +292,7 @@ defaultPrompt: async () => {
 }
 ```
 
-<cc-lab-end-step lab="b2" exercise="3" step="2" />
+<cc-end-step lab="b2" exercise="3" step="2" />
 
 ### Step 3: Debug your app and chat with your data
 
@@ -309,7 +309,7 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 
 ![Chat with your data on Teams](../../assets/images/custom-engine-02/byod-teams.gif)
 
-<cc-lab-end-step lab="b2" exercise="3" step="3" />
+<cc-end-step lab="b2" exercise="3" step="3" />
 
 ## CONGRATULATIONS
 

@@ -33,7 +33,7 @@ Then select your privacy settings and language, and click "Create Site"
 
 After a few moments, you will be presented with a new SharePoint site. 
 
-<cc-lab-end-step lab="e3" exercise="1" step="1" />
+<cc-end-step lab="e3" exercise="1" step="1" />
 
 ### Step 2: Upload the sample documents
 
@@ -51,7 +51,7 @@ Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.shar
 
 ![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-09.png)
 
-<cc-lab-end-step lab="e3" exercise="1" step="2" />
+<cc-end-step lab="e3" exercise="1" step="2" />
 
 ## Exercise 2: Create the declarative copilot
 
@@ -61,7 +61,7 @@ Create a new file called **trey-declarative-copilot.json** within your **appPack
 
 Notice that the file includes a name, description, and instructions for the declarative copilot. Notice that as part of the instructions, Copilot is instructed to "Always remind users of the Trey motto, 'Always be Billing!'." You should see this when you prompt Copilot in the next exercise.
 
-<cc-lab-end-step lab="e3" exercise="2" step="1" />
+<cc-end-step lab="e3" exercise="2" step="1" />
 
 ### Step 2: Add the URL of your SharePoint site to the declarative copilot
 
@@ -91,7 +91,7 @@ And there's an "actions" section which tells the Declarative Copilot to access t
 ]
 ~~~
 
-<cc-lab-end-step lab="e3" exercise="2" step="2" />
+<cc-end-step lab="e3" exercise="2" step="2" />
 
 ### Step 3: Examine the API Plugin files
 
@@ -180,7 +180,7 @@ Scrolling down you can find the runtime settings,
 
 They include a pointer to the **trey-definition.json** file, and an enumeration of the available functions.
 
-<cc-lab-end-step lab="e3" exercise="2" step="4" />
+<cc-end-step lab="e3" exercise="2" step="4" />
 
 ### Step 4: Add the declarative copilot to your app manifest
 
@@ -207,7 +207,7 @@ Be sure to save your work.
 
 By leaving the "plugins" object in place, you are enabling the direct use of the API plugin _or_ the declarative copilot.
 
-<cc-lab-end-step lab="e3" exercise="2" step="4" />
+<cc-end-step lab="e3" exercise="2" step="4" />
 
 ## Exercise 3: Run and test the declarative copilot
 
@@ -217,7 +217,7 @@ If you're still in the debugger, stop it to force a complete re-deloyment.
 
 Then start the debugger by clicking the arrow or pressing F5 and return to the Copilot user interface.
 
-<cc-lab-end-step lab="e3" exercise="3" step="1" />
+<cc-end-step lab="e3" exercise="3" step="1" />
 
 ### Step 2: Test the declarative copilot
 
@@ -230,7 +230,7 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 ![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
 
-<cc-lab-end-step lab="e3" exercise="3" step="2" />
+<cc-end-step lab="e3" exercise="3" step="2" />
 
 
 ## CONGRATULATIONS

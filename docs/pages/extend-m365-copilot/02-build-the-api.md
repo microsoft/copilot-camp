@@ -23,7 +23,7 @@ This lab calls for a couple of additional prerequisites; please install them now
 * [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): You will use this to test your API locally
 * (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer): This will allow you to view and modify the Trey Research database
 
-<cc-lab-end-step lab="e2" exercise="1" step="1" />
+<cc-end-step lab="e2" exercise="1" step="1" />
 
 ### Step 2: Download the starting application
 
@@ -32,7 +32,7 @@ Begin by downloading the Copilot Developer Camp repository at [https://github.co
 Find starting code in the repo at **/src/extend-m365-copilot/path-a-lab02-first-api-plugin/trey-research**.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
-<cc-lab-end-step lab="e2" exercise="1" step="2" />
+<cc-end-step lab="e2" exercise="1" step="2" />
 
 ### Step 3: Set up the local environment files
 
@@ -42,7 +42,7 @@ Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-<cc-lab-end-step lab="e2" exercise="1" step="3" />
+<cc-end-step lab="e2" exercise="1" step="3" />
 
 ### Step 4: Install the dependencies
 
@@ -52,7 +52,7 @@ Open a command line in your working folder and type:
 npm install
 ~~~
 
-<cc-lab-end-step lab="e2" exercise="1" step="4" />
+<cc-end-step lab="e2" exercise="1" step="4" />
 
 ### Step 5: Run the application
 
@@ -68,7 +68,7 @@ Eventually a browser will open (it's faster after the first time). You'll log in
 
 ![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk03.png)
 
-<cc-lab-end-step lab="e2" exercise="1" step="5" />
+<cc-end-step lab="e2" exercise="1" step="5" />
 
 ## Exercise 2: Test the app's web services
 
@@ -88,7 +88,7 @@ You should see the response in the right panel, and a log of the request in the 
 
 ![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
 
-<cc-lab-end-step lab="e2" exercise="2" step="1" />
+<cc-end-step lab="e2" exercise="2" step="1" />
 
 ### Step 2: Try the other methods and resources
 
@@ -96,7 +96,7 @@ Now try sending the POST request for `{{base_url}}/me/chargeTime`. This will cha
 
 Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to Copilot so it can answer user prompts.
 
-<cc-lab-end-step lab="e2" exercise="2" step="2" />
+<cc-end-step lab="e2" exercise="2" step="2" />
 
 ### Step 3: Examine the database (optional)
 
@@ -110,7 +110,7 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 ![Azure Storage Explorer](../../assets/images/extend-m365-copilot-02/azure-storage-explorer01.png)
 
-<cc-lab-end-step lab="e2" exercise="2" step="3" />
+<cc-end-step lab="e2" exercise="2" step="3" />
 
 ## CONGRATULATIONS
 

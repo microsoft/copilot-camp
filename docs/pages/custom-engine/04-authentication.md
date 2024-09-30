@@ -131,7 +131,7 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 }
 ```
 
-<cc-lab-end-step lab="b4" exercise="1" step="1" />
+<cc-end-step lab="b4" exercise="1" step="1" />
 
 ### Step 2: Update Teams Toolkit configuration file to create the Entra ID App
 
@@ -183,7 +183,7 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
  AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
 ```
 
-<cc-lab-end-step lab="b4" exercise="1" step="2" />
+<cc-end-step lab="b4" exercise="1" step="2" />
 
 ## Exercise 2: Add SSO in Teams app manifest
 
@@ -215,7 +215,7 @@ So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` 
     ],
 ```
 
-<cc-lab-end-step lab="b4" exercise="2" step="1" />
+<cc-end-step lab="b4" exercise="2" step="1" />
 
 ## Exercise 3: Update the application code for SSO
 
@@ -478,7 +478,7 @@ Create a file **auth-end.html** and paste in the contents below:
 
 ```
 
-<cc-lab-end-step lab="b4" exercise="3" step="1" />
+<cc-end-step lab="b4" exercise="3" step="1" />
 
 ### Step 2: Update code to handle SSO
 
@@ -655,7 +655,7 @@ async function getUserDisplayName(token: string): Promise<string | undefined> {
     - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`        
     - Go to `src\adapter.ts` and update the adapter definition ` MicrosoftAppType: 'SingleTenant'`   
 
-<cc-lab-end-step lab="b4" exercise="3" step="2" />
+<cc-end-step lab="b4" exercise="3" step="2" />
 
 ## Exercise 4: Run the application
 
@@ -667,7 +667,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 !!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
 
-<cc-lab-end-step lab="b4" exercise="4" step="1" />
+<cc-end-step lab="b4" exercise="4" step="1" />
 
 ### Step 2: Giving consent
 
@@ -700,7 +700,7 @@ You will now get this message from the custom engine agent with your logged in n
 
 You can start chatting with your custom engine agent.
 
-<cc-lab-end-step lab="b4" exercise="4" step="2" />
+<cc-end-step lab="b4" exercise="4" step="2" />
 
 ## CONGRATULATIONS
 

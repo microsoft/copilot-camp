@@ -10,12 +10,12 @@ In this lab, you, the Copilot Developer Camp content developer, will learn how t
 
 ## Exercise 1: Learn the controls
 
-In this exercise, you'll learn how to use the `<cc-lab-end-step>` web control, which allows users to log their process at the end of each step.
+In this exercise, you'll learn how to use the `<cc-end-step>` web control, which allows users to log their process at the end of each step.
 
 ### Step 1: Write the markup
 
 Each step must begin with a 3rd level header ("###") that includes the name of the step.
-Then insert the `<cc-lab-end-step>` control at the end of the step.
+Then insert the `<cc-end-step>` control at the end of the step.
 
 For example,
 
@@ -24,7 +24,7 @@ For example,
 
 ... (all the instructions go here)
 
-<cc-lab-end-step lab="t1" exercise="1" step="1" />
+<cc-end-step lab="t1" exercise="1" step="1" />
 ~~~
 
 The control needs your lab, exercise, and step so it can store the checkbox state uniquely across page refreshes.
@@ -50,7 +50,7 @@ Notice the checkbox at the bottom of each step. When users check it, several thi
 
 Try it out now!
 
-<cc-lab-end-step lab="t1" exercise="1" step="1" />
+<cc-end-step lab="t1" exercise="1" step="1" />
 
 ### Step 2: Make sure your h2 and h3 elements are in order
 
@@ -59,9 +59,9 @@ The controls are poking around in the DOM, and they depend on you having:
  - an h2 (##) for each exercise beginning with the word "Exercise"
  - an h3 (###) for each section 
  - at least one section in each exercise
- - the last thing in the section is the `<cc-lab-end-step />`
+ - the last thing in the section is the `<cc-end-step />`
 
-<cc-lab-end-step lab="t1" exercise="1" step="2" />
+<cc-end-step lab="t1" exercise="1" step="2" />
 
 ### Step 3: Test the last completed step control
 
@@ -74,7 +74,7 @@ To add one of these to your page, use this web control:
 
 These are written using standard web components. Checkbox state is kept in local storage so it will persist across lab sessions so long as the user returns with the same browser and profile, the checkboxes will be as they left them. If you're curious, [here is the code](https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/cc-lab-step.js){target=_blank}.
 
-<cc-lab-end-step lab="t1" exercise="1" step="3" />
+<cc-end-step lab="t1" exercise="1" step="3" />
 
 ## Exercise 2: Give feedback
 
@@ -82,7 +82,7 @@ These are written using standard web components. Checkbox state is kept in local
 
 Is it useful? Whow could it be improved?
 
-<cc-lab-end-step lab="t1" exercise="2" step="1" />
+<cc-end-step lab="t1" exercise="2" step="1" />
 
 ### Step 2: Long steps are no problem
 
@@ -109,7 +109,7 @@ Sed sit amet convallis massa, vehicula auctor justo. Aliquam ultricies porttitor
 
 Nunc massa velit, gravida a nunc in, efficitur viverra sapien. Sed viverra ullamcorper hendrerit. Quisque cursus felis tortor, ut facilisis lectus volutpat vel. Sed scelerisque auctor tempor. Duis ante diam, pretium vitae rhoncus id, mollis vitae lorem. Mauris pretium lorem sem, sit amet iaculis sem ullamcorper ac. Fusce vel arcu aliquet, vulputate leo at, aliquet massa. Ut at imperdiet eros. Mauris gravida mi rutrum mi egestas, sit amet varius tellus pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius nunc in arcu posuere, suscipit fringilla erat commodo. Aenean vitae nisi non felis semper commodo. Donec eget neque ornare, lobortis augue nec, pharetra est. Sed accumsan semper diam, eget pharetra mauris feugiat id. Pellentesque ac velit vitae purus sollicitudin dapibus. Mauris posuere interdum nisi sed pellentesque.
 
-<cc-lab-end-step lab="t1" exercise="2" step="2" />
+<cc-end-step lab="t1" exercise="2" step="2" />
 
 ### Step 3: More ideas
 
@@ -120,4 +120,4 @@ However - I do have more ideas including:
 
 2. Path navigation control that will list the labs in a path, with a "you are here". This will need to be separate from the others because the exercise and step controls depend on sharing the same web page.
 
-<cc-lab-end-step lab="t1" exercise="2" step="3" />
+<cc-end-step lab="t1" exercise="2" step="3" />

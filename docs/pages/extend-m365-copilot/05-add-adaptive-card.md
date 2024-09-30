@@ -56,7 +56,7 @@ Create a new file named `adaptiveCard.json` and add the following JSON content:
 
 This JSON defines a simple Adaptive Card with a text block and a button.
 
-<cc-lab-end-step lab="e5" exercise="1" step="1" />
+<cc-end-step lab="e5" exercise="1" step="1" />
 
 ### Step 2: Test Your Adaptive Card
 
@@ -69,7 +69,7 @@ To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://ad
 
 Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
 
-<cc-lab-end-step lab="e5" exercise="1" step="1" />
+<cc-end-step lab="e5" exercise="1" step="1" />
 
 ## Exercise 2: Update the plugin manifest 
 
@@ -143,7 +143,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
  }
 ```
 
-<cc-lab-end-step lab="e5" exercise="2" step="1" />
+<cc-end-step lab="e5" exercise="2" step="1" />
 
 ### Step 2: Add an adaptive card for GET /api/me requests:
 
@@ -214,7 +214,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
   }
 ```
 
-<cc-lab-end-step lab="e5" exercise="2" step="2" />
+<cc-end-step lab="e5" exercise="2" step="2" />
 
 ### Step 3: Add an adaptive card for GET /api/projects requests:
 
@@ -404,7 +404,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
   }
 ```
 
-<cc-lab-end-step lab="e5" exercise="2" step="3" />
+<cc-end-step lab="e5" exercise="2" step="3" />
 
 ### Step 4: Add an adaptive card for POST /api/billHours requests:
 
@@ -491,7 +491,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
           }
 ```
 
-<cc-lab-end-step lab="e5" exercise="2" step="4" />
+<cc-end-step lab="e5" exercise="2" step="4" />
 
 ### Step 5: Add an adaptive card for POST /api/assignConsultant requests:
 
@@ -596,7 +596,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
 
 ```
 
-<cc-lab-end-step lab="e5" exercise="2" step="5" />
+<cc-end-step lab="e5" exercise="2" step="5" />
 
 ## Exercise 3: Test the plugin in Copilot
 
@@ -607,7 +607,7 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
 
 ![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
-<cc-lab-end-step lab="e5" exercise="3" step="1" />
+<cc-end-step lab="e5" exercise="3" step="1" />
 
 ### Step 2: Display an adaptive card
 
@@ -629,7 +629,7 @@ Instead of just the text response you will also get a rich card with information
 
 You can now test other prompts as well to see the improved responses from Copilot for Microsoft 365.
 
-<cc-lab-end-step lab="e5" exercise="3" step="2" />
+<cc-end-step lab="e5" exercise="3" step="2" />
 
 ## CONGRATULATIONS
 

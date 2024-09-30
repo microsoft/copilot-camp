@@ -175,7 +175,7 @@ In `src/prompts/monologue/` folder, create a new file with a name **actions.json
 ]
 ```
 
-<cc-lab-end-step lab="b5" exercise="1" step="1" />
+<cc-end-step lab="b5" exercise="1" step="1" />
 
 ## Exercise 2: Implement a logic in the planner to choose between prompts
 
@@ -226,7 +226,7 @@ const planner = new ActionPlanner({
 });
 ```
 
-<cc-lab-end-step lab="b4" exercise="2" step="1" />
+<cc-end-step lab="b4" exercise="2" step="1" />
 
 ## Exercise 3: Implement actions in the app
 
@@ -289,7 +289,7 @@ if (
 export { getCandidates, setCandidates, ensureListExists, deleteList };
 ```
 
-<cc-lab-end-step lab="b5" exercise="3" step="1" />
+<cc-end-step lab="b5" exercise="3" step="1" />
 
 ### Step 2: Register action handlers in the app
 
@@ -347,7 +347,7 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 ```
 
-<cc-lab-end-step lab="b5" exercise="3" step="2" />
+<cc-end-step lab="b5" exercise="3" step="2" />
 
 ### Step 3: Test your app with the new actions
 
@@ -371,7 +371,7 @@ To understand how to flow works, you may ask the following questions in order:
 
 ![Actions in Career Genie](../../assets/images/custom-engine-05/actions.gif)
 
-<cc-lab-end-step lab="b5" exercise="3" step="3" />
+<cc-end-step lab="b5" exercise="3" step="3" />
 
 ## Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
 
@@ -409,7 +409,7 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
 }
 ```
 
-<cc-lab-end-step lab="b5" exercise="4" step="1" />
+<cc-end-step lab="b5" exercise="4" step="1" />
 
 ### Step 2: Create a new function for the new `sendLists` action
 
@@ -549,7 +549,7 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 });
 ```
 
-<cc-lab-end-step lab="b5" exercise="4" step="3" />
+<cc-end-step lab="b5" exercise="4" step="3" />
 
 ### Step 4: Update your Entra ID app registration
 
@@ -562,7 +562,7 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
 }
 ```
 
-<cc-lab-end-step lab="b5" exercise="4" step="4" />
+<cc-end-step lab="b5" exercise="4" step="4" />
 
 ### Step 5: Test your app and the new `sendLists` action
 
@@ -608,7 +608,7 @@ To understand how to flow works, you may ask the following questions in order:
 
 ![Career Genie full experience](../../assets/images/custom-engine-05/career-genie-full.gif)
 
-<cc-lab-end-step lab="b5" exercise="4" step="5" />
+<cc-end-step lab="b5" exercise="4" step="5" />
 
 ## CONGRATULATIONS
 

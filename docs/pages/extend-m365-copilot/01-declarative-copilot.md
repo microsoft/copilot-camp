@@ -88,7 +88,7 @@ https://aka.ms/json-schemas/copilot/declarative-agent/v1.0/schema.json
 !!! tip "Teams Toolkit Prerelease"
      Only this lab uses prerelease version of Teams Toolkit. You can switch back to release version after this lab is completed. The steps are similar to above.
 
-<cc-lab-end-step lab="e1" exercise="1" step="1" />
+<cc-end-step lab="e1" exercise="1" step="1" />
 
 ### Step 2: Use Teams Toolkit to create a declarative agent app
 
@@ -125,7 +125,7 @@ The project will be created in a few seconds in the folder you mentioned and wil
 
 Well done! You have successfully set up the base declarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
-<cc-lab-end-step lab="e1" exercise="1" step="2" />
+<cc-end-step lab="e1" exercise="1" step="2" />
 
 
 ### Step 3: Set up accounts in Teams Toolkit
@@ -144,7 +144,7 @@ Now verify that the "Copilot Access Enabled" checker has a green checkmark. If i
 
 Now, let's do a code tour.
 
-<cc-lab-end-step lab="e1" exercise="1" step="3" />
+<cc-end-step lab="e1" exercise="1" step="3" />
 
 
 
@@ -189,7 +189,7 @@ Another important file is the `appPackage/manifest.json` file, which contains cr
 ```
 You could also update the logo files `color.png` and `outline.png` to make it match your application's brand. In today's lab you will change **color.png** icon for the agent to stand out. 
 
-<cc-lab-end-step lab="e1" exercise="1" step="4" />
+<cc-end-step lab="e1" exercise="1" step="4" />
 
 ## Exercise 2: Update instructions and icons
 
@@ -260,7 +260,7 @@ Follow the next step to make sure our agent can help user engage with it by givi
 
     This brings in your instructions from the **instruction.txt** file. If you want to modularize your packaging files, you can use this technique in any of the JSON files in the **appPackage** folder.
 
-<cc-lab-end-step lab="e1" exercise="2" step="1" />
+<cc-end-step lab="e1" exercise="2" step="1" />
 
 ### Step 2 : Add conversation starters
 
@@ -298,7 +298,7 @@ Open file `declarativeAgent.json` and right after the `instructions` node add a 
 
 Now all the changes are done to the agent, it's time to test it.
 
-<cc-lab-end-step lab="e1" exercise="2" step="2" />
+<cc-end-step lab="e1" exercise="2" step="2" />
 
 ### Step 3: Test the app
 
@@ -330,7 +330,7 @@ Check out the demo of the game.
 
 ![demo](../../assets/images/extend-m365-copilot-01/demo.gif)
 
-<cc-lab-end-step lab="e1" exercise="2" step="3" />
+<cc-end-step lab="e1" exercise="2" step="3" />
 
 ## Exercise 3: Add files for reference (Bonus exercise) 
 
@@ -345,7 +345,7 @@ These documents are **historical_map.pdf** and **travelers_diary** to help make 
 
 Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso` and proceed to next step.
 
-<cc-lab-end-step lab="e1" exercise="3" step="1" />
+<cc-end-step lab="e1" exercise="3" step="1" />
 
 ### Step 2: Update declarative agent manifest
 
@@ -369,13 +369,13 @@ Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a co
 This widens declarative agent's knowledge to read documents in this SharePoint site specifically to help spice up the game. 
 There is no limit to how many URLs you can add 💪🏼
 
-<cc-lab-end-step lab="e1" exercise="3" step="2" />
+<cc-end-step lab="e1" exercise="3" step="2" />
 
 ### Step 3: Upgrade app manifest
 
 Next, go to the file **appPackage/manifest.json** and upgrade the manifest version from "1.0.0"" to "1.0.1" so the changes are reflected when you install. 
 
-<cc-lab-end-step lab="e1" exercise="3" step="3" />
+<cc-end-step lab="e1" exercise="3" step="3" />
 
 ### Step 4: Test the app
 
@@ -395,7 +395,7 @@ You have basically become a declarative agent boss. Find out more from this vide
 
 [place holder for video]
 
-<cc-lab-end-step lab="e1" exercise="3" step="4" />
+<cc-end-step lab="e1" exercise="3" step="4" />
 
 ## Resources
 - [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot)
