@@ -1,4 +1,4 @@
-# Lab E4 - Enhance the API Plugin
+# Lab E4 - Enhance the API and Plugin
 
 ---8<--- "e-labs-prelude.md"
 

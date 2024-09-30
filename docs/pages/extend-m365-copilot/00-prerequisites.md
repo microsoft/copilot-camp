@@ -1,4 +1,4 @@
-# Lab E0 - Prerequisites
+# Lab E0 - Setup
 
 ---8<--- "e-labs-prelude.md"
 

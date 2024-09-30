@@ -1,4 +1,4 @@
-# Lab E1 - Customize Copilot by building a declarative agent
+# Lab E1 - First declarative agent
 
 ---8<--- "e-labs-prelude.md"
 
