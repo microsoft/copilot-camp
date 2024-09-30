@@ -1,3 +1,4 @@
+/**** GENERAL USE ***/
 .heading-image {
     width: 200px;
     float: right;
@@ -61,7 +62,7 @@ button {
     padding: 30pt 36pt;
 }
 
-/* Lab path rendering */
+/*** Colorful lab path TOCs ***/
 
 hr {
     border-top: 1px solid black;
@@ -255,7 +256,21 @@ hr {
     background-image: url('./images/path-icons/icon-b5.png');
 }
 
-/* Style the top label on side nav */
+/*** Style mkdocs features ***
+
+/* Admonitions */
+details.info {
+    border-color: #9515FF !important;
+}
+details.info summary {
+    background-color: #E4C3FF !important;
+}
+details.info summary::before {
+    background-color: #9515FF !important;
+}
+
+
+/* Top label on side nav */
 
 .md-nav__item:not(.md-nav__item .md-nav__item)>a,
 .md-nav__item:not(.md-nav__item .md-nav__item)>label {
@@ -313,13 +328,6 @@ hr {
 .md-tabs {
     background-color: #6D33A0;
 }
-
-/*
-.md-nav__link--active {
-    font-weight: bold;
-    color: black !important;
-}
-*/
 
 .github-button {
     display: inline-block;
