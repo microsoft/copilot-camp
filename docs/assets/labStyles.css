@@ -156,6 +156,10 @@ hr {
     color: black;
 }
 
+.cc-lab-toc li:hover {
+    background-color: rgb(241, 241, 241);
+}
+
 .cc-lab-toc img {
     padding-left: 8pt;
 }
