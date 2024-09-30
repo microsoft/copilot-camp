@@ -73,6 +73,8 @@ The labs are divided into two pathways, allowing you to choose based on what you
       <div>Troubleshoot your Copilot plugins with Developer mode</div>
     </div>
 
+Please subscribe to the [Microsoft 365 Developer Channel](https://www.youtube.com/@Microsoft365Developer){target=_blank} to keep up with all our latest videos on Microsoft 365 development!
+
 ## Copilot Camp in a Box
 
 Got the labs working? Ready to share your knowledge?
