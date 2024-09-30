@@ -107,6 +107,25 @@ hr {
     border-radius: 10pt;
 }
 
+.cc-e-lab-steps ul,
+.cc-b-lab-steps ul {
+    margin-top: -6pt;
+}
+
+.cc-e-lab-steps,
+.cc-e-lab-steps a:link,
+.cc-e-lab-steps a:visited {
+    color: #1c8fd2;
+}
+
+.cc-b-lab-steps,
+.cc-b-lab-steps a:link,
+.cc-b-lab-steps a:visited {
+    color: #8d57c2;
+}
+
+/* Border around lab steps (local TOC)
+ * Looks better without it?
 .cc-e-lab-steps {
     border: #1EA6F3 2px solid;
 }
@@ -122,6 +141,7 @@ hr {
         width: 100%;
     }
 }
+ */
 
 @media screen and (min-width: 800px) {
     .floatwide {
