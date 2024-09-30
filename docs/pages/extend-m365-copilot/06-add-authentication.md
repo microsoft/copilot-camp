@@ -444,7 +444,8 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 <cc-end-step lab="e6" exercise="8" step="1" />
 
-## CONGRATULATIONS!
+---8<--- "e-congratulations.md"
+
 You have completed lab E6, Add Authentication!
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />

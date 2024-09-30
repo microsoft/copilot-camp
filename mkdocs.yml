@@ -44,6 +44,8 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: docs/includes
   - attr_list
+  - toc:
+      toc_depth: 2
 extra_javascript:
   - javascripts/next-button.js
   - javascripts/cc-lab-step.js

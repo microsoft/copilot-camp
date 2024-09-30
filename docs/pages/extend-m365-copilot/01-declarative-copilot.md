@@ -405,6 +405,6 @@ You have basically become a declarative agent boss. Find out more from this vide
 
 Great job on building your game agent 🎉 ! In the next lab, you’ll create a REST API, use it to build a plugin, and dive into a real-world business scenario solved by another agent. Exciting stuff ahead. Select **Next**
 
-
+---8<--- "e-congratulations.md"
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />

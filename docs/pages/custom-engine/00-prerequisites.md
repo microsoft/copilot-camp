@@ -91,7 +91,7 @@ Follow the steps to activate an Azure free account:
 
 <cc-end-step lab="b0" exercise="3" step="1" />
 
-## CONGRATULATIONS
+---8<--- "b-congratulations.md"
 
 You have completed Lab B0 - Prerequisites!
 You are now ready to proceed to lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit. Select Next. 

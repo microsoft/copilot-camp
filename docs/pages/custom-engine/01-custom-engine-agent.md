@@ -148,7 +148,7 @@ After successfully completing your testing, end your debugging session and close
 
 <cc-end-step lab="b1" exercise="2" step="2" />
 
-## CONGRATULATIONS
+---8<--- "b-congratulations.md"
 
 You have completed Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie).
 

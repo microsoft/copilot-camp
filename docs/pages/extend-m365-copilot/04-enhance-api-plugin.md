@@ -347,7 +347,7 @@ You may see a confirmation card, even for the GET request. If you do, allow the 
 
 <cc-end-step lab="e4" exercise="3" step="2" />
 
-## CONGRATULATIONS
+---8<--- "e-congratulations.md"
 
 You've now completed enhancing your API plugin. You are now ready to proceed to the next lab to add rich card responses using adaptive cards. 
 

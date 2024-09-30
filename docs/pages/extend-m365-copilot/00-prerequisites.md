@@ -67,7 +67,9 @@ Follow the steps as shown in the screen shot below.
     If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
 
 <cc-end-step lab="e0" exercise="2" step="3" />
-    
+
+---8<--- "e-congratulations.md"
+
 Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Agent in the next lab. 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/00-prerequisites" />

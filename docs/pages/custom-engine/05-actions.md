@@ -610,7 +610,7 @@ To understand how to flow works, you may ask the following questions in order:
 
 <cc-end-step lab="b5" exercise="4" step="5" />
 
-## CONGRATULATIONS
+---8<--- "b-congratulations.md"
 
 You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie).
 
