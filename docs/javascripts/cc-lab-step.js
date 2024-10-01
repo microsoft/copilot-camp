@@ -1,6 +1,6 @@
 (() => {
 
-    // Web controls for Copilot Camp lab step tracking
+    // Web controls for Copilot Developer Camp lab step tracking
 
     //#region CSS
     function ensureCss() {
@@ -51,7 +51,7 @@
     };
     //#endregion
 
-    //#region cc-lab-end-step web component
+    //#region cc-end-step web component
 
     // This web component goes at the end of a step in a lab to track completion
     class LabEndStep extends HTMLElement {
@@ -200,7 +200,7 @@
         constructor(updateUI) {
             super();
 
-            const elts = document.querySelectorAll('cc-lab-end-step');
+            const elts = document.querySelectorAll('cc-end-step');
             for (let elt of elts) {
                 elt.onChange = updateUI.bind(this);
             }
@@ -233,7 +233,7 @@
                 let lastCompletedExercise = 0;
                 let lastCompletedStep = 0;
                 let lastCompletedStepTitle = '';
-                const elts = document.querySelectorAll('cc-lab-end-step');
+                const elts = document.querySelectorAll('cc-end-step');
                 for (let elt of elts) {
                     if (elt.checked) {
                         lastCompletedExercise = elt.exercise;
@@ -284,7 +284,7 @@
                 this.listElement.innerHTML = '';
 
                 const exerciseElements = document.querySelectorAll('h2');
-                const endStepElements = document.querySelectorAll('cc-lab-end-step');
+                const endStepElements = document.querySelectorAll('cc-end-step');
                 let exerciseNumber = 1;
 
                 for (let elt of exerciseElements) {
@@ -334,7 +334,7 @@
     //#endregion
 
     document.addEventListener('DOMContentLoaded', function () {
-        window.customElements.define('cc-lab-end-step', LabEndStep);
+        window.customElements.define('cc-end-step', LabEndStep);
         window.customElements.define('cc-last-completed-step', LastCompletedStep);
         window.customElements.define('cc-table-of-contents', TableOfContents);
     });

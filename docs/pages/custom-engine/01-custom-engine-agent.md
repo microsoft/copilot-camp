@@ -1,16 +1,8 @@
 # Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit
 
-In this lab you will build a custom engine agent using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
+---8<--- "b-labs-prelude.md"
 
-???+ "Navigating the Build your own agent labs (Build Path)"
-    - [Lab B0 - Prerequisites](/copilot-camp/pages/custom-engine/00-prerequisites)
-    - [Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit](/copilot-camp/pages/custom-engine/01-custom-engine-agent) (📍 You are here)
-    - [Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent](/copilot-camp/pages/custom-engine/02-rag)
-    - [Lab B3 - Enhance user experience with the Powered by AI kit](/copilot-camp/pages/custom-engine/03-powered-by-ai)
-    - [Lab B4 - Secure your solution using authentication](/copilot-camp/pages/custom-engine/04-authentication)
-    - [Lab B5 - Add actions to handle complex tasks](/copilot-camp/pages/custom-engine/05-actions)
-   
----8<--- "b-path-prelude.md"
+In this lab you will build a custom engine agent using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
 
 In this lab you will:
 
@@ -66,7 +58,7 @@ You'll need to complete the Azure subscription pre-requisite before starting wit
 
 Once your Azure OpenAI service is created successfully, navigate to your resource, select **Keys and Endpoint** from the left side panel. Copy and save `KEY 1` and `Endpoint`that will be required later in Exercise 2.
 
-<cc-lab-end-step lab="b1" exercise="1" step="1" />
+<cc-end-step lab="b1" exercise="1" step="1" />
 
 ### Step 2: Create a deployment model
 
@@ -98,7 +90,7 @@ For example, choose "Shakespeare writing assistant" and ask questions such as "t
 
 ![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
-<cc-lab-end-step lab="b1" exercise="1" step="2" />
+<cc-end-step lab="b1" exercise="1" step="2" />
 
 ## Exercise 2: Scaffold a custom engine agent from a template
 
@@ -116,7 +108,7 @@ You'll need to complete all the required pre-requisites before starting with thi
 
 After providing all the details mentioned above, your project will be scaffolded successfully in seconds.
 
-<cc-lab-end-step lab="b1" exercise="2" step="1" />
+<cc-end-step lab="b1" exercise="2" step="1" />
 
 ### Step 2: Customize prompt and test the app
 
@@ -154,11 +146,11 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 After successfully completing your testing, end your debugging session and close the terminals in Visual Studio Code.
 
-<cc-lab-end-step lab="b1" exercise="2" step="2" />
+<cc-end-step lab="b1" exercise="2" step="2" />
 
-## CONGRATULATIONS
+---8<--- "b-congratulations.md"
 
-You have completed Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot developer camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie).
+You have completed Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie).
 
 You are now ready to proceed to Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent. Select Next.
 
