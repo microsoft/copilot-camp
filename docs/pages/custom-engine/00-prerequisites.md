@@ -9,10 +9,11 @@ In this lab you will learn how to:
 - Install and configure Teams toolkit for Visual Studio Code
 - Prepare your Azure environment to create required resources
 
-!!! warning "These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality."
+!!! pied-piper "Disclaimer"
+    These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
-!!! note "To install and run your own custom engine agent, you'll need a Microsoft 365 tenant where you have administrator permission. You won't need Microsoft 365 Copilot License to test your custom engine agent."
-
+!!! note "Note"
+    To install and run your own custom engine agent, you'll need a Microsoft 365 tenant where you have administrator permission. You won't need Microsoft 365 Copilot License to test your custom engine agent.
 
 ## Exercise 1 : Setup Microsoft Teams
 
@@ -94,6 +95,6 @@ Follow the steps to activate an Azure free account:
 ---8<--- "b-congratulations.md"
 
 You have completed Lab B0 - Prerequisites!
-You are now ready to proceed to lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit. Select Next. 
+You are now ready to proceed to lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit. Select Next.
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/00-prerequisites" />

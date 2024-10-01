@@ -1,5 +1,4 @@
-
-# B4 - Secure your custom engine agent using authentication
+# B4 - Add single sign on authentication
 
 ---8<--- "b-labs-prelude.md"
 
@@ -170,7 +169,8 @@ And after `botFramework/create` add below to update the existing AAD app.
       outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 ```
 
-!!! Tip "YAML requires proper indentation; each level in the object hierarchy must be indented to indicate the structure. 2 spaces (not tabs) is a good choice. Visual Studio Code will help you here, and will underline any syntax errors in red. You'll know you got it right when the red lines disappear!"
+!!! tip "Tip: YAML requires proper indentation"
+    YAML requires proper indentation; each level in the object hierarchy must be indented to indicate the structure. 2 spaces (not tabs) is a good choice. Visual Studio Code will help you here, and will underline any syntax errors in red. You'll know you got it right when the red lines disappear!
 
 Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in the deploy phase. Add these variables to the envs: collection, right below the ones you added in the previous lab:
 
@@ -665,7 +665,8 @@ Now we are code complete for Teams SSO in Career Genie. Let's take it for a ride
 
 Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. This will open Microsoft Teams in your browser. When your app details appear in Teams, select **Add** to start chatting with your app.
 
-!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+!!! tip "Tip: Testing this exercise locally"
+    Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.
 
 <cc-end-step lab="b4" exercise="4" step="1" />
 
@@ -673,7 +674,8 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 To start a conversation with the Career Genie, simply type a message. For example, you can begin by typing and sending 'Hi'.
 
-!!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions."
+!!! tip "Tip: Check pop up settings in your browser"
+    Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions.
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
@@ -690,7 +692,8 @@ You'll be redirected to Entra ID, where you'll be asked to consent to the app's 
 
 ![consent graph](../../assets/images/custom-engine-04/consent-graph.png)
 
-!!! tip "If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant."
+!!! tip "Tip: Consent on behalf of your organization"
+    If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.
 
 Select **Accept** to consent to the permissions and run Career Genie.
 

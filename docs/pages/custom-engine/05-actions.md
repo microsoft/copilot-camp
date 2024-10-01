@@ -1,4 +1,3 @@
-
 # B5 - Add actions to handle complex tasks
 
 ---8<--- "b-labs-prelude.md"
@@ -14,7 +13,7 @@ In this lab you will:
 
 It's time to add some actions for Career Genie to handle complex tasks and workflows! In this lab, you'll integrate a new prompt in Career Genie's logic that can handle lists of candidates. That basically means that when you are searching for candidates with Career Genie, you can also create lists for candidates and add their names in. Once you are done, you can also send these lists to HR for scheduling interviews. All these will be handled by actions you'll implement in Career Genie! Let's get started.
 
-??? check "What are actions in Custom engine agents?"
+???+ info "What are actions in Custom engine agents?"
     An action in an AI system is like a basic function or method in your code—it's a specific task that the system can perform. Actions are the building blocks that the AI uses to accomplish various tasks based on the user’s input. The AI system decides which action to execute depending on what the user asks for.
 
     For example, actions could include:
@@ -353,7 +352,8 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 Let's test Career Genie with the new actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
-!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+!!! tip "Tip: Testing this exercise locally"
+    Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.
 
 To understand how to flow works, you may ask the following questions in order:
 
@@ -444,7 +444,8 @@ Go to `env/.env.local.user` and add the following HR email as an environment var
 HR_EMAIL=<YOUR-EMAIL-ADDRESS>
 ```
 
-!!! warning "Please enter your own account email address in `HR_EMAIL` to test this lab. In an ideal scenario, you'll use an email address of a Human Resources Team to send interview scheduling emails. Note that this lab is only for prototyping purposes and shouldn't be used in production."
+!!! pied-piper "`HR_EMAIL` details to test this lab"
+    Please enter your own account email address in `HR_EMAIL` to test this lab. In an ideal scenario, you'll use an email address of a Human Resources Team to send interview scheduling emails. Note that this lab is only for prototyping purposes and shouldn't be used in production.
 
 Go to `teamsapp.local.yml` and add the following line under the `file/createOrUpdateEnvironmentFile`, **envs** list:
 
@@ -568,19 +569,22 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
 
 Let's test Career Genie with the new **sendLists** actions. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
-!!! tip "Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool."
+!!! tip "Tip: Testing this exercise locally"
+    Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.
 
 To start a conversation with Career Genie, simply type a message. For example, you can begin with 'Hi'.
 
-!!! tip " Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions."
+!!! tip "Tip: Check pop up settings in your browser"
+    Make sure `Pop up` is not blocked by browser for a smoother experience for below instructions.
 
-You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**. 
+You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
 ![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed. You'll be redirected to login and consent to the app's permissions.
 
-!!! tip "If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant."
+!!! tip "Tip: Consent on behalf of your organization"
+    If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.
 
 Select **Accept** to consent to the permissions.
 
