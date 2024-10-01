@@ -1,4 +1,4 @@
-# Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit
+# Lab B1 - First custom engine agent
 
 ---8<--- "b-labs-prelude.md"
 
@@ -16,7 +16,7 @@ In this lab you will:
 
 Welcome aboard to the exciting journey of building your own custom engine agent! In this path, you'll create a custom engine agent for Microsoft Teams using cutting-edge Azure OpenAI models. You'll be able to define specific prompts, integrate complex data, and add advanced skills to make your agent truly unique. By using custom models and orchestration, your agent will tackle advanced tasks, complex conversations, and workflows, delivering an exceptional, personalized experience. Let's dive in and start building your first custom engine agent!
 
-!!! tip "Before everything else, lets remember... What is a custom engine agent?"
+???+ info "Before everything else, lets remember... What is a custom engine agent?"
     Custom engine agents are chatbots powered by Generative AI, designed to provide sophisticated conversational experiences. Custom engine agents are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.
 
 ## Exercise 1: Create Azure OpenAI service and models
@@ -66,7 +66,7 @@ In your Azure OpenAI service, navigate to **Model deployments** from the left si
 
 ??? check "What is Azure OpenAI Studio?"
     Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.
-    
+
     *Learn more about the Generative AI, prompting and Azure OpenAI Studio by watching this Doodle to Code video!*
     
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
