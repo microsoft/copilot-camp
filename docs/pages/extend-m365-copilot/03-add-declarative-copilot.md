@@ -193,21 +193,15 @@ Now open the **manifest.json** file within the **appPackage** directory. Add a n
         "id": "treygenie",
       "file": "trey-declarative-copilot.json"
       }
-    ],
-    "plugins": [
-      {
-        "id": "treyresearch",
-        "file": "trey-plugin.json"
-      }
     ]
   }, 
 ~~~
 
 Be sure to save your work. 
 
-By leaving the "plugins" object in place, you are enabling the direct use of the API plugin _or_ the declarative copilot.
 
-<cc-end-step lab="e3" exercise="2" step="4" />
+<cc-lab-end-step lab="e3" exercise="2" step="4" />
+
 
 ## Exercise 3: Run and test the declarative copilot
 
