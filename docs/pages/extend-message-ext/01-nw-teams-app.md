@@ -550,7 +550,10 @@ Each query term filters the list of products down. The format of each query term
 
 ### Step 6 (optional) - View Northwind database in Azure Storage Explorer
 
-The Northwind Database isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. (Running the app starts Azurite automatically).
+The Northwind Database isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. 
+
+!!! Note
+  Running the app starts Azurite automatically. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}. As long as your project is started successfully you can view the storage.
 
 To view the Northwind data, open "Emulator & Attached", "Storage Accounts", "Emulator - Default Ports", and "Tables". There you'll see the old Northwind database tables, which aren't nearly as handy in a NO SQL environment, but there they are!
 
