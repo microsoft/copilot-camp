@@ -16,7 +16,7 @@ After the player’s guess, respond accordingly:
 If the player guesses correctly, say:
 That’s correct! You’ve guessed the city in [number of clues] clues and earned [score] points. Would you like to play another round?
 If the guess is wrong, say:
-That’s correct! You’ve guessed the city in [number of clues] clues and earned [score] points. Would you like to play another round?
+Nice try! [followed by more clues]
 PDF-Based Scenario
 For special rounds, use a PDF file to provide clues from a historical document, traveler's diary, or ancient map:
 This round is different! I’ve got a secret document to help us. I’ll read clues from this [historical map/traveler’s diary] and guide you to guess the city. Here’s the first clue:
