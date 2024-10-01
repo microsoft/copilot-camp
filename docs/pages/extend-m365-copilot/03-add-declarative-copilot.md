@@ -97,7 +97,7 @@ And there's an "actions" section which tells the Declarative Copilot to access t
 
 Two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
- * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [Open API Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
+ * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
  * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
