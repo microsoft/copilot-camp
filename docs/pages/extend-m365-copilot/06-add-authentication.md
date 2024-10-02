@@ -70,6 +70,29 @@ Copy the "Connect via browser" URL and save it as the "API Base URL".
 
 <cc-end-step lab="e6" exercise="1" step="2" />
 
+### Step 3: Disable the dynamically created tunnel in your project
+
+If your project is running locally, stop it. Then edit [\.vscode\tasks.json]() and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:
+
+~~~json
+{
+    "label": "Start Teams App Locally",
+    "dependsOn": [
+        "Validate prerequisites",
+        //"Start local tunnel",
+        "Start Azurite emulator",
+        "Create resources",
+        "Build project",
+        "Start application"
+    ],
+    "dependsOrder": "sequence"
+},
+~~~
+
+Then open **env\.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
+
+<cc-end-step lab="e6" exercise="1" step="3" />
+
 ## Exercise 2: Register an Entra ID application for your API
 
 ### Step 1: Add a new Entra ID app registration
