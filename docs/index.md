@@ -78,8 +78,14 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
 
 Got the labs working? Ready to share your knowledge?
 Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./pages/in-a-box/) resources! We've got you covered with presentation materials that even include embedded demos.
+
+
+## Join the Conversation! 💬
+
+---8<--- "discussions.md"
+
     
-## Feedback
+## Issues
 
 We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or if you're in Microsoft let us know in the "Copilot Developer Camp Early Testers" chat in Microsoft Teams. Thanks!
 
