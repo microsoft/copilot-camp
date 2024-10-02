@@ -10,7 +10,6 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
       <div>Microsoft 365 Copilot Wave 2 announcement with Satya Nadella and Jared Spataro</div>
     </div>
 
-
 ???+ info "Video briefing: Building Agents for Microsoft 365 Copilot"
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/r8HY22l6rhQ" frameborder="0" allowfullscreen></iframe>
@@ -30,13 +29,13 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
     </div>
 
 
-## Hands-on Labs
+## Hands-on Labs 🧪
 
 The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Studio (or any AI of your choice), choose the "Build" labs.
 
 ---8<--- "all-labs-toc.md"
 
-## More videos!
+## More videos 📺
 
 Here are some relevant videos from the [Microsoft 365 Developer Channel](https://www.youtube.com/@Microsoft365Developer){target=_blank}. Please subscribe to keep up with all our latest videos on Microsoft 365 development!
 
@@ -74,7 +73,7 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
       <div>Chat over your data with Azure OpenAI and Teams AI Library</div>
     </div>
 
-## Copilot Camp in a Box
+## Copilot Camp in a Box 📥
 
 Got the labs working? Ready to share your knowledge?
 Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./pages/in-a-box/) resources! We've got you covered with presentation materials that even include embedded demos.
@@ -83,7 +82,6 @@ Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./p
 ## Join the Conversation! 💬
 
 ---8<--- "discussions.md"
-
     
 ## Issues
 
