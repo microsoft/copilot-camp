@@ -8,19 +8,19 @@ In this lab you will add authentication to your API plugin using OAuth 2.0 with 
     There are many detailed setup steps for Entra ID in this lab.
     A preview version of Teams Toolkit is available which will automate many of these steps for you; we hope to provide a more streamlined version of the lab when it's released. However this could still be useful for those wishing to understand exactly what needs to be provisioned to get OAuth working.
 
-In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. You will be saving:
+In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. Here are the values you'll need to save:
 
-| Configuration field | Value |
-| --- | --- |
-| API Base URL | |
-| API service Application (client) ID | |
-| API service Directory (tenant) ID | |
-| Authorization endpoint | |
-| Token endpoint | |
-| API service client secret | |
-| API scope | |
-| Plugin service application (client) ID | |
-| Plugin service client secret | |
+~~~text
+API Base URL: 
+API service Application (client) ID: 
+API service Directory (tenant) ID: 
+Authorization endpoint: 
+Token endpoint: 
+API service client secret: 
+API scope: 
+Plugin service application (client) ID: 
+Plugin service client secret: 
+~~~
 
 ## Exercise 1: Set up a persistent developer tunnel (optional)
 
@@ -88,10 +88,13 @@ If your project is running locally, stop it. Then edit [\.vscode\tasks.json]() a
     "dependsOrder": "sequence"
 },
 ~~~
-
-Then open **env\.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
-
 <cc-end-step lab="e6" exercise="1" step="3" />
+
+### Step 4: Manually override the server URL
+
+Open **env\.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
+
+<cc-end-step lab="e6" exercise="1" step="4" />
 
 ## Exercise 2: Register an Entra ID application for your API
 
