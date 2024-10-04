@@ -65,7 +65,7 @@ Notice that the file includes a name, description, and instructions for the decl
 
 ### Step 2: Add the URL of your SharePoint site to the declarative copilot
 
-Under "Capabilities" you will notice a SharePoint file container. While Microsoft 365 Copilot may reference any documents in SharePoint or OneDrive, this declarative copilot will only access files in the Trey Research Legal Documents site you created in Exercise 1. To set that up, replace the SharePoint URL with yours.
+Under "Capabilities" you will notice a SharePoint file container. While Microsoft 365 Copilot may reference any documents in SharePoint or OneDrive, this declarative copilot will only access files in the Trey Research Legal Documents site you created in Exercise 1. 
 
 ~~~json
 "capabilities": [
@@ -73,14 +73,25 @@ Under "Capabilities" you will notice a SharePoint file container. While Microsof
         "name": "OneDriveAndSharePoint",
         "items_by_url": [
             {
-                "url": "https://<your-tenant-name>.sharepoint.com/sites/TreyResearchLegalDocuments"
+                    "url": "${{SHAREPOINT_DOCS_URL}}"
             }
         ]
     }
 ],
 ~~~
 
-And there's an "actions" section which tells the Declarative Copilot to access the Trey Research API. In the next step we'll look at **trey-plugin.json** and how it and another file describe the API to Copilot so it can make the REST calls.
+Notice that the SharePoint URL is actually an environment variable `SHAREPOINT_DOCS_URL`, so you need to add that to your **env\.env.local** file. Add this in its own line at the end of the file, using your SharePoint URL:
+
+~~~text
+SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegalDocuments
+~~~
+
+<cc-end-step lab="e3" exercise="2" step="2" />
+
+
+### Step 3: Examine the API Plugin files
+
+Within the **trey-declarative-agent.json** file, you'll find an "actions" section which tells the Declarative Copilot to access the Trey Research API.
 
 ~~~json
 "actions": [
@@ -91,11 +102,9 @@ And there's an "actions" section which tells the Declarative Copilot to access t
 ]
 ~~~
 
-<cc-end-step lab="e3" exercise="2" step="2" />
+In this step we'll look at **trey-plugin.json** and how it and another file describe the API to Copilot so it can make the REST calls.
 
-### Step 3: Examine the API Plugin files
-
-Two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
+These two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
  * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
  * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file

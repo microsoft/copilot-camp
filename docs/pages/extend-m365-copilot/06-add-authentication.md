@@ -272,14 +272,19 @@ The portal will display your OAuth client registration ID. Save this for the nex
 
 Open your working folder in Visual Studio Code. In the **appPackage** folder, open the **trey-plugin.json** file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.
 
-Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indicating the API is currently not authenticated.
-Change it to type `"OAuthPluginVault"` and add the registration ID you saved in the previous step.
+Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the OAuth settings you saved in the vault.
 
 ~~~json
 "auth": {
-    "type": "OAuthPluginVault",
-    "reference_id":  "<your-oauth-client-registration-id>"
+  "type": "OAuthPluginVault",
+  "reference_id":  "${{OAUTH_CLIENT_REGISTRATION_ID}}"
 },
+~~~
+
+Then add this line to your **env\.env.local** file:
+
+~~~text
+OAUTH_CLIENT_REGISTRATION_ID=<registration id you saved in the previous exercise>
 ~~~
 
 The next time you start and prompt your API plugin, it should prompt you to sign in.

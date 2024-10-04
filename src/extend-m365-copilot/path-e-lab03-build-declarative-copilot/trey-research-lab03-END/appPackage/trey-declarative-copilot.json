@@ -23,7 +23,7 @@
             "name": "OneDriveAndSharePoint",
             "items_by_url": [
                 {
-                    "url": "https://testtestcp36599.sharepoint.com/sites/TreyResearchLegalDocuments"
+                    "url": "${{SHAREPOINT_DOCS_URL}}"
                 }
             ]
         }
