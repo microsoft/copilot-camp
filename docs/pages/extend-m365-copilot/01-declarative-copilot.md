@@ -7,7 +7,6 @@ In this lab, you'll build a simple declarative agent using Teams Toolkit for Vis
 In this lab you will learn:
 
 - What is a declarative agent for Microsoft 365 Copilot
-- Install [Teams toolkit for VS Code from this link](https://github.com/OfficeDev/teams-toolkit/actions/runs/10846087381){target=_blank}
 - Create a declarative agent using Teams Toolkit template
 - Customise the agent to create the geo locator game using instructions 
 - Learn how to run and test your app 
@@ -71,16 +70,14 @@ They are called capabilities and there are three types of capabilities supported
 You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
 So to keep things as simple as possible you will use Teams Toolkit.
 
-### Step 1: Install Teams Toolkit 
+### Step 1: Switch to pre-release version of  Teams Toolkit 
 
-https://aka.ms/json-schemas/copilot/declarative-agent/v1.0/schema.json
-
-!!! warning "This step is temporary"
-     For now you will need to use this hotfix version until the feature is available in Teams Toolkit as either Preview or Stable Release
+!!! warning "This step may change"
+     For now you will need to use this pre-release version until the feature is available in Teams Toolkit as Stable Release
 
 - Go to extensions tab of your Visual Studio Code and type **team** as in step 1️⃣ in the image below.
 - Select **Teams Toolkit** as step 2️⃣. 
-- Select **Switch to Pre-Release Version**  3️⃣ <mark>v5.9.2024091405 (pre-release)</mark>
+- Select **Switch to Pre-Release Version**  3️⃣ 
 
 ![prerelease version install](../../assets/images/extend-m365-copilot-01/prerelease-ttk.png)
 
