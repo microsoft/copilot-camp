@@ -8,19 +8,19 @@ In this lab you will add authentication to your API plugin using OAuth 2.0 with 
     There are many detailed setup steps for Entra ID in this lab.
     A preview version of Teams Toolkit is available which will automate many of these steps for you; we hope to provide a more streamlined version of the lab when it's released. However this could still be useful for those wishing to understand exactly what needs to be provisioned to get OAuth working.
 
-In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. You will be saving:
+In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. Here are the values you'll need to save:
 
-| Configuration field | Value |
-| --- | --- |
-| API Base URL | |
-| API service Application (client) ID | |
-| API service Directory (tenant) ID | |
-| Authorization endpoint | |
-| Token endpoint | |
-| API service client secret | |
-| API scope | |
-| Plugin service application (client) ID | |
-| Plugin service client secret | |
+~~~text
+API Base URL: 
+API service Application (client) ID: 
+API service Directory (tenant) ID: 
+Authorization endpoint: 
+Token endpoint: 
+API service client secret: 
+API scope: 
+Plugin service application (client) ID: 
+Plugin service client secret: 
+~~~
 
 ## Exercise 1: Set up a persistent developer tunnel (optional)
 
@@ -69,6 +69,32 @@ The command line will display the connection information, such as:
 Copy the "Connect via browser" URL and save it as the "API Base URL".
 
 <cc-end-step lab="e6" exercise="1" step="2" />
+
+### Step 3: Disable the dynamically created tunnel in your project
+
+If your project is running locally, stop it. Then edit [\.vscode\tasks.json]() and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:
+
+~~~json
+{
+    "label": "Start Teams App Locally",
+    "dependsOn": [
+        "Validate prerequisites",
+        //"Start local tunnel",
+        "Start Azurite emulator",
+        "Create resources",
+        "Build project",
+        "Start application"
+    ],
+    "dependsOrder": "sequence"
+},
+~~~
+<cc-end-step lab="e6" exercise="1" step="3" />
+
+### Step 4: Manually override the server URL
+
+Open **env\.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
+
+<cc-end-step lab="e6" exercise="1" step="4" />
 
 ## Exercise 2: Register an Entra ID application for your API
 
@@ -249,14 +275,19 @@ The portal will display your OAuth client registration ID. Save this for the nex
 
 Open your working folder in Visual Studio Code. In the **appPackage** folder, open the **trey-plugin.json** file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.
 
-Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indicating the API is currently not authenticated.
-Change it to type `"OAuthPluginVault"` and add the registration ID you saved in the previous step.
+Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the OAuth settings you saved in the vault.
 
 ~~~json
 "auth": {
-    "type": "OAuthPluginVault",
-    "reference_id":  "<your-oauth-client-registration-id>"
+  "type": "OAuthPluginVault",
+  "reference_id":  "${{OAUTH_CLIENT_REGISTRATION_ID}}"
 },
+~~~
+
+Then add this line to your **env\.env.local** file:
+
+~~~text
+OAUTH_CLIENT_REGISTRATION_ID=<registration id you saved in the previous exercise>
 ~~~
 
 The next time you start and prompt your API plugin, it should prompt you to sign in.

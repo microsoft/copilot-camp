@@ -35,7 +35,8 @@
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
-                "Start local tunnel",
+                //"Start local tunnel",
+                "Start Azurite emulator",
                 "Create resources",
                 "Build project",
                 "Start application"
