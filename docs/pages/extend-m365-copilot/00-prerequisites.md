@@ -7,7 +7,7 @@ In this lab, you will set up the development environment to build, test, and dep
 
 In this lab you will learn:
 
-- How to configuring your Microsoft 365 tenant's Teams upload policy for lab use
+- How to configure your Microsoft 365 tenant's Teams upload policy for lab use
 - How to install and configure Teams toolkit for Visual Studio Code
 
 !!! pied-piper "Disclaimer"
