@@ -33,6 +33,9 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
 
 The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Studio (or any AI of your choice), choose the "Build" labs.
 
+!!! important
+    The Copilot features needed for the "Extend" path have not yet rolled out to all tenants. You may not be able to do the "Extend" path labs (E0-E6) without these features. Some students have reported that they can create declarative agents with actions but that the authentication features in Teams Developer Portal required by lab E6 were not yet enabled. We hope these will all be rolled out very soon; thanks!
+
 ---8<--- "all-labs-toc.md"
 
 ## More videos 📺
