@@ -208,9 +208,32 @@ Now open the **manifest.json** file within the **appPackage** directory. Add a n
 
 Be sure to save your work. 
 
+<cc-end-step lab="e3" exercise="2" step="4" />
 
-<cc-lab-end-step lab="e3" exercise="2" step="4" />
+### Step 5: Remove the dummy feature from the app manifest
 
+The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Camp home page. This would allow users to view the Copilot Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com))s
+
+If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you would know all about them. If not, don't worry about it, just delete these lines from **manifest.json** as they aren't needed anymore.
+
+~~~json
+"staticTabs": [
+  {
+    "entityId": "index",
+    "name": "Copilot Camp",
+    "contentUrl": "https://microsoft.github.io/copilot-camp/",
+    "websiteUrl": "https://microsoft.github.io/copilot-camp/",
+    "scopes": [
+      "personal"
+    ]
+  }
+],
+"validDomains": [
+  "microsoft.github.io"
+],
+~~~
+
+<cc-end-step lab="e3" exercise="2" step="5" />
 
 ## Exercise 3: Run and test the declarative copilot
 

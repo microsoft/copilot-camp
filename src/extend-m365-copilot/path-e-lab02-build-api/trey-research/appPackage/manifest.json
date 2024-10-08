@@ -22,9 +22,23 @@
     "short": "Everyday management of Trey Research projects and consultants",
     "full": "This application allows you to find Trey Research projects and consultants, to bill time to a project, and to assign a consultant to a project."
   },
-  "accentColor": "#FFFFFF",  
+  "staticTabs": [
+    {
+      "entityId": "index",
+      "name": "Copilot Camp",
+      "contentUrl": "https://microsoft.github.io/copilot-camp/",
+      "websiteUrl": "https://microsoft.github.io/copilot-camp/",
+      "scopes": [
+        "personal"
+      ]
+    }
+  ],
+  "validDomains": [
+    "microsoft.github.io"
+  ],
+  "accentColor": "#FFFFFF",
   "permissions": [
     "identity",
     "messageTeamMembers"
-  ]
+  ]  
 }
