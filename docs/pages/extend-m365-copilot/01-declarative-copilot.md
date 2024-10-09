@@ -304,9 +304,6 @@ To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. Thi
 
 In this step Teams toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
 
-!!! warning "Private Preview not enabled"
-    Provision step will fail if the user is using a Tenant without Private Preview enabled. 
-
 Go to Teams in browser [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) logged into your developer tenant.
 If you have a Microsoft 365 Copilot, the new app will be automatically pinned above your chats. Just open Teams, select “chats” and you’ll see Copilot.
 
