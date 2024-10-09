@@ -49,4 +49,5 @@ markdown_extensions:
 extra_javascript:
   - javascripts/next-button.js
   - javascripts/cc-lab-step.js
+  - javascripts/clipboard.js
 

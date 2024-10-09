@@ -463,4 +463,29 @@ dicussion */
   .cta-button:hover {
        border: 2px solid #6D33A0;
   }
+  .copy-button {
+    background-color: #f4f4f5; /* Light neutral background */
+    color: #333; /* Darker text color */
+    border: 1px solid #e0e0e0; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 4px 8px; /* Smaller padding for a compact look */
+    font-size: 12px; /* Smaller font size */
+    cursor: pointer; /* Pointer on hover */
+    float: right; /* Align button to the right of the code block */
+    margin: 5px; /* Add a small margin */
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* Smooth hover transitions */
+}
 
+.copy-button:hover {
+    background-color: #e0e0e0; /* Darker background on hover */
+    border-color: #ccc; /* Slightly darker border on hover */
+}
+
+.copy-button:active {
+    background-color: #d6d6d6; /* Darker background when clicked */
+}
+
+.copy-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5); /* Subtle focus ring */
+}
