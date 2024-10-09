@@ -386,7 +386,10 @@ This time, try the challenge which will be based on the travel diary. Choose the
 
 You have basically become a declarative agent boss. Find out more from this video we did.
 
-[place holder for video]
+ <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/QTP4PfXyyNk" frameborder="0" allowfullscreen></iframe>
+      <div>Introducing Declarative agents</div>
+    </div>
 
 <cc-end-step lab="e1" exercise="3" step="4" />
 
