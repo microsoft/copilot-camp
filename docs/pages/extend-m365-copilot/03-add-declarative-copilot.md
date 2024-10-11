@@ -80,7 +80,7 @@ Under "Capabilities" you will notice a SharePoint file container. While Microsof
 ],
 ~~~
 
-Notice that the SharePoint URL is actually an environment variable `SHAREPOINT_DOCS_URL`, so you need to add that to your **env\.env.local** file. Add this in its own line at the end of the file, using your SharePoint URL:
+Notice that the SharePoint URL is actually an environment variable `SHAREPOINT_DOCS_URL`, so you need to add that to your **.env.local** file in the **env** folder. Add this in its own line at the end of the file, using your SharePoint URL:
 
 ~~~text
 SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegalDocuments
