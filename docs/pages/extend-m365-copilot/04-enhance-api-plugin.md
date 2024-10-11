@@ -329,9 +329,9 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 ### Step 1: Restart the application
 
 Stop and restart your project to force it to re-deploy the application package.
-You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative copilots and select the Trey Genie Local copilot 2️⃣.
+You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and agents and select the Trey Genie Local agent 2️⃣.
 
-![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 <cc-end-step lab="e4" exercise="3" step="1" />
 

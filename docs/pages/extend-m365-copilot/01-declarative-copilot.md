@@ -119,7 +119,7 @@ The project will be created in a few seconds in the folder you mentioned and wil
 
 ![project created](../../assets/images/extend-m365-copilot-01/project-scffolded.png)
 
-Well done! You have successfully set up the base declarative Copilot app! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
+Well done! You have successfully set up the base declarative agent! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
 <cc-end-step lab="e1" exercise="1" step="2" />
 

@@ -602,9 +602,9 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
 ### Step 1: Install the plugin
 
 Stop and restart your project to force it to re-deploy the application package.
-You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative copilots and select the Trey Genie Local copilot 2️⃣.
+You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local copilot 2️⃣.
 
-![Running the declarative copilot](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 <cc-end-step lab="e5" exercise="3" step="1" />
 
@@ -632,6 +632,6 @@ You can now test other prompts as well to see the improved responses from Copilo
 
 ---8<--- "e-congratulations.md"
 
-You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add a declarative copilot to the same API plugin. 
+You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add a declarative agent to the same API plugin. 
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />
