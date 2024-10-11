@@ -16,9 +16,19 @@ These text elements are embedded into the lab instructions, so the formatting is
 
 ## Includes
 
-To include content from the /docs/includes folder, use this format:
+Content that will be used on multiple pages should be placed in include files in the /docs/includes folder.
 
---8<-- "test.md"
+Here is the syntax:
+
+<blockquote>--8<-- "all-labs-toc.md"</blockquote>
+
+Here is an example::
+
+--8<-- "all-labs-toc.md"
+
+## Lab steps
+
+Copilot Camp labs use custom web controls to help students track their progress. You will want to include a `<cc-end-step />` element at the end of each lab step. See [this test page](../../test) for details.
 
 ## Hyperlinks
 
@@ -26,11 +36,12 @@ Links within the labs can be relative and should open within the current window 
 
 Links that go outside the labs, including links to source code in the same repo, should open a new window [like this](https://github.com/microsoft/app-camp/blob/main/src/create-core-app/aad/A01-begin-app/client/index.html){target=_blank}
 
-Please add this query string to links to Microsoft documentation: ?WT.mc_id=m365-58890-cxa
-
 ## Admonitions
 
-!!! check "Challenge"
+The [documentation for admonitions is here](https://squidfunk.github.io/mkdocs-material/reference/admonitions/).
+Here's how to use them in Copilot Developer Camp:
+
+!!! example "Challenge"
     Here's something to try on your own
 
 !!! note
