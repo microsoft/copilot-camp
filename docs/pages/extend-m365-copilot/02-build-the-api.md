@@ -117,6 +117,6 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 ---8<--- "e-congratulations.md"
 
-You've successfully built the lab sample API! You can now proceed to make it into a Copilot plugin, and expose it via a Declarateive Copilot.
+You've successfully built the lab sample API! You can now proceed to make it into a Copilot plugin, and expose it via a Declarative agent.
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/02-build-the-api" />
