@@ -5,8 +5,12 @@
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 
 !!! note
+    This lab builds on the previous one, Lab E2. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+    The finished solution for this lab is in the **/src/extend-m365-copilot/path-e-lab06-add-authentication/trey-research-lab06-END**.
+
+!!! note
     There are many detailed setup steps for Entra ID in this lab.
-    A preview version of Teams Toolkit is available which will automate many of these steps for you; we hope to provide a more streamlined version of the lab when it's released. However this could still be useful for those wishing to understand exactly what needs to be provisioned to get OAuth working.
+    A new version of Teams Toolkit is available which will automate many of these steps for you; we plan to provide a more streamlined version of the lab shortly.
 
 In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. Here are the values you'll need to save:
 

@@ -10,6 +10,10 @@ In this lab you will learn:
 - How to create and test an Adaptive Card
 - How to update Microsoft 365 Copilot responses to use Adaptive Cards for rich content
 
+!!! note
+    This lab builds on the previous one, Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+    The finished solution for this lab is in the **/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**.
+
 ## Introduction
 <details open>
 <summary>What are Adaptive Cards?</summary>
