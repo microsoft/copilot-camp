@@ -6,7 +6,7 @@ In this lab you will add additional REST calls to the API and add them to the AP
 
 !!! note
     This lab builds on the previous one, Lab E3. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the **/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END**.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END) folder.
 
 ## Exercise 1: Add /projects resource
 

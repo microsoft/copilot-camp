@@ -12,7 +12,7 @@ In this lab you will learn:
 
 !!! note
     This lab builds on the previous one, Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the **/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END) folder.
 
 ## Introduction
 <details open>
