@@ -302,6 +302,40 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
+### Step 3: Learn to troubleshoot your API Plugin
+
+With any luck your declarative agent is working, but what if it's not? If your API is working but Copilot isn't calling it, what can you do?
+
+The answer is simple, and it's called _developer mode_.
+
+To enable developer mode, enter this prompt into Copilot:
+
+~~~text
+-developer mode
+~~~
+
+Then when you issue a prompt, Copilot will include an adaptive card at the end of its response with the words "Show plugin developer info".
+
+![Developer mode](../../assets/images/extend-m365-copilot-04/devmode1.png)
+
+Try this, and then click the box. You should see a breakdown of Copilot's processing.
+
+!!! note
+    This screen shot includes functions you won't add until the next lab.
+
+![Developer mode](../../assets/images/extend-m365-copilot-04/devmode2.png)
+
+Notice that it includes several sections:
+
+ * Enabled plugins - explains which API plugins are available within your declarative agent
+ * Matched functions - shows the available functions in your plugin JSON (**trey-plugin.json** in this case).
+ * Selected functions for execution - shows which of the functions Copilot chose
+ * Function execution details - shows the HTTP status code returned by the API when Copilot called it
+
+For more details please see the [developer mode documentation](https://learn.microsoft.com/microsoft-365-copilot/extensibility/debugging-copilot-plugin){target=_blank}
+
+<cc-end-step lab="e3" exercise="3" step="3" />
+
 ---8<--- "e-congratulations.md"
 
 You've completed adding a declarative agent to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
