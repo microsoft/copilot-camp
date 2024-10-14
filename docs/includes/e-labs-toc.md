@@ -6,7 +6,7 @@
       <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites/">E0 - Setup</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot/">E1 - First declarative agent</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api/">E2 - Build an API</a></li>
-      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-copilot/">E3 - Add a declarative agent and API plugin</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent/">E3 - Add a declarative agent and API plugin</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin/">E4 - Enhance the API and plugin</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card/">E5 - Add adaptive cards</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/06-add-authentication/">E6 - Add Entra ID authentication</a></li>
