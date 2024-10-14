@@ -49,7 +49,7 @@ Next, click the "Upload" 1️⃣ toolbar button and select "Files" 2️⃣.
 
 ![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-08.png)
 
-Navigte to your working folder; you will find a directory called "Sample Documents" within. Highlight all the sample documents 1️⃣ and click "Open" 2️⃣.
+Navigte to your working folder; you will find a directory called **sampleDocs** within. Highlight all the sample documents 1️⃣ and click "Open" 2️⃣.
 
 Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.sharepoint.com/sites/TreyResearchlegaldocuments", as you will need it in the next exercise.
 
@@ -61,7 +61,47 @@ Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.shar
 
 ### Step 1: Add the declarative agent JSON to your project
 
-Create a new file called **trey-declarative-copilot.json** within your **appPackage** folder. Copy the contents of the [solution file](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-declarative-copilot.json) into this file and save it.
+Create a new file called **trey-declarative-copilot.json** within your **appPackage** folder. Copy the following JSON into this file and save it.
+
+~~~json
+{
+    "$schema": "https://aka.ms/json-schemas/copilot-extensions/vNext/declarative-copilot.schema.json",
+    "version": "v1.0",
+    "name": "Trey Genie Local",
+    "description": "You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. ",
+    "instructions": "Greet users in a professional manner, introduce yourself as the Trey Genie, and offer to help them. Always remind users of the Trey motto, 'Always be Billing!'. Your main job is to help consultants with their projects and hours. Using the TreyResearch action, you are able to find consultants based on their names, project assignments, skills, roles, and certifications. You can also find project details based on the project or client name, charge hours on a project, and add a consultant to a project. If a user asks how many hours they have billed, charged, or worked on a project, reword the request to ask how many hours they have delivered. In addition, you may offer general consulting advice. If there is any confusion, encourage users to speak with their Managing Consultant. Avoid giving legal advice.",
+    "conversation_starters": [
+        {
+            "title": "Find consultants",
+            "text": "Find consultants with TypeScript skills"
+        },
+        {
+            "title": "My Projects",
+            "text": "What projects am I assigned to?"
+        },
+        {
+            "title": "My Hours",
+            "text": "How many hours have I delivered on projects this month?"
+        }
+    ],
+    "capabilities": [
+        {
+            "name": "OneDriveAndSharePoint",
+            "items_by_url": [
+                {
+                    "url": "${{SHAREPOINT_DOCS_URL}}"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "id": "treyresearch",
+            "file": "trey-plugin.json"
+        }
+    ]
+}
+~~~
 
 Notice that the file includes a name, description, and instructions for the declarative agent. Notice that as part of the instructions, Copilot is instructed to "Always remind users of the Trey motto, 'Always be Billing!'." You should see this when you prompt Copilot in the next exercise.
 
