@@ -3,7 +3,7 @@
   "manifestVersion": "devPreview",
   "id": "${{TEAMS_APP_ID}}",
   "packageName": "com.microsoft.teams.extension",
-  "version": "1.0.9",
+  "version": "1.0.0",
   "developer": {
     "name": "Teams App, Inc.",
     "websiteUrl": "https://www.example.com",
