@@ -1,0 +1,37 @@
+[
+  {
+    "name": "title",
+    "type": "String",
+    "isQueryable": "true",
+    "isSearchable": "true",
+    "isRetrievable": "true",
+    "labels": ["title"]
+  },
+  {
+    "name": "abstract",
+    "type": "String",
+    "isQueryable": "true",
+    "isSearchable": "true",
+    "isRetrievable": "true"
+  },
+  {
+    "name": "consultant",
+    "type": "String",
+    "isQueryable": "true",
+    "isRetrievable": "true",
+    "isSearchable": "true",
+    "labels": ["createdBy"]
+  },
+  {
+    "name": "lastModified",
+    "type": "dateTime",
+    "isRetrievable": "true",
+    "labels": ["lastModifiedDateTime"]
+  },
+  {
+    "name": "url",
+    "type": "String",
+    "isRetrievable": "true",
+    "labels": ["url"]
+  }
+]
