@@ -1,0 +1,69 @@
+@base_url = http://localhost:7071/api
+
+########## /api/me - working with the Copilot user ##########
+
+### Get my consultant and project information
+{{base_url}}/me
+
+### Charge time to a project
+POST {{base_url}}/me/chargeTime
+Content-Type: application/json
+
+{
+    "projectName": "woodgrove",
+    "hours": 3
+}
+
+
+########## /api/consultants - working with consultants ##########
+
+### Get all consultants
+{{base_url}}/consultants
+
+### Get consultant by id
+{{base_url}}/consultants/1
+
+### Get consulatnt by name
+{{base_url}}/consultants/?consultantName=Sanjay
+
+### Get consultants by project
+{{base_url}}/consultants/?projectName=woodgrove
+
+### Get consultants by skill
+{{base_url}}/consultants/?skill=javascript
+
+### Get consultants by certification
+{{base_url}}/consultants/?certification=azure
+
+### Get consultants by role
+{{base_url}}/consultants/?role=developer
+
+### Get consultants by hours available this month
+{{base_url}}/consultants/?hoursAvailable=100
+
+
+########## /api/projects - working with projects ##########
+
+### Get all projects
+{{base_url}}/projects
+
+### Get project by id
+{{base_url}}/projects/1
+
+### Get project by project or client name
+{{base_url}}/projects/?projectName=supply
+
+### Get project by consultant name
+{{base_url}}/projects/?consultantName=dominique
+
+### Add consultant to project
+POST {{base_url}}/projects/assignConsultant
+Content-Type: application/json
+
+{
+    "projectName": "contoso",
+    "consultantName": "sanjay",
+    "role": "architect",
+    "forecast": 30
+}
+
