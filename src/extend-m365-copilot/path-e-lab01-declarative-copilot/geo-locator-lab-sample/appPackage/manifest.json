@@ -1,11 +1,10 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
-    "manifestVersion": "devPreview",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.19",
     "version": "1.0.0",
     "id": "${{TEAMS_APP_ID}}",
-    "packageName": "com.microsoft.teams.extension",
     "developer": {
-        "name": "Microsoft 365 Cloud Advocates",
+        "name": "Teams App, Inc.",
         "websiteUrl": "https://www.example.com",
         "privacyUrl": "https://www.example.com/privacy",
         "termsOfUseUrl": "https://www.example.com/termofuse"
@@ -14,6 +13,7 @@
         "color": "color.png",
         "outline": "outline.png"
     },
+
     "name": {
         "short": "Geo Locator Game",
         "full": "Geo locator game"    
@@ -28,8 +28,8 @@
         "identity",
         "messageTeamMembers"
     ],
-    "copilotExtensions": {
-        "declarativeCopilots": [            
+    "copilotAgents": {
+        "declarativeAgents": [            
             {
                 "id": "dcGeolocator",
                 "file": "declarativeAgent.json"
@@ -38,3 +38,6 @@
     },
     "validDomains": []
 }
+
+
+
