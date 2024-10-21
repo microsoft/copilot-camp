@@ -70,19 +70,13 @@ They are called capabilities and there are three types of capabilities supported
 You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
 So to keep things as simple as possible you will use Teams Toolkit.
 
-### Step 1: Switch to pre-release version of  Teams Toolkit 
+### Step 1: Install Teams Toolkit
 
-!!! warning "This step may change"
-     For now you will need to use this pre-release version until the feature is available in Teams Toolkit as Stable Release
 
 - Go to extensions tab of your Visual Studio Code and type **team** as in step 1️⃣ in the image below.
 - Select **Teams Toolkit** as step 2️⃣. 
-- Select **Switch to Pre-Release Version**  3️⃣ 
 
-![prerelease version install](../../assets/images/extend-m365-copilot-01/prerelease-ttk.png)
-
-!!! tip "Teams Toolkit Prerelease"
-     Only this lab uses prerelease version of Teams Toolkit. You can switch back to release version after this lab is completed. The steps are similar to above.
+![Install](../../assets/images/extend-m365-copilot-01/install-ttk.png)
 
 <cc-end-step lab="e1" exercise="1" step="1" />
 
@@ -171,11 +165,11 @@ Another important file is **appPackage/declarativeAgent.json** where there is a 
 - The `description` provides a description.
 - The `instructions` the path to the **instructions.txt** file which holds directives which will determine the operational behavior. You can also put your instructions as plain text as a value here. But for this lab we will use the **instructions.txt** file.
 
-Another important file is the `appPackage/manifest.json` file, which contains crucial metadata, including the package name, the developer’s name, and references to the copilot extensions utilised by the application. The following section from the manifest.json file illustrates these details:
+Another important file is the `appPackage/manifest.json` file, which contains crucial metadata, including the package name, the developer’s name, and references to the copilot agents utilised by the application. The following section from the manifest.json file illustrates these details:
 
 ```JSON
-"copilotExtensions": {
-        "declarativeCopilots": [            
+"copilotAgents": {
+        "declarativeAgents": [            
             {
                 "id": "declarativeAgent",
                 "file": "declarativeAgent.json"
@@ -193,11 +187,11 @@ You could also update the logo files `color.png` and `outline.png` to make it ma
 
 First we will do the easy bit which is replacing the logo. Copy the image located [here](../../assets/images/extend-m365-copilot-01/color.png){target=_blank} and replace it with the image of same name in the folder **appPackage** in your root project. 
 
-Next, go to the file **appPackage/manifest.json**  in your root project and find the node **copilotExtensions**. Update the id value of the declarativeAgents array's first entry from `declarativeAgent` to `dcGeolocator` to make this ID unique.
+Next, go to the file **appPackage/manifest.json**  in your root project and find the node **copilotAgents**. Update the id value of the declarativeAgents array's first entry from `declarativeAgent` to `dcGeolocator` to make this ID unique.
 
 <pre>
- "copilotExtensions": {
-        "declarativeCopilots": [            
+ "copilotAgents": {
+        "declarativeAgents": [            
             {
                 "id": "<b>dcGeolocator</b>",
                 "file": "declarativeAgent.json"
@@ -250,7 +244,7 @@ Would you like to play another round, try a special challenge?
 Follow the next step to make sure our agent can help user engage with it by giving conversation starters.  
 
 !!! tip "Include your own files in **appPackage** files"
-    Notice this line in **appPackage/declarative-copilot.json**:
+    Notice this line in **appPackage/declarativeAgent.json**:
 
     `"instructions": "$[file('instruction.txt')]",`
 
