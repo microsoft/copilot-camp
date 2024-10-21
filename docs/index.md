@@ -81,10 +81,13 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
 Got the labs working? Ready to share your knowledge?
 Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./pages/in-a-box/) resources! We've got you covered with presentation materials that even include embedded demos.
 
-
 ## Join the Conversation! 💬
 
 ---8<--- "discussions.md"
+
+## Microsoft Learn 📖
+
+Discover Microsoft Learn content to extend Copilot all in one place with the **Official Collection: Microsoft 365 Copilot extensibility** available at the link [https://aka.ms/extend-microsoft365-copilot](https://aka.ms/extend-microsoft365-copilot)
     
 ## Issues
 
