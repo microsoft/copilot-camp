@@ -72,6 +72,24 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
       <div>Bring your AI App to Microsoft Teams from Azure OpenAI Studio</div>
     </div>
 
+???+ info "Microsoft Mechanics"
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/cpZl2-mlB74?si=aAx4Ozb3_TFy5IXH" frameborder="0" allowfullscreen></iframe>
+      <div>Microsoft 365 Copilot - New agent and extensibility options for developers</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/6Mmevs1877A?si=n_IY7GWTdClxm8Jk" frameborder="0" allowfullscreen></iframe>
+      <div>AI apps - Control Safety, Privacy & Security - with Mark Russinovich</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/B2-8wrF9Okc?si=w4cV240_eVg3wBe4" frameborder="0" allowfullscreen></iframe>
+      <div>How Microsoft 365 Copilot works</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/u7RtGa0erU8?si=B6SxiQSv7nK5FnWO" frameborder="0" allowfullscreen></iframe>
+      <div>Microsoft 365 Copilot Wave Two updates - Pages, Excel, OneDrive, and agents</div>
+    </div>
+
 ???+ info "Microsoft 365 Developer Essentials"
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/pYe2NqKhJoM" frameborder="0" allowfullscreen></iframe>
