@@ -4,6 +4,18 @@
 
 Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot. 
 
+???+ info "Join the Microsoft 365 Copilot: Developer Camp on November 7th! 🎉"
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/l4bCs34T6qM" frameborder="0" allowfullscreen></iframe>
+        <div>
+            <br><b>📅 November 07, 2024 | 🕘 9:00 AM - 10:30 AM (PT) | 📍 Virtual Live</b> 
+            <br><br>Join us for <b>Microsoft 365 Copilot: Developer Camp 2024</b> on <b>November 7th</b>! 
+            This exciting event is designed to inspire developers to build the next generation of Copilot Agents with insights from product experts. 
+            <br><br>Explore everything from declarative agents to custom engine agents through fun games, doodles, studio interviews, and panels with leaders shaping the future of developer tooling. 
+            <br><br>Mark your calendars and visit <b><a>https://aka.ms/copilotdevcamp/live</a></b> to learn more! 
+        </div>
+    </div>
+
 ??? info "Learn about Microsoft 365 Copilot 'Wave 2'"
     <div class="video">
       <iframe src="//www.youtube.com/embed/Gz0jPfCuvsM" frameborder="0" allowfullscreen></iframe>
