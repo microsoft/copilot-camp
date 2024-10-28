@@ -11,6 +11,12 @@ First, replace the first two lines with these:
   "manifestVersion": "1.19",
 ~~~
 
+If you see a `packageName` property like this one in your **manifest.json** file, remove it as it is no longer necessary or supported.
+
+~~~json
+  "packageName": "com.microsoft.teams.extension",
+~~~
+
 Then replace the `copilotExtensions` property with this:
 
 ~~~json

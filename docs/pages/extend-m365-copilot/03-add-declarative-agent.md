@@ -61,7 +61,7 @@ Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.shar
 
 ### Step 1: Add the declarative agent JSON to your project
 
-Create a new file called **trey-declarative-copilot.json** within your **appPackage** folder. Copy the following JSON into this file and save it.
+Create a new file called **trey-declarative-agent.json** within your **appPackage** folder. Copy the following JSON into this file and save it.
 
 ~~~json
 {
@@ -240,11 +240,11 @@ They include a pointer to the **trey-definition.json** file, and an enumeration 
 Now open the **manifest.json** file within the **appPackage** directory. Add a new `declarativeCopilots` object to the `copilotExtensions` object as follows, so it references the declarative agent JSON file you created in the previous step.
 
 ~~~json
-  "copilotExtensions": {
-    "declarativeCopilots": [
+  "copilotAgents": {
+    "declarativeAgents": [
       {
         "id": "treygenie",
-      "file": "trey-declarative-copilot.json"
+      "file": "trey-declarative-agent.json"
       }
     ]
   }, 
