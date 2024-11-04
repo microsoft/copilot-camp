@@ -44,12 +44,15 @@ You'll need to complete the Azure subscription pre-requisite before starting wit
 
 ### Step 1: Create Azure OpenAI service resource
 
+???+ info "Make sure the model you want to create in further steps is available in your Azure OpenAI service region"
+    Please check [Model summary table and region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#model-summary-table-and-region-availability) before creating your Azure OpenAI service in any particular region. Make sure that the model you want to use such as `gpt-4` is available in **Standard** or **Global Standard** types in the region you prefer to create your Azure OpenAI Service.
+
 1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com).
 1. Select **Create a resource**, then search for `Azure OpenAI`. Select the Azure OpenAI service and then **Create**.
 1. Fill out the following details and select **Next**:
     - **Subscription:** The Azure subscription for your Azure OpenAI Service
     - **Resource group:** The Azure resource group to contain your Azure OpenAI resource. You can create a new group or use a pre-existing group.
-    - **Region:** The location of your instance.
+    - **Region:** The location of your instance. (Make sure that the deployment model is available in your region).
     - **Name:** A descriptive name for your Azure OpenAI Service resource, such as `MyOpenAIResource`.
     - **Pricing Tier:** The pricing tier for the resource. Currently, only the `Standard` tier is available for the Azure OpenAI Service.
 1. Select the network configuration of your choice and select **Next**.
@@ -71,22 +74,20 @@ In your Azure OpenAI service, navigate to **Model deployments** from the left si
     
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
-From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
+In Azure OpenAI Studio, select **Deployments** tab, **Deploy model** and then **Deploy base model**. Search the model you prefer to use such as `gpt-4` and **Confirm**. Fill out the following details and select **Deploy**:
 
-- **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-35-turbo`.
-- **Select a model:** Select `gpt-35-turbo` or higher model.
-- **Model version:** Auto update to default.
-- **Deployment type:** Provisioned-Managed.
-- **Content Filter:** Default.
+- **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
+- **Select a model:** Select a model, `gpt-4` is recommended.
+- **Deployment type:** Global Standard.
 
 !!! tip "Tip: Handling no quota available message"
     When you select a model, you may see **No quota available** message pop-up on top of the configuration page. To handle this, you have two options:
     1. Select a different version or deployment type
     1. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota)
 
-Once your model is successfully created, you can navigate to **Chat**, and test your model by selecting one of the available templates in **Prompt** section and asking relevant questions in the chat playground.
+Once your model is successfully created, select **Open in playground**, and test your model by selecting **Prompt samples** from the top and choose one of the prompts available.
 
-For example, choose "Shakespeare writing assistant" and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
+For example, choose "Shakespearean Writing Assistant" and select **Use prompt**. and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
 
 ![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 

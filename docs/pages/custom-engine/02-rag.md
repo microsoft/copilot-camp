@@ -122,7 +122,11 @@ For this exercise, download [fictitious_resumes.zip](https://github.com/microsof
 
 ### Step 1: Upload your documents to Azure AI Search
 
-1. Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Chat** playground. In the **Setup** section, select **Add your data** tab and then **Add a data source**.
+1. Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
+
+     ![Reset chat playground](../../assets/images/custom-engine-02/reset-chat-playground.png)
+
+1. Select **Add your data** and then **Add a data source**.
 
     ![Add your data in Azure OpenAI Studio](../../assets/images/custom-engine-02/add-your-data-aoai.png)
 
@@ -149,7 +153,9 @@ It takes couple of minutes to complete the data ingestion. Once the data is read
 
 ### Step 2: Test your data on Azure OpenAI Studio
 
-Once your data  ingestion is completed, use Chat playground to ask questions about your data.
+Once your data  ingestion is completed, use Chat playground to ask questions about your data. 
+
+You can ask questions such as *"Can you suggest me a candidate who is suitable for Spanish speaking role that requires at least 2 years of .NET experience?"*.
 
 !!! tip "Tip: Making the most out of your data"
     Review your dataset before asking questions testing the vector search. Go through the `resumes` folder and recognize the resumes provided in different languages with diverse professions, years of experience, skills and more. Start chatting with your data by asking questions to find out the right candidate for a skill, language, profession, years of experience and other categories. Try to test out the combination of requirements to challenge the search experience!
