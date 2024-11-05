@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "32c7d928-e0f9-4061-afd7-9ac1482de262",
+		"name": "TreyResearch API",
+		"description": "# 🚀 Get started here\n\nThis template guides you through API operations (GET, POST) available to developers to test out APIs for a consultant and project management company - Trey Research. Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4380975"
+	},
+	"item": [
+		{
+			"name": "Get my consulting profile and projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/me/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"me",
+						""
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve the consulting profile and data of the logged in user (for now with no auth it is always a mock user Avery).  \nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            \"location\": {\n                \"street\": \"5 Wayside Rd.\",\n                \"city\": \"Burlington\",\n                \"state\": \"MA\",\n                \"country\": \"USA\",\n                \"postalCode\": \"01803\",\n                \"latitude\": 42.5048,\n                \"longitude\": -71.1956....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all consultants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve all consultants in Trey Research  \nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            ....\n        },\n        {\n            \"id\": \"2\",\n            \"name\": \"Dominique Dutertre\",\n            \"email\": \"dominique@treyresearch.com\",\n            \"phone\": \"1-555-567-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Dominique.jpg\",\n            ....\n        },\n        ...\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get consultants with name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/?consultantName=Avery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					],
+					"query": [
+						{
+							"key": "consultantName",
+							"value": "Avery"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of consultants whose names, or parts of their names, match a given name. The endpoint uses query parameter `consultantName` to accept a search string, which it then uses to query the database and return matching consultant profiles.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            \"location\": {\n                \"street\": \"5 Wayside Rd.\",\n                \"city\": \"Burlington\",\n                \"state\": \"MA\",\n                \"country\": \"USA\",\n                \"postalCode\": \"01803\",\n                \"latitude\": 42.5048,\n                \"longitude\": -71.1956....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get consultants with projects based on projects they are assigned",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/?projectName=Financial",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					],
+					"query": [
+						{
+							"key": "projectName",
+							"value": "Financial"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of consultants who is assigned to projects which has its name or parts of its names, match a given project name. The endpoint uses query parameter `projectName` to accept a search string, which it then uses to query the database and return matching consultant profiles.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            .....\n        \"projects\": [\n                {\n                    \"projectName\": \"Financial data plugin for Microsoft Copilot\",\n                    \"projectDescription\": \"Extend Woodgrove's financial analytics platform to integrate with Microsoft Copilot\",\n                    \"projectLocation\": {\n                        \"street\": \"1 Microsoft Way\",\n                        \"city\": \"Redmond\",\n                        \"state\": \"WA\",\n                        \"country\": \"USA\",\n                        \"postalCode\": \"98052\",\n                        \"latitude\": 47.6396,\n                        \"longitude\": -122.1295,\n                        \"mapUrl\": \"https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?47.6396,-122.1295mapSize=450,600&pp=47.6396,-122.1295&key=xxxxxxxxxxxxxxxxxxxxxxx\"\n                    },\n                    \"clientName\": \"Woodgrove Bank\",\n                    \"clientContact\": \"Bi Gao\",\n                    \"clientEmail\": \"bigao@woodgrovebank.com\",\n                    \"role\": \"Architect\",\n                    \"forecastThisMonth\": 98,\n                    \"forecastNextMonth\": 1,\n                    \"deliveredLastMonth\": 0\n                 .....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get consultants with a certain skill listed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/?skill=TypeScript",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					],
+					"query": [
+						{
+							"key": "skill",
+							"value": "TypeScript"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of consultants based on skills in their skill list. The endpoint uses query parameter `skill` to accept a search string, which it then uses to query the database and return matching consultant profiles.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            .....\n        \"projects\": [\n              \"skills\": [\n                \"C#\",\n                \"JavaScript\",\n                \"TypeScript\",\n                \"React\",\n                \"Node.js\"\n            ],\n            \"certifications\": [\n                \"MCSADA\",\n                \"Azure Developer Associate\",\n                \"MCAAF\",\n                \"Azure AI Fundamentals\"\n            ],\n            \"roles\": [\n                \"Project lead\",\n                \"Developer\",\n                \"Architect\",\n                \"DevOps\"\n            ],\n                 .....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get consultants with a certain certification listed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/?certification=azure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					],
+					"query": [
+						{
+							"key": "certification",
+							"value": "azure"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of consultants based on the certifications they have acquired. The endpoint uses query parameter `certification` to accept a search string, which it then uses to query the database and return matching consultant profiles.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            .....\n        \"projects\": [\n              \"skills\": [\n                \"C#\",\n                \"JavaScript\",\n                \"TypeScript\",\n                \"React\",\n                \"Node.js\"\n            ],\n            \"certifications\": [\n                \"MCSADA\",\n                \"Azure Developer Associate\",\n                \"MCAAF\",\n                \"Azure AI Fundamentals\"\n            ],\n            \"roles\": [\n                \"Project lead\",\n                \"Developer\",\n                \"Architect\",\n                \"DevOps\"\n            ],\n                 .....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get consultants with a certain role listed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/?role=developer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "developer"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of consultants based on their roles. The endpoint uses query parameter `role` to accept a search string, which it then uses to query the database and return matching consultant profiles.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            .....\n        \"projects\": [\n              \"skills\": [\n                \"C#\",\n                \"JavaScript\",\n                \"TypeScript\",\n                \"React\",\n                \"Node.js\"\n            ],\n            \"certifications\": [\n                \"MCSADA\",\n                \"Azure Developer Associate\",\n                \"MCAAF\",\n                \"Azure AI Fundamentals\"\n            ],\n            \"roles\": [\n                \"Project lead\",\n                \"Developer\",\n                \"Architect\",\n                \"DevOps\"\n            ],\n                 .....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get consultants has x hours available in the current or next month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/consultants/?availability=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"consultants",
+						""
+					],
+					"query": [
+						{
+							"key": "availability",
+							"value": "2"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of consultants who have x hours available in the current month or next. The endpoint uses query parameter `availability` to accept the value of `x` hours, which it then uses to query the database and return matching consultant profiles.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"Avery Howard\",\n            \"email\": \"avery@treyresearch.com\",\n            \"phone\": \"1-555-456-7890\",\n            \"imageUrl\": \"https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg\",\n            .....\n                }\n            ],\n            \"forecastThisMonth\": 138,\n            \"forecastNextMonth\": 41,\n            \"deliveredLastMonth\": 0,\n            \"deliveredThisMonth\": 2\n                 .....\n     ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Get all projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/projects/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"projects",
+						""
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve all projects in Trey Research  \nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:  \n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"CRM Cloud Migration\",\n            \"description\": \"Migrate Adatum's CRM system to Dynamics 365\",\n            \"clientName\": \"Adatum Corporation\",\n            \"clientContact\": \"Natasha Jones\",\n            \"clientEmail\": \"natjones@adatum.com\",\n            ....\n            \"forecastThisMonth\": 10,\n            \"forecastNextMonth\": 0,\n            \"deliveredLastMonth\": 0,\n            \"deliveredThisMonth\": 0\n        },\n        {\n            \"id\": \"10\",\n            \"name\": \"Financial data plugin for Microsoft Copilot\",\n            \"description\": \"Extend Woodgrove's financial analytics platform to integrate with Microsoft Copilot\",\n            \"clientName\": \"Woodgrove Bank\",\n            \"clientContact\": \"Bi Gao\",\n            \"clientEmail\": \"bigao@woodgrovebank.com\",\n           .....\n            \"forecastThisMonth\": 118,\n            \"forecastNextMonth\": 21,\n            \"deliveredLastMonth\": 0,\n            \"deliveredThisMonth\": 2\n        },\n       .....\n    ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get projects with name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/projects/?projectName=Financial",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"projects",
+						""
+					],
+					"query": [
+						{
+							"key": "projectName",
+							"value": "Financial"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of project which have name, or parts of its name, matching a given name. The endpoint uses query parameter `projectName` to accept a search string, which it then uses to query the database and return matching projects.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"10\",\n            \"name\": \"Financial data plugin for Microsoft Copilot\",\n            \"description\": \"Extend Woodgrove's financial analytics platform to integrate with Microsoft Copilot\",\n            \"clientName\": \"Woodgrove Bank\",\n            \"clientContact\": \"Bi Gao\",\n            \"clientEmail\": \"bigao@woodgrovebank.com\",\n            \"location\": {\n                \"street\": \"1 Microsoft Way\",\n                \"city\": \"Redmond\",\n                \"state\": \"WA\",\n                \"country\": \"USA\",\n                \"postalCode\": \"98052\",\n                \"latitude\": 47.6396,\n                \"longitude\": -122.1295,\n                \"mapUrl\": \"https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?47.6396,-122.1295mapSize=450,600&pp=47.6396,-122.1295&key=xxxxxxxxxxxxxxxxxxxxxxx\"\n            },\n           ...\n        }\n    ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get projects based on consultant name assigned",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/api/projects/?consultantName=Avery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"projects",
+						""
+					],
+					"query": [
+						{
+							"key": "consultantName",
+							"value": "Avery"
+						}
+					]
+				},
+				"description": "This API endpoint is a GET request designed to retrieve a list of project which have consultants who's name, or parts of their name, matching a given name. The endpoint uses query parameter `consultantName` to accept a search string, which it then uses to query the database and return matching projects.\n\nWhen a client makes a GET request to this endpoint, they should expect a 200 OK status code upon success, indicating that the request has been processed and the data is being sent in the response. The response body will typically be in JSON format as shown below:\n\n``` json\n{\n    \"results\": [\n        {\n            \"id\": \"10\",\n            \"name\": \"Financial data plugin for Microsoft Copilot\",\n            \"description\": \"Extend Woodgrove's financial analytics platform to integrate with Microsoft Copilot\",\n            \"clientName\": \"Woodgrove Bank\",\n            \"clientContact\": \"Bi Gao\",\n            \"clientEmail\": \"bigao@woodgrovebank.com\",\n             ....\n            \"consultants\": [\n                {\n                    \"consultantName\": \"Avery Howard\",\n                    \"consultantLocation\": {\n                        \"street\": \"5 Wayside Rd.\",\n                        \"city\": \"Burlington\",\n                        \"state\": \"MA\",\n                        \"country\": \"USA\",\n                        \"postalCode\": \"01803\",\n                        \"latitude\": 42.5048,\n                        \"longitude\": -71.1956,\n                        \"mapUrl\": \"https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?42.5048,-71.1956mapSize=450,600&pp=42.5048,-71.1956&key=xxxxxxxxxxxxxxxxxxxxxxx\"\n                    },\n                    \"role\": \"Developer\",\n                    \"forecastThisMonth\": 40,\n                    \"forecastNextMonth\": 40,\n                    \"deliveredLastMonth\": 0,\n                    \"deliveredThisMonth\": 0\n                }\n            ],\n            \"forecastThisMonth\": 40,\n            \"forecastNextMonth\": 40,\n            \"deliveredLastMonth\": 0,\n            \"deliveredThisMonth\": 0\n        }\n    ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add hours to a project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"projectName\": \"Woodgrove\",\n  \"hours\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/me/chargeTime",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"me",
+						"chargeTime"
+					]
+				},
+				"description": "This API endpoint is a POST request that allows users to log hours spent on a project. The request body must be in JSON format and include the `projectName` and `hours` fields.\n\nWhen a client makes a POST request to this endpoint with the appropriate JSON body, they should expect a 200 Created status code upon successful creation of the log entry.\n\nThe JSON request body should look like this:\n\n``` json\n{\n\"projectName\": \"Woodgrove\",\n\"hours\": 2\n}\n\n ```\n\nAnd its sample response:\n\n``` json\n{\n    \"results\": {\n        \"status\": 200,\n        \"clientName\": \"Woodgrove Bank\",\n        \"projectName\": \"Financial data plugin for Microsoft Copilot\",\n        \"remainingForecast\": 96,\n        \"message\": \"Charged 2 hours to Woodgrove Bank on project \\\"Financial data plugin for Microsoft Copilot\\\". You have 96 hours remaining this month.\"\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Assign a consultant to a project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"projectName\": \"CRM Cloud Migration\",\n    \"consultantName\": \"Lois\",\n    \"role\": \"project lead\",\n    \"forecast\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/projects/assignConsultant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"projects",
+						"assignConsultant"
+					]
+				},
+				"description": "This API endpoint is a POST request that assigns a consultant to a project with some forcast alloted.\n\nWhen a client makes a POST request to this endpoint with the appropriate JSON body, they should expect a 200 Created status code upon successful creation of the log entry.\n\nThe JSON request body should look like this:\n\n``` json\n{\n    \"projectName\": \"CRM Cloud Migration\",\n    \"consultantName\": \"Lois\",\n    \"role\": \"project lead\",\n    \"forecast\": 10\n}\n\n ```\n\nAnd its sample response:\n\n``` json\n{\n    \"results\": {\n        \"status\": 200,\n        \"clientName\": \"Adatum Corporation\",\n        \"projectName\": \"CRM Cloud Migration\",\n        \"consultantName\": \"Lois Wyn\",\n        \"remainingForecast\": 10,\n        \"message\": \"Added consultant Lois Wyn to Adatum Corporation on project \\\"CRM Cloud Migration\\\" with 10 hours forecast this month.\"\n    }\n}\n\n ```"
+			},
+			"response": []
+		}
+	]
+}

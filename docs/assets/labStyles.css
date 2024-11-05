@@ -251,6 +251,10 @@ hr {
     background-image: url('./images/path-icons/icon-e6.png');
 }
 
+.e-path ul li:nth-child(8) {
+    background-image: url('./images/path-icons/icon-eb-gc.png');
+}
+
 .b-path div,
 .b-path div p  {
     border-color: #B06CF4;
