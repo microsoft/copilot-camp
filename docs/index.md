@@ -4,12 +4,38 @@
 
 Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot. 
 
-???+ info "WATCH LIVE: the Microsoft 365 Copilot: Developer Camp! 🎉"
-    <div class="liveVideo">
-      <iframe src="https://www.youtube.com/embed/36ksodlm8_w?si=veHvjOCXSPpa5Dxc" frameborder="0" allowfullscreen></iframe>
-        <div>
-            <br><b>📅 November 07, 2024 | 🕘 9:00 AM - 10:30 AM (PT) | 📍 Virtual Live</b>
-        </div>
+???+ info "Watch Microsoft 365 Copilot: Developer Camp On-demand! 🎉"
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/8dc6op4BZdU?si=9DH8ABy1z3BziO8Y" frameborder="0" allowfullscreen></iframe>
+      <div>Let's Start with a Game!</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/SkpAicAt42U?si=o2zqGMUa3PKvfp60" frameborder="0" allowfullscreen></iframe>
+      <div>Developer's Guide to Building Copilot Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/QfgmvoWDDrw?si=z92Xh-NIPBao3DEw" frameborder="0" allowfullscreen></iframe>
+      <div>Introducing Declarative Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/f2hITAkh0IQ?si=Hugb9Vf0-Mwujhh2" frameborder="0" allowfullscreen></iframe>
+      <div>The Future of Declarative Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/IXTWvYrdVKU?si=FSL2myO9hTfiIgqK" frameborder="0" allowfullscreen></iframe>
+      <div>Extending Declarative Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/ocyBgi3m9Zo?si=grLCZRQ9LYlJI1vd" frameborder="0" allowfullscreen></iframe>
+      <div>A Conversation with the Leaders Behind the Developer Tools</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/-7r1zy5s_lw?si=UQbzMTWnSDYakHD4" frameborder="0" allowfullscreen></iframe>
+      <div>Introducing Custom Engine Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/EGi1Xq8P1ws?si=YFkGUQYiVFccGwmq" frameborder="0" allowfullscreen></iframe>
+      <div>Unlock the Power of Custom Engine Agents</div>
     </div>
 
 ??? info "Learn about Microsoft 365 Copilot 'Wave 2'"
