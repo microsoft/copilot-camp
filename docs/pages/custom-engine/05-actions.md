@@ -558,7 +558,7 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
 
 ```JSON
  {
-    "id": "Mail.Read",
+    "id": "Mail.Send",
     "type": "Scope"
 }
 ```
