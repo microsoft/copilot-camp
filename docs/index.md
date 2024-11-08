@@ -1,8 +1,9 @@
 
 <img class="heading-image" src="./assets/images/CopilotCamp-Tent-Clean.png"></img>
+
 # Copilot Developer Camp
 
-Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot. 
+Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot.
 
 ???+ info "Watch Microsoft 365 Copilot: Developer Camp On-demand! 🎉"
     <div class="tinyVideo">
@@ -132,6 +133,8 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
 
 Got the labs working? Ready to share your knowledge?
 Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./pages/in-a-box/) resources! We've got you covered with presentation materials that even include embedded demos.
+
+---8<--- "starrepo.md"
 
 ## Join the Conversation! 💬
 

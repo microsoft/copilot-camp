@@ -1,10 +1,10 @@
 # Welcome to Copilot Developer Camp!
 
-This repo is for hosting a virtual workshop for developers who want to build agents and connectors for Microsoft 365 Copilot. The content is still in development but our labs are ready for testing; please check it out!
+This repo is for hosting a virtual workshop for developers who want to build agents and connectors for Microsoft 365 Copilot.
 
 Please visit Copilot Developer Camp at [https://aka.ms/copilotdevcamp](https://aka.ms/copilotdevcamp)
 
-The samples that were hosted here have turned into labs, and the plain samples have moved.
+You can find the complete source code of each labs below:
 
 | | Sample | Lab |
 |---|---|---|
@@ -15,6 +15,8 @@ The samples that were hosted here have turned into labs, and the plain samples h
 We'd love it if you would test out the [Copilot Developer Camp](https://aka.ms/copilotdevcamp) labs, and very much appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues.
 
 You can also join the community, by simply introducing yourself, sharing ideas and connecting with other members in [Copilot Developer Camp Discussions](https://github.com/microsoft/copilot-camp/discussions/328) 🎉!
+
+Watch the Microsoft 365 Copilot: Developer Camp on-demand to learn more about Copilot Agents: [Microsoft 365 Copilot: Developer Camp Playlist 🎉](https://youtube.com/playlist?list=PLlrxD0HtieHiMCKFMGsGFX9oZEwDQtFIT&si=OpsV43XZ5YAhbJOI)
 
 ## Contributing
 
