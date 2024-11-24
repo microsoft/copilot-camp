@@ -48,8 +48,9 @@ Create a new file named `adaptiveCard.json` and add the following JSON content:
   ],
   "actions": [
     {
-      "type": "Action.Submit",
-      "title": "Click me"
+      "type": "Action.OpenUrl",
+      "title": "Click me",
+      "url":"https://www.contoso.com"
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
