@@ -4,6 +4,9 @@
 
 In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
+!!! note "Set up your development environment for Microsoft 365 Copilot"
+    This lab currently assumes you already have a tenant to setup. You can reference off to the
+    <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites" target="_blank">page here </a>that explains the current way you can get a tenant.
 
 In this lab you will learn:
 
