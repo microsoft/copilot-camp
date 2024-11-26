@@ -360,7 +360,7 @@ There is no limit to how many URLs you can add 💪🏼
 
 ### Step 3: Upgrade app manifest
 
-Next, go to the file **appPackage/manifest.json** and upgrade the manifest version from "1.0.0"" to "1.0.1" so the changes are reflected when you install. 
+Next, go to the file **appPackage/manifest.json** and upgrade the app `version` from "1.0.0"" to "1.0.1" so the changes are reflected when you install. 
 
 <cc-end-step lab="e1" exercise="3" step="3" />
 
@@ -376,7 +376,7 @@ Next, go to the file **appPackage/manifest.json** and upgrade the manifest versi
 
 This time, try the challenge which will be based on the travel diary. Choose the second converation starter.
 
-![traveller](../../assets/images/extend-m365-copilot-01/traveller.png)
+![traveller](../../assets/images/extend-m365-copilot-01/traveller.gif)
 
 You have basically become a declarative agent boss. Find out more from this video we did.
 
