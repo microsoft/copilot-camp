@@ -7,7 +7,7 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
 
 ???+ info "Watch Microsoft 365 Copilot: Developer Camp On-demand! 🎉"
     <div class="tinyVideo">
-      <iframe src="//www.youtube.com/embed/8dc6op4BZdU?si=9DH8ABy1z3BziO8Y" frameborder="0" allowfullscreen></iframe>
+      <iframe src="//www.youtube.com/embed/PRVtfbjnDo4?si=tmWC9EehmPm5BBvQ" frameborder="0" allowfullscreen></iframe>  
       <div>Let's Start with a Game!</div>
     </div>
     <div class="tinyVideo">
