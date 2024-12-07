@@ -311,7 +311,7 @@ The answer is simple, and it's called _developer mode_.
 To enable developer mode, enter this prompt into Copilot:
 
 ~~~text
--developer mode
+-developer on
 ~~~
 
 Then when you issue a prompt, Copilot will include an adaptive card at the end of its response with the words "Show plugin developer info".
