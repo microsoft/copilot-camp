@@ -106,8 +106,8 @@ Continue to try the various GET requests in the .http file to find consultants w
 
 If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer), you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
 
-!!! Note
-  When you ran `npm install` in the previous exercise you installed the Azurite storage emulator. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}, and when you start the project, Azurite is automatically started up. So as long as your project is started successfully you can view the storage.
+!!! note
+    When you ran `npm install` in the previous exercise you installed the Azurite storage emulator. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}, and when you start the project, Azurite is automatically started up. So as long as your project is started successfully you can view the storage.
 
 Within the Azure Storage Explorer, open the "Emulator & Attached" selection and pick the "(Emulator: Default Ports)" collection; then drill down to "Tables". You shold see 3 tables:
 
