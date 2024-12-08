@@ -43,7 +43,7 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 
 
 !!! note 
-     You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
+     You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like CodeInterpreter support, GraphArt skill,  plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
 
 
 ## Capabilities of a Declarative agent 
