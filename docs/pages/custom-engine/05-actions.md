@@ -478,14 +478,8 @@ async function sendLists(state: ApplicationTurnState, token): Promise<string> {
                 done(null, token);
             }
         });
-        const sendEmail = await client.api('/me/sendMail').post(JSON.stringify(email));
-        if (sendEmail.ok) {
-            return email.message.body.content;
-        }
-        else {
-            console.log(`Error ${sendEmail.status} calling Graph in sendToHR: ${sendEmail.statusText}`);
-            return 'Error sending email';
-        }
+        await client.api('/me/sendMail').post(JSON.stringify(email));
+        return email.message.body.content;
     } catch (error) {
         console.error('Error in sendLists:', error);
         throw error;
