@@ -43,7 +43,7 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 
 
 !!! note 
-     You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
+     You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like CodeInterpreter support, GraphicArt skill,  plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
 
 
 ## Capabilities of a Declarative agent 
@@ -54,6 +54,8 @@ They are called capabilities and there are three types of capabilities supported
 - **Microsoft Graph Connectors** - Pass connections of Graph connectors into the agent, allowing the agent to access and utilize the connector's knowledge.
 - **OneDrive and SharePoint** - Provides URLs of files and sites to agent, for it to gain access to those contents.
 - **Web search** - Enables or disables web content as part of the agent's knowledge base.
+- **Code interpreter** - Enables the capabilities for better solve the Math problem and leverage Python code to do the complex data analysis or generate chart if needed.
+- **GraphicArt** - Enable the agent to support image or video generation by using DALL-e capability.
 
 ![capabilities of declarative agents](../../assets/images/extend-m365-copilot-01/capabiltities-da.png)
 

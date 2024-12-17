@@ -20,7 +20,8 @@ The code consists of Azure Functions written in TypeScript, backed by a database
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
-* [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): You will use this to test your API locally
+* [Azure functions core tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools) OR
+[REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): You will use one of these toolks to test your API locally
 * (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer): This will allow you to view and modify the Trey Research database
 
 <cc-end-step lab="e2" exercise="1" step="1" />
@@ -105,8 +106,8 @@ Continue to try the various GET requests in the .http file to find consultants w
 
 If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer), you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
 
-!!! Note
-  When you ran `npm install` in the previous exercise you installed the Azurite storage emulator. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}, and when you start the project, Azurite is automatically started up. So as long as your project is started successfully you can view the storage.
+!!! note
+    When you ran `npm install` in the previous exercise you installed the Azurite storage emulator. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}, and when you start the project, Azurite is automatically started up. So as long as your project is started successfully you can view the storage.
 
 Within the Azure Storage Explorer, open the "Emulator & Attached" selection and pick the "(Emulator: Default Ports)" collection; then drill down to "Tables". You shold see 3 tables:
 
