@@ -91,6 +91,7 @@ Once your Azure AI Search service resource is created successfully, navigate to 
     - **Resource group:** Select the pre-existing resource group you created earlier for Azure OpenAI service.
     - **Name:** A descriptive name for your Azure OpenAI Service resource, such as `copilotcampstorage`.
     - **Region:** The location of your instance.
+    - **Primary service:** Azure Blob Storage or Azure Data Lake Storage Gen 2
     - **Performance:** Standard
     - **Redundancy:** Geo-redundant storage (GRS)
 
@@ -101,13 +102,12 @@ Once your Azure AI Search service resource is created successfully, navigate to 
 ??? info "What does `text-embedding-ada-002` do?"
     The `text-embedding-ada-002` model on Azure OpenAI converts text into numeric vectors that represent the meaning of the text. This allows for vector search, where instead of matching exact words, the search finds text with similar meanings. It works with multiple languages and different content types, making it useful for comparing text across languages and formats. When used with Azure AI Search, it improves search results by finding the most relevant and contextually accurate information. This model is perfect for creating advanced search solutions and applications that need to understand natural language.
 
-Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
+Open [Azure AI Foundry](https://oai.azure.com/portal) in your browser, then select **Deployments**. Select **Deploy model**, 
+then **Deploy base model**. In **Select a model:** find and select `text-embedding-ada-002` and press **Confirm**.
 
-- **Select a model:** `text-embedding-ada-002`.
-- **Model version:** Default.
-- **Deployment type:** Standard.
+Fill out the following details and select **Deploy**:
 - **Deployment name:** Choose a memorable name, such as `text-embeddings`
-- **Content Filter:** Default.
+- **Deployment type:** Standard.
 
 !!! tip "Tip: Handling no quota available message"
     When you select a model, you may see **No quota available** message pop-up on top of the configuration page. To handle this, you have two options:
@@ -116,13 +116,14 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 
 <cc-end-step lab="b2" exercise="1" step="3" />
 
-## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
+## Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry
 
 For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
-1. Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
+1. Open [Azure AI Foundry](https://oai.azure.com/portal) in your browser, then in the **Playgrounds** section select **Chat**.
+In the **Setup** section, first make sure you reset the model instructions by selecting the reset icon and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
 
      ![Reset chat playground](../../assets/images/custom-engine-02/reset-chat-playground.png)
 
@@ -133,11 +134,20 @@ For this exercise, download [fictitious_resumes.zip](https://github.com/microsof
 1. Select **Upload files (preview)**, then fill the details as the following and select **Next**:
 
     - **Subscription:** Select the subscription you created your Azure resources.
-    - **Select Azure Blob storage resource:** Select your storage resource, `copilotcampstorage`. (You'll see a message *Azure OpenAI needs your permission to access this resource*, select **Turn on CORS**.)
+    - **Select Azure Blob storage resource:** Select your storage resource, `copilotcampstorage`. (You'll see a message *Azure OpenAI needs your permission to access this resource*, select **Turn on CORS**. 
     - **Select Azure AI Search resource:** Select your Azure AI Search resournce, `copilotcamp-ai-search`.
     - **Enter the index name:** Index name, such as `resumes`; make note of this
     - Select the box for **Add vector search to this search resource**.
     - **Select an embedding model:** Select your text-embedding-ada-002 model, `text-embeddings`.
+
+!!! tip "Tip: What to do if CORS cannot be turned on"
+    When you select **Turn on CORS**, you may receive an error. In that case, you can
+    turn on CORS for your storage account manually, with the configuration below:
+    1. Allowed origins: `https://mlworkspace.azure.ai,https://ml.azure.com,https://*.ml.azure.com,https://ai.azure.com,https://*.ai.azure.com`
+    1. Methods: all except `MERGE`
+    1. Headers: `*`
+    1. Max age: `1800`
+    Also see [CORS support for Azure Storage](https://learn.microsoft.com/en-us/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)
 
 Take note of the index name as you will use this in the INDEX_NAME environment variable.
 
@@ -170,7 +180,7 @@ To understand more about your dataset and explore more, select **resumes** from 
 
 ![Index on Azure AI Search](../../assets/images/custom-engine-02/index-aoai.png)
 
-First, let's include the vector content in our data. Select **Fields** tab in your Resumes index page, then check the box for **contentVector**, finally select **Save**.
+First, let's include the vector content in our data. Select **Fields** tab in your Resumes index page, then check the `Retrievable` box for **contentVector**, finally select **Save**.
 
 ![Include contentVector](../../assets/images/custom-engine-02/add-contentvector.png)
 
