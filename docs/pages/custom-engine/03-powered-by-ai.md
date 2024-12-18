@@ -40,7 +40,8 @@ In this exercise, you can continue using the same source code you developed in t
 
 ### Step 1: Integrate Feedback Loop in your app
 
-In your project, open `src/app/app.ts`, locate your application instance and add `enable_feedback_loop: true` inside the **ai** property brackets. The updated application instance will look like the following:
+In your project, open `src/app/app.ts`, locate your application instance and ensure that `enable_feedback_loop` is set
+to `true` inside the **ai** property brackets. The updated application instance should look like the following:
 
 ```javascript
 const app = new Application({
@@ -53,7 +54,7 @@ const app = new Application({
 });
 ```
 
-To handle the feedback responses, add the following code snippet in the `src/app/app.ts`:
+To handle the feedback responses, add or update `app.feedbackLoop` with the following code snippet in the `src/app/app.ts`:
 
 ```javascript
 app.feedbackLoop(async (_context, _state, feedbackLoopData) => {
@@ -218,8 +219,6 @@ app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, stat
   return "success";
  
 });
-
-export default app;
 ```
 
 <cc-end-step lab="b3" exercise="2" step="2" />
