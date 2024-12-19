@@ -490,14 +490,16 @@ To serve static files from the public folder, include the following import for `
 import * as path from 'path';
 
 ```
-And then add below code after the `server.listen` method .
+And then add below code after the `expressApp.listen` method.
 
 ```TypeScript
-server.get(
-  '/auth-:name(start|end).html',
-  restify.plugins.serveStatic({
-      directory: path.join(__dirname, 'public')
-  })
+expressApp.get(
+  '/auth-start.html',
+  express.static(path.join(__dirname, 'public'))
+);
+expressApp.get(
+  '/auth-end.html',
+  express.static(path.join(__dirname, 'public'))
 );
 ```
 
@@ -514,8 +516,8 @@ Replace the adapter definition with `TeamsAdapter` instead of `CloudAdapter` for
 const adapter = new TeamsAdapter(
   {},
   new ConfigurationServiceClientCredentialFactory({
-    MicrosoftAppId: config.botId,
-    MicrosoftAppPassword: config.botPassword,
+    MicrosoftAppId: config.MicrosoftAppId,
+    MicrosoftAppPassword: config.MicrosoftAppPassword,
     MicrosoftAppType: 'MultiTenant',
   })
 );
@@ -540,15 +542,15 @@ aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
 
 We will be using the `TurnContext` module so include it in your import statement from the `botbuilder` library as shown below:
 
-<pre>
-import { CardFactory, MemoryStorage, MessageFactory,<b>TurnContext</b> } from "botbuilder";
-</pre>
+```Typescript
+import { CardFactory, MemoryStorage, MessageFactory, TurnContext } from "botbuilder";
+```
 
 We will be using the `TurnState` and `AuthError` modules so include it in your import statement from the `@microsoft/teams-ai` library as shown below:
 
-<pre>
-Import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, <b>AuthError, TurnState</b> } from "@microsoft/teams-ai";
-</pre>
+```Typescript
+import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, AuthError, TurnState } from "@microsoft/teams-ai";
+```
 
 Now to pass authentication setting to the Application definition, replace `const app` definition with below code snippet:
 
