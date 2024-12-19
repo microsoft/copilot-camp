@@ -66,7 +66,7 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
 
 ## Hands-on Labs 🧪
 
-The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Studio (or any AI of your choice), choose the "Build" labs.
+The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.
 
 !!! info "New schema"
     If you began the "Extend" labs prior to October 27, 2024, you are probably still using the developer preview schema and should upgrade to the [v1.19 schema](https://learn.microsoft.com/microsoftteams/platform/resources/schema/manifest-schema){target=_blank} at this time. Detailed instructions are [here](./pages/updating-the-schema.md). The solution files were updated on October 27, so if you started with those you can disregard this notice.
