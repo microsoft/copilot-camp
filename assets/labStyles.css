@@ -1,0 +1,533 @@
+/**** GENERAL USE ***/
+.heading-image {
+    width: 200px;
+    float: right;
+    margin-top: -40px;
+}
+
+.video {
+    max-width: 640px;
+    min-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.video>iframe,
+.video>img {
+    width: 32vw;
+    height: 18vw;
+}
+
+.liveVideo {
+    max-width: 1920px;
+    min-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.liveVideo>iframe,
+.liveVideo>img {
+    width: 48vw;
+    height: 27vw;
+}
+
+.tinyVideo {
+    max-width: 16vw;
+    min-width: 9vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    padding: 1%;
+}
+
+.videoHeading {
+    padding: 6pt;
+    font-weight: 700;
+    background-color: rgba(0, 184, 212, .1);
+}
+
+.videoDescription {
+    font-style: italic;
+}
+
+.headingWithSubtitle {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.subtitle {
+    padding: 0 !important;
+    margin: 0 0 40t 0 !important;
+    font-style: italic;
+}
+
+button {
+    background-color: #795649;
+    font-size: xx-large;
+    color: white;
+    font-weight: bold;
+    padding: 3pt 6pt;
+}
+
+.largeButton {
+    padding: 30pt 36pt;
+}
+
+/*** Colorful lab path TOCs ***/
+
+hr {
+    border-top: 1px solid black;
+}
+
+.cc-lab-toc-container img {
+    width: 100%;
+}
+
+.cc-lab-toc-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (min-width: 800px) {
+    .cc-lab-toc-container {
+        border: 3px solid #fff;
+        padding: 0 10px;
+    }
+
+    .cc-lab-toc-container .e-path {
+        width: 50%;
+        float: left;
+        padding: 3px;
+    }
+
+    .cc-lab-toc-container .b-path {
+        width: 50%;
+        float: right;
+        padding: 3px;
+    }
+}
+
+.cc-e-lab-steps,
+.cc-b-lab-steps {
+    color: black;
+    margin: 0 20pt;
+    padding: 0 10pt;
+    font-size: 11pt;
+    width: 494px;
+    border-radius: 10pt;
+}
+
+.cc-e-lab-steps ul,
+.cc-b-lab-steps ul {
+    margin-top: -6pt;
+}
+
+.cc-e-lab-steps,
+.cc-e-lab-steps a:link,
+.cc-e-lab-steps a:visited {
+    color: #1c8fd2;
+}
+
+.cc-b-lab-steps,
+.cc-b-lab-steps a:link,
+.cc-b-lab-steps a:visited {
+    color: #8d57c2;
+}
+
+/* Border around lab steps (local TOC)
+ * Looks better without it?
+.cc-e-lab-steps {
+    border: #1EA6F3 2px solid;
+}
+
+.cc-b-lab-steps {
+    border: #B06CF4 2px solid;
+}
+
+@media screen and (max-width: 550px) {
+    .cc-e-lab-steps,
+    .cc-b-lab-steps {
+        border-width: 0;
+        width: 100%;
+    }
+}
+ */
+
+@media screen and (min-width: 800px) {
+    .floatwide {
+        float: right;
+        background-color: white;
+        z-index: 1;
+     }
+}
+
+@media screen and (max-width: 799px) {
+    .cc-lab-toc {
+        margin-top: 10pt;
+    }
+}
+
+.cc-lab-toc {
+    color: black;
+    padding: 0 10pt;
+    font-size: 11pt;
+    max-width: 400pt;
+}
+
+.cc-lab-toc img {
+    height: 35pt;
+    border-radius: 18pt 10pt 10pt 18pt / 10pt 10pt 10pt 10pt;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cc-lab-toc li a:link,
+.cc-lab-toc li a:visited {
+    color: black;
+}
+
+.cc-lab-toc li:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+.cc-lab-toc img {
+    padding-left: 8pt;
+}
+
+.cc-lab-toc div {
+    margin: 0 0 0 10pt;
+    border: black 2px solid;
+    border-radius: 10pt;
+}
+
+.cc-lab-toc div p {
+    padding-left: 8pt;
+    margin: 6pt 6pt -12pt 6pt;
+    border-bottom: 2px solid;
+}
+
+.cc-lab-toc ul {
+    padding-top: 8pt;
+}
+
+.cc-lab-toc ul li {
+	margin: 0;
+	padding: 8pt 0 8pt 40pt;
+	list-style: none;
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 30pt;
+}
+
+.cc-lab-toc ul li span {
+    padding: 4pt 8pt 4pt 8pt;
+    border-radius: 20pt;
+    margin: 0 0 0 10pt;
+    background-color: #6D33A0;
+    color: white;
+    font-weight: bold;
+}
+
+.e-path div,
+.e-path div p {
+    border-color: #1EA6F3;
+}
+
+.e-path ul li:nth-child(1) {
+	background-image: url("./images/path-icons/icon-e0.png");
+}
+
+.e-path ul li:nth-child(2) {
+    background-image: url('./images/path-icons/icon-e1.png');
+}
+
+.e-path ul li:nth-child(3) {
+    background-image: url('./images/path-icons/icon-e2.png');
+}
+
+.e-path ul li:nth-child(4) {
+    background-image: url('./images/path-icons/icon-e3.png');
+}
+
+.e-path ul li:nth-child(5) {
+    background-image: url('./images/path-icons/icon-e4.png');
+}
+
+.e-path ul li:nth-child(6) {
+    background-image: url('./images/path-icons/icon-e5.png');
+}
+
+.e-path ul li:nth-child(7) {
+    background-image: url('./images/path-icons/icon-e6.png');
+}
+
+.e-path ul li:nth-child(8) {
+    background-image: url('./images/path-icons/icon-eb-gc.png');
+}
+
+.b-path div,
+.b-path div p  {
+    border-color: #B06CF4;
+}
+
+.b-path ul li:nth-child(1) {
+	background-image: url("./images/path-icons/icon-b0.png");
+}
+
+.b-path ul li:nth-child(2) {
+    background-image: url('./images/path-icons/icon-b1.png');
+}
+
+.b-path ul li:nth-child(3) {
+    background-image: url('./images/path-icons/icon-b2.png');
+}
+
+.b-path ul li:nth-child(4) {
+    background-image: url('./images/path-icons/icon-b3.png');
+}
+
+.b-path ul li:nth-child(5) {
+    background-image: url('./images/path-icons/icon-b4.png');
+}
+
+.b-path ul li:nth-child(6) {
+    background-image: url('./images/path-icons/icon-b5.png');
+}
+
+/*** Style mkdocs features ***
+
+/* Admonitions */
+details.info {
+    border-color: #9515FF !important;
+}
+details.info summary {
+    background-color: #E4C3FF !important;
+}
+details.info summary::before {
+    background-color: #9515FF !important;
+}
+
+/* Top label on side nav */
+
+.md-nav__item:not(.md-nav__item .md-nav__item)>a,
+.md-nav__item:not(.md-nav__item .md-nav__item)>label {
+    border-bottom: solid;
+    border-bottom-color: brown;
+    font-size: large;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 50%;
+    float: right;
+    padding: 10px;
+    margin-left: 10px;
+    border: 2px solid black;
+}
+
+.sidebar b {
+    color: #3F2274;
+}
+
+.sidebar h2 {
+    margin: 0;
+    background-color: #3F2274;
+    color: white;
+    text-align: center;
+    padding: 6pt;
+}
+
+.sidebar h3 {
+    color: #3F2274;
+    font-size: x-large;
+    margin: 0;
+    padding-bottom: 6pt;
+    line-height: 0.9;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 4pt;
+    padding-left: 0;
+}
+
+.sidebar li {
+    border: 2px solid black;
+    margin-left: -7pt !important;
+    padding: 10pt;
+}
+
+.md-header {
+    background-color: #6D33A0;
+}
+
+.md-tabs {
+    background-color: #6D33A0;
+}
+
+.github-button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #28a745;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid rgba(27, 31, 35, .15);
+    box-shadow: 0 1px 0 rgba(27, 31, 35, .04), inset 0 1px 0 hsla(0, 0%, 100%, .25);
+    cursor: pointer;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.github-button:hover {
+    background-color: #218838;
+    border-color: rgba(27, 31, 35, .15);
+}
+
+.github-button:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, .15);
+    cursor: not-allowed;
+}
+
+:root {
+    --md-admonition-icon--pied-piper: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M244 246c-3.2-2-6.3-2.9-10.1-2.9-6.6 0-12.6 3.2-19.3 3.7l1.7 4.9zm135.9 197.9c-19 0-64.1 9.5-79.9 19.8l6.9 45.1c35.7 6.1 70.1 3.6 106-9.8-4.8-10-23.5-55.1-33-55.1zM340.8 177c6.6 2.8 11.5 9.2 22.7 22.1 2-1.4 7.5-5.2 7.5-8.6 0-4.9-11.8-13.2-13.2-23 11.2-5.7 25.2-6 37.6-8.9 68.1-16.4 116.3-52.9 146.8-116.7C548.3 29.3 554 16.1 554.6 2l-2 2.6c-28.4 50-33 63.2-81.3 100-31.9 24.4-69.2 40.2-106.6 54.6l-6.3-.3v-21.8c-19.6 1.6-19.7-14.6-31.6-23-18.7 20.6-31.6 40.8-58.9 51.1-12.7 4.8-19.6 10-25.9 21.8 34.9-16.4 91.2-13.5 98.8-10zM555.5 0l-.6 1.1-.3.9.6-.6zm-59.2 382.1c-33.9-56.9-75.3-118.4-150-115.5l-.3-6c-1.1-13.5 32.8 3.2 35.1-31l-14.4 7.2c-19.8-45.7-8.6-54.3-65.5-54.3-14.7 0-26.7 1.7-41.4 4.6 2.9 18.6 2.2 36.7-10.9 50.3l19.5 5.5c-1.7 3.2-2.9 6.3-2.9 9.8 0 21 42.8 2.9 42.8 33.6 0 18.4-36.8 60.1-54.9 60.1-8 0-53.7-50-53.4-60.1l.3-4.6 52.3-11.5c13-2.6 12.3-22.7-2.9-22.7-3.7 0-43.1 9.2-49.4 10.6-2-5.2-7.5-14.1-13.8-14.1-3.2 0-6.3 3.2-9.5 4-9.2 2.6-31 2.9-21.5 20.1L15.9 298.5c-5.5 1.1-8.9 6.3-8.9 11.8 0 6 5.5 10.9 11.5 10.9 8 0 131.3-28.4 147.4-32.2 2.6 3.2 4.6 6.3 7.8 8.6 20.1 14.4 59.8 85.9 76.4 85.9 24.1 0 58-22.4 71.3-41.9 3.2-4.3 6.9-7.5 12.4-6.9.6 13.8-31.6 34.2-33 43.7-1.4 10.2-1 35.2-.3 41.1 26.7 8.1 52-3.6 77.9-2.9 4.3-21 10.6-41.9 9.8-63.5l-.3-9.5c-1.4-34.2-10.9-38.5-34.8-58.6-1.1-1.1-2.6-2.6-3.7-4 2.2-1.4 1.1-1 4.6-1.7 88.5 0 56.3 183.6 111.5 229.9 33.1-15 72.5-27.9 103.5-47.2-29-25.6-52.6-45.7-72.7-79.9zm-196.2 46.1v27.2l11.8-3.4-2.9-23.8zm-68.7-150.4l24.1 61.2 21-13.8-31.3-50.9zm84.4 154.9l2 12.4c9-1.5 58.4-6.6 58.4-14.1 0-1.4-.6-3.2-.9-4.6-26.8 0-36.9 3.8-59.5 6.3z"/></svg>')
+}
+
+.md-typeset .admonition.pied-piper,
+.md-typeset details.pied-piper {
+    border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .pied-piper>.admonition-title,
+.md-typeset .pied-piper>summary {
+    background-color: rgba(43, 155, 70, 0.1);
+}
+
+.md-typeset .pied-piper>.admonition-title::before,
+.md-typeset .pied-piper>summary::before {
+    background-color: rgb(43, 155, 70);
+    -webkit-mask-image: var(--md-admonition-icon--pied-piper);
+    mask-image: var(--md-admonition-icon--pied-piper);
+}
+/* 
+dicussion */
+
+
+  .recent-discussions {
+    background-color: #f0f4ff;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .section-title {
+    color: #ff5f5f;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .discussion-card {
+    display: block;
+    background-color: #fff;
+    border: 2px solid #9515FF;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Ensures the text inside retains its original color */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .discussion-card:hover {
+    background-color: #dac1ef;
+    transform: translateY(-5px); /* Lifts the card slightly when hovered */
+  }
+
+  .discussion-title {
+    font-size: 20px;
+    color: #3366ff;
+  }
+
+  .discussion-summary {
+    color: #666;
+    font-size: 16px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color:white;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+       border: 2px solid #6D33A0;
+  }
+
+  .star-button {
+    display: inline-block;
+    background-color: #fff;
+    border: 2px solid #9515FF;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Ensures the text inside retains its original color */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .star-button:hover {
+    background-color: #dac1ef;
+    transform: translateY(-5px); /* Lifts the card slightly when hovered */
+  }
+
+
+
+  .copy-button {
+    background-color: #f4f4f5; /* Light neutral background */
+    color: #333; /* Darker text color */
+    border: 1px solid #e0e0e0; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 4px 8px; /* Smaller padding for a compact look */
+    font-size: 12px; /* Smaller font size */
+    cursor: pointer; /* Pointer on hover */
+    float: right; /* Align button to the right of the code block */
+    margin: 5px; /* Add a small margin */
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* Smooth hover transitions */
+}
+
+.copy-button:hover {
+    background-color: #e0e0e0; /* Darker background on hover */
+    border-color: #ccc; /* Slightly darker border on hover */
+}
+
+.copy-button:active {
+    background-color: #d6d6d6; /* Darker background when clicked */
+}
+
+.copy-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5); /* Subtle focus ring */
+}
+

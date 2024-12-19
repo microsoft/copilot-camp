@@ -1,0 +1,1572 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/04-authentication/">
+      
+      
+        <link rel="prev" href="../03-powered-by-ai/">
+      
+      
+        <link rel="next" href="../05-actions/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lab B4 - Add single sign on authentication - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#b4-add-single-sign-on-authentication" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab B4 - Add single sign on authentication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/EB-add-graphconnector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-set-up-your-project-for-entra-id-single-sign-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Set up your project for Entra ID Single Sign-on
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-add-sso-in-teams-app-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Add SSO in Teams app manifest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-update-the-application-code-for-sso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Update the application code for SSO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-run-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Run the application
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="b4-add-single-sign-on-authentication">B4 - Add single sign on authentication</h1>
+<div class="floatwide">
+<div class="cc-lab-toc b-path">
+  <img src="/copilot-camp/assets/images/path-icons/B-path-heading.png"></img>
+  <div>
+    <p>Do these labs if you want to build a Custom engine agent with custom AI model and orchestration using Azure OpenAI and Teams AI library</p>
+    <ul>
+      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Setup</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-agent/">B1 - First custom engine agent</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/02-rag/">B2 - Index your data in Azure AI Search</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/04-authentication/">B4 - Add single sign on authentication</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/05-actions/">B5 - Add actions to handle complex tasks</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(() => {
+// This script decorates the table of contents with a "you are here" indicator.
+const toc = document.getElementsByClassName('cc-lab-toc');
+for (const div of toc) {
+    const lis = div.querySelectorAll('li');
+    for (const li of lis) {
+        const anchor = li.querySelector('a');
+        if (location.href.includes(anchor.href)) {
+            const span = document.createElement("span");
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+            li.appendChild(span);
+        }
+    }    
+}
+})();
+</script>
+
+<div class="cc-b-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
+</div>
+
+<p>In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.</p>
+<p>In this lab you will learn to:</p>
+<ul>
+<li>Add Entra ID single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams</li>
+<li>Use Teams AI library and Bot Framework to implement the single sign on.</li>
+<li>Acquire and use tokens for app users to enhance security and user experience.</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD) single sign-on (SSO). This will allow your app to seamlessly acquire tokens for accessing Microsoft 365 data via Microsoft Graph, ensuring smooth authentication and authorization. You'll be incorporating this SSO capability using the Teams AI library and the Bot Framework, specifically focusing on a multi-tenant configuration.</p>
+<h2 id="exercise-1-set-up-your-project-for-entra-id-single-sign-on">Exercise 1: Set up your project for Entra ID Single Sign-on</h2>
+<p>Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.</p>
+<p>In this exercise, use the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie">source code for Lab B3</a> as the base project and proceed to next steps.</p>
+<h3 id="step-1-add-an-entra-id-app-manifest-file-to-define-the-entra-id-application">Step 1: Add an Entra ID App manifest file to define the Entra ID Application</h3>
+<p>In this step, you'll add a file that defines the application that Teams Toolkit will register for your application in Entra ID. This manifest file allows you to customize various aspects of your application registration. For example, this one sets up <code>User.Read</code> permission on the Microsoft Graph API so your app can read the user's profile.</p>
+<p>Create a file <strong>aad.manifest.json</strong> in the root of your project folder, and paste in this JSON:</p>
+<pre><code class="language-JSON">{
+    &quot;id&quot;: &quot;${{AAD_APP_OBJECT_ID}}&quot;,
+    &quot;appId&quot;: &quot;${{AAD_APP_CLIENT_ID}}&quot;,
+    &quot;name&quot;: &quot;CareerGenieBot-aad&quot;,
+    &quot;accessTokenAcceptedVersion&quot;: 2,
+    &quot;signInAudience&quot;: &quot;AzureADMultipleOrgs&quot;,
+    &quot;optionalClaims&quot;: {
+        &quot;idToken&quot;: [],
+        &quot;accessToken&quot;: [
+            {
+                &quot;name&quot;: &quot;idtyp&quot;,
+                &quot;source&quot;: null,
+                &quot;essential&quot;: false,
+                &quot;additionalProperties&quot;: []
+            }
+        ],
+        &quot;saml2Token&quot;: []
+    },
+    &quot;requiredResourceAccess&quot;: [
+        {
+            &quot;resourceAppId&quot;: &quot;Microsoft Graph&quot;,
+            &quot;resourceAccess&quot;: [
+                {
+                    &quot;id&quot;: &quot;User.Read&quot;,
+                    &quot;type&quot;: &quot;Scope&quot;
+                }
+            ]
+        }
+    ],
+    &quot;oauth2Permissions&quot;: [
+        {
+            &quot;adminConsentDescription&quot;: &quot;Allows Teams to call the app's web APIs as the current user.&quot;,
+            &quot;adminConsentDisplayName&quot;: &quot;Teams can access app's web APIs&quot;,
+            &quot;id&quot;: &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;,
+            &quot;isEnabled&quot;: true,
+            &quot;type&quot;: &quot;User&quot;,
+            &quot;userConsentDescription&quot;: &quot;Enable Teams to call this app's web APIs with the same rights that you have&quot;,
+            &quot;userConsentDisplayName&quot;: &quot;Teams can access app's web APIs and make requests on your behalf&quot;,
+            &quot;value&quot;: &quot;access_as_user&quot;
+        }
+    ],
+    &quot;preAuthorizedApplications&quot;: [
+        {
+            &quot;appId&quot;: &quot;1fec8e78-bce4-4aaf-ab1b-5451cc387264&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;5e3ce6c0-2b1f-4285-8d4b-75ee78787346&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;d3590ed6-52b3-4102-aeff-aad2292ab01c&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;00000002-0000-0ff1-ce00-000000000000&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;bc59ab01-8403-45c6-8796-ac3ef710b3e3&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;0ec893e0-5785-4de6-99da-4ed124e5296c&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;4765445b-32c6-49b0-83e6-1d93765276ca&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        },
+        {
+            &quot;appId&quot;: &quot;4345a7b9-9a63-4910-a426-35363201d503&quot;,
+            &quot;permissionIds&quot;: [
+                &quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;
+            ]
+        }
+    ],
+    &quot;identifierUris&quot;:[
+        &quot;api://botid-${{BOT_ID}}&quot;
+    ],
+    &quot;replyUrlsWithType&quot;:[
+        {
+          &quot;url&quot;: &quot;https://${{BOT_DOMAIN}}/auth-end.html&quot;,
+          &quot;type&quot;: &quot;Web&quot;
+        }
+    ]
+}
+</code></pre>
+<p><cc-end-step lab="b4" exercise="1" step="1" /></p>
+<h3 id="step-2-update-teams-toolkit-configuration-file-to-create-the-entra-id-app">Step 2: Update Teams Toolkit configuration file to create the Entra ID App</h3>
+<p>Open the <code>teamsapp.local.yml</code> file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.</p>
+<ul>
+<li>
+<p>Provision - In this phase, any infrastructure needed by your app is created. This includes things like the bot registration, the Teams app package, and, in this case, the Entra ID app registration</p>
+</li>
+<li>
+<p>Deploy - In this phase, the code is built and run locally, or uploaded to Azure for environments other than "local"</p>
+</li>
+<li>
+<p>Publish - In this phase, the app package is published to Microsoft Teams</p>
+</li>
+</ul>
+<p>To provision your Entra ID app, add these lines to <strong>teamsapp.local.yml</strong>. You can put them directly below the <code>provision</code>:</p>
+<pre><code class="language-yml">  - uses: aadApp/create # Creates a new Entra ID (AAD) app to authenticate users if the environment variable that stores clientId is empty
+    with:
+      name: CareerGenieBot-aad # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
+      generateClientSecret: true # If the value is false, the action will not generate client secret for you
+      signInAudience: &quot;AzureADMultipleOrgs&quot; # Authenticate users with a Microsoft work or school account in your organization's Entra ID tenant (for example, single tenant).
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      clientId: AAD_APP_CLIENT_ID
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+
+</code></pre>
+<p>And after <code>botFramework/create</code> add below to update the existing AAD app.</p>
+<pre><code class="language-yml">  - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
+    with:
+      manifestPath: ./aad.manifest.json # Relative path to teamsfx folder. Environment variables in manifest will be replaced before apply to AAD app
+      outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Tip: YAML requires proper indentation</p>
+<p>YAML requires proper indentation; each level in the object hierarchy must be indented to indicate the structure. 2 spaces (not tabs) is a good choice. Visual Studio Code will help you here, and will underline any syntax errors in red. You'll know you got it right when the red lines disappear!</p>
+</div>
+<p>Now scroll down and find the <code>file/createOrUpdateEnvironmentFile</code> directive in the deploy phase. Add these variables to the envs: collection, right below the ones you added in the previous lab:</p>
+<pre><code class="language-yml"> BOT_DOMAIN: ${{BOT_DOMAIN}}
+ AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
+ AAD_APP_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+ AAD_APP_TENANT_ID: ${{AAD_APP_TENANT_ID}}
+ AAD_APP_OAUTH_AUTHORITY_HOST: ${{AAD_APP_OAUTH_AUTHORITY_HOST}}
+ AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
+</code></pre>
+<p><cc-end-step lab="b4" exercise="1" step="2" /></p>
+<h2 id="exercise-2-add-sso-in-teams-app-manifest">Exercise 2: Add SSO in Teams app manifest</h2>
+<p>In this exercise, you'll update the Teams app manifest to add single sign on.</p>
+<h3 id="step-1-update-your-teams-app-manifest-for-sso">Step 1: Update your Teams app manifest for SSO</h3>
+<p>In the single sign-on process, Teams will hand your code an Entra ID access token for your application. Teams can't provide this access token, however, unless it knows about your application; specifically, it needs to know the application (client) ID and the ID of the bot that's connected to Teams. So you need to add this information to your Teams app manifest.</p>
+<p>Find the Teams app manifest template in <strong>./appPackage/manifest.json</strong> and add the following:</p>
+<pre><code class="language-json"> &quot;webApplicationInfo&quot;: {
+        &quot;id&quot;: &quot;${{BOT_ID}}&quot;,
+        &quot;resource&quot;: &quot;api://botid-${{BOT_ID}}&quot;
+    }
+</code></pre>
+<p>Add it below the <code>validDomains</code> node, with a comma in between.</p>
+<p>While we're here, we need to tell Teams to display web pages from your bot's domain, which allows access to the <code>auth-start.html</code> and <code>auth-end.html</code> pages used for user consent to call the Microsoft Graph. This only happens the first time a user accesses the custom engine agent.</p>
+<p>So you need to add your bot's domain, <strong>${{BOT_DOMAIN}}</strong> to the <code>validDomains</code> array. After making these changes, the end of your <code>manifest.json</code> file should look like this:</p>
+<pre><code class="language-JSON">  &quot;validDomains&quot;: [
+        &quot;${{BOT_DOMAIN}}&quot;,
+        &quot;*.botframework.com&quot;
+    ],
+</code></pre>
+<p><cc-end-step lab="b4" exercise="2" step="1" /></p>
+<h2 id="exercise-3-update-the-application-code-for-sso">Exercise 3: Update the application code for SSO</h2>
+<p>In this exercise, you'll modify the code to accommodate the SSO process.</p>
+<h3 id="step-1-provide-html-pages-for-the-consent-dialog">Step 1: Provide HTML pages for the consent dialog</h3>
+<p>The first time a user accesses your application, they may need to consent to giving the app permission to read their profile information. This is performed by the Teams AI library. It will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.</p>
+<blockquote>
+<p>The code snippets for pop up for permission grant are from official <a href="https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public">teams-ai library sample for Teams SSO</a></p>
+</blockquote>
+<p>Create a new folder called <strong>public</strong> inside the <strong>src</strong> folder of the project.</p>
+<p>Create a file <strong>auth-start.html</strong> and paste in the contents below:</p>
+<pre><code class="language-html">&lt;!--This file is used during the Teams Bot authentication flow to assist with retrieval of the access token.--&gt;
+&lt;!--If you're not familiar with this, do not alter or remove this file from your project.--&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Login Start Page&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        popUpSignInWindow();
+
+        async function popUpSignInWindow() {
+            // Generate random state string and store it, so we can verify it in the callback
+            let state = _guid();
+            localStorage.setItem('state', state);
+            localStorage.removeItem('codeVerifier');
+            var currentURL = new URL(window.location);
+            var clientId = currentURL.searchParams.get('clientId');
+            var tenantId = currentURL.searchParams.get('tenantId');
+            var loginHint = currentURL.searchParams.get('loginHint');
+            var scope = currentURL.searchParams.get('scope');
+            if (!loginHint) {
+                loginHint = '';
+            }
+            var originalCode = _guid();
+            var codeChallenge = await pkceChallengeFromVerifier(originalCode);
+            localStorage.setItem('codeVerifier', originalCode);
+            let queryParams = {
+                client_id: clientId,
+                response_type: 'code',
+                response_mode: 'fragment',
+                scope: scope,
+                redirect_uri: window.location.origin + '/auth-end.html',
+                nonce: _guid(),
+                login_hint: loginHint,
+                state: state,
+                code_challenge: codeChallenge,
+                code_challenge_method: 'S256'
+            };
+            let authorizeEndpoint = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?${toQueryString(queryParams)}`;     
+            window.location.assign(authorizeEndpoint);
+        }
+
+        // Build query string from map of query parameter
+        function toQueryString(queryParams) {
+            let encodedQueryParams = [];
+            for (let key in queryParams) {
+                encodedQueryParams.push(key + '=' + encodeURIComponent(queryParams[key]));
+            }
+            return encodedQueryParams.join('&amp;');
+        }
+
+        // Converts decimal to hex equivalent      
+        function _decimalToHex(number) {
+            var hex = number.toString(16);
+            while (hex.length &lt; 2) {
+                hex = '0' + hex;
+            }
+            return hex;
+        }
+
+        // Generates RFC4122 version 4 guid (128 bits)
+        function _guid() {
+            // RFC4122: The version 4 UUID is meant for generating UUIDs from truly-random or
+            // pseudo-random numbers.
+            // The algorithm is as follows:
+            //     Set the two most significant bits (bits 6 and 7) of the
+            //        clock_seq_hi_and_reserved to zero and one, respectively.
+            //     Set the four most significant bits (bits 12 through 15) of the
+            //        time_hi_and_version field to the 4-bit version number from
+            //        Section 4.1.3. Version4
+            //     Set all the other bits to randomly (or pseudo-randomly) chosen
+            //     values.
+            // UUID                   = time-low &quot;-&quot; time-mid &quot;-&quot;time-high-and-version &quot;-&quot;clock-seq-reserved and low(2hexOctet)&quot;-&quot; node
+            // time-low               = 4hexOctet
+            // time-mid               = 2hexOctet
+            // time-high-and-version  = 2hexOctet
+            // clock-seq-and-reserved = hexOctet:
+            // clock-seq-low          = hexOctet
+            // node                   = 6hexOctet
+            // Format: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
+            // y could be 1000, 1001, 1010, 1011 since most significant two bits needs to be 10
+            // y values are 8, 9, A, B
+            var cryptoObj = window.crypto || window.msCrypto; // for IE 11
+            if (cryptoObj &amp;&amp; cryptoObj.getRandomValues) {
+                var buffer = new Uint8Array(16);
+                cryptoObj.getRandomValues(buffer);
+                //buffer[6] and buffer[7] represents the time_hi_and_version field. We will set the four most significant bits (4 through 7) of buffer[6] to represent decimal number 4 (UUID version number).
+                buffer[6] |= 0x40; //buffer[6] | 01000000 will set the 6 bit to 1.
+                buffer[6] &amp;= 0x4f; //buffer[6] &amp; 01001111 will set the 4, 5, and 7 bit to 0 such that bits 4-7 == 0100 = &quot;4&quot;.
+                //buffer[8] represents the clock_seq_hi_and_reserved field. We will set the two most significant bits (6 and 7) of the clock_seq_hi_and_reserved to zero and one, respectively.
+                buffer[8] |= 0x80; //buffer[8] | 10000000 will set the 7 bit to 1.
+                buffer[8] &amp;= 0xbf; //buffer[8] &amp; 10111111 will set the 6 bit to 0.
+                return (
+                    _decimalToHex(buffer[0]) +
+                    _decimalToHex(buffer[1]) +
+                    _decimalToHex(buffer[2]) +
+                    _decimalToHex(buffer[3]) +
+                    '-' +
+                    _decimalToHex(buffer[4]) +
+                    _decimalToHex(buffer[5]) +
+                    '-' +
+                    _decimalToHex(buffer[6]) +
+                    _decimalToHex(buffer[7]) +
+                    '-' +
+                    _decimalToHex(buffer[8]) +
+                    _decimalToHex(buffer[9]) +
+                    '-' +
+                    _decimalToHex(buffer[10]) +
+                    _decimalToHex(buffer[11]) +
+                    _decimalToHex(buffer[12]) +
+                    _decimalToHex(buffer[13]) +
+                    _decimalToHex(buffer[14]) +
+                    _decimalToHex(buffer[15])
+                );
+            } else {
+                var guidHolder = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+                var hex = '0123456789abcdef';
+                var r = 0;
+                var guidResponse = '';
+                for (var i = 0; i &lt; 36; i++) {
+                    if (guidHolder[i] !== '-' &amp;&amp; guidHolder[i] !== '4') {
+                        // each x and y needs to be random
+                        r = (Math.random() * 16) | 0;
+                    }
+                    if (guidHolder[i] === 'x') {
+                        guidResponse += hex[r];
+                    } else if (guidHolder[i] === 'y') {
+                        // clock-seq-and-reserved first hex is filtered and remaining hex values are random
+                        r &amp;= 0x3; // bit and with 0011 to set pos 2 to zero ?0??
+                        r |= 0x8; // set pos 3 to 1 as 1???
+                        guidResponse += hex[r];
+                    } else {
+                        guidResponse += guidHolder[i];
+                    }
+                }
+                return guidResponse;
+            }
+        }
+
+        // Calculate the SHA256 hash of the input text.
+        // Returns a promise that resolves to an ArrayBuffer
+        function sha256(plain) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(plain);
+            return window.crypto.subtle.digest('SHA-256', data);
+        }
+
+        // Base64-urlencodes the input string
+        function base64urlencode(str) {
+            // Convert the ArrayBuffer to string using Uint8 array to convert to what btoa accepts.
+            // btoa accepts chars only within ascii 0-255 and base64 encodes them.
+            // Then convert the base64 encoded to base64url encoded
+            //   (replace + with -, replace / with _, trim trailing =)
+            return btoa(String.fromCharCode.apply(null, new Uint8Array(str)))
+                .replace(/\+/g, '-')
+                .replace(/\//g, '_')
+                .replace(/=+$/, '');
+        }
+
+        // Return the base64-urlencoded sha256 hash for the PKCE challenge
+        async function pkceChallengeFromVerifier(v) {
+            hashed = await sha256(v);
+            return base64urlencode(hashed);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>Create a file <strong>auth-end.html</strong> and paste in the contents below:</p>
+<pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;title&gt;Login End Page&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot; /&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;script
+            src=&quot;https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js&quot;
+            integrity=&quot;sha384-mhp2E+BLMiZLe7rDIzj19WjgXJeI32NkPvrvvZBrMi5IvWup/1NUfS5xuYN5S3VT&quot;
+            crossorigin=&quot;anonymous&quot;
+        &gt;&lt;/script&gt;
+        &lt;div id=&quot;divError&quot;&gt;&lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            microsoftTeams.initialize();
+            let hashParams = getHashParameters();
+
+            if (hashParams['error']) {
+                // Authentication failed
+                handleAuthError(hashParams['error'], hashParams);
+            } else if (hashParams['code']) {
+                // Get the stored state parameter and compare with incoming state
+                let expectedState = localStorage.getItem('state');
+                if (expectedState !== hashParams['state']) {
+                    // State does not match, report error
+                    handleAuthError('StateDoesNotMatch', hashParams);
+                } else {
+                    microsoftTeams.authentication.notifySuccess();
+                }
+            } else {
+                // Unexpected condition: hash does not contain error or access_token parameter
+                handleAuthError('UnexpectedFailure', hashParams);
+            }
+
+            // Parse hash parameters into key-value pairs
+            function getHashParameters() {
+                let hashParams = {};
+                location.hash
+                    .substr(1)
+                    .split('&amp;')
+                    .forEach(function (item) {
+                        let s = item.split('='),
+                            k = s[0],
+                            v = s[1] &amp;&amp; decodeURIComponent(s[1]);
+                        hashParams[k] = v;
+                    });
+                return hashParams;
+            }
+
+            // Show error information
+            function handleAuthError(errorType, errorMessage) {
+                const err = JSON.stringify({
+                    error: errorType,
+                    message: JSON.stringify(errorMessage)
+                });
+                let para = document.createElement('p');
+                let node = document.createTextNode(err);
+                para.appendChild(node);
+
+                let element = document.getElementById('divError');
+                element.appendChild(para);
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p><cc-end-step lab="b4" exercise="3" step="1" /></p>
+<h3 id="step-2-update-code-to-handle-sso">Step 2: Update code to handle SSO</h3>
+<ul>
+<li>Changes to <strong>index.ts</strong> file is as follows:</li>
+</ul>
+<p>To serve static files from the public folder, include the following import for <code>path</code>:</p>
+<pre><code class="language-TypeScript">import * as path from 'path';
+
+</code></pre>
+<p>And then add below code after the <code>server.listen</code> method .</p>
+<pre><code class="language-TypeScript">server.get(
+  '/auth-:name(start|end).html',
+  restify.plugins.serveStatic({
+      directory: path.join(__dirname, 'public')
+  })
+);
+</code></pre>
+<ul>
+<li>Changes to <strong>adapter.ts</strong> file is as follows:
+Import the TeamsAdapter from teams-ai library.</li>
+</ul>
+<pre><code class="language-TypeScript">import { TeamsAdapter } from '@microsoft/teams-ai';
+</code></pre>
+<p>Replace the adapter definition with <code>TeamsAdapter</code> instead of <code>CloudAdapter</code> for Teams SSO.</p>
+<pre><code class="language-JavaScript">const adapter = new TeamsAdapter(
+  {},
+  new ConfigurationServiceClientCredentialFactory({
+    MicrosoftAppId: config.botId,
+    MicrosoftAppPassword: config.botPassword,
+    MicrosoftAppType: 'MultiTenant',
+  })
+);
+
+</code></pre>
+<p>Comment out the definition for <code>botFrameworkAuthentication</code> which is not needed anymore.</p>
+<ul>
+<li>Changes to <strong>config.ts</strong> file is as follows:
+Add below properties to the constant <code>config</code>. Add a comma and after <code>process.env.INDEX_NAME</code> and append below snippet:</li>
+</ul>
+<pre><code class="language-TypeScript">aadAppClientId: process.env.AAD_APP_CLIENT_ID,
+aadAppClientSecret: process.env.AAD_APP_CLIENT_SECRET,
+aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
+aadAppTenantId: process.env.AAD_APP_TENANT_ID,
+botDomain: process.env.BOT_DOMAIN,
+aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
+</code></pre>
+<ul>
+<li>Changes to <strong>app.ts</strong> file is as follows:</li>
+</ul>
+<p>We will be using the <code>TurnContext</code> module so include it in your import statement from the <code>botbuilder</code> library as shown below:</p>
+<pre>
+import { CardFactory, MemoryStorage, MessageFactory,<b>TurnContext</b> } from "botbuilder";
+</pre>
+
+<p>We will be using the <code>TurnState</code> and <code>AuthError</code> modules so include it in your import statement from the <code>@microsoft/teams-ai</code> library as shown below:</p>
+<pre>
+Import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, <b>AuthError, TurnState</b> } from "@microsoft/teams-ai";
+</pre>
+
+<p>Now to pass authentication setting to the Application definition, replace <code>const app</code> definition with below code snippet:</p>
+<pre><code class="language-TypeScript">const app = new Application({
+  storage,
+  authentication: {settings: {
+    graph: {
+      scopes: ['User.Read'],
+      msalConfig: {
+        auth: {
+          clientId: config.aadAppClientId!,
+          clientSecret: config.aadAppClientSecret!,
+          authority: `${config.aadAppOauthAuthorityHost}/common`
+        }
+      },
+      signInLink: `https://${config.botDomain}/auth-start.html`,
+      endOnInvalidMessage: true
+    }
+  }},
+  ai: {
+    planner,
+    //feedback loop is enabled
+    enable_feedback_loop: true
+  },
+});
+</code></pre>
+<p>Teams AI library handles exchange of token between your custom engine agent and Microsoft Teams, so you can just call Microsoft Graph immediately upon receiving the token.
+Now let's add code to define and handle various authentication and messaging events using the Teams AI library.
+Paste below code after the app definition method:</p>
+<pre><code class="language-TypeScript">interface ConversationState {
+  count: number;
+}
+type ApplicationTurnState = TurnState&lt;ConversationState&gt;;
+app.authentication.get('graph').onUserSignInSuccess(async (context: TurnContext, state: ApplicationTurnState) =&gt; {
+  const token = state.temp.authTokens['graph'];
+  await context.sendActivity(`Hello ${await getUserDisplayName(token)}. You have successfully logged in to CareerGenie!`);     
+});
+app.authentication
+    .get('graph')
+    .onUserSignInFailure(async (context: TurnContext, _state: ApplicationTurnState, error: AuthError) =&gt; {
+        await context.sendActivity('Failed to login');
+        await context.sendActivity(`Error message: ${error.message}`);
+    });
+
+    // Listen for user to say '/reset' and then delete conversation state
+app.message('/reset', async (context: TurnContext, state: ApplicationTurnState) =&gt; {
+  state.deleteConversationState();
+  await context.sendActivity(`Ok I've deleted the current conversation state.`);
+});
+
+app.message('/signout', async (context: TurnContext, state: ApplicationTurnState) =&gt; {
+  await app.authentication.signOutUser(context, state);
+
+  // Echo back users request
+  await context.sendActivity(`You have signed out`);
+});
+
+</code></pre>
+<p>The above code called a function <code>getUserDisplayName()</code> after token is successfully received with which we can now call Microsoft Graph to get user information. So let's add the function definition. You will install the <a href="https://github.com/microsoftgraph/msgraph-sdk-javascript">Graph SDK</a> first. </p>
+<p>Run below script in the terminal to install the npm package:</p>
+<pre><code class="language-PowerShell">npm install @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
+</code></pre>
+<p>Now, import module needed from the package in <strong>app.ts</strong> file.</p>
+<pre><code class="language-TypeScript">import { Client } from &quot;@microsoft/microsoft-graph-client&quot;;
+</code></pre>
+<p>Paste below code snippet after <code>app.message</code> method:</p>
+<pre><code class="language-TypeScript">async function getUserDisplayName(token: string): Promise&lt;string | undefined&gt; {
+  let displayName: string | undefined;
+
+  const client = Client.init({
+    authProvider: (done) =&gt; {
+      done(null, token);
+    }
+  });
+
+  try {
+    const user = await client.api('/me').get();
+    displayName = user.displayName;
+  } catch (error) {
+    console.log(`Error calling Graph SDK in getUserDisplayName: ${error}`);
+  }
+
+  return displayName;
+}
+</code></pre>
+<details open="open">
+<summary>To make this app only work in single tenant, make below changes</summary>
+<ul>
+<li>Go to <code>aad.manifest.json</code> and update signInAudience node as <code>"signInAudience": "AzureADMyOrg"</code></li>
+<li>Got to <code>teamsapp.local.yml</code> and update signInAudience node for the aadApp\create as <code>"signInAudience: "AzureADMyOrg"</code></li>
+<li>Got to <code>src\app\app.ts</code> and update application definition's auth setting's authority as <code>authority: config.aadAppOauthAuthority</code></li>
+<li>Got to <code>src\public\auth-start.html</code> and set variable <code>authorizeEndpoint</code> to <code>https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}</code>        </li>
+<li>Go to <code>src\adapter.ts</code> and update the adapter definition <code>MicrosoftAppType: 'SingleTenant'</code>   </li>
+</ul>
+</details>
+<p><cc-end-step lab="b4" exercise="3" step="2" /></p>
+<h2 id="exercise-4-run-the-application">Exercise 4: Run the application</h2>
+<p>Now we are code complete for Teams SSO in Career Genie. Let's take it for a ride.</p>
+<h3 id="step-1-app-installation-in-teams">Step 1: App installation in Teams</h3>
+<p>Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. This will open Microsoft Teams in your browser. When your app details appear in Teams, select <strong>Add</strong> to start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p><cc-end-step lab="b4" exercise="4" step="1" /></p>
+<h3 id="step-2-giving-consent">Step 2: Giving consent</h3>
+<p>To start a conversation with the Career Genie, simply type a message. For example, you can begin by typing and sending 'Hi'.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Check pop up settings in your browser</p>
+<p>Make sure <code>Pop up</code> is not blocked by browser for a smoother experience for below instructions.</p>
+</div>
+<p>You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select <strong>Continue</strong>.</p>
+<p><img alt="consent message teams" src="../../../assets/images/custom-engine-04/consent-teams.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Known issues</p>
+<ul>
+<li>There is a delay for the consent dialog to show up in Teams chat. This has been identified as a platform issue and we are monitoring. Keep pinging 2-3 times.</li>
+</ul>
+</div>
+<p>Since you're running locally with Developer Tunnels, you'll see a warning screen, select <strong>Continue</strong>. Users won't see this when your app is deployed.</p>
+<p><img alt="consent dev tunnels" src="../../../assets/images/custom-engine-04/consent-devtunnel.png" /></p>
+<p>You'll be redirected to Entra ID, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).</p>
+<p><img alt="consent graph" src="../../../assets/images/custom-engine-04/consent-graph.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Consent on behalf of your organization</p>
+<p>If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.</p>
+</div>
+<p>Select <strong>Accept</strong> to consent to the permissions and run Career Genie.</p>
+<p>You will now get this message from the custom engine agent with your logged in name showing successful authentication.</p>
+<p><img alt="success message" src="../../../assets/images/custom-engine-04/auth.gif" /></p>
+<p>You can start chatting with your custom engine agent.</p>
+<p><cc-end-step lab="b4" exercise="4" step="2" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab B4 - Secure your custom engine agent using authentication!  If you want explore further, the source code of this lab is available in the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie">Copilot Developer Camp repo</a>.</p>
+<p>You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.</p>
+<p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/04-authentication" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>

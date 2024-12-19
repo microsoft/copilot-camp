@@ -1,0 +1,1215 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/03-powered-by-ai/">
+      
+      
+        <link rel="prev" href="../02-rag/">
+      
+      
+        <link rel="next" href="../04-authentication/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lab B3 - Enhance user experience - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#b3-enhance-user-experience" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab B3 - Enhance user experience
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/EB-add-graphconnector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-enable-feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Enable Feedback Loop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-customize-citations-with-adaptive-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Customize citations with Adaptive Cards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-enable-the-generated-by-ai-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Enable the Generated by AI label
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-enable-the-sensitivity-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Enable the Sensitivity label
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="b3-enhance-user-experience">B3 - Enhance User Experience</h1>
+<div class="floatwide">
+<div class="cc-lab-toc b-path">
+  <img src="/copilot-camp/assets/images/path-icons/B-path-heading.png"></img>
+  <div>
+    <p>Do these labs if you want to build a Custom engine agent with custom AI model and orchestration using Azure OpenAI and Teams AI library</p>
+    <ul>
+      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Setup</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-agent/">B1 - First custom engine agent</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/02-rag/">B2 - Index your data in Azure AI Search</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/04-authentication/">B4 - Add single sign on authentication</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/05-actions/">B5 - Add actions to handle complex tasks</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(() => {
+// This script decorates the table of contents with a "you are here" indicator.
+const toc = document.getElementsByClassName('cc-lab-toc');
+for (const div of toc) {
+    const lis = div.querySelectorAll('li');
+    for (const li of lis) {
+        const anchor = li.querySelector('a');
+        if (location.href.includes(anchor.href)) {
+            const span = document.createElement("span");
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+            li.appendChild(span);
+        }
+    }    
+}
+})();
+</script>
+
+<div class="cc-b-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
+</div>
+
+<p>In this lab you will learn about the Powered by AI, a set of features Teams AI library provides and utilize them in your custom engine agent to enhance the user experience.</p>
+<p>In this lab you will:</p>
+<ul>
+<li>Learn what are the Powered by AI features</li>
+<li>Enable Feedback Loop to collect user feedback</li>
+<li>Customize citations with Adaptive Cards</li>
+<li>Enable Generated by AI label</li>
+<li>Enable Sensitivity Label</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<details class="info" open="open">
+<summary>What is Powered by AI?</summary>
+<p>Powered by AI is a set of features provided by the Teams AI library that enhances interactions with custom engine agents, making them more engaging and user-friendly. These features include:</p>
+<ul>
+<li>
+<p><strong>Feedback Loop:</strong> Users can rate AI responses with a thumbs up or down. This feedback helps refine the AI's accuracy and usefulness over time.</p>
+</li>
+<li>
+<p><strong>Citations:</strong> The AI provides references to the sources of information, ensuring transparency and credibility.</p>
+</li>
+<li>
+<p><strong>Generated by AI:</strong> Messages created by the AI system are labeled as "AI generated," so users can distinguish between AI and human responses.</p>
+</li>
+<li>
+<p><strong>Sensitivity Information:</strong> If the information shared is sensitive, a sensitivity label will appear, advising whether it can be shared outside your organization.</p>
+</li>
+</ul>
+</details>
+<p>In the previous exercise, you explored Retrieval-Augmented Generation (RAG) and its integration into your custom engine agent. In this exercise, you'll enhance the user experience by leveraging "Powered by AI" features. Follow these steps:</p>
+<ul>
+<li>Implement the Feedback Loop</li>
+<li>Customize Citations</li>
+<li>Label AI-Generated messages</li>
+<li>Display Sensitivity information</li>
+</ul>
+<p>By incorporating these "Powered by AI" features, you'll make your custom engine agent more transparent, reliable, and user-friendly, which will enhance the overall user experience.</p>
+<h2 id="exercise-1-enable-feedback-loop">Exercise 1: Enable Feedback Loop</h2>
+<p>In this exercise, you can continue using the same source code you developed in the previous lab.</p>
+<h3 id="step-1-integrate-feedback-loop-in-your-app">Step 1: Integrate Feedback Loop in your app</h3>
+<p>In your project, open <code>src/app/app.ts</code>, locate your application instance and add <code>enable_feedback_loop: true</code> inside the <strong>ai</strong> property brackets. The updated application instance will look like the following:</p>
+<pre><code class="language-javascript">const app = new Application({
+  storage,
+  ai: {
+    planner,
+    //feedback loop is enabled
+    enable_feedback_loop: true
+  },
+});
+</code></pre>
+<p>To handle the feedback responses, add the following code snippet in the <code>src/app/app.ts</code>:</p>
+<pre><code class="language-javascript">app.feedbackLoop(async (_context, _state, feedbackLoopData) =&gt; {
+  if (feedbackLoopData.actionValue.reaction === 'like') {
+      console.log('👍' + ' ' + feedbackLoopData.actionValue.feedback!);
+  } else {
+      console.log('👎' + ' ' + feedbackLoopData.actionValue.feedback!);
+  }
+});
+</code></pre>
+<p><cc-end-step lab="b3" exercise="1" step="1" /></p>
+<h3 id="step-2-test-the-feedback-loop-feature">Step 2: Test the Feedback Loop feature</h3>
+<p>Let's test Career Genie with the Feedback Loop feature. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. This will open Microsoft Teams in your browser. When your app details appear in Teams, select <strong>Add</strong> to start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>Before testing the Feedback Loop, type "Hi" or ask a question similar to "Suggest me .NET developers who can speak Spanish." You'll notice that the response from your custom engine agent includes thumbs up and down buttons at the bottom left corner.</p>
+<p><img alt="Feedback Loop" src="../../../assets/images/custom-engine-03/thumbs-up-down.png" /></p>
+<p>Now, let's test the feedback loop. Click on either the thumbs up or down button. A feedback card will immediately pop up. Provide your feedback in the text field on the card and click <strong>Submit</strong>.</p>
+<p><img alt="Feedback Loop" src="../../../assets/images/custom-engine-03/feedback-card.png" /></p>
+<p>To verify that your feedback was recorded, return to Visual Studio Code and check your terminal. You'll see the feedback you provided, including whether you gave a thumbs up or down and your comment.</p>
+<p><img alt="Feedback Loop" src="../../../assets/images/custom-engine-03/feedback-output.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Dive deeper into the Feedback Loop by debugging</p>
+<p>Debugging the code is an excellent way to understand how it works. To delve deeper into how the Feedback Loop handler functions, set a breakpoint at <code>app.feedbackLoop</code>. Run the app and test the Feedback Loop by clicking thumbs up or down. You'll observe that <code>feedbackLoopData.actionValue.reaction</code> captures the reaction, while <code>feedbackLoopData.actionValue.feedback</code> captures the text feedback you provide.</p>
+</div>
+<p><cc-end-step lab="b3" exercise="1" step="2" /></p>
+<h2 id="exercise-2-customize-citations-with-adaptive-cards">Exercise 2: Customize citations with Adaptive Cards</h2>
+<p>When you define a data source in a custom engine agent, the Teams AI library dynamically enables citations to reference related documents. Recognize the current experience in your custom engine agent, ask a question similar to "Suggest me .NET developers who can speak Spanish.". You will realize that you can hover over the citation to see the beginning of the document.</p>
+<p><img alt="Default citation" src="../../../assets/images/custom-engine-03/current-citation.png" /></p>
+<p>In this exercise, you'll tailor this citation experience further and use Adaptive Cards to customize the way citations are presented.</p>
+<h3 id="step-1-create-an-adaptive-card-for-citations">Step 1: Create an Adaptive Card for citations</h3>
+<p>Go to <code>src/app/</code> folder and create a new file named <strong>card.ts</strong>. Add the following code snippet inside the <code>card.ts</code> file:</p>
+<pre><code class="language-javascript">import { AdaptiveCard, Message, Utilities } from '@microsoft/teams-ai';
+/**
+ * Create an adaptive card from a prompt response.
+ * @param {Message&lt;string&gt;} response The prompt response to create the card from.
+ * @returns {AdaptiveCard} The response card.
+ */
+
+//Adaptive card to display the response and citations
+export function createResponseCard(response: Message&lt;string&gt;): AdaptiveCard {
+    const citationCards = response.context?.citations.map((citation, i) =&gt; ({
+            type: 'Action.ShowCard',
+            title: `${i+1}`,
+            card: {
+                type: 'AdaptiveCard',
+                body: [
+                    {
+                        type: 'TextBlock',
+                        text: citation.title,
+                        fontType: 'Default',
+                        weight: 'Bolder'
+                    },
+                    {
+                        type: 'TextBlock',
+                        text: citation.content,
+                        wrap: true
+                    }
+                ]
+            }
+        }));
+
+    const text = Utilities.formatCitationsResponse(response.content!);
+    return {
+        type: 'AdaptiveCard',
+        body: [
+            {
+                type: 'TextBlock',
+                text: text,
+                wrap: true
+            },
+            {
+                type: 'TextBlock',
+                text: 'Citations',
+                wrap: true,
+                fontType: 'Default',
+                weight: 'Bolder'
+            },
+            {
+                type: 'ActionSet',
+                actions: citationCards
+            }
+        ],
+        $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
+        version: '1.5'
+    };
+}
+</code></pre>
+<p>This Adaptive Card allows you to list citations as <code>Action.ShowCard</code> buttons which show more details when clicked. It also displays the main content of the response alongside the citation buttons. If a user wants to learn more about a citation, they can click the button to read the entire document.</p>
+<p><cc-end-step lab="b3" exercise="2" step="1" /></p>
+<h3 id="step-2-use-predictedsaycommand-to-customize-the-citation-experience">Step 2: Use PredictedSayCommand to customize the citation experience</h3>
+<details class="info">
+<summary>What does <code>PredictedSayCommand</code> do?</summary>
+<p>A <strong>PredictedSayCommand</strong> is a response directive that the AI system executes. By customizing PredictedSayCommand, you gain granular control over integrating Powered by AI features like citations, feedback loops into the custom engine agent's activities. This allows you to precisely tailor the AI responses to meet your application needs.</p>
+</details>
+<p>Go to <code>src/app/app.ts</code> and add the following snippet on top of your code to import your adaptive card:</p>
+<pre><code class="language-javascript">import { createResponseCard } from './card';
+</code></pre>
+<p>Add <code>CardFactory</code> and <code>MessageFactory</code> inside the "botbuilder" import,  the updated version of the import will look like the following:</p>
+<pre><code class="language-javascript">import { CardFactory, MemoryStorage, MessageFactory } from &quot;botbuilder&quot;;
+</code></pre>
+<p>Add <code>AI</code> and <code>PredictedSayCommand</code> inside the "@microsoft/teams-ai" import, the updated version of the import will look like the following:</p>
+<pre><code class="language-javascript">import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand} from &quot;@microsoft/teams-ai&quot;;
+</code></pre>
+<p>Add the following PredictedSayCommand action in the <code>src/app/app.ts</code> to customize the citation:</p>
+<pre><code class="language-javascript">app.ai.action&lt;PredictedSayCommand&gt;(AI.SayCommandActionName, async (context, state, data, action) =&gt; {
+  let activity;
+  if (data.response.context &amp;&amp; data.response.context.citations.length &gt; 0 ) {
+      const attachment = CardFactory.adaptiveCard(createResponseCard(data.response));
+      activity = MessageFactory.attachment(attachment);
+  }
+  else {
+      activity = MessageFactory.text(data.response.content);
+  }
+
+  activity.entities = [
+    {
+        type: &quot;https://schema.org/Message&quot;,
+        &quot;@type&quot;: &quot;Message&quot;,
+        &quot;@context&quot;: &quot;https://schema.org&quot;,
+        &quot;@id&quot;: &quot;&quot;
+    }
+  ];
+  activity.channelData = {
+    feedbackLoopEnabled: true
+  };
+
+  await context.sendActivity(activity);
+
+  return &quot;success&quot;;
+
+});
+
+export default app;
+</code></pre>
+<p><cc-end-step lab="b3" exercise="2" step="2" /></p>
+<h3 id="step-3-test-the-customized-citation-experience">Step 3: Test the customized citation experience</h3>
+<p>Let's test Career Genie with the customized citation experience. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. Microsoft Teams will pop up on your browser. This will open Microsoft Teams in your browser. When your app details appear in Teams, select <strong>Add</strong> to start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>To test the new citation experience, start by greeting Career Genie with "Hi" or "Hello". Then, try to ask questions similar to "Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?"</p>
+<p><img alt="Customized citation" src="../../../assets/images/custom-engine-03/customized-citation.gif" /></p>
+<p>Now, recognize that the customized citation experience with Adaptive Cards provides a button for each citation. Click on citation buttons to extend the document view and review the resume details for each candidate.</p>
+<p><cc-end-step lab="b3" exercise="2" step="3" /></p>
+<h2 id="exercise-3-enable-the-generated-by-ai-label">Exercise 3: Enable the Generated by AI label</h2>
+<p>In this exercise, you will continue customizing the user experience of your custom engine agent using <code>PredictedSayCommand</code>. To help users differentiate between AI and human responses, you'll enable the "AI generated" label that appears on top of the messages created by the AI system.</p>
+<h3 id="step-1-use-predictedsaycommand-to-enable-the-generated-by-ai-label">Step 1: Use PredictedSayCommand to enable the Generated by AI label</h3>
+<p>Go to <code>src/app/app.ts</code> and locate your <code>PredictedSayCommand</code> action. Add the following code snippet inside <code>activity.entities</code>:</p>
+<pre><code class="language-javascript">// Generated by AI label
+additionalType: [&quot;AIGeneratedContent&quot;]
+</code></pre>
+<p>The update <code>activity.entities</code> will look like the following:</p>
+<pre><code class="language-javascript">activity.entities = [
+    {
+        type: &quot;https://schema.org/Message&quot;,
+        &quot;@type&quot;: &quot;Message&quot;,
+        &quot;@context&quot;: &quot;https://schema.org&quot;,
+        &quot;@id&quot;: &quot;&quot;,
+        // Generated by AI label
+        additionalType: [&quot;AIGeneratedContent&quot;],
+    },
+
+];
+</code></pre>
+<p><cc-end-step lab="b3" exercise="3" step="1" /></p>
+<h3 id="step-2-test-the-generated-by-ai-label">Step 2: Test the Generated by AI label</h3>
+<p>Let's test Career Genie with the "Generated by AI" label. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. This will open Microsoft Teams in your browser. When your app details appear in Teams, select <strong>Add</strong> to start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>To test the "Generated by AI" label, simply greet Career Genie. The first message you receive will have a small "AI generated" label on top.</p>
+<p><img alt="AI Generated Label" src="../../../assets/images/custom-engine-03/ai-generated.png" /></p>
+<p><cc-end-step lab="b3" exercise="3" step="2" /></p>
+<h2 id="exercise-4-enable-the-sensitivity-label">Exercise 4: Enable the Sensitivity label</h2>
+<p>In this final exercise, you will continue utilizing <code>PredictedSayCommand</code> to enable the sensitivity label. Remember, Career Genie is an expert in Human Resources tasks that often require sharing confidential information within your organization. For scenarios like Career Genie, where the information shared is sensitive, a sensitivity label will appear on top of the AI-generated messages, advising whether it can be shared outside your organization.</p>
+<h3 id="step-1-use-predictedsaycommand-to-enable-the-sensitivity-label">Step 1: Use PredictedSayCommand to enable the Sensitivity label</h3>
+<p>Go to <code>src/app/app.ts</code> and locate your <code>PredictedSayCommand</code> action. Add the following code snippet inside <code>activity.entities</code>:</p>
+<pre><code class="language-javascript">// Sensitivity label
+usageInfo: {
+    &quot;@type&quot;: &quot;CreativeWork&quot;,
+    name: &quot;Confidential&quot;,
+    description: &quot;Sensitive information, do not share outside of your organization.&quot;,
+}
+</code></pre>
+<p>The update <code>activity.entities</code> will look like the following:</p>
+<pre><code class="language-javascript">activity.entities = [
+    {
+        type: &quot;https://schema.org/Message&quot;,
+        &quot;@type&quot;: &quot;Message&quot;,
+        &quot;@context&quot;: &quot;https://schema.org&quot;,
+        &quot;@id&quot;: &quot;&quot;,
+        // Generated by AI label
+        additionalType: [&quot;AIGeneratedContent&quot;],
+        // Sensitivity label
+        usageInfo: {
+          &quot;@type&quot;: &quot;CreativeWork&quot;,
+          name: &quot;Confidential&quot;,
+          description: &quot;Sensitive information, do not share outside of your organization.&quot;,
+        }
+    },
+
+  ];
+</code></pre>
+<p><cc-end-step lab="b3" exercise="4" step="1" /></p>
+<h3 id="step-2-test-the-sensitivity-label">Step 2: Test the Sensitivity label</h3>
+<p>Let's test Career Genie with the Sensitivity label. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select <strong>Add</strong> and start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>To test the Sensitivity label, greet Career Genie or try to ask questions similar to "Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?".</p>
+<p><img alt="Sensitivity Label" src="../../../assets/images/custom-engine-03/sensitivity-label.png" /></p>
+<p>Notice that the sensitivity label appears right next to the "AI Generated" label in Career Genie's message. Hover over the sensitivity label to read the guidance specific to your organization.</p>
+<p><cc-end-step lab="b3" exercise="4" step="2" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab B3 - Enhance User Experience with the Powered by AI kit!  If you want explore further, the source code of this lab is available in the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie">Copilot Developer Camp repo</a>.</p>
+<p>You are now ready to proceed to Lab A4 - Secure your solution using authentication. Select Next.</p>
+<p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/03-powered-by-ai" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1400 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-message-ext/04-add-authentication/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lab M4 - Add authentication - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-m4-add-authentication" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab M4 - Add authentication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/EB-add-graphconnector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/04-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/05-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="lab-m4-add-authentication">Lab M4 - Add authentication</h1>
+<p>In this lab you will secure your Northwind plugin from the previous lab with authentication using Entra ID SSO (single sign-on) to search and find your own contacts like suppliers information from Outlook.  </p>
+<details open="open">
+<summary>Navigating the Extend Teams Message Extension labs (Extend Path)</summary>
+<ul>
+<li><a href="/copilot-camp/pages/extend-message-ext/00-prerequisites">Lab M0 - Prerequisites</a> </li>
+<li><a href="/copilot-camp/pages/extend-message-ext/01-nw-teams-app">Lab M1 - Get to know Northwind message extension</a> </li>
+<li><a href="/copilot-camp/pages/extend-message-ext/02-nw-plugin">Lab M2 - Run app in Microsoft Copilot for Microsoft 365</a> </li>
+<li><a href="/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin">Lab M3 - Enhance plugin with new search command</a></li>
+<li><a href="/copilot-camp/pages/extend-message-ext/04-add-authentication">Lab M4 - Add authentication</a> (📍You are here)</li>
+<li><a href="/copilot-camp/pages/extend-message-ext/05-add-action">Lab M5 - Enhance plugin with an action command</a> </li>
+</ul>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Attention</p>
+<p>This lab requires you to have an Azure Subscripton to provision bot services.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">NOTE</p>
+<p>The completed exercise with all of the code changes can be downloaded <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/">from here</a>. This can be useful for troubleshooting purposes.
+If you ever need to reset your edits, you can clone again the repository and start over.</p>
+</div>
+<p>In this lab you will learn to:</p>
+<ul>
+<li>
+<p>how to add Entra ID single sign-on (SSO) to your plugin so users can seamlessly log into your app with the same account they use in Microsoft Teams</p>
+</li>
+<li>
+<p>Access the Microsoft Graph API to access user data in Microsoft 365. Your app will act on behalf of the logged-in user so they can securely access their own content within your application like contacts from Outlook in this lab.</p>
+</li>
+</ul>
+<h2 id="introduction-tasks-involved-to-implement-sso-brief">Introduction : Tasks involved to implement SSO (brief)</h2>
+<p>Implementing SSO for your plugin (Message extension app) involves several steps. Here is a high level over view of the process:</p>
+<h3 id="register-your-app-in-microsoft-entra-id-configure-your-bot-in-azure-bot-service">Register Your App in Microsoft Entra ID &amp; Configure Your Bot in Azure Bot Service</h3>
+<ul>
+<li>Create a new app registration in the Azure portal.</li>
+<li>Configure the app with necessary permissions and scopes.</li>
+<li>Generate a client secret for your app.</li>
+<li>Create a bot in the Azure Bot Service.</li>
+<li>Add the Microsoft 365 channel to your bot.</li>
+<li>Set up OAuth connection settings in the Azure portal.</li>
+</ul>
+<h3 id="enable-sso-in-your-teams-app">Enable SSO in Your Teams App</h3>
+<ul>
+<li>Update your message extension's bot code to handle authentication and token exchange.</li>
+<li>Use the Bot Framework SDK to integrate SSO capabilities.</li>
+<li>Implement the OAuth flow to obtain access tokens for the user.</li>
+</ul>
+<h3 id="configure-authentication-in-teams">Configure Authentication in Teams</h3>
+<ul>
+<li>Add the necessary permissions in the Teams app manifest.</li>
+</ul>
+<h2 id="exercise-1-register-your-app-in-microsoft-entra-id-and-configure-your-bot-in-azure-bot-service">Exercise 1: Register Your App in Microsoft Entra ID and Configure Your Bot in Azure Bot Service</h2>
+<p>Luckily for you, we’ve streamlined everything so that it’s ready to go as soon as you hit <strong>F5</strong>. However, let’s go over the specific changes you’ll need to make in the project for registering and configuring these resources. </p>
+<h3 id="step-1-copy-files-and-folders">Step 1: Copy files and folders</h3>
+<p>Create a new folder called <strong>entra</strong> inside folder <strong>infra</strong> in your root folder. </p>
+<p>Create two new files in the <strong>entra</strong> folder called <strong>entra.bot.manifest.json</strong> and <strong>entra.graph.manifest.json</strong> </p>
+<p>Copy code from this <a href="https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.bot.manifest.json" target="_blank">file</a> into <strong>entra.bot.manifest.json</strong> and same for <strong>entra.graph.manifest.json</strong> from this <a href="https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.graph.manifest.json" target="_blank">file</a>.</p>
+<p>These files are needed to provision the Entra ID app registrations (previously know as Azure Active Directory app registrations) needed for the bot as well as the one for graph for token exchange between them. </p>
+<p>Next in the <strong>infra</strong> folder create files <strong>azure.local.bicep</strong> and copy code from this <a href="https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep" target="_blank">file</a> and create file <strong>azure.parameters.local.json</strong> in the same folder <strong>infra</strong> and copy code from this <a href="https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json" target="_blank">file</a></p>
+<p>These file help with the bot registration. This will ensure the bot service is provisioned in Azure even when you run app locally. This is required for this authentication flow.</p>
+<div class="admonition note">
+<p class="admonition-title">What is happening with these files?</p>
+<p>When Teams Toolkit runs the app locally, it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.</p>
+</div>
+<h3 id="step-2-update-existing-code">Step 2: Update existing code</h3>
+<p>Next, open file <strong>azurebot.bicep</strong> under <strong>botRegistration</strong> folder which is under <strong>infra</strong> folder and add below code snippet after declaration of "param botAppDomain"</p>
+<pre><code class="language-bicep">param graphAadAppClientId string
+@secure()
+param graphAadAppClientSecret string
+
+param connectionName string
+</code></pre>
+<p>Next add below snippet to provision bot service into the same file at end of line.</p>
+<pre><code class="language-bicep">resource botServicesMicrosoftGraphConnection 'Microsoft.BotService/botServices/connections@2022-09-15' = {
+  parent: botService
+  name: connectionName
+  location: 'global'
+  properties: {
+    serviceProviderDisplayName: 'Azure Active Directory v2'
+    serviceProviderId: '30dd229c-58e3-4a48-bdfd-91ec48eb906c'
+    clientId: graphAadAppClientId
+    clientSecret: graphAadAppClientSecret
+    scopes: 'email offline_access openid profile Contacts.Read'
+    parameters: [
+      {
+        key: 'tenantID'
+        value: 'common'
+      }
+      {
+        key: 'tokenExchangeUrl'
+        value: 'api://${botAppDomain}/botid-${botAadAppClientId}'
+      }
+    ]
+  }
+}
+
+</code></pre>
+<p>This will create a new OAUTH connection for token exchange between bot service and the graph entra ID app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Changes to infrastructure for plugin</p>
+<p>We require a different infrastructure to run this setup compared to the non-authenticated plugins we've previously built in this path and hence we need to rewire. Next steps will help you with this. </p>
+</div>
+<p>Next, open the <strong>teamsapp.local.yml</strong> file and replace its content with the code snippet below. This will rewire parts of the infrastructure, including deploying a bot service in Azure for our lab. </p>
+<pre><code class="language-yaml"># yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
+# Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
+# Visit https://aka.ms/teamsfx-actions for details on actions
+version: 1.0.0
+
+provision:
+
+  - uses: script
+    name: Ensure database
+    with:
+      run: node db-setup.js
+      workingDirectory: scripts
+
+  # Creates a Teams app
+  - uses: teamsApp/create
+    with:
+      # Teams app name
+      name: NorthwindProducts-${{TEAMSFX_ENV}}
+    # Write the information of created resources into environment file for
+    # the specified environment variable(s).
+    writeToEnvironmentFile:
+      teamsAppId: TEAMS_APP_ID
+
+  - uses: aadApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-bot-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMultipleOrgs
+    writeToEnvironmentFile:
+      clientId: BOT_ID
+      clientSecret: SECRET_BOT_PASSWORD
+      objectId: BOT_AAD_APP_OBJECT_ID
+      tenantId: BOT_AAD_APP_TENANT_ID
+      authority: BOT_AAD_APP_OAUTH_AUTHORITY
+      authorityHost: BOT_AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: &quot;./infra/entra/entra.bot.manifest.json&quot;
+      outputFilePath : &quot;./build/entra.bot.manifest.${{TEAMSFX_ENV}}.json&quot;
+  - uses: aadApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-graph-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMultipleOrgs
+    writeToEnvironmentFile:
+      clientId: GRAPH_AAD_APP_ID
+      clientSecret: SECRET_GRAPH_AAD_APP_CLIENT_SECRET
+      objectId: GRAPH_AAD_APP_OBJECT_ID
+      tenantId: GRAPH_AAD_APP_TENANT_ID
+      authority: GRAPH_AAD_APP_OAUTH_AUTHORITY
+      authorityHost: GRAPH_AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: &quot;./infra/entra/entra.graph.manifest.json&quot;
+      outputFilePath : &quot;./build/entra.graph.manifest.${{TEAMSFX_ENV}}.json&quot;
+
+  - uses: arm/deploy
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+      templates:
+        - path: ./infra/azure.local.bicep
+          parameters: ./infra/azure.parameters.local.json
+          deploymentName: Create-resources-for-${{APP_INTERNAL_NAME}}-${{TEAMSFX_ENV}}
+      bicepCliVersion: v0.9.1
+
+  # Validate using manifest schema
+  - uses: teamsApp/validateManifest
+    with:
+      # Path to manifest template
+      manifestPath: ./appPackage/manifest.json
+
+  # Build Teams app package with latest env value
+  - uses: teamsApp/zipAppPackage
+    with:
+      # Path to manifest template
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+  # Validate app package using validation rules
+  - uses: teamsApp/validateAppPackage
+    with:
+      # Relative path to this file. This is the path for built zip file.
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  # Apply the Teams app manifest to an existing Teams app in
+  # Teams Developer Portal.
+  # Will use the app id in manifest file to determine which Teams app to update.
+  - uses: teamsApp/update
+    with:
+      # Relative path to this file. This is the path for built zip file.
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  # Extend your Teams app to Outlook and the Microsoft 365 app
+  - uses: teamsApp/extendToM365
+    with:
+      # Relative path to the build app package.
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+    # Write the information of created resources into environment file for
+    # the specified environment variable(s).
+    writeToEnvironmentFile:
+      titleId: M365_TITLE_ID
+      appId: M365_APP_ID
+
+deploy:
+# Run npm command
+  - uses: cli/runNpmCommand
+    name: install dependencies
+    with:
+      args: install --no-audit
+
+  # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./.localConfigs
+      envs:
+        BOT_ID: ${{BOT_ID}}
+        BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
+        CONNECTION_NAME: ${{CONNECTION_NAME}}
+
+</code></pre>
+<p>Open <strong>.env.local</strong> file under <strong>env</strong> folder and completely remove all variable and add below for a fresh start. </p>
+<pre><code>APP_INTERNAL_NAME=Northwind
+APP_DISPLAY_NAME=Northwind
+CONNECTION_NAME=MicrosoftGraph
+
+</code></pre>
+<p>Open <strong>.env.local.user</strong> file under <strong>env</strong> folder and completely remove all variable and add below for a fresh start. </p>
+<pre><code>SECRET_BOT_PASSWORD=
+SECRET_GRAPH_AAD_APP_CLIENT_SECRET=
+SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+</code></pre>
+<h2 id="exercise-2-new-search-command-for-contacts">Exercise 2: New search command for Contacts</h2>
+<h3 id="step-1-add-a-command-to-search-contacts-suppliers">Step 1: Add a command to search contacts (suppliers)</h3>
+<p>To start, add a new command for searching contacts. We’ll eventually retrieve contact details from Microsoft Graph, but for now, we’ll use mock data to ensure the message extension command functions correctly.
+Go to <strong>src</strong> folder &gt; <strong>messageExtensions</strong> and add an new file <strong>supplierContactSearchCommand.ts</strong> in it.</p>
+<p>Copy the content from below into the new file.</p>
+<pre><code class="language-JavaScript">import {
+    CardFactory,
+    TurnContext
+} from &quot;botbuilder&quot;;
+
+
+const COMMAND_ID = &quot;supplierContactSearch&quot;;
+
+let queryCount = 0;
+async function handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise&lt;any&gt; {
+
+    let name = '';
+    if (query.parameters.length === 1 &amp;&amp; query.parameters[0]?.name === &quot;name&quot;) {
+        [name] = (query.parameters[0]?.value.split(','));
+    } else {
+        name = cleanupParam(query.parameters.find((element) =&gt; element.name === &quot;name&quot;)?.value);
+    }
+    console.log(`🍽️ Query #${++queryCount}:\name of contact=${name}`);
+    const filteredProfile = [];
+    const attachments = [];
+
+    const allContacts = [
+    {
+        displayName: &quot;John Doe&quot;,
+        emailAddresses: [
+        { address: &quot;john.doe@example.com&quot; }
+        ]
+    },
+    {
+        displayName: &quot;Jane Smith&quot;,
+        emailAddresses: [
+        { address: &quot;jane.smith@example.com&quot; }
+        ]
+    },
+    {
+        displayName: &quot;Alice Johnson&quot;,
+        emailAddresses: [
+        { address: &quot;alice.johnson@example.com&quot; }
+        ]
+    }
+];
+
+    allContacts.forEach((contact) =&gt; {
+        if (contact.displayName.toLowerCase().includes(name.toLowerCase()) || contact.emailAddresses[0]?.address.toLowerCase().includes(name.toLowerCase())) {
+            filteredProfile.push(contact);
+        }
+    });
+
+    filteredProfile.forEach((prof) =&gt; {
+        const preview = CardFactory.heroCard(prof.displayName,
+            `with email ${prof.emailAddresses[0]?.address}`);
+
+        const resultCard = CardFactory.heroCard(prof.displayName,
+            `with email ${prof.emailAddresses[0]?.address}`);
+        const attachment = { ...resultCard, preview };
+        attachments.push(attachment);
+    });
+    return {
+        composeExtension: {
+            type: &quot;result&quot;,
+            attachmentLayout: &quot;list&quot;,
+            attachments: attachments,
+        },
+    };
+
+}
+function cleanupParam(value: string): string {
+
+    if (!value) {
+        return &quot;&quot;;
+    } else {
+        let result = value.trim();
+        result = result.split(',')[0];          // Remove extra data
+        result = result.replace(&quot;*&quot;, &quot;&quot;);       // Remove wildcard characters from Copilot
+        return result;
+    }
+}
+
+export default { COMMAND_ID, handleTeamsMessagingExtensionQuery }
+</code></pre>
+<p>Go to <strong>src</strong> folder &gt; <strong>searchApp.ts</strong> file and import the newly created command.</p>
+<pre><code class="language-JavaScript">import supplierContactSearchCommand from &quot;./messageExtensions/supplierContactSearchCommand&quot;;
+</code></pre>
+<p>And add another case in the <strong>handleTeamsMessagingExtensionQuery</strong> for the newly added command after <em>case customerSearchCommand.COMMAND_ID:</em></p>
+<pre><code class="language-JavaScript">  case supplierContactSearchCommand.COMMAND_ID: {
+        return supplierContactSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      } 
+</code></pre>
+<p>Now to go <strong>appPackage</strong> &gt; <strong>manifest.json</strong> and add the command inside the <em>commands</em> array under the node <em>composeExtensions</em>.</p>
+<pre><code class="language-JSON"> {
+                    &quot;id&quot;: &quot;supplierContactSearch&quot;,
+                    &quot;context&quot;: [
+                        &quot;compose&quot;,
+                        &quot;commandBox&quot;
+                    ],
+                    &quot;description&quot;: &quot;Search for a contact in the user's Outlook contacts list for Northwind&quot;,
+                    &quot;title&quot;: &quot;Contact search&quot;,
+                    &quot;type&quot;: &quot;query&quot;,
+                    &quot;parameters&quot;: [
+                        {
+                            &quot;name&quot;: &quot;name&quot;,
+                            &quot;title&quot;: &quot;Contact search&quot;,
+                            &quot;description&quot;: &quot;Type name of the contact or company which forms the domain for email address of the contact, to search my Outlook contacts list&quot;,
+                            &quot;inputType&quot;: &quot;text&quot;
+                        }
+                    ] 
+         } 
+</code></pre>
+<p>So you have now added a new non authenticated command to search contacts from a mock list. </p>
+<h3 id="step-2-sign-in-to-azure-in-teams-toolkit">Step 2: Sign in to Azure in Teams Toolkit</h3>
+<p>Teams Toolkit requires you to sign in to an Azure account and have a subscription before you can provision the resource instances. You'll then use these resources to deploy your app to host it in Azure.</p>
+<p>On the Activity Bar of your project editor, select the Microsoft Teams icon 1️⃣. This will open the Teams Toolkit extension panel.</p>
+<p>On the Teams Toolkit panel, under Accounts, select "Sign in to Azure" 2️⃣.</p>
+<p><img alt="Sign into azure" src="../../../assets/images/extend-message-ext-04/03-sign-into-azure.png" /></p>
+<p>In the dialog that appears, select "Sign in".</p>
+<p><img alt="Sign in dialog" src="../../../assets/images/extend-message-ext-04/03-sign-into-azure-alert.png" /></p>
+<h3 id="step-3-run-the-application-in-teams-to-test-new-command">Step 3: Run the application in Teams to test new command</h3>
+<p>To test the new command you need to run the app locally.</p>
+<p>Click F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.</p>
+<p><img alt="Run application locally" src="../../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">F5 in this lab</p>
+<p>When you press F5 to run the application, it will also provision all the necessary resources for the authenticated flow, as we configured everything using the Team Toolkit's actions in Exercise 1. </p>
+</div>
+<p>Since you cleared the environments variable, you will install all Entra ID apps and bot services in Azure. During the first run, you'll need to select a resource group in your Azure subscription, which you logged into via the Teams toolkit, for provisioning resources.</p>
+<p><img alt="resource group selection" src="../../../assets/images/extend-message-ext-04/new-resource-group.png" /></p>
+<p>Choose <strong>+ New resource group</strong> to keep things tidy.And choose the default name teams toolkit has suggested and select Enter.</p>
+<p>Next, choose a Location. For this lab just choose <strong>Central US</strong></p>
+<p><img alt="resource group selection" src="../../../assets/images/extend-message-ext-04/new-resource-group2.png" /></p>
+<p>Next Teams Toolkit will go ahead and provision the resources but will also ask you a confirmation before doing so.</p>
+<p><img alt="provision" src="../../../assets/images/extend-message-ext-04/provision.png" /></p>
+<p>Select <strong>Provision</strong>.</p>
+<p>Once it's provisioned all the resources, you will get the Northwind app install dialog in a browser, select <strong>Add</strong>.</p>
+<p><img alt="provision" src="../../../assets/images/extend-message-ext-04/app-install.png" /></p>
+<p>Once installed, you will be given another dialog to open the app. This will open the app as a message extension in a personal chat. Select <strong>Open</strong>.</p>
+<p><img alt="app open" src="../../../assets/images/extend-message-ext-04/app-open.png" /></p>
+<p>Since we only need to test if the command works or not, we will only test the app in Teams chat.
+In the personal chat with the app, select the <strong>Contacrt search</strong> and type <em>a</em>. </p>
+<p><img alt="app open" src="../../../assets/images/extend-message-ext-04/contacts-non-auth.png" /></p>
+<p>If it lists the contacts as shown above, the command is working, but with mock data. We will fix this in the next exercise.</p>
+<h2 id="exercise-3-enable-authentication-for-new-command">Exercise 3 : Enable authentication for new command</h2>
+<p>In the previous step, you have laid the foundation for the new command. Next you will add authentication on top of the command, replace the mock contact list and replace it with actual contact list from the logged in user's Outlook contacts.</p>
+<p>You will first install some npm packages needed for the plugin. Create a new terminal window in the project.</p>
+<p>Run below script in the terminal :</p>
+<pre><code class="language-CLI">npm i @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
+</code></pre>
+<p>Locate <strong>config.ts</strong> file in the <strong>src</strong> folder. Add a "," after <code>storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING</code> and add the new property and value for <code>connectionName</code> as below.</p>
+<pre>
+ const config = {
+  botId: process.env.BOT_ID,
+  botPassword: process.env.BOT_PASSWORD,
+  storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING<b>,
+  connectionName: process.env.CONNECTION_NAME</b>
+};
+</pre>
+
+<p>Now create a folder called <strong>services</strong> under <strong>src</strong> folder of your base project.
+Create two files <strong>AuthService.ts</strong> and <strong>GraphService.ts</strong> in the <strong>services</strong> folder. </p>
+<ul>
+<li>
+<p><strong>AuthService</strong> : contains a class that provides authentication services. It includes a method <strong>getSignInLink</strong> which asynchronously retrieves a sign-in URL from a client using specific connection details and returns this URL.</p>
+</li>
+<li>
+<p><strong>GraphService</strong> : defines a class that interacts with the Microsoft Graph API. It initializes a Graph client using an authentication token and provides a method getContacts to fetch the user's contacts, selecting specific fields (displayName and emailAddresses).</p>
+</li>
+</ul>
+<p>Next, copy paste below code into <strong>AuthService.ts</strong></p>
+<pre><code class="language-JavaScript">import {
+  AdaptiveCardInvokeResponse,
+  CloudAdapter,
+  MessagingExtensionQuery,
+  MessagingExtensionResponse,
+  TurnContext,
+} from 'botbuilder';
+import { UserTokenClient } from 'botframework-connector';
+import { Activity } from 'botframework-schema';
+import config from '../config';
+
+export class AuthService {
+  private client: UserTokenClient;
+  private activity: Activity;
+  private connectionName: string;
+
+  constructor(context: TurnContext) {
+    const adapter = context.adapter as CloudAdapter;
+    this.client = context.turnState.get&lt;UserTokenClient&gt;(
+      adapter.UserTokenClientKey
+    );
+    this.activity = context.activity;
+    this.connectionName = config.connectionName;
+  }
+
+  async getUserToken(
+    query?: MessagingExtensionQuery
+  ): Promise&lt;string | undefined&gt; {
+    const magicCode =
+      query?.state &amp;&amp; Number.isInteger(Number(query.state)) ? query.state : '';
+
+    const tokenResponse = await this.client.getUserToken(
+      this.activity.from.id,
+      this.connectionName,
+      this.activity.channelId,
+      magicCode
+    );
+
+    return tokenResponse?.token;
+  }
+
+  async getSignInComposeExtension(): Promise&lt;MessagingExtensionResponse&gt; {
+    const signInLink = await this.getSignInLink();
+
+    return {
+      composeExtension: {
+        type: 'auth',
+        suggestedActions: {
+          actions: [
+            {
+              type: 'openUrl',
+              value: signInLink,
+              title: 'SignIn',
+            },
+          ],
+        },
+      },
+    };
+  }
+
+  async getSignInAdaptiveCardInvokeResponse(): Promise&lt;AdaptiveCardInvokeResponse&gt; {
+    const signInLink = await this.getSignInLink();
+
+    return {
+      statusCode: 401,
+      type: 'application/vnd.microsoft.card.signin',
+
+      value: {
+        signinurl: signInLink,
+      },
+    };
+  }
+
+  async getSignInLink(): Promise&lt;string&gt; {
+    const { signInLink } = await this.client.getSignInResource(
+      this.connectionName,
+      this.activity,
+      ''
+    );
+
+    return signInLink;
+  }
+}
+
+</code></pre>
+<p>Next, copy paste below code into <strong>GraphService.ts</strong></p>
+<pre><code class="language-JavaScript">import { Client } from '@microsoft/microsoft-graph-client';
+
+
+export class GraphService {
+  private _token: string;
+  private graphClient: Client;
+
+  constructor(token: string) {
+    if (!token || !token.trim()) {
+      throw new Error('SimpleGraphClient: Invalid token received.');
+    }
+    this._token = token;
+
+    this.graphClient = Client.init({
+      authProvider: done =&gt; {
+        done(null, this._token);
+      },
+    });
+  }
+  async getContacts(): Promise&lt;any&gt; {
+    const response = await this.graphClient
+      .api(`me/contacts`)
+      .select('displayName,emailAddresses')
+      .get();
+
+    return response.value;
+  }
+}
+
+</code></pre>
+<p>Now, go back to the <strong>supplierContactSearchCommand.ts</strong> file and import these two services we just added.</p>
+<pre><code class="language-JavaScript">import { AuthService } from &quot;../services/AuthService&quot;;
+import { GraphService } from &quot;../services/GraphService&quot;;
+</code></pre>
+<p>Next, add the code that initializes authentication, retrieves a user token, checks its validity, and then sets up a service to interact with the Microsoft Graph API if the token is valid. If the token is invalid, it prompts the user to sign in.</p>
+<p>Copy below code into the <em>handleTeamsMessagingExtensionQuery</em> function above the mock definition of <strong>allContacts</strong> constant.</p>
+<pre><code class="language-JavaScript">  const credentials = new AuthService(context);
+  const token = await credentials.getUserToken(query);
+  if (!token) {
+    return credentials.getSignInComposeExtension();
+  }
+  const graphService = new GraphService(token);
+</code></pre>
+<p>Next, replace the mock definition of <strong>allContacts</strong> constant with below code:</p>
+<pre><code class="language-JavaScript">const allContacts = await graphService.getContacts();
+</code></pre>
+<p>Next go to <strong>appPackage/manifest.json</strong> file and update the node <em>validDomains</em> as below</p>
+<pre><code class="language-JSON">&quot;validDomains&quot;: [
+        &quot;token.botframework.com&quot;,
+        &quot;${{BOT_DOMAIN}}&quot;
+    ]
+</code></pre>
+<p>Also add comma "," after <code>validDomains</code> array and add a node for <em>webApplicationInfo</em> and update it with below value</p>
+<pre><code class="language-JSON">    &quot;webApplicationInfo&quot;: {
+        &quot;id&quot;: &quot;${{BOT_ID}}&quot;,
+        &quot;resource&quot;: &quot;api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}&quot;
+    },
+</code></pre>
+<p>Next, upgrade the manifest version from "1.0.10" to "1.0.11" so the changes are reflected. </p>
+<p>These manifest changes will make sure the sign-in url is correctly formed and sent to the user for consent.</p>
+<h2 id="exercise-4-test-authentication">Exercise 4:  Test authentication</h2>
+<h3 id="step-1-run-app-locally">Step 1: Run app locally</h3>
+<p>Stop the local debugger if it is kept running. Since you have updated the manifest with a new command, you will want to re install the app with the new package. </p>
+<p>Restart debugger by clicking F5, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.</p>
+<p><img alt="Run application locally" src="../../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png" /></p>
+<div class="admonition pied-piper">
+<p class="admonition-title">Provision</p>
+<p>Here you will again get a dialog confirming if you want to provision the resources. Select "Provision". This is not actually provisioning new resources just overwriting existing resources. </p>
+</div>
+<p>The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. </p>
+<p><img alt="Open" src="../../../assets/images/extend-message-ext-01/nw-open.png" /></p>
+<p>Once opened it immediately ask you where you want to open the app in. By default it's personal chat. You could also select it in a channel or group chat as shown. Select "Open".</p>
+<p><img alt="Open surfaces" src="../../../assets/images/extend-message-ext-01/nw-open-2.png" /></p>
+<p>Now you are in a personal chat with the app. But we are testing in Copilt so follow next instruction. </p>
+<p>In Teams click on <strong>Chat</strong> and then <strong>Copilot</strong>. Copilot should be the top-most option.
+Click on the <strong>Plugin icon</strong> and select <strong>Northwind Inventory</strong> to enable the plugin.</p>
+<h3 id="step-2-enter-test-data">Step 2 : Enter test data</h3>
+<p>Before we test the plugin to bring actual contacts, we'll need to add some contact information.
+So let us first ensure we have some contacts in Microsoft 365.</p>
+<p>1️⃣ From Microsoft Teams, click the "waffle" menu</p>
+<p>2️⃣ Select Microsoft Outlook</p>
+<p><img alt="outlook" src="../../../assets/images/extend-message-ext-04/Lab05-002-EnterTestData1.png" /></p>
+<p>1️⃣ Within Outlook, click the "Contacts" button</p>
+<p>2️⃣ Enter some new contacts</p>
+<p>The app is simple, and will only display the person or company name and email address. If you want to play along with the business scenario, make them sound like suppliers.</p>
+<p><img alt="outlook" src="../../../assets/images/extend-message-ext-04/Lab05-003-EnterTestData2.png" /></p>
+<h3 id="step-2-test-in-copilot">Step 2: Test in Copilot</h3>
+<p>Ask Copilot for contacts by using this prompt- <strong>Find my conacts with name {first name} in Northwind</strong> (Replace {first name} with what name you have given for your contacts in Exercise 4, Step 1)</p>
+<p>You will get a sign-in button to authenticate (one time only) as shown in the screen. </p>
+<p><img alt="prompt" src="../../../assets/images/extend-message-ext-04/prompt.png" /></p>
+<p>This is the indication that you have an some sort of an authentication set in place to call this feature of the plugin. Select <strong>Sign in to Northwind Inventory</strong></p>
+<p>You will now get a dialog to interact and provide consent as show in the GIF below. Once consented you should be able to get back results form Copilot for Microsoft 365.
+<img alt="working gif" src="../../../assets/images/extend-message-ext-04/working.gif" /></p>
+<h2 id="congratulations">Congratulations</h2>
+<p>This was a hard one, but you ACED it! You are now ready add an action command. Proceed to the next lab. Select <strong>Next</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>

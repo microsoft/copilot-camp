@@ -1,0 +1,1466 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/05-actions/">
+      
+      
+        <link rel="prev" href="../04-authentication/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lab B5 - Add actions to handle complex tasks - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#b5-add-actions-to-handle-complex-tasks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab B5 - Add actions to handle complex tasks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/EB-add-graphconnector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-create-a-new-prompt-with-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Create a new prompt with actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-implement-a-logic-in-the-planner-to-choose-between-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Implement a logic in the planner to choose between prompts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-implement-actions-in-the-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Implement actions in the app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-utilize-actions-together-with-the-microsoft-graph-to-automate-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="b5-add-actions-to-handle-complex-tasks">B5 - Add actions to handle complex tasks</h1>
+<div class="floatwide">
+<div class="cc-lab-toc b-path">
+  <img src="/copilot-camp/assets/images/path-icons/B-path-heading.png"></img>
+  <div>
+    <p>Do these labs if you want to build a Custom engine agent with custom AI model and orchestration using Azure OpenAI and Teams AI library</p>
+    <ul>
+      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Setup</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-agent/">B1 - First custom engine agent</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/02-rag/">B2 - Index your data in Azure AI Search</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/04-authentication/">B4 - Add single sign on authentication</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/05-actions/">B5 - Add actions to handle complex tasks</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(() => {
+// This script decorates the table of contents with a "you are here" indicator.
+const toc = document.getElementsByClassName('cc-lab-toc');
+for (const div of toc) {
+    const lis = div.querySelectorAll('li');
+    for (const li of lis) {
+        const anchor = li.querySelector('a');
+        if (location.href.includes(anchor.href)) {
+            const span = document.createElement("span");
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+            li.appendChild(span);
+        }
+    }    
+}
+})();
+</script>
+
+<div class="cc-b-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
+</div>
+
+<p>In this lab you will:</p>
+<ul>
+<li>Learn what actions are and how to handle complex tasks with them</li>
+<li>Integrate multi-prompt in your custom engine agent to handle actions</li>
+<li>Implement actions in your custom engine agent</li>
+<li>Utilize Microsoft Graph and actions together to automate workflows</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>It's time to add some actions for Career Genie to handle complex tasks and workflows! In this lab, you'll integrate a new prompt in Career Genie's logic that can handle lists of candidates. That basically means that when you are searching for candidates with Career Genie, you can also create lists for candidates and add their names in. Once you are done, you can also send these lists to HR for scheduling interviews. All these will be handled by actions you'll implement in Career Genie! Let's get started.</p>
+<details class="info" open="open">
+<summary>What are actions in Custom engine agents?</summary>
+<p>An action in an AI system is like a basic function or method in your code—it's a specific task that the system can perform. Actions are the building blocks that the AI uses to accomplish various tasks based on the user’s input. The AI system decides which action to execute depending on what the user asks for.</p>
+<p>For example, actions could include:</p>
+<ul>
+<li>
+<p>Creating a new list.</p>
+</li>
+<li>
+<p>Remove a list.</p>
+</li>
+<li>
+<p>Adding items to an existing list.</p>
+</li>
+<li>
+<p>Remove items from an existing list.</p>
+</li>
+</ul>
+<p>When a user interacts with the AI system, the system interprets the prompt and selects the appropriate actions to carry out. It’s like having a toolbox of functions, and the AI picks the right tool for the job based on the user’s needs.</p>
+</details>
+<h2 id="exercise-1-create-a-new-prompt-with-actions">Exercise 1: Create a new prompt with actions</h2>
+<p>In this exercise, you'll create a new prompt in "prompts" folder to handle actions.</p>
+<h3 id="step-1-create-a-monologue-prompt">Step 1: Create a "monologue" prompt</h3>
+<p>In your project go to <code>src/prompts/</code> and add a new folder with a name <strong>monologue</strong>. In <code>src/prompts/monologue/</code> folder, create a new file with a name <strong>config.json</strong> and copy the following code snippet in the file:</p>
+<pre><code class="language-json">{
+  &quot;schema&quot;: 1.1,
+  &quot;description&quot;: &quot;A bot that can chat with users&quot;,
+  &quot;type&quot;: &quot;completion&quot;,
+  &quot;completion&quot;: {
+    &quot;completion_type&quot;: &quot;chat&quot;,
+    &quot;include_history&quot;: true,
+    &quot;include_input&quot;: true,
+    &quot;max_input_tokens&quot;: 2800,
+    &quot;max_tokens&quot;: 1000,
+    &quot;temperature&quot;: 0.9,
+    &quot;top_p&quot;: 0.0,
+    &quot;presence_penalty&quot;: 0.6,
+    &quot;frequency_penalty&quot;: 0.0
+  },
+  &quot;augmentation&quot;: {
+      &quot;augmentation_type&quot;: &quot;monologue&quot;
+  }
+}
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Brief intro about <code>augmentation</code> in config.json</p>
+<p>Augmentations help simplify prompt engineering by automatically adding specific instructions to your prompts. With augmentations, you can configure whether you want the AI to handle multi-step tasks (sequence) or think through its actions step by step (monologue).</p>
+</div>
+<p>In <code>src/prompts/monologue/</code> folder, create a new file with a name <strong>skprompt.txt</strong> and copy the following text in the file:</p>
+<pre><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team who can manage lists of Candidates. 
+You are friendly and professional. You like using emojis where appropriate.
+Always share the lists in bullet points.
+
+rules:
+- only create lists the user has explicitly asked to create.
+- only add Candidates to a list that the user has asked to have added.
+- if multiple lists are being manipulated, call a separate action for each list.
+- if Candidates are being added and removed from a list, call a separate action for each operation.
+- if user asks for a summary, share all the lists and candidates. 
+- only send an email to HR if user has explicitly asked to send.
+
+Current lists:
+{{$conversation.lists}}
+</code></pre>
+<p>In <code>src/prompts/monologue/</code> folder, create a new file with a name <strong>actions.json</strong> and copy the following code snippet in the file:</p>
+<pre><code class="language-json">[
+    {
+        &quot;name&quot;: &quot;createList&quot;,
+        &quot;description&quot;: &quot;Creates a new list with an optional set of initial Candidates&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;list&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;The name of the list to create&quot;
+                },
+                &quot;Candidates&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;description&quot;: &quot;The Candidates to add to the list&quot;,
+                    &quot;Candidates&quot;: {
+                        &quot;type&quot;: &quot;string&quot;
+                    }
+                }
+            },
+            &quot;required&quot;: [
+                &quot;list&quot;
+            ]
+        }
+    },
+    {
+        &quot;name&quot;: &quot;deleteList&quot;,
+        &quot;description&quot;: &quot;Deletes a list&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;list&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;The name of the list to delete&quot;
+                }
+            },
+            &quot;required&quot;: [
+                &quot;list&quot;
+            ]
+        }
+    },
+    {
+        &quot;name&quot;: &quot;addCandidates&quot;,
+        &quot;description&quot;: &quot;Adds one or more Candidates to a list&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;list&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;The name of the list to add the item to&quot;
+                },
+                &quot;Candidates&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;description&quot;: &quot;The Candidates to add to the list&quot;,
+                    &quot;Candidates&quot;: {
+                        &quot;type&quot;: &quot;string&quot;
+                    }
+                }
+            },
+            &quot;required&quot;: [
+                &quot;list&quot;,
+                &quot;Candidates&quot;
+            ]
+        }
+    },
+    {
+        &quot;name&quot;: &quot;removeCandidates&quot;,
+        &quot;description&quot;: &quot;Removes one or more Candidates from a list&quot;,
+        &quot;parameters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;list&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;description&quot;: &quot;The name of the list to remove the item from&quot;
+                },
+                &quot;Candidates&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;description&quot;: &quot;The Candidates to remove from the list&quot;,
+                    &quot;Candidates&quot;: {
+                        &quot;type&quot;: &quot;string&quot;
+                    }
+                }
+            },
+            &quot;required&quot;: [
+                &quot;list&quot;,
+                &quot;Candidates&quot;
+            ]
+        }
+    }
+]
+</code></pre>
+<p><cc-end-step lab="b5" exercise="1" step="1" /></p>
+<h2 id="exercise-2-implement-a-logic-in-the-planner-to-choose-between-prompts">Exercise 2: Implement a logic in the planner to choose between prompts</h2>
+<p>In this exercise, you'll write a function that checks the user prompt and decides between "chat" or "monologue" prompts.</p>
+<h3 id="step-1-create-a-function-for-defaultprompt-in-the-planner">Step 1: Create a function for <code>defaultPrompt</code> in the planner</h3>
+<p>In your project, go to <code>src/app/app.ts</code> file, and add the following function in your project:</p>
+<pre><code class="language-javascript">async function choosePrompt(context){
+  if (context.activity.text.includes('list')){
+    const template = await prompts.getPrompt('monologue');
+    return template;
+  }
+  else {
+    const template = await prompts.getPrompt('chat');
+    const skprompt = fs.readFileSync(path.join(__dirname, '..', 'prompts', 'chat', 'skprompt.txt'));
+
+    const dataSources = (template.config.completion as any)['data_sources'];
+
+    dataSources.forEach((dataSource: any) =&gt; {
+      if (dataSource.type === 'azure_search') {
+        dataSource.parameters.authentication.key = config.azureSearchKey;
+        dataSource.parameters.endpoint = config.azureSearchEndpoint;
+        dataSource.parameters.indexName = config.indexName;
+        dataSource.parameters.embedding_dependency.deployment_name =
+          config.azureOpenAIEmbeddingDeploymentName;
+        dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
+      }
+    });
+
+    return template;
+  }
+}
+</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Review <code>choosePrompt</code> function</p>
+<p>Recognize that the choosePrompt function checks if user prompt includes "list". If yes, then it returns <strong>monologue</strong> prompt, if no, then it returns the <strong>chat</strong> that is currently our default prompt.</p>
+</div>
+<p>In <code>src/app/app.ts</code> file, find the <code>planner</code> and remove the code assigned to the <strong>defaultPrompt</strong>. Then, define <code>choosePrompt</code> function as the <strong>defaultPrompt</strong>. The final version of the planner will look like below:</p>
+<pre><code class="language-javascript">const planner = new ActionPlanner({
+  model,
+  prompts,
+  defaultPrompt: choosePrompt,
+});
+</code></pre>
+<p><cc-end-step lab="b4" exercise="2" step="1" /></p>
+<h2 id="exercise-3-implement-actions-in-the-app">Exercise 3: Implement actions in the app</h2>
+<p>In this exercise, you'll create functions for your actions and register the action handlers in the app.</p>
+<h3 id="step-1-update-conversationstate-and-define-functions-for-each-action">Step 1: Update <code>ConversationState</code> and define functions for each action</h3>
+<p>In <code>src/app/app.ts</code>, update the <code>@microsoft/teams-ai</code> with <strong>DefaultConversationState</strong>. The final version of the import will look as below:</p>
+<pre><code class="language-javascript">import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState, DefaultConversationState } from &quot;@microsoft/teams-ai&quot;;
+</code></pre>
+<p>In <code>src/app/app.ts</code>, find the <strong>ConversationState</strong> and <strong>ApplicationTurnState</strong>, replace them with the following code:</p>
+<pre><code class="language-javascript">import { TurnState, DefaultConversationState } from &quot;@microsoft/teams-ai&quot;;
+
+// Strongly type the applications turn state
+interface ConversationState extends DefaultConversationState {
+  lists: Record&lt;string, string[]&gt;;
+}
+export type ApplicationTurnState = TurnState&lt;ConversationState&gt;;
+</code></pre>
+<p>In <code>src/app/</code>, create another file with a name <strong>actions.ts</strong> and add the following source code to define functions for the actions:</p>
+<pre><code class="language-javascript">import { ApplicationTurnState } from './app';
+
+function getCandidates(state: ApplicationTurnState, list: string): string[] {
+    ensureListExists(state, list);
+    return state.conversation.lists[list];
+}
+
+function setCandidates(state: ApplicationTurnState, list: string, Candidates: string[]): void {
+ensureListExists(state, list);
+state.conversation.lists[list] = Candidates ?? [];
+}
+
+function ensureListExists(state: ApplicationTurnState, listName: string): void {
+if (typeof state.conversation.lists != 'object') {
+    state.conversation.lists = {};
+}
+
+if (!Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)) {
+    state.conversation.lists[listName] = [];
+}
+}
+
+function deleteList(state: ApplicationTurnState, listName: string): void {
+if (
+    typeof state.conversation.lists == 'object' &amp;&amp;
+    Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)
+) {
+    delete state.conversation.lists[listName];
+}
+}
+
+export { getCandidates, setCandidates, ensureListExists, deleteList };
+</code></pre>
+<p><cc-end-step lab="b5" exercise="3" step="1" /></p>
+<h3 id="step-2-register-action-handlers-in-the-app">Step 2: Register action handlers in the app</h3>
+<p>In<code>src/app/app.ts</code>, add the following action imports on top of the file:</p>
+<pre><code class="language-javascript">import { ensureListExists, getCandidates, setCandidates, deleteList } from &quot;./actions&quot;;
+</code></pre>
+<p>Then add the following code snippet in the <code>src/app/app.ts</code> to register action handlers in the AI System:</p>
+<pre><code class="language-javascript">// Register action handlers
+interface ListOnly {
+  list: string;
+}
+
+interface ListAndCandidates extends ListOnly {
+  Candidates?: string[];
+}
+
+app.ai.action('createList', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
+  ensureListExists(state, parameters.list);
+  if (Array.isArray(parameters.Candidates) &amp;&amp; parameters.Candidates.length &gt; 0) {
+      await app.ai.doAction(context, state, 'addCandidates', parameters);
+      return `List created and Candidates added. Summarize your action.`;
+  } else {
+      return `List created. Summarize your action.`;
+  }
+});
+
+app.ai.action('deleteList', async (context: TurnContext, state: ApplicationTurnState, parameters: ListOnly) =&gt; {
+  deleteList(state, parameters.list);
+  return `list deleted. Summarize your action.`;
+});
+
+app.ai.action('addCandidates', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
+  const Candidates = getCandidates(state, parameters.list);
+  Candidates.push(...(parameters.Candidates ?? []));
+  setCandidates(state, parameters.list, Candidates);
+  return `Candidates added. Summarize your action.`;
+});
+
+app.ai.action('removeCandidates', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
+  const Candidates = getCandidates(state, parameters.list);
+  (parameters.Candidates ?? []).forEach((candidate: string) =&gt; {
+      const index = Candidates.indexOf(candidate);
+      if (index &gt;= 0) {
+          Candidates.splice(index, 1);
+      }
+  });
+  setCandidates(state, parameters.list, Candidates);
+  return `Candidates removed. Summarize your action.`;
+});
+
+</code></pre>
+<p><cc-end-step lab="b5" exercise="3" step="2" /></p>
+<h3 id="step-3-test-your-app-with-the-new-actions">Step 3: Test your app with the new actions</h3>
+<p>Let's test Career Genie with the new actions. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select <strong>Add</strong> and start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>To understand how to flow works, you may ask the following questions in order:</p>
+<ul>
+<li>Hello</li>
+<li>Can you suggest candidates who have experience in .NET?</li>
+<li>Great, add Isaac Talbot in the .NET Developer Candidates list</li>
+<li>Add Anthony Ivanov in the same list with Isaac</li>
+<li>Can you summarize my lists</li>
+<li>Suggest candidates who have experience in Python and are able to speak Spanish</li>
+<li>Nice! Add Sara Folgueroles in the Python Developer Candidates (Spanish speaking) list</li>
+<li>Can you suggest candidates who have 10+ years of experience</li>
+<li>Ok, remove Anthony from the .NET Developer Candidates list</li>
+<li>Add Anthony Ivanov in the Talent list</li>
+<li>Summarize my lists</li>
+</ul>
+<p><img alt="Actions in Career Genie" src="../../../assets/images/custom-engine-05/actions.gif" /></p>
+<p><cc-end-step lab="b5" exercise="3" step="3" /></p>
+<h2 id="exercise-4-utilize-actions-together-with-the-microsoft-graph-to-automate-workflows">Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows</h2>
+<p>In this exercise, you'll implement a new action that utilizes Microsoft Graph to send the candidates lists to the HR for scheduling interviews.</p>
+<h3 id="step-1-define-a-new-action-in-your-prompt-for-sending-emails">Step 1: Define a new action in your prompt for sending emails</h3>
+<p>In your project, go to <code>src/prompts/monologue/actions.json</code> and add the following action:</p>
+<pre><code class="language-json">,
+{
+    &quot;name&quot;: &quot;sendLists&quot;,
+    &quot;description&quot;: &quot;Send list of Candidates to Human Resources, aka HR for scheduling interviews&quot;,
+    &quot;parameters&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;list&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;description&quot;: &quot;The name of the list to send Human Resources, aka HR for scheduling interviews&quot;
+            },
+            &quot;Candidates&quot;: {
+                &quot;type&quot;: &quot;array&quot;,
+                &quot;description&quot;: &quot;The Candidates in the list to send Human Resources, aka HR for scheduling interviews&quot;,
+                &quot;Candidates&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        },
+        &quot;required&quot;: [
+            &quot;list&quot;,
+            &quot;Candidates&quot;
+        ]
+    }
+}
+</code></pre>
+<p><cc-end-step lab="b5" exercise="4" step="1" /></p>
+<h3 id="step-2-create-a-new-function-for-the-new-sendlists-action">Step 2: Create a new function for the new <code>sendLists</code> action</h3>
+<p>In your project, go to <code>src/app/app.ts</code>, locate the <code>getUserDisplayName</code> and add <strong>export</strong> in front of the function. The final version of the function will look like below:</p>
+<pre><code class="language-javascript">export async function getUserDisplayName {
+...
+...
+...
+}
+
+</code></pre>
+<p>Locate <code>app</code> in the <code>src/app/app.ts</code> and update the scope with <strong>'Mail.Send'</strong>. The final version of the app will look like below:</p>
+<pre><code class="language-javascript">const app = new Application({
+  storage,
+  authentication: {settings: {
+    graph: {
+      scopes: ['User.Read', 'Mail.Send'],
+        ...
+        ...
+    }
+  }}});
+</code></pre>
+<p>Go to <code>env/.env.local.user</code> and add the following HR email as an environment variable:</p>
+<pre><code>HR_EMAIL=&lt;YOUR-EMAIL-ADDRESS&gt;
+</code></pre>
+<div class="admonition pied-piper">
+<p class="admonition-title"><code>HR_EMAIL</code> details to test this lab</p>
+<p>Please enter your own account email address in <code>HR_EMAIL</code> to test this lab. In an ideal scenario, you'll use an email address of a Human Resources Team to send interview scheduling emails. Note that this lab is only for prototyping purposes and shouldn't be used in production.</p>
+</div>
+<p>Go to <code>teamsapp.local.yml</code> and add the following line under the <code>file/createOrUpdateEnvironmentFile</code>, <strong>envs</strong> list:</p>
+<pre><code>HR_EMAIL: ${{HR_EMAIL}}
+</code></pre>
+<p>Go to <code>src/config.ts</code> and add the following line in the config:</p>
+<pre><code class="language-javascript">HR_EMAIL: process.env.HR_EMAIL
+</code></pre>
+<p>Go to <code>src/app/actions.ts</code> and update the imports on top of the code as below:</p>
+<pre><code class="language-javascript">import { getUserDisplayName, ApplicationTurnState } from './app';
+import { Client } from &quot;@microsoft/microsoft-graph-client&quot;;
+import config from '../config';
+</code></pre>
+<p>Then, add the following functions in the <code>actions.ts</code>:</p>
+<pre><code class="language-javascript">async function sendLists(state: ApplicationTurnState, token): Promise&lt;string&gt; {
+    const email = await createEmailContent(state.conversation.lists, token);
+    try {
+        const client = Client.init({
+            authProvider: (done) =&gt; {
+                done(null, token);
+            }
+        });
+        const sendEmail = await client.api('/me/sendMail').post(JSON.stringify(email));
+        if (sendEmail.ok) {
+            return email.message.body.content;
+        }
+        else {
+            console.log(`Error ${sendEmail.status} calling Graph in sendToHR: ${sendEmail.statusText}`);
+            return 'Error sending email';
+        }
+    } catch (error) {
+        console.error('Error in sendLists:', error);
+        throw error;
+    }
+}
+
+async function createEmailContent(lists, token) {
+let emailContent = '';
+for (const listName in lists) {
+    if (lists.hasOwnProperty(listName)) {
+    emailContent += `${listName}:\n`;
+    lists[listName].forEach(candidate =&gt; {
+        emailContent += `  • ${candidate}\n`;
+    });
+    emailContent += '\n'; // Add an extra line between different lists
+    }
+}
+
+const profileName = await getUserDisplayName(token);
+
+const email ={
+    &quot;message&quot;: {
+    &quot;subject&quot;: &quot;Request to Schedule Interviews with Shortlisted Candidates&quot;,
+    &quot;body&quot;: {
+        &quot;contentType&quot;: &quot;Text&quot;,
+        &quot;content&quot;: `Hello HR Team, \nI hope this email finds you well. \n\nCould you please assist in scheduling 1:1 interviews with the following shortlisted candidates? \n\n${emailContent} Please arrange suitable times and send out the calendar invites accordingly. \n\n Best Regards, \n ${profileName}`
+    },
+    &quot;toRecipients&quot;: [
+        {
+        &quot;emailAddress&quot;: {
+            &quot;address&quot;: `${config.HR_EMAIL}`
+        }
+        }
+    ]
+    },
+    &quot;saveToSentCandidates&quot;: &quot;true&quot;
+};
+return await email;
+}
+</code></pre>
+<p>Finally in <code>src/app/actions.ts</code>m add <strong>sendLists</strong> in the<code>actions.ts</code> exports. The final version of the exports will look like below:</p>
+<pre><code class="language-javascript">export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
+</code></pre>
+<h3 id="step-3-register-sendlists-action-handler">Step 3: Register <code>sendLists</code> action handler</h3>
+<p>Go to <code>src/app/app.ts</code> and update the <code>./actions</code> import with the <strong>sendLists</strong> function. The final version of the import will look as below:</p>
+<pre><code class="language-javascript">import { ensureListExists, getCandidates, setCandidates, deleteList, sendLists } from &quot;./actions&quot;;
+</code></pre>
+<p>Then, add the following code snippet to register <code>sendLists</code> action in the AI System:</p>
+<pre><code class="language-javascript">app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
+  await sendLists(state, state.temp.authTokens['graph']);
+  return `Email sent to HR. Summarize your action.`;
+});
+</code></pre>
+<p><cc-end-step lab="b5" exercise="4" step="3" /></p>
+<h3 id="step-4-update-your-entra-id-app-registration">Step 4: Update your Entra ID app registration</h3>
+<p>Update the script for your Entra ID app for new scope <code>Mail.Send</code>. Go to file <strong>aad.manifest.json</strong> and inside the node <code>requiredResourceAccess</code> find <code>"resourceAppId": "Microsoft Graph",</code>. In the <code>resourceAccess</code> array add below scope after adding a comma.</p>
+<pre><code class="language-JSON"> {
+    &quot;id&quot;: &quot;Mail.Send&quot;,
+    &quot;type&quot;: &quot;Scope&quot;
+}
+</code></pre>
+<p><cc-end-step lab="b5" exercise="4" step="4" /></p>
+<h3 id="step-5-test-your-app-and-the-new-sendlists-action">Step 5: Test your app and the new <code>sendLists</code> action</h3>
+<p>Let's test Career Genie with the new <strong>sendLists</strong> actions. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select <strong>Add</strong> and start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>To start a conversation with Career Genie, simply type a message. For example, you can begin with 'Hi'.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Check pop up settings in your browser</p>
+<p>Make sure <code>Pop up</code> is not blocked by browser for a smoother experience for below instructions.</p>
+</div>
+<p>You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select <strong>Continue</strong>.</p>
+<p><img alt="consent message teams" src="../../../assets/images/custom-engine-04/consent-teams.png" /></p>
+<p>Since you're running locally with Developer Tunnels, you'll see a warning screen, select <strong>Continue</strong>. Users won't see this when your app is deployed. You'll be redirected to login and consent to the app's permissions.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Consent on behalf of your organization</p>
+<p>If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.</p>
+</div>
+<p>Select <strong>Accept</strong> to consent to the permissions.</p>
+<p>You will now get this message from the Career Genie with your logged in name showing successful authentication. Now, you can start testing the new action in Career Genie!</p>
+<p>To understand how to flow works, you may ask the following questions in order:</p>
+<ul>
+<li>Hello</li>
+<li>Can you suggest candidates who have experience in .NET?</li>
+<li>Great, add Isaac Talbot in the .NET Developer Candidates list</li>
+<li>Add Anthony Ivanov in the same list with Isaac</li>
+<li>Can you summarize my lists</li>
+<li>Suggest candidates who have experience in Python and are able to speak Spanish</li>
+<li>Nice! Add Sara Folgueroles in the Python Developer Candidates (Spanish speaking) list</li>
+<li>Can you suggest candidates who have 10+ years of experience</li>
+<li>Ok, remove Anthony from the .NET Developer Candidates list</li>
+<li>Add Anthony Ivanov in the Talent list</li>
+<li>Summarize my lists</li>
+<li>Add Pedro Armijo in the same list with Sara</li>
+<li>Summarize my lists</li>
+<li>Send my lists to HR</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Check your mailbox</p>
+<p>After the last step, check your mailbox to see if you receive any email for the lists of candidates.</p>
+</div>
+<p><img alt="Career Genie full experience" src="../../../assets/images/custom-engine-05/career-genie-full.gif" /></p>
+<p><cc-end-step lab="b5" exercise="4" step="5" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
+<p>You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie">Copilot Developer Camp repo</a>.</p>
+<p>This is the end of the <strong>Build your own agent</strong> path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜</p>
+<p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/05-actions" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>

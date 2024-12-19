@@ -1,0 +1,1251 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-message-ext/01-nw-teams-app/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lab M1 - Get to know Northwind message extension - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-m1-get-to-know-northwind-message-extension" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab M1 - Get to know Northwind message extension
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/EB-add-graphconnector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/04-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/05-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="lab-m1-get-to-know-northwind-message-extension">Lab M1 - Get to know Northwind message extension</h1>
+<p>In this lab, you’ll run the Northwind message extension, your base app. The initial exercises will make you familiar with the source code. Finally, you’ll run the application in Teams.</p>
+<details open="open">
+<summary>Navigating the Extend Teams Message Extension labs (Extend Path)</summary>
+<ul>
+<li><a href="/copilot-camp/pages/extend-message-ext/00-prerequisites">Lab M0 - Prerequisites</a> </li>
+<li><a href="/copilot-camp/pages/extend-message-ext/01-nw-teams-app">Lab M1 - Get to know Northwind message extension</a> (📍You are here)</li>
+<li><a href="/copilot-camp/pages/extend-message-ext/02-nw-plugin">Lab M2 - Run app in Microsoft Copilot for Microsoft 365</a> </li>
+<li><a href="/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin">Lab M3 - Enhance plugin with new search command</a></li>
+<li><a href="/copilot-camp/pages/extend-message-ext/04-add-authentication">Lab M4 - Add authentication</a> </li>
+<li><a href="/copilot-camp/pages/extend-message-ext/05-add-action">Lab M5 - Enhance plugin with an action command</a> </li>
+</ul>
+</details>
+<p>In this lab you will:</p>
+<ul>
+<li>Do a quick code tour of the Northwind Message extension</li>
+<li>Run the application on Teams</li>
+</ul>
+<h2 id="exercise-1-code-tour">Exercise 1 - Code tour</h2>
+<p>Let's examine the code in the base app called Northwind. </p>
+<h3 id="step-1-examine-the-manifest">Step 1 - Examine the manifest</h3>
+<p>The core of any Microsoft 365 application is its application manifest. This is where you provide the information Microsoft 365 needs to access your application.</p>
+<p>In your working directory called <strong>Northwind</strong> from previous lab , open the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json">manifest.json</a> file in the <strong>appPackage</strong> folder. This JSON file is placed in a zip archive with icon files to create the application package. The "icons" property includes paths to these icons.</p>
+<pre><code class="language-json">&quot;icons&quot;: {
+    &quot;color&quot;: &quot;Northwind-Logo3-192-${{TEAMSFX_ENV}}.png&quot;,
+    &quot;outline&quot;: &quot;Northwind-Logo3-32.png&quot;
+},
+</code></pre>
+<p>Notice the token <code>${{TEAMSFX_ENV}}</code> in one of the icon names. Teams Toolkit will replace this token with your environment name, such as "local" or "dev" (for an Azure deployment in development). Thus, the icon color will change depending on the environment.</p>
+<p>Now have a look at the "name" and "description". Notice that the description is quite long! This is important so both users and Copilot can learn what your application does and when to use it.</p>
+<pre><code class="language-json">    &quot;name&quot;: {
+        &quot;short&quot;: &quot;Northwind Inventory&quot;,
+        &quot;full&quot;: &quot;Northwind Inventory App&quot;
+    },
+    &quot;description&quot;: {
+        &quot;short&quot;: &quot;App allows you to find and update product inventory information&quot;,
+        &quot;full&quot;: &quot;Northwind Inventory is the ultimate tool for managing your product inventory. With its intuitive interface and powerful features, you'll be able to easily find your products by name, category, inventory status, and supplier city. You can also update inventory information with the app. \n\n **Why Choose Northwind Inventory:** \n\n Northwind Inventory is the perfect solution for businesses of all sizes that need to keep track of their inventory. Whether you're a small business owner or a large corporation, Northwind Inventory can help you stay on top of your inventory management needs. \n\n **Features and Benefits:** \n\n - Easy Product Search through Microsoft Copilot. Simply start by saying, 'Find northwind dairy products that are low on stock' \r - Real-Time Inventory Updates: Keep track of inventory levels in real-time and update them as needed \r  - User-Friendly Interface: Northwind Inventory's intuitive interface makes it easy to navigate and use \n\n **Availability:** \n\n To use Northwind Inventory, you'll need an active Microsoft 365 account . Ensure that your administrator enables the app for your Microsoft 365 account.&quot;
+    },
+</code></pre>
+<p>Scroll down a bit to "composeExtensions". Compose extension is the historical term for message extension; this is where the app's message extensions are defined.</p>
+<p>Within this is a bot, with the ID supplied by Teams Toolkit.</p>
+<pre><code class="language-json">    &quot;composeExtensions&quot;: [
+        {
+            &quot;botId&quot;: &quot;${{BOT_ID}}&quot;,
+            &quot;commands&quot;: [
+                {
+                    ...
+</code></pre>
+<p>Message extensions communicate using the Azure Bot Framework; this provides a fast and secure communication channel between Microsoft 365 and your application. When you first ran your project, Teams Toolkit registered a bot, and will place its bot ID here.</p>
+<p>This message extension has two commands, which are defined in the <code>commands</code> array. Let's pick one command and see the structure. </p>
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;discountSearch&quot;,
+    &quot;context&quot;: [
+        &quot;compose&quot;,
+        &quot;commandBox&quot;
+    ],
+    &quot;description&quot;: &quot;Search for discounted products by category&quot;,
+    &quot;title&quot;: &quot;Discounts&quot;,
+    &quot;type&quot;: &quot;query&quot;,
+    &quot;parameters&quot;: [
+        {
+            &quot;name&quot;: &quot;categoryName&quot;,
+            &quot;title&quot;: &quot;Category name&quot;,
+            &quot;description&quot;: &quot;Enter the category to find discounted products&quot;,
+            &quot;inputType&quot;: &quot;text&quot;
+        }
+    ]
+},
+</code></pre>
+<p>This allows user to search for discounted products within a Northwind category. This command accepts a single parameter, "categoryName". </p>
+<p>OK now let's move back to the first command, "inventorySearch". It has 5 parameters, which allows for much more sophisticated queries.</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: &quot;inventorySearch&quot;,
+    &quot;context&quot;: [
+        &quot;compose&quot;,
+        &quot;commandBox&quot;
+    ],
+    &quot;description&quot;: &quot;Search products by name, category, inventory status, supplier location, stock level&quot;,
+    &quot;title&quot;: &quot;Product inventory&quot;,
+    &quot;type&quot;: &quot;query&quot;,
+    &quot;parameters&quot;: [
+        {
+            &quot;name&quot;: &quot;productName&quot;,
+            &quot;title&quot;: &quot;Product name&quot;,
+            &quot;description&quot;: &quot;Enter a product name here&quot;,
+            &quot;inputType&quot;: &quot;text&quot;
+        },
+        {
+            &quot;name&quot;: &quot;categoryName&quot;,
+            &quot;title&quot;: &quot;Category name&quot;,
+            &quot;description&quot;: &quot;Enter the category of the product&quot;,
+            &quot;inputType&quot;: &quot;text&quot;
+        },
+        {
+            &quot;name&quot;: &quot;inventoryStatus&quot;,
+            &quot;title&quot;: &quot;Inventory status&quot;,
+            &quot;description&quot;: &quot;Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'&quot;,
+            &quot;inputType&quot;: &quot;text&quot;
+        },
+        {
+            &quot;name&quot;: &quot;supplierCity&quot;,
+            &quot;title&quot;: &quot;Supplier city&quot;,
+            &quot;description&quot;: &quot;Enter the supplier city of product&quot;,
+            &quot;inputType&quot;: &quot;text&quot;
+        },
+        {
+            &quot;name&quot;: &quot;stockQuery&quot;,
+            &quot;title&quot;: &quot;Stock level&quot;,
+            &quot;description&quot;: &quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;,
+            &quot;inputType&quot;: &quot;text&quot;
+        }
+    ]
+},
+</code></pre>
+<h3 id="step-2-examine-the-bot-code">Step 2 - Examine the "Bot" code</h3>
+<p>Now open the file <strong>searchApp.ts</strong> in folder <strong>src</strong> in the root folder. This application contains the "bot" code, which communicates with the Azure Bot Framework using the <a href="https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0">Bot Builder SDK</a>.</p>
+<p>Notice that the bot extends an SDK class <strong>TeamsActivityHandler</strong>.</p>
+<pre><code class="language-typescript">export class SearchApp extends TeamsActivityHandler {
+  constructor() {
+    super();
+  }
+
+  ...
+</code></pre>
+<p>By overriding the methods of the <strong>TeamsActivityHandler</strong>, the application is able to handle messages (called "activities") coming from Microsoft 365.</p>
+<p>The first of these is a Messaging Extension Query activity ("messaging extension" is another historical name for a message extension). This function is called when a user types into a message extension or when Copilot calls it.</p>
+<pre><code class="language-typescript">  // Handle search message extension
+  public async handleTeamsMessagingExtensionQuery(
+    context: TurnContext,
+    query: MessagingExtensionQuery
+  ): Promise&lt;MessagingExtensionResponse&gt; {
+
+    switch (query.commandId) {
+      case productSearchCommand.COMMAND_ID: {
+        return productSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
+      case discountedSearchCommand.COMMAND_ID: {
+        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
+    }
+  }
+</code></pre>
+<p>All it's doing is dispatching the query to the based on the command ID. These are the same command ID's used in the manifest above.</p>
+<p>The other type of activity our app needs to handle is the adaptive card actions, such as when a user clicks on "Update stock" or "Reorder" on an adaptive card. Since there is no specific method for an adaptive card action, the code overrides <code>onInvokeActivity()</code>, which is a much broader class of activity that includes message extension queries. For that reason, the code manually checks the activity name, and dispatches to the appropriate handler. If the activity name isn't for an adaptive card action, the <code>else</code> clause runs the base implementation of <code>onInvokeActivity()</code> which, among other things, will call our <code>handleTeamsMessagingExtensionQuery()</code> method if the Invoke activity is a query.</p>
+<pre><code class="language-typescript">import {
+  TeamsActivityHandler,
+  TurnContext,
+  MessagingExtensionQuery,
+  MessagingExtensionResponse,
+  InvokeResponse
+} from &quot;botbuilder&quot;;
+import productSearchCommand from &quot;./messageExtensions/productSearchCommand&quot;;
+import discountedSearchCommand from &quot;./messageExtensions/discountSearchCommand&quot;;
+import revenueSearchCommand from &quot;./messageExtensions/revenueSearchCommand&quot;;
+import actionHandler from &quot;./adaptiveCards/cardHandler&quot;;
+
+export class SearchApp extends TeamsActivityHandler {
+  constructor() {
+    super();
+  }
+
+  // Handle search message extension
+  public async handleTeamsMessagingExtensionQuery(
+    context: TurnContext,
+    query: MessagingExtensionQuery
+  ): Promise&lt;MessagingExtensionResponse&gt; {
+
+    switch (query.commandId) {
+      case productSearchCommand.COMMAND_ID: {
+        return productSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
+      case discountedSearchCommand.COMMAND_ID: {
+        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
+    }
+
+  }
+
+  // Handle adaptive card actions
+  public async onInvokeActivity(context: TurnContext): Promise&lt;InvokeResponse&gt; {
+    let runEvents = true;
+    // console.log (`🎬 Invoke activity received: ${context.activity.name}`);
+    try {
+      if(context.activity.name==='adaptiveCard/action'){
+        switch (context.activity.value.action.verb) {
+          case 'ok': {
+            return actionHandler.handleTeamsCardActionUpdateStock(context);
+          }
+          case 'restock': {
+            return actionHandler.handleTeamsCardActionRestock(context);
+          }
+          case 'cancel': {
+            return actionHandler.handleTeamsCardActionCancelRestock(context);
+          }
+          default:
+            runEvents = false;
+            return super.onInvokeActivity(context);
+        }
+      } else {
+          runEvents = false;
+          return super.onInvokeActivity(context);
+      }
+    } ...
+</code></pre>
+<h3 id="step-3-examine-the-message-extension-command-code">Step 3 - Examine the message extension command code</h3>
+<p>In an effort to make the code more modular, readable, and reusable, each message extension command has been placed in its own TypeScript module. Have a look at <strong>src/messageExtensions/discountSearchCommand.ts</strong> as an example.</p>
+<p>First, note that the module exports a constant <code>COMMAND_ID</code>, which contains the same command ID found in the app manifest, and allows the switch statement in <strong>searchApp.ts</strong> to work properly.</p>
+<p>Then it provides a function, <code>handleTeamsMessagingExtensionQuery()</code>, to handle incoming queries for discounted products by category.</p>
+<pre><code class="language-JavaScript">async function handleTeamsMessagingExtensionQuery(
+    context: TurnContext,
+    query: MessagingExtensionQuery
+): Promise&lt;MessagingExtensionResponse&gt; {
+
+    // Seek the parameter by name, don't assume it's in element 0 of the array
+    let categoryName = cleanupParam(query.parameters.find((element) =&gt; element.name === &quot;categoryName&quot;)?.value);
+    console.log(`💰 Discount query #${++queryCount}: Discounted products with categoryName=${categoryName}`);
+
+    const products = await getDiscountedProductsByCategory(categoryName);
+
+    console.log(`Found ${products.length} products in the Northwind database`)
+    const attachments = [];
+    products.forEach((product) =&gt; {
+        const preview = CardFactory.heroCard(product.ProductName,
+            `Avg discount ${product.AverageDiscount}%&lt;br /&gt;Supplied by ${product.SupplierName} of ${product.SupplierCity}`,
+            [product.ImageUrl]);
+
+        const resultCard = cardHandler.getEditCard(product);
+        const attachment = { ...resultCard, preview };
+        attachments.push(attachment);
+    });
+    return {
+        composeExtension: {
+            type: &quot;result&quot;,
+            attachmentLayout: &quot;list&quot;,
+            attachments: attachments,
+        },
+    };
+}
+</code></pre>
+<p>Notice that the index in the <code>query.parameters</code> array may not correspond to the parameter's position in the manifest. While this is generally only an issue for a multi-parameter command, the code will still get the value based on the parameter name rather than hard coding an index.
+After cleaning up the parameter (trimming it, and handling the fact that sometimes Copilot assumes "*" is a wildcard that matches everything), the code calls the Northwind data access layer to <code>getDiscountedProductsByCategory()</code>.</p>
+<p>Then it iterates through the products and creates two cards for each:</p>
+<ul>
+<li>a <em>preview</em> card, which is implemented as a "hero" card (these predate adaptive cards and are very simple). This is what's displayed in the search results in the user interface and in some citations in Copilot.</li>
+<li>a <em>result</em> card, which is implemented as an "adaptive" card that includes all the details.</li>
+</ul>
+<p>In the next step, we'll review the adaptive card code and check out the Adaptive Card designer.</p>
+<h3 id="step-4-examine-the-adaptive-cards-and-related-code">Step 4 - Examine the adaptive cards and related code</h3>
+<p>The project's adaptive cards are in the <strong>src/adaptiveCards</strong> folder. There are 3 cards, each implemented as a JSON file.</p>
+<ul>
+<li><strong>editCard.json</strong> - This is the initial card that's displayed by the message extension or a Copilot reference</li>
+<li><strong>successCard.json</strong> - When a user takes action, this card is displayed to indicate success. It's mostly the same as the edit card except it includes a message to the user.</li>
+<li><strong>errorCard.json</strong> - If an action fails, this card is displayed.</li>
+</ul>
+<p>Let's take a look at the edit card in the Adaptive Card Designer. Open your web browser to <a href="https://adaptivecards.io">https://adaptivecards.io</a> and click the "Designer" option at the top.</p>
+<p><img alt="image" src="../../../assets/images/extend-message-ext-01/05-01-AdaptiveCardDesigner-01.png" /></p>
+<p>Notice the data binding expressions such as <code>"text": "📦 ${productName}",</code>. This binds the <code>productName</code> property in the data to the text on the card.</p>
+<p>Now select "Microsoft Teams" as the host application 1️⃣ . Paste the entire contents of <strong>editCard.json</strong> into the Card Payload Editor 2️⃣ , and the contents of <strong>sampleData.json</strong> into the Sample Data Editor 3️⃣ . The sample data is identical to a product as provided in the code.</p>
+<p><img alt="image" src="../../../assets/images/extend-message-ext-01/05-01-AdaptiveCardDesigner-02.png" /></p>
+<p>You should see the card as rendered, except for a small error which arises due to the designer's inability to display one of the adaptive card formats.</p>
+<p>Near the top of the page, try changing the Theme and Emulated Device to see how the card would look in dark theme or on a mobile device. This is the tool that was used to build adaptive cards for the sample application.</p>
+<p>Now, back in Visual Studio Code, open <strong>cardHandler.ts</strong>. The function <code>getEditCard()</code> is called from each of the message extension commands to obtain a result card. The code reads the adaptive card JSON - which is considered a template - and then binds it to product data. The result is more JSON - the same card as the template, with the data binding expressions all filled in. Finally, the <code>CardFactory</code> module is used to convert the final JSON into an adaptive card object for rendering.</p>
+<pre><code class="language-typescript">function getEditCard(product: ProductEx): any {
+
+    var template = new ACData.Template(editCard);
+    var card = template.expand({
+        $root: {
+            productName: product.ProductName,
+            unitsInStock: product.UnitsInStock,
+            productId: product.ProductID,
+            categoryId: product.CategoryID,
+            imageUrl: product.ImageUrl,
+            supplierName: product.SupplierName,
+            supplierCity: product.SupplierCity,
+            categoryName: product.CategoryName,
+            inventoryStatus: product.InventoryStatus,
+            unitPrice: product.UnitPrice,
+            quantityPerUnit: product.QuantityPerUnit,
+            unitsOnOrder: product.UnitsOnOrder,
+            reorderLevel: product.ReorderLevel,
+            unitSales: product.UnitSales,
+            inventoryValue: product.InventoryValue,
+            revenue: product.Revenue,
+            averageDiscount: product.AverageDiscount
+        }
+    });
+    return CardFactory.adaptiveCard(card);
+}
+</code></pre>
+<p>Scrolling down, you'll see the handler for each of the action buttons on the card. The card submits data when an action button is clicked - specifically <code>data.txtStock</code>, which is the "Quantity" input box on the card, and <code>data.productId</code>, which is sent in each card action to let the code know what product to update.</p>
+<pre><code class="language-typescript">async function handleTeamsCardActionUpdateStock(context: TurnContext) {
+
+    const request = context.activity.value;
+    const data = request.action.data;
+    console.log(`🎬 Handling update stock action, quantity=${data.txtStock}`);
+
+    if (data.txtStock &amp;&amp; data.productId) {
+
+        const product = await getProductEx(data.productId);
+        product.UnitsInStock = Number(data.txtStock);
+        await updateProduct(product);
+
+        var template = new ACData.Template(successCard);
+        var card = template.expand({
+            $root: {
+                productName: product.ProductName,
+                unitsInStock: product.UnitsInStock,
+                productId: product.ProductID,
+                categoryId: product.CategoryID,
+                imageUrl: product.ImageUrl,
+                ...
+</code></pre>
+<p>As you can see, the code obtains these two values, updates the database, and then sends a new card that contains a message and the updated data.</p>
+<h2 id="exercise-2-run-the-sample-as-a-message-extension">Exercise 2 - Run the sample as a Message Extension</h2>
+<h3 id="step-1-set-up-the-project-for-first-use">Step 1 - Set up the project for first use</h3>
+<p>Open your working folder in Visual Studio Code. If you have already opened it for the code tour, you can continue from there.</p>
+<p>Teams Toolkit stores environment variables in the <strong>env</strong> folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.</p>
+<p>In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the <a href="https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio">Azurite</a> storage emulator. That's mostly built into the project, but the project won't build unless you provide the connection string.</p>
+<p>The necessary setting is provided in a file <strong>env/.env.local.user.sample</strong>. Make a copy of this file in the <strong>env</strong> folder, and call it <strong>.env.local.user</strong>. This is where secret or sensitive settings are stored.</p>
+<p>If you're not sure how to do this, here are the steps in Visual Studio Code. Expand the <strong>env</strong> folder and right click on <strong>.env.local.user.sample</strong>. Select "Copy". Then right click anywhere in the <strong>env</strong> folder and select "Paste". You will have a new file called <strong>.env.local.user copy.sample</strong>. Use the same context menu to rename the file to <strong>.env.local.user</strong> and you're done.</p>
+<p><img alt="Copy .env.local.user.sample to .env.local.user" src="../../../assets/images/extend-message-ext-01/02-01-Setup-Project-01.png" /></p>
+<p>The resulting <strong>.env.local.user</strong> file should contain this line:</p>
+<pre><code class="language-text">SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+</code></pre>
+<p>(OK it's not a secret! But it could be; if you deploy the project to Azure it will be!)</p>
+<h3 id="step-2-run-the-application-locally">Step 2 - Run the application locally</h3>
+<p>Click F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.</p>
+<p><img alt="Run application locally" src="../../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png" /></p>
+<p>If you see this screen, you need to fix your <strong>env/.env.local.user</strong> file; this is explained in the previous step.</p>
+<p><img alt="Error is displayed because of a missing environment variable" src="../../../assets/images/extend-message-ext-01/02-01-Setup-Project-06.png" /></p>
+<p>The first time your app runs, you may be prompted to allow NodeJS to go through your firewall; this is necessary to allow the application to communicate.</p>
+<p>It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.</p>
+<p>The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. </p>
+<p><img alt="Open" src="../../../assets/images/extend-message-ext-01/nw-open.png" /></p>
+<p>Once opened it immediately ask you where you want to open the app in. By default it's personal chat. You could also select it in a channel or group chat as shown. Select "Open".</p>
+<p><img alt="Open surfaces" src="../../../assets/images/extend-message-ext-01/nw-open-2.png" /></p>
+<p>Now you are in a personal chat with the app.</p>
+<h3 id="step-3-test-in-microsoft-teams">Step 3 - Test in Microsoft Teams</h3>
+<p>To test the app on the teams, select the "+" sign in the chat message compose area. And select "+ Get more apps" button to open the dialog to search apps. Choose "Northwind Inventory" app with a blue background. See the process below.</p>
+<p><img alt="select app" src="../../../assets/images/extend-message-ext-01/choose-app.gif" /></p>
+<p>Once the app is opened from the compose area, you will see a search box in the default tab "Products Inventory". You will also find the "Discount" search tab greyed out.
+Continue searching for a product, type in "Chai" which is a product available in Northwind database to see if the item is displayed as shown below.</p>
+<p><img alt="search app" src="../../../assets/images/extend-message-ext-01/nw-me-working.png" /></p>
+<p>You can select the card for Chai and send it in the conversation. </p>
+<p>You could also test the button actions in the adaptive card as demonstrated below. </p>
+<p><img alt="search app" src="../../../assets/images/extend-message-ext-01/action-working.gif" /></p>
+<p>This will confirm that the message extension is working and ready to be used as a plugin, which we will see in the next lab.</p>
+<blockquote>
+<p>NOTE: This is really only useful in conversations with other users; the chat in the Northwind Inventory app is just for testing.</p>
+</blockquote>
+<h3 id="step-4-advanced-queries">Step 4 - Advanced queries</h3>
+<p>Back in Visual Studio Code, have a look at the app manifest, which is in a file called <strong>manifest.json</strong> in the <strong>appPackage</strong> directory. You'll notice that the app information that was displayed when you installed the app is all here.</p>
+<p>Scroll down a bit to <code>composeExtensions:</code>.
+Compose extensions is the historical name for a message extension; the Northwind Inventory message extension is defined here.</p>
+<p>Here's an abbreviated version of that JSON for easy reference.</p>
+<pre><code class="language-json">&quot;composeExtensions&quot;: [
+    {
+        &quot;botId&quot;: &quot;${{BOT_ID}}&quot;,
+        &quot;commands&quot;: [
+            {
+                &quot;id&quot;: &quot;inventorySearch&quot;,
+                ...
+                &quot;description&quot;: &quot;Search products by name, category, inventory status, supplier location, stock level&quot;,
+                &quot;title&quot;: &quot;Product inventory&quot;,
+                &quot;type&quot;: &quot;query&quot;,
+                &quot;parameters&quot;: [ ... ]
+            },
+            {
+                &quot;id&quot;: &quot;discountSearch&quot;,
+                ...
+                &quot;description&quot;: &quot;Search for discounted products by category&quot;,
+                &quot;title&quot;: &quot;Discounts&quot;,
+                &quot;type&quot;: &quot;query&quot;,
+                &quot;parameters&quot;: [ ...]
+            }
+        ]
+    }
+],
+</code></pre>
+<p>Notice first that there's a bot ID. That's because Microsoft Teams uses the Azure bot channel to exchange secure, real-time messages with your application. Teams Toolkit will register the bot and fill in the ID for you.</p>
+<p>Then there's a collection of commands. These correspond to the tabs in the search dialog in Teams. In this application, the commands are really intended for Copilot more than regular users!</p>
+<p>You already ran the first command when you searched for a product by name. You can try the other one now.</p>
+<p>Enter "Beverages", "Dairy", or "Produce" into the "Discounts" tab, and you'll see the products within those categories that are discounted. Copilot will use this to answer questions about discounted products.</p>
+<p><img alt="Searching for beverages under the discount tab" src="../../../assets/images/extend-message-ext-01/02-03-Test-Multi-02.png" /></p>
+<p>Now examine the first command again. You'll notice it has 5 parameters!</p>
+<pre><code class="language-json">&quot;parameters&quot;: [
+    {
+        &quot;name&quot;: &quot;productName&quot;,
+        &quot;title&quot;: &quot;Product name&quot;,
+        &quot;description&quot;: &quot;Enter a product name here&quot;,
+        &quot;inputType&quot;: &quot;text&quot;
+    },
+    {
+        &quot;name&quot;: &quot;categoryName&quot;,
+        &quot;title&quot;: &quot;Category name&quot;,
+        &quot;description&quot;: &quot;Enter the category of the product&quot;,
+        &quot;inputType&quot;: &quot;text&quot;
+    },
+    {
+        &quot;name&quot;: &quot;inventoryStatus&quot;,
+        &quot;title&quot;: &quot;Inventory status&quot;,
+        &quot;description&quot;: &quot;Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'&quot;,
+        &quot;inputType&quot;: &quot;text&quot;
+    },
+    {
+        &quot;name&quot;: &quot;supplierCity&quot;,
+        &quot;title&quot;: &quot;Supplier city&quot;,
+        &quot;description&quot;: &quot;Enter the supplier city of product&quot;,
+        &quot;inputType&quot;: &quot;text&quot;
+    },
+    {
+        &quot;name&quot;: &quot;stockQuery&quot;,
+        &quot;title&quot;: &quot;Stock level&quot;,
+        &quot;description&quot;: &quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;,
+        &quot;inputType&quot;: &quot;text&quot;
+    }
+]
+</code></pre>
+<p>Unfortunately, Teams can only display the first parameter, but Copilot can use all 5. This will allow it to do more advanced queries of the Northwind inventory data.</p>
+<p>As a work-around to the Teams UI limitation, in the "Northwind Inventory" tab, the application will accept up to 5 parameters comma separated, using the format:</p>
+<pre><code class="language-text">name,category,inventoryStatus,supplierCity,supplierName
+</code></pre>
+<p><img alt="Entering multiple comma separated fields into the Northwind Inventory tab" src="../../../assets/images/extend-message-ext-01/02-03-Test-Multi-04.png" /></p>
+<p>Read the descriptions in the JSON above carefully when entering a query. Try entering these, and as you do, keep an eye on the debug console tab in Visual Studio Code, where you'll see each query as it's run.</p>
+<ul>
+<li>"chai" - find products with names that begin with "chai</li>
+<li>"c,bev" - find products in categories beginning with "bev" and names that begin with "c</li>
+<li>",,out" - find products that are out of stock</li>
+<li>",,on,london" - find products that are on order from suppliers in London</li>
+<li>"tofu,produce,,osaka" - find products in the "produce" category with suppliers in Osaka and names that begin with "tofu"</li>
+</ul>
+<p>Each query term filters the list of products down. The format of each query term is arbitrary - just be sure to explain it to Copilot in the description of each parameter.</p>
+<h3 id="step-6-optional-view-northwind-database-in-azure-storage-explorer">Step 6 (optional) - View Northwind database in Azure Storage Explorer</h3>
+<p>The Northwind Database isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Running the app starts Azurite automatically. For more information check the <a href="https://learn.microsoft.com/azure/storage/common/storage-use-azurite" target="_blank">Azurite documention here</a>. As long as your project is started successfully you can view the storage.</p>
+<p>To view the Northwind data, open "Emulator &amp; Attached", "Storage Accounts", "Emulator - Default Ports", and "Tables". There you'll see the old Northwind database tables, which aren't nearly as handy in a NO SQL environment, but there they are!</p>
+<p><img alt="Azure Storage Explorer showing the Northwind database tables" src="../../../assets/images/extend-message-ext-01/02-06-AzureStorageExplorer-01.png" /></p>
+<p>The code reads the Products table on each query, but the other tables are only accessed when the app starts. So if you want to add a new category, you'll need to restart the app for it to appear.</p>
+<h2 id="congratulations">Congratulations</h2>
+<p>You have mastered running the Northwind message extension. Now it's time to test it as plugin in Microsoft Copilot for Microsoft 365 in the next lab. Select Next.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>
