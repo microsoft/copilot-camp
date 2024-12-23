@@ -14,7 +14,7 @@ In this lab you will:
 
 ## Introduction
 
-In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure OpenAI Studio on your data" feature to:
+In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure AI Foundry on your data" feature to:
 
 - Create an index on Azure AI Search.
 - Generate vector embeddings for the resumes (PDF documents).
@@ -101,7 +101,7 @@ Once your Azure AI Search service resource is created successfully, navigate to 
 ??? info "What does `text-embedding-ada-002` do?"
     The `text-embedding-ada-002` model on Azure OpenAI converts text into numeric vectors that represent the meaning of the text. This allows for vector search, where instead of matching exact words, the search finds text with similar meanings. It works with multiple languages and different content types, making it useful for comparing text across languages and formats. When used with Azure AI Search, it improves search results by finding the most relevant and contextually accurate information. This model is perfect for creating advanced search solutions and applications that need to understand natural language.
 
-Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
+Open [Azure AI Foundry](https://oai.azure.com/portal) in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
 
 - **Select a model:** `text-embedding-ada-002`.
 - **Model version:** Default.
@@ -116,19 +116,19 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 
 <cc-end-step lab="b2" exercise="1" step="3" />
 
-## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
+## Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground
 
 For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
-1. Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
+1. Open [Azure AI Foundry](https://oai.azure.com/portal) in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
 
      ![Reset chat playground](../../assets/images/custom-engine-02/reset-chat-playground.png)
 
 1. Select **Add your data** and then **Add a data source**.
 
-    ![Add your data in Azure OpenAI Studio](../../assets/images/custom-engine-02/add-your-data-aoai.png)
+    ![Add your data in Azure AI Foundry](../../assets/images/custom-engine-02/add-your-data-aoai.png)
 
 1. Select **Upload files (preview)**, then fill the details as the following and select **Next**:
 
@@ -151,7 +151,10 @@ It takes couple of minutes to complete the data ingestion. Once the data is read
 
 <cc-end-step lab="b2" exercise="2" step="1" />
 
-### Step 2: Test your data on Azure OpenAI Studio
+!!! note "Note"
+    Once you index your data, your index remains on Azure AI Search even if you close or refresh the Chat Playground. If the Chat Playground resets itself and you have to add your data again, you don't have to index your data for the second time using Upload files, instead you can select Azure AI Search from Add Your Data section and select your existing index to test out your data.
+
+### Step 2: Test your data on Azure AI Foundry
 
 Once your data  ingestion is completed, use Chat playground to ask questions about your data. 
 
@@ -160,7 +163,7 @@ You can ask questions such as *"Can you suggest me a candidate who is suitable f
 !!! tip "Tip: Making the most out of your data"
     Review your dataset before asking questions testing the vector search. Go through the `resumes` folder and recognize the resumes provided in different languages with diverse professions, years of experience, skills and more. Start chatting with your data by asking questions to find out the right candidate for a skill, language, profession, years of experience and other categories. Try to test out the combination of requirements to challenge the search experience!
 
-![Chat with your data on Azure OpenAI Studio](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
+![Chat with your data on Azure AI Foundry](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
 
 <cc-end-step lab="b2" exercise="2" step="2" />
 
@@ -301,6 +304,9 @@ defaultPrompt: async () => {
 <cc-end-step lab="b2" exercise="3" step="2" />
 
 ### Step 3: Debug your app and chat with your data
+
+!!! pied-piper "Disclaimer: Debug locally instead of using the Test Tool"
+   Note that some advanced features you've added in your app may not show up properly in the App Test Tool. Therefore, you are going to debug your app locally on Teams instead of using the Test Tool moving forward.
 
 Let's test Career Genie on Teams this time. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 

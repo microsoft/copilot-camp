@@ -65,16 +65,16 @@ Once your Azure OpenAI service is created successfully, navigate to your resourc
 
 ### Step 2: Create a deployment model
 
-In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure OpenAI Studio` where you can create your deployment model.
+In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure AI Foundry` where you can create your deployment model.
 
-??? check "What is Azure OpenAI Studio?"
-    Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Foundry that provide a large selection of models to deploy, fine-tune and publish.
+??? check "What is Azure AI Foundry?"
+    Azure AI Foundry is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. It's also a playground to models other than OpenAI such as `Phi-3`, `Llama 3.1` and a starting point to other Azure AI services such as Speech, Vision and more.
 
-    *Learn more about the Generative AI, prompting and Azure OpenAI Studio by watching this Doodle to Code video!*
+    *Learn more about the Generative AI, prompting by watching this Doodle to Code video!*
     
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
-In Azure OpenAI Studio, select **Deployments** tab, **Deploy model** and then **Deploy base model**. Search the model you prefer to use such as `gpt-4` and **Confirm**. Fill out the following details and select **Deploy**:
+In Azure AI Foundry, select **Deployments** tab, **Deploy model** and then **Deploy base model**. Search the model you prefer to use such as `gpt-4` and **Confirm**. Fill out the following details and select **Deploy**:
 
 - **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
 - **Select a model:** Select a model, `gpt-4` is recommended.
@@ -89,7 +89,7 @@ Once your model is successfully created, select **Open in playground**, and test
 
 For example, choose "Shakespearean Writing Assistant" and select **Use prompt**. and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
 
-![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
+![Testing the model in Azure AI Foundry Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 <cc-end-step lab="b1" exercise="1" step="2" />
 
