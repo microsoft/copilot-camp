@@ -92,7 +92,7 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
     </div>
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/xAXlFGSH1II" frameborder="0" allowfullscreen></iframe>
-      <div>Bring your AI App to Microsoft Teams from Azure OpenAI Studio</div>
+      <div>Bring your AI App to Microsoft Teams from Azure AI Foundry</div>
     </div>
 
 ???+ info "Microsoft Mechanics"
