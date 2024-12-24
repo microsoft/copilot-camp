@@ -1,0 +1,1209 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/02-rag/">
+      
+      
+        <link rel="prev" href="../01-custom-engine-agent/">
+      
+      
+        <link rel="next" href="../03-powered-by-ai/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Lab B2 - Index your data in Azure AI Search - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-b2-index-your-data-in-azure-ai-search" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab B2 - Index your data in Azure AI Search
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/EB-add-graphconnector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-setup-azure-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Setup Azure Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-upload-your-documents-to-azure-ai-search-using-azure-ai-foundry-chat-playground" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-integrate-your-app-with-azure-ai-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Integrate your app with Azure AI Search
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="lab-b2-index-your-data-in-azure-ai-search">Lab B2 - Index your data in Azure AI Search</h1>
+<div class="floatwide">
+<div class="cc-lab-toc b-path">
+  <img src="/copilot-camp/assets/images/path-icons/B-path-heading.png"></img>
+  <div>
+    <p>Do these labs if you want to build a Custom engine agent with custom AI model and orchestration using Azure OpenAI and Teams AI library</p>
+    <ul>
+      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Setup</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-agent/">B1 - First custom engine agent</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/02-rag/">B2 - Index your data in Azure AI Search</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/04-authentication/">B4 - Add single sign on authentication</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/05-actions/">B5 - Add actions to handle complex tasks</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(() => {
+// This script decorates the table of contents with a "you are here" indicator.
+const toc = document.getElementsByClassName('cc-lab-toc');
+for (const div of toc) {
+    const lis = div.querySelectorAll('li');
+    for (const li of lis) {
+        const anchor = li.querySelector('a');
+        if (location.href.includes(anchor.href)) {
+            const span = document.createElement("span");
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+            li.appendChild(span);
+        }
+    }    
+}
+})();
+</script>
+
+<div class="cc-b-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
+</div>
+
+<p>In this lab you will enable Retrieval-Augmented Generation for your custom engine agent and integrate with Azure AI Search to chat with your data.</p>
+<p>In this lab you will:</p>
+<ul>
+<li>Learn what is Retrieval-Augmented Generation (RAG)</li>
+<li>Setup Azure resources</li>
+<li>Upload your documents to Azure AI Search</li>
+<li>Prepare your custom engine agent for Vector Search</li>
+<li>Learn how to run and test your app</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure AI Foundry on your data" feature to:</p>
+<ul>
+<li>Create an index on Azure AI Search.</li>
+<li>Generate vector embeddings for the resumes (PDF documents).</li>
+<li>Upload the data in chunks to Azure AI Search.</li>
+</ul>
+<p>Finally, you'll integrate your custom engine agent with Azure AI Search to chat with your data and obtain the best results.</p>
+<details class="info" open="open">
+<summary>What is Retrieval-Augmented Generation (RAG)?</summary>
+<p>Retrieval-Augmented Generation (RAG) is a technique used in artificial intelligence to improve the quality of responses generated by language models. Here's a simple example to understand it better:</p>
+<p>Imagine you have a smart assistant that can write answers to your questions. Sometimes, this assistant might not know everything it needs to give a great answer. To help with this, RAG lets the assistant look up information from a large collection of documents, videos, images similar to how you might search the internet for answers. After finding the relevant information, the assistant then uses this data to write a better, more accurate response.</p>
+<p>So, RAG combines two steps:</p>
+<ul>
+<li><strong>Retrieval:</strong> Finding relevant information from a big pool of data.</li>
+<li><strong>Generation:</strong> Using that information to create a detailed and accurate response.</li>
+</ul>
+<p>This way, RAG helps in providing more informed and useful answers, making it very effective for tasks like answering questions, writing articles, and assisting with research.</p>
+<p><em>Learn more about the RAG by watching this Doodle to Code video!</em></p>
+<p><iframe src="//www.youtube.com/embed/1k4XGgsqfTM?si=P6O9baroreDKizb" frameborder="0" allowfullscreen></iframe></p>
+</details>
+<details class="tip">
+<summary>Benefits of using Vector Search</summary>
+<p>Vector search is an advanced technique used to find information quickly and accurately based on its meaning rather than just matching exact words. Unlike traditional text-based search, which relies on exact keyword matches, vector search uses numeric vectors to find content that is similar to your query. This enables Vector search to handle:</p>
+<ul>
+<li><strong>Semantic or conceptual similarity:</strong> Matching concepts that are similar in meaning even if they use different words (e.g., "pastry" and "croissant").</li>
+<li><strong>Multilingual content:</strong> Finding equivalent content across different languages (e.g., "pastry" in English and "gebäck" in German).</li>
+<li><strong>Multiple content types:</strong> Searching across different formats (e.g., "pastry" in text and an image of a pastry).</li>
+</ul>
+<p>Here is how vector search works:</p>
+<ol>
+<li><strong>Converting text to vectors:</strong> Imagine turning words or sentences into a series of numbers (a vector) that captures the essence or meaning of that text. This is done using techniques like word embeddings or deep learning models.</li>
+<li><strong>Storing vectors:</strong> These vectors are stored in a special database designed to handle them efficiently.</li>
+<li><strong>Searching with vectors:</strong> When you search for something, your query is also converted into a vector. The search system then looks for vectors in the database that are close to your query vector in terms of meaning, not just exact word matches.</li>
+</ol>
+<p>For example, if you search for "how to bake a cake" the system can find documents about "cake recipes" or "baking tips" even if they don't have the exact words "how to bake a cake" or even if the recipes are written in another language. This makes vector search powerful for finding relevant information based on context and meaning, especially in large datasets.</p>
+<p>In summary, vector search improves the search process by focusing on the meaning behind the words, enabling more accurate and relevant results.</p>
+</details>
+<h2 id="exercise-1-setup-azure-resources">Exercise 1: Setup Azure Resources</h2>
+<p>You'll need to complete the Azure subscription pre-requisite before starting with this exercise.</p>
+<h3 id="step-1-create-azure-ai-search-service-resource">Step 1: Create Azure AI Search service resource</h3>
+<details class="check">
+<summary>What is Azure AI Search?</summary>
+<p>Azure AI Search (formerly known as "Azure Cognitive Search") provides secure information retrieval at scale over user-owned content in traditional and generative AI search applications.When you create a search service, you work with the following capabilities:</p>
+<ul>
+<li>A search engine for vector search, full text and hybrid search over a search index</li>
+<li>Rich indexing with integrated data chunking and vectorization</li>
+<li>Rich query syntax for vector queries, text search, hybrid queries</li>
+<li>Integration with Azure AI services and Azure OpenAI</li>
+</ul>
+</details>
+<ol>
+<li>Open the browser of your choice and navigate to <a href="https://portal.azure.com">Azure Portal</a>.</li>
+<li>Select <strong>Create a resource</strong>, then search for <code>Azure AI Search</code>. Select the Azure AI Search service and then <strong>Create</strong>.</li>
+<li>Fill out the following details and select <strong>Review + Create</strong>:<ul>
+<li><strong>Subscription:</strong> The Azure subscription for your Azure OpenAI Service</li>
+<li><strong>Resource group:</strong> Select the pre-existing resource group you created earlier for Azure OpenAI service.</li>
+<li><strong>Name:</strong> A descriptive name for your Azure OpenAI Service resource, such as <code>copilotcamp-ai-search</code>.</li>
+<li><strong>Location:</strong> The location of your instance.</li>
+<li><strong>Pricing Tier:</strong> Basic</li>
+</ul>
+</li>
+</ol>
+<p>Once your Azure AI Search service resource is created successfully, navigate to your resource, In <strong>Overview</strong>, copy and save <code>Url</code>. Then, navigate to <strong>Keys</strong> tab under the <strong>Settings</strong>, copy and save <code>Primary admin key</code>. Both of them will be required later in the following exercises.</p>
+<p><cc-end-step lab="b2" exercise="1" step="1" /></p>
+<h3 id="step-2-create-a-storage-account-service-resource">Step 2: Create a storage account service resource</h3>
+<ol>
+<li>Open the browser of your choice and navigate to <a href="https://portal.azure.com">Azure Portal</a>.</li>
+<li>Select <strong>Create a resource</strong>, then search for <code>Storage Account</code>. Select the Storage Account service and then <strong>Create</strong>.</li>
+<li>Fill out the following details and select <strong>Review</strong>, then <strong>Create</strong>:<ul>
+<li><strong>Subscription:</strong> The Azure subscription for your Azure OpenAI Service</li>
+<li><strong>Resource group:</strong> Select the pre-existing resource group you created earlier for Azure OpenAI service.</li>
+<li><strong>Name:</strong> A descriptive name for your Azure OpenAI Service resource, such as <code>copilotcampstorage</code>.</li>
+<li><strong>Region:</strong> The location of your instance.</li>
+<li><strong>Performance:</strong> Standard</li>
+<li><strong>Redundancy:</strong> Geo-redundant storage (GRS)</li>
+</ul>
+</li>
+</ol>
+<p><cc-end-step lab="b2" exercise="1" step="2" /></p>
+<h3 id="step-3-create-a-text-embedding-ada-002-model">Step 3: Create a <code>text-embedding-ada-002</code> model</h3>
+<details class="info">
+<summary>What does <code>text-embedding-ada-002</code> do?</summary>
+<p>The <code>text-embedding-ada-002</code> model on Azure OpenAI converts text into numeric vectors that represent the meaning of the text. This allows for vector search, where instead of matching exact words, the search finds text with similar meanings. It works with multiple languages and different content types, making it useful for comparing text across languages and formats. When used with Azure AI Search, it improves search results by finding the most relevant and contextually accurate information. This model is perfect for creating advanced search solutions and applications that need to understand natural language.</p>
+</details>
+<p>Open <a href="https://oai.azure.com/portal">Azure AI Foundry</a> in your browser, then select <strong>Deployments</strong>. Select <strong>Create a new deployment</strong>. Fill out the following details and select <strong>Create</strong>:</p>
+<ul>
+<li><strong>Select a model:</strong> <code>text-embedding-ada-002</code>.</li>
+<li><strong>Model version:</strong> Default.</li>
+<li><strong>Deployment type:</strong> Standard.</li>
+<li><strong>Deployment name:</strong> Choose a memorable name, such as <code>text-embeddings</code></li>
+<li><strong>Content Filter:</strong> Default.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Handling no quota available message</p>
+<p>When you select a model, you may see <strong>No quota available</strong> message pop-up on top of the configuration page. To handle this, you have two options:
+1. Select a different version or deployment type
+1. Free up the resources on other deployments by requesting for <a href="https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota">more quota or adjust the existing quota</a></p>
+</div>
+<p><cc-end-step lab="b2" exercise="1" step="3" /></p>
+<h2 id="exercise-2-upload-your-documents-to-azure-ai-search-using-azure-ai-foundry-chat-playground">Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground</h2>
+<p>For this exercise, download <a href="https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip">fictitious_resumes.zip</a> and unzip the folder.</p>
+<h3 id="step-1-upload-your-documents-to-azure-ai-search">Step 1: Upload your documents to Azure AI Search</h3>
+<ol>
+<li>
+<p>Open <a href="https://oai.azure.com/portal">Azure AI Foundry</a> in your browser, then select <strong>Chat</strong> playground. In the <strong>Setup</strong> section, first make sure you reset the model instructions by selecting <strong>Reset</strong> and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.</p>
+<p><img alt="Reset chat playground" src="../../../assets/images/custom-engine-02/reset-chat-playground.png" /></p>
+</li>
+<li>
+<p>Select <strong>Add your data</strong> and then <strong>Add a data source</strong>.</p>
+<p><img alt="Add your data in Azure AI Foundry" src="../../../assets/images/custom-engine-02/add-your-data-aoai.png" /></p>
+</li>
+<li>
+<p>Select <strong>Upload files (preview)</strong>, then fill the details as the following and select <strong>Next</strong>:</p>
+<ul>
+<li><strong>Subscription:</strong> Select the subscription you created your Azure resources.</li>
+<li><strong>Select Azure Blob storage resource:</strong> Select your storage resource, <code>copilotcampstorage</code>. (You'll see a message <em>Azure OpenAI needs your permission to access this resource</em>, select <strong>Turn on CORS</strong>.)</li>
+<li><strong>Select Azure AI Search resource:</strong> Select your Azure AI Search resournce, <code>copilotcamp-ai-search</code>.</li>
+<li><strong>Enter the index name:</strong> Index name, such as <code>resumes</code>; make note of this</li>
+<li>Select the box for <strong>Add vector search to this search resource</strong>.</li>
+<li><strong>Select an embedding model:</strong> Select your text-embedding-ada-002 model, <code>text-embeddings</code>.</li>
+</ul>
+</li>
+</ol>
+<p>Take note of the index name as you will use this in the INDEX_NAME environment variable.</p>
+<p><img alt="Upload your data source" src="../../../assets/images/custom-engine-02/add-data-source-aoai.png" /></p>
+<ol>
+<li>Select <strong>Browse for a file</strong> and select the pdf documents from the <code>resumes</code> folder. Then, select <strong>Upload files</strong> and <strong>Next</strong>.</li>
+<li>Select Search type as <code>Vector</code> and chunk size as <code>1024(Default)</code>, then <strong>Next</strong>.</li>
+<li>Select <code>API Key</code> as Azure resource authentication type, then <strong>Next</strong>.</li>
+</ol>
+<p>It takes couple of minutes to complete the data ingestion. Once the data is ready, you can proceed with testing.</p>
+<p><cc-end-step lab="b2" exercise="2" step="1" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once you index your data, your index remains on Azure AI Search even if you close or refresh the Chat Playground. If the Chat Playground resets itself and you have to add your data again, you don't have to index your data for the second time using Upload files, instead you can select Azure AI Search from Add Your Data section and select your existing index to test out your data.</p>
+</div>
+<h3 id="step-2-test-your-data-on-azure-ai-foundry">Step 2: Test your data on Azure AI Foundry</h3>
+<p>Once your data  ingestion is completed, use Chat playground to ask questions about your data. </p>
+<p>You can ask questions such as <em>"Can you suggest me a candidate who is suitable for Spanish speaking role that requires at least 2 years of .NET experience?"</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Making the most out of your data</p>
+<p>Review your dataset before asking questions testing the vector search. Go through the <code>resumes</code> folder and recognize the resumes provided in different languages with diverse professions, years of experience, skills and more. Start chatting with your data by asking questions to find out the right candidate for a skill, language, profession, years of experience and other categories. Try to test out the combination of requirements to challenge the search experience!</p>
+</div>
+<p><img alt="Chat with your data on Azure AI Foundry" src="../../../assets/images/custom-engine-02/chat-with-your-data-aoai.png" /></p>
+<p><cc-end-step lab="b2" exercise="2" step="2" /></p>
+<h3 id="step-3-sneak-peek-to-your-index-on-azure-ai-search">Step 3: Sneak peek to your index on Azure AI Search</h3>
+<p>To understand more about your dataset and explore more, select <strong>resumes</strong> from the Add your data section of the Chat playground. This will redirect you to your resumes index on Azure AI Search.</p>
+<p><img alt="Index on Azure AI Search" src="../../../assets/images/custom-engine-02/index-aoai.png" /></p>
+<p>First, let's include the vector content in our data. Select <strong>Fields</strong> tab in your Resumes index page, then check the box for <strong>contentVector</strong>, finally select <strong>Save</strong>.</p>
+<p><img alt="Include contentVector" src="../../../assets/images/custom-engine-02/add-contentvector.png" /></p>
+<p>Go back to <strong>Search explorer</strong> tab, select <strong>Query options</strong> in your Resumes index page and then change the <strong>API version</strong> as <code>2023-11-01</code>, then select <strong>Close</strong>. To view your data, press <strong>Search</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Recognize <code>contentVector</code> parameter</p>
+<p>When scrolling through your data, recognize that each document has <code>contentVector</code> parameter that contains the numeric vectors of the pdf document. These numeric vectors will be used for Vector Search to identify the best matching results.</p>
+</div>
+<p><img alt="contentVector in data" src="../../../assets/images/custom-engine-02/contentvector-in-your-data.png" /></p>
+<p><cc-end-step lab="b2" exercise="2" step="3" /></p>
+<h2 id="exercise-3-integrate-your-app-with-azure-ai-search">Exercise 3: Integrate your app with Azure AI Search</h2>
+<p>For this exercise, ensure that you obtain Azure OpenAI text embedding deployment name and Azure AI Search key and endpoint.</p>
+<h3 id="step-1-configure-environment-variables">Step 1: Configure environment variables</h3>
+<p>In your Career Genie project, navigate to <code>env/.env.local.user</code> and paste the following environment variables:</p>
+<pre><code class="language-json">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='&lt;Your-Text-Embedding-Model-Name&gt;'
+SECRET_AZURE_SEARCH_KEY='&lt;Your-Azure-AI-Search-Key&gt;'
+AZURE_SEARCH_ENDPOINT='&lt;Your-Azure-AI-Search-Endpoint&gt;'
+INDEX_NAME='&lt;Your-index-name&gt;'
+</code></pre>
+<p>Open <code>teamsapp.local.yml</code> and add the following snippet at the bottom of the file, under <code>uses: file/createOrUpdateEnvironmentFile</code>:</p>
+<pre><code class="language-yml">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}}
+AZURE_SEARCH_KEY: ${{SECRET_AZURE_SEARCH_KEY}}
+AZURE_SEARCH_ENDPOINT: ${{AZURE_SEARCH_ENDPOINT}}
+INDEX_NAME: ${{INDEX_NAME}}
+</code></pre>
+<p>Navigate to <code>src/config.ts</code> and add the following snippet inside <code>config</code>:</p>
+<pre><code class="language-typescript">azureOpenAIEmbeddingDeploymentName: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME,
+azureSearchKey: process.env.AZURE_SEARCH_KEY,
+azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
+indexName: process.env.INDEX_NAME,
+</code></pre>
+<p><cc-end-step lab="b2" exercise="3" step="1" /></p>
+<h3 id="step-2-configure-azure-ai-search-as-a-data-source">Step 2: Configure Azure AI Search as a data source</h3>
+<p>Open <code>src/prompts/chat/config.json</code> in your project, then add <code>data_sources</code> inside the <code>completion</code> brackets:</p>
+<pre><code class="language-json">&quot;data_sources&quot;: [
+{
+    &quot;type&quot;: &quot;azure_search&quot;,
+    &quot;parameters&quot;: {
+        &quot;endpoint&quot;: &quot;$searchEndpoint&quot;,
+        &quot;index_name&quot;: &quot;$indexName&quot;,
+        &quot;authentication&quot;: {
+            &quot;type&quot;: &quot;api_key&quot;,
+            &quot;key&quot;: &quot;$searchApiKey&quot;
+        },
+        &quot;query_type&quot;:&quot;vector&quot;,
+        &quot;in_scope&quot;: true,
+        &quot;strictness&quot;: 3,
+        &quot;top_n_documents&quot;: 3,
+        &quot;embedding_dependency&quot;: {
+        &quot;type&quot;: &quot;deployment_name&quot;,
+        &quot;deployment_name&quot;: &quot;$azureOpenAIEmbeddingDeploymentName&quot;
+        }
+    }
+}
+]
+</code></pre>
+<p>Open <code>src/prompts/chat/skprompt.txt</code> and update the prompt as the following:</p>
+<pre><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team for finding the right candidate for the jobs. 
+You are friendly and professional.
+You always greet users with excitement and introduce yourself first.
+You like using emojis where appropriate.
+Always mention all citations in your content.
+</code></pre>
+<p>Open the terminal in Visual Studio Code, and run the following script from the project root:</p>
+<pre><code class="language-powershell">npm install fs
+</code></pre>
+<p>Go to <code>src/app/app.ts</code> and add the following parameter in your  <code>OpenAIModel</code>:</p>
+<pre><code class="language-typescript">azureApiVersion: '2024-02-15-preview'
+</code></pre>
+<p>Add the following import on top of the <code>src/app/app.ts</code> file:</p>
+<pre><code class="language-typescript">import fs from 'fs';
+</code></pre>
+<p>In <code>src/app/app.ts</code>, replace the <code>defaultPrompt</code> inside the <code>ActionPlanner</code> with the following code snippet:</p>
+<pre><code class="language-typescript">defaultPrompt: async () =&gt; {
+    const template = await prompts.getPrompt('chat');
+    const skprompt = fs.readFileSync(path.join(__dirname, '..', 'prompts', 'chat', 'skprompt.txt'));
+
+    const dataSources = (template.config.completion as any)['data_sources'];
+
+    dataSources.forEach((dataSource: any) =&gt; {
+      if (dataSource.type === 'azure_search') {
+        dataSource.parameters.authentication.key = config.azureSearchKey;
+        dataSource.parameters.endpoint = config.azureSearchEndpoint;
+        dataSource.parameters.indexName = config.indexName;
+        dataSource.parameters.embedding_dependency.deployment_name =
+          config.azureOpenAIEmbeddingDeploymentName;
+        dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
+      }
+    });
+
+    return template;
+}
+</code></pre>
+<p><cc-end-step lab="b2" exercise="3" step="2" /></p>
+<h3 id="step-3-debug-your-app-and-chat-with-your-data">Step 3: Debug your app and chat with your data</h3>
+<div class="admonition pied-piper">
+<p class="admonition-title">Disclaimer: Debug locally instead of using the Test Tool</p>
+</div>
+<p>Note that some advanced features you've added in your app may not show up properly in the App Test Tool. Therefore, you are going to debug your app locally on Teams instead of using the Test Tool moving forward.</p>
+<p>Let's test Career Genie on Teams this time. Start debugging your app by selecting <strong>Run and Debug</strong> tab on Visual Studio Code and <strong>Debug in Teams (Edge)</strong> or <strong>Debug in Teams (Chrome)</strong>. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select <strong>Add</strong> and start chatting with your app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Testing this exercise locally</p>
+<p>Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.</p>
+</div>
+<p>Ensure your questions are related to your dataset. Go through pdf documents in the <code>resumes</code> folder to understand more about your data. Challenge your custom engine agent by combining requirements and asking complex questions! Some suggestions would be:</p>
+<ul>
+<li>Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?</li>
+<li>Who are the other good candidates?</li>
+<li>Who would be suitable for a position that requires 5+ python development experience?</li>
+<li>Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?</li>
+</ul>
+<p><img alt="Chat with your data on Teams" src="../../../assets/images/custom-engine-02/byod-teams.gif" /></p>
+<p><cc-end-step lab="b2" exercise="3" step="3" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent! If you want explore further, the source code of this lab is available in the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie">Copilot Developer Camp repo</a>.</p>
+<p>You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. </p>
+<p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/02-rag" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>
