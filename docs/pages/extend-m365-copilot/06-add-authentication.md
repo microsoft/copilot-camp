@@ -179,6 +179,10 @@ Copy the scope to your safe place as the "API Scope".
 
 Now that you've registered an API for the application, it's time to register the plugin itself.
 
+!!! Note "About two Entra ID app registrations"
+    This lab is a guide on how to adapt assuming you already have a registered application for your API and want to integrate it into the agent as a plugin. That is why we have two app registrations. 
+    When creating an API from scratch, you may not always need two app registrations to implement OAuth securely to plug into the agent. Instead, you can use an existing app registration. Here is how you can do it in one single app registration in this [learn module](https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth)
+
 ### Step 1: Register the plugin
 
 Return to the "App registrations" section and register a second application. This time call it "My API Plugin" 1️⃣, and once again set "Supported account types" to "Accounts in this organizational directory only" 2️⃣.
@@ -445,6 +449,22 @@ Note that project assignments are stored in the `Assignment` table and reference
 
 ## Exercise 7: Test the application
 
+Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
+
+1. Open the `manifest.json` file located in the `appPackage` folder of your project.
+
+2. Locate the `version` field in the JSON file. It should look something like this:  
+   ```json
+   "version": "1.0.0"
+   ```
+
+3. Increment the version number to a small increment. For example, change it to:  
+   ```json
+   "version": "1.0.1"
+   ```
+
+4. Save the file after making the change.
+
 ### Step 1: (Re)start the application
 
 If your app is still running from an earlier lab, stop it to force it to re-create the application package.
@@ -460,9 +480,15 @@ Click "Sign in to Trey" to sign in. At first you should see a pop-up window aski
 
 ![](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
-The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
+There are cases where your admin has not allowed you to consent as a user and may see something like below:
+![](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-03small.png)
+This is because the admin has restricted applications to allow user consent tenant wide. In this case, you have to request admin to manually grant global consent for all users for the plugin API registration as below:
+
+![](../../assets/images/extend-m365-copilot-06/approval-admin.png)
+
+
+The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
 
 Since you were just added to the database, you're not assigned to any projects.
 

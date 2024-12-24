@@ -19,6 +19,9 @@ In this lab you will learn to:
 !!! note "Prerequisites: Tenant Admin Access"
     Additonal prerequisites are needed to run this lab. You will need <mark>tenant administrator privileges </mark> as Microsoft Graph connectors use app-only authentication to access the connector APIs.
 
+!!! note "Prerequisites: Azure Functions Visual Studio Code extension"
+    - [Azure Functions Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+
 ## Exercise 1 : Deploy Graph Connector
 
 ### Step 1: Download sample project
@@ -121,9 +124,26 @@ Now the capability is added, it's time to test.
 <cc-end-step lab="eb" exercise="2" step="2" />
 
 ## Exercise 3: Test the plugin in Copilot
+
+Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
+
+1. Open the `manifest.json` file located in the `appPackage` folder of your project.
+
+2. Locate the `version` field in the JSON file. It should look something like this:  
+   ```json
+   "version": "1.0.0"
+   ```
+
+3. Increment the version number to a small increment. For example, change it to:  
+   ```json
+   "version": "1.0.1"
+   ```
+
+4. Save the file after making the change.
+
 ### Step 1: Start the application
 
-Update the manifest version of your app package in file **appPackage\manifest.json** from ` "version": "1.0.0"` to ` "version": "1.0.1"`. This will make sure the changes are applied. 
+This update ensures that the platform detects the changes and properly applies the latest version of your app.
 
 Start your project to force it to re-deploy the application package by selecting **F5**.
 You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and agents and select the Trey Genie Local agent 3️⃣.
