@@ -179,6 +179,10 @@ Copy the scope to your safe place as the "API Scope".
 
 Now that you've registered an API for the application, it's time to register the plugin itself.
 
+!!! Note "About two Entra ID app registrations"
+    This lab is a guide on how to adapt assuming you already have a registered application for your API and want to integrate it into the agent as a plugin. That is why we have two app registrations. 
+    When creating an API from scratch, you may not always need two app registrations to implement OAuth securely to plug into the agent. Instead, you can use an existing app registration. Here is how you can do it in one single app registration in this [learn module](https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth)
+
 ### Step 1: Register the plugin
 
 Return to the "App registrations" section and register a second application. This time call it "My API Plugin" 1️⃣, and once again set "Supported account types" to "Accounts in this organizational directory only" 2️⃣.
