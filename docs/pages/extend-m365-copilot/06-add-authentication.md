@@ -480,9 +480,15 @@ Click "Sign in to Trey" to sign in. At first you should see a pop-up window aski
 
 ![](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
-The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
+There are cases where your admin has not allowed you to consent as a user and may see something like below:
+![](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-03small.png)
+This is because the admin has restricted applications to allow user consent tenant wide. In this case, you have to request admin to manually grant global consent for all users for the plugin API registration as below:
+
+![](../../assets/images/extend-m365-copilot-06/approval-admin.png)
+
+
+The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
 
 Since you were just added to the database, you're not assigned to any projects.
 
