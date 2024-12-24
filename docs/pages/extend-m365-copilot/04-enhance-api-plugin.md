@@ -330,6 +330,22 @@ Finally, it includes some conversation starters which are prompt suggestions sho
 
 ## Exercise 3: Test the plugin in Copilot
 
+Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
+
+1. Open the `manifest.json` file located in the `appPackage` folder of your project.
+
+2. Locate the `version` field in the JSON file. It should look something like this:  
+   ```json
+   "version": "1.0.0"
+   ```
+
+3. Increment the version number to a small increment. For example, change it to:  
+   ```json
+   "version": "1.0.1"
+   ```
+
+4. Save the file after making the change.
+
 ### Step 1: Restart the application
 
 Stop and restart your project to force it to re-deploy the application package.

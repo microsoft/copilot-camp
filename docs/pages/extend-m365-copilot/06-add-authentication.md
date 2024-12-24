@@ -445,6 +445,22 @@ Note that project assignments are stored in the `Assignment` table and reference
 
 ## Exercise 7: Test the application
 
+Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
+
+1. Open the `manifest.json` file located in the `appPackage` folder of your project.
+
+2. Locate the `version` field in the JSON file. It should look something like this:  
+   ```json
+   "version": "1.0.0"
+   ```
+
+3. Increment the version number to a small increment. For example, change it to:  
+   ```json
+   "version": "1.0.1"
+   ```
+
+4. Save the file after making the change.
+
 ### Step 1: (Re)start the application
 
 If your app is still running from an earlier lab, stop it to force it to re-create the application package.
