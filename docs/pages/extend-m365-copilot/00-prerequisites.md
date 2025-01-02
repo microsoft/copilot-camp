@@ -21,7 +21,7 @@ In this lab you will learn:
 
 ### Step 1: Enable Teams custom application uploads
 
-By default, end users can't upload applications directly; instead an Teams Administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
+By default, end users can't upload applications directly; instead a Teams Administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 
 1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
 

@@ -17,23 +17,23 @@ In this step you will upload sample documents which will be used by your declara
 
 Within the [Microsoft 365 app](https://www.office.com/){target=_blank}, or elsewhere in Microsoft 365, click the "waffle" menu 1️⃣ and select "SharePoint" 2️⃣.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-01.png)
+![The UI of Microsoft 365 with the waffle menu expanded and the SharePoint workload highlighted.](../../assets/images/extend-m365-copilot-05/upload-docs-01.png)
 
 Then click "Create Site" 1️⃣ and choose a "Team site" 2️⃣.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-02.png)
+![The UI to create a new SharePoint Online site, with 'Team Site' template suggested.](../../assets/images/extend-m365-copilot-05/upload-docs-02.png)
 
 Select the Standard team site template; you will be shown a preview of the site. Click "Use Template" to continue.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-05.png)
+![The UI to select the 'Standard' site template for the target site.](../../assets/images/extend-m365-copilot-05/upload-docs-03.png)
 
 Give your site a name such as "Trey Research legal documents" 1️⃣ and click "Next" 2️⃣.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-05.png)
+![The UI to provide name, description, and other details for the target site to create.](../../assets/images/extend-m365-copilot-05/upload-docs-05.png)
 
 Then select your privacy settings and language, and click "Create Site"
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-06.png)
+![The UI to select the privacy settings and the language for the target site.](../../assets/images/extend-m365-copilot-05/upload-docs-06.png)
 
 After a few moments, you will be presented with a new SharePoint site. 
 
@@ -43,17 +43,17 @@ After a few moments, you will be presented with a new SharePoint site.
 
 In the Documents web part, select "See all" to view the document library page.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-07.png)
+![The home page of the site with the Documents web part and the 'See all' link highlighted.](../../assets/images/extend-m365-copilot-05/upload-docs-07.png)
 
 Next, click the "Upload" 1️⃣ toolbar button and select "Files" 2️⃣.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-08.png)
+![The command bar of the document library with the 'Upload' menu expanded and the 'Files' option selected.](../../assets/images/extend-m365-copilot-05/upload-docs-08.png)
 
 Navigte to your working folder; you will find a directory called **sampleDocs** within. Highlight all the sample documents 1️⃣ and click "Open" 2️⃣.
 
 Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.sharepoint.com/sites/TreyResearchlegaldocuments", as you will need it in the next exercise.
 
-![Upload sample documents](../../assets/images/extend-m365-copilot-05/upload-docs-09.png)
+![The file system browsing dialog to select the files to upload.](../../assets/images/extend-m365-copilot-05/upload-docs-09.png)
 
 <cc-end-step lab="e3" exercise="1" step="2" />
 
@@ -135,7 +135,7 @@ SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegalDocum
 
 ### Step 3: Examine the API Plugin files
 
-Within the **trey-declarative-agent.json** file, you'll find an "actions" section which tells the declarative agent to access the Trey Research API.
+Within the **trey-declarative-agent.json** file, you'll find an "actions" section, which tells the declarative agent to access the Trey Research API.
 
 ~~~json
 "actions": [
@@ -150,8 +150,8 @@ In this step we'll look at **trey-plugin.json** and how it and another file desc
 
 These two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
- * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
- * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-copilot/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
+ * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
+ * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
 
@@ -210,7 +210,7 @@ The **appPackage/trey-plugin.json** file has the Copilot-specific details. This 
     },
 ~~~
 
-Scrolling down you can find the runtime settings, 
+Scrolling down you can find the runtime settings: 
 
 ~~~json
 "runtimes": [
@@ -237,7 +237,7 @@ They include a pointer to the **trey-definition.json** file, and an enumeration 
 
 ### Step 4: Add the declarative agent to your app manifest
 
-Now open the **manifest.json** file within the **appPackage** directory. Add a new `declarativeCopilots` object to the `copilotExtensions` object as follows, so it references the declarative agent JSON file you created in the previous step.
+Now open the **manifest.json** file within the **appPackage** directory. Add, just before the `staticTabs` object, a new `copilotAgents` object with a `declarativeAgents` object inside as follows, so it references the declarative agent JSON file you created in the previous step.
 
 ~~~json
   "copilotAgents": {
@@ -256,7 +256,7 @@ Be sure to save your work.
 
 ### Step 5: Remove the dummy feature from the app manifest
 
-The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Camp home page. This would allow users to view the Copilot Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com))s
+The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Camp home page. This would allow users to view the Copilot Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com)).
 
 If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you would know all about them. If not, don't worry about it, just delete these lines from **manifest.json** as they aren't needed anymore.
 
@@ -293,12 +293,12 @@ Then start the debugger by clicking the arrow or pressing F5 and return to the C
 
 Open the Copilot chat and the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local copilot 2️⃣.
 
-![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 Try a prompt such as "Please list my projects along with details from the Statement of Work doc". 
 You should see a list of your projects from the API plugin, enhanced with details from each project's Statement of Work 1️⃣. Notice that Copilot includes the Trey Research motto 2️⃣ and references to the documents 3️⃣. Click one of the references to check out the document.
 
-![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
+![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
@@ -316,14 +316,14 @@ To enable developer mode, enter this prompt into Copilot:
 
 Then when you issue a prompt, Copilot will include an adaptive card at the end of its response with the words "Show plugin developer info". 
 
-![Developer mode](../../assets/images/extend-m365-copilot-04/devmode1.png)
+![The output of the declarative agent, when the developer mode is turned on. There is a button to show the plugin developer information.](../../assets/images/extend-m365-copilot-04/devmode1.png)
 
 If you expand by selecting the "Show plugin developer info" button , you will find details like enabled plugins that the agent can use, the matched functions and selected function that is used in the response sent by the agent. 
 
 !!! note
     This screen shot includes functions you won't add until the next lab.
 
-![Developer mode](../../assets/images/extend-m365-copilot-04/devmode2.png)
+![Detailed information about the processing of the plugin request with enabled plugins, matched functions, selected function for execution, and function execution details.](../../assets/images/extend-m365-copilot-04/devmode2.png)
 
 If you expand the selected function, you will see the execution details of the API/function.
 
@@ -334,7 +334,7 @@ Summary of developer mode info and their sections:
  * Enabled plugins - explains which API plugins are available within your declarative agent
  * Matched functions - shows the available functions in your plugin JSON (**trey-plugin.json** in this case).
  * Selected functions for execution - shows which of the functions Copilot chose
- * Function execution details - shows the HTTP status code returned by the API when Copilot called it
+ * Function execution details - shows the HTTP status code returned by the API when Copilot called it and allows to dig into the details of the HTTP request and response
 
 For more details please see the [developer mode documentation](https://learn.microsoft.com/microsoft-365-copilot/extensibility/debugging-copilot-plugin){target=_blank}
 
