@@ -119,9 +119,6 @@ Then click "Register" 4️⃣ to register your application.
 
 ![Filling in the new app registration page](../../assets/images/extend-m365-copilot-06/oauth-A4.png)
 
-!!! Note "Only single tenant apps work at the moment"
-    Software vendors and others will want their app to work across multiple Microsoft 365 tenants, however at the time of this writing that doesn't work, so for now stick with the "Accounts in this organizational directory" option.
-
 <cc-end-step lab="e6" exercise="2" step="1" />
 
 ### Step 2: Copy application info to a safe place
@@ -187,8 +184,6 @@ Now that you've registered an API for the application, it's time to register the
 
 Return to the "App registrations" section and register a second application. This time call it "My API Plugin" 1️⃣, and once again set "Supported account types" to "Accounts in this organizational directory only" 2️⃣.
 
-!!! Note "Only single tenant apps work at the moment"
-    Software vendors and others will want their app to work across multiple Microsoft 365 tenants, however at the time of this writing that doesn't work, so for now stick with the "Accounts in this organizational directory" option.
 
 Under "Redirect URL" select "Web", and this time set it to `https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect` 3️⃣. This is the Teams location that will handle completed logins to the API Plugin application.
 
