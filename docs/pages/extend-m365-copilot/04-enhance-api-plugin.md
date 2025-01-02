@@ -6,7 +6,7 @@ In this lab you will add additional REST calls to the API and add them to the AP
 
 !!! note
     This lab builds on the previous one, Lab E3. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END) folder.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END){target=_blank} folder.
 
 ## Exercise 1: Add /projects resource
 
@@ -82,9 +82,9 @@ Content-Type: application/json
 
 If your app is still running from Lab 2, stop the debugger and restart it. Or, just start the debugger normally and wait for the app to start. When everything is ready, Teams Toolkit will display a web browser wanting you to log into Microsoft 365. Minimize this browser as you don't need it yet, but closing it would stop the debugger.
 
-Now try sending the new requestsm and you should be able to see Trey Research project details or assign a new consultant to a project using the POST request.
+Now try sending the new requests and you should be able to see Trey Research project details or assign a new consultant to a project using the POST request.
 
-![Click link to send an HTTP POST request](../../assets/images/extend-m365-copilot-03/test-projects-2.png)
+![Visual Studio Code showing the treyResearchAPI.http file with the POST request for projects highligthed on the left and the response on the right side.](../../assets/images/extend-m365-copilot-03/test-projects-2.png)
 
 <cc-end-step lab="e4" exercise="1" step="4" />
 
@@ -98,7 +98,7 @@ In this exercise, you'll add information about the new /projects resource to the
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
 To begin, in the **/appPackage** folder, open the file **trey-definition.json**. 
-Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json) and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
+Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json){target=_blank} and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
 
 <cc-end-step lab="e4" exercise="2" step="1" />
 
@@ -227,7 +227,7 @@ You will also find that a path has been added at `/projects/assignConsultant` to
 
 ### Step 3: Add projects to the plugin definition file
 
-Now open the file **trey-plugin.json** within the **/appPackage** folder. This file contains extra information not included in the OAS definition file. Replace the contents of **trey-plugin.json** with [this updated JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json).
+Now open the file **trey-plugin.json** within the **/appPackage** folder. This file contains extra information not included in the OAS definition file. Replace the contents of **trey-plugin.json** with [this updated JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json){target=_blank}.
 
 <cc-end-step lab="e4" exercise="2" step="3" />
 
@@ -276,7 +276,7 @@ Notice that it includes some `response_semantics` which instruct Copilot in the 
 }
 ~~~
 
-It includes an [adaptive card](https://adaptivecards.io) to be used in the confirmation card, which is shown to users to confirm an action prior to issuing a POST request.
+It includes an [adaptive card](https://adaptivecards.io){target=_blank} to be used in the confirmation card, which is shown to users to confirm an action prior to issuing a POST request.
 
 Scrolling down, you can see the `runtimes` object which defines the type of plugin, the OAS definition file location, and a list of functions. The new functions have been added to the list.
 
@@ -351,7 +351,7 @@ Before you test the application, update the manifest version of your app package
 Stop and restart your project to force it to re-deploy the application package.
 You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and agents and select the Trey Genie Local agent 2️⃣.
 
-![Running the declarative agent](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt for the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 <cc-end-step lab="e4" exercise="3" step="1" />
 
@@ -359,11 +359,11 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
 
 Now try a prompt such as "what projects are we doing for adatum?"
 
-![Run in Copilot](../../assets/images/extend-m365-copilot-03/test-projects-copilot-1.png)
+![Microsoft 365 Copilot prompting the user with a confirmation card to allow invoking the API plugin. There are three buttons to 'Always allow', 'Allow once', or 'Cancel' the request.](../../assets/images/extend-m365-copilot-03/test-projects-copilot-1.png)
 
 You may see a confirmation card, even for the GET request. If you do, allow the request to view the project details.
 
-![Run in Copilot](../../assets/images/extend-m365-copilot-03/test-projects-copilot-2.png)
+![Microsoft 365 Copilot showing the output of Trey Genie agent when invoking the API plugin](../../assets/images/extend-m365-copilot-03/test-projects-copilot-2.png)
 
 <cc-end-step lab="e4" exercise="3" step="2" />
 
