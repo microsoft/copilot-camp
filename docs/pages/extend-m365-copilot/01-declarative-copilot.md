@@ -147,8 +147,8 @@ Here's how the base project looks:
 | Folder/File                          | Contents                                                                                                            |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
 | `.vscode`                            | VSCode files for debugging                                                                                          |
-| `appPackage`                         | Templates for the Teams application manifest, the agent manifest, and the API specification, if any specification                            |
-| `env`                                | Environment files with a default  `.env.dev`    file        
+| `appPackage`                         | Templates for the Teams application manifest, the agent manifest, and the API specification, if any |
+| `env`                                | Environment files with a default  `.env.dev`    file |
 | `appPackage/color.png`               | Application logo image                        |
 | `appPackage/outline.png`             | Application logo outline image                        |
 | `appPackage/declarativeAgent.json` | Defines settings and configurations of the declarative agent.                                                |
