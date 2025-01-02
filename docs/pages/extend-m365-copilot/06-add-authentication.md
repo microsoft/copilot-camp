@@ -5,8 +5,8 @@
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 
 !!! note
-    This lab builds on the previous one, Lab E2. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06-add-authentication/trey-research-lab06-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END) folder.
+    This lab builds on the previous one, Lab E5. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06-add-authentication/trey-research-lab06-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END){target=_blank} folder.
 
 !!! note
     There are many detailed setup steps for Entra ID in this lab.
@@ -31,7 +31,7 @@ Plugin service client secret:
 By default, Teams Toolkit creates a new developer tunnel - and thus a new URL for accesing your locally running API - every time you start the project. Normally this is fine because Teams Toolkit automatically updates the URL where needed, but since this lab will be a manual setup, you'll have to manually update the URL in Entra ID and in Teams Developer Portal each time you start the debugger. For that reason, you may wish to set up a persistent developer tunnel with a URL that does not change.
 
 ??? Note "If you don't want to set up a persistent tunnel, open this note ▶▶▶"
-    You are free to skip this exercise and use the developer tunnel provided by Teams Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise ? step ?).
+    You are free to skip this exercise and use the developer tunnel provided by Teams Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise 5 step 1).
     ![Developer tunnel URL](../../assets/images/extend-m365-copilot-06/oauth-A0.png)
 
 ### Step 1: Install the developer tunnel CLI
@@ -76,7 +76,7 @@ Copy the "Connect via browser" URL and save it as the "API Base URL".
 
 ### Step 3: Disable the dynamically created tunnel in your project
 
-If your project is running locally, stop it. Then edit [\.vscode\tasks.json]() and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:
+If your project is running locally, stop it. Then edit [\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:
 
 ~~~json
 {
@@ -96,7 +96,7 @@ If your project is running locally, stop it. Then edit [\.vscode\tasks.json]() a
 
 ### Step 4: Manually override the server URL
 
-Open **env\.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
+Open **env/.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
 
 <cc-end-step lab="e6" exercise="1" step="4" />
 
@@ -108,7 +108,7 @@ Browse to the Entra ID admin center either via the [Microsoft 365 Admin center](
 
 Once you're there, click "Identity" 1️⃣, then "Applications" 2️⃣, and then "App registrations" 3️⃣. Then click the "+" 4️⃣ to add a new app registration.
 
-![Adding a new app registration](../../assets/images/extend-m365-copilot-06/oauth-A2.png)
+![The Microsoft Entra admin center showing the list of applications registered and the button to create a 'New regitration'.](../../assets/images/extend-m365-copilot-06/oauth-A2.png)
 
 Give your application a unique and descriptive name such as "My API Service" 1️⃣. Under "Supported account types", select "Accounts in this organizational directory only (Microsoft only - single tenant) 2️⃣. Under "Redirect URI (optional)" select "Web" and enter the URL of your developer tunnel 3️⃣. 
 
@@ -117,7 +117,7 @@ Give your application a unique and descriptive name such as "My API Service" 1�
 
 Then click "Register" 4️⃣ to register your application.
 
-![Filling in the new app registration page](../../assets/images/extend-m365-copilot-06/oauth-A4.png)
+![The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select.](../../assets/images/extend-m365-copilot-06/oauth-A4.png)
 
 !!! Note "Only single tenant apps work at the moment"
     Software vendors and others will want their app to work across multiple Microsoft 365 tenants, however at the time of this writing that doesn't work, so for now stick with the "Accounts in this organizational directory" option.
@@ -125,21 +125,21 @@ Then click "Register" 4️⃣ to register your application.
 <cc-end-step lab="e6" exercise="2" step="1" />
 
 ### Step 2: Copy application info to a safe place
-Copy the Application ID (also called the Client ID) 1️⃣ and the tenant ID (also called the directory ID) 2️⃣ to a safe place; you'll need them later. Then click on the Endpoints button 3️⃣ to open the Endpoints flyout.
+Copy the Application ID (also called the Client ID) 1️⃣ and the Directory ID (also called the Tenant ID) 2️⃣ to a safe place; you'll need them later. Then click on the Endpoints button 3️⃣ to open the Endpoints flyout.
 
-![Copy information from the application overview page](../../assets/images/extend-m365-copilot-06/oauth-A5.png)
+![The overview page of the application registered. There you can copy the Application ID and the Directory ID, as well as you can find the 'Endpoints' command.](../../assets/images/extend-m365-copilot-06/oauth-A5.png)
 
-Now copy the first two endpoint URL's, the "OAuth 2.0 authorization endpoint (v2)" 1️⃣ and "OAuth 2.0 token endpoint (v2)" 2️⃣ and save them in the same safe place.
+Now copy the two endpoint URLs with name, the "OAuth 2.0 authorization endpoint (v2)" 1️⃣ and "OAuth 2.0 token endpoint (v2)" 2️⃣ and save them in the same safe place.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-A7.png)
+![The panel with the Endpoints of the application. The buttons to copy 'OAuth 2.0 authorization endpoint (v2)' and 'OAuth 2.0 token endpoint (v2)' are highlighted.](../../assets/images/extend-m365-copilot-06/oauth-A7.png)
 
 <cc-end-step lab="e6" exercise="2" step="2" />
 
 ### Step 3: Create client secret
 
-Next, navigate to "Certificates & secrets" 1️⃣ and click "+ New client secret" 2️⃣. Give your secret a name and choose a duration. The secret will be displayed; this is your one and only chance to view it as secrets are only displayed in the portal when they're first created. Copy the secret 3️⃣ to your safe storage place.
+Next, navigate to "Certificates & secrets" 1️⃣ and click "+ New client secret" 2️⃣. Give your secret a name and choose a duration, then select the *Add* button. The secret will be displayed; this is your one and only chance to view it as secrets are only displayed in the portal when they're first created. Copy the secret 3️⃣ to your safe storage place.
 
-![Creating a client secret](../../assets/images/extend-m365-copilot-06/oauth-A11.png)
+![The 'Certificates &amp; secrets' page from which you can select to create a 'New client secret'.](../../assets/images/extend-m365-copilot-06/oauth-A11.png)
 
 <cc-end-step lab="e6" exercise="2" step="3" />
 
@@ -149,7 +149,7 @@ In order to validate calls to your API, you need to expose an API Scope, which r
 
 First, browse to "Expose an API" 1️⃣ and, next to "Application ID URI" click "Add" 2️⃣. A flyout will open on the right; you can stay with the default value which is api://&lt;your application (client) ID&gt;. Go ahead and click "Save and continue" 3️⃣ to proceed.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-A15.png)
+![The 'Expose an API' page of the application registered, with the side panel to set the application unique URI.](../../assets/images/extend-m365-copilot-06/oauth-A15.png)
 
 Under "Add a scope" enter "access_as_user" as the scope name 1️⃣. Fill in the remaining fields as follows:
 
@@ -181,7 +181,7 @@ Now that you've registered an API for the application, it's time to register the
 
 !!! Note "About two Entra ID app registrations"
     This lab is a guide on how to adapt assuming you already have a registered application for your API and want to integrate it into the agent as a plugin. That is why we have two app registrations. 
-    When creating an API from scratch, you may not always need two app registrations to implement OAuth securely to plug into the agent. Instead, you can use an existing app registration. Here is how you can do it in one single app registration in this [learn module](https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth)
+    When creating an API from scratch, you may not always need two app registrations to implement OAuth securely to plug into the agent. Instead, you can use an existing app registration. Here is how you can do it in one single app registration in this [learn module](https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth){target=_blank}
 
 ### Step 1: Register the plugin
 
@@ -194,7 +194,7 @@ Under "Redirect URL" select "Web", and this time set it to `https://teams.micros
 
 Click the "Register" button 4️⃣ to complete the registration.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-B5.png)
+![The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select.](../../assets/images/extend-m365-copilot-06/oauth-B5.png)
 
 As before, view the app's "Overview" page and save the Application (client) ID for the API Plugin app.
 
@@ -210,11 +210,11 @@ As before, create a client secret and save it under "Plugin service client secre
 
 Your plugin needs to call your API service, so naturally it needs permission to do that. Begin by navigating to "API permissions". Then click the "APIs my organization uses" tab 1️⃣ and search for your API service 2️⃣. Select your API service from the results 3️⃣.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-B11.png)
+![The 'API permissions' page of the application registered, with the side panel to grant new permissions. The 'APIs my organization uses' tab is selected and the list of applications shows 'My API Service' in the results.](../../assets/images/extend-m365-copilot-06/oauth-B11.png)
 
 Now you should see your API service application. Select the "access_as_user" permission and click "Add permission".
 
-![](../../assets/images/extend-m365-copilot-06/oauth-B12.png)
+![The side panel to select and add a permission to the application registered. The 'access_as_user' permission is selected and highlighted, together with the 'Add permission' button.](../../assets/images/extend-m365-copilot-06/oauth-B12.png)
 
 <cc-end-step lab="e6" exercise="3" step="3" />
 
@@ -233,21 +233,21 @@ Now the API Service application needs to allow the API Plugin application to iss
 
 Remember to click "Save" 2️⃣ when you're done.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-C4.png)
+![The page to edit the manifest of the application with the 'knownClientApplications' entry and the 'Save' button highlighted.](../../assets/images/extend-m365-copilot-06/oauth-C4.png)
 
 <cc-end-step lab="e6" exercise="4" step="1" />
 
 ## Exercise 5: Register the OAuth information in the Teams Developer Portal
 
-Now you're apps are all set up, but Microsoft 365 doesn't know anything about it. It wouldn't be safe to store secrets in the app manifest, so Teams has set up a place in the Teams Developer Portal to safely store this information. In this exercise you'll se the Teams Developer Portal to register your OAuth client application so Copilot can authenticate users for it.
+Now you're apps are all set up, but Microsoft 365 doesn't know anything about it. It wouldn't be safe to store secrets in the app manifest, so Teams has set up a place in the Teams Developer Portal to safely store this information. In this exercise you'll use the Teams Developer Portal to register your OAuth client application so Copilot can authenticate users for it.
 
 ### Step 1: Create a new OAuth client registration
 
 Browse to the Teams Developer Portal at [https://dev.teams.microsoft.com](https://dev.teams.microsoft.com){target=_blank}. Select "Tools" 1️⃣ and then "OAuth client registration" 2️⃣.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-C2.png)
+![The UI of the Teams Developer Portal with 'Tools' and 'OAuth client registration' highlighted.](../../assets/images/extend-m365-copilot-06/oauth-C2.png)
 
-Click "+ New OAuth client registration" and fill in the form. Several of the fields are from your safely stored information you've been building up over the last few exercises.
+Click "Register client", if you don't have any already registered client application, or "+ New OAuth client registration", if you already have existing client applications, and fill in the form. Several of the fields are from your safely stored information you've been building up over the last few exercises.
 
 | Field | Value |
 | --- | --- |
@@ -256,13 +256,13 @@ Click "+ New OAuth client registration" and fill in the form. Several of the fie
 | Restrict usage by org | select "My organization only" |
 | Restrict usage by app | select "Any Teams app" |
 | Client ID | Your **Plugin Application** (client) ID |
-| Client secret | Your **Plugin Application ** client secret |
+| Client secret | Your **Plugin Application** client secret |
 | Authorization endpoint | Your authorization endpoint (same for both API Service and API Plugin apps) |
 | Token endpoint | Your token endpoint (same for both API Service and API Plugin apps) |
 | Refresh endpoint |  Your token endpoint (same for both API Service and API Plugin apps) |
 | API scope | Your API Service application's scope |
 
-![](../../assets/images/extend-m365-copilot-06/oauth-C3ab.png)
+![the page to register a new OAuth client in the Teams Developer Portal. There is a list of fields to configure the client registration settings.](../../assets/images/extend-m365-copilot-06/oauth-C3ab.png)
 
 !!! Note "If you didn't make a persistent developer tunnel URL..."
     ...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Teams Toolkit
@@ -271,7 +271,7 @@ Click "+ New OAuth client registration" and fill in the form. Several of the fie
 
 ### Step 2: Save your OAuth registration ID
 
-![](../../assets/images/extend-m365-copilot-06/oauth-E1.png)
+![The result of registering an OAuth client in the Teams Developer Portal. There is a box confirming the registration and providing a 'Registration ID' for reference.](../../assets/images/extend-m365-copilot-06/oauth-E1.png)
 
 The portal will display your OAuth client registration ID. Save this for the next step.
 
@@ -292,7 +292,7 @@ Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indic
 },
 ~~~
 
-Then add this line to your **env\.env.local** file:
+Then add this line to your **env/.env.local** file:
 
 ~~~text
 OAUTH_CLIENT_REGISTRATION_ID=<registration id you saved in the previous exercise>
@@ -435,19 +435,19 @@ catch (ex) {
     If the token is valid, the library returns an object with all the "claims" that were inside, including the user's unique ID, name, and email. We will use these values instead of relying on the fictitious "Avery Howard".
 
 !!! Note "If your app will be multi-tenant"
-    Check the comments for notes about validating tokens for a multi-tenant app
+    Check the comments in the above code for notes about validating tokens for a multi-tenant app
 
 Once the code has a `userId` it will look for a Consultant record for the user. This was hard-coded to Avery Howard's ID in the original code. Now it will use the user ID for the logged in user, and create a new Consultant record if it doesn't find one in the database.
 
 As a result, when you run the app for the first time, it should create a new Consultant for your logged-in user with a default set of skills, roles, etc. If you want to change them to make your own demo, you can do that using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank}
 
-![Editing your user record](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
+![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
 
 Note that project assignments are stored in the `Assignment` table and reference the project ID and the assigned consultant's consultant ID.
 
 <cc-end-step lab="e6" exercise="7" step="3" />
 
-## Exercise 7: Test the application
+## Exercise 8: Test the application
 
 Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
 
@@ -473,31 +473,30 @@ Then press F5 to run the application again, and install it as before.
 
 Prompt the plugin, "What Trey projects am I assigned to?". You may see a confirmation card asking if it's OK to call your API. No authentication is happening here; click "Allow Once" to proceed.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
+![Microsoft 365 Copilot showing a confirmation card asking if it is ok to call your API. There are buttons to 'Always allow', 'Allow once', or 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
 
 The confirmation card will be replaced with a login card.
 Click "Sign in to Trey" to sign in. At first you should see a pop-up window asking you to log in and to consent to permissions. On subsequent vists this may be hidden as your credentials have been cached by Entra ID in your local browser.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
+![Microsoft 365 Copilot showing a login card with a button to 'Sign in to Trey' and another one to 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
 There are cases where your admin has not allowed you to consent as a user and may see something like below:
-![](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
+![The Microsoft Entra popup dialog asking for an admin approval to consume the API.](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
 
 This is because the admin has restricted applications to allow user consent tenant wide. In this case, you have to request admin to manually grant global consent for all users for the plugin API registration as below:
 
-![](../../assets/images/extend-m365-copilot-06/approval-admin.png)
+![The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted.](../../assets/images/extend-m365-copilot-06/approval-admin.png)
 
 
 The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
 
 Since you were just added to the database, you're not assigned to any projects.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
+![The response from the 'Trey Genie' agent when the actual user doesn't have any assigned project.](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
 
 Ask Copilot to add you to the Woodgrove project. Copilot will press you for details if you forgot to include any required values.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-04small.png)
-![](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
+![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to provide them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
 
 Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"
 
