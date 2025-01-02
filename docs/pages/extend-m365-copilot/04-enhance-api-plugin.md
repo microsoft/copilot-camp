@@ -253,7 +253,40 @@ The new **trey-plugin.json** file includes new functions `getProjects` and `post
 },
 ~~~
 
-Notice that it includes some `response_semantics` which instruct Copilot in the important properties to mention when referring to a project in its responses. The POST request has a similar function:
+Notice that it includes some `response_semantics` which instruct Copilot's orchestrator how to interpret the response payload. It defines the mapping of structured data in a response payload to specific properties required by the function. It enables the orchestrator to interpret and transform raw response data into meaningful content for rendering or further processing.
+For e.g. look at the response semantics below:
+
+~~~json
+
+"functions": [
+    {
+      "name": "getConsultants",
+      "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          }
+        }
+      }
+    },..]
+
+~~~
+
+Here `data_path` is : `$.results` in the `response_semantics` of function `getConsultants`. It means the main data resides under the `results` key in the JSON, which ensures the system extracts data starting at that path. It also defines mappings of specific fields from the raw data to corresponding semantic properties under `properties` field to readily use it for rendering.
+
+e.g. 
+
+~~~json
+     "title": "$.name",
+      "subtitle": "$.id",
+      "url": "$.consultantPhotoUrl"
+~~~
+
+The POST request has a similar function:
 
 ~~~json
 {
