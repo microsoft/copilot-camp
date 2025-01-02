@@ -314,18 +314,22 @@ To enable developer mode, enter this prompt into Copilot:
 -developer on
 ~~~
 
-Then when you issue a prompt, Copilot will include an adaptive card at the end of its response with the words "Show plugin developer info".
+Then when you issue a prompt, Copilot will include an adaptive card at the end of its response with the words "Show plugin developer info". 
 
 ![Developer mode](../../assets/images/extend-m365-copilot-04/devmode1.png)
 
-Try this, and then click the box. You should see a breakdown of Copilot's processing.
+If you expand by selecting the "Show plugin developer info" button , you will find details like enabled plugins that the agent can use, the matched functions and selected function that is used in the response sent by the agent. 
 
 !!! note
     This screen shot includes functions you won't add until the next lab.
 
 ![Developer mode](../../assets/images/extend-m365-copilot-04/devmode2.png)
 
-Notice that it includes several sections:
+If you expand the selected function, you will see the execution details of the API/function.
+
+![Developer mode](../../assets/images/extend-m365-copilot-04/devmode3.png)
+
+Summary of developer mode info and their sections:
 
  * Enabled plugins - explains which API plugins are available within your declarative agent
  * Matched functions - shows the available functions in your plugin JSON (**trey-plugin.json** in this case).
