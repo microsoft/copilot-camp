@@ -18,7 +18,7 @@ Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD
 
 Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.
 
-In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie) as the base project and proceed to next steps.
+In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} as the base project and proceed to next steps.
 
 ### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
@@ -223,9 +223,9 @@ In this exercise, you'll modify the code to accommodate the SSO process.
 
 ### Step 1: Provide HTML pages for the consent dialog
 
-The first time a user accesses your application, they may need to consent to giving the app permission to read their profile information. This is performed by the Teams AI library. It will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.
+The first time users access your application, they may need to consent to giving the app permission to read their profile information. This is performed by the Teams AI library. It will display a pop-up window; these HTML pages are to be displayed in that pop-up, and will redirect to Entra ID to do the actual consent.
 
-> The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public)
+> The code snippets for pop up for permission grant are from official [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public){target=_blank}.
 
 Create a new folder called **public** inside the **src** folder of the project.
 
@@ -541,10 +541,10 @@ aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
 We will be using the `TurnContext` module so include it in your import statement from the `botbuilder` library as shown below:
 
 <pre>
-import { CardFactory, MemoryStorage, MessageFactory,<b>TurnContext</b> } from "botbuilder";
+import { CardFactory, MemoryStorage, MessageFactory, <b>TurnContext</b> } from "botbuilder";
 </pre>
 
-We will be using the `TurnState` and `AuthError` modules so include it in your import statement from the `@microsoft/teams-ai` library as shown below:
+We will be using the `TurnState` and `AuthError` modules so include them in your import statement from the `@microsoft/teams-ai` library as shown below:
 
 <pre>
 Import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, <b>AuthError, TurnState</b> } from "@microsoft/teams-ai";
@@ -612,7 +612,7 @@ app.message('/signout', async (context: TurnContext, state: ApplicationTurnState
 
 ```
 
-The above code called a function `getUserDisplayName()` after token is successfully received with which we can now call Microsoft Graph to get user information. So let's add the function definition. You will install the [Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript) first. 
+The above code called a function `getUserDisplayName()` after token is successfully received with which we can now call Microsoft Graph to get user information. So let's add the function definition. You will install the [Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript){target=_blank} first. 
 
 Run below script in the terminal to install the npm package:
 
@@ -679,18 +679,18 @@ To start a conversation with the Career Genie, simply type a message. For exampl
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
-![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../assets/images/custom-engine-04/consent-teams.png)
 
 !!! warning "Known issues"
-    - There is a delay for the consent dialog to show up in Teams chat. This has been identified as a platform issue and we are monitoring. Keep pinging 2-3 times.
+    - There is a delay for the consent dialog to show up in Teams chat. This has been identified as a platform issue and we are monitoring it. Keep pinging 2-3 times.
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed.
 
-![consent dev tunnels](../../assets/images/custom-engine-04/consent-devtunnel.png)
+![A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'.](../../assets/images/custom-engine-04/consent-devtunnel.png)
 
 You'll be redirected to Entra ID, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).
 
-![consent graph](../../assets/images/custom-engine-04/consent-graph.png)
+![The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons.](../../assets/images/custom-engine-04/consent-graph.png)
 
 !!! tip "Tip: Consent on behalf of your organization"
     If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.
@@ -699,7 +699,7 @@ Select **Accept** to consent to the permissions and run Career Genie.
 
 You will now get this message from the custom engine agent with your logged in name showing successful authentication.
 
-![success message](../../assets/images/custom-engine-04/auth.gif)
+![Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent.](../../assets/images/custom-engine-04/auth.gif)
 
 You can start chatting with your custom engine agent.
 
@@ -707,7 +707,7 @@ You can start chatting with your custom engine agent.
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B4 - Secure your custom engine agent using authentication!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie).
+You have completed Lab B4 - Add single sign on authentication to secure your custom engine agent!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank}.
 
 You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
 
