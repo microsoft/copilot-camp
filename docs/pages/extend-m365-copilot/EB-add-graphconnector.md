@@ -166,6 +166,6 @@ In the immersive experience of Trey Genie, use below prompts and test them
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab Graph connector lab, Well done!
+You have completed lab Add Graph Connector, Well done!
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/EB-add-graphconnector" />
