@@ -7,7 +7,7 @@ In this lab you will add a declarative agent which is grounded in the API plugin
 
 !!! note
     This lab builds on the previous one, Lab E2. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END) folder.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END){target=_blank} folder.
 
 ## Exercise 1: Upload sample documents
 
@@ -256,7 +256,7 @@ Be sure to save your work.
 
 ### Step 5: Remove the dummy feature from the app manifest
 
-The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Camp home page. This would allow users to view the Copilot Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com)).
+The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Camp home page. This would allow users to view the Copilot Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com){target=_blank}).
 
 If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you would know all about them. If not, don't worry about it, just delete these lines from **manifest.json** as they aren't needed anymore.
 

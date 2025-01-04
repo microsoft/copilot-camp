@@ -20,7 +20,7 @@ In this lab you will learn to:
     Additonal prerequisites are needed to run this lab. You will need <mark>tenant administrator privileges</mark> as Microsoft Graph connectors use app-only authentication to access the connector APIs.
 
 !!! note "Prerequisites: Azure Functions Visual Studio Code extension"
-    - [Azure Functions Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+    - [Azure Functions Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions){target=_blank}
 
 ## Exercise 1 : Deploy Graph Connector
 

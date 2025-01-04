@@ -300,7 +300,7 @@ To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. Thi
 
 In this step Teams toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
 
-Open the Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/) logged into your developer tenant.
+Open the Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank} logged into your developer tenant.
 
 Once the Copilot app is loaded, Find the "Geo Locator Game" from the right panel as shown. 
 
@@ -369,7 +369,7 @@ Next, go to the file **appPackage/manifest.json** and upgrade the app `version` 
 
 - To test the app go back to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision" for packaging and installing the upgraded declarative agent to your own app catalog.
 
-- Open the Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/) logged into your developer tenant.
+- Open the Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank} logged into your developer tenant.
 
 - Launch the "Geo Locator Game" again.
 
@@ -389,10 +389,10 @@ You have basically become a declarative agent boss. Find out more from this vide
 <cc-end-step lab="e1" exercise="3" step="4" />
 
 ## Resources
-- [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot)
-- [Declarative agent manifest schema](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-manifest)
-- [Supported content types](https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot#supported-content-types)
-- [Capabilities of Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-capabilities-ids?tabs=explorer)
+- [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
+- [Declarative agent manifest schema](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-manifest){target=_blank}
+- [Supported content types](https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot#supported-content-types){target=_blank}
+- [Capabilities of Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-capabilities-ids?tabs=explorer){target=_blank}
 
 
 Great job on building your game agent 🎉 ! In the next lab, you’ll create a REST API, use it to build a plugin, and dive into a real-world business scenario solved by another agent. Exciting stuff ahead. Select **Next**
