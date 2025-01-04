@@ -20,11 +20,11 @@ It's time to add some actions for Career Genie to handle complex tasks and workf
 
     * Creating a new list.
 
-    * Remove a list.
+    * Removing a list.
     
     * Adding items to an existing list.
     
-    * Remove items from an existing list.
+    * Removing items from an existing list.
 
     When a user interacts with the AI system, the system interprets the prompt and selects the appropriate actions to carry out. It’s like having a toolbox of functions, and the AI picks the right tool for the job based on the user’s needs.
 
@@ -34,7 +34,7 @@ In this exercise, you'll create a new prompt in "prompts" folder to handle actio
 
 ### Step 1: Create a "monologue" prompt
 
-In your project go to `src/prompts/` and add a new folder with a name **monologue**. In `src/prompts/monologue/` folder, create a new file with a name **config.json** and copy the following code snippet in the file:
+In your project, go to `src/prompts/` and add a new folder with a name **monologue**. In `src/prompts/monologue/` folder, create a new file with a name **config.json** and copy the following code snippet in the file:
 
 ```json
 {
@@ -262,27 +262,27 @@ function getCandidates(state: ApplicationTurnState, list: string): string[] {
 }
   
 function setCandidates(state: ApplicationTurnState, list: string, Candidates: string[]): void {
-ensureListExists(state, list);
-state.conversation.lists[list] = Candidates ?? [];
+    ensureListExists(state, list);
+    state.conversation.lists[list] = Candidates ?? [];
 }
 
 function ensureListExists(state: ApplicationTurnState, listName: string): void {
-if (typeof state.conversation.lists != 'object') {
-    state.conversation.lists = {};
-}
+    if (typeof state.conversation.lists != 'object') {
+        state.conversation.lists = {};
+    }
 
-if (!Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)) {
-    state.conversation.lists[listName] = [];
-}
+    if (!Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)) {
+        state.conversation.lists[listName] = [];
+    }
 }
   
 function deleteList(state: ApplicationTurnState, listName: string): void {
-if (
-    typeof state.conversation.lists == 'object' &&
-    Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)
-) {
-    delete state.conversation.lists[listName];
-}
+    if (
+        typeof state.conversation.lists == 'object' &&
+        Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)
+    ) {
+        delete state.conversation.lists[listName];
+    }
 }
 
 export { getCandidates, setCandidates, ensureListExists, deleteList };
@@ -369,7 +369,7 @@ To understand how to flow works, you may ask the following questions in order:
 - Add Anthony Ivanov in the Talent list
 - Summarize my lists
 
-![Actions in Career Genie](../../assets/images/custom-engine-05/actions.gif)
+![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../assets/images/custom-engine-05/actions.gif)
 
 <cc-end-step lab="b5" exercise="3" step="3" />
 
@@ -493,41 +493,41 @@ async function sendLists(state: ApplicationTurnState, token): Promise<string> {
 }
    
 async function createEmailContent(lists, token) {
-let emailContent = '';
-for (const listName in lists) {
-    if (lists.hasOwnProperty(listName)) {
-    emailContent += `${listName}:\n`;
-    lists[listName].forEach(candidate => {
-        emailContent += `  • ${candidate}\n`;
-    });
-    emailContent += '\n'; // Add an extra line between different lists
+    let emailContent = '';
+    for (const listName in lists) {
+        if (lists.hasOwnProperty(listName)) {
+        emailContent += `${listName}:\n`;
+        lists[listName].forEach(candidate => {
+            emailContent += `  • ${candidate}\n`;
+        });
+        emailContent += '\n'; // Add an extra line between different lists
+        }
     }
-}
 
-const profileName = await getUserDisplayName(token);
+    const profileName = await getUserDisplayName(token);
 
-const email ={
-    "message": {
-    "subject": "Request to Schedule Interviews with Shortlisted Candidates",
-    "body": {
-        "contentType": "Text",
-        "content": `Hello HR Team, \nI hope this email finds you well. \n\nCould you please assist in scheduling 1:1 interviews with the following shortlisted candidates? \n\n${emailContent} Please arrange suitable times and send out the calendar invites accordingly. \n\n Best Regards, \n ${profileName}`
-    },
-    "toRecipients": [
-        {
-        "emailAddress": {
-            "address": `${config.HR_EMAIL}`
-        }
-        }
-    ]
-    },
-    "saveToSentCandidates": "true"
-};
-return await email;
+    const email ={
+        "message": {
+        "subject": "Request to Schedule Interviews with Shortlisted Candidates",
+        "body": {
+            "contentType": "Text",
+            "content": `Hello HR Team, \nI hope this email finds you well. \n\nCould you please assist in scheduling 1:1 interviews with the following shortlisted candidates? \n\n${emailContent} Please arrange suitable times and send out the calendar invites accordingly. \n\n Best Regards, \n ${profileName}`
+        },
+        "toRecipients": [
+            {
+            "emailAddress": {
+                "address": `${config.HR_EMAIL}`
+            }
+            }
+        ]
+        },
+        "saveToSentCandidates": "true"
+    };
+    return await email;
 }
 ```
 
-Finally in `src/app/actions.ts`m add **sendLists** in the`actions.ts` exports. The final version of the exports will look like below:
+Finally in `src/app/actions.ts`, add **sendLists** in the`actions.ts` exports. The final version of the exports will look like below:
 
 ```javascript
 export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
@@ -579,7 +579,7 @@ To start a conversation with Career Genie, simply type a message. For example, y
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
-![consent message teams](../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../assets/images/custom-engine-04/consent-teams.png)
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed. You'll be redirected to login and consent to the app's permissions.
 
@@ -590,7 +590,7 @@ Select **Accept** to consent to the permissions.
 
 You will now get this message from the Career Genie with your logged in name showing successful authentication. Now, you can start testing the new action in Career Genie!
 
-To understand how to flow works, you may ask the following questions in order:
+To understand how the flow works, you may ask the following questions in order:
 
 - Hello
 - Can you suggest candidates who have experience in .NET?
@@ -608,15 +608,15 @@ To understand how to flow works, you may ask the following questions in order:
 - Send my lists to HR
 
 !!! tip "Check your mailbox"
-    After the last step, check your mailbox to see if you receive any email for the lists of candidates.
+    After the last step, check your mailbox to see if you received any email for the lists of candidates.
 
-![Career Genie full experience](../../assets/images/custom-engine-05/career-genie-full.gif)
+![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../assets/images/custom-engine-05/career-genie-full.gif)
 
 <cc-end-step lab="b5" exercise="4" step="5" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie).
+You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank}.
 
 This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
