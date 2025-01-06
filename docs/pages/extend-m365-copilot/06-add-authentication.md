@@ -68,7 +68,7 @@ devtunnel host mytunnel
 
 The command line will display the connection information, such as:
 
-![running the developer tunnel](../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
+![The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity.](../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
 
 Copy the "Connect via browser" URL and save it as the "API Base URL".
 
@@ -161,14 +161,14 @@ Under "Add a scope" enter "access_as_user" as the scope name 1️⃣. Fill in th
 
 When you're done, click "Add Scope" 2️⃣.
 
-![](../../assets/images/extend-m365-copilot-06/oauth-A17.png)
+![The 'Add a scope' side panel in the 'Expose an API' page of the application registered, with settings for scope name, who can consent the scope, the admin and user display name and description, and the state flag to enable or disable the scope.](../../assets/images/extend-m365-copilot-06/oauth-A17.png)
 
 <cc-end-step lab="e6" exercise="2" step="4" />
 
 ### Step 5: Save the API Scope
 Copy the scope to your safe place as the "API Scope".
 
-![](../../assets/images/extend-m365-copilot-06/oauth-A17b.png)
+![The 'Expose an API' page of the application registered, once the custom scope has been created with the button to copy the scope name highlighted.](../../assets/images/extend-m365-copilot-06/oauth-A17b.png)
 
 <cc-end-step lab="e6" exercise="2" step="5" />
 
@@ -501,6 +501,6 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab E6, Add Authentication!
+You have completed lab E6, Add Entra ID authentication!
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />

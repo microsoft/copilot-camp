@@ -19,9 +19,9 @@ In this lab you will learn how to:
 
 ### Step 1: Enable Teams custom application uploads
 
-By default, end users can't upload applications directly; instead an Teams administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
+By default, end users can't upload applications directly; instead a Teams administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
 
-1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/{target=_blank}), which is the Microsoft 365 Admin Center.
+1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
 
 2️⃣ In the left panel of the admin center, select **Show all** to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
 
@@ -71,13 +71,13 @@ Follow the steps as shown in the screen shot below.
 
 ## Exercise 3: Get an Azure subscription
 
-To complete the exercises in Path B, you'll need an Azure subscription to create resources on Azure. If you don't have Azure subscription yet, you can activate an [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p) that offers $200 in credits which can be used within the first 30 days on most Azure services.
+To complete the exercises in Path B, you'll need an Azure subscription to create resources on Azure. If you don't have Azure subscription yet, you can activate an [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} that offers $200 in credits which can be used within the first 30 days on most Azure services.
 
 ### Step 1: Create an Azure free account
 
 Follow the steps to activate an Azure free account:
 
-1️⃣ Navigate to [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p) page and select **Activate**.
+1️⃣ Navigate to [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} page and select **Activate**.
 
 2️⃣ Login with an account of your choice, it's recommended to use the Microsoft 365 tenant account you would like to use in the exercises.
 
@@ -94,7 +94,7 @@ Follow the steps to activate an Azure free account:
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B0 - Prerequisites!
-You are now ready to proceed to lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit. Select Next.
+You have completed Lab B0 - Setup!
+You are now ready to proceed to lab B1 - First custom engine agent. Select Next.
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/00-prerequisites" />
