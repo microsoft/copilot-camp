@@ -45,7 +45,7 @@ export async function retractConnection(timer: Timer, context: InvocationContext
 }
 
 const currentDate = new Date();
-const cronExpression = `0 0 0 ${currentDate.getUTCMonth()} ${currentDate.getUTCDay()} *`;
+const cronExpression = `0 0 0 ${currentDate.getUTCDate()} ${currentDate.getUTCMonth() + 1} *`;
 app.timer('deployConnection', {
   // Runs every year
   schedule: cronExpression,	
