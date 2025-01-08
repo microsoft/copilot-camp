@@ -9,11 +9,11 @@
         "resourceAppId": "Microsoft Graph",
         "resourceAccess": [
           {
-            "id": "ExternalConnection.ReadWrite.All",
+            "id": "ExternalConnection.ReadWrite.OwnedBy",
             "type": "Role"
           },
           {
-            "id": "ExternalItem.ReadWrite.All",
+            "id": "ExternalItem.ReadWrite.OwnedBy",
             "type": "Role"
           }
         ]
