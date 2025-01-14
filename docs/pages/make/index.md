@@ -37,7 +37,7 @@ If you are assigned with a Microsoft 365 Copilot license, or your organization h
 
 ## Copilot Studio
 
-Withx Copilot Studio you have the maximum potential for making custom agents. You can use it to create agents that you can host in multiple different channels like Microsoft Teams, custom web sites, Skype, Slack, etc. You can also host your agents in Microsoft 365 Copilot chat.
+With Copilot Studio you have the maximum potential for making custom agents. You can use it to create agents that you can host in multiple different channels like Microsoft Teams, custom web sites, Skype, Slack, etc. You can also host your agents in Microsoft 365 Copilot chat.
 The knowledge base can be:
 
 - SharePoint Online
@@ -54,6 +54,6 @@ In order to use Copilot Studio, you need a user license (also known as _per user
 
 ![The UI of Microsoft Copilot Studio when creating a new agent. It prompts the user for a name, logo, description, instructions in natural language, etc.](../../assets/images/make-global-intro/copilot-studio-01.png)
 
-## <a href="./copilot-studio/00-prerequisites">Start here</a> with Lab MCS0, where you'll set up your development environment for Copilot Studio.
+## <a href="./copilot-studio/00-prerequisites">Start here</a> with Lab MCS0, where you'll set up your environment for Copilot Studio.
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/index" />
