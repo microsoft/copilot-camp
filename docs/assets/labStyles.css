@@ -113,7 +113,10 @@ hr {
 }
 
 .cc-e-lab-steps,
-.cc-b-lab-steps {
+.cc-b-lab-steps,
+.cc-mab-lab-steps,
+.cc-msa-lab-steps,
+.cc-mcs-lab-steps {
     color: black;
     margin: 0 20pt;
     padding: 0 10pt;
@@ -123,7 +126,10 @@ hr {
 }
 
 .cc-e-lab-steps ul,
-.cc-b-lab-steps ul {
+.cc-b-lab-steps ul,
+.cc-mab-lab-steps ul,
+.cc-msa-lab-steps ul,
+.cc-mcs-lab-steps ul {
     margin-top: -6pt;
 }
 
@@ -139,6 +145,24 @@ hr {
     color: #8d57c2;
 }
 
+.cc-mab-lab-steps,
+.cc-mab-lab-steps a:link,
+.cc-mab-lab-steps a:visited {
+    color: #c00000;
+}
+
+.cc-msa-lab-steps,
+.cc-msa-lab-steps a:link,
+.cc-msa-lab-steps a:visited {
+    color: #105658;
+}
+
+.cc-mcs-lab-steps,
+.cc-mcs-lab-steps a:link,
+.cc-mcs-lab-steps a:visited {
+    color: #0571b9;
+}
+
 /* Border around lab steps (local TOC)
  * Looks better without it?
 .cc-e-lab-steps {
@@ -149,9 +173,24 @@ hr {
     border: #B06CF4 2px solid;
 }
 
+.cc-mab-lab-steps {
+    border: #c00000 2px solid;
+}
+
+.cc-msa-lab-steps {
+    border: #105658 2px solid;
+}
+
+.cc-mcs-lab-steps {
+    border: #0571b9 2px solid;
+}
+
 @media screen and (max-width: 550px) {
     .cc-e-lab-steps,
-    .cc-b-lab-steps {
+    .cc-b-lab-steps,
+    .cc-mab-lab-steps,
+    .cc-msa-lab-steps,
+    .cc-mcs-lab-steps {
         border-width: 0;
         width: 100%;
     }
@@ -177,6 +216,8 @@ hr {
     padding: 0 10pt;
     font-size: 11pt;
     max-width: 400pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
 }
 
 .cc-lab-toc img {
@@ -233,6 +274,8 @@ hr {
     font-weight: bold;
 }
 
+/* E Path */
+
 .e-path div,
 .e-path div p {
     border-color: #1EA6F3;
@@ -270,6 +313,8 @@ hr {
     background-image: url('./images/path-icons/icon-eb-gc.png');
 }
 
+/** B Path */
+
 .b-path div,
 .b-path div p  {
     border-color: #B06CF4;
@@ -297,6 +342,63 @@ hr {
 
 .b-path ul li:nth-child(6) {
     background-image: url('./images/path-icons/icon-b5.png');
+}
+
+/** MAB Path */
+
+.mab-path div,
+.mab-path div p  {
+    border-color: #c00000;
+}
+
+.mab-path ul li:nth-child(1) {
+	background-image: url("./images/path-icons/icon-mab1.png");
+}
+
+/** MSA Path */
+
+.msa-path div,
+.msa-path div p  {
+    border-color: #105658;
+}
+
+.msa-path ul li:nth-child(1) {
+	background-image: url("./images/path-icons/icon-msa1.png");
+}
+
+.msa-path ul li:nth-child(2) {
+    background-image: url('./images/path-icons/icon-msa2.png');
+}
+
+/** MCS Path */
+
+.mcs-path div,
+.mcs-path div p  {
+    border-color: #0571b9;
+}
+
+.mcs-path ul li:nth-child(1) {
+	background-image: url("./images/path-icons/icon-mcs0.png");
+}
+
+.mcs-path ul li:nth-child(2) {
+    background-image: url('./images/path-icons/icon-mcs1.png');
+}
+
+.mcs-path ul li:nth-child(3) {
+    background-image: url('./images/path-icons/icon-mcs2.png');
+}
+
+.mcs-path ul li:nth-child(4) {
+    background-image: url('./images/path-icons/icon-mcs3.png');
+}
+
+.mcs-path ul li:nth-child(5) {
+    background-image: url('./images/path-icons/icon-mcs4.png');
+}
+
+.mcs-path ul li:nth-child(6) {
+    background-image: url('./images/path-icons/icon-mcs5.png');
 }
 
 /*** Style mkdocs features ***
