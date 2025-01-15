@@ -1,5 +1,5 @@
 
-# Welcome to Copilot Camp's Make Path: SharePoint agents
+# Understanding SharePoint agents
 
 A SharePoint agent is the easiest way to create an agent specialized on content stored in SharePoint Online. 
 Tha SharePoint agent can target:
