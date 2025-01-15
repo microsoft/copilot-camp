@@ -633,3 +633,61 @@ dicussion */
     box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5); /* Subtle focus ring */
 }
 
+/* Lab branches */
+.lab-branches {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lab-branch {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 5px;
+    width: 30%;
+    min-width: 300px;
+}
+
+.lab-branch-detail {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.lab-branch-detail.title {
+    margin-top: 5px;
+    max-height: 50px;
+}
+
+.lab-branch-detail.title > a > img {
+    max-height: 50px;
+}
+
+.lab-branch-detail.body {
+    flex: 1;
+}
+
+.lab-branch-detail.body > ul {
+    vertical-align: top;
+}
+
+.lab-branch-detail.button {
+    flex: 0;
+    width: 330px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.lab-branch-detail.button > a > button {
+    width: 100%;
+}
+
+@media (min-width: 800px) {
+    .lab-branches {
+        flex-direction: row;
+    }
+    .lab-branch {
+        flex-direction: column;
+        flex: 1;
+    }
+}
