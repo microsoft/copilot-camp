@@ -679,7 +679,7 @@ dicussion */
 }
 
 .lab-branch-detail.button > a > button {
-    width: 100%;
+    width: 80%;
 }
 
 @media (min-width: 800px) {
