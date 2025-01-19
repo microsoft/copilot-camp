@@ -109,7 +109,7 @@ For each agent, you have command to edit, share, download, and delete it.
 
 ### Step 1: Provide a custom icon
 
-Let's edit the **Gardener** agent that you just created. The dialog starts with the **Configure** panel active. You can go through the configuration settings and notice that all the descriptions that you provided in Exercise 1 are now specific settings for the agent.
+Let's edit the **Gardener** agent that you just created. The dialog starts with the **Configure** panel active. You can go through the configuration settings and notice that all the descriptions that you provided in Exercise 1 of this lab are now specific settings of the agent.
 There are configuration settings to define:
 
 - Icon: to customize the icon of the agent
@@ -121,10 +121,125 @@ There are configuration settings to define:
 - Capabilities: to enable capabilites like code interpreting and image generation
 - Starter prompts: to configure up to 6 starter prompts for the agent 
 
+To customize the icon of the agent, select the edit button just beside the default icon of the agent.
+
+A dialog pops up and allows you to change the icon and the background color for the icon. For your convenience, you can download a sample icon from [here](https://github.com/microsoft/copilot-camp/blob/main/src/make/agent-builder/color.png) and upload it as the custom icon for the agent. You can also define the background color using the following RGB value: #F1F1F1.
+
+![The dialog to update the icon and background color for the agent. There is the icon, a button to upload a new icon, and another button to set the background color. In the lower right corner there are buttons to save or cancel.](../../../assets/images/make/agent-builder-01/update-agent-03.png)
+
+<cc-end-step lab="mab1" exercise="2" step="1" />
+
 ### Step 2: Define the guess plant/flower game rules
 
-### Step 3: Add SharePoint Online knowledge base
+Still while editing the settings of the agent, update the content of the **Instructions** configuration field with the following value.
 
-### Step 4: Add support for image generation
+```txt
+You are an expert gardener and you help users to maintain and improve their home garden
+providing detailed instructions and advice about the best practices for home gardening.
+Here are your working rules:
 
-### Step 5: Test the agent
+- Provide detailed instructions and advice about the best practices for home gardening.
+- Help users maintain and improve their home garden.
+- Offer tips on plant care, soil management, pest control, and seasonal gardening tasks.
+- Respond to user queries with clear and actionable steps.
+- Be friendly, knowledgeable, and supportive in all interactions.
+- Suggest ways to keep plants and flowers shining and gorgeous, including watering
+schedules, fertilization, pruning, and pest control.
+- Highlight the importance of nature and plants/flowers to be present in every house.
+- Use a professional, yet friendly, tone in all responses.
+
+Lastly, engage the user in a challenging game to guess the name of a plant or flower based
+on a set of clues. Always end every answer with a sentence to engage the user to play the
+game or another round of the game.
+```
+
+![The dialog with the agent settings updated accordingly to the lab instructions and with the 'Update' button highlighted.](../../../assets/images/make/agent-builder-01/update-agent-04.png)
+
+Select the **Update** button in the upper right corner of the configuration dialog. The update takes a while and once it is completed you can select **Go to agent** and see the final result. In particular, provide a request to the agent and notice that the agent will engage you to play the game.
+
+![The updated agent with the new icon and the final sentence to engage the user to play the game highlighted.](../../../assets/images/make/agent-builder-01/update-agent-05.png)
+
+For the sake of completeness, here follows a sample dialog with the agent, while guessing the name of a plant.
+
+![A sample interaction between the user and the agent while guessing the name of a plant.](../../../assets/images/make/agent-builder-01/update-agent-06.png)
+
+<cc-end-step lab="mab1" exercise="2" step="2" />
+
+## Exercise 3: Add SharePoint Online knowledge base
+
+In this exercise you are going to add some Word documents as an additional knowledge base for the **Gardener** agent.
+
+### Step 1: Upload the knowledge base documents
+
+Now, let's add some custom knowledge base content, like for example few Microsoft Word documents with specific information about plants and flowers.
+
+Download this zip file consisting of four DOCX files by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/agent-builder/sharepoint-docs&filename=sharepoint-docs).
+
+Extract the four files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
+These documents are **Basic Aspects of Gardening and Maintaining a Healthy Garden.docx**, **Common Plants List.docx**, **Healing a Plant in Your Garden**, and **The Most Common Types of Plants in a Home Garden.docx** to help make the agent more expert and the game more challenging.
+
+Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso` and proceed to next step.
+
+<cc-end-step lab="mab1" exercise="3" step="1" />
+
+### Step 2: Add support for SharePoint Online documents
+
+Go back to the list of agents, edit the **Gardener** agent and scroll to the configuration section with title **Knowledge**. Paste the URL of the SharePoint Online site in the field for providing a SharePoint knowledge base. If you like, instead of pasting the URL, you can select the **Browse** button and search for the site in your tenant.
+
+![The configuration dialog of the agent with the 'Knowledge' section and the 'SharePoint' URL field highlighted.](../../../assets/images/make/agent-builder-01/update-agent-07.png)
+
+Update the agent and interact with it again. You will see much more specialized answers based on the custom knowledge base that you provided.
+
+<cc-end-step lab="mab1" exercise="3" step="2" />
+
+## Exercise 4: Final touches to the agent
+
+In this exercise you are going to add image generation capabilities to the **Gardener** agent and you will share it with your colleagues.
+
+### Step 1: Add support for image generation
+
+Edit again the **Gardener** agent, scroll down in the configuration panel and find the section with title **Capabilities**. Enable the option with name **Image generator** and update the agent.
+
+![The configuration dialog of the agent with the 'Capabilities' section and the 'Image generator' option selected and highlighted.](../../../assets/images/make/agent-builder-01/update-agent-08.png)
+
+Reload the agent and provide the following prompt:
+
+```txt
+Generate the image of a dozen of red roses
+```
+
+In the following image you can see the output with a generated image.
+
+![The 'Gardener' agent with the answer to a prompt that generated an image of a dozen of red roses.](../../../assets/images/make/agent-builder-01/update-agent-09.png)
+
+<cc-end-step lab="mab1" exercise="4" step="1" />
+
+### Step 2: Share the agent
+
+You are now ready to share the agent with your colleagues. Edit the agent one last time.
+In the upper right corner, just beside the **Update** button, there is **Share** button.
+By selecting the sharing button, a sharing dialog pops up and from there you can select if you want to share the agent with any of the following targets:
+
+- Anyone in your organization
+- Specific users in your organization via security groups
+- Only you
+
+Select the option to share with specific users and provide the e-mail of the sharing target, then select the **Save** button to confirm your sharing settings.
+At the end of the sharing process you will see a dialog with a URL that you can copy and provide to any users that you shared the agent with.
+
+![The panel to configure the sharing target. Available options are 'Anyone in your organization', 'Specific users in your organization via security groups', or 'Only you'. The panel also provides a button to 'Save' the sharing option and a URL to access the agent.](../../../assets/images/make/agent-builder-01/update-agent-10.png)
+
+<cc-end-step lab="mab1" exercise="4" step="2" />
+
+---8<--- "mab-congratulations.md"
+
+Great job on building your agent 🎉 ! This is the end of the **Copilot Studio agent builder** path! Did you enjoy building the Gardener agent? Let us know about your experience and feedback. 💜
+
+## Resources
+- [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
+- [Build agents with Copilot Studio agent builder](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build){target=_blank}
+- [Publish and manage Copilot Studio agent builder agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish){target=_blank}
+
+<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent" />
+
+
