@@ -28,7 +28,8 @@
             <ul>
         </div>
         <div class="lab-branch-detail button">
-            <a href="./sharepoint-agents"><button class="github-button">Start here</button></a>
+            <a href="#"><button class="github-button">Coming soon ...</button></a>
+            <!-- <a href="./sharepoint-agents"><button class="github-button">Start here</button></a> -->
         </div>
     </div>
     <div class="lab-branch">
@@ -46,7 +47,8 @@
             <ul>
         </div>
         <div class="lab-branch-detail button">
-            <a href="./copilot-studio"><button class="github-button">Start here</button></a>
+            <a href="#"><button class="github-button">Coming soon ...</button></a>
+            <!-- <a href="./copilot-studio"><button class="github-button">Start here</button></a> -->
         </div>
     </div>
 </div>
