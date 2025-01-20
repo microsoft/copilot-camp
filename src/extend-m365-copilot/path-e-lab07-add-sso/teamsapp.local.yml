@@ -64,7 +64,9 @@ deploy:
     with:
       target: ./.localConfigs
       envs:
-        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
+        TENANT_ID: ${{TEAMS_APP_TENANT_ID}}
+        APP_ID: ${{APP_ID}}
 
   # Run npm command
   - uses: cli/runNpmCommand
