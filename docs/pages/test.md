@@ -116,6 +116,6 @@ Nunc massa velit, gravida a nunc in, efficitur viverra sapien. Sed viverra ullam
 
 ### Step 3: Thank you!
 
-Thanks for testing the Copilot Camp web controls!
+Thanks for testing the Copilot Developer Camp web controls!
 
 <cc-end-step lab="t1" exercise="2" step="3" />

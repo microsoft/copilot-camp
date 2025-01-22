@@ -5,9 +5,9 @@ repo_name: microsoft/copilot-camp
 edit_uri: ''                    # Disable edit button
 extra_css:
     - assets/labStyles.css
-nav: 
+nav:
 - Home: 'index.md'
-- Extend Path - Extend Microsoft 365 Copilot: 
+- Extend Path - Extend Microsoft 365 Copilot:
   - Welcome : 'pages/extend-m365-copilot/index.md'
   - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
   - Lab E1 - First Declarative agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
@@ -17,7 +17,7 @@ nav:
   - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
   - Lab E6 - Add Entra ID authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
   - Lab EB - Add Graph Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
-- Build Path - Build your own agent: 
+- Build Path - Build your own agent:
   - Welcome : 'pages/custom-engine/index.md'
   - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
   - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
@@ -25,10 +25,39 @@ nav:
   - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
+- Make Path - Make your own agent:
+  - Welcome: 'pages/make/index.md'
+  - Lab MAB - Copilot Studio agent builder: 'pages/make/agent-builder/index.md'
+  - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
+  - Lab MCS - Microsoft Copilot Studio: 'pages/make/copilot-studio/index.md'
+  - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
+  - Lab MCS2 - Defining Topics: 'pages/make/copilot-studio/02-topics.md'
+  - Lab MCS3 - Defining Actions: 'pages/make/copilot-studio/03-actions.md'
+  - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
+  - Lab MCS5 - Consuming a Power Platform connector: 'pages/make/copilot-studio/05-connectors.md'
+  - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
+  - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
+  - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
+
+# The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
+#  - Lab MAB - Copilot Studio agent builder:
+#      - Lab MAB - Welcome: 'pages/make/agent-builder/index.md'
+#      - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
+#  - Lab MCS - Microsoft Copilot Studio:
+#      - Lab MCS - Welcome: 'pages/make/copilot-studio/index.md'
+#      - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
+#      - Lab MCS2 - Defining Topics: 'pages/make/copilot-studio/02-topics.md'
+#      - Lab MCS3 - Defining Actions: 'pages/make/copilot-studio/03-actions.md'
+#      - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
+#      - Lab MCS5 - Consuming a Power Platform connector: 'pages/make/copilot-studio/05-connectors.md'
+#  - Lab MSA - SharePoint agents:
+#      - Lab MSA - Welcome: 'pages/make/sharepoint-agents/index.md'
+#      - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
+#      - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
 
 theme:
   name: 'material'
-  palette: 
+  palette:
     primary: '#35258F'
     accent: '#091F2C'
   logo: 'assets/images/CopilotCamp-Tent-Clean.png'

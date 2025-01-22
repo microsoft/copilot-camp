@@ -28,7 +28,7 @@ Here is an example::
 
 ## Lab steps
 
-Copilot Camp labs use custom web controls to help students track their progress. You will want to include a `<cc-end-step />` element at the end of each lab step. See [this test page](../../test) for details.
+Copilot Developer Camp labs use custom web controls to help students track their progress. You will want to include a `<cc-end-step />` element at the end of each lab step. See [this test page](../../test) for details.
 
 ## Hyperlinks
 
