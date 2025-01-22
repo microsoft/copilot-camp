@@ -17,23 +17,6 @@
     </div>
     <div class="lab-branch">
         <div class="lab-branch-detail title">
-            <a href="./sharepoint-agents"><img src="../../assets/images/path-icons/MSA-path-heading.png" alt="Follow this link to dig into the SharePoint agents path"></a>
-        </div>      
-        <div class="lab-branch-detail body">
-            <ul>
-                <li>Integrated with SharePoint Online user experience</li>
-                <li>SharePoint Online content only</li>
-                <li>Supported in Microsoft Teams chat</li>
-                <li>Microsoft 365 Copilot license or Microsoft Copilot Studio capacity or Pay-As-You-Go</li>
-            <ul>
-        </div>
-        <div class="lab-branch-detail button">
-            <a href="#"><button class="github-button">Coming soon ...</button></a>
-            <!-- <a href="./sharepoint-agents"><button class="github-button">Start here</button></a> -->
-        </div>
-    </div>
-    <div class="lab-branch">
-        <div class="lab-branch-detail title">
             <a href="./copilot-studio"><img src="../../assets/images/path-icons/MCS-path-heading.png" alt="Follow this link to dig into the Microsoft Copilot Studio path"></a>
         </div>      
         <div class="lab-branch-detail body">
@@ -49,6 +32,23 @@
         <div class="lab-branch-detail button">
             <a href="#"><button class="github-button">Coming soon ...</button></a>
             <!-- <a href="./copilot-studio"><button class="github-button">Start here</button></a> -->
+        </div>
+    </div>
+    <div class="lab-branch">
+        <div class="lab-branch-detail title">
+            <a href="./sharepoint-agents"><img src="../../assets/images/path-icons/MSA-path-heading.png" alt="Follow this link to dig into the SharePoint agents path"></a>
+        </div>      
+        <div class="lab-branch-detail body">
+            <ul>
+                <li>Integrated with SharePoint Online user experience</li>
+                <li>SharePoint Online content only</li>
+                <li>Supported in Microsoft Teams chat</li>
+                <li>Microsoft 365 Copilot license or Microsoft Copilot Studio capacity or Pay-As-You-Go</li>
+            <ul>
+        </div>
+        <div class="lab-branch-detail button">
+            <a href="#"><button class="github-button">Coming soon ...</button></a>
+            <!-- <a href="./sharepoint-agents"><button class="github-button">Start here</button></a> -->
         </div>
     </div>
 </div>
