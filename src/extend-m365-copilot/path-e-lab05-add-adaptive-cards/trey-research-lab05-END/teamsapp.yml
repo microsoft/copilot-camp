@@ -3,6 +3,9 @@
 # Visit https://aka.ms/teamsfx-actions for details on actions
 version: v1.5
 
+additionalMetadata:
+  sampleTag: copilot-camp:path-e-lab05-add-adaptive-cards_trey-research-lab05-END
+
 environmentFolderPath: ./env
 
 # Triggered when 'teamsapp provision' is executed
