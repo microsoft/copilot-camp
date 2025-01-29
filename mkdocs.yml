@@ -16,6 +16,7 @@ nav:
   - Lab E4 - Enhance the API and plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
   - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
   - Lab E6 - Add Entra ID authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
+  - Lab E6c - Add SSO: 'pages/extend-m365-copilot/06c-add-sso.md'
   - Lab EB - Add Graph Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
 - Build Path - Build your own agent: 
   - Welcome : 'pages/custom-engine/index.md'

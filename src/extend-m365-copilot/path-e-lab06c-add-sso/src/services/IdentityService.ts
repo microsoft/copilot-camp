@@ -20,7 +20,7 @@ class Identity {
 
         // Try to validate the token and get user's basic information
         try {
-            const { TENANT_ID, APP_ID } = process.env;
+            const { API_APPLICATION_ID, API_TENANT_ID, AUTH_CONGIF_ID } = process.env;
             const token = req.headers.get("Authorization")?.split(" ")[1];
             if (!token) {
                 throw new HttpError(401, "Authorization token not found");
@@ -32,7 +32,7 @@ class Identity {
                 // requests so it can cache the Entra ID signing keys
                 // For multitenant, use:
                 // const entraJwksUri = await getEntraJwksUri();
-                const entraJwksUri = await getEntraJwksUri(TENANT_ID);
+                const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
                 this.validator = new TokenValidator({
                     jwksUri: entraJwksUri
                 });
@@ -41,8 +41,8 @@ class Identity {
 
             // Use these options for single-tenant applications
             const options: ValidateTokenOptions = {
-                audience: `api://auth-257f8e8f-738f-4070-a1c1-e0a20f99a98c/${APP_ID}`, //to:do check what auth-257f8e8f-738f-4070-a1c1-e0a20f99a98c guid stand for
-                issuer: `https://sts.windows.net/${TENANT_ID}/`,              
+                audience: `api://auth-${AUTH_CONGIF_ID}/${API_APPLICATION_ID}`, 
+                issuer: `https://sts.windows.net/${API_TENANT_ID}/`,              
                 scp: ["access_as_user"],
             
             };
