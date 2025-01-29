@@ -240,9 +240,11 @@ API_TENANT_ID=<Directory (tenant) ID>
 
 !!! Note "Generate Application ID URI manually"
     In case the Application ID URI isn't available, please construct it using the below steps temporarily:
-    Go to Base64 Decode and Encode - Online
+    Go to [Base64 Decode and Encode](https://www.base64decode.org/) - Online
     Copy and paste the auth registration ID generated in last step and decode.
-    Construct the application ID URI using the second part of the decoded value (after ##) as highlighted below – `api://auth-<AuthConfigID_Decoded>/<tenantid>`
+    Construct the application ID URI using the second part of the decoded value (after ##) as highlighted below – api://auth-<AuthConfigID_Decoded_SecondPart>, e.g., api://auth-16cfcd90-803e-40ba-8106-356aa4927bb9
+    ![Generating Application ID URI manually](../../assets/images/extend-m365-copilot-06c/oauth-A13.png)
+  
 
 
 To make these values available inside your code running in Teams Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
@@ -378,11 +380,26 @@ Before you test the application, update the manifest version of your app package
 
 ### Step 1: (Re)start the application
 
+Restart the application if it was already running and open Trey Genie in Copilot app.
+
+Prompt - "What projects am I assigned to?" 
+After allowing the agent, you will be asked to sign in as below (this is one time)
+
+![Sign in button](../../assets/images/extend-m365-copilot-06c/oauth-A14.png)
+
+Once you select the sign in button, you need to allow the application's API to be access as the current user, so go ahead and give the permission by selecting "Accept".
+
+![Accept permission](../../assets/images/extend-m365-copilot-06c/oauth-A15.png)
+
+From now on, the sign in will be smooth for the user when interacting with the agent, without having to sign in each time.
+
+![Single sign on](../../assets/images/extend-m365-copilot-06c/oauth-A16.gif)
+
 
 <cc-end-step lab="e6" exercise="8" step="1" />
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab E6, Add Entra ID authentication!
+You have completed lab E6c, Add SSO!
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06c-add-sso" />

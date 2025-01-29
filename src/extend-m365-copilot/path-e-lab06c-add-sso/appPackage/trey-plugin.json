@@ -566,7 +566,7 @@
       "type": "OpenApi",
       "auth": {
         "type": "OAuthPluginVault",
-        "reference_id": "YmVmMmY3M2QtNTgwYi00MmY2LWE1ZjktMzU2MWJiN2U3OGQ1IyMyNTdmOGU4Zi03MzhmLTQwNzAtYTFjMS1lMGEyMGY5OWE5OGM="
+        "reference_id": "<your Microsoft Entra SSO Registration ID>"
       },
       "spec": {
         "url": "trey-definition.json"

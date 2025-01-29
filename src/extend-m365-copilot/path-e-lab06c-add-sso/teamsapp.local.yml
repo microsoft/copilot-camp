@@ -65,9 +65,8 @@ deploy:
       target: ./.localConfigs
       envs:
         STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
+        APP_ID_URI: ${{APP_ID_URI}}
         API_TENANT_ID: ${{API_TENANT_ID}}
-        API_APPLICATION_ID: ${{API_APPLICATION_ID}}
-        AUTH_CONGIF_ID: ${{AUTH_CONGIF_ID}}
 
   # Run npm command
   - uses: cli/runNpmCommand
