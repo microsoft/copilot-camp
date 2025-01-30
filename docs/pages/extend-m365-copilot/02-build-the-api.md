@@ -12,7 +12,7 @@ In this lab you will set up a REST API for Trey Research, a hypothetical consult
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
 ???+ Question "How did you create this API?"
-    The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new project and select "Copilot Extensions", then "Declarative Agent" and "Declarative Agent with a new API".
+    The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new app project and select "Agent", then "Declarative Agent" and "Add plugin".
 
 ## Exercise 1: Configure and run the starting application
 
@@ -20,8 +20,9 @@ The code consists of Azure Functions written in TypeScript, backed by a database
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
-* [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): You will use this to test your API locally
-* (optional)[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer): This will allow you to view and modify the Trey Research database
+* [Azure functions core tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools){target=_blank} OR
+[REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}: You will use one of these toolks to test your API locally
+* (optional) [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank}: This will allow you to view and modify the Trey Research database
 
 <cc-end-step lab="e2" exercise="1" step="1" />
 
@@ -29,7 +30,7 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 Begin by downloading the Copilot Developer Camp repository at [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}. Select the "Code" button and clone or download the content to your computer.
 
-Find starting code in the repo at **/src/extend-m365-copilot/path-a-lab02-first-api-plugin/trey-research**.
+Find starting code in the repo at **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research**.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
 !!! note
@@ -39,7 +40,7 @@ Copy this folder to a location on your computer where you want to do your work. 
 
 ### Step 3: Set up the local environment files
 
-Open your working folder in Visual Studio Code. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure this line is present:
+Open your working folder in Visual Studio Code. You might see a popup dialog asking you to "trust the authors of the files in this folder". If that is the case, select the button "Yes, I trust the authors" to proceed. Copy the **/env/.env.local.user.sample** file to **/env/.env.local.user**. If **env.local.user** already exists, ensure this line is present:
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
@@ -61,15 +62,15 @@ npm install
 
 In Visual Studio Code, click the Teams logo in the left sidebar to open Teams Toolkit. Ensure you are logged into Microsoft 365 1️⃣ and that Custom App Uploads and Copilot Access Enabled indicators 2️⃣ are both showing green checkmarks.
 
-![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk01.png)
+![Visual Studio Code with the Teams Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/run-in-ttk01.png)
 
 Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
 
-![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk02.png)
+![Visual Studio Code with the Teams Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/run-in-ttk02.png)
 
 Eventually a browser will open (it's faster after the first time). You'll log into this in the next lab to test with Copilot, but for now just minimize the browser so your app keeps running, and we'll proceed to test the API.
 
-![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk03.png)
+![The debug session in the browser, with suggestion to minimize the browser window.](../../assets/images/extend-m365-copilot-02/run-in-ttk03.png)
 
 <cc-end-step lab="e2" exercise="1" step="5" />
 
@@ -85,11 +86,11 @@ Before proceeding, ensure the log file is in view by opening the "Debug console"
 
 Now click the "Send Request" link in **treyResearchAAPI.http** just above the link `{{base_url}}/me` 6️⃣.
 
-![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk04.png)
+![Visual Studio Code with the sample treyResearchAPI.http file open and the shortcut to send a sample HTTP request while in debug mode.](../../assets/images/extend-m365-copilot-02/run-in-ttk04.png)
 
 You should see the response in the right panel, and a log of the request in the bottom panel. The response shows the information about the logged-in user, but since we haven't implemented authentication as yet (that's coming in Lab 6), the app will return information on the fictitious consultant "Avery Howard". Take a moment to scroll through the response to see details about Avery, including a list of project assignments.
 
-![Teams Toolkit](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
+![Visual Studio Code with the output of the request triggered in the treyResearchAPI.http file.](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
 
 <cc-end-step lab="e2" exercise="2" step="1" />
 
@@ -103,10 +104,10 @@ Continue to try the various GET requests in the .http file to find consultants w
 
 ### Step 3: Examine the database (optional)
 
-If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer), you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
+If you've installed the [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank}, you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.
 
-!!! Note
-  When you ran `npm install` in the previous exercise you installed the Azurite storage emulator. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}, and when you start the project, Azurite is automatically started up. So as long as your project is started successfully you can view the storage.
+!!! note
+    When you ran `npm install` in the previous exercise you installed the Azurite storage emulator. For more information check the [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank}, and when you start the project, Azurite is automatically started up. So as long as your project is started successfully you can view the storage.
 
 Within the Azure Storage Explorer, open the "Emulator & Attached" selection and pick the "(Emulator: Default Ports)" collection; then drill down to "Tables". You shold see 3 tables:
 
@@ -114,7 +115,7 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
   * **Project:** This table stores details about Trey Research projects
   * **Assignment:** This table stores consultant assignments to projects, such as Avery Howard's assignment to the Woodgrove Bank project. This table includes a "delivered" field that contains a JSON representation of the hours delivered by that consultant on the project over time.
 
-![Azure Storage Explorer](../../assets/images/extend-m365-copilot-02/azure-storage-explorer01.png)
+![The UI of the Azure Storage Explorer while browsing the local storage tables for Consultant, Project, and Assignment.](../../assets/images/extend-m365-copilot-02/azure-storage-explorer01.png)
 
 <cc-end-step lab="e2" exercise="2" step="3" />
 

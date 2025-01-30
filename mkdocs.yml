@@ -7,8 +7,7 @@ extra_css:
     - assets/labStyles.css
 nav: 
 - Home: 'index.md'
-- Virtual Live Event - Nov 7th 🎉: 'https://aka.ms/copilotdevcamp/live'
-- Extend Path - Extend Copilot for Microsoft 365: 
+- Extend Path - Extend Microsoft 365 Copilot: 
   - Welcome : 'pages/extend-m365-copilot/index.md'
   - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
   - Lab E1 - First Declarative agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
@@ -17,6 +16,7 @@ nav:
   - Lab E4 - Enhance the API and plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
   - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
   - Lab E6 - Add Entra ID authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
+  - Lab EB - Add Graph Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
 - Build Path - Build your own agent: 
   - Welcome : 'pages/custom-engine/index.md'
   - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'

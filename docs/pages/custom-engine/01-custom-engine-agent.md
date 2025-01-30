@@ -8,7 +8,7 @@ In this lab you will:
 
 - Learn what is a custom engine agent
 - Create Azure OpenAI service and a deployment model
-- Create a custom engine agent using Teams toolkit
+- Create a custom engine agent using Teams Toolkit
 - Define a prompt in your custom engine agent
 - Learn how to run and test your app
 
@@ -40,16 +40,19 @@ This exercise particularly demonstrates how to create and utilize Azure OpenAI's
 
     - **gpt-35-turbo:** A balanced model that provides good performance at a lower cost, ideal for a wide range of applications.
 
-You'll need to complete the Azure subscription pre-requisite before starting with this exercise.
+You'll need to complete the [Azure subscription prerequisite](./00-prerequisites.md#exercise-3-get-an-azure-subscription){target=_blank} before starting with this exercise.
 
 ### Step 1: Create Azure OpenAI service resource
+
+???+ info "Make sure the model you want to create in further steps is available in your Azure OpenAI service region"
+    Please check [Model summary table and region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#model-summary-table-and-region-availability){target=_blank} before creating your Azure OpenAI service in any particular region. Make sure that the model you want to use such as `gpt-4` is available in **Standard** or **Global Standard** types in the region you prefer to create your Azure OpenAI Service.
 
 1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com).
 1. Select **Create a resource**, then search for `Azure OpenAI`. Select the Azure OpenAI service and then **Create**.
 1. Fill out the following details and select **Next**:
     - **Subscription:** The Azure subscription for your Azure OpenAI Service
     - **Resource group:** The Azure resource group to contain your Azure OpenAI resource. You can create a new group or use a pre-existing group.
-    - **Region:** The location of your instance.
+    - **Region:** The location of your instance. (Make sure that the deployment model is available in your region).
     - **Name:** A descriptive name for your Azure OpenAI Service resource, such as `MyOpenAIResource`.
     - **Pricing Tier:** The pricing tier for the resource. Currently, only the `Standard` tier is available for the Azure OpenAI Service.
 1. Select the network configuration of your choice and select **Next**.
@@ -62,39 +65,37 @@ Once your Azure OpenAI service is created successfully, navigate to your resourc
 
 ### Step 2: Create a deployment model
 
-In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure OpenAI Studio` where you can create your deployment model.
+In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure AI Foundry` where you can create your deployment model.
 
-??? check "What is Azure OpenAI Studio?"
-    Azure OpenAI Studio is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. If you prefer to use any model other than OpenAI models such as `Phi-3`, `Llama 3.1` or models from `HuggingFace`, we recommend you to use Azure AI Studio that provide a large selection of models to deploy, fine-tune and publish.
+??? check "What is Azure AI Foundry?"
+    Azure AI Foundry is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. It's also a playground to models other than OpenAI such as `Phi-3`, `Llama 3.1` and a starting point to other Azure AI services such as Speech, Vision and more.
 
-    *Learn more about the Generative AI, prompting and Azure OpenAI Studio by watching this Doodle to Code video!*
+    *Learn more about the Generative AI, prompting by watching this Doodle to Code video!*
     
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
-From the **Deployments** tab, select **Create a new deployment**. Fill out the following details and select **Create**:
+In Azure AI Foundry, select **Deployments** tab, **Deploy model** and then **Deploy base model**. Search the model you prefer to use such as `gpt-4` and **Confirm**. Fill out the following details and select **Deploy**:
 
-- **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-35-turbo`.
-- **Select a model:** Select `gpt-35-turbo` or higher model.
-- **Model version:** Auto update to default.
-- **Deployment type:** Provisioned-Managed.
-- **Content Filter:** Default.
+- **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
+- **Select a model:** Select a model, `gpt-4` is recommended.
+- **Deployment type:** Global Standard.
 
 !!! tip "Tip: Handling no quota available message"
     When you select a model, you may see **No quota available** message pop-up on top of the configuration page. To handle this, you have two options:
     1. Select a different version or deployment type
-    1. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota)
+    2. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota){target=_blank}
 
-Once your model is successfully created, you can navigate to **Chat**, and test your model by selecting one of the available templates in **Prompt** section and asking relevant questions in the chat playground.
+Once your model is successfully created, select **Open in playground**, and test your model by selecting **Prompt samples** from the top and choose one of the prompts available.
 
-For example, choose "Shakespeare writing assistant" and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
+For example, choose "Shakespearean Writing Assistant" and select **Use prompt**. and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
 
-![Testing the model in Azure OpenAI Studio Chat Playground](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
+![The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 <cc-end-step lab="b1" exercise="1" step="2" />
 
 ## Exercise 2: Scaffold a custom engine agent from a template
 
-You'll need to complete all the required pre-requisites before starting with this exercise.
+You'll need to complete all the [required prerequisites](./00-prerequisites.md){target=_blank} before starting with this exercise.
 
 ### Step 1: Use Teams Toolkit to create a new custom engine agent
 
@@ -134,7 +135,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 - "What would be the list of required skills for a Project Manager role?"
 - "Can you share a job template?"
 
-![Test Career Genie in App Test Tool](../../assets/images/custom-engine-01/teams-app-test-tool.png)
+![Test Career Genie in App Test Tool. There is a UI looking almost like the real Microsoft Teams one, with a chat area that allows to interact with the custom engine agent. On the right side there is a log panel with detailed logs about the interactions between the user and the bot.](../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
 ??? info "What does Teams Toolkit do behind the scene?"
     When you start debugging your app, Teams Toolkit completes some required tasks for you behind the scene, such as:
@@ -150,8 +151,8 @@ After successfully completing your testing, end your debugging session and close
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B1 - Build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie).
+You have completed Lab B1 - First custom engine agent to build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie){target=_blank}.
 
-You are now ready to proceed to Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent. Select Next.
+You are now ready to proceed to Lab B2 - Index your data in Azure AI Search to bring your data into your custom engine agent. Select Next.
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-agent" />

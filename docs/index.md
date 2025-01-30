@@ -1,19 +1,42 @@
 
 <img class="heading-image" src="./assets/images/CopilotCamp-Tent-Clean.png"></img>
+
 # Copilot Developer Camp
 
-Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot. 
+Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot.
 
-???+ info "Join the Microsoft 365 Copilot: Developer Camp on November 7th! 🎉"
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/l4bCs34T6qM" frameborder="0" allowfullscreen></iframe>
-        <div>
-            <br><b>📅 November 07, 2024 | 🕘 9:00 AM - 10:30 AM (PT) | 📍 Virtual Live</b> 
-            <br><br>Join us for <b>Microsoft 365 Copilot: Developer Camp 2024</b> on <b>November 7th</b>! 
-            This exciting event is designed to inspire developers to build the next generation of Copilot Agents with insights from product experts. 
-            <br><br>Explore everything from declarative agents to custom engine agents through fun games, doodles, studio interviews, and panels with leaders shaping the future of developer tooling. 
-            <br><br>Mark your calendars and visit <b><a>https://aka.ms/copilotdevcamp/live</a></b> to learn more! 
-        </div>
+???+ info "Watch Microsoft 365 Copilot: Developer Camp On-demand! 🎉"
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/PRVtfbjnDo4?si=tmWC9EehmPm5BBvQ" frameborder="0" allowfullscreen></iframe>  
+      <div>Let's Start with a Game!</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/SkpAicAt42U?si=o2zqGMUa3PKvfp60" frameborder="0" allowfullscreen></iframe>
+      <div>Developer's Guide to Building Copilot Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/QfgmvoWDDrw?si=z92Xh-NIPBao3DEw" frameborder="0" allowfullscreen></iframe>
+      <div>Introducing Declarative Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/f2hITAkh0IQ?si=Hugb9Vf0-Mwujhh2" frameborder="0" allowfullscreen></iframe>
+      <div>The Future of Declarative Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/IXTWvYrdVKU?si=FSL2myO9hTfiIgqK" frameborder="0" allowfullscreen></iframe>
+      <div>Extending Declarative Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/ocyBgi3m9Zo?si=grLCZRQ9LYlJI1vd" frameborder="0" allowfullscreen></iframe>
+      <div>A Conversation with the Leaders Behind the Developer Tools</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/-7r1zy5s_lw?si=UQbzMTWnSDYakHD4" frameborder="0" allowfullscreen></iframe>
+      <div>Introducing Custom Engine Agents</div>
+    </div>
+    <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/EGi1Xq8P1ws?si=YFkGUQYiVFccGwmq" frameborder="0" allowfullscreen></iframe>
+      <div>Unlock the Power of Custom Engine Agents</div>
     </div>
 
 ??? info "Learn about Microsoft 365 Copilot 'Wave 2'"
@@ -43,7 +66,7 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
 
 ## Hands-on Labs 🧪
 
-The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Studio (or any AI of your choice), choose the "Build" labs.
+The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.
 
 !!! info "New schema"
     If you began the "Extend" labs prior to October 27, 2024, you are probably still using the developer preview schema and should upgrade to the [v1.19 schema](https://learn.microsoft.com/microsoftteams/platform/resources/schema/manifest-schema){target=_blank} at this time. Detailed instructions are [here](./pages/updating-the-schema.md). The solution files were updated on October 27, so if you started with those you can disregard this notice.
@@ -69,7 +92,7 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
     </div>
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/xAXlFGSH1II" frameborder="0" allowfullscreen></iframe>
-      <div>Bring your AI App to Microsoft Teams from Azure OpenAI Studio</div>
+      <div>Bring your AI App to Microsoft Teams from Azure AI Foundry</div>
     </div>
 
 ???+ info "Microsoft Mechanics"
@@ -110,6 +133,8 @@ Here are some relevant videos from the [Microsoft 365 Developer Channel](https:/
 
 Got the labs working? Ready to share your knowledge?
 Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./pages/in-a-box/) resources! We've got you covered with presentation materials that even include embedded demos.
+
+---8<--- "starrepo.md"
 
 ## Join the Conversation! 💬
 

@@ -10,6 +10,7 @@
       <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin/">E4 - Enhance the API and plugin</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card/">E5 - Add adaptive cards</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/06-add-authentication/">E6 - Add Entra ID authentication</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/EB-add-graphconnector/">Bonus - Add Graph Connector</a></li>
     </ul>
   </div>
 </div>

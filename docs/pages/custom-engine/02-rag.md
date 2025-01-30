@@ -14,7 +14,7 @@ In this lab you will:
 
 ## Introduction
 
-In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure OpenAI Studio on your data" feature to:
+In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure AI Foundry on your data" feature to:
 
 - Create an index on Azure AI Search.
 - Generate vector embeddings for the resumes (PDF documents).
@@ -57,7 +57,7 @@ Finally, you'll integrate your custom engine agent with Azure AI Search to chat 
 
 ## Exercise 1: Setup Azure Resources
 
-You'll need to complete the Azure subscription pre-requisite before starting with this exercise.
+You'll need to complete the Azure subscription prerequisite before starting with this exercise.
 
 ### Step 1: Create Azure AI Search service resource
 
@@ -69,12 +69,12 @@ You'll need to complete the Azure subscription pre-requisite before starting wit
     - Rich query syntax for vector queries, text search, hybrid queries
     - Integration with Azure AI services and Azure OpenAI
 
-1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com).
+1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com){target=_blank}.
 1. Select **Create a resource**, then search for `Azure AI Search`. Select the Azure AI Search service and then **Create**.
 1. Fill out the following details and select **Review + Create**:
-    - **Subscription:** The Azure subscription for your Azure OpenAI Service
+    - **Subscription:** The Azure subscription for your Azure AI Search service
     - **Resource group:** Select the pre-existing resource group you created earlier for Azure OpenAI service.
-    - **Name:** A descriptive name for your Azure OpenAI Service resource, such as `copilotcamp-ai-search`.
+    - **Name:** A descriptive name for your Azure AI Search service resource, such as `copilotcamp-ai-search`.
     - **Location:** The location of your instance.
     - **Pricing Tier:** Basic
 
@@ -84,12 +84,12 @@ Once your Azure AI Search service resource is created successfully, navigate to 
 
 ### Step 2: Create a storage account service resource
 
-1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com).
+1. Open the browser of your choice and navigate to [Azure Portal](https://portal.azure.com){target=_blank}.
 1. Select **Create a resource**, then search for `Storage Account`. Select the Storage Account service and then **Create**.
 1. Fill out the following details and select **Review**, then **Create**:
-    - **Subscription:** The Azure subscription for your Azure OpenAI Service
+    - **Subscription:** The Azure subscription for your Azure Storage Account service
     - **Resource group:** Select the pre-existing resource group you created earlier for Azure OpenAI service.
-    - **Name:** A descriptive name for your Azure OpenAI Service resource, such as `copilotcampstorage`.
+    - **Name:** A descriptive name for your Azure Storage Account service resource, such as `copilotcampstorage`.
     - **Region:** The location of your instance.
     - **Performance:** Standard
     - **Redundancy:** Geo-redundant storage (GRS)
@@ -101,7 +101,7 @@ Once your Azure AI Search service resource is created successfully, navigate to 
 ??? info "What does `text-embedding-ada-002` do?"
     The `text-embedding-ada-002` model on Azure OpenAI converts text into numeric vectors that represent the meaning of the text. This allows for vector search, where instead of matching exact words, the search finds text with similar meanings. It works with multiple languages and different content types, making it useful for comparing text across languages and formats. When used with Azure AI Search, it improves search results by finding the most relevant and contextually accurate information. This model is perfect for creating advanced search solutions and applications that need to understand natural language.
 
-Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
+Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
 
 - **Select a model:** `text-embedding-ada-002`.
 - **Model version:** Default.
@@ -112,19 +112,23 @@ Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then s
 !!! tip "Tip: Handling no quota available message"
     When you select a model, you may see **No quota available** message pop-up on top of the configuration page. To handle this, you have two options:
     1. Select a different version or deployment type
-    1. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota)
+    2. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota){target=_blank}
 
 <cc-end-step lab="b2" exercise="1" step="3" />
 
-## Exercise 2: Upload your documents to Azure AI Search using Azure OpenAI Studio
+## Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground
 
 For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
-1. Open [Azure OpenAI Studio](https://oai.azure.com/portal) in your browser, then select **Chat** playground. In the **Setup** section, select **Add your data** tab and then **Add a data source**.
+1. Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
 
-    ![Add your data in Azure OpenAI Studio](../../assets/images/custom-engine-02/add-your-data-aoai.png)
+     ![The Setup section of the Chat Playground in Azure AI Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted.](../../assets/images/custom-engine-02/reset-chat-playground.png)
+
+1. Select **Add your data** and then **Add a data source**.
+
+    ![The UI of Azure AI Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground.](../../assets/images/custom-engine-02/add-your-data-aoai.png)
 
 1. Select **Upload files (preview)**, then fill the details as the following and select **Next**:
 
@@ -135,9 +139,9 @@ For this exercise, download [fictitious_resumes.zip](https://github.com/microsof
     - Select the box for **Add vector search to this search resource**.
     - **Select an embedding model:** Select your text-embedding-ada-002 model, `text-embeddings`.
 
-Take note of the index name as you will use this in the INDEX_NAME environment variable.
+Take note of the index name as you will use this in the `INDEX_NAME` environment variable.
 
-![Upload your data source](../../assets/images/custom-engine-02/add-data-source-aoai.png)
+![The UI to add a custom data source with fields to select subscription, Azure Storage, Azure AI Search, index name, and embedding model.](../../assets/images/custom-engine-02/add-data-source-aoai.png)
 
 1. Select **Browse for a file** and select the pdf documents from the `resumes` folder. Then, select **Upload files** and **Next**.
 1. Select Search type as `Vector` and chunk size as `1024(Default)`, then **Next**.
@@ -147,14 +151,19 @@ It takes couple of minutes to complete the data ingestion. Once the data is read
 
 <cc-end-step lab="b2" exercise="2" step="1" />
 
-### Step 2: Test your data on Azure OpenAI Studio
+!!! note "Note"
+    Once you index your data, your index remains on Azure AI Search even if you close or refresh the Chat Playground. If the Chat Playground resets itself and you have to add your data again, you don't have to index your data for the second time using Upload files, instead you can select Azure AI Search from Add Your Data section and select your existing index to test out your data.
 
-Once your data  ingestion is completed, use Chat playground to ask questions about your data.
+### Step 2: Test your data on Azure AI Foundry
+
+Once your data  ingestion is completed, use Chat playground to ask questions about your data. 
+
+You can ask questions such as *"Can you suggest me a candidate who is suitable for Spanish speaking role that requires at least 2 years of .NET experience?"*.
 
 !!! tip "Tip: Making the most out of your data"
     Review your dataset before asking questions testing the vector search. Go through the `resumes` folder and recognize the resumes provided in different languages with diverse professions, years of experience, skills and more. Start chatting with your data by asking questions to find out the right candidate for a skill, language, profession, years of experience and other categories. Try to test out the combination of requirements to challenge the search experience!
 
-![Chat with your data on Azure OpenAI Studio](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
+![The Chat Playground in Azure AI Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents.](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
 
 <cc-end-step lab="b2" exercise="2" step="2" />
 
@@ -162,18 +171,18 @@ Once your data  ingestion is completed, use Chat playground to ask questions abo
 
 To understand more about your dataset and explore more, select **resumes** from the Add your data section of the Chat playground. This will redirect you to your resumes index on Azure AI Search.
 
-![Index on Azure AI Search](../../assets/images/custom-engine-02/index-aoai.png)
+![The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Azure AI Foundry](../../assets/images/custom-engine-02/index-aoai.png)
 
 First, let's include the vector content in our data. Select **Fields** tab in your Resumes index page, then check the box for **contentVector**, finally select **Save**.
 
-![Include contentVector](../../assets/images/custom-engine-02/add-contentvector.png)
+![The UI of Azure AI Search when adding the contentVector field to the search index with the fields tab, the contentVector field, and the save button highlighted.](../../assets/images/custom-engine-02/add-contentvector.png)
 
 Go back to **Search explorer** tab, select **Query options** in your Resumes index page and then change the **API version** as `2023-11-01`, then select **Close**. To view your data, press **Search**.
 
 !!! tip "Tip: Recognize `contentVector` parameter"
     When scrolling through your data, recognize that each document has `contentVector` parameter that contains the numeric vectors of the pdf document. These numeric vectors will be used for Vector Search to identify the best matching results.
 
-![contentVector in data](../../assets/images/custom-engine-02/contentvector-in-your-data.png)
+![The Search Explorer for the current index in Azure AI Search, showing search data with the contentVector field highlighted with the numeric vectors values.](../../assets/images/custom-engine-02/contentvector-in-your-data.png)
 
 <cc-end-step lab="b2" exercise="2" step="3" />
 
@@ -218,25 +227,25 @@ Open `src/prompts/chat/config.json` in your project, then add `data_sources` ins
 
 ```json
 "data_sources": [
-{
-    "type": "azure_search",
-    "parameters": {
-        "endpoint": "$searchEndpoint",
-        "index_name": "$indexName",
-        "authentication": {
-            "type": "api_key",
-            "key": "$searchApiKey"
-        },
-        "query_type":"vector",
-        "in_scope": true,
-        "strictness": 3,
-        "top_n_documents": 3,
-        "embedding_dependency": {
-        "type": "deployment_name",
-        "deployment_name": "$azureOpenAIEmbeddingDeploymentName"
+    {
+        "type": "azure_search",
+        "parameters": {
+            "endpoint": "$searchEndpoint",
+            "index_name": "$indexName",
+            "authentication": {
+                "type": "api_key",
+                "key": "$searchApiKey"
+            },
+            "query_type":"vector",
+            "in_scope": true,
+            "strictness": 3,
+            "top_n_documents": 3,
+            "embedding_dependency": {
+            "type": "deployment_name",
+            "deployment_name": "$azureOpenAIEmbeddingDeploymentName"
+            }
         }
     }
-}
 ]
 ```
 
@@ -296,6 +305,9 @@ defaultPrompt: async () => {
 
 ### Step 3: Debug your app and chat with your data
 
+!!! pied-piper "Disclaimer: Debug locally instead of using the Test Tool"
+   Note that some advanced features you've added in your app may not show up properly in the App Test Tool. Therefore, you are going to debug your app locally on Teams instead of using the Test Tool moving forward.
+
 Let's test Career Genie on Teams this time. Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Teams (Edge)** or **Debug in Teams (Chrome)**. Microsoft Teams will pop up on your browser. Once your app details show up on Teams, select **Add** and start chatting with your app.
 
 !!! tip "Tip: Testing this exercise locally"
@@ -308,13 +320,13 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 - Who would be suitable for a position that requires 5+ python development experience?
 - Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?
 
-![Chat with your data on Teams](../../assets/images/custom-engine-02/byod-teams.gif)
+![Animation of the interaction with the Career Genie custom engine agent. The user interacts with the bot providing subsequent prompts and looking for a specific candidate based on some requirements.](../../assets/images/custom-engine-02/byod-teams.gif)
 
 <cc-end-step lab="b2" exercise="3" step="3" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B2 - Index your data in Azure AI Search and bring it into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie).
+You have completed Lab B2 - Index your data in Azure AI Search to bring your data into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie){target=_blank}.
 
 You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 
 

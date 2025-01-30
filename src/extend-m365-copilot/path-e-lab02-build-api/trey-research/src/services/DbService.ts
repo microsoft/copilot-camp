@@ -4,7 +4,7 @@ import { DbEntity } from '../model/dbModel';
 
 export default class DbService<DbEntityType> {
 
-    private storageAccountConnectionString = process.env.STORAGE_ACCOUNT_CONNECTION_STRING;
+    private storageAccountConnectionString = process.env.STORAGE_ACCOUNT_CONNECTION_STRING ??"UseDevelopmentStorage=true";
     private okToCacheLocally = false;
     private entityCache: DbEntity[] = [];
 

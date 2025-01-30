@@ -19,14 +19,29 @@
     height: 18vw;
 }
 
+.liveVideo {
+    max-width: 1920px;
+    min-width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.liveVideo>iframe,
+.liveVideo>img {
+    width: 48vw;
+    height: 27vw;
+}
+
 .tinyVideo {
     max-width: 16vw;
     min-width: 9vw;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: left;
     vertical-align: top;
     display: inline-block;
+    padding: 1%;
 }
 
 .videoHeading {
@@ -251,6 +266,10 @@ hr {
     background-image: url('./images/path-icons/icon-e6.png');
 }
 
+.e-path ul li:nth-child(8) {
+    background-image: url('./images/path-icons/icon-eb-gc.png');
+}
+
 .b-path div,
 .b-path div p  {
     border-color: #B06CF4;
@@ -292,7 +311,6 @@ details.info summary {
 details.info summary::before {
     background-color: #9515FF !important;
 }
-
 
 /* Top label on side nav */
 
@@ -421,7 +439,7 @@ dicussion */
   .discussion-card {
     display: block;
     background-color: #fff;
-    border: 2px solid #ffcccb;
+    border: 2px solid #9515FF;
     border-radius: 8px;
     padding: 20px;
     margin: 15px auto;
@@ -434,7 +452,7 @@ dicussion */
   }
 
   .discussion-card:hover {
-    background-color: #fef9f9;
+    background-color: #dac1ef;
     transform: translateY(-5px); /* Lifts the card slightly when hovered */
   }
 
@@ -463,6 +481,29 @@ dicussion */
   .cta-button:hover {
        border: 2px solid #6D33A0;
   }
+
+  .star-button {
+    display: inline-block;
+    background-color: #fff;
+    border: 2px solid #9515FF;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Ensures the text inside retains its original color */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .star-button:hover {
+    background-color: #dac1ef;
+    transform: translateY(-5px); /* Lifts the card slightly when hovered */
+  }
+
+
+
   .copy-button {
     background-color: #f4f4f5; /* Light neutral background */
     color: #333; /* Darker text color */
@@ -489,3 +530,4 @@ dicussion */
     outline: none; /* Remove default focus outline */
     box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.5); /* Subtle focus ring */
 }
+
