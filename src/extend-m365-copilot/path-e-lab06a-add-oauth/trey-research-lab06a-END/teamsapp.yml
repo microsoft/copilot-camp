@@ -97,7 +97,7 @@ provision:
       clientId: ${{AAD_APP_CLIENT_ID}}
       clientSecret: ${{SECRET_AAD_APP_CLIENT_SECRET}}
       # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/trey-definition.yml
+      apiSpecPath: ./appPackage/trey-definition.json
     writeToEnvironmentFile:
       configurationId: OAUTH2AUTHCODE_CONFIGURATION_ID
       
@@ -107,10 +107,6 @@ provision:
       # Path to manifest template
       manifestPath: ./appPackage/manifest.json
       outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-      outputFolder: ./appPackage/build
-  - uses: teamsApp/validateAppPackage
-    with:
-      # Relative path to this file. This is the path for built zip file.
       outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
 
   # Apply the Teams app manifest to an existing Teams app in

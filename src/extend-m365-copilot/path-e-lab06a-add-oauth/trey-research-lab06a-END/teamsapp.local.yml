@@ -56,7 +56,7 @@ provision:
       clientId: ${{AAD_APP_CLIENT_ID}}
       clientSecret: ${{SECRET_AAD_APP_CLIENT_SECRET}}
       # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/trey-definition.yml
+      apiSpecPath: ./appPackage/trey-definition.json
     writeToEnvironmentFile:
       configurationId: OAUTH2AUTHCODE_CONFIGURATION_ID
 
@@ -66,7 +66,7 @@ provision:
       appId: ${{TEAMS_APP_ID}}
       clientId: ${{AAD_APP_CLIENT_ID}}
       # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/trey-definition.yml
+      apiSpecPath: ./appPackage/trey-definition.json
       configurationId: ${{OAUTH2AUTHCODE_CONFIGURATION_ID}}
 
   # Apply the Microsoft Entra manifest to an existing Microsoft Entra app. Will use the object id in

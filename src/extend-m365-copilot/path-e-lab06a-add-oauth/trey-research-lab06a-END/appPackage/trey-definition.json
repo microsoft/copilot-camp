@@ -11,6 +11,23 @@
             "description": "Production server"
         }
     ],
+    "components": {
+        "securitySchemes": {
+            "oAuth2AuthCode": {
+                "type": "oauth2",
+                "description": "OAuth configuration for the Trey Research service",
+                "flows": {
+                    "authorizationCode": {
+                        "authorizationUrl": "https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/authorize",
+                        "tokenUrl": "https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/token",
+                        "scopes": {
+                            "api://${{AAD_APP_CLIENT_ID}}/access_as_user": "Access Trey Research API as the user"
+                        }
+                    }
+                }
+            }
+        }
+    },
     "paths": {
         "/consultants/": {
             "get": {
@@ -71,6 +88,11 @@
                         "schema": {
                             "type": "string"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "oAuth2AuthCode": []
                     }
                 ],
                 "responses": {
@@ -240,6 +262,11 @@
                 "operationId": "getUserInformation",
                 "summary": "Get consultant profile of the logged in user.",
                 "description": "Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.",
+                "security": [
+                    {
+                        "oAuth2AuthCode": []
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -421,6 +448,11 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "oAuth2AuthCode": []
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -529,6 +561,11 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "oAuth2AuthCode": []
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful charge",
@@ -600,6 +637,11 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "oAuth2AuthCode": []
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful assignment",
