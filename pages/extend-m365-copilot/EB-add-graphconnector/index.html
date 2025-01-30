@@ -1,0 +1,1073 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/EB-add-graphconnector/">
+      
+      
+        <link rel="prev" href="../06-add-authentication/">
+      
+      
+        <link rel="next" href="../../custom-engine/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Lab EB - Add Graph Connector - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/labStyles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#35258F" data-md-color-accent="#091F2C">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bonus-lab-add-knowldege-capability-to-trey-genie-using-a-microsoft-graph-connector" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab EB - Add Graph Connector
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Extend Path - Extend Microsoft 365 Copilot
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  Build Path - Build your own agent
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/CopilotCamp-Tent-Clean.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Extend Path - Extend Microsoft 365 Copilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extend Path - Extend Microsoft 365 Copilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-declarative-copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E1 - First Declarative agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-build-the-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build an API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add a declarative agent and API plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance the API and plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add adaptive cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-add-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab E6 - Add Entra ID authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab EB - Add Graph Connector
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-deploy-graph-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 : Deploy Graph Connector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-add-graph-connector-to-declarative-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 : Add Graph Connector to Declarative Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-test-the-plugin-in-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Test the plugin in Copilot
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Build Path - Build your own agent
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Build Path - Build your own agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/00-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B0 - Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B1 - First custom engine agent
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/02-rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B2 - Index your data in Azure AI Search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B3 - Enhance user experience
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/04-authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B4 - Add single sign on authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/05-actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab B5 - Add actions to handle complex tasks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="bonus-lab-add-knowldege-capability-to-trey-genie-using-a-microsoft-graph-connector">Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Graph connector</h1>
+<div class="floatwide">
+<div class="cc-lab-toc e-path">
+  <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
+  <div>
+    <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and orchestration</p>
+    <ul>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites/">E0 - Setup</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot/">E1 - First declarative agent</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api/">E2 - Build an API</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent/">E3 - Add a declarative agent and API plugin</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin/">E4 - Enhance the API and plugin</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card/">E5 - Add adaptive cards</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/06-add-authentication/">E6 - Add Entra ID authentication</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/EB-add-graphconnector/">Bonus - Add Graph Connector</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(() => {
+
+// This script decorates the table of contents with a "you are here" indicator.
+const toc = document.getElementsByClassName('cc-lab-toc');
+for (const div of toc) {
+    const lis = div.querySelectorAll('li');
+    for (const li of lis) {
+        const anchor = li.querySelector('a');
+        if (location.href.includes(anchor.href)) {
+            const span = document.createElement("span");
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+            li.appendChild(span);
+        }
+    }    
+}
+})();
+</script>
+
+
+
+  <div class="cc-e-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
+</div>
+
+<p>In this lab you will learn how to add your own data into the Microsoft Graph to be then organically utilised by the declarative agent as it's own knowledge.  In the process you will learn all how to deploy a Microsoft Graph connector and use the connector in Trey Genie declarative agent. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lab builds on the Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+The finished Trey Genie declarative solution for this lab is in the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END" target="_blank"><strong>/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END</strong></a> folder.
+The Microsoft Graph connector source code is in <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector" target="_blank"><strong>/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector</strong></a> folder.</p>
+</div>
+<p>In this lab you will learn to:</p>
+<ul>
+<li>deploy a Microsoft Graph connector of your own data into Microsoft Graph and have it power various Microsoft 365 experiences</li>
+<li>customise the trey genie declarative agent to use the Graph connector as a capability to extend its knowledge</li>
+<li>learn how to run and test your app </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Prerequisites: Tenant Admin Access</p>
+<p>Additonal prerequisites are needed to run this lab. You will need <mark>tenant administrator privileges</mark> as Microsoft Graph connectors use app-only authentication to access the connector APIs.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Prerequisites: Azure Functions Visual Studio Code extension</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions" target="_blank">Azure Functions Visual Studio Code extension</a></li>
+</ul>
+</div>
+<h2 id="exercise-1-deploy-graph-connector">Exercise 1 : Deploy Graph Connector</h2>
+<h3 id="step-1-download-sample-project">Step 1: Download sample project</h3>
+<ul>
+<li>In your browser, go to <a href="https://download-directory.github.io?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector&amp;filename=trey-feedback-connector" target="_blank">this link</a></li>
+<li>Extract the <strong>trey-feedback-connector.zip</strong> file</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The extracted folder of the sample project is <strong>trey-feedback-connector</strong>. It has a folder called <strong>content</strong> which consist of feedback files from various clients for consultants at Trey Research. The files are all created by AI and are for demo purposes only. 
+The aim is to deploy these external files into Microsoft 365 data to be available as knowledge base for our declarative agent Trey Genie. </p>
+</div>
+<p><cc-end-step lab="eb" exercise="1" step="1" /></p>
+<h3 id="step-2-create-external-connection">Step 2: Create external connection</h3>
+<ul>
+<li>Open the folder <strong>trey-feedback-connector</strong> in Visual Studio Code</li>
+<li>In the Activity Bar of Visual Studio Code, open the Teams Toolkit extension</li>
+<li>Create a file <strong>.env.local</strong> in the <strong>env</strong> folder of the root folder <strong>trey-feedback-connector</strong></li>
+<li>Paste below contents in the newly created file</li>
+</ul>
+<pre><code class="language-txt">APP_NAME=TreyFeedbackConnectorApp
+CONNECTOR_ID=tfcfeedback
+CONNECTOR_NAME=Trey Feedback Connector
+CONNECTOR_DESCRIPTION=The Trey Feedback Connector seamlessly integrate feedback data from various clients about consultants in Trey Research.
+CONNECTOR_BASE_URL=https://localhost:3000/
+
+</code></pre>
+<ul>
+<li>Select <strong>F5</strong>, which will then kick off the creation of the Entra ID app registration needed for your connector API to authenicate and load data into Microsoft Graph </li>
+<li>In the <code>Terminal</code> window, for the <code>func:host start</code> Task, you will notice below link provided. Using this link you can grant the app-only permission for the Entra ID app</li>
+</ul>
+<p><img alt="The UI of Visual Studio Code while running the connector function, with a prompt to use a link to grant permissions to the app used to load data." src="../../../assets/images/extend-m365-copilot-GC/entra-link.png" /></p>
+<ul>
+<li>Copy the link and open in a browser where you are logged in as the tenant admin for the Microsoft 365 tenant. </li>
+<li>Grant the required permissions to the app using the <strong>Grant admin consent</strong> button.</li>
+</ul>
+<p><img alt="The UI of Microsoft Entra showing the 'API permissions' page of the app used to load data and highlighting the 'Grant admin consent for ...' command." src="../../../assets/images/extend-m365-copilot-GC/consent.png" /></p>
+<ul>
+<li>Once granted, the connector creates an external connection, provisions the schema and ingests the sample contents in the <strong>content</strong> folder to your Microsoft 365 tenant. This takes a while, so keep the project running. </li>
+<li>Once all files in the <strong>content</strong> folder are loaded, the debugger can be stopped. </li>
+<li>You can also close this connector project folder.</li>
+</ul>
+<p><cc-end-step lab="eb" exercise="1" step="2" /></p>
+<h3 id="step-3-test-the-connector-data-in-microsoft365-app">Step 3: Test the connector data in Microsoft365 app</h3>
+<p>Now that your data is loaded into Microsoft 365 tenant, let's test if a regular search is picking up the contents in Microsoft365.com.</p>
+<p>Go to <a href="https://www.microsoft365.com/" target="_blank">https://www.microsoft365.com/</a> and in the search box above, type <code>thanks Avery</code>.</p>
+<p>You will see the results as below from the external connection which are basically the clients' feedback for consultant Avery Howard.</p>
+<p><img alt="The search result page of Microsoft 365 highlighting 2 result items based on the search query 'thanks Avery' provided by the user." src="../../../assets/images/extend-m365-copilot-GC/search-m365.png" /></p>
+<p>Now that your data is part of Microsoft 365 data or Microsoft Graph, let's go ahead and add this connector data as focused knowledge for our declarative agent for Trey Research called <strong>Trey Genie</strong>.</p>
+<p><cc-end-step lab="eb" exercise="1" step="3" /></p>
+<h2 id="exercise-2-add-graph-connector-to-declarative-agent">Exercise 2 : Add Graph Connector to Declarative Agent</h2>
+<p>In the previous exercise, we established a new external connection to load our data into the Microsoft 365 tenant. Next, we will integrate this connector into our declarative agent to provide focused knowledge on Trey Research consultants.</p>
+<h3 id="step-1-get-the-connection-id-of-the-microsoft-graph-connector">Step 1: Get the connection id of the Microsoft Graph Connector</h3>
+<p>In exercise 1, we added the environment variable in the <strong>.env.local</strong> file which has the configuration values for the Graph connector. 
+The connection id value we gave is <code>tfcfeedback</code>. When Teams Toolkit deploys this connector it will add a suffix of its environment value like <code>local</code> to the connection id. Hence we can infer the connection id is <code>tfcfeedbacklocal</code>.
+But the most straightforward way to get the Graph connector id is to use Graph Explorer.</p>
+<ul>
+<li>Browse to <a href="https://aka.ms/ge" target="_blank">Microsoft Graph Explorer</a> and sign in with your admin account.</li>
+<li>Select your user avatar in the upper right corner and select <strong>Consent to permissions</strong>.</li>
+<li>Search for <code>ExternalConnection.Read.All</code> and select Consent for that permission. Follow the prompts to grant consent.</li>
+<li>Enter <code>https://graph.microsoft.com/v1.0/external/connections?$select=id,name</code> in the request field and select Run query.</li>
+<li>Locate the connector you want and copy its id property.</li>
+</ul>
+<p><img alt="The Microsoft Graph Explorer showing the output of a query to retrieve all the connectors, with the ID 'tfcfeedbacklocal' of the custom connector highlighted." src="../../../assets/images/extend-m365-copilot-GC/graph-connector-id.png" /></p>
+<p><cc-end-step lab="eb" exercise="2" step="1" /></p>
+<h3 id="step-2-update-declarative-agent-manifest">Step 2: Update declarative agent manifest</h3>
+<p>Let's now resume with our declarative agent from Lab 4. If you have it open, then continue or go to the finished lab 4 solution in this folder <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END" target="_blank"><strong>/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END</strong></a>.</p>
+<ul>
+<li>Open the lab 4 solution for Trey Genie declarative agent.</li>
+<li>Go to <strong>appPackage\trey-declarative-agent.json</strong></li>
+<li>Add a new item into the <code>capabilities</code> array as below and save</li>
+</ul>
+<pre><code class="language-JSON"> {
+            &quot;name&quot;: &quot;GraphConnectors&quot;,
+            &quot;connections&quot;: [
+                {
+                    &quot;connection_id&quot;: &quot;tfcfeedbacklocal&quot;
+                }
+            ]
+}
+</code></pre>
+<p>Now the capability is added, it's time to test.</p>
+<p><cc-end-step lab="eb" exercise="2" step="2" /></p>
+<h2 id="exercise-3-test-the-plugin-in-copilot">Exercise 3: Test the plugin in Copilot</h2>
+<p>Before you test the application, update the manifest version of your app package in the <code>appPackage\manifest.json</code> file, follow these steps:</p>
+<ol>
+<li>
+<p>Open the <code>manifest.json</code> file located in the <code>appPackage</code> folder of your project.</p>
+</li>
+<li>
+<p>Locate the <code>version</code> field in the JSON file. It should look something like this:<br />
+<code>json
+   "version": "1.0.0"</code></p>
+</li>
+<li>
+<p>Increment the version number to a small increment. For example, change it to:<br />
+<code>json
+   "version": "1.0.1"</code></p>
+</li>
+<li>
+<p>Save the file after making the change.</p>
+</li>
+</ol>
+<h3 id="step-1-start-the-application">Step 1: Start the application</h3>
+<p>This update ensures that the platform detects the changes and properly applies the latest version of your app.</p>
+<p>Start your project to force it to re-deploy the application package by selecting <strong>F5</strong>.
+You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and agents and select the Trey Genie Local agent 2️⃣.</p>
+<p><img alt="Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt for the agent." src="../../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png" /></p>
+<p><cc-end-step lab="eb" exercise="3" step="1" /></p>
+<h3 id="step-2-test-knowledge-in-copilot">Step 2: Test knowledge in Copilot</h3>
+<p>In the immersive experience of Trey Genie, use below prompts and test them</p>
+<ul>
+<li>Can you check for any feedback from clients for consultants Trey Research</li>
+<li>How did Avery's guidance specifically streamline the product development process?</li>
+</ul>
+<p><img alt="The Trey Genie agent in action in Microsoft 365 Copilot, processing requests that relate on the content available through the custom connector." src="../../../assets/images/extend-m365-copilot-GC/GC-Trey-Feedback.gif" /></p>
+<p><cc-end-step lab="eb" exercise="3" step="2" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>You have completed lab Add Graph Connector, Well done!</p>
+<p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/EB-add-graphconnector" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../../javascripts/next-button.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/clipboard.js"></script>
+      
+    
+  </body>
+</html>
