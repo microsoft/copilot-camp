@@ -569,8 +569,7 @@
         "reference_id": "${{OAUTH2AUTHCODE_CONFIGURATION_ID}}"
       },
       "spec": {
-        "url": "trey-definition.json",
-        "progress_style": "ShowUsageWithInputAndOutput"
+        "url": "trey-definition.json"
       },
       "run_for_functions": [
         "getConsultants",
