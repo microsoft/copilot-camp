@@ -565,10 +565,12 @@
     {
       "type": "OpenApi",
       "auth": {
-        "type": "None"
+        "type": "OAuthPluginVault",
+        "reference_id": "${{OAUTH2AUTHCODE_CONFIGURATION_ID}}"
       },
       "spec": {
-        "url": "trey-definition.json"
+        "url": "trey-definition.yml",
+        "progress_style": "ShowUsageWithInputAndOutput"
       },
       "run_for_functions": [
         "getConsultants",
