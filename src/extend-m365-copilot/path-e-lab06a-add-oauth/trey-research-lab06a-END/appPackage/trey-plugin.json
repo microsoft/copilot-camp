@@ -1,0 +1,602 @@
+{
+  "schema_version": "v2.1",
+  "name_for_human": "Trey",
+  "description_for_human": "API to streamline consultant assignment and project management.",
+  "namespace": "trey",
+  "functions": [
+    {
+      "name": "getConsultants",
+      "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "items": [
+                  {
+                    "speak": "${name}",
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "bolder",
+                            "size": "extraLarge",
+                            "spacing": "none",
+                            "wrap": true,
+                            "style": "heading"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${email}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${phone}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${location.city}, ${location.country}",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "Image",
+                            "url": "${consultantPhotoUrl}",
+                            "altText": "${name}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }   
+             
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "getUserInformation",
+      "description": "Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          },
+          "static_template":{
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "items": [
+                  {
+                    "speak": "${name}",
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "bolder",
+                            "size": "extraLarge",
+                            "spacing": "none",
+                            "wrap": true,
+                            "style": "heading"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${email}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${phone}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${location.city}, ${location.country}",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "Image",
+                            "url": "${consultantPhotoUrl}",
+                            "altText": "${name}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }   
+             
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "getProjects",
+      "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.description"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "items": [
+                  {
+                    "speak": "${description}",
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "bolder",
+                            "size": "extraLarge",
+                            "spacing": "none",
+                            "wrap": true,
+                            "style": "heading"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${description}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${location.city}, ${location.country}",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientName}",
+                            "weight": "Bolder",
+                            "size": "Large",
+                            "spacing": "Medium",
+                            "wrap": true,
+                            "maxLines": 3
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientContact}",
+                            "size": "small",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientEmail}",
+                            "size": "small",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "Image",
+                            "url": "${mapUrl}",
+                            "altText": "${location.street}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "TextBlock",
+                "text": "Project Metrics",
+                "weight": "Bolder",
+                "size": "Large",
+                "spacing": "Medium",
+                "horizontalAlignment": "Center",
+                "separator": true
+              },
+              {
+                "type": "ColumnSet",
+                "columns": [
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Forecast This Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${forecastThisMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Forecast Next Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${forecastNextMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ColumnSet",
+                "columns": [
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Delivered Last Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${deliveredLastMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Delivered This Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${deliveredThisMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "View map",
+                "url": "${mapUrl}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "postBillhours",
+      "description": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.results.clientName",
+            "subtitle": "$.results.status"
+          },
+          "static_template": {
+            "type": "AdaptiveCard",
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "Project Status Summary",
+                "weight": "Bolder",
+                "size": "Large",
+                "separator": true
+              },              
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Client Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.clientName, results.clientName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Project Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.projectName, results.projectName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },  
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Remaining Forecast",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },           
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Message",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.message, results.message, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              }
+            ]
+          }
+          
+        },
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Charge time to a project on behalf of the logged in user.",
+          "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **Hours**: {{function.parameters.hours}}"
+        }
+      }
+    },
+    {
+      "name": "postAssignConsultant",
+      "description": "Assign (add) consultant to a project when name, role and project name is specified.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.results.clientName",
+            "subtitle": "$.results.status"
+          },
+          "static_template": {
+            "type": "AdaptiveCard",
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "Project Overview",
+                "weight": "Bolder",
+                "size": "Large",
+                "separator": true,
+                "spacing": "Medium"
+              },              
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Client Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.clientName, results.clientName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Project Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.projectName, results.projectName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Consultant Name",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.consultantName, results.consultantName, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Remaining Forecast",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "Message",
+                    "weight": "Bolder",
+                    "spacing": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(results.message, results.message, 'N/A')}",
+                    "wrap": true
+                  }
+                ]
+              }            
+            ]
+          
+          }
+          
+        },
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Assign consultant to a project when name, role and project name is specified.",
+          "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "None"
+      },
+      "spec": {
+        "url": "trey-definition.json"
+      },
+      "run_for_functions": [
+        "getConsultants",
+        "getUserInformation",
+        "getProjects",
+        "postBillhours",
+        "postAssignConsultant"
+      ]
+    }
+  ],
+  "capabilities": {
+    "localization": {},
+    "conversation_starters": [
+      {
+        "text": "What Trey projects am i assigned to?"
+      },
+      {
+        "text": "Charge 5 hours to the Contoso project for Trey Research"
+      },
+      {
+        "text": "Which Trey consultants are Azure certified?"
+      },
+      {
+        "text": "Find a Trey consultant who is available now and has Python skills"
+      },
+      {
+        "text": "Add Avery as a developer on the Contoso project for Trey"
+      }
+    ]
+  }
+}
