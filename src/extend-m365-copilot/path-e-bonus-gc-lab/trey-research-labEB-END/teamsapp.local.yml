@@ -3,6 +3,9 @@
 # Visit https://aka.ms/teamsfx-actions for details on actions
 version: v1.5
 
+additionalMetadata:
+  sampleTag: copilot-camp:path-e-bonus-gc-lab_trey-research-labEB-END
+
 provision:
   # Creates a Teams app
   - uses: teamsApp/create
