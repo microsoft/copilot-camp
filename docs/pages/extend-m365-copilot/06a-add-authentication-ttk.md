@@ -5,12 +5,218 @@
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider. You will learn how to set up Teams Toolkit to automate the Entra ID and Teams Developer Portal registrations.
 
 !!! note
-    This lab builds on the previous one, Lab E5. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot//path-e-lab06a-add-oauth/trey-research-lab06a-END){target=_blank} folder.
+    This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the [solution folder for Lab E5 from **/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END){target=_blank}
+    and work there.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END){target=_blank} folder.
 
-## Exercise 1: Update Teams Toolkit configuration
+## Exercise 1: Update the local Teams Toolkit configuration
 
-In this exercise you will modify the Teams Toolkit configuration files to instruct it to register the application in Entra ID and to place the information in the Teams Developer Portal "vault"
+In this exercise you will modify the Teams Toolkit configuration files to instruct it to register the application in Entra ID and to place the information in the Teams Developer Portal "vault".
+
+### Step 1: Add an Entra ID app manifest
+
+Create a new files **aad.manifest.json** in the root of your working folder. Copy these lines into this file.
+
+```json
+{
+    "id": "${{AAD_APP_OBJECT_ID}}",
+    "appId": "${{AAD_APP_CLIENT_ID}}",
+    "name": "Trey-Research-OAuth-aad",
+    "accessTokenAcceptedVersion": 2,
+    "signInAudience": "AzureADMyOrg",
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "idtyp",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+    "oauth2Permissions": [
+        {
+            "adminConsentDescription": "Allows Copilot to access the Trey Research API on the user's behalf.",
+            "adminConsentDisplayName": "Access Trey Research API",
+            "id": "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}",
+            "isEnabled": true,
+            "type": "User",
+            "userConsentDescription": "Allows Copilot to access the Trey Research API on your behalf.",
+            "userConsentDisplayName": "Access Trey Research API",
+            "value": "access_as_user"
+        }
+    ],
+    "replyUrlsWithType": [
+        {
+           "url": "https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect",
+           "type": "Web"
+        }
+    ],
+    "identifierUris": [
+        "api://${{AAD_APP_CLIENT_ID}}"
+    ]
+}
+```
+
+This file contains details for the Entra ID application to be registered or updated. Notice that it contains various tokens such as `${{AAD_APP_CLIENT_ID}}` which will be replaced with actual values when Teams Toolkit provisions the application.
+
+!!! Note
+    Entra ID was previously called "Azure Active Directory"; references to "AAD" refer to Entra ID under its old name.
+
+### Step 2: Update the file version number in **teamsapp.local.ynl**
+
+The **teamsapp.local.yml** file contains instructions for Teams Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
+
+!!! warning Indentation is critical in yaml
+    Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank}.
+
+These labs were originally written using a slightly older version of Teams Toolkit, which uses version 1.5 of this file. In this step you will update the file to version 1.7.
+
+Begin by replacing the first line with this new schema reference:
+
+```yaml
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.7/yaml.schema.json
+```
+
+Then on the 4th line, update the version number to 1.7.
+
+```yaml
+version: v1.7
+```
+
+### Step 3: Provision an Entra ID application
+
+In order for an application to authenticate a user and authorize it to do something, the application must first be registered in Entra ID. In this step we'll add this app registration if it's not already present.
+
+Locate these lines in the file:
+
+```yaml
+provision:
+  # Creates a Teams app
+```
+Insert the following yaml between these lines, directly under the `provision:` line. You may leave blank lines for readability if you wish.
+
+```yaml
+  # Creates a new Microsoft Entra app to authenticate users if
+  # the environment variable that stores clientId is empty
+  - uses: aadApp/create
+    with:
+      # Note: when you run aadApp/update, the Microsoft Entra app name will be updated
+      # based on the definition in manifest. If you don't want to change the
+      # name, make sure the name in Microsoft Entra manifest is the same with the name
+      # defined here.
+      name: trey-oauth-aad
+      # If the value is false, the action will not generate client secret for you
+      generateClientSecret: true
+      # Authenticate users with a Microsoft work or school account in your
+      # organization's Microsoft Entra tenant (for example, single tenant).
+      signInAudience: AzureADMyOrg
+    # Write the information of created resources into environment file for the
+    # specified environment variable(s).
+    writeToEnvironmentFile:
+      clientId: AAD_APP_CLIENT_ID
+      # Environment variable that starts with `SECRET_` will be stored to the
+      # .env.{envName}.user environment file
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+```
+
+Notice that by setting `signInAudience` to `AzureADMyOrg`, Teams Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
+
+Also note that this step will write several values into your environment files, where they will be inserted into **aad.manifest.json** as well as in your application package.
+
+### Step 4: Update the Entra ID application
+
+Locate this line in **teamsapp.local.yml**
+```yaml
+  # Build Teams app package with latest env value
+```
+
+Insert the following yaml before this line:
+
+```yaml
+  - uses: oauth/register
+    with:
+      name: oAuth2AuthCode
+      flow: authorizationCode
+      appId: ${{TEAMS_APP_ID}}
+      clientId: ${{AAD_APP_CLIENT_ID}}
+      clientSecret: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+      # Path to OpenAPI description document
+      apiSpecPath: ./appPackage/trey-definition.json
+    writeToEnvironmentFile:
+      configurationId: OAUTH2AUTHCODE_CONFIGURATION_ID
+
+  - uses: oauth/update
+    with:
+      name: oAuth2AuthCode
+      appId: ${{TEAMS_APP_ID}}
+      clientId: ${{AAD_APP_CLIENT_ID}}
+      # Path to OpenAPI description document
+      apiSpecPath: ./appPackage/trey-definition.json
+      configurationId: ${{OAUTH2AUTHCODE_CONFIGURATION_ID}}
+
+  # Apply the Microsoft Entra manifest to an existing Microsoft Entra app. Will use the object id in
+  # manifest file to determine which Microsoft Entra app to update.
+  - uses: aadApp/update
+    with:
+      # Relative path to this file. Environment variables in manifest will
+      # be replaced before apply to Microsoft Entra app
+      manifestPath: ./aad.manifest.json
+      outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
+```
+
+The `oauth/register` and `oauth/update` steps will register the application in the Teams Developer Portal's vault, where Copilot can obtain the necessary details to implement the OAuth 2.0 Auth Code authorization flow. The `aadApp/update` step will update the Entra ID application itself with the details for this app. These details are in a separte file, **aad.manifest.json**, which we'll add in the next exercise.
+
+### Step 5: Change the output path
+
+The new yaml schema changes the output path slightly. Locate this line:
+
+```yaml
+      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+```
+
+and replace it with this one:
+
+```yaml
+      outputFolder: ./appPackage/build
+```
+### Step 6: Make the Entra ID values available to your application code
+
+Locate these lines:
+
+```yaml
+deploy:
+  # Install development tool(s)
+  - uses: devTool/install
+    with:
+      func:
+        version: ~4.0.5530
+        symlinkDir: ./devTools/func
+    # Write the information of installed development tool(s) into environment
+    # file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      funcPath: FUNC_PATH
+          # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./.localConfigs
+      envs:
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
+```
+
+This code publishes environment variables for use within your application code. Add these lines under the `STORAGE_ACCOUNT_CONNECTION_STRING` to make them available:
+
+```yaml
+        AAD_APP_TENANT_ID: ${{AAD_APP_TENANT_ID}}
+        AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
+```
+
 
 ## Exercise 2: Update your application package
 
