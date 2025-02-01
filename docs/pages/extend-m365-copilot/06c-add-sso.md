@@ -26,7 +26,7 @@ By default, Teams Toolkit creates a new developer tunnel - and thus a new URL fo
 
 ### Step 1: Install the developer tunnel CLI
 
-Here are the command lines for installing the developer tunnel. [Full instructions and download links for the Developer Tunnel are here.](https://learn.microsoft.com/azure/developer/dev-tunnels/get-started){target=_blank}. 
+Here are the command lines for installing the developer tunnel. [Full instructions and download links for the Developer Tunnel are here.](https://learn.microsoft.com/azure/developer/dev-tunnels/get-started){target=_blank} 
 
 | OS | Command |
 | --- | --- |
@@ -35,7 +35,7 @@ Here are the command lines for installing the developer tunnel. [Full instructio
 | Linux | `curl -sL https://aka.ms/DevTunnelCliInstall | bash` |
 
 !!! tip
-    You may have to restart your command line to update the file path before devtunnel commands will work
+    You may have to restart your command line to update the file path before devtunnel commands will work.
 
 Once you have it installed, you'll need to log in. You can use your Microsoft 365 account to log in.
 
@@ -66,7 +66,7 @@ Copy the "Connect via browser" URL and save it as the "API Base URL".
 
 ### Step 3: Disable the dynamically created tunnel in your project
 
-If your project is running locally, stop it. Then edit [\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:
+If your project is running locally, stop it. Then edit [\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} and locate the "Start Teams App Locally" task. Comment out the "Start local tunnel" dependency and add the "Start Azurite emulator" dependency instead. The resulting task should look like this:
 
 ~~~json
 {
@@ -238,7 +238,7 @@ This will install a library for validating the incoming Entra ID authorization t
 
 ### Step 2: Add environment variables for your API
 
-In the **env** folder in your working directory, open **env.local** and add these lines for your API Service app's tenant ID, application ID URL
+In the **env** folder in your working directory, open **.env.local** and add these lines for your API Service app's tenant ID, application ID URL
 
 ~~~text
 APP_ID_URI=<Application ID URI>
@@ -248,7 +248,7 @@ API_TENANT_ID=<Directory (tenant) ID>
 
 !!! Note "Generate Application ID URI manually"
     In case the Application ID URI isn't available, please construct it using the below steps temporarily:
-    Go to [Base64 Decode and Encode](https://www.base64decode.org/) - Online
+    Go to [Base64 Decode and Encode](https://www.base64decode.org/) - 
     Copy and paste the auth registration ID generated in Exercise 3, Step 1 and decode.
     Construct the application ID URI using the second part of the decoded value (after ##) as highlighted below – api://auth-<AuthConfigID_Decoded_SecondPart>, e.g., api://auth-16cfcd90-803e-40ba-8106-356aa4927bb9
     ![Generating Application ID URI manually](../../assets/images/extend-m365-copilot-06c/oauth-A13.png)
@@ -374,15 +374,17 @@ Before you test the application, update the manifest version of your app package
 
 1. Open the `manifest.json` file located in the `appPackage` folder of your project.
 
-2. Locate the `version` field in the JSON file. It should look something like this:  
-   ```json
-   "version": "1.0.0"
-   ```
+2. Locate the `version` field in the JSON file. It should look something like this: 
+
+```json
+"version": "1.0.0"
+```
 
 3. Increment the version number to a small increment. For example, change it to:  
-   ```json
-   "version": "1.0.1"
-   ```
+
+```json
+"version": "1.0.1"
+```
 
 4. Save the file after making the change.
 
@@ -395,7 +397,7 @@ After allowing the agent, you will be asked to sign in as below (this is one tim
 
 ![Sign in button](../../assets/images/extend-m365-copilot-06c/oauth-A14.png)
 
-Once you select the sign in button, you need to allow the application's API to be access as the current user, so go ahead and give the permission by selecting "Accept".
+Once you select the sign in button, you need to allow the application's API to access as the current user, so go ahead and give the permission by selecting "Accept."
 
 ![Accept permission](../../assets/images/extend-m365-copilot-06c/oauth-A15.png)
 
@@ -408,7 +410,7 @@ From now on, the sign in will be smooth for the user when interacting with the a
 
 ## Known Issues
 
-- The jwt-validate package throws typing error for @types/jsonwebtoken package. This can be avoided by either downgrading the package or by adding `"skipLibCheck":true` in **tsconfig.json** file of the project. 
+- The `jwt-validate` package throws typing error for `@types/jsonwebtoken` package. This can be avoided by either downgrading the package or by adding `"skipLibCheck":true` in **tsconfig.json** file of the project. 
 
 ---8<--- "e-congratulations.md"
 
