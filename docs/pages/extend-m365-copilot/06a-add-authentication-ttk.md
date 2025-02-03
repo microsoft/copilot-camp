@@ -15,7 +15,7 @@ In this exercise you will modify the Teams Toolkit configuration files to instru
 
 ### Step 1: Add an Entra ID app manifest
 
-Create a new files **aad.manifest.json** in the root of your working folder. Copy these lines into this file.
+Create a new file **aad.manifest.json** in the root of your working folder. Copy these lines into this file.
 
 ```json
 {
@@ -65,6 +65,8 @@ This file contains details for the Entra ID application to be registered or upda
 !!! Note
     Entra ID was previously called "Azure Active Directory"; references to "AAD" refer to Entra ID under its old name.
 
+<cc-end-step lab="e6a" exercise="1" step="1" />
+
 ### Step 2: Update the file version number in **teamsapp.local.ynl**
 
 The **teamsapp.local.yml** file contains instructions for Teams Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
@@ -85,6 +87,8 @@ Then on the 4th line, update the version number to 1.7.
 ```yaml
 version: v1.7
 ```
+
+<cc-end-step lab="e6a" exercise="1" step="2" />
 
 ### Step 3: Provision an Entra ID application
 
@@ -130,6 +134,8 @@ Notice that by setting `signInAudience` to `AzureADMyOrg`, Teams Toolkit creates
 
 Also note that this step will write several values into your environment files, where they will be inserted into **aad.manifest.json** as well as in your application package.
 
+<cc-end-step lab="e6a" exercise="1" step="3" />
+
 ### Step 4: Update the Entra ID application
 
 Locate this line in **teamsapp.local.yml**
@@ -173,6 +179,8 @@ Insert the following yaml before this line:
 
 The `oauth/register` and `oauth/update` steps will register the application in the Teams Developer Portal's vault, where Copilot can obtain the necessary details to implement the OAuth 2.0 Auth Code authorization flow. The `aadApp/update` step will update the Entra ID application itself with the details for this app. These details are in a separte file, **aad.manifest.json**, which we'll add in the next exercise.
 
+<cc-end-step lab="e6a" exercise="1" step="4" />
+
 ### Step 5: Change the output path
 
 The new yaml schema changes the output path slightly. Locate this line:
@@ -186,6 +194,9 @@ and replace it with this one:
 ```yaml
       outputFolder: ./appPackage/build
 ```
+
+<cc-end-step lab="e6a" exercise="1" step="5" />
+
 ### Step 6: Make the Entra ID values available to your application code
 
 Locate these lines:
@@ -217,35 +228,178 @@ This code publishes environment variables for use within your application code. 
         AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
 ```
 
+<cc-end-step lab="e6a" exercise="1" step="7" />
 
-## Exercise 2: Update your application package
+## Exercise 2: Update the general Teams Toolkit configuration
 
-### Step 1: Update the Plugin file
+While **teamsapp-local.yml** controls Teams Toolkit behavior when debugging locally, **teamsapp.yml**
+controls its behavior when deploying to Microsoft Azure. In this exercise you'll update this file.
 
-Open your working folder in Visual Studio Code. In the **appPackage** folder, open the **trey-plugin.json** file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.
+!!! warning
+    Azure deployment doesn't yet work in these labs; this is a known issue and we're investigating it
+
+### Step 1: Provision an Entra ID application
+
+In order for an application to authenticate a user and authorize it to do something, the application must first be registered in Entra ID. In this step we'll add this app registration if it's not already present.
+
+Locate these lines in the file:
+
+```yaml
+provision:
+  # Creates a Teams app
+```
+Insert the following yaml between these lines, directly under the `provision:` line. You may leave blank lines for readability if you wish.
+
+```yaml
+  # Creates a new Microsoft Entra app to authenticate users if
+  # the environment variable that stores clientId is empty
+  - uses: aadApp/create
+    with:
+      # Note: when you run aadApp/update, the Microsoft Entra app name will be updated
+      # based on the definition in manifest. If you don't want to change the
+      # name, make sure the name in Microsoft Entra manifest is the same with the name
+      # defined here.
+      name: Repairs-OAuth-aad
+      # If the value is false, the action will not generate client secret for you
+      generateClientSecret: true
+      # Authenticate users with a Microsoft work or school account in your
+      # organization's Microsoft Entra tenant (for example, single tenant).
+      signInAudience: AzureADMyOrg
+    # Write the information of created resources into environment file for the
+    # specified environment variable(s).
+    writeToEnvironmentFile:
+      clientId: AAD_APP_CLIENT_ID
+      # Environment variable that starts with `SECRET_` will be stored to the
+      # .env.{envName}.user environment file
+      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
+      objectId: AAD_APP_OBJECT_ID
+      tenantId: AAD_APP_TENANT_ID
+      authority: AAD_APP_OAUTH_AUTHORITY
+      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
+```
+
+Notice that by setting `signInAudience` to `AzureADMyOrg`, Teams Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
+
+Also note that this step will write several values into your environment files, where they will be inserted into **aad.manifest.json** as well as in your application package.
+
+<cc-end-step lab="e6a" exercise="2" step="1" />
+
+### Step 2: Register the app in the Teams Developer Portal Vault
+
+Locate these lines in **teamsapp.yml**
+
+```yaml
+  # Validate using manifest schema
+  # - uses: teamsApp/validateManifest
+  #   with:
+  #     # Path to manifest template
+  #     manifestPath: ./appPackage/manifest.json
+
+  # Build Teams app package with latest env value
+```
+
+Insert the following before the last line:
+
+```yaml
+  # Apply the Microsoft Entra manifest to an existing Microsoft Entra app. Will use the object id in
+  # manifest file to determine which Microsoft Entra app to update.
+  - uses: aadApp/update
+    with:
+      # Relative path to this file. Environment variables in manifest will
+      # be replaced before apply to Microsoft Entra app
+      manifestPath: ./aad.manifest.json
+      outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
+
+  - uses: oauth/register
+    with:
+      name: oAuth2AuthCode
+      flow: authorizationCode
+      appId: ${{TEAMS_APP_ID}}
+      clientId: ${{AAD_APP_CLIENT_ID}}
+      clientSecret: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+      # Path to OpenAPI description document
+      apiSpecPath: ./appPackage/trey-definition.json
+    writeToEnvironmentFile:
+      configurationId: OAUTH2AUTHCODE_CONFIGURATION_ID
+```
+
+<cc-end-step lab="e6a" exercise="2" step="2" />
+
+## Exercise 3: Update your application package
+
+Now that you've got Teams Toolkit setting up the Entra ID registrations, it's time to update the application package so Copilot knows about the authentication. In this exercise you'll update the necessary files.
+
+### Step 1: Update the Open API Specificationfile
+
+Open your working folder in Visual Studio Code. In the **appPackage** folder, open the **trey-definition.json** file. Locate the line:
+
+```json
+    "paths": {
+```
+
+and insert the following JSON before it:
+
+```json
+    "components": {
+        "securitySchemes": {
+            "oAuth2AuthCode": {
+                "type": "oauth2",
+                "description": "OAuth configuration for the Trey Research service",
+                "flows": {
+                    "authorizationCode": {
+                        "authorizationUrl": "https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/authorize",
+                        "tokenUrl": "https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/token",
+                        "scopes": {
+                            "api://${{AAD_APP_CLIENT_ID}}/access_as_user": "Access Trey Research API as the user"
+                        }
+                    }
+                }
+            }
+        }
+    },
+```
+
+This sets up a new security scheme to be used when calling the API.
+
+Now you need to add this scheme to each API path. Find each instance of a path and look for the `responses` object:
+
+```json
+    "responses": {
+      ...
+```
+
+Insert the following JSON before each of the `responses` (you will find 5 of them in the file; make sure you insert this before each one):
+
+```json
+    "security": [
+        {
+            "oAuth2AuthCode": []
+        }
+    ],
+```
+
+Be sure to save your changes after editing.
+
+<cc-end-step lab="e6a" exercise="3" step="1" />
+
+### Step 2: Update the Plugin file
+
+In the **appPackage** folder, open the **trey-plugin.json** file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.
 
 Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the OAuth settings you saved in the vault.
 
 ~~~json
-"auth": {
-  "type": "OAuthPluginVault",
-  "reference_id":  "${{OAUTH_CLIENT_REGISTRATION_ID}}"
-},
+  "auth": {
+    "type": "OAuthPluginVault",
+    "reference_id": "${{OAUTH2AUTHCODE_CONFIGURATION_ID}}"
+  },
 ~~~
 
-Then add this line to your **env/.env.local** file:
-
-~~~text
-OAUTH_CLIENT_REGISTRATION_ID=<registration id you saved in the previous exercise>
-~~~
-
-The next time you start and prompt your API plugin, it should prompt you to sign in.
-However we've done nothing to secure the application; anyone on the Internet can call it!
 In the next step you'll update the application code to check for a valid login and access the API as the actual Microsoft 365 user instead of "Avery Howard" (which is a name from Microsoft's fictitious name generator).
 
-<cc-end-step lab="e6" exercise="2" step="1" />
+<cc-end-step lab="e6a" exercise="3" step="2" />
 
-## Exercise 3: Update the application code
+## Exercise 4: Update the application code
 
 ### Step 1: Install the JWT validation library
 
@@ -264,7 +418,7 @@ This will install a library for validating the incoming Entra ID authorization t
     
     If you want to track progress on a supported library, please follow [this Github issue](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank}.
 
-<cc-end-step lab="e6" exercise="3" step="1" />
+<cc-end-step lab="e6a" exercise="4" step="1" />
 
 ### Step 2: Update the identity service
 
@@ -290,52 +444,47 @@ Now look for the comment
 Replace the comment with this code:
 
 ~~~typescript
-// Try to validate the token and get user's basic information
-try {
-    const { API_APPLICATION_ID, API_TENANT_ID } = process.env;
-    const token = req.headers.get("Authorization")?.split(" ")[1];
-    if (!token) {
-        throw new HttpError(401, "Authorization token not found");
-    }
+  // Try to validate the token and get user's basic information
+  try {
+      const { AAD_APP_CLIENT_ID, AAD_APP_TENANT_ID } = process.env;
+      const token = req.headers.get("Authorization")?.split(" ")[1];
+      if (!token) {
+          throw new HttpError(401, "Authorization token not found");
+      }
 
-    // create a new token validator for the Microsoft Entra common tenant
-    if (!this.validator) {
+      // create a new token validator for the Microsoft Entra common tenant
+      if (!this.validator) {
         // We need a new validator object which we will continue to use on subsequent
         // requests so it can cache the Entra ID signing keys
         // For multitenant, use:
         // const entraJwksUri = await getEntraJwksUri();
-        const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
+        const entraJwksUri = await getEntraJwksUri(AAD_APP_TENANT_ID);
         this.validator = new TokenValidator({
             jwksUri: entraJwksUri
         });
         console.log ("Token validator created");
-    }
+      }
 
-    // Use these options for single-tenant applications
-    const options: ValidateTokenOptions = {
-        audience: `api://${API_APPLICATION_ID}`,
-        issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
-        // NOTE: If this is a multi-tenant app, look for 
-        // issuer: "https://sts.windows.net/common/",
-        // Also you may wish to manage a list of allowed tenants
-        // and test them as well
-        //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
-        scp: ["access_as_user"]
-    };
+      const options: ValidateTokenOptions = {
+          allowedTenants: [AAD_APP_TENANT_ID],
+          audience: `${AAD_APP_CLIENT_ID}`,
+          issuer: `https://login.microsoftonline.com/${AAD_APP_TENANT_ID}/v2.0`,
+          scp: ["access_as_user"]
+      };
 
-    // validate the token
-    const validToken = await this.validator.validateToken(token, options);
+      // validate the token
+      const validToken = await this.validator.validateToken(token, options);
 
-    userId = validToken.oid;
-    userName = validToken.name;
-    userEmail = validToken.upn;
-    console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
-}
-catch (ex) {
-    // Token is missing or invalid - return a 401 error
-    console.error(ex);
-    throw new HttpError(401, "Unauthorized");
-}
+      userId = validToken.oid;
+      userName = validToken.name;
+      userEmail = validToken.preferred_username;
+      console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
+  }
+  catch (ex) {
+      // Token is missing or invalid - return a 401 error
+      console.error(ex);
+      throw new HttpError(401, "Unauthorized");
+  }
 ~~~
 
 !!! Note "Learn from the code"
@@ -356,9 +505,6 @@ catch (ex) {
 
     If the token is valid, the library returns an object with all the "claims" that were inside, including the user's unique ID, name, and email. We will use these values instead of relying on the fictitious "Avery Howard".
 
-!!! Note "If your app will be multi-tenant"
-    Check the comments in the above code for notes about validating tokens for a multi-tenant app
-
 Once the code has a `userId` it will look for a Consultant record for the user. This was hard-coded to Avery Howard's ID in the original code. Now it will use the user ID for the logged in user, and create a new Consultant record if it doesn't find one in the database.
 
 As a result, when you run the app for the first time, it should create a new Consultant for your logged-in user with a default set of skills, roles, etc. If you want to change them to make your own demo, you can do that using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank}
@@ -367,9 +513,11 @@ As a result, when you run the app for the first time, it should create a new Con
 
 Note that project assignments are stored in the `Assignment` table and reference the project ID and the assigned consultant's consultant ID.
 
-<cc-end-step lab="e6" exercise="3" step="2" />
+<cc-end-step lab="e6a" exercise="4" step="2" />
 
-## Exercise 4: Test the application
+## Exercise 5: Test the application
+
+### Step 1: Bump the application version number in the app manifest
 
 Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
 
@@ -387,13 +535,20 @@ Before you test the application, update the manifest version of your app package
 
 4. Save the file after making the change.
 
-### Step 1: (Re)start the application
+<cc-end-step lab="e6a" exercise="5" step="1" />
+
+### Step 2: (Re)start the application
 
 If your app is still running from an earlier lab, stop it to force it to re-create the application package.
 
 Then press F5 to run the application again, and install it as before.
 
-Prompt the plugin, "What Trey projects am I assigned to?". You may see a confirmation card asking if it's OK to call your API. No authentication is happening here; click "Allow Once" to proceed.
+<cc-end-step lab="e6a" exercise="5" step="2" />
+
+### Step 3: Run the declarative agent
+
+Proceed back to Microsoft 365 Copilot and select the Trey Research agent.
+Enter the prompt, "What Trey projects am I assigned to?". You may see a confirmation card asking if it's OK to call your API. No authentication is happening here; click "Allow Once" to proceed.
 
 ![Microsoft 365 Copilot showing a confirmation card asking if it is ok to call your API. There are buttons to 'Always allow', 'Allow once', or 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
 
@@ -424,7 +579,7 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 ![](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
 
-<cc-end-step lab="e6" exercise="4" step="1" />
+<cc-end-step lab="e6" exercise="5" step="3" />
 
 ---8<--- "e-congratulations.md"
 

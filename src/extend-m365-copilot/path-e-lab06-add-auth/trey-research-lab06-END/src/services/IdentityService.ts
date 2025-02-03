@@ -37,7 +37,7 @@ class Identity {
                 this.validator = new TokenValidator({
                     jwksUri: entraJwksUri
                 });
-                console.log ("Token validator created");
+                console.log("Token validator created");
             }
 
             // Use these options for single-tenant applications
@@ -65,7 +65,7 @@ class Identity {
             console.error(ex);
             throw new HttpError(401, "Unauthorized");
         }
-        
+
         // Get the consultant record for this user; create one if necessary
         let consultant: ApiConsultant = null;
         try {
