@@ -1,1 +1,0 @@
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/resources" />

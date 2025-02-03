@@ -2,15 +2,16 @@ import { HttpRequest } from "@azure/functions";
 import { HttpError } from './Utilities';
 import { Consultant } from '../model/baseModel';
 import { ApiConsultant } from '../model/apiModel';
+import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 
 // This is a DEMO ONLY identity solution.
-import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 import ConsultantApiService from "./ConsultantApiService";
 
 class Identity {
     private validator: TokenValidator;
 
     private requestNumber = 1;  // Number the requests for logging purposes
+
 
     public async validateRequest(req: HttpRequest): Promise<ApiConsultant> {
 
@@ -21,34 +22,29 @@ class Identity {
 
         // Try to validate the token and get user's basic information
         try {
-            const { API_APPLICATION_ID, API_TENANT_ID } = process.env;
+            const { AAD_APP_CLIENT_ID, AAD_APP_TENANT_ID } = process.env;
             const token = req.headers.get("Authorization")?.split(" ")[1];
             if (!token) {
                 throw new HttpError(401, "Authorization token not found");
             }
 
-            // create a new token validator for the Microsoft Entra common tenant
-            if (!this.validator) {
-                // We need a new validator object which we will continue to use on subsequent
-                // requests so it can cache the Entra ID signing keys
-                // For multitenant, use:
-                // const entraJwksUri = await getEntraJwksUri();
-                const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
-                this.validator = new TokenValidator({
-                    jwksUri: entraJwksUri
-                });
-                console.log("Token validator created");
-            }
+    // create a new token validator for the Microsoft Entra common tenant
+    if (!this.validator) {
+        // We need a new validator object which we will continue to use on subsequent
+        // requests so it can cache the Entra ID signing keys
+        // For multitenant, use:
+        // const entraJwksUri = await getEntraJwksUri();
+        const entraJwksUri = await getEntraJwksUri(AAD_APP_TENANT_ID);
+        this.validator = new TokenValidator({
+            jwksUri: entraJwksUri
+        });
+        console.log ("Token validator created");
+    }
 
-            // Use these options for single-tenant applications
             const options: ValidateTokenOptions = {
-                audience: `api://${API_APPLICATION_ID}`,
-                issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
-                // NOTE: If this is a multi-tenant app, look for 
-                // issuer: "https://sts.windows.net/common/",
-                // Also you may wish to manage a list of allowed tenants
-                // and test them as well
-                //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
+                allowedTenants: [AAD_APP_TENANT_ID],
+                audience: `${AAD_APP_CLIENT_ID}`,
+                issuer: `https://login.microsoftonline.com/${AAD_APP_TENANT_ID}/v2.0`,
                 scp: ["access_as_user"]
             };
 
@@ -57,7 +53,7 @@ class Identity {
 
             userId = validToken.oid;
             userName = validToken.name;
-            userEmail = validToken.upn;
+            userEmail = validToken.preferred_username;
             console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
         }
         catch (ex) {
