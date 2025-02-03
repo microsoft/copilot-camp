@@ -228,15 +228,15 @@ This code publishes environment variables for use within your application code. 
         AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
 ```
 
-<cc-end-step lab="e6a" exercise="1" step="7" />
+<cc-end-step lab="e6a" exercise="1" step="6" />
 
 ## Exercise 2: Update the general Teams Toolkit configuration
 
 While **teamsapp-local.yml** controls Teams Toolkit behavior when debugging locally, **teamsapp.yml**
 controls its behavior when deploying to Microsoft Azure. In this exercise you'll update this file.
 
-!!! warning
-    Azure deployment doesn't yet work in these labs; this is a known issue and we're investigating it
+!!! warning Indentation is critical in yaml
+    Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.yml){_target=blank}.
 
 ### Step 1: Provision an Entra ID application
 
@@ -505,14 +505,6 @@ Replace the comment with this code:
 
     If the token is valid, the library returns an object with all the "claims" that were inside, including the user's unique ID, name, and email. We will use these values instead of relying on the fictitious "Avery Howard".
 
-Once the code has a `userId` it will look for a Consultant record for the user. This was hard-coded to Avery Howard's ID in the original code. Now it will use the user ID for the logged in user, and create a new Consultant record if it doesn't find one in the database.
-
-As a result, when you run the app for the first time, it should create a new Consultant for your logged-in user with a default set of skills, roles, etc. If you want to change them to make your own demo, you can do that using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank}
-
-![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
-
-Note that project assignments are stored in the `Assignment` table and reference the project ID and the assigned consultant's consultant ID.
-
 <cc-end-step lab="e6a" exercise="4" step="2" />
 
 ## Exercise 5: Test the application
@@ -557,17 +549,29 @@ Click "Sign in to Trey" to sign in. At first you should see a pop-up window aski
 
 ![Microsoft 365 Copilot showing a login card with a button to 'Sign in to Trey' and another one to 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
-There are cases where your admin has not allowed you to consent as a user and may see something like below:
-![The Microsoft Entra popup dialog asking for an admin approval to consume the API.](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
+!!! tip "You might need admin approval"
+    There are cases where your admin has not allowed you to consent as a user and may see something like below:
 
-This is because the admin has restricted applications to allow user consent tenant wide. In this case, you have to request admin to manually grant global consent for all users for the plugin API registration as below:
+    ![The Microsoft Entra popup dialog asking for an admin approval to consume the API.](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
 
-![The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted.](../../assets/images/extend-m365-copilot-06/approval-admin.png)
+    This is because the admin has restricted the ability for users to consent to grant permissions to applications. In this case, you have to request admin to manually grant global consent for all users for the plugin API registration as below. Find the app registration in Microsoft 365 Admin / Identity / Applications / App Registrations and do the consent from there.
 
+    ![The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted.](../../assets/images/extend-m365-copilot-06/approval-admin.png)
 
 The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
 
-Since you were just added to the database, you're not assigned to any projects.
+Recall that the user was hard coded to the fictitious user "Avery Howard". When the new code runs for the first time, it won't find your user ID, so it will create a new consultant record that's not (yet) assigned to any projects.
+
+!!! note "Updating your user information"
+    Since this is just a lab, we have hard-coded the details such as skills and location for your new user account. If you want to change them, you can do that using the [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank}
+
+    ![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
+    
+<cc-end-step lab="e6" exercise="5" step="3" />
+
+### Step 4: Add yourself to a project
+
+Since you were just added to the database, you're not assigned to any projects. Note that project assignments are stored in the `Assignment` table and reference the project ID and the assigned consultant's consultant ID.
 
 ![The response from the 'Trey Genie' agent when the actual user doesn't have any assigned project.](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
 
@@ -577,9 +581,7 @@ Ask Copilot to add you to the Woodgrove project. Copilot will press you for deta
 
 Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
-
-<cc-end-step lab="e6" exercise="5" step="3" />
+<cc-end-step lab="e6" exercise="5" step="4" />
 
 ---8<--- "e-congratulations.md"
 
