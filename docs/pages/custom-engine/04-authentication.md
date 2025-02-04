@@ -488,44 +488,46 @@ To serve static files from the public folder, include the following import for `
 
 ```TypeScript
 import * as path from 'path';
-
 ```
-And then add below code after the `server.listen` method .
+And then add below code after the line that initializes the `server` object with the result of the `expressApp.listen` method.
 
 ```TypeScript
-server.get(
-  '/auth-:name(start|end).html',
-  restify.plugins.serveStatic({
-      directory: path.join(__dirname, 'public')
-  })
-);
+const authFilePattern = /^\/auth-(start|end)\.html$/;
+expressApp.get(
+  authFilePattern, (req, res) => {
+    const fileName = req.path;
+    const filePath = path.join(__dirname, 'public', fileName);
+    res.sendFile(filePath);
+});
 ```
 
-- Changes to **adapter.ts** file is as follows:
-Import the TeamsAdapter from teams-ai library.
+Change the **adapter.ts** file is as follows:
+
+- Import the `TeamsAdapter` from teams-ai library.
 
 ```TypeScript
 import { TeamsAdapter } from '@microsoft/teams-ai';
 ```
 
-Replace the adapter definition with `TeamsAdapter` instead of `CloudAdapter` for Teams SSO.
+- Replace the adapter definition with `TeamsAdapter` instead of `CloudAdapter` for Teams SSO.
 
 ```JavaScript
 const adapter = new TeamsAdapter(
   {},
   new ConfigurationServiceClientCredentialFactory({
-    MicrosoftAppId: config.botId,
-    MicrosoftAppPassword: config.botPassword,
+    MicrosoftAppId: config.MicrosoftAppId,
+    MicrosoftAppPassword: config.MicrosoftAppPassword,
     MicrosoftAppType: 'MultiTenant',
   })
 );
 
 ```
 
-Comment out the definition for `botFrameworkAuthentication` which is not needed anymore.
+- Comment out the definition for `botFrameworkAuthentication` which is not needed anymore.
 
-- Changes to **config.ts** file is as follows:
-Add below properties to the constant `config`. Add a comma and after `process.env.INDEX_NAME` and append below snippet:
+Change the **config.ts** file is as follows:
+
+- Add below properties to the constant `config`. Add a comma and after `process.env.INDEX_NAME` and append below snippet:
 
 ```TypeScript
 aadAppClientId: process.env.AAD_APP_CLIENT_ID,
@@ -536,21 +538,15 @@ botDomain: process.env.BOT_DOMAIN,
 aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
 ```
 
-- Changes to **app.ts** file is as follows:
+Change the **app.ts** file is as follows:
 
-We will be using the `TurnContext` module so include it in your import statement from the `botbuilder` library as shown below:
+- We will be using the `TurnState` and `AuthError` modules so include them in your import statement from the `@microsoft/teams-ai` library as shown below:
 
-<pre>
-import { CardFactory, MemoryStorage, MessageFactory, <b>TurnContext</b> } from "botbuilder";
-</pre>
+```TypeScript
+import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, AuthError, TurnState } from "@microsoft/teams-ai";
+```
 
-We will be using the `TurnState` and `AuthError` modules so include them in your import statement from the `@microsoft/teams-ai` library as shown below:
-
-<pre>
-Import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, <b>AuthError, TurnState</b> } from "@microsoft/teams-ai";
-</pre>
-
-Now to pass authentication setting to the Application definition, replace `const app` definition with below code snippet:
+- Now to pass authentication setting to the Application definition, replace `const app` definition with below code snippet:
 
 ```TypeScript
 const app = new Application({
