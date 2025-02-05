@@ -401,6 +401,10 @@ hr {
     background-image: url('./images/path-icons/icon-mcs5.png');
 }
 
+.mcs-path ul li:nth-child(7) {
+    background-image: url('./images/path-icons/icon-mcs6.png');
+}
+
 /*** Style mkdocs features ***
 
 /* Admonitions */
