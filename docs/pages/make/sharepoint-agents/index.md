@@ -22,4 +22,4 @@ If you are assigned with a Microsoft 365 Copilot license, or a Copilot Studio ca
 
 ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio agent builder.
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/sharepoint-agent/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agent/index" />

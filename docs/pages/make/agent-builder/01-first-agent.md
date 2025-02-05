@@ -242,6 +242,6 @@ Great job on making your agent 🎉 ! This is the end of the **Copilot Studio ag
 - [Build agents with Copilot Studio agent builder](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build){target=_blank}
 - [Publish and manage Copilot Studio agent builder agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish){target=_blank}
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent" />
 
 

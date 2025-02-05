@@ -344,4 +344,4 @@ For more details please see the [developer mode documentation](https://learn.mic
 
 You've completed adding a declarative agent to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />

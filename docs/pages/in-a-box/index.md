@@ -10,4 +10,4 @@ Here are presentation materials for running your own Copilot Developer Camp work
 | 40 min | CC03: Introducing Custom Engine Agents | [part 1](https://github.com/microsoft/copilot-camp/raw/refs/heads/in-a-box/downloads/presentations-with-videos/CC03%20-%20Building%20Custom%20Engine%20Agents%20part%201.pptx), [part 2](https://github.com/microsoft/copilot-camp/raw/refs/heads/in-a-box/downloads/presentations-with-videos/CC03%20-%20Building%20Custom%20Engine%20Agents%20part%202.pptx) | [download](https://github.com/microsoft/copilot-camp/raw/refs/heads/in-a-box/downloads/presentations-for-sharing/CC03%20-%20Building%20Custom%20Engine%20Agents.pptx) |
 
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/in-a-box" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/in-a-box" />

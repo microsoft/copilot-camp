@@ -1,1 +1,1 @@
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/resources" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/resources" />
