@@ -339,7 +339,7 @@ Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/con
 
 Go to the environment file called **.env.dev** and create a new variable called "SP_SITE_URL" and paste the absolute url of the SharePoint site as its value.
 
-Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a comma `,` after conversation_starters array and paste the belwo new array object for extending the agent's capability to refer to SharePoint data of a particular site.
+Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a comma `,` after conversation_starters array and paste the below new array object for extending the agent's capability to refer to SharePoint data of a particular site.
 
 ```JSON
  "capabilities": [
