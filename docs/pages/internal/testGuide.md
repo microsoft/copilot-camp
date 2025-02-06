@@ -62,7 +62,7 @@ The following labs are in need of testing. Please send questions and issues to t
 
     Test procedure:
 
-      1. Just read the initial introductions for each branch, starting from [here](../make/).
+      1. Just read the initial introductions for each branch, starting from [here](https://microsoft.github.io/copilot-camp/pages/make/).
 
 !!! note "Lab MAB1 - Agent builder"
     Owner: Paolo Pialorsi
@@ -81,7 +81,7 @@ The following labs are in need of testing. Please send questions and issues to t
 
     Test procedure:
 
-      1. Just follow the [lab instructions](../make/agent-builder/)
+      1. Just follow the [lab instructions](https://microsoft.github.io/copilot-camp/pages/make/agent-builder/)
 
 !!! note "Lab MCS0 - Setup"
     Owner: Paolo Pialorsi
@@ -95,7 +95,7 @@ The following labs are in need of testing. Please send questions and issues to t
 
     Test procedure:
 
-      1. Just follow the [lab instructions](../make/copilot-studio/00-prerequisites/)
+      1. Just follow the [lab instructions](https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/00-prerequisites/)
 
  # Thank you!
 
