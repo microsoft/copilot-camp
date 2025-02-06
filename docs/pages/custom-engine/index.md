@@ -14,4 +14,4 @@ The journey starts with building a basic custom engine agent using Teams Toolkit
   
 ## <a href="./00-prerequisites">Start here</a> with Lab B0, where you'll set up development your environment.
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/custom-engine/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/index" />

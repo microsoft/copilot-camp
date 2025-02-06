@@ -24,4 +24,4 @@ In order to use Copilot Studio, you need a user license (also known as _per user
 
 ## <a href="./00-prerequisites">Start here</a> with Lab MCS0, where you'll set up your environment for Copilot Studio.
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/agent-builder/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/index" />

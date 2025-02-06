@@ -22,4 +22,4 @@ Depending on the target knowledge base and on your users' license, your organiza
 
 ## <a href="./01-first-agent">Start here</a> with Lab MAB1, where you'll make your first agent with Copilot Studio agent builder.
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/agent-builder/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/index" />

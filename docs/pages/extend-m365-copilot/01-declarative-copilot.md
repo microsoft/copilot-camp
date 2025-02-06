@@ -399,4 +399,4 @@ Great job on building your game agent 🎉 ! In the next lab, you’ll create a 
 
 ---8<--- "e-congratulations.md"
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />

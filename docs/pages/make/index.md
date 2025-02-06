@@ -9,4 +9,4 @@ In order to better understand the available options and when you should use what
 
 ---8<--- "m-labs-branches.md"
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/index" />
