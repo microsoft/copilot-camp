@@ -507,4 +507,4 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 You have completed lab E6, Add Entra ID authentication!
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />

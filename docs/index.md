@@ -159,4 +159,4 @@ Resources:
 - [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
 - Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with questions or concerns
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/index" />

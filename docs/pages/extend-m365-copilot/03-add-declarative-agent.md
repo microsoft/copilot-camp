@@ -256,7 +256,7 @@ Be sure to save your work.
 
 ### Step 5: Remove the dummy feature from the app manifest
 
-The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Camp home page. This would allow users to view the Copilot Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com){target=_blank}).
+The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Developer Camp home page. This would allow users to view the Copilot Developer Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app ([https://office.com](https://office.com){target=_blank}).
 
 If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you would know all about them. If not, don't worry about it, just delete these lines from **manifest.json** as they aren't needed anymore.
 
@@ -344,4 +344,4 @@ For more details please see the [developer mode documentation](https://learn.mic
 
 You've completed adding a declarative agent to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />
