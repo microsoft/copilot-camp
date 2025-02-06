@@ -98,4 +98,4 @@ Now you are all set to create your first agent with Copilot Studio. Proceed to c
 
 <a href="#"><button class="github-button">Coming soon ...</button></a>
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/make/copilot-studio/00-prerequisites" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/00-prerequisites" />
