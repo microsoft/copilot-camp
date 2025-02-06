@@ -17,7 +17,7 @@ The following labs are in need of testing. Please send questions and issues to t
      - updates the code to validate the access token
      - tests the declarative agent
 
-    To test you will need a tenant with Microsoft 365 Copilot and [Visual Studio Code with Teams Toolkit](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/00-prerequisites/). zs
+    To test you will need a tenant with Microsoft 365 Copilot and [Visual Studio Code with Teams Toolkit](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/00-prerequisites/).
 
     Test procedure:
     
@@ -39,7 +39,7 @@ The following labs are in need of testing. Please send questions and issues to t
      - updates the code to validate the access token
      - tests the declarative agent
 
-    To test you will need a tenant with Microsoft 365 Copilot and [Visual Studio Code with Teams Toolkit](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/00-prerequisites/). zs
+    To test you will need a tenant with Microsoft 365 Copilot and [Visual Studio Code with Teams Toolkit](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/00-prerequisites/).
 
     Test procedure:
 
@@ -50,6 +50,52 @@ The following labs are in need of testing. Please send questions and issues to t
       - (optional) edit **/appPackage/trey-declarative-agent.json** and rename the agent so you know which instance you're testing
       - press F5. You should get a declarative agent for Trey Research.
       - then follow [the Lab 6c instructions](../extend-m365-copilot/06c-add-sso.md)
- 
+
+!!! note "New Make Path"
+    Owner: Paolo Pialorsi
+
+    In this new path, the student finds content about:
+
+     - Copilot Studio agent builder
+     - Microsoft Copilot Studio
+     - SharePoint agents
+
+    Test procedure:
+
+      1. Just read the initial introductions for each branch, starting from [here](../make/).
+
+!!! note "Lab MAB1 - Agent builder"
+    Owner: Paolo Pialorsi
+
+    In this lab, the student:
+
+     - learns what is a declarative agent for Microsoft 365 Copilot
+     - makes a declarative agent using Copilot Studio agent builder
+     - customises the agent to create a game using specific instructions
+     - configures the agent to rely on a set of documents stored in SharePoint Online
+     - enables the agent to generate images
+     - shares the agent with other people
+     - learns how to share the agent with other people
+
+    To test you will need a tenant with Microsoft 365 Copilot.
+
+    Test procedure:
+
+      1. Just follow the [lab instructions](../make/agent-builder/)
+
+!!! note "Lab MCS0 - Setup"
+    Owner: Paolo Pialorsi
+
+    In this lab, the student:
+
+     - How to create a dedicated environment for your labs
+     - How to setup and configure Microsoft Copilot Studio
+
+    To test you will need a tenant with Microsoft 365 Copilot and Microsoft Copilot Studio (a trial license is enough).
+
+    Test procedure:
+
+      1. Just follow the [lab instructions](../make/copilot-studio/00-prerequisites/)
+
  # Thank you!
 
