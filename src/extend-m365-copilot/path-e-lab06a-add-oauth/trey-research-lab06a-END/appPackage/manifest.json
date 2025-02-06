@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "id": "${{TEAMS_APP_ID}}",
+  "version": "1.0.0",
+  "developer": {
+    "name": "Teams App, Inc.",
+    "websiteUrl": "https://www.example.com",
+    "privacyUrl": "https://www.example.com/privacy",
+    "termsOfUseUrl": "https://www.example.com/termsofuse"
+  },
+  "icons": {
+    "color": "TreyResearch-blue-192.png",
+    "outline": "TreyResearch-blue-32.png"
+  },
+  "name": {
+    "short": "Trey Research E6a ${{APP_NAME_SUFFIX}}",
+    "full": "Trey Research consulting management"
+  },
+  "description": {
+    "short": "Everyday management of Trey Research projects and consultants",
+    "full": "This application allows you to find Trey Research projects and consultants, to bill time to a project, and to assign a consultant to a project."
+  },
+  "accentColor": "#FFFFFF",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "treygenie",
+      "file": "trey-declarative-agent.json"
+      }
+    ]   
+  }, 
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ]
+}
