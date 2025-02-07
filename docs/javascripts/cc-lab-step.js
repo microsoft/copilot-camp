@@ -174,7 +174,7 @@
         #telemetrySent = false; // True if telemetry has been sent
         #updateTelemetry(lab, exercise, step) {
             if (this.checked && !this.#telemetrySent) {
-                const url = `https://pnptelemetry.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
+                const url = `https://m365-visitor-stats.azurewebsites.net/copilot-camp/completed-lab-${lab}-ex-${exercise}-step-${step}`;
                 const img = new Image();
                 img.src = url;
                 this.#containerElement.appendChild(img);

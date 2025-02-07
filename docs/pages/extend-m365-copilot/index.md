@@ -9,4 +9,4 @@ During Extend Path of the Copilot Developer Camp, learners will construct a cust
 
 ## <a href="./00-prerequisites">Start here</a> with Lab E0, where you'll set up development your environment.
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />

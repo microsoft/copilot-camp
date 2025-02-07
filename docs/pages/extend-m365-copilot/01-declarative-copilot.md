@@ -326,7 +326,7 @@ Playing the same game over and over can get dull. To keep things fun and engagin
 
 ### Step 1: Upload files to SharePoint.
 
-Download this zip file consisting of two PDF file by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
+Download this zip file consisting of two PDF files by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
 
 Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
 These documents are **historical_map.pdf** and **travelers_diary** to help make the game more challenging. 
@@ -399,4 +399,4 @@ Great job on building your game agent 🎉 ! In the next lab, you’ll create a 
 
 ---8<--- "e-congratulations.md"
 
-<img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
