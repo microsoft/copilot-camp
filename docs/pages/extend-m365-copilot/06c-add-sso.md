@@ -9,11 +9,13 @@ In this lab you will add Microsoft Entra ID SSO authentication enabling users to
     The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END){target=_blank} folder. Here in the finished sample we have used persistent developer tunnel so you will have to make adjustments if you are not using persistent developer tunnel. Check Exercise 1. 
 
 
-In this lab you will register an Entra ID application that secures your API. Below are the two things you will need to configure SSO.
+In this lab, as you register your API, you'll need to save a few values from the Entra ID portal and Teams Developer Portal for use in later steps. Here's what you'll need to save:
 
 ~~~text
 API Base URL: 
 API's Entra ID application ID: 
+API's Tenant ID: 
+SSO Client registration: 
 ~~~
 
 ## Exercise 1: Set up a persistent developer tunnel (optional)
@@ -42,6 +44,8 @@ Once you have it installed, you'll need to log in. You can use your Microsoft 36
 ~~~sh
 devtunnel user login
 ~~~
+
+Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel user login`.
 
 <cc-end-step lab="e6c" exercise="1" step="1" />
 
@@ -126,7 +130,7 @@ Browse to the Teams Developer Portal at [https://dev.teams.microsoft.com](https:
 
 ![The Entra ID SSO config page in Teams developer portal](../../assets/images/extend-m365-copilot-06c/oauth-A6.png)
 
-Select **New client registration** and fill up the values. 
+Select **Register client ID** and fill up the values.
 
 | Field | Value |
 | --- | --- |
@@ -245,7 +249,6 @@ APP_ID_URI=<Application ID URI>
 API_TENANT_ID=<Directory (tenant) ID>
 ~~~
 
-
 !!! Note "Generate Application ID URI manually"
     In case the Application ID URI isn't available, please construct it using the below steps temporarily:
     Go to [Base64 Decode and Encode](https://www.base64decode.org/) - Online
@@ -253,9 +256,14 @@ API_TENANT_ID=<Directory (tenant) ID>
     Construct the application ID URI using the second part of the decoded value (after ##) as highlighted below – api://auth-<AuthConfigID_Decoded_SecondPart>, e.g., api://auth-16cfcd90-803e-40ba-8106-356aa4927bb9
     ![Generating Application ID URI manually](../../assets/images/extend-m365-copilot-06c/oauth-A13.png)
   
-
-
 To make these values available inside your code running in Teams Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
+
+~~~yaml
+        APP_ID_URI: ${{APP_ID_URI}}
+        API_TENANT_ID: ${{API_TENANT_ID}}
+~~~
+
+The finished yaml should look like this:
 
 ~~~yaml
   - uses: file/createOrUpdateEnvironmentFile
@@ -270,6 +278,8 @@ To make these values available inside your code running in Teams Toolkit, you al
 <cc-end-step lab="e6c" exercise="6" step="2" />
 
 ### Step 3: Update the identity service
+
+At this point, Single Sign-on should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.
 
 In the **src/services** folder, open **IdentityService.ts**. 
 At the top of the file along with the other `import` statements, add this one:
