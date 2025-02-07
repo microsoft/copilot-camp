@@ -11,6 +11,7 @@ The knowledge base can be:
 - Power Platform connectors
 - etc.
 
+Agents interact with users through topics, which can define single-turn or multi-turn conversations with the user.
 Every agent can have custom actions to interact with Power Automate flows, Power Platform connectors, external REST APIs, etc.
 Generally speaking, with Copilot Studio you can create really powerful agents without the need to write any line of code.
 
