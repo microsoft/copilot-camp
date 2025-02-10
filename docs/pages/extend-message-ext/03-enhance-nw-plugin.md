@@ -250,5 +250,7 @@ Of course, you can test this new command also by using the sample as a Message E
 
 ![The new command used as a message extension](../../assets/images/extend-message-ext-03/03-08-customer-message-extension.png)
 
+<cc-next />
+
 ## Congratulations
 You are now a plugin champion. You are now ready to secure your plugin with authentication. Proceed to the next lab. Select "Next"

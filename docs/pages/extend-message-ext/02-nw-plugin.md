@@ -123,6 +123,7 @@ Here are some more prompts to try:
 
 Which prompts work best for you? Try making up your own prompts and observe your log messages to see how Copilot accesses your plugin.
 
+<cc-next />
 
 ## Congratulations
 
