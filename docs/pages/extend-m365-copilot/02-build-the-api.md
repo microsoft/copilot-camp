@@ -123,4 +123,6 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 You've successfully built the lab sample API! You can now proceed to make it into a Copilot plugin, and expose it via a Declarative agent.
 
+<cc-next />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/02-build-the-api" />

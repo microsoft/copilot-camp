@@ -155,4 +155,6 @@ You have completed Lab B1 - First custom engine agent to build a custom engine a
 
 You are now ready to proceed to Lab B2 - Index your data in Azure AI Search to bring your data into your custom engine agent. Select Next.
 
+<cc-next />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-agent" />

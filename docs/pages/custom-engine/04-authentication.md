@@ -707,4 +707,6 @@ You have completed Lab B4 - Add single sign on authentication to secure your cus
 
 You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
 
+<cc-next />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/04-authentication" />
