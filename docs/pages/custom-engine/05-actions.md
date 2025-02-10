@@ -618,4 +618,6 @@ You have completed B5 - Add actions to handle complex tasks!  If you want explor
 
 This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
+<cc-next label="Home" url="/" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/05-actions" />

@@ -343,4 +343,6 @@ You have completed Lab B3 - Enhance User Experience with the Powered by AI kit! 
 
 You are now ready to proceed to Lab A4 - Secure your solution using authentication. Select Next.
 
+<cc-next />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/03-powered-by-ai" />

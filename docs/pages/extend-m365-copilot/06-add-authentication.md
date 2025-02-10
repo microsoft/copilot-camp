@@ -511,4 +511,8 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 You have completed lab E6, Add Entra ID authentication!
 
+Want to try something cool? How about adding a Graph Connector to your solution?
+
+<cc-next url="../EB-add-graphconnector" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />
