@@ -331,7 +331,12 @@ Download this zip file consisting of two PDF files by selecting this [link](http
 Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
 These documents are **historical_map.pdf** and **travelers_diary** to help make the game more challenging. 
 
-Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso` and proceed to next step.
+Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso`.
+
+> [!NOTE]
+> To get the full path of a file or folder, you can use the "Copy direct link" option in SharePoint. Right-click on the file or folder and select Details, then navigate to Path and click on the copy icon.
+
+Then proceed to next step.
 
 <cc-end-step lab="e1" exercise="3" step="1" />
 
