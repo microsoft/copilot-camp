@@ -159,7 +159,7 @@ Here's how the base project looks:
 The file of interest for our lab is primarily the **appPackage/instruction.txt** file which is the core directives needed for your agent.
 It's a plain text file and you can write natural language instructions in it. 
 
-Another important file is **appPackage/declarativeAgent.json** where there is a schema to be followed to extend Microsoft 365 Copilot with the new declarative agent. Let's look at what propertis the schema of this file has. 
+Another important file is **appPackage/declarativeAgent.json** where there is a schema to be followed to extend Microsoft 365 Copilot with the new declarative agent. Let's look at what properties the schema of this file has. 
 
 - The `$schema` is the schema reference 
 - The `version` is the schema version 
@@ -331,7 +331,12 @@ Download this zip file consisting of two PDF files by selecting this [link](http
 Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
 These documents are **historical_map.pdf** and **travelers_diary** to help make the game more challenging. 
 
-Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso` and proceed to next step.
+Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/contoso`.
+
+> [!NOTE]
+> To get the full path of a file or folder, you can use the "Copy direct link" option in SharePoint. Right-click on the file or folder and select Details, then navigate to Path and click on the copy icon.
+
+Then proceed to next step.
 
 <cc-end-step lab="e1" exercise="3" step="1" />
 
@@ -339,7 +344,7 @@ Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/con
 
 Go to the environment file called **.env.dev** and create a new variable called "SP_SITE_URL" and paste the absolute url of the SharePoint site as its value.
 
-Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a comma `,` after conversation_starters array and paste the belwo new array object for extending the agent's capability to refer to SharePoint data of a particular site.
+Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a comma `,` after conversation_starters array and paste the below new array object for extending the agent's capability to refer to SharePoint data of a particular site.
 
 ```JSON
  "capabilities": [

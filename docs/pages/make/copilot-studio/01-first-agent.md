@@ -243,7 +243,7 @@ Selecting the **Availability options** button you can:
 
 - Copy a link to use the agent in Microsoft Teams
 - Make the agent available in the Teams app store, choosing if it will be available to the whole organization or just to selected users
-- Download a ZIP file with a package that can be used to import the agent on other tenants
+- Download a ZIP file with a package that you can upload to the Teams app store
 
 ![The side panel to see the availability options for the agent in Microsoft Teams. There are buttons to copy a link to the agent in Teams, to make the agent available in the Teams app store, and to download a zip with the agent package for sharing the agent on other tenants.](../../../assets/images/make/copilot-studio-01/make-agent-publish-05.png)
 
