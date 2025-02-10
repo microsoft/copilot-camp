@@ -141,5 +141,6 @@ By doing this step early, there's a good chance that the Microsoft 365 search en
 
 You have completed the prerequisites lab. You are now ready to proceed to run your app. Select "Next" button below.
 
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/00-prerequisites" />
