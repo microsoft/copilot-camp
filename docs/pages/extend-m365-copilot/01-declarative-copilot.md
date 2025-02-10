@@ -159,7 +159,7 @@ Here's how the base project looks:
 The file of interest for our lab is primarily the **appPackage/instruction.txt** file which is the core directives needed for your agent.
 It's a plain text file and you can write natural language instructions in it. 
 
-Another important file is **appPackage/declarativeAgent.json** where there is a schema to be followed to extend Microsoft 365 Copilot with the new declarative agent. Let's look at what propertis the schema of this file has. 
+Another important file is **appPackage/declarativeAgent.json** where there is a schema to be followed to extend Microsoft 365 Copilot with the new declarative agent. Let's look at what properties the schema of this file has. 
 
 - The `$schema` is the schema reference 
 - The `version` is the schema version 
