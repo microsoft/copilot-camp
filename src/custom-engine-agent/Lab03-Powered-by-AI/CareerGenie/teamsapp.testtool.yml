@@ -3,6 +3,9 @@
 # Visit https://aka.ms/teamsfx-actions for details on actions
 version: v1.5
 
+additionalMetadata:
+  sampleTag: copilot-camp:Lab03-Powered-by-AI_CareerGenie
+
 deploy:
   # Install development tool(s)
   - uses: devTool/install
