@@ -422,6 +422,8 @@ This will install a library for validating the incoming Entra ID authorization t
 
 ### Step 2: Update the identity service
 
+At this point, OAuth login should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.
+
 In the **src/services** folder, open **IdentityService.ts**. 
 At the top of the file along with the other `import` statements, add this one:
 
