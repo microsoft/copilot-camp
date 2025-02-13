@@ -300,6 +300,13 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 ![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
 
+!!! note
+    If the SharePoint documents aren't referenced, perhaps there is an issue accessing the files. Has there been time for Search to index the site? Does the end user have permission to the site? Has an administrator excluded the site from Search? Try doing a Search (outside of Copilot) such as 
+    
+    `woodgrove path:"https://<tenant>.sharepoint.com/sites/<sitename>"`
+    
+    filling in your tenant and site name to match the one in the capability. You should see three Woodgrove documents; if you don't you need to troubleshoot Search since Copilot won't be able to find them either.
+
 <cc-end-step lab="e3" exercise="3" step="2" />
 
 ### Step 3: Learn to troubleshoot your API Plugin
