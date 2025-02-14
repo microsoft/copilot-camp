@@ -21,7 +21,7 @@ The code consists of Azure Functions written in TypeScript, backed by a database
 This lab calls for a couple of additional prerequisites; please install them now.
 
 * [Azure functions core tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools){target=_blank} OR
-[REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}: You will use one of these toolks to test your API locally
+[REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}: You will use one of these toolkits to test your API locally
 * (optional) [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank}: This will allow you to view and modify the Trey Research database
 
 <cc-end-step lab="e2" exercise="1" step="1" />
@@ -122,5 +122,7 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 ---8<--- "e-congratulations.md"
 
 You've successfully built the lab sample API! You can now proceed to make it into a Copilot plugin, and expose it via a Declarative agent.
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/02-build-the-api" />

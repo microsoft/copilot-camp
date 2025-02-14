@@ -71,7 +71,7 @@ Follow the steps as shown in the screen shot below.
 
 ## Exercise 3: Get an Azure subscription
 
-To complete the exercises in Path B, you'll need an Azure subscription to create resources on Azure. If you don't have Azure subscription yet, you can activate an [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} that offers $200 in credits which can be used within the first 30 days on most Azure services.
+To complete the exercises in Path B, you'll need an Azure subscription to create resources on Azure. If you don't have an Azure subscription yet, you can activate an [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} that offers $200 in credits which can be used within the first 30 days on most Azure services.
 
 ### Step 1: Create an Azure free account
 
@@ -96,5 +96,7 @@ Follow the steps to activate an Azure free account:
 
 You have completed Lab B0 - Setup!
 You are now ready to proceed to lab B1 - First custom engine agent. Select Next.
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/00-prerequisites" />

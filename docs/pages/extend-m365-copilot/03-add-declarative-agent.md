@@ -49,7 +49,7 @@ Next, click the "Upload" 1️⃣ toolbar button and select "Files" 2️⃣.
 
 ![The command bar of the document library with the 'Upload' menu expanded and the 'Files' option selected.](../../assets/images/extend-m365-copilot-05/upload-docs-08.png)
 
-Navigte to your working folder; you will find a directory called **sampleDocs** within. Highlight all the sample documents 1️⃣ and click "Open" 2️⃣.
+Navigate to your working folder; you will find a directory called **sampleDocs** within. Highlight all the sample documents 1️⃣ and click "Open" 2️⃣.
 
 Make note of the site url, which will resemble "https://&lt;your-tenant&gt;.sharepoint.com/sites/TreyResearchlegaldocuments", as you will need it in the next exercise.
 
@@ -300,6 +300,13 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 ![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
 
+!!! note
+    If the SharePoint documents aren't referenced, perhaps there is an issue accessing the files. Has there been time for Search to index the site? Does the end user have permission to the site? Has an administrator excluded the site from Search? Try doing a Search (outside of Copilot) such as 
+    
+    `woodgrove path:"https://<tenant>.sharepoint.com/sites/<sitename>"`
+    
+    filling in your tenant and site name to match the one in the capability. You should see three Woodgrove documents; if you don't you need to troubleshoot Search since Copilot won't be able to find them either.
+
 <cc-end-step lab="e3" exercise="3" step="2" />
 
 ### Step 3: Learn to troubleshoot your API Plugin
@@ -343,5 +350,7 @@ For more details please see the [developer mode documentation](https://learn.mic
 ---8<--- "e-congratulations.md"
 
 You've completed adding a declarative agent to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />

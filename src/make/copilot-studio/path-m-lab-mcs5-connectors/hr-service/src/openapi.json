@@ -1,0 +1,155 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "HR Service API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/api/candidates": {
+        "get": {
+          "summary": "Get all candidates",
+          "operationId": "getCandidates",
+          "responses": {
+            "200": {
+              "description": "A list of candidates",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Candidate"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new candidate",
+          "operationId": "addCandidate",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Candidate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "The updated list of candidates",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Candidate"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/candidates/{email}": {
+        "get": {
+          "summary": "Get a candidate by email",
+          "operationId": "getCandidate",
+          "parameters": [
+            {
+              "name": "email",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The candidate details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Candidate"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Candidate not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Remove a candidate by email",
+          "operationId": "removeCandidate",
+          "parameters": [
+            {
+              "name": "email",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The updated list of candidates",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Candidate"
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Candidate not found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Candidate": {
+          "type": "object",
+          "properties": {
+            "firstname": {
+              "type": "string"
+            },
+            "lastname": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "spoken_languages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "skills": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "current_role": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

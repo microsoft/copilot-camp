@@ -9,11 +9,13 @@ In this lab you will add Microsoft Entra ID SSO authentication enabling users to
     The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END){target=_blank} folder. Here in the finished sample we have used persistent developer tunnel so you will have to make adjustments if you are not using persistent developer tunnel. Check Exercise 1. 
 
 
-In this lab you will register an Entra ID application that secures your API. Below are the two things you will need to configure SSO.
+In this lab, as you register your API, you'll need to save a few values from the Entra ID portal and Teams Developer Portal for use in later steps. Here's what you'll need to save:
 
 ~~~text
 API Base URL: 
 API's Entra ID application ID: 
+API's Tenant ID: 
+SSO Client registration: 
 ~~~
 
 ## Exercise 1: Set up a persistent developer tunnel (optional)
@@ -26,7 +28,7 @@ By default, Teams Toolkit creates a new developer tunnel - and thus a new URL fo
 
 ### Step 1: Install the developer tunnel CLI
 
-Here are the command lines for installing the developer tunnel. [Full instructions and download links for the Developer Tunnel are here.](https://learn.microsoft.com/azure/developer/dev-tunnels/get-started){target=_blank}. 
+Here are the command lines for installing the developer tunnel. [Full instructions and download links for the Developer Tunnel are here.](https://learn.microsoft.com/azure/developer/dev-tunnels/get-started){target=_blank} 
 
 | OS | Command |
 | --- | --- |
@@ -35,13 +37,15 @@ Here are the command lines for installing the developer tunnel. [Full instructio
 | Linux | `curl -sL https://aka.ms/DevTunnelCliInstall | bash` |
 
 !!! tip
-    You may have to restart your command line to update the file path before devtunnel commands will work
+    You may have to restart your command line to update the file path before devtunnel commands will work.
 
 Once you have it installed, you'll need to log in. You can use your Microsoft 365 account to log in.
 
 ~~~sh
 devtunnel user login
 ~~~
+
+Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel user login`.
 
 <cc-end-step lab="e6c" exercise="1" step="1" />
 
@@ -66,7 +70,7 @@ Copy the "Connect via browser" URL and save it as the "API Base URL".
 
 ### Step 3: Disable the dynamically created tunnel in your project
 
-If your project is running locally, stop it. Then edit [\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:
+If your project is running locally, stop it. Then edit [\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} and locate the "Start Teams App Locally" task. Comment out the "Start local tunnel" dependency and add the "Start Azurite emulator" dependency instead. The resulting task should look like this:
 
 ~~~json
 {
@@ -126,7 +130,7 @@ Browse to the Teams Developer Portal at [https://dev.teams.microsoft.com](https:
 
 ![The Entra ID SSO config page in Teams developer portal](../../assets/images/extend-m365-copilot-06c/oauth-A6.png)
 
-Select **New client registration** and fill up the values. 
+Select **Register client ID** and fill up the values.
 
 | Field | Value |
 | --- | --- |
@@ -238,24 +242,28 @@ This will install a library for validating the incoming Entra ID authorization t
 
 ### Step 2: Add environment variables for your API
 
-In the **env** folder in your working directory, open **env.local** and add these lines for your API Service app's tenant ID, application ID URL
+In the **env** folder in your working directory, open **.env.local** and add these lines for your API Service app's tenant ID, application ID URL
 
 ~~~text
 APP_ID_URI=<Application ID URI>
 API_TENANT_ID=<Directory (tenant) ID>
 ~~~
 
-
 !!! Note "Generate Application ID URI manually"
     In case the Application ID URI isn't available, please construct it using the below steps temporarily:
-    Go to [Base64 Decode and Encode](https://www.base64decode.org/) - Online
+    Go to [Base64 Decode and Encode](https://www.base64decode.org/) - 
     Copy and paste the auth registration ID generated in Exercise 3, Step 1 and decode.
     Construct the application ID URI using the second part of the decoded value (after ##) as highlighted below – api://auth-<AuthConfigID_Decoded_SecondPart>, e.g., api://auth-16cfcd90-803e-40ba-8106-356aa4927bb9
     ![Generating Application ID URI manually](../../assets/images/extend-m365-copilot-06c/oauth-A13.png)
   
-
-
 To make these values available inside your code running in Teams Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
+
+~~~yaml
+        APP_ID_URI: ${{APP_ID_URI}}
+        API_TENANT_ID: ${{API_TENANT_ID}}
+~~~
+
+The finished yaml should look like this:
 
 ~~~yaml
   - uses: file/createOrUpdateEnvironmentFile
@@ -270,6 +278,8 @@ To make these values available inside your code running in Teams Toolkit, you al
 <cc-end-step lab="e6c" exercise="6" step="2" />
 
 ### Step 3: Update the identity service
+
+At this point, Single Sign-on should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.
 
 In the **src/services** folder, open **IdentityService.ts**. 
 At the top of the file along with the other `import` statements, add this one:
@@ -374,15 +384,17 @@ Before you test the application, update the manifest version of your app package
 
 1. Open the `manifest.json` file located in the `appPackage` folder of your project.
 
-2. Locate the `version` field in the JSON file. It should look something like this:  
-   ```json
-   "version": "1.0.0"
-   ```
+2. Locate the `version` field in the JSON file. It should look something like this: 
+
+```json
+"version": "1.0.0"
+```
 
 3. Increment the version number to a small increment. For example, change it to:  
-   ```json
-   "version": "1.0.1"
-   ```
+
+```json
+"version": "1.0.1"
+```
 
 4. Save the file after making the change.
 
@@ -395,7 +407,7 @@ After allowing the agent, you will be asked to sign in as below (this is one tim
 
 ![Sign in button](../../assets/images/extend-m365-copilot-06c/oauth-A14.png)
 
-Once you select the sign in button, you need to allow the application's API to be access as the current user, so go ahead and give the permission by selecting "Accept".
+Once you select the sign in button, you need to allow the application's API to access as the current user, so go ahead and give the permission by selecting "Accept."
 
 ![Accept permission](../../assets/images/extend-m365-copilot-06c/oauth-A15.png)
 
@@ -408,7 +420,7 @@ From now on, the sign in will be smooth for the user when interacting with the a
 
 ## Known Issues
 
-- The jwt-validate package throws typing error for @types/jsonwebtoken package. This can be avoided by either downgrading the package or by adding `"skipLibCheck":true` in **tsconfig.json** file of the project. 
+- The `jwt-validate` package throws typing error for `@types/jsonwebtoken` package. This can be avoided by either downgrading the package or by adding `"skipLibCheck":true` in **tsconfig.json** file of the project. 
 
 ---8<--- "e-congratulations.md"
 

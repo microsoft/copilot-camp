@@ -657,6 +657,17 @@ You can now test other prompts as well to see the improved responses from Micros
 
 ---8<--- "e-congratulations.md"
 
-You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add a declarative agent to the same API plugin. 
+You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.
 
+<cc-next url="../06-add-authentication" />
+
+Or, try one of our new authentication labs (still under test):
+
+  * With this option you will use Teams Toolkit to provision an Entra ID app, and log the user in using OAuth 2.0.
+<cc-next url="../06a-add-authentication-ttk" label="OAuth with Teams Toolkit" />
+
+
+  * With this option you will use Teams Toolkit to provision an Entra ID app, and log the user in using OAuth 2.0.
+<cc-next url="../06c-add-sso" label="OAuth with SSO" />
+  
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />

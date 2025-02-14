@@ -242,8 +242,6 @@ import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayC
 In `src/app/app.ts`, find the **ConversationState** and **ApplicationTurnState**, replace them with the following code:
 
 ```javascript
-import { TurnState, DefaultConversationState } from "@microsoft/teams-ai";
-
 // Strongly type the applications turn state
 interface ConversationState extends DefaultConversationState {
   lists: Record<string, string[]>;
@@ -251,7 +249,7 @@ interface ConversationState extends DefaultConversationState {
 export type ApplicationTurnState = TurnState<ConversationState>;
 ```
 
-In `src/app/`, create another file with a name **actions.ts** and add the following source code to define functions for the actions:
+In `src/app/` folder, create another file with a name **actions.ts** and add the following source code to define functions for the actions:
 
 ```javascript
 import { ApplicationTurnState } from './app';
@@ -355,7 +353,7 @@ Let's test Career Genie with the new actions. Start debugging your app by select
 !!! tip "Tip: Testing this exercise locally"
     Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.
 
-To understand how to flow works, you may ask the following questions in order:
+To understand how the flow works, you may ask the following questions in order:
 
 - Hello
 - Can you suggest candidates who have experience in .NET?
@@ -588,7 +586,7 @@ Since you're running locally with Developer Tunnels, you'll see a warning screen
 
 Select **Accept** to consent to the permissions.
 
-You will now get this message from the Career Genie with your logged in name showing successful authentication. Now, you can start testing the new action in Career Genie!
+You will now get a message from Career Genie with your logged in name showing successful authentication. Now, you can start testing the new action in Career Genie!
 
 To understand how the flow works, you may ask the following questions in order:
 
@@ -619,5 +617,7 @@ To understand how the flow works, you may ask the following questions in order:
 You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank}.
 
 This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
+
+<cc-next label="Home" url="/" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/05-actions" />

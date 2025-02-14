@@ -1,0 +1,27 @@
+### Test GET Candidates
+GET https://rljq2l9p-7071.euw.devtunnels.ms/api/candidates
+
+### Test GET Candidate
+GET https://rljq2l9p-7071.euw.devtunnels.ms/api/candidates/jane.smith@example.com
+
+### Test ADD Candidate
+POST https://rljq2l9p-7071.euw.devtunnels.ms/api/candidates
+Content-Type: application/json
+
+{
+    "firstname": "Mark",
+    "lastname": "Red",
+    "email": "mark.red@domain.com",
+    "spoken_languages": ["English", "Italian"],
+    "skills": ["Development", "Project Management"],
+    "current_role": "Senior PM"
+}
+
+### Test REMOVE Candidate
+DELETE https://rljq2l9p-7071.euw.devtunnels.ms/api/candidates/jane.smith@example.com
+
+### Test GET OpenAPI
+GET https://rljq2l9p-7071.euw.devtunnels.ms/api/openapi
+
+### Test GET OpenAPI as YAML
+GET https://rljq2l9p-7071.euw.devtunnels.ms/api/openapi-yaml

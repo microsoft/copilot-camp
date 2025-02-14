@@ -53,6 +53,8 @@ Once you have it installed, you'll need to log in. You can use your Microsoft 36
 devtunnel user login
 ~~~
 
+Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel user login`.
+
 <cc-end-step lab="e6" exercise="1" step="1" />
 
 ### Step 2: Create and host the tunnel
@@ -345,6 +347,8 @@ To make these values available inside your code running in Teams Toolkit, you al
 
 ### Step 3: Update the identity service
 
+At this point, OAuth login should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.
+
 In the **src/services** folder, open **IdentityService.ts**. 
 At the top of the file along with the other `import` statements, add this one:
 
@@ -506,5 +510,9 @@ Now check out your default skills and confirm the project assignment by asking, 
 ---8<--- "e-congratulations.md"
 
 You have completed lab E6, Add Entra ID authentication!
+
+Want to try something cool? How about adding a Graph Connector to your solution?
+
+<cc-next url="../EB-add-graphconnector" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />

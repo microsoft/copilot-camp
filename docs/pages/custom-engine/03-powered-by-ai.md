@@ -176,10 +176,10 @@ Go to `src/app/app.ts` and add the following snippet on top of your code to impo
 import { createResponseCard } from './card';
 ```
 
-Add `CardFactory` and `MessageFactory` inside the "botbuilder" import,  the updated version of the import will look like the following:
+Add `CardFactory` inside the "botbuilder" import,  the updated version of the import will look like the following:
 
 ```javascript
-import { CardFactory, MemoryStorage, MessageFactory } from "botbuilder";
+import { CardFactory, MemoryStorage, MessageFactory, TurnContext } from "botbuilder";
 ```
 
 Add `AI` and `PredictedSayCommand` inside the "@microsoft/teams-ai" import, the updated version of the import will look like the following:
@@ -218,8 +218,6 @@ app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, stat
   return "success";
  
 });
-
-export default app;
 ```
 
 <cc-end-step lab="b3" exercise="2" step="2" />
@@ -299,7 +297,8 @@ usageInfo: {
     description: "Sensitive information, do not share outside of your organization.",
 }
 ```
-The update `activity.entities` will look like the following:
+
+The updated `activity.entities` will look like the following:
 
 ```javascript
 activity.entities = [
@@ -343,5 +342,7 @@ Notice that the sensitivity label appears right next to the "AI Generated" label
 You have completed Lab B3 - Enhance User Experience with the Powered by AI kit!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank}.
 
 You are now ready to proceed to Lab A4 - Secure your solution using authentication. Select Next.
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/03-powered-by-ai" />

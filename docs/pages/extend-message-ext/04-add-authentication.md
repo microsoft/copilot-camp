@@ -700,4 +700,8 @@ You will now get a dialog to interact and provide consent as show in the GIF bel
 ![working gif](../../assets/images/extend-message-ext-04/working.gif)
 
 ## Congratulations
-This was a hard one, but you ACED it! You are now ready add an action command. Proceed to the next lab. Select **Next**.
+This was a hard one, but you ACED it!
+Thanks for doing the Message Extension agent track!
+
+<cc-next url="/" label="Home" />
+

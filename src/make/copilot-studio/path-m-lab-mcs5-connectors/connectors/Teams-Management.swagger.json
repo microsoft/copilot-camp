@@ -1,0 +1,89 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Teams Management",
+    "description": "",
+    "version": "1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/teams": {
+      "post": {
+        "responses": {
+          "202": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Create a Team",
+        "description": "Creates a team in Microsoft Teams",
+        "operationId": "CreateTeams",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "template@odata.bind": {
+                  "type": "string",
+                  "description": "template@odata.bind"
+                },
+                "displayName": {
+                  "type": "string",
+                  "description": "displayName"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "description"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2-auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "Team.Create": "Team.Create"
+      }
+    },
+    "oAuthClientCredentials": {
+      "type": "oauth2",
+      "flow": "application",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "Team.Create": "Team.Create"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2-auth": [
+        "Team.Create"
+      ]
+    },
+    {
+      "oAuthClientCredentials": [
+        "Team.Create"
+      ]
+    }
+  ],
+  "tags": []
+}

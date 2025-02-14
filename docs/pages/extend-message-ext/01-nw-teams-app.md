@@ -561,6 +561,8 @@ To view the Northwind data, open "Emulator & Attached", "Storage Accounts", "Emu
 
 The code reads the Products table on each query, but the other tables are only accessed when the app starts. So if you want to add a new category, you'll need to restart the app for it to appear.
 
+<cc-next />
+
 ## Congratulations
 
 You have mastered running the Northwind message extension. Now it's time to test it as plugin in Microsoft Copilot for Microsoft 365 in the next lab. Select Next.

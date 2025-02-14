@@ -57,7 +57,7 @@ Finally, you'll integrate your custom engine agent with Azure AI Search to chat 
 
 ## Exercise 1: Setup Azure Resources
 
-You'll need to complete the Azure subscription prerequisite before starting with this exercise.
+You'll need to complete the [Azure subscription prerequisite](./00-prerequisites.md#exercise-3-get-an-azure-subscription){target=_blank} before starting with this exercise.
 
 ### Step 1: Create Azure AI Search service resource
 
@@ -177,7 +177,7 @@ First, let's include the vector content in our data. Select **Fields** tab in yo
 
 ![The UI of Azure AI Search when adding the contentVector field to the search index with the fields tab, the contentVector field, and the save button highlighted.](../../assets/images/custom-engine-02/add-contentvector.png)
 
-Go back to **Search explorer** tab, select **Query options** in your Resumes index page and then change the **API version** as `2023-11-01`, then select **Close**. To view your data, press **Search**.
+Go back to **Search explorer** tab, select **Query options** in your Resumes index page and then change the **API version** as `2024-11-01-preview`, then select **Close**. To view your data, press **Search**.
 
 !!! tip "Tip: Recognize `contentVector` parameter"
     When scrolling through your data, recognize that each document has `contentVector` parameter that contains the numeric vectors of the pdf document. These numeric vectors will be used for Vector Search to identify the best matching results.
@@ -329,5 +329,7 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 You have completed Lab B2 - Index your data in Azure AI Search to bring your data into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie){target=_blank}.
 
 You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/02-rag" />
