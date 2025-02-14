@@ -1,0 +1,24 @@
+### Test GET Candidates
+GET http://localhost:7071/api/candidates
+Content-Type: application/json
+
+### Test GET Candidate
+GET http://localhost:7071/api/candidates/jane.smith@example.com
+Content-Type: application/json
+
+### Test ADD Candidate
+POST http://localhost:7071/api/candidates
+Content-Type: application/json
+
+{
+    "firstname": "Mark",
+    "lastname": "Red",
+    "email": "mark.red@domain.com",
+    "spoken_languages": ["English", "Italian"],
+    "skills": ["Development", "Project Management"],
+    "current_role": "Senior PM"
+}
+
+### Test REMOVE Candidate
+DELETE http://localhost:7071/api/candidates/jane.smith@example.com
+Content-Type: application/json
