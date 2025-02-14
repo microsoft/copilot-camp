@@ -1,0 +1,79 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Medium",
+            "weight": "Bolder",
+            "text": "New HR Candidate Information"
+        },
+        {
+            "type": "Input.Text",
+            "id": "firstname",
+            "placeholder": "First Name"
+        },
+        {
+            "type": "Input.Text",
+            "id": "lastname",
+            "placeholder": "Last Name"
+        },
+        {
+            "type": "Input.Text",
+            "id": "email",
+            "placeholder": "Email"
+        },
+        {
+            "type": "Input.Text",
+            "id": "current_role",
+            "placeholder": "Current Role"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "spoken_languages",
+            "placeholder": "Spoken Languages",
+            "isMultiSelect": true,
+            "choices": [
+                {
+                    "title": "English",
+                    "value": "English"
+                },
+                {
+                    "title": "Spanish",
+                    "value": "Spanish"
+                },
+                {
+                    "title": "French",
+                    "value": "French"
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "skills",
+            "placeholder": "Skills",
+            "isMultiSelect": true,
+            "choices": [
+                {
+                    "title": "Programming",
+                    "value": "Programming"
+                },
+                {
+                    "title": "Management",
+                    "value": "Management"
+                },
+                {
+                    "title": "Design",
+                    "value": "Design"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5"
+}

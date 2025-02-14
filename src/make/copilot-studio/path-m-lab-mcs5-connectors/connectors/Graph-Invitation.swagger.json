@@ -1,0 +1,225 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Graph Invitation",
+    "description": "Allows to invite a guest to the tenant",
+    "version": "1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/invitations": {
+      "post": {
+        "responses": {
+          "201": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "id"
+                },
+                "inviteRedeemUrl": {
+                  "type": "string",
+                  "description": "inviteRedeemUrl"
+                },
+                "invitedUserDisplayName": {
+                  "type": "string",
+                  "description": "invitedUserDisplayName"
+                },
+                "invitedUserEmailAddress": {
+                  "type": "string",
+                  "description": "invitedUserEmailAddress"
+                },
+                "resetRedemption": {
+                  "type": "boolean",
+                  "description": "resetRedemption"
+                },
+                "sendInvitationMessage": {
+                  "type": "boolean",
+                  "description": "sendInvitationMessage"
+                },
+                "invitedUserMessageInfo": {
+                  "type": "object",
+                  "properties": {
+                    "messageLanguage": {
+                      "type": "string",
+                      "description": "messageLanguage"
+                    },
+                    "ccRecipients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "emailAddress": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "name"
+                              },
+                              "address": {
+                                "type": "string",
+                                "description": "address"
+                              }
+                            },
+                            "description": "emailAddress"
+                          }
+                        }
+                      },
+                      "description": "ccRecipients"
+                    },
+                    "customizedMessageBody": {
+                      "type": "string",
+                      "description": "customizedMessageBody"
+                    }
+                  },
+                  "description": "invitedUserMessageInfo"
+                },
+                "inviteRedirectUrl": {
+                  "type": "string",
+                  "description": "inviteRedirectUrl"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "status"
+                },
+                "invitedUser": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "id"
+                    }
+                  },
+                  "description": "invitedUser"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create an invitation",
+        "description": "Use this action to create a new invitation. An invitation adds an external user to the organization.",
+        "operationId": "CreateInvitation",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "invitedUserDisplayName": {
+                  "type": "string",
+                  "description": "invitedUserDisplayName"
+                },
+                "invitedUserEmailAddress": {
+                  "type": "string",
+                  "description": "invitedUserEmailAddress"
+                },
+                "invitedUserMessageInfo": {
+                  "type": "object",
+                  "properties": {
+                    "ccRecipients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "emailAddress": {
+                            "type": "object",
+                            "properties": {
+                              "address": {
+                                "type": "string",
+                                "description": "address"
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "name"
+                              }
+                            },
+                            "description": "emailAddress"
+                          }
+                        }
+                      },
+                      "description": "ccRecipients"
+                    },
+                    "customizedMessageBody": {
+                      "type": "string",
+                      "description": "customizedMessageBody"
+                    },
+                    "messageLanguage": {
+                      "type": "string",
+                      "description": "messageLanguage"
+                    }
+                  },
+                  "description": "invitedUserMessageInfo"
+                },
+                "sendInvitationMessage": {
+                  "type": "boolean",
+                  "description": "sendInvitationMessage"
+                },
+                "inviteRedirectUrl": {
+                  "type": "string",
+                  "description": "inviteRedirectUrl"
+                },
+                "inviteRedeemUrl": {
+                  "type": "string",
+                  "description": "inviteRedeemUrl"
+                },
+                "resetRedemption": {
+                  "type": "boolean",
+                  "description": "resetRedemption"
+                },
+                "invitedUserType": {
+                  "type": "string",
+                  "description": "invitedUserType"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2-auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "User.Invite.All": "User.Invite.All"
+      }
+    },
+    "oAuthClientCredentials": {
+      "type": "oauth2",
+      "flow": "application",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "User.Invite.All": "User.Invite.All"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2-auth": [
+        "User.Invite.All"
+      ]
+    },
+    {
+      "oAuthClientCredentials": [
+        "User.Invite.All"
+      ]
+    }
+  ],
+  "tags": []
+}
