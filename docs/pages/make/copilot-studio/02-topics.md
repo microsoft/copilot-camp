@@ -7,7 +7,7 @@ In this lab, you'll learn how to create custom Topics in Microsoft Copilot Studi
 !!! note
     This lab builds on the previous one, [Lab MCS1](./01-first-agent.md){target=_blank}. You should be able to continue working on the same agent, improving its functionalities with new capabilities.
 
-Topics can be created with a graphical designer or describing the intent with natural language. Once you have create a new Topic, you can also edit its definition with a low level code editor, in case you need to apply detailed fine tuning.
+Topics can be created with a graphical designer or describing the intent with natural language. Once you have created a new Topic, you can also edit its definition with a low level code editor, in case you need to apply detailed fine tuning.
 
 There are two different flavors of Topics:
 
@@ -30,9 +30,9 @@ In this first exercise you are going to enable the agent that you created in [La
 
 ### Step 1: Enabling Orchestration based on generative AI
 
-One important feature of an agent made with Copilot Studio, is generative orchestration. With generative orchestration, your agent can choose the best knowledge, topics, and actions to use to interact with the user and answer to the user's queries, or to respond to event triggers. 
+One important feature of an agent made with Copilot Studio, is generative orchestration. With generative orchestration, your agent can choose the best knowledge base, topics, and actions to use to interact with the user and answer to the user's queries, or to respond to event triggers. 
 
-By default agents use classic orchestration, which means that an agent responds to users by triggering a topic whose trigger phrases match most closely the user's query. With generative orchestration, Copilot Studio understands the intent of the user processing the prompt provided by the user in natural language and determines the best process to trigger. 
+By default agents use classic orchestration, which means that an agent responds to users by triggering a topic whose trigger phrases match most closely the user's query. With generative orchestration, Copilot Studio understands the intent of the user processing the prompt provided by the user in natural language and determines the best item to trigger. 
 
 !!! pied-piper "Disclaimer"
     Enabling generative orchestration can impact how billing is calculated. Learn more about [billing for generative mode](https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-billed-sessions){target=_blank}. There are key differences between classic and generative orchestration, such as how knowledge is searched, and the supported data sources. Before turning on generative mode for an existing agent, read about the [known limitations](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-generative-actions#known-limitations-for-generative-orchestration){target=_blank}.
@@ -60,18 +60,18 @@ In this exercise you are going to create a new topic to collect an input from th
 To create a new topic, in the upper side of the screen select the 1️⃣ **Topics** tab, then select 2️⃣ **+ Add a topic**, and then 3️⃣ **From blank** to start creating a new custom topic.
 
 !!! info "Creating topics with Copilot"
-    Notice that you can also create a new topic simply providing a description with natural language, allowing Copilot to draft the topic for you. You will learn more about this option in the upcoming exercises.
+    Notice that you can also create a new topic simply providing a description with natural language, allowing Copilot to draft the topic for you.
 
 ![The interface of Microsoft Copilot Studio when creating a new topic. There is the **Topics** tab highlighted, with the **+ Add a topic** dropdown menu, and the **From blank** option highlighted.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-01.png)
 
-Copilot Studio will provide you the graphical designer to define the new topic. The very first building block of the topic is the **Trigger** action, which is used to describe what the topic does. When generative orchestration is enabled, in the action you can find a text area where you can define with natural language what the purpose of the topic is. You can provide the following content:
+Copilot Studio will provide you the graphical designer to define the new topic. The very first building block of the topic is the **Trigger** action, which is used to describe what the topic does. When generative orchestration is enabled, in the action you can find a text area where you can define with natural language what the purpose of the topic is. For the sake of working on this lab, you can provide the following content:
 
 ```txt
 This topic can handle queries like these: collect user's role and provide feedback, 
 give me a feedback based on my role, what's your feedback for my role?
 ```
 
-If you use classic orchestration, you can specify between 5 and 10 triggering phrases or sentences, instead of a single text.
+If you use classic orchestration, you can specify between 5 and 10 triggering phrases or sentences, instead of a single descriptive text.
 
 ![The interface of Microsoft Copilot Studio when designing a new topic. There is a **Trigger** action with the value suggested in this exercise step as the trigger condition. There is also the button to add new actions highlighted.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-02.png)
 
@@ -86,7 +86,7 @@ Select the **+** button in the middle of the screen to add new actions or steps 
 - Ask with adaptive card: to collect content from the user utilizing an Adaptive Card.
 - Add a condition: to add branches to the topic based on comparison between variables and/or constant values.
 - Variable management: to manage variables, which can be scoped at topic level, global, system, or environment.
-- Topic management: to manage the lifecycle of the current topic
+- Topic management: to manage the lifecycle of the current topic.
 - Add an action: to consume external actions like Power Automate flows, custom connectors, or other agents in a multi-agent scenario.
 - Advanced: to provide advanced capabilities like consuming an external HTTP REST API, using generative answers, sending events or activities, etc.
 
@@ -98,18 +98,18 @@ In order to collect user's input, add an **Ask a question** action. Since we wan
 What is your role?
 ```
 
-Notice that by default Copilot Studio assigns a multiple choice options value to the collected input, as highlighted in the **Identify** configuration field.
+Notice that by default Copilot Studio assigns a `Multiple choice options` data type to the collected input, as highlighted in the **Identify** configuration field.
 Select the **+ New option** command just below the **Identify** configuration field and add one by one the following three values:
 
 - Candidate
 - Employee
 - HR staff member
 
-The action automatically stores the value selected by the user into a variable stored at topic scope. You can select the three dots in the upper right corner of the action and select the **Properties** command to customize the name of the variable and other settings.
+The action automatically stores the value selected by the user into a variable stored at topic-level. You can select the three dots in the upper right corner of the action and select the **Properties** command to customize the action, or you can select the variable in the lower part of the action to update its name and other settings.
 
 ![The context menu of the action with commands to: see properties, rename the action, delete the action, add a comment to the action.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-04.png)
 
-For example, you can rename the variable as `UserRole`. You can see how the action looks like once it is fully configured.
+For example, you can rename the variable to `UserRole`. You can see how the action looks like once it is fully configured.
 
 ![The action fully configured with all the settings and commands highlighted. There is the question text, the data type for the result, the options, the variable to store the selected option, and the scope of the variable.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-05.png)
 
@@ -118,7 +118,7 @@ For example, you can rename the variable as `UserRole`. You can see how the acti
 ### Step 3: Providing feedback to the user
 
 You will notice that, while adding new options to the **Ask a question** action, Copilot Studio automatically creates a set of conditions for all the branches matching each of the provided options, plus one last condition for `All other conditions`.
-Inside each branch, you can specify some custom logic to provide a specialized feedback to the user. To do so, select the **+** command below each of the **Condition** branches and add one action of type **Send a message**. You can eventually add more than one action to each brunch.
+Inside each branch, you can specify some custom logic to provide a specialized feedback to the user. To do so, select the **+** command below each of the **Condition** branches and add one action of type **Send a message**. You can eventually add more than one action to each branch.
 
 For the three branches, you could for example provide the following feedback messages:
 
@@ -199,7 +199,7 @@ This topic helps to collect information about a new candidate to process. Trigge
 register a new candidate, create a new candidate, add a new candidate.
 ```
 
-Then, for each of the above information fields, you need to prompt the user with an action of type **Ask a question**. However, in this exercise the value of the answer will vary depending on the requested field. For example: first name, last name, and current role will be simple text fields. The e-mail will need to be a valid e-mail.
+Then, for each of the above information fields, you need to prompt the user with an action of type **Ask a question**. However, in this exercise the value of the answer will vary depending on the requested field. For example: first name, last name, and current role will be simple text fields., while the e-mail field will need to be a valid e-mail.
 
 So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entier response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningfull name to each of the variables holding the values provided by the user.
 In the following screenshot you can see how the first name input action can be defined. You can do the same for last name and current job role.
@@ -216,13 +216,13 @@ Now you are ready to collect all of the information about the candidate and you 
 
 ### Step 2: Giving a feedback to the user
 
-Based on the collected input, you can now send a message to the user confirming the collected data. Add a new action of type **Send a message** and build the content of the message using the variables where the collected inputs where stored.
+Based on the collected input, you can now send a message to the user confirming the collected data. Add a new action of type **Send a message** and build the content of the message using the variables where the collected inputs were stored.
 To add variables to the message, simply select the **{x}** command in the toolbar of the **Send a message** action and select the variable that you are looking for.
 
 ![The action **Send a message** with the insert variable command highlighted and the list of variables available in the current topic.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-03.png)
 
 You can insert variables defined in the current topic, system variables, or environment variables.
-Once you have configured the recap message with all the variables, it should like in the following screenshot.
+Once you have configured the recap message with all the variables, it should look like the following screenshot.
 
 ![The action **Send a message** with all the referenced variables.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-04.png)
 
@@ -232,7 +232,7 @@ Just for the sake of having a final confirmation from the user, insert an action
 Is it ok for you to insert this new candidate?
 ```
 
-And configure the action to support the answers `Yes` and `No`. As like as it happened in Excercise 1 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of **Send a message** actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback.
+And configure the action to support the answers `Yes` and `No`. As like as it happened in Excercise 2 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of **Send a message** actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback. Lastly, add an action of type **End current topic** to complete the topic.
 
 ![The final part of the topic with the last **Ask a question** action, three branches to manage the user's input and one final action to **End current topic**.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-05.png)
 
@@ -248,6 +248,17 @@ Here follows a screenshot of the interaction with the multi-turn topic. You can 
 
 Collecting inputs using multiple instances of **Ask a question** actions is definitely one option that you have. However, when you need to collect a lot of data or when you want to have a nice looking interaction with the user you can consider using an Adaptive Card.
 
+<details open>
+<summary>What are Adaptive Cards?</summary>
+
+Adaptive Cards are platform-independent UI snippets authored in JSON that can be exchanged between apps and services. Once delivered to an app, the JSON transforms into native UI that automatically adapts to its environment. This enables the design and integration of lightweight UI across major platforms and frameworks.
+    <div class="video">
+      <iframe src="https://adaptivecardsblob.blob.core.windows.net/assets/AdaptiveCardsOverviewVideo.mp4" title="adptivecard video">
+      </video>" frameborder="0" allowfullscreen></iframe>
+      <div>Adaptive cards</div>
+    </div>
+</details>
+
 ### Step 1: Collecting input with Adaptive Cards
 
 Imagine that you want to create yet another topic to collect the following information about a new candidate:
@@ -259,8 +270,7 @@ Imagine that you want to create yet another topic to collect the following infor
 - Spoken languages
 - Skills
 
-Where spoken languages and skills are multi-select lists of values.
-To collect the above information, create a new topic in your agent. However, this time you are going to leverage Copilot to create the topic for you. 
+Specifically, spoken languages and skills are multi-select lists of values.
 
 So open the **Topics** tab, and disable the topic that you created in Exercise 3 to avoid any overlapping of trigger conditions. Then, create a new topic following the istructions provided in Excercise 2 Step 1. The **Trigger** description for the topic could be:
 
@@ -269,9 +279,9 @@ This topic helps to collect information about a new candidate to process. Trigge
 register a new candidate, create a new candidate, add a new candidate.
 ```
 
-![The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open to define the JSON of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png)
-
 Now add a new action of type **Ask with adaptive card**, 1️⃣ select the body of the new action and 2️⃣ type the following JSON into the text area available in the property pane of the action.
+
+![The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open to define the JSON of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png)
 
 ```json
 {
@@ -410,7 +420,7 @@ A side panel shows up allowing you to define the content of the adaptive card. C
 }
 ```
 
-It is very important that, while pasting the JSON of the adaptive card, you have the **Edit JSON** option selected (which is by the way the default one) at the top of the text area. That means that you are editing the actual JSON of the adaptive card. As soon as you will move the focus out of the text area where you copied the JSON, the **Send a message** action will start previewing the adaptive card. As you can see the adaptive card is rendering static values for all the variables (firstname, lastname, etc.).
+It is very important that, when pasting the JSON of the adaptive card, you have the **Edit JSON** option selected (which is by the way the default one) at the top of the text area. That means that you are editing the actual JSON of the adaptive card. As soon as you will move the focus out of the text area where you pasted the JSON, the **Send a message** action will start previewing the adaptive card. As you can see the adaptive card is rendering static values for all the variables (firstname, lastname, etc.).
 
 ![The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-04.png)
 
@@ -426,7 +436,7 @@ You will see a dialog popping up and providing an advanced editor with intellise
 
 ![The adaptive card editor with intellisense to reference variables and PowerFx functions.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-07.png)
 
-One by one you can replace all the static values with the actual variables. In particular, the spoken languages and the skills are list of values (variables of type `Table`) so, in order to render their value, you need to rely on the PowerFx `Concat` function and then on the PowerFx `Text` function to convert the result into an actual string. Here you can find the content of the adaptive card JSON when all the formulas are in place.
+One by one, you can replace all the static values with the actual variables. In particular, the spoken languages and the skills are list of values (variables of type `Table`) so, in order to render their value, you need to rely on the PowerFx `Concat` function and then on the PowerFx `Text` function to convert the result into an actual string. Here you can find the content of the adaptive card JSON when all the formulas are in place.
 
 ```JSON
 {
@@ -480,7 +490,7 @@ One by one you can replace all the static values with the actual variables. In p
 
 ### Step 3: Testing the current topic
 
-Now add a **End current topic** action at the end of the topic, save the topic, give it a name like for example `Register new candidate with adaptive cards`, and test it in the test panel on the right side. In the following screenshot you can see how the topic interacts with a user.
+Now add an **End current topic** action at the end of the topic, save it, give it a name like for example `Register new candidate with adaptive cards`, and test it in the test panel on the right side of the agent designer. In the following screenshot you can see how the topic interacts with a user.
 
 ![The topic collecting information about a new candidate using an adaptive card and providing feedback through another adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-08.png)
 
