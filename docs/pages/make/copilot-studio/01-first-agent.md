@@ -279,6 +279,6 @@ Notice also the disclaimer, at the top of the answer, about the fact that the pr
 
 Now your agent is fully functional and ready to be used in Microsoft Teams. In the next labs you will be able to customize and fine tune its behavior.
 
-<a href="#"><button class="github-button">Coming soon ...</button></a>
+<a href="../02-topics">Start here</a> with Lab MCS2, to define topics in your agent with Copilot Studio.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/01-first-agent" />
