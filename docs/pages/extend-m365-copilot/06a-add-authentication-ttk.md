@@ -1,4 +1,4 @@
-# Lab E6a - Add Entra ID authentication with Teams Toolkit
+# Lab E6a - Add Entra ID authentication with OAuth (Teams Toolkit)
 
 ---8<--- "e-labs-prelude.md"
 
@@ -588,5 +588,9 @@ Now check out your default skills and confirm the project assignment by asking, 
 ---8<--- "e-congratulations.md"
 
 You have completed lab Ea6, Add Entra ID authentication with Teams Toolkit!
+
+Want to try something cool? How about adding a Graph Connector to your solution?
+
+<cc-next url="../EB-add-graphconnector" />
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06a-add-authentication" />

@@ -22,7 +22,7 @@ nav:
 #   - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
 #   - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
 #   - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
-- Extend Path - Extend Microsoft 365 Copilot:
+- Extend - Build a declarative agent:
   - Welcome : 'pages/extend-m365-copilot/index.md'
   - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
   - Lab E1 - First Declarative agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
@@ -30,9 +30,12 @@ nav:
   - Lab E3 - Add a declarative agent and API plugin: 'pages/extend-m365-copilot/03-add-declarative-agent.md'
   - Lab E4 - Enhance the API and plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
   - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
-  - Lab E6 - Add Entra ID authentication: 'pages/extend-m365-copilot/06-add-authentication.md'
+  - Authentication labs:
+    - Lab E6a - Add Entra ID authentication (Teams Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'
+    - Lab E6b - Add Entra ID authentication (Manual setup): 'pages/extend-m365-copilot/06b-add-authentication.md'
+    - Lab E6c - Add Entra ID authentication (Single Sign-on): 'pages/extend-m365-copilot/06c-add-sso.md'
   - Lab EB - Add Graph Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
-- Build Path - Build your own agent:
+- Build - Build a custom engine agent:
   - Welcome : 'pages/custom-engine/index.md'
   - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
   - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
@@ -82,7 +85,6 @@ markdown_extensions:
       toc_depth: 2
 extra_javascript:
   - javascripts/cc-next.js
-  # - javascripts/next-button.js
   - javascripts/cc-lab-step.js
   - javascripts/clipboard.js
 

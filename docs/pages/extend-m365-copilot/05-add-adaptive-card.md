@@ -659,15 +659,15 @@ You can now test other prompts as well to see the improved responses from Micros
 
 You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.
 
-<cc-next url="../06-add-authentication" />
+You have 3 choices here, all of which show you how to add authentication to your app package files and validate the incoming access token in your web service. The difference is in how the app is registered in Entra ID and Microsoft 365.
 
-Or, try one of our new authentication labs (still under test):
+  1. **Use OAuth 2.0 with Teams Toolkit** - This is the easiest approach; you will learn to set up Teams Toolkit's automated Entra ID registration for an F5 project start experience
+  <cc-next url="../06a-add-authentication-ttk" label="OAuth with Teams Toolkit" />
 
-  * With this option you will use Teams Toolkit to provision an Entra ID app, and log the user in using OAuth 2.0.
-<cc-next url="../06a-add-authentication-ttk" label="OAuth with Teams Toolkit" />
+  2. **Use OAuth 2.0 with Manual Setup** - Leads you through all the Entra ID registration details so you can really understand what's happening; this may help adapt your solution to work with another identity provider
+  <cc-next url="../06b-add-authentication" label="OAuth with Manual Setup" />
 
-
-  * With this option you will use Teams Toolkit to provision an Entra ID app, and log the user in using OAuth 2.0.
-<cc-next url="../06c-add-sso" label="OAuth with SSO" />
+  3. **Use Single Sign-on** - New capability for seamless Entra ID authentication, manual setup
+  <cc-next url="../06c-add-sso" label="Single Sign-on with Manual Setup" />
   
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />
