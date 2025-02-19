@@ -5,7 +5,7 @@
 In this lab, you'll learn how to create custom Topics in Microsoft Copilot Studio. Topics are core building blocks of an agent. With topics you can provide a conversational experience to your end users, where the conversation can be single-turn or multi-turn. Topics define how the conversation between the user and the agent can evolve, through discrete interaction paths.
 
 !!! note
-    This lab builds on the previous one, [Lab MCS1](./01-first-agent.md){target=_blank}. You should be able to continue working on the same agent, improving its functionalities with new capabilities.
+    This lab builds on the previous one, [Lab MCS1](../01-first-agent){target=_blank}. You should be able to continue working on the same agent, improving its functionalities with new capabilities.
 
 Topics can be created with a graphical designer or describing the intent with natural language. Once you have created a new Topic, you can also edit its definition with a low level code editor, in case you need to apply detailed fine tuning.
 
@@ -26,7 +26,7 @@ In this lab you will learn:
 
 ## Exercise 1 : Orchestration based on Generative AI
 
-In this first exercise you are going to enable the agent that you created in [Lab MCS1](./01-first-agent.md){target=_blank} to use Orchestration based on Generative AI, which is a new feature under preview at the time of this writing.
+In this first exercise you are going to enable the agent that you created in [Lab MCS1](../01-first-agent){target=_blank} to use Orchestration based on Generative AI, which is a new feature under preview at the time of this writing.
 
 ### Step 1: Enabling Orchestration based on generative AI
 
@@ -502,6 +502,6 @@ Now your topic is ready and fully functional. In the upcoming labs you will lear
 
 Now your agent supports multiple conversation paths through different topics. In the next labs you will learn how to work with custom Actions.
 
-<a href="#"><button class="github-button">Coming soon ...</button></a>
+<a href="../03-actions">Start here</a> with Lab MCS3, to define actions in your agent with Copilot Studio.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/02-topics" />
