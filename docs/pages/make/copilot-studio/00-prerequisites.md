@@ -96,6 +96,7 @@ To activate Copilot Studio follow these steps:
 
 Now you are all set to create your first agent with Copilot Studio. 
 
-## <a href="../01-first-agent">Start here</a> with Lab MCS1, to create your first agent with Copilot Studio.
+<a href="../01-first-agent">Start here</a> with Lab MCS1, to create your first agent with Copilot Studio.
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/00-prerequisites" />
