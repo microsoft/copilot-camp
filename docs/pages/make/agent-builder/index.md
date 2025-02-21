@@ -20,6 +20,7 @@ Depending on the target knowledge base and on your users' license, your organiza
 
 ---8<--- "mab-labs-toc.md"
 
-## <a href="./01-first-agent">Start here</a> with Lab MAB1, where you'll make your first agent with Copilot Studio agent builder.
+<a href="./01-first-agent">Start here</a> with Lab MAB1, where you'll make your first agent with Copilot Studio agent builder.
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/index" />

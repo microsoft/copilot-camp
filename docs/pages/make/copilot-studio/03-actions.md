@@ -255,7 +255,7 @@ Fill the adaptive card and submit the request. The action will be triggered via 
 
 Now your agent supports actions. In the next lab you will learn how to use Copilot Studio to create agents for Microsoft 365 Copilot Chat.
 
-<a href="#"><button class="github-button">Coming soon ...</button></a>
-<!-- <a href="../04-extending-m365-copilot">Start here</a> with Lab MCS4, to learn how to use Copilot Studio to create agents for Microsoft 365 Copilot Chat. -->
+<a href="../04-extending-m365-copilot">Start here</a> with Lab MCS4, to learn how to use Copilot Studio to create agents for Microsoft 365 Copilot Chat.
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/03-actions" />

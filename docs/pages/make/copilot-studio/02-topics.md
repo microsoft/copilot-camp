@@ -503,5 +503,6 @@ Now your topic is ready and fully functional. In the upcoming labs you will lear
 Now your agent supports multiple conversation paths through different topics. In the next labs you will learn how to work with custom Actions.
 
 <a href="../03-actions">Start here</a> with Lab MCS3, to define actions in your agent with Copilot Studio.
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/02-topics" />
