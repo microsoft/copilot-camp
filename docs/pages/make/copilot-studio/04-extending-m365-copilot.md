@@ -26,9 +26,7 @@ A new section of Microsoft Copilot Studio will open. From there, you can select 
 
 ![The interface of Microsoft Copilot Studio editing Microsoft 365 Copilot agents. The **+ Add** button is highlighted. There is also a list of pre-defined actions.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png)
 
-Copilot Studio asks you to describe in natural language what the purpose of the agent that you want to create is. As like as you did in [Lab MCS1](../01-first-agent){target=_blank} you can define your agent requirements in natural language, using for example the following prompts.
-
-In this lab you can provide the following initial description:
+Copilot Studio asks you to describe in natural language what the purpose of the agent is. As like as you did in [Lab MCS1](../01-first-agent){target=_blank} you can define your agent requirements in natural language, using for example the following prompts.
 
 ```txt
 You are an agent helping employees to find information about HR policies and procedures,
@@ -49,7 +47,7 @@ It should have a professional tone
 
 ![The interface of Microsoft Copilot Studio when defining the agent using natural language.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-03.png)
 
-Select the **Create** command to create the actual agent. Alternatively, you can select the **Skip to configure** command and move to the classic configuration user interface.
+Once you are done describing your agent, select the **Create** command to create the actual agent. Alternatively, you can select the **Skip to configure** command and move to the classic configuration user interface.
 
 Once the agent has been created, you will see its configuration page, where you can define:
 
@@ -109,6 +107,7 @@ Now you can publish and test the agent in Microsoft 365 Copilot Chat. 1️⃣ Se
 ![The agent in Copilot Studio with the **Publish** button highlighted and the publishing dialog where there are fields to define, short description, long description, developer name, developer website URL, privacy statement URL, terms of use URL.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-08.png)
 
 The details for the agent are those required by a Microsoft 365 application manifest:
+
 - Short description: short description of the agent (up to 30 characters).
 - Long description: long description of the agent (up to 100 characters).
 - Developer name: name of the developer (up to 32 characters).
@@ -120,22 +119,22 @@ Initial publishing takes quite some time, between 30 and 60 seconds. Once the ag
 
 ![The dialog confirming the successful publishing and providing a command to copy a direct link to the agent app, two commands to share the agent with selected group of people or with the whole organization, and a command to download a ZIP package to publish the agent in the store.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-09.png)
 
-Specifically you can select:
+Specifically, you can select:
 
 - **Copy** command to copy a URL with a direct link to the app registered for the new agent.
 - **Show to my teammates and shared users** to share the agent with selected groups or individuals in your organization.
 - **Show to everyone in my org** to share the agent with the whole organization.
-- **Download .zip file** to download a .ZIP package of the app that you can then upload to the Microsoft 365 store.
+- **Download .zip file** to download a zip package of the app that you can then upload to the Microsoft 365 store.
 
 !!! note "Show to everyone in my org"
-    When you choose to show the agent to the whole organization, ensure your agent is ready for release and in compliance with company standards, rules, and policies. Coordinate with your teammates. Once the agent is submitted, it can't be resubmitted by others until an admin approves or rejects it. You can find additional details about publishing an app to the whole organization reading [Show to the organization](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams#show-to-the-organization).
+    When you choose to show the agent to the whole organization, ensure your agent is ready for release and in compliance with company standards, rules, and policies. Coordinate with your teammates. Once the agent is submitted, it can't be resubmitted by others until an admin approves or rejects it. You can find additional details about publishing an app to the whole organization reading [Show to the organization](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams#show-to-the-organization){target=_blank}.
 
-Select the **Copy** command, open a new browser tab, and paste the URL to navigate to the direct link to the agent.
+Select the **Copy** command, open a new browser tab, and paste the URL with the direct link to the agent.
 The company app store will show in the browser and a dialog will allow you to select the **Add** button, to add the agent to Microsoft 365 Copilot.
 
 ![The company store with the agent dialog allowing to add the agent to Microsoft 365 Copilot.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-10.png)
 
-Once the agent will be added to Microsoft 365 Copilot Chat, you will find it in the list of agents in the right side of the Copilot chat, like illustrated in the following screenshot.
+Once you have added the agent to Microsoft 365 Copilot Chat, you will find it in the list of agents in the right side of the Copilot chat, like illustrated in the following screenshot.
 
 ![The "Agentic HR" agent in Microsoft 365 Copilot Chat.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-11.png)
 
@@ -153,10 +152,10 @@ The agent will provide you detailed information about the hiring procedures, bas
 
 ## Exercise 2 : Adding an action to the agent
 
-In this excercise you are going to add a custom action to the agent that you made in the previous exercise. In Microsoft Copilot Studio you can add four different types of actions:
+In this excercise you are going to add a custom action to the agent that you made in the previous exercise. In Microsoft Copilot Studio, when making agents for Microsoft 365 Copilot Chat, you can add four different types of actions:
 
 - New prompt: allows consuming an AI action built using a prompt written in natural language.
-- New Power Automate flow: allows consuming a Power Automate flow (see [Step 2](#step-2-consuming-a-power-automate-flow)).
+- New Power Automate flow: allows consuming a Power Automate flow.
 - New custom connector: allows consuming a Power Platform custom connector.
 - New REST API: allows consuming an external REST API. You can find additional details [here](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}.
 
@@ -196,7 +195,7 @@ Upload the file to the **Documents** library of a SharePoint Teams site in the s
 - Copy the name of the document library. For example : `Shared documents`
 - Copy also the name of the file. For example: `Sample-list-of-candidates.xlsx`
 
-Now go back to Microsoft Copilot Studio and resume finalize the action configuration.
+Now go back to Microsoft Copilot Studio and finalize the action configuration.
 
 ![The dialog to create the action with the Name, description and authentication configured. There are a button to **Add action** and a button to **Cancel** the process.](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-04.png)
 
@@ -213,7 +212,7 @@ By default, all the mandatory input arguments have been configured so that their
 
 ![The tab to configure the input arguments of the action. There is a list of arguments with specific settings for each of them.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png)
 
-Select the **How will the agent fill this input?** setting for each of the input arguments and switch to `Set as a value` in order to provide static values for all of the input arguments. Confirm that you want to change the setting and proceed configuring a manual value for each of the input arguments.
+Select the **How will the agent fill this input?** setting for each of the input arguments and switch to `Set as a value` in order to provide static values for all of the input arguments. Confirm that you want to change the setting and proceed configuring a static value for each of the input arguments.
 
 ![The configuration of the **Location** input argument where the source for the value is a static value manually configured.](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-07.png)
 
@@ -241,7 +240,7 @@ It is really easy to invoke the just created action simply providing to the agen
 Show me the list of candidates for HR with role "HR Director" or "HR Manager"
 ```
 
-Microsoft 365 Copilot Chat will ask you the permission to consume an external API (Excel Online) and you will have to select the optin to **Always allow** or **Allow once**. For the sake of testing purposes, choose **Allow once** so that you will be able to test the authorization process again in the future.
+Microsoft 365 Copilot Chat will ask you the permission to consume an external API (Excel Online) and you will have to select the option to **Always allow** or **Allow once**. For the sake of testing purposes, choose **Allow once** so that you will be able to test the authorization process again in the future.
 
 ![Microsoft 365 Copilot Chat asking consent to consume the external API for Excel Online. There are three command buttons to **Always allow**, **Allow once**, and **Cancel**.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png)
 
