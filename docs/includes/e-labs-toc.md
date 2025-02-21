@@ -9,7 +9,9 @@
       <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent/">E3 - Add a declarative agent and API plugin</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin/">E4 - Enhance the API and plugin</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card/">E5 - Add adaptive cards</a></li>
-      <li><a href="/copilot-camp/pages/extend-m365-copilot/06-add-authentication/">E6 - Add Entra ID authentication</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk/">E6a - Add Entra ID authentication (Teams Toolkit)</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/06b-add-authentication/">E6b - Add Entra ID authentication (manual setup)</a></li>
+      <li><a href="/copilot-camp/pages/extend-m365-copilot/06c-add-sso/">E6c - Add Entra ID authentication (Single sign-on)</a></li>
       <li><a href="/copilot-camp/pages/extend-m365-copilot/EB-add-graphconnector/">Bonus - Add Graph Connector</a></li>
     </ul>
   </div>

@@ -310,6 +310,14 @@ hr {
 }
 
 .e-path ul li:nth-child(8) {
+    background-image: url('./images/path-icons/icon-e6.png');
+}
+
+.e-path ul li:nth-child(9) {
+    background-image: url('./images/path-icons/icon-e6.png');
+}
+
+.e-path ul li:nth-child(10) {
     background-image: url('./images/path-icons/icon-eb-gc.png');
 }
 
