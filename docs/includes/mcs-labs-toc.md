@@ -7,7 +7,7 @@
       <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - First agent</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - Defining Topics</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - Defining Actions</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/04-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
+      <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - Consuming a Power Platform connector</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/06-knowledge/">MCS6 - Knowledge</a></li>
     </ul>
