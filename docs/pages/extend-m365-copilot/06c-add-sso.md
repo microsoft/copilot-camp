@@ -1,4 +1,4 @@
-# Lab E6c - Add SSO
+# Lab E6c - Add Entra ID authentication with Single Sign-on
 
 ---8<--- "e-labs-prelude.md"
 
@@ -425,6 +425,10 @@ From now on, the sign in will be smooth for the user when interacting with the a
 ---8<--- "e-congratulations.md"
 
 You have completed lab E6c, Add SSO!
+
+Want to try something cool? How about adding a Graph Connector to your solution?
+
+<cc-next url="../EB-add-graphconnector" />
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06c-add-sso" />
 

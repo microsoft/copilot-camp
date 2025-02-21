@@ -1,12 +1,13 @@
-# Lab E6 - Add Entra ID authentication
+# Lab E6b - Add Entra ID authentication with OAuth (Manual Setup)
 
 ---8<--- "e-labs-prelude.md"
 
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 
 !!! note
-    This lab builds on the previous one, Lab E5. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06-add-authentication/trey-research-lab06-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END){target=_blank} folder.
+    This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the [solution folder for Lab E5 from **/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END){target=_blank}
+    and work there.
+    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END){target=_blank} folder.
 
 !!! note
     There are many detailed setup steps for Entra ID in this lab.
@@ -55,7 +56,7 @@ devtunnel user login
 
 Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel user login`.
 
-<cc-end-step lab="e6" exercise="1" step="1" />
+<cc-end-step lab="e6b" exercise="1" step="1" />
 
 ### Step 2: Create and host the tunnel
 
@@ -74,7 +75,7 @@ The command line will display the connection information, such as:
 
 Copy the "Connect via browser" URL and save it as the "API Base URL".
 
-<cc-end-step lab="e6" exercise="1" step="2" />
+<cc-end-step lab="e6b" exercise="1" step="2" />
 
 ### Step 3: Disable the dynamically created tunnel in your project
 
@@ -94,13 +95,13 @@ If your project is running locally, stop it. Then edit [\.vscode\tasks.json](htt
     "dependsOrder": "sequence"
 },
 ~~~
-<cc-end-step lab="e6" exercise="1" step="3" />
+<cc-end-step lab="e6b" exercise="1" step="3" />
 
 ### Step 4: Manually override the server URL
 
 Open **env/.env.local** and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.
 
-<cc-end-step lab="e6" exercise="1" step="4" />
+<cc-end-step lab="e6b" exercise="1" step="4" />
 
 ## Exercise 2: Register an Entra ID application for your API
 
@@ -121,7 +122,7 @@ Then click "Register" 4️⃣ to register your application.
 
 ![The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select.](../../assets/images/extend-m365-copilot-06/oauth-A4.png)
 
-<cc-end-step lab="e6" exercise="2" step="1" />
+<cc-end-step lab="e6b" exercise="2" step="1" />
 
 ### Step 2: Copy application info to a safe place
 Copy the Application ID (also called the Client ID) 1️⃣ and the Directory ID (also called the Tenant ID) 2️⃣ to a safe place; you'll need them later. Then click on the Endpoints button 3️⃣ to open the Endpoints flyout.
@@ -132,7 +133,7 @@ Now copy the two endpoint URLs with name "OAuth 2.0 authorization endpoint (v2)"
 
 ![The panel with the Endpoints of the application. The buttons to copy 'OAuth 2.0 authorization endpoint (v2)' and 'OAuth 2.0 token endpoint (v2)' are highlighted.](../../assets/images/extend-m365-copilot-06/oauth-A7.png)
 
-<cc-end-step lab="e6" exercise="2" step="2" />
+<cc-end-step lab="e6b" exercise="2" step="2" />
 
 ### Step 3: Create client secret
 
@@ -140,7 +141,7 @@ Next, navigate to "Certificates & secrets" 1️⃣ and click "+ New client secre
 
 ![The 'Certificates &amp; secrets' page from which you can select to create a 'New client secret'.](../../assets/images/extend-m365-copilot-06/oauth-A11.png)
 
-<cc-end-step lab="e6" exercise="2" step="3" />
+<cc-end-step lab="e6b" exercise="2" step="3" />
 
 ### Step 4: Expose an API Scope
 
@@ -165,14 +166,14 @@ When you're done, click "Add Scope" 2️⃣.
 
 ![The 'Add a scope' side panel in the 'Expose an API' page of the application registered, with settings for scope name, who can consent the scope, the admin and user display name and description, and the state flag to enable or disable the scope.](../../assets/images/extend-m365-copilot-06/oauth-A17.png)
 
-<cc-end-step lab="e6" exercise="2" step="4" />
+<cc-end-step lab="e6b" exercise="2" step="4" />
 
 ### Step 5: Save the API Scope
 Copy the scope to your safe place as the "API Scope".
 
 ![The 'Expose an API' page of the application registered, once the custom scope has been created with the button to copy the scope name highlighted.](../../assets/images/extend-m365-copilot-06/oauth-A17b.png)
 
-<cc-end-step lab="e6" exercise="2" step="5" />
+<cc-end-step lab="e6b" exercise="2" step="5" />
 
 ## Exercise 3: Register an Entra ID application for your plugin
 
@@ -195,13 +196,13 @@ Click the "Register" button 4️⃣ to complete the registration.
 
 As before, view the app's "Overview" page and save the Application (client) ID for the API Plugin app.
 
-<cc-end-step lab="e6" exercise="3" step="1" />
+<cc-end-step lab="e6b" exercise="3" step="1" />
 
 ### Step 2: Create a client secret
 
 As before, create a client secret and save it under "Plugin service client secret" in your safe location.
 
-<cc-end-step lab="e6" exercise="3" step="2" />
+<cc-end-step lab="e6b" exercise="3" step="2" />
 
 ### Step 3: Grant permission
 
@@ -213,7 +214,7 @@ Now you should see your API service application. Select the "access_as_user" per
 
 ![The side panel to select and add a permission to the application registered. The 'access_as_user' permission is selected and highlighted, together with the 'Add permission' button.](../../assets/images/extend-m365-copilot-06/oauth-B12.png)
 
-<cc-end-step lab="e6" exercise="3" step="3" />
+<cc-end-step lab="e6b" exercise="3" step="3" />
 
 ## Exercise 4: Update the API app registration with the plugin application ID
 
@@ -232,7 +233,7 @@ Remember to click "Save" 2️⃣ when you're done.
 
 ![The page to edit the manifest of the application with the 'knownClientApplications' entry and the 'Save' button highlighted.](../../assets/images/extend-m365-copilot-06/oauth-C4.png)
 
-<cc-end-step lab="e6" exercise="4" step="1" />
+<cc-end-step lab="e6b" exercise="4" step="1" />
 
 ## Exercise 5: Register the OAuth information in the Teams Developer Portal
 
@@ -264,7 +265,7 @@ Click "Register client", if you don't have any already registered client applica
 !!! Note "If you didn't make a persistent developer tunnel URL..."
     ...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Teams Toolkit
 
-<cc-end-step lab="e6" exercise="5" step="1" />
+<cc-end-step lab="e6b" exercise="5" step="1" />
 
 ### Step 2: Save your OAuth registration ID
 
@@ -272,7 +273,7 @@ Click "Register client", if you don't have any already registered client applica
 
 The portal will display your OAuth client registration ID. Save this for the next step.
 
-<cc-end-step lab="e6" exercise="5" step="2" />
+<cc-end-step lab="e6b" exercise="5" step="2" />
 
 ## Exercise 6: Update your application package
 
@@ -299,7 +300,7 @@ The next time you start and prompt your API plugin, it should prompt you to sign
 However we've done nothing to secure the application; anyone on the Internet can call it!
 In the next step you'll update the application code to check for a valid login and access the API as the actual Microsoft 365 user instead of "Avery Howard" (which is a name from Microsoft's fictitious name generator).
 
-<cc-end-step lab="e6" exercise="6" step="1" />
+<cc-end-step lab="e6b" exercise="6" step="1" />
 
 ## Exercise 7: Update the application code
 
@@ -320,7 +321,7 @@ This will install a library for validating the incoming Entra ID authorization t
     
     If you want to track progress on a supported library, please follow [this Github issue](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank}.
 
-<cc-end-step lab="e6" exercise="7" step="1" />
+<cc-end-step lab="e6b" exercise="7" step="1" />
 
 ### Step 2: Add environment variables for your API
 
@@ -343,7 +344,7 @@ To make these values available inside your code running in Teams Toolkit, you al
         API_TENANT_ID: ${{API_TENANT_ID}}
 ~~~
 
-<cc-end-step lab="e6" exercise="7" step="2" />
+<cc-end-step lab="e6b" exercise="7" step="2" />
 
 ### Step 3: Update the identity service
 
@@ -448,7 +449,7 @@ As a result, when you run the app for the first time, it should create a new Con
 
 Note that project assignments are stored in the `Assignment` table and reference the project ID and the assigned consultant's consultant ID.
 
-<cc-end-step lab="e6" exercise="7" step="3" />
+<cc-end-step lab="e6b" exercise="7" step="3" />
 
 ## Exercise 8: Test the application
 
@@ -505,14 +506,14 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 ![](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
 
-<cc-end-step lab="e6" exercise="8" step="1" />
+<cc-end-step lab="e6b" exercise="8" step="1" />
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab E6, Add Entra ID authentication!
+You have completed lab E6b, Add Entra ID authentication with Manual Setup!
 
 Want to try something cool? How about adding a Graph Connector to your solution?
 
 <cc-next url="../EB-add-graphconnector" />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06-add-authentication" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06b-add-authentication" />
