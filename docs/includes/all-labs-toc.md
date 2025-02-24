@@ -3,5 +3,5 @@
 ---8<--- "b-labs-toc.md"
 ---8<--- "mab-labs-toc.md"
 ---8<--- "mcs-labs-toc.md"
----8<--- "msa-labs-toc.md"
+<!-- ---8<--- "msa-labs-toc.md" -->
 </div>
