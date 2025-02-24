@@ -66,7 +66,9 @@ Welcome to Copilot Developer Camp, a workshop for professional developers who wa
 
 ## Hands-on Labs 🧪
 
-The labs are divided into two pathways, allowing you to choose based on what you want to create. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.
+The labs are divided into three pathways, allowing you to choose based on what you want to create. If you want to use Microsoft Copilot Studio and a no-code/low-code approach, choose the "Make" labs. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.
+
+![The labs are divided into three pathways, allowing you to choose based on what you want to create. If you want to use Microsoft Copilot Studio and a no-code/low-code approach, choose the "Make" labs. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.](./assets/images/CopilotCamp-Flow-Chart.png)
 
 ---8<--- "all-labs-toc.md"
 

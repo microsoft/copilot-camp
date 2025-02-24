@@ -251,7 +251,7 @@ Fill the adaptive card and submit the request. The action will be triggered via 
 
 <cc-end-step lab="mcs3" exercise="2" step="1" />
 
----8<--- "m-congratulations.md"
+---8<--- "mcs-congratulations.md"
 
 Now your agent supports actions. In the next lab you will learn how to use Copilot Studio to create agents for Microsoft 365 Copilot Chat.
 

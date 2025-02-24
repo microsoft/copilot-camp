@@ -275,7 +275,7 @@ Notice also the disclaimer, at the top of the answer, about the fact that the pr
 
 <cc-end-step lab="mcs1" exercise="3" step="2" />
 
----8<--- "m-congratulations.md"
+---8<--- "mcs-congratulations.md"
 
 Now your agent is fully functional and ready to be used in Microsoft Teams. In the next labs you will be able to customize and fine tune its behavior.
 
