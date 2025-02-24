@@ -256,6 +256,8 @@ Well done! You were able to consume an external connector from a Copilot Studio 
 
 <cc-end-step lab="mcs4" exercise="2" step="2" />
 
+---8<--- "mcs-congratulations.md"
+
 <a href="../05-connectors">Start here</a> with Lab MCS5, to learn how to use custom connectors in Copilot Studio.
 <cc-next />
 

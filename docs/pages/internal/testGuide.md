@@ -122,5 +122,20 @@ The following labs are in need of testing. Please send questions and issues to t
 
       1. Just follow the [lab instructions](https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/)
 
+!!! note "Lab MCS5 - Power Platform custom connector"
+    Owner: Paolo Pialorsi
+
+    In this lab, the student:
+
+      - How to expose a REST API through a Power Platform custom connector
+      - How to secure communication to an external REST API in the Power Platform
+      - How to consume a custom connector from an agent
+
+    To test you will need a tenant with Microsoft 365 Copilot and Microsoft Copilot Studio (a trial license is enough).
+
+    Test procedure:
+
+      1. Just follow the [lab instructions](https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/05-connectors/)
+
  # Thank you!
 
