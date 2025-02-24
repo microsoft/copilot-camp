@@ -20,8 +20,8 @@ nav:
   - Lab MCS5 - Consuming a custom connector: 'pages/make/copilot-studio/05-connectors.md'
   # - Lab MCS6 - Knowledge: 'pages/make/copilot-studio/06-knowledge.md'
   - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
-  - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
-  - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
+  # - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
+  # - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
 - Extend - Build a declarative agent:
   - Welcome : 'pages/extend-m365-copilot/index.md'
   - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
