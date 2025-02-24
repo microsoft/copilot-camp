@@ -256,8 +256,9 @@ Well done! You were able to consume an external connector from a Copilot Studio 
 
 <cc-end-step lab="mcs4" exercise="2" step="2" />
 
-<cc-next url="#" label="Comin soon ..." />
-<!-- <a href="../05-connectors">Start here</a> with Lab MCS5, to learn how to use custom connectors in Copilot Studio. -->
-<!-- <cc-next /> -->
+---8<--- "mcs-congratulations.md"
+
+<a href="../05-connectors">Start here</a> with Lab MCS5, to learn how to use custom connectors in Copilot Studio.
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/04-extending-m365-copilot" />

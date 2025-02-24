@@ -498,7 +498,7 @@ Now your topic is ready and fully functional. In the upcoming labs you will lear
 
 <cc-end-step lab="mcs2" exercise="4" step="3" />
 
----8<--- "m-congratulations.md"
+---8<--- "mcs-congratulations.md"
 
 Now your agent supports multiple conversation paths through different topics. In the next labs you will learn how to work with custom Actions.
 

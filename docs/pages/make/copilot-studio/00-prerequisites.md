@@ -92,7 +92,7 @@ To activate Copilot Studio follow these steps:
 
 <cc-end-step lab="mcs0" exercise="2" step="1" />
 
----8<--- "m-congratulations.md"
+---8<--- "mcs-congratulations.md"
 
 Now you are all set to create your first agent with Copilot Studio. 
 
