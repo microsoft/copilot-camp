@@ -1,0 +1,356 @@
+{
+    "paths": [
+        {
+            "path": "Make",
+            "title": "Make Path - Make your agent",
+            "labs": [
+                {
+                    "labId": "mab1",
+                    "title": "MAB1 - Build your first agent",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating the Declarative agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Describe your agent"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test the agent"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Customizing the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Provide a custom icon"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Define the guess plant/flower game rules"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Add SharePoint Online knowledge base",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Upload the knowledge base documents"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add support for SharePoint Online documents"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Final touches to the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add support for image generation"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Share the agent"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs0",
+                    "title": "MCS0 - Setup",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating a Power Platform environment",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new Power Platform environment"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Microsoft Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Activating Microsoft Copilot Studio"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs1",
+                    "title": "MCS1 - First agent",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating an agent with Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new agent"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Changing the agent's icon"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Testing the agent"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Extending the knowledge base",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Adding SharePoint Online knowledge base documents"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the updated agent"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Disabling general knowledge"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Publishing the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Publishing the agent in Microsoft Teams"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the agent in Microsoft Teams"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs2",
+                    "title": "MCS2 - Defining Topics",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Orchestration based on Generative AI",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Enabling Orchestration based on generative AI"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Creating a single-turn topic",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new single-turn topic"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Collecting user's input"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Providing feedback to the user"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Ending the current topic"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Testing the current topic"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Creating a multi-turn topic",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new multi-turn topic"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Giving a feedback to the user"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Using Adaptive Cards",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Collecting input with Adaptive Cards"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Providing feedback with Adaptive Cards"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Testing the current topic"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs3",
+                    "title": "MCS3 - Defining Actions",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating actions in Microsoft Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Consuming a Power Platform connector"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the new action"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Consuming a Power Automate flow"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Invoking actions from within a topic",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Invoking an action from a topic"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs4",
+                    "title": "MCS4 - Extending Microsoft 365 Copilot",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating an agent for Microsoft 365 Copilot Chat",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating an agent for Copilot Chat"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Updating the agent's icon"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Adding a knowledge base to the agent"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Publishing the agent in Microsoft 365 Copilot Chat"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Adding an action to the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Adding an action to an agent for Microsoft 365 Copilot"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the new action"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs5",
+                    "title": "MCS5 - Consuming a custom connector",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating the REST API",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Downloading and testing the REST API"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Registering the API in Entra ID"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Configure the dev tunnel"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Registering the Consumer in Entra ID"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Creating the custom connector",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating the custom connector"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the custom connector"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Consuming the custom connector",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Consuming the custom connector from the agent"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

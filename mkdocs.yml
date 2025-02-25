@@ -84,6 +84,7 @@ markdown_extensions:
   - toc:
       toc_depth: 2
 extra_javascript:
+  - javascripts/cc-award.js
   - javascripts/cc-next.js
   - javascripts/cc-lab-step.js
   - javascripts/clipboard.js
