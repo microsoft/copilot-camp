@@ -20,12 +20,10 @@ In this lab you will learn:
 
 Adaptive Cards are platform-independent UI snippets authored in JSON that can be exchanged between apps and services. Once delivered to an app, the JSON transforms into native UI that automatically adapts to its environment. This enables the design and integration of lightweight UI across major platforms and frameworks.
     <div class="video">
-      <iframe src="https://adaptivecardsblob.blob.core.windows.net/assets/AdaptiveCardsOverviewVideo.mp4" title="adptivecard video">
-      </video>" frameborder="0" allowfullscreen></iframe>
-      <div>Adaptive cards</div>
+      <iframe src="//www.youtube.com/embed/pYe2NqKhJoM" frameborder="0" allowfullscreen></iframe>
+      <div>Adaptive cards are everywhere</div>
     </div>
 </details>
-
 
 ## Exercise 1: Create and test a simple Adaptive Card
 
