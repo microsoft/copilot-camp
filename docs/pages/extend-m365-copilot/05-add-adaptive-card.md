@@ -31,7 +31,7 @@ Let's dive in and discover how fun it is to create adaptive cards.
 
 ### Step 1: Define Your Adaptive Card in JSON
 
-Create a new file named `adaptiveCard.json` and add the following JSON content:
+Here is an adaptive card in JSON. Begin by copying it to your clipboard.
 
 ```json
 {
