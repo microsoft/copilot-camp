@@ -608,12 +608,12 @@ Before you test the application, update the manifest version of your app package
 
 2. Locate the `version` field in the JSON file. It should look something like this:  
    ```json
-   "version": "1.0.0"
+   "version": "1.0.1"
    ```
 
 3. Increment the version number to a small increment. For example, change it to:  
    ```json
-   "version": "1.0.1"
+   "version": "1.0.2"
    ```
 
 4. Save the file after making the change.
