@@ -3,7 +3,7 @@
 
 # Copilot Developer Camp
 
-Welcome to Copilot Developer Camp, a workshop for professional developers who want to learn how to build agents for Microsoft 365 Copilot.
+Welcome to Copilot Developer Camp, a workshop for makers and professional developers who want to learn how to build agents for Microsoft 365 Copilot.
 
 ??? info "Watch Microsoft 365 Copilot: Developer Camp On-demand! 🎉"
     <div class="tinyVideo">
