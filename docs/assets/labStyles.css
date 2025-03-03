@@ -739,3 +739,16 @@ dicussion */
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.badge-row {
+    display: flex; /* Displays images in a row */
+    justify-content: space-between; /* Adjusts the space between images */
+    align-items: center; /* Aligns images vertically in the center */
+    width: 400px; /* Set the desired width */    
+}
+
+.badge-row img {
+    width: 100px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+    margin: 0 10px; /* Adjust the margin between images */
+}
