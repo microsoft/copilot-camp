@@ -1,5 +1,5 @@
 
-# Lab E2: Build an API
+# Lab E2 - Build an API
 
 ---8<--- "e-labs-prelude.md"
 
@@ -20,8 +20,8 @@ The code consists of Azure Functions written in TypeScript, backed by a database
 
 This lab calls for a couple of additional prerequisites; please install them now.
 
-* [Azure functions core tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools){target=_blank} OR
-[REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}: You will use one of these toolkits to test your API locally
+* [Azure functions core tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools){target=_blank} 
+* [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}: You will use one of these toolkits to test your API locally
 * (optional) [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank}: This will allow you to view and modify the Trey Research database
 
 <cc-end-step lab="e2" exercise="1" step="1" />

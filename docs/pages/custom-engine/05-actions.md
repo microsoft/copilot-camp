@@ -225,7 +225,7 @@ const planner = new ActionPlanner({
 });
 ```
 
-<cc-end-step lab="b4" exercise="2" step="1" />
+<cc-end-step lab="b5" exercise="2" step="1" />
 
 ## Exercise 3: Implement actions in the app
 
@@ -531,6 +531,8 @@ Finally in `src/app/actions.ts`, add **sendLists** in the`actions.ts` exports. T
 export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
 ```
 
+<cc-end-step lab="b5" exercise="4" step="2" />
+
 ### Step 3: Register `sendLists` action handler
 
 Go to `src/app/app.ts` and update the `./actions` import with the **sendLists** function. The final version of the import will look as below:
@@ -619,5 +621,7 @@ You have completed B5 - Add actions to handle complex tasks!  If you want explor
 This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
 <cc-next label="Home" url="/" />
+
+<cc-award path="Build" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/05-actions" />

@@ -31,7 +31,7 @@ Let's dive in and discover how fun it is to create adaptive cards.
 
 ### Step 1: Define Your Adaptive Card in JSON
 
-Create a new file named `adaptiveCard.json` and add the following JSON content:
+Here is an adaptive card in JSON. Begin by copying it to your clipboard.
 
 ```json
 {
@@ -71,7 +71,7 @@ To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://ad
 
 Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
 
-<cc-end-step lab="e5" exercise="1" step="1" />
+<cc-end-step lab="e5" exercise="1" step="2" />
 
 ## Exercise 2: Update the plugin manifest 
 
@@ -147,7 +147,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
 
 <cc-end-step lab="e5" exercise="2" step="1" />
 
-### Step 2: Add an adaptive card for GET /api/me requests:
+### Step 2: Add an adaptive card for GET /api/me requests
 
 - Locate the function **getUserInformation** and after the `properties` node add below `static_template` node.
 
@@ -218,7 +218,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
 
 <cc-end-step lab="e5" exercise="2" step="2" />
 
-### Step 3: Add an adaptive card for GET /api/projects requests:
+### Step 3: Add an adaptive card for GET /api/projects requests
 
 - Locate the function **getProjects** and after the `properties` node add below `static_template` node.
 
@@ -408,7 +408,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
 
 <cc-end-step lab="e5" exercise="2" step="3" />
 
-### Step 4: Add an adaptive card for POST /api/billHours requests:
+### Step 4: Add an adaptive card for POST /api/billHours requests
 
 - Locate the function **postBillhours** and after the `properties` node add below `static_template` node.
 
@@ -495,7 +495,7 @@ We are going to update the plugin manifest file called **trey-plugin.json** in t
 
 <cc-end-step lab="e5" exercise="2" step="4" />
 
-### Step 5: Add an adaptive card for POST /api/assignConsultant requests:
+### Step 5: Add an adaptive card for POST /api/assignConsultant requests
 
 - Locate the function **postAssignConsultant** and after the `properties` node add below `static_template` node.
 
@@ -608,12 +608,12 @@ Before you test the application, update the manifest version of your app package
 
 2. Locate the `version` field in the JSON file. It should look something like this:  
    ```json
-   "version": "1.0.0"
+   "version": "1.0.1"
    ```
 
 3. Increment the version number to a small increment. For example, change it to:  
    ```json
-   "version": "1.0.1"
+   "version": "1.0.2"
    ```
 
 4. Save the file after making the change.

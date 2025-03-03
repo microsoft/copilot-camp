@@ -67,7 +67,7 @@ This file contains details for the Entra ID application to be registered or upda
 
 <cc-end-step lab="e6a" exercise="1" step="1" />
 
-### Step 2: Update the file version number in **teamsapp.local.ynl**
+### Step 2: Update the file version number in **teamsapp.local.yml**
 
 The **teamsapp.local.yml** file contains instructions for Teams Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
 
@@ -329,7 +329,7 @@ Insert the following before the last line:
 
 Now that you've got Teams Toolkit setting up the Entra ID registrations, it's time to update the application package so Copilot knows about the authentication. In this exercise you'll update the necessary files.
 
-### Step 1: Update the Open API Specificationfile
+### Step 1: Update the Open API Specification file
 
 Open your working folder in Visual Studio Code. In the **appPackage** folder, open the **trey-definition.json** file. Locate the line:
 
@@ -569,7 +569,7 @@ Recall that the user was hard coded to the fictitious user "Avery Howard". When 
 
     ![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
     
-<cc-end-step lab="e6" exercise="5" step="3" />
+<cc-end-step lab="e6a" exercise="5" step="3" />
 
 ### Step 4: Add yourself to a project
 
@@ -583,7 +583,7 @@ Ask Copilot to add you to the Woodgrove project. Copilot will press you for deta
 
 Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"
 
-<cc-end-step lab="e6" exercise="5" step="4" />
+<cc-end-step lab="e6a" exercise="5" step="4" />
 
 ---8<--- "e-congratulations.md"
 
