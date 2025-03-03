@@ -2,11 +2,11 @@
 
 # Copilot Developer Camp Awards
 
-We are excited to announce a thrilling competition that will challenge you to showcase your knowledge and skills in Microsoft 365 Copilot extensibility. This is your chance to dive deep into the world of Copilot, explore its capabilities, and demonstrate your expertise.
+We are excited to announce a thrilling initiative that will challenge you to showcase your knowledge and skills in Microsoft 365 Copilot extensibility. This is your chance to dive deep into the world of Copilot, explore its capabilities, and demonstrate your expertise.
 
 ## Why participate?
 
-- **Learn and Grow**: This competition is a fantastic opportunity to expand your understanding of Microsoft 365 Copilot extensibility.
+- **Learn and Grow**: This initiative is a fantastic opportunity to expand your understanding of Microsoft 365 Copilot extensibility.
 - **Earn Badges**: Show off your achievements with exclusive badges awarded based on your performance.
 - **Community Recognition**: Stand out in the community and get recognized for your contributions and knowledge.
 
@@ -33,14 +33,14 @@ We are excited to announce a thrilling competition that will challenge you to sh
     <img src="../assets/images/awards/Samples-Small.png" alt="Sample Sensei - Copilot Camp badge"></img>
 </div>
 
-## Competition Timeline and Limits
+## Timeline and Limits
 
-- **Competition Starts**: March 10, 2025
-- **Competition Ends**: May 20, 2025
+- **Initiative Starts**: March 10, 2025
+- **Initiative Ends**: May 20, 2025
 - **Limits**: only the first 200 community members will earn badges
 
 Every single week, during [Microsoft 365 & Power Platform Community calls](https://aka.ms/community/ms-speakers-call-invite){target=_blank}, we will announce community members awarded with one or more badges. Challenge yourself and be among the first 200 community members to earn badges and seize this unique opportunity!
 
-Don't miss out on this exciting opportunity to earn recognition in the community. Whether you're a seasoned expert or just starting out, this competition is designed for everyone. So, gear up, get ready, and let's see how much you know about Microsoft 365 Copilot extensibility!
+Don't miss out on this exciting opportunity to earn recognition in the community. Whether you're a seasoned expert or just starting out, this initiative is designed for everyone. So, gear up, get ready, and let's see how much you know about Microsoft 365 Copilot extensibility!
 
 Happy learning and good luck!
