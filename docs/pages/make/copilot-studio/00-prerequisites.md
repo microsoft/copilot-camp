@@ -6,8 +6,8 @@ In this lab, you'll setup and configure your Microsoft 365 tenant to start creat
 Copilot Studio is part of the Microsoft Power Platform offering and requires dedicated licensing, accordingly to the [Microsoft Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?linkid=2085130){target=_blank}.
 
 !!! note "Set up your development environment for Microsoft 365 Copilot and Microsoft Copilot Studio"
-    This lab currently assumes you already have a tenant to setup. You can reference off to the
-    [page here](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} that explains the current way you can get a tenant.
+    This lab currently assumes you already have a developer tenant to setup. You can reference off to the
+    [page here](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} that explains the current way you can get a tenant. It also assumes that you have a user account that is a Power Platform administrator, in order to being able to create a new Power Platform environment.
 
 In this lab you will learn:
 
@@ -22,6 +22,9 @@ In this lab you will learn:
 With the Power Platform, you can create different environments and easily switch between them accordingly to your needs.
 An environment stores apps, flows, data, agents, etc. and each environment is completely isolated from any other environment.
 You can learn more about Power Platform environments reading this [overview document](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview){target=_blank}.
+
+!!! note "Power Platform administrative rights"
+    In order to proceed with the steps illustrated in this Exercise, you need a user account that is a Power Platform administrator in your target tenant. If you don't have such an account, ask to a Power Plaform administrator to create the environment for you and to give you access to that new environment.
 
 ### Step 1: Creating a new Power Platform environment
 
@@ -69,6 +72,9 @@ Once the new environment will be ready, the list of environments will show the i
 ## Exercise 2 : Microsoft Copilot Studio
 
 In order to use Microsoft Copilot Studio you need to have a valid license and you need to activate it in the target tenant where you want to use it.
+
+!!! note "Microsoft Copilot Studio licensing"
+    There are multiple options to have a licensed access to Microsoft Copilot Studio. We suggest you to refer to the [Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=2085130){target=_blank}.
 
 ### Step 1: Activating Microsoft Copilot Studio
 
