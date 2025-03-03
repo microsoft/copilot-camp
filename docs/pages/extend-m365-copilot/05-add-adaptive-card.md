@@ -31,7 +31,7 @@ Let's dive in and discover how fun it is to create adaptive cards.
 
 ### Step 1: Define Your Adaptive Card in JSON
 
-Create a new file named `adaptiveCard.json` and add the following JSON content:
+Here is an adaptive card in JSON. Begin by copying it to your clipboard.
 
 ```json
 {
@@ -608,12 +608,12 @@ Before you test the application, update the manifest version of your app package
 
 2. Locate the `version` field in the JSON file. It should look something like this:  
    ```json
-   "version": "1.0.0"
+   "version": "1.0.1"
    ```
 
 3. Increment the version number to a small increment. For example, change it to:  
    ```json
-   "version": "1.0.1"
+   "version": "1.0.2"
    ```
 
 4. Save the file after making the change.
