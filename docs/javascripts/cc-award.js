@@ -160,9 +160,9 @@
             // Check if all steps have been completed
             const steps = stepsArray.filter(step => localStorage.getItem(step) === 'true');
 
-            console.log('Completed steps:', steps.length, 'Total steps:', stepsArray.length);
-            console.log(stepsArray);
-            console.log(steps);
+            // console.log('Completed steps:', steps.length, 'Total steps:', stepsArray.length);
+            // console.log(stepsArray);
+            // console.log(steps);
 
             // Return true if all steps have been completed
             const isEligible = steps.length === stepsArray.length || this.#debugMode;
