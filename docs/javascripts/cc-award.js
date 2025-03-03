@@ -56,8 +56,11 @@
 
         #containerElement; // Div container
 
-        #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
-        // #labsAndStepsUrl = 'https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/labs-and-steps.json?raw=true';
+        // #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
+        #labsAndStepsUrl = 'https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/labs-and-steps.json?raw=true'; // Production
+
+        // #functionsBaseUrl = 'http://localhost:7071/api/'; // Local testing
+        #functionsBaseUrl = 'https://cc-awards.azurewebsites.net/api/'; // Production
 
         #debugMode = false;  // Debug mode
 
@@ -66,7 +69,7 @@
 
             this.#label = this.getAttribute('label') || ' ⭐ Claim your badge! ⭐ ';
             this.#pathName = this.getAttribute('path');
-            this.#claimAwardUrl = this.getAttribute('claimAwardUrl');
+            this.#claimAwardUrl = this.getAttribute('claimAwardUrl') || 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_nXMqzQBN1KhlLGpDnOomlURExDM1BINzU0TzVBQjRRN1VTQ0dVWVBaVi4u&r3a6998c8554d4dbebe2eab89c0a2cf58=';
 
             ensureCss();
 
@@ -82,6 +85,7 @@
             setTimeout(() => { this.refreshAwardStatus(); }, 1000);
         }
 
+        // Renders the award button
         #renderClaimAward() {
             this.#containerElement = document.createElement('div');
 
@@ -110,11 +114,12 @@
                 // Retrieve the unique ID and navigate to the claim URL
                 const uniqueId = this.#ensureAwardUniqueId();
                 // providing the uniqueId as a query parameter
-                window.location.href = `${this.#claimAwardUrl}?uniqueId=${uniqueId}`;
+                window.open(`${this.#claimAwardUrl}${uniqueId}`, '_blank');
             }
         }
 
-        async #fetchLabsAndSteps() {
+        // Retrieves all the labs and labs steps from the configuration file
+        async #fetchLabsAndSteps(pathName) {
             try {
                 // Try to retrieve the labs and steps data
                 const response = await fetch(this.#labsAndStepsUrl);
@@ -129,6 +134,7 @@
     
                 // Build the steps array
                 data.paths.forEach(path => {
+                    if (path.pathId !== pathName) return;
                     path.labs.forEach(lab => {
                         lab.exercises.forEach(exercise => {
                             exercise.steps.forEach(step => {
@@ -145,9 +151,10 @@
             }
         }
 
-        async #checkAwardElegibility() {
+        // Checks if the user is eligible to claim the award for a specific path
+        async #checkAwardElegibility(pathName) {
             // Check if the user is eligible to claim the award
-            const stepsArray = await this.#fetchLabsAndSteps();
+            const stepsArray = await this.#fetchLabsAndSteps(pathName);
             if (!stepsArray) return false;
 
             // Check if all steps have been completed
@@ -176,10 +183,33 @@
             return uniqueId;
         }
 
+        async #updateAwardStatus(pathName, isEligible) {
+            // Update the award status for the current user
+            const uniqueId = this.#ensureAwardUniqueId();
+            const awardStatusUrl = `${this.#functionsBaseUrl}assignAward/${uniqueId}/${pathName}`;
+            const response = await fetch(awardStatusUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status: isEligible })
+            });
+            if (!response.ok) {
+                console.error('Failed to update award status:', response.status, response.statusText);
+            }
+        }
+
         // Public method to check award eligibility
         async refreshAwardStatus() {
             // Check if the user is eligible to claim the award
-            const isEligible = await this.#checkAwardElegibility();
+            const isEligible = await this.#checkAwardElegibility(this.#pathName);
+
+            try {
+                // Update the award status for the current user
+                await this.#updateAwardStatus(this.#pathName, isEligible);
+            } catch (error) {
+                console.error('Failed to update award status:', error);
+            }
 
             // Show the award button if the user is eligible
             if (this.#claimAwardUrl && isEligible) {

@@ -211,7 +211,7 @@ Select **Add a client application** 1️⃣ in the same **Expose an API page** a
 
 <cc-end-step lab="e6c" exercise="5" step="3" />
 
-### Step 4 : Redirect URIs for Authentication
+### Step 4: Redirect URIs for Authentication
 
 Now in the left navigation, go to **Authentication** 1️⃣ , **Add a platform** 2️⃣, select **Web** 3️⃣. 
 
