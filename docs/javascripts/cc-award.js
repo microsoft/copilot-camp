@@ -57,7 +57,7 @@
         #containerElement; // Div container
 
         // #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
-        #labsAndStepsUrl = 'https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/labs-and-steps.json?raw=true'; // Production
+        #labsAndStepsUrl = 'https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/docs/javascripts/labs-and-steps.json'; // Production
 
         // #functionsBaseUrl = 'http://localhost:7071/api/'; // Local testing
         #functionsBaseUrl = 'https://cc-awards.azurewebsites.net/api/'; // Production
