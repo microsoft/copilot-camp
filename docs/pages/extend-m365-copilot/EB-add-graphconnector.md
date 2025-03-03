@@ -168,6 +168,6 @@ In the immersive experience of Trey Genie, use below prompts and test them
 
 You have completed lab Add Graph Connector, Well done!
 
-<cc-award path="Extend" />
+<!-- <cc-award path="Extend" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/EB-add-graphconnector" />
