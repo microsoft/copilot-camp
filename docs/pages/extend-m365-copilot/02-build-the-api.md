@@ -1,5 +1,5 @@
 
-# Lab E2: Build an API
+# Lab E2 - Build an API
 
 ---8<--- "e-labs-prelude.md"
 

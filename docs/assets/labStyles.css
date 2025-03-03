@@ -703,3 +703,52 @@ dicussion */
         flex: 1;
     }
 }
+
+/* Award styles */
+.award-button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #38a5e4;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid rgba(27, 31, 35, .15);
+    box-shadow: 0 1px 0 rgba(27, 31, 35, .04), inset 0 1px 0 hsla(0, 0%, 100%, .25);
+    cursor: pointer;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.award-button:hover {
+    background-color: #62b8ea;
+    border-color: rgba(27, 31, 35, .15);
+}
+
+.award-button:disabled {
+    background-color: #10557d;
+    border-color: rgba(27, 31, 35, .15);
+    cursor: not-allowed;
+}
+
+.award-congrats {
+    color: #1c8fd2;
+    font-size: larger;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-row {
+    display: flex; /* Displays images in a row */
+    justify-content: space-between; /* Adjusts the space between images */
+    align-items: center; /* Aligns images vertically in the center */
+    width: 400px; /* Set the desired width */    
+}
+
+.badge-row img {
+    width: 100px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+    margin: 0 10px; /* Adjust the margin between images */
+}

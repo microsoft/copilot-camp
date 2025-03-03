@@ -189,6 +189,14 @@
 
         #setStepStatus(lab, exercise, step, status) {
             localStorage.setItem(`step-${lab}-${exercise}-${step}`, status);
+
+            // Check if all steps have been completed
+            const awardComponent = document.querySelector('cc-award');
+            if (awardComponent) {
+                awardComponent.refreshAwardStatus().then(() => {
+                    console.log('Award status refreshed');
+                });
+            }        
         }
     }
     //#endregion

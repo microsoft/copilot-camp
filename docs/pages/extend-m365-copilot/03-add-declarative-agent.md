@@ -150,7 +150,7 @@ In this step we'll look at **trey-plugin.json** and how it and another file desc
 
 These two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
- * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specifiction (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
+ * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
  * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
@@ -233,7 +233,7 @@ Scrolling down you can find the runtime settings:
 
 They include a pointer to the **trey-definition.json** file, and an enumeration of the available functions.
 
-<cc-end-step lab="e3" exercise="2" step="4" />
+<cc-end-step lab="e3" exercise="2" step="3" />
 
 ### Step 4: Add the declarative agent to your app manifest
 

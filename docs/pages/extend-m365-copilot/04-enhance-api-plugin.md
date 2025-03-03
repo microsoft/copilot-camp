@@ -93,7 +93,7 @@ Now try sending the new requests and you should be able to see Trey Research pro
 The API plugin's application package is a zip file that contains all the information Copilot needs to use the API.
 In this exercise, you'll add information about the new /projects resource to the app package.
 
-### Step 1: Update the Open API Specifiction file
+### Step 1: Update the Open API Specification file
 
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
