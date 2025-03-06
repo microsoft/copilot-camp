@@ -62,6 +62,8 @@
         // #functionsBaseUrl = 'http://localhost:7071/api/'; // Local testing
         #functionsBaseUrl = 'https://cc-awards.azurewebsites.net/api/'; // Production
 
+        #badgeClaimedTrackingUrl = 'https://m365-visitor-stats.azurewebsites.net/copilot-camp/badge-claimed/'; // Badge claimed tracking URL
+
         #debugMode = false;  // Debug mode
 
         constructor() {
@@ -101,7 +103,7 @@
             awardButton.className = 'award-button';
             awardButton.onclick = this.#clickHandler;
             this.#containerElement.appendChild(awardButton);
-
+            
             // Hide the container by default
             this.#containerElement.style.display = 'none';
 
@@ -184,19 +186,40 @@
         }
 
         async #updateAwardStatus(pathName, isEligible) {
-            // Update the award status for the current user
-            const uniqueId = this.#ensureAwardUniqueId();
-            const awardStatusUrl = `${this.#functionsBaseUrl}assignAward/${uniqueId}/${pathName}`;
-            const response = await fetch(awardStatusUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ status: isEligible })
-            });
-            if (!response.ok) {
-                console.error('Failed to update award status:', response.status, response.statusText);
+
+            try {
+                // Update the award status for the current user
+                const uniqueId = this.#ensureAwardUniqueId();
+                const awardStatusUrl = `${this.#functionsBaseUrl}assignAward/${uniqueId}/${pathName}`;
+                const awardStatusResponse = await fetch(awardStatusUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: isEligible })
+                });
+                if (!awardStatusResponse.ok) {
+                    console.error('Failed to update award status via API:', awardStatusResponse.status, awardStatusResponse.statusText);
+                }
+            } catch (error) {
+                console.error('Failed to update award status:', error);
             }
+
+            try {
+                if (isEligible) {
+                    // Track the award status on telemetry
+                    const awardTrackingUrl = `${this.#badgeClaimedTrackingUrl}${pathName}`;
+                    const trackingResponse = await fetch(awardTrackingUrl, {
+                        method: 'GET'
+                    });
+                    if (!trackingResponse.ok) {
+                        console.error('Failed to track award status via telemetry:', response.status, response.statusText);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to track award status:', error);
+            }
+
         }
 
         // Public method to check award eligibility
