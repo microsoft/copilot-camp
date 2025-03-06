@@ -112,6 +112,17 @@
 
         // Button click event handler
         #clickHandler(e) {
+
+            try {
+                // Track the award status on telemetry
+                const awardTrackingUrl = `${this.#badgeClaimedTrackingUrl}${this.#pathName}`;
+                fetch(awardTrackingUrl, {
+                    method: 'GET'
+                });
+            } catch (error) {
+                console.error('Failed to track award status:', error);
+            }
+
             if (this.#claimAwardUrl) {
                 // Retrieve the unique ID and navigate to the claim URL
                 const uniqueId = this.#ensureAwardUniqueId();
@@ -186,7 +197,6 @@
         }
 
         async #updateAwardStatus(pathName, isEligible) {
-
             try {
                 // Update the award status for the current user
                 const uniqueId = this.#ensureAwardUniqueId();
@@ -204,22 +214,6 @@
             } catch (error) {
                 console.error('Failed to update award status:', error);
             }
-
-            try {
-                if (isEligible) {
-                    // Track the award status on telemetry
-                    const awardTrackingUrl = `${this.#badgeClaimedTrackingUrl}${pathName}`;
-                    const trackingResponse = await fetch(awardTrackingUrl, {
-                        method: 'GET'
-                    });
-                    if (!trackingResponse.ok) {
-                        console.error('Failed to track award status via telemetry:', response.status, response.statusText);
-                    }
-                }
-            } catch (error) {
-                console.error('Failed to track award status:', error);
-            }
-
         }
 
         // Public method to check award eligibility
