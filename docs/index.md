@@ -47,6 +47,10 @@ Welcome to Copilot Developer Camp, a workshop for makers and professional develo
 
 ???+ info "Video briefing: Building Agents for Microsoft 365 Copilot"
     <div class="tinyVideo">
+      <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
+      <div>Understanding the Copilot Dev Camp pathways</div>
+    </div>
+    <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/r8HY22l6rhQ" frameborder="0" allowfullscreen></iframe>
       <div>Building Copilot agents with code (Overview)</div>
     </div>
