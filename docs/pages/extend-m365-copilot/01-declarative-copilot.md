@@ -129,7 +129,7 @@ A browser window will pop up and offer to log into Microsoft 365. When it says "
 
 Now verify that the "Custom App Upload Enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. Follow steps in Exercise 1 of this lab. 
 
-Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account license for Copilot. This is required to continue the labs.
+Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account does not have a license for Copilot. This is required to continue the labs.
 
 
 ![The UI of Teams Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/checker.png)
