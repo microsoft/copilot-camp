@@ -73,7 +73,7 @@ Creating a scope allows you to define a custom delegated permission scope for yo
 
 Here you can see some suggested values for the permission scope configuration:
 
-- Scope name: the actual name of the scope. For example: `HR.Manage`.
+- Scope name: the actual name of the scope. For example: `HR.Consume`.
 - Who can consent?: defines whether the scope can be consented by admins only, or both by admins and regular users. Choose `Admins and users`.
 - Admin consent display name: the short display name of the scope for admin consent. For example: `HR.Consume`.
 - Admin consent description: the description of the scope for admin consent. For example:  `Allows consuming the HR Service`.
@@ -237,7 +237,7 @@ Then 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the 
 
 ![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Copilot for Microsoft 365** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
 
-Now, edit the `Agentic HR` agent, go to the **Actions** section and select **+ Add action**. Follow the instructions that you have already seen in Lab MCS4 - Exercise 2 - Step 1. However, this time select the **Library** group of actions and search for `HR-Services`. You will see the actions defined in the `HR-Services` connector that you created in Exercise 2 - Step 1.
+Now, edit the `Agentic HR` agent, go to the **Actions** section and select **+ Add action**. Follow the instructions that you have already seen in Lab MCS4 - Exercise 2 - Step 1. However, this time select the **Custom connector** group of actions and search for `HR-Services`. You will see the actions defined in the `HR-Services` connector that you created in Exercise 2 - Step 1.
 
 Select the `Get all candidates` action and confirm to connect to the target custom connector.
 Configure the action as follows:
