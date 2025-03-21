@@ -201,7 +201,7 @@ register a new candidate, create a new candidate, add a new candidate.
 
 Then, for each of the above information fields, you need to prompt the user with an action of type **Ask a question**. However, in this exercise the value of the answer will vary depending on the requested field. For example: first name, last name, and current role will be simple text fields., while the e-mail field will need to be a valid e-mail.
 
-So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entier response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningfull name to each of the variables holding the values provided by the user.
+So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entire response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningfull name to each of the variables holding the values provided by the user.
 In the following screenshot you can see how the first name input action can be defined. You can do the same for last name and current job role.
 
 ![The **Ask a question** action configured to collect the candidate's first name and store it into a variable of type string, accepting any value provided by the user.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-01.png)

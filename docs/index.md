@@ -151,7 +151,7 @@ Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box](./p
 
 ## Microsoft Learn 📖
 
-Discover Microsoft Learn content to extend Copilot all in one place with the **Official Collection: Microsoft 365 Copilot extensibility** available at the link [https://aka.ms/extend-microsoft365-copilot](https://aka.ms/extend-microsoft365-copilot)
+Discover Microsoft Learn content [here](./mslearn).
     
 ## Issues
 
