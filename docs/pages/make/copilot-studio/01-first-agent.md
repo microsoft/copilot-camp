@@ -218,9 +218,9 @@ To publish an agent made with Copilot Studio you need to select the **Publish** 
 
 Selecting the command will prompt you for confirmation. Once confirmed, the publishing process takes a while and in the meantime you see a "Publishing ..." message. Publishing an agent registers it in the target Power Platform environment, but does not make it available in any target platform.
 
-In order to make the agent actually available in a specific target platform (channel), you need to 1️⃣ select the **Channels** tab in the agent editor and then you can choose one or more target channels to make the agent available for. For example, to publish the agent in Microsoft Teams, as a bot, you need to 2️⃣ select **Microsoft Teams** as the target channel.
+In order to make the agent actually available in a specific target platform (channel), you need to 1️⃣ select the **Channels** tab in the agent editor and then you can choose one or more target channels to make the agent available for. For example, to publish the agent in Microsoft Teams, as a bot, you need to 2️⃣ select **Teams + Microsoft 365** as the target channel.
 
-![The **Channels** tab where you can make an agent available in one or more channels. There is a list of available channels like "Telephony", "Microsoft Teams", "Demo website", "Custom website", etc.](../../../assets/images/make/copilot-studio-01/make-agent-publish-02.png)
+![The **Channels** tab where you can make an agent available in one or more channels. There is a list of available channels like "Telephony", "Teams + Microsoft 365", "Demo website", "Custom website", etc.](../../../assets/images/make/copilot-studio-01/make-agent-publish-02.png)
 
 By default, when you make and agent and publish it with default settings, the agent will be configured for Microsoft authentication, which means that the agent will rely on Microsoft Entra ID authentication in Teams, Power Apps, or Microsoft 365 Copilot.
 With the default authentication settings, the agent can only be published in Microsoft Teams, as you can notice from the warning message displayed at the top of the **Channels** tab in the previous screenshot. 
@@ -231,9 +231,9 @@ With the default authentication settings, the agent can only be published in Mic
 !!! note "Premium license for Microsoft Copilot Studio"
     In the screenshot above, there is also an information bar about the licensing model and the potential requirement of a Premium license. In fact, when you use Copilot Studio  and you rely on premium features like premium connectors, you need to upgrade your license accordingly. Luckily, if you are just learning and testing with Microsoft Copilot Studio, you can activate a 60-days free trial period with the Premium license.
 
-When you select the **Microsoft Teams** channel a side panel shows up and allows you to **Turn on Teams** by selecting the corresponding button.
+When you select the **Teams + Microsoft 365** channel a side panel shows up and allows you to select the **Add channel** button.
 
-![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a couple of buttons to **Turn on Teams** and to **Cancel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-03.png)
+![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a button to **Add channel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-03.png)
 
 Once the agent is enabled on the Microsoft Teams channel, the side panel updates and shows a confirmation message, as well as few commands to edit the agent details and to open the agent in the Microsoft Teams client. There will also be a button **Availability options** that you can select to see the various options you have to access the agent in Microsoft Teams.
 
@@ -242,8 +242,8 @@ Once the agent is enabled on the Microsoft Teams channel, the side panel updates
 Selecting the **Availability options** button you can:
 
 - Copy a link to use the agent in Microsoft Teams
-- Make the agent available in the Teams app store, choosing if it will be available to the whole organization or just to selected users
 - Download a ZIP file with a package that you can upload to the Teams app store
+- Make the agent available in the Teams app store, choosing if it will be available to the whole organization or just to selected users
 
 ![The side panel to see the availability options for the agent in Microsoft Teams. There are buttons to copy a link to the agent in Teams, to make the agent available in the Teams app store, and to download a zip with the agent package for sharing the agent on other tenants.](../../../assets/images/make/copilot-studio-01/make-agent-publish-05.png)
 
