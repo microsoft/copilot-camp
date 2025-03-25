@@ -35,7 +35,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 
 ## Timeline and Limits
 
-- **Initiative Starts**: March 10, 2025
+- **Initiative Starts**: March 25, 2025
 - **Initiative Ends**: May 20, 2025
 - **Limits**: only the first 200 community members will earn badges
 
