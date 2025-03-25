@@ -12,7 +12,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 
 ## How to participate?
 
-- **Register**: Sign up for the Microsoft 365 & Power Platform Community Recognition Program through [this form](https://aka.ms/community/recognition-register){target=_blank}.
+- **Register**: Sign up for the Microsoft 365 & Power Platform Community Recognition Program through [this form](https://aka.ms/community/recognition-register){target=_blank}. If you already claimed badges through the Microsoft 365 & Power Platform Community Recognition Program, you don't need to sign up again.
 - **Complete a Copilot Developer Camp pathway**: Complete all the labs of any of the learning pathways ([Make](https://microsoft.github.io/copilot-camp/pages/make/){target=_blank}, [Extend](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/){target=_blank}, and [Build](https://microsoft.github.io/copilot-camp/pages/custom-engine/){target=_blank}) of Copilot Developer Camp to claim a blue-belt badge!
 
 <div class="badge-row">
