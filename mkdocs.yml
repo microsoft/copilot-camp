@@ -43,6 +43,7 @@ nav:
   - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
+- Awards: 'awards.md'
 
 # The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
 #  - Lab MAB - Copilot Studio agent builder:

@@ -71,7 +71,7 @@
 
             this.#label = this.getAttribute('label') || ' ⭐ Claim your badge! ⭐ ';
             this.#pathName = this.getAttribute('path');
-            this.#claimAwardUrl = this.getAttribute('claimAwardUrl') || 'https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_nXMqzQBN1KhlLGpDnOomlURExDM1BINzU0TzVBQjRRN1VTQ0dVWVBaVi4u&r3a6998c8554d4dbebe2eab89c0a2cf58=';
+            this.#claimAwardUrl = this.getAttribute('claimAwardUrl') || 'https://aka.ms/copilotdevcamp/awards/claim?r3a6998c8554d4dbebe2eab89c0a2cf58=';
 
             ensureCss();
 
