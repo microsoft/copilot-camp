@@ -191,7 +191,7 @@ Imagine that you want to create a topic to collect the following information abo
 - E-mail
 - Current role
 
-To collect the above information, create a new topic following the istructions provided in Excercise 2 Step 1.
+To collect the above information, create a new topic following the instructions provided in Exercise 2 Step 1.
 The **Trigger** description for the topic could be:
 
 ```txt
@@ -201,7 +201,7 @@ register a new candidate, create a new candidate, add a new candidate.
 
 Then, for each of the above information fields, you need to prompt the user with an action of type **Ask a question**. However, in this exercise the value of the answer will vary depending on the requested field. For example: first name, last name, and current role will be simple text fields., while the e-mail field will need to be a valid e-mail.
 
-So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entire response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningfull name to each of the variables holding the values provided by the user.
+So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entire response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningful name to each of the variables holding the values provided by the user.
 In the following screenshot you can see how the first name input action can be defined. You can do the same for last name and current job role.
 
 ![The **Ask a question** action configured to collect the candidate's first name and store it into a variable of type string, accepting any value provided by the user.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-01.png)
@@ -232,7 +232,7 @@ Just for the sake of having a final confirmation from the user, insert an action
 Is it ok for you to insert this new candidate?
 ```
 
-And configure the action to support the answers `Yes` and `No`. As like as it happened in Excercise 2 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of **Send a message** actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback. Lastly, add an action of type **End current topic** to complete the topic.
+And configure the action to support the answers `Yes` and `No`. As like as it happened in Exercise 2 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of **Send a message** actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback. Lastly, add an action of type **End current topic** to complete the topic.
 
 ![The final part of the topic with the last **Ask a question** action, three branches to manage the user's input and one final action to **End current topic**.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-05.png)
 
@@ -271,7 +271,7 @@ Imagine that you want to create yet another topic to collect the following infor
 
 Specifically, spoken languages and skills are multi-select lists of values.
 
-So open the **Topics** tab, and disable the topic that you created in Exercise 3 to avoid any overlapping of trigger conditions. Then, create a new topic following the istructions provided in Excercise 2 Step 1. The **Trigger** description for the topic could be:
+So open the **Topics** tab, and disable the topic that you created in Exercise 3 to avoid any overlapping of trigger conditions. Then, create a new topic following the instructions provided in Exercise 2 Step 1. The **Trigger** description for the topic could be:
 
 ```txt
 This topic helps to collect information about a new candidate to process. Trigger sentences can be: 
