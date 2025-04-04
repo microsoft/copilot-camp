@@ -409,7 +409,7 @@ Great job on building your game agent 🎉 ! In the next lab, you’ll create a 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
 
-<script src="https://giscus.app/client.js"
+<!-- <script src="https://giscus.app/client.js"
         data-repo="microsoft/copilot-camp"
         data-repo-id="R_kgDOLMKPIA"
         data-mapping="number"
@@ -421,4 +421,4 @@ Great job on building your game agent 🎉 ! In the next lab, you’ll create a 
         data-lang="en"
         crossorigin="anonymous"
         async>
-</script>
+</script> -->
