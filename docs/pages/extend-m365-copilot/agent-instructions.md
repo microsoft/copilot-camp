@@ -5,7 +5,7 @@ This lab will guide you with suggestions to help refine your agent instructions 
 
 
 ???+ info "Prerequisites"
-    - Access to Copilot either usind Teams, Microsoft 356 chat or Copilot chat
+    - Access to Copilot either using Teams, Microsoft 356 chat or Copilot chat
     - A tool to iteratively test and update your agent either Teams Toolkit or Agent builder or Copilot Studio 
     (This lab uses Teams Toolkit, but you can also test it in Agent builder or even Copilot Studio)
 
@@ -15,15 +15,15 @@ Declarative agents are personalised Copilots that you can use to create a more c
 
 In this lab you will create an agent that will help you choose the show you want to watch this weekend on Netflix.
 We start with a simple prompt and iteratively try and improve the instructions. 
-Evaluating the agent's behavior at every iteration of your instructions is crucial. We will conduct iterative cycles to refine the instructions until we achieve a consistent behavior from the agent.
+Evaluating the agent's behaviour at every iteration of your instructions is crucial. We will conduct iterative cycles to refine the instructions until we achieve a consistent behaviour from the agent.
 
 ![Improvement cycle](../../assets/images/extend-m365-copilot-a1/improvement-cycle.png)
 
-## Step 1: Identify the problem for AI assitant
+## Step 1: Identify the problem for AI assistant 
 
 **Problem:** There are findings, stating that an average person spends approximately 110 hours annually scrolling through menus of various streaming apps like Netflix, Prime Video, Apple TV+, and Disney+ Hotstar. When considered in context, this means people spend an entire working week per year just checking various streaming apps without interruptions.
 
-**Solution:** Consider implementing a Copilot agent that can streamline decision-makeing processes. 
+**Solution:** Consider implementing a Copilot agent that can streamline decision-making processes. 
 
 **Goal:** It helps to already have an end goal in mind for the agent. The agent we are looking for is interactive, friendly, will ask for preferences, and give me detailed information about the shows it recommends and why it thinks I should watch it. Just like a friend. 
 
@@ -32,16 +32,16 @@ Evaluating the agent's behavior at every iteration of your instructions is cruci
 
 ## Step 2: Basic prompt 
 
-Next step is to come up with a basic prompt. This prompt looks almost like the title to the instructions you are going to build.Our examination of the community's prompting techniques, facilitated by the [Copillt Prompt Library](https://aka.ms/copilot-prompt-library), has revealed that this particular style of prompting is very common.
+Next step is to come up with a basic prompt. This prompt looks almost like the title to the instructions you are going to build.Our examination of the community's prompting techniques, facilitated by the [Copilot Prompt Library](https://aka.ms/copilot-prompt-library), has revealed that this particular style of prompting is very common.
 
-So let's start off with the basic prompt below:
+So, let's start off with the basic prompt below:
 
 ```
 Recommend a great Netflix show based on user preferences!
 ```
 
 ## Step 3: Evaluate Basic prompt using a Declarative agent
-To evaluate the behaviour you can use any tool of your choice like Teams Toolkit, Agent Builder or Copilot Studio. In this lab we have used Teams Toolkit. Check out our [prerequisites lab](http://127.0.0.1:8000/copilot-camp/pages/extend-m365-copilot/00-prerequisites/) to understand how to set up your environment for testing.
+To evaluate the behaviour, you can use any tool of your choice like Teams Toolkit, Agent Builder or Copilot Studio. In this lab we have used Teams Toolkit. Check out our [prerequisites lab](http://127.0.0.1:8000/copilot-camp/pages/extend-m365-copilot/00-prerequisites/) to understand how to set up your environment for testing.
 
 ### Declarative agent using Teams Toolkit
 
@@ -58,12 +58,12 @@ To evaluate the behaviour you can use any tool of your choice like Teams Toolkit
 - A VS code window will open up with your agent project scaffolded.
 - Expand **appPackage** folder. This is you will work to update your agent. 
 - (Optional) Replace the **color.png** with an icon of your choice with 192x192 size. Here is an example [file](../../assets/images/extend-m365-copilot-a1/color.png).
-- Go to file **declarativeAgent.json** and locate _description_ object. This is where you will set your personna for your agent for Copilot. Paste a simple description like `Netflix show recommendation agent` for now. 
+- Go to file **declarativeAgent.json** and locate _description_ object. This is where you will set your persona for your agent for Copilot. Paste a simple description like `Netflix show recommendation agent` for now. 
 - Go to **instruction.txt** file and replace the placeholder instruction with our basic prompt `Recommend a great Netflix show based on user preferences!`
 
 Now you are ready to test the basic prompt.
 
-- Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Provision** under **LifeCycle**. This step will sideload your agent to Microsoft 365 availabale for you test.
+- Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Provision** under **LifeCycle**. This step will sideload your agent to Microsoft 365 available for you test.
 - Go to teams app or Microsoft 365 chat.
 - Open Copilot app
 - Inside Copilot app, locate the "ShowExpert" agent from the right panel and select for an immersive chat experience with the agent. 
@@ -73,18 +73,18 @@ Below shows the interaction with the agent.
 
 ![Basic prompt agent interaction](../../assets/images/extend-m365-copilot-a1/step1-basic-prompt.png)
 
-While this agent did it's job it is far from my end goal. So like mentioned in the intro let's try and improve it's behaviour.
+While this agent did its job it is far from my end goal. So, like mentioned in the intro let's try and improve its behaviour.
 
 ## Step 4: Identify and assign a role/purpose to your agent
-Now let's give our agent a role and a purpose. Much like humans agents are motivated when they are given their life's purpose!
+Now let's give our agent a role and a purpose. Much like humans, agents are motivated when they are given their life's purpose!
 
-The way to look at it is to think of instructing a child of 7 years of age how to do something , like emptying the trash can.
+The way to look at it is to think of instructing a child of 7 years of age how to do something, like emptying the trash can.
 You might say something like this to the kid - _"**You are Captain Clean-up, the superhero tasked with saving the house from the stinky trash monster in the kitchen!**"_
 
-Now your Copilot agents are very smart but they are also unaware of the task at hand. So giving them a role similar to giving a child instruction to do a task would help.
-This is also the personna of the agent, so we will not only put the role in the instuctions but also make this the descripton of the agent.
+Now your Copilot agents are very smart,  but they are also unaware of the task at hand. So, giving them a role similar to giving a child instruction to do a task would help.
+This is also the persona of the agent, so we will not only put the role in the instructions but also make this the description of the agent.
 
-Copy paste below text to `description` field in **declarativeAgent.json** as well as the whole text for **instruction.txt**
+Copy and paste below text to `description` field in **declarativeAgent.json** as well as the whole text for **instruction.txt**
 
 ```
 You are an AI assistant specialised in providing Netflix show reviews and recommendations. Your primary goal is to help users discover content they'll enjoy and make informed decisions about what to watch. 
@@ -99,14 +99,14 @@ Below shows the interaction with the agent.
 
 ![Role provided agent interaction](../../assets/images/extend-m365-copilot-a1/step2-role.png)
 
-As you can see the agent is friendlier and slightly give me general review of what is popular these days with it's own recommendations. It has made more informed decision on behalf of the user. This is a good improvement but has not reached the goal yet so let's keep improving. 
+As you can see the agent is friendlier and slightly give me general review of what is popular these days with its own recommendations. It has made more informed decision on behalf of the user. This is a good improvement but has not reached the goal yet so let's keep improving. 
 
 ## Step 5: Workflow for sequential subtasks if relevant
 
 When you take the example of explaining the role of Captain clean up, you could make it a lot easier for the child to do the task successfully if you provide steps to do the task. Just like the child, agents also behave better when you give it steps or workflow steps (if at all the task at hand involves steps) when needed. 
 For the case of captain clean up you could say - _"**You are Captain Clean-up. You have a special mission to keep the house safe from the trash monster in the kitchen. Carefully pull out the trash bag from the bin. Use your superhero strength to make sure nothing falls out. Open the lid of the big garbage bin and put the trash bag inside. Make sure it's all the way in. Close the lid of the big garbage bin. You've completed your mission and saved the house from the stinky trash monster**_
 
-Certainly this is a sequence that can be made into workflow steps. 
+Certainly, this is a sequence that can be made into workflow steps. 
 Now let's reimage for our ShowExpert agent how to incorporate subtasks as steps.
 
 Add into the **instruction.txt** file below workflow steps
@@ -116,7 +116,7 @@ Add into the **instruction.txt** file below workflow steps
 
 ```
 ## Workflow Steps
-1. Extract the user's name and greet them personally. Use emjois and be welcoming.
+1. Extract the user's name and greet them personally. Use emojis and be welcoming.
 2. Identify the type of request (review, recommendation, or question).
 3. List key elements from the user's input (e.g., shows mentioned, preferences).
 4. For recommendations, brainstorm potential shows before making final selections, ask questions to clarify preferences.
@@ -128,12 +128,12 @@ Once changes are made, select **Provision** to update the agent.
 
 As you can see the agent interaction has improved, it knows my name, uses emojis, asks for preferences and genre. 
 It also gives me the recommendations since we also had a little brainstorm session based on genre. 
-It is a lot better but it could be improved as per our goal. 
+It is a lot better, but it could be improved as per our goal. 
 
 
 ## Step 6: Guidelines for Response, Tone and miscellaneous
-Giving our agent gudelines on how it's response should be formed, what tone to give, what to keep in mind etc are all good ways to improve the behaviour of your agent as you see fit.
-In our case there is reponse format we have as goal, we know what tone the agent should use and we also want to enforce some other principals. We are going to call it `Operating Principals`.
+Giving our agent guidelines on how it's response should be formed, what tone to give, what to keep in mind etc are all good ways to improve the behaviour of your agent as you see fit.
+In our case there is response format we have as goal, we know what tone the agent should use and we also want to enforce some other principals. We are going to call it `Operating Principals`.
 
 I would put these operating principals right above the workflow steps. 
 
@@ -177,12 +177,12 @@ Once changes are made, select **Provision** to update the agent.
 
 ![interaction with improved response guidelines ](../../assets/images/extend-m365-copilot-a1/step4-response-guidelines.png)
 
-A lot has improved here. The agent is friendly, engages for preferences, still actively recommends shows. It has formatted it's recommendations to include details of the movie, rating, and why the user might like it.
-I still want to re-inforce some behaviour like the brain storming part. 
+A lot has improved here. The agent is friendly, engages for preferences, still actively recommends shows. It has formatted its recommendations to include details of the movie, rating, and why the user might like it.
+I still want to re-enforce some behaviour like the brain storming part. 
 
 ## Step 7: Examples, examples, examples
 
-The best way to get to respond similar to your goals is to provide as many examples you can of your ideal interaction with the agent. Include atleast 2 examples. The more complex your tasks, the more examples, espcially if your workflow needs to use multi turn conversation between user and agent. 
+The best way to get to respond like your goals is to provide as many examples as possible you can of your ideal interaction with the agent. Include at the very least 2 examples. The more complex your tasks, the more examples, especially if your workflow needs to use multi turn conversation between user and agent. 
 
 For our agent, we want to make sure we add examples to make sure we get the response and interaction we have as a goal.
 
@@ -310,7 +310,7 @@ You can see the interaction improvement, more predictable response pattern as we
 
 ## Step 8: Fine tune your own way
 
-All steps for this lab are now complete, and you have an agent that exhibits somewhat consistent behavior. The final step is optional, but what would you add to enhance this agent further? Let us know!
+All steps for this lab are now complete, and you have an agent that exhibits somewhat consistent behaviour. The final step is optional, but what would you add to enhance this agent further? Let us know!
 
 !!! note
     Restrict your instructions to a total length of 8000 characters.
