@@ -59,7 +59,20 @@ To evaluate the behaviour, you can use any tool of your choice like Teams Toolki
 - Expand **appPackage** folder. This is you will work to update your agent. 
 - (Optional) Replace the **color.png** with an icon of your choice with 192x192 size. Here is an example [file](../../assets/images/extend-m365-copilot-a1/color.png).
 - Go to file **declarativeAgent.json** and locate _description_ object. This is where you will set your persona for your agent for Copilot. Paste a simple description like `Netflix show recommendation agent` for now. 
+- In the same file **declarativeAgent.json**, after the _instructions_ object, add the capability for your agent to use websearch but appending below code after a comma. 
+
+```
+ "capabilities": [
+        {
+
+            "name": "WebSearch"
+        
+        }
+    ]
+```
+
 - Go to **instruction.txt** file and replace the placeholder instruction with our basic prompt `Recommend a great Netflix show based on user preferences!`
+
 
 Now you are ready to test the basic prompt.
 
