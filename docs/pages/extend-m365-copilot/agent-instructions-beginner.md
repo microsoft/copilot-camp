@@ -128,7 +128,7 @@ Open a new chat with the **ShowExpert** and interact the same way as before.
 
 As you can see the agent is friendlier and slightly gives us general review of what is popular these days with its own recommendations. It has made more informed decision on behalf of the user. This is a good improvement but has not reached the goal yet so let's keep improving. 
 
-## Step 4: Execution for sequential subtasks if relevant
+## Step 4: Execution steps for sequential subtasks if relevant
 
 When you take the example of explaining the role of Captain clean up, you could make it a lot easier for the child to do the task successfully if you provide steps to do the task. Just like the child, agents also behave better when you give them steps or execution steps (if at all the task at hand involves steps) when needed. For the case of captain clean up you could say - _"**You are Captain Clean-up. You have a special mission to keep the house safe from the trash monster in the kitchen. Carefully pull out the trash bag from the bin. Use your superhero strength to make sure nothing falls out. Open the lid of the big garbage bin and put the trash bag inside. Make sure it's all the way in. Close the lid of the big garbage bin. You've completed your mission and saved the house from the stinky trash monster**_
 
@@ -207,7 +207,7 @@ A lot has improved here. The agent is friendly, engages for preferences, still a
 
 ## Step 6: Examples, Examples, Examples
 
-The best way to get to respond like your goals is to provide as many examples as possible you can of your ideal interaction with the agent. Include at the very least 2 examples. The more complex your tasks, the more examples, especially if your steps needs to use multi turn conversation between user and agent. 
+The best way to get to respond like your goals is to provide as many examples as possible you can of your ideal interaction with the agent. Include at the very least 2 examples. The more complex your tasks, the more examples, especially if your flow needs to use multi turn conversation between user and agent. 
 
 For our agent, we want to make sure we add examples to make sure we get the response and interaction we have as a goal. 
 
