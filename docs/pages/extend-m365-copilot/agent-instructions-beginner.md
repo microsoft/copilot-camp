@@ -6,7 +6,7 @@ What you will do:
 - **Identify the Problem:** Pinpoint the specific issue your copilot agent will address 
 - **Build a Basic Agent:** Start with a simple prompt to get your agent up and running. 
 - **Define the Agent's Role:** Improve your agents focus with a role assigned 
-- **Outline Workflow Steps:** Break down the process into clear, manageable subtasks. 
+- **Outline Execution Steps:** Break down the process into clear, manageable subtasks. 
 - **Set Response Guidelines:** Influence the agent’s response with clear instructions 
 - **Give example conversations:** Provide examples to improve consistency in agent’s response 
 
@@ -128,20 +128,20 @@ Open a new chat with the **ShowExpert** and interact the same way as before.
 
 As you can see the agent is friendlier and slightly gives us general review of what is popular these days with its own recommendations. It has made more informed decision on behalf of the user. This is a good improvement but has not reached the goal yet so let's keep improving. 
 
-## Step 4: Workflow for sequential subtasks if relevant
+## Step 4: Execution for sequential subtasks if relevant
 
-When you take the example of explaining the role of Captain clean up, you could make it a lot easier for the child to do the task successfully if you provide steps to do the task. Just like the child, agents also behave better when you give them steps or workflow steps (if at all the task at hand involves steps) when needed. For the case of captain clean up you could say - _"**You are Captain Clean-up. You have a special mission to keep the house safe from the trash monster in the kitchen. Carefully pull out the trash bag from the bin. Use your superhero strength to make sure nothing falls out. Open the lid of the big garbage bin and put the trash bag inside. Make sure it's all the way in. Close the lid of the big garbage bin. You've completed your mission and saved the house from the stinky trash monster**_
+When you take the example of explaining the role of Captain clean up, you could make it a lot easier for the child to do the task successfully if you provide steps to do the task. Just like the child, agents also behave better when you give them steps or execution steps (if at all the task at hand involves steps) when needed. For the case of captain clean up you could say - _"**You are Captain Clean-up. You have a special mission to keep the house safe from the trash monster in the kitchen. Carefully pull out the trash bag from the bin. Use your superhero strength to make sure nothing falls out. Open the lid of the big garbage bin and put the trash bag inside. Make sure it's all the way in. Close the lid of the big garbage bin. You've completed your mission and saved the house from the stinky trash monster**_
 
-Certainly, this is a sequence that can be made into workflow steps. 
+Certainly, this is a sequence that can be made into execution steps. 
 Now let's reimage for our ShowExpert agent how to incorporate subtasks as steps.
 
-Add into the **instruction.txt** file below workflow steps
+Add into the **instruction.txt** file below Execution Steps
 
 ???+ info "Format of instruction file"
     Agents behave better when instruction files are in .md format
 
 ```
-## Workflow Steps
+## Execution Steps
 
 1. Extract the user's name and greet them personally. Use emojis and be welcoming.
 2. Identify the type of request (review, recommendation, or question).
@@ -160,7 +160,7 @@ As you can see the agent interaction has improved, it knows the name of the user
 
 Giving our agent guidelines on how it's response should be formed, what tone to give, what to keep in mind etc. are all good ways to improve the behaviour of your agent as you see fit. In our case there is response format we have as goal, we know what tone the agent should use and we also want to enforce some other principals. We are going to call it  `Operating Principals`.
 
-We can put these operating principals right above the workflow steps. 
+We can put these operating principals right above the execution steps. 
 
 ```
 ## Operating Principles
@@ -207,7 +207,7 @@ A lot has improved here. The agent is friendly, engages for preferences, still a
 
 ## Step 6: Examples, Examples, Examples
 
-The best way to get to respond like your goals is to provide as many examples as possible you can of your ideal interaction with the agent. Include at the very least 2 examples. The more complex your tasks, the more examples, especially if your workflow needs to use multi turn conversation between user and agent. 
+The best way to get to respond like your goals is to provide as many examples as possible you can of your ideal interaction with the agent. Include at the very least 2 examples. The more complex your tasks, the more examples, especially if your steps needs to use multi turn conversation between user and agent. 
 
 For our agent, we want to make sure we add examples to make sure we get the response and interaction we have as a goal. 
 
@@ -350,7 +350,7 @@ Do not settle for simple line prompts if your agents have complex tasks at hand.
 ```txt
 You are an agent specialised in providing reviews and recommendations for shows on all online streaming platforms. Your primary goal is to help users discover content they'll enjoy and make informed decisions about what to watch. Speak concretely about all angles, pros and cons in an unbiased yet informative manner about the shows.Extract the user's name and greet them personally.  
 
-## Workflow Steps
+## Execution Steps
 
 1. Extract the user's name and greet them personally. Use emojis and be welcoming.
 2. Identify the type of request (review, recommendation, or question).
