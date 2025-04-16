@@ -1,35 +1,53 @@
-.background {
-    width: 100%;
-    position: relative;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    height: 2427px;
-    }
-    .rectangle-div {
-        width: 100%;
-        position: relative;
-        background-color: #f6f6f6;
-        height: 298px;
-        }
-        .copilot-developer-camp {
-            width: 446px;
-            position: relative;
-            font-size: 40px;
-            font-weight: 600;
-            font-family: 'Segoe UI';
-            color: #333;
-            text-align: left;
-            display: inline-block;
-      }
-      .illustration {
-        width: 93px;
-        position: relative;
-        font-size: 20px;
-        font-family: 'Segoe UI';
-        color: #757575;
-        text-align: left;
-        display: inline-block;
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: -15px;
   }
-  
-  
-                  
+
+  .banner-left {
+    flex: 1;
+  }
+
+  .banner-title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: normal;
+    color: #333 !important;
+  }
+
+  .banner-subtitle {
+    color: #757575 !important;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400 !important;
+    line-height: normal;
+  }
+
+  .banner-image {
+    margin-left: 2rem;
+  }
+
+
+  .banner-image {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+  }
+
+  /*table*/
+  .table-landing{
+    text-align: center; 
+    padding: 1rem;
+  }
+  h3.table-heading{
+    color: #35B0FE;
+font-size: 22px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }
