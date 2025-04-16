@@ -12,7 +12,7 @@
     <h1 class="banner-title">Copilot Developer Camp</h1>
     <p class="banner-subtitle">Guide for building agents for Microsoft 365 Copilot</p>
   </div>
-  <img src="./assets/images/landing/CopilotCamp.png" alt="Copilot Logo" class="banner-image">
+  <img src="http://127.0.0.1:8000/copilot-camp/assets/images/CopilotCamp-Tent-Clean.png" alt="Copilot Logo" class="banner-image">
 </div>
 <svg class="banner-divider" xmlns="http://www.w3.org/2000/svg" width="1280" height="15" viewBox="0 0 1280 15" fill="none">
 <path d="M0 0H1280V15H0V0Z" fill="url(#paint0_linear_5_111)"/>
@@ -43,7 +43,7 @@ The labs are divided into three pathways, allowing you to choose based on what y
 
 ## 🎁 Copilot Camp in a Box 
 
-Got the labs working? Ready to share your knowledge? Why not run your own Copilot Camp workshop using our Copilot Camp in a Box resources! We've got you covered with presentation materials that even include embedded demos.
+Got the labs working? Ready to share your knowledge? Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box resources](https://microsoft.github.io/copilot-camp/pages/in-a-box/)! We've got you covered with presentation materials that even include embedded demos.
 
 ## 📜 Code of Conduct
 
