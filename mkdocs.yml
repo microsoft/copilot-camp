@@ -5,6 +5,7 @@ repo_name: microsoft/copilot-camp
 edit_uri: ''                    # Disable edit button
 extra_css:
     - assets/labStyles.css
+    - ./index.css
 nav:
 - Home: 'index.md'
 - Make Path - Make your agent:
@@ -44,7 +45,7 @@ nav:
   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
 - Awards: 'awards.md'
-
+- Resources: 'resources.md'
 # The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
 #  - Lab MAB - Copilot Studio agent builder:
 #      - Lab MAB - Welcome: 'pages/make/agent-builder/index.md'
