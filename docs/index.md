@@ -12,7 +12,7 @@
     <h1 class="banner-title">Copilot Developer Camp</h1>
     <p class="banner-subtitle">Guide for building agents for Microsoft 365 Copilot</p>
   </div>
-  <img src="http://127.0.0.1:8000/copilot-camp/assets/images/CopilotCamp-Tent-Clean.png" alt="Copilot Logo" class="banner-image">
+  <img src="./assets/images/CopilotCamp-Tent-Clean.png" alt="Copilot Logo" class="banner-image">
 </div>
 <svg class="banner-divider" xmlns="http://www.w3.org/2000/svg" width="1280" height="15" viewBox="0 0 1280 15" fill="none"><path d="M0 0H1280V15H0V0Z" fill="url(#paint0_linear_5_111)"/><defs><linearGradient id="paint0_linear_5_111" x1="2.80782e-08" y1="3.23034" x2="206.014" y2="477.898" gradientUnits="userSpaceOnUse"><stop stop-color="#35B0FE"/><stop offset="1" stop-color="#B86FFE"/>
 </linearGradient>
