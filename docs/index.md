@@ -43,7 +43,7 @@ The labs are divided into three pathways, allowing you to choose based on what y
 
 ---8<--- "more-links.md"
 
-## Copilot Developer Camp Awards
+## 🎖️ Copilot Developer Camp Awards
 
 We are excited to announce a thrilling initiative that will challenge you to showcase your knowledge and skills in Microsoft 365 Copilot extensibility. This is your chance to dive deep into the world of Copilot, explore its capabilities, and demonstrate your expertise. [Find out more on awards.](https://microsoft.github.io/copilot-camp/awards)
 
@@ -55,7 +55,7 @@ Got the labs working? Ready to share your knowledge? Why not run your own Copilo
 
 
 
-## Issues
+## 🚑 Issues
 
 We really appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues, or if you're in Microsoft let us know in the "Copilot Developer Camp Early Testers" chat in Microsoft Teams. Thanks!
 
