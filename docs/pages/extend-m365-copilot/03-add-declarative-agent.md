@@ -155,7 +155,7 @@ These two files are used to describe your API to Copilot. They were already incl
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
 
- In **appPackage/trey-definition.json**, you'll find the general description of the aplication. This includes the server URL; Teams Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
+ In **appPackage/trey-definition.json**, you'll find the general description of the application. This includes the server URL; Teams Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
 
 ~~~json
 {
@@ -244,7 +244,7 @@ Now open the **manifest.json** file within the **appPackage** directory. Add, ju
     "declarativeAgents": [
       {
         "id": "treygenie",
-      "file": "trey-declarative-agent.json"
+        "file": "trey-declarative-agent.json"
       }
     ]
   }, 
