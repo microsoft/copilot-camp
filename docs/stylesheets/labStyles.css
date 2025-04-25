@@ -683,7 +683,7 @@ dicussion */
 }
 
 .award-congrats {
-    color: color: var(--md-typeset-a-color--darker);
+    color: var(--md-typeset-a-color--darker);
     font-size: larger;
     font-weight: bold;
     text-transform: uppercase;
