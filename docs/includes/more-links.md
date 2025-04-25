@@ -21,4 +21,8 @@
     </h3>
     <p>Join the conversation on <a href="https://github.com/microsoft/copilot-camp/discussions">GitHub Discussion</a>!</p>
   </div>
+  <div class="table-landing">
+  </div>
+  <div class="table-landing">
+  </div>
 </div>

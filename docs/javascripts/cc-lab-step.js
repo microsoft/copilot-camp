@@ -2,55 +2,6 @@
 
     // Web controls for Copilot Developer Camp lab step tracking
 
-    //#region CSS
-    function ensureCss() {
-
-        const css = `
-            .cc-end-step {
-                background-color: gray;
-                color: white;
-                padding: 4pt 20pt 4pt 4pt;
-                display: inline-block;
-                border-radius: 0 22pt 22pt 0;
-            }
-            .cc-end-step input[type=checkbox] {
-                -ms-transform: scale(1.5);  /* IE */
-                -moz-transform: scale(1.5); /* FF */
-                -webkit-transform: scale(1.5); /* Safari and Chrome */
-                -o-transform: scale(1.5);  /* Opera */
-                transform: scale(1.5);
-            }
-            .cc-end-step .subtext {
-                font-size: 0.8em;
-                font-style: italic;
-                padding-left: 18pt;
-                margin-top -9pt;
-            }
-            h3 {
-                border-top: 4px solid gray;
-                border-bottom: 4px solid gray;
-            }
-            .cc-last-completed-step {
-                font-size: large;
-            }
-            .cc-table-of-contents {
-            }
-            .cc-table-of-contents li ul {
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-            .cc-table-of-contents li ul li {
-                padding: 0 !important;
-                margin: 0 !important;
-                list-style-type: none;
-            }
-        `;
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(css);
-        document.adoptedStyleSheets = [sheet];
-    };
-    //#endregion
-
     //#region cc-end-step web component
 
     // This web component goes at the end of a step in a lab to track completion
@@ -71,8 +22,6 @@
             this.lab = this.getAttribute('lab');
             this.exercise = this.getAttribute('exercise');
             this.step = this.getAttribute('step');
-
-            ensureCss();
 
             this.#containerElement = document.createElement('div');
             this.#containerElement.className = 'cc-end-step';
