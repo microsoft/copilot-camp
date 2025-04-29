@@ -3,63 +3,6 @@ site_url: https://microsoft.github.io/copilot-camp
 repo_url: https://github.com/microsoft/copilot-camp
 repo_name: microsoft/copilot-camp
 edit_uri: ''                    # Disable edit button
-nav:
-- Home: 'index.md'
-- Make Path - Make your agent:
-  - Welcome: 'pages/make/index.md'
-  - Lab MAB - Copilot Studio agent builder: 'pages/make/agent-builder/index.md'
-  - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
-  - Lab MCS - Microsoft Copilot Studio: 'pages/make/copilot-studio/index.md'
-  - Lab MCS0 - Setup: 'pages/make/copilot-studio/00-prerequisites.md'
-  - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
-  - Lab MCS2 - Defining Topics: 'pages/make/copilot-studio/02-topics.md'
-  - Lab MCS3 - Defining Actions: 'pages/make/copilot-studio/03-actions.md'
-  - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
-  - Lab MCS5 - Consuming a custom connector: 'pages/make/copilot-studio/05-connectors.md'
-  # - Lab MCS6 - Knowledge: 'pages/make/copilot-studio/06-knowledge.md'
-  - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
-  # - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
-  # - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
-- Extend - Build a declarative agent:
-  - Welcome : 'pages/extend-m365-copilot/index.md'
-  - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
-  - Lab E1 - First Declarative agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
-  - Lab E2 - Build an API: 'pages/extend-m365-copilot/02-build-the-api.md'
-  - Lab E3 - Add a declarative agent and API plugin: 'pages/extend-m365-copilot/03-add-declarative-agent.md'
-  - Lab E4 - Enhance the API and plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
-  - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
-  - Authentication labs:
-    - Lab E6a - Add Entra ID authentication (Teams Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'
-    - Lab E6b - Add Entra ID authentication (Manual setup): 'pages/extend-m365-copilot/06b-add-authentication.md'
-    - Lab E6c - Add Entra ID authentication (Single Sign-on): 'pages/extend-m365-copilot/06c-add-sso.md'
-  - Lab EB - Add Graph Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
-- Build - Build a custom engine agent:
-  - Welcome : 'pages/custom-engine/index.md'
-  - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
-  - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
-  - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
-  - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
-  - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
-  - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
-- Awards: 'awards.md'
-- Resources: 'resources.md'
-# The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
-#  - Lab MAB - Copilot Studio agent builder:
-#      - Lab MAB - Welcome: 'pages/make/agent-builder/index.md'
-#      - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
-#  - Lab MCS - Microsoft Copilot Studio:
-#      - Lab MCS - Welcome: 'pages/make/copilot-studio/index.md'
-#      - Lab MCS0 - Setup: 'pages/make/copilot-studio/00-prerequisites.md'
-#      - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
-#      - Lab MCS2 - Defining Topics: 'pages/make/copilot-studio/02-topics.md'
-#      - Lab MCS3 - Defining Actions: 'pages/make/copilot-studio/03-actions.md'
-#      - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
-#      - Lab MCS5 - Consuming a custom connector: 'pages/make/copilot-studio/05-connectors.md'
-#      - Lab MCS6 - Knowledge: 'pages/make/copilot-studio/06-knowledge.md'
-#  - Lab MSA - SharePoint agents:
-#      - Lab MSA - Welcome: 'pages/make/sharepoint-agents/index.md'
-#      - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
-#      - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
 
 theme:
   name: 'material'
@@ -91,3 +34,79 @@ extra_javascript:
 extra_css:
   - stylesheets/labStyles.css
   - stylesheets/extra.css
+
+plugins:
+  - search:
+  - i18n:
+      docs_structure: folder
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+          nav:
+            - Home: 'index.md'
+            - Make Path - Make your agent:
+              - Welcome: 'pages/make/index.md'
+              - Lab MAB - Copilot Studio agent builder: 'pages/make/agent-builder/index.md'
+              - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
+              - Lab MCS - Microsoft Copilot Studio: 'pages/make/copilot-studio/index.md'
+              - Lab MCS0 - Setup: 'pages/make/copilot-studio/00-prerequisites.md'
+              - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
+              - Lab MCS2 - Defining Topics: 'pages/make/copilot-studio/02-topics.md'
+              - Lab MCS3 - Defining Actions: 'pages/make/copilot-studio/03-actions.md'
+              - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
+              - Lab MCS5 - Consuming a custom connector: 'pages/make/copilot-studio/05-connectors.md'
+              # - Lab MCS6 - Knowledge: 'pages/make/copilot-studio/06-knowledge.md'
+              - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
+              # - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
+              # - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
+            - Extend - Build a declarative agent:
+              - Welcome : 'pages/extend-m365-copilot/index.md'
+              - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
+              - Lab E1 - First Declarative agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
+              - Lab E2 - Build an API: 'pages/extend-m365-copilot/02-build-the-api.md'
+              - Lab E3 - Add a declarative agent and API plugin: 'pages/extend-m365-copilot/03-add-declarative-agent.md'
+              - Lab E4 - Enhance the API and plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
+              - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
+              - Authentication labs:
+                - Lab E6a - Add Entra ID authentication (Teams Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'
+                - Lab E6b - Add Entra ID authentication (Manual setup): 'pages/extend-m365-copilot/06b-add-authentication.md'
+                - Lab E6c - Add Entra ID authentication (Single Sign-on): 'pages/extend-m365-copilot/06c-add-sso.md'
+              - Lab EB - Add Graph Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
+            - Build - Build a custom engine agent:
+              - Welcome : 'pages/custom-engine/index.md'
+              - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
+              - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
+              - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
+              - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
+              - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
+              - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
+            - Awards: 'awards.md'
+            - Resources: 'resources.md'
+            # The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
+            #  - Lab MAB - Copilot Studio agent builder:
+            #      - Lab MAB - Welcome: 'pages/make/agent-builder/index.md'
+            #      - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
+            #  - Lab MCS - Microsoft Copilot Studio:
+            #      - Lab MCS - Welcome: 'pages/make/copilot-studio/index.md'
+            #      - Lab MCS0 - Setup: 'pages/make/copilot-studio/00-prerequisites.md'
+            #      - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
+            #      - Lab MCS2 - Defining Topics: 'pages/make/copilot-studio/02-topics.md'
+            #      - Lab MCS3 - Defining Actions: 'pages/make/copilot-studio/03-actions.md'
+            #      - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
+            #      - Lab MCS5 - Consuming a custom connector: 'pages/make/copilot-studio/05-connectors.md'
+            #      - Lab MCS6 - Knowledge: 'pages/make/copilot-studio/06-knowledge.md'
+            #  - Lab MSA - SharePoint agents:
+            #      - Lab MSA - Welcome: 'pages/make/sharepoint-agents/index.md'
+            #      - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
+            #      - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
+
+        - locale: ja
+          name: Japanese (日本語)
+          build: true
+          nav:
+            - ようこそ: 'index.md'
+            - アワード: 'awards.md'
+            - 動画など: 'resources.md'
+    

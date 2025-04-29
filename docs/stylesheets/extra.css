@@ -89,6 +89,19 @@
   scroll-snap-align: start;
 }
 
+/* i18n button */
+
+button.md-header__button {
+  color: currentcolor;
+  outline-color: inherit;
+  background: none;
+  box-shadow: none;
+}
+
+button.md-header__button:hover {
+  box-shadow: none;
+}
+
 /* Article */
 
 .md-typeset {
