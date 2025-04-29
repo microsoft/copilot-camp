@@ -66,7 +66,7 @@ theme:
   palette:
     scheme: default
     primary: custom
-  logo: 'assets/images/CopilotCamp-Tent-Clean.png'
+  logo: 'assets/images/tent-small.png'
   icon:
     repo: fontawesome/brands/github
   features:

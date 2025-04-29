@@ -51,6 +51,10 @@
   font-weight: 400;
 }
 
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+  height: 0.9rem;
+}
+
 [dir=ltr] .md-header__title {
   margin-left: 0;
   margin-right: .4rem;
