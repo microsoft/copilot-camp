@@ -66,7 +66,8 @@ theme:
   palette:
     scheme: default
     primary: custom
-  logo: 'assets/images/tent-small.png'
+  logo: assets/images/tent-small.png
+  favicon: assets/images/favicon.png
   icon:
     repo: fontawesome/brands/github
   features:

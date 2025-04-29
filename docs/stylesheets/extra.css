@@ -55,6 +55,10 @@
   height: 0.9rem;
 }
 
+.md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
+  height: 1.8rem;
+}
+
 [dir=ltr] .md-header__title {
   margin-left: 0;
   margin-right: .4rem;
