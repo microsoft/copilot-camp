@@ -54,7 +54,7 @@
             this.#label = this.getAttribute('label') || 'Next';
             this.#url = this.getAttribute('url') || this.#getNextUrlByNavigation();
 
-            ensureCss();
+            //ensureCss();
 
             if (this.#url) {
                 this.#containerElement = document.createElement('div');

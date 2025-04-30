@@ -117,7 +117,9 @@ For example, you can rename the variable to `UserRole`. You can see how the acti
 
 ### Step 3: Providing feedback to the user
 
-You will notice that, while adding new options to the **Ask a question** action, Copilot Studio automatically creates a set of conditions for all the branches matching each of the provided options, plus one last condition for `All other conditions`.
+Now select the **+** button in the middle of the screen to **Add a condition**. In the branch on the left side, select the **Select a variable** option, and select the **userRole** variable that you created in the previous step. Then select the value for the condition, so that the condition will be like `userRole is equal to Candidate`.
+Repeat the previous instructions two more times to provide conditions for `userRole is equal to Employee` and `userRole is equal to HR staff member`. Leave the last condition for `All other conditions`.
+
 Inside each branch, you can specify some custom logic to provide a specialized feedback to the user. To do so, select the **+** command below each of the **Condition** branches and add one action of type **Send a message**. You can eventually add more than one action to each branch.
 
 For the three branches, you could for example provide the following feedback messages:
@@ -139,7 +141,7 @@ how to learn more about your growth mindset.
 - HR staff member
 
 ```txt
-As an HR staff member, you can manage the list of candidates and all the hiring procedures
+As an HR staff member, you can manage the list of candidates and all the hiring procedures.
 ```
 
 For the `All other conditions` branch, you can configure a **Redirect** action, available under the **Topic management** group, to fallback to the System Topic with name **Fallback**.
@@ -191,7 +193,7 @@ Imagine that you want to create a topic to collect the following information abo
 - E-mail
 - Current role
 
-To collect the above information, create a new topic following the istructions provided in Excercise 2 Step 1.
+To collect the above information, create a new topic following the instructions provided in Exercise 2 Step 1.
 The **Trigger** description for the topic could be:
 
 ```txt
@@ -201,7 +203,7 @@ register a new candidate, create a new candidate, add a new candidate.
 
 Then, for each of the above information fields, you need to prompt the user with an action of type **Ask a question**. However, in this exercise the value of the answer will vary depending on the requested field. For example: first name, last name, and current role will be simple text fields., while the e-mail field will need to be a valid e-mail.
 
-So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entire response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningfull name to each of the variables holding the values provided by the user.
+So for the first name, last name, and current role fields you can select the **Identify** property of the **Ask a question** action and you can select **User's entire response** as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a `string` by Copilot Studio. Give a meaningful name to each of the variables holding the values provided by the user.
 In the following screenshot you can see how the first name input action can be defined. You can do the same for last name and current job role.
 
 ![The **Ask a question** action configured to collect the candidate's first name and store it into a variable of type string, accepting any value provided by the user.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-01.png)
@@ -232,7 +234,7 @@ Just for the sake of having a final confirmation from the user, insert an action
 Is it ok for you to insert this new candidate?
 ```
 
-And configure the action to support the answers `Yes` and `No`. As like as it happened in Excercise 2 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of **Send a message** actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback. Lastly, add an action of type **End current topic** to complete the topic.
+And configure the action to support the answers `Yes` and `No`. As like as it happened in Exercise 2 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of **Send a message** actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback. Lastly, add an action of type **End current topic** to complete the topic.
 
 ![The final part of the topic with the last **Ask a question** action, three branches to manage the user's input and one final action to **End current topic**.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-05.png)
 
@@ -271,14 +273,14 @@ Imagine that you want to create yet another topic to collect the following infor
 
 Specifically, spoken languages and skills are multi-select lists of values.
 
-So open the **Topics** tab, and disable the topic that you created in Exercise 3 to avoid any overlapping of trigger conditions. Then, create a new topic following the istructions provided in Excercise 2 Step 1. The **Trigger** description for the topic could be:
+So open the **Topics** tab, and disable the topic that you created in Exercise 3 to avoid any overlapping of trigger conditions. Then, create a new topic following the instructions provided in Exercise 2 Step 1. The **Trigger** description for the topic could be:
 
 ```txt
 This topic helps to collect information about a new candidate to process. Trigger sentences can be: 
 register a new candidate, create a new candidate, add a new candidate.
 ```
 
-Now add a new action of type **Ask with adaptive card**, 1️⃣ select the body of the new action and 2️⃣ type the following JSON into the text area available in the property pane of the action.
+Now add a new action of type **Ask with adaptive card**, 1️⃣ select the body of the new action and 2️⃣ then select the button **Edit adaptive card**. Then type the following JSON into the **Card payload editor** of the **Adaptive card designer** of the action.
 
 ![The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open to define the JSON of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png)
 
@@ -388,7 +390,7 @@ You can now use an adaptive card also to provide feedback to the user, showing a
 
 ![The command box to add an adaptive card as the message to send with the **Send a message** action.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-03.png)
 
-A side panel shows up allowing you to define the content of the adaptive card. Copy and paste the following JSON into the text area.
+A side panel shows up allowing you to select the **Edit adaptive card** command and to define the content of the adaptive card. Copy and paste the following JSON into the **Card payload editor** of the **Adaptive card designer**.
 
 ```JSON
 {

@@ -43,7 +43,7 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 
 
 !!! note 
-     You can add reference data form SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like CodeInterpreter support, GraphicArt skill,  plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
+     You can add reference data from SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like CodeInterpreter support, GraphicArt skill,  plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
 
 
 ## Capabilities of a Declarative agent 
@@ -129,7 +129,7 @@ A browser window will pop up and offer to log into Microsoft 365. When it says "
 
 Now verify that the "Custom App Upload Enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. Follow steps in Exercise 1 of this lab. 
 
-Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account license for Copilot. This is required to continue the labs.
+Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account does not have a license for Copilot. This is required to continue the labs.
 
 
 ![The UI of Teams Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/checker.png)
@@ -408,3 +408,17 @@ Great job on building your game agent 🎉 ! In the next lab, you’ll create a 
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
+
+<!-- <script src="https://giscus.app/client.js"
+        data-repo="microsoft/copilot-camp"
+        data-repo-id="R_kgDOLMKPIA"
+        data-mapping="number"
+        data-term="548"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script> -->
