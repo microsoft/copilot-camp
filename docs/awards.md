@@ -44,3 +44,5 @@ Every single week, during [Microsoft 365 & Power Platform Community calls](https
 Don't miss out on this exciting opportunity to earn recognition in the community. Whether you're a seasoned expert or just starting out, this initiative is designed for everyone. So, gear up, get ready, and let's see how much you know about Microsoft 365 Copilot extensibility!
 
 Happy learning and good luck!
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/awards" />

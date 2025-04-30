@@ -2,11 +2,11 @@
 
 ---8<--- "mcs-labs-prelude.md"
 
-In this lab, you are going to learn how to extend Microsoft 365 Copilot Chat with a custom agent made using Microsoft Copilot Studio. In fact, so far you have seen how to create agents in Copilot Studio and how to consume them in Microsoft Teams. Now, with this lab, you are moving to Microsoft 365 Copilot Chat.
+In this lab, you are going to learn how to extend Microsoft 365 Copilot Chat with a Declarative Agent made using Microsoft Copilot Studio. In fact, so far you have seen how to create agents in Copilot Studio and how to consume them in Microsoft Teams. You have also seen that agents created in Microsoft Copilot Studio can target both Microsoft Teams and Microsoft 365 Copilot Chat through the specific options available in the **Teams and Microsoft 365 Copilot** channel. Now, with this lab, you are moving to Declarative Agents for Microsoft 365 Copilot Chat.
 
 In this lab you will learn:
 
-- How to create an agent for Microsoft 365 Copilot Chat
+- How to create a declarative agent for Microsoft 365 Copilot Chat
 - How to configure a custom icon for your agent
 - How to configure knowledge sources for your agent
 - How to publish the agent in Microsoft 365 Copilot Chat
@@ -14,11 +14,11 @@ In this lab you will learn:
 
 ## Exercise 1 : Creating an agent for Microsoft 365 Copilot Chat
 
-In this excercise you are going to create an agent with Microsoft Copilot Studio and hosting it in Microsoft 365 Copilot Chat.
+In this excercise you are going to create a declarative agent with Microsoft Copilot Studio and hosting it in Microsoft 365 Copilot Chat.
 
 ### Step 1: Creating an agent for Copilot Chat
 
-To create an agent for Microsoft 365 Copilot Chat you need to 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the agent with name **Copilot for Microsoft 365**.
+To create a declarative agent for Microsoft 365 Copilot Chat you need to 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the agent with name **Copilot for Microsoft 365**.
 
 ![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Copilot for Microsoft 365** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
 

@@ -117,7 +117,9 @@ For example, you can rename the variable to `UserRole`. You can see how the acti
 
 ### Step 3: Providing feedback to the user
 
-You will notice that, while adding new options to the **Ask a question** action, Copilot Studio automatically creates a set of conditions for all the branches matching each of the provided options, plus one last condition for `All other conditions`.
+Now select the **+** button in the middle of the screen to **Add a condition**. In the branch on the left side, select the **Select a variable** option, and select the **userRole** variable that you created in the previous step. Then select the value for the condition, so that the condition will be like `userRole is equal to Candidate`.
+Repeat the previous instructions two more times to provide conditions for `userRole is equal to Employee` and `userRole is equal to HR staff member`. Leave the last condition for `All other conditions`.
+
 Inside each branch, you can specify some custom logic to provide a specialized feedback to the user. To do so, select the **+** command below each of the **Condition** branches and add one action of type **Send a message**. You can eventually add more than one action to each branch.
 
 For the three branches, you could for example provide the following feedback messages:
@@ -139,7 +141,7 @@ how to learn more about your growth mindset.
 - HR staff member
 
 ```txt
-As an HR staff member, you can manage the list of candidates and all the hiring procedures
+As an HR staff member, you can manage the list of candidates and all the hiring procedures.
 ```
 
 For the `All other conditions` branch, you can configure a **Redirect** action, available under the **Topic management** group, to fallback to the System Topic with name **Fallback**.
@@ -278,7 +280,7 @@ This topic helps to collect information about a new candidate to process. Trigge
 register a new candidate, create a new candidate, add a new candidate.
 ```
 
-Now add a new action of type **Ask with adaptive card**, 1️⃣ select the body of the new action and 2️⃣ type the following JSON into the text area available in the property pane of the action.
+Now add a new action of type **Ask with adaptive card**, 1️⃣ select the body of the new action and 2️⃣ then select the button **Edit adaptive card**. Then type the following JSON into the **Card payload editor** of the **Adaptive card designer** of the action.
 
 ![The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open to define the JSON of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png)
 
@@ -388,7 +390,7 @@ You can now use an adaptive card also to provide feedback to the user, showing a
 
 ![The command box to add an adaptive card as the message to send with the **Send a message** action.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-03.png)
 
-A side panel shows up allowing you to define the content of the adaptive card. Copy and paste the following JSON into the text area.
+A side panel shows up allowing you to select the **Edit adaptive card** command and to define the content of the adaptive card. Copy and paste the following JSON into the **Card payload editor** of the **Adaptive card designer**.
 
 ```JSON
 {
