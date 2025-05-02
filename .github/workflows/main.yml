@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v4  # Updated to the latest version
         with:
           python-version: '3.x'
-      - run: pip install mkdocs-material 
+      - run: pip install "mkdocs-material" "mkdocs-static-i18n[material]"  # Install dependencies
       - run: mkdocs gh-deploy --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -51,6 +51,14 @@
   font-weight: 400;
 }
 
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+  height: 0.9rem;
+}
+
+.md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
+  height: 1.8rem;
+}
+
 [dir=ltr] .md-header__title {
   margin-left: 0;
   margin-right: .4rem;
@@ -79,6 +87,19 @@
   line-height: 1.8rem;
   padding: 0 .8rem;
   scroll-snap-align: start;
+}
+
+/* i18n button */
+
+button.md-header__button {
+  color: currentcolor;
+  outline-color: inherit;
+  background: none;
+  box-shadow: none;
+}
+
+button.md-header__button:hover {
+  box-shadow: none;
 }
 
 /* Article */
