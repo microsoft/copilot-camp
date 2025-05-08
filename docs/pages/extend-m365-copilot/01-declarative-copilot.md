@@ -88,7 +88,7 @@ Go to the Teams Toolkit extension in your Visual Studio Code editor and select *
 
 ![The UI of the Teams Toolkit to start creating a new app with the 'Create a New App' button highlighted.](../../assets/images/extend-m365-copilot-01/create-new-app.png)
 
-A panel opens up where you need to select **Copilot Agent** from the list of project types.
+A panel opens up where you need to select **Declarative Agent** from the list of project types.
 
 ![The project types available when creating a new app with Teams Toolkit. Options include 'Agent', which is highlighted.](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
 
