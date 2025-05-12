@@ -4,7 +4,7 @@ In this lab you will secure your Northwind plugin from the previous lab with aut
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
     - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
     - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M2 - Run app in Microsoft 365 Copilot](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) (📍You are here)
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
@@ -59,7 +59,7 @@ Next in the **infra** folder create files **azure.local.bicep** and copy code fr
 These file help with the bot registration. This will ensure the bot service is provisioned in Azure even when you run app locally. This is required for this authentication flow.
 
 !!! note "What is happening with these files?"
-    When Teams Toolkit runs the app locally, it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
+    When Agents Toolkit runs the app locally, it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
 
 ### Step 2: Update existing code
 
@@ -379,13 +379,13 @@ Now to go **appPackage** > **manifest.json** and add the command inside the *com
 ```
 So you have now added a new non authenticated command to search contacts from a mock list. 
 
-### Step 2: Sign in to Azure in Teams Toolkit
+### Step 2: Sign in to Azure in Agents Toolkit
 
-Teams Toolkit requires you to sign in to an Azure account and have a subscription before you can provision the resource instances. You'll then use these resources to deploy your app to host it in Azure.
+Agents Toolkit requires you to sign in to an Azure account and have a subscription before you can provision the resource instances. You'll then use these resources to deploy your app to host it in Azure.
 
-On the Activity Bar of your project editor, select the Microsoft Teams icon 1️⃣. This will open the Teams Toolkit extension panel.
+On the Activity Bar of your project editor, select the Microsoft Teams icon 1️⃣. This will open the Agents Toolkit extension panel.
 
-On the Teams Toolkit panel, under Accounts, select "Sign in to Azure" 2️⃣.
+On the Agents Toolkit panel, under Accounts, select "Sign in to Azure" 2️⃣.
 
 ![Sign into azure](../../assets/images/extend-message-ext-04/03-sign-into-azure.png)
 
@@ -407,17 +407,17 @@ Click F5 to start debugging, or click the start button 1️⃣. You will have an
 !!! tip "F5 in this lab"
        When you press F5 to run the application, it will also provision all the necessary resources for the authenticated flow, as we configured everything using the Team Toolkit's actions in Exercise 1. 
 
-Since you cleared the environments variable, you will install all Entra ID apps and bot services in Azure. During the first run, you'll need to select a resource group in your Azure subscription, which you logged into via the Teams toolkit, for provisioning resources.
+Since you cleared the environments variable, you will install all Entra ID apps and bot services in Azure. During the first run, you'll need to select a resource group in your Azure subscription, which you logged into via the Agents Toolkit, for provisioning resources.
 
 ![resource group selection](../../assets/images/extend-message-ext-04/new-resource-group.png)
 
-Choose **+ New resource group** to keep things tidy.And choose the default name teams toolkit has suggested and select Enter.
+Choose **+ New resource group** to keep things tidy.And choose the default name Agents Toolkit has suggested and select Enter.
 
 Next, choose a Location. For this lab just choose **Central US**
 
 ![resource group selection](../../assets/images/extend-message-ext-04/new-resource-group2.png)
 
-Next Teams Toolkit will go ahead and provision the resources but will also ask you a confirmation before doing so.
+Next Agents Toolkit will go ahead and provision the resources but will also ask you a confirmation before doing so.
 
 ![provision](../../assets/images/extend-message-ext-04/provision.png)
 
@@ -652,7 +652,7 @@ Restart debugger by clicking F5, or click the start button 1️⃣. You will hav
 !!! pied-piper "Provision"
     Here you will again get a dialog confirming if you want to provision the resources. Select "Provision". This is not actually provisioning new resources just overwriting existing resources. 
 
-The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Agents Toolkit.
 Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
@@ -696,7 +696,7 @@ You will get a sign-in button to authenticate (one time only) as shown in the sc
 
 This is the indication that you have an some sort of an authentication set in place to call this feature of the plugin. Select **Sign in to Northwind Inventory**
 
-You will now get a dialog to interact and provide consent as show in the GIF below. Once consented you should be able to get back results form Copilot for Microsoft 365.
+You will now get a dialog to interact and provide consent as show in the GIF below. Once consented you should be able to get back results form Microsoft 365 Copilot.
 ![working gif](../../assets/images/extend-message-ext-04/working.gif)
 
 ## Congratulations

@@ -41,7 +41,7 @@ provision:
 
   # Automates the creation and configuration of a Bot Framework registration which is required for a bot.
   # This configures the bot to use the Azure AD app registration created in the previous step.
-  # Teams Toolkit automatically creates a local Dev Tunnel URL and updates BOT_ENDPOINT when debugging (F5).
+  # Agents Toolkit automatically creates a local Dev Tunnel URL and updates BOT_ENDPOINT when debugging (F5).
   - uses: botFramework/create
     with:
       botId: ${{BOT_ID}}

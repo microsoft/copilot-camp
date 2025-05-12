@@ -3,7 +3,7 @@
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab you will set up an API based on Azure Functions and install it as an API plugin for Copilot for Microsoft 365.
+In this lab you will set up an API based on Azure Functions and install it as an API plugin for Microsoft 365 Copilot.
 
 ## Introduction
 
@@ -12,7 +12,7 @@ In this lab you will set up a REST API for Trey Research, a hypothetical consult
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
 ???+ Question "How did you create this API?"
-    The project was created using Teams Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Teams Toolkit. Create a new app project and select "Agent", then "Declarative Agent" and "Add plugin".
+    The project was created using Agents Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Agents Toolkit. Create a new app project and select "Agent", then "Declarative Agent" and "Add plugin".
 
 ## Exercise 1: Configure and run the starting application
 
@@ -60,13 +60,13 @@ npm install
 
 ### Step 5: Run the application
 
-In Visual Studio Code, click the Teams logo in the left sidebar to open Teams Toolkit. Ensure you are logged into Microsoft 365 1️⃣ and that Custom App Uploads and Copilot Access Enabled indicators 2️⃣ are both showing green checkmarks.
+In Visual Studio Code, click the Teams logo in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 1️⃣ and that Custom App Uploads and Copilot Access Enabled indicators 2️⃣ are both showing green checkmarks.
 
-![Visual Studio Code with the Teams Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/run-in-ttk01.png)
+![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/run-in-ttk01.png)
 
 Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
 
-![Visual Studio Code with the Teams Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/run-in-ttk02.png)
+![Visual Studio Code with the Agents Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/run-in-ttk02.png)
 
 Eventually a browser will open (it's faster after the first time). You'll log into this in the next lab to test with Copilot, but for now just minimize the browser so your app keeps running, and we'll proceed to test the API.
 

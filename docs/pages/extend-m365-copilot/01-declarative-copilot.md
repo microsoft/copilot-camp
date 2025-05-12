@@ -2,12 +2,12 @@
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab, you'll build a simple declarative agent using Teams Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
+In this lab, you'll build a simple declarative agent using Agents Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
 
 In this lab you will learn:
 
 - What is a declarative agent for Microsoft 365 Copilot
-- Create a declarative agent using Teams Toolkit template
+- Create a declarative agent using Agents Toolkit template
 - Customise the agent to create the geo locator game using instructions 
 - Learn how to run and test your app 
 - For bonus exercise, you will need a SharePoint teams site
@@ -19,7 +19,7 @@ They function as subject matter experts in a specific area or business need, all
 
 Welcome on board to building your own declarative agent ☺️! Let's dive in and make your Copilot work magic!
 
-In this lab you will start out building a declarative agent using Teams Toolkit with a default template used in the tool. This is to help you get started with something.
+In this lab you will start out building a declarative agent using Agents Toolkit with a default template used in the tool. This is to help you get started with something.
 Next, you will modify your agent to be focused on a geo location game. 
 
 The goal of your AI is to provide a fun break from work while helping you learn about different cities around the world. It offers abstract clues for you to identify a city. The more clues you need, the fewer points you earn. At the end of the game, it will reveal your final score.
@@ -51,7 +51,7 @@ You will see as we develop more and more extensions to Copilot,  that in the end
 You can enhance the agent's focus on context and data by not only adding instructions but also specifying the knowledge base it should access.
 They are called capabilities and there are five types of capabilities supported.
 
-- **Microsoft Graph Connectors** - Pass connections of Graph connectors into the agent, allowing the agent to access and utilize the connector's knowledge.
+- **Microsoft Copilot Connectors** - Pass connections of Copilot Connectors into the agent, allowing the agent to access and utilize the connector's knowledge.
 - **OneDrive and SharePoint** - Provides URLs of files and sites to agent, for it to gain access to those contents.
 - **Web search** - Enables or disables web content as part of the agent's knowledge base.
 - **Code interpreter** - Enables the capabilities for better solve the Math problem and leverage Python code to do the complex data analysis or generate chart if needed.
@@ -62,54 +62,54 @@ They are called capabilities and there are five types of capabilities supported.
 !!! tip "OnDrive and SharePoint"
     URLs should be full path to SharePoint items (site, document library, folder, or file). You can use the "Copy direct link" option in SharePoint to get the full path of files and folders. To achieve this, right-click on the file or folder and select Details. Navigate to Path and click on the copy icon.<mark> Not specifying the URLs, the entire corpus of OneDrive and SharePoint content available to the logged in user will be used by the agent.</mark>
 
-!!! tip "Microsoft Graph Connector"
-    Not specifying the connections, the entire corpus of Graph Connectors content available to the logged in user will be used by the agent.
+!!! tip "Microsoft Copilot Connector"
+    Not specifying the connections, the entire corpus of Copilot Connectors content available to the logged in user will be used by the agent.
 
 !!! tip "Web search"
     Not specifying the sites, the agent is allowed to search all the sites. You can specify up to four sites with no more than 2 path segments and no querystring parameters. 
 
 ## Exercise 1: Scaffold a declarative agent from template
-You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Teams Toolkit to not only create these files for you but also help you deploy and publish your app. 
-So to keep things as simple as possible you will use Teams Toolkit.
+You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Agents Toolkit to not only create these files for you but also help you deploy and publish your app. 
+So to keep things as simple as possible you will use Agents Toolkit.
 
-### Step 1: Install Teams Toolkit
+### Step 1: Install Agents Toolkit
 
 
 - Go to extensions tab of your Visual Studio Code and type **team** as in step 1️⃣ in the image below.
-- Select **Teams Toolkit** as step 2️⃣. 
+- Select **Agents Toolkit** as step 2️⃣. 
 
-![Visual Studio Code with the Extensions panel activated and the Teams Toolkit extension selected.](../../assets/images/extend-m365-copilot-01/install-ttk.png)
+![Visual Studio Code with the Extensions panel activated and the Agents Toolkit extension selected.](../../assets/images/extend-m365-copilot-01/install-ttk.png)
 
 <cc-end-step lab="e1" exercise="1" step="1" />
 
-### Step 2: Use Teams Toolkit to create a declarative agent app
+### Step 2: Use Agents Toolkit to create a declarative agent app
 
-Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Create a New App**
+Go to the Agents Toolkit extension in your Visual Studio Code editor and select **Create a New App**
 
-![The UI of the Teams Toolkit to start creating a new app with the 'Create a New App' button highlighted.](../../assets/images/extend-m365-copilot-01/create-new-app.png)
+![The UI of the Agents Toolkit to start creating a new app with the 'Create a New App' button highlighted.](../../assets/images/extend-m365-copilot-01/create-new-app.png)
 
 A panel opens up where you need to select **Copilot Agent** from the list of project types.
 
-![The project types available when creating a new app with Teams Toolkit. Options include 'Agent', which is highlighted.](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
+![The project types available when creating a new app with Agents Toolkit. Options include 'Agent', which is highlighted.](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
 
 Next, you will be asked to choose the app feature of Copilot Agent. Choose `declarative agent` and select Enter. 
 
-![The Teams Toolkit app creation flow with the 'Declarative Agent' agent template selected.](../../assets/images/extend-m365-copilot-01/app-feature.png)
+![The Agents Toolkit app creation flow with the 'Declarative Agent' agent template selected.](../../assets/images/extend-m365-copilot-01/app-feature.png)
 
 Next, you will be asked to choose want to create a basic declarative agent or one with an API plugin.  Choose the **No Plugin** option.
 
-![The Teams Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/type.png)
+![The Agents Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/type.png)
 
 !!! tip "Why not create one with API plugin here? "
      You will build API plugins in the next lab and you will also learn how to integrate an API plugin with a declarative agent in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
 
 Next, type in the directory where the project folder has to be created.
 
-![The Teams Toolkit app creation flow with the prompt to provide a target path where to store the new app.](../../assets/images/extend-m365-copilot-01/folder.png)
+![The Agents Toolkit app creation flow with the prompt to provide a target path where to store the new app.](../../assets/images/extend-m365-copilot-01/folder.png)
 
 Next, give it an application name `Geo Locator Game` and select Enter. 
 
-![The Teams Toolkit app creation flow with the prompt to provide a name for the app.](../../assets/images/extend-m365-copilot-01/name.png)
+![The Agents Toolkit app creation flow with the prompt to provide a name for the app.](../../assets/images/extend-m365-copilot-01/name.png)
 
 The project will be created in a few seconds in the folder you mentioned and will open up in a new project window of Visual Studio Code. This is your working folder.
 
@@ -120,10 +120,10 @@ Well done! You have successfully set up the base declarative agent! Now, proceed
 <cc-end-step lab="e1" exercise="1" step="2" />
 
 
-### Step 3: Set up accounts in Teams Toolkit
-Now select the Teams Toolkit icon in the left 1️⃣ . Under "Accounts" click "Sign in to Microsoft 365" 2️⃣ and log in with your own Microsoft 365 account.
+### Step 3: Set up accounts in Agents Toolkit
+Now select the Agents Toolkit icon in the left 1️⃣ . Under "Accounts" click "Sign in to Microsoft 365" 2️⃣ and log in with your own Microsoft 365 account.
 
-![The UI of Teams Toolkit to allow logging into a target Microsoft 365 tenant.](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-01.png)
+![The UI of Agents Toolkit to allow logging into a target Microsoft 365 tenant.](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-01.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
@@ -132,7 +132,7 @@ Now verify that the "Custom App Upload Enabled" checker has a green checkmark. I
 Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account does not have a license for Copilot. This is required to continue the labs.
 
 
-![The UI of Teams Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/checker.png)
+![The UI of Agents Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/checker.png)
 
 Now, let's do a code tour.
 
@@ -154,7 +154,7 @@ Here's how the base project looks:
 | `appPackage/declarativeAgent.json` | Defines settings and configurations of the declarative agent.                                                |
 | `appPackage/instruction.txt`         | Defines the behaviour of declarative agent.                                                |
 | `appPackage/manifest.json`           | Teams application manifest that defines metadata for your declarative agent.                                      |
-| `teamsapp.yml`                       | Main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
+| `teamsapp.yml`                       | Main Agents Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
 
 The file of interest for our lab is primarily the **appPackage/instruction.txt** file which is the core directives needed for your agent.
 It's a plain text file and you can write natural language instructions in it. 
@@ -167,7 +167,7 @@ Another important file is **appPackage/declarativeAgent.json** where there is a 
 - The `description` provides a description.
 - The `instructions` provides the path to the **instructions.txt** file which holds directives which will determine the operational behavior. You can also put your instructions as plain text as a value here. But for this lab we will use the **instructions.txt** file.
 
-Another important file is the `appPackage/manifest.json` file, which contains crucial metadata, including the package name, the developer’s name, and references to the copilot agents utilised by the application. The following excerpt from the manifest.json file illustrates these details:
+Another important file is the `appPackage/manifest.json` file, which contains crucial metadata, including the package name, the developer’s name, and references to the agents utilised by the application. The following excerpt from the manifest.json file illustrates these details:
 
 ```JSON
 "copilotAgents": {
@@ -294,11 +294,11 @@ Now all the changes are done to the agent, it's time to test it.
 
 ### Step 3: Test the app
 
-To test the app go to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision".  You can see the value of Teams Toolkit here, as it makes publishing so simple. 
+To test the app go to the `Agents Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision".  You can see the value of Agents Toolkit here, as it makes publishing so simple. 
 
-![The UI of Teams Toolkit highlighting the 'Provision' command under the 'Lifecycle' group of commands.](../../assets/images/extend-m365-copilot-01/provision.png)
+![The UI of Agents Toolkit highlighting the 'Provision' command under the 'Lifecycle' group of commands.](../../assets/images/extend-m365-copilot-01/provision.png)
 
-In this step Teams toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
+In this step Agents Toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
 
 Open the Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank} logged into your developer tenant.
 
@@ -372,7 +372,7 @@ Next, go to the file **appPackage/manifest.json** and upgrade the app `version` 
 
 ### Step 4: Test the app
 
-- To test the app go back to the `Teams Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision" for packaging and installing the upgraded declarative agent to your own app catalog.
+- To test the app go back to the `Agents Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision" for packaging and installing the upgraded declarative agent to your own app catalog.
 
 - Open the Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank} logged into your developer tenant.
 

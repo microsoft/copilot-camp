@@ -3,7 +3,7 @@
 
 What you will do:
   
-- **Identify the Problem:** Pinpoint the specific issue your copilot agent will address 
+- **Identify the Problem:** Pinpoint the specific issue your agent will address 
 - **Build a Basic Agent:** Start with a simple prompt to get your agent up and running. 
 - **Define the Agent's Role:** Improve your agents focus with a role assigned 
 - **Outline Execution Steps:** Break down the process into clear, manageable subtasks. 
@@ -16,8 +16,8 @@ This lab will guide you with suggestions to help refine your agent instructions 
 
 ???+ info "Prerequisites"
     - Access to Copilot either using Teams, Microsoft 356 chat or Copilot chat
-    - A tool to iteratively test and update your agent either Teams Toolkit or Agent builder or Copilot Studio 
-    (This lab uses Teams Toolkit, but you can also test it in Agent builder or even Copilot Studio)
+    - A tool to iteratively test and update your agent either Microsoft 365 Agents Toolkit or Agent builder or Copilot Studio 
+    (This lab uses Agents Toolkit, but you can also test it in Agent builder or even Copilot Studio)
 
 ## Introduction
 
@@ -56,15 +56,15 @@ So, let's start off with the basic prompt below:
 You are an agent to help user with recommendation for shows that are streaming on online streaming platforms 
 ```
 
-Now to build ShowExpert, you can use any tool of your choice like Teams Toolkit, Agent Builder or Copilot Studio. In this lab we have used Teams Toolkit. Check out our [prerequisites lab](http://127.0.0.1:8000/copilot-camp/pages/extend-m365-copilot/00-prerequisites/) to understand how to set up your environment for testing using Teams Toolkit. 
+Now to build ShowExpert, you can use any tool of your choice like Agents Toolkit, Agent Builder or Copilot Studio. In this lab we have used Agents Toolkit. Check out our [prerequisites lab](http://127.0.0.1:8000/copilot-camp/pages/extend-m365-copilot/00-prerequisites/) to understand how to set up your environment for testing using Agents Toolkit. 
 
-### Declarative agent using Teams Toolkit
+### Declarative agent using Agents Toolkit
 
 
 ???+ info "About this step"
-     This step in the lab assumes you have installed Teams Toolkit for Visual Studio Code and is going to use this extension to create a declarative agent. If you are going to use Agent Builder or Copilot Studio, these steps won’t be needed. Use the tool of your choice and paste instructions in the `Instructions` column instead and test it out. Here is a lab that shows you below steps to create a [declarative agent](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot/) in detail.
+     This step in the lab assumes you have installed Agents Toolkit for Visual Studio Code and is going to use this extension to create a declarative agent. If you are going to use Agent Builder or Copilot Studio, these steps won’t be needed. Use the tool of your choice and paste instructions in the `Instructions` column instead and test it out. Here is a lab that shows you below steps to create a [declarative agent](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/01-declarative-copilot/) in detail.
 
-- Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Create a New App**
+- Go to the Agents Toolkit extension in your Visual Studio Code editor and select **Create a New App**
 - A panel opens up where you need to select **Declarative Agent** from the list of project types.
 - Select **No Action** next
 - Choose the project root folder for your agent project
@@ -90,7 +90,7 @@ Now to build ShowExpert, you can use any tool of your choice like Teams Toolkit,
 
 Now you are ready to test the basic prompt.
 
-- Go to the Teams Toolkit extension in your Visual Studio Code editor and select **Provision** under **LifeCycle**. This step will sideload your agent to Microsoft 365 available for you test.
+- Go to the Agents Toolkit extension in your Visual Studio Code editor and select **Provision** under **LifeCycle**. This step will sideload your agent to Microsoft 365 available for you test.
 - Go to teams app or Microsoft 365 chat.
 - Open Copilot app
 - Inside Copilot app, locate the "ShowExpert" agent from the right panel and select for an immersive chat experience with the agent. 

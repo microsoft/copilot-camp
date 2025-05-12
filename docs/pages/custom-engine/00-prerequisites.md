@@ -6,7 +6,7 @@ In this lab you will set up your development environment to build, test, and dep
 
 In this lab you will learn how to:
 
-- Install and configure Teams toolkit for Visual Studio Code
+- Install and configure Microsoft 365 Agents Toolkit for Visual Studio Code
 - Prepare your Azure environment to create required resources
 
 !!! pied-piper "Disclaimer"
@@ -19,7 +19,7 @@ In this lab you will learn how to:
 
 ### Step 1: Enable Teams custom application uploads
 
-By default, end users can't upload applications directly; instead a Teams administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
+By default, end users can't upload applications directly; instead a Teams administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Microsoft 365 Agents Toolkit.
 
 1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
 
@@ -35,13 +35,13 @@ By default, end users can't upload applications directly; instead a Teams admini
 
 <cc-end-step lab="b0" exercise="1" step="1" />
 
-## Exercise 2: Install Teams Toolkit and prerequisites
+## Exercise 2: Install Microsoft 365 Agents Toolkit and prerequisites
 
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
 
 ### Step 1: Install Visual Studio Code
 
-It should be no surprise that **Teams Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+It should be no surprise that **Agents Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
 
 <cc-end-step lab="b0" exercise="2" step="1" />
 
@@ -53,19 +53,19 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 
 <cc-end-step lab="b0" exercise="2" step="2" />
 
-### Step 3: Install Teams Toolkit
+### Step 3: Install Agents Toolkit
 
-These labs are based on [Teams Toolkit version 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
+These labs are based on [Agents Toolkit version 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
 Follow the steps as shown in the screen shot below.
 
 1️⃣ Open Visual Studio Code and click on the Extensions toolbar button
 
-2️⃣ Search for "Teams" and locate Teams Toolkit
+2️⃣ Search for "Teams" and locate Agents Toolkit
 
 3️⃣ Click **Install**
 
-!!! note "If you have Teams Toolkit installed but hidden"
-    If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
+!!! note "If you have Agents Toolkit installed but hidden"
+    If you previously installed Agents Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Agents Toolkit to bring it back into view.
 
 <cc-end-step lab="b0" exercise="2" step="3" />
 

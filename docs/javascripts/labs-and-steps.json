@@ -372,7 +372,7 @@
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Install Teams Toolkit and prerequisites",
+                            "title": "Install Microsoft 365 Agents Toolkit and prerequisites",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -384,7 +384,7 @@
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Install Teams Toolkit"                                    
+                                    "title": "Install Agents Toolkit"                                    
                                 }
                             ]
                         }
@@ -400,15 +400,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install Teams Toolkit"                                    
+                                    "title": "Install Agents Toolkit"                                    
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Use Teams Toolkit to create a declarative agent app"                                    
+                                    "title": "Use Agents Toolkit to create a declarative agent app"                                    
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Set up accounts in Teams Toolkit"                                    
+                                    "title": "Set up accounts in Agents Toolkit"                                    
                                 },
                                 {
                                     "stepId": "4",
@@ -698,11 +698,11 @@
                 },
                 {
                     "labId": "e6a",
-                    "title": "E6A - Add Entra ID authentication with OAuth (Teams Toolkit)",
+                    "title": "E6A - Add Entra ID authentication with OAuth (Agents Toolkit)",
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Update the local Teams Toolkit configuration",
+                            "title": "Update the local Agents Toolkit configuration",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -732,7 +732,7 @@
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Update the general Teams Toolkit configuration",
+                            "title": "Update the general Agents Toolkit configuration",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -1044,11 +1044,11 @@
                 },
                 {
                     "labId": "eb",
-                    "title": "Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Graph connector",
+                    "title": "Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector",
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Deploy Graph Connector",
+                            "title": "Deploy Copilot Connector",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -1066,11 +1066,11 @@
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Add Graph Connector to Declarative Agent",
+                            "title": "Add Copilot Connector to Declarative Agent",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Get the connection id of the Microsoft Graph Connector"                                    
+                                    "title": "Get the connection id of the Microsoft Copilot Connector"                                    
                                 },
                                 {
                                     "stepId": "2",
@@ -1116,7 +1116,7 @@
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Install Teams Toolkit and prerequisites",
+                            "title": "Install Agents Toolkit and prerequisites",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -1128,7 +1128,7 @@
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Install Teams Toolkit"                                    
+                                    "title": "Install Agents Toolkit"                                    
                                 }
                             ]
                         },
@@ -1168,7 +1168,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Use Teams Toolkit to create a new custom engine agent"                                    
+                                    "title": "Use Agents Toolkit to create a new custom engine agent"                                    
                                 },
                                 {
                                     "stepId": "2",
@@ -1318,7 +1318,7 @@
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update Teams Toolkit configuration file to create the Entra ID App"                                    
+                                    "title": "Update Agents Toolkit configuration file to create the Entra ID App"                                    
                                 }
                             ]
                         },

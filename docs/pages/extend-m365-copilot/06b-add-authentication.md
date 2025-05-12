@@ -11,7 +11,7 @@ In this lab you will add authentication to your API plugin using OAuth 2.0 with 
 
 !!! note
     There are many detailed setup steps for Entra ID in this lab.
-    A new version of Teams Toolkit is available which will automate many of these steps for you; we plan to provide a more streamlined version of the lab shortly.
+    A new version of Agents Toolkit is available which will automate many of these steps for you; we plan to provide a more streamlined version of the lab shortly.
 
 In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. Here are the values you'll need to save:
 
@@ -29,10 +29,10 @@ Plugin service client secret:
 
 ## Exercise 1: Set up a persistent developer tunnel (optional)
 
-By default, Teams Toolkit creates a new developer tunnel - and thus a new URL for accesing your locally running API - every time you start the project. Normally this is fine because Teams Toolkit automatically updates the URL where needed, but since this lab will be a manual setup, you'll have to manually update the URL in Entra ID and in Teams Developer Portal each time you start the debugger. For that reason, you may wish to set up a persistent developer tunnel with a URL that does not change.
+By default, Agents Toolkit creates a new developer tunnel - and thus a new URL for accesing your locally running API - every time you start the project. Normally this is fine because Agents Toolkit automatically updates the URL where needed, but since this lab will be a manual setup, you'll have to manually update the URL in Entra ID and in Teams Developer Portal each time you start the debugger. For that reason, you may wish to set up a persistent developer tunnel with a URL that does not change.
 
 ??? Note "If you don't want to set up a persistent tunnel, open this note ▶▶▶"
-    You are free to skip this exercise and use the developer tunnel provided by Teams Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise 5 step 1).
+    You are free to skip this exercise and use the developer tunnel provided by Agents Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise 5 step 1).
     ![Developer tunnel URL](../../assets/images/extend-m365-copilot-06/oauth-A0.png)
 
 ### Step 1: Install the developer tunnel CLI
@@ -116,7 +116,7 @@ Once you're there, click "Identity" 1️⃣, then "Applications" 2️⃣, and th
 Give your application a unique and descriptive name such as "My API Service" 1️⃣. Under "Supported account types", select "Accounts in this organizational directory only (Microsoft only - single tenant) 2️⃣. Under "Redirect URI (optional)" select "Web" and enter the URL of your developer tunnel 3️⃣. 
 
 !!! Note "If you didn't make a persistent developer tunnel URL..."
-    ...you will have to update the "Redirect URI" field with the new tunnel URL after each time you start your application in Teams Toolkit
+    ...you will have to update the "Redirect URI" field with the new tunnel URL after each time you start your application in Agents Toolkit
 
 Then click "Register" 4️⃣ to register your application.
 
@@ -263,7 +263,7 @@ Click "Register client", if you don't have any already registered client applica
 ![the page to register a new OAuth client in the Teams Developer Portal. There is a list of fields to configure the client registration settings.](../../assets/images/extend-m365-copilot-06/oauth-C3ab.png)
 
 !!! Note "If you didn't make a persistent developer tunnel URL..."
-    ...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Teams Toolkit
+    ...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Agents Toolkit
 
 <cc-end-step lab="e6b" exercise="5" step="1" />
 
@@ -332,7 +332,7 @@ API_APPLICATION_ID=<your-api-service-client-id>
 API_TENANT_ID=<your-tenant-id>
 ~~~
 
-To make these values available inside your code running in Teams Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
+To make these values available inside your code running in Agents Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
 
 ~~~yaml
   - uses: file/createOrUpdateEnvironmentFile
@@ -512,7 +512,7 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 You have completed lab E6b, Add Entra ID authentication with Manual Setup!
 
-Want to try something cool? How about adding a Graph Connector to your solution?
+Want to try something cool? How about adding a Copilot Connector to your solution?
 
 <cc-next url="../EB-add-graphconnector" />
 
