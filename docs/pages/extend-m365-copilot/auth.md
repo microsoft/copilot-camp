@@ -70,3 +70,4 @@ Test procedure:
   - click the green button to open the instructions 
     <cc-next url="../06c-add-sso" label="Lab E6c - Single Sign-on"/>
 
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/auth" />
