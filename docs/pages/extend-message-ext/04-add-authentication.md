@@ -705,3 +705,4 @@ Thanks for doing the Message Extension agent track!
 
 <cc-next url="/" label="Home" />
 
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/04-add-authentication" />

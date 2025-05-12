@@ -566,3 +566,5 @@ The code reads the Products table on each query, but the other tables are only a
 ## Congratulations
 
 You have mastered running the Northwind message extension. Now it's time to test it as plugin in Microsoft Copilot for Microsoft 365 in the next lab. Select Next.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/01-nw-teams-app" />
