@@ -501,3 +501,5 @@ If you enjoy intricate mysteries, time travel concepts, and don't mind a show th
 
 ???+ info "Coming up in this series"
      An agent designed for enterprise scenarios, equipped with tailored instructions and an execution flow that integrates API consumption
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-instructions/beginner-agent" />
