@@ -254,3 +254,5 @@ Of course, you can test this new command also by using the sample as a Message E
 
 ## Congratulations
 You are now a plugin champion. You are now ready to secure your plugin with authentication. Proceed to the next lab. Select "Next"
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/03-enhance-nw-plugin" />
