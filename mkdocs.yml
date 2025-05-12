@@ -46,7 +46,7 @@ plugins:
           build: true
           nav:
             - Home: 'index.md'
-            - Make Path - Make your agent:
+            - Maker Path - Make your agent:
               - Welcome: 'pages/make/index.md'
               - Lab MAB - Copilot Studio agent builder: 'pages/make/agent-builder/index.md'
               - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
