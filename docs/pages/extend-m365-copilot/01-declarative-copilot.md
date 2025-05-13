@@ -81,36 +81,32 @@ So to keep things as simple as possible you will use Agents Toolkit.
 
 ### Step 2: Use Agents Toolkit to create a declarative agent app
 
-Go to the Agents Toolkit extension in your Visual Studio Code editor and select **Create a New App**
+Go to the Agents Toolkit extension in your Visual Studio Code editor in the left 1️⃣ and select **Create a New Agent/App** 2️⃣.
 
-![The UI of the Agents Toolkit to start creating a new app with the 'Create a New App' button highlighted.](../../assets/images/extend-m365-copilot-01/create-new-app.png)
+![The UI of the Agents Toolkit to start creating a new app with the 'Create a New Agent' button highlighted.](../../assets/images/extend-m365-copilot-01/atk-create-new-agent.png)
 
-A panel opens up where you need to select **Copilot Agent** from the list of project types.
+A panel opens up where you need to select **Declarative Agent** from the list of project types.
 
-![The project types available when creating a new app with Agents Toolkit. Options include 'Agent', which is highlighted.](../../assets/images/extend-m365-copilot-01/copilot-extension.png)
+![The project types available when creating a new app with Agents Toolkit. Options include 'Agent', which is highlighted.](../../assets/images/extend-m365-copilot-01/atk-da.png)
 
-Next, you will be asked to choose the app feature of Copilot Agent. Choose `declarative agent` and select Enter. 
+Next, you will be asked to choose want to create a basic declarative agent or one with an API plugin.  Choose the **No Action** option.
 
-![The Agents Toolkit app creation flow with the 'Declarative Agent' agent template selected.](../../assets/images/extend-m365-copilot-01/app-feature.png)
+![The Agents Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/atk-no-action.png)
 
-Next, you will be asked to choose want to create a basic declarative agent or one with an API plugin.  Choose the **No Plugin** option.
-
-![The Agents Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/type.png)
-
-!!! tip "Why not create one with API plugin here? "
-     You will build API plugins in the next lab and you will also learn how to integrate an API plugin with a declarative agent in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
+!!! tip "Why not create one with an action here? "
+     You will build API plugins as an action in the next lab and you will also learn how to integrate an API plugin with a declarative agent in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
 
 Next, type in the directory where the project folder has to be created.
 
-![The Agents Toolkit app creation flow with the prompt to provide a target path where to store the new app.](../../assets/images/extend-m365-copilot-01/folder.png)
+![The Agents Toolkit app creation flow with the prompt to provide a target path where to store the new app.](../../assets/images/extend-m365-copilot-01/atk-folder.png)
 
 Next, give it an application name `Geo Locator Game` and select Enter. 
 
-![The Agents Toolkit app creation flow with the prompt to provide a name for the app.](../../assets/images/extend-m365-copilot-01/name.png)
+![The Agents Toolkit app creation flow with the prompt to provide a name for the app.](../../assets/images/extend-m365-copilot-01/atk-app-name.png)
 
 The project will be created in a few seconds in the folder you mentioned and will open up in a new project window of Visual Studio Code. This is your working folder.
 
-![Visual Studio Code with the new app scaffolded and ready to be extendend and the README file on the screen.](../../assets/images/extend-m365-copilot-01/project-scffolded.png)
+![Visual Studio Code with the new app scaffolded and ready to be extendend and the README file on the screen.](../../assets/images/extend-m365-copilot-01/atk-scaffold.png)
 
 Well done! You have successfully set up the base declarative agent! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
@@ -120,7 +116,7 @@ Well done! You have successfully set up the base declarative agent! Now, proceed
 ### Step 3: Set up accounts in Agents Toolkit
 Now select the Agents Toolkit icon in the left 1️⃣ . Under "Accounts" click "Sign in to Microsoft 365" 2️⃣ and log in with your own Microsoft 365 account.
 
-![The UI of Agents Toolkit to allow logging into a target Microsoft 365 tenant.](../../assets/images/extend-m365-copilot-01/01-04-Setup-TTK-01.png)
+![The UI of Agents Toolkit to allow logging into a target Microsoft 365 tenant.](../../assets/images/extend-m365-copilot-01/atk-accounts.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
@@ -129,7 +125,7 @@ Now verify that the "Custom App Upload Enabled" checker has a green checkmark. I
 Now verify that the "Copilot Access Enabled" checker has a green checkmark. If it doesn't, that means that your user account does not have a license for Copilot. This is required to continue the labs.
 
 
-![The UI of Agents Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/checker.png)
+![The UI of Agents Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/atk-accounts-logged.png)
 
 Now, let's do a code tour.
 
@@ -151,7 +147,7 @@ Here's how the base project looks:
 | `appPackage/declarativeAgent.json` | Defines settings and configurations of the declarative agent.                                                |
 | `appPackage/instruction.txt`         | Defines the behaviour of declarative agent.                                                |
 | `appPackage/manifest.json`           | Teams application manifest that defines metadata for your declarative agent.                                      |
-| `teamsapp.yml`                       | Main Agents Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
+| `m365agent.yml`                       | Main Agents Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
 
 The file of interest for our lab is primarily the **appPackage/instruction.txt** file which is the core directives needed for your agent.
 It's a plain text file and you can write natural language instructions in it. 
@@ -293,7 +289,7 @@ Now all the changes are done to the agent, it's time to test it.
 
 To test the app go to the `Agents Toolkit` extension in `Visual Studio Code`. This will open up the left pane. Under "LIFECYCLE" select "Provision".  You can see the value of Agents Toolkit here, as it makes publishing so simple. 
 
-![The UI of Agents Toolkit highlighting the 'Provision' command under the 'Lifecycle' group of commands.](../../assets/images/extend-m365-copilot-01/provision.png)
+![The UI of Agents Toolkit highlighting the 'Provision' command under the 'Lifecycle' group of commands.](../../assets/images/extend-m365-copilot-01/atk-provision.png)
 
 In this step Agents Toolkit will package up all the files inside the `appPackage` folder as a zip file and install the declarative agent to your own app catalog.
 

@@ -60,13 +60,13 @@ npm install
 
 ### Step 5: Run the application
 
-In Visual Studio Code, click the Teams logo in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 1️⃣ and that Custom App Uploads and Copilot Access Enabled indicators 2️⃣ are both showing green checkmarks.
+In Visual Studio Code, click the Teams logo in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 and that Custom App Uploads and Copilot Access Enabled indicators are both showing green checkmarks.
 
-![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/run-in-ttk01.png)
+![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-01/atk-accounts-logged.png)
 
 Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
 
-![Visual Studio Code with the Agents Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/run-in-ttk02.png)
+![Visual Studio Code with the Agents Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/atk-debug.png)
 
 Eventually a browser will open (it's faster after the first time). You'll log into this in the next lab to test with Copilot, but for now just minimize the browser so your app keeps running, and we'll proceed to test the API.
 
