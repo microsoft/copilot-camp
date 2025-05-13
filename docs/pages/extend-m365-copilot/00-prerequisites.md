@@ -37,7 +37,7 @@ By default, end users can't upload applications directly; instead a Teams Admini
 
 <cc-end-step lab="e0" exercise="1" step="1" />
 
-## Exercise 2: Install Microsoft 365 Agents Toolkit and prerequisites
+## Exercise 2: Install Agents Toolkit and prerequisites
 
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
 
@@ -57,12 +57,16 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 
 ### Step 3: Install Agents Toolkit
 
-These labs are based on [Agents Toolkit version 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
+These labs are based on **Microsoft 365 Agents Toolkit** version 6.0.
+
+!!! tip "What is Agents Toolkit?"
+    Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop build agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.
+
 Follow the steps as shown in the screen shot below.
 
 1️⃣ Open Visual Studio Code and click on the Extensions toolbar button
 
-2️⃣ Search for "Teams" and locate Agents Toolkit
+2️⃣ Search for "Microsoft 365 Agents" and locate Agents Toolkit
 
 3️⃣ Click **Install**
 

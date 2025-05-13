@@ -1168,7 +1168,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Use Agents Toolkit to create a new custom engine agent"                                    
+                                    "title": "Use Teams Toolkit to create a new custom engine agent"                                    
                                 },
                                 {
                                     "stepId": "2",
@@ -1318,7 +1318,7 @@
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update Agents Toolkit configuration file to create the Entra ID App"                                    
+                                    "title": "Update Teams Toolkit configuration file to create the Entra ID App"                                    
                                 }
                             ]
                         },

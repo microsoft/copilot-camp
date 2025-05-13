@@ -74,11 +74,8 @@ So to keep things as simple as possible you will use Agents Toolkit.
 
 ### Step 1: Install Agents Toolkit
 
-
-- Go to extensions tab of your Visual Studio Code and type **team** as in step 1️⃣ in the image below.
-- Select **Agents Toolkit** as step 2️⃣. 
-
-![Visual Studio Code with the Extensions panel activated and the Agents Toolkit extension selected.](../../assets/images/extend-m365-copilot-01/install-ttk.png)
+- Go to extensions tab of your Visual Studio Code and look for **Microsoft 365 Agents Toolkit**.
+- Select it and install.
 
 <cc-end-step lab="e1" exercise="1" step="1" />
 
