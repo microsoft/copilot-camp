@@ -94,7 +94,7 @@ Next, you will be asked to choose want to create a basic declarative agent or on
 ![The Agents Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/atk-no-action.png)
 
 !!! tip "Why not create one with an action here? "
-     You will build API plugins as an action in the next lab and you will also learn how to integrate an API plugin with a declarative agent in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
+     You will build a REST API in the next lab and you will also learn how to integrate that API in a declarative agent with an action in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
 
 Next, type in the directory where the project folder has to be created.
 
