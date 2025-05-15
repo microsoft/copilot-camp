@@ -52,10 +52,14 @@ You can enhance the agent's focus on context and data by not only adding instruc
 They are called capabilities and there are five types of capabilities supported.
 
 - **Microsoft Copilot Connectors** - Pass connections of Copilot Connectors into the agent, allowing the agent to access and utilize the connector's knowledge.
-- **OneDrive and SharePoint** - Provides URLs of files and sites to agent, for it to gain access to those contents.
 - **Web search** - Enables or disables web content as part of the agent's knowledge base.
+- **OneDrive and SharePoint** - Provides URLs of files and sites to agent, for it to gain access to those contents.
+- **GraphicArt** - Enables the agent to support image or video generation by using DALL-e capability.
 - **Code interpreter** - Enables the capabilities for better solve the Math problem and leverage Python code to do the complex data analysis or generate chart if needed.
-- **GraphicArt** - Enable the agent to support image or video generation by using DALL-e capability.
+- **Dataverse** - Enables searching through data from tables in Microsoft Dataverse.
+- **Teams messages** - Allows searching through Teams channels, teams, meetings, 1:1 chats, and group chats.
+- **Email** - Enables searching through email messages in the mailboxes that the user has access to.
+- **People** - Allows searching for information about people in the organization.
 
 ![The capabilities available when defining a Declarative Agent.](../../assets/images/extend-m365-copilot-01/capabiltities-da.png)
 
@@ -94,7 +98,7 @@ Next, you will be asked to choose want to create a basic declarative agent or on
 ![The Agents Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/atk-no-action.png)
 
 !!! tip "Why not create one with an action here? "
-     You will build API plugins as an action in the next lab and you will also learn how to integrate an API plugin with a declarative agent in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
+     You will build a REST API in the next lab and you will also learn how to integrate that API in a declarative agent with an action in the following one in this same path. Here we are just going to create a declarative agent. Baby steps!
 
 Next, type in the directory where the project folder has to be created.
 
