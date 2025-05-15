@@ -233,9 +233,9 @@ In this step you are going to consume the custom connector from the agent for Mi
 
 Open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} to start using Microsoft Copilot Studio.
 
-Then 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the agent with name **Copilot for Microsoft 365**.
+Then 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the agent with name **Microsoft 365 Copilot**.
 
-![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Copilot for Microsoft 365** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
+![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Microsoft 365 Copilot** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
 
 Now, edit the `Agentic HR` agent, go to the **Actions** section and select **+ Add action**. Follow the instructions that you have already seen in Lab MCS4 - Exercise 2 - Step 1. However, this time select the **Custom connector** group of actions and search for `HR-Services`. You will see the actions defined in the `HR-Services` connector that you created in Exercise 2 - Step 1.
 

@@ -12,9 +12,9 @@ Copilot Developer Camp は、Microsoft 365 Copilot のエージェントを構�
 
 ## 🧪 どのラボから始めるべき？
 
-ラボは3つのパスウェイに分かれており、あなたが作りたいものに基づいて選ぶことができます。Microsoft Copilot Studio を使用し、ノーコード/ローコードのアプローチを取りたい場合は、「Make」ラボを選んでください。Microsoft 365 Copilot を拡張し、その AI エンジンとオーケストレーションを活用したい場合は、「Extend」ラボを選んでください。Azure AI Foundry（またはお好みの AI）を使用して完全にカスタムエージェントを構築したい場合は、「Build」ラボを選んでください。
+ラボは3つのパスウェイに分かれており、あなたが作りたいものに基づいて選ぶことができます。Microsoft Copilot Studio を使用し、ノーコード/ローコードのアプローチを取りたい場合は、「Maker」ラボを選んでください。Microsoft 365 Copilot を拡張し、その AI エンジンとオーケストレーションを活用したい場合は、「Extend」ラボを選んでください。Azure AI Foundry（またはお好みの AI）を使用して完全にカスタムエージェントを構築したい場合は、「Build」ラボを選んでください。
 
-![The labs are divided into three pathways, allowing you to choose based on what you want to create. If you want to use Microsoft Copilot Studio and a no-code/low-code approach, choose the "Make" labs. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.](./assets/images/CopilotCamp-Flow-Chart.png)
+![The labs are divided into three pathways, allowing you to choose based on what you want to create. If you want to use Microsoft Copilot Studio and a no-code/low-code approach, choose the "Maker" labs. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.](./assets/images/CopilotCamp-Flow-Chart.png)
 
 ---8<--- "main-links.md"
 

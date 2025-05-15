@@ -2,7 +2,7 @@
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab you will further enhance the reponse from Copilot for Microsoft 365 from text to rich cards using Adaptive Cards. 
+In this lab you will further enhance the response from Microsoft 365 Copilot from text to rich cards using Adaptive Cards. 
 
 In this lab you will learn:
 
@@ -621,7 +621,7 @@ Before you test the application, update the manifest version of your app package
 ### Step 1: Install the plugin
 
 Stop and restart your project to force it to re-deploy the application package.
-You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local copilot 2️⃣.
+You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.
 
 ![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
@@ -659,8 +659,8 @@ You've completed adding adaptive card responses to your first API plugin. You ar
 
 You have 3 choices here, all of which show you how to add authentication to your app package files and validate the incoming access token in your web service. The difference is in how the app is registered in Entra ID and Microsoft 365.
 
-  1. **Use OAuth 2.0 with Teams Toolkit** - This is the easiest approach; you will learn to set up Teams Toolkit's automated Entra ID registration for an F5 project start experience
-  <cc-next url="../06a-add-authentication-ttk" label="OAuth with Teams Toolkit" />
+  1. **Use OAuth 2.0 with Agents Toolkit** - This is the easiest approach; you will learn to set up Agents Toolkit's automated Entra ID registration for an F5 project start experience
+  <cc-next url="../06a-add-authentication-ttk" label="OAuth with Agents Toolkit" />
 
   2. **Use OAuth 2.0 with Manual Setup** - Leads you through all the Entra ID registration details so you can really understand what's happening; this may help adapt your solution to work with another identity provider
   <cc-next url="../06b-add-authentication" label="OAuth with Manual Setup" />

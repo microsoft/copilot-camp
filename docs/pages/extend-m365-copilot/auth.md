@@ -6,11 +6,11 @@ Begin by completing [Lab E0](../extend-m365-copilot/00-prerequisites.md) to get 
 Then choose an auth lab from these choices:
 
 <hr />
-### Lab E6a - Add OAuth authentication with Teams Toolkit
+### Lab E6a - Add OAuth authentication with Agents Toolkit
 
 In this lab, the student:
 
-  - adds Teams Toolkit directives to register an Entra ID application
+  - adds Agents Toolkit directives to register an Entra ID application
   - updates the app packaging so Copilot uses OAuth when calling the API
   - updates the code to validate the access token
   - tests the declarative agent
@@ -24,7 +24,7 @@ Test procedure:
   - (optional) edit **/appPackage/trey-declarative-agent.json** and rename the agent so you know which instance you're testing
   - press F5. You should get a declarative agent for Trey Research.
   - click the green button to open the instructions
-  <cc-next url="../06a-add-authentication-ttk" label="Lab E6a - OAuth with Teams Toolkit"/>
+  <cc-next url="../06a-add-authentication-ttk" label="Lab E6a - OAuth with Agents Toolkit"/>
  
 <hr />
 ### Lab E6b - Add OAuth authentication with Manual Setup

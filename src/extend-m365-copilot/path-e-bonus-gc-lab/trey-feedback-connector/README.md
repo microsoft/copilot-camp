@@ -1,10 +1,10 @@
 # Trey Feedback Connector
 
-A sample graph connector sample for Trey Genie in Copilot Camp. It ingests customer feedback of clients for consultants in Trey Research. 
+A sample Copilot Connector sample for Trey Genie in Copilot Camp. It ingests customer feedback of clients for consultants in Trey Research. 
 
 ## Summary
 
-This is a sample graph connector designed for Trey Genie, used in Copilot Camp lab. Its primary function is to ingest customer feedback from clients, which is then utilized by consultants at Trey Research. This tool aims to streamline the feedback process, enhancing the efficiency and effectiveness of the consultancy services provided.
+This is a sample Copilot Connector designed for Trey Genie, used in Copilot Camp lab. Its primary function is to ingest customer feedback from clients, which is then utilized by consultants at Trey Research. This tool aims to streamline the feedback process, enhancing the efficiency and effectiveness of the consultancy services provided.
 
 > [!NOTE]  
 > Sample data was generated using Artificial Intelligence. Any resemblance to real data is purely coincidental.
@@ -17,7 +17,7 @@ This sample shows how to ingest data from a custom API into your Microsoft 365 t
 
 The sample illustrates the following concepts:
 
-- simplify debugging and provisioning of resources with Teams Toolkit for Visual Studio code
+- simplify debugging and provisioning of resources with Agents Toolkit for Visual Studio code
 - create external connection schema
 - support full ingestion of data
 - visualize the external content in Microsoft 365 search results
@@ -26,7 +26,7 @@ The sample illustrates the following concepts:
 
 ## Prerequisites
 
-- [Teams Toolkit for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
+- [Microsoft 365 Agents Toolkit for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
 - [Azure Functions Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 - [Microsoft 365 Developer tenant](https://developer.microsoft.com/microsoft-365/dev-program) with [uploading custom apps enabled](https://learn.microsoft.com/microsoftteams/platform/m365-apps/prerequisites#prepare-a-developer-tenant-for-testing)
 - [Node@18](https://nodejs.org)
@@ -51,7 +51,7 @@ The sample illustrates the following concepts:
 
 ## Credit
 
-Thanks to authors of the the Policies Graph connector sample which is the bootstrap project for this connector for Trey Research scenario. [https://github.com/pnp/graph-connectors-samples/tree/main/samples/nodejs-typescript-policies](https://github.com/pnp/graph-connectors-samples/tree/main/samples/nodejs-typescript-policies) 
+Thanks to authors of the the Policies Copilot Connector sample which is the bootstrap project for this connector for Trey Research scenario. [https://github.com/pnp/graph-connectors-samples/tree/main/samples/nodejs-typescript-policies](https://github.com/pnp/graph-connectors-samples/tree/main/samples/nodejs-typescript-policies) 
 
 ## Disclaimer
 

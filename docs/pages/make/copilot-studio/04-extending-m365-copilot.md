@@ -18,9 +18,9 @@ In this excercise you are going to create a declarative agent with Microsoft Cop
 
 ### Step 1: Creating an agent for Copilot Chat
 
-To create a declarative agent for Microsoft 365 Copilot Chat you need to 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the agent with name **Copilot for Microsoft 365**.
+To create a declarative agent for Microsoft 365 Copilot Chat you need to 1️⃣ browse the list of agents in Copilot Studio and 2️⃣ select the agent with name **Microsoft 365 Copilot**.
 
-![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Copilot for Microsoft 365** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
+![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Microsoft 365 Copilot** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
 
 A new section of Microsoft Copilot Studio will open. From there, you can select the **+ Add** command to create a new agent for Microsoft 365 Copilot Chat.
 

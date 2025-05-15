@@ -1,7 +1,7 @@
 {
   "name": "trey-feedback",
   "version": "1.0.0",
-  "description": "## Build a basic declarative copilot for Trey",
+  "description": "## Build a basic declarative agent for Trey",
   "module": "esnext",
   "main": "dist/src/functions/*.js",
   "scripts": {

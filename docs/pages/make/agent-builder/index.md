@@ -9,7 +9,7 @@ An agent built with Copilot Studio agent builder can use knowledge bases like:
 
 - Generic web content
 - Content of documents stored in SharePoint Online
-- Microsoft Graph connectors
+- Microsoft Copilot Connectors
 
 It can also generate images on the fly or convert natural language into code.
 

@@ -1,12 +1,12 @@
 # Lab M0 - Prerequisites
 
-In this lab, you will set up the development environment to build, test, and deploy the plugins that will extend the capabilities of Copilot for Microsoft 365.
+In this lab, you will set up the development environment to build, test, and deploy the plugins that will extend the capabilities of Microsoft 365 Copilot.
 
 
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
     - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) (📍You are here)
     - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M2 - Run app in Microsoft 365 Copilot](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
@@ -15,17 +15,17 @@ In this lab, you will set up the development environment to build, test, and dep
 In this lab you will learn:
 
 - How to set up your developer tenant for the entire lab exercises
-- How to install and configure Teams toolkit for Visual Studio Code and other tools
+- How to install and configure Agents Toolkit for Visual Studio Code and other tools
 - How to set up your development environment with a base project
 
 !!! warning   "Attention"
-    To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
+    To extend Microsoft 365 Copilot, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
 
 ## Exercise 1: Enable Teams application uploads
 You will need a Microsoft work or school account with permissions to upload custom Teams applications. 
 
-By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
+By default, end users can't upload applications directly; instead an administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Microsoft 365 Agents Toolkit.
 
 
 - Sign in to [Microsoft Teams admin center](https://admin.teams.microsoft.com/dashboard) with your admin credentials.
@@ -35,12 +35,12 @@ By default, end users can't upload applications directly; instead an administrat
 
 > The change can take up to 24 hours to take effect, but usually it's much faster.
 
-## Exercise 2: Install Teams Toolkit and prerequisites
+## Exercise 2: Install Agents Toolkit and prerequisites
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
 
 ### Step 1: Install Visual Studio Code
 
-It should be no surprise that [Teams Toolkit for Visual Studio Code](){target=_blank} requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+It should be no surprise that [Agents Toolkit for Visual Studio Code](){target=_blank} requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
 
 ### Step 2: Install NodeJS
 
@@ -50,19 +50,19 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 
 ### Step 3: Install Tools
 
-These labs are based on the latest general available version of [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
+These labs are based on the latest general available version of [Agents Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
 Follow the steps as shown in the screen shot below.
 
 1️⃣ Open Visual Studio Code and click on the Extensions toolbar button
 
-2️⃣ Search for "Teams" and locate Teams Toolkit
+2️⃣ Search for "Teams" and locate Agents Toolkit
 
 3️⃣ Click "Install"
 
 ![Open the App setup policies](../../assets/images/extend-m365-copilot-00/install-ttk.png)
 
-!!! note "If you have Teams Toolkit installed but hidden"
-    If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
+!!! note "If you have Agents Toolkit installed but hidden"
+    If you previously installed Agents Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Agents Toolkit to bring it back into view.
     
 
 !!! tip "Azure Storage Explorer"
@@ -88,13 +88,13 @@ In Visual Studio Code:
 
 These labs will refer to this **Northwind** folder as your "root folder" or "working folder" since this is where you'll be working.
 
-### Step 2 - Set up accounts in Teams Toolkit
+### Step 2 - Set up accounts in Agents Toolkit
 
-Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **Northwind** folder. You should see sections for Accounts, Environment, etc. as shown below.
+Now select the Agents Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **Northwind** folder. You should see sections for Accounts, Environment, etc. as shown below.
 
 Under "Accounts" click "Sign in to Microsoft 365" 2️⃣ and log in with your own Microsoft 365 account.
 
-![Logging into Microsoft 365 from within Teams Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
+![Logging into Microsoft 365 from within Agents Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 

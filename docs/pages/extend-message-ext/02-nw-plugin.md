@@ -1,10 +1,10 @@
-# Lab M2 - Run app in Microsoft Copilot for Microsoft 365
-In this lab, you’ll run the Northwind app as a plugin in Microsoft Copilot for Microsoft 365. 
+# Lab M2 - Run app in Microsoft Microsoft 365 Copilot
+In this lab, you’ll run the Northwind app as a plugin in Microsoft 365 Copilot. 
 
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
     - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
     - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) (📍You are here)
+    - [Lab M2 - Run app in Microsoft 365 Copilot](/copilot-camp/pages/extend-message-ext/02-nw-plugin) (📍You are here)
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
@@ -29,7 +29,7 @@ Restart by clicking F5 to start debugging, or click the start button 1️⃣. Yo
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
-The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Agents Toolkit.
 Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
@@ -40,11 +40,11 @@ Once opened it immediately ask you where you want to open the app in. By default
 
 Now you are in a personal chat with the app.
 
-## Step 2 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
+## Step 2 - Test in Microsoft 365 Copilot (single parameter)
 !!! tip inline "Reminder"
-    To perform the following exercise, your account must have a valid license for Copilot for Microsoft 365.
+    To perform the following exercise, your account must have a valid license for Microsoft 365 Copilot.
 Go to Teams in browser [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) logged into your developer tenant.
-If you have a Copilot for Microsoft 365, the new app will be automatically pinned above your chats. Just open Teams, select “chats” and you’ll see Copilot.
+If you have a Microsoft 365 Copilot, the new app will be automatically pinned above your chats. Just open Teams, select “chats” and you’ll see Copilot.
 
 
 
@@ -86,7 +86,7 @@ You should be able to see when Copilot calls your plugin. For example, after the
 
 
 
-## Step 3 - Test in Microsoft Copilot for Microsoft 365 (multiple parameters)
+## Step 3 - Test in Microsoft 365 Copilot (multiple parameters)
 
 In this exercise, you'll try some prompts that exercise the multi-parameter feature in the sample plugin. These prompts will request data that can be retrieved by name, category, inventory status, supplier city, and stock level, as defined in [the manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json).
 
@@ -127,6 +127,6 @@ Which prompts work best for you? Try making up your own prompts and observe your
 
 ## Congratulations
 
-You’ve done an excellent job testing the plugin in Microsoft Copilot for Microsoft 365. Now, proceed to the next lab to add code for another search criterion. Select **Next**.
+You’ve done an excellent job testing the plugin in Microsoft 365 Copilot. Now, proceed to the next lab to add code for another search criterion. Select **Next**.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/02-nw-plugin" />

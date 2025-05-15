@@ -80,7 +80,7 @@ Content-Type: application/json
 
 ### Step 4: Test the new resource
 
-If your app is still running from Lab 2, stop the debugger and restart it. Or, just start the debugger normally and wait for the app to start. When everything is ready, Teams Toolkit will display a web browser wanting you to log into Microsoft 365. Minimize this browser as you don't need it yet, but closing it would stop the debugger.
+If your app is still running from Lab 2, stop the debugger and restart it. Or, just start the debugger normally and wait for the app to start. When everything is ready, Agents Toolkit will display a web browser wanting you to log into Microsoft 365. Minimize this browser as you don't need it yet, but closing it would stop the debugger.
 
 Now try sending the new requests and you should be able to see Trey Research project details or assign a new consultant to a project using the POST request.
 

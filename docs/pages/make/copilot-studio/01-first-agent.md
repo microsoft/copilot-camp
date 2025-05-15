@@ -137,7 +137,7 @@ From the dialog window that pops up you can add additional knowledge sources lik
 - Public websites: to add additional websites
 - SharePoint: to configure sites or libraries in SharePoint Online
 - Dataverse: to add tables in Dataverse
-- Advanced: to consume enterprise data connections like Azure AI Search, Azure SQL, Microsoft Graph connectors, or third party data connections
+- Advanced: to consume enterprise data connections like Azure AI Search, Azure SQL, Microsoft Copilot Connectors, or third party data connections
 
 Select **SharePoint** and, in the dialog popping up, provide the URL of the site where you uploaded the files and select **Add**.
 
