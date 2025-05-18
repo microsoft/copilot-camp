@@ -128,3 +128,5 @@ Which prompts work best for you? Try making up your own prompts and observe your
 ## Congratulations
 
 You’ve done an excellent job testing the plugin in Microsoft Copilot for Microsoft 365. Now, proceed to the next lab to add code for another search criterion. Select **Next**.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/02-nw-plugin" />
