@@ -237,7 +237,7 @@ button:hover {
   background-color: var(--md-gradient-color--middle);
 }
 
-.md-typeset .pied-piper>.admonition-title:before,
+.md-typeset .pied-piper,
 .md-typeset .admonition.warning  {
   border: solid 1px var(--md-gradient-color--end);
 }

@@ -11,7 +11,7 @@
             <ul>
                 <li>Easy, simple, and interactive experience</li>
                 <li>Web based, integrated with Microsoft 365 Copilot Chat and Microsoft 365 Copilot</li>
-                <li>Content from SharePoint Online, public web, and Microsoft Graph Connectors</li>
+                <li>Content from SharePoint Online, public web, and Microsoft Copilot Connectors</li>
                 <li>Available in Microsoft 365 Copilot Chat</li>
             <ul>
         </div>

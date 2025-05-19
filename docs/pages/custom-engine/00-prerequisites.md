@@ -6,7 +6,7 @@ In this lab you will set up your development environment to build, test, and dep
 
 In this lab you will learn how to:
 
-- Install and configure Teams toolkit for Visual Studio Code
+- Install and configure Teams Toolkit for Visual Studio Code
 - Prepare your Azure environment to create required resources
 
 !!! pied-piper "Disclaimer"

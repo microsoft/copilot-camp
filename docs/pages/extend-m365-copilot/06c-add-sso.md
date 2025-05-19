@@ -21,10 +21,10 @@ API ID URI:
 
 ## Exercise 1: Set up a persistent developer tunnel (optional)
 
-By default, Teams Toolkit creates a new developer tunnel - and thus a new URL for accesing your locally running API - every time you start the project. Normally this is fine because Teams Toolkit automatically updates the URL where needed, but since this lab will be a manual setup, you'll have to manually update the URL in Entra ID and in Teams Developer Portal each time you start the debugger. For that reason, you may wish to set up a persistent developer tunnel with a URL that does not change.
+By default, Agents Toolkit creates a new developer tunnel - and thus a new URL for accesing your locally running API - every time you start the project. Normally this is fine because Agents Toolkit automatically updates the URL where needed, but since this lab will be a manual setup, you'll have to manually update the URL in Entra ID and in Teams Developer Portal each time you start the debugger. For that reason, you may wish to set up a persistent developer tunnel with a URL that does not change.
 
 ??? Note "If you don't want to set up a persistent tunnel, open this note ▶▶▶"
-    You are free to skip this exercise and use the developer tunnel provided by Teams Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise 5 step 1).
+    You are free to skip this exercise and use the developer tunnel provided by Agents Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise 5 step 1).
     ![Developer tunnel URL](../../assets/images/extend-m365-copilot-06/oauth-A0.png)
 
 ### Step 1: Install the developer tunnel CLI
@@ -151,7 +151,7 @@ Copy them to a note, to configure the plugin manifest file to enable SSO.
 ![Teams deveoper portal Entra SSO configuration](../../assets/images/extend-m365-copilot-06c/oauth-A8.png)
 
 !!! Note "If you didn't make a persistent developer tunnel URL..."
-    ...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Teams Toolkit
+    ...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Agents Toolkit
 
 <cc-end-step lab="e6c" exercise="3" step="1" />
 
@@ -257,7 +257,7 @@ API_TENANT_ID=<Directory (tenant) ID>
     Construct the application ID URI using the second part of the decoded value (after ##) as highlighted below – api://auth-<AuthConfigID_Decoded_SecondPart>, e.g., api://auth-16cfcd90-803e-40ba-8106-356aa4927bb9
     ![Generating Application ID URI manually](../../assets/images/extend-m365-copilot-06c/oauth-A13.png)
   
-To make these values available inside your code running in Teams Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
+To make these values available inside your code running in Agents Toolkit, you also need to update the **teamsapp.local.yml** file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:
 
 ~~~yaml
         APP_ID_URI: ${{APP_ID_URI}}
@@ -430,7 +430,7 @@ From now on, the sign in will be smooth for the user when interacting with the a
 
 You have completed lab E6c, Add SSO!
 
-Want to try something cool? How about adding a Graph Connector to your solution?
+Want to try something cool? How about adding a Copilot Connector to your solution?
 
 <cc-next url="../EB-add-graphconnector" />
 
