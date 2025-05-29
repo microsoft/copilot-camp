@@ -707,6 +707,6 @@ You have completed Lab BTA4 - Add single sign on authentication to secure your c
 
 You can now proceed to Lab BTA5 - Add actions to handle complex tasks. Select Next.
 
-<cc-next />
+<cc-next url="../05-actions" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/04-authentication" />

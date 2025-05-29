@@ -330,6 +330,6 @@ You have completed Lab BTA2 - Index your data in Azure AI Search to bring your d
 
 You are now ready to proceed to Lab BTA3 - Enhance User Experience with the Powered by AI kit! Select Next. 
 
-<cc-next />
+<cc-next url="../03-powered-by-ai" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/02-rag" />

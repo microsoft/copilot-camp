@@ -80,6 +80,6 @@ Follow the steps to activate an Azure free account:
 You have completed Lab BMA0 - Setup!
 You are now ready to proceed to lab BMA1 - Prepare your agent in Azure AI Foundry. Select Next.
 
-<cc-next />
+<cc-next url="../01-agent-in-foundry" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/00-prerequisites" />

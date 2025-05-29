@@ -1,4 +1,4 @@
-# Lab BTA1 - First custom engine agent
+# Lab BTA1 - First custom engine agent with Teams AI library
 
 ---8<--- "b-labs-prelude.md"
 
@@ -155,6 +155,6 @@ You have completed Lab BTA1 - First custom engine agent to build a custom engine
 
 You are now ready to proceed to Lab BTA2 - Index your data in Azure AI Search to bring your data into your custom engine agent. Select Next.
 
-<cc-next />
+<cc-next url="../02-rag" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/01-custom-engine-agent" />

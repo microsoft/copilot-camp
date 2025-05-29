@@ -343,6 +343,6 @@ You have completed Lab BTA3 - Enhance User Experience with the Powered by AI kit
 
 You are now ready to proceed to Lab BTA4 - Secure your solution using authentication. Select Next.
 
-<cc-next />
+<cc-next url="../04-authentication" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/03-powered-by-ai" />

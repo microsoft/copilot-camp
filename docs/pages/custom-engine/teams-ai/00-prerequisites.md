@@ -97,6 +97,6 @@ Follow the steps to activate an Azure free account:
 You have completed Lab BTA0 - Setup!
 You are now ready to proceed to lab BTA1 - First custom engine agent. Select Next.
 
-<cc-next />
+<cc-next url="../01-custom-engine-agent" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/00-prerequisites" />

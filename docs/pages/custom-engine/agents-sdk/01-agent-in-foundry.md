@@ -92,6 +92,6 @@ You have completed Lab BMA1 - Prepare your agent in Azure AI Foundry! If you wan
 
 You are now ready to proceed to Lab BMA2 - Build your first agent using M365 Agents SDK. Select Next.
 
-<cc-next />
+<cc-next url="../02-agent-with-agents-sdk" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/01-agent-in-foundry" />

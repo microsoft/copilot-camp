@@ -16,6 +16,6 @@ The lab includes multiple exercises. Complete them in order, as each one builds 
 * Integrate your agent with Teams using Azure AI Foundry
 * Bring your agent into Microsoft 365 Copilot Chat
 
-<a href="./00-prerequisites">Start here</a> with Lab BMA0, where you'll set up your development environment.
+## <a href="./00-prerequisites">Start here</a> with Lab BMA0, where you'll set up your development environment.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/index" />

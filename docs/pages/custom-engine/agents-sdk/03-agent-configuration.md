@@ -354,6 +354,6 @@ You have completed Lab BMA3 - Integrate Azure AI Foundry Agent with M365 Agents 
 
 You are now ready to proceed to Lab BMA4 - Bring your agent to Copilot Chat. Select Next.
 
-<cc-next />
+<cc-next url="../04-bring-agent-to-copilot" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/03-agent-configuration" />
