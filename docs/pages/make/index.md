@@ -1,15 +1,9 @@
 
 # Welcome to Copilot Developer Camp's Maker Path: Make agents for Microsoft 365 Copilot
 
-In the Build Path of the Copilot Developer Camp, learners will dive deeper into building custom engine agents that integrate with Microsoft Teams and Microsoft 365 Copilot. This path is ideal for developers who want more control over the orchestration, user experience, and underlying AI capabilities of their agent.
+During the Maker Path of the Copilot Developer Camp, learners will design customised assistants to improve the overall experience of using Microsoft 365 Copilot. The process will begin with the creation of a basic agent using either the Copilot Studio agent builder, or the SharPoint agent capability in SharePoint Online, or Copilot Studio.
 
-You’ll choose between two hands-on exercises based on your preferred experience:
-
-- Create a custom engine agent using TypeScript and the Teams AI Library. This option is optimized for Microsoft Teams and provides a streamlined orchestration experience handled by the library behind the scenes.
-- Create a cross-channel custom engine agent using C#, the Microsoft 365 Agents SDK, and Semantic Kernel. This option supports Microsoft Teams, Microsoft 365 Copilot, and external channels, offering full control over the orchestration layer.
-
-To help you decide which path to follow, here is a quick overview of each option and what you’ll learn by building with them.
-
+In order to better understand the available options and when you should use what, here you can find a helpful table with a brief explanation of each of the options.
 
 <hr />
 
