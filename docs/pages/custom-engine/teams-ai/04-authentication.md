@@ -1,4 +1,4 @@
-# B4 - Add single sign on authentication
+# BTA4 - Add single sign on authentication
 
 ---8<--- "b-labs-prelude.md"
 
@@ -16,13 +16,13 @@ Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD
 
 ## Exercise 1: Set up your project for Entra ID Single Sign-on
 
-Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.
+Applications secured with Entra ID must be registered and granted permission. M365 Agents Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the M365 Agents Toolkit project files to provision your app registration in Entra ID.
 
 In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} as the base project and proceed to next steps.
 
 ### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
-In this step, you'll add a file that defines the application that Teams Toolkit will register for your application in Entra ID. This manifest file allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
+In this step, you'll add a file that defines the application that M365 Agents Toolkit will register for your application in Entra ID. This manifest file allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
 
 Create a file **aad.manifest.json** in the root of your project folder, and paste in this JSON:
 
@@ -130,11 +130,11 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 }
 ```
 
-<cc-end-step lab="b4" exercise="1" step="1" />
+<cc-end-step lab="bta4" exercise="1" step="1" />
 
-### Step 2: Update Teams Toolkit configuration file to create the Entra ID App
+### Step 2: Update M365 Agents Toolkit configuration file to create the Entra ID App
 
-Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
+Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps M365 Agents Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the M365 Agents Toolkit user interface.
 
 - Provision - In this phase, any infrastructure needed by your app is created. This includes things like the bot registration, the Teams app package, and, in this case, the Entra ID app registration
 
@@ -183,7 +183,7 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
  AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
 ```
 
-<cc-end-step lab="b4" exercise="1" step="2" />
+<cc-end-step lab="bta4" exercise="1" step="2" />
 
 ## Exercise 2: Add SSO in Teams app manifest
 
@@ -215,7 +215,7 @@ So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` 
     ],
 ```
 
-<cc-end-step lab="b4" exercise="2" step="1" />
+<cc-end-step lab="bta4" exercise="2" step="1" />
 
 ## Exercise 3: Update the application code for SSO
 
@@ -478,7 +478,7 @@ Create a file **auth-end.html** and paste in the contents below:
 
 ```
 
-<cc-end-step lab="b4" exercise="3" step="1" />
+<cc-end-step lab="bta4" exercise="3" step="1" />
 
 ### Step 2: Update code to handle SSO
 
@@ -651,7 +651,7 @@ async function getUserDisplayName(token: string): Promise<string | undefined> {
     - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`        
     - Go to `src\adapter.ts` and update the adapter definition ` MicrosoftAppType: 'SingleTenant'`   
 
-<cc-end-step lab="b4" exercise="3" step="2" />
+<cc-end-step lab="bta4" exercise="3" step="2" />
 
 ## Exercise 4: Run the application
 
@@ -664,7 +664,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 !!! tip "Tip: Testing this exercise locally"
     Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.
 
-<cc-end-step lab="b4" exercise="4" step="1" />
+<cc-end-step lab="bta4" exercise="4" step="1" />
 
 ### Step 2: Giving consent
 
@@ -699,14 +699,14 @@ You will now get this message from the custom engine agent with your logged in n
 
 You can start chatting with your custom engine agent.
 
-<cc-end-step lab="b4" exercise="4" step="2" />
+<cc-end-step lab="bta4" exercise="4" step="2" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B4 - Add single sign on authentication to secure your custom engine agent!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank}.
+You have completed Lab BTA4 - Add single sign on authentication to secure your custom engine agent!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank}.
 
-You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
+You can now proceed to Lab BTA5 - Add actions to handle complex tasks. Select Next.
 
 <cc-next />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/04-authentication" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/04-authentication" />

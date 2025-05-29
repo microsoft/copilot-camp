@@ -1,14 +1,14 @@
-# Lab B1 - First custom engine agent
+# Lab BTA1 - First custom engine agent
 
 ---8<--- "b-labs-prelude.md"
 
-In this lab you will build a custom engine agent using Teams Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
+In this lab you will build a custom engine agent using M365 Agents Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
 
 In this lab you will:
 
 - Learn what is a custom engine agent
 - Create Azure OpenAI service and a deployment model
-- Create a custom engine agent using Teams Toolkit
+- Create a custom engine agent using M365 Agents Toolkit
 - Define a prompt in your custom engine agent
 - Learn how to run and test your app
 
@@ -61,7 +61,7 @@ You'll need to complete the [Azure subscription prerequisite](./00-prerequisites
 
 Once your Azure OpenAI service is created successfully, navigate to your resource, select **Keys and Endpoint** from the left side panel. Copy and save `KEY 1` and `Endpoint`that will be required later in Exercise 2.
 
-<cc-end-step lab="b1" exercise="1" step="1" />
+<cc-end-step lab="bta1" exercise="1" step="1" />
 
 ### Step 2: Create a deployment model
 
@@ -91,15 +91,15 @@ For example, choose "Shakespearean Writing Assistant" and select **Use prompt**.
 
 ![The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
-<cc-end-step lab="b1" exercise="1" step="2" />
+<cc-end-step lab="bta1" exercise="1" step="2" />
 
 ## Exercise 2: Scaffold a custom engine agent from a template
 
 You'll need to complete all the [required prerequisites](./00-prerequisites.md){target=_blank} before starting with this exercise.
 
-### Step 1: Use Teams Toolkit to create a new custom engine agent
+### Step 1: Use M365 Agents Toolkit to create a new custom engine agent
 
-1. Open Teams Toolkit on Visual Studio Code and select **Create a New App** > **Custom Engine Agent** > **Basic AI Chatbot**.
+1. Open M365 Agents Toolkit on Visual Studio Code and select **Create a New App** > **Custom Engine Agent** > **Basic AI Chatbot**.
 1. Select **TypeScript** as a programming language choice and **Azure OpenAI** as Large Language model of your choice.
     1. Paste the Azure OpenAI key and press enter.
     1. Paste the Azure OpenAI endpoint and press enter. (Endpoint shouldn't include forward slash at the end of its URL.)
@@ -109,7 +109,7 @@ You'll need to complete all the [required prerequisites](./00-prerequisites.md){
 
 After providing all the details mentioned above, your project will be scaffolded successfully in seconds.
 
-<cc-end-step lab="b1" exercise="2" step="1" />
+<cc-end-step lab="bta1" exercise="2" step="1" />
 
 ### Step 2: Customize prompt and test the app
 
@@ -127,7 +127,7 @@ You like using emojis where appropriate.
 To test the behavior of your app quickly, you can use Teams App Test Tool. Later in the exercise, you'll run and debug your custom engine agent on Microsoft Teams.
 
 ??? check "More information about the Teams App Test Tool"
-    The Teams App Test Tool, or simply Test Tool, is a feature within Teams Toolkit that enables developers to debug, test, and refine their Teams bot applications in a web-based chat environment that mimics the behavior, look, and feel of Microsoft Teams. This tool eliminates the need for a Microsoft 365 tenant or a dev tunnel, streamlining the development process.
+    The Teams App Test Tool, or simply Test Tool, is a feature within M365 Agents Toolkit that enables developers to debug, test, and refine their Teams bot applications in a web-based chat environment that mimics the behavior, look, and feel of Microsoft Teams. This tool eliminates the need for a Microsoft 365 tenant or a dev tunnel, streamlining the development process.
 
 Start debugging your app by selecting **Run and Debug** tab on Visual Studio Code and **Debug in Test Tool**. Teams App Test Tool will pop up on your browser and you can start chatting with your custom engine agent right away! Some of the recommended questions you can ask to test the behavior:
 
@@ -137,8 +137,8 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 ![Test Career Genie in App Test Tool. There is a UI looking almost like the real Microsoft Teams one, with a chat area that allows to interact with the custom engine agent. On the right side there is a log panel with detailed logs about the interactions between the user and the bot.](../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
-??? info "What does Teams Toolkit do behind the scene?"
-    When you start debugging your app, Teams Toolkit completes some required tasks for you behind the scene, such as:
+??? info "What does M365 Agents Toolkit do behind the scene?"
+    When you start debugging your app, M365 Agents Toolkit completes some required tasks for you behind the scene, such as:
 
     - Checking the required prerequisites such as Node.js, Microsoft 365 Account (If debugging in local or dev), ports occupancy.
     - Starting local tunneling service (If debugging in local) to forward public URL to local port.
@@ -147,14 +147,14 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 
 After successfully completing your testing, end your debugging session and close the terminals in Visual Studio Code.
 
-<cc-end-step lab="b1" exercise="2" step="2" />
+<cc-end-step lab="bta1" exercise="2" step="2" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B1 - First custom engine agent to build a custom engine agent using Azure OpenAI and Teams Toolkit! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie){target=_blank}.
+You have completed Lab BTA1 - First custom engine agent to build a custom engine agent using Azure OpenAI and M365 Agents Toolkit! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie){target=_blank}.
 
-You are now ready to proceed to Lab B2 - Index your data in Azure AI Search to bring your data into your custom engine agent. Select Next.
+You are now ready to proceed to Lab BTA2 - Index your data in Azure AI Search to bring your data into your custom engine agent. Select Next.
 
 <cc-next />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/01-custom-engine-agent" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/01-custom-engine-agent" />

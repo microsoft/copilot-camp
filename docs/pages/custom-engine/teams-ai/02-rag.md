@@ -1,4 +1,4 @@
-# Lab B2 - Index your data in Azure AI Search
+# Lab BTA2 - Index your data in Azure AI Search
 
 ---8<--- "b-labs-prelude.md"
 
@@ -80,7 +80,7 @@ You'll need to complete the [Azure subscription prerequisite](./00-prerequisites
 
 Once your Azure AI Search service resource is created successfully, navigate to your resource, In **Overview**, copy and save `Url`. Then, navigate to **Keys** tab under the **Settings**, copy and save `Primary admin key`. Both of them will be required later in the following exercises.
 
-<cc-end-step lab="b2" exercise="1" step="1" />
+<cc-end-step lab="bta2" exercise="1" step="1" />
 
 ### Step 2: Create a storage account service resource
 
@@ -94,7 +94,7 @@ Once your Azure AI Search service resource is created successfully, navigate to 
     - **Performance:** Standard
     - **Redundancy:** Geo-redundant storage (GRS)
 
-<cc-end-step lab="b2" exercise="1" step="2" />
+<cc-end-step lab="bta2" exercise="1" step="2" />
 
 ### Step 3: Create a `text-embedding-ada-002` model
 
@@ -114,7 +114,7 @@ Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your bro
     1. Select a different version or deployment type
     2. Free up the resources on other deployments by requesting for [more quota or adjust the existing quota](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota){target=_blank}
 
-<cc-end-step lab="b2" exercise="1" step="3" />
+<cc-end-step lab="bta2" exercise="1" step="3" />
 
 ## Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground
 
@@ -149,7 +149,7 @@ Take note of the index name as you will use this in the `INDEX_NAME` environment
 
 It takes couple of minutes to complete the data ingestion. Once the data is ready, you can proceed with testing.
 
-<cc-end-step lab="b2" exercise="2" step="1" />
+<cc-end-step lab="bta2" exercise="2" step="1" />
 
 !!! note "Note"
     Once you index your data, your index remains on Azure AI Search even if you close or refresh the Chat Playground. If the Chat Playground resets itself and you have to add your data again, you don't have to index your data for the second time using Upload files, instead you can select Azure AI Search from Add Your Data section and select your existing index to test out your data.
@@ -165,7 +165,7 @@ You can ask questions such as *"Can you suggest me a candidate who is suitable f
 
 ![The Chat Playground in Azure AI Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents.](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
 
-<cc-end-step lab="b2" exercise="2" step="2" />
+<cc-end-step lab="bta2" exercise="2" step="2" />
 
 ### Step 3: Sneak peek to your index on Azure AI Search
 
@@ -184,7 +184,7 @@ Go back to **Search explorer** tab, select **Query options** in your Resumes ind
 
 ![The Search Explorer for the current index in Azure AI Search, showing search data with the contentVector field highlighted with the numeric vectors values.](../../assets/images/custom-engine-02/contentvector-in-your-data.png)
 
-<cc-end-step lab="b2" exercise="2" step="3" />
+<cc-end-step lab="bta2" exercise="2" step="3" />
 
 ## Exercise 3: Integrate your app with Azure AI Search
 
@@ -219,7 +219,7 @@ azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
 indexName: process.env.INDEX_NAME,
 ```
 
-<cc-end-step lab="b2" exercise="3" step="1" />
+<cc-end-step lab="bta2" exercise="3" step="1" />
 
 ### Step 2: Configure Azure AI Search as a data source
 
@@ -301,7 +301,7 @@ defaultPrompt: async () => {
 }
 ```
 
-<cc-end-step lab="b2" exercise="3" step="2" />
+<cc-end-step lab="bta2" exercise="3" step="2" />
 
 ### Step 3: Debug your app and chat with your data
 
@@ -322,14 +322,14 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 
 ![Animation of the interaction with the Career Genie custom engine agent. The user interacts with the bot providing subsequent prompts and looking for a specific candidate based on some requirements.](../../assets/images/custom-engine-02/byod-teams.gif)
 
-<cc-end-step lab="b2" exercise="3" step="3" />
+<cc-end-step lab="bta2" exercise="3" step="3" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B2 - Index your data in Azure AI Search to bring your data into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie){target=_blank}.
+You have completed Lab BTA2 - Index your data in Azure AI Search to bring your data into your custom engine agent! If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab02-RAG/CareerGenie){target=_blank}.
 
-You are now ready to proceed to Lab B3 - Enhance User Experience with the Powered by AI kit! Select Next. 
+You are now ready to proceed to Lab BTA3 - Enhance User Experience with the Powered by AI kit! Select Next. 
 
 <cc-next />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/02-rag" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/02-rag" />

@@ -1101,8 +1101,8 @@
             "title": "Build - Build a custom engine agent",
             "labs": [
                 {
-                    "labId": "b0",
-                    "title": "Lab B0 - Prerequisites",
+                    "labId": "bta0",
+                    "title": "Lab BTA0 - Prerequisites",
                     "exercises": [
                         {
                             "exerciseId": "1",

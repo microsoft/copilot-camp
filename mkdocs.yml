@@ -76,12 +76,21 @@ plugins:
               - Lab EB - Add Copilot Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
             - Build - Build a custom engine agent:
               - Welcome : 'pages/custom-engine/index.md'
-              - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
-              - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
-              - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
-              - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
-              - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
-              - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
+              - Teams AI library labs:
+                - Welcome : 'pages/custom-engine/teams-ai/index.md'
+                - Lab BTA0 - Setup: 'pages/custom-engine/teams-ai/00-prerequisites.md'
+                - Lab BTA1 - First custom engine agent: 'pages/custom-engine/teams-ai/01-custom-engine-agent.md'
+                - Lab BTA2 - Index your data in Azure AI Search: 'pages/custom-engine/teams-ai/02-rag.md'
+                - Lab BTA3 - Enhance user experience: 'pages/custom-engine/teams-ai/03-powered-by-ai.md'
+                - Lab BTA4 - Add single sign on authentication: 'pages/custom-engine/teams-ai/04-authentication.md'
+                - Lab BTA5 - Add actions to handle complex tasks: 'pages/custom-engine/teams-ai/05-actions.md'
+              - M365 Agents SDK labs:
+                - Welcome : 'pages/custom-engine/agents-sdk/index.md'
+                - Lab BMA0 - Setup: 'pages/custom-engine/agents-sdk/00-prerequisites.md'
+                - Lab BMA1 - Prepare your agent in Azure AI Foundry: 'pages/custom-engine/agents-sdk/01-agent-in-foundry.md'
+                - Lab BMA2 - Build your first agent using M365 Agents SDK: 'pages/custom-engine/agents-sdk/02-agent-with-agents-sdk.md'
+                - Lab BMA3 - Configure agent properties and test on Teams: 'pages/custom-engine/agents-sdk/03-agent-configuration.md'
+                - Lab BMA4 - Bring your agent to Copilot Chat: 'pages/custom-engine/agents-sdk/04-bring-agent-to-copilot.md'
             - Agent instructions:
               - Level 1 - Simple agent instructions: 'pages/copilot-instructions/beginner-agent.md'
             - Awards: 'awards.md'

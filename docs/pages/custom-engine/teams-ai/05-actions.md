@@ -1,4 +1,4 @@
-# B5 - Add actions to handle complex tasks
+# BTA5 - Add actions to handle complex tasks
 
 ---8<--- "b-labs-prelude.md"
 
@@ -174,7 +174,7 @@ In `src/prompts/monologue/` folder, create a new file with a name **actions.json
 ]
 ```
 
-<cc-end-step lab="b5" exercise="1" step="1" />
+<cc-end-step lab="bta5" exercise="1" step="1" />
 
 ## Exercise 2: Implement a logic in the planner to choose between prompts
 
@@ -225,7 +225,7 @@ const planner = new ActionPlanner({
 });
 ```
 
-<cc-end-step lab="b5" exercise="2" step="1" />
+<cc-end-step lab="bta5" exercise="2" step="1" />
 
 ## Exercise 3: Implement actions in the app
 
@@ -286,7 +286,7 @@ function deleteList(state: ApplicationTurnState, listName: string): void {
 export { getCandidates, setCandidates, ensureListExists, deleteList };
 ```
 
-<cc-end-step lab="b5" exercise="3" step="1" />
+<cc-end-step lab="bta5" exercise="3" step="1" />
 
 ### Step 2: Register action handlers in the app
 
@@ -344,7 +344,7 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 ```
 
-<cc-end-step lab="b5" exercise="3" step="2" />
+<cc-end-step lab="bta5" exercise="3" step="2" />
 
 ### Step 3: Test your app with the new actions
 
@@ -369,7 +369,7 @@ To understand how the flow works, you may ask the following questions in order:
 
 ![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../assets/images/custom-engine-05/actions.gif)
 
-<cc-end-step lab="b5" exercise="3" step="3" />
+<cc-end-step lab="bta5" exercise="3" step="3" />
 
 ## Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
 
@@ -407,7 +407,7 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
 }
 ```
 
-<cc-end-step lab="b5" exercise="4" step="1" />
+<cc-end-step lab="bta5" exercise="4" step="1" />
 
 ### Step 2: Create a new function for the new `sendLists` action
 
@@ -531,7 +531,7 @@ Finally in `src/app/actions.ts`, add **sendLists** in the`actions.ts` exports. T
 export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
 ```
 
-<cc-end-step lab="b5" exercise="4" step="2" />
+<cc-end-step lab="bta5" exercise="4" step="2" />
 
 ### Step 3: Register `sendLists` action handler
 
@@ -550,7 +550,7 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 });
 ```
 
-<cc-end-step lab="b5" exercise="4" step="3" />
+<cc-end-step lab="bta5" exercise="4" step="3" />
 
 ### Step 4: Update your Entra ID app registration
 
@@ -563,7 +563,7 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
 }
 ```
 
-<cc-end-step lab="b5" exercise="4" step="4" />
+<cc-end-step lab="bta5" exercise="4" step="4" />
 
 ### Step 5: Test your app and the new `sendLists` action
 
@@ -612,11 +612,11 @@ To understand how the flow works, you may ask the following questions in order:
 
 ![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../assets/images/custom-engine-05/career-genie-full.gif)
 
-<cc-end-step lab="b5" exercise="4" step="5" />
+<cc-end-step lab="bta5" exercise="4" step="5" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank}.
+You have completed BTA5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank}.
 
 This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
@@ -624,4 +624,4 @@ This is the end of the **Build your own agent** path! Did you enjoy building Car
 
 <cc-award path="Build" />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/05-actions" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/05-actions" />
