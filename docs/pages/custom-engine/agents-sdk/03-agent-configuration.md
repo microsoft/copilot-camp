@@ -224,11 +224,7 @@ Replace **OnMessageAsync** method with the following:
 ```
 
 ???+ info "What happens in OnMessageAsync?"
-    The *OnMessageAsync* method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to:
-        * Send the user’s message to your Azure AI Foundry agent
-        * Stream the response back to the user in real time
-        * Track and attach citations and file references for transparency
-        * Add sensitivity and AI-generated labels for security and traceability
+    The *OnMessageAsync* method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to send the user’s message to your Azure AI Foundry agent, stream the response back to the user in real time, track and attach citations and file references for transparency and add sensitivity and AI-generated labels for security and traceability.
 
 <cc-end-step lab="bma3" exercise="2" step="1" />
 
@@ -314,11 +310,12 @@ azd auth login --scope https://ai.azure.com/.default
 
 A window will pop up on your browser and you'll need to sign into your Microsoft account to successfully complete az login.
 
-Expand **Start** and select **Dev Tunnels > Create a Tunnel**.  
-  * Select **Sign in** and **Work or school account**. Login with the same credentials mentioned above.
-  * Provide a name for your tunnel such as `DevTunnel`.
-  * Keep the Tunnel Type **Temporary**.
-  * Select Access as **Public** and then **Create**.
+Expand **Start** and select **Dev Tunnels > Create a Tunnel**:
+ 
+* Select **Sign in** and **Work or school account**. Login with the same credentials mentioned above.
+* Provide a name for your tunnel such as `DevTunnel`.
+* Keep the Tunnel Type **Temporary**.
+* Select Access as **Public** and then **Create**.
 
 ![Dev Tunnel](https://github.com/user-attachments/assets/146fb3d4-256d-48b3-95a1-9e285f6bbc08)
 

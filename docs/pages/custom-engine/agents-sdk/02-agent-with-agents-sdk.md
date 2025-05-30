@@ -9,7 +9,7 @@ This lab introduces you to the Microsoft 365 Agents SDK and Microsoft 365 Agents
 Now that you’ve seen how to build an agent using Azure AI Foundry, let’s switch gears and explore how to build your own agent locally using the Microsoft 365 Agents SDK. This SDK lets you build multi-channel, production-ready agents that can run in Microsoft Teams, Microsoft 365 Copilot, and other preferred channels.
 
 1. Open Visual Studio 2022 and select **Create a new project**.
-1. Search and select **Microsoft 365 Agents**.
+1. Search and select **Microsoft 365 Agents** template.
 1. Provide a name for your agent as `ContosoHRAgent` and select **Create**.  
 1. From the list of templates, select **Echo Bot** and select **Create**.
 1. When the project template is scaffolded, go to Solution Explorer on the right-side panel and explore the agent template.

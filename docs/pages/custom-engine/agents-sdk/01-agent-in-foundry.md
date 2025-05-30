@@ -5,7 +5,7 @@ In this lab, you’ll begin your journey by preparing a custom engine agent usin
 This exercise sets the foundation for the rest of the Build Path using the **Microsoft 365 Agents SDK** and **Semantic Kernel**. You’ll simulate a real-world Human Resources agent for Contoso Electronics that can answer questions based on uploaded documents like the Employee Handbook, Role Library, and Benefit Plans.
 
 ???+ info "What is Azure AI Foundry?"
-Azure AI Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.
+    Azure AI Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.
 
 ## Exercise 1: Prepare your agent in Azure AI Foundry
 
