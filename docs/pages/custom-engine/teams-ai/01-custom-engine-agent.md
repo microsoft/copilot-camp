@@ -65,7 +65,7 @@ Once your Azure OpenAI service is created successfully, navigate to your resourc
 
 ### Step 2: Create a deployment model
 
-In your Azure OpenAI service, navigate to **Model deployments** from the left side panel, then select **Manage deployments**. This will direct you to `Azure AI Foundry` where you can create your deployment model.
+In your Azure OpenAI service, navigate to `Azure AI Foundry` where you can create your deployment model.
 
 ??? check "What is Azure AI Foundry?"
     Azure AI Foundry is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. It's also a playground to models other than OpenAI such as `Phi-3`, `Llama 3.1` and a starting point to other Azure AI services such as Speech, Vision and more.
