@@ -390,69 +390,65 @@
                         }
                     ]
                 },
-                {
+                 {
                     "labId": "e1",
-                    "title": "E1 - First declarative agent",
+                    "title": "Lab E1 - Build your first Declarative agent with TypeSpec definition using Microsoft 365 Agents Toolkit",
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Scaffold a declarative agent from template",
+                            "title": "Build the base agent with TypeSpec using Microsoft 365 Agents Toolkit",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install Agents Toolkit"                                    
+                                    "title": "Scaffold your base agent project using Microsoft 365 Agents Toolkit"                                    
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Use Agents Toolkit to create a declarative agent app"                                    
+                                    "title": "Sign into the Microsoft 365 Agents Toolkit "                                    
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Set up accounts in Agents Toolkit"                                    
+                                    "title": "Define your agent"                                    
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Understanding the files in the app"                                    
+                                    "title": "(Optional) Understand the decorators"                                    
+                                },
+ {
+                                    "stepId": "5",
+                                    "title": "Test your agent"                                    
                                 }
                             ]
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Update instructions and icons",
+                            "title": "Enhance Agent capabilities",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update icons and manifests"                                    
+                                    "title": "Modify agent to add more operations"                                    
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add conversation starters"                                    
+                                    "title": "Add adaptive card to function reference"                                    
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Test the app"                                    
+                                    "title": "Add code interpreter capabilities"                                    
+                                },
+   {
+                                    "stepId": "4",
+                                    "title": "Provision and Test the Agent"                                    
                                 }
                             ]
                         },
                         {
                             "exerciseId": "3",
-                            "title": "Add files for reference (Bonus exercise)",
+                            "title": "Diagnosing and Debugging Agent",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Upload files to SharePoint"                                    
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Update declarative agent manifest"                                    
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Upgrade app manifest"                                    
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Test the app"                                    
+                                    "title": "Agent debugging in the chat"                                    
                                 }
                             ]
                         }
@@ -1043,8 +1039,8 @@
                     ]
                 },
                 {
-                    "labId": "eb",
-                    "title": "Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector",
+                    "labId": "e7",
+                    "title": "Integrate - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector",
                     "exercises": [
                         {
                             "exerciseId": "1",
@@ -1080,7 +1076,7 @@
                         },
                         {
                             "exerciseId": "3",
-                            "title": "Test the plugin in Copilot",
+                            "title": "Test agent in Copilot",
                             "steps": [
                                 {
                                     "stepId": "1",
