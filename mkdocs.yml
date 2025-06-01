@@ -5,7 +5,7 @@ repo_name: microsoft/copilot-camp
 edit_uri: ''                    # Disable edit button
 
 theme:
-  name: 'material'
+  name: 'material'  
   palette:
     scheme: default
     primary: custom
@@ -17,7 +17,8 @@ theme:
     - navigation.tabs         # Top nav
     - navigation.tabs.sticky  # Make top nav stay vaisible
     - navigation.sections
-    - toc.integrate           # Integrate sections into left nav
+    - toc.integrate  
+    - content.code.copy
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -30,7 +31,6 @@ extra_javascript:
   - javascripts/cc-award.js
   - javascripts/cc-next.js
   - javascripts/cc-lab-step.js
-  - javascripts/clipboard.js
 extra_css:
   - stylesheets/labStyles.css
   - stylesheets/extra.css
