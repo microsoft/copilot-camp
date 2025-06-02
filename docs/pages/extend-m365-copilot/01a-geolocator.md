@@ -2,22 +2,19 @@
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab, you'll build a simple declarative agent using Agents Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
+In this lab, you'll create a basic declarative agent using instructions and supplementary knowledge provided through files.  Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
 
-In this lab you will learn:
+In this lab you will learn how to:
 
-- What is a declarative agent for Microsoft 365 Copilot
-- Create a declarative agent using Agents Toolkit template
-- Customise the agent to create the geo locator game using instructions 
-- Learn how to run and test your app 
-- For bonus exercise, you will need a SharePoint teams site
+- create a declarative agent using Agents Toolkit template
+- customise the agent to create the geo locator game using instructions 
+- learn how to run and test your app 
+- for bonus exercise, you will need a SharePoint teams site
 
 ## Introduction
 
 Declarative agents leverage the same scalable infrastructure and platform of Microsoft 365 Copilot, tailored specifically to meet focus on a special area of your needs.
 They function as subject matter experts in a specific area or business need, allowing you to use the same interface as a standard Microsoft 365 Copilot chat while ensuring they focus exclusively on the specific task at hand. 
-
-Welcome on board to building your own declarative agent ☺️! Let's dive in and make your Copilot work magic!
 
 In this lab you will start out building a declarative agent using Agents Toolkit with a default template used in the tool. This is to help you get started with something.
 Next, you will modify your agent to be focused on a geo location game. 

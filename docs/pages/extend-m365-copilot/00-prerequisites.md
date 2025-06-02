@@ -70,6 +70,8 @@ Follow the steps as shown in the screen shot below.
 
 3️⃣ Click **Install**
 
+![agents toolkit](../../assets/images/extend-m365-copilot-00/agents-toolkit.png)
+
 !!! note "If you have Agents Toolkit installed but hidden"
     If you previously installed Agents Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Agents Toolkit to bring it back into view.
 
