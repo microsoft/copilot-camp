@@ -65,8 +65,8 @@ Create a new file called **trey-declarative-agent.json** within your **appPackag
 
 ~~~json
 {
-    "$schema": "https://aka.ms/json-schemas/copilot-extensions/vNext/declarative-copilot.schema.json",
-    "version": "v1.0",
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.3/schema.json",
+    "version": "v1.3",
     "name": "Trey Genie Local",
     "description": "You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. ",
     "instructions": "You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, 'Always be Billing!'. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice.",
@@ -127,7 +127,7 @@ Under "Capabilities" you will notice a SharePoint file container. While Microsof
 Notice that the SharePoint URL is actually an environment variable `SHAREPOINT_DOCS_URL`, so you need to add that to your **.env.local** file in the **env** folder. Add this in its own line at the end of the file, using your SharePoint URL:
 
 ~~~text
-SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegalDocuments
+SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocuments
 ~~~
 
 <cc-end-step lab="e3" exercise="2" step="2" />
@@ -309,47 +309,10 @@ You should see a list of your projects from the API plugin, enhanced with detail
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
-### Step 3: Learn to troubleshoot your API Plugin
-
-With any luck your declarative agent is working, but what if it's not? If your API is working but Copilot isn't calling it, what can you do?
-
-The answer is simple, and it's called _developer mode_.
-
-To enable developer mode, enter this prompt into Copilot:
-
-~~~text
--developer on
-~~~
-
-Then when you issue a prompt, Copilot will include an adaptive card at the end of its response with the words "Show plugin developer info". 
-
-![The output of the declarative agent, when the developer mode is turned on. There is a button to show the plugin developer information.](../../assets/images/extend-m365-copilot-04/devmode1.png)
-
-If you expand by selecting the "Show plugin developer info" button , you will find details like enabled plugins that the agent can use, the matched functions and selected function that is used in the response sent by the agent. 
-
-!!! note
-    This screen shot includes functions you won't add until the next lab.
-
-![Detailed information about the processing of the plugin request with enabled plugins, matched functions, selected function for execution, and function execution details.](../../assets/images/extend-m365-copilot-04/devmode2.png)
-
-If you expand the selected function, you will see the execution details of the API/function.
-
-![Developer mode](../../assets/images/extend-m365-copilot-04/devmode3.png)
-
-Summary of developer mode info and their sections:
-
- * Enabled plugins - explains which API plugins are available within your declarative agent
- * Matched functions - shows the available functions in your plugin JSON (**trey-plugin.json** in this case).
- * Selected functions for execution - shows which of the functions Copilot chose
- * Function execution details - shows the HTTP status code returned by the API when Copilot called it and allows to dig into the details of the HTTP request and response
-
-For more details please see the [developer mode documentation](https://learn.microsoft.com/microsoft-365-copilot/extensibility/debugging-copilot-plugin){target=_blank}
-
-<cc-end-step lab="e3" exercise="3" step="3" />
 
 ---8<--- "e-congratulations.md"
 
-You've completed adding a declarative agent to your API plugin. You are now ready to proceed to add authentication to your API plugin. 
+You've completed adding a declarative agent to your API plugin. You are now ready to enhance your API and the plugin for your agent. 
 
 <cc-next />
 

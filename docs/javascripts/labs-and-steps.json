@@ -559,11 +559,8 @@
                                 {
                                     "stepId": "2",
                                     "title": "Test the declarative agent"                                    
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Learn to troubleshoot your API Plugin"                                    
                                 }
+                              
                             ]
                         }
                     ]
