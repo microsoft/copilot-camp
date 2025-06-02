@@ -84,7 +84,7 @@ plugins:
               - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
             - Agent instructions:
               - Level 1 - Simple agent instructions: 'pages/copilot-instructions/beginner-agent.md'
-            - Awards: 'awards.md'
+            # - Awards: 'awards.md'
             - Resources: 'resources.md'
             # The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
             #  - Lab MAB - Copilot Studio agent builder:
