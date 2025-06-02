@@ -12,7 +12,7 @@ The following labs are in need of testing. Please send questions and issues to t
 
 ## Here are the new labs!
 
-!!! note "New Make Path"
+!!! note "New Maker Path"
     Owner: Paolo Pialorsi
 
     In this new path, the student finds content about:

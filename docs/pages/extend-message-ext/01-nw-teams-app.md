@@ -4,7 +4,7 @@ In this lab, you’ll run the Northwind message extension, your base app. The in
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
     - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
     - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) (📍You are here)
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M2 - Run app in Microsoft 365 Copilot](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
@@ -32,7 +32,7 @@ In your working directory called **Northwind** from previous lab , open the [man
 },
 ~~~
 
-Notice the token `${{TEAMSFX_ENV}}` in one of the icon names. Teams Toolkit will replace this token with your environment name, such as "local" or "dev" (for an Azure deployment in development). Thus, the icon color will change depending on the environment.
+Notice the token `${{TEAMSFX_ENV}}` in one of the icon names. Agents Toolkit will replace this token with your environment name, such as "local" or "dev" (for an Azure deployment in development). Thus, the icon color will change depending on the environment.
 
 Now have a look at the "name" and "description". Notice that the description is quite long! This is important so both users and Copilot can learn what your application does and when to use it.
 
@@ -49,7 +49,7 @@ Now have a look at the "name" and "description". Notice that the description is 
 
 Scroll down a bit to "composeExtensions". Compose extension is the historical term for message extension; this is where the app's message extensions are defined.
 
-Within this is a bot, with the ID supplied by Teams Toolkit.
+Within this is a bot, with the ID supplied by Agents Toolkit.
 
 ~~~json
     "composeExtensions": [
@@ -60,7 +60,7 @@ Within this is a bot, with the ID supplied by Teams Toolkit.
                     ...
 ~~~
 
-Message extensions communicate using the Azure Bot Framework; this provides a fast and secure communication channel between Microsoft 365 and your application. When you first ran your project, Teams Toolkit registered a bot, and will place its bot ID here.
+Message extensions communicate using the Azure Bot Framework; this provides a fast and secure communication channel between Microsoft 365 and your application. When you first ran your project, Agents Toolkit registered a bot, and will place its bot ID here.
 
 This message extension has two commands, which are defined in the `commands` array. Let's pick one command and see the structure. 
 
@@ -377,7 +377,7 @@ As you can see, the code obtains these two values, updates the database, and the
 
 Open your working folder in Visual Studio Code. If you have already opened it for the code tour, you can continue from there.
 
-Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
+Agents Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
 
 In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) storage emulator. That's mostly built into the project, but the project won't build unless you provide the connection string.
 
@@ -409,7 +409,7 @@ The first time your app runs, you may be prompted to allow NodeJS to go through 
 
 It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.
 
-The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Agents Toolkit.
 Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
@@ -480,7 +480,7 @@ Here's an abbreviated version of that JSON for easy reference.
 ],
 ~~~
 
-Notice first that there's a bot ID. That's because Microsoft Teams uses the Azure bot channel to exchange secure, real-time messages with your application. Teams Toolkit will register the bot and fill in the ID for you.
+Notice first that there's a bot ID. That's because Microsoft Teams uses the Azure bot channel to exchange secure, real-time messages with your application. Agents Toolkit will register the bot and fill in the ID for you.
 
 Then there's a collection of commands. These correspond to the tabs in the search dialog in Teams. In this application, the commands are really intended for Copilot more than regular users!
 
@@ -565,6 +565,6 @@ The code reads the Products table on each query, but the other tables are only a
 
 ## Congratulations
 
-You have mastered running the Northwind message extension. Now it's time to test it as plugin in Microsoft Copilot for Microsoft 365 in the next lab. Select Next.
+You have mastered running the Northwind message extension. Now it's time to test it as plugin in Microsoft 365 Copilot  in the next lab. Select Next.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/01-nw-teams-app" />

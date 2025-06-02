@@ -1,17 +1,17 @@
-# Lab E6a - Add Entra ID authentication with OAuth (Teams Toolkit)
+# Lab E6a - Add Entra ID authentication with OAuth (Agents Toolkit)
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider. You will learn how to set up Teams Toolkit to automate the Entra ID and Teams Developer Portal registrations.
+In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider. You will learn how to set up Agents Toolkit to automate the Entra ID and Teams Developer Portal registrations.
 
 !!! note
     This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the [solution folder for Lab E5 from **/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END){target=_blank}
     and work there.
     The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END){target=_blank} folder.
 
-## Exercise 1: Update the local Teams Toolkit configuration
+## Exercise 1: Update the local Agents Toolkit configuration
 
-In this exercise you will modify the Teams Toolkit configuration files to instruct it to register the application in Entra ID and to place the information in the Teams Developer Portal "vault".
+In this exercise you will modify the Agents Toolkit configuration files to instruct it to register the application in Entra ID and to place the information in the Teams Developer Portal "vault".
 
 ### Step 1: Add an Entra ID app manifest
 
@@ -60,7 +60,7 @@ Create a new file **aad.manifest.json** in the root of your working folder. Copy
 }
 ```
 
-This file contains details for the Entra ID application to be registered or updated. Notice that it contains various tokens such as `${{AAD_APP_CLIENT_ID}}` which will be replaced with actual values when Teams Toolkit provisions the application.
+This file contains details for the Entra ID application to be registered or updated. Notice that it contains various tokens such as `${{AAD_APP_CLIENT_ID}}` which will be replaced with actual values when Agents Toolkit provisions the application.
 
 !!! Note
     Entra ID was previously called "Azure Active Directory"; references to "AAD" refer to Entra ID under its old name.
@@ -69,12 +69,12 @@ This file contains details for the Entra ID application to be registered or upda
 
 ### Step 2: Update the file version number in **teamsapp.local.yml**
 
-The **teamsapp.local.yml** file contains instructions for Teams Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
+The **teamsapp.local.yml** file contains instructions for Agents Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
 
 !!! warning Indentation is critical in yaml
     Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank}.
 
-These labs were originally written using a slightly older version of Teams Toolkit, which uses version 1.5 of this file. In this step you will update the file to version 1.7.
+These labs were originally written using a slightly older version of Agents Toolkit, which uses version 1.5 of this file. In this step you will update the file to version 1.7.
 
 Begin by replacing the first line with this new schema reference:
 
@@ -130,7 +130,7 @@ Insert the following yaml between these lines, directly under the `provision:` l
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 ```
 
-Notice that by setting `signInAudience` to `AzureADMyOrg`, Teams Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
+Notice that by setting `signInAudience` to `AzureADMyOrg`, Agents Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
 
 Also note that this step will write several values into your environment files, where they will be inserted into **aad.manifest.json** as well as in your application package.
 
@@ -230,9 +230,9 @@ This code publishes environment variables for use within your application code. 
 
 <cc-end-step lab="e6a" exercise="1" step="6" />
 
-## Exercise 2: Update the general Teams Toolkit configuration
+## Exercise 2: Update the general Agents Toolkit configuration
 
-While **teamsapp-local.yml** controls Teams Toolkit behavior when debugging locally, **teamsapp.yml**
+While **teamsapp-local.yml** controls Agents Toolkit behavior when debugging locally, **teamsapp.yml**
 controls its behavior when deploying to Microsoft Azure. In this exercise you'll update this file.
 
 !!! warning Indentation is critical in yaml
@@ -278,7 +278,7 @@ Insert the following yaml between these lines, directly under the `provision:` l
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 ```
 
-Notice that by setting `signInAudience` to `AzureADMyOrg`, Teams Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
+Notice that by setting `signInAudience` to `AzureADMyOrg`, Agents Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
 
 Also note that this step will write several values into your environment files, where they will be inserted into **aad.manifest.json** as well as in your application package.
 
@@ -327,7 +327,7 @@ Insert the following before the last line:
 
 ## Exercise 3: Update your application package
 
-Now that you've got Teams Toolkit setting up the Entra ID registrations, it's time to update the application package so Copilot knows about the authentication. In this exercise you'll update the necessary files.
+Now that you've got Agents Toolkit setting up the Entra ID registrations, it's time to update the application package so Copilot knows about the authentication. In this exercise you'll update the necessary files.
 
 ### Step 1: Update the Open API Specification file
 
@@ -587,9 +587,9 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab Ea6, Add Entra ID authentication with Teams Toolkit!
+You have completed lab Ea6, Add Entra ID authentication with Agents Toolkit!
 
-Want to try something cool? How about adding a Graph Connector to your solution?
+Want to try something cool? How about adding a Copilot Connector to your solution?
 
 <cc-next url="../EB-add-graphconnector" />
 

@@ -11,7 +11,7 @@ In this lab, you will set up the development environment to build, test, and dep
 In this lab you will learn:
 
 - How to configure your Microsoft 365 tenant's Teams upload policy for lab use
-- How to install and configure Teams toolkit for Visual Studio Code
+- How to install and configure Microsoft 365 Agents Toolkit for Visual Studio Code
 
 !!! pied-piper "Disclaimer"
     These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
@@ -21,7 +21,7 @@ In this lab you will learn:
 
 ### Step 1: Enable Teams custom application uploads
 
-By default, end users can't upload applications directly; instead a Teams Administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Teams Toolkit.
+By default, end users can't upload applications directly; instead a Teams Administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Agents Toolkit.
 
 1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
 
@@ -37,13 +37,13 @@ By default, end users can't upload applications directly; instead a Teams Admini
 
 <cc-end-step lab="e0" exercise="1" step="1" />
 
-## Exercise 2: Install Teams Toolkit and prerequisites
+## Exercise 2: Install Agents Toolkit and prerequisites
 
 You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
 
 ### Step 1: Install Visual Studio Code
 
-It should be no surprise that **Teams Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+It should be no surprise that **Agents Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
 
 <cc-end-step lab="e0" exercise="2" step="1" />
 
@@ -55,26 +55,30 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 
 <cc-end-step lab="e0" exercise="2" step="2" />
 
-### Step 3: Install Teams Toolkit
+### Step 3: Install Agents Toolkit
 
-These labs are based on [Teams Toolkit version 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank}.
+These labs are based on **Microsoft 365 Agents Toolkit** version 6.0.
+
+!!! tip "What is Agents Toolkit?"
+    Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop build agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.
+
 Follow the steps as shown in the screen shot below.
 
 1️⃣ Open Visual Studio Code and click on the Extensions toolbar button
 
-2️⃣ Search for "Teams" and locate Teams Toolkit
+2️⃣ Search for "Microsoft 365 Agents" and locate Agents Toolkit
 
 3️⃣ Click **Install**
 
-!!! note "If you have Teams Toolkit installed but hidden"
-    If you previously installed Teams Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Teams Toolkit to bring it back into view.
+!!! note "If you have Agents Toolkit installed but hidden"
+    If you previously installed Agents Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Agents Toolkit to bring it back into view.
 
 <cc-end-step lab="e0" exercise="2" step="3" />
 
 
 ---8<--- "e-congratulations.md"
 
-Now you are all set to create your first extensibility feature for Copilot for Microsoft 365. Proceed to create a Declarative Agent in the next lab. 
+Now you are all set to create your first extensibility feature for Microsoft 365 Copilot. Proceed to create a Declarative Agent in the next lab. 
 
 <cc-next />
 

@@ -5,7 +5,7 @@ In this lab, you will enhance the Northwind plugin by adding a new command. Whil
 ???+ "Navigating the Extend Teams Message Extension labs (Extend Path)"
     - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
     - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [Lab M2 - Run app in Microsoft Copilot for Microsoft 365](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M2 - Run app in Microsoft 365 Copilot](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
     - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)(📍You are here)
     - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
     - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 
@@ -196,7 +196,7 @@ In the switch statement of the handler function `handleTeamsMessagingExtensionQu
 
 ## Exercise 2 - Run the App! Search for product by company name
 
-Now you're ready to test the sample as a plugin for Copilot for Microsoft 365.
+Now you're ready to test the sample as a plugin for Microsoft 365 Copilot.
 
 ### Step 1: Run the updated app locally
 
@@ -207,7 +207,7 @@ Restart debugger by clicking F5, or click the start button 1️⃣. You will hav
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
-The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Teams Toolkit.
+The debugging will open teams in a browser window. Make sure you login using the same credentials you signed into Agents Toolkit.
 Once you're in, Microsoft Teams should open up and display a dialog offering to open your application. 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)

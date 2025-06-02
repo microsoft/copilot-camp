@@ -14,13 +14,13 @@ Ensure you have the following prerequisites:
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 or higher, or [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
-- [Copilot for Microsoft 365 license](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites#prerequisites)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 or higher, or [Agents Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
+- [Microsoft 365 Copilot license](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites#prerequisites)
 - Upload the two PDF files as seen in folder **sharepoint-docs** into a SharePoint site in the same tenant
 
 ### Setup
 
-1. Open Visual Studio Code and select the Teams Toolkit icon from the left toolbar.
+1. Open Visual Studio Code and select the Agents Toolkit icon from the left toolbar.
 2. Sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven’t already.
 3. Copy file **.env.dev.sample** and paste in folder **env** and rename to `.env.dev`. Populate your SharePoint site's absolute URL as value for `SP_SITE_URL` where PDF files are uploaded. Eg if you have a SharePoint site `https://xyz.sharepoint.com/sites/contoso`, **https://xyz.sharepoint.com/sites/contoso** is the `SP_SITE_URL`.
 4. Create a new Teams app by clicking `Provision` in the "Lifecycle" section.
@@ -46,15 +46,15 @@ The template includes the following structure:
 | `appPackage/instruction.txt` | Instruction file defining system prompt          |
 | `appPackage/manifest.json`           | Teams application manifest outlining metadata for your declarative agent.                  |
 
-### Teams Toolkit Files
+### Agents Toolkit Files
 
 | File           | Description                                                                                                                   |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `teamsapp.yml` | Main Teams Toolkit project file defining properties and configuration stages. For a complete guide, visit the [Teams Toolkit guide](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview). |
+| `teamsapp.yml` | Main Agents Toolkit project file defining properties and configuration stages. For a complete guide, visit the [Agents Toolkit guide](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview). |
 
 ## Additional Information and References
 
-- [Extend Microsoft Copilot for Microsoft 365](https://aka.ms/teamsfx-copilot-plugin)
+- [Extend Microsoft 365 Copilot](https://aka.ms/teamsfx-copilot-plugin)
 
 
 ---

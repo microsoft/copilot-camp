@@ -1,28 +1,28 @@
-# Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Graph connector
+# Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab you will learn how to add your own data into the Microsoft Graph to be then organically utilised by the declarative agent as it's own knowledge.  In the process you will learn all how to deploy a Microsoft Graph connector and use the connector in Trey Genie declarative agent. 
+In this lab you will learn how to add your own data into the Microsoft Graph to be then organically utilised by the declarative agent as it's own knowledge.  In the process you will learn all how to deploy a Microsoft Copilot Connector and use the connector in Trey Genie declarative agent. 
 
 !!! note
     This lab builds on the Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
     The finished Trey Genie declarative solution for this lab is in the [**/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END){target=_blank} folder.
-    The Microsoft Graph connector source code is in [**/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector){target=_blank} folder.
+    The Microsoft Copilot Connector source code is in [**/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector){target=_blank} folder.
 
 
 In this lab you will learn to:
 
-- deploy a Microsoft Graph connector of your own data into Microsoft Graph and have it power various Microsoft 365 experiences
-- customise the trey genie declarative agent to use the Graph connector as a capability to extend its knowledge
+- deploy a Microsoft Copilot Connector of your own data into Microsoft Graph and have it power various Microsoft 365 experiences
+- customise the trey genie declarative agent to use the Copilot Connector as a capability to extend its knowledge
 - learn how to run and test your app 
 
 !!! note "Prerequisites: Tenant Admin Access"
-    Additonal prerequisites are needed to run this lab. You will need <mark>tenant administrator privileges</mark> as Microsoft Graph connectors use app-only authentication to access the connector APIs.
+    Additonal prerequisites are needed to run this lab. You will need <mark>tenant administrator privileges</mark> as Microsoft Copilot Connectors use app-only authentication to access the connector APIs.
 
 !!! note "Prerequisites: Azure Functions Visual Studio Code extension"
     - [Azure Functions Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions){target=_blank}
 
-## Exercise 1 : Deploy Graph Connector
+## Exercise 1 : Deploy Copilot Connector
 
 ### Step 1: Download sample project
 
@@ -38,7 +38,7 @@ In this lab you will learn to:
 ### Step 2: Create external connection
 
 - Open the folder **trey-feedback-connector** in Visual Studio Code
-- In the Activity Bar of Visual Studio Code, open the Teams Toolkit extension
+- In the Activity Bar of Visual Studio Code, open the Agents Toolkit extension
 - Create a file **.env.local** in the **env** folder of the root folder **trey-feedback-connector**
 - Paste below contents in the newly created file
 
@@ -80,15 +80,15 @@ Now that your data is part of Microsoft 365 data or Microsoft Graph, let's go ah
 
 <cc-end-step lab="eb" exercise="1" step="3" />
 
-## Exercise 2 : Add Graph Connector to Declarative Agent
+## Exercise 2 : Add Copilot Connector to Declarative Agent
 
 In the previous exercise, we established a new external connection to load our data into the Microsoft 365 tenant. Next, we will integrate this connector into our declarative agent to provide focused knowledge on Trey Research consultants.
 
-### Step 1: Get the connection id of the Microsoft Graph Connector
+### Step 1: Get the connection id of the Microsoft Copilot Connector
 
-In exercise 1, we added the environment variable in the **.env.local** file which has the configuration values for the Graph connector. 
-The connection id value we gave is `tfcfeedback`. When Teams Toolkit deploys this connector it will add a suffix of its environment value like `local` to the connection id. Hence we can infer the connection id is `tfcfeedbacklocal`.
-But the most straightforward way to get the Graph connector id is to use Graph Explorer.
+In exercise 1, we added the environment variable in the **.env.local** file which has the configuration values for the Copilot Connector. 
+The connection id value we gave is `tfcfeedback`. When Agents Toolkit deploys this connector it will add a suffix of its environment value like `local` to the connection id. Hence we can infer the connection id is `tfcfeedbacklocal`.
+But the most straightforward way to get the Copilot Connector id is to use Graph Explorer.
 
 - Browse to [Microsoft Graph Explorer](https://aka.ms/ge){target=_blank} and sign in with your admin account.
 - Select your user avatar in the upper right corner and select **Consent to permissions**.
@@ -166,8 +166,8 @@ In the immersive experience of Trey Genie, use below prompts and test them
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab Add Graph Connector, Well done!
+You have completed lab Add Copilot Connector, Well done!
 
-<cc-award path="Extend" />
+<!-- <cc-award path="Extend" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/EB-add-graphconnector" />

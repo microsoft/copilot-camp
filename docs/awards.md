@@ -13,7 +13,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 ## How to participate?
 
 - **Register**: Sign up for the Microsoft 365 & Power Platform Community Recognition Program through [this form](https://aka.ms/community/recognition-register){target=_blank}. If you already claimed badges through the Microsoft 365 & Power Platform Community Recognition Program, you don't need to sign up again.
-- **Complete a Copilot Developer Camp pathway**: Complete all the labs of any of the learning pathways ([Make](https://microsoft.github.io/copilot-camp/pages/make/){target=_blank}, [Extend](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/){target=_blank}, and [Build](https://microsoft.github.io/copilot-camp/pages/custom-engine/){target=_blank}) of Copilot Developer Camp to claim a blue-belt badge!
+- **Complete a Copilot Developer Camp pathway**: Complete all the labs of any of the learning pathways ([Maker Path](https://microsoft.github.io/copilot-camp/pages/make/){target=_blank}, [Extend](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/){target=_blank}, and [Build](https://microsoft.github.io/copilot-camp/pages/custom-engine/){target=_blank}) of Copilot Developer Camp to claim a blue-belt badge!
 
 <div class="badge-row">
     <img src="../assets/images/awards/Make-Small.png" alt="Make path - Copilot Camp badge"></img>
@@ -36,7 +36,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 ## Timeline and Limits
 
 - **Initiative Starts**: March 25, 2025
-- **Initiative Ends**: May 20, 2025
+- **Initiative Ends**: May 31, 2025
 - **Limits**: only the first 200 community members will earn badges
 
 Every single week, during [Microsoft 365 & Power Platform Community calls](https://aka.ms/community/ms-speakers-call-invite){target=_blank}, we will announce community members awarded with one or more badges. Challenge yourself and be among the first 200 community members to earn badges and seize this unique opportunity!
