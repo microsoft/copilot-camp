@@ -43,10 +43,10 @@ The labs are divided into three pathways, allowing you to choose based on what y
 
 ---8<--- "more-links.md"
 
-## 🎖️ Copilot Developer Camp Awards
+<!-- ## 🎖️ Copilot Developer Camp Awards
 
 We are excited to announce a thrilling initiative that will challenge you to showcase your knowledge and skills in Microsoft 365 Copilot extensibility. This is your chance to dive deep into the world of Copilot, explore its capabilities, and demonstrate your expertise. [Find out more on awards.](https://microsoft.github.io/copilot-camp/awards)
-
+ -->
 
 
 ## 🎁 Copilot Camp in a Box 
