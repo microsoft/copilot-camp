@@ -5,7 +5,7 @@ repo_name: microsoft/copilot-camp
 edit_uri: ''                    # Disable edit button
 
 theme:
-  name: 'material'
+  name: 'material'  
   palette:
     scheme: default
     primary: custom
@@ -17,7 +17,8 @@ theme:
     - navigation.tabs         # Top nav
     - navigation.tabs.sticky  # Make top nav stay vaisible
     - navigation.sections
-    - toc.integrate           # Integrate sections into left nav
+    - toc.integrate  
+    - content.code.copy
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -30,7 +31,6 @@ extra_javascript:
   - javascripts/cc-award.js
   - javascripts/cc-next.js
   - javascripts/cc-lab-step.js
-  - javascripts/clipboard.js
 extra_css:
   - stylesheets/labStyles.css
   - stylesheets/extra.css
@@ -62,18 +62,23 @@ plugins:
               # - Lab MSA1 - Build your first agent: 'pages/make/sharepoint-agents/01-first-agent.md'
               # - Lab MSA2 - Sharing SharePoint agents in Microsoft Teams: 'pages/make/sharepoint-agents/02-sharing-agents.md'
             - Extend - Build a declarative agent:
-              - Welcome : 'pages/extend-m365-copilot/index.md'
-              - Lab E0 - Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
-              - Lab E1 - First Declarative agent: 'pages/extend-m365-copilot/01-declarative-copilot.md'
-              - Lab E2 - Build an API: 'pages/extend-m365-copilot/02-build-the-api.md'
-              - Lab E3 - Add a declarative agent and API plugin: 'pages/extend-m365-copilot/03-add-declarative-agent.md'
-              - Lab E4 - Enhance the API and plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
-              - Lab E5 - Add adaptive cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'
-              - Authentication labs:
-                - Lab E6a - Add Entra ID authentication (Microsoft 365 Agents Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'
-                - Lab E6b - Add Entra ID authentication (Manual setup): 'pages/extend-m365-copilot/06b-add-authentication.md'
-                - Lab E6c - Add Entra ID authentication (Single Sign-on): 'pages/extend-m365-copilot/06c-add-sso.md'
-              - Lab EB - Add Copilot Connector: 'pages/extend-m365-copilot/EB-add-graphconnector.md'
+              - Welcome: 'pages/extend-m365-copilot/index.md'              
+              - Setup:
+                  - Lab E0 - Prerequisites and Environment Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
+              - Declarative Agent Fundamentals :
+                  - Lab E1 - Build a Detailed Declarative Agent using TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
+                  - Lab E1a - Build a game agent: 'pages/extend-m365-copilot/01a-geolocator.md'
+              - Build and Integrate API from scratch:
+                  - Lab E2 - Build a Backend API: 'pages/extend-m365-copilot/02-build-the-api.md'
+                  - Lab E3 - Add Declarative Agent and API Plugin: 'pages/extend-m365-copilot/03-add-declarative-agent.md'
+                  - Lab E4 - Enhance API and Plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
+                  - Lab E5 - Add Adaptive Cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'                          
+              - Authentication:
+                  - Lab E6a - Add Entra ID Authentication (Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'
+                  - Lab E6b - Add Entra ID Authentication (Manual Setup): 'pages/extend-m365-copilot/06b-add-authentication.md'
+                  - Lab E6c - Add Entra ID Authentication (Single Sign-on): 'pages/extend-m365-copilot/06c-add-sso.md'
+              - Integration:
+                  - Lab E7 - Add Copilot Connector: 'pages/extend-m365-copilot/07-add-graphconnector.md'
             - Build - Build a custom engine agent:
               - Welcome : 'pages/custom-engine/index.md'
               - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'

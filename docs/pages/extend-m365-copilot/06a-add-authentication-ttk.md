@@ -71,6 +71,9 @@ This file contains details for the Entra ID application to be registered or upda
 
 The **teamsapp.local.yml** file contains instructions for Agents Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
 
+!!! info "teamsapp.local.yml is now m365agents.local.yml"
+    The new Agents toolkit renamed the file for all toolkit related tasks to `m365agents.local.yml`. So if you started off creating agents with new Agents Toolkit, this will be the file name you will change. For these labs, since you work on existing agent project, there is nothing you need to rename or refactor. Proceed as per the steps.
+
 !!! warning Indentation is critical in yaml
     Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank}.
 
@@ -529,6 +532,9 @@ Before you test the application, update the manifest version of your app package
 
 4. Save the file after making the change.
 
+!!! warning "Compile issue with jwt-validate package "
+    At the moment, the jwt-validate package throws typing error for @types/jsonwebtoken package. To work around the issue, edit the tsconfig.json file, found at the root of the project, and add "skipLibCheck":true. This will be fixed in a future version of the library, and may no longer be necessary by the time you do the lab.
+
 <cc-end-step lab="e6a" exercise="5" step="1" />
 
 ### Step 2: (Re)start the application
@@ -574,12 +580,21 @@ Recall that the user was hard coded to the fictitious user "Avery Howard". When 
 ### Step 4: Add yourself to a project
 
 Since you were just added to the database, you're not assigned to any projects. Note that project assignments are stored in the `Assignment` table and reference the project ID and the assigned consultant's consultant ID.
+When you ask Agent what projects you are asigned to, it says it cannot find any project assigned but identifies your skills and roles and offers to help.
 
 ![The response from the 'Trey Genie' agent when the actual user doesn't have any assigned project.](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
 
-Ask Copilot to add you to the Woodgrove project. Copilot will press you for details if you forgot to include any required values.
+Ask Agent to add you to the Woodgrove project. Agent will press you for details if you forgot to include any required values.
 
-![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to provide them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
+![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to confirm them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
+
+You would want to provide missing information, so your agent can confirm the details again before proceeding.
+
+![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to confirm them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-06.png)
+
+Finally once you confirm, agent fullfills the task by adding you to the project with right role and forecast.
+
+![The response from the 'Trey Genie' agent after adding user to project](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
 
 Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"
 
@@ -591,6 +606,6 @@ You have completed lab Ea6, Add Entra ID authentication with Agents Toolkit!
 
 Want to try something cool? How about adding a Copilot Connector to your solution?
 
-<cc-next url="../EB-add-graphconnector" />
+<cc-next url="../07-add-graphconnector" />
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06a-add-authentication" />
