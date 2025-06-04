@@ -5,7 +5,7 @@ In this lab, you’ll begin your journey by preparing a custom engine agent usin
 This exercise sets the foundation for the rest of the Build Path using the **Microsoft 365 Agents SDK** and **Semantic Kernel**. You’ll simulate a real-world Human Resources agent for Contoso Electronics that can answer questions based on uploaded documents like the Employee Handbook, Role Library, and Benefit Plans.
 
 ???+ info "What is Azure AI Foundry?"
-Azure AI Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.
+    Azure AI Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.
 
 ## Exercise 1: Prepare your agent in Azure AI Foundry
 
@@ -15,12 +15,12 @@ In this exercise, you'll explore Azure AI Foundry, a platform that enables devel
 
 Azure AI Foundry is your launchpad for building AI agents. In this step, you’ll log in to Azure AI Foundry with the account that has Azure subscription enabled.
 
-1. Open the browser and navigate to https://ai.azure.com and sign to your Azure account.
+1. Open the browser and navigate to [https://ai.azure.com](https://ai.azure.com) and sign to your Azure account.
 1. From the Azure AI Foundry homepage, select **+ Create new**, **Azure AI Foundry resource** and then **Next**.
 1. Leave the project name as recommended and select **Create**.
 1. This will scaffold a new project for you in Azure AI Foundry, it usually takes 3-5 minutes.
 1. When your project is created, you'll be redirected to your project, extend the left side bar and select **Agents**. This will open the Agents Playground.
-1. In the Agent Playground, the first window you'll see the **Deploy a model** window. Search for **gpt-4o** and select **Deploy**.
+1. In the Agent Playground, the first time you'll see the **Deploy a model** window. Search for **gpt-4o** and select **Confirm**, then select **Deploy** in the following window.
 1. Once you are in the **Agents Playground**, you'll recognize there is a pre-populated agent for you in the list. Select the agent and select **Try in playground**.
     <img width="1029" alt="Agents Playground" src="https://github.com/user-attachments/assets/dd481101-c15d-4aed-af62-aeb7d3c8e5ed" />
 
@@ -53,7 +53,7 @@ Example scenarios you should support:
 - What happens during a performance review?
 ```
 
-2. Finally in the **Knowledge** section, Select **+ Add** and select **Files**, then **Select local files**. Download and select all the files from the **[docs folder](./../../../../src/agents-sdk/docs/)** and hit **Upload and save**. This will create a vector store for our agent.
+2. Finally in the **Knowledge** section, Select **+ Add** and select **Files**, then **Select local files**. Download this zip file consisting of few files from the following **[link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agents-sdk/docs/)**, extract the files, browse for them and hit **Upload and save** to upload them. This will create a vector store for our agent.
 
 > When you upload documents, Foundry automatically converts them into vectors, a format that allows the agent to search and retrieve relevant information efficiently.
 
