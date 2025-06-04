@@ -4,37 +4,37 @@
         <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and
             orchestration</p>
         <ul id="lab-toc">
-            <li><strong><a href="copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
+            <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
             <li><strong>🔧 Set up</strong>
                 <ul>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Setup</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Setup</a></li>
                 </ul>
             </li>
             <li><strong>🧰 Declarative agent fundamentals</strong>
                 <ul>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent"> Lab E1 - Build a Detailed Declarative Agent</a>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent"> Lab E1 - Build a Detailed Declarative Agent</a>
                     </li>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/01a-geolocator"> Lab E1a - Geo locator game</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator"> Lab E1a - Geo locator game</a></li>
                 </ul>
             </li>
             <li><strong>🛠️ Build and integrate API from scratch</strong>
                 <ul>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build an API</a></li>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent"> Lab E3 - Add Declarative Agent + API</a></li>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin"> Lab E4 - Enhance API + Plugin</a></li>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build an API</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent"> Lab E3 - Add Declarative Agent + API</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin"> Lab E4 - Enhance API + Plugin</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
                 </ul>
             </li>
             <li><strong>🔐 Authentication</strong>
                 <ul>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk.md"> Lab E6a - Toolkit</a></li>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/06b-add-authentication.md"> Lab E6b - Manual</a></li>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/06c-add-sso.md"> Lab E6c - SSO</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk.md"> Lab E6a - Toolkit</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06b-add-authentication.md"> Lab E6b - Manual</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06c-add-sso.md"> Lab E6c - SSO</a></li>
                 </ul>
             </li>
             <li><strong>🔌 Integration</strong>
                 <ul>
-                    <li><a href="copilot-camp/pages/extend-m365-copilot/07-add-graphconnector.md"> Lab EB - Add Graph Connector</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector.md"> Lab EB - Add Graph Connector</a></li>
                 </ul>
             </li>
         </ul>
