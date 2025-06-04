@@ -76,34 +76,36 @@
             }
         }
 
-        #getNextUrlByNavigation() {
-            // Get the active navigation item
+    #getNextUrlByNavigation() {
+            // Recursive function to find all links in a navigation item
+            const getAllLinks = (element) => {
+                const links = [];
+                const allLinks = element.querySelectorAll('a');
+                allLinks.forEach(link => {
+                    if (link.getAttribute('href') && !link.getAttribute('href').startsWith('#')) {
+                        links.push(link);
+                    }
+                });
+                return links;
+            };
+
+            // Get the active navigation section
             const navInner = document.querySelector('.md-nav--primary');
-            const navUls = navInner.querySelector('ul.md-nav__list');
-            const activelistItem = Array.from(navUls.children).filter(child => child.classList.contains('md-nav__item--active'))[0];
+            const links = getAllLinks(navInner);
+            
+            // Find current link in the flattened list
+            const currentPath = window.location.pathname;
+            const currentIndex = links.findIndex(link => {
+                const linkPath = new URL(link.href).pathname;
+                return linkPath === currentPath;
+            });
 
-            if (!activelistItem) {
-                return;
+            // Return the next URL if it exists
+            if (currentIndex !== -1 && currentIndex < links.length - 1) {
+                return links[currentIndex + 1].getAttribute('href');
             }
-            const activeNav = activelistItem.querySelector('ul.md-nav__list');
-
-            // Get the next URL
-            const items = activeNav.querySelectorAll('li');
-            let currentIndex = -1
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].classList.contains('md-nav__item--active')) {
-                    currentIndex = i;
-                    break;
-                }
-            }
-
-            const navItems = Array.from(activeNav.children).map(child => child.querySelector('a'));
-            if (currentIndex !== -1 && currentIndex < navItems.length - 1) {
-                const nextUrl = navItems[currentIndex + 1].getAttribute('href');
-                return nextUrl;
-            } else {
-                return null;
-            }
+            
+            return null;
         }
 
         // Run when the element is added to the DOM
