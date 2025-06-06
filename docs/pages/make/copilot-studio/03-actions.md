@@ -2,6 +2,10 @@
 
 ---8<--- "mcs-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/ZVHkBiH6RxQ" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you'll learn how to create Actions in Microsoft Copilot Studio. Actions are another core building block of an agent. With actions you can extend the capabilities of your agent by adding support for external Power Platform connectors (native or custom), external REST APIs, Power Automate flows, etc.
 
 !!! note

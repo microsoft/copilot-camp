@@ -2,6 +2,10 @@
 
 ---8<--- "mcs-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you'll create your first agent with Microsoft Copilot Studio. The agent that you are going to create helps users to find information about HR policies and processes to hire or layoff employees, to improve your career, and to define learning pathways.
 The knowledge base of the agent will be a set of documents stored in SharePoint Online and some public web content.
 

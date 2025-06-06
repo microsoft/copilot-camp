@@ -33,6 +33,18 @@
   text-decoration: none;
 }
 
+.video-small {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.video-small>iframe,
+.video-small>img {
+    width: 24vw;
+    height: 13vw;
+}
+
 .video {
     /* max-width: 640px;
     min-width: 120px; */

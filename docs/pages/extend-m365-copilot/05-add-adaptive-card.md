@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/9kb9whCKey4" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will further enhance the response from Microsoft 365 Copilot from text to rich cards using Adaptive Cards. 
 
 In this lab you will learn:
