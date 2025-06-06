@@ -3,6 +3,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/XO2aG3YPbPc" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will add a declarative agent which is grounded in the API plugin you created in the previous lab, as well as in specific SharePoint files
 
 !!! note

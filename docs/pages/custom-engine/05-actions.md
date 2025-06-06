@@ -2,6 +2,10 @@
 
 ---8<--- "b-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/bfULaDnpAXY" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will:
 
 - Learn what actions are and how to handle complex tasks with them
