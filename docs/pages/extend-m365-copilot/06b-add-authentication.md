@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 
 !!! note

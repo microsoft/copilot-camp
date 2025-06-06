@@ -2,6 +2,10 @@
 
 ---8<--- "b-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/J7IZULJsagM" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will learn about the Powered by AI, a set of features Teams AI library provides, and utilize them in your custom engine agent to enhance the user experience.
 
 In this lab you will:

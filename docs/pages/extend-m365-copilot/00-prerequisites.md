@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
 !!! note "Set up your development environment for Microsoft 365 Copilot"

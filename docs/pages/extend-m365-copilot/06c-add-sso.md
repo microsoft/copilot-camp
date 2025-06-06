@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will add Microsoft Entra ID SSO authentication enabling users to authenticate with their existing Entra ID credentials.
 
 !!! note

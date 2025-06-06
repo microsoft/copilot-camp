@@ -3,6 +3,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/XO2aG3YPbPc" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will set up an API based on Azure Functions and install it as an API plugin for Microsoft 365 Copilot.
 
 ## Introduction

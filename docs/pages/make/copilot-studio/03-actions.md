@@ -2,6 +2,10 @@
 
 ---8<--- "mcs-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/ZVHkBiH6RxQ" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you'll learn how to create Actions in Microsoft Copilot Studio. Actions are another core building block of an agent. With actions you can extend the capabilities of your agent by adding support for external Power Platform connectors (native or custom), external REST APIs, Power Automate flows, etc.
 
 !!! note
@@ -234,7 +238,7 @@ Here follows the JSON of the adaptive card that you can use to collect the input
 }
 ```
 
-Then add a new action from the group **Add an action**, select the tab **Agent (preview)**, and select the action that you just created in [Exercise 1 - Step 3](#step-3-consuming-a-power-automate-flow).
+Then add a new action from the group **Add an action**, select the tab **Action (preview)**, and select the action that you just created in [Exercise 1 - Step 3](#step-3-consuming-a-power-automate-flow).
 Map the input arguments of the action with the variables collected by the user via the adaptive card.
 
 ![The topic designer while adding a new action from the current agent. There is the list of all the actions defined in the agent, available under the group **Add an action**.](../../../assets/images/make/copilot-studio-03/use-action-in-topic-01.png)
