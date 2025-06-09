@@ -62,7 +62,7 @@ Replace bots section with the following that will also add copilotAgents in the 
   }, 
 ```
 
-Hit **Start** or **F5** to start debugging. Microsoft Teams will launch automatically. When Microsoft Teams open in your browser, ignore the app pop-up and select **Apps > Manage your apps > Upload an app**. In the File Explorer go to your project folder `...\ContosoHRAgent\M365Agent\appPackage\build` select **appPackage.local**.
+Hit **Start** or **F5** to start debugging. Microsoft Teams will launch automatically. When Microsoft Teams open in your browser, ignore the app pop-up and select **Apps > Manage your apps > Upload an app** and then select **Upload a custom app**. In the File Explorer go to your project folder `...\ContosoHRAgent\M365Agent\appPackage\build` select **appPackage.local.zip**.
 
 ![Upload app](https://github.com/user-attachments/assets/5fad723f-b087-4481-8c8c-d5ad87c1bead)
 
