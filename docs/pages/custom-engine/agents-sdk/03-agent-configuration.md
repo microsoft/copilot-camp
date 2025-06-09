@@ -125,7 +125,7 @@ public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : 
 
 > **⚠️ Note:** When pasting the following code excerpt, you might see a warning (SKEXP0110) because this feature is still in preview. You can safely suppress this warning for now by right-clicking on AzureAIAgent, selecting **Quick Actions and Refactorings > Suppress or configure issues > Configure SKEXP0110 Severity > Silent**.
 > 
-> ![Warning](https://github.com/user-attachments/assets/3dc267c0-c3b6-4436-9dc6-09157f9a8b5b)
+> ![The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications.](https://github.com/user-attachments/assets/3dc267c0-c3b6-4436-9dc6-09157f9a8b5b)
 
 Replace **OnMessageAsync** method with the following:
 
@@ -248,7 +248,7 @@ Add your Foundry connection details to appsettings.json, these values connect yo
 
 Replace the **<AzureAIFoundryAgentId>** with your **Agent id** which can be found in **Agents Playground**.
 
-![Agents Playground](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
+![The Agents Playground of Azure AI Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
 
 Replace **<ProjectEndpoint>** with your AI Foundry project connection string which can be found in the **Overview** page of the AI Foundry, under Endpoints and keys.
 
@@ -320,17 +320,17 @@ Expand **Start** and select **Dev Tunnels > Create a Tunnel**.
   * Keep the Tunnel Type **Temporary**.
   * Select Access as **Public** and then **Create**.
 
-![Dev Tunnel](https://github.com/user-attachments/assets/146fb3d4-256d-48b3-95a1-9e285f6bbc08)
+![The UI of Visual Studio to create a Dev Tunnel for the agent. There is a "Create a Tunnel" command highlighted.](https://github.com/user-attachments/assets/146fb3d4-256d-48b3-95a1-9e285f6bbc08)
 
 Right click to **M365Agent** project, select **Microsoft 365 Agents Toolkit > Select Microsoft 365 Account**.
 
-![M365 Agents Toolkit](https://github.com/user-attachments/assets/6981343d-8668-4b33-b36f-63b12739fc9d)
+![The context menu of the the M365 Agents Toolkit when selecting the Microsoft 365 Account to use, highlighted in the screenshot.](https://github.com/user-attachments/assets/6981343d-8668-4b33-b36f-63b12739fc9d)
 
 Select the same account as before and select **Continue** to use it. If your account doesn't show up automatically, select **Sign in** and **Work or school account**.
   
 Expand the startup item on top of Visual Studio, where there is by default **<Multiple Startup Projects>**, and Select **Microsoft Teams (browser)**.
 
-![Teams Browser](https://github.com/user-attachments/assets/0f564f0a-0394-49de-a679-6be59761b4fb)
+![The UI of Visual Studio when configuring Microsoft Teams (browser) for testing the agent in debug mode.](https://github.com/user-attachments/assets/0f564f0a-0394-49de-a679-6be59761b4fb)
 
 You're now ready to run your integrated agent and test it live in Microsoft Teams. Make sure your dev tunnel is created and your account is authenticated.
 
@@ -344,7 +344,7 @@ You can ask one of the following questions to interact with the agent:
 
 You should observe that you are getting similar responses with the agent you've created on Azure AI Foundry.
 
-![Agent on Teams](https://github.com/user-attachments/assets/73ef491f-eaff-4743-bb2d-79a52a9ae301)
+![The Agent running in Microsoft Teams with evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/73ef491f-eaff-4743-bb2d-79a52a9ae301)
 
 <cc-end-step lab="bma3" exercise="2" step="3" />
 

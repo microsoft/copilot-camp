@@ -26,7 +26,7 @@ To test your echo agent, hit **Start** or **F5**. This will launch Test Tool aut
 
 Wait until the agent's message "Hello and Welcome!", then type anything such as “Hi”, “Hello”. Observe that the agent echoes everything back.
 
-![Echo bot](https://github.com/user-attachments/assets/4562052d-856b-44d5-b2dd-27623d9bed11)
+![The local Microsoft 365 Agents Playground when testing locally the Echo Bot. On the left side of the screen there is an emulated chat, while on the right side of the screen there is a panel with the history of the interaction between the user and the agent.](https://github.com/user-attachments/assets/4562052d-856b-44d5-b2dd-27623d9bed11)
 
 
 <cc-end-step lab="bma2" exercise="1" step="2" />
