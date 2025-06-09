@@ -33,6 +33,18 @@
   text-decoration: none;
 }
 
+.video-small {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.video-small>iframe,
+.video-small>img {
+    width: 24vw;
+    height: 13vw;
+}
+
 .video {
     /* max-width: 640px;
     min-width: 120px; */
@@ -288,6 +300,12 @@ button {
 	background-position: left center;
 	background-size: 30pt;
 }
+/*no icons and padding for epath*/
+
+.cc-lab-toc.e-path ul li {
+	margin: 0;
+	padding:0;
+}
 
 .cc-lab-toc ul li span {
     padding: 4pt 8pt 4pt 8pt;
@@ -330,7 +348,7 @@ h3[id*="step-"] {
 .e-path div p {
     border-color: #1EA6F3;
 }
-
+/* 
 .e-path ul li:nth-child(1) {
 	background-image: url("../assets/images/path-icons/icon-e0.png");
 }
@@ -369,6 +387,10 @@ h3[id*="step-"] {
 
 .e-path ul li:nth-child(10) {
     background-image: url('../assets/images/path-icons/icon-eb-gc.png');
+} 
+
+.e-path ul li:nth-child(11) {
+    background-image: url('../assets/images/path-icons/icon-e1.png');
 } */
 
 /** B Path */

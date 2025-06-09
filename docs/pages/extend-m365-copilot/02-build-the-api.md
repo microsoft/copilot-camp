@@ -3,6 +3,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/XO2aG3YPbPc" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will set up an API based on Azure Functions and install it as an API plugin for Microsoft 365 Copilot.
 
 ## Introduction
@@ -60,9 +64,9 @@ npm install
 
 ### Step 5: Run the application
 
-In Visual Studio Code, click the Teams logo in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 and that Custom App Uploads and Copilot Access Enabled indicators are both showing green checkmarks.
+In Visual Studio Code, click the logo for Microsoft 365 Agents Toolkit in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 and that Custom App Uploads and Copilot Access Enabled indicators are both showing green checkmarks.
 
-![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-01/atk-accounts-logged.png)
+![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/atk-accounts-logged.png)
 
 Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
 

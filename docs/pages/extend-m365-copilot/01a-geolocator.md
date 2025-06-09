@@ -1,23 +1,24 @@
-# Lab E1 - First declarative agent
+# Lab E1 - Instructions based Gelocator game agent
 
 ---8<--- "e-labs-prelude.md"
 
-In this lab, you'll build a simple declarative agent using Agents Toolkit for Visual Studio Code. Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen></iframe>
+</div>
 
-In this lab you will learn:
+In this lab, you'll create a basic declarative agent using instructions and supplementary knowledge provided through files.  Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
 
-- What is a declarative agent for Microsoft 365 Copilot
-- Create a declarative agent using Agents Toolkit template
-- Customise the agent to create the geo locator game using instructions 
-- Learn how to run and test your app 
-- For bonus exercise, you will need a SharePoint teams site
+In this lab you will learn how to:
+
+- create a declarative agent using Agents Toolkit template
+- customise the agent to create the geo locator game using instructions 
+- learn how to run and test your app 
+- for bonus exercise, you will need a SharePoint teams site
 
 ## Introduction
 
 Declarative agents leverage the same scalable infrastructure and platform of Microsoft 365 Copilot, tailored specifically to meet focus on a special area of your needs.
 They function as subject matter experts in a specific area or business need, allowing you to use the same interface as a standard Microsoft 365 Copilot chat while ensuring they focus exclusively on the specific task at hand. 
-
-Welcome on board to building your own declarative agent ☺️! Let's dive in and make your Copilot work magic!
 
 In this lab you will start out building a declarative agent using Agents Toolkit with a default template used in the tool. This is to help you get started with something.
 Next, you will modify your agent to be focused on a geo location game. 
@@ -30,48 +31,6 @@ As a bonus you will also give your agent some files to refer to a secret diary �
 
 So let's begin 💪🏼
 
-## Anatomy of a Declarative agent 
-
-You will see as we develop more and more extensions to Copilot,  that in the end what you will build is collection of few files in a zip file which we will refer to as an `app package` that you will  then install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a declarative agent is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app. 
-
-
-| Element                | Description                                                                                 |Name of file                                                                                
-|-----------------------------|---------------------------------------------------------------------------------------------|---|
-| **App manifest**            | Describes app configuration, capabilities, required resources, and important attributes.    |manifest.json|
-| **App icons**               | Requires a color (192x192) and outline (32x32) icon for your declarative agent.                             |icon.png, color.png|
-| **Declarative agent manifest** | Describes agent configuration, instructions, required fields, capabilities, conversation starters, and actions. |declarativeAgent.json|
-
-
-!!! note 
-     You can add reference data from SharePoint, OneDrive, Websearch etc and add extension capabilities to a declarative agent like CodeInterpreter support, GraphicArt skill,  plugins and connectors. You will learn how to add a plugin in the upcoming labs in this path. 
-
-
-## Capabilities of a Declarative agent 
-
-You can enhance the agent's focus on context and data by not only adding instructions but also specifying the knowledge base it should access.
-They are called capabilities and there are five types of capabilities supported.
-
-- **Microsoft Copilot Connectors** - Pass connections of Copilot Connectors into the agent, allowing the agent to access and utilize the connector's knowledge.
-- **Web search** - Enables or disables web content as part of the agent's knowledge base.
-- **OneDrive and SharePoint** - Provides URLs of files and sites to agent, for it to gain access to those contents.
-- **GraphicArt** - Enables the agent to support image or video generation by using DALL-e capability.
-- **Code interpreter** - Enables the capabilities for better solve the Math problem and leverage Python code to do the complex data analysis or generate chart if needed.
-- **Dataverse** - Enables searching through data from tables in Microsoft Dataverse.
-- **Teams messages** - Allows searching through Teams channels, teams, meetings, 1:1 chats, and group chats.
-- **Email** - Enables searching through email messages in the mailboxes that the user has access to.
-- **People** - Allows searching for information about people in the organization.
-
-![The capabilities available when defining a Declarative Agent.](../../assets/images/extend-m365-copilot-01/capabiltities-da.png)
-
-!!! tip "OnDrive and SharePoint"
-    URLs should be full path to SharePoint items (site, document library, folder, or file). You can use the "Copy direct link" option in SharePoint to get the full path of files and folders. To achieve this, right-click on the file or folder and select Details. Navigate to Path and click on the copy icon.<mark> Not specifying the URLs, the entire corpus of OneDrive and SharePoint content available to the logged in user will be used by the agent.</mark>
-
-!!! tip "Microsoft Copilot Connector"
-    Not specifying the connections, the entire corpus of Copilot Connectors content available to the logged in user will be used by the agent.
-
-!!! tip "Web search"
-    Not specifying the sites, the agent is allowed to search all the sites. You can specify up to four sites with no more than 2 path segments and no querystring parameters. 
-
 ## Exercise 1: Scaffold a declarative agent from template
 You can use just any editor to create a declarative agent if you know the structure of the files in the app package mentioned above. But things are easier if you use a tool like Agents Toolkit to not only create these files for you but also help you deploy and publish your app. 
 So to keep things as simple as possible you will use Agents Toolkit.
@@ -81,7 +40,7 @@ So to keep things as simple as possible you will use Agents Toolkit.
 - Go to extensions tab of your Visual Studio Code and look for **Microsoft 365 Agents Toolkit**.
 - Select it and install.
 
-<cc-end-step lab="e1" exercise="1" step="1" />
+<cc-end-step lab="e1a" exercise="1" step="1" />
 
 ### Step 2: Use Agents Toolkit to create a declarative agent app
 
@@ -114,7 +73,7 @@ The project will be created in a few seconds in the folder you mentioned and wil
 
 Well done! You have successfully set up the base declarative agent! Now, proceed to examine the files contained within to be able to customise it to make the geo locator game app. 
 
-<cc-end-step lab="e1" exercise="1" step="2" />
+<cc-end-step lab="e1a" exercise="1" step="2" />
 
 
 ### Step 3: Set up accounts in Agents Toolkit
@@ -133,7 +92,7 @@ Now verify that the "Copilot Access Enabled" checker has a green checkmark. If i
 
 Now, let's do a code tour.
 
-<cc-end-step lab="e1" exercise="1" step="3" />
+<cc-end-step lab="e1a" exercise="1" step="3" />
 
 
 
@@ -178,7 +137,7 @@ Another important file is the `appPackage/manifest.json` file, which contains cr
 ```
 You could also update the logo files `color.png` and `outline.png` to make it match your application's brand. In today's lab you will change **color.png** icon for the agent to stand out. 
 
-<cc-end-step lab="e1" exercise="1" step="4" />
+<cc-end-step lab="e1a" exercise="1" step="4" />
 
 ## Exercise 2: Update instructions and icons
 
@@ -249,7 +208,7 @@ Follow the next step to make sure our agent can help user engage with it by givi
 
     This brings in your instructions from the **instruction.txt** file. If you want to modularize your packaging files, you can use this technique in any of the JSON files in the **appPackage** folder.
 
-<cc-end-step lab="e1" exercise="2" step="1" />
+<cc-end-step lab="e1a" exercise="2" step="1" />
 
 ### Step 2 : Add conversation starters
 
@@ -287,7 +246,7 @@ Open file `declarativeAgent.json` and right after the `instructions` node add a 
 
 Now all the changes are done to the agent, it's time to test it.
 
-<cc-end-step lab="e1" exercise="2" step="2" />
+<cc-end-step lab="e1a" exercise="2" step="2" />
 
 ### Step 3: Test the app
 
@@ -315,7 +274,7 @@ Check out the demo of the game.
 
 ![A video of the 'Geo Locator Game' in action with a user guessing a couple of cities and the agent showing the collected points.](../../assets/images/extend-m365-copilot-01/demo.gif)
 
-<cc-end-step lab="e1" exercise="2" step="3" />
+<cc-end-step lab="e1a" exercise="2" step="3" />
 
 ## Exercise 3: Add files for reference (Bonus exercise) 
 
@@ -323,7 +282,7 @@ Playing the same game over and over can get dull. To keep things fun and engagin
 
 ### Step 1: Upload files to SharePoint.
 
-Download this zip file consisting of two PDF files by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
+Download this zip file consisting of two PDF files by selecting this [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01a-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
 
 Extract the two files from the zip and upload to a SharePoint Teams site in the same tenant in the document library **Documents**.
 These documents are **historical_map.pdf** and **travelers_diary** to help make the game more challenging. 
@@ -335,7 +294,7 @@ Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/con
 
 Then proceed to next step.
 
-<cc-end-step lab="e1" exercise="3" step="1" />
+<cc-end-step lab="e1a" exercise="3" step="1" />
 
 ### Step 2: Update declarative agent manifest
 
@@ -359,13 +318,13 @@ Next, go to the agent manifest **appPackage/declarativeAgent.json** and add a co
 This widens declarative agent's knowledge to read documents in this SharePoint site specifically to help spice up the game. 
 There is no limit to how many URLs you can add 💪🏼
 
-<cc-end-step lab="e1" exercise="3" step="2" />
+<cc-end-step lab="e1a" exercise="3" step="2" />
 
 ### Step 3: Upgrade app manifest
 
 Next, go to the file **appPackage/manifest.json** and upgrade the app `version` from "1.0.0"" to "1.0.1" so the changes are reflected when you install. 
 
-<cc-end-step lab="e1" exercise="3" step="3" />
+<cc-end-step lab="e1a" exercise="3" step="3" />
 
 ### Step 4: Test the app
 
@@ -388,7 +347,7 @@ You have basically become a declarative agent boss. Find out more from this vide
       <div>Introducing Declarative agents</div>
     </div>
 
-<cc-end-step lab="e1" exercise="3" step="4" />
+<cc-end-step lab="e1a" exercise="3" step="4" />
 
 ## Resources
 - [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
@@ -404,7 +363,7 @@ Great job on building your game agent 🎉 ! In the next lab, you’ll create a 
 
 <cc-next />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-declarative-copilot" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01a-geolocator" />
 
 <!-- <script src="https://giscus.app/client.js"
         data-repo="microsoft/copilot-camp"

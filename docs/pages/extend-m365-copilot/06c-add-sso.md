@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will add Microsoft Entra ID SSO authentication enabling users to authenticate with their existing Entra ID credentials.
 
 !!! note
@@ -432,7 +436,7 @@ You have completed lab E6c, Add SSO!
 
 Want to try something cool? How about adding a Copilot Connector to your solution?
 
-<cc-next url="../EB-add-graphconnector" />
+<cc-next url="../07-add-graphconnector" />
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06c-add-sso" />
 

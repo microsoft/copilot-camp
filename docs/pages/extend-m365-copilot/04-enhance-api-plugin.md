@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/9kb9whCKey4" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will add additional REST calls to the API and add them to the API Plugin packaging so Copilot can call them. In the process you will learn all the places where an API needs to be defined for Copilot.
 
 !!! note
@@ -396,13 +400,13 @@ Now try a prompt such as "what projects are we doing for adatum?"
 
 You may see a confirmation card, even for the GET request. If you do, allow the request to view the project details.
 
-![Microsoft 365 Copilot showing the output of Trey Genie agent when invoking the API plugin](../../assets/images/extend-m365-copilot-03/test-projects-copilot-2.png)
+![Microsoft 365 Copilot showing the output of Trey Genie agent when invoking the API plugin](../../assets/images/extend-m365-copilot-04/test-projects-copilot-2.png)
 
 <cc-end-step lab="e4" exercise="3" step="2" />
 
 ---8<--- "e-congratulations.md"
 
-You've now completed enhancing your API plugin. You are now ready to proceed to the next lab to add rich card responses using adaptive cards. 
+You've now completed enhancing your API plugin. But as you can see, the citation cards are very basic. So let's proceed to the next lab to add rich card citations and responses using adaptive cards. 
 
 <cc-next />
 

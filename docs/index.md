@@ -15,14 +15,38 @@ The labs are divided into three pathways, allowing you to choose based on what y
 
 ---8<--- "main-links.md"
 
+## 🎉 What's New
+
+!!! success "🚀 Hot Off the Press: [✨ Agent Instructions guide to Beginners](./pages/copilot-instructions/beginner-agent)"
+    <div style="font-size: 1.1em;">
+    📢 **Just Launched!**  <br>
+    <strong><a href="./pages/copilot-instructions/beginner-agent">Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)</a></strong>  
+    <span style="color: #6c757d;">_This lab will guide you with suggestions to help refine your agent instructions approach drawing from techniques we have experimented over time. These practices have generally contributed to enhancing our agent's behaviour and consistency. ._</span><br><br>
+
+     **What you will learn:**  
+  
+      - Identify the Problem: Pinpoint the specific issue your agent will address 
+      - Build a Basic Agent: Start with a simple prompt to get your agent up and running. 
+      - Define the Agent's Role: Improve your agents focus with a role assigned 
+      - Outline Execution Steps: Break down the process into clear, manageable subtasks. 
+      - Set Response Guidelines: Influence the agent’s response with clear instructions 
+      - Give example conversations: Provide examples to improve consistency in agent’s response 
+
+    </div>
+
+    <br>
+    👉 Click here to explore »  <cc-next url="./pages/copilot-instructions/beginner-agent" label="Agent Instruction Lab" />
+
+
+
 ## 🧑‍💻 More
 
 ---8<--- "more-links.md"
 
-## 🎖️ Copilot Developer Camp Awards
+<!-- ## 🎖️ Copilot Developer Camp Awards
 
 We are excited to announce a thrilling initiative that will challenge you to showcase your knowledge and skills in Microsoft 365 Copilot extensibility. This is your chance to dive deep into the world of Copilot, explore its capabilities, and demonstrate your expertise. [Find out more on awards.](https://microsoft.github.io/copilot-camp/awards)
-
+ -->
 
 
 ## 🎁 Copilot Camp in a Box 

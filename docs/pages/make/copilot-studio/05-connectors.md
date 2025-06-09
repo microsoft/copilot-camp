@@ -2,6 +2,10 @@
 
 ---8<--- "mcs-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/f_HrMbg6kOU" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you are going to understand how to extend an agent made with Microsoft Copilot Studio using a Power Platform custom connector. Specifically, you are going to consume a custom REST API to manage a hypotethical list of candidates for a job role. The API offers functionalities to:
 
 - List candidates
@@ -280,6 +284,6 @@ Wonderful! You were able to configure a custom connector and consume it within M
 
 You have completed Lab MCS5 - Power Platform custom connector!
 
-<cc-award path="Make" />
+<!-- <cc-award path="Make" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/05-connectors" />

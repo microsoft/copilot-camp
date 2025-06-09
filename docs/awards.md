@@ -36,7 +36,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 ## Timeline and Limits
 
 - **Initiative Starts**: March 25, 2025
-- **Initiative Ends**: May 20, 2025
+- **Initiative Ends**: May 31, 2025
 - **Limits**: only the first 200 community members will earn badges
 
 Every single week, during [Microsoft 365 & Power Platform Community calls](https://aka.ms/community/ms-speakers-call-invite){target=_blank}, we will announce community members awarded with one or more badges. Challenge yourself and be among the first 200 community members to earn badges and seize this unique opportunity!

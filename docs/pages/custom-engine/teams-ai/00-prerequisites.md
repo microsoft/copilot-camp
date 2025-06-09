@@ -2,6 +2,10 @@
 
 ---8<--- "b-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/Onk04pehtjE" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop throughout the path.
 
 In this lab you will learn how to:

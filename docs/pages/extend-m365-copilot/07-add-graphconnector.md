@@ -1,4 +1,4 @@
-# Bonus Lab - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector
+# Integration - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector
 
 ---8<--- "e-labs-prelude.md"
 
@@ -33,7 +33,7 @@ In this lab you will learn to:
     The extracted folder of the sample project is **trey-feedback-connector**. It has a folder called **content** which consist of feedback files from various clients for consultants at Trey Research. The files are all created by AI and are for demo purposes only. 
     The aim is to deploy these external files into Microsoft 365 data to be available as knowledge base for our declarative agent Trey Genie. 
 
-<cc-end-step lab="eb" exercise="1" step="1" />
+<cc-end-step lab="e7" exercise="1" step="1" />
 
 ### Step 2: Create external connection
 
@@ -64,7 +64,7 @@ CONNECTOR_BASE_URL=https://localhost:3000/
 - Once all files in the **content** folder are loaded, the debugger can be stopped. 
 - You can also close this connector project folder.
 
-<cc-end-step lab="eb" exercise="1" step="2" />
+<cc-end-step lab="e7" exercise="1" step="2" />
 
 ### Step 3: Test the connector data in Microsoft365 app
 
@@ -78,7 +78,7 @@ You will see the results as below from the external connection which are basical
 
 Now that your data is part of Microsoft 365 data or Microsoft Graph, let's go ahead and add this connector data as focused knowledge for our declarative agent for Trey Research called **Trey Genie**.
 
-<cc-end-step lab="eb" exercise="1" step="3" />
+<cc-end-step lab="e7" exercise="1" step="3" />
 
 ## Exercise 2 : Add Copilot Connector to Declarative Agent
 
@@ -99,7 +99,7 @@ But the most straightforward way to get the Copilot Connector id is to use Graph
 ![The Microsoft Graph Explorer showing the output of a query to retrieve all the connectors, with the ID 'tfcfeedbacklocal' of the custom connector highlighted.](../../assets/images/extend-m365-copilot-GC/graph-connector-id.png)
 
 
-<cc-end-step lab="eb" exercise="2" step="1" />
+<cc-end-step lab="e7" exercise="2" step="1" />
 
 ### Step 2: Update declarative agent manifest
 
@@ -121,9 +121,9 @@ Let's now resume with our declarative agent from Lab 4. If you have it open, the
 ```
 Now the capability is added, it's time to test.
 
-<cc-end-step lab="eb" exercise="2" step="2" />
+<cc-end-step lab="e7" exercise="2" step="2" />
 
-## Exercise 3: Test the plugin in Copilot
+## Exercise 3: Test the agent in Copilot
 
 Before you test the application, update the manifest version of your app package in the `appPackage\manifest.json` file, follow these steps:
 
@@ -150,7 +150,7 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
 
 ![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt for the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
-<cc-end-step lab="eb" exercise="3" step="1" />
+<cc-end-step lab="e7" exercise="3" step="1" />
 
 ### Step 2: Test knowledge in Copilot
 
@@ -161,13 +161,13 @@ In the immersive experience of Trey Genie, use below prompts and test them
 
 ![The Trey Genie agent in action in Microsoft 365 Copilot, processing requests that relate on the content available through the custom connector.](../../assets/images/extend-m365-copilot-GC/GC-Trey-Feedback.gif)
 
-<cc-end-step lab="eb" exercise="3" step="2" />
+<cc-end-step lab="e7" exercise="3" step="2" />
 
 
 ---8<--- "e-congratulations.md"
 
 You have completed lab Add Copilot Connector, Well done!
 
-<cc-award path="Extend" />
+<!-- <cc-award path="Extend" /> -->
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/EB-add-graphconnector" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/07-add-graphconnector" />

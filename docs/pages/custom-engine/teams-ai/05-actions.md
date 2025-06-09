@@ -2,6 +2,10 @@
 
 ---8<--- "b-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/bfULaDnpAXY" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will:
 
 - Learn what actions are and how to handle complex tasks with them
@@ -622,6 +626,6 @@ This is the end of the **Build your own agent** path! Did you enjoy building Car
 
 <cc-next label="Home" url="/" />
 
-<cc-award path="Build" />
+<!-- <cc-award path="Build" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/05-actions" />

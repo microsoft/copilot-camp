@@ -2,6 +2,10 @@
 
 ---8<--- "mcs-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/JUctt1s5oj0" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you are going to learn how to extend Microsoft 365 Copilot Chat with a Declarative Agent made using Microsoft Copilot Studio. In fact, so far you have seen how to create agents in Copilot Studio and how to consume them in Microsoft Teams. You have also seen that agents created in Microsoft Copilot Studio can target both Microsoft Teams and Microsoft 365 Copilot Chat through the specific options available in the **Teams and Microsoft 365 Copilot** channel. Now, with this lab, you are moving to Declarative Agents for Microsoft 365 Copilot Chat.
 
 In this lab you will learn:

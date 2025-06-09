@@ -2,6 +2,10 @@
 
 ---8<--- "b-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/J7IZULJsagM" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will enable Retrieval-Augmented Generation for your custom engine agent and integrate with Azure AI Search to chat with your data.
 
 In this lab you will:

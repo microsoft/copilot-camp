@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.
 
 !!! note
@@ -514,6 +518,6 @@ You have completed lab E6b, Add Entra ID authentication with Manual Setup!
 
 Want to try something cool? How about adding a Copilot Connector to your solution?
 
-<cc-next url="../EB-add-graphconnector" />
+<cc-next url="../07-add-graphconnector" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06b-add-authentication" />

@@ -2,6 +2,10 @@
 
 ---8<--- "e-labs-prelude.md"
 
+<div class="video-small">
+    <iframe src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen></iframe>
+</div>
+
 In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
 !!! note "Set up your development environment for Microsoft 365 Copilot"
@@ -25,9 +29,9 @@ By default, end users can't upload applications directly; instead a Teams Admini
 
 1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
 
-2️⃣ In the left panel of the admin center, select **Show all** to open up the entire navigation. When the panel opens, select Teams to open the Microsoft Teams admin center.
+2️⃣ In the left pane of the admin center, select **Show all** to open up the entire navigation. When the pane opens, select Teams to open the Microsoft Teams admin center.
 
-3️⃣ In the left of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup Policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default) policy**.
+3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup Policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default) policy**.
 
 4️⃣ Ensure the first switch, **Upload custom apps** is turned **On**.
 
@@ -47,11 +51,11 @@ It should be no surprise that **Agents Toolkit for Visual Studio Code** requires
 
 <cc-end-step lab="e0" exercise="2" step="1" />
 
-### Step 2: Install NodeJS
+### Step 2: Install Node.js
 
-NodeJS is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need NodeJS to run the web server code used throughout this workshop.
+Node.js is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need Node.js to run the web server code used throughout this workshop.
 
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 18 or 16 for your operating system. This lab has been tested using NodeJS version 18.16.0. If you already have another version of NodeJS installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node versions on the same computer.
+Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 18 or 16 for your operating system. This lab has been tested using Node.js version 18.16.0. If you already have another version of Node.js installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node.js versions on the same computer.
 
 <cc-end-step lab="e0" exercise="2" step="2" />
 
@@ -60,7 +64,7 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 These labs are based on **Microsoft 365 Agents Toolkit** version 6.0.
 
 !!! tip "What is Agents Toolkit?"
-    Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop build agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.
+    Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.
 
 Follow the steps as shown in the screen shot below.
 
@@ -69,6 +73,8 @@ Follow the steps as shown in the screen shot below.
 2️⃣ Search for "Microsoft 365 Agents" and locate Agents Toolkit
 
 3️⃣ Click **Install**
+
+![agents toolkit](../../assets/images/extend-m365-copilot-00/agents-toolkit.png)
 
 !!! note "If you have Agents Toolkit installed but hidden"
     If you previously installed Agents Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Agents Toolkit to bring it back into view.
