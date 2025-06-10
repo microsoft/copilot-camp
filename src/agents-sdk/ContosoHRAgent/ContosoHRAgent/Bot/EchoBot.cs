@@ -15,14 +15,15 @@ public class EchoBot : AgentApplication
 {
     private readonly PersistentAgentsClient _projectClient;
     private readonly string _agentId;
+    
     public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : base(options)
     {
-  
+
         OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync);
-  
+
         // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
         OnActivity(ActivityTypes.Message, OnMessageAsync);
-  
+
         // Azure AI Foundry Project ConnectionString
         string projectEndpoint = configuration["AIServices:ProjectEndpoint"];
         if (string.IsNullOrEmpty(projectEndpoint))
@@ -30,14 +31,13 @@ public class EchoBot : AgentApplication
             throw new InvalidOperationException("ProjectEndpoint is not configured.");
         }
         _projectClient = new PersistentAgentsClient(projectEndpoint, new DefaultAzureCredential());
-        
+
         // Azure AI Foundry Agent Id
         _agentId = configuration["AIServices:AgentID"];
         if (string.IsNullOrEmpty(_agentId))
         {
             throw new InvalidOperationException("AgentID is not configured.");
         }
-  
     }
   
     protected async Task WelcomeMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)

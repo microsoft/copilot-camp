@@ -27,11 +27,10 @@ builder.AddAgentApplicationOptions();
 // Add the bot (which is transient)
 builder.AddAgent<EchoBot>();
 builder.Services.AddSingleton<IStorage, MemoryStorage>();
-
 // Add the Semantic Kernel services 
-
 builder.Services.AddKernel();
 var app = builder.Build();
+
 
 if (app.Environment.IsDevelopment())
 {
