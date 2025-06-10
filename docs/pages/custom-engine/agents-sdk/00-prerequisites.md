@@ -43,7 +43,7 @@ You can complete these labs on a Windows machine and you do need the ability to 
 1. You can download Visual Studio 2022 here: [Visual Studio 2022](https://code.visualstudio.com/download){target=_blank}.
 1. Select **Install**. If you've already installed Visual Studio, select **Modify**.
 1. Visual Studio installer shows all workloads.
-    ![Visual Studio install](../../../assets/images/agents-sdk/visual-studio-install.png)
+    ![The Visual Studio installation UI with the list of components available for ASP.NET and web development and the Microsoft 365 Agents Toolkit highlighted.](../../../assets/images/agents-sdk/visual-studio-install.png)
 1. From the installation screen, perform the following steps:
     1. Select **Workloads > ASP.NET and web development**.
     1. On the right pane, go to **Installation details > Optional** and then select **Microsoft 365 Agents toolkit**.

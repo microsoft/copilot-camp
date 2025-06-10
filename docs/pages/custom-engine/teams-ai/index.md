@@ -1,7 +1,7 @@
 
 # Welcome to Copilot Developer Camp's Build Path: Build your own agent with Teams AI library
 
-During Build Path of the Copilot Developer Camp, you will develop a custom engine agent specifically designed to help Human Resources departments manage resumes, create new job posts, and more.
+During Build Path of the Copilot Developer Camp, you will develop a custom engine agent that runs across Microsoft Teams using the Teams AI Library. The agent will be specifically designed to help Human Resources departments manage resumes, create new job posts, and more.
 
 ???+ info "What is a custom engine agent?"
     Custom engine agents are chatbots powered by Generative AI, designed to provide sophisticated conversational experiences. Custom engine agents are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.
@@ -12,6 +12,6 @@ The journey starts with building a basic custom engine agent using M365 Agents T
 
 ---8<--- "b-labs-toc.md"
   
-## <a href="./00-prerequisites">Start here</a> with Lab B0, where you'll set up development your environment.
+## <a href="./00-prerequisites">Start here</a> with Lab BTA0, where you'll set up development your environment.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/index" />
