@@ -1,11 +1,5 @@
 # Lab BTA1 - First custom engine agent with Teams AI library
 
----8<--- "b-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/Onk04pehtjE" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab you will build a custom engine agent using M365 Agents Toolkit for Visual Studio Code. You will also utilize Azure OpenAI models in your custom engine agent and define your first prompt.
 
 In this lab you will:
@@ -15,6 +9,17 @@ In this lab you will:
 - Create a custom engine agent using M365 Agents Toolkit
 - Define a prompt in your custom engine agent
 - Learn how to run and test your app
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/Onk04pehtjE" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+        ---8<--- "b-labs-prelude.md"
+    </div>
+</div>
 
 ## Introduction
 

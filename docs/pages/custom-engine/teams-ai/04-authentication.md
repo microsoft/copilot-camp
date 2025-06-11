@@ -1,11 +1,5 @@
 # BTA4 - Add single sign on authentication
 
----8<--- "b-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/5oyftU9PRpM" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 
 In this lab you will learn to:
@@ -13,6 +7,18 @@ In this lab you will learn to:
 - Add Entra ID single sign-on (SSO) in your app, so users can seamlessly log into your app with the same account they use in Microsoft Teams
 - Use Teams AI library and Bot Framework to implement the single sign on.
 - Acquire and use tokens for app users to enhance security and user experience.
+
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/5oyftU9PRpM" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+        ---8<--- "b-labs-prelude.md"
+    </div>
+</div>
 
 ## Introduction
 
