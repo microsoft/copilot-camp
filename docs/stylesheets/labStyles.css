@@ -723,3 +723,8 @@ dicussion */
     height: 100px; /* Set the desired height */
     margin: 0 10px; /* Adjust the margin between images */
 }
+.lab-intro-video{
+  display: flex;
+  gap: 20px; 
+  align-items: stretch;
+}
