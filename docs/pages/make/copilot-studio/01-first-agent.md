@@ -1,11 +1,5 @@
 # Lab MCS1 - First agent
 
----8<--- "mcs-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab, you'll create your first agent with Microsoft Copilot Studio. The agent that you are going to create helps users to find information about HR policies and processes to hire or layoff employees, to improve your career, and to define learning pathways.
 The knowledge base of the agent will be a set of documents stored in SharePoint Online and some public web content.
 
@@ -15,6 +9,18 @@ In this lab you will learn:
 - How to configure a custom icon for your agent
 - How to configure knowledge sources for your agent
 - How to publish your agent in Microsoft Teams
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+   ---8<--- "mcs-labs-prelude.md"
+    </div>
+</div>
+
 
 !!! pied-piper "Disclaimer"
     These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.

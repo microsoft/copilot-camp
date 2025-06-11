@@ -1,11 +1,5 @@
 # Lab E0 - Setup
 
----8<--- "e-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
 
 !!! note "Set up your development environment for Microsoft 365 Copilot"
@@ -17,8 +11,20 @@ In this lab you will learn:
 - How to configure your Microsoft 365 tenant's Teams upload policy for lab use
 - How to install and configure Microsoft 365 Agents Toolkit for Visual Studio Code
 
-!!! pied-piper "Disclaimer"
-    These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="disclaimer-box">
+            ⚠️ <strong>Disclaimer:</strong> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
 
 
 ## Exercise 1 : Configure Teams upload policy

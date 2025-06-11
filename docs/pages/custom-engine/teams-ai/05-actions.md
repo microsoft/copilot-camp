@@ -1,17 +1,23 @@
 # BTA5 - Add actions to handle complex tasks
 
----8<--- "b-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/bfULaDnpAXY" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab you will:
 
 - Learn what actions are and how to handle complex tasks with them
 - Integrate multi-prompt in your custom engine agent to handle actions
 - Implement actions in your custom engine agent
 - Utilize Microsoft Graph and actions together to automate workflows
+
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/bfULaDnpAXY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+        ---8<--- "b-labs-prelude.md"
+    </div>
+</div>
 
 ## Introduction
 

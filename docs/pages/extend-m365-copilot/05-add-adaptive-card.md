@@ -1,11 +1,5 @@
 # Lab E5 - Add adaptive cards
 
----8<--- "e-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/9kb9whCKey4" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab you will further enhance the response from Microsoft 365 Copilot from text to rich cards using Adaptive Cards. 
 
 In this lab you will learn:
@@ -14,12 +8,24 @@ In this lab you will learn:
 - How to create and test an Adaptive Card
 - How to update Microsoft 365 Copilot responses to use Adaptive Cards for rich content
 
-!!! note
-    This lab builds on the previous one, Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END){target=_blank} folder.
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/9kb9whCKey4" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="note-box">
+            📘 <strong>Note:</strong> This lab builds on the previous one, Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+    The finished solution for this lab is in the <a  src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a>
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
+
 
 ## Introduction
-<details open>
+<details>
 <summary>What are Adaptive Cards?</summary>
 
 Adaptive Cards are platform-independent UI snippets authored in JSON that can be exchanged between apps and services. Once delivered to an app, the JSON transforms into native UI that automatically adapts to its environment. This enables the design and integration of lightweight UI across major platforms and frameworks.

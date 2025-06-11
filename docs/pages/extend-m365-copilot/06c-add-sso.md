@@ -1,16 +1,26 @@
 # Lab E6c - Add Entra ID authentication with Single Sign-on
 
----8<--- "e-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab you will add Microsoft Entra ID SSO authentication enabling users to authenticate with their existing Entra ID credentials.
 
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="note-box">
+            📘 <strong>Note:</strong>   This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the solution folder for Lab E5 from <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> 
+    and work there.
+    The finished solution for this lab is in the <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06b-END" target="_blank">/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END</a> folder.
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
+
 !!! note
-    This lab builds on the previous one, Lab E5. You should be able to continue working in the same folder for labs E2-E6a, E6b or E6c, but solution folders have been provided for your reference.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END){target=_blank} folder. Here in the finished sample we have used persistent developer tunnel so you will have to make adjustments if you are not using persistent developer tunnel. Check Exercise 1. 
+    In the finished sample we have used persistent developer tunnel so you will have to make adjustments if you are not using persistent developer tunnel. Check Exercise 1. 
 
 
 In this lab, as you register your API, you'll need to save a few values from the Entra ID portal and Teams Developer Portal for use in later steps. Here's what you'll need to save:

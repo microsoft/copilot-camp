@@ -1,13 +1,18 @@
 # Lab MCS0 - Setup
 
----8<--- "mcs-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab, you'll setup and configure your Microsoft 365 tenant to start creating agents with Microsoft Copilot Studio.
 Copilot Studio is part of the Microsoft Power Platform offering and requires dedicated licensing, accordingly to the [Microsoft Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?linkid=2085130){target=_blank}.
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+   ---8<--- "mcs-labs-prelude.md"
+    </div>
+</div>
 
 !!! note "Set up your development environment for Microsoft 365 Copilot and Microsoft Copilot Studio"
     This lab currently assumes you already have a developer tenant to setup. You can reference off to the
