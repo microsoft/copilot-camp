@@ -1,17 +1,23 @@
 # Lab E6a - Add Entra ID authentication with OAuth (Agents Toolkit)
 
----8<--- "e-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider. You will learn how to set up Agents Toolkit to automate the Entra ID and Teams Developer Portal registrations.
 
-!!! note
-    This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the [solution folder for Lab E5 from **/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END){target=_blank}
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="note-box">
+            📘 <strong>Note:</strong>    This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the solution folder for Lab E5 from <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a>
     and work there.
-    The finished solution for this lab is in the [**/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END){target=_blank} folder.
+    The finished solution for this lab is in the <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END" target="_blank">src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END </a> folder.
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
+
 
 ## Exercise 1: Update the local Agents Toolkit configuration
 

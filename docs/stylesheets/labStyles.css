@@ -728,3 +728,19 @@ dicussion */
   gap: 20px; 
   align-items: stretch;
 }
+.disclaimer-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 16.8px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #ffd43b;
+    border-radius: 4px;
+}
+.note-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 16.8px;
+    background-color: #f8f9fa;
+    border-left: 4px solid powderblue;
+    border-radius: 4px;
+}

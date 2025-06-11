@@ -27,14 +27,14 @@
             </li>
             <li><strong>🔐 Authentication</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk.md"> Lab E6a - Toolkit</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06b-add-authentication.md"> Lab E6b - Manual</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06c-add-sso.md"> Lab E6c - SSO</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk"> Lab E6a - Toolkit</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06b-add-authentication"> Lab E6b - Manual</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06c-add-sso"> Lab E6c - SSO</a></li>
                 </ul>
             </li>
             <li><strong>🔌 Integration</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector.md"> Lab EB - Add Graph Connector</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab EB - Add Graph Connector</a></li>
                 </ul>
             </li>
         </ul>
