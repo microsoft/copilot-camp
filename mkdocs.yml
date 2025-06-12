@@ -96,13 +96,13 @@ plugins:
                 - Lab BTA3 - Enhance user experience: 'pages/custom-engine/teams-ai/03-powered-by-ai.md'
                 - Lab BTA4 - Add single sign on authentication: 'pages/custom-engine/teams-ai/04-authentication.md'
                 - Lab BTA5 - Add actions to handle complex tasks: 'pages/custom-engine/teams-ai/05-actions.md'
-            - Agent instructions:
-              - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
-              - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
-              - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
-              - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
-              - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
-              - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
+            # - Agent instructions:
+            #   - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
+            #   - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
+            #   - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
+            #   - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
+            #   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
+            #   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
             - Prompt engineering:
               - Level 1 - Simple agent instructions: 'pages/copilot-instructions/beginner-agent.md'
             # - Awards: 'awards.md'
