@@ -1,5 +1,13 @@
 
-# Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)
+# Agent Instruction Lab - Improve your agent instructions (Beginner friendly)
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/hzNhQGYDz4w" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>       
+    </div>   
+</div>
+
 
 What you will do:
   
