@@ -685,18 +685,18 @@ To start a conversation with the Career Genie, simply type a message. For exampl
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
-![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../../assets/images/custom-engine-04/consent-teams.png)
 
 !!! warning "Known issues"
     - There is a delay for the consent dialog to show up in Teams chat. This has been identified as a platform issue and we are monitoring it. Keep pinging 2-3 times.
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed.
 
-![A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'.](../../assets/images/custom-engine-04/consent-devtunnel.png)
+![A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'.](../../../assets/images/custom-engine-04/consent-devtunnel.png)
 
 You'll be redirected to Entra ID, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).
 
-![The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons.](../../assets/images/custom-engine-04/consent-graph.png)
+![The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons.](../../../assets/images/custom-engine-04/consent-graph.png)
 
 !!! tip "Tip: Consent on behalf of your organization"
     If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.
@@ -705,7 +705,7 @@ Select **Accept** to consent to the permissions and run Career Genie.
 
 You will now get this message from the custom engine agent with your logged in name showing successful authentication.
 
-![Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent.](../../assets/images/custom-engine-04/auth.gif)
+![Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent.](../../../assets/images/custom-engine-04/auth.gif)
 
 You can start chatting with your custom engine agent.
 

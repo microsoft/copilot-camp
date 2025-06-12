@@ -377,7 +377,7 @@ To understand how the flow works, you may ask the following questions in order:
 - Add Anthony Ivanov in the Talent list
 - Summarize my lists
 
-![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../assets/images/custom-engine-05/actions.gif)
+![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../../assets/images/custom-engine-05/actions.gif)
 
 <cc-end-step lab="bta5" exercise="3" step="3" />
 
@@ -589,7 +589,7 @@ To start a conversation with Career Genie, simply type a message. For example, y
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
-![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../../assets/images/custom-engine-04/consent-teams.png)
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed. You'll be redirected to login and consent to the app's permissions.
 
@@ -620,7 +620,7 @@ To understand how the flow works, you may ask the following questions in order:
 !!! tip "Check your mailbox"
     After the last step, check your mailbox to see if you received any email for the lists of candidates.
 
-![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../assets/images/custom-engine-05/career-genie-full.gif)
+![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../../assets/images/custom-engine-05/career-genie-full.gif)
 
 <cc-end-step lab="bta5" exercise="4" step="5" />
 

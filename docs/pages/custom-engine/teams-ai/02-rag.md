@@ -133,11 +133,11 @@ For this exercise, download [fictitious_resumes.zip](https://github.com/microsof
 
 1. Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
 
-     ![The Setup section of the Chat Playground in Azure AI Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted.](../../assets/images/custom-engine-02/reset-chat-playground.png)
+     ![The Setup section of the Chat Playground in Azure AI Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted.](../../../assets/images/custom-engine-02/reset-chat-playground.png)
 
 1. Select **Add your data** and then **Add a data source**.
 
-    ![The UI of Azure AI Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground.](../../assets/images/custom-engine-02/add-your-data-aoai.png)
+    ![The UI of Azure AI Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground.](../../../assets/images/custom-engine-02/add-your-data-aoai.png)
 
 1. Select **Upload files (preview)**, then fill the details as the following and select **Next**:
 
@@ -150,7 +150,7 @@ For this exercise, download [fictitious_resumes.zip](https://github.com/microsof
 
 Take note of the index name as you will use this in the `INDEX_NAME` environment variable.
 
-![The UI to add a custom data source with fields to select subscription, Azure Storage, Azure AI Search, index name, and embedding model.](../../assets/images/custom-engine-02/add-data-source-aoai.png)
+![The UI to add a custom data source with fields to select subscription, Azure Storage, Azure AI Search, index name, and embedding model.](../../../assets/images/custom-engine-02/add-data-source-aoai.png)
 
 1. Select **Browse for a file** and select the pdf documents from the `resumes` folder. Then, select **Upload files** and **Next**.
 1. Select Search type as `Vector` and chunk size as `1024(Default)`, then **Next**.
@@ -172,7 +172,7 @@ You can ask questions such as *"Can you suggest me a candidate who is suitable f
 !!! tip "Tip: Making the most out of your data"
     Review your dataset before asking questions testing the vector search. Go through the `resumes` folder and recognize the resumes provided in different languages with diverse professions, years of experience, skills and more. Start chatting with your data by asking questions to find out the right candidate for a skill, language, profession, years of experience and other categories. Try to test out the combination of requirements to challenge the search experience!
 
-![The Chat Playground in Azure AI Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents.](../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
+![The Chat Playground in Azure AI Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents.](../../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
 
 <cc-end-step lab="bta2" exercise="2" step="2" />
 
@@ -180,18 +180,18 @@ You can ask questions such as *"Can you suggest me a candidate who is suitable f
 
 To understand more about your dataset and explore more, select **resumes** from the Add your data section of the Chat playground. This will redirect you to your resumes index on Azure AI Search.
 
-![The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Azure AI Foundry](../../assets/images/custom-engine-02/index-aoai.png)
+![The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Azure AI Foundry](../../../assets/images/custom-engine-02/index-aoai.png)
 
 First, let's include the vector content in our data. Select **Fields** tab in your Resumes index page, then check the box for **contentVector**, finally select **Save**.
 
-![The UI of Azure AI Search when adding the contentVector field to the search index with the fields tab, the contentVector field, and the save button highlighted.](../../assets/images/custom-engine-02/add-contentvector.png)
+![The UI of Azure AI Search when adding the contentVector field to the search index with the fields tab, the contentVector field, and the save button highlighted.](../../../assets/images/custom-engine-02/add-contentvector.png)
 
 Go back to **Search explorer** tab, select **Query options** in your Resumes index page and then change the **API version** as `2024-11-01-preview`, then select **Close**. To view your data, press **Search**.
 
 !!! tip "Tip: Recognize `contentVector` parameter"
     When scrolling through your data, recognize that each document has `contentVector` parameter that contains the numeric vectors of the pdf document. These numeric vectors will be used for Vector Search to identify the best matching results.
 
-![The Search Explorer for the current index in Azure AI Search, showing search data with the contentVector field highlighted with the numeric vectors values.](../../assets/images/custom-engine-02/contentvector-in-your-data.png)
+![The Search Explorer for the current index in Azure AI Search, showing search data with the contentVector field highlighted with the numeric vectors values.](../../../assets/images/custom-engine-02/contentvector-in-your-data.png)
 
 <cc-end-step lab="bta2" exercise="2" step="3" />
 
@@ -329,7 +329,7 @@ Ensure your questions are related to your dataset. Go through pdf documents in t
 - Who would be suitable for a position that requires 5+ python development experience?
 - Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?
 
-![Animation of the interaction with the Career Genie custom engine agent. The user interacts with the bot providing subsequent prompts and looking for a specific candidate based on some requirements.](../../assets/images/custom-engine-02/byod-teams.gif)
+![Animation of the interaction with the Career Genie custom engine agent. The user interacts with the bot providing subsequent prompts and looking for a specific candidate based on some requirements.](../../../assets/images/custom-engine-02/byod-teams.gif)
 
 <cc-end-step lab="bta2" exercise="3" step="3" />
 

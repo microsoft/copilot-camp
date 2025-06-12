@@ -98,7 +98,7 @@ Once your model is successfully created, select **Open in playground**, and test
 
 For example, choose "Shakespearean Writing Assistant" and select **Use prompt**. and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
 
-![The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
+![The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 <cc-end-step lab="bta1" exercise="1" step="2" />
 
@@ -144,7 +144,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 - "What would be the list of required skills for a Project Manager role?"
 - "Can you share a job template?"
 
-![Test Career Genie in App Test Tool. There is a UI looking almost like the real Microsoft Teams one, with a chat area that allows to interact with the custom engine agent. On the right side there is a log panel with detailed logs about the interactions between the user and the bot.](../../assets/images/custom-engine-01/teams-app-test-tool.png)
+![Test Career Genie in App Test Tool. There is a UI looking almost like the real Microsoft Teams one, with a chat area that allows to interact with the custom engine agent. On the right side there is a log panel with detailed logs about the interactions between the user and the bot.](../../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
 ??? info "What does M365 Agents Toolkit do behind the scene?"
     When you start debugging your app, M365 Agents Toolkit completes some required tasks for you behind the scene, such as:
