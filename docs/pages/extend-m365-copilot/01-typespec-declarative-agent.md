@@ -2,7 +2,16 @@
 
 In this lab your will build a Declarative Agent with TypeSpec definition using Microsoft 365 Agents Toolkit. You will create an agent called `RepairServiceAgent`, which interacts with repairs data via an existing API service to help users manage car repair records.
 
----8<--- "e-labs-prelude.md"
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/RNsa0kLsXgY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+        </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
 
 
 ## What are Declarative Agents? 
