@@ -1,6 +1,4 @@
-# B5 - Add actions to handle complex tasks
-
----8<--- "b-labs-prelude.md"
+# BTA5 - Add actions to handle complex tasks
 
 In this lab you will:
 
@@ -8,6 +6,18 @@ In this lab you will:
 - Integrate multi-prompt in your custom engine agent to handle actions
 - Implement actions in your custom engine agent
 - Utilize Microsoft Graph and actions together to automate workflows
+
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/bfULaDnpAXY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+        ---8<--- "b-labs-prelude.md"
+    </div>
+</div>
 
 ## Introduction
 
@@ -174,7 +184,7 @@ In `src/prompts/monologue/` folder, create a new file with a name **actions.json
 ]
 ```
 
-<cc-end-step lab="b5" exercise="1" step="1" />
+<cc-end-step lab="bta5" exercise="1" step="1" />
 
 ## Exercise 2: Implement a logic in the planner to choose between prompts
 
@@ -225,7 +235,7 @@ const planner = new ActionPlanner({
 });
 ```
 
-<cc-end-step lab="b5" exercise="2" step="1" />
+<cc-end-step lab="bta5" exercise="2" step="1" />
 
 ## Exercise 3: Implement actions in the app
 
@@ -286,7 +296,7 @@ function deleteList(state: ApplicationTurnState, listName: string): void {
 export { getCandidates, setCandidates, ensureListExists, deleteList };
 ```
 
-<cc-end-step lab="b5" exercise="3" step="1" />
+<cc-end-step lab="bta5" exercise="3" step="1" />
 
 ### Step 2: Register action handlers in the app
 
@@ -344,7 +354,7 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 ```
 
-<cc-end-step lab="b5" exercise="3" step="2" />
+<cc-end-step lab="bta5" exercise="3" step="2" />
 
 ### Step 3: Test your app with the new actions
 
@@ -367,9 +377,9 @@ To understand how the flow works, you may ask the following questions in order:
 - Add Anthony Ivanov in the Talent list
 - Summarize my lists
 
-![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../assets/images/custom-engine-05/actions.gif)
+![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../../assets/images/custom-engine-05/actions.gif)
 
-<cc-end-step lab="b5" exercise="3" step="3" />
+<cc-end-step lab="bta5" exercise="3" step="3" />
 
 ## Exercise 4: Utilize actions together with the Microsoft Graph to automate workflows
 
@@ -407,7 +417,7 @@ In your project, go to `src/prompts/monologue/actions.json` and add the followin
 }
 ```
 
-<cc-end-step lab="b5" exercise="4" step="1" />
+<cc-end-step lab="bta5" exercise="4" step="1" />
 
 ### Step 2: Create a new function for the new `sendLists` action
 
@@ -531,7 +541,7 @@ Finally in `src/app/actions.ts`, add **sendLists** in the`actions.ts` exports. T
 export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
 ```
 
-<cc-end-step lab="b5" exercise="4" step="2" />
+<cc-end-step lab="bta5" exercise="4" step="2" />
 
 ### Step 3: Register `sendLists` action handler
 
@@ -550,7 +560,7 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 });
 ```
 
-<cc-end-step lab="b5" exercise="4" step="3" />
+<cc-end-step lab="bta5" exercise="4" step="3" />
 
 ### Step 4: Update your Entra ID app registration
 
@@ -563,7 +573,7 @@ Update the script for your Entra ID app for new scope `Mail.Send`. Go to file **
 }
 ```
 
-<cc-end-step lab="b5" exercise="4" step="4" />
+<cc-end-step lab="bta5" exercise="4" step="4" />
 
 ### Step 5: Test your app and the new `sendLists` action
 
@@ -579,7 +589,7 @@ To start a conversation with Career Genie, simply type a message. For example, y
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
-![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../../assets/images/custom-engine-04/consent-teams.png)
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed. You'll be redirected to login and consent to the app's permissions.
 
@@ -610,13 +620,13 @@ To understand how the flow works, you may ask the following questions in order:
 !!! tip "Check your mailbox"
     After the last step, check your mailbox to see if you received any email for the lists of candidates.
 
-![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../assets/images/custom-engine-05/career-genie-full.gif)
+![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../../assets/images/custom-engine-05/career-genie-full.gif)
 
-<cc-end-step lab="b5" exercise="4" step="5" />
+<cc-end-step lab="bta5" exercise="4" step="5" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed B5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank}.
+You have completed BTA5 - Add actions to handle complex tasks!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank}.
 
 This is the end of the **Build your own agent** path! Did you enjoy building Career Genie? Let us know about your experience and feedback. 💜
 
@@ -624,4 +634,4 @@ This is the end of the **Build your own agent** path! Did you enjoy building Car
 
 <!-- <cc-award path="Build" /> -->
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/05-actions" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/05-actions" />

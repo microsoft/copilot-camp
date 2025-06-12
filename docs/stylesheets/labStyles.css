@@ -33,6 +33,18 @@
   text-decoration: none;
 }
 
+.video-small {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.video-small>iframe,
+.video-small>img {
+    width: 24vw;
+    height: 13vw;
+}
+
 .video {
     /* max-width: 640px;
     min-width: 120px; */
@@ -710,4 +722,25 @@ dicussion */
     width: 100px; /* Set the desired width */
     height: 100px; /* Set the desired height */
     margin: 0 10px; /* Adjust the margin between images */
+}
+.lab-intro-video{
+  display: flex;
+  gap: 20px; 
+  align-items: stretch;
+}
+.disclaimer-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 16.8px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #ffd43b;
+    border-radius: 4px;
+}
+.note-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 16.8px;
+    background-color: #f8f9fa;
+    border-left: 4px solid powderblue;
+    border-radius: 4px;
 }

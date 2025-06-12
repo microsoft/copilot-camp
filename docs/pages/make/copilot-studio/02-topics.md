@@ -1,8 +1,17 @@
 # Lab MCS2 - Defining Topics
 
----8<--- "mcs-labs-prelude.md"
-
 In this lab, you'll learn how to create custom Topics in Microsoft Copilot Studio. Topics are core building blocks of an agent. With topics you can provide a conversational experience to your end users, where the conversation can be single-turn or multi-turn. Topics define how the conversation between the user and the agent can evolve, through discrete interaction paths.
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/ZVHkBiH6RxQ" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+   ---8<--- "mcs-labs-prelude.md"
+    </div>
+</div>
 
 !!! note
     This lab builds on the previous one, [Lab MCS1](../01-first-agent){target=_blank}. You should be able to continue working on the same agent, improving its functionalities with new capabilities.

@@ -1,6 +1,4 @@
-# B4 - Add single sign on authentication
-
----8<--- "b-labs-prelude.md"
+# BTA4 - Add single sign on authentication
 
 In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 
@@ -10,19 +8,31 @@ In this lab you will learn to:
 - Use Teams AI library and Bot Framework to implement the single sign on.
 - Acquire and use tokens for app users to enhance security and user experience.
 
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/5oyftU9PRpM" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+        ---8<--- "b-labs-prelude.md"
+    </div>
+</div>
+
 ## Introduction
 
 Get ready to enhance your CareerGenie by integrating Entra ID (formerly Azure AD) single sign-on (SSO). This will allow your app to seamlessly acquire tokens for accessing Microsoft 365 data via Microsoft Graph, ensuring smooth authentication and authorization. You'll be incorporating this SSO capability using the Teams AI library and the Bot Framework, specifically focusing on a multi-tenant configuration.
 
 ## Exercise 1: Set up your project for Entra ID Single Sign-on
 
-Applications secured with Entra ID must be registered and granted permission. Teams Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the Teams Toolkit project files to provision your app registration in Entra ID.
+Applications secured with Entra ID must be registered and granted permission. M365 Agents Toolkit will do this work for you, but you have to update your project to make that happen. In this exercise, you'll modify the M365 Agents Toolkit project files to provision your app registration in Entra ID.
 
 In this exercise, use the [source code for Lab B3](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} as the base project and proceed to next steps.
 
 ### Step 1: Add an Entra ID App manifest file to define the Entra ID Application
 
-In this step, you'll add a file that defines the application that Teams Toolkit will register for your application in Entra ID. This manifest file allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
+In this step, you'll add a file that defines the application that M365 Agents Toolkit will register for your application in Entra ID. This manifest file allows you to customize various aspects of your application registration. For example, this one sets up `User.Read` permission on the Microsoft Graph API so your app can read the user's profile.
 
 Create a file **aad.manifest.json** in the root of your project folder, and paste in this JSON:
 
@@ -130,11 +140,11 @@ Create a file **aad.manifest.json** in the root of your project folder, and past
 }
 ```
 
-<cc-end-step lab="b4" exercise="1" step="1" />
+<cc-end-step lab="bta4" exercise="1" step="1" />
 
-### Step 2: Update Teams Toolkit configuration file to create the Entra ID App
+### Step 2: Update M365 Agents Toolkit configuration file to create the Entra ID App
 
-Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps Teams Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the Teams Toolkit user interface.
+Open the `teamsapp.local.yml` file. This is a YAML file that defines the steps M365 Agents Toolkit takes to run your project. There are 3 steps in the "LIFECYCLE" section of the M365 Agents Toolkit user interface.
 
 - Provision - In this phase, any infrastructure needed by your app is created. This includes things like the bot registration, the Teams app package, and, in this case, the Entra ID app registration
 
@@ -183,7 +193,7 @@ Now scroll down and find the `file/createOrUpdateEnvironmentFile` directive in t
  AAD_APP_OAUTH_AUTHORITY: ${{AAD_APP_OAUTH_AUTHORITY}}
 ```
 
-<cc-end-step lab="b4" exercise="1" step="2" />
+<cc-end-step lab="bta4" exercise="1" step="2" />
 
 ## Exercise 2: Add SSO in Teams app manifest
 
@@ -215,7 +225,7 @@ So you need to add your bot's domain, **${{BOT_DOMAIN}}** to the `validDomains` 
     ],
 ```
 
-<cc-end-step lab="b4" exercise="2" step="1" />
+<cc-end-step lab="bta4" exercise="2" step="1" />
 
 ## Exercise 3: Update the application code for SSO
 
@@ -478,7 +488,7 @@ Create a file **auth-end.html** and paste in the contents below:
 
 ```
 
-<cc-end-step lab="b4" exercise="3" step="1" />
+<cc-end-step lab="bta4" exercise="3" step="1" />
 
 ### Step 2: Update code to handle SSO
 
@@ -651,7 +661,7 @@ async function getUserDisplayName(token: string): Promise<string | undefined> {
     - Got to `src\public\auth-start.html` and set variable `authorizeEndpoint` to `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}`        
     - Go to `src\adapter.ts` and update the adapter definition ` MicrosoftAppType: 'SingleTenant'`   
 
-<cc-end-step lab="b4" exercise="3" step="2" />
+<cc-end-step lab="bta4" exercise="3" step="2" />
 
 ## Exercise 4: Run the application
 
@@ -664,7 +674,7 @@ Start debugging your app by selecting **Run and Debug** tab on Visual Studio Cod
 !!! tip "Tip: Testing this exercise locally"
     Make sure to test and debug this exercise on Teams locally, as some of the Teams AI library capabilities you've implemented in your app so far won't smoothly work in the Teams App Test Tool.
 
-<cc-end-step lab="b4" exercise="4" step="1" />
+<cc-end-step lab="bta4" exercise="4" step="1" />
 
 ### Step 2: Giving consent
 
@@ -675,18 +685,18 @@ To start a conversation with the Career Genie, simply type a message. For exampl
 
 You will see a small dialog box for the additional permissions with ‘Cancel’ and ‘Continue’ buttons. This dialog is for logging in and giving your consent to the required permissions. Select **Continue**.
 
-![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../../assets/images/custom-engine-04/consent-teams.png)
 
 !!! warning "Known issues"
     - There is a delay for the consent dialog to show up in Teams chat. This has been identified as a platform issue and we are monitoring it. Keep pinging 2-3 times.
 
 Since you're running locally with Developer Tunnels, you'll see a warning screen, select **Continue**. Users won't see this when your app is deployed.
 
-![A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'.](../../assets/images/custom-engine-04/consent-devtunnel.png)
+![A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'.](../../../assets/images/custom-engine-04/consent-devtunnel.png)
 
 You'll be redirected to Entra ID, where you'll be asked to consent to the app's permissions. (You were directed there by public/auth-start.html which gets displayed when it found you hadn't consented).
 
-![The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons.](../../assets/images/custom-engine-04/consent-graph.png)
+![The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons.](../../../assets/images/custom-engine-04/consent-graph.png)
 
 !!! tip "Tip: Consent on behalf of your organization"
     If you're a Microsoft 365 administrator, you will also be given the option to "Consent on behalf of your organization" which will consent for every user in your tenant.
@@ -695,18 +705,18 @@ Select **Accept** to consent to the permissions and run Career Genie.
 
 You will now get this message from the custom engine agent with your logged in name showing successful authentication.
 
-![Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent.](../../assets/images/custom-engine-04/auth.gif)
+![Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent.](../../../assets/images/custom-engine-04/auth.gif)
 
 You can start chatting with your custom engine agent.
 
-<cc-end-step lab="b4" exercise="4" step="2" />
+<cc-end-step lab="bta4" exercise="4" step="2" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab B4 - Add single sign on authentication to secure your custom engine agent!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank}.
+You have completed Lab BTA4 - Add single sign on authentication to secure your custom engine agent!  If you want explore further, the source code of this lab is available in the [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank}.
 
-You can now proceed to Lab B5 - Add actions to handle complex tasks. Select Next.
+You can now proceed to Lab BTA5 - Add actions to handle complex tasks. Select Next.
 
-<cc-next />
+<cc-next url="../05-actions" />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/04-authentication" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/04-authentication" />
