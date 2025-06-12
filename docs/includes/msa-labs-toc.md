@@ -3,7 +3,7 @@
   <div>
     <p>Do these labs if you want to build a SharePoint agent</p>
     <ul>
-      <li><a href="/copilot-camp/pages/make/sharepoint-agents/01-first-agent/">MSA1 - Build your first agent</a></li>
+      <li><a href="/copilot-camp/pages/make/sharepoint-agents/01-first-agent/">MSA1 - Build your first SharePoint agent</a></li>
       <li><a href="/copilot-camp/pages/make/sharepoint-agents/02-sharing-agents/">MSA2 - Sharing SharePoint agents in Microsoft Teams</a></li>
     </ul>
   </div>
