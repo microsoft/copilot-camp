@@ -10,9 +10,9 @@ In this step you will upload sample documents which will be used by your SharePo
 
 ### Step 1: Create a SharePoint site
 
-Within the [Microsoft 365 app](https://www.office.com/){target=_blank}, or elsewhere in Microsoft 365, click the "waffle" menu 1️⃣ and select **SharePoint** 2️⃣.
+Within the [Microsoft 365 Portal](https://m365.cloud.microsoft/){target=_blank}, or elsewhere in Microsoft 365, click the "Apps" menu 1️⃣ and select **SharePoint** 2️⃣.
 
-![The UI of Microsoft 365 with the waffle menu expanded and the SharePoint workload highlighted.](../../../assets/images/extend-m365-copilot-05/upload-docs-01.png)
+![The UI of Microsoft 365 Portal with the Apps command and the SharePoint workload highlighted.](../../../assets/images/make/sharepoint-agents-01/m365-new-portal-01.png)
 
 Then select **Create Site** 1️⃣ and choose a **Team site** 2️⃣.
 
@@ -22,7 +22,7 @@ Select the **Standard team** site template; you will be shown a preview of the s
 
 ![The UI to select the 'Standard' site template for the target site.](../../../assets/images/extend-m365-copilot-05/upload-docs-03.png)
 
-Give your site a name such as "Copilot Dev Camp - HR" 1️⃣ and select **Next** 2️⃣.
+Give your site a name such as "Copilot Dev Camp - HR" 1️⃣ and select **Next** 2️⃣. The name must be unique in your tenant, so be sure to not use and already allocated name.
 
 ![The UI to provide name, description, and other details for the target site to create.](../../../assets/images/make/sharepoint-agents-01/create-site-01.png)
 
@@ -181,8 +181,13 @@ Once you have updated the agent icon, purpose, and instructions select the **Sav
 
 For example, provide the following prompts:
 
-- Hello!
-- How can I improve my career? Provide me a list of suggested actions.
+```text
+Hello!
+```
+
+```text
+How can I improve my career? Provide me a list of suggested actions.
+```
 
 ![The updated behavior of the agent, based on the improved instructions. There are emojis, tables to render lists of items and generally speaking a more accurate respose.](../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-02.png)
 
