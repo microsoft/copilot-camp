@@ -17,7 +17,7 @@ The labs are divided into three pathways, allowing you to choose based on what y
 
 !!! info "Explore the new labs we've published! "    
 
-    We’re excited to introduce **three new hands-on labs** designed to help you build powerful Copilot experiences. 
+    We’re excited to introduce **four new hands-on labs** designed to help you build powerful Copilot experiences. 
 
     - **Build with Microsoft 365 Agents SDK**:
     Leverage the full capabilities of the Microsoft 365 Agents SDK to create production-ready Copilot agents that integrate with real business data.
@@ -31,7 +31,9 @@ The labs are divided into three pathways, allowing you to choose based on what y
     New to Copilot? This lab walks you through the process of writing effective natural language instructions and testing your Copilot agent in a guided environment.
     [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-instructions/beginner-agent/)
 
-
+    - **SharePoint agents**:
+    Learn how to create SharePoint agents starting from the basics, how to fine tune their settings, and how to share them with people or in Microsoft Teams group chats.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/make/sharepoint-agents/)
 
 ## 🧑‍💻 More
 
