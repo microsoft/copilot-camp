@@ -3,12 +3,12 @@
   <div>
     <p>Do these labs if you want to build a Custom engine agent with custom AI model and orchestration using Azure OpenAI and Teams AI library</p>
     <ul>
-      <li><a href="/copilot-camp/pages/custom-engine/00-prerequisites/">B0 - Setup</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/01-custom-engine-agent/">B1 - First custom engine agent</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/02-rag/">B2 - Index your data in Azure AI Search</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/03-powered-by-ai/">B3 - Enhance the user experience</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/04-authentication/">B4 - Add single sign on authentication</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/05-actions/">B5 - Add actions to handle complex tasks</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/00-prerequisites/">BTA0 - Setup</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/01-custom-engine-agent/">BTA1 - First custom engine agent</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/02-rag/">BTA2 - Index your data in Azure AI Search</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/03-powered-by-ai/">BTA3 - Enhance the user experience</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/04-authentication/">BTA4 - Add single sign on authentication</a></li>
+      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/05-actions/">BTA5 - Add actions to handle complex tasks</a></li>
     </ul>
   </div>
 </div>

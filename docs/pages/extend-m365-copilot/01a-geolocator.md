@@ -1,11 +1,5 @@
 # Lab E1 - Instructions based Gelocator game agent
 
----8<--- "e-labs-prelude.md"
-
-<div class="video-small">
-    <iframe src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen></iframe>
-</div>
-
 In this lab, you'll create a basic declarative agent using instructions and supplementary knowledge provided through files.  Your agent is designed to give you a fun and educational break from work by helping you explore cities across the globe. It presents abstract clues for you to guess a city, with fewer points awarded the more clues you use. At the end, your final score will be revealed.
 
 In this lab you will learn how to:
@@ -14,6 +8,17 @@ In this lab you will learn how to:
 - customise the agent to create the geo locator game using instructions 
 - learn how to run and test your app 
 - for bonus exercise, you will need a SharePoint teams site
+
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+        </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
 
 ## Introduction
 

@@ -1094,8 +1094,8 @@
             "title": "Build - Build a custom engine agent",
             "labs": [
                 {
-                    "labId": "b0",
-                    "title": "Lab B0 - Prerequisites",
+                    "labId": "bta0",
+                    "title": "Lab BTA0 - Prerequisites",
                     "exercises": [
                         {
                             "exerciseId": "1",
@@ -1138,8 +1138,8 @@
                     ]
                 },
                 {
-                    "labId": "b1",
-                    "title": "Lab B1 - First custom engine agent",
+                    "labId": "bta1",
+                    "title": "Lab BTA1 - First custom engine agent",
                     "exercises": [
                         {
                             "exerciseId": "1",
@@ -1172,8 +1172,8 @@
                     ]
                 },
                 {
-                    "labId": "b2",
-                    "title": "Lab B2 - Index your data in Azure AI Search",
+                    "labId": "bta2",
+                    "title": "Lab BTA2 - Index your data in Azure AI Search",
                     "exercises": [
                         {
                             "exerciseId": "1",
@@ -1232,8 +1232,8 @@
                     ]
                 },
                 {
-                    "labId": "b3",
-                    "title": "Lab B3 - Enhance User Experience",
+                    "labId": "bta3",
+                    "title": "Lab BTA3 - Enhance User Experience",
                     "exercises": [
                         {
                             "exerciseId": "1",
@@ -1298,8 +1298,8 @@
                     ]
                 },
                 {
-                    "labId": "b4",
-                    "title": "Lab B4 - Add single sign on authentication",
+                    "labId": "bta4",
+                    "title": "Lab BTA4 - Add single sign on authentication",
                     "exercises": [
                         {
                             "exerciseId": "1",
@@ -1356,8 +1356,8 @@
                     ]
                 },
                 {
-                    "labId": "b5",
-                    "title": "Lab B5 - Add actions to handle complex tasks",
+                    "labId": "bta5",
+                    "title": "Lab BTA5 - Add actions to handle complex tasks",
                     "exercises": [
                         {
                             "exerciseId": "1",

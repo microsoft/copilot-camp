@@ -15,27 +15,21 @@ The labs are divided into three pathways, allowing you to choose based on what y
 
 ---8<--- "main-links.md"
 
-## 🎉 What's New
+!!! info "Explore the new labs we've published! "    
 
-!!! success "🚀 Hot Off the Press: [✨ Agent Instructions guide to Beginners](./pages/copilot-instructions/beginner-agent)"
-    <div style="font-size: 1.1em;">
-    📢 **Just Launched!**  <br>
-    <strong><a href="./pages/copilot-instructions/beginner-agent">Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)</a></strong>  
-    <span style="color: #6c757d;">_This lab will guide you with suggestions to help refine your agent instructions approach drawing from techniques we have experimented over time. These practices have generally contributed to enhancing our agent's behaviour and consistency. ._</span><br><br>
+    We’re excited to introduce **three new hands-on labs** designed to help you build powerful Copilot experiences. 
 
-     **What you will learn:**  
-  
-      - Identify the Problem: Pinpoint the specific issue your agent will address 
-      - Build a Basic Agent: Start with a simple prompt to get your agent up and running. 
-      - Define the Agent's Role: Improve your agents focus with a role assigned 
-      - Outline Execution Steps: Break down the process into clear, manageable subtasks. 
-      - Set Response Guidelines: Influence the agent’s response with clear instructions 
-      - Give example conversations: Provide examples to improve consistency in agent’s response 
+    - **Build with Microsoft 365 Agents SDK**:
+    Leverage the full capabilities of the Microsoft 365 Agents SDK to create production-ready Copilot agents that integrate with real business data.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/)
 
-    </div>
+    - **Build Copilot Agents Using TypeSpec**:
+    Use TypeSpec to define your agent and capabilities declaratively. Ideal for developers looking to build Copilot agents that connect to API services with seamless orchestration.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent/)
 
-    <br>
-    👉 Click here to explore »  <cc-next url="./pages/copilot-instructions/beginner-agent" label="Agent Instruction Lab" />
+    - **Agent Instructions Guide for Beginners**:
+    New to Copilot? This lab walks you through the process of writing effective natural language instructions and testing your Copilot agent in a guided environment.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-instructions/beginner-agent/)
 
 
 

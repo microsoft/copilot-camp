@@ -2,7 +2,7 @@
 # Understanding SharePoint agents
 
 A SharePoint agent is the easiest way to create an agent specialized on content stored in SharePoint Online. 
-Tha SharePoint agent can target:
+The SharePoint agents can target:
 
 - sites
 - libraries
@@ -22,6 +22,7 @@ If you are assigned with a Microsoft 365 Copilot license, or a Copilot Studio ca
 
 <!-- ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio agent builder. -->
 
-<cc-next url="#" label="Comin soon ..." />
+## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll create your first SharePoint agent.
+<cc-next url="./01-first-agent" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agent/index" />

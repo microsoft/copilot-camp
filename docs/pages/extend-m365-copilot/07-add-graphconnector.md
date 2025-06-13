@@ -4,17 +4,19 @@
 
 In this lab you will learn how to add your own data into the Microsoft Graph to be then organically utilised by the declarative agent as it's own knowledge.  In the process you will learn all how to deploy a Microsoft Copilot Connector and use the connector in Trey Genie declarative agent. 
 
-!!! note
-    This lab builds on the Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
-    The finished Trey Genie declarative solution for this lab is in the [**/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END){target=_blank} folder.
-    The Microsoft Copilot Connector source code is in [**/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector**](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector){target=_blank} folder.
-
-
 In this lab you will learn to:
 
 - deploy a Microsoft Copilot Connector of your own data into Microsoft Graph and have it power various Microsoft 365 experiences
 - customise the trey genie declarative agent to use the Copilot Connector as a capability to extend its knowledge
 - learn how to run and test your app 
+
+  <div class="note-box">
+            📘 <strong>Note:</strong>       This lab builds on the Lab E4. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+    The finished Trey Genie declarative solution for this lab is in the <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END" target="_blank">/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-research-labEB-END</a> folder.
+    The Microsoft Copilot Connector source code is in <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector" target="_blank">/src/extend-m365-copilot/path-e-bonus-gc-lab/trey-feedback-connector</a> folder.
+        </div>
+
+
 
 !!! note "Prerequisites: Tenant Admin Access"
     Additonal prerequisites are needed to run this lab. You will need <mark>tenant administrator privileges</mark> as Microsoft Copilot Connectors use app-only authentication to access the connector APIs.
