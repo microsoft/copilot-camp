@@ -49,7 +49,11 @@ Select the command, and wait few seconds. In case of successful result you will 
 
 ### Step 3: Interacting with the shared agent in Microsoft Teams
 
-You can now interact with the agent within the group chat experience in Microsoft Teams. Whenever you want to trigger the agent, you simply need to at mention by name (@HR Agent) the agent and send it a prompt to process.
+You can now interact with the agent within the group chat experience in Microsoft Teams. Whenever you want to trigger the agent, you simply need to at mention by name (@HR Agent) the agent and send it a prompt to process. For example, you can use a prompt like the following one:
+
+```text
+How can I improve my career?
+```
 
 ![The Microsoft Teams chat when at mentioning @HR Agent in a new chat message.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-01.png)
 
