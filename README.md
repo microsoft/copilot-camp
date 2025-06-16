@@ -10,7 +10,8 @@ You can find the complete source code of each labs below:
 |---|---|---|
 | Trey Research Copilot Agent with API Plugin | typescript:<br />- [anonymous](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research)<br />- [with auth](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research-auth) | [labs E0, E2-E8](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
 | Declarative agent | [instructions based](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) | [labs E0-E1](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
- | Custom engine agent | [typescript](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie)  | [labs BTA0-B5](https://microsoft.github.io/copilot-camp/pages/custom-engine/) |
+ | Custom engine agent with Teams AI library | [TypeScript](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie)  | [labs BTA0-BTA5](https://microsoft.github.io/copilot-camp/pages/custom-engine/) |
+ | Custom engine agent with M365 Agents SDK | [C#](https://github.com/aycabas/copilot-camp/tree/main/src/agents-sdk)  | [labs BMA0-BM5](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/) |
 
 We'd love it if you would test out the [Copilot Developer Camp](https://aka.ms/copilotdevcamp) labs, and very much appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues.
 
