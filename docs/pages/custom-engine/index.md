@@ -1,7 +1,7 @@
 
-# Welcome to Copilot Developer Camp's Build Path: Build Custom Engine Agents
+# Welcome - Build Custom Engine Agents
 
-In the Build Path of the Copilot Developer Camp, learners will dive deeper into building custom engine agents that integrate with Microsoft Teams and Microsoft 365 Copilot. This path is ideal for developers who want more control over the orchestration, user experience, and underlying AI capabilities of their agent.
+In the Build Path of the Copilot Developer Camp, you will dive deeper into building custom engine agents that integrate with Microsoft Teams and Microsoft 365 Copilot. This path is ideal for developers who want more control over the orchestration, user experience, and underlying AI capabilities of their agent.
 
 You’ll choose between two hands-on exercises based on your preferred development experience:
 

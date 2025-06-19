@@ -9,8 +9,8 @@
     </h3>
     <p>Learn more from various resources</p>
     <ul>
-      <li><a href="/copilot-camp/mslearn/">Microsoft Learn</a></li>
-      <li><a href="/copilot-camp/resources">Video tutorials</a></li>
+      <li><a href="mslearn">Microsoft Learn</a></li>
+      <li><a href="resources">Video tutorials</a></li>
     </ul>
   </div>
   <div class="table-landing">

@@ -1,0 +1,6 @@
+  - [ラボ M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) テスト準備完了
+  - [ラボ M1 - Northwind メッセージ拡張機能を理解する](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) テスト準備完了
+  - [ラボ M2 - Microsoft 365 Copilot でアプリを実行する](/copilot-camp/pages/extend-message-ext/02-nw-plugin) まもなくテスト準備完了
+  - [ラボ M3 - 新しい検索コマンドでプラグインを強化する](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) テスト準備完了
+  - [ラボ M4 - 認証を追加する](/copilot-camp/pages/extend-message-ext/04-add-authentication) テスト準備完了
+  - [ラボ M5 - アクションコマンドでプラグインを強化する](/copilot-camp/pages/extend-message-ext/05-add-action) 近日公開

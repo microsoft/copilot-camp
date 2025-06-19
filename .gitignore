@@ -1,3 +1,19 @@
-# Remove Mac artifacts
+# macOS system files
 .DS_Store
+
+# Python virtual environments
+venv/
+
+# MkDocs build output
+site/
+
+# Editor/project files
+.vscode/
+*.swp
+
+# Misc
 Gemfile.lock
+
+# Config and secrets
+.env
+.env.local

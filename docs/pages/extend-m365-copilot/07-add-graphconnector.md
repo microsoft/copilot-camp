@@ -1,4 +1,4 @@
-# Integration - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector
+# Lab E7 - Integration: Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector
 
 ---8<--- "e-labs-prelude.md"
 
