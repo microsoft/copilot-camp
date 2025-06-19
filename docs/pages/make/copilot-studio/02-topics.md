@@ -434,13 +434,13 @@ It is very important that, when pasting the JSON of the adaptive card, you have 
 
 ![The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-04.png)
 
-Now, select the drop down with **Edit JSON** and switch to **Edit Formula** in order to replace the static values with the actual variables defined in the current Topic.
+Now, select the drop down with **JSON Card** and switch to **Formula Card** in order to replace the static values with the actual variables defined in the current Topic.
 
 ![The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-05.png)
 
 Select the button to expand the editor and you can start replacing the static values with formulas that will refer to the actual value of the topic-level variables.
 
-![The side panel of the **Send a message** action while editing the adaptive card JSON in **Edit formula** mode. There is a button to expand the editor.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-06.png)
+![The side panel of the **Send a message** action while editing the adaptive card JSON in **Formula card** mode. There is a button to expand the editor.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-06.png)
 
 You will see a dialog popping up and providing an advanced editor with intellisense helping you to reference variables and PowerFx functions, like illustrated in the following screenshot.
 
