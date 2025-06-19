@@ -193,17 +193,9 @@ You will notice that you still get back an answer from the agent, even if the re
 ### Step 3: Disabling general knowledge
 
 If you want to have your agent fully focused on your custom knowledge base only, you need to disable the **General knowledge**.
-Go back to the **Overview** tab, scroll to the **Knowledge** section and disable the option "Allow the AI to use its own general knowledge", like illustrated in the following screenshot.
+Select the **Settings** command in the upper right corner, activate the **Generative AI** tab (active by default), scroll to the **Knowledge** section and disable the option "Use general knowledge", like illustrated in the following screenshot.
 
-![The option to disable "AI general knowledge" when configuring the **Knowledge** of an agent in the **Overview** tab.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-01.png)
-
-When you disable that option, a confirmation dialog will pop up to let you know about what is going to happen. In fact, the agent will stop using any external data or knowledge, except what you configured explicitly.
-
-![The dialog to confirm that you want to disable general knowledge. There are a **Continue** button and a **Cancel** button.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-02.png)
-
-Once you select the **Confirm** button, you will see another dialog showing the process is in progess.
-
-![The dialog showing the ongoing process of disabling general knowledge for the agent.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-03.png)
+![The option to disable "AI general knowledge" when configuring the **Knowledge** of an agent in the agent **Settings**.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-01.png)
 
 When the general knowledge will be disabled, try again asking to the agent something completely out of context. 
 
@@ -246,6 +238,8 @@ When you select the **Teams + Microsoft 365** channel a side panel shows up and 
 ![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a button to **Add channel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-03.png)
 
 Once the agent is enabled on the Microsoft Teams channel, the side panel updates and shows a confirmation message, as well as few commands to edit the agent details and to open the agent in the Microsoft Teams client. There will also be a button **Availability options** that you can select to see the various options you have to access the agent in Microsoft Teams.
+
+If you registered the channel to support Microsoft 365 Copilot, you can also select the link **See agent in Microsoft 365** to access the agent directly in the Microsoft 365 Copilot chat user experience.
 
 ![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a couple of buttons to **Turn on Teams** and to **Cancel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-04.png)
 
