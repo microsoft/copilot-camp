@@ -1,5 +1,5 @@
 
-# Welcome to Copilot Developer Camp's Build Path: Build your own agent with Teams AI library
+# Intro - Build your own agent with Teams AI library
 
 During Build Path of the Copilot Developer Camp, you will develop a custom engine agent that runs across Microsoft Teams using the Teams AI Library. The agent will be specifically designed to help Human Resources departments manage resumes, create new job posts, and more.
 

@@ -1,7 +1,6 @@
+# Welcome - Extend Microsoft 365 Copilot
 
-# Welcome to Copilot Developer Camp's Extend Path: Extend Microsoft 365 Copilot
-
-During Extend Path of the Copilot Developer Camp, learners will construct a customized assistant tailored for a Human Resources department. The process will begin with understanding the fundamentals on creating a declarative agent, the creation of a basic declarative agent, and progress towards developing fully skilled assistant.
+During Extend Path of the Copilot Developer Camp, you will construct a customized assistant tailored for a Human Resources department. The process will begin with understanding the fundamentals on creating a declarative agent, the creation of a basic declarative agent, and progress towards developing fully skilled assistant.
 This advanced assistant will be equipped with security features, including authentication mechanism linked to the Microsoft 365 tenant to get organizational data.
 
 ## ✅ Naming & Structure

@@ -1,5 +1,4 @@
-
-# Understanding SharePoint agents
+# Lab MSA - Understanding SharePoint agents
 
 A SharePoint agent is the easiest way to create an agent specialized on content stored in SharePoint Online. 
 The SharePoint agents can target:
