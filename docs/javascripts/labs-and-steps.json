@@ -224,11 +224,11 @@
                 },
                 {
                     "labId": "mcs3",
-                    "title": "MCS3 - Defining Actions",
+                    "title": "MCS3 - Defining Tools",
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Creating actions in Microsoft Copilot Studio",
+                            "title": "Creating tools in Microsoft Copilot Studio",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -236,7 +236,7 @@
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Testing the new action"
+                                    "title": "Testing the new tool"
                                 },
                                 {
                                     "stepId": "3",
@@ -246,11 +246,11 @@
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Invoking actions from within a topic",
+                            "title": "Invoking tools from within a topic",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Invoking an action from a topic"
+                                    "title": "Invoking a tool from a topic"
                                 }
                             ]
                         }
