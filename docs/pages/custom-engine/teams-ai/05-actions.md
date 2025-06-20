@@ -1,4 +1,4 @@
-# BTA5 - Add actions to handle complex tasks
+# Lab BTA5 - Add actions to handle complex tasks
 
 In this lab you will:
 

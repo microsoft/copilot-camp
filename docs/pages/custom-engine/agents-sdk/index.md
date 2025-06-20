@@ -1,4 +1,4 @@
-# Welcome to Copilot Developer Camp's Build Path: Build your own agent with the M365 Agents SDK and Semantic Kernel
+# Intro - Build your own agent with the M365 Agents SDK and Semantic Kernel
 
 During the Build Path of the Copilot Developer Camp, you will develop a custom engine agent that runs across Microsoft Teams, Microsoft 365 Copilot Chat, and even external channels using the Microsoft 365 Agents SDK and Semantic Kernel.
 

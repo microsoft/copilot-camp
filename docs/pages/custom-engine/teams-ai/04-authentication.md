@@ -1,4 +1,4 @@
-# BTA4 - Add single sign on authentication
+# Lab BTA4 - Add single sign on authentication
 
 In this lab, you'll learn how to authenticate users with Entra Single Sign-On in Career Genie, and to call the Microsoft Graph API using the token to get logged in user information.
 

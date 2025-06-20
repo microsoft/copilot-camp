@@ -1,0 +1,10 @@
+# Python requirements for copilot-camp project
+# Run pip install -r requirements.txt
+
+# MkDocs and plugins
+mkdocs-material
+mkdocs-static-i18n[material]
+
+# Core dependencies for scripts/translate-docs.py
+python-dotenv
+openai
