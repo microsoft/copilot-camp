@@ -8,7 +8,7 @@ In this lab you will learn:
 - How to configure a custom icon for your agent
 - How to configure knowledge sources for your agent
 - How to publish the agent in Microsoft 365 Copilot Chat
-- How to create an action for Microsoft 365 Copilot Chat
+- How to create a tool for Microsoft 365 Copilot Chat
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
@@ -33,7 +33,7 @@ To create a declarative agent for Microsoft 365 Copilot Chat you need to 1️⃣
 
 A new section of Microsoft Copilot Studio will open. From there, you can select the **+ Add** command to create a new agent for Microsoft 365 Copilot Chat.
 
-![The interface of Microsoft Copilot Studio editing Microsoft 365 Copilot agents. The **+ Add** button is highlighted. There is also a list of pre-defined actions.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png)
+![The interface of Microsoft Copilot Studio editing Microsoft 365 Copilot agents. The **+ Add** button is highlighted. There is also a list of pre-defined tools.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png)
 
 Copilot Studio asks you to describe in natural language what the purpose of the agent is. As like as you did in [Lab MCS1](../01-first-agent){target=_blank} you can define your agent requirements in natural language, using for example the following prompts.
 
@@ -62,12 +62,12 @@ Once the agent has been created, you will see its configuration page, where you 
 
 - Details: with generic information about the agent like name, icon, description, and instructions (system prompt).
 - Knowledge: to define the various knowledge bases for the agent.
-- Actions: to define custom actions for the agent.
+- Tools: to define custom tools for the agent.
 - Additional settings: to configure whether the agent will rely on public web content or not.
 - Starter prompts: to configure up to 6 starter prompts that will be shown in the Copilot Chat when starting a new chat.
 - Publishing details: to get information about how to consume the agent, once it will be published.
 
-![The configuration page of an agent for Microsoft 365 Copilot Chat in Microsoft Copilot Studio. There are sections to define general details, knowledge bases, actions, additional settings, starter prompts, and publishing details.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-04.png)
+![The configuration page of an agent for Microsoft 365 Copilot Chat in Microsoft Copilot Studio. There are sections to define general details, knowledge bases, tools, additional settings, starter prompts, and publishing details.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-04.png)
 
 On the right side of the screen, you can already see a preview of the agent that you can use to test its behaviour.
 The initial setup of the agent is now ready. Move to the next steps to fine tune its settings.
@@ -159,43 +159,47 @@ The agent will provide you detailed information about the hiring procedures, bas
 
 <cc-end-step lab="mcs4" exercise="1" step="4" />
 
-## Exercise 2 : Adding an action to the agent
+## Exercise 2 : Adding a tool to the agent
 
-In this excercise you are going to add a custom action to the agent that you made in the previous exercise. In Microsoft Copilot Studio, when making agents for Microsoft 365 Copilot Chat, you can add four different types of actions:
+In this excercise you are going to add a custom tool to the agent that you made in the previous exercise. In Microsoft Copilot Studio, when making agents for Microsoft 365 Copilot Chat, you can add four different types of tools:
 
-- New prompt: allows consuming an AI action built using a prompt written in natural language.
-- New Power Automate flow: allows consuming a Power Automate flow.
-- New custom connector: allows consuming a Power Platform custom connector.
-- New REST API: allows consuming an external REST API. You can find additional details [here](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}.
+- Prompt: allows consuming an AI tool built using a prompt written in natural language.
+- Custom connector: allows consuming a Power Platform custom connector.
+- REST API: allows consuming an external REST API. You can find additional details [here](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}.
+- Model Context Protocol: allows consuming an MCP server and its tools.
 
-!!! information "Actions for agents"
-    You can find additional information about adding actions to agents in Copilot Studio reading the article [Use actions with custom agents (preview)](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-plugin-actions){target=_blank}.
+!!! information "Tools for agents"
+    You can find additional information about adding tools to agents in Copilot Studio reading the article [Add tools to custom agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-plugin-actions){target=_blank}.
 
-In this lab you are going to add an action of type `New custom connector` in order to retrieve a list of candidates from an Excel spreadsheet stored in SharePoint Online.
+In this lab you are going to add a tool of type `Custom connector` in order to retrieve a list of candidates from an Excel spreadsheet stored in SharePoint Online.
 
-### Step 1: Adding an action to an agent for Microsoft 365 Copilot
+### Step 1: Adding a tool to an agent for Microsoft 365 Copilot
 
-To add a new action, select the **+ Add action** command in the **Actions** section of the agent's configuration panel.
+To add a new tool, select the **+ Add tool** command in the **Tools** section of the agent's configuration panel.
 
-![The **Actions** section of an agent with the **+ Add action** command highlighted.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-01.png)
+![The **Tools** section of an agent with the **+ Add tool** command highlighted.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-01.png)
 
-A dialog window pops up allowing you to choose what kind of action to create. By default, there are some **Featured** actions like those that allow you to interact with Excel Online content or other common services. You can also create a new action from scratch, selecting the **+ New action** command and choosing between the options highlighted in the previous paragraphs.
+A dialog window pops up allowing you to choose what kind of tool to create. By default, there are some **Featured** tools like those that allow you to interact with Excel Online content or other common services. You can also create a new tool from scratch, selecting the **+ New tool** command and choosing between the options highlighted in the previous paragraphs.
 
-If you don't find the option you are looking for in the list of featured items, simply switch to the **Library** group and search by text what you are looking for.
+If you don't find the option you are looking for in the list of featured items, simply switch to the **All** group and search by text what you are looking for.
 
-To complete the current step, choose the featured action to **List rows present in a table** in the family of **Excel Online (Business)** actions. First of all, you will need to connect to the external connector simply selecting the **Next** button and proceeding with the process.
+To complete the current step, choose the featured tool **Excel Online (Business)** and then select **List rows present in a table**. First of all, you will need to connect to the external connector simply selecting the **Connection** and then **Create new connection** and proceeding with the process.
 
-![The dialog to connect to the target Power Platform connector with details about the connection, a button to move next and a button to cancel the request. There is also a back button to start over.](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png)
+![The dialog to connect to the target Power Platform connector with details about the connection, if any, or a button to create a new connection. There is also a back button to start over.](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png)
 
-Next, you get a dialog to configure the actual action. You need to provide:
+You will need to login with your account and to allow access to Excel Online (Business). Once the connection is configured, you will see a dialog with commands to **Add to agent** or **Add and configure** the tool.
 
-- Name: simply a descriptive name for the action.
-- Description: a description in natural language that will be used by generative orchestration to determine when to use your action. 
-- Authentication settings: the settings to define how the action will rely on authentication.
+![The dialog to add the actual tool to the agent. There are commands to **Add to agent** or **Add and configure** the tool. There is also a back button to start over.](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03b.png)
+
+After adding the tool, you will get the list of tools in Copilot Studio. Click on the tool that you just created to edit its settings. In the configuration panel you need to provide:
+
+- Name: simply a descriptive name for the tools.
+- Display name: a display name for the tool.
+- Description: a description in natural language that will be used by generative orchestration to determine when to use your tool. 
 - Inputs and outpus: to define the input and output arguments for the action, if any.
 - Response settings: defines how the action handles the request and response to the user.
 
-Before configuring the action, you need to prepare the Excel spreadsheet with the list of candidates.
+Before configuring the tool, you need to prepare the Excel spreadsheet with the list of candidates.
 Download a sample Excel file by selecting this [link](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true){target=_blank}.
 
 Upload the file to the **Documents** library of a SharePoint Teams site in the same tenant where you are making your agent with Copilot Studio. The document was generated by Microsoft 365 Copilot for the sake of having a hypothetical list of candidates.
@@ -204,20 +208,13 @@ Upload the file to the **Documents** library of a SharePoint Teams site in the s
 - Copy the name of the document library. For example : `Shared documents`
 - Copy also the name of the file. For example: `Sample-list-of-candidates.xlsx`
 
-Now go back to Microsoft Copilot Studio and finalize the action configuration.
-
-![The dialog to create the action with the Name, description and authentication configured. There are a button to **Add action** and a button to **Cancel** the process.](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-04.png)
-
+Now go back to Microsoft Copilot Studio and finalize the tool configuration.
 Use the following settings:
 
 - Name: List HR candidates
 - Description: List candidates for an HR role
-- Authentication: User authentication
 
-Select the **Add action** button to save the new action. You will get the list of actions in Copilot Studio. Click on the action that you just created to edit its settings.
-
-In the dialog for editing the action, update the **Action name** to give it a more descriptive and informative name. Then select the **Inputs** tab and start configuring the input arguments.
-By default, all the mandatory input arguments have been configured so that their value will be exctracted by the `User's entire response` as you can notice in the **Identify as** property of each input argument.
+In the dialog for editing the tool, update the **Tool name** to give it a more descriptive and informative name. Then select the Inputs tab and start configuring the input arguments. By default, all the mandatory input arguments have been configured so that their value will be exctracted by the User's entire response as you can notice in the **Identify as** property of each input argument.
 
 ![The tab to configure the input arguments of the action. There is a list of arguments with specific settings for each of them.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png)
 
@@ -238,12 +235,12 @@ Now select the **Save** button in the upper right corner of the screen to save t
 
 <cc-end-step lab="mcs4" exercise="2" step="1" />
 
-### Step 2: Testing the new action
+### Step 2: Testing the new tool
 
 You are now ready to publish the updated agent and to play with it in the integrated test panel or in Microsoft Teams.
 Select the **Publish** button again, to update the publishing of the agent. Wait for the publishing to complete and then open again the direct link to the agent's app. You will see an **Update now** command instead of the **Add** that you saw in Exercise 1 - Step 4. Select the **Update now** command and wait. Once ready, go to Microsoft 365 Copilot Chat, refresh the page and start interacting with the updated agent.
 
-It is really easy to invoke the just created action simply providing to the agent a prompt like the following one:
+It is really easy to invoke the just created tool simply providing to the agent a prompt like the following one:
 
 ```txt
 Show me the list of candidates for HR with role "HR Director" or "HR Manager"
