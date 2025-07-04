@@ -4,121 +4,122 @@ search:
 ---
 # ラボ MCS4 - Microsoft 365 Copilot の拡張
 
-このラボでは、 Microsoft 365 Copilot Chat を Microsoft Copilot Studio で作成した宣言型エージェントで拡張する方法を学習します。これまでに Copilot Studio でエージェントを作成し、それを Microsoft Teams で利用する方法を確認しました。また、 Copilot Studio で作成したエージェントは **Teams and Microsoft 365 Copilot** チャネルのオプションを使用して、 Microsoft Teams と Microsoft 365 Copilot Chat の両方を対象にできることも見てきました。本ラボでは、 Microsoft 365 Copilot Chat 用の宣言型エージェントに取り組みます。
+このラボでは、 Microsoft 365 Copilot Chat を Declarative エージェントで拡張する方法を学習します。この Declarative エージェントは Microsoft Copilot Studio で作成します。これまでに Copilot Studio でエージェントを作成し、それらを Microsoft Teams で利用する方法を確認してきました。また、 Microsoft Copilot Studio で作成したエージェントは **Teams and Microsoft 365 Copilot** チャネルを通じて Microsoft Teams と Microsoft 365 Copilot Chat の両方を対象にできることも確認済みです。本ラボでは、 Microsoft 365 Copilot Chat 向けの Declarative エージェントに取り組みます。
 
 このラボで学習する内容:
 
-- Microsoft 365 Copilot Chat 用の宣言型エージェントの作成方法
-- エージェントのカスタム アイコン設定方法
-- エージェントのナレッジ ソース設定方法
-- エージェントを Microsoft 365 Copilot Chat に発行する方法
-- Microsoft 365 Copilot Chat 用アクションの作成方法
+- Microsoft 365 Copilot Chat 用の Declarative エージェントの作成方法
+- エージェント用のカスタムアイコンの設定方法
+- エージェント用のナレッジ ソースの設定方法
+- Microsoft 365 Copilot Chat へのエージェント公開方法
+- Microsoft 365 Copilot Chat 用のツール作成方法
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/JUctt1s5oj0" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を確認してください。</div>
+          <div>このビデオでラボの概要を確認しましょう。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
     </div>
 </div>
 
-## Exercise 1 : Microsoft 365 Copilot Chat 用エージェントの作成
+## エクササイズ 1 : Microsoft 365 Copilot Chat 用エージェントの作成
 
-この演習では、 Microsoft Copilot Studio で宣言型エージェントを作成し、 Microsoft 365 Copilot Chat でホスティングします。
+このエクササイズでは、 Microsoft Copilot Studio で Declarative エージェントを作成し、 Microsoft 365 Copilot Chat でホストします。
 
-### Step 1: Copilot Chat 用エージェントの作成
+### ステップ 1: Copilot Chat 用エージェントの作成
 
-Microsoft 365 Copilot Chat 用の宣言型エージェントを作成するには、1️⃣ Copilot Studio でエージェントの一覧を表示し、2️⃣ **Microsoft 365 Copilot** という名前のエージェントを選択します。
+Microsoft 365 Copilot Chat 用の Declarative エージェントを作成するには、まず 1️⃣ Copilot Studio でエージェントの一覧を表示し、 2️⃣ **Microsoft 365 Copilot** という名前のエージェントを選択します。
 
-![Copilot Studio の全エージェント一覧で **Microsoft 365 Copilot** エージェントを選択している画面。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
+![Microsoft Copilot Studio でエージェント一覧を表示し、 **Microsoft 365 Copilot** エージェントを選択している画面。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
 
 Microsoft Copilot Studio の新しいセクションが開きます。そこで **+ Add** コマンドを選択し、 Microsoft 365 Copilot Chat 用の新しいエージェントを作成します。
 
-![Copilot Studio で Microsoft 365 Copilot エージェントを編集している画面。**+ Add** ボタンが強調表示され、あらかじめ定義されたアクションの一覧が表示されている。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png)
+![Microsoft Copilot Studio で Microsoft 365 Copilot エージェントを編集している画面。 **+ Add** ボタンが強調表示され、事前定義ツールの一覧もある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png)
 
-Copilot Studio では、エージェントの目的を自然言語で入力するよう求められます。[Lab MCS1](../01-first-agent){target=_blank} と同様に、以下のプロンプト例を用いて自然言語で要件を定義できます。
+Copilot Studio からエージェントの目的を自然言語で説明するように求められます。[ラボ MCS1](../01-first-agent){target=_blank} と同様に、以下のようなプロンプトを用いて自然言語で要件を定義できます。
 
 ```txt
 You are an agent helping employees to find information about HR policies and procedures,
 about how to improve their career, and about how to define learning pathways.
 ```
 
-Copilot Studio に名前を聞かれたら、カスタム エージェントに "Agentic HR" と入力します。その後、以下の指示でエージェントに特定のタスクやゴールを伝えます。
+Copilot Studio から名前を聞かれたら、カスタム エージェント名として「Agentic HR」と入力します。その後、次の指示を与えて特定のタスクや目標を設定します。
 
 ```txt
 Emphasize everything that helps team building, inclusion, and the growth mindset
 ```
 
-さらに、次の入力を使ってエージェントのトーンを「プロフェッショナル」に設定します。
+さらに、エージェントのトーンをプロフェッショナルに設定するため、次の入力を提供します。
 
 ```txt
 It should have a professional tone
 ```
 
-![自然言語でエージェントを定義している Copilot Studio の画面。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-03.png)
+![Microsoft Copilot Studio で自然言語を使ってエージェントを定義している画面。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-03.png)
 
-エージェントの説明が完了したら **Create** を選択して実際にエージェントを作成します。あるいは **Skip to configure** を選択して従来の設定 UI に進むこともできます。
+エージェントの説明が完了したら **Create** を選択してエージェントを実際に作成します。あるいは **Skip to configure** を選択して従来の設定 UI に移動してもかまいません。
 
-エージェントが作成されると、その設定ページが表示され、以下を定義できます。
+エージェントが作成されると設定ページが表示され、以下を定義できます。
 
-- Details: 名前、アイコン、説明、 instructions (システムプロンプト) などエージェントの基本情報
-- Knowledge: エージェント用のナレッジ ベース
-- Actions: カスタム アクション
-- Additional settings: 公開 Web コンテンツの利用有無
-- Starter prompts: Copilot Chat で新規チャット開始時に表示する最大 6 件のスターター プロンプト
-- Publishing details: 発行後の利用方法に関する情報
+- Details: 名前、アイコン、説明、 instructions (システムプロンプト) などの一般情報
+- Knowledge: エージェント用の各種ナレッジ ベース
+- Tools: エージェント用のカスタムツール
+- Additional settings: パブリック Web コンテンツを利用するかどうかの設定
+- Starter prompts: 新しいチャット開始時に Copilot Chat で表示されるスターター プロンプト (最大 6 件)
+- Publishing details: 公開後のエージェント利用方法に関する情報
 
-![Microsoft Copilot Studio で表示される Microsoft 365 Copilot Chat 用エージェントの設定ページ。一般情報、ナレッジ ベース、アクション、追加設定、スターター プロンプト、発行情報の各セクションがある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-04.png)
+![Microsoft Copilot Studio における Microsoft 365 Copilot Chat 用エージェントの設定ページ。一般情報、ナレッジ ベース、ツール、追加設定、スターター プロンプト、公開情報のセクションがある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-04.png)
 
-画面右側にはエージェントのプレビューが表示され、動作をテストできます。
-初期セットアップが完了したので、次の手順で詳細設定を行いましょう。
+画面右側にはエージェントのプレビューが表示され、動作をすぐにテストできます。
+初期セットアップは完了です。次のステップで詳細設定を行います。
 
 <cc-end-step lab="mcs4" exercise="1" step="1" />
 
-### Step 2: エージェント アイコンの更新
+### ステップ 2: エージェント アイコンの更新
 
-**Details** セクション右上の **Edit** コマンドを選択し、詳細を編集します。編集モードで **Change icon** を選択し、カスタム アイコンをアップロードして背景色を設定します。
-必要であれば [こちらのリンク](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/HR-agent-color.png?raw=true){target=_blank} のアイコンを使用できます。推奨アイコンを使用する場合、背景色は `#B9BAB5` が適切です。
+**Details** セクション右上の **Edit** コマンドを選択し、詳細情報を編集します。
+編集モードになったら **Change icon** を選択し、カスタムアイコンをアップロードしてアイコンの背景色を設定します。
+必要であれば、[こちらのリンク](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/HR-agent-color.png?raw=true){target=_blank} のアイコンを使用できます。その場合、背景色は #B9BAB5 が適しています。
 
-![エージェントの詳細編集画面でアイコンを更新している様子。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-05.png)
+![エージェント詳細を編集し、アイコンを更新している設定ページ。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-05.png)
 
-**Save** を選択して新しいアイコンと背景色を保存し、再度 **Save** を選択してエージェントの詳細を更新します。
+**Save** を選択して新しいアイコンと背景色を保存し、再度 **Save** を選択して詳細情報を確定します。
 
 <cc-end-step lab="mcs4" exercise="1" step="2" />
 
-### Step 3: ナレッジ ベースの追加
+### ステップ 3: ナレッジ ベースの追加
 
-[Lab MCS1](../01-first-agent){target=_blank} と同様に、こちらの [リンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&filename=hr-documents){target=_blank} から複数のファイル (Word、 PowerPoint、 PDF) が入った ZIP ファイルをダウンロードしてください。
+[ラボ MCS1](../01-first-agent){target=_blank} と同様に、 Word、PowerPoint、PDF など数ファイルが入った ZIP を [こちらのリンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&filename=hr-documents){target=_blank} からダウンロードしてください。
 
-ZIP を解凍し、同じテナント内の SharePoint Teams サイトの **Documents** ライブラリにアップロードします。これらのドキュメントは、エージェントに追加のナレッジ ベースを提供する目的で Microsoft 365 Copilot により生成されたものです。
+ZIP を展開し、同一テナントの SharePoint Teams サイトの **Documents** ライブラリへアップロードします。これらのドキュメントは、エージェントに追加のナレッジ ベースを提供するために Microsoft 365 Copilot で生成されたものです。
 
 サイトの絶対 URL をコピーします。例: `https://xyz.sharepoint.com/sites/contoso`
 
-ナレッジ ソースを追加するには、 **Knowledge** セクション右上の **+ Add knowledge** を選択します。ダイアログが開き、データ ソースを選択できます。執筆時点では **SharePoint** を選べます。 **SharePoint** を選択し、使用するサイトを参照します。
+ナレッジ ソースを追加するには、 **Knowledge** セクション右上の **+ Add knowledge** コマンドを選択します。ダイアログが表示され、データ ソースを選択できます。執筆時点では **SharePoint** を選択可能です。 **SharePoint** を選択し、使用したいサイトを参照します。
 
-![ナレッジ ベースを追加するダイアログ。**Featured** に SharePoint が表示され、**Advanced** データ ソースを参照するコマンドもある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-06.png)
+![ナレッジ ベース追加のダイアログ。 **Featured** に SharePoint が表示され、 **Advanced** データ ソースを参照するコマンドもある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-06.png)
 
-SharePoint Online サイトの URL を貼り付けるか、 **Browse files** を選択してサイトを参照します。 URL またはデータ ソースを指定したら、ナレッジ ベースの名前とわかりやすい説明を入力します。この説明は、ユーザーのプロンプトに基づく意図に応じて Copilot がデータ ソースを利用する際に役立ちます。
+先ほどコピーした SharePoint Online サイトの URL を貼り付けるか、 **Browse files** を選択し SharePoint Online サイトからデータ ソースを検索します。URL を入力またはデータ ソースを選択したら、新しいナレッジ ベースの名前と説明を入力します。説明はユーザーのプロンプトによる意図に基づき、 Copilot がデータ ソースを選択する際に使用されます。
 
-![SharePoint Online データ ソースを設定するダイアログ。URL の貼り付け欄と **Browse files** コマンドがあり、既に選択されたデータ ソースが表示されている。下部には **Add**、**Cancel**、**Back** ボタン。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-07.png)
+![SharePoint Online データ ソースを設定するダイアログ。 **Browse files** コマンドと直接リンク用テキスト ボックスがあり、既に選択済みのデータ ソースが表示されている。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-07.png)
 
-**Add** を選択してナレッジ ベースにデータ ソースを追加します。
+**Add** ボタンを選択し、ナレッジ ベースにデータ ソースを追加します。
 
-!!! warning "Important"
-    Copilot Studio でエージェントのナレッジ ベースとして SharePoint Online サイトを設定する場合、ユーザーは自分がアクセス権を持つドキュメントの内容のみ取得できます。セキュリティとアクセス制御は Microsoft 365 のセキュリティ基盤で保証され、 Copilot Studio のエージェントは現在のユーザーの権限でドキュメントにアクセスします。
+!!! warning "重要"
+    Copilot Studio でエージェントのナレッジ ベースとして SharePoint Online サイトを設定した場合、ユーザーは自分がアクセス権を持つドキュメントのみ参照できます。 Microsoft 365 のセキュリティ基盤によりアクセス制御が保証され、 Copilot Studio エージェントは現在のユーザーの権限でドキュメントにアクセスします。
     
 <cc-end-step lab="mcs4" exercise="1" step="3" />
 
-### Step 4: エージェントを Microsoft 365 Copilot Chat に発行
+### ステップ 4: Microsoft 365 Copilot Chat への公開
 
-エージェントを発行して Microsoft 365 Copilot Chat でテストしましょう。1️⃣ ページ右上の **Publish** を選択し、 Copilot Chat で利用できるようにします。次に 2️⃣ エージェントの詳細を入力し、最後に 3️⃣ ダイアログ下部の **Publish** を選択します。
+エージェントを Microsoft 365 Copilot Chat でテストするため公開します。1️⃣ 画面右上の **Publish** コマンドを選択し、エージェントを Copilot Chat で利用可能にします。続いて 2️⃣ 必要事項を入力し、最後に 3️⃣ ダイアログ下部の **Publish** を選択します。
 
-![Copilot Studio で **Publish** ボタンが強調表示され、発行ダイアログには短い説明、長い説明、開発者名、Web サイト URL、プライバシー ポリシー URL、利用規約 URL のフィールドがある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-08.png)
+![Copilot Studio のエージェント画面で **Publish** ボタンと公開ダイアログが表示されている。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-08.png)
 
-エージェントの詳細は Microsoft 365 アプリのマニフェスト要件に相当します。
+公開に必要な情報は Microsoft 365 アプリ マニフェストで求められる項目です。
 
 - Short description: エージェントの短い説明 (30 文字以内)
 - Long description: エージェントの長い説明 (100 文字以内)
@@ -127,149 +128,149 @@ SharePoint Online サイトの URL を貼り付けるか、 **Browse files** を
 - Privacy statement: プライバシー ポリシーの URL (2048 文字以内)
 - Terms of use: 利用規約の URL (2048 文字以内)
 
-初回の発行には 30〜60 秒ほどかかります。発行が完了すると、利用オプションをまとめたダイアログが表示されます。
+初回の公開には 30〜60 秒程度かかります。公開が完了すると、利用オプションの概要ダイアログが表示されます。
 
-![発行成功を知らせるダイアログ。エージェント アプリへのリンクコピー、特定のユーザーや全社への共有、ストア掲載用 ZIP ダウンロードの各コマンドがある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-09.png)
+![公開成功を示すダイアログ。エージェントへの直接リンクコピー、共有設定、 ZIP パッケージのダウンロードなどのコマンドがある。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-09.png)
 
-具体的には、以下を選択できます。
+具体的には次の操作が可能です。
 
-- **Copy**: エージェント アプリへの直接リンク URL をコピー
-- **Show to my teammates and shared users**: 組織内の特定ユーザーまたはグループと共有
-- **Show to everyone in my org**: 組織全体と共有
-- **Download .zip file**: ストア公開用アプリの ZIP パッケージをダウンロード
+- **Copy** : エージェント アプリへの直接リンク URL をコピー
+- **Show to my teammates and shared users** : 組織内の特定のグループやユーザーと共有
+- **Show to everyone in my org** : 組織全体と共有
+- **Download .zip file** : ストア公開用の ZIP パッケージをダウンロード
 
 !!! note "Show to everyone in my org"
-    エージェントを組織全体に公開する場合、リリース準備が整い、社内基準・規則・ポリシーに準拠していることを確認してください。同僚と調整のうえ、提出後は管理者が承認または拒否するまで再提出できません。詳細は [Show to the organization](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams#show-to-the-organization){target=_blank} を参照してください。
+    組織全体と共有する場合、エージェントがリリース準備完了かつ社内標準・ポリシーに準拠していることを確認してください。チームメイトと調整し、提出後は管理者が承認または拒否するまで再提出できません。詳細は [Show to the organization](https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams#show-to-the-organization){target=_blank} をご覧ください。
 
-**Copy** を選択し、新しいブラウザー タブで URL を開きます。
-社内アプリ ストアが表示され、ダイアログの **Add** ボタンでエージェントを Microsoft 365 Copilot に追加できます。
+**Copy** を選択し、新しいブラウザー タブを開いて URL を貼り付けます。
+会社のアプリ ストアが表示され、 **Add** ボタンを選択してエージェントを Microsoft 365 Copilot に追加できます。
 
-![社内ストアでエージェントを Microsoft 365 Copilot に追加するダイアログ。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-10.png)
+![会社ストアでエージェントを Microsoft 365 Copilot に追加するダイアログ。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-10.png)
 
 エージェントを Microsoft 365 Copilot Chat に追加すると、 Copilot チャット右側のエージェント一覧に表示されます。
 
 ![Microsoft 365 Copilot Chat に表示された "Agentic HR" エージェント。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-11.png)
 
-エージェントを選択してやり取りを開始します。例えば、次のプロンプトを入力できます。
+エージェントを選択して対話を開始します。たとえば次のプロンプトを送信できます。
 
 ```txt
 How can we hire new people in our company?
 ```
 
-エージェントはナレッジ ベースのドキュメントに基づいて採用手続きの詳細を回答します。たとえば、主なデータ ソースは SharePoint Online にアップロードした `Hiring Procedures.docx` になります。
+エージェントはナレッジ ベースのドキュメントを参照し、採用手順に関する詳細情報を提供します。主な情報源は SharePoint Online にアップロードした `Hiring Procedures.docx` です。
 
-![Microsoft 365 Copilot Chat で "Agentic HR" エージェントが採用手続きについて回答し、SharePoint Online の Word ドキュメントを参照している。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-12.png)
+![Microsoft 365 Copilot Chat で "Agentic HR" エージェントが採用手順について回答し、 SharePoint Online の Word ドキュメントを参照している。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-12.png)
 
 <cc-end-step lab="mcs4" exercise="1" step="4" />
 
-## Exercise 2 : エージェントへのアクション追加
+## エクササイズ 2 : エージェントへのツール追加
 
-この演習では、前の演習で作成したエージェントにカスタム アクションを追加します。 Copilot Studio で Microsoft 365 Copilot Chat 向けエージェントを作成する際、追加できるアクションは 4 種類あります。
+このエクササイズでは、前のエクササイズで作成したエージェントにカスタム ツールを追加します。 Microsoft Copilot Studio で Microsoft 365 Copilot Chat 用エージェントを作成する際、追加できるツールの種類は 4 つあります。
 
-- New prompt: 自然言語プロンプトで作成した AI アクションを利用
-- New Power Automate flow: Power Automate フローを利用
-- New custom connector: Power Platform のカスタム コネクタを利用
-- New REST API: 外部 REST API を利用。詳細は [こちら](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}
+- Prompt: 自然言語で記述したプロンプトを使用する AI ツール
+- Custom connector: Power Platform のカスタム コネクターを使用
+- REST API: 外部 REST API を使用。詳細は [こちら](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}
+- Model Context Protocol: MCP サーバーとそのツールを使用
 
-!!! information "Actions for agents"
-    Copilot Studio でエージェントにアクションを追加する方法の詳細は [Use actions with custom agents (preview)](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-plugin-actions){target=_blank} を参照してください。
+!!! information "エージェント用ツール"
+    Copilot Studio でエージェントにツールを追加する方法の詳細は [Add tools to custom agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-plugin-actions){target=_blank} を参照してください。
 
-このラボでは `New custom connector` タイプのアクションを追加し、 SharePoint Online に保存された Excel スプレッドシートから候補者一覧を取得します。
+本ラボでは `Custom connector` タイプのツールを追加し、 SharePoint Online に保存された Excel スプレッドシートから候補者一覧を取得します。
 
-### Step 1: Microsoft 365 Copilot 用エージェントにアクションを追加
+### ステップ 1: Microsoft 365 Copilot 用エージェントにツールを追加
 
-**Actions** セクションの **+ Add action** コマンドを選択します。
+新しいツールを追加するには、エージェント設定パネルの **Tools** セクションで **+ Add tool** を選択します。
 
-![エージェントの **Actions** セクションで **+ Add action** コマンドが強調表示されている。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-01.png)
+![エージェントの **Tools** セクションで **+ Add tool** コマンドが強調表示されている。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-01.png)
 
-ダイアログが開き、作成するアクションの種類を選択できます。デフォルトでは **Featured** アクションとして Excel Online など一般的なサービスとの連携が表示されます。 **+ New action** を選択すると前述のオプションから新規アクションを作成できます。
+ダイアログが表示され、作成するツールの種類を選択できます。既定では Excel Online などと連携する **Featured** ツールがいくつか示されています。 **+ New tool** を選択すると前述のオプションから新しいツールを作成可能です。
 
-目的のオプションが見つからない場合は **Library** グループに切り替え、テキスト検索してください。
+目的の項目が Featured にない場合は **All** グループに切り替え、テキスト検索します。
 
-今回は **Excel Online (Business)** ファミリーの **List rows present in a table** を選択します。まず **Next** をクリックしてコネクタへの接続を進めます。
+今回は Featured ツールの **Excel Online (Business)** を選択し、 **List rows present in a table** を選びます。まず **Connection** を選択し **Create new connection** をクリックして外部コネクターへ接続します。
 
-![対象コネクタへの接続ダイアログ。接続の詳細と Next、Cancel、Back ボタンがある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png)
+![対象 Power Platform コネクターへの接続ダイアログ。接続情報や新規接続ボタンがある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png)
 
-続いてアクション設定ダイアログが表示されます。以下を設定します。
+自分のアカウントでサインインし、 Excel Online (Business) へのアクセスを許可します。接続が設定されると、 **Add to agent** または **Add and configure** を選択できるダイアログが表示されます。
 
-- Name: アクションの説明的な名前
-- Description: ジェネレーティブ オーケストレーションがアクションを使用するタイミングを判断するための自然言語説明
-- Authentication settings: 認証方式
-- Inputs and outputs: 入出力パラメーター
-- Response settings: ユーザーへの応答方法
+![ツールをエージェントに追加するダイアログ。 **Add to agent** と **Add and configure** のコマンドがある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03b.png)
 
-設定前に候補者一覧の Excel ファイルを準備します。
-[こちらのサンプル ファイル](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true){target=_blank} をダウンロードしてください。
+ツールを追加すると Copilot Studio のツール一覧に表示されます。作成したツールをクリックして設定を編集します。設定パネルでは次を指定します。
 
-同じテナントの SharePoint Teams サイト **Documents** ライブラリにアップロードします。これは架空の候補者一覧で、 Microsoft 365 Copilot により生成されています。
+- Name: ツールの説明的な名前
+- Display name: 表示名
+- Description: 自然言語の説明。ジェネレーティブ オーケストレーションがツールをいつ使うかを判断する際に使用
+- Inputs and outputs: 入出力引数
+- Response settings: リクエストと応答の処理方法
 
-- サイト コレクションの絶対 URL をコピー (例: `https://xyz.sharepoint.com/sites/contoso/`)
-- ドキュメント ライブラリ名をコピー (例: `Shared documents`)
-- ファイル名もコピー (例: `Sample-list-of-candidates.xlsx`)
+設定前に候補者一覧用 Excel スプレッドシートを準備します。
+サンプル Excel ファイルは [こちら](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true){target=_blank} からダウンロードできます。
 
-Copilot Studio に戻り、アクション設定を完了します。
+同一テナントの SharePoint Teams サイトの **Documents** ライブラリへアップロードします。このドキュメントは想定上の候補者一覧として Microsoft 365 Copilot で生成されました。
 
-![Name、description、authentication を設定したアクション作成ダイアログ。**Add action** と **Cancel** ボタンがある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-04.png)
+- サイト コレクション URL をコピー: 例 `https://xyz.sharepoint.com/sites/contoso/`
+- ドキュメント ライブラリ名をコピー: 例 `Shared documents`
+- ファイル名をコピー: 例 `Sample-list-of-candidates.xlsx`
 
-設定値:
+では Copilot Studio に戻りツール設定を完了します。以下の設定を使用してください。
 
 - Name: List HR candidates
 - Description: List candidates for an HR role
-- Authentication: User authentication
 
-**Add action** を選択しアクションを保存します。アクション一覧に追加されるので、作成したアクションをクリックして編集します。
+ツール編集ダイアログで **Tool name** をわかりやすい名前に変更し、 **Inputs** タブで入力引数を設定します。既定では必須引数がすべてユーザーの応答から抽出されるよう **Identify as** に設定されています。
 
-編集ダイアログで **Action name** をよりわかりやすい名称に更新します。次に **Inputs** タブで入力パラメーターを設定します。
-既定では必須入力はすべて **Identify as** が `User's entire response` になっています。
+![アクションの入力引数を設定するタブ。各引数に固有の設定がある。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png)
 
-![アクションの入力パラメーター設定タブ。各引数の設定が表示されている。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png)
+各入力引数の **How will the agent fill this input?** を `Set as a value` に変更し、すべての引数を固定値にします。設定変更を確認し、各引数に静的値を設定してください。
 
-各入力の **How will the agent fill this input?** を `Set as a value` に変更し、静的値を設定します。変更を確認し、すべての入力に静的値を入力します。
+![**Location** 引数を静的値で設定している画面。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-07.png)
 
-![**Location** 入力を静的値で設定している画面。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-07.png)
+静的値は次のとおりです。
 
-静的値:
-
-- Location: Excel を保存した SharePoint Online サイト コレクションの URL (例: `https://xyz.sharepoint.com/sites/contoso/`)
-- Document Library: ライブラリ名 (例: `Shared Documents`)
-- File: ファイル名 (例: `Sample-list-of-candidates.xlsx`)
+- Location: Excel ファイルを保存した SharePoint Online サイト コレクションの URL  
+  例 `https://xyz.sharepoint.com/sites/contoso/`
+- Document Library: スプレッドシートを保存したドキュメント ライブラリ名  
+  例 `Shared Documents`
+- File: Excel ファイル名  
+  例 `Sample-list-of-candidates.xlsx`
 - Table: `Candidates_Table`
 
-![推奨設定どおりに入力パラメーターを設定した一覧。すべて手動で値が入力されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-08.png)
+![設定例に従い入力引数を構成した一覧。すべて手動値で設定済み。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-08.png)
 
-画面右上の **Save** を選択してアクションを保存します。
+画面右上の **Save** を選択しアクションを保存します。
 
 <cc-end-step lab="mcs4" exercise="2" step="1" />
 
-### Step 2: 新しいアクションのテスト
+### ステップ 2: 新しいツールのテスト
 
-更新したエージェントを発行し、統合テスト パネルまたは Microsoft Teams で試します。再度 **Publish** をクリックしてエージェントを更新し、処理が完了するまで待ちます。直接リンクを開くと **Add** の代わりに **Update now** が表示されるので **Update now** を選択します。完了したら Microsoft 365 Copilot Chat を更新し、エージェントと対話します。
+更新したエージェントを公開し、統合テスト パネルまたは Microsoft Teams で試します。
+再度 **Publish** を選択し、公開を更新します。完了したらエージェント アプリへの直接リンクを開きます。今回は **Add** の代わりに **Update now** が表示されますので選択し、完了後 Microsoft 365 Copilot Chat を更新してエージェントと対話します。
 
-作成したアクションは次のようなプロンプトで簡単に呼び出せます。
+作成したツールを呼び出すのは簡単で、以下のようなプロンプトをエージェントに送るだけです。
 
 ```txt
 Show me the list of candidates for HR with role "HR Director" or "HR Manager"
 ```
 
-Microsoft 365 Copilot Chat は外部 API (Excel Online) の利用許可を求めてきます。 **Always allow** または **Allow once** を選択します。テスト用に **Allow once** を選んでおくと、後で再度認証プロセスをテストできます。
+Microsoft 365 Copilot Chat は外部 API (Excel Online) の利用許可を求めるので **Always allow** か **Allow once** を選択します。テスト目的で **Allow once** を選択してください。
 
-![Excel Online の外部 API 利用許可を求めるダイアログ。**Always allow**、**Allow once**、**Cancel** の 3 つのボタンがある。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png)
+![Microsoft 365 Copilot Chat が Excel Online API へのアクセス許可を求めるダイアログ。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png)
 
-Power Platform コネクタは有効な接続を必要とするため、エージェントはユーザーに **Sign in to Agentic HR** を促します。 
+Power Platform コネクターは有効な接続が必要なため、エージェントはユーザーに **Sign in to Agentic HR** を求めます。 
 
-![外部 Excel Online API を利用するためサインインを求めるダイアログ。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-04.png)
+![Microsoft 365 Copilot Chat が外部 Excel Online API へのサインインを要求している。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-04.png)
 
-接続を完了し、再度プロンプトを実行すると、エージェントが Excel スプレッドシートから条件に合致した候補者一覧を返します。
+外部コネクターに接続し、再度プロンプトを実行すると、エージェントは Excel スプレッドシートから取得した条件に合致する候補者一覧を返します。
 
-![Excel Online API から取得した候補者一覧を表示する Copilot Chat。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-05.png)
+![Microsoft 365 Copilot Chat が外部 Excel Online API へのサインインを要求している。](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-05.png)
 
-お疲れさまでした! Copilot Studio のエージェントから外部コネクタを利用できました。
+お疲れさまでした! Copilot Studio で作成した Microsoft 365 Copilot エージェントから外部コネクターを利用できました。
 
 <cc-end-step lab="mcs4" exercise="2" step="2" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-<a href="../05-connectors">Start here</a> with Lab MCS5, to learn how to use custom connectors in Copilot Studio.
+<a href="../05-connectors">こちらから開始</a> してラボ MCS5 で Copilot Studio のカスタム コネクター利用方法を学びましょう。
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/04-extending-m365-copilot" />

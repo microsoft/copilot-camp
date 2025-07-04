@@ -1,21 +1,34 @@
-# What is Copilot Developer Camp?
+**Copilot Developer Camp** is a self-paced learning resource, designed to help you build agents for Microsoft 365 Copilot. It provides practical guidance and real-world examples to support your development journey.
 
-Copilot Developer Camp is a workshop for makers and professional developers who want to learn how to build agents for Microsoft 365 Copilot.
+# Building Agents for Microsoft 365
 
-  <div class="video">
-      <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
-      <div>Overview of Copilot Dev Camp</div>
-    </div>
+Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, HR support, and more.
 
-## 🧪 Where should I start?
+![Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, HR support, and more.](./assets/images/m365-agent-general.png)
 
-The labs are divided into three pathways, allowing you to choose based on what you want to create. If you want to use Microsoft Copilot Studio and a no-code/low-code approach, choose the "Maker" labs. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.
+An agent for Microsoft 365 is typically made up of these components—foundational model,  an orchestrator, which is running that taps into that knowledge, skills, and autonomous processes that it has those capabilities to do, and it may or may not have a user interface. ​
 
-![The labs are divided into three pathways, allowing you to choose based on what you want to create. If you want to use Microsoft Copilot Studio and a no-code/low-code approach, choose the "Maker" labs. If you want to extend Microsoft 365 Copilot, building on its AI engine and orchestration, choose the "Extend" labs. If you want to build a completely custom agent using Azure AI Foundry (or any AI of your choice), choose the "Build" labs.](./assets/images/CopilotCamp-Flow-Chart.png)
+You can either extend Microsoft 365 Copilot by using the same infrastructure, orchestrator, foundation model, and security controls as Microsoft 365 Copilot, which ensures a consistent and familiar user experience.
+
+Or you can pick your own foundation model, orchestrator, and responsible AI controls.
+
+## 🧪 Where should I start to build agents?
+
+There are three major pathways with several labs. If you want a no-code/low-code approach, choose the **Maker** path ("MAB", "MSA", or "MCS" lab). If you want to extend Microsoft 365 Copilot, choose the **Extend** path ("E" lab). If you want to build a completely custom agent using Azure AI Foundry or any AI of your choice, choose the **Build** path ("BMA" or "BTA" lab).
+
+![If you want a no-code/low-code approach, choose the Maker labs ("MAB", "MSA", or "MCS"). If you want to extend Microsoft 365 Copilot, choose the Extend lab ("E"). If you want to build a completely custom agent using Azure AI Foundry or any AI of your choice, choose the Build labs ("BMA" or "BTA")](./assets/images/CopilotCamp-Flow-Chart.png)
 
 ---8<--- "main-links.md"
 
-!!! info "Explore the new labs we've published! "    
+
+<div class="video">
+  <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
+  <div>Overview of Copilot Dev Camp</div>
+</div>
+
+## 🆕 What's New?
+
+!!! example "Updated in June 2025"
 
     We’re excited to introduce **four new hands-on labs** designed to help you build powerful Copilot experiences. 
 

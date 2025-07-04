@@ -9,14 +9,14 @@
         </div>      
         <div class="lab-branch-detail body">
             <ul>
-                <li>簡単でシンプル、インタラクティブなエクスペリエンス</li>
+                <li>簡単でシンプル、かつインタラクティブなエクスペリエンス</li>
                 <li>Web ベースで、Microsoft 365 Copilot Chat と Microsoft 365 Copilot に統合</li>
-                <li>SharePoint Online、パブリック Web、および Microsoft Copilot Connectors のコンテンツを利用</li>
+                <li>SharePoint Online、パブリック Web、Microsoft Copilot コネクタからのコンテンツ</li>
                 <li>Microsoft 365 Copilot Chat で利用可能</li>
             <ul>
         </div>
         <div class="lab-branch-detail button">
-            <a href="./agent-builder"><button class="github-button">ここから開始</button></a>
+            <a href="./agent-builder"><button class="github-button">Start here</button></a>
         </div>
     </div>
     <div class="lab-branch">
@@ -29,16 +29,16 @@
         <div class="lab-branch-detail body">
             <ul>
                 <li>最高レベルの柔軟性</li>
-                <li>ほぼあらゆるデータ ソースやナレッジ ベースに対応</li>
+                <li>ほぼすべてのデータ ソースまたはナレッジ ベースに対応</li>
                 <li>多様な公開チャネルをサポート</li>
-                <li>アクションをサポート</li>
-                <li>Power Platform connectors、Dataverse、REST API などをサポート</li>
-                <li>ユーザー単位 + テナント単位のライセンス または従量課金制</li>
+                <li>アクションに対応</li>
+                <li>Power Platform コネクタ、Dataverse、REST API などに対応</li>
+                <li>ユーザー単位 + テナント単位のライセンス、または従量課金制</li>
             <ul>
         </div>
         <div class="lab-branch-detail button">
             <!-- <a href="#"><button class="github-button">Coming soon ...</button></a> -->
-            <a href="./copilot-studio"><button class="github-button">ここから開始</button></a>
+            <a href="./copilot-studio"><button class="github-button">Start here</button></a>
         </div>
     </div>
     <div class="lab-branch">
@@ -51,13 +51,13 @@
             <ul>
                 <li>SharePoint Online のユーザー エクスペリエンスに統合</li>
                 <li>SharePoint Online のコンテンツのみ</li>
-                <li>Microsoft Teams チャットでサポート</li>
-                <li>Microsoft 365 Copilot ライセンス、Microsoft Copilot Studio キャパシティ、または従量課金制</li>
+                <li>Microsoft Teams のチャットでサポート</li>
+                <li>Microsoft 365 Copilot ライセンス、Microsoft Copilot Studio 容量、または従量課金制</li>
             <ul>
         </div>
         <div class="lab-branch-detail button">
             <!-- <a href="#"><button class="github-button">Coming soon ...</button></a> -->
-            <a href="./sharepoint-agents"><button class="github-button">ここから開始</button></a>
+            <a href="./sharepoint-agents"><button class="github-button">Start here</button></a>
         </div>
     </div>
 </div>
