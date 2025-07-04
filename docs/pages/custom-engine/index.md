@@ -3,7 +3,7 @@
 
 **Custom engine agents** are a type of agent for Microsoft 365 Copilot that give you full control. Unlike declarative agents, which rely on Microsoft 365 Copilot's model and orchestration, custom engine agents let you bring your own foundation model, orchestrator, and security stack. This approach is ideal when you need to tailor the agent's behavior, data access, or reasoning logic to fit specific requirements or infrastructure.
 
-![Custom engine agents use the orchestrator, foundation model, and security controls of your choice.](../../assets/images/m365-custom-engine-agent.png)
+![Custom engine agent diagram](../../assets/images/m365-custom-engine-agent.png)
 
 ## What you're going to do
 
