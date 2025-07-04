@@ -2,9 +2,9 @@
 
 # Building Agents for Microsoft 365
 
-Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, and HR support.
+Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, HR support, and more.
 
-![Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, and HR support](./assets/images/m365-agent-general.png)
+![Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, HR support, and more.](./assets/images/m365-agent-general.png)
 
 An agent for Microsoft 365 is typically made up of these components—foundational model,  an orchestrator, which is running that taps into that knowledge, skills, and autonomous processes that it has those capabilities to do, and it may or may not have a user interface. ​
 
