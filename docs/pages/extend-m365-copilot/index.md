@@ -4,7 +4,7 @@
 
 Declarative agents use the same infrastructure, orchestrator, foundation model, and security controls as Microsoft 365 Copilot, which ensures a consistent and familiar user experience.
 
-![Declarative agents use the same infrastructure, orchestrator, foundation model, and security controls as Microsoft 365 Copilot, which ensures a consistent and familiar user experience.](../../assets/images/m365-declarative-agent.png)
+![Declarative agent architecture diagram](../../assets/images/m365-declarative-agent.png)
 
 ## What you're going to do
 
