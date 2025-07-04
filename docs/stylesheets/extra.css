@@ -271,6 +271,11 @@ button.md-clipboard.md-icon:hover{
   mask-image: var(--sparkle-icon);
 }
 
+/* Video */
+
+.video {
+  font-size: smaller;
+}
 
 /* Footer */
 
