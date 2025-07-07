@@ -2,44 +2,57 @@
 search:
   exclude: true
 ---
-# Copilot Developer Camp とは
+**Copilot Developer Camp** は、Microsoft 365 Copilot のための エージェント を構築する方法を学べる、セルフペース形式の学習リソースです。実践的なガイドとリアルな使用例を通じて、開発の旅をサポートします。
 
-Copilot Developer Camp は、Microsoft 365 Copilot 向けのエージェントを構築する方法を学びたい Maker とプロフェッショナル開発者のためのワークショップです。
+# Microsoft 365 向けエージェントの構築
 
-  <div class="video">
-      <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
-      <div>Copilot Dev Camp の概要</div>
-    </div>
+Microsoft 365 向けエージェントは、会話型 AI を活用したアシスタントで、ユーザーのタスク自動化、質問への回答、Microsoft 365 アプリやサービス全体でのワークフロー効率化を支援します。カスタマーサポート、IT ヘルプデスク、HR サポートなど、さまざまなシナリオで利用できます。
 
-## 🧪 スタートガイド
+![Microsoft 365 向けエージェントは、会話型 AI を活用したアシスタントで、ユーザーのタスク自動化、質問への回答、Microsoft 365 アプリやサービス全体でのワークフロー効率化を支援します。カスタマーサポート、IT ヘルプデスク、HR サポートなど、さまざまなシナリオで利用できます](../assets/images/m365-agent-general.png)
 
-ラボは 3 つのパスウェイに分かれており、作りたいものに応じて選択できます。Microsoft Copilot Studio を使用し、ノーコード／ローコード アプローチを取りたい場合は「Maker」ラボを選択してください。Microsoft 365 Copilot を拡張し、その AI エンジンとオーケストレーションを基盤にしたい場合は「Extend」ラボを選択してください。Azure AI Foundry（またはお好きな AI）を用いて完全にカスタムなエージェントを構築したい場合は「Build」ラボを選択してください。
+Microsoft 365 向けエージェントは通常、ファウンデーションモデル、オーケストレーター（知識・スキル・自律プロセスを活用して実行）、そしてユーザーインターフェースの有無を含む複数のコンポーネントで構成されます。  
 
-![ラボは 3 つのパスウェイに分かれており、作りたいものに応じて選択できます。Microsoft Copilot Studio を使用し、ノーコード／ローコード アプローチを取りたい場合は「Maker」ラボを選択してください。Microsoft 365 Copilot を拡張し、その AI エンジンとオーケストレーションを基盤にしたい場合は「Extend」ラボを選択してください。Azure AI Foundry（またはお好きな AI）を用いて完全にカスタムなエージェントを構築したい場合は「Build」ラボを選択してください。](../assets/images/CopilotCamp-Flow-Chart.png)
+Microsoft 365 Copilot を拡張する場合は、同じインフラストラクチャ、オーケストレーター、ファウンデーションモデル、セキュリティ制御を利用できるため、一貫性のある使い慣れたユーザー エクスペリエンスを提供できます。  
+
+あるいは、独自のファウンデーションモデル、オーケストレーター、責任ある AI 制御を選択することも可能です。
+
+## 🧪 エージェント開発を始めるには
+
+ラーニング パスは大きく 3 つあり、それぞれに複数の ラボ があります。コード不要／ローコードで進めたい場合は **Maker** パス（「MAB」「MSA」「MCS」 ラボ）を選びます。Microsoft 365 Copilot を拡張したい場合は **Extend** パス（「E」 ラボ）を選びます。Azure AI Foundry など任意の AI を使って完全にカスタム エージェントを構築したい場合は **Build** パス（「BMA」または「BTA」 ラボ）を選択してください。
+
+![コード不要／ローコードで進めたい場合は Maker ラボ（「MAB」「MSA」「MCS」）。Microsoft 365 Copilot を拡張したい場合は Extend ラボ（「E」）。Azure AI Foundry など任意の AI を用いてカスタム エージェントを構築したい場合は Build ラボ（「BMA」「BTA」）](../assets/images/CopilotCamp-Flow-Chart.png)
 
 ---8<--- "ja/main-links.md"
 
-!!! info "公開された新しいラボを試してみましょう！"    
 
-    **4 つの新しいハンズオン ラボ** をご用意しました。強力な Copilot エクスペリエンスを構築するのにぜひお役立てください。 
+<div class="video">
+  <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
+  <div>Copilot Dev Camp の概要</div>
+</div>
+
+## 🆕 更新情報
+
+!!! example "2025 年 6 月更新"
+
+    **4 つの新しいハンズオン ラボ** を公開しました。強力な Copilot エクスペリエンスを構築する際にぜひご活用ください。  
 
     - **Build with Microsoft 365 Agents SDK**:  
-      Microsoft 365 Agents SDK のすべての機能を活用し、実ビジネス データと連携する本番環境レベルの Copilot エージェントを構築します。  
+      Microsoft 365 Agents SDK のフル機能を活用し、実ビジネス データと連携する本番レベルの Copilot エージェントを作成します。  
       [🔗 このラボを始める](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/)
 
     - **Build Copilot Agents Using TypeSpec**:  
-      TypeSpec を用いてエージェントとその機能を宣言的に定義します。API サービスとシームレスに連携する Copilot エージェントを構築したい開発者に最適です。  
+      TypeSpec を使って エージェント とその機能を宣言的に定義します。API サービスとシームレスに連携する Copilot エージェントを構築したい開発者に最適です。  
       [🔗 このラボを始める](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent/)
 
     - **Agent Instructions Guide for Beginners**:  
-      Copilot を初めてお使いですか？このラボでは、効果的な自然言語 instructions の書き方と Copilot エージェントのテスト方法をステップ バイ ステップで学べます。  
+      Copilot が初めての方に向け、効果的な自然言語の instructions の書き方と Copilot エージェントのテスト方法をステップ バイ ステップで学べます。  
       [🔗 このラボを始める](https://microsoft.github.io/copilot-camp/pages/copilot-instructions/beginner-agent/)
 
     - **SharePoint agents**:  
-      SharePoint エージェントの基礎から設定調整、Microsoft Teams グループ チャットでの共有方法までを学びます。  
+      基本から始めて設定の微調整、共有方法（個人、Microsoft Teams グループ チャット）まで、SharePoint エージェント の作成方法を習得します。  
       [🔗 このラボを始める](https://microsoft.github.io/copilot-camp/pages/make/sharepoint-agents/)
 
-## 🧑‍💻 その他
+## 🧑‍💻 さらに学ぶ
 
 ---8<--- "ja/more-links.md"
 
@@ -51,24 +64,24 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 
 ## 🎁 Copilot Camp in a Box 
 
-ラボを試してみてうまく動きましたか？その知識を共有したいですか？それなら、[Copilot Camp in a Box リソース](https://microsoft.github.io/copilot-camp/pages/in-a-box/) を使って、ご自身で Copilot Camp ワークショップを開催してみましょう。プレゼンテーション資料にはデモも組み込まれていて、すぐに使えます。
+ラボを完了しましたか？知識を共有したいですか？それなら、[Copilot Camp in a Box リソース](https://microsoft.github.io/copilot-camp/pages/in-a-box/) を使って独自の Copilot Camp ワークショップを開催しましょう。プレゼンテーション資料にはデモも組み込まれていますので、すぐにご利用いただけます。
 
 
 
-## 🚑 Issues
+## 🚑 既知の問題とフィードバック
 
-ご意見・ご要望をお待ちしています！コメントや問題点があれば、ぜひ [issues リスト](https://github.com/microsoft/copilot-camp/issues) にご投稿ください。Microsoft 社内の方は Microsoft Teams の「Copilot Developer Camp Early Testers」チャットでもお知らせいただけます。ありがとうございます！
+フィードバックを心よりお待ちしています！コメントや問題は [issues リスト](https://github.com/microsoft/copilot-camp/issues) にてご連絡ください。Microsoft 社内の方は Microsoft Teams の「Copilot Developer Camp Early Testers」チャットでもお知らせください。ありがとうございます！
 
 
 ## 📜 行動規範
 
-このプロジェクトは [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) を採用しています。
+本プロジェクトは [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) を採用しています。
 
 リソース:
 
 - [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
 - [Microsoft Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
-- ご質問やご懸念は [opencode@microsoft.com](mailto:opencode@microsoft.com) までお問い合わせください。
+- 質問や懸念点は [opencode@microsoft.com](mailto:opencode@microsoft.com) までご連絡ください
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/index" />
 
