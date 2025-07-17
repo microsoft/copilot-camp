@@ -1,14 +1,20 @@
 
-# Welcome - Build Custom Engine Agents
+# Build Custom Engine Agents
 
-In the Build Path of the Copilot Developer Camp, you will dive deeper into building custom engine agents that integrate with Microsoft Teams and Microsoft 365 Copilot. This path is ideal for developers who want more control over the orchestration, user experience, and underlying AI capabilities of their agent.
+**Custom engine agents** are a type of agent for Microsoft 365 Copilot that give you full control. Unlike declarative agents, which rely on Microsoft 365 Copilot's model and orchestration, custom engine agents let you bring your own foundation model, orchestrator, and security stack. This approach is ideal when you need to tailor the agent's behavior, data access, or reasoning logic to fit specific requirements or infrastructure.
+
+![Custom engine agent architecture diagram. At the very basis you can have any foundational model of your choice. Also the orchestrator is completely customizable. Knowledge, skills, and autonomous capabilities can be implemented with custom code, relying on external SDKs and libraries. The user experience can be in Microsoft 365 Copilot, in Microsoft Teams, or any other supported channel.](../../assets/images/m365-custom-engine-agent.png)
+
+## What you're going to do
+
+In the Build Path of the Copilot Developer Camp, you will dive deeper into building custom engine agents that integrate with Microsoft 365 Copilot and/or Microsoft Teams.
 
 You’ll choose between two hands-on exercises based on your preferred development experience:
 
-* Create a custom engine agent using TypeScript and the Teams AI Library. This option is optimized for Microsoft Teams and provides a streamlined orchestration experience handled by the library behind the scenes.
-* Create a cross-channel custom engine agent using C#, the Microsoft 365 Agents SDK, and Semantic Kernel. This option supports Microsoft Teams, Microsoft 365 Copilot, and external channels, offering full control over the orchestration layer.
+* Create a cross-channel custom engine agent using C#, the **Microsoft 365 Agents SDK**, and Semantic Kernel. This option supports Microsoft Teams, Microsoft 365 Copilot, and external channels, offering full control over the orchestration layer.
+* Create a custom engine agent using TypeScript and the **Teams AI Library**. This option is optimized for Microsoft Teams and provides a streamlined orchestration experience handled by the library behind the scenes.
 
-<hr />
+---
 
 ---8<--- "b-labs-branches.md"
 
