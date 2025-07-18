@@ -744,3 +744,119 @@ dicussion */
     border-left: 4px solid powderblue;
     border-radius: 4px;
 }
+
+
+/* Card component styles */
+.cc-card-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.cc-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+}
+
+.cc-card:hover,
+.cc-card.cc-card-hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--md-accent-fg-color);
+    text-decoration: none !important;
+
+}
+
+.cc-card.cc-card-focus {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+}
+
+.cc-card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.cc-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cc-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    color: var(--md-primary-bg-color);
+    line-height: 1.3;
+}
+
+.cc-card-description {
+    font-size: 0.9rem;
+    color: var(--md-default-fg-color--light);
+    margin: 0;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.cc-card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-items: stretch;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .cc-card {
+        background: #1e1e1e;
+        border-color: #404040;
+        color: #e1e1e1;
+    }
+    
+    .cc-card:hover,
+    .cc-card.cc-card-hover {
+        border-color: var(--md-accent-fg-color);
+    }
+    
+    .cc-card-title {
+        color: #ffffff;
+    }
+    
+    .cc-card-description {
+        color: #b0b0b0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .cc-card {
+        padding: 1rem;
+    }
+    
+    .cc-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .cc-card-description {
+        font-size: 0.85rem;
+    }
+    
+    .cc-card-grid {
+        grid-template-columns: 1fr;
+    }
+}

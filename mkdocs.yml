@@ -31,6 +31,7 @@ extra_javascript:
   - javascripts/cc-award.js
   - javascripts/cc-next.js
   - javascripts/cc-lab-step.js
+  - javascripts/cc-card.js
 extra_css:
   - stylesheets/labStyles.css
   - stylesheets/extra.css
@@ -104,6 +105,7 @@ plugins:
             #   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
             #   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
             - Prompt engineering:
+              - Introduction : 'pages/copilot-instructions/index.md'
               - Level 1 - Simple agent instructions: 'pages/copilot-instructions/beginner-agent.md'
             # - Awards: 'awards.md'
             - Resources: 'resources.md'
