@@ -9,7 +9,7 @@
       <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - Defining Tools</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - Consuming a custom connector</a></li>
-      <!-- <li><a href="/copilot-camp/pages/make/copilot-studio/06-knowledge/">MCS6 - Knowledge</a></li> -->
+      <!-- <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - Consuming an MCP server</a></li> -->
     </ul>
   </div>
 </div>

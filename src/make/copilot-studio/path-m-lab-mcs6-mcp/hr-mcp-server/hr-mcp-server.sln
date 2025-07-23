@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hr-mcp-server", "hr-mcp-server.csproj", "{05325E11-A468-F397-C76F-58A5AC337614}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05325E11-A468-F397-C76F-58A5AC337614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05325E11-A468-F397-C76F-58A5AC337614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05325E11-A468-F397-C76F-58A5AC337614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05325E11-A468-F397-C76F-58A5AC337614}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D535D0EE-B85B-4AB2-B43B-618B25A2B32B}
+	EndGlobalSection
+EndGlobal
