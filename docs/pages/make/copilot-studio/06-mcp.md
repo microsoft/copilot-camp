@@ -51,7 +51,6 @@ Before starting, make sure you have:
 
 - [.NET 10.0 SDK (preview 6 or higher)](https://dotnet.microsoft.com/download/dotnet/10.0){target=_blank}
 - [Visual Studio Code](https://code.visualstudio.com/){target=_blank}
-- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot){target=_blank}
 - [Node.js v.22 or higher](https://nodejs.org/en){target=_blank}
 - [MCP Inspector](https://github.com/modelcontextprotocol/inspector){target=_blank}
 
@@ -159,17 +158,15 @@ In this exercise you are going to create a new agent in Microsoft Copilot Studio
 
 Open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} to start using Microsoft Copilot Studio.
 
-Select **Create** in the left navigation menu, then choose **Agent** to create a new agent.
+Select the `Copilot Dev Camp` environment, and then select **Create** in the left navigation menu, then choose **Agent** to create a new agent.
 
-![The Microsoft Copilot Studio interface showing the Create menu with the Agent option highlighted.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
-
-Configure your new agent with the following settings:
+Choose to **Skip to configure** and define your new agent with the following settings:
 
 - **Name**: `HR Agent with MCP`
 - **Description**: `An AI assistant that helps manage HR candidates using MCP server integration for comprehensive candidate management`
 - **Instructions**: `You are a helpful HR assistant that specializes in candidate management. You can help users search for candidates, check their availability, get detailed candidate information, and add new candidates to the system. Always provide clear and helpful information about candidates, including their skills, experience, contact details, and availability status.`
 
-![The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the HR Agent with MCP.](../../../assets/images/make/copilot-studio-06/create-agent-02.png)
+![The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the HR Agent with MCP.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
 
 Select **Create** to create your new agent.
 
@@ -177,37 +174,15 @@ Select **Create** to create your new agent.
 
 ### Step 2: Configuring the agent's knowledge and conversation starters
 
-After creating the agent, you'll be taken to the agent configuration page. In the **Knowledge** section, add some sample HR and candidate information that will help the agent understand the context:
+After creating the agent, you'll be taken to the agent configuration page. In the **Suggested prompts** section, add these helpful prompts:
 
-**Knowledge Sources**: Add the following information as knowledge:
+1. Title: `List all candidates` - Prompt: `List all the candidates`
+1. Title: `Search candidates` - Prompt: `Search for candidates with name [NAME_TO_SEARCH]`
+1. Title: `Add new candidate` - Prompt: `Add a candidate with firstname [FIRSTNAME], lastname [LASTNAME],  e-mail [EMAIL], role [ROLE], spoken languages [LANGUAGES], and skills [SKILLS]`
 
-```text
-HR Candidate Management:
-- Candidates have personal details: name, email, phone, address
-- Professional information: skills, experience level, current position, desired position
-- Application status: Applied, Under Review, Interview Scheduled, Hired, Rejected
-- Availability: Available, Busy, On Notice Period, Not Available
+![The agent configuration page showing the "Suggested prompts" sections filled in with the suggested information.](../../../assets/images/make/copilot-studio-06/configure-agent-01.png)
 
-Common Skills Categories:
-- Technical: Programming languages, frameworks, tools, certifications
-- Soft Skills: Communication, leadership, teamwork, problem-solving
-- Domain Expertise: Industry-specific knowledge and experience
-- Languages: Spoken languages and proficiency levels
-
-Interview Process:
-- Candidates can be scheduled for phone, video, or in-person interviews
-- Availability status affects scheduling possibilities
-- Interview feedback and notes are maintained for each candidate
-```
-
-In the **Conversation starters** section, add these helpful prompts:
-
-1. `List all candidates in the database`
-2. `Search for candidates with JavaScript skills`
-3. `Add a new candidate to the system`
-4. `Update candidate information for ID 1`
-
-![The agent configuration page showing the Knowledge and Conversation starters sections filled in with HR candidate management information.](../../../assets/images/make/copilot-studio-06/configure-agent-01.png)
+Select the **Save** button to confirm your changes.
 
 <cc-end-step lab="mcs6" exercise="2" step="2" />
 
@@ -217,11 +192,46 @@ In this exercise you are going to configure the integration between your MCP ser
 
 ### Step 1: Adding MCP server as a knowledge source
 
-In your HR Agent with MCP agent, navigate to the **Knowledge** section and select **+ Add knowledge**.
+In your HR Agent with MCP agent, navigate to the 1️⃣ **Tools** section and select 2️⃣ **+ Add Tool**.
 
-Choose **External knowledge** and then select **MCP Server** as the knowledge source type.
+![The "Tools" section of the agent with the "+ Add Tool" command highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-01.png)
 
-![The knowledge source selection dialog in Copilot Studio showing MCP Server as an option for external knowledge.](../../../assets/images/make/copilot-studio-06/mcp-integration-01.png)
+Choose 1️⃣ **Model Context Protocol** group to see all the already existing tools available to you agent via MCP. Now select 2️⃣ **+ New tool** to add the actual tools.
+
+![The panel to add new tools, with the "+ New tool" command highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-02.png)
+
+A new dialog will show up allowing you to select the kind of tool that you want to add. At the time of this writing, if you select the **Model Context Protocol** option, you will be brought to the official documentation page [Extend your agent with Model Context Protocol](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp){target=_blank} that explains you how to add a new MCP server as a Power Platform custom connector.
+
+In this lab we are going to create the actual custom connector for the MCP server. So, select **Custom connector** and proceed with the following steps. 
+
+![The dialog to add a new tool with the "Custom connector" option highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-03.png)
+
+A new browser tab will open, providing you access to the Power Apps page to configure custom connectors. Select 1️⃣ **+ New custom connector** and then 2️⃣ **Import an OpenAPI file**.
+
+Keep this process on hold, move to Visual Studio Code, create a new file, and paste the following YAML schema into it.
+
+```yaml
+swagger: '2.0'
+info:
+  title: Contoso
+  description: HR MCP Server Specification, YAML for streamable MCP support in Copilot Studio
+  version: 1.0.0
+host: [Connect via browser host name of your dev tunnel]
+basePath: /
+schemes:
+  - https
+paths:
+  /mcp:
+    post:
+      summary: HR MCP Server
+      x-ms-agentic-protocol: mcp-streamable-1.0
+      operationId: InvokeMCP
+      responses:
+        '200':
+          description: Success
+```
+
+Replace the `host` with the actual hostname of your dev tunnel public URL.
 
 Configure the MCP server connection:
 
