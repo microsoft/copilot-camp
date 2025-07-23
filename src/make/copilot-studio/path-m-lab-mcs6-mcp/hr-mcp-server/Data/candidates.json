@@ -1,0 +1,42 @@
+[
+    {
+        "firstname": "John",
+        "lastname": "Doe",
+        "email": "john.doe@example.com",
+        "spoken_languages": ["English", "Spanish"],
+        "skills": ["Recruitment", "Employee Relations", "HRIS"],
+        "current_role": "HR Manager"
+    },
+    {
+        "firstname": "Jane",
+        "lastname": "Smith",
+        "email": "jane.smith@example.com",
+        "spoken_languages": ["English", "French"],
+        "skills": ["Talent Acquisition", "Onboarding", "Training"],
+        "current_role": "HR Specialist"
+    },
+    {
+        "firstname": "Alice",
+        "lastname": "Johnson",
+        "email": "alice.johnson@example.com",
+        "spoken_languages": ["English", "German"],
+        "skills": ["Compensation and Benefits", "Performance Management", "Employee Engagement"],
+        "current_role": "HR Business Partner"
+    },
+    {
+        "firstname": "Bob",
+        "lastname": "Brown",
+        "email": "bob.brown@example.com",
+        "spoken_languages": ["English", "Italian"],
+        "skills": ["HR Policy Development", "Conflict Resolution", "Diversity and Inclusion"],
+        "current_role": "HR Director"
+    },
+    {
+        "firstname": "Emily",
+        "lastname": "Davis",
+        "email": "emily.davis@example.com",
+        "spoken_languages": ["English", "Portuguese"],
+        "skills": ["Workforce Planning", "HR Analytics", "Change Management"],
+        "current_role": "HR Consultant"
+    }
+]
