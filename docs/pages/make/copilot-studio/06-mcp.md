@@ -1,6 +1,6 @@
 # Lab MCS6 - Consuming an MCP server
 
-In this lab, you are going to understand how to extend an agent made with Microsoft Copilot Studio using an MCP (Model Context Protocol) server. Specifically, you are going to consume an existing MCP server that provides knowledge and tools for managing a hypothetical list of candidates for a job role. The MCP server will offer functionalities to:
+In this lab, you are going to understand how to extend an agent made with Microsoft Copilot Studio using an MCP (Model Context Protocol) server. Specifically, you are going to consume an existing MCP server that provides tools for managing a hypothetical list of candidates for a job role. The MCP server will offer functionalities to:
 
 - List all candidates 
 - Search for candidates by criteria
@@ -110,7 +110,7 @@ Copy the "Connect via browser" URL and save it in a safe place. Open a browser a
 
 ![The confirmation page to access the MCP server via the dev tunnel. There is a button to "Continue" that you should select.](../../../assets/images/make/copilot-studio-06/mcp-server-03.png)
 
-Be sure to leave the dev tunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel host hr-service`.
+Be sure to leave both the dev tunnel command and the MCP server running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel host hr-mcp`.
 
 <cc-end-step lab="mcs6" exercise="1" step="3" />
 
@@ -158,13 +158,32 @@ In this exercise you are going to create a new agent in Microsoft Copilot Studio
 
 Open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} to start using Microsoft Copilot Studio.
 
-Select the `Copilot Dev Camp` environment, and then select **Create** in the left navigation menu, then choose **Agent** to create a new agent.
+Select the `Copilot Dev Camp` environment that you created in **Exercise 1** of [Lab MCS0 - Setup](00-prerequisites.md), and then select **Create** in the left navigation menu, then choose **Agent** to create a new agent.
 
 Choose to **Skip to configure** and define your new agent with the following settings:
 
-- **Name**: `HR Agent with MCP`
-- **Description**: `An AI assistant that helps manage HR candidates using MCP server integration for comprehensive candidate management`
-- **Instructions**: `You are a helpful HR assistant that specializes in candidate management. You can help users search for candidates, check their availability, get detailed candidate information, and add new candidates to the system. Always provide clear and helpful information about candidates, including their skills, experience, contact details, and availability status.`
+- **Name**: 
+
+```text
+HR Agent with MCP
+```
+
+- **Description**: 
+
+```text
+An AI assistant that helps manage HR candidates using MCP server integration 
+for comprehensive candidate management
+```
+
+- **Instructions**: 
+
+```text
+You are a helpful HR assistant that specializes in candidate management. You can help users search 
+for candidates, check their availability, get detailed candidate information, and add new 
+candidates to the system. 
+Always provide clear and helpful information about candidates, including their skills, experience, 
+contact details, and availability status.
+```
 
 ![The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the HR Agent with MCP.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
 
@@ -172,7 +191,7 @@ Select **Create** to create your new agent.
 
 <cc-end-step lab="mcs6" exercise="2" step="1" />
 
-### Step 2: Configuring the agent's knowledge and conversation starters
+### Step 2: Configuring the agent's conversation starters
 
 After creating the agent, you'll be taken to the agent configuration page. In the **Suggested prompts** section, add these helpful prompts:
 
@@ -190,38 +209,40 @@ Select the **Save** button to confirm your changes.
 
 In this exercise you are going to configure the integration between your MCP server and the Copilot Studio agent.
 
-### Step 1: Adding MCP server as a knowledge source
+### Step 1: Adding tools exposed by the MCP server
 
-In your HR Agent with MCP agent, navigate to the 1️⃣ **Tools** section and select 2️⃣ **+ Add Tool**.
+In your agent, navigate to the 1️⃣ **Tools** section and select 2️⃣ **+ Add a tool**.
 
-![The "Tools" section of the agent with the "+ Add Tool" command highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-01.png)
+![The "Tools" section of the agent with the "+ Add a tool" command highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-01.png)
 
-Choose 1️⃣ **Model Context Protocol** group to see all the already existing tools available to you agent via MCP. Now select 2️⃣ **+ New tool** to add the actual tools.
+Choose 1️⃣ **Model Context Protocol** group to see all the already existing MCP servers available to you agent. Now select 2️⃣ **+ New tool** to add the actual HR MCP server.
 
 ![The panel to add new tools, with the "+ New tool" command highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-02.png)
 
-A new dialog will show up allowing you to select the kind of tool that you want to add. At the time of this writing, if you select the **Model Context Protocol** option, you will be brought to the official documentation page [Extend your agent with Model Context Protocol](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp){target=_blank} that explains you how to add a new MCP server as a Power Platform custom connector.
+A new dialog shows up allowing you to select the kind of tool that you want to add. At the time of this writing, if you select the **Model Context Protocol** option, you will be brought to the official Microsoft Copilot Studio documentation page [Extend your agent with Model Context Protocol](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp){target=_blank} that explains you how to add a new MCP server as a Power Platform custom connector.
 
 In this lab we are going to create the actual custom connector for the MCP server. So, select **Custom connector** and proceed with the following steps. 
 
 ![The dialog to add a new tool with the "Custom connector" option highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-03.png)
 
-A new browser tab will open, providing you access to the Power Apps page to configure custom connectors. Select 1️⃣ **+ New custom connector** and then 2️⃣ **Import an OpenAPI file**.
+A new browser tab will open, providing you access to the Power Apps configuration page to manage custom connectors. Select 1️⃣ **+ New custom connector** and then 2️⃣ **Import an OpenAPI file**.
+
+![The dialog to add a new tool with the "Custom connector" option highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-04.png)
 
 Keep this process on hold, move to Visual Studio Code, create a new file, and paste the following YAML schema into it.
 
 ```yaml
 swagger: '2.0'
 info:
-  title: Contoso
-  description: HR MCP Server Specification, YAML for streamable MCP support in Copilot Studio
+  title: HR MCP Server
+  description: Allows to manage candidates for specific job roles providing tools to list, search, add, update, and remove candidates from a reference list
   version: 1.0.0
 host: [Connect via browser host name of your dev tunnel]
 basePath: /
 schemes:
   - https
 paths:
-  /mcp:
+  /:
     post:
       summary: HR MCP Server
       x-ms-agentic-protocol: mcp-streamable-1.0
@@ -232,180 +253,108 @@ paths:
 ```
 
 Replace the `host` with the actual hostname of your dev tunnel public URL.
+The value for the `host` property should be something like `3dcwb74w-47002.euw.devtunnels.ms`, without the https:// prefix and without the closing /. Simply use the hostname. Save the file and go back to the browser. 
 
-Configure the MCP server connection:
+Provide a name for the connector, for example `HR MCP Server`.
+Select **Import** and browse for the OpenAPI file that you just created.
+Once you have selected the file, click on **Continue**
 
-- **Server Name**: `HR Candidate MCP Server`
-- **Description**: `MCP server providing HR candidate management tools and data`
-- **Connection Type**: `Local Server` (for development) or `HTTP/HTTPS` (for deployed servers)
-- **Server Path**: Path to your MCP server executable or connection details
-- **Authentication**: Configure if needed for your deployment
+![The dialog to create a new "Custom connector" in the current Power Platform environment. There are the name of the connector and the path to the OpenAPI specification YAML file.](../../../assets/images/make/copilot-studio-06/mcp-integration-05.png)
 
-![The MCP server configuration dialog with connection settings for the HR Candidate MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-integration-02.png)
+In the page to configure the connector, select to enable the **Swagger editor** to switch to the source code of the OpenAPI specification.
+You can see the content of the YAML file that you just uploaded and you can validate that the specification file is correct.
+
+![The "Custom connector" definition page in the current Power Platform environment. There is the "Swagger editor" option selected to see the source code of the OpenAPI specification file.](../../../assets/images/make/copilot-studio-06/mcp-integration-06.png)
+
+Select the **Create connector** command and wait for the connector to be ready. If you like, you can also provide a custom icon for the connector, to easily recognize it in the list of tools. If you like, you can download the [following icon](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/make/copilot-studio/path-m-lab-mcs6-mcp/hr-mcp-server-icon.png){target=_blank}, use it for the custom connector, and select **Update connector** to persist the change. 
+
+Now go back to Copilot Studio, select the **Refresh** button and go back to the list of available tools. 
+
+![The dialog to add a new tool in Copilot Studio with a dialog waiting for you to select the "Refresh" button to reload the list of available tools.](../../../assets/images/make/copilot-studio-06/mcp-integration-07.png)
+
+Now, in the **Model Context Protocol** list, you should be able to find the `HR MCP Server`.
+
+![The list of "Model Context Protocol" tools, including the new "HR MCP Server" connector.](../../../assets/images/make/copilot-studio-06/mcp-integration-08.png)
+
+Select the `HR MCP Server` connector, connect to the server using the default connection user experience of Copilot Studio, and when the connector is connected select **Add and configure**
+
+![The dialog to add the "HR MCP Server" connector as a tool to the current agent in Copilot Studio. There are buttons to "Add to agent" and to "Add and configure", as well as a button to "Cancel".](../../../assets/images/make/copilot-studio-06/mcp-integration-09.png)
+
+All the tools exposed by the MCP server are now available to your agent, as you can verify in the window displaying the MCP server details and tools.
+
+![The details about the settings and tools of the MCP server that you just registered. There is the list of tools exposed by the server.](../../../assets/images/make/copilot-studio-06/mcp-integration-10.png)
 
 <cc-end-step lab="mcs6" exercise="3" step="1" />
 
-### Step 2: Mapping MCP tools to agent actions
+### Step 2: Test the new MCP server
 
-Once the MCP server is connected, Copilot Studio will automatically discover the available tools. Map each tool to appropriate agent actions:
+Publish your agent by selecting **Publish** in the top right corner. Once published, test the agent in the integrated Test panel using the following prompt:
 
-**List Candidates Tool**:
-- **Action Name**: `List All Candidates`
-- **Description**: `List all candidates in the HR database`
-- **When to use**: When users ask to see all candidates or get an overview
+```text
+List all candidates
+```
 
-**Search Candidates Tool**:
-- **Action Name**: `Search HR Candidates`
-- **Description**: `Search for candidates by name, skills, position, or other criteria`
-- **When to use**: When users ask to find or search for specific candidates
+The agent should use the MCP server's `list_candidates` tool to return a complete list of all candidates in your HR system.
+However, in order to being able to consume the list of candidates you will need to connect to the target connector. As such, Copilot Studio will ask you to **Open connection manager**, connect to the MCP server, and then **Retry** the request.
 
-**Add Candidate Tool**:
-- **Action Name**: `Add New Candidate`
-- **Description**: `Add a new candidate to the HR database`
-- **When to use**: When users want to add new candidates to the system
+![The initial dialog with the agent, which prompts the user to open the connection manager to connect to the MCP server and then to retry the request, once the connection is established.](../../../assets/images/make/copilot-studio-06/mcp-test-01.png)
 
-**Update Candidate Tool**:
-- **Action Name**: `Update Candidate Information`
-- **Description**: `Update existing candidate information in the database`
-- **When to use**: When users want to modify or update candidate details
+Once the connection is established, you can get the actual list of candidates from the HR MCP server.
 
-**Remove Candidate Tool**:
-- **Action Name**: `Remove Candidate`
-- **Description**: `Remove a candidate from the HR database`
-- **When to use**: When users want to delete or remove candidates from the system
+![The list of candidates retrieved from the HR MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-02.png)
 
-![The tool mapping interface in Copilot Studio showing the MCP tools mapped to agent actions with descriptions and usage criteria.](../../../assets/images/make/copilot-studio-06/mcp-integration-03.png)
+You can now try with another prompt like:
 
-Select **Save** to save the MCP integration configuration.
+```text
+Search for candidate Alice
+```
+
+Now the agent should use the MCP server's `search_candidates` tool and return only one candidate matching the search criteria.
+
+![The list of candidates retrieved from the HR MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-03.png)
+
+It is now time to test a much more advanced tool, like the `add_candidate` one to add a new candidate to the HR system. Use the following prompt:
+
+```text
+Add a new candidate: John Smith, Software Engineer, skills: React, Node.js, 
+email: john.smith@email.com, speaks English and Spanish
+```
+
+The agent will understand your intent, will extract the input arguments for the `add_candidate` tool, and will invoke it adding a new candidate to the list. The response from the MCP server will be a simple confirmation.
+
+![The agent confirming that a new candidate has been added to the HR system via the MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-04.png)
+
+You can double check the outcome by listing again the whole list of candidates. You can find `John Smith` as a new candidate at the end of the list.
+
+![The updated list of candidates retrieved from the HR system via the MCP Server. The newly added candidate with name John Smith is at the end of the list.](../../../assets/images/make/copilot-studio-06/mcp-test-05.png)
+
+You can also have fun with other prompts like:
+
+```text
+Update the candidate with email bob.brown@example.com to speak also French
+```
+
+or:
+
+```text
+Add skill "Project Management" to candidate bob.brown@example.com
+```
+
+or:
+
+```text
+Remove candidate bob.brown@example.com
+```
+
+The agent will invoke the right tools for you and will act accordingly to your prompts.
+
+Well done! Your agent is fully functional and capable of consuming all the tools exposed by the HR MCP server.
 
 <cc-end-step lab="mcs6" exercise="3" step="2" />
-
-### Step 3: Testing the agent with MCP integration
-
-Publish your agent by selecting **Publish** in the top right corner. Once published, test the agent using the conversation starters:
-
-**Test 1 - List All Candidates**:
-```text
-List all candidates in the database
-```
-
-The agent should use the MCP server's `list_candidates` tool and return a complete list of all candidates in your HR database.
-
-**Test 2 - Candidate Search**:
-```text
-Search for candidates with JavaScript skills
-```
-
-The agent should use the MCP server's `search_candidates` tool and return a list of candidates with JavaScript skills from your HR database.
-
-![Microsoft Copilot Studio agent test interface showing a successful candidate search query returning JavaScript developers from the MCP server.](../../../assets/images/make/copilot-studio-06/test-agent-01.png)
-
-**Test 3 - Add New Candidate**:
-```text
-Add a new candidate: John Smith, Software Engineer, skills: React, Node.js, email: john.smith@email.com
-```
-
-The agent should use the `add_candidate` tool to add the new candidate to the HR database.
-
-**Test 4 - Update Candidate**:
-```text
-Update candidate ID 1 with new email: newemail@example.com
-```
-
-The agent should use the `update_candidate` tool to modify the existing candidate information.
-
-**Test 5 - Remove Candidate**:
-```text
-Remove candidate ID 5 from the database
-```
-
-The agent should use the `remove_candidate` tool to delete the candidate from the HR database.
-
-![The agent successfully processing various HR requests using the MCP server tools, showing candidate listings, search results, additions, updates, and deletions with confirmation messages.](../../../assets/images/make/copilot-studio-06/test-agent-02.png)
-
-<cc-end-step lab="mcs6" exercise="3" step="3" />
-
-## Exercise 4 : Advanced MCP Integration Features
-
-In this exercise you will explore advanced MCP integration features and best practices for your HR Agent.
-
-### Step 1: Configuring advanced MCP settings
-
-Navigate back to your MCP server configuration in Copilot Studio and explore the advanced settings:
-
-**Connection Settings**:
-- Configure timeout settings for MCP tool calls
-- Set up retry policies for failed connections
-- Enable logging for debugging purposes
-
-**Security Configuration**:
-- Review authentication options if your MCP server requires it
-- Configure access permissions for different user roles
-- Set up data privacy and compliance settings
-
-![The advanced MCP configuration dialog showing timeout, retry, and security settings for the HR Candidate MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-advanced-01.png)
-
-<cc-end-step lab="mcs6" exercise="4" step="1" />
-
-### Step 2: Monitoring and performance optimization
-
-Monitor your MCP integration to ensure optimal performance:
-
-**Usage Analytics**:
-- Review which MCP tools are being used most frequently
-- Monitor response times for different tool calls
-- Analyze user interaction patterns with HR data
-
-**Performance Optimization**:
-- Optimize frequently used queries for faster responses
-- Consider caching strategies for static candidate data
-- Review and optimize tool parameter validation
-
-![The MCP analytics dashboard showing usage statistics, response times, and performance metrics for the HR candidate management tools.](../../../assets/images/make/copilot-studio-06/mcp-analytics-01.png)
-
-<cc-end-step lab="mcs6" exercise="4" step="2" />
-
-### Step 3: Extending functionality with custom prompts
-
-Enhance your HR Agent with more sophisticated conversation patterns:
-
-**Advanced Conversation Scenarios**:
-```text
-"List all candidates and show me their current status"
-
-"Search for Senior Frontend Developer candidates with React experience and 5+ years in the field"
-
-"Add a new candidate: Sarah Johnson, Full Stack Developer, skills: Python, Django, PostgreSQL, email: sarah.j@email.com"
-
-"Update candidate ID 3's status to 'Interview Scheduled' and add availability note"
-
-"Remove candidate ID 7 from the system as they've withdrawn their application"
-```
-
-**Custom Action Combinations**:
-Configure the agent to chain multiple MCP tool calls for complex workflows:
-- List candidates → Search specific criteria → Update status in a single conversation
-- Add candidate → Validate information → Update with additional details
-- Search candidates → Compare multiple candidates → Update or remove as needed
-
-![The agent configuration showing custom conversation patterns and chained MCP tool workflows for complex HR scenarios.](../../../assets/images/make/copilot-studio-06/advanced-conversations-01.png)
-
-<cc-end-step lab="mcs6" exercise="4" step="3" />
 
 ---8<--- "mcs-congratulations.md"
 
 You have completed Lab MCS6 - Consuming an MCP server!
-
-In this lab, you learned how to:
-
-- Connect to and configure an existing MCP server for HR candidate management
-- Set up a new HR Agent in Microsoft Copilot Studio  
-- Integrate MCP servers as knowledge sources in Copilot Studio
-- Map MCP tools to agent actions for seamless HR workflows
-- Test and validate the MCP integration with candidate data
-- Implement advanced features like monitoring and custom conversation patterns
-
-The Model Context Protocol provides a powerful way to extend Copilot Studio agents with external HR tools and candidate databases, enabling rich, context-aware conversations for recruiting and talent management.
 
 <!-- <cc-award path="Make" /> -->
 
