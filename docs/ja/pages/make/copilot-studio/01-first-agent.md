@@ -2,284 +2,292 @@
 search:
   exclude: true
 ---
-# ラボ MCS1 - 最初のエージェント
+# Lab MCS1 - First エージェント
 
-このラボでは、 Microsoft Copilot Studio を使用して最初のエージェントを作成します。作成するエージェントは、 HR ポリシーや従業員の採用・解雇プロセス、キャリアアップ、学習パスの設定に関する情報を ユーザー が探しやすくするものです。エージェントのナレッジ ベースとして、 SharePoint Online に保管されているドキュメントと公開 Web コンテンツを利用します。
+このラボでは、Microsoft Copilot Studio を使用して最初のエージェントを作成します。これから作成するエージェントは、ユーザーが採用またはレイオフの手続き、キャリア向上、学習パスの定義に関する人事ポリシーおよびプロセスの情報を見つけるのを支援します。  
+エージェントの知識ベースは、SharePoint Online に保存された一連のドキュメントと一部の公開 Web コンテンツとなります。
 
 このラボで学習する内容:
 
-- Copilot Studio でのエージェントの作成方法  
-- エージェントにカスタム アイコンを設定する方法  
-- エージェントのナレッジ ソースを構成する方法  
-- エージェントを Microsoft Teams に発行する方法  
+- Microsoft Copilot Studio を使用してエージェントを作成する方法
+- エージェント用のカスタムアイコンを設定する方法
+- エージェントの知識ソースを構成する方法
+- Microsoft Teams でエージェントを公開する方法
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要をご覧ください。</div>
+          <div>このビデオでラボの概要を手早くご確認いただけます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
     </div>
 </div>
 
+
 !!! pied-piper "注意事項"
-    これらのサンプルおよびラボは学習およびデモ目的で提供されています。運用環境で使用することを前提としていません。運用環境で使用する場合は、必ず本番品質にアップグレードしてください。
+    これらのコード例およびラボは、指導およびデモンストレーションの目的で提供されており、本番環境での使用を意図していません。本番品質にアップグレードせずに本番環境へ投入しないでください。
 
-## 演習 1 : Copilot Studio でのエージェント作成
+## エクササイズ 1 : Microsoft Copilot Studio でのエージェント作成
 
-最初の演習では、 Generative AI を利用して新しいエージェントを作成し、カスタム アイコンを設定し、テストを行います。
+最初のエクササイズでは、 Generative AI を使用し、求めるものを記述することで新しいエージェントを作成します。また、エージェントのカスタムアイコンを設定し、エージェントをテストします。
 
 ### 手順 1: 新しいエージェントの作成
 
-ブラウザーを開き、対象の Microsoft 365 テナントの職場アカウントで [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、 Microsoft Copilot Studio を起動します。
+新しいエージェントを作成するには、ブラウザーを開き、対象の Microsoft 365 テナントの作業用アカウントを使用して、[https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、 Microsoft Copilot Studio の使用を開始してください。
 
-画面左側の **Create** ボタンを選択します。以下のスクリーンショットを参照してください。
+画面左側の **Create** ボタンを選択します。以下のスクリーンショットに示されています。
 
-![The home page of Microsoft Copilot Studio with the **Create** button highlighted to create a new agent.](../../../assets/images/make/copilot-studio-01/make-agent-01.png)
+![Microsoft Copilot Studio のホームページ。新しいエージェントを作成するために **Create** ボタンがハイライトされています。](../assets/images/make/copilot-studio-01/make-agent-01.png)
 
-新しいエージェントを作成できるページにリダイレクトされます。 Copilot Studio では **New agent** を選択してゼロからエージェントを作成するか、あらかじめ用意されたテンプレートから開始できます。このラボではシンプルに **New agent** を選択します。
+新しいエージェントを作成するページにリダイレクトされます。 Copilot Studio では、 **New agent** オプションを選択してゼロから新しいエージェントを作成するか、事前定義済みで有用なエージェントテンプレートのセットからテンプレートを選択して作成するかが可能です。ここでは簡略化のため、このラボではゼロから作成するために **New agent** を選択します。
 
-![The **Create agent** page of Microsoft Copilot Studio with the **New agent** option highlighted to create a new agent from scratch.](../../../assets/images/make/copilot-studio-01/make-agent-02.png)
+![Microsoft Copilot Studio の **Create agent** ページ。ゼロから新しいエージェントを作成するために **New agent** オプションがハイライトされています。](../assets/images/make/copilot-studio-01/make-agent-02.png)
 
-デフォルトでは、 Copilot Studio に自然言語でエージェントの内容を説明できます。これは非常に便利で、求めている内容を記述するだけで Copilot Studio が入力を解析し、要件に合わせてエージェントを作成します。自然言語で説明したくない場合は **Skip to configure** を選択して手動設定も可能です。
+デフォルトでは、 Copilot Studio はエージェントがどのようなものであるかを自然言語で記述する方法をサポートします。これは、新しいエージェントを簡単に作成する非常に便利な方法です。なぜなら、求めるものを記述するだけで、 Copilot Studio が入力を処理し、ニーズに合わせたエージェントを作成してくれるからです。もし、自然言語でエージェントを記述する方法が好みでない場合は、常に **Skip to configure** を選択して、エージェントを手動で構成することもできます。
 
-![The **Create agent** page of Microsoft Copilot Studio when describing the agent behavior and capabilities with natural language.](../../../assets/images/make/copilot-studio-01/make-agent-03.png)
+![自然言語でエージェントの動作および能力を記述している Microsoft Copilot Studio の **Create agent** ページ。](../assets/images/make/copilot-studio-01/make-agent-03.png)
 
-このラボでは次の初期説明を入力してください。
+このラボでは以下の初期記述を提供できます:
 
 ```txt
 You are an agent helping employees to find information about HR policies and procedures,
 about how to improve their career, and about how to define learning pathways.
 ```
 
-Copilot Studio に名前を尋ねられたら、エージェントの名前として「 HR Agent」と入力します。その後、次の指示を与えて特定の情報を強調または除外させます。
+Copilot Studio からの要求があった場合は、カスタムエージェントに「HR Agent」という名前を付けてください。次に、 Copilot Studio に対し、以下の指示を提供し、特定の情報を強調または省略するように指示します:
 
 ```txt
 Emphasize everything that helps team building, inclusion, and the growth mindset
 ```
 
-さらに、エージェントのトーンをプロフェッショナルに設定するため、次の入力を行います。
+その後、以下の入力を提供してエージェントに専門的なトーンを定義します:
 
 ```txt
 It should have a professional tone
 ```
 
-Copilot Studio からデータ ソースを求められたら、次の指示を入力してください。
+Copilot Studio から要求があった際には、以下の指示を提供してエージェントの初期データソースを構成してください:
 
 ```txt
 Let's use this website: https://www.microsoft.com/en-us/human-resources
 ```
 
-サイトの所有者確認が必要です。
+組織が提供したサイトの所有権を有していることを確認する必要があります。
 
-![The message from Copilot Studio asking for confirmation that the current user's organization owns the provided website and that Bing search results can be used.](../../../assets/images/make/copilot-studio-01/make-agent-confirm-web-datasource-04.png)
+![現在のユーザーの組織が提供された Web サイトの所有権を持っており、 Bing 検索結果を使用できるか確認するように求める Copilot Studio からのメッセージ。](../assets/images/make/copilot-studio-01/make-agent-confirm-web-datasource-04.png)
 
 !!! pied-piper "重要"
-    このサンプル エージェントでは、データ ソースとして Microsoft の HR Web サイトの公開コンテンツを使用します。 Bing 検索結果を有効にするため、組織がこのデータ ソースを所有していることを確認する必要があります。ご自身のエージェントを作成する際は、実際に自社が所有する HR サイトの URL を指定してください。
+    このサンプルエージェントでは、データソースとして Microsoft の HR Web サイト上の一部の公開コンテンツを使用します。また、エージェントのデータソースとして提供するサイトの所有権を組織が有していることを確認する必要があります。
 
-画面右側には、 Copilot Studio に指示した内容に基づいて構成されたエージェントの機能と能力が常に表示されます。設定が完了したら、右上の **Create** ボタンを選択し、 Copilot Studio がエージェントを作成するまで待ちます。
+これで、エージェントの作成の準備は完了です。画面右側には、 Copilot Studio に提供した指示に基づいて構成されたエージェントの機能および能力の概要が常に表示されます。  
+画面右上の **Create** ボタンを選択し、 Copilot Studio がエージェントを作成するのを待ってください。
 
-エージェントが完成すると、次のような画面が表示されます。
+エージェントが準備完了になると、以下のような新しい画面が表示されます。
 
-![The page of Copilot Studio with the new agent just created and all the settings available for further refinement.](../../../assets/images/make/copilot-studio-01/make-agent-05.png)
+![新しいエージェントが作成され、今後さらに詳細な設定が可能な Copilot Studio のページ。](../assets/images/make/copilot-studio-01/make-agent-05.png)
 
-右側のテスト パネルでエージェントを試すか、 **Overview** タブの設定オプションでさらに微調整できます。
+これで、右側のテストパネルを使用してエージェントのテストを開始するか、または **Overview** タブ内の構成オプションを使用してエージェントの設定を微調整することができます。
 
 <cc-end-step lab="mcs1" exercise="1" step="1" />
 
-### 手順 2: エージェント アイコンの変更
+### 手順 2: エージェントのアイコンの変更
 
-**Overview** タブ右上の **Edit** ボタンを選択し、エージェントのアイコンを変更します。 **Details** セクションが編集モードに切り替わります。
+エージェントのアイコンを変更するために、まず **Overview** タブの右上にある **Edit** ボタンを選択してください。  
+以下の画面のように、 **Details** セクションが編集モードに切り替わります。
 
-![The **Details** panel of the agent in edit mode, where it is possible to update the Name, the icon, the description, and the instructions for the agent.](../../../assets/images/make/copilot-studio-01/make-agent-edit-06.png)
+![エージェントの **Details** パネル（編集モード）。ここでは、エージェントの名前、アイコン、説明、および指示を更新できます。](../assets/images/make/copilot-studio-01/make-agent-edit-06.png)
 
-演習 1 の入力内容が **Description** と **Instructions** に反映されていることが確認できます。
+手順 1 で提供した入力文が、エージェントの **Description** および **Instructions** フィールドに含まれているのがわかります。
 
-**Change icon** ボタンを選択してダイアログを開き、カスタム アイコンをアップロードします。必要であれば [こちらのアイコン](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/make/copilot-studio/HR-agent-color.png){target=_blank} を使用できます。
+**Change icon** ボタンを選択して、カスタムアイコンをアップロードするダイアログを表示してください。希望する場合は、[こちらのアイコン](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/make/copilot-studio/HR-agent-color.png){target=_blank} を利用できます。
 
-![The **Details** panel of the agent in edit mode, where it is possible to update the Name, the icon, the description, and the instructions for the agent.](../../../assets/images/make/copilot-studio-01/make-agent-change-icon-07.png)
+![エージェントの **Details** パネル（編集モード）。ここでは、エージェントの名前、アイコン、説明、および指示を更新できます。](../assets/images/make/copilot-studio-01/make-agent-change-icon-07.png)
 
-アップロードが完了したら **Save** を選択します。
+新しいアイコンのアップロードが完了したら、**Save** ボタンを選択してください。
 
 <cc-end-step lab="mcs1" exercise="1" step="2" />
 
 ### 手順 3: エージェントのテスト
 
-右側のテスト パネルでプロンプトを入力してエージェントをテストします。例として次のプロンプトを入力してください。
+エージェントをテストするには、右側のパネルに依存してプロンプトの入力を開始してください。たとえば、以下のプロンプトを提供してみます:
 
 ```txt
 What is our mission?
 ```
 
-次のスクリーンショットは、指定した Web サイトのコンテンツを基にエージェントが返した回答例です。
+以下のスクリーンショットでは、エージェントがデータソースとして提供された Web サイトの内容に基づいて回答を提供している様子が表示されています。
 
-![The **Test** panel with the interaction between the user, asking for 'What is our mission?', and the agent providing a response based on the actua content available on the data source, with direct references to the pages on the data source website.](../../../assets/images/make/copilot-studio-01/make-agent-test-08.png)
+![ユーザーが「What is our mission?」と尋ね、エージェントがデータソースのページへの直接参照を含む内容で応答した **Test** パネル。](../assets/images/make/copilot-studio-01/make-agent-test-08.png)
 
-エージェントはデータ ソースのページへの参照を示し、回答が Azure OpenAI によるものであることをハイライトしています。
+また、エージェントはデータソースとして提供された Web サイトのページへの参照を示し、回答が Azure OpenAI から生成されたものであることを強調しています。
 
 <cc-end-step lab="mcs1" exercise="1" step="3" />
 
-## 演習 2 : ナレッジ ベースの拡張
+## エクササイズ 2 : 知識ベースの拡張
 
-この演習では、 Microsoft SharePoint Online に保存されている Word と PDF のドキュメントを追加し、エージェントのナレッジ ベースを拡張します。
+このエクササイズでは、エージェントの追加の知識ベースとして、 Microsoft SharePoint Online に保存されたいくつかのドキュメント（Word および PDF）を追加します。
 
-### 手順 1: SharePoint Online ドキュメントの追加
+### 手順 1: SharePoint Online の知識ベースドキュメントの追加
 
-[こちらのリンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&filename=hr-documents){target=_blank} から複数ファイル（ Word、 PowerPoint、 PDF）を含む zip ファイルをダウンロードします。
+この [リンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&filename=hr-documents){target=_blank} を選択して、いくつかのファイル（Word、PowerPoint、PDF）からなる zip ファイルをダウンロードしてください。
 
-zip を展開し、同じテナントの SharePoint Teams サイトの **Documents** ライブラリにアップロードします。これらのドキュメントは Microsoft 365 Copilot により生成されたもので、エージェントに追加ナレッジを提供するためのものです。
+zip ファイルを解凍し、ファイルを Copilot Studio を使用してエージェントを作成している同じテナント内の SharePoint Teams サイトの **Documents** ライブラリにアップロードします。これらのドキュメントは、エージェントに追加の知識ベースを提供するために Microsoft 365 Copilot によって生成されたものです。
 
-サイトの絶対 URL（例: `https://xyz.sharepoint.com/sites/contoso`）をコピーします。
+サイトの絶対 URL をコピーしてください。たとえば: `https://xyz.sharepoint.com/sites/contoso`
 
-![The **Overview** tab of the agent with the **+ Add knowledge** button highlighted.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-01.png)
+![エージェントの **Overview** タブ内で **+ Add knowledge** ボタンがハイライトされている様子。](../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-01.png)
 
-先ほど作成したエージェントの **Overview** タブを開き、 **Knowledge** セクションまでスクロールします。演習 1 の手順 1 で設定した Web サイトが表示されているはずです。 **+ Add knowledge** を選択し、 SharePoint サイトとそのドキュメントを追加のナレッジ ソースとして登録します。
+以前作成したエージェントの **Overview** タブから、**Knowledge** セクションまでスクロールします。手順 1 のエクササイズで構成した Web サイトが表示されます。**+ Add knowledge** を選択して、SharePoint サイトとそのドキュメントを追加の知識ソースとして追加してください。
 
-![The dialog to configure additional knowledge for the agent. Options are public websites, SharePoint, Dataverse, or other advanced data sources.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-02.png)
+![エージェント用に追加知識を構成するためのダイアログウィンドウ。オプションとして、公開 Web サイト、SharePoint、Dataverse、またはその他の高度なデータソースがあります。](../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-02.png)
 
-ポップアップ ダイアログから以下のナレッジ ソースを追加できます。
+ポップアップするダイアログウィンドウから、以下のような追加の知識ソースを追加できます:
 
-- Files: ファイルを手動でアップロードし、ナレッジ ベースに追加  
-- Public websites: 追加の Web サイトを登録  
-- SharePoint: SharePoint Online のサイトまたはライブラリを構成  
-- Dataverse: Dataverse のテーブルを追加  
-- Advanced: Azure AI Search、 Azure SQL、 Microsoft Copilot Connectors、サードパーティ データ接続など  
+- Files: 知識ベースの一部となるファイルを手動でアップロードするため
+- Public websites: 追加の Web サイトを追加するため
+- SharePoint: SharePoint Online のサイトまたはライブラリを構成するため
+- Dataverse: Dataverse のテーブルを追加するため
+- Advanced: Azure AI Search、Azure SQL、Microsoft Copilot Connectors、またはサードパーティのデータ接続などのエンタープライズデータ接続を使用するため
 
-**SharePoint** を選択し、ファイルをアップロードしたサイトの URL を入力して **Add** を選択します。
+**SharePoint** を選択し、ポップアップするダイアログでファイルをアップロードしたサイトの URL を提供し、**Add** を選択してください。
 
-![The dialog to add a SharePoint data source. There is a **Browse files** button to search for specific files, a textbox to provide the URL of a site, and an **Add** button.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-03.png)
+![SharePoint データソースを追加するためのダイアログ。特定のファイルを検索するための **Browse files** ボタン、サイトの URL を入力するテキストボックス、そして **Add** ボタンがあります。](../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-03.png)
 
-SharePoint データ ソースを構成する際は **Name** と **Description** を指定する必要があります。意味のある名前と説明を付けることが重要です。これは Copilot Studio がデータ ソースの内容を理解しやすくし、今後のラボでジェネレーティブ オーケストレーションを有効にした際に、適切なデータ ソースを選択できるようにするためです。
+SharePoint データソースを構成する際には、 **Name** と **Description** を指定する必要があります。意味のある名前と説明を提供することは非常に重要です。実際、 Copilot Studio はデータソース内の内容をよりよく理解でき、今後のラボで生成型オーケストレーションを有効化する際に、ユーザーの入力に応じた適切なデータソースを識別できるようになります。
 
-![The dialog to add a SharePoint data source. There is a datasource selected with proper name and description.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-04.png)
+![適切な名前と説明が付与されたデータソースが選択されている SharePoint データソース追加用のダイアログ。](../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-04.png)
 
-画面下部の **Add** ボタンを選択し、 Copilot Studio が新しいナレッジ ベースを処理するまで待ちます。
+画面下部の **Add** ボタンを選択し、Copilot Studio が追加した新しい知識ベースを処理するのを待ちます。
 
-処理が完了すると、 **Overview** タブに公開 Web サイトと SharePoint Online サイトの両方が表示されます。
+知識ベースの更新が完了すると、**Overview** タブには公開 Web サイトと SharePoint Online サイトの両方が表示されます。
 
-![The **Knowledge** section of the **Overview** page with two data sources: the website and the SharePoint Online site.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-05.png)
+![**Overview** ページの **Knowledge** セクション。ウェブサイトと SharePoint Online サイトの 2 つのデータソースが表示されています。](../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-05.png)
 
 !!! warning "重要"
-    Copilot Studio で SharePoint Online サイトをナレッジ ベースとして構成した場合、 ユーザー はアクセス権を持つドキュメントの内容のみ取得できます。セキュリティとアクセス制御は Microsoft 365 のセキュリティ基盤により保証され、 Copilot Studio エージェントは現在の ユーザー の権限でドキュメントにアクセスします。
+    Copilot Studio のエージェントに知識ベースとして SharePoint Online サイトを構成する場合、ユーザーは自分がアクセス権を持つドキュメントからのみ回答およびコンテンツを取得できるようになります。セキュリティおよびアクセス制御は Microsoft 365 のセキュリティインフラストラクチャによって保証され、Copilot Studio エージェントは現在のユーザーの代理としてドキュメントにアクセスします。
 
 <cc-end-step lab="mcs1" exercise="2" step="1" />
 
-### 手順 2: 更新したエージェントのテスト
+### 手順 2: 更新されたエージェントのテスト
 
-右側のパネルで再度エージェントをテストします。例として次のプロンプトを入力してください。
+右側のパネルを使用してエージェントを再度テストできます。たとえば、以下のプロンプトを提供してみます:
 
 ```txt
 How can we hire new people in our company?
 ```
 
-エージェントは採用手続きに関する情報を SharePoint Online のドキュメントから参照して返答します。
+エージェントは、採用手続きに関する情報と、提供された SharePoint Online の知識ベースに保存されているドキュメントへの参照を含む情報で応答します。
 
-![The test panel with a conversation with the agent and a set of references to documents retrieved from the SharePoint Online knowledge base.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-06.png)
+![SharePoint Online の知識ベースから取得されたドキュメントへの参照を含む対話が行われているテストパネル。](../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-06.png)
 
-次に、参考までに以下のプロンプトを試してください。
+次に、完全性のため、以下のプロンプトもエージェントに提供してみてください:
 
 ```txt
 How can I cook spaghetti alla carbonara?
 ```
 
-HR とは無関係な質問でもエージェントが回答を返すことに気付くでしょう。もちろんスパゲッティ・アラ・カルボナーラを作ることもできますが 🍝 、これは本来の目的ではありません。エージェントは特定のトピックや領域に特化したアシスタントであるべきです。
+HR 関連のトピックに関係のないリクエストであっても、エージェントから回答が返されることにお気づきになるでしょう。もちろん、パスタがお好きな方は、スパゲッティ アッラ カルボナーラの調理法を尋ねることも可能です！🍝 しかし、ここで見受けられる挙動は、エージェントの本来の意図された動作とは必ずしも言えません。実際、エージェントは特定のトピックまたは分野に特化したアシスタントであるべきです。
 
 <cc-end-step lab="mcs1" exercise="2" step="2" />
 
 ### 手順 3: 一般知識の無効化
 
-エージェントをカスタム ナレッジ ベースのみに集中させたい場合は、 **General knowledge** を無効にします。右上の **Settings** を選択し、既定でアクティブな **Generative AI** タブを開き、 **Knowledge** セクションまでスクロールして「Use general knowledge」をオフにします。
+エージェントを独自の知識ベースに完全に専念させたい場合は、 **General knowledge** を無効にする必要があります。  
+右上の **Settings** コマンドを選択し、（デフォルトで有効になっている） **Generative AI** タブを有効にした後、**Knowledge** セクションまでスクロールし、以下のスクリーンショットに示されているように "Use general knowledge" オプションを無効にしてください。
 
-![The option to disable "AI general knowledge" when configuring the **Knowledge** of an agent in the agent **Settings**.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-01.png)
+![エージェントの **Settings** における **Knowledge** 設定中の "AI general knowledge" 無効化オプション。](../assets/images/make/copilot-studio-01/make-agent-general-knowledge-01.png)
 
-一般知識を無効にしたら、再度コンテキスト外の質問をしてみてください。
+一般知識が無効になった状態で、文脈とは全く関係のない内容をエージェントに再度尋ねてみてください。
 
-![The answer from the agent when asking something that is not related to its configured knowledge base.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-04.png)
-
-エージェントは該当する情報がない旨を適切に案内します。
+![エージェントがその構成された知識ベースに関連しない内容を尋ねられた際の応答。](../assets/images/make/copilot-studio-01/make-agent-general-knowledge-04.png)
 
 !!! note "一般知識に関する追加情報"
-    Microsoft Copilot Studio のエージェントが使用するナレッジ ソースの詳細は、 [こちらの記事](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-copilot-studio){target=_blank} を参照してください。
+    Microsoft Copilot Studio で作成したエージェントの知識ソースに関する追加情報は、[こちらの記事](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-copilot-studio){target=_blank} をご覧ください。
 
 <cc-end-step lab="mcs1" exercise="2" step="3" />
 
-## 演習 3 : エージェントの発行
+## エクササイズ 3 : エージェントの公開
 
-最後の演習では、作成したエージェントを Microsoft Teams に発行します。
+このラボの最終エクササイズでは、Microsoft Teams でカスタムエージェントを公開します。
 
-### 手順 1: Microsoft Teams への発行
+### 手順 1: Microsoft Teams でのエージェントの公開
 
-Copilot Studio でエージェントを発行するには、エージェント エディター右上の **Publish** ボタンを選択します。
+Copilot Studio で作成したエージェントを公開するには、エージェントエディターの右上にある **Publish** ボタンを選択する必要があります。
 
-![The button to publish an agent highlighted in the user interface of the agent editor.](../../../assets/images/make/copilot-studio-01/make-agent-publish-01.png)
+![エージェントエディターのユーザーインターフェース上で公開用のボタンがハイライトされています。](../assets/images/make/copilot-studio-01/make-agent-publish-01.png)
 
-確認ダイアログが表示されます。確定すると発行処理が始まり、「Publishing ...」メッセージが表示されます。発行により、エージェントはターゲットの Power Platform 環境に登録されますが、まだどのプラットフォームにも公開されていません。
+このコマンドを選択すると確認のプロンプトが表示されます。確認すると、公開プロセスにしばらく時間がかかり、その間 "Publishing ..." のメッセージが表示されます。エージェントの公開は、対象の Power Platform 環境に登録されますが、特定の対象プラットフォームで利用可能になるわけではありません。
 
-特定プラットフォーム（チャネル）で利用可能にするには、1️⃣ エージェント エディターの **Channels** タブを選択し、エージェントを公開するチャネルを選びます。たとえば、 Microsoft Teams にボットとして公開する場合は 2️⃣ **Teams + Microsoft 365** を選択します。
+エージェントを実際に特定の対象プラットフォーム（チャネル）で利用可能にするには、まず 1️⃣ エージェントエディターの **Channels** タブを選択し、次に 2️⃣ 対象チャネルとして**Teams + Microsoft 365** を選択する必要があります。たとえば、エージェントを bot として Microsoft Teams で公開するためには、**Teams + Microsoft 365** を対象チャネルとして選択してください。
 
-![The **Channels** tab where you can make an agent available in one or more channels. There is a list of available channels like "Telephony", "Teams + Microsoft 365", "Demo website", "Custom website", etc.](../../../assets/images/make/copilot-studio-01/make-agent-publish-02.png)
+![エージェントを 1 つ以上のチャネルで利用可能にするための **Channels** タブ。 "Telephony"、"Teams + Microsoft 365"、"Demo website"、"Custom website" などの利用可能なチャネルがリストされています。](../assets/images/make/copilot-studio-01/make-agent-publish-02.png)
 
-既定では、エージェントは Microsoft 認証（ Microsoft Entra ID）を使用するよう設定されています。そのため Teams、 Power Apps、 Microsoft 365 Copilot で利用できます。既定の認証設定では、警告メッセージが示すとおり Microsoft Teams のみ公開可能です。
+デフォルトでは、エージェントを作成し、デフォルトの設定で公開すると、エージェントは Microsoft 認証用に構成されます。つまり、エージェントは Teams、Power Apps、または Microsoft 365 Copilot で Microsoft Entra ID 認証に依存します。  
+デフォルトの認証設定では、警告メッセージが前述の **Channels** タブの上部に表示されていることからもわかるように、エージェントは Microsoft Teams にのみ公開できます。
 
-!!! note "Copilot Studio の認証モデル"
-    Copilot Studio エージェントの認証については [Configure user authentication in Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/configuration-end-user-authentication){target=_blank} を参照してください。
+!!! note "Copilot Studio 認証モデル"
+    Copilot Studio のエージェント認証に関する詳細は、[Configure user authentication in Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/configuration-end-user-authentication){target=_blank} のドキュメントをご覧ください。
 
 !!! note "Microsoft Copilot Studio の Premium ライセンス"
-    上記スクリーンショットにある情報バーはライセンス モデルと Premium ライセンス要件を示しています。 Premium コネクタなどを使用する場合はライセンスのアップグレードが必要です。学習目的であれば 60 日間の Premium 無料試用版を有効化できます。
+    上記のスクリーンショットには、ライセンスモデルおよび Premium ライセンスの潜在的な要件に関する情報バーも表示されています。実際、Copilot Studio のプレミアムコネクターなどのプレミアム機能を使用する場合は、ライセンスを適切にアップグレードする必要があります。幸いなことに、Microsoft Copilot Studio の学習およびテストを行うだけの場合、Premium ライセンスの 60 日間の無料トライアル期間を有効化することができます。
 
-**Teams + Microsoft 365** チャネルを選択するとサイド パネルが開き、 **Add channel** ボタンを押せます。
+**Teams + Microsoft 365** チャネルを選択すると、サイドパネルが表示され、**Add channel** ボタンを選択することができます。
 
-![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a button to **Add channel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-03.png)
+![Microsoft Teams チャネルを有効にするためのサイドパネル。現在の状態の説明と **Add channel** ボタンが表示されています。](../assets/images/make/copilot-studio-01/make-agent-publish-03.png)
 
-Teams チャネルを有効化すると、サイド パネルに確認メッセージとエージェント詳細の編集、 Microsoft Teams クライアントでのエージェント起動などのコマンドが表示されます。 **Availability options** ボタンから Teams での公開方法を確認できます。
+エージェントが Microsoft Teams チャネルで有効になると、サイドパネルが更新され、確認メッセージとともに、エージェントの詳細を編集するためのコマンドや、Microsoft Teams クライアントでエージェントを開くためのコマンドが表示されます。さらに、Microsoft Teams でエージェントへアクセスするためのさまざまなオプションを確認できる **Availability options** ボタンも表示されます。
 
-Microsoft 365 Copilot チャネルを登録した場合は **See agent in Microsoft 365** リンクから Microsoft 365 Copilot チャットでエージェントを利用できます。
+Microsoft 365 Copilot をサポートするチャネルを登録している場合は、Microsoft 365 Copilot チャットユーザーエクスペリエンスで直接エージェントにアクセスできる **See agent in Microsoft 365** リンクも選択できます。
 
-![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a couple of buttons to **Turn on Teams** and to **Cancel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-04.png)
+![Microsoft Teams チャネル有効化用のサイドパネル。現在の状態の説明と、**Turn on Teams** および **Cancel** の 2 つのボタンが表示されています。](../assets/images/make/copilot-studio-01/make-agent-publish-04.png)
 
-**Availability options** では次の操作が可能です。
+**Availability options** ボタンを選択すると、以下の操作が可能です:
 
-- Microsoft Teams でエージェントを開くリンクをコピー  
-- Teams アプリ ストア用の ZIP パッケージをダウンロード  
-- エージェントを Teams アプリ ストアに公開（組織全体または選択した ユーザー のみ）  
+- Microsoft Teams でエージェントを使用するためのリンクのコピー
+- Teams のアプリストアにアップロード可能なパッケージが含まれた ZIP ファイルのダウンロード
+- エージェントを Teams のアプリストアで利用可能にし、組織全体または選択されたユーザー向けに公開するオプションの選択
 
-![The side panel to see the availability options for the agent in Microsoft Teams. There are buttons to copy a link to the agent in Teams, to make the agent available in the Teams app store, and to download a zip with the agent package for sharing the agent on other tenants.](../../../assets/images/make/copilot-studio-01/make-agent-publish-05.png)
+![Microsoft Teams でのエージェントの利用オプションを表示するサイドパネル。Teams でのエージェントへのリンクコピー、Teams アプリストアでのエージェントの公開、および他テナントでエージェントを共有するためのエージェントパッケージの zip ファイルのダウンロードボタンが表示されています。](../assets/images/make/copilot-studio-01/make-agent-publish-05.png)
 
-これで Microsoft Teams へのエージェント発行が完了しました。
+Microsoft Teams でのエージェントの公開はこれで完了です。
 
 <cc-end-step lab="mcs1" exercise="3" step="1" />
 
-### 手順 2: Microsoft Teams でのエージェント テスト
+### 手順 2: Microsoft Teams でのエージェントのテスト
 
-**Availability options** パネルの **Copy link** を選択し、リンクをコピーします。ブラウザーの新しいタブを開き、リンクを貼り付けて ENTER を押します。
+これで、Microsoft Teams でエージェントのテストを行う準備が整いました。  
+**Availability options** パネルで **Copy link** ボタンを選択し、エージェントへのリンクをコピーしてください。次に、新しいブラウザータブを開き、コピーしたリンクを貼り付け、ENTER キーを押してその URL にアクセスします。
 
-![The dialog window showing the agent as a new app in Microsoft Teams. There is an extended description of the app and of the agent. There is also a button to **Add** the app to Microsoft Teams.](../../../assets/images/make/copilot-studio-01/make-agent-test-teams-01.png)
+![Microsoft Teams の新しいアプリとしてエージェントが表示されたダイアログウィンドウ。エージェントおよびアプリの詳細な説明が表示され、Microsoft Teams へアプリを追加するための **Add** ボタンもあります。](../assets/images/make/copilot-studio-01/make-agent-test-teams-01.png)
 
-Microsoft Teams クライアントが新しいアプリ（エージェント）を表示します。 **Add** を選択し、続くダイアログで **Open** をクリックします。
+最初は、Microsoft Teams クライアントにエージェントを表す新しいアプリが表示されます。  
+**Add** ボタンを選択してアプリをクライアントに追加し、次のダイアログで **Open** を選択してください。
 
-![The dialog window showing the agent as a new app in Microsoft Teams. There is an extended description of the app and of the agent. There is also a button to **Add** the app to Microsoft Teams.](../../../assets/images/make/copilot-studio-01/make-agent-test-teams-02.png)
+![Microsoft Teams の新しいアプリとしてエージェントが表示されたダイアログウィンドウ。エージェントおよびアプリの詳細な説明が表示され、Microsoft Teams へアプリを追加するための **Add** ボタンもあります。](../assets/images/make/copilot-studio-01/make-agent-test-teams-02.png)
 
-しばらくすると Teams クライアントにボットとのチャットが表示されます。次のようなプロンプトを入力してください。
+しばらくすると、Microsoft Teams クライアントにはボットとのチャットが表示されます。これは実際にはあなたのエージェントです。たとえば、これまでに使用したプロンプト:
 
 ```txt
 How can we hire new people in our company?
 ```
 
-エージェントは HR コンテキストの情報とナレッジ ベース内ドキュメントの参照を含めて回答します。
+を入力してください。
 
-![The dialog window showing the agent as a new app in Microsoft Teams. There is an extended description of the app and of the agent. There is also a button to **Add** the app to Microsoft Teams.](../../../assets/images/make/copilot-studio-01/make-agent-test-teams-03.png)
+回答を待つと、エージェントは HR の文脈および知識ベースのドキュメントへの参照を含む内容で応答します。
 
-回答の上部には「AI generated」である旨のディスクレーマーが表示され、 ユーザー に AI コンテンツであることを明示しています。
+![Microsoft Teams の新しいアプリとしてエージェントが表示されたダイアログウィンドウ。エージェントおよびアプリの詳細な説明が表示され、Microsoft Teams へアプリを追加するための **Add** ボタンもあります。](../assets/images/make/copilot-studio-01/make-agent-test-teams-03.png)
+
+また、回答の冒頭に「AI generated」という注意事項が表示され、ユーザーに AI プラットフォームを利用していることが明示されています。
 
 <cc-end-step lab="mcs1" exercise="3" step="2" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-これでエージェントは完全に機能し、 Microsoft Teams で使用できるようになりました。次のラボでは、動作をさらにカスタマイズし、微調整していきます。
+これで、エージェントは完全に機能し、Microsoft Teams で使用できる状態になりました。次のラボでは、エージェントの動作をカスタマイズおよび微調整することができます。
 
-<a href="../02-topics">ここから開始</a>して、 Lab MCS2 で Copilot Studio のトピックを定義しましょう。  
+<a href="/ja/pages/02-topics">Lab MCS2</a> から開始し、Microsoft Copilot Studio でエージェントのトピックを定義してください。
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/01-first-agent" />

@@ -2,130 +2,133 @@
 search:
   exclude: true
 ---
-# ラボ BTA1 - Teams AI ライブラリによる最初のカスタムエンジン エージェント
+# ラボ BTA1 – Teams AI ライブラリ を用いた初のカスタム エンジン エージェント
 
-このラボでは、Visual Studio Code 用 M365 Agents Toolkit を使用してカスタムエンジン エージェントを構築します。さらに、Azure OpenAI モデルをカスタムエンジン エージェントで利用し、最初のプロンプトを定義します。
+このラボでは Visual Studio Code 用 M365 Agents Toolkit を使用してカスタム エンジン エージェント を作成します。また、カスタム エンジン エージェント で Azure OpenAI モデル を利用し、最初のプロンプト を定義します。
 
-このラボで学習すること:
+このラボで行うこと：
 
-- カスタムエンジン エージェントとは何かを理解する  
-- Azure OpenAI サービスとデプロイメント モデルを作成する  
-- M365 Agents Toolkit でカスタムエンジン エージェントを作成する  
-- カスタムエンジン エージェントにプロンプトを定義する  
-- アプリを実行してテストする方法を学ぶ  
+- カスタム エンジン エージェント とは何かを学ぶ
+- Azure OpenAI サービス と デプロイメント モデル を作成する
+- M365 Agents Toolkit を使用してカスタム エンジン エージェント を作成する
+- カスタム エンジン エージェント にプロンプト を定義する
+- アプリ の実行 と テスト 方法 を学ぶ
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/Onk04pehtjE" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>動画でラボの概要を確認できます。</div>
+          <div>このビデオでラボ の概要 をすばやく把握してください。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
         ---8<--- "ja/b-labs-prelude.md"
     </div>
 </div>
 
-## 概要
+## 紹介
 
-カスタムエンジン エージェント構築の旅へようこそ! このコースでは、最新の Azure OpenAI モデルを活用し、Microsoft Teams 向けのカスタムエンジン エージェントを作成します。特定のプロンプトを定義し、複雑なデータを統合し、高度なスキルを追加して、真にユニークなエージェントを構築できます。カスタムモデルとオーケストレーションを利用することで、エージェントは高度なタスクや複雑な会話、ワークフローを処理し、卓越したパーソナライズ体験を提供します。それでは、最初のカスタムエンジン エージェントの構築を始めましょう!
+カスタム エンジン エージェント の構築というエキサイティングな旅へようこそ！このコースでは、最新の Azure OpenAI モデル を使用して Microsoft Teams 用 のカスタム エンジン エージェント を作成します。具体的なプロンプト を定義したり、複雑なデータ を統合したり、高度なスキル を追加したりすることで、エージェント を真にユニークなものにできます。カスタム モデル と オーケストレーション を活用することで、エージェント は高度なタスク、複雑な会話、およびワークフロー を実行し、卓越したパーソナライズされた体験 を提供いたします。それでは、早速初のカスタム エンジン エージェント の構築を始めましょう！
 
-???+ info "まずは思い出しましょう… カスタムエンジン エージェントとは?"
-    カスタムエンジン エージェントは、Generative AI を活用したチャットボットで、洗練された会話体験を提供します。Teams AI ライブラリを使用して構築され、プロンプト、アクション、モデル統合の管理をはじめ、UI カスタマイズの幅広いオプションなど、包括的な AI 機能を備えています。これにより、Microsoft プラットフォームに沿ったシームレスで魅力的な体験を実現しながら、AI のすべての機能を最大限に活用できます。
+???+ info "何よりも先に、念頭に置いておきたいこと… カスタム エンジン エージェント とは？"
+    カスタム エンジン エージェント は生成型 AI によって動作するチャットボットであり、洗練された会話体験 を提供することを目的としております。カスタム エンジン エージェント は Teams AI ライブラリ を使用して構築され、プロンプト、アクション、および モデル 統合 の管理、さらに UI カスタマイズ の豊富なオプション を提供いたします。これにより、チャットボット は Microsoft プラットフォーム に適合しながら AI の全機能 を活用し、シームレスで魅力的な体験 を実現いたします。
 
-## 演習 1: Azure OpenAI サービスとモデルの作成
+## 演習 1: Azure OpenAI サービス および モデル の作成
 
-この演習では、特に Azure OpenAI の GPT モデルをカスタムエンジン エージェントで作成・利用する方法を示します。ただし、カスタムエンジン エージェントは GPT モデルに限定されません。他のモデルでも自由にお試しいただけます。
+この演習では、カスタム エンジン エージェント で Azure OpenAI の GPT モデル を作成および活用する方法 を具体的に示します。ただし、カスタム エンジン エージェント は GPT モデル のみを利用する必要はなく、別のモデル で本ラボ を試すことも可能です。
 
-??? check "Small と Large Language Models の選び方"
-    Small Language Models (SLM) と Large Language Models (LLM)、および複数の GPT モデルを選択する際には、プロジェクトの複雑性、計算リソース、効率性といった特定のニーズを考慮することが重要です。  
+??? check "小規模言語モデル と 大規模言語モデル の選択"
+    小規模言語モデル（ SLMS ）と大規模言語モデル（ LLMs ）の選択、及び各種 GPT モデル の中から選ぶ際は、複雑さ、計算リソース、効率性 など、プロジェクト の具体的なニーズ を考慮することが重要です。
 
-    - **LLM:** 多くのパラメーターを持ち、人間の言語理解・生成に優れ、複雑で高度なタスクに最適です。GPT-4、LLaMA 2、BERT、PaLM などが例です。  
-      ***例:** 複雑な顧客問い合わせの対応、文脈を考慮した詳細回答、短いプロンプトから高品質な記事を生成、膨大な学術論文の要約と洞察抽出など。*
+    - **LLMs:** 複雑かつ精緻なタスク に最適で、数十億のパラメーター を有し、人間 の言語 の理解 や生成 に卓越しております。GPT-4、 LLaMA 2、 BERT、 PaLM などが例として挙げられます。  
+    ***Example scenarios:** 複雑な顧客からの問い合わせ の処理、詳細かつ文脈に即した回答 の提供、簡潔なプロンプト から高品質な記事 の生成、大量の学術論文 の要約、主要な知見 の抽出、詳細な質問 への回答。*
 
-    - **SLM:** パラメーター数が少なく、リソースが限られた環境で高速・効率的に動作します。Phi-3 (Microsoft)、ALBERT (Google)、DistilBERT (HuggingFace) などが例です。  
-      ***例:** クラウドリソース不要の効率的なテキスト解析、低遅延で正確に応答する音声コマンド、スマートホームの自然言語操作など。*
+    - **SLMs:** 手早く実行するタスク に向いており、パラメーター 数 が少なく、特定のタスク に最適化され、計算資源 が限られている環境 に適しております。Microsoft の Phi-3、Google の ALBERT、 HuggingFace の DistilBERT などが例です。  
+    ***Example scenarios:** クラウドリソース を必要とせず効率的なテキスト解析、最小限の遅延 で正確かつ応答性の高い音声コマンド の実現、自然言語 によるスマート ホーム の自動化 と制御。*
     
-    OpenAI の GPT シリーズは LLM の代表例です。モデル選定時の目安は次のとおりです。  
+    OpenAI の GPT モデル は大規模言語モデル の代表例 でございます。OpenAI のモデル を選択する際は、以下 の利点 をご考慮ください：
     
-    - **gpt-4:** 最も高度で、広範な理解と生成能力が必要なタスク向き。  
-    - **gpt-4o:** 特定タスクに最適化され、高速かつ効率的。  
-    - **gpt-35-turbo:** コストを抑えつつ良好な性能を提供し、幅広い用途に適します。  
+    - **gpt-4:** 最も先進的 なモデル で、非常に複雑なタスク に対し、広範な理解 と生成 能力 を要求する場合 に適しております。
 
-開始前に [Azure サブスクリプションの前提条件](./00-prerequisites.md#exercise-3-get-an-azure-subscription){target=_blank} を完了してください。
+    - **gpt-4o:** 特定のタスク に最適化されたバージョン で、該当分野 においてより高速かつ効率的なパフォーマンス を実現いたします。
 
-### 手順 1: Azure OpenAI サービス リソースの作成
+    - **gpt-35-turbo:** コスト を抑えながらも良好なパフォーマンス を提供するバランス の取れたモデル で、幅広い用途 に理想的でございます。
 
-???+ info "今後作成するモデルが Azure OpenAI サービスのリージョンで利用可能か確認してください"
-    [モデル一覧とリージョン対応表](https://learn.microsoft.com/ja-jp/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#model-summary-table-and-region-availability){target=_blank} を確認し、使用したいモデル (例: `gpt-4`) が、作成予定のリージョンで **Standard** または **Global Standard** タイプとして利用できることを確認してください。
+本演習を始める前に、[Azure subscription prerequisite](./00-prerequisites.md#exercise-3-get-an-azure-subscription){target=_blank} を完了してください。
 
-1. お好みのブラウザーで [Azure Portal](https://portal.azure.com) を開きます。  
-1. **Create a resource** を選択し、`Azure OpenAI` を検索します。Azure OpenAI サービスを選択して **Create** をクリックします。  
-1. 次の情報を入力し **Next** を選択します。  
-    - **Subscription:** 使用する Azure サブスクリプション  
-    - **Resource group:** リソースを含む Azure リソース グループ (新規作成または既存グループ)  
-    - **Region:** インスタンスのリージョン (選択モデルが利用可能なリージョンを指定)  
-    - **Name:** 例 `MyOpenAIResource` などのわかりやすい名前  
-    - **Pricing Tier:** 現在は `Standard` のみ  
-1. ネットワーク構成を選択し **Next** をクリックします。  
-1. Tags セクションはデフォルトのまま **Next** をクリックします。  
-1. 内容を確認し **Create** をクリックします。  
+### ステップ 1: Azure OpenAI サービス リソース の作成
 
-Azure OpenAI サービスが作成されたら、リソースの **Keys and Endpoint** を開き、`KEY 1` と `Endpoint` をコピーして保存してください。これは後の演習 2 で使用します。
+???+ info "以降のステップで作成したいモデル が選択した Azure OpenAI サービス リージョン に利用可能であること を確認してください"
+    特定のリージョン で Azure OpenAI サービス を作成する前に、[Model summary table and region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#model-summary-table-and-region-availability){target=_blank} をご確認ください。ご利用になりたい `gpt-4` などのモデル が、ご希望 のリージョン で **Standard** または **Global Standard** タイプ として提供されているか を必ずご確認ください。
+
+1. ご使用 のブラウザー を開き、[Azure Portal](https://portal.azure.com) にアクセスしてください。
+1. **Create a resource** を選択し、`Azure OpenAI` を検索します。Azure OpenAI サービス を選択の上、**Create** をクリックしてください。
+1. 以下 の詳細 を入力し、**Next** を選択してください:
+    - **Subscription:** Azure OpenAI サービス 用 の Azure subscription
+    - **Resource group:** Azure OpenAI リソース を含む Azure リソース グループ。新しいグループ を作成するか、既存 のグループ をご利用いただけます。
+    - **Region:** インスタンス のリージョン。（作成するリージョン でデプロイメントモデル が利用可能であること を確認してください。）
+    - **Name:** Azure OpenAI サービス リソース の説明的な名前。例: `MyOpenAIResource`
+    - **Pricing Tier:** リソース の価格プラン。現状、Azure OpenAI サービス では `Standard` タイア のみがご利用いただけます。
+1. ご希望 のネットワーク構成 を選択し、**Next** をクリックしてください。
+1. Tags セクション はそのままで、**Next** を選択してください。
+1. 最後に、Azure OpenAI サービス の詳細 をご確認の上、**Create** をクリックしてください。
+
+Azure OpenAI サービス の作成が正常に完了しましたら、リソース に移動し、左側 のパネル から **Keys and Endpoint** を選択してください。その後、後の演習 で必要となる `KEY 1` と `Endpoint` をコピーし保存してください。
 
 <cc-end-step lab="bta1" exercise="1" step="1" />
 
-### 手順 2: デプロイメント モデルの作成
+### ステップ 2: デプロイメント モデル の作成
 
-Azure OpenAI サービスで `Azure AI Foundry` に移動し、デプロイメント モデルを作成します。
+Azure OpenAI サービス 内で、`Azure AI Foundry` に移動し、デプロイメント モデル を作成してください。
 
-??? check "Azure AI Foundry とは?"
-    Azure AI Foundry は `gpt-35-turbo`、`gpt-4`、`Dall-e` などの OpenAI モデルを試せるプレイグラウンドです。ユースケースに合わせてプロンプトを作成し、モデルをファインチューニングできます。また、`Phi-3`、`Llama 3.1` など OpenAI 以外のモデルも扱え、Speech や Vision など他の Azure AI サービスへの入口にもなります。  
+??? check "Azure AI Foundry とは？"
+    Azure AI Foundry は、`gpt-35-turbo`、`gpt-4`、または `Dall-e` などの OpenAI モデル を試すためのプレイグラウンドであり、ユースケース に合わせたユニークなプロンプト の作成やモデル のファインチューニング を支援いたします。また、OpenAI 以外 のモデル、例えば `Phi-3` や `Llama 3.1`、さらには Speech、Vision などの他の Azure AI サービス を試すための出発点 としてもご利用いただけます。
 
-    *Generative AI とプロンプティングについては、Doodle to Code の動画もご覧ください!*  
+    *この Doodle to Code ビデオ をご覧いただき、生成型 AI と プロンプティング についてさらに学んでください！*
+    
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
-Azure AI Foundry で **Deployments** タブを開き **Deploy model** → **Deploy base model** を選択します。使用するモデル (例: `gpt-4`) を検索し **Confirm** をクリックします。次の情報を入力し **Deploy** をクリックします。  
+Azure AI Foundry で、**Deployments** タブ、**Deploy model**、および **Deploy base model** を順に選択してください。`gpt-4` などご希望 のモデル を検索し、**Confirm** をクリックしてください。以下 の詳細 を入力し、**Deploy** を選択してください:
 
-- **Deployment name:** 例 `gpt-4` のようにモデル名と同じ名前を推奨  
-- **Select a model:** `gpt-4` を選択  
-- **Deployment type:** Global Standard  
+- **Deployment name:** 選択したデプロイメント モデル と同一の名前 を使用することが推奨されます。例: `gpt-4`
+- **Select a model:** モデル を選択します。`gpt-4` が推奨されます。
+- **Deployment type:** Global Standard
 
-!!! tip "ヒント: No quota available メッセージへの対応"
-    モデル選択時に **No quota available** というメッセージが表示されることがあります。対処方法は 2 つあります。  
-    1. バージョンまたはデプロイメント タイプを変更する  
-    2. 他のデプロイメントのリソースを解放し、[クォータの追加申請や調整](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota){target=_blank} を行う  
+!!! tip "ヒント: 利用可能なクォータがない場合 の対応"
+    モデル を選択すると、設定ページ 上部 に **No quota available** というメッセージ が表示される場合がございます。これに対応するため、以下 の 2 つのオプション がございます:
+    1. 別のバージョン または デプロイメント タイプ を選択する
+    2. 他のデプロイメント で使用中 のリソース を解放するため、[追加クォータ の申請 または 既存クォータ の調整](https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota){target=_blank} を実施する
 
-モデルが作成されたら **Open in playground** を選択し、**Prompt samples** からプロンプトを一つ選んでテストできます。  
+モデル の作成が成功しましたら、**Open in playground** を選択し、上部 の **Prompt samples** から利用可能なプロンプト のいずれか を選択してテストしてください。
 
-例として "Shakespearean Writing Assistant" を選び **Use prompt** をクリックし、「tell me about Istanbul」など質問してみましょう。詩的で詳細な回答に驚くはずです ✍️  
+例えば、「Shakespearean Writing Assistant」を選択し、**Use prompt** をクリック。その後「tell me about Istanbul」 等の質問 を送信すると、記述的かつ詩的なスタイル の応答 に驚かれることでしょう ✍️。
 
-![Chat Playground でモデルをテストする Azure AI Foundry の UI。左に設定、右にチャット。「tell me about Istanbul」のプロンプトに長い詳細な返答が表示されている。](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
+![Azure AI Foundry の UI 。左側に設定項目、右側にチャット領域 があり、'tell me about Istanbul' のプロンプト に対して長文かつ詳細な回答 が表示されている様子。](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 <cc-end-step lab="bta1" exercise="1" step="2" />
 
-## 演習 2: テンプレートからカスタムエンジン エージェントを生成
+## 演習 2: テンプレート からカスタム エンジン エージェント のスキャフォールド作成
 
-開始前に必須の [前提条件](./00-prerequisites.md){target=_blank} をすべて完了してください。
+この演習を始める前に、すべての [必須 前提条件](./00-prerequisites.md){target=_blank} を完了してください。
 
-### 手順 1: M365 Agents Toolkit で新しいカスタムエンジン エージェントを作成
+### ステップ 1: M365 Agents Toolkit を使用して新しいカスタム エンジン エージェント を作成する
 
-1. Visual Studio Code で M365 Agents Toolkit を開き、**Create a New App** → **Custom Engine Agent** → **Basic AI Chatbot** を選択します。  
-1. プログラミング言語に **TypeScript**、Large Language Model に **Azure OpenAI** を選択します。  
-    1. Azure OpenAI のキーを貼り付け、Enter キーを押します。  
-    1. Azure OpenAI のエンドポイントを貼り付け、Enter キーを押します (URL 末尾にスラッシュを付けないでください)。  
-    1. Azure OpenAI のデプロイメント モデル名を入力し、Enter キーを押します。  
-1. プロジェクトのルート フォルダーを選択します。  
-1. プロジェクト名を `CareerGenie` などと入力し、Enter キーを押します。  
+1. Visual Studio Code で M365 Agents Toolkit を開き、**Create a New App** > **Custom Engine Agent** > **Basic AI Chatbot** を選択してください。
+1. プログラミング言語 として **TypeScript** を選択し、 大規模言語モデル として **Azure OpenAI** を選択してください。
+    1. Azure OpenAI の key を貼り付け、Enter キー を押してください。
+    1. Azure OpenAI の endpoint を貼り付け、Enter キー を押してください。（Endpoint には URL の末尾にフォワードスラッシュ が含まれていないこと をご確認ください。）
+    1. Azure OpenAI のデプロイメント モデル 名 を入力し、Enter キー を押してください。
+1. プロジェクト のルートフォルダー を選択してください。
+1. プロジェクト に `CareerGenie` などの名前 を指定し、Enter キー を押してください。
 
-以上の入力が完了すると、数秒でプロジェクトが生成されます。
+上記 のすべて の詳細 を入力すると、数秒でプロジェクト が正常にスキャフォールド作成されます。
 
 <cc-end-step lab="bta1" exercise="2" step="1" />
 
-### 手順 2: プロンプトをカスタマイズしてアプリをテスト
+### ステップ 2: プロンプト のカスタマイズ と アプリのテスト
 
-プロンプトは AI 言語モデルと対話し、その挙動を指示するために不可欠です。適切にプロンプトを作成することで、AI の出力を望む形へ導けます。それでは、Career Genie のプロンプトをカスタマイズし、エージェントの動作を定義しましょう。
+プロンプト は AI 言語モデル と対話し、その動作 を指示するための不可欠な入力（質問） です。プロンプト を慎重に作成することで、AI に目的 の出力 を生成 させるよう導くことが可能です。それでは、カスタム エンジン エージェント のプロンプト をカスタマイズし、CareerGenie の動作 を定義いたしましょう！
 
-プロジェクト フォルダーで `src/prompts/chat/skprompt.txt` を開き、既存のテキストを以下のプロンプトに置き換えます。
+プロジェクト フォルダー 内の `src/prompts/chat/skprompt.txt` に移動し、既存 のテキスト を次のプロンプト に置き換えてください:
 
 ```html
 You are a career specialist named "Career Genie" that helps Human Resources team for writing job posts.
@@ -134,36 +137,36 @@ You always greet users with excitement and introduce yourself first.
 You like using emojis where appropriate.
 ```
 
-動作を素早く確認するには、Teams App Test Tool を使用できます。本演習の後半では、Microsoft Teams 上でカスタムエンジン エージェントを実行・デバッグします。
+アプリ の動作 を迅速にテストするには、Teams App Test Tool をご利用いただけます。後ほどの演習 で、Microsoft Teams 上 でカスタム エンジン エージェント を実行 およびデバッグいたします。
 
-??? check "Teams App Test Tool について詳しく"
-    Teams App Test Tool (Test Tool) は、M365 Agents Toolkit に含まれる機能で、Microsoft Teams と同様の Web ベース チャット環境で Teams ボット アプリをデバッグ、テスト、改良できます。Microsoft 365 テナントや Dev トンネルを用意する必要がないため、開発プロセスが簡素化されます。
+??? check "Teams App Test Tool の詳細情報"
+    Teams App Test Tool（または単に Test Tool ） は、M365 Agents Toolkit 内 の機能 で、開発者 が Webベース のチャット環境 で Teams ボット アプリケーション をデバッグ、テスト、および改善 できるよう支援いたします。このツール は Microsoft Teams の動作、外観、および使い心地 を模倣しており、Microsoft 365 テナント や dev tunnel の必要 を排除し、開発プロセス を効率化 します。
 
-Visual Studio Code の **Run and Debug** タブで **Debug in Test Tool** を選択し、デバッグを開始します。ブラウザーに Teams App Test Tool が表示され、すぐにカスタムエンジン エージェントと対話できます。動作確認におすすめの質問例:
+Visual Studio Code の **Run and Debug** タブ を選択し、**Debug in Test Tool** をクリックしてアプリ のデバッグ を開始してください。Teams App Test Tool がブラウザー に表示され、直ちにカスタム エンジン エージェント とチャット を始めることが可能です。動作 をテストするための推奨質問 には、以下 などがございます：
 
-- 「Senior Developer 役職の求人票を書くのを手伝ってくれる？」  
-- 「Project Manager 役職に必要なスキル一覧は？」  
-- 「求人票のテンプレートを共有してくれる？」  
+- "Can you help me write a job post for a Senior Developer role?"
+- "What would be the list of required skills for a Project Manager role?"
+- "Can you share a job template?"
 
-![App Test Tool で Career Genie をテストする様子。Microsoft Teams に似た UI でチャットが行え、右側にはユーザーとボット間の詳細ログが表示されている。](../../../assets/images/custom-engine-01/teams-app-test-tool.png)
+![Teams App Test Tool で CareerGenie をテスト。実際の Microsoft Teams に近い UI が表示され、カスタム エンジン エージェント と対話可能なチャットエリアが含まれ、右側 にはユーザー とボット のやり取り の詳細ログ を示すログパネル が表示されています。](../../../assets/images/custom-engine-01/teams-app-test-tool.png)
 
-??? info "M365 Agents Toolkit が裏で行う処理"
-    デバッグ開始時、M365 Agents Toolkit は次のような必須タスクを自動で実行します。  
+??? info "M365 Agents Toolkit が内部で実行する処理"
+    アプリ のデバッグ を開始すると、M365 Agents Toolkit が内部で以下 の必要なタスク を自動的に実行いたします：
 
-    - Node.js、Microsoft 365 アカウント (ローカルまたは Dev でのデバッグ時)、ポート使用状況などの前提条件チェック  
-    - ローカル デバッグ時にパブリック URL をローカル ポートへ転送するトンネル サービスの起動  
-    - `teamsapp.yml`、`teamsapp.local.user`、`teamsapp.testtool.user` に記載のプロビジョン ライフサイクル ステージを実行し、Teams App ID の作成、ボット登録、アプリ マニフェストの実行、`appPackage/` フォルダーへのアプリ パッケージ作成を実施  
-    - `env/` フォルダー内の env ファイルに変数を作成または更新  
+    - Node.js、Microsoft 365 アカウント（ローカルまたは dev でデバッグする場合）およびポート使用状況 の確認。
+    - ローカルでのデバッグの場合、パブリック URL をローカルポート に転送するためのローカル トンネリング サービス の開始。
+    - Teams App ID の作成、ボット登録 の完了、アプリ マニフェスト の実行、さらに `appPackage/` フォルダー に格納されるアプリ パッケージ の作成のため、`teamsapp.yml`、`teamsapp.local.user`、または `teamsapp.testtool.user` ファイル 内 のライフサイクル ステージ provision の実行。
+    - `env/` フォルダー 内 の env ファイル への変数 の作成 または更新。
 
-テストが完了したら、デバッグ セッションを終了し、Visual Studio Code のターミナルも閉じてください。
+テスト が正常に完了しましたら、デバッグ セッション を終了し、Visual Studio Code のターミナル を閉じてください。
 
 <cc-end-step lab="bta1" exercise="2" step="2" />
 
 ---8<--- "ja/b-congratulations.md"
 
-Azure OpenAI と M365 Agents Toolkit を用いてカスタムエンジン エージェントを構築する Lab BTA1 を完了しました! さらに探求したい場合は、本ラボのソースコードを [Copilot Developer Camp リポジトリ](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie){target=_blank} でご覧いただけます。
+Azure OpenAI および M365 Agents Toolkit を用いてカスタム エンジン エージェント を構築するラボ、ラボ BTA1 – 初のカスタム エンジン エージェント が完了いたしました。さらに探求されたく存じます場合は、本ラボ のソースコード が [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab01-From-TTK-template/CareerGenie){target=_blank} にてご確認いただけます。
 
-次は Lab BTA2 - Azure AI Search でデータをインデクシングし、カスタムエンジン エージェントにデータを取り込む方法へ進みましょう。Next を選択してください。
+次は、ラボ BTA2 – Azure AI Search でデータ をインデックス化し、カスタム エンジン エージェント にデータ を取り込む の準備が整いました。次へ を選択してください。
 
 <cc-next url="../02-rag" />
 

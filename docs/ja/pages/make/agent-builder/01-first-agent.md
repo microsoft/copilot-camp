@@ -2,141 +2,135 @@
 search:
   exclude: true
 ---
-# Lab MAB1 - はじめてのエージェント構築
+# ラボ MAB1 - 初めてのエージェント構築
 
 ---8<--- "ja/mab-labs-prelude.md"
 
-このラボでは、Copilot Studio エージェント ビルダーを使ってシンプルな宣言型エージェントを作成します。作成するエージェントは、 ユーザー が家庭菜園を維持・改善するのをサポートするよう設計されています。エージェントのナレッジ ベースは SharePoint Online に保存されたドキュメントと公開 Web コンテンツに基づきます。また、エージェントはヒントを基に植物や花の名前を当てるゲームで ユーザー とやり取りすることもできます。
+このラボでは、 Copilot Studio エージェントビルダー を使用して、シンプルな宣言型エージェントを作成します。エージェントは、ユーザーがホームガーデンの維持や改善を支援するために設計されています。エージェントの知識ベースは、 SharePoint Online に保存された一連のドキュメントおよびパブリック Web コンテンツに基づいています。また、エージェントは、複数の手がかりに基づいて植物や花の名前を推測する楽しいゲームにユーザーを参加させることも可能です。
 
-このラボで学ぶ内容:
+本ラボで学ぶ内容:
 
-- Microsoft 365 Copilot の宣言型エージェントとは何か
-- Copilot Studio エージェント ビルダーで宣言型エージェントを作成する方法
-- 特定の instructions を使ってゲームを作成し、エージェントをカスタマイズする方法
-- SharePoint Online に保存されたドキュメントをナレッジ ベースとしてエージェントに設定する方法
-- エージェントで画像生成を有効にする方法
-- エージェントを他の人と共有する方法
-- エージェントを共有する方法を学ぶ
+- Microsoft 365 Copilot 用宣言型エージェントとは何か
+- Copilot Studio エージェントビルダー を使用して宣言型エージェントを作成する
+- 特定の指示を用いてゲームを作成するようにエージェントをカスタマイズする
+- SharePoint Online に保存された一連のドキュメントに基づいてエージェントを設定する
+- エージェントに画像生成機能を有効にする
+- エージェントを他の人と共有する
+- エージェントの共有方法を学ぶ
 
-## はじめに
+## 概要
 
-宣言型エージェントは、Microsoft 365 Copilot と同じスケーラブルなインフラストラクチャとプラットフォームを活用し、特定のニーズにフォーカスできるよう調整されています。これらは特定領域のエキスパートとして機能し、通常の Microsoft 365 Copilot チャットと同じインターフェースで利用しつつ、指定されたタスクにのみ集中させることができます。
+宣言型エージェントは、 Microsoft 365 Copilot と同じスケーラブルなインフラストラクチャおよびプラットフォームを活用し、特定のニーズに焦点を合わせるためにカスタマイズされています。特定分野の専門家として機能し、標準の Microsoft 365 Copilot チャットと同じインターフェイスを使用できる一方で、特定のタスクに専念します。
 
-宣言型エージェント作成の旅へようこそ ☺️！さっそく Copilot に魔法をかけましょう！
+宣言型エージェント作成の旅へようこそ ☺️！ Copilot を活用して魔法のような成果を生み出しましょう！
 
-まずは Copilot Studio エージェント ビルダーで宣言型エージェントを作成し、サンプルの instructions を追加します。
+本ラボでは、まず Copilot Studio エージェントビルダー を使用して宣言型エージェントを構築し、サンプルの指示セットを提供する方法を学びます。次に、エージェントを植物や花の名前を当てるゲームに特化するように変更します。さらに、エージェントに SharePoint Online に保存されたファイルを参照させ、仮想の知識ベースとします。最後に、エージェントを組織内の他の人と共有します。
 
-次に、植物や花の名前を当てるゲームにフォーカスするようエージェントを改良します。
+![ユーザーからのいくつかの推測が表示された Gardener エージェントの初期の UI](../../../assets/images/make/agent-builder-01/gardener-agent.gif)
 
-さらに、SharePoint Online に保存したファイルをナレッジ ベースとしてエージェントに提供します。
+## 演習 1：宣言型エージェント作成
 
-最後に、エージェントを組織内の他の人と共有します。
+始めましょう！ 💪🏼 Copilot Studio エージェントビルダー を使用して、最初からエージェントを作成します。
 
-![The initial UI of the Gardener agent with a couple of guesses from the user.](../../../assets/images/make/agent-builder-01/gardener-agent.gif)
+### ステップ 1：エージェントの説明
 
-## エクササイズ 1: 宣言型エージェントの作成
+Copilot Studio エージェントビルダー を使用して宣言型エージェントを作成するには、[Microsoft 365 Copilot チャット ホームページ](https://www.microsoft365.com/copilot){target=_blank} を開き、右側のパネルにある利用可能なエージェントの一覧から **Create an agent** を選択してください。
 
-さあ始めましょう！💪🏼 まずは Copilot Studio エージェント ビルダーでエージェントをゼロから作成します。
+![『Create an agent』コマンドが強調表示された Microsoft 365 Copilot チャット](../../../assets/images/make/agent-builder-01/create-agent-01.png)
 
-### Step 1: エージェントを説明する
-
-Copilot Studio エージェント ビルダーで宣言型エージェントを作成するには、[Microsoft 365 Copilot チャット ホーム ページ](https://www.microsoft365.com/copilot){target=_blank} を開き、右側のパネルにある **Create an agent** を選択します。そこには利用可能なエージェントの一覧が表示され、下図のようになります。
-
-![Microsoft 365 Copilot Chat with the 'Create an agent' command highlighted.](../../../assets/images/make/agent-builder-01/create-agent-01.png)
-
-Copilot Studio エージェント ビルダーが表示されたら、カスタム エージェントを定義します。テンプレートから開始することも、自然言語でエージェントを *説明* することもできます。**Configure** オプションを選んで手動で設定することもできますが、それは後ほど行います。まずは次の説明を入力してください。
+Copilot Studio エージェントビルダー がポップアップし、カスタムエージェントの定義を開始できます。テンプレートから開始することも、単に自然言語でエージェントを *describe* することも可能です。手動でエージェントを構成するために **Configure** オプションを選択することもできますが、それは後ほど行います。最初に次の初期説明を入力してください:
 
 ```txt
 You are an expert gardener and you help users to maintain and improve their home garden
 providing detailed instructions and advice about the best practices for home gardening.
 ```
 
-![The user experience of the Copilot Studio agent builder. On the lower left side there is a textbox that you can use to provide instructions to the agent builder, while on the right side there is a preview of the agent.](../../../assets/images/make/agent-builder-01/create-agent-02.png)
+![Copilot Studio エージェントビルダー のユーザー体験。左下にエージェントビルダーへ指示を入力するためのテキストボックスがあり、右側にはエージェントのプレビューが表示されています。](../../../assets/images/make/agent-builder-01/create-agent-02.png)
 
-instructions を入力すると、エージェント ビルダーから新しいエージェントの名前を尋ねられます。名前に *Gardener* と入力してください。エージェント ビルダーと対話している間、ダイアログの右側にはエージェントのプレビューが表示され、会話のスターターも提案されます。さらに instructions の詳細化を求められたら、次の文章を入力します。
+指示を入力すると、エージェントビルダーから新しいエージェントの名前の入力を求められます。*Gardener* という名前を入力してください。エージェントビルダーとの対話中、ダイアログの右側にエージェント本体のプレビューやいくつかの会話のスターターが表示されます。エージェントビルダーがさらに指示の精査を求めた場合は、次の文章を入力してください。
 
 ```txt
 Suggest ways to keep plants and flowers shining and gorgeous
 ```
 
-![The user experience of the Copilot Studio agent builder. On the lower left side there is the interaction with the agent builder, while on the right side there is a preview of the agent.](../../../assets/images/make/agent-builder-01/create-agent-03.png)
+![Copilot Studio エージェントビルダー のユーザー体験。ダイアログの左下にエージェントビルダーとのやり取りが表示され、右側にはエージェントのプレビューが表示されています。](../../../assets/images/make/agent-builder-01/create-agent-03.png)
 
-エージェント ビルダーが必要な情報をすべて取得できるまで対話を続けます。強調すべきポイントを尋ねられたら、次の文章を入力してください。
+エージェントの作成に必要な全ての情報が入力されるまで、エージェントビルダーと対話を続けてください。もし、エージェントビルダーからどの点を強調すべきか尋ねられたら、次の文章を入力してください。
 
 ```txt
 Highlight the importance of nature and plants/flowers to be present in every house!
 ```
 
-エージェントの話し方を尋ねられたら、次の文章を入力します。
+エージェントの話し方についてエージェントビルダーから尋ねられた場合は、次の文章で回答してください。
 
 ```txt
 Use a professional, yet friendly, tone.
 ```
 
-最後に追加の調整がないことを伝え、画面右上の **Create** ボタンを選択します。
+最後に、これ以上の修正は不要であると伝え、画面右上の **Create** ボタンを選択してください。
 
-![The user experience of the Copilot Studio agent builder with the 'Create' button highlighted.](../../../assets/images/make/agent-builder-01/create-agent-04.png)
+![『Create』ボタンが強調表示された Copilot Studio エージェントビルダー のユーザー体験](../../../assets/images/make/agent-builder-01/create-agent-04.png)
 
-Copilot Studio エージェント ビルダーが、提供された instructions に基づいて新しいエージェントを作成します。
+Copilot Studio エージェントビルダー は、入力された指示に基づいて新しいエージェントを作成します。
 
 <cc-end-step lab="mab1" exercise="1" step="1" />
 
-### Step 2: エージェントをテストする
+### ステップ 2：エージェントのテスト
 
-エージェントが準備できると、エージェントへのリンクと組織内の他の人と共有するリンクを含むポップアップ ダイアログが表示されます。
+エージェントが準備完了になると、エージェントへのリンクと組織内の他の人とエージェントを共有するためのリンクが表示されたポップアップダイアログが表示されます。
 
-![The dialog confirming the creation of the new 'Gardener' agent, providing a link to the agent and actions to share the agent.](../../../assets/images/make/agent-builder-01/create-agent-05.png)
+![‘Gardener’ エージェントの作成を確認するダイアログ。エージェントへのリンクとエージェントを共有するためのアクションが提供されています。](../../../assets/images/make/agent-builder-01/create-agent-05.png)
 
-**Go to agent** ボタンを選択すると、作成したエージェントのユーザー エクスペリエンスが開きます。
+**Go to agent** ボタンを選択してください。すると、作成したばかりの新しいエージェントの実際のユーザー体験へと案内されます。
 
-![The user experience of the 'Gardener' agent that you have just created. There is the name of the agent at the top of the screen, followed by a set of conversation starters generated by the Copilot Studio agent builder, and then the textbox to provide a new prompt to the agent.](../../../assets/images/make/agent-builder-01/create-agent-06.png)
+![作成した ‘Gardener’ エージェントのユーザー体験。画面上部にエージェントの名前が表示され、 Copilot Studio エージェントビルダー で生成された会話のスターターが続き、その下にエージェントへ新たなプロンプトを入力するテキストボックスが表示されています。](../../../assets/images/make/agent-builder-01/create-agent-06.png)
 
-エージェントと対話を始めるには、最初の推奨プロンプトをクリックし、エージェントの応答を確認します。これでエージェントが完成しました。おめでとうございます！
+エージェントとの対話を開始するには、最初の提案されたプロンプトをクリックし、エージェントからの応答を確認してください。これでエージェントの準備は完了です。おめでとうございます！
 
-![The user experience of the 'Gardener' agent in action. There is a prompt at the top of the left side of the screen and the response from Microsoft 365 Copilot. On the right side there are the available agents and the recent chats.](../../../assets/images/make/agent-builder-01/create-agent-07.png)
+![動作中の ‘Gardener’ エージェントのユーザー体験。画面左上にプロンプトが表示され、 Microsoft 365 Copilot からの応答が表示されています。右側には利用可能なエージェントと最近のチャットが表示されています。](../../../assets/images/make/agent-builder-01/create-agent-07.png)
 
 <cc-end-step lab="mab1" exercise="1" step="2" />
 
-## エクササイズ 2: エージェントのカスタマイズ
+## 演習 2：エージェントのカスタマイズ
 
-次はエージェントを少しカスタマイズします。カスタム アイコンを追加し、植物や花の名前を当てるゲームのルールを定義します。
+ここでエージェントを少しカスタマイズします。カスタムアイコンを追加し、植物または花の名前を当てるゲームのルールを定義します。
 
-Microsoft 365 Copilot Chat の右上にある **New chat** ボタンで新しいチャットを開始し、先ほどと同様に右側の **Create an agent** を選択します。
-先ほど使用したのと同じダイアログが表示されます。今回は、ダイアログ左上の **Copilot Studio** ロゴの横にある **My Copilot Agent** ドロップダウンを選択し、**View all agents** を選択して Copilot Studio エージェント ビルダーで作成したエージェント一覧を表示します。
+Microsoft 365 Copilot チャットのユーザーインターフェイス右上にある **New chat** ボタンを選んで最初から開始します。前回と同様に、画面右側の **Create an agent** コマンドを選択してください。最初のエージェントを作成する際に使用したのと同じダイアログが表示されます。今回は、ダイアログの左上にある **Copilot Studio** ロゴのすぐ横にあるエージェント名 **My Copilot Agent** のドロップダウンを選択し、そこから **View all agents** を選択して、Copilot Studio エージェントビルダー で作成したエージェントの全一覧を確認してください。
 
-![The user experience of Copilot Studio agent builder when editing an already existing agent. There is a command in the upper left side of the dialog to view all the agents that you already defined.](../../../assets/images/make/agent-builder-01/update-agent-01.png)
+![既存のエージェントを編集する際の Copilot Studio エージェントビルダー のユーザー体験。既に定義済みのエージェントを全て表示するコマンドがダイアログの左上にあります。](../../../assets/images/make/agent-builder-01/update-agent-01.png)
 
-作成したエージェントの一覧が表示されます。
+作成したエージェントの全一覧が表示された新しいダイアログが開きます。
 
-![The user experience of Copilot Studio agent builder when showing the list of agents. There is the 'Gardener' agent highlighted with a list of action to edit, share, download, and delete the agent.](../../../assets/images/make/agent-builder-01/update-agent-02.png)
+![エージェント一覧が表示された Copilot Studio エージェントビルダー のユーザー体験。‘Gardener’ エージェントが強調表示され、編集、共有、ダウンロード、削除のアクションが一覧化されています。](../../../assets/images/make/agent-builder-01/update-agent-02.png)
 
-各エージェントに対して、編集・共有・ダウンロード・削除のコマンドがあります。
+各エージェントには、編集、共有、ダウンロード、削除の各コマンドが用意されています。
 
-### Step 1: カスタム アイコンを設定する
+### ステップ 1：カスタムアイコンの提供
 
-先ほど作成した **Gardener** エージェントを編集します。ダイアログは **Configure** パネルから始まります。ラボのエクササイズ 1 で入力した説明がエージェントの個別設定になっていることを確認できます。
-設定できる項目:
+先ほど作成した **Gardener** エージェントを編集しましょう。ダイアログは **Configure** パネルがアクティブな状態で開始されます。構成設定を確認すると、本ラボの演習 1 で入力したすべての説明が現在エージェントの具体的な設定として反映されているのがわかります。
 
-- **Icon**: エージェントのアイコンをカスタマイズ
-- **Name**: エージェントの名前
-- **Description**: エージェントの説明
-- **Instructions**: エージェントの system prompt。システム ロールと動作ルールを定義
-- **Knowledge**: ナレッジ ベースの設定
-- **Actions**: 執筆時点では開発中
-- **Capabilities**: コード解釈や画像生成などの機能を有効化
-- **Starter prompts**: エージェント用のスターター プロンプトを最大 6 件設定
+定義できる構成設定は以下の通りです:
 
-アイコンをカスタマイズするには、既定のアイコン横にある編集ボタンを選択します。
+- **Icon**：エージェントのアイコンをカスタマイズするため
+- **Name**：エージェントの名前を指定するため
+- **Description**：エージェントの説明を定義するため
+- **Instructions**：エージェントのシステムプロンプトであり、システムプロンプトでシステムロール及び動作規則を定義します
+- **Knowledge**：エージェント用の各種知識ベースを設定するため
+- **Actions**：（本稿作成時点では開発中のセクションです）
+- **Capabilities**：コードの解釈や画像生成などの機能を有効にするため
+- **Starter prompts**：最大 6 つのスタータープロンプトをエージェント用に設定するため
 
-ダイアログが表示され、アイコンと背景色を変更できます。サンプル アイコンを [こちら](https://github.com/microsoft/copilot-camp/blob/main/src/make/agent-builder/color.png) からダウンロードしてアップロードしてください。背景色は RGB 値 #F1F1F1 を設定します。
+エージェントのアイコンをカスタマイズするには、デフォルトのアイコンのすぐ横にある編集ボタンを選択してください。
 
-![The dialog to update the icon and background color for the agent. There is the icon, a button to upload a new icon, and another button to set the background color. In the lower right corner there are buttons to save or cancel.](../../../assets/images/make/agent-builder-01/update-agent-03.png)
+ダイアログが表示され、アイコンとアイコンの背景色を変更できます。便利なように、[こちら](https://github.com/microsoft/copilot-camp/blob/main/src/make/agent-builder/color.png)からサンプルアイコンをダウンロードし、エージェント用のカスタムアイコンとしてアップロードできます。また、背景色は次の RGB 値を使用して定義できます： #F1F1F1.
+
+![エージェントのアイコンと背景色を更新するためのダイアログ。アイコン、アイコンをアップロードするためのボタン、背景色を設定するための別のボタンがあり、右下に保存またはキャンセルのボタンが配置されています。](../../../assets/images/make/agent-builder-01/update-agent-03.png)
 
 <cc-end-step lab="mab1" exercise="2" step="1" />
 
-### Step 2: 植物／花当てゲームのルールを定義する
+### ステップ 2：植物・花名推測ゲームのルール定義
 
-引き続きエージェントの設定を編集し、**Instructions** フィールドの内容を次の値に更新します。
+エージェントの設定編集中に、**Instructions** 構成フィールドの内容を次の値に更新してください。
 
 ```txt
 You are an expert gardener and you help users to maintain and improve their home garden
@@ -158,91 +152,95 @@ on a set of clues. Always end every answer with a sentence to engage the user to
 game or another round of the game.
 ```
 
-![The dialog with the agent settings updated accordingly to the lab instructions and with the 'Update' button highlighted.](../../../assets/images/make/agent-builder-01/update-agent-04.png)
+![本ラボの指示に従ってエージェント設定が更新されたダイアログ。『Update』ボタンが強調表示されています。](../../../assets/images/make/agent-builder-01/update-agent-04.png)
 
-画面右上の **Update** ボタンを選択します。更新には少し時間がかかります。完了後 **Go to agent** を選択し結果を確認します。エージェントにリクエストを送ると、ゲームに参加するよう促されることを確認してください。
+設定ダイアログの右上にある **Update** ボタンを選択してください。更新にはしばらく時間がかかりますが、完了したら **Go to agent** を選択して最終結果を確認できます。特に、エージェントにリクエストを送信して、エージェントがゲームに参加するよう促すことを確認してください。
 
-![The updated agent with the new icon and the final sentence to engage the user to play the game highlighted.](../../../assets/images/make/agent-builder-01/update-agent-05.png)
+![新しいアイコンと、ユーザーにゲームへの参加を促す最終文が強調表示された更新済みエージェント。](../../../assets/images/make/agent-builder-01/update-agent-05.png)
 
-参考までに、エージェントと植物名を当てるやり取りの例を示します。
+参考までに、植物の名前を推測する際のエージェントとのサンプルダイアログを以下に示します。
 
-![A sample interaction between the user and the agent while guessing the name of a plant.](../../../assets/images/make/agent-builder-01/update-agent-06.png)
+![植物の名前を推測する際の、ユーザーとエージェント間のサンプル対話。](../../../assets/images/make/agent-builder-01/update-agent-06.png)
 
 <cc-end-step lab="mab1" exercise="2" step="2" />
 
-## エクササイズ 3: SharePoint Online ナレッジ ベースの追加
+## 演習 3：SharePoint Online 知識ベースの追加
 
-このエクササイズでは、Word ドキュメントを **Gardener** エージェントの追加ナレッジ ベースとして設定します。
+本演習では、**Gardener** エージェントの追加の知識ベースとして、いくつかの Word ドキュメントを追加します。
 
-### Step 1: ナレッジ ベース ドキュメントのアップロード
+### ステップ 1：知識ベースドキュメントのアップロード
 
-まずは、カスタム ナレッジ ベースとして植物や花に関する情報が記載された Microsoft Word ドキュメントをアップロードします。
+では、植物や花に関する特定の情報が記載された Microsoft Word ドキュメントなど、カスタム知識ベースのコンテンツを追加しましょう。
 
-この [リンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/agent-builder/sharepoint-docs&filename=sharepoint-docs) から 4 つの DOCX ファイルを含む zip ファイルをダウンロードしてください。
+この [リンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/agent-builder/sharepoint-docs&filename=sharepoint-docs) を選択して、4 つの DOCX ファイルが含まれた zip ファイルをダウンロードしてください。
 
-zip を展開し、同じテナントの SharePoint Teams サイトにアップロードします。ドキュメント ライブラリ **Documents** に配置してください。
-ファイルは **Basic Aspects of Gardening and Maintaining a Healthy Garden.docx**、**Common Plants List.docx**、**Healing a Plant in Your Garden**、**The Most Common Types of Plants in a Home Garden.docx** です。これによりエージェントがより専門的になり、ゲームも難しくなります。
+zip ファイルから 4 つのファイルを抽出し、このラボをテストしているテナント内の SharePoint Teams サイトにアップロードしてください。ファイルはドキュメントライブラリ **Documents** に配置します。
 
-サイトの絶対 URL（例: `https://xyz.sharepoint.com/sites/contoso`）をコピーし、次のステップへ進みます。
+これらのドキュメントは **Basic Aspects of Gardening and Maintaining a Healthy Garden.docx**、**Common Plants List.docx**、**Healing a Plant in Your Garden**、および **The Most Common Types of Plants in a Home Garden.docx** であり、エージェントの専門性を高め、ゲームをより難しくするためのものです。
+
+サイトの絶対 URL（例： `https://xyz.sharepoint.com/sites/contoso` ）をコピーし、次のステップに進んでください。
 
 <cc-end-step lab="mab1" exercise="3" step="1" />
 
-### Step 2: SharePoint Online ドキュメントのサポートを追加
+### ステップ 2：SharePoint Online ドキュメントのサポート追加
 
-エージェント一覧に戻り、**Gardener** エージェントを編集して **Knowledge** セクションまでスクロールします。SharePoint ナレッジ ベースのフィールドに先ほどコピーした SharePoint Online サイトの URL を貼り付けます。もしくは **Browse** ボタンからテナント内のサイトを検索することもできます。
+エージェント一覧に戻り、**Gardener** エージェントを編集して、**Knowledge** タイトルの設定セクションまでスクロールします。SharePoint Online サイトの URL を、SharePoint 知識ベースを提供するためのフィールドに貼り付けてください。URL を貼り付ける代わりに、**Browse** ボタンを選択してテナント内でサイトを検索することも可能です。
 
-![The configuration dialog of the agent with the 'Knowledge' section and the 'SharePoint' URL field highlighted.](../../../assets/images/make/agent-builder-01/update-agent-07.png)
+![『Knowledge』セクションおよび『SharePoint』 URL フィールドが強調表示されたエージェントの設定ダイアログ。](../../../assets/images/make/agent-builder-01/update-agent-07.png)
 
-エージェントを更新して再度対話すると、カスタム ナレッジ ベースに基づいたより専門的な回答を得られるようになります。
+エージェントを更新し、再度対話してください。提供されたカスタム知識ベースに基づいた、より専門的な応答が得られるようになります。
 
 <cc-end-step lab="mab1" exercise="3" step="2" />
 
-## エクササイズ 4: エージェントの最終仕上げ
+## 演習 4：エージェントの最終調整
 
-このエクササイズでは、**Gardener** エージェントに画像生成機能を追加し、同僚と共有します。
+本演習では、**Gardener** エージェントに画像生成機能を追加し、同僚と共有します。
 
-### Step 1: 画像生成機能を追加する
+### ステップ 1：画像生成機能の追加
 
-再度 **Gardener** エージェントを編集し、設定パネルを下にスクロールして **Capabilities** セクションを探します。**Image generator** オプションを有効にしてエージェントを更新します。
+再度 **Gardener** エージェントを編集し、設定パネルを下にスクロールして **Capabilities** セクションを見つけます。**Image generator** オプションを有効にし、エージェントを更新してください。
 
-![The configuration dialog of the agent with the 'Capabilities' section and the 'Image generator' option selected and highlighted.](../../../assets/images/make/agent-builder-01/update-agent-08.png)
+![『Capabilities』セクションで **Image generator** オプションが選択され強調表示されたエージェントの設定ダイアログ。](../../../assets/images/make/agent-builder-01/update-agent-08.png)
 
-エージェントを再読み込みし、次のプロンプトを入力します。
+エージェントを再読み込みし、次のプロンプトを入力してください:
 
 ```txt
 Generate the image of a dozen of red roses
 ```
 
-以下の画像は生成された結果例です。
+以下の画像では、生成された画像を含む出力が確認できます。
 
-![The 'Gardener' agent with the answer to a prompt that generated an image of a dozen of red roses.](../../../assets/images/make/agent-builder-01/update-agent-09.png)
+![プロンプトへの応答として、12 本の赤いバラの画像が生成された ‘Gardener’ エージェント。](../../../assets/images/make/agent-builder-01/update-agent-09.png)
 
 <cc-end-step lab="mab1" exercise="4" step="1" />
 
-### Step 2: エージェントを共有する
+### ステップ 2：エージェントの共有
 
-準備が整ったらエージェントを共有します。最後にもう一度エージェントを編集します。
-右上の **Update** ボタンの隣に **Share** ボタンがあります。
-選択すると共有ダイアログが表示され、以下の対象から共有先を選べます。
+これでエージェントを同僚と共有する準備が整いました。エージェントを最後に編集してください。
 
-- 組織内の全員
-- 組織内の特定のユーザー（セキュリティ グループ経由）
+画面右上の **Update** ボタンのすぐ横に **Share** ボタンが表示されています。
+
+それを選択すると、以下のターゲットのいずれかとエージェントを共有するかを選択できる共有ダイアログが表示されます:
+
+- 組織内のすべてのユーザー
+- セキュリティグループを介して組織内の特定のユーザー
 - 自分のみ
 
-特定のユーザーと共有するオプションを選択し、共有相手のメール アドレスを入力して **Save** を選択します。
-共有プロセス完了後、コピー可能な URL が表示され、共有した ユーザー に送信できます。
+特定のユーザーと共有するオプションを選択し、共有対象のメールアドレスを入力後、**Save** ボタンを選択して共有設定を確定してください。
 
-![The panel to configure the sharing target. Available options are 'Anyone in your organization', 'Specific users in your organization via security groups', or 'Only you'. The panel also provides a button to 'Save' the sharing option and a URL to access the agent.](../../../assets/images/make/agent-builder-01/update-agent-10.png)
+共有プロセスの最後に、エージェントを共有したユーザーに渡せる URL が表示されたダイアログが現れます。
+
+![共有ターゲットを設定するパネル。利用可能なオプションは、‘組織内のすべてのユーザー’、‘セキュリティグループを介して組織内の特定のユーザー’、または‘自分のみ’です。パネルには、共有オプションを保存するためのボタンとエージェントにアクセスするための URL も表示されています。](../../../assets/images/make/agent-builder-01/update-agent-10.png)
 
 <cc-end-step lab="mab1" exercise="4" step="2" />
 
 ---8<--- "ja/mab-congratulations.md"
 
-エージェントの作成、お疲れさまでした 🎉 ! これで **Copilot Studio エージェント ビルダー** コースは終了です！Gardener エージェントの作成は楽しめましたか？ぜひご感想をお聞かせください 💜
+エージェントの作成、素晴らしい仕事でした 🎉 ！これで **Copilot Studio agent builder** のパスは終了です！ Gardener エージェントの作成はいかがでしたか？ ご意見・ご感想をお聞かせください。💜
 
-## 参考資料
-- [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
-- [Build agents with Copilot Studio agent builder](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build){target=_blank}
-- [Publish and manage Copilot Studio agent builder agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish){target=_blank}
+## リソース
+- [宣言型エージェント](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
+- [Copilot Studio エージェントビルダー によるエージェント作成](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build){target=_blank}
+- [Copilot Studio エージェントビルダー エージェントの公開と管理](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish){target=_blank}
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent" />

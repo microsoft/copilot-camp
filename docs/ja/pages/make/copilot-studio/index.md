@@ -2,30 +2,35 @@
 search:
   exclude: true
 ---
-# ラボ MCS - Microsoft Copilot Studio の概要
+# ラボ MCS ― Microsoft Copilot Studio の理解
 
-Microsoft Copilot Studio を使用すると、カスタム エージェントを最大限に活用できます。Microsoft Teams、カスタム Web サイト、Skype、Slack など、複数のチャネルでホストできるエージェントを作成可能です。また、Microsoft 365 Copilot チャット内でエージェントをホストすることもできます。  
-ナレッジ ベースとして使用できるリソースは次のとおりです。
+Microsoft Copilot Studio を使用することで、カスタムエージェント の作成における最大限 の可能性を手に入れることができます。これを利用して、Microsoft Teams 、カスタム Web サイト、Skype、Slack など、さまざまなチャンネルでホストできるエージェント を作成できます。また、Microsoft 365 Copilot チャット 内でもエージェント をホストすることが可能です。
+
+Copilot Studio エージェント は、Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、およびセキュリティ制御を使用しており、一貫性があり親しみやすいユーザー エクスペリエンス を実現します。
+
+![Copilot Studio エージェント アーキテクチャ図。最も基本となる部分は、Microsoft Copilot Studio によって提供される基盤モデルですが、カスタマイズすることが可能です。オーケストレーター は Copilot Studio により提供されます。エージェント は、カスタム知識およびグラウンディング データ、カスタムスキル、そして自律機能も提供します。ユーザー エクスペリエンス は Microsoft Teams 、Microsoft 365 Copilot、Microsoft SharePoint Online など多岐に渡るプラットフォームで提供されます。](../../../assets/images/copilot-studio-agent.png)
+
+ナレッジ ベース は以下のようなものです:
 
 - SharePoint Online
 - OneDrive for Business
-- 公開 Web サイト
+- パブリック Web サイト
 - Microsoft Dataverse テーブル
-- Power Platform コネクター
-- など
+- Power Platform コネクタ
+- etc.
 
-エージェントはトピックを通じてユーザーと対話し、単一ターンまたはマルチターンの会話を定義できます。  
-各エージェントには、Power Automate フロー、Power Platform コネクター、外部 REST API などと連携するカスタム アクションを追加できます。  
-一般的に、Copilot Studio を使えばコードを 1 行も書かずに非常に強力なエージェントを作成できます。
+エージェント は、トピック を通じてユーザー と対話し、これによりシングルターンまたはマルチターン の会話を定義できます。  
+すべてのエージェント は、Power Automate フロー、Power Platform コネクタ、外部 REST API などと連携するためのカスタムアクション を備えることが可能です。  
+一般的に、Microsoft Copilot Studio を利用すれば、コード を一行も記述する必要なく、非常に強力なエージェント を作成することができます。
 
-![新しいエージェントを作成する際の Microsoft Copilot Studio の UI。名前、ロゴ、説明、自然言語での instructions などを入力するようユーザーに促す画面。](../../../assets/images/make-global-intro/copilot-studio-01.png)
+![新しいエージェント 作成時の Microsoft Copilot Studio の UI。ユーザー に対して名前、ロゴ、説明、自然言語の指示などを求めます。](../../../assets/images/make-global-intro/copilot-studio-01.png)
 
-Copilot Studio を利用するには、エージェントを作成・管理する各ユーザーに対してユーザー ライセンス（_per user license_ とも呼ばれます）が必要です。さらに、組織レベルで Copilot Studio のライセンス（_tenant license_ とも呼ばれます）が必要です。2024 年 12 月 1 日からは Copilot Studio メッセージに対して Pay-As-You-Go がサポートされ、実際に消費したメッセージ キャパシティ分のみを柔軟に支払うことができます。
+Microsoft Copilot Studio を利用するには、エージェント の作成または保守を行う各ユーザー に対してユーザーライセンス（_per user license_ とも呼ばれます）が必要です。さらに、Microsoft Copilot Studio には組織レベル のライセンス（_tenant license_ とも呼ばれます）が必要です。2024 年 12 月 1 日より、Copilot Studio メッセージ に対して Pay‑As‑You‑Go がサポートされるため、顧客 は消費するメッセージ容量に対してのみ支払う柔軟性を得ることができます。
 
 <hr />
 
 ---8<--- "ja/mcs-labs-toc.md"
 
-## <a href="./00-prerequisites">まずは Lab MCS0 から開始</a> — Copilot Studio 用の環境をセットアップします。
+## <a href="./00-prerequisites">ここから開始</a> ラボ MCS0（Copilot Studio 用環境構築）
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/index" />
