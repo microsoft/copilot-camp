@@ -314,18 +314,18 @@ def main():
     print("Translation completed.")
 
     # Move and rename language-specific includes folders - docs/<lang_code>/includes -> docs/includes/<lang_code>
-    for lang_code in languages:
-        src_folder = os.path.join("docs", lang_code, "includes")
-        renamed_folder = os.path.join("docs", lang_code, lang_code)
-        dest_folder = os.path.join("docs", "includes", lang_code)
+    # for lang_code in languages:
+    #     src_folder = os.path.join("docs", lang_code, "includes")
+    #     renamed_folder = os.path.join("docs", lang_code, lang_code)
+    #     dest_folder = os.path.join("docs", "includes", lang_code)
 
-        if os.path.exists(src_folder):
-            os.rename(src_folder, renamed_folder)
-        if os.path.exists(renamed_folder):
-            os.makedirs(os.path.dirname(dest_folder), exist_ok=True)
-            shutil.move(renamed_folder, dest_folder)
+    #     if os.path.exists(src_folder):
+    #         os.rename(src_folder, renamed_folder)
+    #     if os.path.exists(renamed_folder):
+    #         os.makedirs(os.path.dirname(dest_folder), exist_ok=True)
+    #         shutil.move(renamed_folder, dest_folder)
 
-    print("Includes dir relocated.")
+    # print("Includes dir relocated.")
 
 if __name__ == "__main__":
     # translate_single_source_file("docs/index.md")
