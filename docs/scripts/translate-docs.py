@@ -267,17 +267,22 @@ def translate_single_source_file(file_path: str) -> None:
         return
 
     for lang_code in languages:
-        # Always put translations in docs/<lang_code>/<relative_path>
-        target_dir = os.path.join(source_dir, lang_code)
-        target_path = os.path.join(target_dir, relative_path)
+        # Determine if this is an includes file
+        is_includes = "includes" in os.path.normpath(file_path).split(os.sep)
+        if is_includes:
+            # For includes files, check docs/includes/<lang_code>/
+            target_dir = os.path.join(source_dir, "includes", lang_code)
+            target_path = os.path.join(target_dir, os.path.basename(file_path))
+        else:
+            # For regular files, check docs/<lang_code>/
+            target_dir = os.path.join(source_dir, lang_code)
+            target_path = os.path.join(target_dir, relative_path)
 
-        # Check if target file exists and is up-to-date - added by copilot
-        # If the target file exists and is newer than the source file, skip translation
+        # Check if target file exists and is up-to-date
         if os.path.exists(target_path):
             src_mtime = os.path.getmtime(file_path)
             tgt_mtime = os.path.getmtime(target_path)
             if tgt_mtime >= src_mtime:
-                # Target is newer or same as source, skip translation
                 print(f"Skipping up-to-date file: {target_path}")
                 continue
 
