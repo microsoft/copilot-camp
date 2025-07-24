@@ -10,7 +10,7 @@ In this lab, you are going to understand how to extend an agent made with Micros
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/???" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        <iframe  src="//www.youtube.com/embed/Y8KpHmmMqzc" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
     </div>
