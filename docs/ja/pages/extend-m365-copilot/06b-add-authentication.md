@@ -2,18 +2,18 @@
 search:
   exclude: true
 ---
-# ラボ E6b - OAuth を使用した Entra ID 認証（手動セットアップ）
+# ラボ E6b - OAuth を使用した Entra ID 認証の追加（手動セットアップ）
 
-このラボでは、Entra ID をアイデンティティ プロバイダーとして利用し、OAuth 2.0 を使った認証を API プラグインに追加します。
+このラボでは、OAuth 2.0 を使用して Entra ID をアイデンティティプロバイダーとして用いることで、API プラグインに認証を追加します。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を確認できます。</div>
+          <div>このビデオでラボの概要を確認してください。</div>
             <div class="note-box">
-            📘 <strong>注意:</strong>   このラボは前のラボ E5 を基にしています。既にラボ E5 を完了している場合は、同じフォルダーで続けて作業できます。未完了の場合は <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> からソリューション フォルダーをコピーして作業してください。  
-    このラボの完成版ソリューションは <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06b-add-oauth/trey-research-lab06b-END" target="_blank">/src/extend-m365-copilot/path-e-lab06b-add-oauth/trey-research-lab06b-END</a> フォルダーにあります。
+            📘 <strong>注意事項:</strong>   このラボは前のラボ E5 を踏襲しています。ラボ E5 を完了している場合は、同じフォルダーで作業を続けることができます。完了していない場合は、<a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> からラボ E5 のソリューションフォルダーをコピーし、そこでするようにしてください。
+    このラボの完成ソリューションは、<a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06b-add-oauth/trey-research-lab06b-END" target="_blank">/src/extend-m365-copilot/path-e-lab06b-add-oauth/trey-research-lab06b-END</a> フォルダーにあります。
         </div>
     </div>
     <div style="flex: 1; min-width: 0;">
@@ -23,10 +23,10 @@ search:
 
 
 !!! note
-    このラボでは Entra ID に関する詳細なセットアップ手順が多数あります。  
-    これらの手順を自動化する新しい Agents Toolkit が公開されていますので、近いうちにより簡素化したラボを提供する予定です。
+    このラボでは Entra ID の詳細なセットアップ手順が多数あります。
+    Agents Toolkit の新バージョンが利用可能で、多くの手順を自動化できます。近々、より簡素化されたバージョンのラボを提供する予定です。
 
-このラボでは、プラグインと API を保護するために使用する Entra ID アプリケーションを登録します。開始する前に、アプリ情報を安全な場所に保存してください。保存が必要な値は次のとおりです。
+このラボでは、プラグインと API を保護するために使用される Entra ID アプリケーションを登録します。始める前に、アプリ情報の安全な保存場所を選んでください。以下の値を保存する必要があります:
 
 ~~~text
 API Base URL: 
@@ -40,17 +40,17 @@ Plugin service application (client) ID:
 Plugin service client secret: 
 ~~~
 
-## 演習 1: 永続的な開発者トンネルの設定（任意）
+## エクササイズ 1: 永続的なデベロッパートンネルの設定（任意）
 
-既定では、Agents Toolkit がプロジェクトを開始するたびに新しい開発者トンネルを作成するため、ローカルで実行中の API にアクセスする URL も毎回変わります。通常は Agents Toolkit が必要な場所を自動更新するため問題ありませんが、このラボでは手動設定を行うため、デバッガーを起動するたびに Entra ID と Teams Developer Portal の URL を手動で更新する必要があります。そのため、URL が変わらない永続的な開発者トンネルを設定しておくと便利です。
+デフォルトでは、Agents Toolkit は、プロジェクトを起動するたびに新しいデベロッパートンネル、つまりローカルで動作する API にアクセスするための新しい URL を作成します。通常、Agents Toolkit は必要な場所で URL を自動更新するため問題ありませんが、このラボは手動セットアップなので、デバッガーを開始するたびに Entra ID と Teams Developer Portal で URL を手動更新する必要があります。そのため、変更されない URL の永続的なデベロッパートンネルを設定することをお勧めします。
 
-??? Note "永続トンネルを設定しない場合はこちら ▶▶▶"
-    この演習をスキップして、Agents Toolkit が提供する開発者トンネルを使用してもかまいません。プロジェクトが実行中になったら、ターミナル 1️⃣ で “Start local tunnel” ターミナル 2️⃣ を選択し、Forwarding URL 3️⃣ をコピーします。この URL はプロジェクトを起動するたびに変更されるため、アプリ登録の Reply URL（演習 2 手順 1）と Teams Developer Portal の URL（演習 5 手順 1）を手動で更新する必要があります。  
-    ![Developer tunnel URL](../../assets/images/extend-m365-copilot-06/oauth-A0.png)
+??? Note "永続的なトンネルを設定したくない場合は、このノートを開いてください ▶▶▶"
+    Agents Toolkit が提供するデベロッパートンネルを使用しても構いません。プロジェクトが動作したら、ターミナルタブ 1️⃣ で「Start local tunnel」ターミナル 2️⃣ を選択し、Forwarding URL 3️⃣ をコピーしてください。ただし、この URL はプロジェクト開始のたびに変わるため、アプリ登録の返信 URL（エクササイズ 2 のステップ 1）と Teams Developer Portal の URL（エクササイズ 5 のステップ 1）を手動で更新する必要があります。
+    ![Developer tunnel URL](../assets/images/extend-m365-copilot-06/oauth-A0.png)
 
-### 手順 1: Developer Tunnel CLI のインストール
+### ステップ 1: デベロッパートンネル CLI のインストール
 
-以下は Developer Tunnel をインストールするコマンドです。[Developer Tunnel の詳細手順とダウンロード リンクはこちら](https://learn.microsoft.com/azure/developer/dev-tunnels/get-started){target=_blank}。
+以下はデベロッパートンネルをインストールするためのコマンドです。[Developer Tunnel の完全な手順とダウンロードリンクはここにあります。](https://learn.microsoft.com/azure/developer/dev-tunnels/get-started){target=_blank} 
 
 | OS | コマンド |
 | --- | --- |
@@ -59,21 +59,22 @@ Plugin service client secret:
 | Linux | `curl -sL https://aka.ms/DevTunnelCliInstall | bash` |
 
 !!! tip
-    `devtunnel` コマンドを使用する前に、パスを更新するためにコマンドラインを再起動する必要がある場合があります。
+    devtunnel コマンドを利用する前に、コマンドラインを再起動してファイルパスを更新する必要がある場合があります。
 
-インストール後、ログインが必要です。Microsoft 365 アカウントでログインできます。
+インストールが完了したら、ログインが必要です。Microsoft 365 アカウントを使用してログインできます。
 
 ~~~sh
 devtunnel user login
 ~~~
 
-このラボを進める間は `devtunnel` コマンドを実行したままにしてください。再起動が必要な場合は、`devtunnel user login` を再度実行します。
+演習中は devtunnel コマンドを実行状態のままにしておいてください。再起動が必要な場合は、最後のコマンド `devtunnel user login` を再実行してください。
 
 <cc-end-step lab="e6b" exercise="1" step="1" />
 
-### 手順 2: トンネルの作成とホスト
+### ステップ 2: トンネルの作成とホスティング
 
-Azure Functions のローカル ポート（7071）への永続的なトンネルをセットアップします。下記コマンドは例として "mytunnel" を使用していますが、任意の名前に置き換えてください。
+次に、Azure Functions のローカルポート（7071）に対して永続的なトンネルを設定する必要があります。
+以下のコマンドを使用し、必要に応じて "mytunnel" の代わりに任意の名前を指定してください。
 
 ~~~sh
 devtunnel create mytunnel -a --host-header unchanged
@@ -81,17 +82,17 @@ devtunnel port create mytunnel -p 7071
 devtunnel host mytunnel
 ~~~
 
-コマンド ラインに接続情報が表示されます。
+コマンドラインには接続情報が表示されます。例えば、次のような情報です:
 
-![The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity.](../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
+![コンソールウィンドウ内で実行中の devtunnel の表示。ホスティングポート、ブラウザー経由の接続 URL、およびネットワークアクティビティを検査するための URL が示されています。](../assets/images/extend-m365-copilot-06/devtunnel-output.png)
 
-“Connect via browser” の URL をコピーし、「API Base URL」として保存します。
+「Connect via browser」URL をコピーし、「API Base URL」として保存してください。
 
 <cc-end-step lab="e6b" exercise="1" step="2" />
 
-### 手順 3: プロジェクトで動的トンネルを無効化
+### ステップ 3: プロジェクト内の動的に生成されたトンネルの無効化
 
-ローカルでプロジェクトが実行中の場合は停止します。その後 [\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} を編集し、"Start Teams App Locally" タスクを探します。依存関係 `"Start local tunnel"` をコメントアウトし、その代わり `"Start Azurite emulator"` を追加します。結果は次のようになります。
+プロジェクトがローカルで動作している場合は停止してください。その後、[\.vscode\tasks.json](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json){target=_blank} を編集し、「Start Teams App task」を探します。「Start local tunnel」の依存関係をコメントアウトし、その代わりに「Start Azurite emulator」の依存関係を追加してください。結果として、タスクは以下のようになります:
 
 ~~~json
 {
@@ -109,64 +110,61 @@ devtunnel host mytunnel
 ~~~
 <cc-end-step lab="e6b" exercise="1" step="3" />
 
-### 手順 4: サーバー URL の手動オーバーライド
+### ステップ 4: サーバー URL の手動上書き
 
-**env/.env.local** を開き、`OPENAPI_SERVER_URL` の値を永続トンネルの URL に変更します。
+**env/.env.local** を開き、OPENAPI_SERVER_URL の値を永続的なトンネル URL に変更してください。
 
 <cc-end-step lab="e6b" exercise="1" step="4" />
 
-## 演習 2: API 用の Entra ID アプリ登録
+## エクササイズ 2: API 用の Entra ID アプリケーションの登録
 
-### 手順 1: 新しい Entra ID アプリ登録の追加
+### ステップ 1: 新しい Entra ID アプリ登録の追加
 
-[Microsoft 365 Admin Center](https://portal.office.com/AdminPortal/){target=_blank} から、または直接 [https://entra.microsoft.com/](https://entra.microsoft.com/){target=_blank} で Entra ID 管理センターを開きます。開発テナントにログインしていることを確認してください。
+[Microsoft 365 Admin center](https://portal.office.com/AdminPortal/){target=_blank} あるいは直接 [https://entra.microsoft.com/](https://entra.microsoft.com/){target=_blank} から Entra ID 管理センターにアクセスしてください。開発テナントにログインしていることを確認してください。
 
-「Identity」 1️⃣ → 「Applications」 2️⃣ → 「App registrations」 3️⃣ の順にクリックし、"+" 4️⃣ を選択して新しいアプリを登録します。
+画面に入ったら、「Identity」 1️⃣ をクリックし、その後「Applications」 2️⃣、そして「App registrations」 3️⃣ をクリックします。最後に、"+" 4️⃣ をクリックして新しいアプリ登録を追加してください。
 
-![The Microsoft Entra admin center showing the list of applications registered and the button to create a 'New regitration'.](../../assets/images/extend-m365-copilot-06/oauth-A2.png)
+![Microsoft Entra 管理センターで、登録されているアプリケーションの一覧と『New regitration』作成ボタンが表示されている様子。](../assets/images/extend-m365-copilot-06/oauth-A2.png)
 
-アプリケーション名に「My API Service」など一意でわかりやすい名前を入力 1️⃣。  
-「Supported account types」は「Accounts in this organizational directory only (Microsoft only - single tenant)」を選択 2️⃣。  
-「Redirect URI (optional)」で「Web」を選択し、開発者トンネルの URL を入力 3️⃣。
+例えば「My API Service」 1️⃣ といった、一意かつ説明的な名前を付けます。「Supported account types」として「Accounts in this organizational directory only (Microsoft only - single tenant)」 2️⃣ を選択。さらに、「Redirect URI (optional)」では「Web」を選択し、デベロッパートンネルの URL を入力してください 3️⃣。 
 
-!!! Note "永続トンネル URL を作成していない場合..."
-    プロジェクトを起動するたびに新しいトンネル URL に置き換える必要があります。
+!!! Note "永続的なデベロッパートンネル URL を作成していない場合..."
+    アプリケーションを起動するたびに、Agents Toolkit 内で新しいトンネル URL が作成されるので、「Redirect URI」フィールドをその都度新しい URL に更新する必要があります。
 
-「Register」 4️⃣ をクリックします。
+その後、「Register」 4️⃣ をクリックしてアプリケーションを登録してください。
 
-![The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select.](../../assets/images/extend-m365-copilot-06/oauth-A4.png)
+![アプリケーションの名前、サポートされるアプリケーションタイプ、およびリダイレクト URI を入力する画面。『Register』ボタンも確認できます。](../assets/images/extend-m365-copilot-06/oauth-A4.png)
 
 <cc-end-step lab="e6b" exercise="2" step="1" />
 
-### 手順 2: アプリ情報を安全な場所にコピー
+### ステップ 2: アプリケーション情報の安全な保管
+Application ID（Client ID とも呼ばれます） 1️⃣ と Directory ID（Tenant ID とも呼ばれます） 2️⃣ を安全な場所に保存してください。後で必要になります。その後、Endpoints ボタン 3️⃣ をクリックして Endpoints フライアウトを開きます。
 
-「Application (client) ID」 1️⃣ と 「Directory (tenant) ID」 2️⃣ をコピーして保存します。次に 「Endpoints」 ボタン 3️⃣ をクリックしてフライアウトを開きます。
+![登録されたアプリケーションの概要ページ。ここで Application ID と Directory ID のコピーや『Endpoints』コマンドの確認ができます。](../assets/images/extend-m365-copilot-06/oauth-A5.png)
 
-![The overview page of the application registered. There you can copy the Application ID and the Directory ID, as well as you can find the 'Endpoints' command.](../../assets/images/extend-m365-copilot-06/oauth-A5.png)
+次に、「OAuth 2.0 authorization endpoint (v2)」 1️⃣ と「OAuth 2.0 token endpoint (v2)」 2️⃣ という名前の2つのエンドポイント URL をコピーし、同じ安全な場所に保存してください。
 
-「OAuth 2.0 authorization endpoint (v2)」 1️⃣ と 「OAuth 2.0 token endpoint (v2)」 2️⃣ の URL をコピーし、同じ場所に保存します。
-
-![The panel with the Endpoints of the application. The buttons to copy 'OAuth 2.0 authorization endpoint (v2)' and 'OAuth 2.0 token endpoint (v2)' are highlighted.](../../assets/images/extend-m365-copilot-06/oauth-A7.png)
+![アプリケーションの Endpoints を表示するパネル。『OAuth 2.0 authorization endpoint (v2)』と『OAuth 2.0 token endpoint (v2)』のコピー ボタンがハイライトされています。](../assets/images/extend-m365-copilot-06/oauth-A7.png)
 
 <cc-end-step lab="e6b" exercise="2" step="2" />
 
-### 手順 3: クライアント シークレットの作成
+### ステップ 3: クライアント シークレットの作成
 
-「Certificates & secrets」 1️⃣ → 「+ New client secret」 2️⃣ を選択します。シークレットに名前と有効期限を設定し *Add* をクリックします。シークレットはこのときのみ表示されるため、表示された値 3️⃣ を必ず保存してください。
+次に、「Certificates & secrets」 1️⃣ に移動し、「+ New client secret」 2️⃣ をクリックします。シークレットに名前を付け、期間を選択し、*Add* ボタンを押してください。シークレットが表示されます。シークレットは作成時にのみ表示されるので、必ずコピーして安全な場所に保管してください。
 
-![The 'Certificates &amp; secrets' page from which you can select to create a 'New client secret'.](../../assets/images/extend-m365-copilot-06/oauth-A11.png)
+![『Certificates &amp; secrets』ページ。ここから『New client secret』を作成できます。](../assets/images/extend-m365-copilot-06/oauth-A11.png)
 
 <cc-end-step lab="e6b" exercise="2" step="3" />
 
-### 手順 4: API Scope の公開
+### ステップ 4: API Scope の公開
 
-API への呼び出しを検証するために、アクセス許可を表す API Scope が必要です。今回はシンプルに `access_as_user` というスコープを作成します。
+API への呼び出しを検証するために、API を呼び出す権限を表す API Scope を公開する必要があります。特定の操作を API 経由で許可するなど、非常に具体的なものにすることも可能ですが、ここではシンプルな Scope「access_as_user」を設定します。
 
-「Expose an API」 1️⃣ へ移動し、「Application ID URI」 の横にある 「Add」 2️⃣ をクリックします。フライアウトで既定値 `api://<your application (client) ID>` のまま 「Save and continue」 3️⃣ をクリックします。
+まず、「Expose an API」 1️⃣ に移動し、「Application ID URI」の横にある「Add」 2️⃣ をクリックします。右側にフライアウトが表示されます。デフォルト値である api://＜your application (client) ID＞ のままで構いません。「Save and continue」 3️⃣ をクリックして進みます。
 
-![The 'Expose an API' page of the application registered, with the side panel to set the application unique URI.](../../assets/images/extend-m365-copilot-06/oauth-A15.png)
+![登録されたアプリケーションの『Expose an API』ページ。サイドパネルでアプリケーションの一意な URI を設定しています。](../assets/images/extend-m365-copilot-06/oauth-A15.png)
 
-「Add a scope」で Scope 名に `access_as_user` 1️⃣ を入力し、以下の値を設定します。
+「Add a scope」欄には、Scope 名として「access_as_user」 1️⃣ を入力します。残りのフィールドには以下の値を入力してください:
 
 | フィールド | 値 |
 | --- | --- |
@@ -177,64 +175,64 @@ API への呼び出しを検証するために、アクセス許可を表す API
 | User consent description | Allows an app to access My API as you |
 | State | Enabled |
 
-完了したら 「Add Scope」 2️⃣ をクリックします。
+入力が完了したら、「Add Scope」 2️⃣ をクリックしてください。
 
-![The 'Add a scope' side panel in the 'Expose an API' page of the application registered, with settings for scope name, who can consent the scope, the admin and user display name and description, and the state flag to enable or disable the scope.](../../assets/images/extend-m365-copilot-06/oauth-A17.png)
+![登録されたアプリケーションの『Expose an API』ページで、Scope 名、同意可能なユーザー、管理者およびユーザーの表示名と説明、状態フラグの設定が表示されているサイドパネル。](../assets/images/extend-m365-copilot-06/oauth-A17.png)
 
 <cc-end-step lab="e6b" exercise="2" step="4" />
 
-### 手順 5: API Scope の保存
+### ステップ 5: API Scope の保存
+コピーした Scope を「API Scope」として安全な場所に保管してください。
 
-作成したスコープをコピーし、「API Scope」として保存します。
-
-![The 'Expose an API' page of the application registered, once the custom scope has been created with the button to copy the scope name highlighted.](../../assets/images/extend-m365-copilot-06/oauth-A17b.png)
+![カスタムスコープが作成された後の登録済みアプリケーションの『Expose an API』ページ。Scope 名のコピー ボタンがハイライトされています。](../assets/images/extend-m365-copilot-06/oauth-A17b.png)
 
 <cc-end-step lab="e6b" exercise="2" step="5" />
 
-## 演習 3: プラグイン用の Entra ID アプリ登録
+## エクササイズ 3: プラグイン用 Entra ID アプリケーションの登録
 
-API を登録したので、次はプラグイン自体を登録します。
+これで API 用のアプリケーションが登録されたので、次はプラグイン自体の登録を行います。
 
 !!! Note "2 つの Entra ID アプリ登録について"
-    このラボは、既に API 用に登録されているアプリを持ち、それをエージェントにプラグインとして統合するケースを想定しています。そのため 2 つのアプリ登録を使用します。最初から API を作成する場合は、必ずしも 2 つのアプリ登録が必要とは限りません。単一のアプリ登録で実装する方法は [こちらの Learn モジュール](https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth){target=_blank} を参照してください。
+    このラボは、既に API 用の登録済みアプリケーションを持ち、これをエージェントにプラグインとして統合する方法を示しています。そのため、アプリ登録は 2 つになっています。 
+    ゼロから API を作成する場合、OAuth を安全に実装するために必ずしも 2 つのアプリ登録が必要というわけではありません。代わりに、既存のアプリ登録を使用できます。1 つのアプリ登録で行う方法については、この [learn module](https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth){target=_blank} をご覧ください。
 
-### 手順 1: プラグインの登録
+### ステップ 1: プラグインの登録
 
-「App registrations」に戻り、2 つ目のアプリを登録します。名前は「My API Plugin」 1️⃣、Supported account types は再度「Accounts in this organizational directory only」 2️⃣ を選択します。
+「App registrations」 セクションに戻り、2 つ目のアプリケーションを登録します。今回は「My API Plugin」 1️⃣ と名付け、「Supported account types」として再び「Accounts in this organizational directory only」 2️⃣ を設定してください。
 
-「Redirect URL」 に `https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect` 3️⃣ を入力します。これは Teams が API Plugin アプリへのログイン完了を処理する場所です。
+「Redirect URL」では「Web」を選択し、今回は `https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect` 3️⃣ に設定します。これは、API Plugin アプリケーションへのログイン完了後の Teams の処理場所です。
 
-「Register」 4️⃣ をクリックします。
+「Register」 ボタン 4️⃣ をクリックして登録を完了してください。
 
-![The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select.](../../assets/images/extend-m365-copilot-06/oauth-B5.png)
+![アプリケーションの名前、サポートされるアプリケーションタイプ、およびリダイレクト URI を入力する画面。『Register』ボタンが表示されています。](../assets/images/extend-m365-copilot-06/oauth-B5.png)
 
-先ほどと同様に「Overview」 ページでプラグイン アプリの Application (client) ID を保存します。
+先ほどと同様に、アプリの「Overview」ページを表示し、API Plugin アプリの Application (client) ID を保存してください。
 
 <cc-end-step lab="e6b" exercise="3" step="1" />
 
-### 手順 2: クライアント シークレットの作成
+### ステップ 2: クライアント シークレットの作成
 
-同様にクライアント シークレットを作成し、「Plugin service client secret」として保存します。
+先ほどと同様に、クライアント シークレットを作成し、安全な場所に「Plugin service client secret」として保存してください。
 
 <cc-end-step lab="e6b" exercise="3" step="2" />
 
-### 手順 3: 権限の付与
+### ステップ 3: パーミッションの付与
 
-プラグインが API Service を呼び出すための権限を付与します。「API permissions」 に移動し、「APIs my organization uses」 タブ 1️⃣ を選択して API Service を検索 2️⃣、検索結果から選択 3️⃣ します。
+プラグインは API サービスを呼び出す必要があるため、当然ながらそのための権限が必要です。まず「API permissions」に移動します。そして、「APIs my organization uses」タブ 1️⃣ をクリックし、API サービスを検索します 2️⃣。検索結果から API サービスを選択します 3️⃣。
 
-![The 'API permissions' page of the application registered, with the side panel to grant new permissions. The 'APIs my organization uses' tab is selected and the list of applications shows 'My API Service' in the results.](../../assets/images/extend-m365-copilot-06/oauth-B11.png)
+![登録されたアプリケーションの『API permissions』ページ。サイドパネルで新しいパーミッション付与の操作が表示され、『APIs my organization uses』タブでは結果に 'My API Service' が表示されています。](../assets/images/extend-m365-copilot-06/oauth-B11.png)
 
-API Service が表示されたら、`access_as_user` パーミッションを選択し「Add permission」をクリックします。
+次に、API サービスアプリケーションが表示されるので、「access_as_user」パーミッションを選択し、「Add permission」をクリックしてください。
 
-![The side panel to select and add a permission to the application registered. The 'access_as_user' permission is selected and highlighted, together with the 'Add permission' button.](../../assets/images/extend-m365-copilot-06/oauth-B12.png)
+![登録済みアプリケーションにパーミッションを追加するためのサイドパネル。『access_as_user』パーミッションが選択され、ハイライト表示され、『Add permission』ボタンも表示されています。](../assets/images/extend-m365-copilot-06/oauth-B12.png)
 
 <cc-end-step lab="e6b" exercise="3" step="3" />
 
-## 演習 4: API アプリ登録にプラグイン アプリ ID を追加
+## エクササイズ 4: プラグインのアプリケーション ID を API アプリ登録に更新
 
-### 手順 1: API Service アプリにプラグイン アプリの ID を追加
+### ステップ 1: API サービスアプリにプラグインの ID を追加
 
-API Service アプリが Plugin アプリからのトークン発行を許可する必要があります。API Service の App Registration に戻り、「Manifest」 を開き `knownClientApplications` 1️⃣ を探します。次のように Plugin アプリの Client ID を追加します。
+API Service アプリケーションは、API Plugin アプリケーションがトークンを発行することを許可する必要があります。そのために、API Service アプリケーションの App Registration に戻り、「Manifest」を選択し、`knownClientApplications` 1️⃣ のエントリーを探してください。そこに My Plugin App のクライアント ID を以下のように追加します:
 
 ~~~json
 "knownClientApplications": [
@@ -242,59 +240,59 @@ API Service アプリが Plugin アプリからのトークン発行を許可す
 ]
 ~~~
 
-完了後、「Save」 2️⃣ をクリックします。
+完了したら、「Save」 2️⃣ をクリックしてください。
 
-![The page to edit the manifest of the application with the 'knownClientApplications' entry and the 'Save' button highlighted.](../../assets/images/extend-m365-copilot-06/oauth-C4.png)
+![アプリケーションの Manifest 編集ページ。『knownClientApplications』エントリーと「Save」ボタンがハイライトされています。](../assets/images/extend-m365-copilot-06/oauth-C4.png)
 
 <cc-end-step lab="e6b" exercise="4" step="1" />
 
-## 演習 5: Teams Developer Portal で OAuth 情報を登録
+## エクササイズ 5: Teams Developer Portal で OAuth 情報の登録
 
-アプリは準備できましたが、Microsoft 365 側にはまだ情報がありません。シークレットをアプリ マニフェストに保存するのは安全ではないため、Teams では Teams Developer Portal に安全に保存する場所を用意しています。この演習では、Copilot がユーザーを認証できるように OAuth クライアント アプリケーションを登録します。
+これでアプリはすべて設定されましたが、Microsoft 365 はまだそれについて何も知りません。アプリ マニフェストにシークレットを保存するのは安全ではないため、Teams ではこの情報を安全に保存するための場所が用意されています。このエクササイズでは、Teams Developer Portal を使用して OAuth クライアントアプリケーションを登録し、Copilot がユーザー認証を行えるようにします。
 
-### 手順 1: 新しい OAuth クライアント登録の作成
+### ステップ 1: 新しい OAuth クライアント登録の作成
 
-[https://dev.teams.microsoft.com](https://dev.teams.microsoft.com){target=_blank} にアクセスし、「Tools」 1️⃣ → 「OAuth client registration」 2️⃣ を選択します。
+[https://dev.teams.microsoft.com](https://dev.teams.microsoft.com){target=_blank} の Teams Developer Portal にアクセスし、「Tools」 1️⃣ をクリック、その後「OAuth client registration」 2️⃣ を選択します。
 
-![The UI of the Teams Developer Portal with 'Tools' and 'OAuth client registration' highlighted.](../../assets/images/extend-m365-copilot-06/oauth-C2.png)
+![Teams Developer Portal の UI。『Tools』と『OAuth client registration』がハイライトされています。](../assets/images/extend-m365-copilot-06/oauth-C2.png)
 
-「Register client」をクリック（既存がある場合は "+ New OAuth client registration"）し、フォームに入力します。いくつかのフィールドは前の演習で安全な場所に保存した値を使用します。
+クライアントアプリケーションがまだ登録されていなければ「Register client」を、既にある場合は「+ New OAuth client registration」をクリックし、フォームに入力してください。いくつかのフィールドは、これまでに安全な場所に保存してきた情報から取得します。
 
 | フィールド | 値 |
 | --- | --- |
-| Name | 任意のわかりやすい名前 |
-| Base URL | API service の Base URL |
-| Restrict usage by org | "My organization only" を選択 |
-| Restrict usage by app | "Any Teams app" を選択 |
-| Client ID | **Plugin Application** の client ID |
-| Client secret | **Plugin Application** の client secret |
-| Authorization endpoint | Authorization endpoint |
-| Token endpoint | Token endpoint |
-| Refresh endpoint | Token endpoint |
-| API scope | API Service アプリケーションの scope |
+| Name | 記憶に残る名前を選んでください |
+| Base URL | API service Base URL |
+| Restrict usage by org | 「My organization only」を選択 |
+| Restrict usage by app | 「Any Teams app」を選択 |
+| Client ID | **Plugin Application** (client) ID |
+| Client secret | **Plugin Application** client secret |
+| Authorization endpoint | API Service と API Plugin アプリで同じ認証エンドポイント |
+| Token endpoint | API Service と API Plugin アプリで同じトークン エンドポイント |
+| Refresh endpoint | API Service と API Plugin アプリで同じトークン エンドポイント |
+| API scope | API Service アプリの scope |
 
-![the page to register a new OAuth client in the Teams Developer Portal. There is a list of fields to configure the client registration settings.](../../assets/images/extend-m365-copilot-06/oauth-C3ab.png)
+![Teams Developer Portal で新しい OAuth クライアントを登録するページ。クライアント登録設定のための各種フィールドが表示されています。](../assets/images/extend-m365-copilot-06/oauth-C3ab.png)
 
-!!! Note "永続トンネル URL を作成していない場合..."
-    プロジェクトを起動するたびに「Base URL」を新しいトンネル URL に更新する必要があります。
+!!! Note "永続的なデベロッパートンネル URL を作成していない場合..."
+    アプリケーションを起動するたびに、Agents Toolkit 内で新しいトンネル URL が生成されるので、「Base URL」フィールドもその都度新しいトンネル URL に更新する必要があります。
 
 <cc-end-step lab="e6b" exercise="5" step="1" />
 
-### 手順 2: OAuth 登録 ID の保存
+### ステップ 2: OAuth 登録 ID の保存
 
-![The result of registering an OAuth client in the Teams Developer Portal. There is a box confirming the registration and providing a 'Registration ID' for reference.](../../assets/images/extend-m365-copilot-06/oauth-E1.png)
+![Teams Developer Portal で OAuth クライアント登録後の結果。登録確認のボックスと参照用の『Registration ID』が表示されています。](../assets/images/extend-m365-copilot-06/oauth-E1.png)
 
-ポータルに OAuth クライアント登録 ID が表示されます。次の手順で使用するため保存します。
+ポータル上に OAuth クライアント登録 ID が表示されます。次のステップで使用するために保存してください。
 
 <cc-end-step lab="e6b" exercise="5" step="2" />
 
-## 演習 6: アプリ パッケージの更新
+## エクササイズ 6: アプリケーション パッケージの更新
 
-### 手順 1: プラグイン ファイルの更新
+### ステップ 1: プラグインファイルの更新
 
-Visual Studio Code で作業フォルダーを開きます。**appPackage** フォルダーの **trey-plugin.json** を開きます。ここには Open API Specification (OAS) ファイルに含まれていない Copilot 用の情報が格納されています。
+Visual Studio Code で作業フォルダーを開いてください。**appPackage** フォルダー内の **trey-plugin.json** ファイルを開きます。ここには、Copilot が必要とする情報が格納されていますが、Open API Specification (OAS) ファイルには存在しません。
 
-`Runtimes` の下に `auth` プロパティがあり `type` が `"None"` となっています。以下のように書き換え、Copilot に Vault に保存した OAuth 設定を使うよう指示します。
+`Runtimes` の下に、`"auth": { "type": "None" }` として記載され、現在 API が認証されていない状態を示しています。これを以下のように変更し、Copilot に OAuth 設定を使用して認証するよう指示してください。
 
 ~~~json
 "auth": {
@@ -303,47 +301,49 @@ Visual Studio Code で作業フォルダーを開きます。**appPackage** フ�
 },
 ~~~
 
-次に **env/.env.local** に次の行を追加します。
+次に、**env/.env.local** ファイルに以下の行を追加してください:
 
 ~~~text
 OAUTH_CLIENT_REGISTRATION_ID=<registration id you saved in the previous exercise>
 ~~~
 
-次回 API プラグインを起動してプロンプトすると、サインインが求められるはずです。しかし現在はアプリが保護されていないため、インターネット上の誰でも呼び出せてしまいます。次のステップでコードを更新し、実際の Microsoft 365 ユーザーとして API にアクセスできるようにします。
+次回、API プラグインを起動してプロンプトが表示されたとき、サインインを促されるはずです。
+しかし、アプリケーションのセキュリティは確保されていません。誰でもインターネットから呼び出すことが可能です！
+次のステップでは、実際の Microsoft 365 ユーザーとして API にアクセスするために、有効なログインを確認するコードを更新します。（「Avery Howard」は、Microsoft の架空の名前生成器から得た名前です。）
 
 <cc-end-step lab="e6b" exercise="6" step="1" />
 
-## 演習 7: アプリケーション コードの更新
+## エクササイズ 7: アプリケーション コードの更新
 
-### 手順 1: JWT 検証ライブラリのインストール
+### ステップ 1: JWT バリデーションライブラリのインストール
 
-作業ディレクトリで次のコマンドを実行します。
+作業ディレクトリのコマンドラインから、以下のコマンドを実行してください：
 
 ~~~sh
 npm i jwt-validate
 ~~~
 
-これにより Entra ID からの認可トークンを検証するライブラリがインストールされます。
+これにより、Entra ID からの認証トークンのバリデーションを行うライブラリがインストールされます。
 
 !!! warning
-    Microsoft は Node.js 用の公式 Entra ID トークン検証ライブラリを提供していません。代わりに [詳細ドキュメント](https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens){target=_blank} で独自実装方法を案内しています。Microsoft MVP の [Andrew Connell](https://www.voitanos.io/pages/about/#whos-behind-voitanos){target=_blank} による [記事](https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/){target=_blank} も参考になります。  
+    Microsoft は NodeJS 用の Entra ID トークンのサポートライブラリを提供していません。その代わりに、[こちらの詳細ドキュメント](https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens){target=_blank} を参照し、独自に実装してください。[Microsoft MVP Andrew Connell](https://www.voitanos.io/pages/about/#whos-behind-voitanos){target=_blank} による[もう一つの有用な記事](https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/){target=_blank}も参考になります。
 
-    **本ラボでは、[Waldek Mastykarz](https://github.com/waldekmastykarz){target=_blank} 氏が提供する [コミュニティ ライブラリ](https://www.npmjs.com/package/jwt-validate){target=_blank} を使用します。MIT License のため自己責任でご利用ください。**  
-
-    公式ライブラリの進捗を追いたい場合は [この GitHub issue](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank} をご覧ください。
+    **このラボでは、[コミュニティ提供ライブラリ](https://www.npmjs.com/package/jwt-validate){target=_blank}（Waldek Mastykarz により提供）を使用します。このライブラリは上記のガイダンスに沿ったものです。なお、このライブラリは Microsoft によってサポートされておらず、MIT ライセンスの下で提供されるため、自己責任で使用してください。**
+    
+    サポートされるライブラリの進捗を追跡したい場合は、[こちらの Github イシュー](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank} をご覧ください。
 
 <cc-end-step lab="e6b" exercise="7" step="1" />
 
-### 手順 2: API 用環境変数の追加
+### ステップ 2: API 用環境変数の追加
 
-作業フォルダーの **env** の **env.local** に次の行を追加します。
+作業ディレクトリ内の **env** フォルダーにある **env.local** を開き、API Service アプリのクライアント ID とテナント ID 用の以下の行を追加してください。
 
 ~~~text
 API_APPLICATION_ID=<your-api-service-client-id>
 API_TENANT_ID=<your-tenant-id>
 ~~~
 
-Agents Toolkit で実行されるコード内でこれらを使用できるよう、作業フォルダー直下の **teamsapp.local.yml** も更新します。「Generate runtime environment variables」というコメントを探し、`STORAGE_ACCOUNT_CONNECTION_STRING` の下に追加します。
+これらの値を Agents Toolkit 内で動作するコードで利用可能にするため、作業ディレクトリ直下の **teamsapp.local.yml** ファイルも更新する必要があります。コメント「Generate runtime environment variables」を探し、新しい値を STORAGE_ACCOUNT_CONNECTION_STRING の下に追加してください:
 
 ~~~yaml
   - uses: file/createOrUpdateEnvironmentFile
@@ -357,32 +357,33 @@ Agents Toolkit で実行されるコード内でこれらを使用できるよ�
 
 <cc-end-step lab="e6b" exercise="7" step="2" />
 
-### 手順 3: Identity Service の更新
+### ステップ 3: アイデンティティサービスの更新
 
-この時点で OAuth ログインは動作し、有効なアクセストークンが取得できますが、トークンを検証しなければ安全ではありません。ここではトークンを検証し、ユーザー名や ID といった情報を抽出するコードを追加します。
+この時点で、OAuth ログインは機能し、有効なアクセストークンが取得できるはずですが、コードがトークンの有効性を確認しなければ、ソリューションは安全ではありません。このステップでは、トークンの検証と、ユーザーの名前や ID などの情報の抽出を行うコードを追加します。
 
-**src/services** フォルダーの **IdentityService.ts** を開き、`import` 文の中に次を追加します。
+**src/services** フォルダー内の **IdentityService.ts** を開いてください。 
+他の `import` 文とともに、次の行をファイルの先頭に追加します:
 
 ~~~typescript
 import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 ~~~
 
-`class Identity` の直下に次の行を追加します。
+その後、`class Identity` の直後に次の行を追加してください:
 
 ~~~typescript
     private validator: TokenValidator;
 ~~~
 
-次に
+次に、以下のコメントを探してください:
 
 ~~~typescript
 // ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
 ~~~
 
-というコメントを下記コードに置き換えます。
+このコメントを次のコードで置き換えてください:
 
-```typescript
-// Try to validate the token and get user's basic information
+~~~typescript
+// ユーザーの基本情報を取得するため、トークンのバリデーションを試みます
 try {
     const { API_APPLICATION_ID, API_TENANT_ID } = process.env;
     const token = req.headers.get("Authorization")?.split(" ")[1];
@@ -390,11 +391,10 @@ try {
         throw new HttpError(401, "Authorization token not found");
     }
 
-    // create a new token validator for the Microsoft Entra common tenant
+    // Microsoft Entra の共通テナント用に新しいトークンバリデータを作成します
     if (!this.validator) {
-        // We need a new validator object which we will continue to use on subsequent
-        // requests so it can cache the Entra ID signing keys
-        // For multitenant, use:
+        // 今後のリクエストで利用するため、新しいバリデータオブジェクトを作成し、Entra ID の署名キーをキャッシュします
+        // マルチテナントの場合は、以下を使用:
         // const entraJwksUri = await getEntraJwksUri();
         const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
         this.validator = new TokenValidator({
@@ -403,19 +403,18 @@ try {
         console.log ("Token validator created");
     }
 
-    // Use these options for single-tenant applications
+    // シングルテナントアプリケーション向けのオプション
     const options: ValidateTokenOptions = {
         audience: `api://${API_APPLICATION_ID}`,
         issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
-        // NOTE: If this is a multi-tenant app, look for 
+        // ※ マルチテナントアプリの場合は、以下を参照:
         // issuer: "https://sts.windows.net/common/",
-        // Also you may wish to manage a list of allowed tenants
-        // and test them as well
+        // また、許可されたテナントのリストを管理し、テストすることもできます
         //   allowedTenants: [process.env["AAD_APP_TENANT_ID"]],
         scp: ["access_as_user"]
     };
 
-    // validate the token
+    // トークンのバリデーション
     const validToken = await this.validator.validateToken(token, options);
 
     userId = validToken.oid;
@@ -424,90 +423,104 @@ try {
     console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
 }
 catch (ex) {
-    // Token is missing or invalid - return a 401 error
+    // トークンが存在しない、または無効の場合 - 401 エラーを返します
     console.error(ex);
     throw new HttpError(401, "Unauthorized");
 }
-```
+~~~
 
-!!! Note "コードを読み解く"
-    まず `Authorization` ヘッダーからトークンを取得します。このヘッダーは `"Bearer <トークン>"` 形式のため `split(" ")` でトークンのみを抽出しています。  
-    認証に失敗した場合は例外をスローし、Azure Function が 401 エラーを返します。  
+!!! Note "コードから学ぶ"
+    この新しいソースコードを確認してください。最初に、HTTPs リクエストの `Authorization` ヘッダーからトークンを取得します。このヘッダーは「Bearer」＋半角スペース＋トークンの形式になっており、JavaScript の `split(" ")` を使用してトークンのみを取得します。
 
-    その後、`jwt-validate` ライブラリ用のトークン バリデーターを作成します。この呼び出しは Entra ID の公開鍵を取得するため非同期で時間が掛かる場合があります。  
+    また、認証が何らかの理由で失敗した場合、コードは例外を投げます。Azure function は適切なエラーを返します。
 
-    `ValidateTokenOptions` では以下を検証します。  
-    * audience が API Service アプリ URI と一致すること  
-    * issuer がテナントの STS であること  
-    * scope が `access_as_user` であること  
+    その後、`jwks-validate` ライブラリを用いたバリデータを作成します。この呼び出しは、Entra ID から最新の署名キーを非同期で読み込むため、実行に時間がかかる場合があります。
 
-    トークンが有効であれば、ユーザーの ID・名前・メールなどのクレーム情報を取得できます。
+    次に、`ValidateTokenOptions` オブジェクトを設定します。このオブジェクトに基づいて、トークンが Entra ID の秘密鍵で署名されているだけでなく、以下も検証されます:
 
-!!! Note "アプリをマルチテナント化する場合"
-    上記コード内のコメントを参照してください。
+    * _audience_ は API service アプリの URI と同じでなければなりません。これにより、トークンが当 Web サービス専用であることが保証されます
 
-`userId` が取得できたら、それに対応する Consultant レコードを検索します。存在しなければ新しく作成します。
+    * _issuer_ は当テナントのセキュリティトークンサービスから発行されたものでなければなりません
 
-初回実行時にはデフォルトのスキルやロールを持つ Consultant が作成されます。デモ用に変更したい場合は [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank} で編集できます。
+    * _scope_ は、アプリ登録で定義した `"access_as_user"` と一致している必要があります。
 
-![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
+    トークンが有効な場合、ライブラリは全ての「クレーム」を含むオブジェクトを返します。これには、ユーザーの一意な ID、名前、メールアドレスが含まれます。これらの値を使用して、「Avery Howard」に依存しないようにします。
 
-プロジェクト割り当ては `Assignment` テーブルに保存され、プロジェクト ID と Consultant ID を参照します。
+!!! Note "アプリがマルチテナントの場合"
+    上記コード内のコメントを確認し、マルチテナントアプリのトークン検証方法について確認してください。
+
+コードが `userId` を取得すると、ユーザーの Consultant レコードを探します。これは従来は Avery Howard の ID にハードコードされていましたが、今後はログインしたユーザーの ID を使用し、データベースに該当のレコードがなければ新規作成します。
+
+結果として、初回実行時にログインユーザーのためにデフォルトのスキルや役割を持つ新しい Consultant レコードが作成されます。デモ用に変更する場合は、[Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank} を使用して変更できます。
+
+![コンサルタントテーブルを編集中の Azure Storage Explorer の様子。現在のユーザーがハイライトされています。](../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
+
+プロジェクトの割り当ては `Assignment` テーブルに保存され、プロジェクト ID と割り当てられたコンサルタントの consultant ID が参照されています。
 
 <cc-end-step lab="e6b" exercise="7" step="3" />
 
-## 演習 8: アプリケーションのテスト
+## エクササイズ 8: アプリケーションのテスト
 
-アプリケーションをテストする前に、`appPackage\manifest.json` の manifest バージョンを更新します。
+アプリケーションのテスト前に、`appPackage\manifest.json` ファイル内のアプリパッケージのマニフェストバージョンを更新してください。以下の手順に従ってください:
 
-1. `appPackage` フォルダーにある `manifest.json` を開きます。  
-2. `version` フィールドを見つけます。  
-      ```json
+1. プロジェクトの `appPackage` フォルダー内にある `manifest.json` ファイルを開きます。
+
+2. JSON ファイル内の `version` フィールドを探してください。以下のようになっているはずです:  
+   ```json
    "version": "1.0.0"
-   ```  
-3. バージョン番号を小さくインクリメントします。例:  
-      ```json
+   ```
+
+3. バージョン番号を小さい数値にインクリメントしてください。例えば、次のように変更します:  
+   ```json
    "version": "1.0.1"
-   ```  
-4. 保存します。
+   ```
 
-### 手順 1: アプリケーションの再起動
+4. 変更を保存してください。
 
-前のラボからアプリが起動している場合は停止し、アプリ パッケージを再生成させます。その後 F5 を押して再度実行し、以前と同じようにインストールします。
+### ステップ 1: アプリケーションの (再)起動
 
-プラグインに「What Trey projects am I assigned to?」と尋ねてみましょう。API 呼び出しの確認カードが表示される場合があります。ここでは認証は行われず、「Allow Once」をクリックして続行します。
+前のラボからアプリが動作中の場合は、停止してアプリパッケージの再作成を強制してください。
 
-![Microsoft 365 Copilot showing a confirmation card asking if it is ok to call your API. There are buttons to 'Always allow', 'Allow once', or 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
+その後、F5 を押してアプリを再実行し、従来通りインストールしてください。
 
-続いてログイン カードが表示されます。`Sign in to Trey` をクリックしてサインインします。最初はポップアップが表示されログインと権限付与を行います。以降はキャッシュにより表示されない場合があります。
+プラグインに「What Trey projects am I assigned to?」とプロンプトを出してください。確認カードが表示され、API の呼び出しが許可されるかどうか確認される場合があります。ここでは認証は行われていませんので、「Allow Once」をクリックして進んでください。
 
-![Microsoft 365 Copilot showing a login card with a button to 'Sign in to Trey' and another one to 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
+![Microsoft 365 Copilot が、API の呼び出し許可を確認するカードを表示しています。『Always allow』、『Allow once』、『Cancel』ボタンがあります。](../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
 
-管理者がユーザーによる同意を許可していない場合、以下のような画面が表示されることがあります。  
-![The Microsoft Entra popup dialog asking for an admin approval to consume the API.](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
+確認カードはログインカードに置き換えられます。
+「Sign in to Trey」をクリックしてサインインしてください。最初はログインと権限への同意を求めるポップアップウィンドウが表示されます。以降は、Entra ID により資格情報がローカルブラウザにキャッシュされるため、表示されない場合があります。
 
-この場合、管理者に依頼して Plugin API 登録に対しグローバル同意を付与してもらう必要があります。  
-![The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted.](../../assets/images/extend-m365-copilot-06/approval-admin.png)
+![Microsoft 365 Copilot が、サインイン用のカードを表示しています。『Sign in to Trey』ボタンと『Cancel』ボタンがあります。](../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
-ログイン カードが Copilot の応答に置き換わります。データベースに追加されたばかりなので、まだプロジェクトには割り当てられていません。
+管理者によってユーザーによる同意が許可されていない場合、次のようなメッセージが表示されることがあります:
+![API の利用に対して管理者の承認を求める Microsoft Entra のポップアップダイアログ。](../assets/images/extend-m365-copilot-06/need-admin-approval.png)
 
-![The response from the 'Trey Genie' agent when the actual user doesn't have any assigned project.](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
+これは、管理者がテナント全体でユーザーによる同意を制限しているためです。この場合、プラグインの API 登録に対して、管理者に手動で全ユーザーに対するグローバル同意を付与してもらう必要があります。
 
-次に「Woodgrove プロジェクトに自分を追加して」と依頼してください。必須情報が不足している場合は Copilot が質問してきます。
+![Microsoft Entra に登録された『API Plugin』アプリケーションの『API permissions』ページ。『Grant admin consent ...』コマンドがハイライトされています。](../assets/images/extend-m365-copilot-06/approval-admin.png)
 
-![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to provide them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
 
-続けて「What are my skills and what projects am I assigned to?」と尋ね、スキルとプロジェクト割り当てを確認します。
+ログインカードは、Copilot がプロンプトに対して返す応答へと置き換えられます。データベースに新規追加されたため、いまだプロジェクトに割り当てられていません。
 
-![](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
+データベースに新規追加されたため、プロジェクトの割り当てはありません。
+
+![実際のユーザーがプロジェクトに割り当てられていない場合の『Trey Genie』エージェントの応答。](../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
+
+Copilot に「木のグローブ プロジェクトに追加して」と指示してください。必要な値を含めなかった場合、Copilot は詳細の入力を求めます。
+
+![現在のユーザーをプロジェクトに追加する際、情報が不足している場合に詳細を求める『Trey Genie』エージェントの応答。必要な情報が全て揃うと、アクションの確認が表示されます。](../assets/images/extend-m365-copilot-06/oauth-run-05.png)
+
+次に、「What are my skills and what projects am I assigned to?」と尋ね、デフォルトのスキルとプロジェクトの割り当てを確認してください。
+
+![](../assets/images/extend-m365-copilot-06/oauth-run-07.png)
 
 <cc-end-step lab="e6b" exercise="8" step="1" />
 
 ---8<--- "ja/e-congratulations.md"
 
-ラボ E6b「OAuth を使用した Entra ID 認証（手動セットアップ）」が完了しました!
+ラボ E6b、Entra ID 認証の手動セットアップの完了おめでとうございます！
 
-もっと挑戦してみませんか? Copilot コネクタをソリューションに追加してみましょう。
+何か面白いことに挑戦してみませんか？Copilot Connector をソリューションに追加してみてはいかがでしょうか？
 
 <cc-next url="../07-add-graphconnector" />
 

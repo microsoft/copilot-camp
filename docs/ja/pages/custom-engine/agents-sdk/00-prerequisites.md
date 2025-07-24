@@ -2,87 +2,92 @@
 search:
   exclude: true
 ---
-# Lab BMA0 - 前提条件
+# ラボ BMA0 - 前提条件
 
-このラボでは、パス全体を通じて開発するカスタムエンジン エージェントをビルド、テスト、デプロイするための開発環境を構築します。
+このラボでは，パス全体で開発するカスタム エンジン エージェントの構築，テスト，およびデプロイのための開発環境を設定します。
 
-このラボで学習する内容:
+このラボで学習する内容は以下の通りです：
 
--  Microsoft 365 環境のセットアップ  
--  Visual Studio 2022 と Microsoft 365 Agents Toolkit のインストールおよび構成  
--  必要なリソースを作成するための Azure 環境の準備  
+- Microsoft 365 環境のセットアップ
+- Visual Studio 2022 と Microsoft 365 エージェントツールキット のインストールと構成
+- 必要なリソースを作成するための Azure 環境の準備
 
 !!! pied-piper "注意事項"
-    これらのサンプルとラボは、教育およびデモンストレーション目的のためのもので、運用環境での使用を想定していません。運用環境で使用する場合は、必ず運用レベルに引き上げてからご利用ください。
+    これらのサンプルおよびラボは，教育およびデモンストレーション目的のために提供されており，本番環境での使用を意図するものではありません。本番品質にアップグレードすることなく，本番環境へ投入しないでください。
 
-!!! note "補足"
-    独自のカスタムエンジン エージェントをインストールして実行するには、管理者権限を持つ Microsoft 365 テナントが必要です。カスタムエンジン エージェントのテストには Microsoft 365 Copilot ライセンスは不要です。
+!!! note "注意"
+    独自のカスタム エンジン エージェントをインストールして実行するには，管理者権限を持つ Microsoft 365 テナントが必要です。カスタム エンジン エージェントのテストには，Microsoft 365 Copilot ライセンスは必要ありません。
 
-## Exercise 1 : Microsoft Teams のセットアップ
+## 演習 1 : Microsoft Teams のセットアップ
 
-### Step 1: Teams カスタムアプリのアップロードを有効化
+### ステップ 1： Teams カスタムアプリのアップロードの有効化
 
-既定では、エンドユーザーはアプリを直接アップロードできません。Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。この手順では、 M365 Agents Toolkit による直接アップロードができるようテナントを設定します。
+デフォルトでは，エンドユーザーはアプリケーションを直接アップロードすることはできず，Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。このステップでは，お使いのテナントが M365 エージェントツールキット による直接アップロードの設定になっていることを確認します。
 
-1️⃣ [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank} にアクセスします。ここは Microsoft 365 管理センターです。  
+1️⃣ [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank} にアクセスしてください。こちらは Microsoft 365 管理センターです。
 
-2️⃣ 管理センター左側のパネルで **Show all** を選択してナビゲーションを展開します。パネルが開いたら **Teams** を選択し、 Microsoft Teams 管理センターを開きます。  
+2️⃣ 管理センターの左側パネルで **Show all** を選択してナビゲーション全体を開いてください。パネルが開いたら，Microsoft Teams 管理センターを開くために Teams を選択します。
 
-3️⃣ Microsoft Teams 管理センター左側で **Teams apps** のアコーディオンを開き、**Setup Policies** を選択します。App setup policy の一覧が表示されるので **Global (Org-wide default)** ポリシーを選択します。  
+3️⃣ Microsoft Teams 管理センターの左側で，Teams アプリのアコーディオンを開いてください。[**セットアップ ポリシー**] を選択すると，アプリセットアップ ポリシーの一覧が表示されます。その後，[**グローバル（組織全体既定）ポリシー**] を選択してください。
 
-4️⃣ 最初のスイッチ **Upload custom apps** が **On** になっていることを確認します。  
+4️⃣ 最初のスイッチである [**カスタム アプリのアップロード**] が [**On**] になっていることを確認してください。
 
-5️⃣ 画面を下までスクロールし、**Save** ボタンを選択して変更を保存します。  
+5️⃣ 下までスクロールして，[**Save**] ボタンを選択し，変更内容を保存してください。
 
-> 変更が反映されるまで最大 24 時間かかる場合がありますが、通常はもっと早く反映されます。
+> 変更内容が反映されるまでに最大 24 時間かかる場合がありますが，通常ははるかに速いです。
 
 <cc-end-step lab="bma0" exercise="1" step="1" />
 
-## Exercise 2: M365 Agents Toolkit のセットアップ
+## 演習 2: M365 エージェントツールキット のセットアップ
 
-これらのラボは Windows マシンで実施できます。前提条件をインストールできる権限が必要です。インストールが許可されていない場合は、別のマシン（または仮想マシン）を利用してください。
+これらのラボは Windows マシンで完了できます。また，必要な前提条件をインストールする権限が必要です。もしパソコンにアプリケーションをインストールする許可が与えられていない場合は，ワークショップ期間中に使用する別のマシン（または仮想マシン）を用意する必要があります。
 
-### Step 1: Visual Studio 用 Agents Toolkit のインストール
+### ステップ 1： Visual Studio 用 エージェントツールキット のインストール
 
-1. こちらから Visual Studio 2022 をダウンロードします: [Visual Studio 2022](https://code.visualstudio.com/download){target=_blank}  
-1. **Install** を選択します。すでに Visual Studio がインストールされている場合は **Modify** を選択します。  
-1. Visual Studio インストーラーにすべてのワークロードが表示されます。  
-    ![The Visual Studio installation UI with the list of components available for ASP.NET and web development and the Microsoft 365 Agents Toolkit highlighted.](../../../assets/images/agents-sdk/visual-studio-install.png)
-1. インストール画面で次の操作を行います:  
-    1. **Workloads > ASP.NET and web development** を選択します。  
-    1. 右側のペインで **Installation details > Optional** に移動し、**Microsoft 365 Agents toolkit** を選択します。  
-    1. **Install** を選択します。Visual Studio のインストールが開始され、完了するとポップアップが表示されます。  
-1. **Launch** を選択します。  
+1. こちらから Visual Studio 2022 をダウンロードできます： [Visual Studio 2022](https://code.visualstudio.com/download){target=_blank}.
+
+2. [**Install**] を選択してください。既に Visual Studio をインストール済みの場合は，[**Modify**] を選択してください。
+
+3. Visual Studio インストーラーはすべてのワークロードを表示します.
+   
+   ![ASP.NET とウェブ開発用のコンポーネント一覧および Microsoft 365 エージェントツールキット が強調表示された Visual Studio インストール画面](../../../assets/images/agents-sdk/visual-studio-install.png)
+
+4. インストール画面から，以下の手順を実行してください：
+    1. [**ワークロード > ASP.NET とウェブ開発**] を選択してください。
+    2. 右側ペインの [**Installation details > Optional**] から，[**Microsoft 365 エージェントツールキット**] を選択してください。
+    3. [**Install**] を選択してください。Visual Studio のインストールが開始され，ポップアップが表示されます。
+
+5. [**Launch**] を選択してください。
 
 <cc-end-step lab="bma0" exercise="2" step="1" />
 
-## Exercise 3: Azure サブスクリプションの取得
+## 演習 3: Azure サブスクリプションの取得
 
-Path B の演習を完了するには、 Azure 上にリソースを作成するための Azure サブスクリプションが必要です。まだお持ちでない場合は、[Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} を有効化すると、30 日間で利用できる 200 米ドル分のクレジットが付与され、多くの Azure サービスで使用できます。
+パス B の演習を完了するには，Azure 上でリソースを作成するための Azure サブスクリプションが必要です。もしまだ Azure サブスクリプションをお持ちでない場合，最初の 30 日間でほとんどの Azure サービスに利用できる 200 ドル分のクレジットが付与される [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} を有効化してください。
 
-### Step 1: Azure 無料アカウントの作成
+### ステップ 1： Azure 無料アカウントの作成
 
-Azure 無料アカウントを有効化する手順:
+Azure 無料アカウントを有効化する手順に従ってください：
 
-1️⃣ [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} ページにアクセスし、**Activate** を選択します。  
+1️⃣ [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} のページにアクセスし，[**Activate**] を選択してください。
 
-2️⃣ 任意のアカウントでサインインします。演習で使用する Microsoft 365 テナント アカウントを使用することを推奨します。  
+2️⃣ お好みのアカウントでログインしてください。演習で使用する Microsoft 365 テナントのアカウントの使用を推奨します。
 
-3️⃣ プライバシー ステートメントのチェックボックスをオンにし、**Next** を選択します。  
+3️⃣ プライバシー声明のチェックボックスをオンにし，[**Next**] を選択してください。
 
-4️⃣ 本人確認のため、モバイル電話番号を入力します。  
+4️⃣ 本人確認のために携帯電話番号を入力してください。
 
-5️⃣ 一時的な認証用に支払い情報を入力します。従量課金制に移行しない限り料金は発生しません。その後 **Sign up** を選択します。  
+5️⃣ 一時的な認証のために支払い情報を入力してください。従量課金制料金プランに移行しない限り，料金は発生しません。その後，[**Sign up**] を選択してください。
 
-!!! tip "ヒント: 30 日後の Azure リソース管理"
-    Azure 無料アカウントは 30 日間のみ有効です。30 日経過時に無料サブスクリプションで実行中のサービスがないことを必ず確認してください。30 日後も Azure サービスを利用し続ける場合は、支出上限を解除して従量課金制サブスクリプションにアップグレードする必要があります。これにより、 Azure 無料アカウントと一部の無料サービスを引き続き利用できます。
+!!! tip "ヒント：30 日以降の Azure リソース管理"
+    Azure 無料アカウントは 30 日間のみ利用可能です。30 日終了時に無料サブスクリプションでサービスが実行中になっていないことを確認してください。30 日終了後も Azure サービスを引き続き利用したい場合は，利用制限を解除し従量課金制サブスクリプションにアップグレードする必要があります。これにより，Azure 無料アカウントと選択された無料サービスの継続利用が可能となります。
 
 <cc-end-step lab="bma0" exercise="3" step="1" />
 
 ---8<--- "ja/b-congratulations.md"
 
-ラボ BMA0 - セットアップが完了しました!  
-次はラボ BMA1 - Azure AI Foundry でエージェントを準備 に進みます。**Next** を選択してください。
+ラボ BMA0 - セットアップ が完了しました！
+これで，ラボ BMA1 - Prepare your agent in Azure AI Foundry に進む準備が整いました。Next を選択してください。
 
 <cc-next url="../01-agent-in-foundry" />
 
