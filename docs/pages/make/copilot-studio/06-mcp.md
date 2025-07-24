@@ -81,6 +81,9 @@ dotnet run
 
 Check that the MCP server is up and running. You should be able to consume the server via browser at the URL [http://localhost:47002/](http://localhost:47002/){target=_blank}. You will see an error inside a JSON message, that's ok. It means that you are reaching the MCP server.
 
+!!! info
+    The pre-built HR MCP Server provided with this lab is not a production-ready solution. It operates using an in-memory list of candidates and does not retain data across multiple conversation sessions. It was developed specifically for the purpose of this lab, to offer a simple and accessible solution. If you are a professional developer, you may consider it a starting point for understanding the fundamentals of building an MCP server exposed via HTTP. If you like you can improve the server relying on a container app and adding persistence storage. For example, [here](https://github.com/fabianwilliams/hr-mcp-server){target=_blank} you can find a more advanced version of the server, implemented by [Fabian Williams (Microsoft)](https://github.com/fabianwilliams/){target=_blank}.
+
 <cc-end-step lab="mcs6" exercise="1" step="2" />
 
 ### Step 3: Configure the dev tunnel
@@ -286,7 +289,7 @@ All the tools exposed by the MCP server are now available to your agent, as you 
 
 <cc-end-step lab="mcs6" exercise="3" step="1" />
 
-### Step 2: Test the new MCP server
+### Step 2: Test the new MCP server integration
 
 Publish your agent by selecting **Publish** in the top right corner. Once published, test the agent in the integrated Test panel using the following prompt:
 
@@ -303,15 +306,41 @@ Once the connection is established, you can get the actual list of candidates fr
 
 ![The list of candidates retrieved from the HR MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-02.png)
 
-You can now try with another prompt like:
+!!! tip "Debugging the MCP server locally"
+    If you are a developer and you like to dig into the MCP server implementation, you can add breakpoints to the HRTools.cs file and attach a debugger from Visual Studio Code. You will be able to dig into the code and debug the actual MCP server in action.
+
+You can also make the agent available in the Microsoft 365 Copilot Chat. Select the 1️⃣ **Channels** section, then select the 2️⃣ **Teams and Microsoft 365 Copilot** channel, check the 3️⃣ **Make agent available in Microsoft 365 Copilot** option, and then select the 4️⃣ **Add channel** command. Wait for the channel to be enabled, then close the channel side panel and publish the agent again selecting the **Publish** command of the agent in the top right corner.
+
+![The interface to publish an agent in the "Teams and Microsoft 365 Copilot" channel. There is a checkbox to make the agent available in Microsoft 365 Copilot and a command to "Add channel".](../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-01.png)
+
+Now, open the **Teams and Microsoft 365 Copilot** channel again and select the command **See agent in Microsoft 365** to add the agent to Microsoft 365 Copilot.
+
+![The interface to publish an agent in the "Teams and Microsoft 365 Copilot" channel with the "See agent in Microsoft 365" command highlighted.](../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-02.png)
+
+You will see the interface to add the agent to Microsoft 365 Copilot, select **Add** and then **Open**, in order to play with the agent in Microsoft 365 Copilot.
+
+!!! info "Agent details"
+    If you like, through the **Teams and Microsoft 365 Copilot** channel configuration panel, you can also provide additional details about the agent like a description, a custom icon, etc.
+
+![The interface to add the agent to Microsoft 365 Copilot. There are information about the agent and a command to "Add" the agent to Microsoft 365 Copilot.](../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-03.png)
+
+You can now play with the agent in Microsoft 365 Copilot, notice the suggested prompts in the UI of the agent.
+Now, for example, you can try with another prompt like:
 
 ```text
 Search for candidate Alice
 ```
 
-Now the agent should use the MCP server's `search_candidates` tool and return only one candidate matching the search criteria.
+![The Microsoft 365 Copilot chat interface with the suggested prompts configured for the "HR Agent with MCP" and the prompt "Search for candidate Alice" ready to be processed.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-01.png)
 
-![The list of candidates retrieved from the HR MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-03.png)
+Now the agent should use the MCP server's `search_candidates` tool and return only one candidate matching the search criteria.
+However, since we are in the Microsoft 365 Copilot context, you will need to connect again to the MCP server, using the Microsoft Copilot Studio connections management interface.
+
+![The Microsoft 365 Copilot chat instructing the user to "Open the connection manager" to verify credentials and connect to the MCP server.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-02.png)
+
+Once connected, you will be able to run again the prompt and get the expected response.
+
+![Microsoft 365 Copilot showing information about the candidate Alice Johnson, who is matching the search criteria defined in the prompt.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-03.png)
 
 It is now time to test a much more advanced tool, like the `add_candidate` one to add a new candidate to the HR system. Use the following prompt:
 
@@ -322,11 +351,11 @@ email: john.smith@email.com, speaks English and Spanish
 
 The agent will understand your intent, will extract the input arguments for the `add_candidate` tool, and will invoke it adding a new candidate to the list. The response from the MCP server will be a simple confirmation.
 
-![The agent confirming that a new candidate has been added to the HR system via the MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-04.png)
+![The agent confirming that a new candidate has been added to the HR system via the MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-04.png)
 
 You can double check the outcome by listing again the whole list of candidates. You can find `John Smith` as a new candidate at the end of the list.
 
-![The updated list of candidates retrieved from the HR system via the MCP Server. The newly added candidate with name John Smith is at the end of the list.](../../../assets/images/make/copilot-studio-06/mcp-test-05.png)
+![The updated list of candidates retrieved from the HR system via the MCP Server. The newly added candidate with name John Smith is at the end of the list.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-05.png)
 
 You can also have fun with other prompts like:
 
