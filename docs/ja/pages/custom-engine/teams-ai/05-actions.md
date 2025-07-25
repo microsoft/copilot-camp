@@ -2,14 +2,14 @@
 search:
   exclude: true
 ---
-# ラボ BTA5 - 複雑なタスク処理のためのアクション追加
+# ラボ BTA5 - 複雑なタスクを処理するアクションの追加
 
-このラボでは、次のことを行います:
+このラボでは次のことを行います。
 
-- アクションが何か、またそれらを用いて複雑なタスクを処理する方法を学びます
-- カスタム エンジン エージェントにマルチ プロンプトを統合してアクションを処理します
-- カスタム エンジン エージェントにてアクションを実装します
-- Microsoft Graph とアクションを組み合わせてワークフローを自動化します
+- アクションとは何か、そしてそれを使って複雑なタスクを処理する方法を学びます  
+- カスタム エンジン エージェントに複数プロンプトを統合し、アクションを処理できるようにします  
+- カスタム エンジン エージェントにアクションを実装します  
+- Microsoft Graph とアクションを組み合わせてワークフローを自動化します  
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
@@ -24,28 +24,28 @@ search:
 
 ## はじめに
 
-Career Genie が複雑なタスクとワークフローを処理するために、アクションを追加する時が来ました！ このラボでは、候補者リストを処理できる新たなプロンプトを Career Genie のロジックに統合します。つまり、Career Genie で候補者を検索する際に、候補者リストを作成し、名前を追加することができ、作業完了後はこれらのリストを HR に送信して面接のスケジュールを組むことも可能です。これらはすべて、Career Genie に実装するアクションによって処理されます。では、始めましょう。
+いよいよ Career Genie にアクションを追加して、複雑なタスクやワークフローを処理できるようにします。  
+このラボでは、候補者のリストを扱える新しいプロンプトを Career Genie のロジックに統合します。つまり Career Genie で候補者を検索する際、候補者リストを作成して名前を追加できるようになります。作成が終わったら、これらのリストを HR に送信して面接日程を調整することも可能です。これらすべてを Career Genie に実装するアクションで処理します。さっそく始めましょう。
 
-???+ info "カスタム エンジン エージェントにおけるアクションとは"
-    AI システムにおけるアクションは、コード内の基本的な関数やメソッドのようなもので、システムが実行可能な特定のタスクを意味します。アクションは、ユーザーの入力に基づいて AI が様々なタスクを遂行するための基本部品となります。ユーザーが AI システムとやり取りする際、システムはプロンプトを解釈し、実行すべき適切なアクションを選択します。まるでツールボックスを持っており、ユーザーのニーズに合わせて最適なツールを選び出すようなものです。
+???+ info "カスタム エンジン エージェントにおけるアクションとは？"
+    AI システムにおけるアクションは、コード内の基本的な関数やメソッドのようなものです。ユーザーの入力に基づき、システムが実行できる特定のタスクを指します。アクションは AI がさまざまな要求を達成するための構成要素です。ユーザーの入力内容に応じて、AI システムがどのアクションを実行するかを判断します。  
 
-    たとえば、アクションには以下のものが含まれます:
+    例としては、次のようなアクションがあります。  
 
-    * 新しいリストの作成
+    * 新しいリストを作成する  
+    * リストを削除する  
+    * 既存のリストに項目を追加する  
+    * 既存のリストから項目を削除する  
 
-    * リストの削除
-    
-    * 既存のリストへの項目の追加
-    
-    * 既存のリストからの項目の削除
+    ユーザーが AI システムと対話すると、システムはプロンプトを解釈し、適切なアクションを選択して実行します。ツールボックスの中から適切なツールを取り出して使うイメージです。
 
-## 演習 1：アクションを伴う新規プロンプト作成
+## 演習 1: アクション用の新しいプロンプトを作成する
 
-この演習では、アクションを処理するための新しいプロンプトを "prompts" フォルダー内に作成します。
+この演習では、アクションを処理するための新しいプロンプトを「prompts」フォルダーに作成します。
 
-### ステップ 1： 「monologue」 プロンプトの作成
+### 手順 1: 「monologue」プロンプトを作成する
 
-プロジェクト内の `src/prompts/` に移動し、名前が **monologue** の新しいフォルダーを追加します。`src/prompts/monologue/` フォルダー内に、名前が **config.json** の新しいファイルを作成し、以下のコードスニペットをコピーしてください:
+プロジェクト内で `src/prompts/` に移動し、**monologue** という名前の新しいフォルダーを追加します。`src/prompts/monologue/` フォルダーに **config.json** という名前のファイルを作成し、次のコード スニペットを貼り付けます。
 
 ```json
 {
@@ -69,10 +69,10 @@ Career Genie が複雑なタスクとワークフローを処理するために�
 }
 ```
 
-!!! tip "config.json 内の `augmentation` についての簡単な紹介"
-    Augmentations により、プロンプト エンジニアリングが簡略化され、プロンプトに特定の指示を自動的に追加することができます。Augmentations を使用すれば、AI に multi-step tasks (sequence) を処理させるのか、段階的にアクションを考えさせる (monologue) のかを設定できます。
+!!! tip "`config.json` 内の `augmentation` について"
+    Augmentation を使用すると、特定の指示をプロンプトに自動で追加できるため、プロンプト エンジニアリングを簡素化できます。Augmentation では、AI にマルチステップ タスク（sequence）を処理させるか、ステップごとに考えさせる（monologue）かを設定できます。
 
-`src/prompts/monologue/` フォルダー内に、名前が **skprompt.txt** の新しいファイルを作成し、以下のテキストをコピーしてください:
+`src/prompts/monologue/` フォルダーに **skprompt.txt** というファイルを作成し、次のテキストを貼り付けます。
 
 ```
 You are a career specialist named "Career Genie" that helps Human Resources team who can manage lists of Candidates. 
@@ -91,7 +91,7 @@ Current lists:
 {{$conversation.lists}}
 ```
 
-`src/prompts/monologue/` フォルダー内に、名前が **actions.json** の新しいファイルを作成し、以下のコードスニペットをコピーしてください:
+同じフォルダーに **actions.json** というファイルも作成し、次のコード スニペットを貼り付けます。
 
 ```json
 [
@@ -187,13 +187,13 @@ Current lists:
 
 <cc-end-step lab="bta5" exercise="1" step="1" />
 
-## 演習 2：プランナーにおけるプロンプト選択ロジックの実装
+## 演習 2: プランナーでプロンプトを選択するロジックを実装する
 
-この演習では、ユーザーのプロンプトを確認し、"chat" または "monologue" プロンプトを選択する関数を作成します。
+この演習では、ユーザーのプロンプトを確認し、「chat」または「monologue」のどちらのプロンプトを使用するかを判断する関数を作成します。
 
-### ステップ 1：プランナーにおける `defaultPrompt` 関数の作成
+### 手順 1: プランナーで `defaultPrompt` 用の関数を作成する
 
-プロジェクト内の `src/app/app.ts` ファイルに移動し、次の関数を追加してください:
+プロジェクトの `src/app/app.ts` に移動し、次の関数を追加します。
 
 ```javascript
 async function choosePrompt(context){
@@ -223,10 +223,10 @@ async function choosePrompt(context){
 }
 ```
 
-!!! tip " `choosePrompt` 関数の確認"
-    choosePrompt 関数は、ユーザーのプロンプトに "list" が含まれているかを確認します。含まれていれば **monologue** プロンプトを返し、含まれていなければ現在のデフォルトである **chat** プロンプトを返します。
+!!! tip "`choosePrompt` 関数を確認する"
+    `choosePrompt` 関数はユーザーのプロンプトに「list」が含まれているかをチェックします。含まれていれば **monologue** プロンプトを返し、含まれていなければ既定の **chat** プロンプトを返します。
 
-`src/app/app.ts` ファイル内で `planner` を探し、**defaultPrompt** に割り当てられているコードを削除してください。その後、 `choosePrompt` 関数を **defaultPrompt** として定義します。プランナーの最終バージョンは以下のようになります:
+`src/app/app.ts` で `planner` を見つけ、**defaultPrompt** に割り当てられているコードを削除します。その後、`choosePrompt` 関数を **defaultPrompt** として定義します。最終的なプランナーは次のようになります。
 
 ```javascript
 const planner = new ActionPlanner({
@@ -238,19 +238,19 @@ const planner = new ActionPlanner({
 
 <cc-end-step lab="bta5" exercise="2" step="1" />
 
-## 演習 3：アプリへのアクションの実装
+## 演習 3: アプリにアクションを実装する
 
 この演習では、アクション用の関数を作成し、アプリにアクション ハンドラーを登録します。
 
-### ステップ 1： `ConversationState` の更新および各アクションの関数定義
+### 手順 1: `ConversationState` を更新し、各アクションの関数を定義する
 
-`src/app/app.ts` 内で、`@microsoft/teams-ai` のインポートを **DefaultConversationState** を用いて更新します。インポートの最終バージョンは以下のようになります:
+`src/app/app.ts` で `@microsoft/teams-ai` のインポートを **DefaultConversationState** に更新します。最終的なインポートは次のとおりです。
 
 ```javascript
 import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState, DefaultConversationState } from "@microsoft/teams-ai";
 ```
 
-`src/app/app.ts` 内で、**ConversationState** と **ApplicationTurnState** を探し、次のコードに置き換えてください:
+`src/app/app.ts` で **ConversationState** と **ApplicationTurnState** を探し、次のコードに置き換えます。
 
 ```javascript
 // Strongly type the applications turn state
@@ -260,7 +260,7 @@ interface ConversationState extends DefaultConversationState {
 export type ApplicationTurnState = TurnState<ConversationState>;
 ```
 
-`src/app/` フォルダー内に、名前が **actions.ts** の別のファイルを作成し、アクションの関数を定義するために以下のソースコードを追加してください:
+`src/app/` フォルダーに **actions.ts** というファイルを新規作成し、アクション用の関数を定義する次のソース コードを追加します。
 
 ```javascript
 import { ApplicationTurnState } from './app';
@@ -299,15 +299,15 @@ export { getCandidates, setCandidates, ensureListExists, deleteList };
 
 <cc-end-step lab="bta5" exercise="3" step="1" />
 
-### ステップ 2：アプリへのアクション ハンドラーの登録
+### 手順 2: アクション ハンドラーをアプリに登録する
 
-`src/app/app.ts` ファイルの先頭に、以下のアクションインポートを追加してください:
+`src/app/app.ts` のファイル先頭に次のアクションのインポートを追加します。
 
 ```javascript
 import { ensureListExists, getCandidates, setCandidates, deleteList } from "./actions";
 ```
 
-次に、`src/app/app.ts` に以下のコードスニペットを追加し、AI システムにアクション ハンドラーを登録してください:
+続いて、AI システムにアクション ハンドラーを登録するため、次のコード スニペットを `src/app/app.ts` に追加します。
 
 ```javascript
 // Register action handlers
@@ -357,38 +357,38 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 <cc-end-step lab="bta5" exercise="3" step="2" />
 
-### ステップ 3：新しいアクションを用いたアプリのテスト
+### 手順 3: 新しいアクションでアプリをテストする
 
-新しいアクションを搭載した Career Genie をテストしましょう。Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択して、アプリのデバッグを開始してください。すると、Microsoft Teams がブラウザにポップアップ表示されます。Teams 上にアプリの詳細が表示されたら、**Add** を選択し、アプリとのチャットを開始してください。
+Visual Studio Code の **Run and Debug** タブで **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択し、アプリのデバッグを開始します。Microsoft Teams がブラウザーで開きます。アプリの詳細が表示されたら **Add** を選択し、チャットを開始してください。
 
-!!! tip "ヒント：この演習をローカルでテストする場合"
-    これまでにアプリに実装した Teams AI ライブラリの機能の一部は Teams App Test Tool では正常に動作しない可能性があるため、Teams 上でローカルにテストおよびデバッグを行ってください。
+!!! tip "この演習をローカルでテストするためのヒント"
+    これまで実装してきた Teams AI ライブラリの一部機能は Teams App Test Tool ではスムーズに動作しない場合があります。必ず Teams 上でローカル テストおよびデバッグを行ってください。
 
-以下のような順番で会話を進めると、動作確認に役立ちます:
+フローを確認するため、次の順序で質問してみましょう。
 
-- こんにちは
-- .NET の経験がある候補者を提案してもらえますか？
-- 素晴らしいです。 .NET Developer Candidates リストに Isaac Talbot を追加してください
-- 同じリストに Anthony Ivanov を Isaac と一緒に追加してください
-- 私のリストを要約してもらえますか？
-- Python の経験があり、スペイン語を話せる候補者を提案してもらえますか？
-- いいですね！ Python Developer Candidates (Spanish speaking) リストに Sara Folgueroles を追加してください
-- 10年以上の経験がある候補者を提案してもらえますか？
-- 了解です。 .NET Developer Candidates リストから Anthony を削除してください
-- Talent リストに Anthony Ivanov を追加してください
-- 私のリストを要約してください
+- Hello
+- Can you suggest candidates who have experience in .NET?
+- Great, add Isaac Talbot in the .NET Developer Candidates list
+- Add Anthony Ivanov in the same list with Isaac
+- Can you summarize my lists
+- Suggest candidates who have experience in Python and are able to speak Spanish
+- Nice! Add Sara Folgueroles in the Python Developer Candidates (Spanish speaking) list
+- Can you suggest candidates who have 10+ years of experience
+- Ok, remove Anthony from the .NET Developer Candidates list
+- Add Anthony Ivanov in the Talent list
+- Summarize my lists
 
-![上記のダイアログ フローに従って候補者を検索し、リストに追加する Career Genie の動作を示すアニメーション](../../../assets/images/custom-engine-05/actions.gif)
+![Animation showing Career Genie in action accordingly to the dialog flow illustrated above, to search for candidates and add them to lists.](../../../assets/images/custom-engine-05/actions.gif)
 
 <cc-end-step lab="bta5" exercise="3" step="3" />
 
-## 演習 4：Microsoft Graph とアクションを連携してワークフローの自動化を実現
+## 演習 4: Microsoft Graph とアクションを組み合わせてワークフローを自動化する
 
-この演習では、Microsoft Graph を利用して候補者リストを HR に送信し、面接のスケジュールを調整する新しいアクションを実装します。
+この演習では、Microsoft Graph を利用して候補者リストを HR に送信し、面接を調整する新しいアクションを実装します。
 
-### ステップ 1：メール送信用プロンプトに新しいアクションを定義
+### 手順 1: メール送信用の新しいアクションをプロンプトに定義する
 
-プロジェクト内の `src/prompts/monologue/actions.json` に移動し、以下のアクションを追加してください:
+`src/prompts/monologue/actions.json` に移動し、次のアクションを追加します。
 
 ```json
 ,
@@ -420,9 +420,9 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 
 <cc-end-step lab="bta5" exercise="4" step="1" />
 
-### ステップ 2：新しい `sendLists` アクション用の関数の作成
+### 手順 2: 新しい `sendLists` アクション用の関数を作成する
 
-プロジェクト内の `src/app/app.ts` に移動し、`getUserDisplayName` を探して、関数の前に **export** を追加してください。関数の最終バージョンは以下のようになります:
+`src/app/app.ts` に移動し、`getUserDisplayName` を見つけて、関数の前に **export** を追加します。最終的な関数は次のようになります。
 
 ```javascript
 export async function getUserDisplayName {
@@ -433,7 +433,7 @@ export async function getUserDisplayName {
 
 ```
 
-`src/app/app.ts` 内の `app` を見つけ、スコープを **'Mail.Send'** に更新してください。アプリの最終バージョンは以下のようになります:
+`src/app/app.ts` で `app` を探し、スコープに **'Mail.Send'** を追加します。最終的な `app` は次のようになります。
 
 ```javascript
 const app = new Application({
@@ -447,28 +447,28 @@ const app = new Application({
   }}});
 ```
 
-`env/.env.local.user` に移動し、以下の HR メールアドレスを環境変数として追加してください:
+`env/.env.local.user` を開き、次の HR のメール アドレスを環境変数として追加します。
 
 ```
 HR_EMAIL=<YOUR-EMAIL-ADDRESS>
 ```
 
-!!! pied-piper "`HR_EMAIL` の詳細（このラボをテストするため）"
-    このラボをテストするには、`HR_EMAIL` にご自身のアカウントのメールアドレスを入力してください。理想的には、面接スケジュールのメールを送信するために、Human Resources Team のメールアドレスを使用します。このラボはプロトタイピング目的のみであり、本番環境での使用は推奨されません。
+!!! pied-piper "`HR_EMAIL` の詳細"
+    このラボをテストするために、ご自身のアカウントのメール アドレスを `HR_EMAIL` に入力してください。実際の運用では HR チームのメール アドレスを使用して面接調整メールを送信することになります。このラボはプロトタイプ目的のみで、運用環境での使用を想定していません。
 
-`teamsapp.local.yml` に移動し、`file/createOrUpdateEnvironmentFile` の **envs** リストの下に以下の行を追加してください:
+`teamsapp.local.yml` を開き、`file/createOrUpdateEnvironmentFile` の **envs** リスト下に次の行を追加します。
 
 ```
 HR_EMAIL: ${{HR_EMAIL}}
 ```
 
-`src/config.ts` に移動し、設定に以下の行を追加してください:
+`src/config.ts` を開き、次の行を設定に追加します。
 
 ```javascript
 HR_EMAIL: process.env.HR_EMAIL
 ```
 
-`src/app/actions.ts` に移動し、コード上部のインポートを以下のように更新してください:
+`src/app/actions.ts` を開き、ファイル先頭のインポートを次のように更新します。
 
 ```javascript
 import { getUserDisplayName, ApplicationTurnState } from './app';
@@ -476,7 +476,7 @@ import { Client } from "@microsoft/microsoft-graph-client";
 import config from '../config';
 ```
 
-次に、`actions.ts` に以下の関数を追加してください:
+続いて `actions.ts` に次の関数を追加します。
 
 ```javascript
 async function sendLists(state: ApplicationTurnState, token): Promise<string> {
@@ -536,7 +536,7 @@ async function createEmailContent(lists, token) {
 }
 ```
 
-最後に `src/app/actions.ts` にて、エクスポートに **sendLists** を追加してください。エクスポートの最終バージョンは以下のようになります:
+最後に `src/app/actions.ts` でエクスポートに **sendLists** を追加します。最終的なエクスポートは次のようになります。
 
 ```javascript
 export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
@@ -544,15 +544,15 @@ export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists }
 
 <cc-end-step lab="bta5" exercise="4" step="2" />
 
-### ステップ 3：`sendLists` アクション ハンドラーの登録
+### 手順 3: `sendLists` アクション ハンドラーを登録する
 
-`src/app/app.ts` に移動し、`./actions` のインポートを **sendLists** 関数付きに更新してください。インポートの最終バージョンは以下のようになります:
+`src/app/app.ts` を開き、`./actions` のインポートに **sendLists** を追加します。最終的なインポートは次のとおりです。
 
 ```javascript
 import { ensureListExists, getCandidates, setCandidates, deleteList, sendLists } from "./actions";
 ```
 
-次に、AI システムに `sendLists` アクションを登録するために、以下のコードスニペットを追加してください:
+続いて、AI システムに `sendLists` アクションを登録するため、次のコード スニペットを追加します。
 
 ```javascript
 app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) => {
@@ -563,9 +563,9 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 
 <cc-end-step lab="bta5" exercise="4" step="3" />
 
-### ステップ 4：Entra ID アプリ登録の更新
+### 手順 4: Entra ID アプリ登録を更新する
 
-新しいスコープ `Mail.Send` を対象とする Entra ID アプリのスクリプトを更新してください。**aad.manifest.json** ファイルに移動し、ノード `requiredResourceAccess` 内で `  "resourceAppId": "Microsoft Graph",` を探します。`resourceAccess` 配列内に、カンマの後に以下のスコープを追加してください。
+新しいスコープ `Mail.Send` を追加するために Entra ID アプリのスクリプトを更新します。**aad.manifest.json** を開き、`requiredResourceAccess` ノード内で `  "resourceAppId": "Microsoft Graph",` を探します。`resourceAccess` 配列にコンマを追加したあと、次のスコープを追加します。
 
 ```JSON
  {
@@ -576,60 +576,60 @@ app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnSt
 
 <cc-end-step lab="bta5" exercise="4" step="4" />
 
-### ステップ 5：アプリおよび新しい `sendLists` アクションのテスト
+### 手順 5: アプリと新しい `sendLists` アクションをテストする
 
-新しい **sendLists** アクションを搭載した Career Genie をテストしましょう。Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択して、アプリのデバッグを開始してください。すると、Microsoft Teams がブラウザにポップアップ表示されます。Teams 上にアプリの詳細が表示されたら、**Add** を選択して、アプリとのチャットを開始してください。
+Visual Studio Code の **Run and Debug** タブで **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択し、アプリのデバッグを開始します。Microsoft Teams がブラウザーで開きます。アプリの詳細が表示されたら **Add** を選択し、チャットを開始してください。
 
-!!! tip "ヒント：この演習をローカルでテストする場合"
-    これまでにアプリに実装した Teams AI ライブラリの機能の一部は Teams App Test Tool では正常に動作しない可能性があるため、Teams 上でローカルにテストおよびデバッグを行ってください。
+!!! tip "この演習をローカルでテストするためのヒント"
+    これまで実装してきた Teams AI ライブラリの一部機能は Teams App Test Tool ではスムーズに動作しない場合があります。必ず Teams 上でローカル テストおよびデバッグを行ってください。
 
-Career Genie との会話を開始するには、単にメッセージを入力してください。例えば、'Hi' から始めることができます。
+Career Genie との会話を始めるには、単にメッセージを入力します。たとえば「Hi」と入力してみましょう。
 
-!!! tip "ヒント：ブラウザのポップアップ設定を確認する"
-    下記の指示が円滑に進むよう、ブラウザで `Pop up` がブロックされていないことを確認してください。
+!!! tip "ブラウザーのポップアップ設定を確認する"
+    以下の手順をスムーズに実行するため、ブラウザーで `Pop up` がブロックされていないことを確認してください。
 
-追加の権限に関する小さなダイアログボックスが表示され、‘Cancel’ と ‘Continue’ のボタンが現れます。このダイアログは、ログインして必要な権限への同意を取得するためのものです。**Continue** を選択してください。
+追加のアクセス許可を求める小さなダイアログ ボックスが表示され、「Cancel」と「Continue」のボタンがあります。これはログインして必要な権限に同意するためのダイアログです。**Continue** を選択してください。
 
-![Microsoft Teams のチャットにおいて、カスタム エンジン エージェントに関連付けられたアプリへの権限の同意を求めるメッセージが表示され、'Continue' ボタンと 'Cancel' ボタンが存在する様子。](../../../assets/images/custom-engine-04/consent-teams.png)
+![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../../assets/images/custom-engine-04/consent-teams.png)
 
-Developer Tunnels を使用してローカルで実行しているため、警告画面が表示されますが、**Continue** を選択してください。アプリがデプロイされると、この警告はユーザーに表示されません。ログインページにリダイレクトされ、アプリの権限に同意することになります。
+Developer Tunnels でローカル実行している場合は警告画面が表示されますが、**Continue** を選択してください。アプリをデプロイした際、ユーザーには表示されません。ログイン画面にリダイレクトされ、アプリの権限に同意します。
 
-!!! tip "ヒント：組織全体を代表して同意する"
-    Microsoft 365 の管理者の場合、テナント内の全ユーザーに代わって同意する "Consent on behalf of your organization" のオプションも表示されます。
+!!! tip "組織全体での同意"
+    Microsoft 365 管理者の場合は「Consent on behalf of your organization」を選択して、テナント内のすべてのユーザーに対して同意を与えることもできます。
 
-権限に同意するには **Accept** を選択してください。
+**Accept** を選択して権限に同意します。
 
-ログインした名前が表示された Career Genie から成功した認証のメッセージが届きます。これで、Career Genie の新しいアクションのテストを開始できます！
+ログイン名を示すメッセージが Career Genie から届き、認証が成功したことがわかります。これで Career Genie で新しいアクションをテストできます。
 
-以下のような順番で会話を進めると、動作確認に役立ちます:
+フローを確認するため、次の順序で質問してみましょう。
 
-- こんにちは
-- .NET の経験がある候補者を提案してもらえますか？
-- 素晴らしいです。 .NET Developer Candidates リストに Isaac Talbot を追加してください
-- 同じリストに Anthony Ivanov を Isaac と一緒に追加してください
-- 私のリストを要約してもらえますか？
-- Python の経験があり、スペイン語を話せる候補者を提案してもらえますか？
-- いいですね！ Python Developer Candidates (Spanish speaking) リストに Sara Folgueroles を追加してください
-- 10年以上の経験がある候補者を提案してもらえますか？
-- 了解です。 .NET Developer Candidates リストから Anthony を削除してください
-- Talent リストに Anthony Ivanov を追加してください
-- 私のリストを要約してください
-- 同じリストに Sara と一緒に Pedro Armijo を追加してください
-- 私のリストを要約してください
-- 私のリストを HR に送信してください
+- Hello
+- Can you suggest candidates who have experience in .NET?
+- Great, add Isaac Talbot in the .NET Developer Candidates list
+- Add Anthony Ivanov in the same list with Isaac
+- Can you summarize my lists
+- Suggest candidates who have experience in Python and are able to speak Spanish
+- Nice! Add Sara Folgueroles in the Python Developer Candidates (Spanish speaking) list
+- Can you suggest candidates who have 10+ years of experience
+- Ok, remove Anthony from the .NET Developer Candidates list
+- Add Anthony Ivanov in the Talent list
+- Summarize my lists
+- Add Pedro Armijo in the same list with Sara
+- Summarize my lists
+- Send my lists to HR
 
 !!! tip "メールボックスを確認する"
-    最後のステップが完了した後、候補者リストのメールが届いているか、メールボックスを確認してください。
+    最後のステップの後、候補者リストのメールが届いているかメールボックスを確認してください。
 
-![上記のダイアログ フローに従って候補者を検索、リストへの追加、リストからの削除、候補者リストを HR にメール送信する Career Genie の全体的な動作体験を示すアニメーション](../../../assets/images/custom-engine-05/career-genie-full.gif)
+![Animation showing the full experience of using Career Genie accordingly to the dialog flow illustrated above searching for candidates, adding them to lists, removing them from lists, and sending the lists of candidates by email to HR.](../../../assets/images/custom-engine-05/career-genie-full.gif)
 
 <cc-end-step lab="bta5" exercise="4" step="5" />
 
 ---8<--- "ja/b-congratulations.md"
 
-BTA5 - 複雑なタスク処理のためのアクション追加が完了しました！ さらに探索したい場合は、このラボのソースコードが [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank} にてご利用いただけます。
+BTA5 - 複雑なタスクを処理するアクションの追加 を完了しました！さらに探求したい場合は、このラボのソース コードが [Copilot Developer Camp リポジトリ](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab05-Actions/CareerGenie){target=_blank} にあります。
 
-これで **Build your own agent** パスは終了です！ Career Genie の構築を楽しんでいただけましたか？ ご意見やフィードバックをお聞かせください。 💜
+これで **Build your own agent** パスは終了です。Career Genie の構築は楽しめましたか？ぜひご感想をお聞かせください 💜
 
 <cc-next label="Home" url="/" />
 

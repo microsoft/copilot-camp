@@ -2,111 +2,106 @@
 search:
   exclude: true
 ---
-# ラボ MCS5 - Power Platform custom connector
+# ラボ MCS5 - Power Platform カスタム コネクタ
 
-このラボでは、Microsoft Copilot Studio を使用して構築したエージェントに Power Platform カスタムコネクターを介して拡張する方法を理解していただきます。具体的には、カスタム REST API を利用して、人材募集用の候補者一覧（仮想）を管理します。API は以下の機能を提供します:
+このラボでは、Microsoft Copilot Studio で作成したエージェントを Power Platform のカスタム コネクタを使って拡張する方法を学びます。具体的には、架空の求人候補者リストを管理するカスタム REST API を利用します。この API では次の機能を提供します。
 
-- 候補者の一覧表示
-- 特定候補者の取得
-- 新しい候補者の追加
-- 候補者の削除
+- 候補者一覧の取得  
+- 特定候補者の取得  
+- 新規候補者の追加  
+- 候補者の削除  
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/f_HrMbg6kOU" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を素早く把握できます。</div>
+          <div>このビデオでラボの概要をご覧ください。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
     </div>
 </div>
 
-
-Microsoft 365 Copilot 内の Copilot Studio では、これらの機能を利用して、以前の [ラボ MCS4](../04-extending-m365-copilot){target=_blank} で作成したエージェントの可能性をさらに引き出すことができます。
+Microsoft 365 Copilot では、Copilot Studio 内でこれらの機能を活用し、前の [Lab MCS4](../04-extending-m365-copilot){target=_blank} で作成したカスタム エージェントの可能性をさらに高めることができます。
 
 !!! note
-    このラボは前のラボ、[ラボ MCS4](../04-extending-m365-copilot){target=_blank} を前提として構築されています。同じエージェントで作業を継続し、新たな機能で拡張することが可能です。
+    このラボは前回の [Lab MCS4](../04-extending-m365-copilot){target=_blank} を基にしています。同じエージェントを引き続き使用し、機能を拡張してください。
 
-このラボで学習する内容:
+このラボでは次のことを学びます。
 
-- Power Platform カスタムコネクターを利用して REST API を公開する方法
-- Power Platform における外部 REST API への通信を安全にする方法
-- エージェントからカスタムコネクターを利用する方法
+- REST API を Power Platform カスタム コネクタとして公開する方法  
+- Power Platform で外部 REST API との通信を保護する方法  
+- エージェントからカスタム コネクタを利用する方法  
 
-## エクササイズ 1 : REST API の作成
+## 演習 1 : REST API の作成
 
-簡便さのため、このラボではあらかじめ構築された REST API を使用します。このエクササイズでは、ローカルで実行できるようにダウンロードと設定を行います。
+本ラボでは簡単のため、あらかじめ用意された REST API を使用します。この演習では API をダウンロードして構成し、ローカルで実行できるようにします。
 
-### ステップ 1: REST API のダウンロードとテスト
+### 手順 1: REST API のダウンロードとテスト
 
-サンプル REST API は、TypeScript および Node.js で構築された Azure Function で、名前は `HR Service` です。ソースコードは [こちら](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/path-m-lab-mcs5-connectors/hr-service&filename=hr-service){target=_blank} からダウンロード可能です。
+サンプル REST API は TypeScript と Node.js で作成された Azure Function で、名前は `HR Service` です。ソース コードは [こちら](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/path-m-lab-mcs5-connectors/hr-service&filename=hr-service){target=_blank} からダウンロードできます。
 
-zip ファイルからファイルを展開し、Visual Studio Code で対象フォルダーを開いてください。以下のスクリーンショットは、プロジェクト構造の概要を示しています。
+ZIP を展開し、Visual Studio Code で対象フォルダーを開きます。以下のスクリーンショットはプロジェクト構成の概要です。
 
-![Visual Studio Code での HR Service プロジェクト概要。http フォルダにいくつかの .http ファイルがあり、src フォルダ内にはサンプルデータと実際の Azure Function、二つの Open API 仕様ファイル、いくつかの JSON 構成ファイルが存在します。](../../../assets/images/make/copilot-studio-05/custom-connector-01.png)
+![The outline of the HR Service project in Visual Studio Code. There are an http folder with a couple of .http files to test the API, a src folder with sample data and the actual azure function, two Open API specification files, some JSON configuration files.](../../../assets/images/make/copilot-studio-05/custom-connector-01.png)
 
-プロジェクト概要の主な要素:
+プロジェクトの主な構成要素は次のとおりです。
 
-- `http`: このフォルダーには Visual Studio Code で REST API をテストする際に役立ついくつかの .http ファイルがあります。
-- `src/data/candidates.json`: この JSON ファイルは、サービスの初期データソースとして使用される仮想の候補者一覧を含んでいます。
-- `src/functions/candidatesFunction.ts`: Azure Function の実際の実装です。
-- `src/openapi.json`: JSON 形式で保存された Azure Function の Open API 仕様ファイルです。
-- `src/openapi.yaml`: Yaml 形式で保存された Azure Function の Open API 仕様ファイルです。
-- `askCandidateData.json`: 新しい候補者のデータを収集するための アダプティブカード の JSON です。
-- `dev-tunnel-steps.md`: ローカルで実行中の REST API に対してリバースプロキシを確立する Dev Tunnel を構築するための簡単な手順です。
-- `local.settings.json.sample`: このラボで後ほど使用するサンプル構成ファイルです。
+- `http`: Visual Studio Code で REST API をテストするための .http ファイルが入っています。  
+- `src/data/candidates.json`: サービスの初期データソースとして使用される架空の候補者リスト。  
+- `src/functions/candidatesFunction.ts`: Azure Function の実装。  
+- `src/openapi.json`: Azure Function の Open API 仕様ファイル (JSON)。  
+- `src/openapi.yaml`: Azure Function の Open API 仕様ファイル (YAML)。  
+- `askCandidateData.json`: 新規候補者のデータを収集するアダプティブ カードの JSON。  
+- `dev-tunnel-steps.md`: ローカルで実行している REST API 用にリバース プロキシ (Dev Tunnel) を構築する簡易手順。  
+- `local.settings.json.sample`: 後ほど使用するサンプル構成ファイル。  
 
-`local.settings.json.sample` ファイルの名前を `local.settings.json` に変更し、F5 キーを押してプロジェクトを開始してください。
-Visual Studio Code で `http/ht-service.http` ファイルを開き、`http://localhost:7071/api/candidates` に対する GET リクエストの近くにある **Send request** コマンドを選択して、新たなリクエストをトリガーし、候補者一覧を取得してください。
-画面右側には、リクエストの出力結果が表示され、いくつかのレスポンスヘッダーおよび候補者の JSON 一覧が確認できます。
+`local.settings.json.sample` を `local.settings.json` にリネームし、F5 を押してプロジェクトを起動します。Visual Studio Code で `http/ht-service.http` を開き、`http://localhost:7071/api/candidates` への GET リクエスト横にある **Send request** コマンドを選択して候補者一覧を取得します。画面右側にレスポンス ヘッダーと候補者の JSON リストが表示されます。
 
-![Visual Studio Code での HTTP リクエストの実行例。左側にリクエスト一覧が記載された .http ファイルがあり、候補者一覧を取得するリクエストがハイライトされています。右側には GET リクエストのレスポンス（いくつかの HTTP ヘッダーと JSON ボディ）が表示され、下部には OAuth 無効に関するメッセージが出力された **Terminal** が表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-02.png)
+![The HTTP request in action in Visual Studio Code. On the left side there is the .http file with the list of requests and the one to list the candidates is highlighted. On the right side there is the response for the get list of candidates request, with some HTTP headers and the JSON body of the response. In the lower part of the screen there is the **Terminal** with an highlighted message about OAuth disabled.](../../../assets/images/make/copilot-studio-05/custom-connector-02.png)
 
-**Terminal** ウィンドウの下部には、トリガーした API 呼び出しのトレースと `OAuth is disabled. Skipping token validation` というメッセージが表示されます。現時点では、API は匿名アクセス可能です。
+画面下部の **Terminal** ウィンドウには、実行した API 呼び出しのトレースと `OAuth is disabled. Skipping token validation` というメッセージが表示されます。現時点では API が匿名アクセス可能であることを示しています。
 
 <cc-end-step lab="mcs5" exercise="1" step="1" />
 
-### ステップ 2: Entra ID への API 登録
+### 手順 2: Entra ID での API 登録
 
-次に、API へのアクセスを安全にするための設定を行います。まず、対象の Microsoft 365 テナントの作業用アカウントで、ブラウザを開き [https://entra.microsoft.com](https://entra.microsoft.com){target=_blank} にアクセスし、Microsoft Entra 管理センターにサインインしてください。サインイン後、左側のメニューバーから 1️⃣ **App registrations** を選択し、次に 2️⃣ **+ New registration** コマンドを選択して、対象テナントに新しいアプリケーションを登録します。
+次に API へのアクセスを保護します。まずブラウザーを開き、対象 Microsoft 365 テナントの職場アカウントで [https://entra.microsoft.com](https://entra.microsoft.com){target=_blank} にアクセスし、Microsoft Entra 管理センターにサインインします。左側メニューの 1️⃣ **App registrations** を選択し、つづいて 2️⃣ **+ New registration** を選択して新しいアプリケーションを登録します。
 
-![Microsoft Entra 管理センターのユーザーインターフェイス。左側メニューの **App registration** と **+ New registration** コマンドがハイライトされています。](../../../assets/images/make/copilot-studio-05/custom-connector-03.png)
+![The Microsoft Entra admin center user interface with highlighting of the **App registration** menu and of the **+ New registration** command.](../../../assets/images/make/copilot-studio-05/custom-connector-03.png)
 
-`Register an application` ページが表示されます。例として `HR-Service-API` などのアプリケーション名を入力してください。認証の対象を対象テナント内のみとし、画面下部の **Register** ボタンを選択してください。
+`Register an application` ページでアプリケーション名を `HR-Service-API` などに設定し、対象テナントのみでの認証を選択して **Register** を選択します。
 
-![新しいアプリケーションを登録するページ。アプリケーション名「HR-Service-API」、シングルテナント認証の選択、アプリケーション登録ボタンがハイライトされています。](../../../assets/images/make/copilot-studio-05/custom-connector-04.png)
+![The page to register a new application with the application name "HR-Service-API", the selection of single tenant authentication, and the button to register the application highlighted.](../../../assets/images/make/copilot-studio-05/custom-connector-04.png)
 
-Microsoft Entra はアプリケーションを登録し、**Overview** ページに登録されたアプリケーションの情報を表示します。後ほど必要になるため、Client ID と Tenant ID の値をコピーしてください。
+登録が完了すると **Overview** ページが表示されます。Client ID と Tenant ID を控えておきます。
 
-左側メニューから 1️⃣ **Expose an API** を選択し、次に 2️⃣ **+ Add a scope** を選択して、カスタム API 用の新たな権限スコープを追加します。初めてスコープを追加する際は、**Application ID URI** の構成が必要となります。初期値は `api://<Client-Id>` となっているはずです。**Save and continue** を選択して、アプリケーション固有の URI を保存してください。そして、3️⃣ 右側に表示されるパネルでスコープの設定を行い、4️⃣ **Add scope** を選択して操作を確定してください。
+左側メニューの 1️⃣ **Expose an API** を選択し、2️⃣ **+ Add a scope** で新しいスコープを追加します。最初にスコープを追加する際は **Application ID URI** を設定する必要があります。既定値は `api://<Client-Id>` です。**Save and continue** を選択して保存し、続いて右側パネルで 3️⃣ スコープ設定を行い、4️⃣ **Add scope** で確定します。
 
-スコープを作成することにより、API 用のカスタム委任権限スコープを定義できます。API の利用者は、この権限スコープを含む OAuth 2.0 トークンを提供する必要があり、これにより API を利用可能となります。
+![The page to configure a new permission scope for the application. On the right side there is a panel to configure bunch of settings for the new permission scope.](../../../assets/images/make/copilot-studio-05/custom-connector-05.png)
 
-![アプリケーションの新たな権限スコープの設定ページ。右側に新たな権限スコープの設定パネルが表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-05.png)
+例として以下の値を使用します。
 
-権限スコープ設定のための提案値は次の通りです:
+- Scope name: `HR.Consume`  
+- Who can consent?: `Admins and users`  
+- Admin consent display name: `HR.Consume`  
+- Admin consent description: `Allows consuming the HR Service`  
+- User consent display name: `HR.Consume`  
+- User consent description: `Allows consuming the HR Service`  
+- State: `Enabled`  
 
-- Scope name: スコープの実際の名称。例: `HR.Consume`
-- Who can consent?: スコープに対して管理者のみが同意するか、管理者と通常のユーザーの両方が同意できるかを定義します。`Admins and users` を選択してください。
-- Admin consent display name: 管理者同意用の短い表示名。例: `HR.Consume`
-- Admin consent description: 管理者同意用のスコープ説明。例: `Allows consuming the HR Service`
-- User consent display name: ユーザー同意用の短い表示名。例: `HR.Consume`
-- User consent description: ユーザー同意用のスコープ説明。例: `Allows consuming the HR Service`
-- State: スコープが **Enabled** か **Disabled** かを定義します。有効なままにしておきます。
+設定が完了すると、スコープが一覧に表示されます。
 
-権限スコープの構成が完了すると、アプリケーションに定義されたスコープ一覧に新しいスコープが表示されます。
+![The permission scope configured for the current application. There is the scope name, who can consent, the admin consent display name, the user consent display name, and the state as enabled.](../../../assets/images/make/copilot-studio-05/custom-connector-06.png)
 
-![現在のアプリケーションに設定された権限スコープ。スコープ名、誰が同意できるか、管理者同意表示名、ユーザー同意表示名、そして有効状態が表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-06.png)
-
-次に、左側メニューから 1️⃣ **Manifest** を選択し、2️⃣ **Microsoft Graph App Manifest (new)** を使用してマニフェストファイルの内容を編集、3️⃣ `requestedAccessTokenVersion` プロパティの値を `2` に更新してください。これは、API が v2.0 タイプの JWT トークンを期待していることを示します。
+次に 1️⃣ **Manifest** を選択し、2️⃣ **Microsoft Graph App Manifest (new)** で manifest を編集して `requestedAccessTokenVersion` を `2` に更新します。これにより v2.0 の JWT トークンを期待することを指定します。
 
 !!! note
-    Microsoft Graph App Manifest とトークン v2.0 に関する追加情報は、記事 [Understand the app manifest (Microsoft Graph format)](https://learn.microsoft.com/en-us/entra/identity-platform/reference-microsoft-graph-app-manifest){target=_blank} をご参照ください。
+    Microsoft Graph App Manifest と v2.0 トークンについては [Understand the app manifest (Microsoft Graph format)](https://learn.microsoft.com/en-us/entra/identity-platform/reference-microsoft-graph-app-manifest){target=_blank} を参照してください。
 
-![Entra アプリケーションのマニフェスト編集ページ。`requestedAccessTokenVersion` プロパティとその値 "2" がハイライトされています。](../../../assets/images/make/copilot-studio-05/custom-connector-07.png)
+![The page to edit the manifest of the Entra application. There is the editor with highlighted the property `requestedAccessTokenVersion` and value of "2".](../../../assets/images/make/copilot-studio-05/custom-connector-07.png)
 
-Visual Studio Code に戻り、刚登録したアプリケーションの設定に合わせて `local.settings.json` ファイルを更新してください。`<Client-ID>` と `<Tenant-ID>` のプレースホルダーを実際の値に置き換え、`UseOAuth` プロパティの値を `true` に変更してください。
+Visual Studio Code に戻り、`local.settings.json` を編集して先ほど登録したアプリケーションの値に合わせます。`<Client-ID>` と `<Tenant-ID>` を実際の値に置き換え、`UseOAuth` を `true` に設定します。
 
 ```JSON
 {
@@ -122,22 +117,22 @@ Visual Studio Code に戻り、刚登録したアプリケーションの設定�
 }
 ```
 
-REST API プロジェクトを再起動すると、API は保護され、Authorization ヘッダーに OAuth 2.0 トークンが含まれているかどうかを確認します。トークンが提供されない、または無効なトークンの場合、API は HTTP ステータス 401 （Unauthorized）で応答します。
+REST API プロジェクトを再起動すると、API は保護され、Authorization ヘッダーに OAuth 2.0 トークンを要求するようになります。トークンがない場合や無効な場合は HTTP 401 (Unauthorized) が返されます。
 
 <cc-end-step lab="mcs5" exercise="1" step="2" />
 
-### ステップ 3: dev tunnel の構成
+### 手順 3: Dev Tunnel の構成
 
-次に、REST API をパブリック URL で公開する必要があります。開発マシンでローカルに API プロジェクトを実行しているため、リバースプロキシツールを利用して `localhost` をパブリック URL 経由で公開する必要があります。簡単のため、Microsoft が提供する dev tunnel ツールを以下の手順で使用してください:
+ローカルで実行している REST API を公開 URL として提供する必要があります。簡単のため、Microsoft 提供の Dev Tunnel を使用します。
 
-- [こちらの手順](https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started){target=_blank} に従って、開発環境に dev tunnel をインストールしてください。
-- 次のコマンドを実行して、dev tunnel にログインします:
+- [こちらの手順](https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started){target=_blank} に従って Dev Tunnel をインストールします。  
+- 次のコマンドでログインします。  
 
 ```console
 devtunnel user login
 ```
 
-- 次のコマンド群を実行して、dev tunnel をホストしてください:
+- 次のコマンドでトンネルをホストします。  
 
 ```console
 devtunnel create hr-service -a --host-header unchanged
@@ -145,154 +140,150 @@ devtunnel port create hr-service -p 7071
 devtunnel host hr-service
 ```
 
-コマンドラインには、ホスティングポート、「Connect via browser」URL、ネットワークアクティビティを検査するための URL といった接続情報が表示されます。
+実行後、接続情報が表示されます。
 
-![コンソールウィンドウで実行中の devtunnel。ホスティングポート、ブラウザ経由接続 URL、ネットワークアクティビティ検査用の URL が表示されています。](../../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
+![The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity.](../../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
 
-「Connect via browser」URL をコピーし、安全な場所に保存してください。
+「Connect via browser」の URL をコピーして保存してください。
 
-ラボの演習を進める間、devtunnel コマンドを実行し続けてください。再起動が必要な場合は、最後のコマンド `devtunnel host hr-service` を再実行してください。
+ラボ中は devtunnel コマンドを実行したままにしておきます。再起動が必要な場合は `devtunnel host hr-service` を再実行してください。
 
 <cc-end-step lab="mcs5" exercise="1" step="3" />
 
-### ステップ 4: Entra ID への Consumer 登録
+### 手順 4: Entra ID でのコンシューマー登録
 
-Power Platform からカスタムコネクターを介して API を消費するためには、Microsoft Entra ID に consumer アプリケーションも登録する必要があります。[Microsoft Entra 管理センター](https://entra.microsoft.com){target=_blank} に戻り、左側のメニューバーから **App registrations** を再度選択し、**+ New registration** コマンドを選択して、対象テナントに新しいアプリケーションを登録します。今回は、新しいアプリケーション名を `HR-Service-Consumer` としてください。ステップ 1 と同様に、シングルテナント認証を構成して登録を行ってください。
+Power Platform のカスタム コネクタから API を利用するには、コンシューマー アプリケーションも Microsoft Entra ID に登録する必要があります。[Microsoft Entra admin center](https://entra.microsoft.com){target=_blank} に戻り、再度 **App registrations** → **+ New registration** を選択します。今回はアプリケーション名を `HR-Service-Consumer` とし、同様にシングル テナントで登録します。
 
-Microsoft Entra はアプリケーションを登録し、**Overview** ページに新規登録されたアプリケーションの情報を表示します。先ほどのように、Client ID と Tenant ID の値をコピーしてください。
+登録後、**Overview** ページで Client ID と Tenant ID を控えます。
 
-![Microsoft Entra ID で consumer アプリケーションの新しいクライアントシークレットを作成するページ。説明と有効期限を設定するフィールド、およびシークレット追加のコマンドが表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-08.png)
+![The page to create a new client secret for the consumer application in Microsoft Entra ID. There are fields to configure description and duration of the secret, and a command to add the secret.](../../../assets/images/make/copilot-studio-05/custom-connector-08.png)
 
-左側メニューから 1️⃣ **Certificates & Secrets** を選択し、次に 2️⃣ **+ New secret** を選択して、新しいクライアントシークレットを追加してください。その後、3️⃣ シークレットの名前と有効期間を設定し、4️⃣ **Add** コマンドを選択して新しいシークレットを作成します。新しいシークレットの値を先ほどコピーした Client ID と Tenant ID とともに安全な場所に保存してください。
+1️⃣ **Certificates & Secrets** → 2️⃣ **+ New secret** を選択し、3️⃣ 名前と有効期限を設定して 4️⃣ **Add** をクリックします。生成されたシークレット値も安全な場所に保存してください。
 
-次に、権限ページに切り替え、左側メニューから 1️⃣ **API permissions** を選択し、2️⃣ **+ Add a permission** を選択してください。右側に表示されたパネルで、3️⃣ **APIs my organization uses** を選択、検索して 4️⃣ `HR-Service-API` を選択してください。
+次に 1️⃣ **API permissions** → 2️⃣ **+ Add a permission** を選択し、右側パネルで 3️⃣ **APIs my organization uses** を選択、`HR-Service-API` を検索して 4️⃣ 選択します。
 
-![Microsoft Entra 管理センターの、consumer アプリケーションに新しい権限を付与するページ。右側パネルにテナントに登録された API の一覧が表示され、「HR-Service-API」がハイライトされています。](../../../assets/images/make/copilot-studio-05/custom-connector-09.png)
+![The page of Microsoft Entra admin center to grant a new permission to the consumer application. There is a panel on the right side with the list of APIs registered in the tenant and the "HR-Service-API" highlighted.](../../../assets/images/make/copilot-studio-05/custom-connector-09.png)
 
-対象 API を選択すると、サイドパネルが更新され、先ほど設定した `HR.Consume` 型の委任権限を選択できるようになります。権限を選択後、**Add permission** コマンドを選択して、consumer アプリケーションに権限を追加してください。
-権限が追加されたら、**Grand admin consent for ...** コマンドを選択し、アプリケーションへの権限付与を完了してください。
+続いて `HR.Consume` の Delegated Permission を選択し **Add permission** をクリックします。追加後、**Grand admin consent for ...** を実行して権限を付与します。
 
-![アプリケーションに権限を付与する Microsoft Entra 管理センターのパネル。**Delegated permissions** グループが選択され、**HR.Consume** 権限がハイライトされています。**Add permission** コマンドが表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-10.png)
+![The panel of Microsoft Entra admin center to grant a permission to an application. The group of **Delegated permissions** is selected and the permission of type **HR.Consume** is selected. The **Add permission** command is highlighted.](../../../assets/images/make/copilot-studio-05/custom-connector-10.png)
 
-このプロセスの最後に、consumer アプリケーションは以下のスクリーンショットで示される権限が構成されます。
+最終的に下図のように `User.Read` と `HR.Consume` が Delegated として設定されていれば完了です。
 
-![consumer アプリケーションの権限。**User.Read** と **HR.Consume** の両権限が Delegated 型で表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-11.png)
+![The permissions for the consumer applicaiton. There is the permission **User.Read** and there is the permission **HR.Consume**. Both permissions are of type Delegated.](../../../assets/images/make/copilot-studio-05/custom-connector-11.png)
 
-今後の手順で構成を更新するため、consumer アプリケーションのタブを開いたままにしておいてください。
+このブラウザー タブは後の手順で再度使用しますので開いたままにしてください。
 
 <cc-end-step lab="mcs5" exercise="1" step="4" />
 
-## エクササイズ 2 : カスタムコネクターの作成
+## 演習 2 : カスタム コネクタの作成
 
-このエクササイズでは、HR Service API を消費するための Power Platform カスタムコネクターを作成します。
+この演習では HR Service API を利用する Power Platform カスタム コネクタを作成します。
 
-### ステップ 1: カスタムコネクターの作成
+### 手順 1: カスタム コネクタの作成
 
-新しいカスタムコネクターを作成するには、ブラウザを開き、対象テナントの作業用アカウントで [https://make.powerautomate.com](https://make.powerautomate.com){target=_blank} にアクセスして Power Automate を起動してください。左側のメニューパネルから **More** → **Discover all** を選択し、**Custom connectors** を探します。頻繁に使用する場合は、このメニュー項目をピン留めすることも可能です。カスタムコネクターの一覧ページが表示されたら、**+ New custom connector** コマンドを選択し、**Import an OpenAPI file** を選んでください。
+ブラウザーで [https://make.powerautomate.com](https://make.powerautomate.com){target=_blank} にアクセスし、職場アカウントでサインインします。左メニューで **More** → **Discover all** → **Custom connectors** を選択します。頻繁に使用する場合はピン留めも可能です。カスタム コネクタの一覧ページで **+ New custom connector** → **Import an OpenAPI file** を選択します。
 
-![Power Platform カスタムコネクターの作成メニュー。**Import an OpenAPI file** オプションがハイライトされています。](../../../assets/images/make/copilot-studio-05/custom-connector-12.png)
+![The menu to create a new Power Platform custom connector, highlighting the **Import an OpenAPI file** option.](../../../assets/images/make/copilot-studio-05/custom-connector-12.png)
 
-コネクター名を入力し、`HR-Service` の OpenAPI JSON ファイルを参照してください。ファイルは [こちら](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/path-m-lab-mcs5-connectors/hr-service/src/openapi.json?raw=true){target=_blank} でも入手可能です。名前と Open API 仕様ファイルの指定後、**Continue** ボタンを選択してコネクターの作成を完了してください。
+コネクタ名を入力し、`HR-Service` の OpenAPI JSON ファイルを指定します。ファイルは [こちら](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/path-m-lab-mcs5-connectors/hr-service/src/openapi.json?raw=true){target=_blank} でも取得できます。設定後 **Continue** をクリックします。
 
-![OpenAPI JSON ファイルから新規カスタムコネクターを作成するダイアログ。コネクターの名前と OpenAPI 仕様ファイルのパスが表示され、**Continue** コマンドがハイライトされています。](../../../assets/images/make/copilot-studio-05/custom-connector-13.png)
+![The dialog to create a new custom connector starting from an OpenAPI JSON file. There is the name of the connector and the path of the OpenAPI specification file. The **Continue** command is highlighted.](../../../assets/images/make/copilot-studio-05/custom-connector-13.png)
 
-複数のタブによる登録プロセスが表示されます。最初のタブは **General** で、ここでカスタムアイコン、カラー、説明を構成できます。また、**General** タブでは **Host** の値を設定する必要があります。ここには、エクササイズ 1 - ステップ 3 でコピーした dev tunnel URL のホスト名を入力してください。最後に、デフォルト値 `/` をそのまま使用できる **Base URL** を設定します。
+登録ウィザードが表示され、最初の **General** タブでアイコン、色、説明などを設定できます。ここでは **Host** に演習 1 - 手順 3 で取得した Dev Tunnel のホスト名を入力し、**Base URL** は `/` のままにします。
 
-![Power Platform カスタムコネクターの **General** 設定タブ。アイコン、背景色、説明、プロトコル（HTTP または HTTPS）、ホスト名、Base URL のフィールドがあり、画面下部に **Security** コマンドがあります。](../../../assets/images/make/copilot-studio-05/custom-connector-14.png)
+![The tab to configure **General** settings for the Power Platform custom connector. There are fields to configure icon, background color, description, protocol (HTTP or HTTPS), hostname, and base URL. There is a **Security** command at the bottom of the page.](../../../assets/images/make/copilot-studio-05/custom-connector-14.png)
 
-画面下部の **Security** コマンドを選択して、コネクターのセキュリティ設定に切り替えてください。**Security** タブでは認証タイプとして `OAuth 2.0` を選択し、続けて `Azure Active Directory` をサポートする OAuth 2.0 プロトコルの種類として指定します。
+ページ下部の **Security** をクリックし、認証タイプを `OAuth 2.0`、フレーバーを `Azure Active Directory` に設定します。
 
-![カスタムコネクターの **Security** タブでの認証タイプ設定。選択されている値は `OAuth 2.0` です。](../../../assets/images/make/copilot-studio-05/custom-connector-15.png)
+![The authentication type settings for the **Security** tab of the custom connector. The selected value is `OAuth 2.0`.](../../../assets/images/make/copilot-studio-05/custom-connector-15.png)
 
-`OAuth 2.0` と `Azure Active Directory` を選択すると、セキュリティ設定に必要な各項目の入力が求められます。具体的には次の項目です:
+必要な設定を入力します。
 
-- Client ID: エクササイズ 1 - ステップ 4 で登録した consumer アプリケーションの `<Client-Id>`
-- Client secret: 同じくエクササイズ 1 - ステップ 4 で登録した consumer アプリケーションの `<Client-Secret>`
-- Authorization URL: Entra ID の認証 URL。GCC テナントを使用していない限り、デフォルト値のままで大丈夫です。
-- Tenant ID: エクササイズ 1 - ステップ 4 で登録した consumer アプリケーションの `<Tenant-Id>`
-- Resource URL: エクササイズ 1 - ステップ 2 で `HR-Service-API` アプリケーションに登録した `<Application-ID-URI>`。通常、`api://<Client-Id>` の形式となります（この `<Client-Id>` は `HR-Service-API` アプリケーションのものです）。
-- Enable on-behalf-of login: `False` のままで維持してください。
-- Scope: エクササイズ 1 - ステップ 2 で設定した `HR.Consume` スコープです。
-- Redirect URL: これは読み取り専用のフィールドですが、後ほど使用します。
+- Client ID: 演習 1 - 手順 4 で登録したコンシューマー アプリの `<Client-Id>`  
+- Client secret: 同じく `<Client-Secret>`  
+- Authorization URL: 既定値  
+- Tenant ID: `<Tenant-Id>`  
+- Resource URL: 演習 1 - 手順 2 で設定した `<Application-ID-URI>` (`api://<Client-Id>`)  
+- Enable on-behalf-of login: `False`  
+- Scope: `HR.Consume`  
+- Redirect URL: 読み取り専用 (後ほど使用)  
 
-![`OAuth 2.0`（`Azure Active Directory` 選択時）の設定。Client ID、Client secret、Authorization URL、Tenant ID、Resource URL、Enabled on-behalf-of login、Scope、Redirect URL の各設定項目が表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-16.png)
+![The settings for `OAuth 2.0` when `Azure Active Directory` is selected. There are settings for Client ID, Client secret, Authorization URL, Tenant ID, Resource URL, Enabled on-behalf-of login, Scope, Redirect URL.](../../../assets/images/make/copilot-studio-05/custom-connector-16.png)
 
-右上隅の **Create connector** コマンドを選択して、コネクター設定を保存してください。コネクターが保存されると、**Security** タブが再読み込みされ、**Redirect URL** フィールドに実際の値が表示されます。その値をコピーし、Microsoft Entra ID 管理センターに戻ります。エクササイズ 1 - ステップ 4 で登録した consumer アプリケーションにアクセスし、左側のメニューから 1️⃣ **Authentication** を選択、次に 2️⃣ **+ Add a platform** を選びます。右側に表示されたパネルで、3️⃣ **Web** を選択し、4️⃣ 先ほどコピーした **Redirect URL** を貼り付け、5️⃣ **Configure** を選択して新設定を確定します。
+右上の **Create connector** で保存します。保存後 **Security** タブが再読み込みされ、**Redirect URL** に実際の値が表示されます。コピーして Entra ID のコンシューマー アプリに戻り、1️⃣ **Authentication** → 2️⃣ **+ Add a platform** → 3️⃣ **Web** を選択し、4️⃣ コピーした Redirect URL を貼り付け、5️⃣ **Configure** をクリックします。
 
-![consumer アプリケーションの **Web** 認証用設定ページ。](../../../assets/images/make/copilot-studio-05/custom-connector-17.png)
+![The page to configure **Web** authentication for the consumer application.](../../../assets/images/make/copilot-studio-05/custom-connector-17.png)
 
-これにより、Power Platform の認証フローで使用するリダイレクト URL として、consumer アプリケーションが構成されました。
+これで Power Platform からのリダイレクト URL が許可されました。
 
-![**Web** 認証用リダイレクト URL を設定した consumer アプリケーションのパネル。](../../../assets/images/make/copilot-studio-05/custom-connector-18.png)
+![The panel to configure the consumer application with **Redirect URL** for **Web** authentication.](../../../assets/images/make/copilot-studio-05/custom-connector-18.png)
 
-その後、カスタムコネクター定義に戻り、**Definition** タブに切り替えます。ここには、OpenAPI 仕様ファイルから取得された REST API のすべての操作が表示されます。特に変更を加える必要はありません。**Test** タブに切り替えて、REST API が期待どおりに動作しているかテストすることもできます。
+カスタム コネクタ定義に戻り **Definition** タブへ移動すると、OpenAPI 仕様から取得した操作が確認できます。変更は不要です。**Test** タブに切り替えて動作確認を行うことも可能です。
 
 <cc-end-step lab="mcs5" exercise="2" step="1" />
 
-### ステップ 2: カスタムコネクターのテスト
+### 手順 2: カスタム コネクタのテスト
 
-**Test** タブでは、左側に操作の一覧が表示されます。例として **getCandidates** 操作を選択し、**+ New connection** コマンドを選択して対象のコネクターに接続します。Power Platform のプロンプトに従い認証を完了すると、接続が確立されます。接続ができたら、**Test operation** コマンドを選択して操作をテストし、画面下部に出力結果を確認してください。
+**Test** タブの左側に操作一覧が表示されます。例として **getCandidates** を選択し、**+ New connection** で接続を作成して認証します。接続後 **Test operation** を実行し、画面下部の出力を確認します。
 
-![Power Platform カスタムコネクターのテストページ。上部に構成済みの接続、中央にテストする操作、下部に HTTP リクエストの出力結果が表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-19.png)
+![The test page of the Power Platform custom connector, where you can invoke the target API providing credentials through a connection. In the upper part of the screen there is the configured connection. In the middle of the screen there is the operation to test. In the bottom part of the screen there is the output of the test HTTP request.](../../../assets/images/make/copilot-studio-05/custom-connector-19.png)
 
 <cc-end-step lab="mcs5" exercise="2" step="2" />
 
-## エクササイズ 3 : カスタムコネクターの利用
+## 演習 3 : カスタム コネクタの利用
 
-このエクササイズでは、エクササイズ 2 で作成したカスタムコネクターを利用します。
+この演習では、演習 2 で作成したカスタム コネクタを利用します。
 
-### ステップ 1: エージェントからカスタムコネクターを利用する
+### 手順 1: エージェントからカスタム コネクタを利用
 
-このステップでは、[ラボ MCS4](../04-extending-m365-copilot){target=_blank} で作成した Microsoft 365 Copilot Chat 用エージェントからカスタムコネクターを利用します。
+[Lab MCS4](../04-extending-m365-copilot){target=_blank} で作成した Microsoft 365 Copilot Chat 用エージェントからカスタム コネクタを呼び出します。
 
-ブラウザを開き、対象テナントの作業用アカウントで [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、Microsoft Copilot Studio を起動してください。
+ブラウザーで [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} を開き、1️⃣ Copilot Studio のエージェント一覧から 2️⃣ **Microsoft 365 Copilot** エージェントを選択します。
 
-次に、1️⃣ Copilot Studio 内のエージェント一覧を参照し、2️⃣ **Microsoft 365 Copilot** という名前のエージェントを選択してください。
+![The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Microsoft 365 Copilot** agent.](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
 
-![エージェント一覧から **Microsoft 365 Copilot** エージェントを選択している Microsoft Copilot Studio のインターフェイス。](../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png)
+`Agentic HR` エージェントを編集し、**Actions** セクションで **+ Add action** を選択します。Lab MCS4 - 演習 2 - 手順 1 と同様の手順で、今回は **Custom connector** グループから `HR-Services` を検索します。`HR-Services` コネクタに定義されているアクションが表示されます。
 
-次に、`Agentic HR` エージェントを編集し、**Actions** セクションに移動して **+ Add action** を選択してください。ラボ MCS4 - エクササイズ 2 - ステップ 1 で既に確認した手順に従ってください。ただし、今回は **Custom connector** アクショングループを選択し、`HR-Services` を検索します。エクササイズ 2 - ステップ 1 で作成した `HR-Services` コネクターに定義された操作が一覧表示されます。
+`Get all candidates` アクションを選択しカスタム コネクタへの接続を確定します。設定は次のとおりです。
 
-`Get all candidates` アクションを選択し、対象のカスタムコネクターへの接続を確認してください。
-アクションは以下のように構成します:
+- Name: `Get all candidates`  
+- Description: `Lists all the HR candidates from an external system`  
+- Authentication: `User authentication`  
 
-- Name: `Get all candidates`
-- Description: `Lists all the HR candidates from an external system`
-- Authentication: `User authentication`
+**Add action** で追加したら、Lab MCS4 で作成した旧アクションを無効化します。無効化するにはアクション横の (…) をクリックし、**Status** を `Off` に切り替えます。
 
-**Add action** コマンドを選択してアクションを追加してください。新しいアクションを作成後、ラボ MCS4 - エクササイズ 2 - ステップ 1 で作成した古いアクションを無効にします。アクションを無効にするには、アクション横の三点リーダー (...) をクリックし、**Status** を `Off` に切り替えます。
+![The status menu item do enable/disable an action in an agent for Microsoft 365 Copilot Chat.](../../../assets/images/make/copilot-studio-05/custom-connector-20.png)
 
-![Microsoft 365 Copilot Chat 用エージェントでアクションの有効/無効を切り替えるステータスメニュー。](../../../assets/images/make/copilot-studio-05/custom-connector-20.png)
-
-エージェントを公開し、更新されたら、Microsoft 365 Copilot Chat で次のプロンプトを使用して新しいアクションをテストしてください。
+エージェントを公開し、更新が完了したら Microsoft 365 Copilot Chat で次のプロンプトを入力してテストします。
 
 ```text
 Lists all the HR candidates from an external system
 ```
 
-Microsoft 365 Copilot Chat は、外部 REST API の利用許可を求めるメッセージを表示します。複数回テストする場合は **Allow once**、今後のリクエストでも REST API を消費する場合は **Always allow** を選択してください。
+Microsoft 365 Copilot Chat から外部 REST API 利用の許可を求められます。テストを複数回行う場合は **Allow once**、常時許可する場合は **Always allow** を選択します。
 
-![外部 REST API の利用許可を求める Microsoft 365 Copilot Chat のプロンプト。**Always allow**、**Allow once**、**Cancel** のコマンドが表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-21.png)
+![Microsoft 365 Copilot Chat prompting the user to consent consumption of the HR Service external REST API. There are commands to **Always allow**, **Allow once**, or **Cancel**.](../../../assets/images/make/copilot-studio-05/custom-connector-21.png)
 
-その後、Microsoft 365 Copilot Chat は安全に外部 REST API にアクセスするためにサインインするよう求めるメッセージを表示します。
+続いて安全にアクセスするためのサインインを求められます。
 
-![外部 REST API の利用のためにサインインを促す Microsoft 365 Copilot Chat のプロンプト。**Sign in to Agentic HR** コマンドで認証をトリガーします。](../../../assets/images/make/copilot-studio-05/custom-connector-22.png)
+![Microsoft 365 Copilot Chat prompting the user to sign-in to consume the external REST API. There is a command **Sign in to Agentic HR** to trigger authentication.](../../../assets/images/make/copilot-studio-05/custom-connector-22.png)
 
-**Sign in to Agentic HR** を選択して認証し、対象のカスタムコネクターに接続してください。接続が確立されたら、Microsoft 365 Copilot Chat に戻り、先ほどと同じプロンプトを再実行します。HR Service プロジェクトで定義された候補者一覧が表示され、レスポンス下部には外部サービスからの応答であることを示すアイコンが確認できます。
+**Sign in to Agentic HR** をクリックして認証を完了し、再度同じプロンプトを実行すると候補者一覧が表示されます。レスポンス下部のアイコンは外部サービスからの応答であることを示しています。
 
-![外部 API から取得された候補者一覧を提供している Microsoft 365 Copilot Chat。](../../../assets/images/make/copilot-studio-05/custom-connector-23.png)
+![Microsoft 365 Copilot Chat providing the list of candidates retrieved from the external API.](../../../assets/images/make/copilot-studio-05/custom-connector-23.png)
 
-最後に、Visual Studio Code に戻り、画面下部の **Terminal** エリアに、API による REST リクエストのトレースが表示されていることを確認してください。また、`Token is valid for user <username>` というメッセージがハイライトされ、Microsoft 365 Copilot 内から API を消費するユーザーに対して認証が成功していることが示されています。
+最後に Visual Studio Code の **Terminal** に戻り、REST リクエストのトレースと `Token is valid for user <username>` のメッセージを確認できます。これは Microsoft 365 Copilot からのリクエストが認証されたことを示します。
 
-![Visual Studio Code の **Terminal** ウィンドウにトレース情報が表示されています。](../../../assets/images/make/copilot-studio-05/custom-connector-24.png)
+![The **Terminal** window of Visual Studio Code with tracing information.](../../../assets/images/make/copilot-studio-05/custom-connector-24.png)
 
-素晴らしいです！カスタムコネクターを構成し、Microsoft 365 Copilot Chat 内で利用できるようになりました！
+素晴らしいです！カスタム コネクタを構成し、Microsoft 365 Copilot Chat から呼び出すことができました。
 
 <cc-end-step lab="mcs5" exercise="3" step="1" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-ラボ MCS5 - Power Platform custom connector を完了しました！
+Lab MCS5 - Power Platform カスタム コネクタを完了しました!
 
 <!-- 
 <a href="../06-mcp">Start here</a> with Lab MCS6, to learn how to consume an MCP server in Copilot Studio.

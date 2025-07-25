@@ -2,125 +2,139 @@
 search:
   exclude: true
 ---
-# Lab M2 ― Microsoft 365 Copilot でのアプリ実行
-このラボでは、 Northwind アプリを Microsoft 365 Copilot のプラグインとして実行します。
+# ラボ M2 - Microsoft 365 Copilot でアプリを実行する
+このラボでは、Northwind アプリを Microsoft 365 Copilot のプラグインとして実行します。 
 
-???+ "Teams メッセージ拡張ラボのナビゲーション (Extend Path)"
-    - [Lab M0 ― 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
-    - [Lab M1 ― Northwind メッセージ拡張の概要](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [Lab M2 ― Microsoft 365 Copilot でのアプリ実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) (📍You are here)
-    - [Lab M3 ― 新しい検索コマンドでプラグイン拡張](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
-    - [Lab M4 ― 認証の追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
-    - [Lab M5 ― アクションコマンドでプラグイン拡張](/copilot-camp/pages/extend-message-ext/05-add-action) 
+???+ "Extend Teams Message Extension ラボのナビゲーション (Extend Path)"
+    - [ラボ M0 - 事前準備](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
+    - [ラボ M1 - Northwind メッセージ拡張機能の概要](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
+    - [ラボ M2 - Microsoft 365 Copilot でアプリを実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) (📍現在位置)
+    - [ラボ M3 - 新しい検索コマンドでプラグインを強化](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
+    - [ラボ M4 - 認証を追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
+    - [ラボ M5 - アクション コマンドを追加してプラグインを強化](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
-!!! note "注意事項"
-    すべてのコード変更を含んだ完成版演習は [from here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/) からダウンロードできます。これはトラブルシューティングに役立つ場合があります。  
-    編集内容をリセットする必要がある場合は、リポジトリを再度クローンして最初から始めることができます。
+!!! note "NOTE"
+    すべてのコード変更を反映した完成版は [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/) からダウンロードできます。トラブルシューティングに便利です。
+    編集内容をリセットしたい場合は、リポジトリを再度クローンしてやり直してください。
 
-このラボでは、以下を実施します:
+このラボで学ぶこと:
 
-- Microsoft Teams 上で実行したメッセージ拡張を Microsoft Copilot で実行する
-- 自然言語プロンプトを使用して、 Northwind データベース内のアイテムを検索・発見する方法を学ぶ
+- Microsoft Teams で動かしたメッセージ拡張機能を Microsoft Copilot で実行する  
+- ナチュラル ランゲージ プロンプトを使用して Northwind データベースを検索し、アイテムを見つける方法を理解する  
 
 
-## 演習 1 ― Copilot プラグインとしてのサンプル実行
+## 演習 1 - Copilot プラグインとしてサンプルを実行する
 
-前のラボから引き続きの場合は、デバッガーを継続して実行している状態ならステップ 1 をスキップしてステップ 2 に進んでください。既に停止している場合は、ステップ 1 から始めます。
+前のラボから続けている場合はデバッガーを起動したまま Step 1 をスキップし Step 2 に進めます。停止している場合は Step 1 から開始してください。 
 
-### ステップ 1 : ローカルでアプリ実行
+### Step 1 : アプリをローカルで実行する
 
-デバッグを開始するには、 F5 をクリックして再起動するか、開始ボタン 1️⃣ をクリックしてください。デバッグプロファイルを選択する機会が表示されるので、 Teams (Edge) の Debug を選択するか、他のプロファイルを選んでください。
+F5 キーを押してデバッグを開始するか、スタート ボタン 1️⃣ をクリックして再起動します。デバッグ プロファイルの選択画面が現れるので、Debug in Teams (Edge) 2️⃣ などを選択します。
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
-デバッグ実行により Teams がブラウザーウィンドウで開きます。Agents Toolkit にサインインしたのと同じ資格情報でログインしてください。ログイン後、 Microsoft Teams がアプリを開くかどうかを確認するダイアログを表示します。
+デバッグを開始すると Teams がブラウザー ウィンドウで開きます。Agents Toolkit にサインインしたものと同じ資格情報でログインしていることを確認してください。  
+Teams が開くとアプリを開くかどうか尋ねるダイアログが表示されます。 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
 
-アプリが開かれると、どこでアプリを開くか尋ねられます。デフォルトはパーソナルチャットになっており、なお、チャンネルまたはグループチャットでも選択できます。「Open」を選択してください。
+開くとすぐにアプリをどこで開くか聞かれます。既定では個人チャットですが、チャンネルやグループ チャットも選択できます。「Open」をクリックします。
 
 ![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
 
-これで、アプリとのパーソナルチャット状態になります。
+これでアプリとの個人チャットが開きます。
 
-## ステップ 2 ― Microsoft 365 Copilot でのテスト（単一パラメーター）
+## Step 2 - Microsoft 365 Copilot でテストする (単一パラメーター)
+!!! tip inline "Reminder"
+    以下の演習を行うには、お使いのアカウントに Microsoft 365 Copilot の有効な ライセンス が必要です。
 
-!!! tip inline "リマインダー"
-    以下の演習を実行するには、 アカウントに有効な Microsoft 365 Copilot のライセンスが必要です。  
-    ブラウザーの Teams（[https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/)）に開発者テナントでログインしてください。  
-    Microsoft 365 Copilot をお持ちの場合、新しいアプリが自動的にチャット上部にピン留めされます。Teams を開いて、「chats」を選択すると、Copilot が表示されます。
+ブラウザーで Teams [https://teams.microsoft.com/v2/](https://teams.microsoft.com/v2/) を開き、開発用テナントでログインします。  
+Microsoft 365 Copilot をお持ちの場合、新しいアプリが自動的にチャット一覧の上部にピン留めされます。Teams を開いて **Chats** を選択すると Copilot が表示されます。
 
-Copilot アプリの画面に入ったら、チャットユーザーインターフェースの左下、作成ボックスの下にプラグインアイコン 1️⃣ が表示されます。これをクリックして、 Northwind Inventory プラグインを有効にしてください 2️⃣ 。
+
+
+Copilot 画面が開いたら、チャット UI の左下 (作成ボックスの下) にあるプラグイン アイコン 1️⃣ をクリックし、Northwind Inventory プラグインを有効にします 2️⃣ 。
 
 ![Small panel with a toggle for each plugin](../../assets/images/extend-message-ext-02/03-02-Plugin-Panel.png)
 
-より良い結果を得るには、各プロンプトまたは関連するプロンプトのセットの前に、「New chat」と入力するか、右上の **New chat** アイコンをクリックして新しいチャットを開始してください。
+最良の結果を得るため、各プロンプトまたは関連するプロンプト セットの前に「New chat」と入力するか、右上の **New chat** アイコンをクリックして新しいチャットを開始してください。
 
 ![Copilot showing its new chat screen](../../assets/images/extend-message-ext-02/03-01-New-Chat.png)
 
-以下はメッセージ拡張の単一パラメーターのみを使用するプロンプトの例です:
+以下はメッセージ拡張機能の単一パラメーターのみを利用するサンプル プロンプトです。
 
-* *Northwind Inventory で Chai の情報を探す*
+* *Northwind Inventory で Chai の情報を探して*  
+  *(英語原文: Find information about Chai in Northwind Inventory)*
 
-* *Northwind で割引対象のシーフードを探す。製品、サプライヤー名、平均割引率、期間ごとの収益を含むテーブルを表示する*
+* *Northwind の割引された seafood を検索し、製品名・サプライヤー名・平均割引率・期間別収益を表で示して*  
+  *(英語原文: Find discounted seafood in Northwind. Show a table with the products, supplier names, average discount rate, and revenue per period.)*
 
-まずは最初のプロンプトを試してみましょう。 *Northwind Inventory で Chai の情報を探す*
+まず最初のプロンプト *Northwind Inventory で Chai の情報を探して* を試してみましょう。
 
-![Copilot が Chai を表示](../../assets/images/extend-message-ext-02/copilot-response.png)
+![Copilot showing chai](../../assets/images/extend-message-ext-02/copilot-response.png)
 
-これらの adaptive cards を使用して、製品に対して操作を実行してみてください。もし単一のアイテムが返された場合、Copilot は上記のようにカード全体を表示することがあります。複数の応答の場合、Copilot は各アイテムの横に小さな番号を表示するかもしれません。これらの番号にカーソルを合わせると、adaptive card が表示されます。参照情報も応答の下部に一覧となります。
+返されたアダプティブ カードを使用して製品に対するアクションを試してみてください。1 件のみ返された場合は上図のようにカード全体が表示されます。複数件の場合、Copilot は各カードの横に小さな数字を表示します。その数字にカーソルを合わせるとカードが表示され、回答の下部に参照もリストされます。
 
-複数のアイテムが参照情報とともに返された例を示します.
+複数件が返され、参照が表示される例を次に示します。
 
 ![Copilot citations](../../assets/images/extend-message-ext-02/citations.png)
 
-次に、*Northwind で割引対象のシーフードを探す。製品、サプライヤー名、平均割引率、期間ごとの収益を含むテーブルを表示する* を試してください.
+次に *Northwind の割引された seafood を検索し、製品名・サプライヤー名・平均割引率・期間別収益を表で示して* を試してください。
 
-![Copilot がテーブルを表示](../../assets/images/extend-message-ext-02/table.png)
+![Copilot showing chai](../../assets/images/extend-message-ext-02/table.png)
 
-テスト中は、アプリケーション内のログメッセージを確認してください。
-- プロジェクトが実行中の Visual Studio Code に移動してください。
-- 「Start application」タスクが実行されているターミナルを見つけてください。
+テスト中はアプリケーション内のログ メッセージを確認しましょう。  
+- Visual Studio Code でプロジェクトを実行しているウィンドウに切り替えます。  
+- 「Start application」タスクが実行中のターミナルを探します。  
 
-Copilot がプラグインを呼び出すタイミングがログに表示されます。例えば、前述のプロンプトの後に以下のログが表示されます。
+Copilot がプラグインを呼び出したタイミングが確認できます。たとえば先ほどのプロンプトの後、次のようなログが表示されます。
 
-![シーフードに対する割引検索を示すログメッセージ](../../assets/images/extend-message-ext-02/vscode-log.png)
+![log messages shows a discount search for seafood](../../assets/images/extend-message-ext-02/vscode-log.png)
 
-## ステップ 3 ― Microsoft 365 Copilot でのテスト（複数パラメーター）
 
-この演習では、サンプルプラグインの複数パラメーター機能を活用するいくつかのプロンプトを試します。これらのプロンプトは、[the manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) に定義されている名前、カテゴリ、在庫状況、サプライヤーの都市、および在庫レベルに基づいて取得可能なデータを要求します。
 
-例えば、**Find Northwind beverages with more than 100 items in stock** とプロンプトを入力してみてください。応答するために、Copilot は以下の条件に該当する製品を特定する必要があります:
+## Step 3 - Microsoft 365 Copilot でテストする (複数パラメーター)
+
+この演習では、サンプル プラグインのマルチパラメーター機能を使用するプロンプトを試します。名前、カテゴリ、在庫状況、サプライヤーの都市、在庫レベルでデータを取得する要求を行います。これらは [manifest](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) で定義されています。
+
+例として **Northwind で在庫 100 個超えの beverages を探して** と入力してみましょう。Copilot が応答するためには次の条件を満たす必要があります。
 
 * カテゴリが **beverages**
 * 在庫状況が **in stock**
-* 在庫レベルが **100 を超える**
+* 在庫レベルが **100 個超え**
 
-![Copilot の引用文](../../assets/images/extend-message-ext-02/citations.png)
+![Copilot citations](../../assets/images/extend-message-ext-02/citations.png)
 
-プラグインコードはこれら 3 つのフィルターを適用し、結果セットを提供します。
+プラグイン コードは 3 つすべてのフィルターを適用し、結果セットを提供します。
 
-VS Code のターミナル内のログメッセージを見ると、Copilot がこの要求を理解し、最初のメッセージ拡張コマンドに 3 つのパラメーターを埋め込むことができたことが確認できます.
+VS Code のターミナルでログ メッセージを見ると、Copilot がこれらの要件を理解し、最初のメッセージ拡張コマンドで 3 つのパラメーターを正しく設定したことが分かります。
 
-![categoryName=beverages と stockLevel=100- のクエリを示すログのスクリーンショット](../../assets/images/extend-message-ext-02/multi-query.png)
+![Screen shot of log showing a query for categoryName=beverages and stockLevel=100- ](../../assets/images/extend-message-ext-02/multi-query.png)
 
-このプロンプトを使用することにより、Copilot は各サプライヤーの契約書から支払い条件を探すために OneDrive ファイルも検索するかもしれません。この場合、いくつかの参照には Northwind Inventory アイコンではなく、Word のアイコンが表示されることに気付くでしょう.
 
-![Copilot が SharePoint の契約書から支払い条件を抽出](../../assets/images/extend-message-ext-02/03-06c-PaymentTerms.png)
+このプロンプトを使用すると、Copilot は OneDrive 内のファイルも検索し、各サプライヤーの契約書から支払い条件を見つける場合があります。その場合、参照には Northwind Inventory アイコンではなく Word アイコンが表示されます。
 
-さらに試すためのプロンプト例をいくつかご紹介します:
+例を示します。
 
-- *Northwind で在庫が少ない乳製品を見つける。製品、サプライヤー、在庫単位数、および発注数を含むテーブルを表示する.*
-- *Tofu に対して部分的な注文が届いています。Northwind でサプライヤーを見つけ、在庫状況を要約し、MOQ ポリシーに基づいて部分注文の送付を停止するよう通知するメールのドラフトを作成する.*
-- *Northwind は London の Microsoft Community Days にブースを出展します。現地のサプライヤーがいる製品を探し、ブースと製品を宣伝する LinkedIn 投稿を書く.*
-- *London の Northwind で在庫が少なく、ソーシャルメディアの影響により需要が高い飲料は何か。製品詳細を参照して在庫を更新する.*
+![Copilot extracted payment terms from contracts in SharePoint](../../assets/images/extend-message-ext-02/03-06c-PaymentTerms.png)
 
-どのプロンプトが最も効果的でしたか？ ご自身でプロンプトを考え、ログメッセージを確認して、Copilot がどのようにプラグインにアクセスするかを観察してみてください.
+さらに試せるプロンプト:
+
+- *在庫が少ない Northwind の dairy 製品を探して。製品名・サプライヤー・在庫数・発注中数を表で示して*  
+  *(英語原文: Find Northwind dairy products that are low on stock. Show me a table with the product, supplier, units in stock and on order.)*
+
+- *Tofu の発注が部分納品になっています。Northwind でサプライヤーを探し、在庫状況をまとめ、MOQ ポリシーに従い部分納品を停止するよう依頼するメールを下書きしてください*  
+
+- *London の Microsoft Community Days に Northwind がブースを出します。現地サプライヤーがいる製品を探し、ブースと製品を宣伝する LinkedIn 投稿を作成してください*  
+
+- *SNS で需要が高いが Northwind で在庫が少ない London の beverage は何ですか。参照として製品詳細を提示し、在庫を更新してください*  
+
+どのプロンプトが最も効果的か試してみてください。独自のプロンプトも作成し、ログ メッセージを観察して Copilot がどのようにプラグインへアクセスするか確認しましょう。
 
 <cc-next />
 
 ## おめでとうございます
 
-Microsoft 365 Copilot でプラグインのテストを見事に完了しました。次は別の検索基準に対応するコードを追加するために、次のラボに進んでください。**Next** を選択してください.
+Microsoft 365 Copilot でプラグインをテストする作業を完了しました。次のラボに進み、検索条件を追加するコードを書いてみましょう。**Next** を選択してください。
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/02-nw-plugin" />

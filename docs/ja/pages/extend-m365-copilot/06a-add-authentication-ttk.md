@@ -4,17 +4,17 @@ search:
 ---
 # ラボ E6a - OAuth を使用した Entra ID 認証の追加 (Agents Toolkit)
 
-このラボでは，API プラグインに OAuth 2.0 を用いた認証を追加し，認証プロバイダーとして Entra ID を使用します。また，Agents Toolkit をセットアップして，Entra ID および Teams Developer Portal の登録を自動化する方法を学びます。
+このラボでは、Entra ID を ID プロバイダーとして利用し、OAuth 2.0 を使用して API プラグインに認証を追加します。Agents Toolkit を設定し、Entra ID と Teams Developer Portal への登録を自動化する方法を学びます。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を素早く確認できます。</div>
+          <div>このビデオでラボの概要を素早く確認できます。</div>
             <div class="note-box">
-            📘 <strong>注意事項:</strong>    このラボは前回のラボ、ラボ E5 に基づいています。もしラボ E5 を完了していれば，同じフォルダー内で作業を続けることができます。まだの場合は，<a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> からラボ E5 のソリューションフォルダーをコピーしてください。
-    そこで作業してください。
-    このラボの完成したソリューションは，<a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END" target="_blank">src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END</a> フォルダーにあります。
+            📘 <strong>Note:</strong>    このラボは前回の Lab E5 を基にしています。すでに Lab E5 を完了している場合は、同じフォルダーで作業を続けてください。まだの場合は、<a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a>
+    のソリューション フォルダーをコピーして使用してください。  
+    このラボの完成版は <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END" target="_blank">src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END</a> フォルダーにあります。
         </div>
     </div>
     <div style="flex: 1; min-width: 0;">
@@ -22,13 +22,14 @@ search:
     </div>
 </div>
 
-## 演習 1: ローカル Agents Toolkit 構成の更新
 
-この演習では，Agents Toolkit の構成ファイルを変更し，Entra ID でのアプリ登録と Teams Developer Portal の vault への情報の配置を指示します。
+## 演習 1: ローカル Agents Toolkit 設定の更新
 
-### Step 1: Entra ID アプリ マニフェストの追加
+この演習では、Agents Toolkit の構成ファイルを変更し、Entra ID にアプリケーションを登録し、その情報を Teams Developer Portal の「Vault」に配置するよう指示します。
 
-作業フォルダーのルートに **aad.manifest.json** ファイルを新規作成してください。このファイルに以下の行をコピーしてください。
+### 手順 1: Entra ID アプリ マニフェストの追加
+
+作業フォルダーのルートに **aad.manifest.json** という新しいファイルを作成し、次の内容をコピーします。
 
 ```json
 {
@@ -73,32 +74,32 @@ search:
 }
 ```
 
-このファイルには，登録または更新される Entra ID アプリケーションの詳細が含まれています。`${{AAD_APP_CLIENT_ID}}` などの多数のトークンが含まれていることにご注意ください。これらは Agents Toolkit により実際の値に置き換えられます。
+このファイルには、登録または更新する Entra ID アプリケーションの詳細が含まれています。`${{AAD_APP_CLIENT_ID}}` のようなトークンは、Agents Toolkit がアプリケーションをプロビジョニングするときに実際の値に置き換えられます。
 
-!!! 注意事項
-    Entra ID は以前「Azure Active Directory」と呼ばれていました。AAD への言及は旧名称での Entra ID を意味します。
+!!! Note
+    Entra ID は以前「Azure Active Directory」と呼ばれていました。"AAD" という参照は旧名称の Entra ID を指します。
 
 <cc-end-step lab="e6a" exercise="1" step="1" />
 
-### Step 2: **teamsapp.local.yml** のファイルバージョン番号の更新
+### 手順 2: **teamsapp.local.yml** のファイル バージョン番号を更新
 
-**teamsapp.local.yml** ファイルには，Agents Toolkit によるローカルでのソリューションの実行およびデバッグに関する指示が含まれています。このファイルをこの演習の残りのステップで更新します。
+**teamsapp.local.yml** ファイルには、ソリューションをローカルで実行・デバッグする際の Agents Toolkit の指示が含まれています。この演習では、このファイルを更新します。
 
-!!! info "teamsapp.local.yml は現在 m365agents.local.yml です"
-    新しい Agents Toolkit では，ツールキット関連のタスクすべてに対してファイル名が `m365agents.local.yml` に変更されました。そのため，新しい Agents Toolkit を使用してエージェントを作成した場合は，このファイル名を変更する必要があります。これらのラボでは既存のエージェントプロジェクトで作業しているため，名前の変更やリファクタリングの必要はありません。指示に従って作業を進めてください。
+!!! info "teamsapp.local.yml は m365agents.local.yml に変更されました"
+    新しい Agents Toolkit では、ツールキット関連タスク用のファイル名が `m365agents.local.yml` に変更されました。新しい Agents Toolkit でエージェントを作成した場合は、こちらのファイル名を変更します。このラボでは既存のエージェント プロジェクトを使用するため、リネームやリファクタリングは不要です。手順通りに進めてください。
 
-!!! warning YAML のインデントは非常に重要です
-    YAML ファイルの編集はインデントによって階層が示されるため，時に難しい場合があります。変更を行う際は正しくインデントされていることを必ず確認してください。疑問がある場合は，完成済みのソリューションファイル [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank} を参照してください。
+!!! warning "yaml ではインデントが重要です"
+    yaml ファイルの編集は、階層がインデントで表されるため注意が必要です。インデントが正しくないとラボが動作しません。疑問がある場合は、完成版ファイル [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank} を参照してください。
 
-これらのラボは元々，このファイルのバージョン 1.5 を使用する少し古いバージョンの Agents Toolkit で記述されていました。このステップでは，ファイルをバージョン 1.7 に更新します。
+これらのラボは、バージョン 1.5 を使用する少し古い Agents Toolkit で作成されました。ここではファイルをバージョン 1.7 に更新します。
 
-まず，最初の行を以下の新しいスキーマ参照に置き換えます：
+まず 1 行目を次のスキーマ参照に置き換えます。
 
 ```yaml
 # yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.7/yaml.schema.json
 ```
 
-次に，4 行目のバージョン番号を 1.7 に更新します。
+続いて 4 行目のバージョン番号を 1.7 に更新します。
 
 ```yaml
 version: v1.7
@@ -106,18 +107,17 @@ version: v1.7
 
 <cc-end-step lab="e6a" exercise="1" step="2" />
 
-### Step 3: Entra ID アプリケーションのプロビジョニング
+### 手順 3: Entra ID アプリケーションをプロビジョニング
 
-アプリケーションが ユーザー を認証して何らかの操作を承認するためには，まず Entra ID にアプリケーションを登録する必要があります。このステップでは，アプリケーション登録がまだ存在しない場合に追加します。
+アプリケーションがユーザーを認証し、操作を許可するには、まず Entra ID に登録する必要があります。ここでは、まだ登録されていない場合にアプリ登録を追加します。
 
-ファイル内で以下の行を探してください：
+ファイル内の次の行を探します。
 
 ```yaml
 provision:
   # Creates a Teams app
 ```
-
-これらの行の間，`provision:` 行の直下に次の YAML を挿入してください。可読性のために空行を入れても構いません。
+以下の yaml を `provision:` 行の直下に挿入します。可読性のため空行を入れても構いません。
 
 ```yaml
   # Creates a new Microsoft Entra app to authenticate users if
@@ -147,20 +147,20 @@ provision:
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 ```
 
-`signInAudience` を `AzureADMyOrg` に設定することで，Agents Toolkit は登録された Entra ID テナント内でのみ使用できるシングルテナントアプリケーションを作成します。もし他のテナント，例えばお客様のテナントでもアプリを利用可能にしたい場合は，これを `AzureADMultipleOrgs` に設定します。すべての 3 つのステップは，前のステップで作成した **aad.manifest.json** ファイルを使用します。
+`signInAudience` を `AzureADMyOrg` に設定すると、Agents Toolkit は登録先の Entra ID テナント内だけで使用可能なシングル テナント アプリを作成します。他のテナント (顧客テナントなど) でも使用したい場合は `AzureADMultipleOrgs` を設定します。3 つのステップすべてで、前手順で作成した **aad.manifest.json** が使用されます。
 
-また，このステップでは環境ファイルにいくつかの値を書き込み，これらは **aad.manifest.json** およびアプリケーションパッケージに挿入されます。
+また、このステップで複数の値が環境ファイルに書き込まれ、**aad.manifest.json** とアプリケーション パッケージに挿入されます。
 
 <cc-end-step lab="e6a" exercise="1" step="3" />
 
-### Step 4: Entra ID アプリケーションの更新
+### 手順 4: Entra ID アプリケーションを更新
 
-**teamsapp.local.yml** 内で以下の行を探してください：
+**teamsapp.local.yml** 内の次の行を探します  
 ```yaml
   # Build Teams app package with latest env value
 ```
 
-この行の前に次の YAML を挿入してください：
+この行の前に次の yaml を挿入します。
 
 ```yaml
   - uses: oauth/register
@@ -194,19 +194,19 @@ provision:
       outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 ```
 
-`oauth/register` および `oauth/update` ステップは，Teams Developer Portal の vault にアプリケーションを登録し，Copilot が OAuth 2.0 Auth Code 認証フローを実装するために必要な詳細情報を取得できるようにします。`aadApp/update` ステップは，このアプリケーションの詳細情報で Entra ID アプリケーション自体を更新します。これらの詳細は別のファイル **aad.manifest.json** に記載されており，次の演習で追加します。
+`oauth/register` と `oauth/update` ステップはアプリケーションを Teams Developer Portal の Vault に登録し、Copilot が OAuth 2.0 Auth Code 認可フローに必要な詳細を取得できるようにします。`aadApp/update` ステップは **aad.manifest.json** にある詳細で Entra ID アプリケーション自体を更新します。
 
 <cc-end-step lab="e6a" exercise="1" step="4" />
 
-### Step 5: 出力パスの変更
+### 手順 5: 出力パスの変更
 
-新しい YAML スキーマでは出力パスが少し変更されています。以下の行を探してください：
+新しい yaml スキーマでは出力パスが少し変更されています。次の行を探します。
 
 ```yaml
       outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
 ```
 
-そして以下の行に置き換えてください：
+これを次の行に置き換えます。
 
 ```yaml
       outputFolder: ./appPackage/build
@@ -214,9 +214,9 @@ provision:
 
 <cc-end-step lab="e6a" exercise="1" step="5" />
 
-### Step 6: Entra ID の値をアプリケーションコードで利用可能にする
+### 手順 6: Entra ID の値をアプリケーション コードで利用可能にする
 
-以下の行を探してください：
+次の行を探します。
 
 ```yaml
 deploy:
@@ -238,7 +238,7 @@ deploy:
         STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}
 ```
 
-このコードは，アプリケーションコード内で使用する環境変数を公開します。`STORAGE_ACCOUNT_CONNECTION_STRING` の下に以下の行を追加して利用可能にしてください：
+このコードはアプリ内で使用する環境変数を公開します。`STORAGE_ACCOUNT_CONNECTION_STRING` の下に次の行を追加してください。
 
 ```yaml
         AAD_APP_TENANT_ID: ${{AAD_APP_TENANT_ID}}
@@ -247,25 +247,25 @@ deploy:
 
 <cc-end-step lab="e6a" exercise="1" step="6" />
 
-## 演習 2: 一般的な Agents Toolkit 構成の更新
+## 演習 2: 一般的な Agents Toolkit 設定の更新
 
-ローカルでのデバッグ時には **teamsapp.local.yml** が Agents Toolkit の動作を制御し，Microsoft Azure へのデプロイ時には **teamsapp.yml** がその動作を制御します。この演習では，このファイルを更新します。
+**teamsapp-local.yml** がローカル デバッグ時の Agents Toolkit の動作を制御する一方、**teamsapp.yml**
+は Microsoft Azure へのデプロイ時の動作を制御します。この演習では、このファイルを更新します。
 
-!!! warning YAML のインデントは非常に重要です
-    YAML ファイルの編集はインデントによって階層が示されるため，時に難しい場合があります。変更を行う際は正しくインデントされていることを必ず確認してください。疑問がある場合は，完成済みのソリューションファイル [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.yml){_target=blank} を参照してください。
+!!! warning "yaml ではインデントが重要です"
+    yaml ファイルの編集は、階層がインデントで表されるため注意が必要です。インデントが正しくないとラボが動作しません。疑問がある場合は、完成版ファイル [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.yml){_target=blank} を参照してください。
 
-### Step 1: Entra ID アプリケーションのプロビジョニング
+### 手順 1: Entra ID アプリケーションをプロビジョニング
 
-アプリケーションが ユーザー を認証して何らかの操作を承認するためには，まず Entra ID にアプリケーションを登録する必要があります。このステップでは，アプリケーション登録がまだ存在しない場合に追加します。
+アプリケーションがユーザーを認証し、操作を許可するには、まず Entra ID に登録する必要があります。ここでは、まだ登録されていない場合にアプリ登録を追加します。
 
-ファイル内で以下の行を探してください：
+ファイル内の次の行を探します。
 
 ```yaml
 provision:
   # Creates a Teams app
 ```
-
-これらの行の間，`provision:` 行の直下に次の YAML を挿入してください。可読性のために空行を入れても構いません。
+以下の yaml を `provision:` 行の直下に挿入します。可読性のため空行を入れても構いません。
 
 ```yaml
   # Creates a new Microsoft Entra app to authenticate users if
@@ -295,15 +295,15 @@ provision:
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 ```
 
-`signInAudience` を `AzureADMyOrg` に設定することで，Agents Toolkit は登録された Entra ID テナント内でのみ使用できるシングルテナントアプリケーションを作成します。もし他のテナント，例えばお客様のテナントでもアプリを利用可能にしたい場合は，これを `AzureADMultipleOrgs` に設定します。すべての 3 つのステップは，前のステップで作成した **aad.manifest.json** ファイルを使用します。
+`signInAudience` を `AzureADMyOrg` に設定すると、Agents Toolkit は登録先の Entra ID テナント内だけで使用可能なシングル テナント アプリを作成します。他のテナント (顧客テナントなど) でも使用したい場合は `AzureADMultipleOrgs` を設定します。3 つのステップすべてで、前手順で作成した **aad.manifest.json** が使用されます。
 
-また，このステップでは環境ファイルにいくつかの値を書き込み，これらは **aad.manifest.json** およびアプリケーションパッケージに挿入されます。
+また、このステップで複数の値が環境ファイルに書き込まれ、**aad.manifest.json** とアプリケーション パッケージに挿入されます。
 
 <cc-end-step lab="e6a" exercise="2" step="1" />
 
-### Step 2: Teams Developer Portal Vault へのアプリ登録
+### 手順 2: Teams Developer Portal Vault へのアプリ登録
 
-**teamsapp.yml** 内で以下の行を探してください：
+**teamsapp.yml** 内の次の行を探します
 
 ```yaml
   # Validate using manifest schema
@@ -315,7 +315,7 @@ provision:
   # Build Teams app package with latest env value
 ```
 
-最後の行の前に以下を挿入してください：
+最後の行の前に次を挿入します。
 
 ```yaml
   # Apply the Microsoft Entra manifest to an existing Microsoft Entra app. Will use the object id in
@@ -342,19 +342,19 @@ provision:
 
 <cc-end-step lab="e6a" exercise="2" step="2" />
 
-## 演習 3: アプリケーションパッケージの更新
+## 演習 3: アプリケーション パッケージの更新
 
-Agents Toolkit による Entra ID 登録の設定が完了したので，次は Copilot が認証情報を把握できるようにアプリケーションパッケージを更新する時です。この演習では必要なファイルを更新します。
+Agents Toolkit が Entra ID への登録を行ったので、次はアプリケーション パッケージを更新し、Copilot が認証を認識できるようにします。この演習では必要なファイルを更新します。
 
-### Step 1: Open API Specification ファイルの更新
+### 手順 1: Open API Specification ファイルの更新
 
-Visual Studio Code で作業フォルダーを開き，**appPackage** フォルダー内の **trey-definition.json** ファイルを開いてください。以下の行を探してください：
+Visual Studio Code で作業フォルダーを開き、**appPackage** フォルダー内の **trey-definition.json** を開きます。次の行を探します。
 
 ```json
     "paths": {
 ```
 
-そしてその前に以下の JSON を挿入してください：
+この行の前に次の JSON を挿入します。
 
 ```json
     "components": {
@@ -376,16 +376,16 @@ Visual Studio Code で作業フォルダーを開き，**appPackage** フォル�
     },
 ```
 
-これにより，API 呼び出し時に使用する新しいセキュリティスキームが設定されます。
+これで API 呼び出し時に使用する新しいセキュリティ スキームが設定されます。
 
-次に，各 API パスにこのスキームを追加する必要があります。各パスのインスタンスを見つけ，`responses` オブジェクトを探してください：
+続いて各 API パスにこのスキームを追加します。各パスにある `responses` オブジェクトを探してください。
 
 ```json
     "responses": {
       ...
 ```
 
-各 `responses` の前に以下の JSON を挿入してください（ファイル内に 5 箇所あるので，全ての箇所に挿入することを確認してください）：
+`responses` の前に次の JSON を挿入します (ファイル内に 5 箇所あります。すべて忘れずに追加してください)。
 
 ```json
     "security": [
@@ -395,15 +395,15 @@ Visual Studio Code で作業フォルダーを開き，**appPackage** フォル�
     ],
 ```
 
-編集後は必ず変更を保存してください。
+編集後は必ず保存してください。
 
 <cc-end-step lab="e6a" exercise="3" step="1" />
 
-### Step 2: プラグインファイルの更新
+### 手順 2: プラグイン ファイルの更新
 
-**appPackage** フォルダー内の **trey-plugin.json** ファイルを開いてください。ここには，Copilot が必要とする情報が格納されていますが，Open API Specification (OAS) ファイルには含まれていません。
+**appPackage** フォルダーの **trey-plugin.json** を開きます。このファイルには、Open API Specification (OAS) ファイルに含まれていない Copilot が必要とする情報が保存されています。
 
-`Runtimes` の下に，`type` が `"None"` の `auth` プロパティが見つかります。これは API が現在認証されていないことを示しています。以下のように変更して，Copilot に vault に保存された OAuth 設定を用いて認証するよう指示してください。
+`Runtimes` の下に `auth` プロパティがあり、`"None"` となっています。これは API が現在認証されていないことを示します。次のように変更し、Vault に保存した OAuth 設定を使用して Copilot が認証するようにします。
 
 ~~~json
   "auth": {
@@ -412,55 +412,55 @@ Visual Studio Code で作業フォルダーを開き，**appPackage** フォル�
   },
 ~~~
 
-次のステップでは，実際の Microsoft 365 ユーザーとして API にアクセスするために，アプリケーションコードを更新して有効なログインを確認します（"Avery Howard" は Microsoft の架空の名前生成機による名前です）。
+次のステップでは、アプリケーション コードを更新し、実際の Microsoft 365 ユーザーとして API にアクセスするようにします (現在は Microsoft の架空名ジェネレーターの名前 "Avery Howard" を使用しています)。
 
 <cc-end-step lab="e6a" exercise="3" step="2" />
 
-## 演習 4: アプリケーションコードの更新
+## 演習 4: アプリケーション コードの更新
 
-### Step 1: JWT 検証ライブラリのインストール
+### 手順 1: JWT 検証ライブラリのインストール
 
-作業ディレクトリでコマンドラインから以下を入力してください：
+作業ディレクトリのコマンド ラインで次を実行します。
 
 ~~~sh
 npm i jwt-validate
 ~~~
 
-これにより，受信した Entra ID 認証トークンを検証するためのライブラリがインストールされます。
+これにより、受信した Entra ID 承認トークンを検証するライブラリがインストールされます。
 
 !!! warning
-    Microsoft は NodeJS 用の Entra ID トークン検証のサポートライブラリを提供しておらず，代わりに独自実装の手順を記載した [この詳細なドキュメント](https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens){target=_blank} を提供しています。また，[Microsoft MVP Andrew Connell](https://www.voitanos.io/pages/about/#whos-behind-voitanos){target=_blank} による [別の有用な記事](https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/){target=_blank} もご参照ください。
+    Microsoft は NodeJS で Entra ID トークンを検証する正式なライブラリを提供していませんが、[こちらの詳細ドキュメント](https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens){target=_blank} に独自実装方法が示されています。また、[Microsoft MVP Andrew Connell](https://www.voitanos.io/pages/about/#whos-behind-voitanos){target=_blank} による [参考記事](https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/){target=_blank} もあります。
 
-    **本ラボでは，このガイダンスに従うことを目的とした [コミュニティ提供のライブラリ](https://www.npmjs.com/package/jwt-validate){target=_blank} を，[Waldek Mastykarz](https://github.com/waldekmastykarz){target=_blank} によって作成されたものを使用します。このライブラリは Microsoft によるサポートを受けず，MIT ライセンスの下で提供されているため，自己責任でご利用ください。**
+    **このラボでは、[Waldek Mastykarz](https://github.com/waldekmastykarz){target=_blank} 氏が作成した [コミュニティ提供ライブラリ](https://www.npmjs.com/package/jwt-validate){target=_blank} を使用します。このライブラリはガイダンスに従って作られていますが、Microsoft のサポート対象外で MIT ライセンスのため、自己責任でご使用ください。**
     
-    サポートされているライブラリの進捗状況を追跡したい場合は，[こちらの Github issue](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank} をご参照ください。
+    サポート対象ライブラリの進捗を追跡する場合は、[この Github issue](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank} を参照してください。
 
 <cc-end-step lab="e6a" exercise="4" step="1" />
 
-### Step 2: アイデンティティサービスの更新
+### 手順 2: Identity サービスの更新
 
-この時点で，OAuth ログインは動作し有効なアクセストークンが提供されるはずですが，コードがトークンの有効性を確認しない限り，ソリューションは安全とは言えません。このステップでは，そのトークンの有効性を検証し，ユーザーの名前や ID などの情報を抽出するコードを追加します。
+現時点で OAuth ログインは機能し、アクセス トークンは取得できますが、トークンを検証しない限りソリューションは安全ではありません。この手順では、トークンを検証し、ユーザー名や ID などの情報を抽出するコードを追加します。
 
-**src/services** フォルダー内の **IdentityService.ts** ファイルを開いてください。  
-ファイルの先頭にある他の `import` 文と共に，以下を追加してください：
+**src/services** フォルダーの **IdentityService.ts** を開きます。  
+ファイル冒頭の他の `import` 文と並べて次を追加します。
 
 ~~~typescript
 import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
 ~~~
 
-次に，`class Identity` の直下に以下の行を追加してください：
+次に、`class Identity` 宣言の直下に次の行を追加します。
 
 ~~~typescript
     private validator: TokenValidator;
 ~~~
 
-次に，以下のコメントを探してください
+以下のコメントを探します。
 
 ~~~typescript
 // ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
 ~~~
 
-このコメントを以下のコードに置き換えてください：
+このコメントを次のコードに置き換えます。
 
 ~~~typescript
   // Try to validate the token and get user's basic information
@@ -506,118 +506,114 @@ import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-valid
   }
 ~~~
 
-!!! 注意 「コードから学ぶ」
-    新しいソースコードを見てください。まず，HTTPS リクエストの `Authorization` ヘッダーからトークンを取得します。このヘッダーには "Bearer" という単語と空白，続いてトークンが含まれているため，JavaScript の `split(" ")` を使用してトークンのみを取得します。
+!!! Note "コードから学ぶ"
+    新しいコードを確認してください。まず、HTTP リクエストの `Authorization` ヘッダーからトークンを取得します。このヘッダーには「Bearer」と半角スペース、そしてトークンが含まれるため、JavaScript の `split(" ")` でトークン部分のみを取得しています。
 
-    さらに，認証に失敗する理由がある場合，コードは例外をスローして適切なエラーを返します。
+    また、認証が何らかの理由で失敗した場合は例外をスローし、Azure Function が適切なエラーを返します。
 
-    その後，コードは `jwks-validate` ライブラリで使用するためのバリデーターを作成します。この呼び出しは Entra ID から最新の署名キーを取得するための非同期呼び出しであり，実行に時間がかかる場合があります。
+    その後、`jwks-validate` ライブラリ用のバリデーターを作成します。この呼び出しは Entra ID から最新の公開鍵を読み込むため、時間がかかる非同期処理です。
 
-    次に，`ValidateTokenOptions` オブジェクトを設定します。このオブジェクトに基づき，ライブラリはトークンが Entra ID のプライベートキーで署名されていることに加え，以下を検証します：
+    続いて `ValidateTokenOptions` オブジェクトを設定します。このオブジェクトに基づき、トークンが Entra ID の署名鍵で署名されているだけでなく、以下も検証されます。
 
-    * _audience_ は API サービスアプリの URI と同じでなければならず，これによりトークンが当該 Web サービス専用であることが保証されます。
+    * _audience_ が API サービスの app URI と一致すること (トークンがこの Web サービス用であることを保証)
+    * _issuer_ が自テナントのセキュリティ トークン サービスであること
+    * _scope_ がアプリ登録で定義された `"access_as_user"` と一致すること
 
-    * _issuer_ は当該テナントのセキュリティトークンサービスから発行されなければなりません。
-
-    * _scope_ はアプリ登録に定義されたスコープ `"access_as_user"` と一致している必要があります。
-
-    トークンが有効であれば，ライブラリは内部に含まれていたユーザーの一意の ID，名前，及びメールなど，全ての「クレーム」を持つオブジェクトを返します。これらの値は，架空の "Avery Howard" に依存する代わりに使用されます。
+    トークンが有効な場合、ライブラリはユーザーの一意 ID、名前、メールなどの「クレーム」を含むオブジェクトを返します。これにより、架空の "Avery Howard" を使用せずに実ユーザー情報を使用できます。
 
 <cc-end-step lab="e6a" exercise="4" step="2" />
 
 ## 演習 5: アプリケーションのテスト
 
-### Step 1: アプリマニフェスト内のアプリケーションバージョン番号の更新
+### 手順 1: アプリ マニフェストのバージョン番号を更新
 
-アプリケーションをテストする前に，`appPackage\manifest.json` ファイル内のアプリケーションパッケージの manifest バージョンを更新してください。以下の手順に従います：
+テストの前に、`appPackage\manifest.json` でアプリ パッケージのマニフェスト バージョンを更新します。
 
-1. プロジェクトの `appPackage` フォルダーにある `manifest.json` ファイルを開いてください。
-
-2. JSON ファイル内の `version` フィールドを探してください。次のようになっているはずです：  
+1. プロジェクトの `appPackage` フォルダーにある `manifest.json` を開きます。  
+2. JSON 内の `version` フィールドを探します。  
    ```json
    "version": "1.0.0"
-   ```
-
-3. バージョン番号を少しだけ上げてください。例えば，次のように変更します：  
+   ```  
+3. バージョン番号を小さくインクリメントします。例:  
    ```json
    "version": "1.0.1"
-   ```
+   ```  
+4. ファイルを保存します。
 
-4. 変更を保存してください。
-
-!!! warning 「jwt-validate パッケージのコンパイルエラー」
-    現時点では，jwt-validate パッケージは @types/jsonwebtoken パッケージに対して型エラーを発生させています。この問題を回避するには，プロジェクトのルートにある tsconfig.json ファイルを編集し，"skipLibCheck":true を追加してください。将来的なライブラリのバージョンアップにより修正される可能性がありますので，ラボ実施時には不要になっているかもしれません。
+!!! warning "jwt-validate パッケージのコンパイル問題"
+    現在、jwt-validate パッケージは @types/jsonwebtoken パッケージで型エラーを出します。回避策として、プロジェクト ルートの tsconfig.json に `"skipLibCheck": true` を追加してください。この問題は将来のバージョンで修正される可能性がありますので、その際には不要になる場合があります。
 
 <cc-end-step lab="e6a" exercise="5" step="1" />
 
-### Step 2: アプリケーションの (再)起動
+### 手順 2: アプリケーションの (再) 起動
 
-もし前のラボからアプリが既に起動している場合は，停止してアプリケーションパッケージを再作成させてください。
+以前のラボからアプリがまだ実行中の場合は停止し、アプリケーション パッケージを再作成します。
 
-次に F5 キーを押して，アプリケーションを再度実行し，以前と同様にインストールしてください。
+その後、F5 キーを押して再度アプリを実行し、以前と同様にインストールします。
 
 <cc-end-step lab="e6a" exercise="5" step="2" />
 
-### Step 3: デクララティブエージェントの実行
+### 手順 3: 宣言型エージェントの実行
 
-Microsoft 365 Copilot に戻り， Trey Research エージェントを選択してください。  
-プロンプトに 「What Trey projects am I assigned to?」 と入力してください。API 呼び出しの許可を求める確認カードが表示される場合があります。ここでは認証は行われていません；「Allow Once」をクリックして進んでください。
+Microsoft 365 Copilot に戻り、Trey Research エージェントを選択します。  
+「自分が担当している Trey のプロジェクトは何ですか？」と入力します。API を呼び出してよいか確認するカードが表示される場合があります。ここでは認証は行われていませんので、「Allow Once」をクリックして続行します。
 
-![Microsoft 365 Copilot が API 呼び出しの許可確認カードを表示しています。'Always allow'，'Allow once'，または 'Cancel' のボタンが用意されています。](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
+![Microsoft 365 Copilot showing a confirmation card asking if it is ok to call your API. There are buttons to 'Always allow', 'Allow once', or 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
 
-確認カードはログインカードに置き換えられます。  
-「Sign in to Trey」をクリックしてサインインしてください。最初は，ログインと権限への同意を求めるポップアップウィンドウが表示されるはずです。以降のアクセスでは，ローカルブラウザーに Entra ID により資格情報がキャッシュされているため，表示されない場合があります。
+確認カードがログイン カードに置き換わります。  
+「Sign in to Trey」をクリックしてサインインします。最初はログインと権限付与を求めるポップアップ ウィンドウが表示されます。以降はブラウザーが資格情報をキャッシュするため、表示されない可能性があります。
 
-![Microsoft 365 Copilot が「Sign in to Trey」及び「Cancel」のボタン付きのログインカードを表示しています。](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
+![Microsoft 365 Copilot showing a login card with a button to 'Sign in to Trey' and another one to 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
-!!! tip 「管理者の承認が必要な場合があります」
-    管理者がユーザーとしての同意を許可していない場合，以下のような表示が出ることがあります：
+!!! tip "管理者承認が必要な場合"
+    管理者がユーザーによる同意を許可していない場合、次のような画面が出ることがあります。
 
-    ![Microsoft Entra のポップアップダイアログが，API の利用に対する管理者の承認を求めています。](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
+    ![The Microsoft Entra popup dialog asking for an admin approval to consume the API.](../../assets/images/extend-m365-copilot-06/need-admin-approval.png)
 
-    これは，管理者がユーザーに対しアプリケーションへの権限付与の同意を制限しているためです。この場合，Microsoft 365 Admin / Identity / Applications / App Registrations でアプリ登録を見つけ，そこで管理者に全ユーザー向けのプラグイン API 登録に対するグローバル同意を手動で付与してもらう必要があります。
+    これは、管理者がアプリへの権限付与を制限しているためです。この場合、管理者に依頼して、プラグイン API のアプリ登録に対して全ユーザーへのグローバル同意を手動で付与してもらいます。  
+    Microsoft 365 管理センター / Identity / Applications / App Registrations でアプリを見つけ、「Grant admin consent ...」を実行します。
 
-    ![Microsoft Entra に登録された 'API Plugin' アプリケーションの 'API permissions' ページで，'Grant admin consent ...' コマンドがハイライトされています。](../../assets/images/extend-m365-copilot-06/approval-admin.png)
+    ![The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted.](../../assets/images/extend-m365-copilot-06/approval-admin.png)
 
-ログインカードは，あなたのプロンプトに対する Copilot の応答に置き換えられるはずです。あなたはデータベースに新規追加されたため，まだプロジェクトへの割り当てはありません。
+ログイン カードが Copilot の応答に置き換わります。データベースに追加されたばかりなので、まだプロジェクトには割り当てられていません。
 
-ユーザーがハードコーディングされていた架空のユーザー "Avery Howard" であったことを思い出してください。新しいコードが初めて実行される際，あなたのユーザー ID が見つからないため，まだどのプロジェクトにも割り当てられていない新しいコンサルタントレコードが作成されます。
+以前はユーザーが架空の "Avery Howard" にハードコーディングされていました。新しいコードが初めて実行されると、現在のユーザー ID が見つからないため、新しいコンサルタント レコードが作成されますが、まだどのプロジェクトにも割り当てられていません。
 
-!!! note 「ユーザー情報の更新」
-    これはラボであるため，新規ユーザーアカウントのスキルや所在地などの詳細はハードコーディングされています。変更したい場合は，[Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank} を使用して変更できます。
+!!! note "ユーザー情報の更新"
+    これはラボ用のため、新しいユーザー アカウントのスキルや所在地などはハードコードされています。変更したい場合は [Azure Storage Explorer](https://azure.microsoft.com/en-us/products/storage/storage-explorer/){target=_blank} を使用して編集できます。
 
-    ![Azure Storage Explorer を使って Consultant テーブルを編集している様子。実際の現在のユーザーがハイライトされています。](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
+    ![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
     
 <cc-end-step lab="e6a" exercise="5" step="3" />
 
-### Step 4: プロジェクトへの割り当ての追加
+### 手順 4: プロジェクトに自分を追加
 
-データベースに新規追加されたため，まだどのプロジェクトにも割り当てられていません。プロジェクトの割り当て情報は `Assignment` テーブルに保管され，プロジェクト ID と割り当てられたコンサルタントのコンサルタント ID を参照しています。  
-エージェントに自分が割り当てられているプロジェクトを尋ねると，割り当てられたプロジェクトが見つからないと回答されますが，あなたのスキルや役割を識別し，サポートを申し出ます。
+データベースに追加されたばかりなので、まだプロジェクトに割り当てられていません。プロジェクトの割り当ては `Assignment` テーブルに保存され、プロジェクト ID とアサインされたコンサルタント ID を参照します。  
+「自分のスキルと担当しているプロジェクトは？」と聞くと、エージェントはプロジェクトが見つからないがスキルと役割を特定し、支援を申し出ます。
 
-![実際のユーザーにプロジェクトの割り当てがない場合の 'Trey Genie' エージェントからの応答。](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
+![The response from the 'Trey Genie' agent when the actual user doesn't have any assigned project.](../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png)
 
-エージェントに Woodgrove プロジェクトへの割り当てを依頼してください。必要な情報が不足している場合，エージェントは詳細を確認します。
+「Woodgrove プロジェクトに自分を追加して」とエージェントに依頼します。必要な情報を忘れると、エージェントが確認のため質問します。
 
-![現在のユーザーをプロジェクトに追加する際の 'Trey Genie' エージェントの応答。いくつかの情報が不足している場合，Copilot はそれらの確認を求め，必要な情報がすべて提供されるとエージェントは操作の確認を行います。](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
+![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to confirm them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
 
-必要な情報を提供することで，エージェントが内容を再確認してから処理を進めることができます。
+不足している情報を提供すると、エージェントが再度確認し、処理を進めます。
 
-![現在のユーザーをプロジェクトに追加する際の 'Trey Genie' エージェントの応答。いくつかの情報が不足している場合，Copilot はそれらの確認を求め，必要な情報がすべて提供されるとエージェントは操作の確認を行います。](../../assets/images/extend-m365-copilot-06/oauth-run-06.png)
+![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to confirm them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-06.png)
 
-最終的に確認すると，エージェントは正しい役割と予測をもってあなたをプロジェクトに追加し，タスクを完了します。
+最後に確認すると、エージェントは適切な役割と工数であなたをプロジェクトに追加します。
 
-![ユーザーをプロジェクトに追加した後の 'Trey Genie' エージェントの応答](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
+![The response from the 'Trey Genie' agent after adding user to project](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
 
-次に，自分のデフォルトのスキルを確認し，「What are my skills and what projects am I assigned to?」と尋ねてプロジェクトの割り当てを確認してください。
+続いて、「自分のスキルと割り当てられているプロジェクトは何ですか？」と聞いて、スキルとプロジェクト割り当てを確認してみましょう。
 
 <cc-end-step lab="e6a" exercise="5" step="4" />
 
 ---8<--- "ja/e-congratulations.md"
 
-ラボ Ea6，Agents Toolkit を用いた Entra ID 認証の追加を完了しました！
+ラボ Ea6「Entra ID 認証を Agents Toolkit で追加」が完了しました！
 
-何か面白いことに挑戦してみませんか？ソリューションに Copilot Connector を追加してみてはいかがでしょうか？
+何か面白いことに挑戦したいですか？ソリューションに Copilot Connector を追加してみましょう。
 
 <cc-next url="../07-add-graphconnector" />
 

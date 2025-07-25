@@ -4,126 +4,118 @@ search:
 ---
 # ラボ MCS0 - セットアップ
 
-本ラボでは、 Microsoft 365 テナント をセットアップし、 Microsoft Copilot Studio を使用して エージェント を作成するための構成を行います。  
-Microsoft Copilot Studio は Microsoft Power Platform オファリング の一部であり、専用のライセンス が必要です。詳細は [Microsoft Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?linkid=2085130){target=_blank} をご参照ください。
+このラボでは、Microsoft Copilot Studio を使用してエージェントを作成し始めるために、Microsoft 365 テナントをセットアップおよび構成します。  
+Copilot Studio は Microsoft Power Platform の一部であり、[Microsoft Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?linkid=2085130){target=_blank} に従って専用の ライセンス が必要です。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/RF9RBhPp6v8" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボ の概要 を素早く確認できます。</div>
+          <div>このビデオでラボの概要を簡単に確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
     </div>
 </div>
 
-!!! note "Microsoft 365 Copilot および Microsoft Copilot Studio 用開発環境セットアップ"
-    本ラボでは、既に開発者テナント をお持ちであることを前提としています。対象のテナント でテナント を取得する方法については、[こちらのページ](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} をご参照ください。また、新しい Power Platform 環境 を作成できるように、Power Platform 管理者 権限 を持つ ユーザーアカウント をご用意ください。
+!!! note "Microsoft 365 Copilot と Microsoft Copilot Studio 用の開発環境をセットアップする"
+    このラボでは、すでに開発者テナントをお持ちであることを前提としています。テナントの入手方法については、
+    [こちらのページ](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} を参照してください。また、新しい Power Platform 環境を作成できるよう、Power Platform 管理者である ユーザー アカウントを保有していることも前提としています。
 
-本ラボで学習する内容:
+このラボで学習する内容:
 
-- ラボ 用 の専用環境 の作成方法
-- Microsoft Copilot Studio のセットアップおよび構成方法
+- ラボ用の専用環境を作成する方法
+- Microsoft Copilot Studio をセットアップおよび構成する方法
 
 !!! pied-piper "注意事項"
-    これらのサンプルおよびラボ は、教育およびデモンストレーション目的 で提供されており、本番環境 での使用を目的としておりません。  
-    本番品質 へアップグレードしない限り、本番環境 へ導入しないでください。
+    これらのサンプルおよびラボは、学習およびデモンストレーション目的のために提供されています。運用環境での使用を意図していません。運用環境で使用する場合は、必ず運用レベルにアップグレードしてください。
 
-## 演習 1 : Power Platform 環境 の作成
+## 演習 1 : Power Platform 環境の作成
 
-Microsoft Power Platform を使用すると、ニーズ に合わせてさまざまな 環境 を作成し、簡単 に切り替えることができます。  
-各 環境 にはアプリ、フロー、データ、エージェント 等 が保存され、各 環境 は他の 環境 とは完全 に分離されています。  
-Power Platform 環境 の詳細 については、こちらの [概要ドキュメント](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview){target=_blank} をご覧ください。
+Power Platform では、ニーズに応じて複数の環境を作成し、簡単に切り替えることができます。  
+環境にはアプリ、フロー、データ、エージェントなどが保存され、各環境はほかの環境から完全に分離されています。  
+Power Platform の環境については、[概要ドキュメント](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview){target=_blank} を参照してください。
 
-!!! note "Power Platform 管理者権限"
-    本演習 の手順 を進めるためには、対象テナント で Power Platform 管理者 権限 を持つ ユーザーアカウント が必要です。  
-    そのようなアカウント をお持ちでない場合は、Power Platform 管理者 に環境 の作成および新しい 環境 へのアクセス権 の付与 を依頼してください。
+!!! note "Power Platform の管理者権限"
+    この演習の手順を実行するには、対象テナントで Power Platform 管理者である ユーザー アカウントが必要です。そのようなアカウントがない場合は、Power Platform 管理者に環境を作成してもらい、その環境へのアクセス権を付与してもらってください。
 
-### ステップ 1: 新しい Power Platform 環境 の作成
+### 手順 1: 新しい Power Platform 環境の作成
 
-これら のラボ を利用するため、新しい専用 環境 を作成します。  
-このトレーニング パス の最後 に、関連リソース および設定 をすべて削除できるようにするためです。  
-以下 は、環境 を作成する手順 です。
+これらのラボを実施するために、新しい専用環境を作成します。このトレーニングの終了後に環境を削除すれば、関連するリソースと設定をまとめて削除できます。以下の手順で環境を作成してください。
 
-- ブラウザー を開き、対象 Microsoft 365 テナント の 仕事用アカウント を使用して [https://admin.powerplatform.com](https://admin.powerplatform.com){target=_blank} にアクセスします。
+- ブラウザーを開き、対象の Microsoft 365 テナントの職場 アカウントを使用して [https://admin.powerplatform.com](https://admin.powerplatform.com){target=_blank} にアクセスします。
 
-- 1️⃣ の **Manage** セクション に移動し、2️⃣ の **Environments** パネル を選択し、3️⃣ の **+ New** を選択して 4️⃣ の **New environment** ペーン を開きます。
+- 1️⃣ **Manage** セクションで 2️⃣ **Environments** パネルを選択し、3️⃣ **+ New** を選択して 4️⃣ **New environment** ペインを開きます。
 
-![新しい環境 を作成するための Microsoft Power Platform 管理センター のユーザー インターフェイス。](../../../assets/images/make/copilot-studio-00/new-environment-01.png)
+![The user interface of the Microsoft Power Platform Admin center to create a new environment.](../../../assets/images/make/copilot-studio-00/new-environment-01.png)
 
-- 環境 に一意 の名前 を指定します。例として、"Copilot Dev Camp" を使用することができます。
+- 環境の一意な名前を指定します。たとえば「Copilot Dev Camp」などです。
 
-- **Make this a Managed Environment** 設定 はデフォルト値 (off) のままにします。
+- **Make this a Managed Environment** 設定は既定値 (オフ) のままにします。
 
-- ニーズ に合わせて **Region** を選択します。
+- 必要に応じて **Region** を選択します。
 
-- **Get new features early** 設定 はデフォルト値 (off) のままにします。
+- **Get new features early** 設定は既定値 (オフ) のままにします。
 
-- **Type** 設定 で **Developer** を選択します。
+- **Type** 設定で **Developer** を選択します。
 
-!!! note "環境タイプ の理解"
-    お好みの場合は、**Type** 設定 で **Trial** を選択することもできます。  
-    これにより、30 日間有効 な完全機能 の環境 が作成され、その後自動 に削除されます。  
-    **Trial** 環境 の詳細 については、[こちら](https://learn.microsoft.com/en-gb/microsoft-copilot-studio/environments-first-run-experience#trial-environments){target=_blank} をご覧ください。  
-    さらに、利用可能 なすべて の環境タイプ の詳細 な説明 については、[こちら](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview#power-platform-environment-types){target=_blank} をご覧ください。
+!!! note "環境タイプについて"
+    **Type** 設定で **Trial** を選択することもできます。Trial 環境は 30 日間有効で、自動的に削除されます。**Trial** 環境の詳細は[こちら](https://learn.microsoft.com/en-gb/microsoft-copilot-studio/environments-first-run-experience#trial-environments){target=_blank} を、その他の環境タイプの詳細は[こちら](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview#power-platform-environment-types){target=_blank} を参照してください。
 
-- その他 の設定 はそのままにします。
+- そのほかの設定は変更しないでください。
 
 - **Next** を選択します。
 
-- **Language** および **Currency** を選択するか、またはデフォルト のもの を使用します。
+- **Language** と **Currency** を選択するか、既定値のままにします。
 
-![新しい環境 のための言語、通貨、および最終設定 を構成するための Microsoft Power Platform 管理センター のユーザー インターフェイス。](../../../assets/images/make/copilot-studio-00/new-environment-02.png)
+![The user interface of the Microsoft Power Platform Admin center to configure language, currency and final settings for a new environment.](../../../assets/images/make/copilot-studio-00/new-environment-02.png)
 
-- その他 の設定 はそのままにし、**Save** を選択して環境 を実際 に作成します。
+- そのほかの設定は変更せず、**Save** を選択して環境を作成します。
 
-新しい 環境 が準備 されるまでにはしばらく時間 がかかります。  
-Power Platform 管理センター の 環境 一覧 でその状態 をご確認ください。
+新しい環境が準備されるまでしばらく時間がかかります。Power Platform 管理センターの環境一覧で状況を確認できます。
 
-![「Preparing」 状態 にある新しい 環境 と、新しい 環境 が準備中 であることを示す緑色 のボックス を含む 環境 一覧。](../../../assets/images/make/copilot-studio-00/new-environment-03.png)
+![The list of environment with the new one in "Preparing" status and a green box informing you that the new environment is preparing.](../../../assets/images/make/copilot-studio-00/new-environment-03.png)
 
-新しい 環境 の準備 が整うと、環境 一覧 に情報 が表示されます。
+環境が準備完了になると、一覧に状態が反映されます。
 
-![「Ready」 状態 にある新しい 環境 と、新しい 環境 が正常 に作成されたことを示す緑色 のボックス を含む 環境 一覧。](../../../assets/images/make/copilot-studio-00/new-environment-04.png)
+![The list of environment with the new one in "Ready" status and a green box informing you that the new environment was successfully created.](../../../assets/images/make/copilot-studio-00/new-environment-04.png)
 
 <cc-end-step lab="mcs0" exercise="1" step="1" />
 
 ## 演習 2 : Microsoft Copilot Studio
 
-Microsoft Copilot Studio を使用するには、有効 なライセンス を取得し、使用する対象テナント で有効化する必要 があります。
+Microsoft Copilot Studio を使用するには、有効な ライセンス が必要であり、使用したいテナントでライセンスをアクティブ化する必要があります。
 
-!!! note "Microsoft Copilot Studio ライセンス"
-    Microsoft Copilot Studio へのライセンス アクセス を得る方法 は複数あります。  
-    [Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=2085130){target=_blank} をご参照ください。
+!!! note "Microsoft Copilot Studio のライセンス"
+    Microsoft Copilot Studio にアクセスする ライセンス には複数のオプションがあります。[Power Platform Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=2085130){target=_blank} を参照してください。
 
-### ステップ 1: Microsoft Copilot Studio の有効化
+### 手順 1: Microsoft Copilot Studio の有効化
 
-Copilot Studio を有効化 するには、次 の手順 に従ってください。
+Copilot Studio を有効化するには、次の手順を実行します。
 
-- ブラウザー を開き、対象 Microsoft 365 テナント の 仕事用アカウント を使用して [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスします。
+- ブラウザーを開き、対象 Microsoft 365 テナントの職場 アカウントを使用して [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスします。
 
-- もし初めて Copilot Studio を実行し、ライセンス をお持ちでない場合、以下 の画面 が表示され、試用期間 を開始することができます。
+- Copilot Studio を初めて起動し、ライセンスを保有していない場合、次の画面が表示され、トライアル期間を開始できます。
 
-![Copilot Studio の試用期間 を開始するためのウェブページ。国 を選択し、Microsoft からのオファー に関するメッセージ 受信 の可否 を選択し、無料試用期間 を開始します。](../../../assets/images/make/copilot-studio-00/mcs-trial-01.png)
+![The web page to start a trial period for Copilot Studio. You need to provide your country, to choose whether you want to receive messages from Microsoft about offerts, and to select to start the free trial period.](../../../assets/images/make/copilot-studio-00/mcs-trial-01.png)
 
-!!! note "Copilot Studio 無料試用期間"
-    Copilot Studio の無料試用ライセンス に関する追加情報 は、[こちらのドキュメント](https://learn.microsoft.com/en-us/microsoft-copilot-studio/sign-up-individual){target=_blank} をご覧ください。
+!!! note "Copilot Studio の無料トライアル期間"
+    Copilot Studio の無料トライアル ライセンス については
+    [こちらのドキュメント](https://learn.microsoft.com/en-us/microsoft-copilot-studio/sign-up-individual){target=_blank} を参照してください。
 
-- 画面右上 の 1️⃣ **Environment** セクション を選択し、演習 1 で作成した 環境 を選択します。
+- 画面右上の 1️⃣ **Environment** セクションを選択し、演習 1 で作成した 2️⃣ 環境を選択します。
 
-![ターゲット 環境 を選択する際 の Copilot Studio のユーザー インターフェイス。画面右上 に利用可能 なすべて の環境 が表示され、ターゲット とする 環境 を選択できます。](../../../assets/images/make/copilot-studio-00/new-environment-05.png)
+![The user interface of Copilot Studio when selecting a target environment. There are all the available environments in the upper right corner of the screen and you can choose the one to target.](../../../assets/images/make/copilot-studio-00/new-environment-05.png)
 
-- Copilot Studio が再読み込み され、その後、新しい 環境 での使用 を開始できます。
+- Copilot Studio が再読み込みされ、新しい環境で使用できるようになります。
 
 <cc-end-step lab="mcs0" exercise="2" step="1" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-これで、Microsoft Copilot Studio を使用して最初 の エージェント を作成する準備 が整いました。 
+これで Copilot Studio で最初の エージェント を作成する準備が整いました。 
 
-<a href="../01-first-agent">こちら</a> の Lab MCS1 から開始してください。
-
+<a href="../01-first-agent">ここから開始</a> し、ラボ MCS1 で Copilot Studio を使って最初の エージェント を作成しましょう。  
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/00-prerequisites" />

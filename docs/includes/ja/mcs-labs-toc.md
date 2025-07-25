@@ -1,15 +1,15 @@
 <div class="cc-lab-toc mcs-path">
   <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
   <div>
-    <p>Microsoft Copilot Studio を用いて エージェント を構築したい場合は、これらのラボを実施してください</p>
+    <p>Microsoft Copilot Studio で エージェント を構築したい場合は、次の ラボ を実施してください</p>
     <ul>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - 最初のエージェント</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - トピックの定義</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - ツールの定義</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot の拡張</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの利用</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの利用</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/01-first-agent/">MCS1 - はじめての エージェント</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/02-topics/">MCS2 - トピック の定義</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/03-actions/">MCS3 - ツール の定義</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot を拡張する</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクター の利用</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバー の利用</a></li>
     </ul>
   </div>
 </div>

@@ -4,54 +4,53 @@ search:
 ---
 # ラボ E2 - API の構築
 
-このラボでは、 Azure Functions に基づく API をセットアップし、 Microsoft 365 Copilot の API プラグインとしてインストールします。
+このラボでは Azure Functions を基盤とした API をセットアップし、それを Microsoft 365 Copilot の API プラグインとしてインストールします。
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/XO2aG3YPbPc" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を把握しましょう。</div>
+          <div>この動画でラボの概要を短時間で確認できます。</div>
         </div>
     <div style="flex: 1; min-width: 0;">
   ---8<--- "ja/e-labs-prelude.md"
     </div>
 </div>
 
-## 紹介
+## はじめに
 
-このラボでは、架空のコンサルティング会社 Trey Research のための REST API をセットアップします。この API は、コンサルタントに関する情報にアクセスするための `/api/consultants` パスと、現在の ユーザー に関する情報にアクセスするための `/api/me` パス を提供します。現時点では API は認証をサポートしていないため、現在の ユーザー は常に "Avery Howard" となります。[ラボ E6](./06-add-authentication.md) では、認証とログインした ユーザー へアクセスする機能を追加します。
+このラボでは、仮想のコンサルティング会社 Trey Research 用の REST API をセットアップします。API ではコンサルタント情報（パス `/api/consultants`）と現在のユーザー情報（パス `/api/me`）へアクセスできます。現時点では認証をサポートしていないため、現在のユーザーは常に «Avery Howard» になります。[Lab E6](./06-add-authentication.md) では認証を追加し、ログイン中のユーザーを取得できるようにします。
 
-コードは TypeScript で記述された Azure Functions で構成され、 Azure Table storage のデータベースによって支えられています。アプリをローカルで実行する場合、テーブルストレージは Azurite ストレージ エミュレーター によって提供されます。
+コードは TypeScript で記述された Azure Functions で構成され、Azure Table Storage のデータベースをバックエンドに使用します。ローカルでアプリを実行する際、Table Storage は Azurite ストレージエミュレーターによって提供されます。
 
 ???+ Question "How did you create this API?"
-    このプロジェクトは Agents Toolkit を使用して作成されました。VS Code で空のフォルダーを開き、 Agents Toolkit を起動して新しいアプリプロジェクトを作成し、「エージェント」、「宣言型エージェント」、および「プラグインを追加」を順に選択することで、同じスキャフォールディングを自分のプロジェクトに作成できます。
+    このプロジェクトは Agents Toolkit を使用して作成しました。VS Code で空のフォルダーを開き Agents Toolkit を起動することで、同じスキャフォールディングを自分のプロジェクトでも作成できます。「Create a new app project」を選択し、「Agent」→「Declarative Agent」→「Add plugin」の順に選択してください。
 
-## 演習 1：初期アプリケーションの構成と実行
+## 演習 1: 開始アプリケーションの設定と実行
 
-### ステップ 1：追加の前提条件のインストール
+### 手順 1: 追加の前提条件をインストールする
 
-このラボでは、いくつかの追加の前提条件が必要です。今すぐインストールしてください。
+このラボでは追加でいくつかの前提条件が必要です。以下をインストールしてください。
 
-* [Azure functions core tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools){target=_blank} 
-* [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}：これらのツールキットのいずれかを使用してローカルで API をテストします
-* （オプション）[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank}：これを使用すると、 Trey Research のデータベースを閲覧および変更できます
+* [Azure Functions Core Tool](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp#install-the-azure-functions-core-tools){target=_blank}  
+* [REST Client アドイン (Visual Studio Code)](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank} : API をローカルでテストする際に使用します  
+* (任意) [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank} : Trey Research データベースを閲覧・変更する際に使用します  
 
 <cc-end-step lab="e2" exercise="1" step="1" />
 
-### ステップ 2：初期アプリケーションのダウンロード
+### 手順 2: 開始アプリケーションをダウンロードする
 
-まず、[https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank} から Copilot Developer Camp リポジトリをダウンロードします。「Code」ボタンを選択し、コンテンツをクローンまたはダウンロードしてください。
+[https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank} から Copilot Developer Camp リポジトリをダウンロードします。「Code」ボタンを選択し、クローンまたはダウンロードしてください。
 
-リポジトリ内の **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research** に初期コードが配置されています。
-このフォルダーを、作業を行いたいコンピューター上の任意の場所にコピーしてください。以降、このフォルダーを「作業フォルダー」として参照します。
+開始コードは **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research** にあります。これを作業用フォルダーとして任意の場所にコピーします。以降の手順ではこのフォルダーを「作業フォルダー」と呼びます。
 
 !!! note
-    次のいくつかのラボはこのラボを基に構築されるため、ラボ E2～E6 では同じフォルダー内で作業を続けられます。このラボの完了時点では Github 上で表示されるファイルは変更されていないため、フォルダー **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research** はラボの開始時と終了時で同一です。
+    次の複数のラボはこのラボを土台に進めますので、ラボ E2〜E6 を通じて同じフォルダーで作業を続けられます。このラボ完了時点では GitHub 上のファイルは変更されないため、**/src/extend-m365-copilot/path-e-lab02-build-api/trey-research** フォルダーの内容はラボの開始時と終了時で同一です。
 
 <cc-end-step lab="e2" exercise="1" step="2" />
 
-### ステップ 3：ローカル環境ファイルのセットアップ
+### 手順 3: ローカル環境ファイルをセットアップする
 
-作業フォルダーを Visual Studio Code で開いてください。フォルダー内のファイル作成者を信頼するか尋ねるポップアップが表示された場合は、「Yes, I trust the authors」を選択してください。**/env/.env.local.user.sample** ファイルを **/env/.env.local.user** にコピーします。もし **env.local.user** が既に存在する場合は、以下の行が含まれていることを確認してください：
+作業フォルダーを Visual Studio Code で開きます。フォルダーのファイルの作成者を信頼するか尋ねるポップアップが表示された場合は、「Yes, I trust the authors」を選択してください。**/env/.env.local.user.sample** を **/env/.env.local.user** にコピーします。**env.local.user** が既に存在する場合は、次の行が含まれていることを確認します。
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
@@ -59,9 +58,9 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 <cc-end-step lab="e2" exercise="1" step="3" />
 
-### ステップ 4：依存関係のインストール
+### 手順 4: 依存関係をインストールする
 
-作業フォルダーでコマンドラインを開き、以下を入力してください：
+作業フォルダーでコマンドラインを開き、次を実行します。
 
 ~~~sh
 npm install
@@ -69,60 +68,62 @@ npm install
 
 <cc-end-step lab="e2" exercise="1" step="4" />
 
-### ステップ 5：アプリケーションの実行
+### 手順 5: アプリケーションを実行する
 
-Visual Studio Code の左サイドバーから Microsoft 365 Agents Toolkit のロゴをクリックして Agents Toolkit を開いてください。Microsoft 365 にログインしており、Custom App Uploads と Copilot Access Enabled のインジケーターが緑色のチェックマークになっていることを確認してください。
+Visual Studio Code の左サイドバーで Microsoft 365 Agents Toolkit のロゴをクリックして Agents Toolkit を開きます。Microsoft 365 にサインインし、Custom App Uploads と Copilot Access Enabled のインジケーターがいずれも緑のチェックマークになっていることを確認してください。
 
 ![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/atk-accounts-logged.png)
 
-次に、F5 キーを押して Microsoft Edge でデバッグするか、または「local」環境上にカーソルを合わせ、表示されるデバッガーシンボル 1️⃣ をクリックし、希望のブラウザー 2️⃣ を選択してください。
+F5 キーを押して Microsoft Edge でデバッグするか、「local」環境にカーソルを合わせて表示されるデバッガーアイコン 1️⃣ をクリックし、ブラウザーを選択 2️⃣ します。
 
 ![Visual Studio Code with the Agents Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/atk-debug.png)
 
-最終的にブラウザーが開きます（初回以降は高速です）。次のラボで Copilot を使用してログインしますが、当面はブラウザーを最小化してアプリを実行し続け、API のテストに進みます。
+しばらくするとブラウザーが起動します（2 回目以降は高速になります）。次のラボで Copilot と共にログインしてテストしますが、今回はブラウザーを最小化してアプリを実行したままにし、API のテストに進みましょう。
 
 ![The debug session in the browser, with suggestion to minimize the browser window.](../../assets/images/extend-m365-copilot-02/run-in-ttk03.png)
 
 <cc-end-step lab="e2" exercise="1" step="5" />
 
-## 演習 2：アプリの web サービスのテスト
+## 演習 2: アプリの Web サービスをテストする
 
-Trey Research プロジェクトは API プラグインであるため、当然 API が含まれています。この演習では、API を手動でテストし、その機能を理解します。
+Trey Research プロジェクトは API プラグインであり、当然 API を含んでいます。この演習では API を手動でテストし、その機能を把握します。
 
-### ステップ 1：/me リソースの GET
+### 手順 1: `/me` リソースを GET する
 
-デバッガーが実行中の状態で 1️⃣、Visual Studio Code のコードビューに切り替え、2️⃣、**http** フォルダーを開いて **treyResearchAPI.http** ファイルを選択してください。3️⃣
+デバッガーを実行したまま 1️⃣、Visual Studio Code のコードビューに切り替え 2️⃣、**http** フォルダーの **treyResearchAPI.http** ファイル 3️⃣ を開きます。
 
-続行する前に、4️⃣「Debug console」タブを開いてログファイルを表示し、「Attach to Backend」と名付けられたコンソールが選択されていることを確認してください。5️⃣
+進む前に「Debug console」タブ 4️⃣ を開き、「Attach to Backend」コンソールが選択されている 5️⃣ ことを確認してログを表示させておきます。
 
-次に、6️⃣ **treyResearchAAPI.http** 内で `{{base_url}}/me` のリンクのすぐ上にある「Send Request」リンクをクリックしてください。
+次に **treyResearchAPI.http** の `{{base_url}}/me` 行の上にある「Send Request」リンク 6️⃣ をクリックします。
+
+![Visual Studio Code with the sample treyResearchAPI.http file open and the shortcut to send a sample HTTP request while in debug mode.](../../assets/images/extend-m365-copilot-02/run-in-ttk04.png)
+
+右ペインにレスポンスが、下ペインにリクエストのログが表示されます。認証はまだ実装していない（Lab 6 で追加予定）ため、アプリは架空のコンサルタント «Avery Howard» の情報を返します。レスポンスをスクロールし、Avery の詳細やプロジェクト割り当ての一覧を確認してください。
 
 ![Visual Studio Code with the output of the request triggered in the treyResearchAPI.http file.](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
 
-右側のパネルにレスポンスが表示され、下部パネルにリクエストのログが記録されます。レスポンスにはログイン中の ユーザー に関する情報が表示されますが、現時点では認証が実装されていないため（ラボ 6 で追加予定）、アプリは架空のコンサルタント "Avery Howard" の情報を返します。レスポンスをスクロールして、 Avery の詳細情報やプロジェクト割り当ての一覧を確認してください。
-
 <cc-end-step lab="e2" exercise="2" step="1" />
 
-### ステップ 2：他のメソッドおよびリソースの試行
+### 手順 2: 他のメソッドとリソースを試す
 
-次に、 `{{base_url}}/me/chargeTime` に対して POST リクエストを送信してみてください。これにより、 Avery の作業時間 3 時間が Woodgrove Bank プロジェクトにチャージされます。これは、ローカルでホストされている Azure Table Storage のエミュレーションであるプロジェクト データベースに保存されるため、システムは Avery がこれらの時間を実行したことを記憶します。（確認するために、再度 `/me` リソースを呼び出し、Woodgrove プロジェクトの `"deliveredThisMonth"` プロパティを確認してください。）
+続いて `{{base_url}}/me/chargeTime` の POST リクエストを送ってみましょう。これにより Avery の工数を Woodgrove Bank プロジェクトに 3 時間分チャージします。これはローカルの Azure Table Storage エミュレーションに保存されるため、システムは Avery がこれらの時間を提供したことを記憶します。（確認したい場合は `/me` リソースを再度呼び出し、Woodgrove プロジェクトの `"deliveredThisMonth"` プロパティを見てください）。
 
-.http ファイル内の他の様々な GET リクエストも試し、さまざまなスキル、認証、役割、可用性を持つコンサルタントを検索してください。これらすべての情報は Copilot が ユーザー からのプロンプトに回答する際に利用されます。
+さらに .http ファイル内の各種 GET リクエストを試し、スキルや認定資格、役割、空き状況でコンサルタントを検索してみましょう。これら全ての情報は Copilot がユーザーのプロンプトに回答する際に使用できます。
 
 <cc-end-step lab="e2" exercise="2" step="2" />
 
-### ステップ 3：データベースの確認（オプション）
+### 手順 3: データベースを確認する（任意）
 
-[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank} をインストールしている場合、アプリケーションのデータを確認および変更できます。データは Azure Table Storage に保存されており、ここでは Azurite エミュレーターを使用してローカルで実行されています。
+[Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer){target=_blank} をインストール済みの場合、アプリケーションのデータを閲覧・変更できます。データは Azure Table Storage に保存されており、今回は Azurite エミュレーターでローカル実行されています。
 
 !!! note
-    前の演習で `npm install` を実行した際に Azurite エミュレーターがインストールされました。詳細は [Azurite documention here](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank} をご確認ください。プロジェクトを開始すると Azurite は自動的に起動します。したがって、プロジェクトが正常に開始されていればストレージを閲覧できます。
+    前の演習で `npm install` を実行した際、Azurite ストレージエミュレーターもインストールされています。詳細は [Azurite ドキュメント](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank} を参照してください。プロジェクト起動時に Azurite も自動で起動するため、プロジェクトが正しく開始されていればストレージを確認できます。
 
-Azure Storage Explorer 内で、「Emulator & Attached」 を開き、「(Emulator: Default Ports)」 コレクションを選択し、「Tables」 までドリルダウンしてください。3 つのテーブルが表示されるはずです：
+Azure Storage Explorer で「Emulator & Attached」→「(Emulator: Default Ports)」→「Tables」の順に展開すると、次の 3 つのテーブルが表示されます。
 
-  * **Consultant:** このテーブルには Trey Research のコンサルタントに関する詳細情報が保存されています。
-  * **Project:** このテーブルには Trey Research のプロジェクトの詳細情報が保存されています。
-  * **Assignment:** このテーブルにはコンサルタントのプロジェクトへのアサイン情報が保存されています。例えば、 Avery Howard の Woodgrove Bank プロジェクトへのアサインなどです。このテーブルには、該当コンサルタントがプロジェクトにおいて実行した時間の JSON 表現を含む "delivered" フィールドが含まれています。
+* **Consultant:** Trey Research のコンサルタント情報  
+* **Project:** Trey Research のプロジェクト情報  
+* **Assignment:** コンサルタントとプロジェクトの割り当て情報（例: Avery Howard が Woodgrove Bank プロジェクトに割り当てられている）。このテーブルには、各コンサルタントがプロジェクトで消化した工数を時系列で保持する `"delivered"` フィールドが JSON 形式で保存されています。  
 
 ![The UI of the Azure Storage Explorer while browsing the local storage tables for Consultant, Project, and Assignment.](../../assets/images/extend-m365-copilot-02/azure-storage-explorer01.png)
 
@@ -130,7 +131,7 @@ Azure Storage Explorer 内で、「Emulator & Attached」 を開き、「(Emulat
 
 ---8<--- "ja/e-congratulations.md"
 
-ラボサンプル API の構築に成功しました！これで、API を Copilot プラグインに変換し、宣言型エージェントを通じて公開することができます。
+ラボのサンプル API を構築できました！ 次はこれを Copilot プラグインにし、Declarative エージェント経由で公開していきましょう。
 
 <cc-next />
 

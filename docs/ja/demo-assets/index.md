@@ -2,8 +2,7 @@
 search:
   exclude: true
 ---
-以下のサンプル画像は、Trey Research API Plugin などのサンプル コードで使用するために GitHub ページにホストされています。  
-ポートレートは Microsoft Copilot を使用して生成されました。
+以下のサンプル画像は、 Trey Research API プラグインなどのコード サンプルで使用するために GitHub Pages 上にホストされています。ポートレートは Microsoft Copilot を使用して生成されました。
 
 <style>
     img {

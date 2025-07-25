@@ -16,6 +16,10 @@ USAGE:
 
 - Translated files will be created under docs/<lang_code>/.
 - After translation, language-specific includes will be moved to docs/includes/<lang_code>/.
+
+NOTE:
+If new sections have been added in ToC in mkdocs.yml, you still need to edit it manually!
+
 """
 
 import os

@@ -2,42 +2,43 @@
 search:
   exclude: true
 ---
-# ラボ BTA4 - シングルサインオン認証の追加
+# ラボ BTA4 - シングル サインオン認証の追加
 
-本ラボでは、Career Genie において Entra Single Sign-On を用いて ユーザー 認証を行い、Microsoft Graph API をトークンを使用してログイン ユーザー 情報を取得する方法を学習します。
+このラボでは、Career Genie に Entra Single Sign-On を実装してユーザーを認証し、そのトークンを使用して Microsoft Graph API を呼び出し、ログイン済みユーザー情報を取得する方法を学習します。
 
-本ラボで学習する内容は次のとおりです：
+このラボで学習する内容:
 
-- アプリに Entra ID シングルサインオン (SSO) を追加し、 ユーザー が Microsoft Teams で使用しているアカウントと同じものでシームレスにログインできるようにする
-- Teams AI library と Bot Framework を使用してシングルサインオンを実装する
-- アプリ ユーザー のためのトークンを取得して使用し、セキュリティとユーザー エクスペリエンスを向上させる
+- Entra ID シングル サインオン (SSO) をアプリに追加し、ユーザーが Microsoft Teams と同じアカウントでシームレスにログインできるようにする
+- Teams AI ライブラリと Bot Framework を使用して SSO を実装する
+- アプリ ユーザーのトークンを取得して使用し、セキュリティとユーザー エクスペリエンスを向上させる
+
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/5oyftU9PRpM" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を確認してください。</div>
+          <div>このビデオでラボの概要を素早く確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
         ---8<--- "ja/b-labs-prelude.md"
     </div>
 </div>
 
-## 概要
+## はじめに
 
-CareerGenie を強化するために Entra ID (formerly Azure AD) シングルサインオン (SSO) を統合する準備をしましょう。これにより、アプリは Microsoft 365 のデータへ Microsoft Graph を介してシームレスにトークンを取得し、認証と認可をスムーズに行うことができます。Teams AI library と Bot Framework を使用して、この SSO 機能を組み込みます。特に、マルチテナント構成に焦点を合わせます。
+Entra ID (以前の Azure AD) シングル サインオン (SSO) を統合して CareerGenie をさらに強化しましょう。これにより、アプリは Microsoft Graph を介して Microsoft 365 データにアクセスするためのトークンをシームレスに取得でき、スムーズな認証と認可を実現します。Teams AI ライブラリと Bot Framework を使用し、特にマルチテナント構成に焦点を当ててこの SSO 機能を組み込みます。
 
-## 演習 1： Entra ID シングルサインオンのためのプロジェクト設定
+## 演習 1: Entra ID シングル サインオン用にプロジェクトをセットアップする
 
-Entra ID によって保護されたアプリケーションは、登録および パーミッション の付与が必要です。 M365 Agents Toolkit がこの作業を自動的に行ってくれますが、プロジェクトを更新してそれを実現する必要があります。本演習では、 M365 Agents Toolkit のプロジェクトファイルを変更して、Entra ID におけるアプリ登録をプロビジョンします。
+Entra ID で保護されたアプリケーションは登録され、権限を付与される必要があります。M365 Agents Toolkit がこの作業を行いますが、そのためにはプロジェクトを更新する必要があります。この演習では、M365 Agents Toolkit のプロジェクト ファイルを変更して、Entra ID でアプリ登録をプロビジョニングします。
 
-本演習では、[Lab B3 のソースコード](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} をベース プロジェクトとして次のステップに進んでください。
+この演習では、[Lab B3 のソース コード](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} をベース プロジェクトとして使用し、次の手順に進みます。
 
-### ステップ 1： Entra ID アプリ マニフェスト ファイルの追加
+### 手順 1: Entra ID アプリを定義する App manifest ファイルを追加する
 
-このステップでは、 M365 Agents Toolkit が Entra ID にあなたのアプリケーション用のアプリ登録を行う際に使用するアプリケーションを定義するファイルを追加します。このマニフェスト ファイルによって、アプリ登録のさまざまな側面をカスタマイズすることができます。たとえば、こちらのマニフェストでは Microsoft Graph API に対して `User.Read` パーミッションを設定し、アプリが ユーザー のプロファイルを読み取ることができるようにしています。
+この手順では、M365 Agents Toolkit が Entra ID に登録するアプリケーションを定義するファイルを追加します。この manifest ファイルでは、アプリケーション登録のさまざまな側面をカスタマイズできます。たとえば、この例では Microsoft Graph API の `User.Read` 権限を設定し、アプリがユーザーのプロファイルを読み取れるようにしています。
 
-プロジェクト フォルダーのルートに **aad.manifest.json** ファイルを作成し、以下の JSON を貼り付けてください：
+プロジェクト フォルダーのルートに **aad.manifest.json** ファイルを作成し、次の JSON を貼り付けます。
 
 ```JSON
 {
@@ -145,15 +146,17 @@ Entra ID によって保護されたアプリケーションは、登録およ�
 
 <cc-end-step lab="bta4" exercise="1" step="1" />
 
-### ステップ 2： M365 Agents Toolkit 構成ファイルの更新による Entra ID アプリ作成
+### 手順 2: Entra ID アプリを作成するよう M365 Agents Toolkit 構成ファイルを更新する
 
-`teamsapp.local.yml` ファイルを開いてください。これは、 M365 Agents Toolkit がプロジェクトを実行する際の手順を定義する YAML ファイルです。 M365 Agents Toolkit ユーザー インターフェイスの「LIFECYCLE」セクションには 3 つのステップがあります。
+`teamsapp.local.yml` ファイルを開きます。これは、M365 Agents Toolkit がプロジェクトを実行するための手順を定義する YAML ファイルです。M365 Agents Toolkit のユーザー インターフェイスの「LIFECYCLE」セクションには 3 つの手順があります。
 
-- Provision  - このフェーズでは、アプリに必要なインフラストラクチャ（ボット登録、Teams アプリ パッケージ、今回の場合は Entra ID アプリ登録など）が作成されます。
-- Deploy     - このフェーズでは、コードがビルドされローカルで実行されるか、"local" 以外の環境の場合は Azure にアップロードされます。
-- Publish    - このフェーズでは、アプリ パッケージが Microsoft Teams に公開されます。
+- Provision – このフェーズでは、アプリに必要なインフラストラクチャが作成されます。ボット登録、Teams アプリ パッケージ、そして今回の場合は Entra ID のアプリ登録などが含まれます
 
-Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に以下の行を追加してください。これらは `provision` の直下に配置できます：
+- Deploy – このフェーズでは、コードがビルドされローカルで実行されるか、「local」以外の環境では Azure にアップロードされます
+
+- Publish – このフェーズでは、アプリ パッケージが Microsoft Teams に発行されます
+
+Entra ID アプリをプロビジョニングするため、**teamsapp.local.yml** に次の行を `provision` の直下に追加します。
 
 ```yml
   - uses: aadApp/create # Creates a new Entra ID (AAD) app to authenticate users if the environment variable that stores clientId is empty
@@ -171,7 +174,7 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
 
 ```
 
-さらに、`botFramework/create` の後に、既存の AAD アプリを更新するために以下の内容を追加してください：
+さらに、`botFramework/create` の後に既存の AAD アプリを更新するために次を追加します。
 
 ```yml
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
@@ -180,10 +183,10 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
       outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 ```
 
-!!! tip "ヒント：YAML は適切なインデントが必要です"
-    YAML は適切なインデントが必要です。オブジェクト階層の各レベルは構造を示すためにインデントされなければなりません。2 つのスペース（タブではありません）が推奨されます。Visual Studio Code は文法エラーを赤で下線表示してくれますので、赤い下線が消えたら正しく設定されたことが確認できます。
+!!! tip "Tip: YAML ではインデントが重要"
+    YAML では正しいインデントが必要です。オブジェクト階層の各レベルはインデントで構造を示します。スペース 2 文字 (タブ不可) が適切です。Visual Studio Code が支援してくれ、構文エラーがある場合は赤線で表示します。赤線がなくなれば正しく記述できています。
 
-次に、deploy フェーズ内の `file/createOrUpdateEnvironmentFile` ディレクティブを見つけ、前回のラボで追加したもののすぐ下に、envs: コレクションに以下の変数を追加してください：
+次に、deploy フェーズで `file/createOrUpdateEnvironmentFile` ディレクティブを探します。前のラボで追加したもののすぐ下に、次の変数を envs コレクションに追加します。
 
 ```yml
  BOT_DOMAIN: ${{BOT_DOMAIN}}
@@ -196,13 +199,15 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
 
 <cc-end-step lab="bta4" exercise="1" step="2" />
 
-## 演習 2： Teams アプリ マニフェストへの SSO 追加
+## 演習 2: Teams アプリ manifest に SSO を追加する
 
-### ステップ 1： SSO 対応のための Teams アプリ マニフェストの更新
+この演習では、Teams アプリ manifest を更新してシングル サインオンを追加します。
 
-シングルサインオン プロセスでは、Teams があなたのコードに対して Entra ID アクセストークンを渡します。しかし、Teams はアプリケーションについて知らなければこのアクセストークンを提供することはできません。具体的には、アプリケーション（クライアント） ID と Teams に接続されているボットの ID が必要です。そのため、これらの情報を Teams アプリ マニフェストに追加する必要があります。
+### 手順 1: Teams アプリ manifest を SSO 用に更新する
 
-**./appPackage/manifest.json** 内の Teams アプリ マニフェスト テンプレートを見つけ、以下の内容を追加してください：
+シングル サインオン プロセスでは、Teams がアプリに Entra ID アクセス トークンを渡します。ただし、Teams がこのアクセストークンを提供するには、アプリについて知っている必要があります。具体的には、アプリケーション (クライアント) ID と Teams に接続されているボットの ID が必要です。そのため、この情報を Teams アプリ manifest に追加する必要があります。
+
+**./appPackage/manifest.json** にある Teams アプリ manifest テンプレートを開き、次を追加します。
 
 ```json
  "webApplicationInfo": {
@@ -211,11 +216,11 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
     }
 ```
 
-`validDomains` ノードの下に、カンマを挟んで追加してください。
+`validDomains` ノードの下、カンマ区切りで追加してください。
 
-さらに、Teams にあなたのボットのドメインからウェブページを表示させる必要があります。これにより、Microsoft Graph の呼び出しに必要なユーザー 同意 を取得するために使用される `auth-start.html` および `auth-end.html` ページにアクセスできるようになります。これは、ユーザーが custom engine agent に初めてアクセスしたときのみ発生します。
+ここで、ボットのドメインから Web ページを表示できるように Teams に伝える必要があります。これにより、ユーザーが Microsoft Graph へのアクセスを許可する際に使用される `auth-start.html` と `auth-end.html` ページにアクセスできるようになります。これはユーザーが最初に custom engine agent にアクセスしたときのみ発生します。
 
-そのため、ボットのドメインである **${{BOT_DOMAIN}}** を `validDomains` 配列に追加してください。これらの変更後、`manifest.json` ファイルの末尾は以下のようになります：
+そのため、ボットのドメイン **${{BOT_DOMAIN}}** を `validDomains` 配列に追加します。変更後、`manifest.json` ファイルの末尾は次のようになります。
 
 ```JSON
   "validDomains": [
@@ -226,17 +231,19 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
 
 <cc-end-step lab="bta4" exercise="2" step="1" />
 
-## 演習 3： SSO 対応のためのアプリケーションコードの更新
+## 演習 3: SSO 用にアプリケーション コードを更新する
 
-### ステップ 1： 同意ダイアログ用の HTML ページの提供
+この演習では、SSO プロセスに対応するようコードを変更します。
 
-ユーザーが初めてアプリケーションにアクセスする際、アプリに ユーザー のプロファイル情報を読み取る許可を与える同意が必要な場合があります。これは Teams AI library によって実行され、同意用のポップアップウィンドウが表示されます。これらの HTML ページはそのポップアップ内に表示され、実際の同意処理のために Entra ID へリダイレクトされます。
+### 手順 1: 同意ダイアログ用の HTML ページを用意する
 
-> ポップアップによる権限付与のコード スニペットは、公式 [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public){target=_blank} からのものです。
+ユーザーがアプリを初めて利用するとき、アプリにプロファイル情報を読み取る権限を付与するために同意が必要になる場合があります。これは Teams AI ライブラリによって実行されます。ポップアップ ウィンドウが表示されますが、これらの HTML ページはそのポップアップで表示され、実際の同意は Entra ID にリダイレクトして行われます。
 
-プロジェクトの **src** フォルダー内に **public** という新しいフォルダーを作成してください。
+> 権限付与のポップアップ用コード スニペットは公式 [teams-ai library sample for Teams SSO](https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public){target=_blank} から引用しています。
 
-**auth-start.html** ファイルを作成し、以下の内容を貼り付けてください：
+プロジェクトの **src** フォルダー内に **public** フォルダーを新規作成します。
+
+**auth-start.html** ファイルを作成し、次の内容を貼り付けます。
 
 ```html
 <!--This file is used during the Teams Bot authentication flow to assist with retrieval of the access token.-->
@@ -413,7 +420,7 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
 </html>
 ```
 
-**auth-end.html** ファイルを作成し、以下の内容を貼り付けてください：
+**auth-end.html** ファイルを作成し、次の内容を貼り付けます。
 
 ```html
 <html lang="en">
@@ -487,19 +494,19 @@ Entra ID アプリをプロビジョンするため、**teamsapp.local.yml** に
 
 <cc-end-step lab="bta4" exercise="3" step="1" />
 
-### ステップ 2： SSO 対応のコード更新
+### 手順 2: SSO を処理するコードを更新する
 
-- **index.ts** ファイルの変更は以下の通りです：
+- **index.ts** ファイルの変更点:
 
-  public フォルダーから静的ファイルを提供するため、以下の `path` のインポートを追加してください：
+`public` フォルダーから静的ファイルを提供するために `path` のインポートを追加します。
 
-  ```TypeScript
+```TypeScript
 import * as path from 'path';
 ```
 
-  その後、`expressApp.listen` メソッドの結果で `server` オブジェクトを初期化する行の後に、以下のコードを追加してください：
+その後、`expressApp.listen` で `server` オブジェクトを初期化する行の直下に次のコードを追加します。
 
-  ```TypeScript
+```TypeScript
 const authFilePattern = /^\/auth-(start|end)\.html$/;
 expressApp.get(
   authFilePattern, (req, res) => {
@@ -509,16 +516,17 @@ expressApp.get(
 });
 ```
 
-- **adapter.ts** ファイルの変更は以下の通りです：
-  - teams-ai library から `TeamsAdapter` をインポートします。
+- **adapter.ts** ファイルの変更点:
 
-    ```TypeScript
+  - teams-ai ライブラリから `TeamsAdapter` をインポートします。
+
+```TypeScript
 import { TeamsAdapter } from '@microsoft/teams-ai';
 ```
 
-  - Teams SSO のため、アダプターの定義を `CloudAdapter` ではなく `TeamsAdapter` に置き換えます。
+  - アダプター定義を `CloudAdapter` から Teams SSO 用の `TeamsAdapter` に置き換えます。
 
-    ```JavaScript
+```JavaScript
 const adapter = new TeamsAdapter(
   {},
   new ConfigurationServiceClientCredentialFactory({
@@ -530,12 +538,13 @@ const adapter = new TeamsAdapter(
 
 ```
 
-  - もはや不要な `botFrameworkAuthentication` の定義をコメントアウトします。
+  - 不要になった `botFrameworkAuthentication` の定義をコメントアウトします。
 
-- **config.ts** ファイルの変更は以下の通りです：
-  - 定数 `config` に以下のプロパティを追加します。`process.env.INDEX_NAME` の後ろにカンマを追加し、以下のスニペットを付け加えてください：
+- **config.ts** ファイルの変更点:
 
-    ```TypeScript
+  - 定数 `config` に以下のプロパティを追加します。`process.env.INDEX_NAME` の後にカンマを付けたうえで次のスニペットを挿入してください。
+
+```TypeScript
 aadAppClientId: process.env.AAD_APP_CLIENT_ID,
 aadAppClientSecret: process.env.AAD_APP_CLIENT_SECRET,
 aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
@@ -544,16 +553,17 @@ botDomain: process.env.BOT_DOMAIN,
 aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
 ```
 
-- **app.ts** ファイルの変更は以下の通りです：
-  - ` TurnState ` と ` AuthError ` モジュールを使用するので、以下のように `@microsoft/teams-ai` ライブラリからインポート文に含めてください：
+- **app.ts** ファイルの変更点:
 
-    ```TypeScript
+  - `TurnState` と `AuthError` モジュールを使用するため、`@microsoft/teams-ai` からのインポートに追加します。
+
+```TypeScript
 import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, AuthError, TurnState } from "@microsoft/teams-ai";
 ```
 
-  - アプリケーション定義に認証設定を渡すため、`const app` の定義を以下のコードスニペットに置き換えてください：
+  - 認証設定をアプリケーション定義に渡すため、`const app` の定義を次のコード スニペットに置き換えます。
 
-    ```TypeScript
+```TypeScript
 const app = new Application({
   storage,
   authentication: {settings: {
@@ -578,9 +588,8 @@ const app = new Application({
 });
 ```
 
-Teams AI library が custom engine agent と Microsoft Teams 間のトークン交換を処理するため、トークン受領後すぐに Microsoft Graph を呼び出すことが可能です。  
-次に、Teams AI library を使用してさまざまな認証およびメッセージング イベントを定義・処理するコードを追加しましょう。  
-アプリ定義メソッドの後に、以下のコードを貼り付けてください：
+Teams AI ライブラリは custom engine agent と Microsoft Teams 間のトークン交換を処理するため、トークンを受け取ったらすぐに Microsoft Graph を呼び出せます。
+次に、Teams AI ライブラリを使用して認証およびメッセージングの各種イベントを定義・処理するコードを追加します。アプリ定義メソッドの後に次のコードを貼り付けてください。
 
 ```TypeScript
 interface ConversationState {
@@ -613,21 +622,21 @@ app.message('/signout', async (context: TurnContext, state: ApplicationTurnState
 
 ```
 
-上記のコードでは、トークン受領後に `getUserDisplayName()` 関数が呼び出されています。この関数を用いて Microsoft Graph を呼び出し ユーザー 情報を取得します。では、関数定義を追加しましょう。まず [Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript){target=_blank} をインストールしてください。
+上記コードでは、トークンが正常に取得された後に `getUserDisplayName()` 関数を呼び出し、Microsoft Graph からユーザー情報を取得します。まずは [Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-javascript){target=_blank} をインストールしましょう。
 
-端末で以下のスクリプトを実行して npm パッケージをインストールしてください：
+ターミナルで次のスクリプトを実行して npm パッケージをインストールします。
 
 ```PowerShell
 npm install @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
 ```
 
-次に、**app.ts** ファイル内でパッケージから必要なモジュールをインポートしてください：
+次に、**app.ts** ファイルでパッケージから必要なモジュールをインポートします。
 
 ```TypeScript
 import { Client } from "@microsoft/microsoft-graph-client";
 ```
 
-`app.message` メソッドの後に、以下のコードスニペットを貼り付けてください：
+`app.message` メソッドの後に次のコード スニペットを貼り付けます。
 
 ```TypeScript
 async function getUserDisplayName(token: string): Promise<string | undefined> {
@@ -650,68 +659,68 @@ async function getUserDisplayName(token: string): Promise<string | undefined> {
 }
 ```
 
-???+ "このアプリをシングルテナント専用にするには、以下の変更を行ってください"         
-    - `aad.manifest.json` に移動し、signInAudience ノードを `  "signInAudience": "AzureADMyOrg"` に更新してください
-    - `teamsapp.local.yml` に移動し、aadApp\create の signInAudience ノードを ` "signInAudience": "AzureADMyOrg"` に更新してください
-    - `src\app\app.ts` に移動し、アプリケーション定義の認証設定の authority を ` authority: config.aadAppOauthAuthority` に更新してください
-    - `src\public\auth-start.html` に移動し、変数 `authorizeEndpoint` を `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}` に設定してください        
-    - `src\adapter.ts` に移動し、アダプター定義の ` MicrosoftAppType: 'SingleTenant'` を更新してください
+???+ "このアプリをシングルテナントでのみ動作させる場合は以下を変更"
+    - `aad.manifest.json` の `signInAudience` ノードを `  "signInAudience": "AzureADMyOrg"` に更新
+    - `teamsapp.local.yml` の `aadApp\create` の `signInAudience` ノードを ` "signInAudience: "AzureADMyOrg" ` に更新
+    - `src\app\app.ts` のアプリケーション定義の auth 設定の `authority` を ` authority: config.aadAppOauthAuthority` に更新
+    - `src\public\auth-start.html` の `authorizeEndpoint` 変数を `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}` に設定
+    - `src\adapter.ts` のアダプター定義を ` MicrosoftAppType: 'SingleTenant'` に更新   
 
 <cc-end-step lab="bta4" exercise="3" step="2" />
 
-## 演習 4： アプリケーションの実行
+## 演習 4: アプリを実行する
 
-これで、Career Genie における Teams SSO のコード実装は完了です。実際に動作を確認してみましょう。
+これで Career Genie の Teams SSO 実装が完了しました。実際に動かしてみましょう。
 
-### ステップ 1： Teams へのアプリ インストール
+### 手順 1: Teams でアプリをインストールする
 
-Visual Studio Code の **Run and Debug** タブを選択し、**Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を実行して、アプリのデバッグを開始してください。これにより、ブラウザで Microsoft Teams が自動的に開きます。Teams にアプリの詳細が表示されたら、**Add** を選択してアプリとのチャットを開始してください。
+Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら **Add** を選択してチャットを開始します。
 
-!!! tip "ヒント：この演習をローカルでテストする"
-    これまでに実装した一部の Teams AI library 機能は Teams App Test Tool ではスムーズに動作しない可能性があるため、Teams でローカル環境でテストおよびデバッグすることを必ず確認してください。
+!!! tip "Tip: この演習をローカルでテストする場合"
+    これまでに実装した Teams AI ライブラリの一部機能は Teams App Test Tool ではスムーズに動作しないため、必ず Teams 上でローカルにテストしてください。
 
 <cc-end-step lab="bta4" exercise="4" step="1" />
 
-### ステップ 2： 同意の付与
+### 手順 2: 同意を与える
 
-Career Genie との会話を開始するには、単にメッセージを入力してください。たとえば、'Hi' と入力して送信することで開始できます。
+Career Genie と会話を開始するには、メッセージを入力します。たとえば、'Hi' と入力して送信してください。
 
-!!! tip "ヒント：ブラウザのポップアップ設定の確認"
-    以下の手順をスムーズに実行するため、ブラウザで `Pop up` がブロックされていないことを確認してください。
+!!! tip "Tip: ブラウザーのポップアップ設定を確認"
+    以下の手順をスムーズに進めるため、ブラウザーで `Pop up` がブロックされていないことを確認してください。
 
-追加の権限確認のため、小さなダイアログボックスが表示され、‘Cancel’ および ‘Continue’ ボタンが含まれています。このダイアログはログインおよび要求される権限に対する同意のためのものです。**Continue** を選択してください。
+追加の権限を求める小さなダイアログ ボックスが表示され、‘Cancel’ と ‘Continue’ のボタンが表示されます。これはログインして必要な権限への同意を与えるためのダイアログです。**Continue** を選択してください。
 
 ![The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button.](../../../assets/images/custom-engine-04/consent-teams.png)
 
 !!! warning "既知の問題"
-    - Teams チャットに同意ダイアログが表示されるのに遅延が発生することがあります。これはプラットフォームの問題として確認されており、監視中です。2～3 回程度繰り返しリクエストしてください。
+    - Teams チャットで同意ダイアログが表示されるまでに遅延があります。これはプラットフォームの既知の問題で、現在モニタリング中です。2–3 回メッセージを送信してみてください。
 
-Developer Tunnels を使用してローカルで実行している場合、警告画面が表示されますので、**Continue** を選択してください。アプリがデプロイされた際にはユーザーに表示されません。
+Developer Tunnels でローカル実行しているため警告画面が表示されるので、**Continue** を選択します。アプリがデプロイされた後、ユーザーには表示されません。
 
 ![A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'.](../../../assets/images/custom-engine-04/consent-devtunnel.png)
 
-Entra ID にリダイレクトされ、アプリの権限に対する同意が求められます。（同意が確認できなかった場合、public/auth-start.html によりそこに誘導されます。）
+Entra ID にリダイレクトされ、アプリの権限に同意するよう求められます。(同意が未取得であることを検出した `public/auth-start.html` によってリダイレクトされました)
 
 ![The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons.](../../../assets/images/custom-engine-04/consent-graph.png)
 
-!!! tip "ヒント：組織全体の同意"
-    Microsoft 365 管理者であれば、テナント内のすべての ユーザー に対して一括で同意できる "Consent on behalf of your organization" オプションが提供されます。
+!!! tip "Tip: 組織全体で同意する"
+    Microsoft 365 管理者の場合、「Consent on behalf of your organization」を選択してテナントのすべてのユーザーに対して同意を与えることもできます。
 
-権限に同意し、Career Genie を実行するために **Accept** を選択してください。
+**Accept** を選択して権限に同意し、Career Genie を実行します。
 
-認証に成功したことを示す、ログインした名前と共に custom engine agent からこのメッセージが表示されます。
+ログインした名前が表示され、認証が成功したことを示すメッセージが custom engine agent から届きます。
 
 ![Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent.](../../../assets/images/custom-engine-04/auth.gif)
 
-custom engine agent とチャットを開始することができます。
+custom engine agent とチャットを開始できます。
 
 <cc-end-step lab="bta4" exercise="4" step="2" />
 
 ---8<--- "ja/b-congratulations.md"
 
-Lab BTA4 - シングルサインオン認証の追加 により custom engine agent のセキュリティが向上しました。さらに探求したい場合は、このラボのソースコードが [Copilot Developer Camp repo](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank} で利用可能です。
+これで「ラボ BTA4 - シングル サインオン認証を追加して custom engine agent を保護する」が完了しました。さらに探求したい場合は、このラボのソース コードが [Copilot Developer Camp リポジトリ](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie){target=_blank} にあります。
 
-次は Lab BTA5 - 複雑なタスクを処理するためのアクションの追加 に進んでください。Next を選択してください。
+次の「ラボ BTA5 - 複雑なタスクを処理するアクションの追加」に進むことができます。「Next」を選択してください。
 
 <cc-next url="../05-actions" />
 

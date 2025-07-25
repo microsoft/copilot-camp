@@ -1,10 +1,10 @@
 <div class="cc-lab-toc msa-path">
   <img src="/copilot-camp/assets/images/path-icons/MSA-path-heading.png"></img>
   <div>
-    <p>SharePoint エージェントを構築したい場合は、これらのラボを実施してください</p>
+    <p>SharePoint エージェントを作成したい場合は、これらの ラボ を実施してください</p>
     <ul>
-      <li><a href="/copilot-camp/pages/make/sharepoint-agents/01-first-agent/">MSA1 - 初めての SharePoint エージェントを構築する</a></li>
-      <li><a href="/copilot-camp/pages/make/sharepoint-agents/02-sharing-agents/">MSA2 - SharePoint エージェントの共有</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/sharepoint-agents/01-first-agent/">MSA1 - はじめての SharePoint エージェントを構築する</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/sharepoint-agents/02-sharing-agents/">MSA2 - SharePoint エージェントを共有する</a></li>
     </ul>
   </div>
 </div>

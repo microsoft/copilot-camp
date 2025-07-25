@@ -2,15 +2,15 @@
 search:
   exclude: true
 ---
-# ラボ MCS2 – トピック定義
+# ラボ MCS2 - トピックの定義
 
-このラボでは、Microsoft Copilot Studio においてカスタム トピックを作成する方法を学びます。トピックはエージェントの基本構成要素です。トピックを使用することで、ユーザーに対して １ターン または 複数ターン の会話体験を提供できます。トピックは、ユーザー と エージェント間の会話が、明確な相互作用パスを通してどのように発展するかを定義します。
+このラボでは、Microsoft Copilot Studio でカスタム トピックを作成する方法を学習します。トピックは エージェント の主要な構成要素です。トピックを使うことで、エンド ユーザー に対して単一ターンまたはマルチターンの会話体験を提供できます。トピックは、 ユーザー と エージェント の会話がどのように展開されるかを、個別の対話パスで定義します。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/ZVHkBiH6RxQ" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を確認してください。</div>
+          <div>このビデオでラボの概要をご確認ください。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
@@ -18,278 +18,278 @@ search:
 </div>
 
 !!! note
-    このラボは前のラボ [Lab MCS1](../01-first-agent){target=_blank} を基にしています。同じエージェントで作業を継続し、新たな機能で機能性を向上させることができます。
+    このラボは前回の [ラボ MCS1](../01-first-agent){target=_blank} を基にしています。同じ エージェント を継続して使用し、新しい機能を追加していきます。
 
-トピックは、グラフィカル デザイナーを使用するか、自然言語で意図を記述することで作成できます。新しいトピックを作成した後、詳細な微調整が必要な場合には、ロー レベルのコード エディターで定義を編集することも可能です。
+トピックは、グラフィカル デザイナーで作成することも、自然言語で意図を記述して作成することもできます。新しいトピックを作成した後、詳細な微調整が必要な場合は、低レベル コード エディターで定義を編集することも可能です。
 
-トピックには、２種類のタイプがあります：
+トピックには 2 種類あります。
 
-- システム トピック： Microsoft Copilot Studio によって自動定義されます。無効化することはできますが、削除することはできません。
-- カスタム トピック： エージェント作成者によって、カスタムな相互作用パスを提供するために作成されます。
+- システム トピック: Microsoft Copilot Studio によって自動的に定義されます。無効化はできますが削除はできません。
+- カスタム トピック: エージェント 作者が作成し、独自の対話パスを提供します。
 
-!!! note "トピックに関する追加情報"
-    Microsoft Copilot Studio で作成されたエージェントのトピックに関する追加情報は、[次の記事](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/topics-overview){target=_blank} を参照してください。また、システム トピックの詳細については、[Use system topics](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-system-topics){target=_blank} をご覧ください。
+!!! note "トピックの詳細情報"
+    Microsoft Copilot Studio で作成した エージェント のトピックに関する詳細は、[こちらの記事](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/topics-overview){target=_blank} をご覧ください。システム トピックについては [Use system topics](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-system-topics){target=_blank} を参照してください。
 
-このラボでは、以下の内容を学びます：
+このラボで学習する内容:
 
-- 生成 AI に基づく オーケストレーション の利用方法
-- シングルターン トピック の作成方法
-- マルチターン トピック の作成方法
-- adaptive cards を使用してユーザーと対話する方法
+- Generative AI ベースのオーケストレーションの利用方法
+- シングルターン トピックの作成方法
+- マルチターン トピックの作成方法
+- Adaptive Card を使用した ユーザー との対話方法
 
-## 演習 1 : 生成 AI に基づくオーケストレーション
+## Exercise 1 : Generative AI ベースのオーケストレーション
 
-この最初の演習では、[Lab MCS1](../01-first-agent){target=_blank} で作成したエージェントに、現在プレビュー中の新機能である生成 AI に基づくオーケストレーション を使用させる方法を有効にします。
+最初の演習では、[ラボ MCS1](../01-first-agent){target=_blank} で作成した エージェント に Generative AI ベースのオーケストレーションを有効化します。執筆時点ではプレビュー機能です。
 
-### ステップ 1 : 生成 AI に基づくオーケストレーション の有効化
+### Step 1: Generative AI ベースのオーケストレーションを有効化する
 
-Copilot Studio で作成されたエージェントの重要な機能の一つが生成 AI に基づくオーケストレーション です。生成 AI に基づくオーケストレーション を用いることで、エージェントはユーザーとの対話やクエリへの回答、またはイベント トリガーへの応答のために、最適なナレッジ ベース、トピック、アクションを選択することができます。
+Copilot Studio で作成した エージェント の重要な機能の 1 つに、Generative オーケストレーションがあります。Generative オーケストレーションを使用すると、 エージェント は最適なナレッジ ベース、トピック、アクションを選択し、 ユーザー のクエリやイベント トリガーに応答できます。
 
-デフォルトでは、エージェントはクラシック オーケストレーション を使用しており、これはユーザーのクエリに最も近いトリガーフレーズに一致するトピックをトリガーすることで応答することを意味します。生成 AI に基づくオーケストレーション を使用すると、Copilot Studio はユーザーが自然言語で提供したプロンプトを処理し、ユーザーの意図を理解して最適なアイテムをトリガーします。
+既定では、 エージェント はクラシック オーケストレーションを使用します。これは、 ユーザー が入力したクエリに最も近いトリガー フレーズを持つトピックを起動して応答します。Generative オーケストレーションでは、Copilot Studio が ユーザー の自然言語プロンプトを処理して意図を理解し、最適な項目を判断します。
 
 !!! pied-piper "注意事項"
-    生成 AI に基づくオーケストレーション の有効化は、課金の計算方法に影響を与える可能性があります。[billing for generative mode](https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-billed-sessions){target=_blank} で詳細をご確認ください。クラシック オーケストレーション と生成 AI に基づくオーケストレーション との間には、ナレッジの検索方法やサポートされるデータ ソースなど、主要な違いがあります。既存のエージェントに生成モードをオンにする前に、[既知の制限事項](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-generative-actions#known-limitations-for-generative-orchestration){target=_blank} をお読みください。
+    Generative オーケストレーションを有効にすると、課金方法に影響する場合があります。詳細は [Billing for generative mode](https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-billed-sessions){target=_blank} を参照してください。クラシックと Generative の違いとして、ナレッジ検索方法やサポートされるデータ ソースがあります。既存 エージェント で Generative モードをオンにする前に、[既知の制限](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-generative-actions#known-limitations-for-generative-orchestration){target=_blank} をご確認ください。
 
-生成 AI に基づくオーケストレーション を有効にするには、ブラウザーを開き、ターゲット Microsoft 365 テナントの作業用アカウントを使用して [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、Microsoft Copilot Studio の利用を開始してください。
+Generative オーケストレーションを有効にするには、ブラウザを開き、対象 Microsoft 365 テナントの作業アカウントで [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスします。
 
-1️⃣ **Agents** の一覧を表示し、次に 2️⃣ 前の Lab MCS1 で作成したエージェントを編集してください。
+1️⃣ **Agents** の一覧を表示し、2️⃣ 前回のラボ MCS1 で作成した エージェント を編集します。
 
-![Microsoft Copilot Studio のエージェント一覧画面と、編集対象のエージェントを選択している画面。](../../../assets/images/make/copilot-studio-02/edit-agent-01.png)
+![The interface of Microsoft Copilot Studio when browsing the agents and selecting one item to edit.](../../../assets/images/make/copilot-studio-02/edit-agent-01.png)
 
-**Overview** タブで、以下のスクリーンショットに示すように、名称 **Orchestration** のトグルを有効にしてください。
+**Overview** タブで **Orchestration** トグルをオンにします。
 
-![生成 AI に基づくオーケストレーション が有効化され、ハイライト表示された Microsoft Copilot Studio の画面。](../../../assets/images/make/copilot-studio-02/generative-orchestration-01.png)
+![The interface of Microsoft Copilot Studio with the generative orchestration enabled and highlighted.](../../../assets/images/make/copilot-studio-02/generative-orchestration-01.png)
 
-生成 AI に基づくオーケストレーション の有効化には通常しばらく時間がかかります。設定が適用されたら、エージェントをパブリッシュして変更を確定してください。
+Generative オーケストレーションの有効化には少し時間がかかります。設定後、変更を確定するために エージェント を発行してください。
 
 <cc-end-step lab="mcs2" exercise="1" step="1" />
 
-## 演習 2 : シングルターン トピック作成
+## Exercise 2 : シングルターン トピックの作成
 
-この演習では、新しいトピックを作成してユーザーからの入力を収集し、その入力に基づいてフィードバックを提供します。具体的には、トピックは現在のユーザーの役割に関する情報を収集し、提供された役割に基づいたエージェントの利用方法を案内します。
+この演習では、 ユーザー から入力を収集し、その入力に基づいてフィードバックを返す新しいトピックを作成します。具体的には、現在の ユーザー の役割を取得し、役割に応じたガイダンスを返します。
 
-### ステップ 1 : 新しいシングルターン トピックの作成
+### Step 1: 新しいシングルターン トピックの作成
 
-新しいトピックを作成するには、画面上部で 1️⃣ **Topics** タブ を選択し、次に 2️⃣ **+ Add a topic** を選び、最後に 3️⃣ **From blank** を選択してカスタム トピックの作成を開始してください。
+新しいトピックを作成するには、画面上部で 1️⃣ **Topics** タブを選択し、2️⃣ **+ Add a topic** をクリックして 3️⃣ **From blank** を選択します。
 
-!!! info "Copilot を使用したトピック作成"
-    自然言語による説明を提供するだけで、新しいトピックを作成でき、Copilot がトピックを下書きしてくれる点にご留意ください。
+!!! info "Copilot でトピックを作成"
+    自然言語で説明を入力するだけで、新しいトピックを Copilot に作成させることもできます。
 
-![新しいトピック作成時の Microsoft Copilot Studio の画面。**Topics** タブがハイライトされ、**+ Add a topic** のドロップダウン メニューと **From blank** オプションが選択されています。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-01.png)
+![The interface of Microsoft Copilot Studio when creating a new topic. There is the **Topics** tab highlighted, with the **+ Add a topic** dropdown menu, and the **From blank** option highlighted.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-01.png)
 
-Copilot Studio は、新しいトピックを定義するためのグラフィカル デザイナーを提供します。トピックの最初の構成要素は **Trigger** アクションであり、これはトピックの動作内容を記述するために使用します。生成 AI に基づくオーケストレーション が有効な場合、アクション内に自然言語でトピックの目的を定義できるテキスト エリアが表示されます。このラボでの作業のため、以下の内容を入力してください：
+Copilot Studio ではトピックを定義するグラフィカル デザイナーが表示されます。最初のビルディング ブロックは **Trigger** アクションで、トピックの目的を記述します。Generative オーケストレーションが有効な場合、ここに自然言語でトピックの目的を記述できます。ラボでは次の内容を入力してください。
 
 ```txt
 This topic can handle queries like these: collect user's role and provide feedback, 
 give me a feedback based on my role, what's your feedback for my role?
 ```
 
-クラシック オーケストレーション を使用する場合、単一の記述テキストの代わりに、５ ～ １０ 個のトリガーフレーズや文章を指定することが可能です。
+クラシック オーケストレーションを使用する場合は、5～10 個のトリガー フレーズを指定します。
 
-![新しいトピック設計時の Microsoft Copilot Studio の画面。**Trigger** アクションに、この演習ステップで提案された値がトリガー条件として設定され、新しいアクションを追加するボタンがハイライトされています。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-02.png)
+![The interface of Microsoft Copilot Studio when designing a new topic. There is a **Trigger** action with the value suggested in this exercise step as the trigger condition. There is also the button to add new actions highlighted.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-02.png)
 
 <cc-end-step lab="mcs2" exercise="2" step="1" />
 
-### ステップ 2 : ユーザー入力の収集
+### Step 2: ユーザー の入力を収集する
 
-画面中央の **+** ボタンを選択して、現在のトピックに新しいアクションやステップを追加します。**+** ボタンを選択すると、利用可能なすべてのアクションの一覧が表示されます。主なオプションは以下の通りです：
+画面中央の **+** ボタンを選択して、新しいアクションまたはステップを追加します。**+** を選択すると、利用可能なアクションの一覧が表示されます。主なオプションは以下のとおりです。
 
-- Send a message： ユーザーにメッセージを送信します。メッセージはテキスト、画像、ビデオ、adaptive card などにすることができます。
-- Ask a question： ユーザーに入力を求めます。入力はテキスト、画像、ビデオ、添付ファイル、adaptive card などにすることができます。
-- Ask with adaptive card： Adaptive Card を利用してユーザーから内容を収集します。
-- Add a condition： 変数や定数値の比較に基づいて、トピックに分岐を追加します。
-- Variable management： トピックレベル、グローバル、システム、または環境でのスコープを持つ変数を管理します。
-- Topic management： 現在のトピックのライフサイクルを管理します。
-- Add an action： Power Automate フロー、カスタム コネクター、またはマルチエージェント シナリオでの他のエージェントなど、外部アクションを利用します。
-- Advanced： 外部 HTTP REST API の利用、生成 AI による回答の使用、イベントやアクティビティの送信など、高度な機能を提供します。
+- Send a message: テキスト、画像、動画、Adaptive Card などを送信
+- Ask a question: テキスト、画像、動画、添付ファイル、Adaptive Card などを入力として要求
+- Ask with adaptive card: Adaptive Card を使用して入力を収集
+- Add a condition: 変数や定数の比較に基づく分岐を追加
+- Variable management: 変数を管理 (トピック レベル、グローバル、システム、環境)
+- Topic management: 現在のトピックのライフサイクル管理
+- Add an action: Power Automate フロー、カスタム コネクタ、マルチ エージェント シナリオで他の エージェント などを呼び出し
+- Advanced: 外部 HTTP REST API、ジェネレーティブ アンサー、イベントやアクティビティの送信などの高度な機能
 
-![現在のトピックに追加するアクションを選択するメニュー。利用可能なオプションは、send a message、ask a question、ask with adaptive card、add a condition、variable management、topic management、add an action、advanced です。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-03.png)
+![The menu to select actions to add to the current topic. There available options are: send a message, ask a question, ask with adaptive card, add a condition, variable management, topic management, add an action, advanced.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-03.png)
 
-ユーザーの入力を収集するために、**Ask a question** アクションを追加します。ユーザーの役割を尋ねるために、以下の値を質問テキストとして提供してください。
+ユーザー の入力を収集するために **Ask a question** アクションを追加します。 ユーザー の役割を尋ねるため、質問テキストに次を入力します。
 
 ```txt
 What is your role?
 ```
 
-なお、デフォルトでは Copilot Studio は、**Identify** 設定フィールドで強調表示されているように、収集された入力に `Multiple choice options` データ型を割り当てます。**Identify** 設定フィールドの直下にある **+ New option** コマンドを選択し、以下の３つの値を順に追加してください：
+既定では、Copilot Studio は収集した入力に `Multiple choice options` データ型を割り当てます (**Identify** 設定フィールドで確認可能)。**Identify** のすぐ下にある **+ New option** を選択し、次の 3 つの値を追加します。
 
 - Candidate
 - Employee
 - HR staff member
 
-このアクションは、ユーザーが選択した値を自動的にトピックレベルの変数に保存します。アクションの右上にある三点リーダーを選択して **Properties** コマンドを選ぶか、またはアクション下部の変数を選択して名前やその他設定を更新することができます。
+このアクションは、 ユーザー が選択した値をトピック レベルの変数に自動的に保存します。アクション右上の 3 点リーダーから **Properties** を選択してカスタマイズするか、アクション下部の変数名を選択して名前などを変更できます。
 
-![プロパティの表示、アクションの名前変更、アクションの削除、コメントの追加などのコマンドが表示されるアクションのコンテキスト メニュー。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-04.png)
+![The context menu of the action with commands to: see properties, rename the action, delete the action, add a comment to the action.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-04.png)
 
-例えば、変数名を `UserRole` に変更できます。完全に設定された際のアクションの表示例は以下の通りです。
+たとえば、変数名を `UserRole` に変更します。設定が完了したアクションは次のようになります。
 
-![質問テキスト、結果のデータ型、オプション、選択されたオプションを保存する変数、および変数のスコープが表示された、すべての設定およびコマンドがハイライトされた完全に設定済みのアクション。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-05.png)
+![The action fully configured with all the settings and commands highlighted. There is the question text, the data type for the result, the options, the variable to store the selected option, and the scope of the variable.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-05.png)
 
 <cc-end-step lab="mcs2" exercise="2" step="2" />
 
-### ステップ 3 : ユーザーへのフィードバックの提供
+### Step 3: ユーザー にフィードバックを提供する
 
-次に、画面中央の **+** ボタンを選択して **Add a condition** を追加します。左側の分岐で **Select a variable** オプションを選択し、前のステップで作成した **userRole** 変数を選んでください。その後、条件の値として `userRole is equal to Candidate` となるように設定します。同様の手順をさらに２回繰り返し、`userRole is equal to Employee` および `userRole is equal to HR staff member` 用の条件を設定してください。最後の条件は `All other conditions` としてください。
+次に **+** ボタンを選択して **Add a condition** を追加します。左側のブランチで **Select a variable** を選択し、前のステップで作成した **userRole** 変数を選択します。続いて条件値を設定し、`userRole is equal to Candidate` とします。
+同様にして `userRole is equal to Employee`、`userRole is equal to HR staff member` の条件を追加します。最後のブランチは `All other conditions` とします。
 
-各分岐内で、ユーザーに対して専門的なフィードバックを行うためのカスタム ロジックを指定できます。そのために、各 **Condition** 分岐の下にある **+** コマンドを選択し、**Send a message** タイプのアクションを追加してください。必要に応じて、各分岐に複数のアクションを追加することも可能です。
+各ブランチ内で、 ユーザー に対して専用のフィードバックを送るロジックを指定します。各 **Condition** ブランチの下にある **+** コマンドを選択し、**Send a message** アクションを追加します。必要であれば複数のアクションを追加可能です。
 
-例えば、３つの分岐それぞれに以下のフィードバック メッセージを提供することができます：
+3 つのブランチには、例えば次のフィードバック メッセージを設定します。
 
 - Candidate
 
-  ```txt
+```txt
 You are a new candidate, as such you can submit your resume for evaluation.
 ```
 
+
 - Employee
 
-  ```txt
+```txt
 As an employee, you can ask me about how to improve your career or about 
 how to learn more about your growth mindset.
 ```
 
 - HR staff member
 
-  ```txt
+```txt
 As an HR staff member, you can manage the list of candidates and all the hiring procedures.
 ```
 
-`All other conditions` 分岐では、**Topic management** グループにある **Redirect** アクションを設定して、System Topic の **Fallback** にフォールバックすることができます。
+`All other conditions` ブランチでは、**Topic management** グループにある **Redirect** アクションを設定し、システム トピック **Fallback** にフォールバックさせます。
 
-![各オプションに応じたメッセージが送信され、ユーザーがサポートされていないオプションを選択した場合に **Fallback** トピックへリダイレクトされる条件分岐。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-06.png)
+![The condition branches with messages sent to the user for each option and a redirection to the **Fallback** topic in case the user did not provide any of the supported options.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-06.png)
 
-この非常にシンプルなトピックのロジックは、これで完成です。
+簡単なロジックのトピックが完成しました。
 
 <cc-end-step lab="mcs2" exercise="2" step="3" />
 
-### ステップ 4 : 現在のトピックの終了
+### Step 4: トピックを終了する
 
-カスタム トピックのフローを適切に完了するため、**Topic management** グループにある **End current topic** タイプの新しいアクションを追加します。この最後のアクションは、トピックの会話が完了したことを Copilot Studio に通知します。
+カスタム トピックのフローを適切に完了するため、**Topic management** グループから **End current topic** アクションを追加します。このアクションにより、トピックの会話が完了したことを Copilot Studio に通知します。
 
-![現在のトピック フローに挿入された **End current topic** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-07.png)
+![The **End current topic** action inserted in the current topic flow.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-07.png)
 
 <cc-end-step lab="mcs2" exercise="2" step="4" />
 
-### ステップ 5 : 現在のトピックのテスト
+### Step 5: トピックをテストする
 
-これでトピックを保存してテストする準備が整いました。デザイナーの右上にある **Save** ボタンを選択し、表示されるダイアログ ウィンドウでトピックの名前を指定してから、再度 **Save** ボタンを選択してください。
+トピックを保存してテストする準備ができました。デザイナー右上の **Save** ボタンを選択し、表示されるダイアログでトピック名を入力して **Save** を再度選択します。
 
-![トピックに名前を割り当てて保存するためのダイアログ ウィンドウ。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-08.png)
+![The dialog window to assign a name to the topic and to save it.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-08.png)
 
-例として、トピックの名前を `Collect user's role` としてください。次に、デザイナーの右上にある **Test** コマンドを選択してテストパネルを開き、以下のプロンプトを入力します：
+たとえば、トピック名を `Collect user's role` とします。次にデザイナー右上の **Test** コマンドを選択してテスト パネルを開き、次のプロンプトを入力します。
 
 ```txt
 What's your feedback for my role?
 ```
 
-エージェントは役割の選択を促し、選択に応じた特定のフィードバックが得られます。以下のスクリーンショットをご覧ください。
+エージェント が役割の選択を促し、選択に応じたフィードバックを返します。
 
-![Microsoft Copilot Studio 内のテストパネルで動作中のエージェント。](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-09.png)
+![The agent in action in the test panel inside Microsoft Copilot Studio.](../../../assets/images/make/copilot-studio-02/create-topic-single-turn-09.png)
 
-これで演習 2 は完了です。お疲れ様でした！次は演習 3 に進み、マルチターン トピックの作成に取り組んでください。
+Exercise 2 が完了しました。次は Exercise 3 でマルチターン トピックを作成します。
 
 <cc-end-step lab="mcs2" exercise="2" step="5" />
 
-## 演習 3 : マルチターン トピック作成
+## Exercise 3 : マルチターン トピックの作成
 
-シンプルな対話の場合、質問と回答が１回ずつのシングルターン対話を作成します。しかし、内容の充実したトピックの場合、ユーザー と エージェント間で複数回のやりとりが必要なマルチターン対話が求められます。この演習では、新しい役割の候補者に関するデータを収集するためのマルチターン トピックを作成します。
+単純な対話では 1 つの質問と 1 つの回答だけのシングルターン会話で十分ですが、内容のあるトピックでは ユーザー と エージェント の間で複数回のやり取りが必要です。この演習では、新しい候補者に関するデータを収集するマルチターン トピックを作成します。
 
-### ステップ 1 : 新しいマルチターン トピックの作成
+### Step 1: 新しいマルチターン トピックの作成
 
-新しい候補者について、以下の情報を収集するトピックを作成すると仮定してください：
+新しい候補者について、次の情報を収集すると仮定します。
 
-- First name
-- Last name
+- 名
+- 姓
 - E-mail
-- Current role
+- 現在の役職
 
-上記の情報を収集するため、演習 2 のステップ 1 に記載された手順に従って新しいトピックを作成してください。トピックの **Trigger** 説明として、以下の内容を設定できます：
+これらの情報を収集するため、Exercise 2 Step 1 と同様に新しいトピックを作成します。トピックの **Trigger** の説明例:
 
 ```txt
 This topic helps to collect information about a new candidate to process. Trigger sentences can be: 
 register a new candidate, create a new candidate, add a new candidate.
 ```
 
-次に、上記の各情報項目について、**Ask a question** タイプのアクションでユーザーに対して入力を促す必要があります。ただし、この演習では、回答の値は要求される項目に応じて異なります。例えば、first name、last name、current role は単純なテキスト フィールドとなりますが、e-mail 項目は有効な e-mail である必要があります。
+それぞれの情報フィールドについて **Ask a question** アクションで入力を求めます。ただし、回答の型はフィールドによって異なります。名、姓、現在の役職はシンプルなテキスト、E-mail は有効なメール アドレスである必要があります。
 
-そのため、first name、last name、current role の各フィールドについては、**Ask a question** アクションの **Identify** プロパティから **User's entire response** を実際のエンティティ タイプとして選択できます。これにより、ユーザーが提供したテキスト値が実際の収集値として取得されます。変数の型は Copilot Studio によって自動的に `string` に更新されます。ユーザーが提供した値を保持する各変数に、意味のある名前を付けてください。
+名、姓、現在の役職については、**Ask a question** アクションの **Identify** プロパティで **User's entire response** を選択します。これで ユーザー が入力したテキストをそのまま取得できます。変数型は Copilot Studio により `string` になります。各変数にはわかりやすい名前を付けてください。以下のスクリーンショットは名の入力アクションの例です。同じ手順で姓と現在の役職も設定します。
 
-以下のスクリーンショットでは、first name の入力アクションの定義例が示されています。同様に last name および current role についても定義可能です。
+![The **Ask a question** action configured to collect the candidate's first name and store it into a variable of type string, accepting any value provided by the user.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-01.png)
 
-![候補者の first name を収集し、ユーザーが提供した任意の値を受け入れて string 型の変数に保存するように設定された **Ask a question** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-01.png)
+E-mail フィールドでは **Identify** プロパティで **Email** エンティティを選択し、Copilot Studio が入力を自動的に検証できるようにします。変数型は `string` のままです。
 
-e-mail 項目については、**Identify** プロパティのエンティティとして **Email** を選択し、Copilot Studio が自動的にユーザーの入力を e-mail の検証ルールに従って検証できるようにします。基盤となる変数は引き続き `string` となります。
+![The **Ask a question** action configured to collect the candidate's e-mail accepting only values of type email provided by the user.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-02.png)
 
-![ユーザーが提供した email 型の値のみを受け付け、候補者の e-mail を収集するように設定された **Ask a question** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-02.png)
-
-これで、候補者に関するすべての情報を収集し、ユーザーにフィードバックを提供する準備が整いました。
+これで候補者に関する情報をすべて収集できました。次に ユーザー へフィードバックを送ります。
 
 <cc-end-step lab="mcs2" exercise="3" step="1" />
 
-### ステップ 2 : ユーザーへのフィードバック提供
+### Step 2: ユーザー へのフィードバック
 
-収集した入力に基づいて、ユーザーに収集データの確認メッセージを送信できます。**Send a message** タイプの新しいアクションを追加し、収集された入力が保存されている変数を使用してメッセージの内容を構築してください。
-メッセージに変数を追加するには、**Send a message** アクションのツールバーにある **{x}** コマンドを選択し、目的の変数を選んでください。
+収集した入力に基づいて、確認メッセージを送ります。**Send a message** アクションを追加し、変数を使用してメッセージを構成します。変数を挿入するには、**Send a message** アクションのツールバーにある **{x}** コマンドを選択し、目的の変数を選択します。
 
-![変数の挿入コマンドがハイライトされ、現在のトピックで利用可能な変数一覧が表示された **Send a message** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-03.png)
+![The action **Send a message** with the insert variable command highlighted and the list of variables available in the current topic.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-03.png)
 
-現在のトピックで定義された変数、システム変数、または環境変数を挿入することが可能です。すべての変数を用いて再確認メッセージを構成すると、以下のスクリーンショットのようになります。
+トピック内の変数、システム変数、環境変数を挿入できます。すべての変数を含めた確認メッセージは次のようになります。
 
-![参照されたすべての変数が含まれた **Send a message** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-04.png)
+![The action **Send a message** with all the referenced variables.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-04.png)
 
-ユーザーからの最終確認のために、**Ask a question** タイプのアクションを挿入し、以下のメッセージを入力してください：
+最終確認として、**Ask a question** アクションを追加し、次のメッセージを入力します。
 
 ```txt
 Is it ok for you to insert this new candidate?
 ```
 
-アクションを `Yes` および `No` の回答に対応するよう構成してください。演習 2 のステップ 3 と同様、各結果に対する各分岐を設定できます。簡略化のため、各分岐ごとに **Send a message** アクションを一つずつ使用し、ユーザーのフィードバックに応じてサムズアップやサムズダウンの絵文字をメッセージの内容として配置することも可能です。最後に、**End current topic** タイプのアクションを追加してトピックを完了させてください。
+回答として `Yes` と `No` をサポートするよう設定します。Exercise 2 Step 3 と同様に、それぞれの分岐を構成します。簡単にするため、各分岐に **Send a message** アクションを 1 つずつ追加し、ユーザー のフィードバックに応じて👍または👎の絵文字を送ります。最後に **End current topic** アクションを追加して完了です。
 
-![最後の **Ask a question** アクション、ユーザー入力を管理する３つの分岐、および **End current topic** の最終アクションを含むトピックの最終部分。](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-05.png)
+![The final part of the topic with the last **Ask a question** action, three branches to manage the user's input and one final action to **End current topic**.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-05.png)
 
-これでトピックを保存し、例えば `Register a new candidate` という名前を付け、統合テスト インターフェイスでテストすることができます。以下はマルチターン トピックとの対話のスクリーンショットです。また、e-mail 項目で誤った値が提供された場合、Copilot Studio が自動的に再入力を促すことにもご注意ください。
+トピックを保存し、たとえば `Register a new candidate` と名付け、組み込みのテスト インターフェースでテストしてください。以下は対話のスクリーンショットです。E-mail フィールドで正しくない値を入力すると、Copilot Studio が自動で再入力を促す点にも注目してください。
 
-![候補者情報全体を収集するための一連の質問と回答が行われるマルチターン トピックとの対話。](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-06.png)
+![The interaction with the multi-turn topic, where there are a set of questions and answers to collect all the candidate data.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-06.png)
+
 
 <cc-end-step lab="mcs2" exercise="3" step="2" />
 
-## 演習 4 : Adaptive Cards の利用
+## Exercise 4 : Adaptive Card の利用
 
-複数の **Ask a question** アクションを使用して入力を収集することは一つの選択肢ですが、多くのデータを収集する必要がある場合や、ユーザーとの洗練された対話を実現したい場合、Adaptive Card の利用を検討することができます。
+複数の **Ask a question** アクションで入力を収集するのは 1 つの方法ですが、多くのデータを取得したい場合や、見栄えの良い対話を実現したい場合は Adaptive Card の使用を検討できます。
 
 <details open>
-<summary>Adaptive Cards の概要</summary>
+<summary>Adaptive Card とは?</summary>
 
-Adaptive Cards は、アプリケーションやサービス間で交換可能な、JSON で作成されたプラットフォームに依存しない UI スニペットです。アプリに配信されると、その JSON はネイティブ UI に変換され、環境に自動的に適応します。これにより、主要なプラットフォームやフレームワーク間で軽量な UI の設計と統合が可能となります.
+Adaptive Card は JSON で記述されたプラットフォーム非依存の UI スニペットで、アプリやサービス間で交換できます。アプリに配信されると、JSON は自動的に環境に適応したネイティブ UI に変換されます。これにより、主要なプラットフォームやフレームワークで軽量 UI を設計・統合できます。
     <div class="video">
       <iframe src="//www.youtube.com/embed/pYe2NqKhJoM" frameborder="0" allowfullscreen></iframe>
-      <div>Adaptive Cards はあらゆる場所で利用されています。</div>
+      <div>Adaptive Card はあらゆる場所で利用されています</div>
     </div>
 </details>
 
-### ステップ 1 : Adaptive Cards を使用した入力の収集
+### Step 1: Adaptive Card で入力を収集する
 
-新しい候補者について、以下の情報を収集するための別のトピックを作成すると想定してください：
+新しい候補者について、次の情報を収集すると仮定します。
 
-- First name
-- Last name
+- 名
+- 姓
 - E-mail
-- Current role
-- Spoken languages
-- Skills
+- 現在の役職
+- 話せる言語
+- スキル
 
-特に、Spoken languages および Skills は複数選択可能なリスト形式の値です。
+話せる言語とスキルは複数選択可能なリストです。
 
-そのため、**Topics** タブを開き、トリガー条件の重複を避けるために演習 3 で作成したトピックを無効にしてください。その後、演習 2 ステップ 1 の手順に従って新しいトピックを作成します。トピックの **Trigger** 説明として、以下の内容を設定できます：
+**Topics** タブを開き、Exercise 3 で作成したトピックを無効化してトリガー条件の競合を避けます。その後、Exercise 2 Step 1 の手順で新しいトピックを作成します。トピックの **Trigger** の説明例:
 
 ```txt
 This topic helps to collect information about a new candidate to process. Trigger sentences can be: 
 register a new candidate, create a new candidate, add a new candidate.
 ```
 
-次に、**Ask with adaptive card** タイプの新しいアクションを追加し、1️⃣ 新しいアクションのボディを選択して、2️⃣ **Edit adaptive card** ボタンを選択します。そして、以下の JSON をアクションの **Adaptive card designer** 内の **Card payload editor** に入力してください。
+次に **Ask with adaptive card** アクションを追加し、1️⃣ アクションのボディを選択して 2️⃣ **Edit adaptive card** ボタンをクリックします。**Adaptive card designer** の **Card payload editor** に次の JSON を入力します。
 
-![Adaptive card の JSON を定義するためにサイドパネルが開かれている状態で、**Ask with adaptive card** アクションを追加しているトピックの画面。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png)
+![The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open to define the JSON of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png)
 
 ```json
 {
@@ -385,19 +385,19 @@ register a new candidate, create a new candidate, add a new candidate.
 }
 ```
 
-Adaptive card の JSON を更新すると、Copilot Studio はトピック デザイナーの UI 上にカードのプレビューをレンダリングします（以下のスクリーンショット参照）。また、Copilot Studio はユーザーが提供した値を収集するためのトピックレベルの変数セットを自動的に定義します。
+JSON を更新すると、Copilot Studio はトピック デザイナーの UI 内にカードのプレビューを表示し、 ユーザー が入力した値を収集するためのトピック レベル変数を自動定義します。
 
-![サイドパネルが開かれ、適切な Adaptive card の JSON が定義された状態で **Ask with adaptive card** アクションを追加しているトピックの画面。デザイナー上には実際の Adaptive card のプレビューと、ユーザーが提供した値を収集するための出力引数の一覧が表示されています。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-02.png)
+![The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open and a proper JSON of the adaptive card defined. On the designer there is a preview of the actual adaptive card and a list of output arguments to collect the values provided by the user.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-02.png)
 
 <cc-end-step lab="mcs2" exercise="4" step="1" />
 
-### ステップ 2 : Adaptive Cards を使用したフィードバック提供
+### Step 2: Adaptive Card でフィードバックを提供する
 
-これで、Adaptive card を使用して収集データの再確認をユーザーにフィードバックすることも可能です。**+** コマンドを選択し、**Send a message** タイプの新しいアクションを追加します。次に、新しいアクションの左上にある **+ Add** を選択し、**Adaptive card** を選択してメッセージタイプを Adaptive card に切り替えます。
+Adaptive Card を使用して、収集したデータの要約を ユーザー に表示することもできます。**Send a message** アクションを追加し、左上の **+ Add** を選択して **Adaptive card** を選びます。
 
-![**Send a message** アクションで送信するメッセージとして Adaptive card を追加するためのコマンド ボックス。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-03.png)
+![The command box to add an adaptive card as the message to send with the **Send a message** action.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-03.png)
 
-サイドパネルが表示され、**Edit adaptive card** コマンドを選択して Adaptive card の内容を定義できます。以下の JSON を **Adaptive card designer** の **Card payload editor** にコピーして貼り付けてください。
+右側のパネルで **Edit adaptive card** を選択し、次の JSON を **Card payload editor** にコピー & ペーストします。
 
 ```JSON
 {
@@ -428,23 +428,23 @@ Adaptive card の JSON を更新すると、Copilot Studio はトピック デ�
 }
 ```
 
-Adaptive card の JSON を貼り付ける際、テキスト エリアの上部で **Edit JSON** オプションが選択されていること（これはデフォルトの設定です）が非常に重要です。これは、実際の Adaptive card の JSON を編集していることを意味します。JSON を貼り付けたテキスト エリアからフォーカスが外れると、**Send a message** アクションが Adaptive card のプレビューを開始します。ご覧の通り、Adaptive card はすべての変数（firstname、lastname など）の静的な値をレンダリングしています。
+JSON を貼り付ける際、テキスト エリア上部の **Edit JSON** が選択されていることを確認してください (既定でオン)。フォーカスを外すと **Send a message** アクションがカードをプレビューし、すべての変数に静的値が表示されます。
 
-![右側のサイドパネルに Adaptive card の JSON が表示され、アクション本文に Adaptive card のプレビューが表示されている **Send a message** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-04.png)
+![The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-04.png)
 
-次に、**JSON Card** と表示されたドロップダウンを選択し、**Formula Card** に切り替えて、静的な値を現在のトピックで定義された実際の変数に置き換えてください。
+**JSON Card** ドロップダウンを **Formula Card** に切り替え、トピック レベル変数を参照する式に置き換えます。
 
-![右側のサイドパネルに Adaptive card の JSON が表示され、アクション本文に Adaptive card のプレビューがある **Send a message** アクション。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-05.png)
+![The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-05.png)
 
-エディターを展開するボタンを選択すると、静的な値をトピックレベルの変数の実際の値を参照する数式に置き換え始めることができます。
+エディターを展開し、静的値を順番に変数参照に置き換えます。
 
-![【Formula card】モードで Adaptive card の JSON を編集中の **Send a message** アクションのサイドパネル。エディターを展開するボタンが表示されています。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-06.png)
+![The side panel of the **Send a message** action while editing the adaptive card JSON in **Formula card** mode. There is a button to expand the editor.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-06.png)
 
-変数や PowerFx 関数を参照するのに役立つインテリセンス機能を備えた高度なエディターが表示されるダイアログがポップアップし、以下のスクリーンショットのように表示されます。
+ダイアログが表示され、IntelliSense 付きの高度なエディターで変数や PowerFx 関数を参照できます。
 
-![変数や PowerFx 関数の参照を支援するインテリセンス機能を備えた Adaptive card エディター。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-07.png)
+![The adaptive card editor with intellisense to reference variables and PowerFx functions.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-07.png)
 
-一つずつ、すべての静的な値を実際の変数に置き換えることができます。特に、Spoken languages と Skills は値のリスト（`Table` 型の変数）であるため、それらの値をレンダリングするには、PowerFx の `Concat` 関数と `Text` 関数を使用して、結果を実際の文字列に変換する必要があります。以下に、すべての数式が適用された Adaptive card の JSON 内容を示します。
+静的値をすべて変数に置き換えます。特に、話せる言語とスキルは `Table` 型の値なので、PowerFx の `Concat` 関数と `Text` 関数を使用して文字列に変換します。すべての式を設定した後の JSON は次のとおりです。
 
 ```JSON
 {
@@ -491,26 +491,26 @@ Adaptive card の JSON を貼り付ける際、テキスト エリアの上部�
 }
 ```
 
-!!! note "PowerFx 関数に関する追加情報"
-    PowerFx 関数の詳細については、[Create expressions using Power Fx](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-power-fx){target=_blank} をご参照ください。
+!!! note "PowerFx 関数の詳細"
+    PowerFx 関数の詳細は [Create expressions using Power Fx](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-power-fx){target=_blank} をご覧ください。
 
 <cc-end-step lab="mcs2" exercise="4" step="2" />
 
-### ステップ 3 : 現在のトピックのテスト
+### Step 3: トピックをテストする
 
-トピックの最後に **End current topic** アクションを追加し、保存して、例えば `Register new candidate with adaptive cards` と名前を付け、エージェントデザイナーの右側にあるテストパネルでテストしてください。以下のスクリーンショットでは、トピックがユーザーとどのように対話するかをご確認いただけます。
+最後に **End current topic** アクションを追加し、トピックを保存して `Register new candidate with adaptive cards` などの名前を付け、デザイナー右側のテスト パネルでテストします。以下のスクリーンショットは ユーザー との対話例です。
 
-![Adaptive card を使用して新しい候補者の情報を収集し、別の Adaptive card でフィードバックを提供するトピック。](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-08.png)
+![The topic collecting information about a new candidate using an adaptive card and providing feedback through another adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-08.png)
 
-これで、トピックは準備完了かつ完全に機能しています。今後のラボでは、実際に外部の HR サービスにデータを保存して新しい候補者のレコードを作成する方法を学びます。
+これでトピックは完成です。次のラボでは、外部 HR サービスにデータを保存して実際に新しい候補者レコードを作成する方法を学びます。
 
 <cc-end-step lab="mcs2" exercise="4" step="3" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-これでエージェントは、複数のトピックを通じた複数の会話パスをサポートするようになりました。次のラボでは、カスタム Actions の利用方法を学びます。
+これで エージェント は複数のトピックを通じて複数の会話パスをサポートします。次のラボではカスタム Action の取り扱いを学習します。
 
-<a href="../03-actions">こちら</a>から Lab MCS3 を開始し、Microsoft Copilot Studio を使用してエージェントのアクションを定義してください。
+<a href="../03-actions">こちらから</a> ラボ MCS3 を開始し、Copilot Studio で エージェント に Action を定義しましょう。
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/02-topics" />

@@ -2,35 +2,35 @@
 search:
   exclude: true
 ---
-# ラボ MCS ― Microsoft Copilot Studio の理解
+# ラボ MCS - Microsoft Copilot Studio の理解
 
-Microsoft Copilot Studio を使用することで、カスタムエージェント の作成における最大限 の可能性を手に入れることができます。これを利用して、Microsoft Teams 、カスタム Web サイト、Skype、Slack など、さまざまなチャンネルでホストできるエージェント を作成できます。また、Microsoft 365 Copilot チャット 内でもエージェント をホストすることが可能です。
+Microsoft Copilot Studio を使用すると、カスタム エージェントを最大限に活用できます。Microsoft Teams、カスタム Web サイト、Skype、Slack など、複数のチャネルでホストできるエージェントを作成できます。また、Microsoft 365 Copilot チャット内でエージェントをホストすることも可能です。
 
-Copilot Studio エージェント は、Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、およびセキュリティ制御を使用しており、一貫性があり親しみやすいユーザー エクスペリエンス を実現します。
+Copilot Studio のエージェントは、Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、セキュリティ制御を使用するため、一貫性が高く、ユーザーにとって馴染みのあるエクスペリエンスを提供します。
 
-![Copilot Studio エージェント アーキテクチャ図。最も基本となる部分は、Microsoft Copilot Studio によって提供される基盤モデルですが、カスタマイズすることが可能です。オーケストレーター は Copilot Studio により提供されます。エージェント は、カスタム知識およびグラウンディング データ、カスタムスキル、そして自律機能も提供します。ユーザー エクスペリエンス は Microsoft Teams 、Microsoft 365 Copilot、Microsoft SharePoint Online など多岐に渡るプラットフォームで提供されます。](../../../assets/images/copilot-studio-agent.png)
+![Copilot Studio agent architecture diagram. At the very basis there is the foundational model, which is provided by Microsoft Copilot Studio, but you can customize it. The orchestrator is provided by Copilot Studio. The agent provides also custom knowledge and grounding data, custom skills, and autonomous capabilities. The user experience is provided in Microsoft Teams, Microsoft 365 Copilot, Microsoft SharePoint Online, and much more.](../../../assets/images/copilot-studio-agent.png)
 
-ナレッジ ベース は以下のようなものです:
+ナレッジ ベースとして利用できるリソースの例:
 
 - SharePoint Online
 - OneDrive for Business
-- パブリック Web サイト
+- 公開 Web サイト
 - Microsoft Dataverse テーブル
-- Power Platform コネクタ
-- etc.
+- Power Platform コネクター
+- など
 
-エージェント は、トピック を通じてユーザー と対話し、これによりシングルターンまたはマルチターン の会話を定義できます。  
-すべてのエージェント は、Power Automate フロー、Power Platform コネクタ、外部 REST API などと連携するためのカスタムアクション を備えることが可能です。  
-一般的に、Microsoft Copilot Studio を利用すれば、コード を一行も記述する必要なく、非常に強力なエージェント を作成することができます。
+エージェントはトピックを通じてユーザーと対話し、単一ターンまたはマルチターンの会話を定義できます。  
+各エージェントには Power Automate フロー、Power Platform コネクター、外部 REST API などと連携するカスタム アクションを設定できます。  
+一般的に、Copilot Studio ではコードを一行も書かずに非常に強力なエージェントを作成できます。
 
-![新しいエージェント 作成時の Microsoft Copilot Studio の UI。ユーザー に対して名前、ロゴ、説明、自然言語の指示などを求めます。](../../../assets/images/make-global-intro/copilot-studio-01.png)
+![The UI of Microsoft Copilot Studio when creating a new agent. It prompts the user for a name, logo, description, instructions in natural language, etc.](../../../assets/images/make-global-intro/copilot-studio-01.png)
 
-Microsoft Copilot Studio を利用するには、エージェント の作成または保守を行う各ユーザー に対してユーザーライセンス（_per user license_ とも呼ばれます）が必要です。さらに、Microsoft Copilot Studio には組織レベル のライセンス（_tenant license_ とも呼ばれます）が必要です。2024 年 12 月 1 日より、Copilot Studio メッセージ に対して Pay‑As‑You‑Go がサポートされるため、顧客 は消費するメッセージ容量に対してのみ支払う柔軟性を得ることができます。
+Copilot Studio を使用するには、エージェントを作成または保守する各ユーザーに対してユーザー ライセンス ( _per user license_ とも呼ばれます) が必要です。さらに、組織レベルの Copilot Studio ライセンス ( _tenant license_ とも呼ばれます) も必要です。2024 年 12 月 1 日から、Copilot Studio メッセージに対して Pay-As-You-Go がサポートされ、利用したメッセージ容量に応じて柔軟に支払うことが可能になります。
 
 <hr />
 
 ---8<--- "ja/mcs-labs-toc.md"
 
-## <a href="./00-prerequisites">ここから開始</a> ラボ MCS0（Copilot Studio 用環境構築）
+## <a href="./00-prerequisites">ここから開始</a> — ラボ MCS0 で Copilot Studio の環境をセットアップします。
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/index" />
