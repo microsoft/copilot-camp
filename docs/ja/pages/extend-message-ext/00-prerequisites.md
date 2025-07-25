@@ -4,145 +4,138 @@ search:
 ---
 # ラボ M0 - 前提条件
 
-このラボでは、 Microsoft 365 Copilot の機能拡張用プラグインを構築、テスト、およびデプロイするための開発環境を設定します。
+このラボでは、Microsoft 365 Copilot の機能を拡張するプラグインをビルド、テスト、デプロイするための開発環境をセットアップします。
 
-???+ "Extend Teams Message Extension ラボ (Extend Path) のナビゲーション"
-    - [ラボ M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) (📍現在位置)
-    - [ラボ M1 - Northwind メッセージエクステンションの理解](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [ラボ M2 - Microsoft 365 Copilot でアプリを実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
-    - [ラボ M3 - 新しい検索コマンドによるプラグインの強化](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
-    - [ラボ M4 - 認証の追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
-    - [ラボ M5 - アクションコマンドによるプラグインの強化](/copilot-camp/pages/extend-message-ext/05-add-action) 
+???+ "Extend Teams Message Extension ラボのナビゲーション (Extend Path)"
+    - [ラボ M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) (📍現在地)
+    - [ラボ M1 - Northwind メッセージ拡張機能を理解する](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
+    - [ラボ M2 - アプリを Microsoft 365 Copilot で実行する](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [ラボ M3 - 新しい検索コマンドでプラグインを強化する](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
+    - [ラボ M4 - 認証を追加する](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
+    - [ラボ M5 - アクション コマンドでプラグインを強化する](/copilot-camp/pages/extend-message-ext/05-add-action) 
     
 
-このラボで学ぶ内容:
+このラボで学習する内容:
 
-- ラボ全体の演習用に デベロッパーテナント を設定する方法
-- Visual Studio Code 用 Agents Toolkit やその他のツールをインストールおよび構成する方法
-- ベースプロジェクトで開発環境を整える方法
+- ラボ全体の演習に向けて開発者テナントをセットアップする方法
+- Visual Studio Code 用  Agents Toolkit とその他ツールのインストールと構成方法
+- ベース プロジェクトで開発環境をセットアップする方法
 
-!!! warning "注意事項"
-    Microsoft 365 Copilot を拡張するには、開発環境が [要件](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites) を満たしていることを確認する必要があります。
-
-
-## 演習 1: Teams アプリケーションのアップロードの有効化
-カスタム Teams アプリケーションをアップロードする権限を持つ Microsoft の職場または学校 アカウントが必要です。 
-
-通常、エンド ユーザーは直接アプリケーションをアップロードできず、代わりに管理者が企業向けアプリ カタログにアップロードします。この手順では、 Microsoft 365 Agents Toolkit による直接アップロードができるように、テナントが設定されているか確認します。
+!!! warning   "注意"
+    Microsoft 365 Copilot を拡張するには、開発環境が [要件](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites) を満たしている必要があります。
 
 
-- 管理者資格情報を使用して [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/dashboard) にサインインします。
+## エクササイズ 1: Teams アプリのアップロードを有効化
+カスタム Teams アプリをアップロードできる権限を持つ Microsoft の職場または学校アカウントが必要です。 
+
+既定では、エンドユーザーはアプリを直接アップロードできません。管理者がエンタープライズ アプリ カタログにアップロードする必要があります。このステップでは、Microsoft 365 Agents Toolkit による直接アップロードができるようにテナントを設定します。
+
+- 管理者資格情報で [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/dashboard) にサインインします。
 - **Teams アプリ** > **セットアップ ポリシー** > **グローバル** に移動します。
-- **カスタム アプリのアップロード** を「オン」の位置に切り替えます。
-- 「保存」を選択します。これにより、テスト テナントでカスタム アプリのアップロードが許可されます。
+- **カスタム アプリのアップロード** を “オン” に切り替えます。
+- 「保存」を選択します。これでテスト テナントでカスタム アプリのアップロードが許可されます。
 
-> 変更が有効になるまで最大 24 時間かかる場合がありますが、通常はもっと早く反映されます。
+> 変更が反映されるまで最大 24 時間かかる場合がありますが、通常はもっと早く反映されます。
 
-## 演習 2: Agents Toolkit と前提条件のインストール
-これらのラボは Windows、Mac、Linux マシンのいずれかで実行できますが、前提条件をインストールできる環境が必要です。コンピューターにアプリケーションをインストールする権限がない場合は、ワークショップ全体で使用する別のマシン (または仮想マシン) を見つける必要があります。
+## エクササイズ 2: Agents Toolkit と前提ツールをインストール
+Windows、Mac、Linux いずれのマシンでも演習を行えますが、前提ツールをインストールできる必要があります。コンピューターにアプリをインストールできない場合は、ワークショップ全体で使用できる別のマシン (または仮想マシン) を用意してください。
 
-### ステップ 1: Visual Studio Code のインストール
+### Step 1: Visual Studio Code をインストール
 
-[Agents Toolkit for Visual Studio Code](){target=_blank} が Visual Studio Code を必要とするのは当然です！ こちらからダウンロードできます: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+[Agents Toolkit for Visual Studio Code](){target=_blank} が動作するには Visual Studio Code が必要です。以下からダウンロードしてください: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
 
-### ステップ 2: NodeJS のインストール
+### Step 2: NodeJS をインストール
 
-Node.js はコンピューター上で JavaScript を実行できるランタイムです。オープンソースの V8 エンジンを使用しており、これは Google Chrome や Chromium ベースの Microsoft Edge といった一般的な Web ブラウザで使用されています。ワークショップ全体で使用する Web サーバーのコードを実行するために Node.js が必要です。
+Node.js はコンピューター上で JavaScript を実行できるランタイムです。Google Chrome や Microsoft Edge (Chromium ベース) などのブラウザーで使用されているオープンソースの V8 エンジンを使用しています。本ワークショップで使用する Web サーバー コードを実行するには Node.js が必要です。
 
-[https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} にアクセスし、OS に合わせてバージョン 18 または 16 をインストールしてください。本ラボでは NodeJS バージョン 18.16.0 にてテスト済みです。既に別のバージョンの NodeJS をインストール済みの場合は、同一コンピューター上で簡単に Node のバージョンを切り替えられる [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (または Microsoft Windows 用の [このバリエーション](https://github.com/coreybutler/nvm-windows){target=_blank}) のセットアップをお勧めします。
+[https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} にアクセスし、OS 向けのバージョン 18 または 16 をインストールしてください。このラボでは NodeJS バージョン 18.16.0 でテストしています。すでに別バージョンを使用している場合は、[Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (または Microsoft Windows 向けの [こちらのバリエーション](https://github.com/coreybutler/nvm-windows){target=_blank}) を設定すると、1 台のコンピューターで簡単に Node バージョンを切り替えられます。
 
-### ステップ 3: ツールのインストール
+### Step 3: ツールをインストール
 
-これらのラボは最新版の [Agents Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank} をベースにしています。
-以下のスクリーンショットに示される手順に従ってください。
+これらのラボは、[Agents Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank} の最新 GA 版に基づいています。以下の手順を実行してください。
 
-1️⃣ Visual Studio Code を開き、拡張機能のツールバー ボタンをクリック
+1️⃣ Visual Studio Code を開き、サイドバーの Extensions アイコンをクリック  
+2️⃣ 「Teams」で検索し、Agents Toolkit を見つける  
+3️⃣ 「Install」をクリック  
 
-2️⃣ 「Teams」を検索し、Agents Toolkit を見つける
+![Open the App setup policies](../../assets/images/extend-m365-copilot-00/install-ttk.png)
 
-3️⃣ 「インストール」をクリック
-
-![App セットアップ ポリシーの表示](../assets/images/extend-m365-copilot-00/install-ttk.png)
-
-!!! note "Agents Toolkit がインストール済みでも非表示の場合"
-    以前に Agents Toolkit をインストールし、その後 Visual Studio サイドバーで非表示にした場合、表示されない理由に驚くかもしれません。左サイドバーを右クリックして、Agents Toolkit のチェックを外して再度表示させてください。
+!!! note "Agents Toolkit をインストール済みだが非表示の場合"
+    以前に Agents Toolkit をインストールし、Visual Studio のサイドバーで非表示にした場合、見当たらないことがあります。左側のサイドバーを右クリックし、Agents Toolkit にチェックを入れて再表示してください。
     
 
 !!! tip "Azure Storage Explorer"
-    [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (オプション) - このサンプルで使用している Northwind データベースを表示および編集したい場合は、ダウンロードしてください。
+    [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (任意) - Northwind データベースを閲覧・編集したい場合はダウンロードしてください。
 
-## 演習 3 - プロジェクトとデベロッパーテナント データのセットアップ
+## エクササイズ 3 - プロジェクトと開発者テナント データのセットアップ
 
-### ステップ 1 - サンプルコードのダウンロード
+### Step 1 - サンプル コードをダウンロード
 
-Web ブラウザーで [このリンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/&filename=Northwind){target=_blank} にアクセスしてください。 **Northwind.zip** という ZIP ファイルのダウンロードのプロンプトが表示されます。 
+ブラウザーで [こちらのリンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/&filename=Northwind){target=_blank} にアクセスします。**Northwind.zip** という ZIP ファイルをダウンロードするよう求められます。 
 
-- ZIP ファイルをコンピューターに保存します。 
+- ZIP ファイルを任意の場所に保存します。  
+- ZIP を解凍すると **Northwind** フォルダーが生成されます。  
+- **Visual Studio Code** を開きます。  
 
-- ZIP ファイルの内容を解凍すると、 **Northwind** というフォルダーが作成されます。 
+Visual Studio Code で: 
 
-- **Visual Studio Code** を開きます。 
+- 「ファイル」メニューから「フォルダーを開く...」を選択  
+- **Northwind** フォルダーを開きます。  
 
-Visual Studio Code 内で: 
+このラボ内では、この **Northwind** フォルダーを「ルート フォルダー」または「作業フォルダー」と呼びます。
 
-- 「ファイル」メニューから「フォルダーを開く」オプションを選択 
+### Step 2 - Agents Toolkit でアカウントを設定
 
-- **Northwind** フォルダーを開きます。
+左側の Agents Toolkit アイコン 1️⃣ を選択します。新しいプロジェクトを作成するオプションが表示される場合は、フォルダーが間違っています。Visual Studio Code の「ファイル」メニューから「フォルダーを開く」を選択し、直接 **Northwind** フォルダーを開いてください。下図のように Accounts や Environment などのセクションが表示されます。
 
-これらのラボでは、この **Northwind** フォルダーを「ルート フォルダー」または「作業フォルダー」として参照します。ここで作業を行います。
+「Accounts」下の **Sign in to Microsoft 365** 2️⃣ をクリックし、ご自身の Microsoft 365 アカウントでログインします。
 
-### ステップ 2 - Agents Toolkit でアカウントの設定
+![Logging into Microsoft 365 from within Agents Toolkit](../../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
 
-左側の 1️⃣ にある Agents Toolkit アイコンを選択します。新しいプロジェクトの作成オプションが表示された場合は、誤ったフォルダーにいる可能性があります。Visual Studio Code のファイル メニューから「フォルダーを開く」を選択し、直接 **Northwind** フォルダーを開いてください。すると、下記のように Accounts、Environment などのセクションが表示されます。
+ブラウザー ウィンドウが開き、Microsoft 365 へのサインインを求められます。「You are signed in now and close this page」と表示されたらページを閉じてください。
 
-「Accounts」の下の「Sign in to Microsoft 365」 2️⃣ をクリックし、ご自身の Microsoft 365 アカウントでサインインしてください。
+次に、「Custom App Upload Enabled」チェッカーに緑のチェックが付いていることを確認します。付いていない場合は、Teams アプリのアップロード権限がありません。このラボのエクササイズ 1 を実施してください。 
 
-![Agents Toolkit 内での Microsoft 365 へのサインイン](../assets/images/extend-message-ext-00/01-04-Setup-TTK-01.png)
+同様に「Copilot Access Enabled」チェッカーに緑のチェックが付いていることを確認します。付いていない場合は、Copilot のライセンスがありません。ラボを続行するにはライセンスが必要です。
 
-ブラウザー ウィンドウがポップアップし、 Microsoft 365 へのサインインが促されます。「You are signed in now and close this page」と表示されたら、ウィンドウを閉じてください。
+![Checker](../../assets/images/extend-message-ext-00/checker.png)
 
-次に、「Custom App Upload Enabled」 チェッカーに緑のチェックマークが表示されていることを確認してください。もし表示されていない場合は、ユーザー アカウントに Teams アプリのアップロード権限がないことを意味します。ラボの演習 1 の手順に従ってください。 
+### Step 3 - サンプル ドキュメントをテスト ユーザーの OneDrive にコピー
 
-また、「Copilot Access Enabled」 チェッカーに緑のチェックマークが表示されていることも確認してください。表示されていない場合は、ユーザー アカウントの Copilot 用ライセンスが付与されていないことを意味します。これはラボを進めるために必要となります。
+サンプル アプリには、ラボ中に Copilot が参照するドキュメントが含まれています。このステップでは、これらのファイルをユーザーの OneDrive にコピーし、Copilot が検索できるようにします。テナント設定によっては、多要素認証の設定が求められる場合があります。
 
-![チェッカー](../assets/images/extend-message-ext-00/checker.png)
+ブラウザーで Microsoft 365 ([https://www.office.com/](https://www.office.com/)) にアクセスし、ラボで使用する Microsoft 365 アカウントでサインインします。多要素認証を求められる場合があります。
 
-### ステップ 3 - サンプルドキュメントをテスト ユーザーの OneDrive にコピー
+ページ左上の「ワッフル」メニュー 1️⃣ を使って、Microsoft 365 内の OneDrive アプリ 2️⃣ に移動します。
 
-サンプル アプリケーションには、ラボ中に Copilot が参照できるいくつかのドキュメントが含まれています。この手順では、これらのファイルをユーザーの OneDrive にコピーして、Copilot が見つけられるようにします。テナントの設定によっては、このプロセスの一環として多要素認証の設定を求められる場合があります。
+![Navigating to the OneDrive application in Microsoft 365](../../assets/images/extend-message-ext-00/01-02-CopySampleFiles-01.png)
 
-ブラウザーを開き、 Microsoft 365 ([https://www.office.com/](https://www.office.com/)) にアクセスします。ラボ中に使用する Microsoft 365 アカウントでサインインしてください。多要素認証の設定を求められる場合があります。
+OneDrive 内で **My Files** 1️⃣ に移動します。Documents フォルダーがある場合はクリックして開きます。ない場合は **My Files** 直下で作業できます。
 
-ページの左上にある「ワッフル」メニューを使用して 1️⃣ 、 Microsoft 365 内の OneDrive アプリケーションに移動します 2️⃣ 。
+![Navigating to your documents in OneDrive](../../assets/images/extend-message-ext-00/01-02-CopySampleFiles-02.png)
 
-![Microsoft 365 の OneDrive アプリケーションへのナビゲーション](../assets/images/extend-message-ext-00/01-02-CopySampleFiles-01.png)
+「**Add new**」1️⃣ をクリックし、「**Folder**」2️⃣ を選択して新しいフォルダーを作成します。
 
-OneDrive 内で「My Files」 1️⃣ に移動します。既にドキュメント フォルダーがある場合は、それにも入ってください。なければ「My Files」の場所で直接作業できます。
+![Adding a new folder in OneDrive](../../assets/images/extend-message-ext-00/01-02-CopySampleFiles-03.png)
 
-![OneDrive のドキュメントへのナビゲーション](../assets/images/extend-message-ext-00/01-02-CopySampleFiles-02.png)
+フォルダー名を **Northwind contracts** と入力し、「Create」をクリックします。
 
-次に、「新規作成」 1️⃣ をクリックし、「フォルダー」 2️⃣ を選択して新しいフォルダーを作成します。
+![Naming the new folder "Northwind contracts"](../../assets/images/extend-message-ext-00/01-02-CopySampleFiles-03b.png)
 
-![OneDrive での新規フォルダーの追加](../assets/images/extend-message-ext-00/01-02-CopySampleFiles-03.png)
+新しいフォルダー内で再度「**Add new**」1️⃣ をクリックし、今度は「**Files upload**」2️⃣ を選択します。
 
-フォルダーの名前を "Northwind contracts" として「作成」をクリックします。
+![Adding new files to the new folder](../../assets/images/extend-message-ext-00/01-02-CopySampleFiles-04.png)
 
-![新規フォルダー "Northwind contracts" の命名](../assets/images/extend-message-ext-00/01-02-CopySampleFiles-03b.png)
+作業フォルダー内の **sampleDocs** フォルダーに移動し、すべてのファイルを選択 1️⃣ して「OK」2️⃣ をクリックし、アップロードします。
 
-次に、この新しいフォルダー内から、再度「新規作成」 1️⃣ をクリックし、今回は「ファイルのアップロード」 2️⃣ を選択します。
+![Uploading the sample files from this repo into the folder](../../assets/images/extend-message-ext-00/01-02-CopySampleFiles-05.png)
 
-![新しいフォルダーへのファイル追加](../assets/images/extend-message-ext-00/01-02-CopySampleFiles-04.png)
-
-作業フォルダー内の **sampleDocs** フォルダーに移動します。すべてのファイルを選択し 1️⃣、「OK」 2️⃣ をクリックして一括アップロードします。
-
-![リポジトリ内のサンプルファイルをフォルダーにアップロード](../assets/images/extend-message-ext-00/01-02-CopySampleFiles-05.png)
-
-この手順を早めに行うことで、 Microsoft 365 の検索エンジンがラボで利用するタイミングまでにそれらを発見できる可能性が高まります。
+この手順を早めに行うことで、Microsoft 365 の検索エンジンがファイルを発見しやすくなります。
 
 
-## 完了
+## おめでとうございます
 
-前提条件ラボを終了しました。これでアプリを実行する準備が整いました。下の「Next」ボタンを選択してください。
+前提条件ラボを完了しました。これでアプリを実行する準備が整いました。下の「Next」ボタンを選択してください。
 
 <cc-next />
 

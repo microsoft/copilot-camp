@@ -2,32 +2,34 @@
 search:
   exclude: true
 ---
-# ラボ MSA - SharePoint エージェント の理解
+# ラボ MSA - SharePoint エージェントの概要
 
-SharePoint エージェント は SharePoint Online に保存されているコンテンツに特化したエージェントを作成する最も簡単な方法です。  
-SharePoint エージェント は Microsoft 365 Copilot と同じインフラ、オーケストレーター、基盤モデル、及びセキュリティ コントロール を使用しており、一貫性のある親しみやすいユーザー エクスペリエンス を保証します。
+**SharePoint エージェント** は、SharePoint Online に保存されているコンテンツに特化したエージェントを最も簡単に作成できる方法です。  
+SharePoint エージェントは、Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、セキュリティ制御を使用しており、一貫性のある馴染み深いユーザー エクスペリエンスを提供します。
 
-![SharePoint エージェント のアーキテクチャ ダイアグラム。最も基本となるのは Microsoft 365 Copilot の基盤モデルと同じオーケストレーターです。エージェント はカスタム ナレッジ および グラウンディング データ も提供します。ユーザー エクスペリエンス は SharePoint Online 、 Microsoft Teams 、または Microsoft 365 Copilot で提供されます。](../../../assets/images/sharepoint-agent.png)
+![SharePoint agent architecture diagram. At the very basis there is the foundational model of Microsoft 365 Copilot, as well as the same orchestrator. The agent provides also custom knowledge and grounding data. The user experience is provided in SharePoint Online, or Microsoft Teams, or Microsoft 365 Copilot.](../../../assets/images/sharepoint-agent.png)
 
-SharePoint エージェント は以下を対象とできます：
+SharePoint エージェントは次の対象に設定できます。
 
-- サイト
-- ライブラリ
-- ドキュメント
+- サイト  
+- ライブラリ  
+- ドキュメント  
 
-SharePoint エージェント は、作成されたライブラリ内またはサイトレベルで、SharePoint Online のユーザー エクスペリエンス内から使用できます。SharePoint エージェント を作成するには、対象ライブラリに対して *contribute* 権限 を持つ必要があります。また、サイトの *owner* はサイトレベルで SharePoint エージェント を昇格させることもできます。
+SharePoint エージェントは、作成されたライブラリ内またはサイト レベルで、SharePoint Online のユーザー エクスペリエンスから利用できます。エージェントを作成するには、対象ライブラリに対する *contribute* 権限が必要です。また、サイト *owner* は SharePoint エージェントをサイト レベルで公開することもできます。
 
-SharePoint エージェント は、Microsoft Teams で共有することもでき、チャット（1 対 1 またはグループチャット）のユーザー エクスペリエンス を向上させます。
+SharePoint エージェントは Microsoft Teams で共有することもでき、チャット（1 対 1 またはグループ チャット）のユーザー エクスペリエンスを向上させます。
 
-![ライブラリ内で新しい SharePoint エージェント を作成する際のウェルカム 画面。これから作成される新しい SharePoint エージェント の基本情報が表示されたダイアログが存在します。](../../../assets/images/make-global-intro/sharepoint-agent-01.png)
+![The welcome screen when creating a new SharePoint agent in a document library. There is a dialog with the basic information about the new SharePoint agent that is going to be created.](../../../assets/images/make-global-intro/sharepoint-agent-01.png)
 
-Microsoft 365 Copilot ライセンス、または Copilot Studio capacity が割り当てられている場合、あるいは組織が Pay-As-You-Go 請求 を設定している場合、SharePoint エージェント を使用できます。
+Microsoft 365 Copilot のライセンス、Copilot Studio のキャパシティ、または組織での Pay-As-You-Go 課金が設定されている場合、SharePoint エージェントを利用できます。
 
 <hr />
 
 <!-- ---8<--- "ja/msa-labs-toc.md" -->
 
-## <a href="./01-first-agent">こちらから開始</a> Lab MSA1 - 最初の SharePoint エージェント 作成
+<!-- ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio agent builder. -->
+
+## <a href="./01-first-agent">ここから開始</a> — ラボ MSA1 で最初の SharePoint エージェントを作成します。
 <cc-next url="./01-first-agent" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agent/index" />

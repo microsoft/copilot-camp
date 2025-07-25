@@ -4,87 +4,87 @@ search:
 ---
 ---8<--- "ja/heading.md"
 
-# ラボ内容のフォーマット ガイド
+# ラボ コンテンツの書式設定ガイド
 
-## テキスト要素のフォーマット
+## テキスト要素の書式
 
-これらのテキスト要素はラボの指示内に埋め込まれているため、フォーマットは常にインラインです
+これらのテキスト要素は ラボ の手順に埋め込まれているため、書式設定は常にインラインです。
 
-| 要素 | 処理 | 例 |
+| Element | Treatment | Example |
 |---|---|---|
-| 関数名 | 丸括弧付き等幅 | Then, call `myFunction()` to do something ... |
-| 言語キーワード | 等幅 | ... insert at the top of the `try` block ... |
-| コード中の記号（変数名、オブジェクト名など） | 等幅 | ... the `foo` object contains something random ... |
-| ファイル名とフォルダー名 | 太字 | **foo.js** の内容を **bar** フォルダーにコピー |
+| 関数名 | 等幅フォントで括弧を付ける | Then, call `myFunction()` to do something ... |
+| 言語キーワード | 等幅フォント | ... insert at the top of the `try` block ... |
+| コード内のシンボル (変数名、オブジェクト名など) | 等幅フォント | ... the `foo` object contains something random ... |
+| ファイル名とフォルダー名 | **太字** |  Copy the contents of **foo.js** into the **bar** folder |
 | 画面上のテキスト | 二重引用符で囲む | Now click on the "foo" button |
 
 ## インクルード
 
-複数ページで使用されるコンテンツは、/docs/includes フォルダー内のインクルードファイルに配置すべきです。
+複数のページで使用するコンテンツは /docs/includes フォルダー内のインクルード ファイルに配置してください。
 
-以下は構文です:
+構文は次のとおりです:
 
 <blockquote>--8<-- "all-labs-toc.md"</blockquote>
 
-以下は例です::
+例を示します::
 
 --8<-- "all-labs-toc.md"
 
-## ラボ手順
+## ラボ ステップ
 
-Copilot Developer Camp ラボでは、独自の Web コントロールを使用して、学生の進捗を追跡するのに役立ちます。それぞれのラボ手順の最後に `<cc-end-step />` 要素を含める必要があります。詳細は [this test page](../../test) をご参照ください。
+Copilot Developer Camp ラボでは、受講者が進捗を追跡できるようにカスタム Web コントロールを使用します。各ラボ ステップの末尾に `<cc-end-step />` 要素を追加してください。詳細は [このテスト ページ](../../test) を参照してください。
 
 ## ハイパーリンク
 
-ラボ内のリンクは相対指定可能で、現在のウィンドウ内で開くべきです [like this](./labFormat.md).
+ラボ内のリンクは相対パスを使用し、現在のウィンドウで開くようにします [このように](./labFormat.md)。
 
-ラボの外部にあるリンク、または同じリポジトリ内のソースコードへのリンクは、新しいウィンドウで開く必要があります [like this](https://github.com/microsoft/app-camp/blob/main/src/create-core-app/aad/A01-begin-app/client/index.html){target=_blank}
+ラボ外へ遷移するリンク (同じリポジトリ内のソース コードへのリンクを含む) は新しいウィンドウで開くようにします [このように](https://github.com/microsoft/app-camp/blob/main/src/create-core-app/aad/A01-begin-app/client/index.html){target=_blank}
 
 ## アドモニション
 
-[アドモニションのドキュメントはこちら](https://squidfunk.github.io/mkdocs-material/reference/admonitions/).
-Copilot Developer Camp での使用例は以下の通りです:
+[アドモニションのドキュメントはこちら](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)  
+Copilot Developer Camp での使用方法は次のとおりです。
 
-!!! example "Challenge"
-    以下、ご自身で試してみてください。
+!!! example "チャレンジ"
+    自分で試してみましょう
 
 !!! note
-    このフォーマットを使用して、指示事項を強調または明確化してください。
+    手順を強調または明確化したい場合に使用します
 
 !!! tip
-    このフォーマットを使用して、ヒントやベスト プラクティスを示してください。
+    ヒントやベスト プラクティスを示す場合に使用します
 
 !!! warning
-    ラボの完了時によくある落とし穴について、学生に警告するためにこのフォーマットを使用してください。
+    ラボを進める際によくある落とし穴について警告する場合に使用します
 
 !!! danger
-    本番アプリケーションで発生する可能性のあるセキュリティ上または安定性の問題について、学生に警告するためにこのフォーマットを使用してください。
+    本番アプリケーションで発生し得るセキュリティ問題や安定性の問題について警告する場合に使用します
 
 ???+ info "ビデオ ブリーフィング"
     <div class="video">
       <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
-      <div>キャプション</div>
+      <div>Caption</div>
     </div>
 
 ???+ info "ビデオ ブリーフィング"
     <div class="video">
       <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
-      <div>キャプション</div>
+      <div>Caption</div>
     </div>
 
 ???+ info "詳細情報"
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
-      <div>キャプション 1</div>
+      <div>Caption 1</div>
     </div>
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
-      <div>キャプション 2</div>
+      <div>Caption 2</div>
     </div>
     <div class="tinyVideo">
       <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
-      <div>キャプション 3</div>
+      <div>Caption 3</div>
     </div>
 
 ??? info "TL;DR"
-    このフォーマットを使用して、興味はあるものの必須ではない補足情報を提供してください。
+    本質的ではないものの参考になる追加情報を提供する場合に使用します

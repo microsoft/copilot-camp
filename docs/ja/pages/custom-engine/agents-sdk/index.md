@@ -2,26 +2,24 @@
 search:
   exclude: true
 ---
-# イントロ - M365 Agents SDK および Semantic Kernel を使用して独自の エージェント を構築
+# イントロ – M365 Agents SDK と Semantic Kernel を使用したエージェント構築
 
-Copilot Developer Camp の ビルドパス において、Microsoft Teams や Microsoft 365 Copilot Chat、さらには外部チャネルで動作するカスタムエンジン エージェント を開発します。
+Copilot Developer Camp の Build Path では、M365 Agents SDK と Semantic Kernel を利用して、Microsoft Teams、Microsoft 365 Copilot Chat、さらには外部チャネルでも動作するカスタム エンジン エージェントを開発します。
 
-???+ info "カスタムエンジン エージェント とは？"
-    カスタムエンジン エージェント は、 Generative AI によりパワードされたチャットボット であり、オーケストレーションレイヤー によって拡張されています。M365 Agents SDK を使用して構築される場合、これら の エージェント は、インテント処理、プランナー統合、およびシステムメッセージの設定 などの機能を中心に構築されています。
+???+ info "カスタム エンジン エージェントとは？"
+    カスタム エンジン エージェントは、Generative AI を基盤にオーケストレーション レイヤーで強化されたチャットボットです。M365 Agents SDK を用いて構築すると、インテント処理、プランナー連携、システムメッセージ構成などの機能を中心に設計されます。Semantic Kernel フレームワークがマルチステップ推論と外部ツールの利用を可能にし、エージェントが自律的に動作しながら Microsoft 365 などで一貫性と安全性の高い体験を提供します。
 
-    Semantic Kernel フレームワーク は、多段階推論 と 外部ツール の使用 を可能にし、エージェント が自律的に動作するとともに、Microsoft 365 をはじめとする幅広いサービスで一貫性があり安全な体験 を提供できるようにします。
-
-この旅は Azure AI Foundry から始まり、ここでエージェント のコア instructions, tools, および個性 を定義します。そこから、Microsoft 365 Agents SDK と Visual Studio を使用してエージェント に命を吹き込み、その挙動 をカスタマイズするとともに、オーケストレーション用に Semantic Kernel と統合します。その後、Microsoft Teams でエージェント をテストし、Copilot Chat に組み込み、Microsoft 365 アプリケーション全体で実際に動作する様子 をご確認いただきます。
+この旅は Azure AI Foundry から始まります。そこで、エージェントの core instructions、tools、personality を定義します。その後、M365 Agents SDK と Visual Studio を使用してエージェントを実装し、Semantic Kernel と連携させることでオーケストレーションを行います。完成したエージェントを Microsoft Teams でテストし、Copilot Chat に取り込み、Microsoft 365 の各アプリケーションでその機能を確認します。
 
 <hr />
-本ラボ には複数の演習 が含まれています。各演習 は前の演習 を基に構築されているため、順番に完了してください:
+このラボは複数の演習で構成されています。前の演習の成果を基に進むため、順番に実施してください。
 
-* Azure AI Foundry でエージェント の準備を行う
-* M365 Agents SDK を使用して最初の エージェント を構築する
-* SDK を使用してエージェント のプロパティ を構成する
-* Azure AI Foundry を使用してエージェント を Teams と統合する
-* Microsoft 365 Copilot Chat にエージェント を組み込む
+* Azure AI Foundry でエージェントを準備する
+* M365 Agents SDK で最初のエージェントを構築する
+* SDK を使用してエージェントのプロパティを構成する
+* Azure AI Foundry を使って Teams と統合する
+* エージェントを Microsoft 365 Copilot Chat に取り込む
 
-## <a href="./00-prerequisites">こちら</a> から開始 ― ラボ BMA0 で開発環境 をセットアップする
+## <a href="./00-prerequisites">ここから開始</a> — Lab BMA0 で開発環境をセットアップします。
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/index" />
