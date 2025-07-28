@@ -59,6 +59,7 @@ plugins:
               - Lab MCS4 - Extending Microsoft 365 Copilot: 'pages/make/copilot-studio/04-extending-m365-copilot.md'
               - Lab MCS5 - Consuming a custom connector: 'pages/make/copilot-studio/05-connectors.md'
               - Lab MCS6 - Consuming an MCP server: 'pages/make/copilot-studio/06-mcp.md'
+              # - Lab MCS7 - Creating Autonomous Agents: 'pages/make/copilot-studio/07-autonomous.md'
               - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
               - Lab MSA1 - Build your first SharePoint agent: 'pages/make/sharepoint-agents/01-first-agent.md'
               - Lab MSA2 - Sharing SharePoint agents: 'pages/make/sharepoint-agents/02-sharing-agents.md'
