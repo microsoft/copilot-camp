@@ -2,18 +2,18 @@
 search:
   exclude: true
 ---
-# ラボ E4 - API とプラグインの拡張
+# ラボ E4 - API とプラグインの強化
 
-このラボでは、API に追加の REST 呼び出しを実装し、それらを API プラグイン パッケージに追加して Copilot から呼び出せるようにします。この過程で、Copilot が API を認識するために必要な定義箇所をすべて学習します。
+このラボでは、API に追加の REST 呼び出しを追加し、それらを API プラグイン パッケージに組み込んで Copilot から呼び出せるようにします。この過程で、Copilot 用の API を定義する必要がある箇所をすべて学習します。
 
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/9kb9whCKey4" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を短時間で確認できます。</div>
+          <div>この動画でラボの概要を素早く確認できます。</div>
             <div class="note-box">
-            📘 <strong>注:</strong>    このラボは前回のラボ E3 を基にしています。ラボ E2〜E6 は同じフォルダーで作業を続行できますが、参照用としてソリューション フォルダーも用意されています。<br/>
+            📘 <strong>Note:</strong>    このラボは前の Lab E3 を基にしています。Labs E2〜E6 は同じフォルダーで作業を続行できますが、参照用にソリューション フォルダーも用意されています。  
     このラボの完成版ソリューションは <a  src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END" target="_blank">/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END</a> にあります。
         </div>
     </div>
@@ -23,23 +23,23 @@ search:
 </div>
 
 
-## 演習 1: /projects リソースの追加
+## Exercise 1: /projects リソースの追加
 
-この演習では Trey Research API に /projects リソースを追加します。これにより GET でプロジェクト情報を取得し、POST でコンサルタントをプロジェクトに割り当てられるようになります。その際、**appPackage/trey-Plugin.json** と **trey-definition.json** を編集して新しい projects API 呼び出しを追加しながら、Copilot 用に API を定義する箇所を学びます。
+この演習では Trey Research API に /projects リソースを追加します。これにより、GET リクエストでプロジェクト情報を取得し、POST リクエストでコンサルタントをプロジェクトに割り当てられるようになります。その際に **appPackage/trey-Plugin.json** と **trey-definition.json** ファイルを修正し、新しい projects API 呼び出しを追加していく過程で理解を深めます。
 
-### 手順 1: Azure 関数コードの追加
+### Step 1: Azure Function コードの追加
 
-まず **/src/functions** フォルダーに **projects.ts** ファイルを作成し、[こちらのコードをコピー](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/functions/projects.ts){target=_blank} してください。
+まず、Lab 2 のソリューションの **/src/functions** フォルダーに **projects.ts** という新しいファイルを作成します。そして [こちらのコードをコピー](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/functions/projects.ts){target=_blank} してください。
 
-これにより Trey Research のプロジェクトへアクセスする新しい Azure 関数が実装されます。
+これにより Trey Research のプロジェクトにアクセスする新しい Azure Function が実装されます。
 
 <cc-end-step lab="e4" exercise="1" step="1" />
 
-### 手順 2: Azure 関数コードを確認 (任意)
+### Step 2: Azure Function コードの確認 (任意)
 
-コードを簡単に確認しましょう。
+ここでコードを簡単に確認しましょう。
 
-これはバージョン 4 の Azure 関数で、NodeJS の Express コードに近い構造になっています。`projects` クラスは "/projects" パスへの HTTP リクエスト トリガーを実装しています。続くインライン コードでメソッドとルートを定義します。現時点ではアクセス レベルは anonymous ですが、[ラボ E6](./06-add-authentication.md) で認証を追加します。
+これはバージョン 4 の Azure Function で、NodeJS の従来の Express コードに非常に似ています。`projects` クラスは HTTP リクエスト トリガーを実装しており、`/projects` パスにアクセスされたときに呼び出されます。その後にメソッドとルートを定義するインライン コードが続きます。現時点ではアクセスは anonymous です。[Lab E6](./06-add-authentication.md) で認証を追加します。
 
 ~~~typescript
 export async function projects(
@@ -56,13 +56,13 @@ app.http("projects", {
 });
 ~~~
 
-クラスには GET と POST を処理する switch 文があり、URL パス (プロジェクト ID)、クエリ文字列 (?projectName=foo など)、リクエスト ボディ (POST 時) からパラメーターを取得します。その後、開始ソリューションに含まれている [ProjectApiService](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/services/ProjectApiService.ts){target=_blank} を介してプロジェクト データにアクセスします。また、各リクエストのレスポンスを返し、デバッグ コンソールにログを出力します。
+クラス内では GET と POST を処理する switch 文が含まれ、URL パス (プロジェクト ID)、クエリ文字列 (?projectName=foo など、GET の場合)、およびリクエスト ボディ (POST の場合) からパラメーターを取得します。その後、開始時点のソリューションに含まれている [ProjectApiService](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/services/ProjectApiService.ts){target=_blank} を使用してプロジェクト データにアクセスします。また、各リクエストに対するレスポンスの送信とデバッグ コンソールへのロギングも行います。
 
 <cc-end-step lab="e4" exercise="1" step="2" />
 
-### 手順 3: HTTP テスト リクエストの追加
+### Step 3: HTTP テスト リクエストの追加
 
-**http/treyResearchAPI.http** ファイルに新しいリクエストを追加して試してみましょう。ファイルを開いて末尾に次のテキストを追加し、保存します。もしくは [更新済みファイルをコピー](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/http/treyResearchAPI.http){target="_blank"} してください。	
+次に、**http/treyResearchAPI.http** ファイルに新しいリクエストを追加して試してみましょう。ファイルを開き、一番下に次のテキストを追加して保存します。あるいは [更新済みファイルをコピー](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/http/treyResearchAPI.http){target="_blank"} しても構いません。	
 
 ~~~text
 ########## /api/projects - working with projects ##########
@@ -93,34 +93,34 @@ Content-Type: application/json
 
 <cc-end-step lab="e4" exercise="1" step="3" />
 
-### 手順 4: 新しいリソースのテスト
+### Step 4: 新しいリソースのテスト
 
-アプリがラボ 2 からまだ動作中の場合はデバッガーを停止して再起動します。またはデバッガーを通常どおり開始し、アプリの起動を待ちます。起動が完了すると Agents Toolkit がブラウザーを開き、Microsoft 365 へのサインインを求めます。まだ使用しないので最小化しておきます (閉じるとデバッガーが停止します)。
+アプリがまだ Lab 2 から実行中の場合はデバッガーを停止して再起動してください。そうでなければ、通常どおりデバッガーを開始し、アプリの起動を待ちます。準備が整うと、Agents Toolkit が Microsoft 365 へのサインインを求めるブラウザーを表示します。最小化して構いませんが、閉じるとデバッガーが停止します。
 
-新しいリクエストを送信すると、Trey Research のプロジェクト詳細を取得したり、POST リクエストでコンサルタントをプロジェクトに割り当てたりできます。
+新しいリクエストを送信すると、Trey Research のプロジェクト詳細を確認したり、POST リクエストでプロジェクトに新しいコンサルタントを割り当てたりできるはずです。
 
 ![Visual Studio Code showing the treyResearchAPI.http file with the POST request for projects highligthed on the left and the response on the right side.](../../assets/images/extend-m365-copilot-03/test-projects-2.png)
 
 <cc-end-step lab="e4" exercise="1" step="4" />
 
-## 演習 2: アプリケーション パッケージに projects を追加
+## Exercise 2: アプリケーション パッケージに projects を追加
 
-API プラグインのアプリケーション パッケージは、Copilot が API を使用するために必要なすべての情報を含む zip ファイルです。
+API プラグインのアプリケーション パッケージは zip ファイルで、Copilot が API を使用するために必要な情報がすべて含まれています。  
 この演習では、新しい /projects リソースに関する情報をアプリ パッケージに追加します。
 
-### 手順 1: Open API Specification ファイルの更新
+### Step 1: Open API Specification ファイルの更新
 
-アプリケーション パッケージの重要な構成要素の一つに [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} 定義ファイルがあります。OAS は REST API を記述するための標準形式で、広く使われている "Swagger" 定義を基にしています。
+アプリケーション パッケージの重要な部分に [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} 定義ファイルがあります。OAS は REST API を記述する標準フォーマットで、広く使われている “Swagger” 定義に基づいています。
 
-まず **/appPackage** フォルダーで **trey-definition.json** を開きます。
-大きな JSON ファイルの編集は難しいので、[こちらの更新済みファイル](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json){target=_blank} をコピーして trey-definition.json を置き換え、保存してください。以降の手順で変更点を確認できます。
+まず **/appPackage** フォルダーの **trey-definition.json** を開きます。  
+大きな JSON ファイルの編集は難しいため、[こちらの更新済みファイル](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json){target=_blank} をコピーして上書き保存してください。以降の手順で変更点を確認します。
 
 <cc-end-step lab="e4" exercise="2" step="1" />
 
-### 手順 2: 更新内容を確認 (任意)
+### Step 2: 変更点の確認 (任意)
 
-最初の更新点は `paths` コレクションに `/projects/` パスを追加したことです。
-ここでは `/projects/` リソース取得時のすべてのクエリ文字列、データ型、必須フィールドなどが定義されています。また、ステータス 200 と 400 それぞれのレスポンス ペイロードも記述されています。
+最初の変更は `paths` コレクションに `/projects/` パスを追加したことです。  
+ご覧のとおり、`/projects/` リソース取得時に使用できるクエリ文字列と、そのデータ型・必須項目がすべて含まれています。また、API レスポンスで返されるデータも定義しており、ステータス 200 (成功) と 400 (失敗) で異なるペイロードを持たせています。
 
 ~~~json
 "/projects/": {
@@ -128,28 +128,128 @@ API プラグインのアプリケーション パッケージは、Copilot が 
         "operationId": "getProjects",
         "summary": "Get projects matching a specified project name and/or consultant name",
         "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
-        ...
-}
+        "parameters": [
+            {
+                "name": "consultantName",
+                "in": "query",
+                "description": "The name of the consultant assigned to the project",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "projectName",
+                "in": "query",
+                "description": "The name of the project or name of the client",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "location": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "street": {
+                                                        "type": "string"
+                                                    },
+                                                    "city": {
+                                                        "type": "string"
+                                                    },
+                                                    "state": {
+                                                        "type": "string"
+                                                    },
+                                                    "country": {
+                                                        "type": "string"
+                                                    },
+                                                    "postalCode": {
+                                                        "type": "string"
+                                                    },
+                                                    "latitude": {
+                                                        "type": "number"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "number"
+                                                    },
+                                                    "mapUrl": {
+                                                        "type": "string",
+                                                        "format": "uri"
+                                                    }
+                                                }
+                                            },
+                                            "role": {
+                                                "type": "string"
+                                            },
+                                            "forecastThisMonth": {
+                                                "type": "integer"
+                                            },
+                                            "forecastNextMonth": {
+                                                "type": "integer"
+                                            },
+                                            "deliveredLastMonth": {
+                                                "type": "integer"
+                                            },
+                                            "deliveredThisMonth": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                },
+                                "status": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Project not found"
+            }
+        }
+    }
+},
 ~~~
 
-さらに `/projects/assignConsultant` パスを追加し、POST リクエストを処理できるようにしています。
+POST リクエストを処理するために `/projects/assignConsultant` パスも追加されています。
 
-!!! tip "Descriptions are important!"
-    このファイルを含むアプリ パッケージのすべてのファイルは、インテリジェンス (Copilot) に読み込まれます。AI とはいえ内容を読んで理解します。API を正しく使ってもらうため、ここや他のパッケージ ファイルでは分かりやすい名前と説明を付けましょう。
+!!! tip "説明文は非常に重要です！"
+    このファイルをはじめ、アプリ パッケージ内のすべてのファイルは “インテリジェンス” によって読み取られます。人工であっても知能は説明文を読めます。  
+    API を正しく利用してもらうために、このファイルだけでなくアプリ パッケージ全体でわかりやすい名前と説明を使用しましょう。
 
 <cc-end-step lab="e4" exercise="2" step="2" />
 
-### 手順 3: プラグイン定義ファイルに projects を追加
+### Step 3: プラグイン定義ファイルに projects を追加
 
-次に **/appPackage** フォルダーの **trey-plugin.json** を開きます。このファイルには OAS 定義ファイルに含まれない追加情報が入っています。**trey-plugin.json** の内容を [こちらの更新済み JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json){target=_blank} で置き換えてください。
+次に **/appPackage** フォルダー内の **trey-plugin.json** を開きます。このファイルには OAS 定義ファイルに含まれない追加情報が記述されています。**trey-plugin.json** の内容を [こちらの更新 JSON](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-plugin.json){target=_blank} で置き換えてください。
 
 <cc-end-step lab="e4" exercise="2" step="3" />
 
-### 手順 4: プラグイン定義ファイルの変更点を確認 (任意)
+### Step 4: プラグイン定義ファイルの変更点 (任意)
 
-プラグイン JSON には _functions_ コレクションがあり、各要素が API 呼び出しの種類に対応します。Copilot は実行時にこれらの関数を選択してプラグインを利用します。
+プラグイン JSON ファイルには _functions_ のコレクションがあり、それぞれが API 呼び出しの種類に対応します。Copilot は実行時にプラグインを利用する際、これらの関数を選択します。
 
-新しい **trey-plugin.json** には `getProjects` と `postAssignConsultant` が追加されています。例として `getProjects` を見てみましょう。
+新しい **trey-plugin.json** には `getProjects` と `postAssignConsultant` という新しい関数が含まれています。例として `getProjects` を示します。
 
 ~~~json
 {
@@ -167,9 +267,36 @@ API プラグインのアプリケーション パッケージは、Copilot が 
 },
 ~~~
 
-ここでは `response_semantics` が含まれており、Copilot のオーケストレーターへレスポンス ペイロードの解釈方法を示しています。構造化データのどのフィールドをどのプロパティにマッピングするかを定義し、レンダリングや後処理に利用できるようにします。
+ここには `response_semantics` が含まれており、Copilot のオーケストレーターにレスポンス ペイロードの解釈方法を指示します。構造化データを意味のある形にマッピングし、表示や後処理に利用できるようにします。  
+たとえば次の `getConsultants` の `response_semantics` をご覧ください。
 
-`postAssignConsultant` 関数も同様で、さらに [Adaptive Card](https://adaptivecards.io){target=_blank} を使った確認カードが定義されています。
+~~~json
+"functions": [
+    {
+      "name": "getConsultants",
+      "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          }
+        }
+      }
+    },..]
+~~~
+
+ここでは `data_path` が `$.results` となっており、JSON データのメインの開始位置を表します。その下の `properties` で生データの特定フィールドを意味のあるプロパティにマッピングしています。
+
+~~~json
+     "title": "$.name",
+      "subtitle": "$.id",
+      "url": "$.consultantPhotoUrl"
+~~~
+
+POST リクエストにも同様の関数があります。
 
 ~~~json
 {
@@ -192,7 +319,9 @@ API プラグインのアプリケーション パッケージは、Copilot が 
 }
 ~~~
 
-さらに下部では `runtimes` オブジェクトに新しい関数が追加されています。
+これは [Adaptive Card](https://adaptivecards.io){target=_blank} を確認カードとして使用しており、POST 実行前にユーザーへ確認を促します。
+
+さらに下を見ると、`runtimes` オブジェクトがあります。ここではプラグインの種類、OAS 定義ファイルの場所、および関数のリストが定義されています。新しい関数がリストに追加されています。
 
 ~~~json
 "runtimes": [
@@ -215,7 +344,7 @@ API プラグインのアプリケーション パッケージは、Copilot が 
 ],
 ~~~
 
-最後に、ユーザーへ表示されるプロンプト候補 (conversation starters) に projects 関連のものが追加されています。
+最後に、プロンプト提案として表示される conversation starters が含まれています。新しいファイルには projects に関連するものが追加されています。
 
 ~~~json
 "capabilities": {
@@ -224,40 +353,54 @@ API プラグインのアプリケーション パッケージは、Copilot が 
     {
     "text": "What Trey projects am i assigned to?"
     },
-    ...
+    {
+    "text": "Charge 5 hours to the Contoso project for Trey Research"
+    },
+    {
+    "text": "Which Trey consultants are Azure certified?"
+    },
+    {
+    "text": "Find a Trey consultant who is available now and has Python skills"
+    },
+    {
+    "text": "Add Avery as a developer on the Contoso project for Trey"
+    }
 ]
 }
 ~~~
 
 <cc-end-step lab="e4" exercise="2" step="4" />
 
-## 演習 3: Copilot でプラグインをテスト
+## Exercise 3: Copilot でプラグインをテスト
 
-テストの前に、`appPackage\manifest.json` の manifest バージョンを更新します。
+アプリケーションをテストする前に、`appPackage\manifest.json` 内の manifest バージョンを更新します。以下の手順に従ってください。
 
-1. プロジェクトの `appPackage` フォルダーにある `manifest.json` を開きます。  
-2. JSON 内の `version` フィールドを探します。例:  
+1. プロジェクトの `appPackage` フォルダーにある `manifest.json` ファイルを開きます。
+
+2. JSON 内の `version` フィールドを探します。次のようになっています。  
    ```json
    "version": "1.0.0"
-   ```  
-3. バージョン番号を小さくインクリメントします。例:  
+   ```
+
+3. バージョン番号を小さくインクリメントします。たとえば次のように変更します。  
    ```json
    "version": "1.0.1"
-   ```  
-4. 保存します。
+   ```
 
-### 手順 1: アプリケーションを再起動
+4. 変更後、ファイルを保存します。
 
-アプリを停止して再起動し、アプリ パッケージを再デプロイさせます。
-Microsoft Teams が開いた後、Copilot に戻り、右側のフライアウト 1️⃣ で過去のチャットとエージェントを表示し、Trey Genie Local エージェント 2️⃣ を選択します。
+### Step 1: アプリケーションの再起動
+
+アプリを停止して再起動し、アプリケーション パッケージを再デプロイします。  
+Microsoft Teams が起動します。Copilot に戻ったら、右側のフライアウト 1️⃣ を開き、以前のチャットとエージェントを表示し、Trey Genie Local エージェント 2️⃣ を選択します。
 
 ![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt for the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 <cc-end-step lab="e4" exercise="3" step="1" />
 
-### 手順 2: Trey Genie にプロンプトを送る
+### Step 2: Trey Genie へのプロンプト
 
-たとえば「adatum で進行中のプロジェクトは？」と入力してみてください。
+例として「adatum ではどんなプロジェクトを進めていますか?」と入力してみましょう。
 
 ![Microsoft 365 Copilot prompting the user with a confirmation card to allow invoking the API plugin. There are three buttons to 'Always allow', 'Allow once', or 'Cancel' the request.](../../assets/images/extend-m365-copilot-03/test-projects-copilot-1.png)
 
@@ -269,7 +412,7 @@ GET リクエストでも確認カードが表示される場合があります�
 
 ---8<--- "ja/e-congratulations.md"
 
-API プラグインの拡張が完了しました。ただしご覧のとおり、引用カードはまだシンプルです。次のラボでは、Adaptive Card を使ってリッチな引用カードとレスポンスを追加します。 
+これで API プラグインの強化が完了しました。ただし、引用カードはまだ非常に基本的です。次のラボでは、Adaptive Card を使用してリッチな引用カードとレスポンスを追加しましょう。 
 
 <cc-next />
 

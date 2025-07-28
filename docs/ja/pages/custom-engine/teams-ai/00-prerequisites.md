@@ -4,110 +4,110 @@ search:
 ---
 # ラボ BTA0 - 前提条件
 
-このラボでは、このコースを通じて開発するカスタム エンジン エージェントをビルド、テスト、デプロイするための開発環境を構築します。
+このラボでは、パス全体を通して開発するカスタムエンジン エージェントをビルド、テスト、デプロイするための開発環境をセットアップします。
 
-このラボでは次の内容を学習します。
+このラボで学習できること:
 
-- **M365 Agents Toolkit for Visual Studio Code** をインストールして構成する方法  
-- 必要なリソースを作成するために Azure 環境を準備する方法
+- Visual Studio Code 用 **M365 Agents Toolkit** のインストールと構成
+- 必要なリソースを作成するための Azure 環境の準備
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/Onk04pehtjE" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を素早く確認できます。</div>
+          <div>この動画でラボの概要を短時間で確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
         ---8<--- "ja/b-labs-prelude.md"
     </div>
 </div>
 
-!!! pied-piper "Disclaimer"
-    これらのサンプルとラボは学習およびデモンストレーションを目的としており、本番環境での使用を想定していません。本番環境で使用する場合は、必ず本番品質へアップグレードしてください。
+!!! pied-piper "注意事項"
+    これらのサンプルおよびラボは、教育およびデモンストレーション目的で提供されており、本番環境での使用を意図したものではありません。 本番環境で使用する場合は、必ず本番品質にアップグレードしてください。
 
-!!! note "Note"
-    独自のカスタム エンジン エージェントをインストールして実行するには、管理者権限を持つ Microsoft 365 テナントが必要です。カスタム エンジン エージェントをテストするだけであれば Microsoft 365 Copilot ライセンスは不要です。
+!!! note "注"
+    独自のカスタムエンジン エージェントをインストールして実行するには、管理者権限を持つ Microsoft 365 テナントが必要です。 カスタムエンジン エージェントをテストするだけであれば、Microsoft 365 Copilot  ライセンスは不要です。
 
-## エクササイズ 1 : Microsoft Teams のセットアップ
+## Exercise 1 : Microsoft Teams のセットアップ
 
-### 手順 1: Teams でカスタム アプリのアップロードを有効化する
+### Step 1: Teams のカスタムアプリのアップロードを有効化する
 
-既定では、エンド ユーザーはアプリを直接アップロードできず、Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。この手順では、M365 Agents Toolkit から直接アップロードできるようにテナントを設定します。
+既定では、エンド  ユーザーが直接アプリをアップロードすることはできません。Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。 このステップでは、M365 Agents Toolkit から直接アップロードできるようにテナントを構成します。
 
-1️⃣ [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank} にアクセスします。ここは Microsoft 365 管理センターです。  
+1️⃣ [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank} にアクセスします。ここは Microsoft 365 管理センターです。
 
-2️⃣ 管理センター左側のパネルで **Show all** を選択してナビゲーションをすべて展開します。パネルが開いたら **Teams** を選択し、Microsoft Teams 管理センターを開きます。  
+2️⃣ 左側のナビゲーションで **Show all** を選択してすべてのメニューを表示します。開いたら **Teams** を選択して Microsoft Teams 管理センターを開きます。
 
-3️⃣ Microsoft Teams 管理センター左側で **Teams apps** セクションを展開し、**Setup Policies** を選択します。アプリのセットアップ ポリシーの一覧が表示されるので、**Global (Org-wide default)** ポリシーを選択します。  
+3️⃣ Microsoft Teams 管理センターの左側で **Teams apps** を展開し、**Setup Policies** を選択します。App setup policy の一覧が表示されるので **Global (Org-wide default)** ポリシーを選択します。
 
-4️⃣ 最初のスイッチ **Upload custom apps** が **On** になっていることを確認します。  
+4️⃣ 最初のスイッチ **Upload custom apps** が **On** になっていることを確認します。
 
-5️⃣ 画面を下へスクロールし、**Save** ボタンを選択して変更を保存します。  
+5️⃣ 変更を保存するために、必ず下までスクロールして **Save** ボタンを選択してください。
 
-> 変更が反映されるまでに最大 24 時間 かかる場合がありますが、通常はもっと早く完了します。
+> 反映には最大 24 時間かかる場合がありますが、通常はもっと早く有効になります。
 
 <cc-end-step lab="bta0" exercise="1" step="1" />
 
-## エクササイズ 2: M365 Agents Toolkit と前提条件のインストール
+## Exercise 2: M365 Agents Toolkit と前提条件のインストール
 
-これらのラボは Windows、Mac、Linux のいずれのマシンでも実施できますが、前提ソフトウェアをインストールできる必要があります。もしご使用のコンピューターにアプリをインストールできない場合は、別のマシン（または仮想マシン）をご利用ください。
+Windows、Mac、Linux のいずれのマシンでもラボを実施できますが、前提条件をインストールできる環境が必要です。アプリケーションのインストールが許可されていない場合は、別のマシン（または仮想マシン）を使用してください。
 
-### 手順 1: Visual Studio Code のインストール
+### Step 1: Visual Studio Code のインストール
 
-当然ですが、**Visual Studio Code 用 M365 Agents Toolkit** を使用するには Visual Studio Code 本体が必要です。こちらからダウンロードしてください: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}。
+**M365 Agents Toolkit for Visual Studio Code** を使用するには、Visual Studio Code が必要です。以下からダウンロードしてください: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}。
 
 <cc-end-step lab="bta0" exercise="2" step="1" />
 
-### 手順 2: NodeJS のインストール
+### Step 2: NodeJS のインストール
 
-NodeJS はコンピューター上で JavaScript を実行できるプログラムで、Microsoft Edge や Google Chrome などのブラウザーでも使用されているオープン ソースの V8 エンジンを利用しています。本ワークショップで使用する Web サーバー コードを実行するために NodeJS が必要です。
+NodeJS は JavaScript をローカルで実行できるプログラムで、Microsoft Edge や Google Chrome などのブラウザーで使用されているオープンソースの「 V8 」エンジンを採用しています。 このワークショップで使用する Web サーバー コードを実行するために NodeJS が必要です。
 
-[https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} にアクセスし、お使いの OS 向けにバージョン 18 または 16 をインストールしてください。このラボは NodeJS バージョン 18.16.0 でテスト済みです。すでに別バージョンの NodeJS がインストールされている場合は、同一マシンで簡単にバージョンを切り替えられる [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank}（Windows の場合は [こちらのバリエーション](https://github.com/coreybutler/nvm-windows){target=_blank}）の利用を検討してください。
+[https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} にアクセスし、お使いの OS に合わせてバージョン 18 または 16 をインストールしてください。 このラボは NodeJS 18.16.0 でテストされています。 すでに別のバージョンがインストールされている場合は、同じマシンで簡単にバージョンを切り替えられる [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank}（Windows の場合は [こちらの派生版](https://github.com/coreybutler/nvm-windows){target=_blank}）の利用を検討してください。
 
 <cc-end-step lab="bta0" exercise="2" step="2" />
 
-### 手順 3: M365 Agents Toolkit のインストール
+### Step 3: M365 Agents Toolkit のインストール
 
-これらのラボは [M365 Agents Toolkit バージョン 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank} を基にしています。以下の手順に従ってインストールしてください。
+これらのラボは [M365 Agents Toolkit version 5.0](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension){target=_blank} を基にしています。 以下の手順に従ってインストールしてください。
 
-1️⃣ Visual Studio Code を開き、左側の **Extensions** アイコンをクリックします。  
+1️⃣ Visual Studio Code を開き、サイドバーの **Extensions** ボタンをクリック
 
-2️⃣ 「Teams」で検索し、**M365 Agents Toolkit** を見つけます。  
+2️⃣ 「Teams」で検索し、**M365 Agents Toolkit** を見つける
 
-3️⃣ **Install** をクリックします。  
+3️⃣ **Install** をクリック
 
-!!! note "If you have M365 Agents Toolkit installed but hidden"
-    以前に M365 Agents Toolkit をインストールしたあと、Visual Studio のサイドバーで非表示にしていた場合は、左サイドバーを右クリックして **M365 Agents Toolkit** にチェックを入れると再表示できます。
+!!! note "M365 Agents Toolkit がインストール済みで非表示の場合"
+    以前に M365 Agents Toolkit をインストールして Visual Studio のサイドバーから非表示にした場合、アイコンが見当たらないことがあります。 左側のサイドバーを右クリックし、M365 Agents Toolkit にチェックを入れて再表示してください。
 
 <cc-end-step lab="bta0" exercise="2" step="3" />
 
-## エクササイズ 3: Azure サブスクリプションの取得
+## Exercise 3: Azure サブスクリプションの取得
 
-パス B の演習を完了するには、Azure 上にリソースを作成するための Azure サブスクリプションが必要です。まだお持ちでない場合は、[Azure 無料アカウント](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} を有効化すると、最初の 30 日間 に使用できる 200 米ドル分のクレジットが付与されます。
+Path B の演習を完了するには、Azure にリソースを作成するための Azure サブスクリプションが必要です。まだサブスクリプションをお持ちでない場合は、[Azure 無料アカウント](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} を有効化できます。最初の 30 日間で使用できる 200 米ドル分のクレジットが付与され、多くの Azure サービスで利用できます。
 
-### 手順 1: Azure 無料アカウントの作成
+### Step 1: Azure 無料アカウントの作成
 
-Azure 無料アカウントを有効化するには、次の手順に従ってください。
+Azure 無料アカウントを有効化する手順:
 
-1️⃣ [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} ページに移動し、**Activate** を選択します。  
+1️⃣ [Azure free account](https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p){target=_blank} ページにアクセスし、**Activate** を選択します。
 
-2️⃣ 任意のアカウントでサインインします。演習で使用する予定の Microsoft 365 テナント アカウントを利用することを推奨します。  
+2️⃣ 任意のアカウントでログインします。演習で使用する Microsoft 365 テナント アカウントの利用を推奨します。
 
-3️⃣ プライバシー ステートメントのチェック ボックスをオンにして **Next** を選択します。  
+3️⃣ プライバシー ステートメントのチェックボックスをオンにし、**Next** を選択します。
 
-4️⃣ 本人確認のため、携帯電話番号を入力します。  
+4️⃣ 本人確認のための携帯電話番号を入力します。
 
-5️⃣ 一時的な認証用として支払い情報を入力し、**Sign up** を選択します。課金は、従量課金制へ移行しない限り発生しません。  
+5️⃣ 支払い情報を入力します（仮認証用）。 従量課金制へ移行しない限り課金されません。入力後、**Sign up** を選択します。
 
-!!! tip "Tip: Managing Azure resources after 30 days"
-    Azure 無料アカウントは 30 日間 のみ有効です。30 日を過ぎても無料サブスクリプションでサービスが稼働していないかを確認してください。30 日経過後も Azure サービスを継続利用したい場合は、支出制限を解除して従量課金制サブスクリプションへアップグレードする必要があります。これにより、Azure 無料アカウントおよび一部の無料サービスを継続利用できます。
+!!! tip "ヒント: 30 日後の Azure リソース管理"
+    Azure 無料アカウントは 30 日間のみ有効です。30 日経過時点で無料サブスクリプションに実行中のサービスがないことを確認してください。30 日以降も Azure サービスを継続利用したい場合は、支出上限を解除し、従量課金制サブスクリプションにアップグレードする必要があります。これにより、Azure 無料アカウントと一部の無料サービスを期間内で継続利用できます。
 
 <cc-end-step lab="bta0" exercise="3" step="1" />
 
 ---8<--- "ja/b-congratulations.md"
 
-ラボ BTA0 - セットアップ が完了しました!  
-次はラボ BTA1 - 最初のカスタム エンジン エージェント に進みましょう。**Next** を選択してください。
+Lab BTA0 - Setup が完了しました！  
+次は lab BTA1 - 初めてのカスタムエンジン エージェント に進みます。 **Next** を選択してください。
 
 <cc-next url="../01-custom-engine-agent" />
 

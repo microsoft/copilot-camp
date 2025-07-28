@@ -290,11 +290,7 @@ Wonderful! You were able to configure a custom connector and consume it within M
 
 You have completed Lab MCS5 - Power Platform custom connector!
 
-<!-- 
 <a href="../06-mcp">Start here</a> with Lab MCS6, to learn how to consume an MCP server in Copilot Studio.
 <cc-next /> 
--->
-
-<!-- <cc-award path="Make" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/05-connectors" />
