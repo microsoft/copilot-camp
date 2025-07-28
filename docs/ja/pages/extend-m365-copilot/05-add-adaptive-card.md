@@ -2,23 +2,23 @@
 search:
   exclude: true
 ---
-# ラボ E5 - Adaptive Card の追加
+# ラボ E5 - Adaptive Card 追加
 
-このラボでは、Microsoft 365 Copilot の応答をテキストからリッチ カードへと強化するために Adaptive Cards を使用します。 
+このラボでは、Microsoft 365 Copilot の応答をテキストからリッチカードへ強化するために Adaptive Card を使用します。 
 
 このラボで学習する内容:
 
 - Adaptive Card とは
-- Adaptive Card を作成してテストする方法
+- Adaptive Card の作成とテスト方法
 - Microsoft 365 Copilot の応答を Adaptive Card でリッチ コンテンツ化する方法
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/9kb9whCKey4" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を短時間で確認できます。</div>
+          <div>この動画でラボの概要を確認できます。</div>
             <div class="note-box">
-            📘 <strong>注意:</strong> このラボは前回のラボ E4 を基にしています。同じフォルダーでラボ E2～E6 を継続して作業できますが、参考用にソリューション フォルダーも用意しています。  
+            📘 <strong>Note:</strong> このラボは前回の Lab E4 を基にしています。E2-E6 のラボは同じフォルダーで継続して作業できますが、参照用にソリューション フォルダーも用意されています。  
     このラボの完成版ソリューションは <a  src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> にあります。
         </div>
     </div>
@@ -32,20 +32,20 @@ search:
 <details>
 <summary>Adaptive Card とは？</summary>
 
-Adaptive Card は、JSON で記述されたプラットフォームに依存しない UI スニペットです。アプリやサービス間でやり取りされた後、アプリに配信されるとネイティブ UI へ変換され、環境に自動的に適応します。これにより、主要なプラットフォームとフレームワークで軽量 UI の設計と統合が可能になります。
+Adaptive Card は JSON で記述されたプラットフォーム非依存の UI スニペットで、アプリやサービス間でやり取りできます。アプリに配信されると、JSON が環境に自動で適応したネイティブ UI に変換されます。これにより、主要なプラットフォームやフレームワークで軽量 UI を設計・統合できます。
     <div class="video">
       <iframe src="//www.youtube.com/embed/pYe2NqKhJoM" frameborder="0" allowfullscreen></iframe>
       <div>Adaptive Card はあらゆる場所で使われています</div>
     </div>
 </details>
 
-## 演習 1: シンプルな Adaptive Card を作成してテストする
+## 演習 1: シンプルな Adaptive Card の作成とテスト
 
-さっそく Adaptive Card を作成する楽しさを体験しましょう。
+さっそく Adaptive Card の作成を体験してみましょう。
 
 ### 手順 1: JSON で Adaptive Card を定義する
 
-以下は Adaptive Card の JSON 定義です。まずはクリップボードへコピーしてください。
+以下は Adaptive Card の JSON です。まずはコピーしてください。
 
 ```json
 {
@@ -76,22 +76,22 @@ Adaptive Card は、JSON で記述されたプラットフォームに依存し�
 
 ### 手順 2: Adaptive Card をテストする
 
-Adaptive Card をテストするには、[Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"} を使用します。
+Adaptive Card をテストするには、[Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"} を使用できます。
 
 1. [Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"} を開きます。  
-2. `adaptiveCard.json` ファイルから JSON コンテンツをコピーします。  
-3. Designer 画面下部の「Card Payload Editor」領域へ JSON を貼り付けます。  
-4. 画面上部に Adaptive Card のライブ プレビューが表示されます。  
+2. `adaptiveCard.json` ファイルから JSON をコピーします。  
+3. デザイナー下部の「Card Payload Editor」に JSON を貼り付けます。  
+4. デザイナー上部で Adaptive Card のライブ プレビューが表示されます。  
 
-おめでとうございます！ これでプラグイン向けの Adaptive Card を開発するスキルを習得しました。
+おめでとうございます！ これでプラグイン用の Adaptive Card を作成するスキルを習得しました。
 
 <cc-end-step lab="e5" exercise="1" step="2" />
 
-## 演習 2: プラグイン マニフェストを更新する 
+## 演習 2: プラグイン マニフェストの更新 
 
-**appPackage** フォルダー内の **trey-plugin.json** というプラグイン マニフェスト ファイルに、Adaptive Card を使用した応答テンプレートを追加します。各関数または API 呼び出しを見つけてテンプレートを更新していきます。
+**appPackage** フォルダーにある **trey-plugin.json** マニフェスト ファイルを更新し、Adaptive Card を使用した応答テンプレートを追加します。各関数または API 呼び出しを見つけてテンプレートを更新していきます。
 
-### 手順 1: GET /api/consultants リクエスト用の Adaptive Card を追加する
+### 手順 1: GET /api/consultants 用の Adaptive Card 追加
 
 - **getConsultants** 関数を探し、`properties` ノードの後に次の `static_template` ノードを追加します。
 
@@ -161,7 +161,7 @@ Adaptive Card をテストするには、[Adaptive Cards Designer](https://adapt
 
 <cc-end-step lab="e5" exercise="2" step="1" />
 
-### 手順 2: GET /api/me リクエスト用の Adaptive Card を追加する
+### 手順 2: GET /api/me 用の Adaptive Card 追加
 
 - **getUserInformation** 関数を探し、`properties` ノードの後に次の `static_template` ノードを追加します。
 
@@ -232,7 +232,7 @@ Adaptive Card をテストするには、[Adaptive Cards Designer](https://adapt
 
 <cc-end-step lab="e5" exercise="2" step="2" />
 
-### 手順 3: GET /api/projects リクエスト用の Adaptive Card を追加する
+### 手順 3: GET /api/projects 用の Adaptive Card 追加
 
 - **getProjects** 関数を探し、`properties` ノードの後に次の `static_template` ノードを追加します。
 
@@ -422,7 +422,7 @@ Adaptive Card をテストするには、[Adaptive Cards Designer](https://adapt
 
 <cc-end-step lab="e5" exercise="2" step="3" />
 
-### 手順 4: POST /api/billHours リクエスト用の Adaptive Card を追加する
+### 手順 4: POST /api/billHours 用の Adaptive Card 追加
 
 - **postBillhours** 関数を探し、`properties` ノードの後に次の `static_template` ノードを追加します。
 
@@ -509,7 +509,7 @@ Adaptive Card をテストするには、[Adaptive Cards Designer](https://adapt
 
 <cc-end-step lab="e5" exercise="2" step="4" />
 
-### 手順 5: POST /api/assignConsultant リクエスト用の Adaptive Card を追加する
+### 手順 5: POST /api/assignConsultant 用の Adaptive Card 追加
 
 - **postAssignConsultant** 関数を探し、`properties` ノードの後に次の `static_template` ノードを追加します。
 
@@ -616,16 +616,16 @@ Adaptive Card をテストするには、[Adaptive Cards Designer](https://adapt
 
 ## 演習 3: Copilot でプラグインをテストする
 
-アプリケーションをテストする前に `appPackage\manifest.json` にあるマニフェスト バージョンを更新します。以下の手順に従ってください。
+アプリケーションをテストする前に、`appPackage\manifest.json` ファイルでアプリ パッケージのマニフェスト バージョンを更新します。手順は次のとおりです:
 
 1. プロジェクトの `appPackage` フォルダーにある `manifest.json` ファイルを開きます。  
 
-2. JSON ファイル内の `version` フィールドを探します。例:  
+2. JSON 内の `version` フィールドを探します。例:  
    ```json
    "version": "1.0.1"
    ```
 
-3. バージョン番号をわずかにインクリメントします。例:  
+3. バージョン番号を少し上げます。例:  
    ```json
    "version": "1.0.2"
    ```
@@ -634,52 +634,52 @@ Adaptive Card をテストするには、[Adaptive Cards Designer](https://adapt
 
 ### 手順 1: プラグインをインストールする
 
-プロジェクトを停止して再起動し、アプリケーション パッケージを再デプロイします。  
-Microsoft Teams が開いたら、Copilot に戻り、右側のフライアウト 1️⃣ を開いて以前のチャットと宣言型エージェントを表示し、Trey Genie Local エージェント 2️⃣ を選択します。
+プロジェクトを停止して再起動し、アプリ パッケージを再デプロイします。  
+Microsoft Teams が開いた後、Copilot に戻ります。右側のフライアウト 1️⃣ で以前のチャットと宣言型エージェントを表示し、Trey Genie Local エージェント 2️⃣ を選択します。
 
-![Microsoft 365 Copilot が Trey Genie エージェントを実行している様子。右側にカスタム宣言型エージェントと他のエージェントが表示されている。メイン ボディには会話スターターとプロンプト入力欄がある。](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
 <cc-end-step lab="e5" exercise="3" step="1" />
 
 ### 手順 2: Adaptive Card を表示する
 
-次のようなプロンプトを試してください。
+次のようなプロンプトを試してみてください:
 
- *adatum 向けに進行中のプロジェクトは何ですか？*
+ *what projects are we doing for adatum?*
 
-テキスト応答だけでなく、プロジェクト情報を含むリッチ カードが表示されます。
+テキスト応答だけでなく、プロジェクト情報を含むリッチ カードも取得できます。
 
-![エージェントの応答として表示された Adaptive Card。メトリクスを含むテーブルや画像などのリッチ コンテンツが含まれている。](../../assets/images/extend-m365-copilot-04/project-adaptive.png)
+![The response of the agent based on an Adaptive Card showing rich content, including a table with metrics and an image.](../../assets/images/extend-m365-copilot-04/project-adaptive.png)
 
-次に、POST 操作のプロンプトを試します。
+次に、POST 操作を伴うプロンプトを試してみましょう:
 
- *trey research で woodgrove bank に 1 時間を課金してください*
+ *please charge 1 hour to woodgrove bank in trey research*
 
-このリクエストでは Copilot が API プラグインへ POST でデータを送信する必要があるため、*Confirm* ボタンを選択して許可を与えます。
+このリクエストは Copilot が API プラグインへ POST でデータを送信するため、*Confirm* ボタンを選択して許可を与える必要があります。
 
-![API プラグインへデータ送信を確認するため Copilot が生成したカード。](../../assets/images/extend-m365-copilot-04/bill-hours-confirm.png)
+![A card generated by Copilot to confirm sending data to the API plugin.](../../assets/images/extend-m365-copilot-04/bill-hours-confirm.png)
 
-確認後、テキスト応答だけでなくプロジェクト状況のリッチ カードが表示されます。
+確認後、テキスト応答だけでなく、プロジェクトのステータス情報を含むリッチ カードが表示されます。
 
-![Adaptive Card に基づいたエージェントの応答。プロジェクトのステータスに関するリッチ コンテンツが含まれている。](../../assets/images/extend-m365-copilot-04/bill-hours.png)
+![The response of the agent based on an Adaptive Card showing rich content about the project status.](../../assets/images/extend-m365-copilot-04/bill-hours.png)
 
-他のプロンプトもテストして、Microsoft 365 Copilot の改善された応答を確認してみてください。
+他のプロンプトでも、Microsoft 365 Copilot の改善された応答を確認してみてください。
 
 <cc-end-step lab="e5" exercise="3" step="2" />
 
 ---8<--- "ja/e-congratulations.md"
 
-Adaptive Card 応答を最初の API プラグインへ追加する作業が完了しました。次のラボでは API に認証を追加していきます。
+Adaptive Card 応答を初めての API プラグインに追加し終えました。次のラボでは API に認証を追加します。
 
-ここでは 3 つの選択肢があります。いずれもアプリ パッケージ ファイルへ認証を追加し、Web サービスで受信したアクセス トークンを検証する方法を紹介します。違いは Entra ID と Microsoft 365 へのアプリ登録方法です。
+ここでは 3 つの選択肢があり、いずれもアプリ パッケージ ファイルへの認証追加と Web サービスでの受信アクセス トークンの検証方法を示します。違いは Entra ID と Microsoft 365 でのアプリ登録方法です。
 
-  1. **OAuth 2.0 と Agents Toolkit を使用** - 最も簡単な方法です。F5 でプロジェクトを開始する体験のために、Agents Toolkit の自動 Entra ID 登録を設定する方法を学びます  
+  1. **Agents Toolkit で OAuth 2.0 を使用** - 最も簡単な方法で、F5 プロジェクト開始エクスペリエンスのために Agents Toolkit の自動 Entra ID 登録を設定します  
   <cc-next url="../06a-add-authentication-ttk" label="OAuth with Agents Toolkit" />
 
-  2. **OAuth 2.0 を手動で設定** - Entra ID 登録の詳細をすべて手動で行い、内部で何が起こっているかを理解します。他の ID プロバイダーでの動作に合わせる際にも役立ちます  
+  2. **手動設定で OAuth 2.0 を使用** - Entra ID 登録の詳細をすべて案内し、内部動作を理解できます。他の ID プロバイダーへの適用にも役立ちます  
   <cc-next url="../06b-add-authentication" label="OAuth with Manual Setup" />
 
-  3. **Single Sign-on を使用** - Entra ID でシームレスに認証できる新機能。手動設定  
+  3. **シングル サインオンを使用** - Entra ID とのシームレスな認証を実現する新機能、手動設定  
   <cc-next url="../06c-add-sso" label="Single Sign-on with Manual Setup" />
   
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />

@@ -144,7 +144,7 @@ plugins:
               - pages/make/copilot-studio/03-actions.md
               - pages/make/copilot-studio/04-extending-m365-copilot.md
               - pages/make/copilot-studio/05-connectors.md
-              # - pages/make/copilot-studio/06-knowledge.md
+              - pages/make/copilot-studio/06-mcp.md
               - pages/make/sharepoint-agents/index.md
               - pages/make/sharepoint-agents/01-first-agent.md
               - pages/make/sharepoint-agents/02-sharing-agents.md
