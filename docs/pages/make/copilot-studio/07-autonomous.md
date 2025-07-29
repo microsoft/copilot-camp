@@ -4,7 +4,7 @@ In this lab, you are going to understand how to create an autonomous agent using
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/???" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        <iframe  src="//www.youtube.com/embed/TPwJWZjLrDo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
     </div>
@@ -123,7 +123,7 @@ you automatically:
 
 1. Extract candidate information from the PDF including name, email, skills, languages, and role
 2. Validate and structure the extracted data
-3. Create a new candidate record using the HR MCP server tools
+3. Create a new candidate record using the 'add_candidate' tool of the HR MCP server
 4. Provide confirmation of successful processing
 
 Always ensure data accuracy and provide clear feedback about the processing results. 
