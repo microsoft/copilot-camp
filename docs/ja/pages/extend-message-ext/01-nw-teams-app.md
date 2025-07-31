@@ -2,32 +2,32 @@
 search:
   exclude: true
 ---
-# ラボ M1 - Northwind メッセージ拡張機能の理解
-
-このラボでは、ベースアプリである Northwind メッセージ拡張機能を実行します。最初の演習ではソースコードに慣れていただき、最後にアプリケーションを Teams で実行します。
+# ラボ M1 - Northwind メッセージ拡張を理解する
+このラボでは、ベースアプリである Northwind メッセージ拡張を実行します。最初の演習ではソースコードに慣れ、最後にアプリケーションを Teams で実行します。
 
 ???+ "Extend Teams Message Extension ラボのナビゲーション (Extend Path)"
-    - [ラボ M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
-    - [ラボ M1 - Northwind メッセージ拡張機能の理解](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) (📍現在地)
-    - [ラボ M2 - Microsoft 365 Copilot でアプリを実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
-    - [ラボ M3 - 新しい検索コマンドでプラグインを強化](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
-    - [ラボ M4 - 認証を追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
-    - [ラボ M5 - アクション コマンドでプラグインを強化](/copilot-camp/pages/extend-message-ext/05-add-action) 
+    - [ラボ M0 - 前提条件](/copilot-camp/ja/pages/extend-message-ext/00-prerequisites) 
+    - [ラボ M1 - Northwind メッセージ拡張を理解する](/copilot-camp/ja/pages/extend-message-ext/01-nw-teams-app) (📍現在地)
+    - [ラボ M2 - Microsoft 365 Copilot でアプリを実行する](/copilot-camp/ja/pages/extend-message-ext/02-nw-plugin) 
+    - [ラボ M3 - 新しい検索コマンドでプラグインを強化する](/copilot-camp/ja/pages/extend-message-ext/03-enhance-nw-plugin)
+    - [ラボ M4 - 認証を追加する](/copilot-camp/ja/pages/extend-message-ext/04-add-authentication) 
+    - [ラボ M5 - アクション コマンドでプラグインを強化する](/copilot-camp/ja/pages/extend-message-ext/05-add-action) 
 
 このラボで行うこと:
 
-- Northwind メッセージ拡張機能のコードを簡単に確認する
-- アプリケーションを Teams で実行する
+- Northwind メッセージ拡張のクイックコードツアー
+- アプリケーションを Teams 上で実行
 
 ## Exercise 1 - コードツアー
 
-まず、ベースアプリである Northwind のコードを確認しましょう。 
+まずは Northwind と呼ばれるベースアプリのコードを確認しましょう。 
+
 
 ### Step 1 - マニフェストを確認する
 
-Microsoft 365 アプリケーションの中核はアプリケーション マニフェストです。ここに、Microsoft 365 がアプリケーションへアクセスするために必要な情報を記述します。
+Microsoft 365 アプリケーションの中核はアプリケーション マニフェストです。ここで Microsoft 365 がアプリケーションへアクセスするための情報を提供します。
 
-前のラボで使用した **Northwind** 作業ディレクトリ内の **appPackage** フォルダーにある [manifest.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) を開きます。この JSON ファイルはアイコン ファイルとともに ZIP 形式にまとめられ、アプリケーション パッケージを構成します。"icons" プロパティにはこれらアイコンへのパスが含まれています。
+前のラボで作成した **Northwind** という作業ディレクトリ内の **appPackage** フォルダーにある [manifest.json](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json) ファイルを開きます。この JSON ファイルはアイコンファイルと共に ZIP にまとめられ、アプリケーション パッケージとなります。`icons` プロパティにはアイコンへのパスが含まれています。
 
 ~~~json
 "icons": {
@@ -36,9 +36,9 @@ Microsoft 365 アプリケーションの中核はアプリケーション マ�
 },
 ~~~
 
-アイコン名の中に `${{TEAMSFX_ENV}}` というトークンがあることに注目してください。Agents Toolkit はこれを環境名（"local" や "dev" など）に置き換えます。そのため環境に応じてアイコンの色が変わります。
+アイコン名に含まれるトークン `${{TEAMSFX_ENV}}` に注目してください。Agents Toolkit がこれを環境名 (例: `local` や `dev` など) に置き換えます。そのため環境ごとにアイコンの色が変わります。
 
-続いて "name" と "description" を確認します。description がかなり長いことに気付くでしょう。これはユーザーと Copilot の双方が、アプリケーションの機能と利用シーンを理解するために重要です。
+次に `name` と `description` を見てみましょう。description がかなり長いことに気付くはずです。これは ユーザー と Copilot の両方がアプリケーションの機能と使用シーンを理解するために重要です。
 
 ~~~json
     "name": {
@@ -48,9 +48,9 @@ Microsoft 365 アプリケーションの中核はアプリケーション マ�
     ...
 ~~~
 
-少し下へスクロールすると "composeExtensions" があります。Compose extension はメッセージ拡張機能の旧称で、ここにアプリのメッセージ拡張機能が定義されています。
+少し下にスクロールして `composeExtensions` を探します。Compose extension はメッセージ拡張の旧称で、ここにアプリのメッセージ拡張が定義されています。
 
-この中に bot があり、その ID は Agents Toolkit により挿入されます。
+この中に Agents Toolkit が供給した bot ID 付きの bot が存在します。
 
 ~~~json
     "composeExtensions": [
@@ -61,9 +61,9 @@ Microsoft 365 アプリケーションの中核はアプリケーション マ�
                     ...
 ~~~
 
-メッセージ拡張機能は Azure Bot Framework を介して通信します。これにより Microsoft 365 とアプリケーション間で高速かつ安全な通信が可能になります。プロジェクトを初めて実行した際、Agents Toolkit がボットを登録し、その ID をここへ配置します。
+メッセージ拡張は Azure Bot Framework を用いて通信します。これにより Microsoft 365 とアプリ間で高速かつ安全な通信チャネルが確立されます。プロジェクトを初めて実行した際に Agents Toolkit が bot を登録し、その bot ID をここに配置します。
 
-このメッセージ拡張機能には 2 つのコマンドがあり、`commands` 配列で定義されています。1 つ取り出して構造を見てみましょう。
+このメッセージ拡張には 2 つのコマンドがあり、`commands` 配列に定義されています。1 つ選んで構造を確認してみましょう。
 
 ~~~json
 {
@@ -86,36 +86,37 @@ Microsoft 365 アプリケーションの中核はアプリケーション マ�
 },
 ~~~
 
-これは Northwind のカテゴリ内で値引き商品を検索するためのコマンドです。受け取るパラメーターは "categoryName" の 1 つだけです。
+これは Northwind のカテゴリー内で割引商品を検索するためのコマンドです。単一パラメーター `categoryName` を受け取ります。
 
-それでは最初のコマンド "inventorySearch" に戻ります。こちらは 5 つのパラメーターを持ち、より高度なクエリが可能です。
+では最初のコマンド `inventorySearch` に戻りましょう。こちらは 5 つのパラメーターを持ち、より高度なクエリが可能です。
 
 ~~~json
 {
     "id": "inventorySearch",
     ...
-    "parameters": [
-        ...
-    ]
 },
 ~~~
 
+
+
 ### Step 2 - 「Bot」コードを確認する
 
-ルート フォルダーの **src** フォルダーにある **searchApp.ts** を開きます。このアプリケーションには Azure Bot Framework と通信する "bot" コードが含まれており、[Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0) を使用しています。
+ルートフォルダーの **src** にある **searchApp.ts** ファイルを開きます。このアプリケーションには Azure Bot Framework と通信する「bot」コードが含まれており、[Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0) を利用しています。
 
-bot は SDK クラス **TeamsActivityHandler** を継承しています。
+bot は SDK の **TeamsActivityHandler** クラスを拡張しています。
 
 ~~~typescript
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
   }
+
+  ...
 ~~~
 
-**TeamsActivityHandler** のメソッドをオーバーライドすることで、Microsoft 365 から送られてくるメッセージ（"activities" と呼ばれます）を処理できます。
+**TeamsActivityHandler** のメソッドをオーバーライドすることで、Microsoft 365 から送られるメッセージ (アクティビティ) を処理できます。
 
-最初に紹介するのは Messaging Extension Query アクティビティです（"messaging extension" もメッセージ拡張機能の旧称）。ユーザーがメッセージ拡張機能内で入力したとき、または Copilot が呼び出したときに実行されます。
+最初に紹介するのは Messaging Extension Query アクティビティです (「messaging extension」はメッセージ拡張の旧称)。ユーザーがメッセージ拡張に入力したときや Copilot が呼び出したときに実行されます。
 
 ~~~typescript
   // Handle search message extension
@@ -123,33 +124,28 @@ export class SearchApp extends TeamsActivityHandler {
     context: TurnContext,
     query: MessagingExtensionQuery
   ): Promise<MessagingExtensionResponse> {
-
-    switch (query.commandId) {
-      case productSearchCommand.COMMAND_ID: {
-        return productSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-      case discountedSearchCommand.COMMAND_ID: {
-        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-    }
-  }
-~~~
-
-ここでは command ID に基づきクエリを振り分けるだけです。command ID は前述のマニフェストで使用しているものと同じです。
-
-アプリが処理するもう 1 つのアクティビティはアダプティブ カード アクションです。ユーザーがアダプティブ カード上の「Update stock」や「Reorder」をクリックした際に発生します。アダプティブ カード アクション専用のメソッドはないため、より汎用的な `onInvokeActivity()` をオーバーライドし、アクティビティ名を確認して適切なハンドラーへ振り分けています。Invoke アクティビティがクエリの場合は、`handleTeamsMessagingExtensionQuery()` が呼ばれます。
-
-~~~typescript
 ...
 ~~~
 
-### Step 3 - メッセージ拡張機能コマンドのコードを確認する
+実際には command ID に基づいてクエリをディスパッチしているだけです。これらの command ID は前述のマニフェストで使用されているものと同一です。
 
-コードをモジュール化し読みやすく再利用しやすいものにするため、各メッセージ拡張機能コマンドは独自の TypeScript モジュールになっています。例として **src/messageExtensions/discountSearchCommand.ts** を見てみましょう。
+もう 1 つアプリが処理すべきアクティビティは adaptive card のアクションです。そこで `onInvokeActivity()` をオーバーライドし、アクティビティ名をチェックして適切なハンドラーへディスパッチします。Invoke がメッセージ拡張のクエリだった場合はベース実装が `handleTeamsMessagingExtensionQuery()` を呼び出します。
 
-まず、モジュールは `COMMAND_ID` という定数をエクスポートしており、これはマニフェストにある command ID と同じです。これにより **searchApp.ts** の switch 文が正しく機能します。
+~~~typescript
+import {
+  TeamsActivityHandler,
+  TurnContext,
+  MessagingExtensionQuery,
+...
+~~~
 
-続いて、カテゴリ別の値引き商品を検索する `handleTeamsMessagingExtensionQuery()` 関数を提供しています。
+### Step 3 - メッセージ拡張コマンドのコードを確認する
+
+コードをモジュール化し読みやすく再利用しやすくするため、各メッセージ拡張コマンドは独自の TypeScript モジュールに分けられています。例として **src/messageExtensions/discountSearchCommand.ts** を見てみましょう。
+
+まずモジュールが `COMMAND_ID` 定数をエクスポートしており、これがマニフェストと一致することにより **searchApp.ts** の switch が正しく機能します。
+
+次に `handleTeamsMessagingExtensionQuery()` 関数がカテゴリー別割引商品検索を処理します。
 
 ```JavaScript
 async function handleTeamsMessagingExtensionQuery(
@@ -184,160 +180,162 @@ async function handleTeamsMessagingExtensionQuery(
 }
 ```
 
-`query.parameters` 配列のインデックスは、マニフェストでのパラメーター順と一致するとは限りません。マルチパラメーター コマンドの場合に問題となりますが、コードはインデックスをハードコードせずパラメーター名で値を取得します。
+`query.parameters` 配列のインデックスがマニフェストの順序と一致しない場合があるので、パラメーター名で値を取得しています。
 
-パラメーターを整形（トリムし、Copilot がワイルドカードとして使用する `"*"` を処理）した後、Northwind データ アクセス層の `getDiscountedProductsByCategory()` を呼び出します。
+パラメーターを整形した後、Northwind のデータアクセス層 `getDiscountedProductsByCategory()` を呼び出します。
 
-その後、製品ごとに 2 種類のカードを作成します。
+その後、各商品について 2 種類のカードを作成します。
 
-* _プレビュー_ カード: "hero" カードで実装（アダプティブ カード以前の簡易カード）。Teams の検索結果や Copilot の一部引用で表示。
-* _結果_ カード: すべての詳細を含むアダプティブ カードで実装。
+* プレビュー カード: 「ヒーロー」カードで実装。検索結果や Copilot の引用で表示
+* 結果カード: 詳細を含む「アダプティブ」カード
 
-次のステップではアダプティブ カードのコードと、Adaptive Card Designer を確認します。
+次のステップでアダプティブカードのコードとデザイナーを確認します。
 
-### Step 4 - アダプティブ カードと関連コードを確認する
+### Step 4 - アダプティブカードと関連コードを確認する
 
-プロジェクトのアダプティブ カードは **src/adaptiveCards** フォルダーにあります。3 つの JSON ファイルで構成されています。
+プロジェクトのアダプティブカードは **src/adaptiveCards** フォルダーにあります。3 つの JSON ファイルで実装されています。
 
-* **editCard.json** - メッセージ拡張機能または Copilot 参照で最初に表示されるカード
-* **successCard.json** - ユーザーが操作を行った後、成功を示すカード
-* **errorCard.json** - 操作が失敗した場合に表示されるカード
+* **editCard.json** - メッセージ拡張または Copilot 参照で最初に表示されるカード
+* **successCard.json** - ユーザー操作成功時に表示
+* **errorCard.json** - 操作失敗時に表示
 
-Adaptive Card Designer で edit カードを見てみましょう。ブラウザーで [https://adaptivecards.io](https://adaptivecards.io) を開き、上部の "Designer" をクリックします。
+edit カードを Adaptive Card Designer で見てみましょう。ブラウザーで [https://adaptivecards.io](https://adaptivecards.io) を開き、上部の「Designer」をクリックします。
 
 ![image](../../assets/images/extend-message-ext-01/05-01-AdaptiveCardDesigner-01.png)
 
-`"text": "📦 ${productName}",` のようなデータ バインディング式に注目してください。これはデータの `productName` プロパティをカード上のテキストにバインドしています。
+`"text": "📦 ${productName}"` のようなデータバインディング式に注目してください。これはデータの `productName` プロパティをカード上のテキストにバインドします。
 
-次に、ホスト アプリケーションを 1️⃣ "Microsoft Teams" に設定します。Card Payload Editor 2️⃣ に **editCard.json** の内容を、Sample Data Editor 3️⃣ に **sampleData.json** の内容を貼り付けます。サンプル データはコードで使用している製品データと同一です。
+ホストアプリケーションに「Microsoft Teams」 1️⃣ を選択し、Card Payload Editor 2️⃣ に **editCard.json** の内容、Sample Data Editor 3️⃣ に **sampleData.json** の内容を貼り付けます。
 
 ![image](../../assets/images/extend-message-ext-01/05-01-AdaptiveCardDesigner-02.png)
 
-カードがレンダリングされて表示されます（Designer が一部フォーマットを扱えず小さなエラーが出る場合があります）。
+カードがレンダリングされますが、デザイナーが一部フォーマットを表示できず小さなエラーが出る場合があります。
 
-ページ上部でテーマやエミュレート デバイスを変更し、ダーク テーマやモバイル デバイスでの見え方を確認してみてください。サンプル アプリのアダプティブ カードもこのツールで作成しました。
+ページ上部で Theme や Emulated Device を変更し、ダークテーマやモバイルでの表示を確認してみてください。
 
-Visual Studio Code に戻り、**cardHandler.ts** を開きます。`getEditCard()` 関数は各メッセージ拡張機能コマンドから呼び出され、結果カードを取得します。コードはアダプティブ カード JSON（テンプレート）を読み込み、製品データをバインドします。バインド後はテンプレートと同じ構造の JSON ですが、バインディング式がすべて実データに置き換えられています。最後に `CardFactory` モジュールを使用して、最終 JSON をレンダリング用のアダプティブ カード オブジェクトへ変換します。
+Visual Studio Code に戻り **cardHandler.ts** を開きます。`getEditCard()` 関数は各メッセージ拡張コマンドから呼び出され、結果カードを取得します。テンプレートとしてアダプティブカード JSON を読み込み、製品データにバインドし、`CardFactory` でレンダリング用のアダプティブカード オブジェクトに変換します。
 
 ~~~typescript
 function getEditCard(product: ProductEx): any {
-    ...
+...
 }
 ~~~
 
-下へスクロールすると、カード上の各アクション ボタンのハンドラーが見つかります。カードはボタンがクリックされると `data.txtStock`（数量入力ボックス）と `data.productId` を送信します。
+さらに下へスクロールすると、カード上の各アクションボタンのハンドラーが見つかります。カードはクリック時に `data.txtStock` と `data.productId` を送信し、どの製品を更新するかを示します。
 
 ~~~typescript
 async function handleTeamsCardActionUpdateStock(context: TurnContext) {
-    ...
+...
 }
 ~~~
 
-ご覧のとおり、コードはこれら 2 つの値を取得し、データベースを更新してからメッセージと更新済みデータを含む新しいカードを送信します。
+コードはこれらの値を取得し、データベースを更新して新しいカードを返します。
 
-## Exercise 2 - メッセージ拡張機能としてサンプルを実行
+## Exercise 2 - メッセージ拡張としてサンプルを実行
 
 ### Step 1 - プロジェクトの初期設定
 
-Visual Studio Code で作業フォルダーを開きます。すでに開いている場合はそのまま続けてください。
+Visual Studio Code で作業フォルダーを開きます。すでに開いている場合はそのまま進めてください。
 
-Agents Toolkit は環境変数を **env** フォルダーに保存し、初回起動時に自動で値を設定します。ただしサンプル アプリ固有の値が 1 つあり、それが Northwind データベースへの接続文字列です。
+Agents Toolkit は環境変数を **env** フォルダーに保存し、初回起動時に自動で値を設定します。ただしサンプル固有の値が 1 つあります。それは Northwind データベースへの接続文字列です。
 
-このプロジェクトでは Northwind データベースを Azure Table Storage に保存しています。ローカルデバッグ時には [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) ストレージ エミュレーターを使用します。プロジェクトはほぼ組み込み済みですが、接続文字列を設定しないとビルドできません。
+本プロジェクトでは Northwind データベースを Azure Table Storage に保存し、ローカルデバッグ時には [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) エミュレーターを使用します。プロジェクトをビルドするには接続文字列が必要です。
 
-必要な設定は **env/.env.local.user.sample** に用意されています。このファイルを **env** フォルダーにコピーし、**.env.local.user** という名前に変更してください。ここには機密性の高い設定を記述します。
+必要な設定は **env/.env.local.user.sample** にあります。このファイルを **env** フォルダー内でコピーして **.env.local.user** という名前に変更してください。
 
-Visual Studio Code での手順:
-1. **env** フォルダーを展開し **.env.local.user.sample** を右クリックして "Copy" を選択。
-2. **env** フォルダー内を右クリックして "Paste" を選択。
-3. 生成された **.env.local.user copy.sample** を右クリックして "Rename" を選択し **.env.local.user** に変更。
+わからない場合は以下の手順を参照してください。**env** フォルダーを展開し **.env.local.user.sample** を右クリック → Copy。次に **env** フォルダー内で右クリック → Paste。新しいファイル **.env.local.user copy.sample** が作成されます。右クリック → Rename で **.env.local.user** に変更します。
 
 ![Copy .env.local.user.sample to .env.local.user](../../assets/images/extend-message-ext-01/02-01-Setup-Project-01.png)
 
-作成した **.env.local.user** には次の 1 行が含まれているはずです。
+作成された **.env.local.user** には次の行が含まれます。
 
 ~~~text
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-（実際には秘密ではありませんが、本番 Azure へデプロイする場合には秘密情報になります）
+(ローカル開発用なので秘密ではありませんが、Azure にデプロイする場合はシークレットになる可能性があります)
 
-### Step 2 - アプリケーションをローカルで実行
+### Step 2 - アプリケーションをローカル実行
 
-F5 キーを押すか、スタート ボタン 1️⃣ をクリックしてデバッグを開始します。デバッグ プロファイルを選択する画面が表示されたら "Debug in Teams (Edge)" 2️⃣ を選択するか、別のプロファイルを選びます。
+F5 キー、または 1️⃣ の再生ボタンをクリックしてデバッグを開始します。デバッグプロファイルの選択が求められたら、Debug in Teams (Edge) 2️⃣ などを選択します。
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
-次の画面が表示された場合は **env/.env.local.user** ファイルを修正する必要があります（前ステップ参照）。
+もし次の画面が表示されたら **env/.env.local.user** を修正する必要があります。
 
 ![Error is displayed because of a missing environment variable](../../assets/images/extend-message-ext-01/02-01-Setup-Project-06.png)
 
-初回実行時には NodeJS のファイアウォール許可を求められる場合があります。アプリケーションの通信に必要なので許可してください。
+初回実行時は NodeJS のファイアウォール通過を許可するよう求められる場合があります。
 
-npm パッケージの読み込みに時間がかかる場合があります。最終的にブラウザー ウィンドウが開き、ログインを求められます。
+npm パッケージの読み込みに時間がかかることがありますが、最終的にブラウザーが開きログインを求められます。
 
-Teams がブラウザー ウィンドウで開きます。Agents Toolkit にサインインしたものと同じ資格情報でログインしてください。ログイン後、Microsoft Teams にアプリを開くダイアログが表示されます。
+Teams がブラウザーで開き、Agents Toolkit と同じ資格情報でログインしてください。
+Teams が起動するとアプリケーションを開くダイアログが表示されます。
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
 
-開くと、アプリをどこで開くかを尋ねられます。既定では個人チャットです。チャネルやグループチャットも選択できます。 "Open" をクリックします。
+開く場所を尋ねられます。既定ではパーソナルチャットですが、チャネルやグループチャットも選択可能です。「Open」を選択してください。
 
 ![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
 
-これでアプリとの個人チャットに入ります。
+これでアプリとのパーソナルチャットが開始されます。
+
 
 ### Step 3 - Microsoft Teams でテスト
 
-Teams でアプリをテストするには、チャット メッセージ入力欄の "+" をクリックし、"+ アプリを追加" を選択してダイアログを開きます。青い背景の "Northwind Inventory" アプリを選択します。
+Teams でアプリをテストするには、チャットのメッセージ作成エリアの「+」を選択し、「+ Get more apps」をクリックします。検索ダイアログで背景が青い「Northwind Inventory」アプリを選択します。以下の手順を参照してください。
 
 ![select app](../../assets/images/extend-message-ext-01/choose-app.gif)
 
-アプリを開くと既定タブ "Products Inventory" に検索ボックスが表示されます。"Discount" 検索タブはグレーアウトされています。
-Northwind データベースにある製品 "Chai" を検索して、項目が表示されるか確認します。
+アプリを開くと、既定タブ「Products Inventory」に検索ボックスが表示され、「Discount」検索タブはグレーで非活性です。
+Northwind データベースに存在する製品名「Chai」と入力し、項目が表示されることを確認します。
 
 ![search app](../../assets/images/extend-message-ext-01/nw-me-working.png)
 
-Chai のカードを選択して会話に送信できます。
+カードを選択して会話に送信できます。 
 
-さらに、アダプティブ カードのボタン アクションをテストすることもできます。 
+また、アダプティブカード上のボタン操作も以下のようにテストできます。 
 
 ![search app](../../assets/images/extend-message-ext-01/action-working.gif)
 
-これでメッセージ拡張機能が正常に動作し、プラグインとして利用できる状態であることが確認できました。次のラボで確認します。
 
-> NOTE: 実際に便利なのは他のユーザーとの会話内で使用する場合です。Northwind Inventory アプリとのチャットはテスト用です。
+これでメッセージ拡張が正常に動作し、次のラボでプラグインとして使用する準備ができたことが確認できます。
 
-### Step 4 - 高度なクエリ
 
-Visual Studio Code に戻り、**appPackage** ディレクトリの **manifest.json** を開きます。インストール時に表示されたアプリ情報がすべてここにあります。
+> NOTE: これは他の ユーザー との会話でこそ有用です。Northwind Inventory アプリ内のチャットはテスト用です。
 
-少し下へスクロールして `composeExtensions:` を探します。
-Compose extensions はメッセージ拡張機能の旧称で、Northwind Inventory メッセージ拡張機能がここで定義されています。
 
-参照用に短縮した JSON を示します。
+### Step 4 - 高度なクエリ 
+
+Visual Studio Code に戻り **appPackage** ディレクトリの **manifest.json** を開きます。インストール時に表示されたアプリ情報がすべて記載されています。
+
+少し下にスクロールして `composeExtensions:` を確認してください。
+compose extensions はメッセージ拡張の旧称で、Northwind Inventory のメッセージ拡張がここに定義されています。
+
+わかりやすいように JSON を抜粋します。
 
 ~~~json
 "composeExtensions": [
     {
         "botId": "${{BOT_ID}}",
         "commands": [
-            ...
+...
         ]
     }
 ],
 ~~~
 
-まず bot ID があることに注目してください。Microsoft Teams は Azure ボット チャネルを使用してアプリケーションとセキュアなリアルタイム メッセージを交換します。Agents Toolkit がボットを登録し ID を設定します。
+最初に bot ID があることに注目してください。Teams は Azure bot チャネルを使用してアプリと安全・リアルタイムにメッセージを交換します。Agents Toolkit が bot を登録し ID を設定します。
 
-次に commands コレクションがあります。これは Teams の検索ダイアログのタブに対応します。本アプリでは主に Copilot 用に設計されています。
+次にコマンドのコレクションがあります。これは Teams の検索ダイアログのタブに対応します。本アプリではコマンドは主に Copilot 向けです。
 
-最初のコマンドは製品名で検索しました。もう一方も試してみましょう。
+最初のコマンドでは製品名で検索しました。次のコマンドも試してみましょう。
 
-"Discounts" タブに "Beverages"、"Dairy"、"Produce" のいずれかを入力すると、そのカテゴリ内で値引きされている製品が表示されます。Copilot はこれを利用して値引き商品の質問に回答します。
+「Discounts」タブに `Beverages`, `Dairy`, `Produce` などを入力すると、該当カテゴリーで割引中の製品が表示されます。Copilot はこれを使用して割引製品に関する質問に回答します。
 
 ![Searching for beverages under the discount tab](../../assets/images/extend-message-ext-01/02-03-Test-Multi-02.png)
 
-再び最初のコマンドを確認します。5 つのパラメーターがあることがわかります。
+最初のコマンドを再度見ると、5 つのパラメーターがあることがわかります。
 
 ~~~json
 "parameters": [
@@ -345,9 +343,9 @@ Compose extensions はメッセージ拡張機能の旧称で、Northwind Invent
 ]
 ~~~
 
-残念ながら Teams は最初のパラメーターしか表示できませんが、Copilot は 5 つすべてを使用できます。これにより Northwind 在庫データに対してより高度なクエリが可能になります。
+残念ながら Teams では最初のパラメーターしか表示できませんが、Copilot は 5 つすべてを使用できます。これで Northwind 在庫データに対しより高度なクエリが可能になります。
 
-Teams UI の制限を回避するため、"Northwind Inventory" タブでは最大 5 つのパラメーターをカンマ区切りで入力できます。形式は次のとおりです。
+Teams UI の制限を回避するため、「Northwind Inventory」タブでは最大 5 つのパラメーターをカンマ区切りで入力できます。形式は以下のとおりです。
 
 ~~~text
 name,category,inventoryStatus,supplierCity,supplierName
@@ -355,33 +353,34 @@ name,category,inventoryStatus,supplierCity,supplierName
 
 ![Entering multiple comma separated fields into the Northwind Inventory tab](../../assets/images/extend-message-ext-01/02-03-Test-Multi-04.png)
 
-上記 JSON の説明を参考にクエリを入力してみましょう。入力中は Visual Studio Code のデバッグ コンソールに各クエリが表示されるので確認してください。
+JSON の説明を参考に次のクエリを入力してみてください。実行時には Visual Studio Code のデバッグコンソールに各クエリが表示されます。
 
-* "chai" - 名前が "chai" で始まる製品を検索
-* "c,bev" - カテゴリが "bev" で始まり名前が "c" で始まる製品を検索
-* ",,out" - 在庫切れの製品を検索
-* ",,on,london" - ロンドンのサプライヤーで発注済みの製品を検索
-* "tofu,produce,,osaka" - カテゴリ "produce" で大阪のサプライヤー、名前が "tofu" で始まる製品を検索
+* `chai` - 名前が「chai」で始まる製品を検索
+* `c,bev` - カテゴリーが「bev」で始まり名前が「c」で始まる製品
+* `,,out` - 在庫切れの製品
+* `,,on,london` - ロンドンのサプライヤーで発注中の製品
+* `tofu,produce,,osaka` - カテゴリーが「produce」で大阪のサプライヤーかつ名前が「tofu」で始まる製品
 
-各クエリ語が製品リストを絞り込みます。クエリ語の形式は任意ですが、各パラメーターの description に Copilot へ説明をしっかり書いてください。
+各クエリ用語が製品リストをフィルタリングします。クエリ用語の形式は任意ですが、各パラメーターの description で Copilot に説明するようにしてください。
+
 
 ### Step 6 (任意) - Azure Storage Explorer で Northwind データベースを表示
 
-Northwind データベースはシンプルですが本物です。データを確認・編集したい場合は Azurite 実行中に Azure Storage Explorer を開きます。
+Northwind データベースはシンプルですが実データです。データを確認・編集したい場合は Azurite が実行中に Azure Storage Explorer を開いてください。 
 
 !!! Note
-    アプリを実行すると Azurite が自動起動します。詳細は [Azurite ドキュメント](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank} を参照してください。プロジェクトが正常に起動していればストレージを閲覧できます。
+    アプリを実行すると Azurite が自動的に起動します。詳細は [Azurite のドキュメント](https://learn.microsoft.com/azure/storage/common/storage-use-azurite){target=_blank} を参照してください。プロジェクトが正常に起動していればストレージを閲覧できます。
 
-Northwind データを表示するには "Emulator & Attached" → "Storage Accounts" → "Emulator - Default Ports" → "Tables" の順に開きます。古典的な Northwind データベース テーブルが確認できます（NO SQL 環境ではあまり便利ではありませんが存在します）。
+「Emulator & Attached」→「Storage Accounts」→「Emulator - Default Ports」→「Tables」を展開すると、Northwind データベースのテーブルが表示されます。
 
 ![Azure Storage Explorer showing the Northwind database tables](../../assets/images/extend-message-ext-01/02-06-AzureStorageExplorer-01.png)
 
-コードは各クエリで Products テーブルを読み込みますが、他のテーブルはアプリ起動時のみアクセスします。そのため新しいカテゴリを追加した場合は、アプリを再起動しないと表示されません。
+コードは各クエリで Products テーブルを読み込みますが、他のテーブルはアプリ起動時のみアクセスします。新しいカテゴリーを追加した場合はアプリを再起動してください。
 
 <cc-next />
 
 ## おめでとうございます
 
-Northwind メッセージ拡張機能の実行をマスターしました。次のラボではこれを Microsoft 365 Copilot のプラグインとしてテストします。[次へ] を選択してください。
+Northwind メッセージ拡張の実行をマスターしました。次のラボでは Microsoft 365 Copilot のプラグインとしてテストします。「Next」を選択してください。
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/01-nw-teams-app" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/01-nw-teams-app--ja" />

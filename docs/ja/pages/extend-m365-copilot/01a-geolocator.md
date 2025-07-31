@@ -2,23 +2,23 @@
 search:
   exclude: true
 ---
-# ラボ E1 - Instructions ベースの Gelocator ゲーム エージェント
+# ラボ E1 - インストラクションベースの **Geo Locator Game** エージェント
 
-このラボでは、instructions とファイル経由で提供される補足知識を用いて、基本的な宣言型エージェントを作成します。  
-作成するエージェントは、世界中の都市を探検しながら楽しく学べる休憩時間を提供することを目的としています。エージェントは抽象的な手がかりを提示し、  ユーザー が都市を当てるゲームです。手がかりを多く使うほど得点は低くなり、最後に最終スコアが表示されます。
+このラボでは、インストラクションとファイルで提供される補足知識を使って、基本的な宣言型エージェントを作成します。  
+作成するエージェントは、仕事の合間に楽しく学習できるよう、世界各地の都市を探索するゲームを提供します。抽象的な手掛かりを提示し、都市を当てるまでに使った手掛かりが少ないほど高得点になります。ゲーム終了時に最終スコアが表示されます。
 
-このラボで学べること:
+このラボで学ぶ内容は次のとおりです。
 
-- Agents Toolkit テンプレートを使用して宣言型エージェントを作成する方法  
-- instructions を使ってエージェントをカスタマイズし、Geo Locator Game を実装する方法  
-- アプリを実行・テストする方法  
-- ボーナス演習として、SharePoint Teams サイトを使用する方法  
+- Agents Toolkit テンプレートを使用して宣言型エージェントを作成する  
+- インストラクションを使ってエージェントを **Geo Locator Game** にカスタマイズする  
+- アプリを実行してテストする方法を学ぶ  
+- ボーナス課題として SharePoint Teams サイトを使用する
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を素早く確認できます。</div>
+          <div>ビデオでラボの概要を確認しましょう。</div>
         </div>
     <div style="flex: 1; min-width: 0;">
   ---8<--- "ja/e-labs-prelude.md"
@@ -27,108 +27,108 @@ search:
 
 ## はじめに
 
-宣言型エージェントは、Microsoft 365 Copilot と同じスケーラブルなインフラストラクチャとプラットフォームを活用し、特定領域に特化したニーズにフォーカスできるよう最適化されています。  
-標準の Microsoft 365 Copilot チャットと同じインターフェイスを利用しつつ、特定のタスクに専念する  エージェント として機能します。
+宣言型エージェントは、 Microsoft 365 Copilot と同じスケーラブルなインフラストラクチャとプラットフォームを活用しながら、特定のニーズにフォーカスできるよう調整されています。  
+標準の Microsoft 365 Copilot チャットと同じインターフェイスを使用しつつ、特定のタスクにのみ集中する専門家として機能します。
 
-このラボでは、まず Agents Toolkit の既定テンプレートを使用して宣言型エージェントを作成します。  
-次に、エージェントを地理位置当てゲームに特化させるよう変更します。
+このラボでは、 Agents Toolkit に用意されている既定テンプレートを使って宣言型エージェントを作成するところから始めます。その後、このエージェントを **Geo Locator Game** に特化させるよう修正します。
 
-AI の目的は、仕事の合間に楽しい休憩を提供しながら、世界中のさまざまな都市について学べるようにすることです。抽象的なヒントを提供し、都市を当ててもらいます。ヒントを多く使うほど得点は下がり、ゲーム終了時に最終スコアが表示されます。
+AI の目的は、世界中のさまざまな都市について学びながら、仕事の合間に楽しい休憩時間を提供することです。都市を推測するための抽象的な手掛かりを提示し、手掛かりを多く使うほど得点は低くなります。ゲーム終了時に最終スコアが明らかになります。
 
 ![The initial UI of the Geo Locator Game with a couple of guesses from the user.](../../assets/images/extend-m365-copilot-01/game.png)
 
-ボーナスとして、エージェントに秘密の日記 🕵🏽 と地図 🗺️ のファイルを参照させ、プレイヤーへの挑戦を増やします。
+ボーナスとして、エージェントに秘密の日記 🕵🏽 や地図 🗺️ のファイルを参照させ、プレイヤーへのチャレンジ要素を増やします。
 
 それでは始めましょう 💪🏼
 
-## 演習 1: テンプレートから宣言型エージェントをスキャフォールディングする
-宣言型エージェントを作成するには、アプリ パッケージ内のファイル構造を理解していれば任意のエディターを使用できます。しかし、Agents Toolkit を使えばファイル生成だけでなく、アプリのデプロイや発行も簡単に行えます。  
-ここではシンプルに Agents Toolkit を使用します。
+## Exercise 1: テンプレートから宣言型エージェントをスキャフォールドする
+宣言型エージェントに必要なファイル構成さえ把握していれば、任意のエディターで作成できます。ただし、 Agents Toolkit を使用するとファイル生成だけでなく、デプロイや公開も簡単に行えます。  
+そのため、このラボでは Agents Toolkit を使用して作業を簡素化します。
 
-### 手順 1: Agents Toolkit のインストール
+### Step 1: Agents Toolkit をインストールする
 
-- Visual Studio Code の拡張機能タブに移動し、 **Microsoft 365 Agents Toolkit** を検索します。  
+- ** Visual Studio Code ** の拡張機能タブを開き、 **Microsoft 365 Agents Toolkit** を検索します。  
 - 選択してインストールします。
 
 <cc-end-step lab="e1a" exercise="1" step="1" />
 
-### 手順 2: Agents Toolkit で宣言型エージェント アプリを作成する
+### Step 2: Agents Toolkit で宣言型エージェントアプリを作成する
 
-Visual Studio Code 左側の Agents Toolkit 拡張機能 1️⃣ を開き、 **Create a New Agent/App** 2️⃣ を選択します。
+左側の **Agents Toolkit** 拡張機能 1️⃣ を開き、 **Create a New Agent/App** 2️⃣ を選択します。
 
 ![The UI of the Agents Toolkit to start creating a new app with the 'Create a New Agent' button highlighted.](../../assets/images/extend-m365-copilot-01/atk-create-new-agent.png)
 
-パネルが開いたら、プロジェクトタイプの一覧から **Declarative Agent** を選択します。
+パネルが開くので、プロジェクトタイプの一覧から **Declarative Agent** を選択します。
 
 ![The project types available when creating a new app with Agents Toolkit. Options include 'Agent', which is highlighted.](../../assets/images/extend-m365-copilot-01/atk-da.png)
 
-次に、基本的な宣言型エージェントを作成するか、API プラグイン付きにするか尋ねられます。  **No Action** オプションを選択してください。
+続いて、基本の宣言型エージェントを作成するか、 API プラグイン付きにするかを尋ねられます。 **No Action** を選択してください。
 
 ![The Agents Toolkit app creation flow with the type of Declarative Agent with 'No plugin' selected.](../../assets/images/extend-m365-copilot-01/atk-no-action.png)
 
-!!! tip "ここで Action 付きにしない理由"
-     次のラボで REST API を構築し、その API を Action として宣言型エージェントに統合する方法を学びます。今回は宣言型エージェントのみを作成します。段階的に進めましょう!
+!!! tip "ここでアクション付きにしない理由"
+     次のラボで REST API を構築し、その API を宣言型エージェントにアクションとして統合する方法を学びます。今回は宣言型エージェントの作成だけに集中しましょう。小さなステップから！
 
-続いて、プロジェクト フォルダーを作成するディレクトリーを入力します。
+次に、プロジェクトフォルダーを作成するディレクトリを入力します。
 
 ![The Agents Toolkit app creation flow with the prompt to provide a target path where to store the new app.](../../assets/images/extend-m365-copilot-01/atk-folder.png)
 
-次に、アプリケーション名として `Geo Locator Game` を入力し、Enter を押します。
+アプリケーション名として `Geo Locator Game` と入力し、 Enter キーを押します。
 
 ![The Agents Toolkit app creation flow with the prompt to provide a name for the app.](../../assets/images/extend-m365-copilot-01/atk-app-name.png)
 
-数秒でプロジェクトが指定フォルダーに作成され、新しい Visual Studio Code ウィンドウで開きます。これが作業フォルダーです。
+指定したフォルダーに数秒でプロジェクトが作成され、新しい Visual Studio Code ウィンドウで開きます。これが作業用フォルダーです。
 
 ![Visual Studio Code with the new app scaffolded and ready to be extendend and the README file on the screen.](../../assets/images/extend-m365-copilot-01/atk-scaffold.png)
 
-お疲れさまです! ベースの宣言型エージェントがセットアップできました。次に、geo locator game アプリにカスタマイズできるようファイルを確認しましょう。
+お疲れさまです！ベースの宣言型エージェントがセットアップできました。次に、ファイル内容を確認し、 **Geo Locator Game** にカスタマイズしましょう。
 
 <cc-end-step lab="e1a" exercise="1" step="2" />
 
-### 手順 3: Agents Toolkit でアカウントを設定する
-左側の Agents Toolkit アイコン 1️⃣ を選択します。 "Accounts" の下で "Sign in to Microsoft 365" 2️⃣ をクリックし、ご自身の Microsoft 365 アカウントでログインします。
+### Step 3: Agents Toolkit でアカウントを設定する
+左側の **Agents Toolkit** アイコン 1️⃣ を選択し、"Accounts" セクションの **Sign in to Microsoft 365** 2️⃣ をクリックして、自身の Microsoft 365 アカウントでサインインします。
 
 ![The UI of Agents Toolkit to allow logging into a target Microsoft 365 tenant.](../../assets/images/extend-m365-copilot-01/atk-accounts.png)
 
-ブラウザーが開き Microsoft 365 へのログインが促されます。 "You are signed in now and close this page" と表示されたら閉じてください。
+ブラウザーが開き、 Microsoft 365 へのサインインを求めます。"You are signed in now and close this page" と表示されたらページを閉じます。
 
-"Custom App Upload Enabled" のチェックマークが緑であることを確認します。緑でない場合は、Teams アプリのアップロード権限がありません。ラボの Exercise 1 の手順を参照してください。
+"Custom App Upload Enabled" に緑のチェックマークが付いていることを確認します。付いていない場合、そのユーザーが Teams アプリをアップロードする権限を持っていません。ラボの Exercise 1 の手順を参照して設定してください。
 
-"Copilot Access Enabled" も緑であることを確認します。緑でない場合は Copilot の  ライセンス を保有していません。ラボを続行するには必要です。
+次に "Copilot Access Enabled" に緑のチェックマークがあるか確認します。無い場合、そのユーザーが Copilot のライセンスを持っていません。ライセンスが必要です。
 
 ![The UI of Agents Toolkit after logging in, when the checkmarks are green.](../../assets/images/extend-m365-copilot-01/atk-accounts-logged.png)
 
-それではコード ツアーを行いましょう。
+それではコードツアーを行いましょう。
 
 <cc-end-step lab="e1a" exercise="1" step="3" />
 
-### 手順 4: アプリ内のファイルを理解する
+### Step 4: アプリ内のファイルを理解する
 
-ベース プロジェクトの構成は次のとおりです:
+ベースプロジェクトの構成は次のとおりです。
 
-| フォルダー / ファイル                       | 内容                                                                 |
-| ------------------------------------ | -------------------------------------------------------------------- |
-| `.vscode`                            | デバッグ用 VSCode ファイル                                           |
-| `appPackage`                         | Teams アプリ manifest、エージェント manifest、API 仕様（ある場合）のテンプレート |
-| `env`                                | 環境ファイル。既定で `.env.dev`  が含まれます |
-| `appPackage/color.png`               | アプリ ロゴ画像 |
-| `appPackage/outline.png`             | アプリ ロゴ輪郭画像 |
-| `appPackage/declarativeAgent.json` | 宣言型エージェントの設定と構成を定義 |
-| `appPackage/instruction.txt`         | 宣言型エージェントの動作を定義 |
-| `appPackage/manifest.json`           | 宣言型エージェント用 Teams アプリ manifest |
-| `m365agent.yml`                       | Agents Toolkit プロジェクト ファイル。プロパティと Stage 定義を含む |
+| フォルダー／ファイル | 内容 |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `.vscode` | デバッグ用 VS Code 設定ファイル |
+| `appPackage` | Teams アプリのマニフェスト、エージェントマニフェスト、 API 仕様 (存在する場合) のテンプレート |
+| `env` | デフォルトの `.env.dev` を含む環境設定ファイル |
+| `appPackage/color.png` | アプリのロゴ画像 |
+| `appPackage/outline.png` | アプリのロゴ（アウトライン）画像 |
+| `appPackage/declarativeAgent.json` | 宣言型エージェントの設定および構成 |
+| `appPackage/instruction.txt` | 宣言型エージェントの動作を定義するインストラクション |
+| `appPackage/manifest.json` | 宣言型エージェントのメタデータを定義する Teams アプリマニフェスト |
+| `m365agent.yml` | Agents Toolkit のメインプロジェクトファイル。プロパティと構成ステージを定義 |
 
-今回のラボで特に重要なのは **appPackage/instruction.txt** です。エージェントの核となるディレクティブを記述するプレーンテキストファイルで、自然言語で指示を書けます。
+このラボで特に重要なのは **appPackage/instruction.txt** です。エージェントの主要ディレクティブが含まれています。  
+プレーンテキストなので、自然言語でインストラクションを記述できます。
 
-もうひとつ重要なのが **appPackage/declarativeAgent.json** です。Microsoft 365 Copilot を拡張するためのスキーマを持っています。主なプロパティは次のとおりです。
+もう一つ重要なのは **appPackage/declarativeAgent.json** で、 Microsoft 365 Copilot を新しい宣言型エージェントで拡張するためのスキーマが定義されています。主なプロパティは以下のとおりです。
 
-- `$schema` : スキーマ参照  
-- `version` : スキーマ バージョン  
-- `name` : 宣言型エージェントの名前  
-- `description` : 説明  
-- `instructions` : **instructions.txt** へのパス。動作を決定するディレクティブを保持します。ここに直接テキストを書いても構いませんが、このラボでは **instructions.txt** を使用します。
+- `$schema`: スキーマ参照  
+- `version`: スキーマバージョン  
+- `name`: 宣言型エージェントの名前  
+- `description`: 説明  
+- `instructions`: **instructions.txt** へのパス。ここに直接テキストで記述することも可能ですが、本ラボでは **instructions.txt** を使用します。
 
-さらに **appPackage/manifest.json** には、パッケージ名、開発者名、アプリが使用するエージェント参照など、重要なメタデータが含まれます。以下は manifest.json の抜粋です:
+さらに **appPackage/manifest.json** には、パッケージ名、開発者名、アプリで利用するエージェントの参照など、重要なメタデータが含まれます。次の抜粋はその一部です。
 
 ```JSON
 "copilotAgents": {
@@ -140,17 +140,18 @@ Visual Studio Code 左側の Agents Toolkit 拡張機能 1️⃣ を開き、 **
         ]
     },
 ```
-ブランドに合わせるため、`color.png` と `outline.png` を更新することもできます。本ラボでは **color.png** を変更してエージェントを目立たせます。
+
+ロゴファイル `color.png` と `outline.png` を差し替えてブランドに合わせることもできます。本ラボでは **color.png** を変更してエージェントを目立たせます。
 
 <cc-end-step lab="e1a" exercise="1" step="4" />
 
-## 演習 2: instructions とアイコンの更新
+## Exercise 2: インストラクションとアイコンを更新する
 
-### 手順 1: アイコンと manifest の更新
+### Step 1: アイコンとマニフェストを更新する
 
-まずロゴを置き換えます。[こちら](../../assets/images/extend-m365-copilot-01/color.png){target=_blank} の画像をコピーし、ルート プロジェクトの **appPackage** フォルダー内の同名ファイルと置き換えてください。
+まずはロゴを差し替えます。 [こちら](../../assets/images/extend-m365-copilot-01/color.png){target=_blank} の画像をコピーし、プロジェクトルートの **appPackage** フォルダーにある同名ファイルと置き換えます。
 
-次に **appPackage/manifest.json** を開き、 **copilotAgents** ノードを探します。declarativeAgents 配列の最初のエントリの id 値を `declarativeAgent` から `dcGeolocator` に変更して一意にします。
+次に、ルートプロジェクトの **appPackage/manifest.json** を開き、 **copilotAgents** ノードを探します。 `declarativeAgents` 配列の最初の `id` を `declarativeAgent` から `dcGeolocator` に変更して、一意の ID にします。
 
 <pre>
  "copilotAgents": {
@@ -163,7 +164,7 @@ Visual Studio Code 左側の Agents Toolkit 拡張機能 1️⃣ を開き、 **
     },
 </pre>
 
-続いて **appPackage/instruction.txt** を開き、以下の内容で既存の内容を上書きします。
+続いて **appPackage/instruction.txt** を開き、下記のインストラクションで既存内容を上書きしてください。
 
 ```txt
 System Role: You are the game host for a geo-location guessing game. Your goal is to provide the player with clues about a specific city and guide them through the game until they guess the correct answer. You will progressively offer more detailed clues if the player guesses incorrectly. You will also reference PDF files in special rounds to create a clever and immersive game experience.
@@ -203,29 +204,31 @@ After the player guesses the city or exhausts all clues, prompt:
 Would you like to play another round, try a special challenge?
 
 ```
-次の手順で、  ユーザー が会話を始めやすいよう conversation starters を追加します。  
 
-!!! tip "**appPackage** 内に独自ファイルを含める"
-    **appPackage/declarativeAgent.json** の次の行に注目してください:
+次の手順で、ユーザーがエージェントとやり取りしやすくなるよう、会話スターターを追加します。
+
+!!! tip "**appPackage** 内のファイルをモジュール化"
+    **appPackage/declarativeAgent.json** の以下の行に注目してください。
 
     `"instructions": "$[file('instruction.txt')]",`
 
-    これは **instruction.txt** から instructions を読み込む方法です。パッケージ ファイルをモジュール化したい場合、**appPackage** 内の他の JSON ファイルでも同じテクニックを使用できます。
+    これは **instruction.txt** からインストラクションを読み込む指定です。  
+    **appPackage** 内の他の JSON ファイルでも、この手法でファイルを分割管理できます。
 
 <cc-end-step lab="e1a" exercise="2" step="1" />
 
-### 手順 2 : Conversation Starters を追加する
+### Step 2 : 会話スターターを追加する
 
-宣言型エージェントに conversation starters を追加すると、  ユーザー とのエンゲージメントを高められます。
+宣言型エージェントに会話スターターを追加すると、ユーザーエンゲージメントを高められます。
 
-Conversation starters の利点:
+会話スターターの主なメリットは以下のとおりです。
 
-- **エンゲージメント**: 会話を開始しやすくし、  ユーザー の参加を促します。  
-- **コンテキスト設定**: 会話のトーンとトピックを示し、進め方をガイドします。  
-- **効率**: 明確な焦点を提供することで曖昧さを減らし、スムーズな会話を促進します。  
-- **ユーザー維持**: よく設計された starters は興味を維持し、リピート利用を促します。  
+- **エンゲージメント**: 交流を始めやすくし、ユーザーが気軽に参加できる  
+- **コンテキスト設定**: 会話のトーンとトピックを示し、進行方向をガイド  
+- **効率性**: 明確なフォーカスを提示することで曖昧さを減らし、スムーズに会話が進む  
+- **ユーザー維持**: 興味を引き続け、再利用を促進  
 
-`declarativeAgent.json` を開き、`instructions` ノードの直後にコンマ `,` を追加し、以下のコードを貼り付けます。
+`declarativeAgent.json` を開き、 `instructions` ノードの直後にカンマ `,` を追加し、次のコードを貼り付けます。
 
 ```JSON
  "conversation_starters": [
@@ -245,62 +248,62 @@ Conversation starters の利点:
     ]
 ```
 
-これでエージェントの変更は完了です。次にテストしましょう。
+すべての変更が完了したので、テストに進みます。
 
 <cc-end-step lab="e1a" exercise="2" step="2" />
 
-### 手順 3: アプリをテストする
+### Step 3: アプリをテストする
 
-アプリをテストするには、Visual Studio Code の `Agents Toolkit` 拡張を開きます。左ペインの "LIFECYCLE" で "Provision" を選択します。Agents Toolkit により公開が簡単になります。 
+アプリをテストするには、 ` Visual Studio Code ` の ` Agents Toolkit ` 拡張機能を開きます。左ペインの "LIFECYCLE" で **Provision** を選択します。  
+Agents Toolkit が **appPackage** 内のファイルを ZIP 化し、エージェントを自身のアプリカタログにインストールしてくれます。
 
 ![The UI of Agents Toolkit highlighting the 'Provision' command under the 'Lifecycle' group of commands.](../../assets/images/extend-m365-copilot-01/atk-provision.png)
 
-このステップでは Agents Toolkit が `appPackage` フォルダー内のファイルを zip にパッケージし、宣言型エージェントを自身のアプリ カタログにインストールします。
+Microsoft 365 Copilot BizChat を開きます: [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank}  
+開発者テナントのアカウントでサインインしてください。
 
-Microsoft 365 Copilot BizChat  [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank}  に開発者テナントでログインしてアクセスします。
-
-Copilot アプリが読み込まれたら、右側のパネルから "Geo Locator Game" を見つけます。
+Copilot アプリが読み込まれたら、右側のリストから **Geo Locator Game** を見つけます。
 
 ![The UI of Microsoft 365 Copilot with the list of agents on the right side and the 'Geo Locator Game' agent highlighted.](../../assets/images/extend-m365-copilot-01/launch-geo.png)
 
-見つからない場合、リストが長い可能性があります。"see more" を選択して展開してください。
+見つからない場合は "see more" を展開して探してください。
 
-起動するとエージェント専用のチャット ウィンドウが開き、下図のように conversation starters が表示されます:
+起動すると、そのエージェント専用のチャットウィンドウが開き、会話スターターが表示されます。
 
 ![The UI of Microsoft 365 Copilot when the 'Geo Locator Game' agent is selected. The image highlights the conversation starters.](../../assets/images/extend-m365-copilot-01/launched-geo.png)
 
-いずれかの conversation starter を選択すると、作成ボックスに自動入力され、Enter を押すだけで送信できます。エージェントは  ユーザー の操作を待ちます 🟢
+会話スターターのいずれかを選択すると、入力ボックスに自動で挿入されます。 Enter キーを押すまで送信されません 🟢
 
-ゲームのデモをご覧ください。 
+ゲームのデモはこちらです。
 
 ![A video of the 'Geo Locator Game' in action with a user guessing a couple of cities and the agent showing the collected points.](../../assets/images/extend-m365-copilot-01/demo.gif)
 
 <cc-end-step lab="e1a" exercise="2" step="3" />
 
-## 演習 3: 参照用ファイルを追加する (ボーナス演習)
+## Exercise 3: 参照用ファイルを追加する (ボーナス)
 
-同じゲームを繰り返すだけでは飽きてしまいます。ゲームを楽しく刺激的に保つには、定期的に更新されるデータにアクセスできるようにする必要があります。ここではエージェントにファイル参照の機能を追加して、ゲームを刷新し難易度を上げましょう。先ほど学んだ通り、宣言型エージェントには SharePoint サイトや OneDrive を参照する能力があります。それでは、エージェントにいくつかのファイルへアクセスする能力を追加しましょう。
+同じゲームを繰り返すだけでは飽きてしまいます。ゲームを楽しく保つには、定期的に更新されるデータへのアクセスが必要です。ここでは、エージェントに SharePoint サイトや OneDrive のファイルを参照させる機能を追加し、チャレンジを強化します。
 
-### 手順 1: SharePoint へファイルをアップロードする
+### Step 1: SharePoint にファイルをアップロードする
 
-この zip ファイルをダウンロードしてください: [link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01a-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank}
+2 つの PDF が入った ZIP ファイルを [こちら](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01a-declarative-copilot/geo-locator-lab-sample/sharepoint-docs&filename=sharepoint-docs){target=_blank} からダウンロードしてください。
 
-zip を展開し、同じテナント内の SharePoint Teams サイトのドキュメント ライブラリ **Documents** に 2 つの PDF (**historical_map.pdf** と **travelers_diary**) をアップロードします。
+ZIP を展開し、同じテナントの SharePoint Teams サイトの **Documents** ドキュメントライブラリに **historical_map.pdf** と **travelers_diary.pdf** をアップロードします。
 
 サイトの絶対 URL をコピーします。例: `https://xyz.sharepoint.com/sites/contoso`
 
-> [!NOTE]
-> ファイルやフォルダーのフル パスを取得するには、SharePoint の "Copy direct link" を使用します。対象を右クリックして Details → Path → コピー アイコンを選択してください。
+> [!NOTE]  
+> ファイルやフォルダーの完全パスは、 SharePoint の “Copy direct link” 機能で取得できます。対象を右クリックし **Details** を選択後、 **Path** のコピーアイコンをクリックしてください。
 
-準備ができたら次の手順へ進みます。
+完了したら次の手順に進みます。
 
 <cc-end-step lab="e1a" exercise="3" step="1" />
 
-### 手順 2: 宣言型エージェント manifest を更新する
+### Step 2: 宣言型エージェントマニフェストを更新する
 
-環境ファイル **.env.dev** を開き、"SP_SITE_URL" という新しい変数を作成して、SharePoint サイトの絶対 URL を値として設定します。
+**.env.dev** を開き、 `SP_SITE_URL` という新しい変数を作成して、先ほどの SharePoint サイトの絶対 URL を値に設定します。
 
-次に **appPackage/declarativeAgent.json** を開き、conversation_starters 配列の後ろにコンマ `,` を追加し、SharePoint データ参照機能を拡張する以下の配列オブジェクトを貼り付けます。
+続いて **appPackage/declarativeAgent.json** を開き、 `conversation_starters` 配列の後ろにカンマ `,` を追加し、下記の配列オブジェクトを貼り付けます。これでエージェントが特定の SharePoint サイトのドキュメントを参照できるようになります。
 
 ```JSON
  "capabilities": [
@@ -315,64 +318,49 @@ zip を展開し、同じテナント内の SharePoint Teams サイトのドキ�
         }
     ]
 ```
-これにより、エージェントはこの SharePoint サイトのドキュメントを読み取ってゲームを盛り上げられるようになります。  
-URL の数に制限はありません 💪🏼
+
+これにより、ゲームを盛り上げるためのドキュメント参照が可能になりました。 URL の数に制限はありません 💪🏼
 
 <cc-end-step lab="e1a" exercise="3" step="2" />
 
-### 手順 3: アプリ manifest をアップグレードする
+### Step 3: アプリマニフェストをアップグレードする
 
-**appPackage/manifest.json** を開き、アプリ `version` を "1.0.0" から "1.0.1" に更新して変更を反映させます。
+**appPackage/manifest.json** を開き、 `version` を `"1.0.0"` から `"1.0.1"` に更新して変更を反映させます。
 
 <cc-end-step lab="e1a" exercise="3" step="3" />
 
-### 手順 4: アプリをテストする
+### Step 4: アプリをテストする
 
-- 再度 Visual Studio Code の `Agents Toolkit` 拡張を開きます。左ペインの "LIFECYCLE" で "Provision" を選択し、アップグレードした宣言型エージェントをパッケージして自身のアプリ カタログにインストールします。  
-- Microsoft 365 Copilot BizChat  [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank}  にログインします。  
-- 再び "Geo Locator Game" を起動します。  
+1. ` Visual Studio Code ` の ` Agents Toolkit ` 拡張機能に戻り、左ペインの "LIFECYCLE" で **Provision** を選択して、更新済みエージェントをパッケージ化しアプリカタログにインストールします。  
+2. Microsoft 365 Copilot BizChat [https://microsoft365.com/copilot/](https://microsoft365.com/copilot/){target=_blank} を開きます。  
+3. **Geo Locator Game** を再度起動します。
 
 ![The UI of Microsoft 365 Copilot when the 'Geo Locator Game' agent is selected. The image highlights the conversation starters.](../../assets/images/extend-m365-copilot-01/launched-geo.png)
 
-今回は旅行日記をもとにしたチャレンジを試してみてください。2 つ目の conversation starter を選びましょう。
+今回は旅行日記を使ったチャレンジを試してください。 2 番目の会話スターターを選択します。
 
 ![The 'Geo Locator Game' when relying on the travel diary. The agent answers providing a reference to the travelers_diary.pdf document stored in SharePoint Online.](../../assets/images/extend-m365-copilot-01/traveller.gif)
 
-これであなたは宣言型エージェントの達人です。詳しくは次の動画をご覧ください。
+これであなたは宣言型エージェントのボスです。詳細は次のビデオをご覧ください。
 
  <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/QTP4PfXyyNk" frameborder="0" allowfullscreen></iframe>
-      <div>Introducing Declarative agents</div>
+      <div>宣言型エージェント入門</div>
     </div>
 
 <cc-end-step lab="e1a" exercise="3" step="4" />
 
 ## リソース
-- [Declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
-- [Declarative agent manifest schema](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-manifest){target=_blank}
-- [Supported content types](https://learn.microsoft.com/microsoftsearch/semantic-index-for-copilot#supported-content-types){target=_blank}
-- [Capabilities of Declarative agents](https://learn.microsoft.com/microsoft-365-copilot/extensibility/declarative-agent-capabilities-ids?tabs=explorer){target=_blank}
-- [Validation guidelines for Agents](https://learn.microsoft.com/microsoftteams/platform/concepts/deploy-and-publish/appsource/prepare/review-copilot-validation-guidelines){target=_blank}
+- [宣言型エージェント](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
+- [宣言型エージェントマニフェスト スキーマ](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-manifest){target=_blank}
+- [サポートされるコンテンツタイプ](https://learn.microsoft.com/microsoftsearch/semantic-index-for-copilot#supported-content-types){target=_blank}
+- [宣言型エージェントの機能](https://learn.microsoft.com/microsoft-365-copilot/extensibility/declarative-agent-capabilities-ids?tabs=explorer){target=_blank}
+- [エージェントの検証ガイドライン](https://learn.microsoft.com/microsoftteams/platform/concepts/deploy-and-publish/appsource/prepare/review-copilot-validation-guidelines){target=_blank}
 
 ---8<--- "ja/e-congratulations.md"
 
-素晴らしい! ゲーム エージェントを構築できました 🎉  
-次のラボでは REST API を作成し、それを使ったプラグインを構築し、別のエージェントで実際のビジネス シナリオを解決します。ワクワクする内容が続きます。 **Next** を選択して次のラボへ進んでください。
+素晴らしい！ゲームエージェントを構築できました 🎉 次のラボでは REST API を作成し、それを使ったプラグインを構築して、別のエージェントで実際のビジネスシナリオを解決していきます。ワクワクですね。 **Next** を選択して次のラボに進みましょう。
 
 <cc-next />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01a-geolocator" />
-
-<!-- <script src="https://giscus.app/client.js"
-        data-repo="microsoft/copilot-camp"
-        data-repo-id="R_kgDOLMKPIA"
-        data-mapping="number"
-        data-term="548"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script> -->
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01a-geolocator--ja" />

@@ -2,58 +2,58 @@
 search:
   exclude: true
 ---
-# ラボ BTA3 - ユーザー エクスペリエンスの向上
+# Lab BTA3 - ユーザー エクスペリエンスの強化
 
-このラボでは Powered by AI と呼ばれる、Teams AI ライブラリが提供する一連の機能について学び、それらをカスタム エンジン エージェントに組み込み、ユーザー エクスペリエンスを向上させます。
+このラボでは Teams AI ライブラリが提供する Powered by AI の一連の機能について学び、カスタム エンジン エージェントに取り入れてユーザー エクスペリエンスを向上させます。
 
 このラボで行うこと:
 
 - Powered by AI 機能とは何かを学ぶ  
 - フィードバック ループを有効化してユーザー フィードバックを収集する  
-- Adaptive Cards を使って引用 (Citations) をカスタマイズする  
+- Adaptive Cards で引用をカスタマイズする  
 - AI 生成ラベルを有効化する  
-- センシティビティ ラベルを有効化する  
+- 機密度ラベルを有効化する  
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/J7IZULJsagM" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を確認しましょう。</div>
+          <div>このビデオでラボの概要を確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
         ---8<--- "ja/b-labs-prelude.md"
     </div>
 </div>
 
-## はじめに
+## Introduction
 
-???+ info "Powered by AI とは？"
-    Powered by AI は、Teams AI ライブラリが提供する一連の機能で、カスタム エンジン エージェントとの対話をより魅力的かつユーザー フレンドリーにします。主な機能は次のとおりです。
+???+ info "Powered by AI とは?"
+    Powered by AI は、カスタム エンジン エージェントとの対話をより魅力的でユーザー フレンドリーにするために Teams AI ライブラリが提供する機能セットです。主な機能は次のとおりです。
 
-    * **フィードバック ループ:** ユーザーは AI の応答に対してサムズアップまたはサムズダウンで評価できます。このフィードバックは AI の精度と有用性を継続的に向上させます。  
+    * **フィードバック ループ:** ユーザーは AI の応答に対してサムズアップまたはサムズダウンで評価できます。このフィードバックにより、AI の精度と有用性が時間とともに向上します。  
 
-    * **引用 (Citations):** AI が情報源への参照を提示し、透明性と信頼性を確保します。  
+    * **引用 (Citations):** AI が情報源を参照して透明性と信頼性を確保します。  
 
-    * **AI 生成ラベル:** AI システムが生成したメッセージに「AI 生成」というラベルを付与し、ユーザーが AI と人間の応答を区別できるようにします。  
+    * **AI 生成ラベル:** AI システムが作成したメッセージに「AI generated」というラベルが付き、ユーザーは AI と人間の応答を区別できます。  
 
-    * **センシティビティ情報:** 共有される情報が機密性を伴う場合、センシティビティ ラベルを表示し、組織外に共有できるかどうかを通知します。  
+    * **機密情報:** 共有される情報が機密である場合、機密度ラベルが表示され、組織外への共有可否を示します。  
 
-前回の演習では Retrieval-Augmented Generation (RAG) とそれをカスタム エンジン エージェントに統合する方法を学びました。本演習では Powered by AI 機能を活用してユーザー エクスペリエンスを向上させます。次の手順を実施します。
+前の演習では RAG (Retrieval-Augmented Generation) をカスタム エンジン エージェントに統合しました。本演習では Powered by AI 機能を活用してユーザー エクスペリエンスを強化します。次の手順を実施します。
 
-- フィードバック ループの実装  
-- 引用のカスタマイズ  
-- AI 生成メッセージのラベル付け  
-- センシティビティ情報の表示  
+- フィードバック ループを実装する  
+- 引用をカスタマイズする  
+- AI 生成メッセージをラベリングする  
+- 機密情報を表示する  
 
-これらの Powered by AI 機能を組み込むことで、カスタム エンジン エージェントの透明性、信頼性、ユーザー フレンドリ性が向上し、全体的なユーザー エクスペリエンスが強化されます。
+これらの Powered by AI 機能を組み込むことで、カスタム エンジン エージェントは透明性・信頼性が高まり、ユーザー エクスペリエンス全体が向上します。
 
-## 演習 1: フィードバック ループを有効化する
+## Exercise 1: フィードバック ループを有効化する
 
-この演習では、前のラボで作成したソース コードを続けて使用できます。
+この演習では、前のラボで作成したソース コードをそのまま使用します。
 
-### 手順 1: アプリにフィードバック ループを統合する
+### Step 1: アプリにフィードバック ループを統合する
 
-プロジェクトの `src/app/app.ts` を開き、アプリケーション インスタンスを見つけて **ai** プロパティ内に `enable_feedback_loop: true` を追加します。更新後のアプリケーション インスタンスは次のようになります。
+プロジェクトの `src/app/app.ts` を開き、アプリケーション インスタンスを見つけて **ai** プロパティの中に `enable_feedback_loop: true` を追加します。更新後のアプリケーション インスタンスは次のようになります。
 
 ```javascript
 const app = new Application({
@@ -66,7 +66,7 @@ const app = new Application({
 });
 ```
 
-フィードバックの応答を処理するために、`src/app/app.ts` に次のコード スニペットを追加してください。
+フィードバック応答を処理するために、`src/app/app.ts` に次のコード スニペットを追加します。
 
 ```javascript
 app.feedbackLoop(async (_context, _state, feedbackLoopData) => {
@@ -80,39 +80,39 @@ app.feedbackLoop(async (_context, _state, feedbackLoopData) => {
 
 <cc-end-step lab="bta3" exercise="1" step="1" />
 
-### 手順 2: フィードバック ループ機能をテストする
+### Step 2: フィードバック ループ機能をテストする
 
-Visual Studio Code の **Run and Debug** タブで **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択し、アプリのデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら **Add** を選択してチャットを開始します。
+Career Genie をフィードバック ループ機能付きでテストしましょう。Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細画面が表示されたら **Add** を選択してチャットを開始します。
 
-!!! tip "ヒント: この演習をローカルでテストする"
-    Teams AI ライブラリの一部機能は Teams App Test Tool では動作しない場合があります。必ずローカルの Teams でテストとデバッグを行ってください。
+!!! tip "Tip: この演習をローカルでテストする"
+    これまでに実装した Teams AI ライブラリの一部機能は Teams App Test Tool では正しく動作しない場合があります。必ずローカル環境の Teams でテストとデバッグを行ってください。
 
-フィードバック ループをテストする前に、「Hi」や「Suggest me .NET developers who can speak Spanish.」のように入力します。カスタム エンジン エージェントの応答の左下にサムズアップとサムズダウンのボタンが表示されるはずです。
+フィードバック ループを試す前に「Hi」や「Suggest me .NET developers who can speak Spanish.」のように入力します。カスタム エンジン エージェントの応答の左下にサムズアップとサムズダウンのボタンが表示されていることを確認してください。
 
 ![The UI of a chat with the custom engine agent when the Feedback Loop is enabled. There are thumbs up and down buttons just below the response, to allow users to provide feedback.](../../../assets/images/custom-engine-03/thumbs-up-down.png)
 
-次にフィードバック ループをテストします。いずれかのボタンをクリックすると、フィードバック カードがポップアップ表示されます。テキスト フィールドにフィードバックを入力し、**Submit** をクリックします。
+次にフィードバック ループを試します。サムズアップまたはサムズダウンのいずれかのボタンをクリックすると、フィードバック カードがポップアップ表示されます。テキスト フィールドにフィードバックを入力し **Submit** をクリックします。
 
 ![The UI of a chat with the custom engine agent when the Feedback Loop is enabled and the user selects any of the thumbs up or down buttons. There is a popup dialog to provide a detailed text-based feedback and a 'Submit' button to send it.](../../../assets/images/custom-engine-03/feedback-card.png)
 
-フィードバックが記録されたか確認するため、Visual Studio Code に戻りターミナルを確認します。サムズアップ／ダウンの結果とコメントが表示されます。
+フィードバックが記録されたか確認するには、Visual Studio Code に戻りターミナルを確認します。サムズアップ/サムズダウンの結果とコメントが出力されているはずです。
 
 ![The terminal window of Visual Studio Code showing the user's feedback with a thumb up and the feedback text 'Copilot Camp rocks!'](../../../assets/images/custom-engine-03/feedback-output.png)
 
-!!! tip "デバッグでフィードバック ループを深掘り"
-    コードをデバッグすると動作を詳細に理解できます。`app.feedbackLoop` にブレークポイントを設定し、サムズアップまたはサムズダウンをクリックしてテストしてください。`feedbackLoopData.actionValue.reaction` にリアクションが、`feedbackLoopData.actionValue.feedback` にテキスト フィードバックが格納されていることを確認できます。
+!!! tip "デバッグでフィードバック ループを深掘りする"
+    コードをデバッグすると動作を詳しく理解できます。`app.feedbackLoop` にブレークポイントを設定してアプリを実行し、サムズアップまたはサムズダウンをクリックすると、`feedbackLoopData.actionValue.reaction` にリアクションが、`feedbackLoopData.actionValue.feedback` にテキスト フィードバックが格納される様子を確認できます。
 
 <cc-end-step lab="bta3" exercise="1" step="2" />
 
-## 演習 2: Adaptive Cards で引用をカスタマイズする
+## Exercise 2: Adaptive Cards で引用をカスタマイズする
 
-カスタム エンジン エージェントでデータ ソースを定義すると、Teams AI ライブラリは自動的に引用を有効化し関連ドキュメントを参照します。現在の挙動を確認するため、「Suggest me .NET developers who can speak Spanish.」のように入力してみてください。引用にカーソルを合わせるとドキュメントの冒頭が表示されることがわかります。
+カスタム エンジン エージェントでデータ ソースを定義すると、Teams AI ライブラリが自動的に引用を有効化し関連ドキュメントを参照します。現在のエクスペリエンスを確認するために「Suggest me .NET developers who can speak Spanish.」のように質問してみてください。引用にカーソルを合わせるとドキュメントの冒頭が表示されます。
 
 ![The UI of a chat with the custom engine agent when citations are enabled. There is a citation mark beside a content in the response and a popup callout to show the initial part of the referenced document.](../../../assets/images/custom-engine-03/current-citation.png)
 
-本演習では、この引用体験をさらにカスタマイズし、Adaptive Cards を利用して引用の表示方法を変更します。
+この演習では、引用エクスペリエンスをさらにカスタマイズし、Adaptive Cards を使用して引用の表示方法を変更します。
 
-### 手順 1: 引用用の Adaptive Card を作成する
+### Step 1: 引用用の Adaptive Card を作成する
 
 `src/app/` フォルダーに **card.ts** という新しいファイルを作成し、次のコード スニペットを追加します。
 
@@ -174,28 +174,28 @@ export function createResponseCard(response: Message<string>): AdaptiveCard {
 }
 ```
 
-この Adaptive Card は引用を `Action.ShowCard` ボタンとしてリスト表示し、クリックすると詳細を表示します。回答のメイン コンテンツと引用ボタンを併せて表示し、ユーザーが引用をクリックすることで全文を確認できるようにします。
+この Adaptive Card では、引用を `Action.ShowCard` ボタンとして一覧表示し、クリックすると詳細を表示できます。また、引用ボタンと共に応答のメイン コンテンツも表示します。ユーザーが引用の詳細を読みたい場合、そのボタンをクリックして全文を確認できます。
 
 <cc-end-step lab="bta3" exercise="2" step="1" />
 
-### 手順 2: PredictedSayCommand を使用して引用体験をカスタマイズする
+### Step 2: PredictedSayCommand を使用して引用エクスペリエンスをカスタマイズする
 
-??? info "`PredictedSayCommand` は何をするのですか？"
-    **PredictedSayCommand** は AI システムが実行する応答ディレクティブです。PredictedSayCommand をカスタマイズすることで、引用やフィードバック ループなど Powered by AI 機能をカスタム エンジン エージェントのアクティビティに細かく統合できます。
+??? info "`PredictedSayCommand` は何をするのですか?"
+    **PredictedSayCommand** は AI システムが実行する応答ディレクティブです。PredictedSayCommand をカスタマイズすると、引用やフィードバック ループなどの Powered by AI 機能をエージェント アクティビティに細かく統合できます。これにより、アプリケーションのニーズに合わせて AI の応答を精密に調整できます。
 
-`src/app/app.ts` を開き、Adaptive Card をインポートするために次のスニペットをコードの先頭に追加します。
+`src/app/app.ts` を開き、ファイルの先頭に次のコードを追加して Adaptive Card をインポートします。
 
 ```javascript
 import { createResponseCard } from './card';
 ```
 
-`botbuilder` のインポートに `CardFactory` を追加し、更新後は次のようになります。
+`botbuilder` のインポートに `CardFactory` を追加します。更新後は次のようになります。
 
 ```javascript
 import { CardFactory, MemoryStorage, MessageFactory, TurnContext } from "botbuilder";
 ```
 
-"@microsoft/teams-ai" のインポートに `AI` と `PredictedSayCommand` を追加し、更新後は次のようになります。
+`@microsoft/teams-ai` のインポートに `AI` と `PredictedSayCommand` を追加します。更新後は次のようになります。
 
 ```javascript
 import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand} from "@microsoft/teams-ai";
@@ -235,28 +235,28 @@ app.ai.action<PredictedSayCommand>(AI.SayCommandActionName, async (context, stat
 
 <cc-end-step lab="bta3" exercise="2" step="2" />
 
-### 手順 3: カスタマイズした引用体験をテストする
+### Step 3: カスタマイズした引用エクスペリエンスをテストする
 
-Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら **Add** を選択してチャットを開始します。
+Career Genie をカスタマイズした引用エクスペリエンスでテストしましょう。Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開いたら **Add** を選択してチャットを開始します。
 
-!!! tip "ヒント: この演習をローカルでテストする"
-    Teams AI ライブラリの一部機能は Teams App Test Tool では動作しない場合があります。必ずローカルの Teams でテストとデバッグを行ってください。
+!!! tip "Tip: この演習をローカルでテストする"
+    これまでに実装した Teams AI ライブラリの一部機能は Teams App Test Tool では正しく動作しない場合があります。必ずローカル環境の Teams でテストとデバッグを行ってください。
 
-「Hi」や「Hello」で Career Genie に挨拶した後、「Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?」のような質問をしてみてください。
+まず「Hi」や「Hello」と挨拶し、その後「Can you suggest any candidates for a senior developer position with 7+ year experience that requires Japanese speaking?」のように質問します。
 
 ![An animation showing the behavior of citations in a custom engine agent. There is a prompt and a response that provides three citations. Each citation shows the actual resume for each employee referenced in the answer.](../../../assets/images/custom-engine-03/customized-citation.gif)
 
-Adaptive Cards でカスタマイズされた引用体験では、引用ごとにボタンが表示されます。各ボタンをクリックするとドキュメント ビューが展開され、候補者の履歴書の詳細を確認できます。
+Adaptive Cards でカスタマイズされた引用エクスペリエンスでは、各引用にボタンが表示されます。ボタンをクリックするとドキュメントの詳細が展開され、候補者の履歴書を確認できます。
 
 <cc-end-step lab="bta3" exercise="2" step="3" />
 
-## 演習 3: AI 生成ラベルを有効化する
+## Exercise 3: AI 生成ラベルを有効化する
 
-この演習では、`PredictedSayCommand` を使用してユーザー エクスペリエンスをさらにカスタマイズし、AI と人間の応答を区別できるように「AI 生成」ラベルを有効化します。
+この演習では `PredictedSayCommand` を引き続き使用してユーザー エクスペリエンスをカスタマイズします。AI と人間の応答を区別しやすくするため、AI システムが作成したメッセージに「AI generated」ラベルを表示します。
 
-### 手順 1: PredictedSayCommand で AI 生成ラベルを有効化する
+### Step 1: PredictedSayCommand で AI 生成ラベルを有効化する
 
-`src/app/app.ts` を開き、`PredictedSayCommand` アクションを見つけて、`activity.entities` 内に次のコード スニペットを追加します。
+`src/app/app.ts` を開き、`PredictedSayCommand` アクションを見つけます。`activity.entities` 内に次のコード スニペットを追加します。
 
 ```javascript
 // Generated by AI label
@@ -281,26 +281,26 @@ activity.entities = [
 
 <cc-end-step lab="bta3" exercise="3" step="1" />
 
-### 手順 2: AI 生成ラベルをテストする
+### Step 2: AI 生成ラベルをテストする
 
-Visual Studio Code の **Run and Debug** タブで **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択し、デバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら **Add** を選択してチャットを開始します。
+Career Genie を AI 生成ラベル付きでテストしましょう。Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開いたら **Add** を選択してチャットを開始します。
 
-!!! tip "ヒント: この演習をローカルでテストする"
-    Teams AI ライブラリの一部機能は Teams App Test Tool では動作しない場合があります。必ずローカルの Teams でテストとデバッグを行ってください。
+!!! tip "Tip: この演習をローカルでテストする"
+    これまでに実装した Teams AI ライブラリの一部機能は Teams App Test Tool では正しく動作しない場合があります。必ずローカル環境の Teams でテストとデバッグを行ってください。
 
-Career Genie に挨拶するだけで、「AI generated」ラベルがメッセージの上部に表示されることを確認できます。
+Career Genie に挨拶するだけでテストできます。最初のメッセージの上部に小さく「AI generated」ラベルが表示されます。
 
 ![The UI of a chat with the custom engine agent when the Generated by AI label is enabled. At the top of the answer there is a label showing that the content is 'AI generated'.](../../../assets/images/custom-engine-03/ai-generated.png)
 
 <cc-end-step lab="bta3" exercise="3" step="2" />
 
-## 演習 4: センシティビティ ラベルを有効化する
+## Exercise 4: 機密度ラベルを有効化する
 
-最後の演習では、`PredictedSayCommand` を利用してセンシティビティ ラベルを有効化します。Career Genie は人事業務の専門家として機密情報を共有するケースが多いため、AI 生成メッセージの上部にセンシティビティ ラベルを表示し、組織外への共有可否を示します。
+最後の演習では、`PredictedSayCommand` を活用して機密度ラベルを有効化します。Career Genie は人事タスクに特化しており、組織内でのみ共有すべき機密情報を扱うことが多いです。このようなシナリオでは、AI 生成メッセージの上部に機密度ラベルが表示され、組織外への共有可否が示されます。
 
-### 手順 1: PredictedSayCommand でセンシティビティ ラベルを有効化する
+### Step 1: PredictedSayCommand で機密度ラベルを有効化する
 
-`src/app/app.ts` を開き、`PredictedSayCommand` アクションを見つけて `activity.entities` 内に次のコード スニペットを追加します。
+`src/app/app.ts` を開き、`PredictedSayCommand` アクションを見つけます。`activity.entities` 内に次のコード スニペットを追加します。
 
 ```javascript
 // Sensitivity label
@@ -335,27 +335,27 @@ activity.entities = [
 
 <cc-end-step lab="bta3" exercise="4" step="1" />
 
-### 手順 2: センシティビティ ラベルをテストする
+### Step 2: 機密度ラベルをテストする
 
-Visual Studio Code の **Run and Debug** タブで **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択し、デバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら **Add** を選択してチャットを開始します。
+Career Genie を機密度ラベル付きでテストしましょう。Visual Studio Code の **Run and Debug** タブから **Debug in Teams (Edge)** または **Debug in Teams (Chrome)** を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開いたら **Add** を選択してチャットを開始します。
 
-!!! tip "ヒント: この演習をローカルでテストする"
-    Teams AI ライブラリの一部機能は Teams App Test Tool では動作しない場合があります。必ずローカルの Teams でテストとデバッグを行ってください。
+!!! tip "Tip: この演習をローカルでテストする"
+    これまでに実装した Teams AI ライブラリの一部機能は Teams App Test Tool では正しく動作しない場合があります。必ずローカル環境の Teams でテストとデバッグを行ってください。
 
-Career Genie に挨拶するか、「Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?」のような質問をしてみてください。
+機密度ラベルをテストするには、Career Genie に挨拶するか「Can you suggest a candidate who is suitable for spanish speaking role that requires at least 2 years of .NET experience?」のように質問します。
 
 ![The UI of a chat with the custom engine agent when the Sensitivity label is enabled. At the top of the answer, next to the 'AI generated' label, there is a sensitivity shield label highlighted. There is also a card with specific guidance that appears when hoovering over the sensitivity label.](../../../assets/images/custom-engine-03/sensitivity-label.png)
 
-Career Genie のメッセージ上部に「AI Generated」ラベルの隣にセンシティビティ ラベルが表示されます。ラベルにカーソルを合わせて、組織固有のガイダンスを確認してください。
+Career Genie のメッセージで「AI generated」ラベルの隣に機密度ラベルが表示されることを確認します。機密度ラベルにカーソルを合わせると、組織固有のガイダンスが表示されます。
 
 <cc-end-step lab="bta3" exercise="4" step="2" />
 
 ---8<--- "ja/b-congratulations.md"
 
-Powered by AI キットを使ったラボ BTA3 ‑ ユーザー エクスペリエンスの向上を完了しました！ さらに深く学びたい場合は、このラボのソース コードが [Copilot Developer Camp リポジトリ](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} にあります。
+Lab BTA3 - Powered by AI キットでユーザー エクスペリエンスを強化するラボを完了しました! さらに学習したい場合は、このラボのソース コードが [Copilot Developer Camp リポジトリ](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie){target=_blank} にあります。
 
-次はラボ BTA4 ‑ 認証を使用してソリューションを保護する に進みましょう。**Next** を選択してください。
+次は Lab BTA4 - 認証を使用してソリューションを保護する に進みましょう。Next を選択してください。
 
 <cc-next url="../04-authentication" />
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/03-powered-by-ai" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/03-powered-by-ai--ja" />

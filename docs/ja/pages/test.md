@@ -4,22 +4,22 @@ search:
 ---
 # ラボ T1 - Bob の新しい Web コントロールのテスト
 
-このラボでは、Copilot Developer Camp のコンテンツ開発者であるあなたが、カスタム Web コントロールを使ってより優れたユーザー エクスペリエンスを提供する方法を学びます。
+このラボでは、Copilot Developer Camp のコンテンツ開発者である **あなた** が、カスタム Web コントロールを使用して、より優れた ユーザー エクスペリエンス を提供する方法を学習します。
 
-!!! abstract "Where did I leave off?"
+!!! abstract "前回どこまで進みましたか？"
     <cc-last-completed-step />
 
-!!! abstract "Table of Contents"
+!!! abstract "目次"
     <cc-table-of-contents />
 
-## Exercise 1: Learn the controls
+## 演習 1: コントロールの理解
 
-この演習では、各ステップの最後に進捗を記録できる `<cc-end-step>` Web コントロールの使い方を学びます。
+この演習では、各手順の最後で進捗を記録できる `<cc-end-step>` Web コントロールの使い方を学びます。
 
-### Step 1: Write the markup
+### 手順 1: マークアップの記述
 
-各ステップは、ステップ名を含む 3 級見出し（`###`）で始める必要があります。  
-そしてステップの最後に `<cc-end-step>` コントロールを挿入します。
+各手順は、手順名を含む 3rd レベル ヘッダー（`###`）から始めます。  
+その後、手順の末尾に `<cc-end-step>` コントロールを挿入します。
 
 例:
 
@@ -31,72 +31,73 @@ search:
 <cc-end-step lab="t1" exercise="1" step="1" />
 ~~~
 
-このコントロールは、チェックボックスの状態をページ更新後も一意に保持できるように、lab、exercise、step の 3 つの属性が必要です。
+このコントロールは、ラボ、演習、手順の情報を必要とします。これにより、ページを再読み込みしてもチェックボックスの状態を一意に保持できます。
 
-Table of Contents を挿入するには次を使用します。
+目次を表示する場合は次のように記述します。
 
 ~~~html
 !!! abstract "Table of Contents"
     <cc-table-of-contents />
 ~~~
 
-最後に完了したステップを表示するには次を使用します。
+最後に実行した手順を表示する場合は次のように記述します。
 
 ~~~html
 !!! abstract "Where did I leave off?"
     <cc-last-completed-step />
 ~~~
 
-各ステップの下部にあるチェックボックスに注目してください。ユーザーがチェックすると、次のことが行われます。
+各手順の下部にあるチェックボックスをオンにすると、次のことが行われます。
 
-* ステップ見出しにチェックマークが付く  
-* Table of Contents の該当ステップにチェックマークが付く  
-* ラボ上部にある「Where did I leave off」メッセージ（存在する場合）が更新される  
+* 手順の見出しにチェック マークが追加される  
+* 目次の該当手順にチェック マークが追加される  
+* ラボ上部の「前回どこまで進みましたか？」が更新される（存在する場合）  
 * チェックボックスの下に励ましのメッセージが表示される  
-* テレメトリが完了を匿名で記録する  
+* 完了状況が匿名でテレメトリに記録される  
 
-今すぐ試してみましょう！
+ぜひ試してみてください！
 
 <cc-end-step lab="t1" exercise="1" step="1" />
 
-### Step 2: Make sure your h2 and h3 elements are in order
+### 手順 2: h2 と h3 の順序を確認
 
-これらのコントロールは DOM を操作するため、以下の構成になっている必要があります。
+コントロールは DOM を操作します。そのため、以下を順守してください。
 
- - 各演習ごとに "Exercise" で始まる h2（##）がある  
- - 各ステップごとに h3（###）がある  
- - 各演習に少なくとも 1 つのステップがある  
- - ステップの最後の要素が `<cc-end-step />` である  
+ - 各演習には「Exercise」で始まる h2（`##`）があること  
+ - 各手順には h3（`###`）があること  
+ - 各演習に少なくとも 1 つの手順があること  
+ - 手順の一番最後が `<cc-end-step />` であること  
 
 <cc-end-step lab="t1" exercise="1" step="2" />
 
-### Step 3: Test the links
+### 手順 3: リンクのテスト
 
-いくつかのチェックボックスをチェックすると、「Where did I leave off」メッセージがハイパーリンクになり、最後に完了したステップの末尾へ直接移動できるようになります。
+いくつかのチェックボックスをオンにした状態で確認してください。  
+「前回どこまで進みましたか？」メッセージはハイパーリンクになり、最後に完了した手順の末尾に直接移動します。
 
-一方、Table of Contents のリンクは各ステップの先頭へ移動します。
+一方、目次のリンクは各手順の冒頭に移動します。
 
 <cc-end-step lab="t1" exercise="1" step="3" />
 
-### Step 4: How does it work?
+### 手順 4: 仕組み
 
-これらは標準の Web コンポーネントとして作成されています。チェックボックスの状態は local storage に保存されるため、同じブラウザーとプロファイルでラボに戻れば、前回の状態が保持されます。興味がある場合は [こちらのコード](https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/cc-lab-step.js){target=_blank} をご覧ください。
+これらのコントロールは標準の Web コンポーネントで作成されています。チェックボックスの状態はローカル ストレージに保存されるため、同じブラウザーとプロファイルで戻ってくる限り、前回の状態が保持されます。興味がある方は [こちらがコードです](https://github.com/microsoft/copilot-camp/blob/main/docs/javascripts/cc-lab-step.js){target=_blank}。
 
 <cc-end-step lab="t1" exercise="1" step="4" />
 
-## Exercise 2: Give feedback
+## 演習 2: フィードバックの提供
 
-### Step 1: Do you like it?
+### 手順 1: 気に入りましたか？
 
-便利でしょうか？どのように改善できると思いますか？
+役に立ちましたか？ どのように改善できるでしょうか？
 
 <cc-end-step lab="t1" exercise="2" step="1" />
 
-### Step 2: Long steps are no problem
+### 手順 2: 長い手順でも問題なし
 
-最初の実装では、各ステップの見出しに 1 つだけチェックボックスが置かれていました。  
-ステップが非常に長い場合、ユーザーはチェックするために上まで戻らないかもしれません。そこでチェックボックスを下部に移動しました。  
-以下のダミー文をスクロールしてチェックしてみてください！
+初期実装では、各手順の見出しに 1 つのチェックボックスを配置していました。  
+しかし、この手順のように非常に長い場合、 ユーザー が上部までスクロールバックしてチェックするとは限りません。そこで、チェックボックスを手順の末尾に移動しました。  
+大量のダミー文（ラテン語）をスクロールして、チェックボックスを確認してみてください！
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis nulla elit. Sed tortor turpis, mollis non pretium a, consectetur at augue. Fusce eu mi in sem imperdiet accumsan. Phasellus ullamcorper magna vel tincidunt dapibus. Pellentesque congue commodo finibus. Morbi scelerisque porta velit dictum tincidunt. Suspendisse potenti. Ut a mi suscipit, varius tellus id, luctus nisi. Aenean nec magna vel tortor fermentum laoreet. Praesent mattis hendrerit arcu nec rutrum. Maecenas sit amet sagittis ex, id interdum eros. Donec euismod a nisi nec efficitur. Cras sit amet massa elementum augue efficitur maximus non sed neque. Maecenas sit amet fringilla risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 
@@ -120,7 +121,7 @@ Nunc massa velit, gravida a nunc in, efficitur viverra sapien. Sed viverra ullam
 
 <cc-end-step lab="t1" exercise="2" step="2" />
 
-### Step 3: Thank you!
+### 手順 3: ありがとうございます！
 
 Copilot Developer Camp の Web コントロールをテストしていただき、ありがとうございます！
 

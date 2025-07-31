@@ -55,8 +55,7 @@ search:
 source_dir = "docs"
 languages = {
     "ja": "Japanese",
-    #"zh": "Chinese",
-    # Add more languages here, e.g., "fr": "French"
+    # Add more languages here, e.g., "fr": "French", "zh": "Chinese"
 }
 
 # Define dictionaries for translation control
@@ -73,9 +72,8 @@ do_not_translate = [
     "Visual Studio Code",
     "VS Code",
     "Agents SDK",
-    "Hello World",
     "MCP",
-    "SharePoint Online",
+    "SharePoint",
     # Add more terms here
 ]
 
@@ -98,36 +96,16 @@ eng_to_non_eng_mapping = {
     },
     # Add more languages here
 }
-eng_to_non_eng_instructions = {
-    "common": [
-        "* The term 'examples' must be code examples when the page mentions the code examples in the repo, it can be translated as either 'code examples' or 'sample code'.",
-        "* The term 'primitives' can be translated as basic components.",
-        "* When the terms 'instructions' and 'tools' are mentioned as API parameter names, they must be kept as is.",
-        "* The terms 'temperature', 'top_p', 'max_tokens', 'presence_penalty', 'frequency_penalty' as parameter names must be kept as is.",
-    ],
-    "ja": [
-        "* The term 'result' in the Runner guide context must be translated like 'execution results'",
-        "* The term 'raw' in 'raw response events' must be kept as is",
-        "* You must consistently use polite wording such as です/ます rather than である/なのだ.",
-        # Add more Japanese mappings here
-    ],
-    # Add more languages here
-}
-
 
 def built_instructions(target_language: str, lang_code: str) -> str:
     do_not_translate_terms = "\n".join(do_not_translate)
     specific_terms = "\n".join(
         [f"* {k} -> {v}" for k, v in eng_to_non_eng_mapping.get(lang_code, {}).items()]
     )
-    specific_instructions = "\n".join(
-        eng_to_non_eng_instructions.get("common", [])
-        + eng_to_non_eng_instructions.get(lang_code, [])
-    )
     return f"""You are an expert technical translator.
 
 Your task: translate the markdown passed as a user input from English into {target_language}.
-The inputs are the official OpenAI Agents SDK framework documentation, and your translation outputs'll be used for serving the official {target_language} version of them. Thus, accuracy, clarity, and fidelity to the original are critical.
+The inputs are the Microsoft 365 Copilot agent building instructions, and your translation outputs will be used for serving the official {target_language} version of the instructions. Thus, accuracy, clarity, and fidelity to the original are critical.
 
 ############################
 ##  OUTPUT REQUIREMENTS  ##
@@ -160,6 +138,7 @@ You must return **only** the translated markdown. Do not include any commentary,
 *(applies only when {target_language} = Japanese)*  
 - Insert a half‑width space before and after all alphanumeric terms.  
 - Add a half‑width space just outside markdown emphasis markers: ` **太字** ` (good) vs `** 太字 **` (bad).
+- You must consistently use polite wording such as です/ます rather than である/なのだ.
 
 #########################
 ##  DO NOT TRANSLATE   ##
@@ -174,14 +153,15 @@ Translate these terms exactly as provided (no extra spaces):
 {specific_terms}
 
 #########################
-##  EXTRA GUIDELINES   ##
-#########################
-{specific_instructions}
-
-#########################
 ##  IF UNSURE          ##
 #########################
 If you are uncertain about a term, leave the original English term in parentheses after your translation.
+
+#########################
+##  TRACKING LINK      ##
+#########################
+There is a tracking link to measure the site traffic on each markdown file, except under `docs/includes/`.
+If you see a HTML tag begins with `<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/…`, append `--{lang_code}` to the end of the URL like this: `<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent--ja">`.
 
 #########################
 ##  WORKFLOW           ##
@@ -316,20 +296,6 @@ def main():
                     futures.clear()
 
     print("Translation completed.")
-
-    # Move and rename language-specific includes folders - docs/<lang_code>/includes -> docs/includes/<lang_code>
-    # for lang_code in languages:
-    #     src_folder = os.path.join("docs", lang_code, "includes")
-    #     renamed_folder = os.path.join("docs", lang_code, lang_code)
-    #     dest_folder = os.path.join("docs", "includes", lang_code)
-
-    #     if os.path.exists(src_folder):
-    #         os.rename(src_folder, renamed_folder)
-    #     if os.path.exists(renamed_folder):
-    #         os.makedirs(os.path.dirname(dest_folder), exist_ok=True)
-    #         shutil.move(renamed_folder, dest_folder)
-
-    # print("Includes dir relocated.")
 
 if __name__ == "__main__":
     # translate_single_source_file("docs/index.md")
