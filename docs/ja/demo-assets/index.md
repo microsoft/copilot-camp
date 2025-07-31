@@ -2,7 +2,8 @@
 search:
   exclude: true
 ---
-以下のサンプル画像は、 Trey Research API プラグインなどのコード サンプルで使用するために GitHub Pages 上にホストされています。ポートレートは Microsoft Copilot を使用して生成されました。
+The following sample images are hosted in the github pages for use by code samples such as the Trey Research API Plugin.
+Portraits were generated using Microsoft Copilot.
 
 <style>
     img {

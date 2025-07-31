@@ -2,30 +2,30 @@
 search:
   exclude: true
 ---
-# ラボ M3 - 新しい検索コマンドによるプラグイン拡張
+# Lab M3 - 新しい検索コマンドでプラグインを拡張
 
-このラボでは、 Northwind プラグインに新しいコマンドを追加して拡張します。現在のメッセージ拡張は Northwind 在庫データベース内の製品情報は提供できますが、 Northwind の顧客に関する情報は提供できません。ユーザーが指定した会社名で注文された製品を取得する API 呼び出しに関連付けられた新しいコマンドを追加してください。 
+この lab では、Northwind プラグインに新しいコマンドを追加して機能を拡張します。現在のメッセージ拡張機能は Northwind 在庫データベース内の製品情報を提供しますが、Northwind の顧客に関する情報は提供しません。ユーザーが指定した顧客名で注文された製品を取得する API 呼び出しに紐づく新しいコマンドを導入してください。 
 
 ???+ "Extend Teams Message Extension ラボのナビゲーション (Extend Path)"
-    - [ラボ M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
-    - [ラボ M1 - Northwind メッセージ拡張を知る](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
-    - [ラボ M2 - Microsoft 365 Copilot でアプリを実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
-    - [ラボ M3 - 新しい検索コマンドでプラグインを拡張](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) (📍現在のラボ)
-    - [ラボ M4 - 認証を追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
-    - [ラボ M5 - アクションコマンドを追加してプラグインを拡張](/copilot-camp/pages/extend-message-ext/05-add-action) 
+    - [Lab M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
+    - [Lab M1 - Northwind メッセージ拡張を知る](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
+    - [Lab M2 - Microsoft 365 Copilot でアプリを実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
+    - [Lab M3 - 新しい検索コマンドでプラグインを拡張](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) (📍現在地)
+    - [Lab M4 - 認証を追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) 
+    - [Lab M5 - アクションコマンドを追加してプラグインを強化](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
 !!! tip "NOTE"
-    すべてのコード変更を含む完成済みの演習は [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab03-Enhance-NW-Teams/Northwind/) からダウンロードできます。トラブルシューティングに便利です。  
-    編集をリセットしたい場合は、リポジトリを再度クローンしてやり直してください。
+    すべてのコード変更を含む完成済みの演習は [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab03-Enhance-NW-Teams/Northwind/) からダウンロードできます。トラブルシューティングに役立ちます。  
+    編集内容をリセットしたい場合は、リポジトリを再度クローンして最初からやり直してください。
 
 
 
-## 演習 1 - コード変更
+## Exercise 1 - コード変更
 
-### 手順 1 - メッセージ拡張 / プラグインの UI 拡張 
+### Step 1 - メッセージ拡張 / プラグインの UI を拡張する 
 
-前のラボで使用した **Northwind** 作業ディレクトリで、 **appPackage** フォルダー内の **manifest.json** を開きます。  
-commands 配列内の `discountSearch` を探してください。 `discountSearch` コマンドの閉じかっこ `}` の後にカンマ `,` を追加します。その後、 `companySearch` コマンドのスニペットをコピーして commands 配列に追加します。
+前の lab で使用した **Northwind** 作業フォルダー内の **appPackage** フォルダーにある **manifest.json** を開きます。  
+commands 配列内で `discountSearch` を探してください。`discountSearch` コマンドの閉じ中かっこ直後にカンマ ( , ) を追加します。続いて、`companySearch` コマンドのスニペットをコピーして commands 配列に追加します。
 
 ```json
 {
@@ -48,10 +48,10 @@ commands 配列内の `discountSearch` を探してください。 `discountSear
 }
 ```
 !!! tip "COMMAND_ID"
-    "id" は UI とコードをつなぐキーです。この値は `discount/product/SearchCommand.ts` ファイルで `COMMAND_ID` として定義されています。各ファイルには固有の `COMMAND_ID` があり、"id" の値と一致していることがわかります。
+    「id」は UI とコードを結び付けるキーです。この値は discount/product/SearchCommand.ts ファイルの `COMMAND_ID` として定義されています。各ファイルに固有の `COMMAND_ID` があり、manifest の「id」と対応していることを確認してください。
 
-### 手順 2 - 会社名による製品検索の実装
-会社名での製品検索を実装し、その会社が注文した製品のリストを返します。以下のテーブルを参照して情報を取得してください。
+### Step 2 - 会社名による製品検索を実装する
+会社名で製品を検索し、その会社が注文した製品の一覧を返す機能を実装します。以下のテーブルを使用して情報を取得してください。
 
 | Table         | Find        | Look Up By    |
 | ------------- | ----------- | ------------- |
@@ -59,19 +59,19 @@ commands 配列内の `discountSearch` を探してください。 `discountSear
 | Orders        | Order Id    | Customer Id   |
 | OrderDetail   | Product     | Order Id      |
 
-仕組みは次のとおりです。  
-Customer テーブルで Customer Name から Customer Id を取得します。 Orders テーブルを Customer Id で検索し、関連する Order Id を取得します。各 Order Id について、 OrderDetail テーブルで関連する製品を検索します。最後に、指定した会社名が注文した製品のリストを返します。
+仕組みは次のとおりです:  
+Customer テーブルを使用して Customer Name から Customer Id を取得します。Orders テーブルを Customer Id でクエリし、関連する Order Id を取得します。各 Order Id について、OrderDetail テーブルから関連製品を取得します。最後に、指定した会社名で注文された製品のリストを返します。
 
 **.\src\northwindDB\products.ts** を開きます。
 
-1 行目の `import` 文を更新し、 OrderDetail、 Order、 Customer を含めます。次のようになります。
+1 行目の `import` 文を更新して、OrderDetail、Order、Customer を含めます。以下のようになります。
 ```javascript
 import {
     TABLE_NAME, Product, ProductEx, Supplier, Category, OrderDetail,
     Order, Customer
 } from './model';
 ```
-`import { getInventoryStatus } from '../adaptiveCards/utils';` の直後に、以下のスニペットのように `searchProductsByCustomer()` 関数を追加します。
+`import { getInventoryStatus } from '../adaptiveCards/utils';` の直後に、以下のスニペットのとおり `searchProductsByCustomer()` 関数を追加します。
 
 ```javascript
 export async function searchProductsByCustomer(companyName: string): Promise<ProductEx[]> {
@@ -121,15 +121,15 @@ export async function searchProductsByCustomer(companyName: string): Promise<Pro
 
 
 
-### 手順 3 - 新しいコマンドのハンドラーを作成
+### Step 3: 新しいコマンド用のハンドラーを作成する
 
-VS Code で **src/messageExtensions** フォルダーにある **productSearchCommand.ts** を複製し、コピーしたファイル名を "customerSearchCommand.ts" に変更します。
+VS Code で **src/messageExtensions** フォルダー内の **productSearchCommand.ts** を複製し、コピーしたファイルを "customerSearchCommand.ts" にリネームします。
 
-`COMMAND_ID` 定数の値を次のように変更します。
+`COMMAND_ID` 定数の値を次のように変更します:
 ```javascript
 const COMMAND_ID = "companySearch";
 ```
-以下の import 文を:
+以下の import 文を
 
 ```JavaScript
 import { searchProducts } from "../northwindDB/products";`
@@ -139,9 +139,9 @@ import { searchProducts } from "../northwindDB/products";`
 ```JavaScript
 import { searchProductsByCustomer } from "../northwindDB/products";
 ```
-へ置き換えます。
+に置き換えます。
 
-**handleTeamsMessagingExtensionQuery** の既存の波かっこの中を、次のスニペットで置き換えます。
+**handleTeamsMessagingExtensionQuery** の既存の波かっこ `{}` 内のコードを、下記スニペットに置き換えます。
 
 ```javascript
  
@@ -179,10 +179,10 @@ import { searchProductsByCustomer } from "../northwindDB/products";
 ```
 
 
-### 手順 4 - コマンドルーティングの更新
-この手順では、 `companySearch` コマンドを前の手順で実装したハンドラーにルーティングします。
+### Step 4 - コマンドルーティングを更新する
+このステップでは、`companySearch` コマンドを前のステップで実装したハンドラーにルーティングします。
 
-**src** フォルダーの **searchApp.ts** を開き、以下の import 文を追加します。 
+**src** フォルダーの **searchApp.ts** を開き、以下の import 文を追加します。
 
 ```javascript
 import customerSearchCommand from "./messageExtensions/customerSearchCommand";
@@ -197,66 +197,66 @@ import customerSearchCommand from "./messageExtensions/customerSearchCommand";
 ```
 
 !!! tip "Note"
-    UI 操作でメッセージ拡張 / プラグインを使用するときは、このコマンドが明示的に呼び出されます。しかし、 Microsoft 365 Copilot から呼び出される場合は、 Copilot オーケストレーターによってトリガーされます。
+    メッセージ拡張 / プラグインの UI 操作では、このコマンドは明示的に呼び出されますが、Microsoft 365 Copilot から呼び出される場合は Copilot オーケストレーターによってトリガーされます。
 
-## 演習 2 - アプリを実行！会社名で製品を検索
+## Exercise 2 - アプリを実行！会社名で製品を検索
 
-これで、サンプルを Microsoft 365 Copilot のプラグインとしてテストする準備ができました。
+これで、Microsoft 365 Copilot 用プラグインとしてサンプルをテストする準備が整いました。
 
-### 手順 1: 更新したアプリをローカルで実行
+### Step 1: 更新したアプリをローカルで実行する
 
-ローカルデバッガーが起動している場合は停止します。新しいコマンドを manifest に追加したため、新しいパッケージでアプリを再インストールする必要があります。  
-**appPackage** フォルダー内の **manifest.json** で manifest のバージョンを "1.0.9" から "1.0.10" に更新します。これによりアプリの変更が反映されます。 
+ローカルデバッガーが起動したままの場合は停止してください。manifest に新しいコマンドを追加したため、新しいパッケージでアプリを再インストールする必要があります。  
+**appPackage** フォルダー内の **manifest.json** で、manifest バージョンを "1.0.9" から "1.0.10" に更新します。これによりアプリの新しい変更が反映されます。 
 
-F5 を押すか、開始ボタン 1️⃣ をクリックしてデバッガーを再起動します。デバッグプロファイルを選択するダイアログが表示されたら、 Debug in Teams (Edge) 2️⃣ を選択するか、別のプロファイルを選んでください。
+F5 キーを押すか、スタートボタン 1️⃣ をクリックしてデバッガーを再起動します。デバッグプロファイルを選択するダイアログが表示されたら、Debug in Teams (Edge) 2️⃣ を選択するか、別のプロファイルを選択してください。
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
-デバッグによりブラウザーで Teams が開きます。 Agents Toolkit にサインインしたのと同じ資格情報でログインしてください。  
-ログインすると Microsoft Teams がアプリを開くかどうか確認するダイアログを表示します。 
+デバッグが開始されると、ブラウザー ウィンドウで Teams が開きます。Agents Toolkit にサインインしたものと同じ資格情報でログインしてください。  
+Teams が開いたら、アプリを開くかどうかを尋ねるダイアログが表示されます。 
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
 
-開くと、どのサーフェスでアプリを開くか尋ねられます。既定ではパーソナルチャットですが、チャンネルやグループチャットも選択できます。「Open」を選択します。
+開くとすぐに、どのサーフェスでアプリを開くか選択するよう求められます。既定ではパーソナルチャットです。チャンネルやグループチャットを選択することも可能です。「Open」を選択してください。
 
 ![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
 
-現在はアプリとのパーソナルチャットにいます。ただし Copilot でテストするため、次の手順に従います。 
+これでアプリとのパーソナルチャットに入ります。ただし Copilot でテストするため、次の手順に従ってください。 
 
-Teams で **Chat** をクリックし、 **Copilot** を選択します。 Copilot が最上部に表示されるはずです。  
-**Plugin アイコン** をクリックし、 **Northwind Inventory** を選択してプラグインを有効にします。
+Teams で **Chat** をクリックし、その後 **Copilot** をクリックします。Copilot は最上位に表示されます。  
+**Plugin アイコン** をクリックし、**Northwind Inventory** を選択してプラグインを有効化します。
 
-### 手順 2: Copilot で新しいコマンドをテスト
+### Step 2: Copilot で新しいコマンドをテストする
 
-次のプロンプトを入力します。 
+次のプロンプトを入力します: 
 
 *What are the products ordered by 'Consolidated Holdings' in Northwind Inventory?*
 
-ターミナル出力では、 Copilot がクエリを理解し `companySearch` コマンドを実行して、 Copilot が抽出した会社名を渡したことが確認できます。  
+ターミナル出力には、Copilot がクエリを理解し `companySearch` コマンドを実行、会社名を抽出して渡したことが表示されます。  
 ![03-07-response-customer-search](../../assets/images/extend-message-ext-03/03-08-terminal-query-output.png)
 
-Copilot での出力は次のとおりです:  
+Copilot の出力例:  
 ![03-07-response-customer-search](../../assets/images/extend-message-ext-03/03-07-response-customer-search.png)
 
-ほかにも次のプロンプトを試してください。
+次のプロンプトも試してみてください:
 
 *What are the products ordered by 'Consolidated Holdings' in Northwind Inventory? Please list the product name, price and supplier in a table.*
 
-### 手順 3: メッセージ拡張としてコマンドをテスト (オプション)
+### Step 3: メッセージ拡張としてコマンドをテストする (オプション)
 
-もちろん、この新しいコマンドをメッセージ拡張としてテストすることも可能です。前のラボと同様に行います。
+もちろん、前の lab と同様にサンプルをメッセージ拡張として使用して、この新しいコマンドをテストすることも可能です。
 
-1. Teams のサイドバーで **Chats** セクションに移動し、任意のチャットを選択するか新しいチャットを開始します。  
-2. + アイコンをクリックして **Apps** セクションを開きます。  
+1. Teams サイドバーの **Chats** セクションに移動し、任意のチャットを選択するか新しいチャットを開始します。  
+2. + 記号をクリックして Apps セクションにアクセスします。  
 3. Northwind Inventory アプリを選択します。  
-4. **Customer** という新しいタブが表示されていることを確認します。  
-5. **Consolidated Holdings** を検索し、この会社が注文した製品を確認します。 Copilot で返された結果と一致するはずです。  
+4. **Customer** という新しいタブが表示されていることを確認してください。  
+5. **Consolidated Holdings** を検索し、この会社が注文した製品を確認します。Copilot が前のステップで返した結果と一致します。
 
 ![The new command used as a message extension](../../assets/images/extend-message-ext-03/03-08-customer-message-extension.png)
 
 <cc-next />
 
-## まとめ
-これでプラグイン チャンピオンになりました。次は認証でプラグインを保護しましょう。次のラボへ進むには「Next」を選択してください。
+## Congratulations
+これでプラグイン チャンピオンです！ 次は認証でプラグインを保護しましょう。次の lab に進むには「Next」を選択してください。
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/03-enhance-nw-plugin" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/03-enhance-nw-plugin--ja" />

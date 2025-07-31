@@ -2,19 +2,19 @@
 search:
   exclude: true
 ---
-# 概要 - Teams AI ライブラリで独自エージェントを構築
+# イントロ - Teams AI Library で独自の エージェント を構築する
 
-Copilot Developer Camp の Build Path では、Microsoft Teams 上で動作するカスタム エンジン エージェントを Teams AI ライブラリを使って開発します。このエージェントは、人事部門が履歴書を管理したり、新しい求人情報を作成したりするのを支援するよう設計されています。
+Copilot Developer Camp の Build Path では、 Teams AI Library を使用して Microsoft Teams 上で動作するカスタム エンジン エージェント を開発します。 この エージェント は、人事部門が履歴書を管理したり、新しい求人票を作成したりするなどの業務を支援するように設計されています。
 
-???+ info "カスタム エンジン エージェントとは？"
-    カスタム エンジン エージェントは、Generative AI を活用したチャットボットで、高度な対話体験を提供します。カスタム エンジン エージェントは Teams AI ライブラリを使用して構築され、プロンプト、アクション、モデル統合の管理を含む包括的な AI 機能と、UI カスタマイズの豊富なオプションを備えています。これにより、Microsoft プラットフォームと連携しつつ、AI の機能を最大限に活用したシームレスで魅力的なエクスペリエンスを実現できます。
+???+ info "カスタム エンジン エージェント とは?"
+    カスタム エンジン エージェント は、生成 AI を活用したチャットボットであり、高度な会話体験を提供するように設計されています。 カスタム エンジン エージェント は Teams AI Library を使用して構築され、プロンプト、アクション、モデル統合の管理に加え、 UI カスタマイズのための豊富なオプションなど、包括的な AI 機能を提供します。 これにより、チャットボットが AI の持つ能力を最大限に活用しつつ、 Microsoft プラットフォームと整合したシームレスで魅力的な体験を実現できます。
 
-この学習は、M365 Agents Toolkit、Teams AI ライブラリ、Azure OpenAI を用いて基本的なカスタム エンジン エージェントを構築するところから始まります。その後、さまざまな履歴書を検索できる Retrieval Augmented Generation (RAG) を実装し、Copilot のような UI を適用してチャットボットの見た目と操作感を向上させ、最終的には認証を有効化してカスタム エンジン エージェントを保護し、Microsoft Graph を利用して Microsoft 365 データを統合します。この高度なカスタム エンジン エージェントは、カスタム AI モデルとオーケストレーターを活用し、人事部門の固有のニーズを満たします。
+この旅は、 M365 Agents Toolkit、 Teams AI Library、 Azure OpenAI を使用して基本的なカスタム エンジン エージェント を構築することから始まります。 次に、 RAG (Retrieval Augmented Generation) を実装して多様な履歴書を検索できるようにし、 UI を強化して Copilot らしい見た目と操作感を実現します。 最後に認証を有効化してカスタム エンジン エージェント を保護し、 Microsoft Graph を使用して Microsoft 365 データを取り込みます。 この高度なカスタム エンジン エージェント は、カスタム AI モデルとオーケストレーターを活用し、人事部門の特有のニーズに対応します。
 
 <hr />
 
 ---8<--- "ja/b-labs-toc.md"
   
-## <a href="./00-prerequisites">まずは Lab BTA0 から</a> — 開発環境をセットアップしましょう。
+## <a href="./00-prerequisites">ここから始める</a> - Lab BTA0 で開発環境をセットアップします。
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/index" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/index--ja" />
