@@ -36,9 +36,10 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the Copilot Developer Camp repository at [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}. Select the "Code" button and clone or download the content to your computer.
+Begin by downloading the source code for the base project using [this link]
+(https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api)
 
-Find starting code in the repo at **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research**.
+Find starting code in the repo at ****.
 Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
 !!! note
