@@ -36,11 +36,10 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the source code for the base project using [this link]
+Begin by downloading the source code zip file for the base project using [this link]
 (https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api)
 
-Find starting code in the repo at ****.
-Copy this folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
+Unzip and copy `path-e-lab02-build-api` folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
 !!! note
     The next several labs build on this one, and you should be able to continue working in the same folder for labs E2-E6. At the completion of this lab you will not have changed any of the files visible in Github, so the folder **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research** is the same at the beginning and end of the lab.
