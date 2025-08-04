@@ -293,7 +293,7 @@ If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you w
 
 If you're still in the debugger, stop it to force a complete re-deloyment.
 
-Then start the debugger by clicking the arrow or pressing F5 and return to the Copilot user interface.
+Then start the debugger by clicking the arrow or pressing F5 and return to the Copilot user interface. You might be using Teams in browser at this point to test, but you could also use office.com/chat to test your agent.
 
 ???+ info "I cannot find the agent"
     Refresh your browser and collapse and expand the navigation as shown in screen below the  if you cannot see your agents immediately after F5.
@@ -318,6 +318,15 @@ You should see a list of your projects from the API plugin, enhanced with detail
     `woodgrove path:"https://<tenant>.sharepoint.com/sites/<sitename>"`
     
     filling in your tenant and site name to match the one in the capability. You should see three Woodgrove documents; if you don't you need to troubleshoot Search since Copilot won't be able to find them either.
+
+Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the api/me endpoint of the Trey Research project API 2️⃣.
+
+See below how it brought back my information (Avery Howard is logged in user as we have not yet implemented Auth, coming up in later labs), and my projects.
+![List my information prompt and response ](../../assets/images/extend-m365-copilot-05/my-info.png)
+
+If you go back to your VS Code project under "Terminal", you will also see how the agent called the API as shown below:
+
+![Terminal showing API getting called for api/me ](../../assets/images/extend-m365-copilot-05/api-called.png)
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
