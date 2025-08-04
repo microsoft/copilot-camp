@@ -295,6 +295,10 @@ If you're still in the debugger, stop it to force a complete re-deloyment.
 
 Then start the debugger by clicking the arrow or pressing F5 and return to the Copilot user interface.
 
+???+ info "I cannot find the agent"
+    Refresh your browser and collapse and expand the navigation as shown in screen below the  if you cannot see your agents immediately after F5.
+    ![Expand and collapse navigation](../../assets/images/extend-m365-copilot-05/expand-nav.png)
+
 <cc-end-step lab="e3" exercise="3" step="1" />
 
 ### Step 2: Test the declarative agent
