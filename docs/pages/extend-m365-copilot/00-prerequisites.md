@@ -61,7 +61,7 @@ It should be no surprise that **Agents Toolkit for Visual Studio Code** requires
 
 Node.js is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need Node.js to run the web server code used throughout this workshop.
 
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version 18 or 16 for your operating system. This lab has been tested using Node.js version 18.16.0. If you already have another version of Node.js installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node.js versions on the same computer.
+Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version v22. This lab was last tested in Node Version v22.18.0.  If you already have another version of Node.js installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node.js versions on the same computer.
 
 <cc-end-step lab="e0" exercise="2" step="2" />
 
