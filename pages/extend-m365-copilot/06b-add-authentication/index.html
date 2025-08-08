@@ -1,0 +1,2717 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/06b-add-authentication/">
+      
+      
+        <link rel="prev" href="../06a-add-authentication-ttk/">
+      
+      
+        <link rel="next" href="../06c-add-sso/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Lab E6b - Add Entra ID Authentication (Manual Setup) - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-e6b-add-entra-id-authentication-with-oauth-manual-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab E6b - Add Entra ID Authentication (Manual Setup)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ja/pages/extend-m365-copilot/06b-add-authentication/" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../make/" class="md-tabs__link">
+          
+  
+  
+  Maker Path - Make your agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Extend - Build a declarative agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  Build - Build a custom engine agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../copilot-instructions/" class="md-tabs__link">
+          
+  
+  
+  Prompt engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maker Path - Make your agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Maker Path - Make your agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB - Copilot Studio agent builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB1 - Agent builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS - Microsoft Copilot Studio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS1 - First agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS2 - Defining Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS3 - Defining Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS4 - Extending Microsoft 365 Copilot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS5 - Consuming a custom connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS6 - Consuming an MCP server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS7 - Creating Autonomous Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA - SharePoint agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA1 - Build your first SharePoint agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA2 - Sharing SharePoint agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Extend - Build a declarative agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Extend - Build a declarative agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E0 - Prerequisites and Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Declarative Agent Fundamentals
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Declarative Agent Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1 - Build a Detailed Declarative Agent using TypeSpec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1a - Build a game agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build and Integrate API from scratch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Build and Integrate API from scratch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build a Backend API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add Declarative Agent and API Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance API and Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add Adaptive Cards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6a - Add Entra ID Authentication (Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older Authentication Labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Older Authentication Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab E6b - Add Entra ID Authentication (Manual Setup)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6b - Add Entra ID Authentication (Manual Setup)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-set-up-a-persistent-developer-tunnel-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Set up a persistent developer tunnel (optional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-register-an-entra-id-application-for-your-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Register an Entra ID application for your API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-register-an-entra-id-application-for-your-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Register an Entra ID application for your plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-update-the-api-app-registration-with-the-plugin-application-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Update the API app registration with the plugin application ID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-5-register-the-oauth-information-in-the-teams-developer-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Register the OAuth information in the Teams Developer Portal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-6-update-your-application-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Update your application package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-7-update-the-application-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7: Update the application code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-8-test-the-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8: Test the application
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06c-add-sso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6c - Add Entra ID Authentication (Single Sign-on manual)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Integration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E7 - Add Copilot Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build - Build a custom engine agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Build - Build a custom engine agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    M365 Agents SDK labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            M365 Agents SDK labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA1 - Prepare your agent in Azure AI Foundry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA2 - Build your first agent using M365 Agents SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA3 - Configure agent properties and test on Teams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA4 - Bring your agent to Copilot Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teams AI library labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Teams AI library labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA1 - First custom engine agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA2 - Index your data in Azure AI Search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA3 - Enhance user experience
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA4 - Add single sign on authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA5 - Add actions to handle complex tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Prompt engineering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Prompt engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copilot-instructions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copilot-instructions/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Level 1 - Simple agent instructions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-e6b-add-entra-id-authentication-with-oauth-manual-setup">Lab E6b - Add Entra ID authentication with OAuth (Manual Setup)</h1>
+<p>In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider.</p>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="note-box">
+            📘 <strong>Note:</strong>   This lab builds on the previous one, Lab E5. If you have completed lab E5, you can continue working in the same folder. If not, please copy the solution folder for Lab E5 from <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> 
+    and work there.
+    The finished solution for this lab is in the <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06b-add-oauth/trey-research-lab06b-END" target="_blank">/src/extend-m365-copilot/path-e-lab06b-add-oauth/trey-research-lab06b-END</a>folder.
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+
+  <div class="floatwide">
+  <div class="cc-lab-toc e-path">
+      <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
+      <div>
+          <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and
+              orchestration</p>
+          <ul id="lab-toc">
+              <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
+              <li><strong>🔧 Set up</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Setup</a></li>
+                  </ul>
+              </li>
+              <li><strong>🧰 Declarative agent fundamentals</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent"> Lab E1 - Build a Detailed Declarative Agent</a>
+                      </li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator"> Lab E1a - Geo locator game</a></li>
+                  </ul>
+              </li>
+              <li><strong>🛠️ Build and integrate API from scratch</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build an API</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent"> Lab E3 - Add Declarative Agent + API</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin"> Lab E4 - Enhance API + Plugin</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
+                  </ul>
+              </li>
+              <li><strong>🔐 Authentication</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk"> Lab E6a - Toolkit</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/06b-add-authentication"> Lab E6b - Manual</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/06c-add-sso"> Lab E6c - SSO</a></li>
+                  </ul>
+              </li>
+              <li><strong>🔌 Integration</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab EB - Add Graph Connector</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <script>
+  (() => {
+
+  // This script decorates the table of contents with a "you are here" indicator.
+  const toc = document.getElementsByClassName('cc-lab-toc');
+  for (const div of toc) {
+      const lis = div.querySelectorAll('li');
+      for (const li of lis) {
+          const anchor = li.querySelector('a');
+          if (anchor) {            // Get the last segment of the current URL path
+              const currentPath = window.location.pathname.slice(0, -1).split('/').pop();
+
+              // Get the last segment of the link path
+              const linkPath = anchor.getAttribute('href').split('/').pop().replace('.md', '');
+
+              // Compare the last segments
+              if (currentPath === linkPath) {
+                  const existingSpan = document.querySelector('span.you-are-here');
+                  if (existingSpan) {
+                      existingSpan.remove();
+                  }
+                  const span = document.createElement("span");
+                  span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+                  span.className = "you-are-here";
+                  li.appendChild(span);
+              }
+          }
+      }
+  }
+  })();
+  </script>
+  </div>
+
+    </div>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are many detailed setup steps for Entra ID in this lab.
+A new version of Agents Toolkit is available which will automate many of these steps for you; we plan to provide a more streamlined version of the lab shortly.</p>
+</div>
+<p>In this lab you will register Entra ID applications that are used to secure your plugin and API. Before you begin, choose a safe place for your app information. Here are the values you'll need to save:</p>
+<pre><code class="language-text">API Base URL: 
+API service Application (client) ID: 
+API service Directory (tenant) ID: 
+Authorization endpoint: 
+Token endpoint: 
+API service client secret: 
+API scope: 
+Plugin service application (client) ID: 
+Plugin service client secret: 
+</code></pre>
+<h2 id="exercise-1-set-up-a-persistent-developer-tunnel-optional">Exercise 1: Set up a persistent developer tunnel (optional)</h2>
+<p>By default, Agents Toolkit creates a new developer tunnel - and thus a new URL for accesing your locally running API - every time you start the project. Normally this is fine because Agents Toolkit automatically updates the URL where needed, but since this lab will be a manual setup, you'll have to manually update the URL in Entra ID and in Teams Developer Portal each time you start the debugger. For that reason, you may wish to set up a persistent developer tunnel with a URL that does not change.</p>
+<details class="note">
+<summary>If you don't want to set up a persistent tunnel, open this note ▶▶▶</summary>
+<p>You are free to skip this exercise and use the developer tunnel provided by Agents Toolkit. Once your project is running, you can copy this URL from the terminal tab 1️⃣ by choosing the "Start local tunnel" terminal 2️⃣; copy the Forwarding URL 3️⃣. Note this URL will change every time you start the project, and you will need to manually update the app registration reply URL (exercise 2 step 1) and the Teams Developer Portal URL (exercise 5 step 1).
+<img alt="Developer tunnel URL" src="../../../assets/images/extend-m365-copilot-06/oauth-A0.png" /></p>
+</details>
+<h3 id="step-1-install-the-developer-tunnel-cli">Step 1: Install the developer tunnel CLI</h3>
+<p>Here are the command lines for installing the developer tunnel. <a href="https://learn.microsoft.com/azure/developer/dev-tunnels/get-started" target="_blank">Full instructions and download links for the Developer Tunnel are here.</a>. </p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><code>winget install Microsoft.devtunnel</code></td>
+</tr>
+<tr>
+<td>Mac OS</td>
+<td><code>brew install --cask devtunnel</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>curl -sL https://aka.ms/DevTunnelCliInstall | bash</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You may have to restart your command line to update the file path before devtunnel commands will work</p>
+</div>
+<p>Once you have it installed, you'll need to log in. You can use your Microsoft 365 account to log in.</p>
+<pre><code class="language-sh">devtunnel user login
+</code></pre>
+<p>Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command <code>devtunnel user login</code>.</p>
+<p><cc-end-step lab="e6b" exercise="1" step="1" /></p>
+<h3 id="step-2-create-and-host-the-tunnel">Step 2: Create and host the tunnel</h3>
+<p>Then you'll need to set up a persistent tunnel to the Azure Functions local port (7071).
+You can use these commands and substitute your own name instead of "mytunnel" if you wish.</p>
+<pre><code class="language-sh">devtunnel create mytunnel -a --host-header unchanged
+devtunnel port create mytunnel -p 7071
+devtunnel host mytunnel
+</code></pre>
+<p>The command line will display the connection information, such as:</p>
+<p><img alt="The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../assets/images/extend-m365-copilot-06/devtunnel-output.png" /></p>
+<p>Copy the "Connect via browser" URL and save it as the "API Base URL".</p>
+<p><cc-end-step lab="e6b" exercise="1" step="2" /></p>
+<h3 id="step-3-disable-the-dynamically-created-tunnel-in-your-project">Step 3: Disable the dynamically created tunnel in your project</h3>
+<p>If your project is running locally, stop it. Then edit <a href="https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json" target="_blank">.vscode\tasks.json</a> and locate the "Start Teams App task. Comment out the "Start local tunnel" depdendency and add its dependency, "Start Azurite emulator" instead. The resulting task should look like this:</p>
+<pre><code class="language-json">{
+    &quot;label&quot;: &quot;Start Teams App Locally&quot;,
+    &quot;dependsOn&quot;: [
+        &quot;Validate prerequisites&quot;,
+        //&quot;Start local tunnel&quot;,
+        &quot;Start Azurite emulator&quot;,
+        &quot;Create resources&quot;,
+        &quot;Build project&quot;,
+        &quot;Start application&quot;
+    ],
+    &quot;dependsOrder&quot;: &quot;sequence&quot;
+},
+</code></pre>
+<p><cc-end-step lab="e6b" exercise="1" step="3" /></p>
+<h3 id="step-4-manually-override-the-server-url">Step 4: Manually override the server URL</h3>
+<p>Open <strong>env/.env.local</strong> and change the value of OPENAPI_SERVER_URL to the persistent tunnel URL.</p>
+<p><cc-end-step lab="e6b" exercise="1" step="4" /></p>
+<h2 id="exercise-2-register-an-entra-id-application-for-your-api">Exercise 2: Register an Entra ID application for your API</h2>
+<h3 id="step-1-add-a-new-entra-id-app-registration">Step 1: Add a new Entra ID app registration</h3>
+<p>Browse to the Entra ID admin center either via the <a href="https://portal.office.com/AdminPortal/" target="_blank">Microsoft 365 Admin center</a> or directly at <a href="https://entra.microsoft.com/" target="_blank">https://entra.microsoft.com/</a>. Make sure you are logged into your development tenant and not some other.</p>
+<p>Once you're there, click "Identity" 1️⃣, then "Applications" 2️⃣, and then "App registrations" 3️⃣. Then click the "+" 4️⃣ to add a new app registration.</p>
+<p><img alt="The Microsoft Entra admin center showing the list of applications registered and the button to create a 'New regitration'." src="../../../assets/images/extend-m365-copilot-06/oauth-A2.png" /></p>
+<p>Give your application a unique and descriptive name such as "My API Service" 1️⃣. Under "Supported account types", select "Accounts in this organizational directory only (Microsoft only - single tenant) 2️⃣. Under "Redirect URI (optional)" select "Web" and enter the URL of your developer tunnel 3️⃣. </p>
+<div class="admonition note">
+<p class="admonition-title">If you didn't make a persistent developer tunnel URL...</p>
+<p>...you will have to update the "Redirect URI" field with the new tunnel URL after each time you start your application in Agents Toolkit</p>
+</div>
+<p>Then click "Register" 4️⃣ to register your application.</p>
+<p><img alt="The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select." src="../../../assets/images/extend-m365-copilot-06/oauth-A4.png" /></p>
+<p><cc-end-step lab="e6b" exercise="2" step="1" /></p>
+<h3 id="step-2-copy-application-info-to-a-safe-place">Step 2: Copy application info to a safe place</h3>
+<p>Copy the Application ID (also called the Client ID) 1️⃣ and the Directory ID (also called the Tenant ID) 2️⃣ to a safe place; you'll need them later. Then click on the Endpoints button 3️⃣ to open the Endpoints flyout.</p>
+<p><img alt="The overview page of the application registered. There you can copy the Application ID and the Directory ID, as well as you can find the 'Endpoints' command." src="../../../assets/images/extend-m365-copilot-06/oauth-A5.png" /></p>
+<p>Now copy the two endpoint URLs with name "OAuth 2.0 authorization endpoint (v2)" 1️⃣ and "OAuth 2.0 token endpoint (v2)" 2️⃣ and save them in the same safe place.</p>
+<p><img alt="The panel with the Endpoints of the application. The buttons to copy 'OAuth 2.0 authorization endpoint (v2)' and 'OAuth 2.0 token endpoint (v2)' are highlighted." src="../../../assets/images/extend-m365-copilot-06/oauth-A7.png" /></p>
+<p><cc-end-step lab="e6b" exercise="2" step="2" /></p>
+<h3 id="step-3-create-client-secret">Step 3: Create client secret</h3>
+<p>Next, navigate to "Certificates &amp; secrets" 1️⃣ and click "+ New client secret" 2️⃣. Give your secret a name and choose a duration, then select the <em>Add</em> button. The secret will be displayed; this is your one and only chance to view it as secrets are only displayed in the portal when they're first created. Copy the secret 3️⃣ to your safe storage place.</p>
+<p><img alt="The 'Certificates &amp; secrets' page from which you can select to create a 'New client secret'." src="../../../assets/images/extend-m365-copilot-06/oauth-A11.png" /></p>
+<p><cc-end-step lab="e6b" exercise="2" step="3" /></p>
+<h3 id="step-4-expose-an-api-scope">Step 4: Expose an API Scope</h3>
+<p>In order to validate calls to your API, you need to expose an API Scope, which represents the permission to call the API. Though these could be very specific - allowing permission to do specific operations via the API - in this case we'll set up a simple scope called "access_as_user".</p>
+<p>First, browse to "Expose an API" 1️⃣ and, next to "Application ID URI" click "Add" 2️⃣. A flyout will open on the right; you can stay with the default value which is api://&lt;your application (client) ID&gt;. Go ahead and click "Save and continue" 3️⃣ to proceed.</p>
+<p><img alt="The 'Expose an API' page of the application registered, with the side panel to set the application unique URI." src="../../../assets/images/extend-m365-copilot-06/oauth-A15.png" /></p>
+<p>Under "Add a scope" enter "access_as_user" as the scope name 1️⃣. Fill in the remaining fields as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who can consent?</td>
+<td>Admins and users</td>
+</tr>
+<tr>
+<td>Admin consent display name</td>
+<td>Access My API as the user</td>
+</tr>
+<tr>
+<td>Admin consent description</td>
+<td>Allows an API to access My API as a user</td>
+</tr>
+<tr>
+<td>User consent display name</td>
+<td>Access My API as you</td>
+</tr>
+<tr>
+<td>User consent description</td>
+<td>Allows an app to access My API as you</td>
+</tr>
+<tr>
+<td>State</td>
+<td>Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>When you're done, click "Add Scope" 2️⃣.</p>
+<p><img alt="The 'Add a scope' side panel in the 'Expose an API' page of the application registered, with settings for scope name, who can consent the scope, the admin and user display name and description, and the state flag to enable or disable the scope." src="../../../assets/images/extend-m365-copilot-06/oauth-A17.png" /></p>
+<p><cc-end-step lab="e6b" exercise="2" step="4" /></p>
+<h3 id="step-5-save-the-api-scope">Step 5: Save the API Scope</h3>
+<p>Copy the scope to your safe place as the "API Scope".</p>
+<p><img alt="The 'Expose an API' page of the application registered, once the custom scope has been created with the button to copy the scope name highlighted." src="../../../assets/images/extend-m365-copilot-06/oauth-A17b.png" /></p>
+<p><cc-end-step lab="e6b" exercise="2" step="5" /></p>
+<h2 id="exercise-3-register-an-entra-id-application-for-your-plugin">Exercise 3: Register an Entra ID application for your plugin</h2>
+<p>Now that you've registered an API for the application, it's time to register the plugin itself.</p>
+<div class="admonition note">
+<p class="admonition-title">About two Entra ID app registrations</p>
+<p>This lab is a guide on how to adapt assuming you already have a registered application for your API and want to integrate it into the agent as a plugin. That is why we have two app registrations. 
+When creating an API from scratch, you may not always need two app registrations to implement OAuth securely to plug into the agent. Instead, you can use an existing app registration. Here is how you can do it in one single app registration in this <a href="https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/5-exercise-integrate-api-plugin-oauth" target="_blank">learn module</a></p>
+</div>
+<h3 id="step-1-register-the-plugin">Step 1: Register the plugin</h3>
+<p>Return to the "App registrations" section and register a second application. This time call it "My API Plugin" 1️⃣, and once again set "Supported account types" to "Accounts in this organizational directory only" 2️⃣.</p>
+<p>Under "Redirect URL" select "Web", and this time set it to <code>https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect</code> 3️⃣. This is the Teams location that will handle completed logins to the API Plugin application.</p>
+<p>Click the "Register" button 4️⃣ to complete the registration.</p>
+<p><img alt="The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select." src="../../../assets/images/extend-m365-copilot-06/oauth-B5.png" /></p>
+<p>As before, view the app's "Overview" page and save the Application (client) ID for the API Plugin app.</p>
+<p><cc-end-step lab="e6b" exercise="3" step="1" /></p>
+<h3 id="step-2-create-a-client-secret">Step 2: Create a client secret</h3>
+<p>As before, create a client secret and save it under "Plugin service client secret" in your safe location.</p>
+<p><cc-end-step lab="e6b" exercise="3" step="2" /></p>
+<h3 id="step-3-grant-permission">Step 3: Grant permission</h3>
+<p>Your plugin needs to call your API service, so naturally it needs permission to do that. Begin by navigating to "API permissions". Then click the "APIs my organization uses" tab 1️⃣ and search for your API service 2️⃣. Select your API service from the results 3️⃣.</p>
+<p><img alt="The 'API permissions' page of the application registered, with the side panel to grant new permissions. The 'APIs my organization uses' tab is selected and the list of applications shows 'My API Service' in the results." src="../../../assets/images/extend-m365-copilot-06/oauth-B11.png" /></p>
+<p>Now you should see your API service application. Select the "access_as_user" permission and click "Add permission".</p>
+<p><img alt="The side panel to select and add a permission to the application registered. The 'access_as_user' permission is selected and highlighted, together with the 'Add permission' button." src="../../../assets/images/extend-m365-copilot-06/oauth-B12.png" /></p>
+<p><cc-end-step lab="e6b" exercise="3" step="3" /></p>
+<h2 id="exercise-4-update-the-api-app-registration-with-the-plugin-application-id">Exercise 4: Update the API app registration with the plugin application ID</h2>
+<h3 id="step-1-add-the-plugin-apps-id-to-the-api-service-app">Step 1: Add the Plugin app's ID to the API service app</h3>
+<p>Now the API Service application needs to allow the API Plugin application to issue tokens for it. To enable this, return to the App Registration for your API Service application. Select "Manifest" and find the entry for <code>knownClientApplications</code> 1️⃣. Add your My Plugin App's client ID to this entry as follows:</p>
+<pre><code class="language-json">&quot;knownClientApplications&quot;: [
+    &quot;&lt;your-plugin-client-id&gt;&quot;
+]
+</code></pre>
+<p>Remember to click "Save" 2️⃣ when you're done.</p>
+<p><img alt="The page to edit the manifest of the application with the 'knownClientApplications' entry and the 'Save' button highlighted." src="../../../assets/images/extend-m365-copilot-06/oauth-C4.png" /></p>
+<p><cc-end-step lab="e6b" exercise="4" step="1" /></p>
+<h2 id="exercise-5-register-the-oauth-information-in-the-teams-developer-portal">Exercise 5: Register the OAuth information in the Teams Developer Portal</h2>
+<p>Now you're apps are all set up, but Microsoft 365 doesn't know anything about it. It wouldn't be safe to store secrets in the app manifest, so Teams has set up a place in the Teams Developer Portal to safely store this information. In this exercise you'll use the Teams Developer Portal to register your OAuth client application so Copilot can authenticate users for it.</p>
+<h3 id="step-1-create-a-new-oauth-client-registration">Step 1: Create a new OAuth client registration</h3>
+<p>Browse to the Teams Developer Portal at <a href="https://dev.teams.microsoft.com" target="_blank">https://dev.teams.microsoft.com</a>. Select "Tools" 1️⃣ and then "OAuth client registration" 2️⃣.</p>
+<p><img alt="The UI of the Teams Developer Portal with 'Tools' and 'OAuth client registration' highlighted." src="../../../assets/images/extend-m365-copilot-06/oauth-C2.png" /></p>
+<p>Click "Register client", if you don't have any already registered client application, or "+ New OAuth client registration", if you already have existing client applications, and fill in the form. Several of the fields are from your safely stored information you've been building up over the last few exercises.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Choose a name you'll remember</td>
+</tr>
+<tr>
+<td>Base URL</td>
+<td>your API service Base URL</td>
+</tr>
+<tr>
+<td>Restrict usage by org</td>
+<td>select "My organization only"</td>
+</tr>
+<tr>
+<td>Restrict usage by app</td>
+<td>select "Any Teams app"</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>Your <strong>Plugin Application</strong> (client) ID</td>
+</tr>
+<tr>
+<td>Client secret</td>
+<td>Your <strong>Plugin Application</strong> client secret</td>
+</tr>
+<tr>
+<td>Authorization endpoint</td>
+<td>Your authorization endpoint (same for both API Service and API Plugin apps)</td>
+</tr>
+<tr>
+<td>Token endpoint</td>
+<td>Your token endpoint (same for both API Service and API Plugin apps)</td>
+</tr>
+<tr>
+<td>Refresh endpoint</td>
+<td>Your token endpoint (same for both API Service and API Plugin apps)</td>
+</tr>
+<tr>
+<td>API scope</td>
+<td>Your API Service application's scope</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="the page to register a new OAuth client in the Teams Developer Portal. There is a list of fields to configure the client registration settings." src="../../../assets/images/extend-m365-copilot-06/oauth-C3ab.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">If you didn't make a persistent developer tunnel URL...</p>
+<p>...you will have to update the "Base URL" field with your new tunnel URL each time you start your application in Agents Toolkit</p>
+</div>
+<p><cc-end-step lab="e6b" exercise="5" step="1" /></p>
+<h3 id="step-2-save-your-oauth-registration-id">Step 2: Save your OAuth registration ID</h3>
+<p><img alt="The result of registering an OAuth client in the Teams Developer Portal. There is a box confirming the registration and providing a 'Registration ID' for reference." src="../../../assets/images/extend-m365-copilot-06/oauth-E1.png" /></p>
+<p>The portal will display your OAuth client registration ID. Save this for the next step.</p>
+<p><cc-end-step lab="e6b" exercise="5" step="2" /></p>
+<h2 id="exercise-6-update-your-application-package">Exercise 6: Update your application package</h2>
+<h3 id="step-1-update-the-plugin-file">Step 1: Update the Plugin file</h3>
+<p>Open your working folder in Visual Studio Code. In the <strong>appPackage</strong> folder, open the <strong>trey-plugin.json</strong> file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.</p>
+<p>Under <code>Runtimes</code> you will find an <code>auth</code> property with <code>type</code> of <code>"None"</code>, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the OAuth settings you saved in the vault.</p>
+<pre><code class="language-json">&quot;auth&quot;: {
+  &quot;type&quot;: &quot;OAuthPluginVault&quot;,
+  &quot;reference_id&quot;:  &quot;${{OAUTH_CLIENT_REGISTRATION_ID}}&quot;
+},
+</code></pre>
+<p>Then add this line to your <strong>env/.env.local</strong> file:</p>
+<pre><code class="language-text">OAUTH_CLIENT_REGISTRATION_ID=&lt;registration id you saved in the previous exercise&gt;
+</code></pre>
+<p>The next time you start and prompt your API plugin, it should prompt you to sign in.
+However we've done nothing to secure the application; anyone on the Internet can call it!
+In the next step you'll update the application code to check for a valid login and access the API as the actual Microsoft 365 user instead of "Avery Howard" (which is a name from Microsoft's fictitious name generator).</p>
+<p><cc-end-step lab="e6b" exercise="6" step="1" /></p>
+<h2 id="exercise-7-update-the-application-code">Exercise 7: Update the application code</h2>
+<h3 id="step-1-install-the-jwt-validation-library">Step 1: Install the JWT validation library</h3>
+<p>From a command line in your working directory, type:</p>
+<pre><code class="language-sh">npm i jwt-validate
+</code></pre>
+<p>This will install a library for validating the incoming Entra ID authorization token.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Microsoft does not provide a supported library for validating Entra ID tokens in NodeJS, but instead provides <a href="https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens" target="_blank">this detailed documentation</a> on how to write your own. <a href="https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/" target="_blank">Another useful article</a> is also available from <a href="https://www.voitanos.io/pages/about/#whos-behind-voitanos" target="_blank">Microsoft MVP Andrew Connell</a>.</p>
+<p><strong>This lab uses a <a href="https://www.npmjs.com/package/jwt-validate" target="_blank">community provided library</a> written by <a href="https://github.com/waldekmastykarz" target="_blank">Waldek Mastykarz</a>, which is intended to follow this guidance. Note that this library is not supported by Microsoft and is under an MIT License, so use it at your own risk.</strong></p>
+<p>If you want to track progress on a supported library, please follow <a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113" target="_blank">this Github issue</a>.</p>
+</div>
+<p><cc-end-step lab="e6b" exercise="7" step="1" /></p>
+<h3 id="step-2-add-environment-variables-for-your-api">Step 2: Add environment variables for your API</h3>
+<p>In the <strong>env</strong> folder in your working directory, open <strong>env.local</strong> and add these lines for your API Service app's client ID and tenant ID.</p>
+<pre><code class="language-text">API_APPLICATION_ID=&lt;your-api-service-client-id&gt;
+API_TENANT_ID=&lt;your-tenant-id&gt;
+</code></pre>
+<p>To make these values available inside your code running in Agents Toolkit, you also need to update the <strong>teamsapp.local.yml</strong> file in the root of your working folder. Look for the comment "Generate runtime environment variables" and add the new values under the STORAGE_ACCOUNT_CONNECTION_STRING:</p>
+<pre><code class="language-yaml">  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./.localConfigs
+      envs:
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
+        API_APPLICATION_ID: ${{API_APPLICATION_ID}}
+        API_TENANT_ID: ${{API_TENANT_ID}}
+</code></pre>
+<p><cc-end-step lab="e6b" exercise="7" step="2" /></p>
+<h3 id="step-3-update-the-identity-service">Step 3: Update the identity service</h3>
+<p>At this point, OAuth login should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.</p>
+<p>In the <strong>src/services</strong> folder, open <strong>IdentityService.ts</strong>. 
+At the top of the file along with the other <code>import</code> statements, add this one:</p>
+<pre><code class="language-typescript">import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
+</code></pre>
+<p>Then, right under the <code>class Identity</code> statement, add this line:</p>
+<pre><code class="language-typescript">    private validator: TokenValidator;
+</code></pre>
+<p>Now look for the comment</p>
+<pre><code class="language-typescript">// ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
+</code></pre>
+<p>Replace the comment with this code:</p>
+<pre><code class="language-typescript">// Try to validate the token and get user's basic information
+try {
+    const { API_APPLICATION_ID, API_TENANT_ID } = process.env;
+    const token = req.headers.get(&quot;Authorization&quot;)?.split(&quot; &quot;)[1];
+    if (!token) {
+        throw new HttpError(401, &quot;Authorization token not found&quot;);
+    }
+
+    // create a new token validator for the Microsoft Entra common tenant
+    if (!this.validator) {
+        // We need a new validator object which we will continue to use on subsequent
+        // requests so it can cache the Entra ID signing keys
+        // For multitenant, use:
+        // const entraJwksUri = await getEntraJwksUri();
+        const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
+        this.validator = new TokenValidator({
+            jwksUri: entraJwksUri
+        });
+        console.log (&quot;Token validator created&quot;);
+    }
+
+    // Use these options for single-tenant applications
+    const options: ValidateTokenOptions = {
+        audience: `api://${API_APPLICATION_ID}`,
+        issuer: `https://sts.windows.net/${API_TENANT_ID}/`,
+        // NOTE: If this is a multi-tenant app, look for 
+        // issuer: &quot;https://sts.windows.net/common/&quot;,
+        // Also you may wish to manage a list of allowed tenants
+        // and test them as well
+        //   allowedTenants: [process.env[&quot;AAD_APP_TENANT_ID&quot;]],
+        scp: [&quot;access_as_user&quot;]
+    };
+
+    // validate the token
+    const validToken = await this.validator.validateToken(token, options);
+
+    userId = validToken.oid;
+    userName = validToken.name;
+    userEmail = validToken.upn;
+    console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
+}
+catch (ex) {
+    // Token is missing or invalid - return a 401 error
+    console.error(ex);
+    throw new HttpError(401, &quot;Unauthorized&quot;);
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Learn from the code</p>
+<p>Have a look at the new source code. First, it obtains the token from the <code>Authorization</code> header in the HTTPs request. This header contains the word "Bearer", a space, and then the token, so a JavaScript <code>split(" ")</code> is used to obtain only the token.</p>
+<p>Also note that the code will throw an exception if authentication should fail for any reason; the Azure function will then return
+the appropriate error.</p>
+<p>The code then creates a validator for use with the <code>jwks-validate</code> library. This call reads the latest private keys from Entra ID, so it is an async call that may take some time to run.</p>
+<p>Next, the code sets up a <code>ValidateTokenOptions</code> object. Based on this object, in addition to validating that the token was signed with Entra ID's private key, the library will validate that:</p>
+<ul>
+<li>
+<p>the <em>audience</em> must be the same as the API service app URI; this ensures that the token is intended for our web service and no other</p>
+</li>
+<li>
+<p>the <em>issuer</em> must be from the security token service for our tenant</p>
+</li>
+<li>
+<p>the <em>scope</em> must match the scope defined in our app registration, which is <code>"access_as_user"</code>.</p>
+</li>
+</ul>
+<p>If the token is valid, the library returns an object with all the "claims" that were inside, including the user's unique ID, name, and email. We will use these values instead of relying on the fictitious "Avery Howard".</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">If your app will be multi-tenant</p>
+<p>Check the comments in the above code for notes about validating tokens for a multi-tenant app</p>
+</div>
+<p>Once the code has a <code>userId</code> it will look for a Consultant record for the user. This was hard-coded to Avery Howard's ID in the original code. Now it will use the user ID for the logged in user, and create a new Consultant record if it doesn't find one in the database.</p>
+<p>As a result, when you run the app for the first time, it should create a new Consultant for your logged-in user with a default set of skills, roles, etc. If you want to change them to make your own demo, you can do that using the <a href="https://azure.microsoft.com/en-us/products/storage/storage-explorer/" target="_blank">Azure Storage Explorer</a></p>
+<p><img alt="The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted." src="../../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png" /></p>
+<p>Note that project assignments are stored in the <code>Assignment</code> table and reference the project ID and the assigned consultant's consultant ID.</p>
+<p><cc-end-step lab="e6b" exercise="7" step="3" /></p>
+<h2 id="exercise-8-test-the-application">Exercise 8: Test the application</h2>
+<p>Before you test the application, update the manifest version of your app package in the <code>appPackage\manifest.json</code> file, follow these steps:</p>
+<ol>
+<li>
+<p>Open the <code>manifest.json</code> file located in the <code>appPackage</code> folder of your project.</p>
+</li>
+<li>
+<p>Locate the <code>version</code> field in the JSON file. It should look something like this:<br />
+<code>json
+   "version": "1.0.0"</code></p>
+</li>
+<li>
+<p>Increment the version number to a small increment. For example, change it to:<br />
+<code>json
+   "version": "1.0.1"</code></p>
+</li>
+<li>
+<p>Save the file after making the change.</p>
+</li>
+</ol>
+<h3 id="step-1-restart-the-application">Step 1: (Re)start the application</h3>
+<p>If your app is still running from an earlier lab, stop it to force it to re-create the application package.</p>
+<p>Then press F5 to run the application again, and install it as before.</p>
+<p>Prompt the plugin, "What Trey projects am I assigned to?". You may see a confirmation card asking if it's OK to call your API. No authentication is happening here; click "Allow Once" to proceed.</p>
+<p><img alt="Microsoft 365 Copilot showing a confirmation card asking if it is ok to call your API. There are buttons to 'Always allow', 'Allow once', or 'Cancel.'" src="../../../assets/images/extend-m365-copilot-06/oauth-run-01small.png" /></p>
+<p>The confirmation card will be replaced with a login card.
+Click "Sign in to Trey" to sign in. At first you should see a pop-up window asking you to log in and to consent to permissions. On subsequent vists this may be hidden as your credentials have been cached by Entra ID in your local browser.</p>
+<p><img alt="Microsoft 365 Copilot showing a login card with a button to 'Sign in to Trey' and another one to 'Cancel.'" src="../../../assets/images/extend-m365-copilot-06/oauth-run-02small.png" /></p>
+<p>There are cases where your admin has not allowed you to consent as a user and may see something like below:
+<img alt="The Microsoft Entra popup dialog asking for an admin approval to consume the API." src="../../../assets/images/extend-m365-copilot-06/need-admin-approval.png" /></p>
+<p>This is because the admin has restricted applications to allow user consent tenant wide. In this case, you have to request admin to manually grant global consent for all users for the plugin API registration as below:</p>
+<p><img alt="The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted." src="../../../assets/images/extend-m365-copilot-06/approval-admin.png" /></p>
+<p>The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.</p>
+<p>Since you were just added to the database, you're not assigned to any projects.</p>
+<p><img alt="The response from the 'Trey Genie' agent when the actual user doesn't have any assigned project." src="../../../assets/images/extend-m365-copilot-06/oauth-run-03bsmall.png" /></p>
+<p>Ask Copilot to add you to the Woodgrove project. Copilot will press you for details if you forgot to include any required values.</p>
+<p><img alt="The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to provide them. Once all the information are provided, the agent provides a confirmation of the action." src="../../../assets/images/extend-m365-copilot-06/oauth-run-05.png" /></p>
+<p>Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"</p>
+<p><img alt="" src="../../../assets/images/extend-m365-copilot-06/oauth-run-07.png" /></p>
+<p><cc-end-step lab="e6b" exercise="8" step="1" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>You have completed lab E6b, Add Entra ID authentication with Manual Setup!</p>
+<p>Want to try something cool? How about adding a Copilot Connector to your solution?</p>
+<p><cc-next url="../07-add-graphconnector" /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/06b-add-authentication" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
