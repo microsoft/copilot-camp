@@ -25,7 +25,7 @@ In this exercise you will add a /projects resource to the Trey Research API. Thi
 
 ### Step 1: Add Azure function code
 
-To begin, create a new file, **projects.ts** in the **/src/functions** folder of your solution from Lab 2. Then [copy the code from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/functions/projects.ts){target=_blank}.
+To begin, create a new file, **projects.ts** in the **/src/functions** folder of your solution. Then [copy the code from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/src/functions/projects.ts){target=_blank}.
 
 This will implement a new Azure function to provide access to Trey Research projects
 
@@ -35,7 +35,7 @@ This will implement a new Azure function to provide access to Trey Research proj
 
 Let's take a moment to review the code.
 
-This is a version 4 Azure function, so the code looks a lot like traditional Express code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication in [Lab E6](./06-add-authentication.md).
+This is a version 4 Azure function, so the code looks a lot like traditional Express code for NodeJS. The `projects` class implements an HTTP request trigger, which is called when the "/projects" path is accessed. This is followed by some in-line code that defines the methods and route. For now, access is anonymous; we'll add authentication, [checkout out pathways for authentication](./auth.md).
 
 ~~~typescript
 export async function projects(
@@ -91,7 +91,7 @@ Content-Type: application/json
 
 ### Step 4: Test the new resource
 
-If your app is still running from Lab 2, stop the debugger and restart it. Or, just start the debugger normally and wait for the app to start. When everything is ready, Agents Toolkit will display a web browser wanting you to log into Microsoft 365. Minimize this browser as you don't need it yet, but closing it would stop the debugger.
+If your app is still running from previous lab, stop the debugger and restart it. Or, just start the debugger normally and wait for the app to start. When everything is ready, Agents Toolkit will display a web browser wanting you to log into Microsoft 365. Minimize this browser as you don't need it yet, but closing it would stop the debugger.
 
 Now try sending the new requests and you should be able to see Trey Research project details or assign a new consultant to a project using the POST request.
 
