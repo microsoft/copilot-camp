@@ -667,15 +667,23 @@ You can now test other prompts as well to see the improved responses from Micros
 
 You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.
 
-You have 3 choices here, all of which show you how to add authentication to your app package files and validate the incoming access token in your web service. The difference is in how the app is registered in Entra ID and Microsoft 365.
+Go to the lab **Use OAuth 2.0 with Agents Toolkit** to add authentication - This is the easiest approach; you will learn to set up Agents Toolkit's automated Entra ID registration for an F5 project start experience.
 
-  1. **Use OAuth 2.0 with Agents Toolkit** - This is the easiest approach; you will learn to set up Agents Toolkit's automated Entra ID registration for an F5 project start experience
-  <cc-next url="../06a-add-authentication-ttk" label="OAuth with Agents Toolkit" />
+  <cc-next url="../06a-add-authentication-ttk" label="Next" />
 
-  2. **Use OAuth 2.0 with Manual Setup** - Leads you through all the Entra ID registration details so you can really understand what's happening; this may help adapt your solution to work with another identity provider
+
+<details>
+<summary>Other labs on Authentication with manual steps </summary>
+There are older labs created before OAuth 2.0 support with the Agents Toolkit. They demonstrate how to add authentication to your app package and validate access tokens in your web service. The main difference lies in how the app is registered in Entra ID and Microsoft 365.
+
+Feel free to explore them and they all build on the project from this lab.
+
+  1. **Use OAuth 2.0 with Manual Setup** - Leads you through all the Entra ID registration details so you can really understand what's happening; this may help adapt your solution to work with another identity provider
   <cc-next url="../06b-add-authentication" label="OAuth with Manual Setup" />
 
-  3. **Use Single Sign-on** - New capability for seamless Entra ID authentication, manual setup
+  2. **Use Single Sign-on** - New capability for seamless Entra ID authentication, manual setup
   <cc-next url="../06c-add-sso" label="Single Sign-on with Manual Setup" />
+</details>
+
   
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />

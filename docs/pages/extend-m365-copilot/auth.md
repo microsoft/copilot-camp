@@ -49,7 +49,7 @@ Test procedure:
   <cc-next url="../06b-add-authentication" label="Lab E6b - OAuth with Manual Setup"/>
 
 <hr />
-## Lab E6c - Add Single Sign-on authentication
+## Lab E6c - Add Single Sign-on authentication with manual steps for Teams Developer Portal
 
 In this lab, the student:
 
