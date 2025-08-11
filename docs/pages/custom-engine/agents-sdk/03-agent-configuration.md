@@ -10,7 +10,7 @@ Now that you’ve created a basic bot, it’s time to enhance it with generative
 
 The package you'll add in this step will provide support for Azure AI integration. Right-click to **ContosoHRAgent** project and select **Manage Nuget Packages...**, select **Browse** tab and search for `Microsoft.SemanticKernel.Agents.AzureAI`. Make sure to check **Include prerelease** checkbox. Select the package and select **Install**.
 
-<img width="1002" height="393" alt="Semantic Kernel Nuget Package" src="https://github.com/user-attachments/assets/37a290f4-e825-4140-a294-b1a8d9e1f10a" />
+![Semantic Kernel Nuget Package](https://github.com/user-attachments/assets/37a290f4-e825-4140-a294-b1a8d9e1f10a)
 
 <cc-end-step lab="bma3" exercise="1" step="1" />
 
