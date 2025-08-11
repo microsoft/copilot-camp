@@ -28,6 +28,7 @@ Wait until the agent's message "Hello and Welcome!", then type anything such as 
 
 ![The local Microsoft 365 Agents Playground when testing locally the Echo Bot. On the left side of the screen there is an emulated chat, while on the right side of the screen there is a panel with the history of the interaction between the user and the agent.](https://github.com/user-attachments/assets/4562052d-856b-44d5-b2dd-27623d9bed11)
 
+Stop the debugging session on Visual Studio before moving to the next exercise.
 
 <cc-end-step lab="bma2" exercise="1" step="2" />
 
