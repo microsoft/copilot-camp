@@ -6,17 +6,9 @@ In this lab, you’ll bring together the best of both worlds—combining the gen
 
 Now that you’ve created a basic bot, it’s time to enhance it with generative AI capabilities and upgrade it to an AI agent. In this exercise, you’ll install key libraries such as Semantic Kernel and prepare your agent to reason and respond more intelligently, ready for Teams or Copilot Chat.
 
-### Step 1: Update Project file with new packages
+### Step 1: Add Semantic Kernel Nuget Package
 
-The packages you'll add in this step will provide support for Azure AI integration. Right-click to **ContosoHRAgent** project and select **Edit Project File**, replace the ItemGroup that includes **PackageReference** with the following:
-
-```
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.1.91-beta" />
-    <PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.1.91-beta" />
-    <PackageReference Include="Microsoft.SemanticKernel.Agents.AzureAI" Version="1.52.1-preview" />
-  </ItemGroup>
-```
+The package you'll add in this step will provide support for Azure AI integration. Right-click to **ContosoHRAgent** project and select **Manage Nuget Packages...**, select **Browse** tab and search for `Microsoft.SemanticKernel.Agents.AzureAI`. Select the package and select **Install**.
 
 <cc-end-step lab="bma3" exercise="1" step="1" />
 
@@ -62,18 +54,23 @@ using Microsoft.Agents.Builder.State;
   
 namespace ContosoHRAgent
 {
-    public static class ConversationStateExtensions
-    {
-        public static int MessageCount(this ConversationState state) => state.GetValue<int>("countKey");
-        public static void MessageCount(this ConversationState state, int value) => state.SetValue("countKey", value);
-  
-        public static int IncrementMessageCount(this ConversationState state)
-        {
-            int count = state.GetValue<int>("countKey");
-            state.SetValue("countKey", ++count);
-            return count;
-        } 
-    }
+ public static class ConversationStateExtensions
+ {
+     public static int MessageCount(this ConversationState state) => state.GetValue<int>("countKey");
+
+     public static void MessageCount(this ConversationState state, int value) => state.SetValue("countKey", value);
+
+     public static int IncrementMessageCount(this ConversationState state)
+     {
+         int count = state.GetValue<int>("countKey");
+         state.SetValue("countKey", ++count);
+         return count;
+     }
+
+     public static string ThreadId(this ConversationState state) => state.GetValue<string>("threadId");
+
+     public static void ThreadId(this ConversationState state, string value) => state.SetValue("threadId", value);
+ }
 }
 ```
 
@@ -98,130 +95,90 @@ Replace the existing EchoBot constructor with the following:
 
 ```
 public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : base(options)
-  {
+{
 
-      OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync);
+    OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync);
 
-      // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
-      OnActivity(ActivityTypes.Message, OnMessageAsync);
+    // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
+    OnActivity(ActivityTypes.Message, OnMessageAsync);
 
-      // Azure AI Foundry Project ConnectionString
-      string projectEndpoint = configuration["AIServices:ProjectEndpoint"];
-      if (string.IsNullOrEmpty(projectEndpoint))
-      {
-          throw new InvalidOperationException("ProjectEndpoint is not configured.");
-      }
-      _projectClient = new PersistentAgentsClient(projectEndpoint, new DefaultAzureCredential());
-      
-      // Azure AI Foundry Agent Id
-      _agentId = configuration["AIServices:AgentID"];
-      if (string.IsNullOrEmpty(_agentId))
-      {
-          throw new InvalidOperationException("AgentID is not configured.");
-      }
+    // Azure AI Foundry Project ConnectionString
+    string projectEndpoint = configuration["AIServices:ProjectEndpoint"];
+    if (string.IsNullOrEmpty(projectEndpoint))
+    {
+        throw new InvalidOperationException("ProjectEndpoint is not configured.");
+    }
+    _projectClient = new PersistentAgentsClient(projectEndpoint, new AzureCliCredential());
 
-  }
+    // Azure AI Foundry Agent Id
+    _agentId = configuration["AIServices:AgentID"];
+    if (string.IsNullOrEmpty(_agentId))
+    {
+        throw new InvalidOperationException("AgentID is not configured.");
+    }
+
+}
+```
+
+Replace **OnMessageAsync** method with the following:
+
+```
+protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)
+{
+    // send the initial message to the user
+    await turnContext.StreamingResponse.QueueInformativeUpdateAsync("Working on it...", cancellationToken);
+
+    // get the agent definition from the project
+    var agentDefinition = await _projectClient.Administration.GetAgentAsync(_agentId, cancellationToken);
+
+    // initialize a new agent instance from the agent definition
+    var agent = new AzureAIAgent(agentDefinition, _projectClient);
+
+    // retrieve the threadId from the conversation state
+    // this is set if the agent has been invoked before in the same conversation
+    var threadId = turnState.Conversation.ThreadId();
+
+    // if the threadId is not set, we create a new thread
+    // otherwise, we use the existing thread
+    var thread = string.IsNullOrEmpty(threadId)
+        ? new AzureAIAgentThread(_projectClient)
+        : new AzureAIAgentThread(_projectClient, threadId);
+
+    try
+    {
+        // increment the message count in state and queue the count to the user
+        int count = turnState.Conversation.IncrementMessageCount();
+        turnContext.StreamingResponse.QueueTextChunk($"({count}) ");
+
+        // create the user message to send to the agent
+        var message = new ChatMessageContent(AuthorRole.User, turnContext.Activity.Text);
+
+        // invoke the agent and stream the responses to the user
+        await foreach (AgentResponseItem<StreamingChatMessageContent> agentResponse in agent.InvokeStreamingAsync(message, thread, cancellationToken: cancellationToken))
+        {
+            // if the threadId is not set, we set it from the agent response
+            // and store it in the conversation state for future use
+            if (string.IsNullOrEmpty(threadId))
+            {
+                threadId = agentResponse.Thread.Id;
+                turnState.Conversation.ThreadId(threadId);
+            }
+
+            turnContext.StreamingResponse.QueueTextChunk(agentResponse.Message.Content);
+        }
+    }
+    finally
+    {
+        // ensure we end the streaming response
+        await turnContext.StreamingResponse.EndStreamAsync(cancellationToken);
+    }
+}
+
 ```
 
 > **⚠️ Note:** When pasting the following code excerpt, you might see a warning (SKEXP0110) because this feature is still in preview. You can safely suppress this warning for now by right-clicking on AzureAIAgent, selecting **Quick Actions and Refactorings > Suppress or configure issues > Configure SKEXP0110 Severity > Silent**.
 > 
 > ![The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications.](https://github.com/user-attachments/assets/3dc267c0-c3b6-4436-9dc6-09157f9a8b5b)
-
-Replace **OnMessageAsync** method with the following:
-
-```
- protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)
-    {
-        // get the Azure AI Agent
-        var agentModel = await _projectClient.Administration.GetAgentAsync(_agentId, cancellationToken);
-        var agent = new AzureAIAgent(agentModel, _projectClient);
-        
-        try
-        {
-            // send the initial message
-            await turnContext.StreamingResponse.QueueInformativeUpdateAsync("Working on it...", cancellationToken);
-  
-            // increment the message count in state
-            int count = turnState.Conversation.IncrementMessageCount();
-            turnContext.StreamingResponse.QueueTextChunk($"({count}) ");
-  
-            var fileReferences = new List<FileReference>();
-            var citations = new List<Citation>();
-            var quote = string.Empty;
-  
-            // create the chat message to send to the agent
-            var message = new ChatMessageContent(AuthorRole.User, turnContext.Activity.Text);
-  
-            // stream the response from the agent to the user
-            await foreach (StreamingChatMessageContent chunk in agent.InvokeStreamingAsync(message, cancellationToken: cancellationToken))
-            {
-                // get the annotation content from the message chunk items, if there are any
-                var annotations = chunk.Items.OfType<StreamingAnnotationContent>();
-                foreach (StreamingAnnotationContent annotation in annotations)
-                {
-                    // check if the file reference already exists in the list and skip it if it does
-                    if (fileReferences.Any(fr => fr.Quote == annotation.Label)) { continue; }
-  
-                    var agentFile = await agent.Client.Files.GetFileAsync(annotation.ReferenceId, cancellationToken);
-                    var citation = new Citation(string.Empty, agentFile.Value.Filename, "https://m365.cloud.microsoft/chat");
-  
-                    var fileReference = new FileReference(agentFile.Value.Id, agentFile.Value.Filename, annotation.Label, citation);
-                    fileReferences.Add(fileReference);
-                }
-  
-                // if the message chunk content is empty, we can skip it
-                // this happens when the chunk contains StreamingAnnotationContent items
-                if (chunk.Content == null) { continue; }
-  
-                // if the previous message chunk contained the citation quote, we can process it now
-                if (quote != string.Empty)
-                {
-                    var fileReferenceIndex = fileReferences.FindIndex(fr => fr.Quote == quote);
-                    turnContext.StreamingResponse.QueueTextChunk($" [{fileReferenceIndex + 1}] ");
-  
-                    // reset the quote to empty string to avoid processing it again
-                    quote = string.Empty;
-                    continue;
-                }
-  
-                // if the message chunk contains an annotation quote 【4:0†source】
-                // store the value for the next message chunk so we can process it
-                // we don't want to send it to the user yet
-                if (chunk.Content.Contains('【'))
-                {
-                    quote = chunk.Content;
-                    continue;
-                }
-                else
-                {
-                    // just a regular message chunk, we can send it to the user
-                    turnContext.StreamingResponse.QueueTextChunk(chunk.Content);
-                }
-            }
-  
-            // enable generated by AI label
-            turnContext.StreamingResponse.EnableGeneratedByAILabel = true;
-  
-            // add sensitivity label
-            turnContext.StreamingResponse.SensitivityLabel = new SensitivityUsageInfo()
-            {
-                Name = "General",
-                Description = "Business data which is NOT meant for public consumption. This can be shared with internal employees, business guests and external partners as needed."
-            };
-  
-            // add citations
-            foreach (var fileReference in fileReferences)
-            {
-                citations.Add(fileReference.Citation);
-            }
-            turnContext.StreamingResponse.AddCitations(citations);
-        }
-        finally
-        {
-            await turnContext.StreamingResponse.EndStreamAsync(cancellationToken);
-        }
-    }
-```
 
 ???+ info "What happens in OnMessageAsync?"
     The *OnMessageAsync* method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to send the user’s message to your Azure AI Foundry agent, stream the response back to the user in real time, track and attach citations and file references for transparency and add sensitivity and AI-generated labels for security and traceability.
@@ -305,7 +262,7 @@ Final version of the **appsettings.json** will look like below:
 Open **Tools > Command Line > Developer Command Prompt** and run:
 
 ```
-azd auth login --scope https://ai.azure.com/.default
+az login
 ```
 
 A window will pop up on your browser and you'll need to sign into your Microsoft account to successfully complete az login.
