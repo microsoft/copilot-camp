@@ -8,7 +8,9 @@ Now that you’ve created a basic bot, it’s time to enhance it with generative
 
 ### Step 1: Add Semantic Kernel Nuget Package
 
-The package you'll add in this step will provide support for Azure AI integration. Right-click to **ContosoHRAgent** project and select **Manage Nuget Packages...**, select **Browse** tab and search for `Microsoft.SemanticKernel.Agents.AzureAI`. Select the package and select **Install**.
+The package you'll add in this step will provide support for Azure AI integration. Right-click to **ContosoHRAgent** project and select **Manage Nuget Packages...**, select **Browse** tab and search for `Microsoft.SemanticKernel.Agents.AzureAI`. Make sure to check **Include prerelease** checkbox. Select the package and select **Install**.
+
+<img width="1002" height="393" alt="Semantic Kernel Nuget Package" src="https://github.com/user-attachments/assets/37a290f4-e825-4140-a294-b1a8d9e1f10a" />
 
 <cc-end-step lab="bma3" exercise="1" step="1" />
 
@@ -178,7 +180,8 @@ protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnSta
 
 > **⚠️ Note:** When pasting the following code excerpt, you might see a warning (SKEXP0110) because this feature is still in preview. You can safely suppress this warning for now by right-clicking on AzureAIAgent, selecting **Quick Actions and Refactorings > Suppress or configure issues > Configure SKEXP0110 Severity > Silent**.
 > 
-> ![The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications.](https://github.com/user-attachments/assets/3dc267c0-c3b6-4436-9dc6-09157f9a8b5b)
+> ![The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications.](https://github.com/user-attachments/assets/ac33b725-ede5-4b70-8186-72d393f1e169)
+
 
 ???+ info "What happens in OnMessageAsync?"
     The *OnMessageAsync* method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to send the user’s message to your Azure AI Foundry agent, stream the response back to the user in real time, track and attach citations and file references for transparency and add sensitivity and AI-generated labels for security and traceability.
