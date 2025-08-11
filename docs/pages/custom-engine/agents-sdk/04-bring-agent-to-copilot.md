@@ -72,11 +72,12 @@ Your app will pop-up on Teams again, select **Add**. This time there will be an 
 
 Select your **ContosoHRAgentlocal** from the list of agents in Copilot Chat. You can select one of the conversation starters to chat with your agent.
 
-![The agent hosted inside Microsoft 365 Copilot, showing the conversation starters configured in the application manifest.](https://github.com/user-attachments/assets/2aab299c-23ff-4369-a42c-bd74c66f854d)
+![The agent hosted inside Microsoft 365 Copilot, showing the conversation starters configured in the application manifest.](https://github.com/user-attachments/assets/a1d061c7-c58f-4a1e-9481-4d6a60d85e3b)
 
 Observe that your agent responds back with a similar behavior on Copilot Chat.
 
-![The agent hosted in Microsoft 365 Copilot providing the same feedback as the one provided in Microsoft Teams, including evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/4211f43d-8aef-4262-95e3-1efac7dba495)
+![The agent hosted in Microsoft 365 Copilot providing the same feedback as the one provided in Microsoft Teams, including evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/caedced5-1247-44ed-b12f-78827f4e4784)
+
 
 ---8<--- "b-congratulations.md"
 
