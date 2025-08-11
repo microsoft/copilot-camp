@@ -206,7 +206,7 @@ Replace the **<AzureAIFoundryAgentId>** with your **Agent id** which can be foun
 
 ![The Agents Playground of Azure AI Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
 
-Replace **<ProjectEndpoint>** with your AI Foundry project connection string which can be found in the **Overview** page of the AI Foundry, under Endpoints and keys.
+Replace **<ProjectEndpoint>** with your AI Foundry project endpoing which can be found in the **Overview** page of the AI Foundry, under Endpoints and keys.
 
 Final version of the **appsettings.json** will look like below:
 

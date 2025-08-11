@@ -14,5 +14,9 @@ namespace ContosoHRAgent
             state.SetValue("countKey", ++count);
             return count;
         }
+
+        public static string ThreadId(this ConversationState state) => state.GetValue<string>("threadId");
+
+        public static void ThreadId(this ConversationState state, string value) => state.SetValue("threadId", value);
     }
 }

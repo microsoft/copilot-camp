@@ -12,8 +12,8 @@ In this final lab, you’ll bring your custom engine agent into Copilot Chat by 
 Go to **M365Agent/AppPackage/manifest.json**, update the manifest schema and version as following: 
 
 ``` 
-"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.20/MicrosoftTeams.schema.json", 
-"manifestVersion": "1.20", 
+"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+"manifestVersion": "1.22",
 ```
 
 Replace bots section with the following that will also add copilotAgents in the manifest:
