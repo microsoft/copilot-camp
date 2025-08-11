@@ -21,45 +21,45 @@ Replace bots section with the following that will also add copilotAgents in the 
 > This block declares your agent as a custom engine agent for M365 Copilot. It tells Microsoft 365 to expose this agent in Copilot Chat and surface its command list in the conversation UI along with the conversation starters to help users get started quickly.
 
 ```   
-  "bots": [ 
-    { 
-      "botId": "${{BOT_ID}}", 
-      "scopes": [ 
-        "personal", 
-        "team", 
-        "groupChat" 
-      ], 
-      "supportsFiles": false, 
-      "isNotificationOnly": false, 
-      "commandLists": [ 
-        { 
-          "scopes": [ "personal", "team", "groupChat" ], 
-          "commands": [ 
-            { 
-              "title": "Emergency and Mental Health",
-              "description": "What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
-            }, 
-            { 
-              "title": "PerksPlus Details", 
-              "description": "Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?" 
-            }, 
-            { 
-              "title": "Contoso Electronics Values", 
-              "description": "What values guide behavior and decision making at Contoso Electronics?" 
-            } 
-          ] 
-        } 
-      ] 
-    } 
-  ], 
-  "copilotAgents": { 
-    "customEngineAgents": [ 
+"bots": [ 
+  { 
+    "botId": "${{BOT_ID}}", 
+    "scopes": [ 
+      "personal", 
+      "team", 
+      "groupChat" 
+    ], 
+    "supportsFiles": false, 
+    "isNotificationOnly": false, 
+    "commandLists": [ 
       { 
-        "id": "${{BOT_ID}}", 
-        "type": "bot" 
+        "scopes": [ "personal", "team", "groupChat" ], 
+        "commands": [ 
+          { 
+            "title": "Emergency and Mental Health",
+            "description": "What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
+          }, 
+          { 
+            "title": "PerksPlus Details", 
+            "description": "Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?" 
+          }, 
+          { 
+            "title": "Contoso Electronics Values", 
+            "description": "What values guide behavior and decision making at Contoso Electronics?" 
+          } 
+        ] 
       } 
     ] 
-  }, 
+  } 
+], 
+"copilotAgents": { 
+  "customEngineAgents": [ 
+    { 
+      "id": "${{BOT_ID}}", 
+      "type": "bot" 
+    } 
+  ] 
+}, 
 ```
 
 Hit **Start** or **F5** to start debugging. Microsoft Teams will launch automatically. When Microsoft Teams open in your browser, ignore the app pop-up and select **Apps > Manage your apps > Upload an app** and then select **Upload a custom app**. In the File Explorer go to your project folder `...\ContosoHRAgent\M365Agent\appPackage\build` select **appPackage.local.zip**.
