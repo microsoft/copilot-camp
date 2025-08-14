@@ -4,23 +4,24 @@ search:
 ---
 # ラボ E0 - セットアップ
 
-このラボでは、Microsoft 365 Copilot を活用して、ニーズに合わせた AI 支援を実現する Copilot エージェントを開発・テスト・デプロイするための開発環境をセットアップします。
+このラボでは、Microsoft 365 Copilot を使用して、お客様専用の AI 支援を実現する Copilot エージェントを構築、テスト、デプロイするための開発環境をセットアップします。
 
-!!! note "Microsoft 365 Copilot 用の開発環境をセットアップする"
-    このラボでは、すでにテナントをお持ちであることを前提としています。テナントの取得方法については、[こちらのページ](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank}をご参照ください。
+!!! note "Microsoft 365 Copilot の開発環境をセットアップする"
+    このラボでは、既にテナントをお持ちであることを前提としています。テナント取得方法の最新情報については [こちらのページ](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} を参照してください。
 
 このラボで学習する内容:
 
-- ラボで使用するために Microsoft 365 テナントの Teams アップロードポリシーを構成する方法  
-- Visual Studio Code 用 Microsoft 365 Agents Toolkit をインストールして構成する方法  
+- ラボで使用するために Microsoft 365 テナントの Teams アップロード ポリシーを構成する方法
+- Visual Studio Code 用 Microsoft 365 Agents Toolkit をインストールして構成する方法
+
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要をご覧ください。</div>
+          <div>このビデオでラボの概要を素早く確認できます。</div>
             <div class="disclaimer-box">
-            ⚠️ <strong>注意事項:</strong> これらのサンプルおよびラボは、学習およびデモ目的で提供されています。運用環境での使用を想定していません。運用環境に導入する場合は、必ず本番品質へアップグレードしてください。
+            ⚠️ <strong>注意事項:</strong> これらのサンプルおよびラボは学習およびデモ用であり、運用環境での使用を意図したものではありません。運用環境に導入する場合は、必ず本番品質へアップグレードしてください。
         </div>
     </div>
     <div style="flex: 1; min-width: 0;">
@@ -28,21 +29,22 @@ search:
     </div>
 </div>
 
-## 演習 1: Teams のアップロードポリシーを構成する
 
-### 手順 1: Teams のカスタムアプリのアップロードを有効化する
+## 演習 1 : Teams のアップロード ポリシーを構成する
 
-既定では、エンドユーザーはアプリを直接アップロードできず、Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。この手順では、Agents Toolkit で直接アップロードできるようにテナントを構成します。
+### 手順 1: Teams のカスタム アプリのアップロードを有効にする
+
+既定では、エンド ユーザーはアプリを直接アップロードできず、Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。この手順では、Agents Toolkit から直接アップロードできるようにテナントが構成されていることを確認します。
 
 1️⃣ [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank} にアクセスし、Microsoft 365 管理センターを開きます。  
 
-2️⃣ 左側のペインで **すべて表示** を選択し、ナビゲーションを展開します。開いたペインで **Teams** を選択して Microsoft Teams 管理センターを開きます。  
+2️⃣ 左側のナビゲーションで **Show all** を選択し、すべてのメニューを表示します。開いたら **Teams** を選択して Microsoft Teams 管理センターを開きます。  
 
-3️⃣ 左側のペインで **Teams アプリ** を展開し、**セットアップ ポリシー** を選択します。**アプリ セットアップ ポリシー** の一覧が表示されるので、**グローバル (組織全体の既定)** ポリシーを選択します。  
+3️⃣ 左側の Microsoft Teams 管理センター ナビゲーションで **Teams apps** を展開し、**Setup Policies** を選択します。App setup policy の一覧が表示されるので、**Global (Org-wide default)** ポリシーを選択します。  
 
-4️⃣ **カスタム アプリのアップロードを許可** のスイッチが **オン** になっていることを確認します。  
+4️⃣ 先頭のスイッチ **Upload custom apps** が **On** になっていることを確認します。  
 
-5️⃣ ページを下までスクロールし、**保存** ボタンを選択して変更を保存します。  
+5️⃣ 変更を保存するため、画面を下にスクロールして **Save** ボタンを選択します。  
 
 > 変更が反映されるまで最大 24 時間かかる場合がありますが、通常はもっと早く反映されます。
 
@@ -50,47 +52,48 @@ search:
 
 ## 演習 2: Agents Toolkit と前提条件をインストールする
 
-このラボは Windows、Mac、Linux のいずれのマシンでも実施できますが、前提条件をインストールできる必要があります。PC にアプリをインストールできない場合は、別のマシン（または仮想マシン）をご用意ください。
+このラボは Windows、Mac、Linux のいずれのマシンでも実施できますが、前提条件をインストールできる権限が必要です。インストールが許可されていない場合は、別のマシン (または仮想マシン) を用意してください。
 
 ### 手順 1: Visual Studio Code をインストールする
 
-**Agents Toolkit for Visual Studio Code** を利用するには、当然ながら Visual Studio Code が必要です。以下からダウンロードしてください: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}  
+**Agents Toolkit for Visual Studio Code** を使用するには Visual Studio Code が必要です。以下からダウンロードしてください: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}。
 
 <cc-end-step lab="e0" exercise="2" step="1" />
 
 ### 手順 2: Node.js をインストールする
 
-Node.js は、JavaScript をローカルで実行できるプログラムで、Microsoft Edge や Google Chrome といったブラウザーで使用されているオープンソースの V8 エンジンを使用しています。本ラボで使用する Web サーバーのコードを実行するために Node.js が必要です。
+Node.js は、オープンソースの V8 エンジンを使用してコンピューター上で JavaScript を実行できるプログラムです。このワークショップで使用する Web サーバー コードを実行するために Node.js が必要です。
 
-[https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} にアクセスし、バージョン 18 または 16 をお使いの OS に合わせてインストールしてください。本ラボは Node.js バージョン 18.16.0 でテストされています。すでに別のバージョンがインストールされている場合は、[Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank}（Windows の場合は[こちらのバリエーション](https://github.com/coreybutler/nvm-windows){target=_blank}）を使うと、同一マシンで Node.js のバージョンを簡単に切り替えられます。  
+[https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} にアクセスし、バージョン v22 をインストールしてください。このラボは Node バージョン v22.18.0 で検証されています。既に別のバージョンがインストールされている場合は、[Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (Windows の場合は [こちらのバリエーション](https://github.com/coreybutler/nvm-windows){target=_blank}) を利用すると、同一マシンで簡単に Node.js のバージョンを切り替えられます。
 
 <cc-end-step lab="e0" exercise="2" step="2" />
 
 ### 手順 3: Agents Toolkit をインストールする
 
-このラボは **Microsoft 365 Agents Toolkit** バージョン 6.0 を使用しています。
+これらのラボは **Microsoft 365 Agents Toolkit** バージョン 6.0 を基盤としています。
 
 !!! tip "Agents Toolkit とは?"
-    Microsoft 365 Agents Toolkit は Microsoft Teams Toolkit の進化版であり、Microsoft 365 Copilot、Microsoft Teams、Microsoft 365 向けのエージェントおよびアプリの開発を支援します。
+    Microsoft 365 Agents Toolkit は Microsoft Teams Toolkit の進化版であり、Microsoft 365 Copilot、Microsoft Teams、および Microsoft 365 向けのエージェントとアプリを開発するためのツールです。
 
-以下の手順を画面のスクリーンショットに従って実施してください。
+以下の手順に従ってインストールします。
 
-1️⃣ Visual Studio Code を開き、拡張機能アイコンをクリックします。  
+1️⃣ Visual Studio Code を開き、サイドバーの **Extensions** アイコンをクリックします。  
 
-2️⃣ 「Microsoft 365 Agents」で検索し、Agents Toolkit を見つけます。  
+2️⃣ 「Microsoft 365 Agents」と検索し、Agents Toolkit を見つけます。  
 
 3️⃣ **Install** をクリックします。  
 
 ![agents toolkit](../../assets/images/extend-m365-copilot-00/agents-toolkit.png)
 
-!!! note "Agents Toolkit がインストール済みで非表示の場合"
-    以前に Agents Toolkit をインストールし、Visual Studio のサイドバーで非表示にした場合は、表示されないことがあります。左サイドバーを右クリックし、Agents Toolkit にチェックを入れると再表示できます。  
+!!! note "Agents Toolkit をインストール済みだが非表示の場合"
+    過去に Agents Toolkit をインストールしてサイドバーから非表示にした場合、表示されなくて戸惑うかもしれません。左サイドバーを右クリックし、Agents Toolkit にチェックを入れて再表示してください。
 
 <cc-end-step lab="e0" exercise="2" step="3" />
 
+
 ---8<--- "ja/e-congratulations.md"
 
-これで Microsoft 365 Copilot 向けの最初の拡張機能を作成する準備が整いました。次のラボで Declarative Agent を作成しましょう。
+これで Microsoft 365 Copilot の拡張機能を初めて作成する準備が整いました。次のラボで Declarative エージェントを作成しましょう。 
 
 <cc-next />
 
