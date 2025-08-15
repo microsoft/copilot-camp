@@ -126,7 +126,11 @@ jobs:
           # Push changes
           git push
       
-      - name: 📊 Create summary
+      - name: � Trigger documentation deployment
+        if: steps.check_changes.outputs.changes == 'true'
+        uses: ./.github/workflows/main.yml
+      
+      - name: �📊 Create summary
         run: |
           echo "## 🌐 Translation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
