@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
-      - '.github/workflows/main.yml'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual deployment (optional)'
+        required: false
+        default: 'Manual deployment'
+        type: string
   workflow_call:
     # Allows this workflow to be called by other workflows
 
@@ -39,6 +42,16 @@ jobs:
         run: |
           echo "## 🚀 Documentation Deployed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Trigger:** Push to main branch" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine trigger type
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "**Trigger:** Manual deployment" >> $GITHUB_STEP_SUMMARY
+            echo "**Reason:** ${{ github.event.inputs.reason }}" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ github.event_name }}" == "workflow_call" ]; then
+            echo "**Trigger:** Called by another workflow" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Trigger:** Push to main branch" >> $GITHUB_STEP_SUMMARY
+          fi
+          
           echo "**Site URL:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_STEP_SUMMARY
           echo "**Deployment time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
