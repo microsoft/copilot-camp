@@ -6,152 +6,150 @@ search:
 
 ---8<--- "ja/msa-labs-prelude.md"
 
-このラボでは、SharePoint Online に保存されているドキュメントを操作する SharePoint エージェントを作成します。今回作成するエージェントは、架空の企業の従業員が人事部 (HR) の情報、ポリシー、規則を取得できるように支援します。エージェントのナレッジ ベースは、SharePoint Online のドキュメント ライブラリに保存されたドキュメントのセットです。
+このラボでは、 SharePoint Online に保存されているドキュメントを扱う SharePoint エージェントを作成します。今回作成するエージェントは架空の企業の従業員が HR 部門の情報やポリシー、規則を取得するのに役立ちます。エージェントのナレッジ ベースは SharePoint Online のドキュメント ライブラリに保存されたドキュメントのセットです。
 
-## Exercise 1: サンプル ドキュメントのアップロード
+## 演習 1: サンプル ドキュメントのアップロード
 
-この手順では、SharePoint エージェントがユーザーのプロンプトに応答するために使用するサンプル ドキュメントをアップロードします。サンプルには架空の Word、PowerPoint、PDF ファイルが含まれます。
+ここでは SharePoint エージェントが ユーザー のプロンプトへ回答する際に使用するサンプル ドキュメントをアップロードします。これには架空の Word、PowerPoint、PDF ファイルが含まれます。
 
-### Step 1: SharePoint サイトの作成
+### 手順 1: SharePoint サイトの作成
 
-[Microsoft 365 Portal](https://m365.cloud.microsoft/){target=_blank} など Microsoft 365 内で **Apps** メニュー 1️⃣ をクリックし、**SharePoint** 2️⃣ を選択します。
+[Microsoft 365 Portal](https://m365.cloud.microsoft/){target=_blank} などの Microsoft 365 から、メニューの「 Apps 」1️⃣ をクリックし **SharePoint** 2️⃣ を選択します。
 
 ![The UI of Microsoft 365 Portal with the Apps command and the SharePoint workload highlighted.](../../../assets/images/make/sharepoint-agents-01/m365-new-portal-01.png)
 
-続いて **Create Site** 1️⃣ を選択し、**Team site** 2️⃣ を選択します。
+続いて **Create Site** 1️⃣ を選択し、 **Team site** 2️⃣ を選択します。
 
 ![The UI to create a new SharePoint Online site, with 'Team Site' template suggested.](../../../assets/images/extend-m365-copilot-05/upload-docs-02.png)
 
-**Standard team** サイト テンプレートを選択すると、サイトのプレビューが表示されます。**Use Template** を選択して続行します。
+**Standard team** サイト テンプレートを選択するとプレビューが表示されます。 **Use Template** を選択して続行します。
 
 ![The UI to select the 'Standard' site template for the target site.](../../../assets/images/extend-m365-copilot-05/upload-docs-03.png)
 
-サイト名に「Copilot Dev Camp - HR」など 1️⃣ を入力し、**Next** 2️⃣ を選択します。名前はテナント内で一意である必要があるため、既に使用されている名前は避けてください。
+サイト名に「 Copilot Dev Camp - HR 」など一意の名前を入力 1️⃣ し、 **Next** 2️⃣ を選択します。
 
 ![The UI to provide name, description, and other details for the target site to create.](../../../assets/images/make/sharepoint-agents-01/create-site-01.png)
 
-プライバシー設定と言語を選択し、**Create Site** を選択します。
+プライバシー設定と言語を選択後、 **Create Site** を選択します。
 
 ![The UI to select the privacy settings and the language for the target site.](../../../assets/images/make/sharepoint-agents-01/create-site-02.png)
 
-新しいメンバーの追加をスキップし、サイトのプロビジョニングが完了したら **Finish** を選択します。数秒後、新しい SharePoint サイトが表示されます。 
+メンバー追加をスキップし、プロビジョニング完了後 **Finish** を選択します。数秒で新しい SharePoint サイトが表示されます。 
 
 <cc-end-step lab="msa1" exercise="1" step="1" />
 
-### Step 2: サンプル ドキュメントのアップロード
+### 手順 2: サンプル ドキュメントのアップロード
 
-この [リンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&filename=hr-documents){target=_blank} を選択して、複数のファイル (Word、PowerPoint、PDF) が入った zip ファイルをダウンロードし、ローカル ファイル システム上の任意の場所に解凍します。
+こちらの [リンク](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&filename=hr-documents){target=_blank} から Word、PowerPoint、PDF のサンプル ファイルを含む zip をダウンロードし、ローカルに展開します。
 
-作成した SharePoint サイトに戻り、Documents Web パーツで **See all** を選択してドキュメント ライブラリのページを表示します。
+先ほど作成した SharePoint サイトに戻り、Documents Web パーツで **See all** を選択してドキュメント ライブラリを開きます。
 
 ![The home page of the site with the Documents web part and the 'See all' link highlighted.](../../../assets/images/make/sharepoint-agents-01/upload-docs-01.png)
 
-次に、コマンド バーの **Upload** 1️⃣ ボタンを選択し、**Files** 2️⃣ を選択します。
+次にコマンド バーの **Upload** 1️⃣ を選び **Files** 2️⃣ を選択します。
 
 ![The command bar of the document library with the 'Upload' menu expanded and the 'Files' option selected.](../../../assets/images/make/sharepoint-agents-01/upload-docs-02.png)
 
-解凍した作業フォルダーに移動し、すべてのサンプル ドキュメント 1️⃣ を選択して **Open** 2️⃣ をクリックします。
+展開したフォルダーに移動し、すべてのサンプル ドキュメントを選択 1️⃣ して **Open** 2️⃣ をクリックします。
 
 ![The file system browsing dialog to select the files to upload.](../../../assets/images/make/sharepoint-agents-01/upload-docs-03.png)
 
 <cc-end-step lab="msa1" exercise="1" step="2" />
 
-## Exercise 2 : 最初の SharePoint エージェントの作成
+## 演習 2 : 最初の SharePoint エージェントの作成
 
-この演習では、HR ドキュメントを管理するための初期バージョンの SharePoint エージェントを作成します。
+この演習では HR ドキュメントを管理するための SharePoint エージェントの初期バージョンを作成します。
 
-### Step 1: エージェントの作成
+### 手順 1: エージェントの作成
 
-前の演習で作成したドキュメント ライブラリで、選択ボタン 1️⃣ をクリックしてすべてのファイルを選択し、コマンド バーで **Create an agent** 2️⃣ コマンドを選択します。
+前演習で作成したドキュメント ライブラリで、選択ボタンをクリックしてすべてのファイルを選択 1️⃣ し、コマンド バーの **Create an agent** 2️⃣ を選択します。
 
 ![The SharePoint Online interface of a document library with all the documents selected and the "Create an agent" command highlighted in the command bar.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-01.png)
 
-!!! important "ファイルまたはフォルダーから SharePoint エージェントを作成する場合"
-    ライブラリでファイルを選択せずに **Create an agent** コマンドを選択すると、エージェントは現在のドキュメント ライブラリ全体を対象とします。ライブラリでファイルまたはサブフォルダーを明示的に選択してから **Create an agent** を選択すると、エージェントは選択したコンテンツのみに限定されます。1 つのエージェントで選択できる項目は 20 個までです。20 個を超える項目を選択した場合、*"Sources limit exceeded. The maximum number of sources you can add is 20. Remove XX sources to save this copilot."* というエラー メッセージが表示され、エージェントを作成できません。
+!!! important "Creating SharePoint agents from files or folders"
+    ライブラリで何も選択せずに **Create an agent** を実行すると、エージェントはライブラリ全体を対象とします。ファイルやサブフォルダーを選択してから実行した場合、エージェントは選択内容のみを対象とします。1 つのエージェントにつき 20 項目を超えて選択することはできません。20 を超えると *"Sources limit exceeded. The maximum number of sources you can add is 20. Remove XX sources to save this copilot."* というエラーが表示され、作成できません。
 
-ダイアログ ウィンドウが表示され、選択したコンテンツの概要を確認し、テスト用にエージェントをすぐに開くか、作成したエージェントを編集できます。
+ダイアログが表示され、選択内容の概要を確認したり、テストのために直ちにエージェントを開いたり、作成したエージェントを編集できます。
 
 ![The SharePoint Online interface when creating a SharePoint agent on topo of a document library. There is a recap of the selected content and a couple of buttons to "Open agent" or to "Edit" the agent.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02.png)
 
-!!! note "SharePoint エージェント作成の権限"
-    SharePoint エージェントを作成するには、対象ライブラリまたはサイトで **Contribute** 以上の権限が必要です。エージェントの背後では新しい **.agent** ファイルが作成されるため、適切な権限が必要となります。
+!!! note "Permissions to create a SharePoint agent"
+    SharePoint エージェントを作成するには対象ライブラリまたはサイトへの Contribute 権限が必要です。エージェント作成時に **.agent** ファイルが生成されるため、書き込み権限が要求されます。
 
 <cc-end-step lab="msa1" exercise="2" step="1" />
 
-### Step 2: エージェントのテスト
+### 手順 2: エージェントのテスト
 
-前のダイアログ ウィンドウで **Open agent** ボタンを選択し、新しい SharePoint エージェントを試してみます。全画面のダイアログが表示され、プロンプトを入力してエージェントと対話できます。
+先ほどのダイアログで **Open agent** をクリックし、新しい SharePoint エージェントと対話してみましょう。フルスクリーン ダイアログが開き、プロンプトを入力できます。
 
 ![The SharePoint Online interface showing the new SharePoint agent. There are suggested starter prompts at the top of the page and a textarea to write a prompt in the lower part of the screen.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-03.png)
 
-次のプロンプトを入力して結果を確認してください。
+以下のプロンプトを入力し結果を確認してみてください。
 
-- 従業員を採用するプロセスは？
-- キャリアを向上させる方法は？
+- 新入社員を採用するプロセスは？
+- キャリアを向上させるには？
 
-提示される回答は、エージェントのナレッジ ベースとして選択したドキュメントの内容を要約したものです。プロンプトを処理するエンジンは Microsoft 365 Copilot であり、AI 生成コンテンツに関する明確な **注意事項** 1️⃣ が表示されます。回答の末尾には、回答を生成する際に参照されたドキュメント 2️⃣ が示されます。また、エージェントがトピックを深掘りするためのフォローアップ プロンプト 3️⃣ も提案します。
+回答はナレッジ ベースに選択したドキュメントの内容を要約したものです。エンジンは Microsoft 365 Copilot であり、AI 生成コンテンツに関する 注意事項 1️⃣ が表示されます。回答の下部には参照ドキュメント 2️⃣ と、関連トピックを深掘りするフォローアップ プロンプト 3️⃣ が示されます。
 
 ![The SharePoint Online interface showing the new SharePoint agent. There is a prompt and the answer provided by the agent. The answer includes a disclaimer about the content generated by AI, a reference to an actual document in the library, and a list of suggested prompts.](../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-01.png)
 
-エージェント ダイアログを閉じると、ライブラリに **New agent.agent** という新しいファイルがあるのがわかります。これが新しい SharePoint エージェント定義を表すファイルです。SharePoint Online の標準的なファイル名変更機能を使用してファイル名を変更すると、エージェントの名前とダイアログのタイトルもそれに応じて変更されます。たとえば **HR agent** に変更してみましょう。
+エージェント ダイアログを閉じると、ライブラリに **New agent.agent** という新しいファイルが追加されていることがわかります。これがエージェント定義ファイルです。通常のファイル名変更機能でリネームすると、エージェント名とダイアログのタイトルも変更されます。ここでは **HR agent** にリネームしましょう。
 
 <cc-end-step lab="msa1" exercise="2" step="2" />
 
-## Exercise 3 : エージェントの微調整
+## 演習 3 : エージェントの微調整
 
-この演習では、追加設定の構成、指示の調整などを行い **HR agent** を微調整する方法を学びます。 
+この演習では **HR agent** をさらに設定し、アイコンや指示文などを調整します。 
 
-### Step 1: アイコンとタイトルの更新
+### 手順 1: アイコンとタイトルの更新
 
-ドキュメント ライブラリで **HR agent.agent** ファイルを選択し、SharePoint Online の ECB メニュー (**...**) を開いて **Edit** コマンドを選択します。あるいはライブラリのコマンド バーで **Edit** を選択しても構いません。
+ドキュメント ライブラリで **HR agent.agent** を選択し、 **...** をクリックして ECB メニューから **Edit** を選択します。あるいはコマンド バーの **Edit** でも構いません。
 
 ![The ECB menu of SharePoint Online when the .agent file is selected. The "Edit" command is highlighted.](../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-01.png)
 
-新しいダイアログ ウィンドウが表示され、以下の設定を管理できます。
+表示されるダイアログでは次の設定を行えます。
 
 - Overview: 名前、アイコン、目的/説明
-- Sources: ナレッジ ベースとして使用するデータ ソース (サイト、ライブラリ、ファイル) の構成
-- Behavior: ウェルカム メッセージ、スターター プロンプト、エージェントの指示
+- Sources: ナレッジ ベースとして使用するデータ ソースの設定
+- Behavior: ウェルカム メッセージ、スターター プロンプト、エージェント指示
 
-ダイアログにはライブ プレビューもあり、変更を即座にテストできます。
+ダイアログ右側にはリアルタイム プレビューもあり、その場で動作を確認できます。
 
-編集ダイアログの最初のタブ **Overview** で、[こちらの画像ファイル](https://github.com/microsoft/copilot-camp/blob/main/src/make/sharepoint-agents/HR-SP-Agent.png) を使ってエージェントのアイコンを更新します。さらに **Purpose** を以下のテキストに更新してください。
+編集ダイアログの **Overview** タブで、アイコンを [こちらの画像](https://github.com/microsoft/copilot-camp/blob/main/src/make/sharepoint-agents/HR-SP-Agent.png) に変更し、 **Purpose** を以下のテキストに更新します。
 
-```text
+````text
 This is an agent supporting users to find information, policies, and rules based on the HR department knowledge base
-```
+````
 
 ![The dialog window to edit the agent settings when it comes to update the agent name, icon, and purpose.](../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-02.png)
 
-**Add advanced customization in Copilot Studio** ボタンもありますが、これは将来提供予定の機能です。
+**Add advanced customization in Copilot Studio** ボタンもありますが、現時点では未実装です。
 
-次に **Sources** タブを選択してエージェントのナレッジ ベースを構成します。執筆時点では、構成できるデータ ソースは SharePoint Online のサイト、ドキュメント ライブラリ、ドキュメントのみです。将来的には Microsoft Copilot Studio を通じて追加のナレッジ ソースを利用できるようになる予定です。現時点では SharePoint Online が唯一サポートされるデータ ソースです。
+次に **Sources** タブでナレッジ ベースを構成します。現時点では SharePoint Online のサイト、ライブラリ、ドキュメントのみ追加できます。将来的には Microsoft Copilot Studio で他のデータ ソースも利用可能になる予定です。
 
 ![The dialog window to manage the data sources for the agent. There are fields to configure additional sites, libraries, or documents.](../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-03.png)
 
-**Add a SharePoint site** 1️⃣ セクションでは、エージェントのデータ ソースに追加のサイト コレクションを追加できます。タイトルでサイトを検索するか、追加したいサイトの URL を直接入力できます。  
-**Remove** 2️⃣ コマンドを選択すると既存のサイトを削除できます。現在のサイト (エージェントを作成したサイト) を削除すると、初期設定時に選択したドキュメントがすべて削除されるので注意してください。  
-最後に、**Add document libraries, folders or files** 3️⃣ でデータ ソースを追加できますが、全体で 20 項目を超えないようにしてください。
+**Add a SharePoint site** 1️⃣ では追加のサイト コレクションを検索または URL で指定できます。 **Remove** 2️⃣ で既存のサイトを削除可能です。元のサイトを削除すると初期設定時に選択したドキュメントがすべて削除されるので注意してください。
+さらに **Add document libraries, folders or files** 3️⃣ でデータ ソースを追加できますが、合計 20 項目を超えないようにする必要があります。
 
 <cc-end-step lab="msa1" exercise="3" step="1" />
 
-### Step 2: 指示の更新
+### 手順 2: 指示文の更新
 
-設定ダイアログの **Behavior** タブでは、エージェントの **Welcome messaging** 1️⃣ を設定できます。  
-さらに、ユーザーがエージェントとの会話を始めるときに表示される最大 3 つの **Starter prompts** 2️⃣ を設定できます。
+**Behavior** タブでは、エージェントの **Welcome messaging** 1️⃣ と最大 3 つの **Starter prompts** 2️⃣ を設定できます。
 
-最も重要なのは **Agent instruction** 3️⃣ フィールドで、ここでエージェントのトーン、動作、制限、ルールなどを詳細に設定できます。実質的に、エージェントのシステムプロンプトを設定する場所です。このフィールドを詳細に記述するほど、エージェントから得られる結果は向上します。  
-デフォルトでは、あらかじめ設定されている指示は非常に一般的です。デフォルト値は次のとおりです。
+特に重要なのが **Agent instruction** 3️⃣ フィールドで、エージェントのトーン、動作、制限、ルールなどを詳細に定義できます。これは システムプロンプト に相当し、詳細に記述するほど品質が向上します。
+デフォルトでは汎用的な指示が設定されています。初期値は次のとおりです。
 
-```text
+````text
 Provide accurate information about the content in the selected files and reply in a formal tone.
-```
+````
 
 ![The dialog window to manage the behavior of the agent. There are fields to configure "Welcome messaging", "Starter promptes", and "Agent instructions".](../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-04.png)
 
-高品質なエージェントを作成するには、エージェントの目的に応じて具体的な指示を提供することが重要です。たとえば HR エージェントの場合、指示の例を以下に示します。
+高品質なエージェントを作るには目的に応じた具体的な指示が必要です。以下は HR agent 向けの例です。
 
-```text
+````text
 # System Role
 You are the HR agent. Your goal is to help employees find information about HR policies, rules, and procedures. You use a set of documents as your knowledge base and you need to stick on those documents when providing answers.
 
@@ -171,75 +169,75 @@ Do not allow the user to ask you questions about other employees' personal and s
 # Error Handling
 In case of any error or issue, inform the user with the following prompt:
 I'm sorry, something wrong happened. Please, try again soon.
-```
+````
 
-上記の指示は例示目的であり、完全かつ万能なテンプレートではありません。指示文では Markdown の構造を使ってセクションを明確にしています。
+上記はあくまで例であり完全ではありません。指示文は Markdown 構造を利用してセクションを分けています。
 
-指示文は最大 8,000 文字まで記述できます。詳細を多く含めるほど効果的です。詳細なプロンプト作成方法については [こちら](../../../copilot-instructions/beginner-agent){target=_blank} の **Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)** を参照してください。さらに詳しくは [Write effective instructions for declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-instructions){target=_blank} をご覧ください。
+指示は最大 8,000 文字まで入力できますので、可能な限り詳細に記述してください。詳細な書き方は [こちら](../../../copilot-instructions/beginner-agent){target=_blank} の **Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)** や [Write effective instructions for declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-instructions){target=_blank} を参照してください。
 
 <cc-end-step lab="msa1" exercise="3" step="2" />
 
-### Step 3: エージェントのテスト
+### 手順 3: エージェントのテスト
 
-エージェントのアイコン、目的、指示を更新したら **Save and close** ボタンを選択します。ダイアログを閉じて再びエージェントと対話します。
+アイコン、目的、指示を更新したら **Save and close** を選択し、ダイアログを閉じて再度エージェントと対話します。
 
-たとえば、次のプロンプトを入力します。
+例えば次のプロンプトを入力してみてください。
 
-```text
+````text
 Hello!
-```
+````
 
-```text
+````text
 How can I improve my career? Provide me a list of suggested actions.
-```
+````
 
 ![The updated behavior of the agent, based on the improved instructions. There are emojis, tables to render lists of items and generally speaking a more accurate respose.](../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-02.png)
 
-「Hello!」メッセージに対して、エージェントが指示で設定したウェルカム メッセージで応答することがわかります。さらに、回答には絵文字やリストを表形式で表示するなど、提供した指示に従ったより正確な内容が反映されます。
+「 Hello! 」への回答としてウェルカム メッセージが返され、指示に従い絵文字や表を含むより正確な回答が得られます。
 
 <cc-end-step lab="msa1" exercise="3" step="3" />
 
-## Exercise 4 : サイトの既定エージェントとして設定する
+## 演習 4 : サイトの既定エージェントとして構成
 
-最後に、エージェントをサイトの既定エージェントとして昇格させる方法を紹介します。現在、すべての SharePoint Online サイトには既成のエージェントが用意されています。スイート バーの Copilot コマンドを選択すると、そのサイト レベルのエージェントが表示されます。
+エージェントをサイトの既定エージェントとして昇格させることもできます。現在、すべての SharePoint Online サイトには既製のエージェントが用意されています。スイート バーの Copilot コマンドを選択すると表示されます。
 
 ![The suite bar of Microsoft 365 when rendering a SharePoint Online site. There is the Copilot icon in a command to activate the site level agent.](../../../assets/images/make/sharepoint-agents-01/sp-ready-made-agent-01.png)
 
-既成エージェントを有効にすると、右側にサイド パネルが表示され、プロンプトを入力してエージェントと対話できます。このエージェントはあらかじめ定義された動作と汎用的な指示を持っています。
+準備済みエージェントを起動すると右側にパネルが開き、プロンプトを入力できます。既定エージェントは汎用的な動作と指示が設定されています。
 
-しかし、既成エージェントではなく独自のカスタム エージェントを使用したい場合もあります。この演習では、その方法を学びます。
+しかし、既製エージェントではなく独自エージェントを使用したい場合もあります。この演習で方法を学びましょう。
 
-### Step 1: エージェントの承認と昇格
+### 手順 1: エージェントの承認と昇格
 
-サイトのホーム ページで Copilot コマンドを選択し、サイド パネルを開きます。
+サイトのホーム ページで Copilot コマンドを選びサイド パネルを開きます。
 
-Copilot パネルを開くと、既定で既成エージェントが表示されますが、エージェント名の横にあるドロップダウンを選択することで、作成した他のエージェントを選択できます。
+デフォルトでは既製エージェントが選択されていますが、ドロップダウンから作成済みエージェント (例: HR agent) を選択できます。
 
 ![The Copilot side panel rendering the ready made agent for a site. There is the dropdown to select the agent to use, which allows to select the "HR agent" created before.](../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-03.png)
 
-既定エージェントを変更し、カスタム エージェントを既定として設定する手順を説明します。エージェントを作成したドキュメント ライブラリに戻り、エージェントを開きます。エージェント ダイアログの右上の **...** 1️⃣ を選択し、**Set as approved** 2️⃣ コマンドを選択します。
+次に独自エージェントを既定に設定する手順を見ていきます。エージェントを作成したドキュメント ライブラリに戻り、エージェントを開きます。ダイアログ右上の **...** 1️⃣ を選び **Set as approved** 2️⃣ をクリックします。
 
 ![The command panel of an agent when select, allows to edit the agent, set the agent as approved, delete the Copilot history, or read the conversation history with the agent.](../../../assets/images/make/sharepoint-agents-01/approve-agent-01.png)
 
-エージェントを承認するにはサイト所有者である必要があり、明示的な確認も求められます。承認されたエージェントは **Site Assets** ライブラリの **Copilots** サブフォルダーに移動されるためです。
+エージェントの承認にはサイト所有者である必要があり、確認ダイアログで承認を行います。承認されたエージェントは **Site Assets** ライブラリの **Copilots** サブフォルダーへ移動します。
 
 ![The confirmation request dialog to approve an agent. The dialog explains that the agent, once approved, will be moved to the Site Assets library of the site.](../../../assets/images/make/sharepoint-agents-01/approve-agent-02.png)
 
-承認プロセスが完了すると確認ダイアログが表示され、.agent ファイルは現在のドキュメント ライブラリから削除されます。
+承認が完了すると確認ダイアログが表示され、.agent ファイルは元のライブラリから消えます。
 
 ![The dialog confirming that the agent was approved. The dialog provides a link to the new location of the approved agent.](../../../assets/images/make/sharepoint-agents-01/approve-agent-03.png)
 
-これで、エージェントが **Approved for this site** の一覧に表示されます。
+これでエージェントは **Approved for this site** の一覧に表示されます。
 
 ![The list of agents approved for the current site, showing the custom agent in the list of approved ones.](../../../assets/images/make/sharepoint-agents-01/approve-agent-04.png)
 
-エージェントを選択し、名前の横の **...** 1️⃣ を選択してコンテキスト メニューから **Set as site default** 2️⃣ を選択すると、そのエージェントをサイトの既定エージェントとして設定できます。確認を求めるダイアログが表示され、昇格プロセスが完了すると通知されます。設定後は、スイート バーの Copilot アイコンを選択した際に、カスタム エージェントが最初に表示され既定として機能します。
+エージェントをアクティブにして名前横の **...** 1️⃣ をクリックし **Set as site default** 2️⃣ を選択すると既定エージェントに設定できます。確認後、昇格が完了するとサイトの Copilot アイコンをクリックした際に最初に表示されるエージェントになります。
 
 ![The commands to promote an agent to be the site default one, once it has been approved.](../../../assets/images/make/sharepoint-agents-01/site-default-agent-01.png)
 
 <cc-end-step lab="msa1" exercise="4" step="1" />
 
-<a href="../02-sharing-agents">こちらから開始</a>して Lab MSA2 で SharePoint エージェントを Microsoft Teams で共有しましょう。
+<a href="../02-sharing-agents">こちらから開始</a>して Lab MSA2 へ進み、SharePoint エージェントを Microsoft Teams で共有しましょう。  
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agents/01-first-agent--ja" />

@@ -3,72 +3,74 @@ search:
   exclude: true
 ---
 # ラボ M4 - 認証の追加
-このラボでは、前のラボで作成した Northwind プラグインを Entra ID の SSO (single sign-on) 認証で保護し、Outlook から仕入先などの自身の連絡先を検索できるようにします。  
+このラボでは、前回のラボで作成した Northwind プラグインを Entra ID SSO (single sign-on) で保護し、Outlook のサプライヤー情報など、ご自身の連絡先を検索できるようにします。  
 
-???+ "Extend Teams メッセージ拡張ラボのナビゲーション (Extend Path)"
+???+ "メッセージ拡張機能ラボのナビゲーション (Extend Path)"
     - [ラボ M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) 
-    - [ラボ M1 - Northwind メッセージ拡張を理解する](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
+    - [ラボ M1 - Northwind メッセージ拡張機能を理解する](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) 
     - [ラボ M2 - Microsoft 365 Copilot でアプリを実行する](/copilot-camp/pages/extend-message-ext/02-nw-plugin) 
     - [ラボ M3 - 新しい検索コマンドでプラグインを強化する](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin)
-    - [ラボ M4 - 認証の追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) (📍現在地)
+    - [ラボ M4 - 認証の追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) (📍現在位置)
     - [ラボ M5 - アクション コマンドでプラグインを強化する](/copilot-camp/pages/extend-message-ext/05-add-action) 
 
-!!! warning   "注意"
-    このラボでは、ボット サービスをプロビジョニングするための Azure サブスクリプションが必要です。
+!!! warning "注意"
+    このラボを完了するには、ボット サービスをプロビジョニングするための Azure サブスクリプションが必要です。
 
 !!! tip "ヒント"
-    すべてのコード変更を含む完成済みの演習は [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/) からダウンロードできます。トラブルシューティング時に役立ちます。  
-    編集内容をリセットしたい場合は、リポジトリを再度クローンしてやり直してください。
+    すべてのコード変更を含む完成版は [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/) からダウンロードできます。トラブルシューティングに便利です。  
+    変更をリセットしたい場合は、リポジトリを再度クローンしてやり直してください。
 
-このラボで学習すること:
+このラボで学ぶこと:
 
-- Entra ID の  SSO  をプラグインに追加し、ユーザーが Microsoft Teams と同じアカウントでシームレスにアプリへサインインできるようにする方法  
-- Microsoft Graph API にアクセスして Microsoft 365 内のユーザー データを取得する方法。本ラボでは、ログインしているユーザー本人の Outlook 連絡先を安全に取得できるようにします。
+- Entra ID SSO をプラグインに追加し、ユーザーが Microsoft Teams と同じアカウントでシームレスにアプリへサインインできるようにする方法  
+- Microsoft Graph API へアクセスし、Microsoft 365 内のユーザー データを取得する方法。本ラボでは Outlook の連絡先を安全に取得します。  
 
-## はじめに : SSO 実装のタスク (概要)
+## はじめに : SSO 実装に必要なタスク (概要)
 
-プラグイン (メッセージ拡張アプリ) に  SSO  を実装するには、いくつかの手順が必要です。以下は高レベルの流れです。
+プラグイン (メッセージ拡張アプリ) に SSO を実装するには、いくつかの手順があります。以下は高レベルの流れです。
 
-### Microsoft Entra ID でアプリを登録し、Azure Bot Service でボットを構成する
+### Microsoft Entra ID でのアプリ登録 & Azure Bot Service でのボット構成
 - Azure ポータルで新しいアプリ登録を作成  
-- 必要なアクセス許可とスコープを設定  
+- 必要な permission と scope を構成  
 - クライアント シークレットを生成  
 - Azure Bot Service でボットを作成  
 - ボットに Microsoft 365 チャネルを追加  
 - Azure ポータルで OAuth 接続設定を構成  
 
-### Teams アプリで  SSO  を有効化
-- メッセージ拡張のボット コードを更新し、認証とトークン交換を処理  
-- Bot Framework SDK を使用して  SSO  機能を統合  
+### Teams アプリでの SSO 有効化
+- メッセージ拡張機能のボット コードを更新し、認証とトークン交換を処理  
+- Bot Framework SDK で SSO 機能を統合  
 - OAuth フローを実装し、ユーザーのアクセストークンを取得  
 
-### Teams で認証を構成
-- Teams アプリ マニフェストに必要なアクセス許可を追加  
+### Teams での認証構成
+- Teams アプリ マニフェストに必要な permission を追加  
 
-## 演習 1: Microsoft Entra ID でアプリを登録し、Azure Bot Service を構成する
+## 演習 1: Microsoft Entra ID でのアプリ登録と Azure Bot Service でのボット構成
 
-幸い、すべては **F5** を押すとすぐに動作するように簡略化されています。ただし、リソースを登録・構成するためにプロジェクトで行う具体的な変更を確認しておきましょう。 
+幸い、必要な設定はすべて整えてあるので **F5** を押すだけで動作します。ただし、リソースの登録と構成のためにプロジェクトで変更する箇所を確認していきましょう。 
 
-### 手順 1: ファイルとフォルダーをコピー
+### 手順 1: ファイルとフォルダーのコピー
 
-ルート フォルダーの **infra** 内に **entra** という新しいフォルダーを作成します。  
+ルート フォルダーの **infra** 内に **entra** フォルダーを作成します。  
 
-**entra** フォルダーに **entra.bot.manifest.json** と **entra.graph.manifest.json** という 2 つのファイルを作成します。  
+**entra** フォルダーに **entra.bot.manifest.json** と **entra.graph.manifest.json** の 2 つのファイルを作成します。  
 
-以下の [ファイル](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.bot.manifest.json){target=_blank} からコードをコピーして **entra.bot.manifest.json** に貼り付け、同様に [こちら](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.graph.manifest.json){target=_blank} から **entra.graph.manifest.json** にコピーします。  
+以下のリンクからコードをコピーしてそれぞれのファイルに貼り付けてください。  
+- **entra.bot.manifest.json** : [こちら](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.bot.manifest.json){target=_blank}  
+- **entra.graph.manifest.json** : [こちら](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/entra/entra.graph.manifest.json){target=_blank}  
 
-これらのファイルは、ボット用と Graph 用の Entra ID アプリ登録 (旧称 Azure Active Directory アプリ登録) をプロビジョニングするために必要です。  
+これらのファイルは、ボット用と Graph 用の Entra ID アプリ登録をプロビジョニングするために必要です。  
 
-続いて **infra** フォルダーに **azure.local.bicep** を作成し、[このファイル](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep){target=_blank} からコードをコピーします。同じ **infra** フォルダーに **azure.parameters.local.json** を作成し、[こちら](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json){target=_blank} からコードをコピーしてください。  
+次に **infra** フォルダー内に **azure.local.bicep** を作成し、[こちら](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.local.bicep){target=_blank} からコードをコピーします。同じフォルダーに **azure.parameters.local.json** を作成し、[こちら](https://raw.githubusercontent.com/microsoft/copilot-camp/main/src/extend-message-ext/Lab04-SSO-Auth/Northwind/infra/azure.parameters.local.json){target=_blank} からコードをコピーします。  
 
-これらのファイルはボット登録を支援します。この設定により、ローカル実行時でも Azure 上にボット サービスがプロビジョニングされます。これは本認証フローに必須です。
+これらのファイルはボット登録を支援します。ローカル実行時にも Azure にボット サービスをプロビジョニングする必要があるためです。
 
-!!! note "これらのファイルで何が行われるのか"
-    Agents Toolkit がアプリをローカルで実行するとき、F0 SKU を使用する新しい Azure AI Bot Service がリソース グループにプロビジョニングされます。F0 SKU は標準チャネル (Microsoft Teams や Microsoft 365 チャネル (Outlook と Copilot) を含む) に対して無制限のメッセージ送信が可能で、課金は発生しません。
+!!! note "これらのファイルで何が行われているか?"
+    Agents Toolkit がアプリをローカル実行するとき、F0 SKU の Azure AI Bot Service がリソース グループにプロビジョニングされます。F0 SKU は標準チャネル (Microsoft Teams、Microsoft 365 チャネルなど) へのメッセージ送信が無制限で、コストは発生しません。
 
 ### 手順 2: 既存コードの更新
 
-次に **infra** フォルダー配下の **botRegistration** フォルダーにある **azurebot.bicep** ファイルを開き、"param botAppDomain" の宣言後に以下のコード スニペットを追加します。
+**infra/botRegistration/azurebot.bicep** を開き、`param botAppDomain` の宣言後に以下のコード スニペットを追加します。
 
 ```bicep
 param graphAadAppClientId string
@@ -78,7 +80,7 @@ param graphAadAppClientSecret string
 param connectionName string
 ```
 
-続いて、同ファイルの末尾に以下のスニペットを追加し、ボット サービスをプロビジョニングします。
+次に、同じファイルの末尾付近に以下のスニペットを追加し、ボット サービスをプロビジョニングします。
 
 ```bicep
 resource botServicesMicrosoftGraphConnection 'Microsoft.BotService/botServices/connections@2022-09-15' = {
@@ -106,12 +108,12 @@ resource botServicesMicrosoftGraphConnection 'Microsoft.BotService/botServices/c
 
 ```
 
-これにより、ボット サービスと Graph の Entra ID アプリ間でトークン交換を行う新しい OAuth 接続が作成されます。
+これにより、ボット サービスと Graph Entra ID アプリ間でトークンを交換するための新しい OAUTH 接続が作成されます。
 
 !!! tip "プラグインのインフラ変更"
-    これまで構築した認証なしプラグインとは異なるインフラが必要なため、配線を変更します。次の手順で対応します。 
+    これまで作成した非認証プラグインとは異なるインフラが必要なため、再構成します。次の手順で進めましょう。 
 
-次に **teamsapp.local.yml** を開き、内容を以下のコード スニペットに置き換えます。これにより、インフラの一部が再配線され、ラボ用に Azure にボット サービスがデプロイされます。
+**teamsapp.local.yml** を開き、内容を下記スニペットで完全に置き換えます。これにより、ラボ用に Azure へボット サービスをデプロイするなど、インフラが再構成されます。 
 
 ```yaml
 # yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
@@ -239,7 +241,7 @@ deploy:
 
 ```
 
-**env** フォルダー配下の **.env.local** を開き、変数をすべて削除して以下に置き換えます。 
+**env** フォルダーの **.env.local** を開き、全変数を削除して下記に置き換えます。 
 
 ```
 APP_INTERNAL_NAME=Northwind
@@ -248,7 +250,7 @@ CONNECTION_NAME=MicrosoftGraph
 
 ```
 
-同じフォルダーの **.env.local.user** も変数をすべて削除し、以下に置き換えます。 
+同じく **.env.local.user** も全変数を削除し、下記に置き換えます。 
 
 ```
 SECRET_BOT_PASSWORD=
@@ -257,14 +259,15 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ```
 
 
-## 演習 2: 連絡先検索用の新しい検索コマンド 
 
-### 手順 1: 連絡先 (仕入先) 検索コマンドを追加
+## 演習 2: 連絡先検索用の新しい検索コマンド
 
-まず連絡先検索用の新しいコマンドを追加します。最終的には Microsoft Graph から連絡先を取得しますが、まずはモック データを使ってメッセージ拡張コマンドが正しく動作することを確認します。  
-**src** フォルダー > **messageExtensions** へ移動し、**supplierContactSearchCommand.ts** という新しいファイルを追加します。
+### 手順 1: 連絡先 (サプライヤー) を検索するコマンドを追加
 
-以下の内容を新しいファイルにコピーします。
+まず、連絡先を検索する新しいコマンドを追加します。最終的には Microsoft Graph から連絡先を取得しますが、まずはモック データでコマンドが正しく動くか確認します。  
+**src/messageExtensions** フォルダーに **supplierContactSearchCommand.ts** を作成します。  
+
+以下の内容を新規ファイルにコピーします。
 
 ```JavaScript
 import {
@@ -349,13 +352,13 @@ export default { COMMAND_ID, handleTeamsMessagingExtensionQuery }
 ```
 
 
-**src** フォルダー > **searchApp.ts** を開き、作成したコマンドをインポートします。
+**src/searchApp.ts** を開き、新しく作成したコマンドをインポートします。
 
 ```JavaScript
 import supplierContactSearchCommand from "./messageExtensions/supplierContactSearchCommand";
 ```
 
-さらに、**handleTeamsMessagingExtensionQuery** の *case customerSearchCommand.COMMAND_ID:* の後に新しいコマンド用の case を追加します。
+そして **handleTeamsMessagingExtensionQuery** 内で *case customerSearchCommand.COMMAND_ID:* の後に新しい case を追加します。
 
 ```JavaScript
   case supplierContactSearchCommand.COMMAND_ID: {
@@ -363,7 +366,7 @@ import supplierContactSearchCommand from "./messageExtensions/supplierContactSea
       } 
 ```
 
-次に **appPackage** > **manifest.json** を開き、*composeExtensions* ノードの *commands* 配列にコマンドを追加します。
+次に **appPackage/manifest.json** を開き、*composeExtensions* ノードの *commands* 配列にコマンドを追加します。
 
 ```JSON
  {
@@ -386,99 +389,88 @@ import supplierContactSearchCommand from "./messageExtensions/supplierContactSea
          } 
 ```
 
-これでモック リストを使用する認証なしの連絡先検索コマンドが追加されました。 
+これでモック データを使った非認証の連絡先検索コマンドが追加されました。 
 
 ### 手順 2: Agents Toolkit で Azure にサインイン
 
-Agents Toolkit では、リソース インスタンスをプロビジョニングする前に Azure アカウントにサインインし、サブスクリプションを持っている必要があります。その後、これらのリソースにアプリをデプロイして Azure でホストします。
+Agents Toolkit でリソースをプロビジョニングするには Azure アカウントへのサインインとサブスクリプションが必要です。
 
-1️⃣ プロジェクト エディターのアクティビティ バーで Microsoft Teams アイコンを選択します。Agents Toolkit の拡張パネルが開きます。
+1️⃣ プロジェクト エディターのアクティビティ バーで Microsoft Teams アイコンを選択。  
 
-2️⃣ Agents Toolkit パネルの Accounts 配下で "Sign in to Azure" を選択します。
+2️⃣ Agents Toolkit パネルの Accounts で "Sign in to Azure" を選択。  
 
 ![Sign into azure](../../assets/images/extend-message-ext-04/03-sign-into-azure.png)
 
-表示されるダイアログで "Sign in" を選択します。
+表示されたダイアログで "Sign in" を選択します。
 
 ![Sign in dialog](../../assets/images/extend-message-ext-04/03-sign-into-azure-alert.png)
 
 
-### 手順 3: Teams でアプリを実行して新しいコマンドをテスト
+### 手順 3: Teams でアプリを実行して新コマンドをテスト
 
+ローカルでアプリを実行します。
 
-新しいコマンドをテストするため、アプリをローカルで実行します。
-
-F5 キーを押すか、開始ボタン 1️⃣ をクリックしてデバッグを開始します。デバッグ プロファイルを選択する画面が表示されたら、Debug in Teams (Edge) 2️⃣ などを選択します。
+F5 を押すか、スタート ボタン 1️⃣ をクリックします。デバッグ プロファイル選択画面が表示されるので Debug in Teams (Edge) 2️⃣ などを選択します。
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
 
-!!! tip "本ラボでの F5"
-       F5 を押してアプリを実行すると、Exercise 1 で設定した Team Toolkit のアクションにより、認証フローに必要なリソースも同時にプロビジョニングされます。 
+!!! tip "このラボでの F5"
+       F5 を押すと、Exercise 1 で設定した Team Toolkit のアクションにより、認証フローに必要なリソースが自動でプロビジョニングされます。 
 
-環境変数をクリアしたため、Entra ID アプリやボット サービスが Azure にインストールされます。初回実行時には、Agents Toolkit 経由でログインした Azure サブスクリプション内のリソース グループを選択する必要があります。
+環境変数をクリアしたため、すべての Entra ID アプリとボット サービスが Azure にインストールされます。初回実行では、Agents Toolkit でサインインした Azure サブスクリプションのリソース グループを選択するよう求められます。
 
 ![resource group selection](../../assets/images/extend-message-ext-04/new-resource-group.png)
 
-整理のため **+ New resource group** を選択し、Agents Toolkit が提案する既定の名前を使用して Enter を押します。
+**+ New resource group** を選択し、提案された名前をそのまま使って Enter。  
 
-次に Location を選択します。このラボでは **Central US** を選択してください。
+次に Location を選択します。ここでは **Central US** を選択。  
 
 ![resource group selection](../../assets/images/extend-message-ext-04/new-resource-group2.png)
 
-続いて Agents Toolkit がリソースをプロビジョニングしますが、その前に確認ダイアログが表示されます。
+Agents Toolkit がリソースをプロビジョニングする前に確認ダイアログが表示されます。
 
 ![provision](../../assets/images/extend-message-ext-04/provision.png)
 
 **Provision** を選択します。
 
-リソースのプロビジョニングが完了すると、ブラウザーに Northwind アプリのインストール ダイアログが表示されます。**Add** を選択します。
-
+リソースがすべてプロビジョニングされると、Northwind アプリのインストール ダイアログがブラウザーに表示されます。**Add** を選択。  
 
 ![provision](../../assets/images/extend-message-ext-04/app-install.png)
 
-インストール後、アプリを開くダイアログが表示されます。これにより、パーソナル チャットでメッセージ拡張としてアプリが開きます。**Open** を選択します。
-
+インストール後、アプリを開くためのダイアログが表示されます。**Open** を選択。  
 
 ![app open](../../assets/images/extend-message-ext-04/app-open.png)
 
-今回はコマンドが動作するかだけを確認するため、Teams チャットでのみテストします。  
-アプリとのパーソナル チャットで **Contacrt search** を選択し、*a* と入力します。 
+今回はコマンド動作のみ確認するので Teams チャットでテストします。  
+個人チャットで **Contact search** を選択し `a` と入力します。  
 
 ![app open](../../assets/images/extend-message-ext-04/contacts-non-auth.png)
 
-上図のように連絡先が一覧表示されれば、コマンドはモック データで動作しています。次の演習で実データに置き換えます。
+上図のように連絡先が一覧表示されれば、モック データを用いたコマンドは機能しています。次の演習で修正します。
 
-## 演習 3 : 新しいコマンドに認証を有効化
+## 演習 3 : 新コマンドに認証を付与
 
-前の手順で新しいコマンドの基礎を作成しました。次はそのコマンドに認証を追加し、モックの連絡先リストをログイン ユーザーの Outlook 連絡先に置き換えます。
+前のステップでコマンドの基盤を作成しました。次は認証を追加し、モックの連絡先リストを実際にログイン ユーザーの Outlook 連絡先に置き換えます。
 
-まずプラグインに必要な npm パッケージをインストールします。プロジェクトで新しいターミナル ウィンドウを開きます。
-
-ターミナルで以下のスクリプトを実行します。
+まずプラグインに必要な npm パッケージをインストールします。新しいターミナルを開き、以下を実行します。
 
 ```CLI
 npm i @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
 ```
 
-**src** フォルダーの **config.ts** を開き、`storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING` の行の後ろに **,** を付け、`connectionName` プロパティを追加します。
+**src/config.ts** を開き、`storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING` の行末に `,` を追加して次のプロパティを追加します。
 
-<pre>
- const config = {
-  botId: process.env.BOT_ID,
-  botPassword: process.env.BOT_PASSWORD,
-  storageAccountConnectionString: process.env.STORAGE_ACCOUNT_CONNECTION_STRING<b>,
-  connectionName: process.env.CONNECTION_NAME</b>
-};
-</pre>
+```
+  connectionName: process.env.CONNECTION_NAME
+```
 
-次にプロジェクトの **src** フォルダーに **services** フォルダーを作成します。  
-このフォルダーに **AuthService.ts** と **GraphService.ts** の 2 ファイルを作成します。 
+次に **src** フォルダー直下に **services** フォルダーを作成し、**AuthService.ts** と **GraphService.ts** の 2 ファイルを作成します。  
 
-- **AuthService** : 認証サービス クラスを提供します。**getSignInLink** メソッドがあり、接続情報を使用してサインイン URL を取得し、返します。  
-- **GraphService** : Microsoft Graph API と対話するクラスです。認証トークンを使用して Graph クライアントを初期化し、`getContacts` メソッドでユーザーの連絡先 (displayName と emailAddresses) を取得します。  
+- **AuthService** : サインイン URL を取得するメソッド **getSignInLink** を持つ認証サービス クラス。  
+- **GraphService** : Microsoft Graph API と対話するクラス。アクセストークンで Graph クライアントを初期化し、`getContacts` で連絡先を取得。  
 
-以下のコードを **AuthService.ts** に貼り付けます。
+**AuthService.ts** に以下を貼り付けます。
 
 ```JavaScript
 import {
@@ -567,7 +559,7 @@ export class AuthService {
 
 ```
 
-続いて **GraphService.ts** に以下を貼り付けます。
+**GraphService.ts** に以下を貼り付けます。
 
 ```JavaScript
 import { Client } from '@microsoft/microsoft-graph-client';
@@ -603,16 +595,14 @@ export class GraphService {
 
 
 
-次に **supplierContactSearchCommand.ts** に戻り、追加した 2 つのサービスをインポートします。
+**supplierContactSearchCommand.ts** を開き、追加した 2 つのサービスをインポートします。
 
 ```JavaScript
 import { AuthService } from "../services/AuthService";
 import { GraphService } from "../services/GraphService";
 ```
 
-続いて、認証を初期化し、ユーザー トークンを取得・検証し、トークンが有効なら Microsoft Graph API と対話するサービスを設定するコードを追加します。トークンが無効な場合はユーザーにサインインを促します。
-
-*handleTeamsMessagingExtensionQuery* 関数内、**allContacts** 定義のモックより上に以下のコードをコピーします。
+次に *handleTeamsMessagingExtensionQuery* 関数内のモック **allContacts** 定義の上に、認証を初期化しユーザートークンを取得するコードを追加します。
 
 ```JavaScript
   const credentials = new AuthService(context);
@@ -623,13 +613,13 @@ import { GraphService } from "../services/GraphService";
   const graphService = new GraphService(token);
 ```
 
-次に、**allContacts** 定義のモックを以下のコードに置き換えます。
+続いて **allContacts** のモック定義を以下に置き換えます。
 
 ```JavaScript
 const allContacts = await graphService.getContacts();
 ```
 
-続いて **appPackage/manifest.json** を開き、*validDomains* ノードを以下のように更新します。
+**appPackage/manifest.json** を開き、*validDomains* ノードを以下のように更新します。
 
 ```JSON
 "validDomains": [
@@ -638,7 +628,7 @@ const allContacts = await graphService.getContacts();
     ]
 ```
 
-さらに `validDomains` 配列の後ろに **,** を追加し、*webApplicationInfo* ノードを以下の値で追加します。
+さらに `validDomains` 配列の後に `,` を追加し、*webApplicationInfo* ノードを以下の値で追加します。
 
 ```JSON
     "webApplicationInfo": {
@@ -647,73 +637,71 @@ const allContacts = await graphService.getContacts();
     },
 ```
 
-最後にマニフェストのバージョンを "1.0.10" から "1.0.11" に更新し、変更を反映させます。  
+最後にマニフェストのバージョンを "1.0.10" から "1.0.11" に更新します。  
 
-これらのマニフェスト変更により、サインイン URL が正しく形成され、ユーザーに同意を求めるリンクが送信されます。
+これらの変更により、サインイン URL が正しく形成され、ユーザーに同意を求めることができます。
 
-## 演習 4:  認証をテストする
+## 演習 4: 認証のテスト
 
-### 手順 1: アプリをローカルで実行 
-マニフェストに新しいコマンドを追加したため、アプリを再インストールする必要があります。ローカル デバッガーが起動している場合は停止してください。 
+### 手順 1: アプリをローカルで実行
+デバッガーが起動したままなら停止します。マニフェストが更新されたのでアプリを再インストールする必要があります。  
 
-F5 キーを押すか開始ボタン 1️⃣ をクリックしてデバッガーを再起動します。デバッグ プロファイル選択画面では Debug in Teams (Edge) 2️⃣ などを選択します。
+F5 を押すかスタート ボタン 1️⃣ をクリックし、Debug in Teams (Edge) 2️⃣ を選択します。
 
 ![Run application locally](../../assets/images/extend-message-ext-01/02-02-Run-Project-01.png)
 
-!!! pied-piper "Provision"
-    再度リソースをプロビジョニングするかどうかの確認ダイアログが表示されます。"Provision" を選択してください。これは新規リソースの作成ではなく既存リソースの上書きです。 
+!!! pied-piper "プロビジョニング"
+    再度プロビジョニング確認ダイアログが表示されるので "Provision" を選択します。これは新規リソースを作成するのではなく既存を上書きします。 
 
-デバッグによりブラウザーで Teams が開きます。Agents Toolkit にサインインしたのと同じ資格情報でログインしてください。  
-Teams が開くとアプリを開くダイアログが表示されます。 
+ブラウザーで Teams が開きます。Agents Toolkit にサインインしたものと同じ資格情報でログインしてください。  
+Teams が起動するとアプリを開くダイアログが表示されます。  
 
 ![Open](../../assets/images/extend-message-ext-01/nw-open.png)
 
-開く場所を尋ねられます。既定ではパーソナル チャットです。チャンネルやグループ チャットも選択できます。"Open" を選択します。
+開く場所を聞かれます。既定は個人チャットです。"Open" を選択。  
 
 ![Open surfaces](../../assets/images/extend-message-ext-01/nw-open-2.png)
 
-現在はアプリとのパーソナル チャットですが、Copilot でテストするので次の手順に従います。 
+今回は Copilot でテストするので次へ進みます。  
 
-
-Teams で **Chat** をクリックし、その後 **Copilot** を選択します。Copilot は最上位に表示されます。  
-**Plugin アイコン** をクリックし、**Northwind Inventory** を選択してプラグインを有効化します。
+Teams で **Chat** → **Copilot** をクリックし、**Plugin アイコン** を選択して **Northwind Inventory** を有効化します。
 
 
 ### 手順 2 : テスト データを入力
-プラグインで実際の連絡先を取得する前に、連絡先情報を追加する必要があります。
-まず Microsoft 365 に連絡先があることを確認しましょう。
+実際の連絡先を取得できるように Microsoft 365 に連絡先を追加します。
 
-1️⃣ Microsoft Teams の "ワッフル" メニューをクリック  
+1️⃣ Teams で "ワッフル" メニューをクリック  
 
 2️⃣ Microsoft Outlook を選択  
 
 ![outlook](../../assets/images/extend-message-ext-04/Lab05-002-EnterTestData1.png)
 
-1️⃣ Outlook 内で "Contacts" ボタンをクリック  
+1️⃣ Outlook で "Contacts" ボタンをクリック  
 
-2️⃣ 新しい連絡先を入力  
+2️⃣ 新しい連絡先を追加  
 
-アプリは氏名または会社名とメール アドレスのみを表示します。ビジネス シナリオに合わせたい場合は仕入先らしい名前にしてみてください。
+アプリは名前とメールアドレスのみ表示します。サプライヤーらしい名前にするとシナリオに合います。
 
 ![outlook](../../assets/images/extend-message-ext-04/Lab05-003-EnterTestData2.png)
 
 ### 手順 2: Copilot でテスト
 
-Copilot に次のプロンプトを入力します: **Find my conacts with name {first name} in Northwind**  
-( {first name} は演習 4 手順 1 で作成した連絡先の名前に置き換えてください)
+Copilot に次のプロンプトを入力します。  
+**Find my contacts with name {first name} in Northwind**  
+({first name} は先ほど追加した連絡先の名前に置き換えてください)
 
-サインイン ボタンが表示され、一度だけ認証を求められます。 
+サインイン ボタンが表示されます (初回のみ)。  
 
 ![prompt](../../assets/images/extend-message-ext-04/prompt.png)
 
-これが、この機能に認証が設定されていることを示しています。**Sign in to Northwind Inventory** を選択してください。
+これはプラグイン機能呼び出しに認証が必要であることを示しています。**Sign in to Northwind Inventory** を選択。  
 
-以下の GIF のように同意ダイアログが表示されます。承諾すると Microsoft 365 Copilot から結果が返されるはずです。  
+次に同意ダイアログが表示されます。承認すると Microsoft 365 Copilot から結果が返ってきます。  
 ![working gif](../../assets/images/extend-message-ext-04/working.gif)
 
 ## おめでとうございます
-難易度の高いラボでしたが、見事に達成しました!  
-メッセージ拡張エージェント トラックの完了、お疲れさまでした。
+難易度の高いラボでしたが、見事に完了しました!  
+メッセージ拡張エージェント トラックのご参加ありがとうございました!
 
 <cc-next url="/" label="Home" />
 

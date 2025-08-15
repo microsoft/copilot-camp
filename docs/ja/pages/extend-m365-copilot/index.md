@@ -4,25 +4,25 @@ search:
 ---
 # Microsoft 365 Copilot の拡張
 
-**宣言型エージェント** は、 Microsoft 365 用のエージェントの一種です。 Microsoft 365 Copilot を拡張することで作成できます。特定のシナリオに合わせたエージェントを作成するために、カスタム ナレッジとカスタム アクションを定義します。
+**Declarative エージェント** は、Microsoft 365 向けのエージェントの一種です。Microsoft 365 Copilot を拡張することで作成でき、特定のシナリオに合わせたカスタム ナレッジとカスタム アクションを定義して構築します。
 
-宣言型エージェントは、 Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、セキュリティ制御を使用するため、一貫性があり馴染みのあるユーザー エクスペリエンスを実現します。
+Declarative エージェントは、Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、セキュリティ制御を使用するため、一貫性があり親しみやすいユーザー エクスペリエンスを提供します。
 
-![宣言型エージェントのアーキテクチャ ダイアグラム。最下層には Microsoft 365 Copilot の基盤モデルと同じオーケストレーターがあります。エージェントはカスタム ナレッジとグラウンディング データ、アクション、トリガー、ワークフローとしてのカスタム スキルも提供します。ユーザー エクスペリエンスは Microsoft 365 Copilot に表示されます。](../../assets/images/m365-declarative-agent.png)
+![Declarative agent architecture diagram. At the very basis there is the foundational model of Microsoft 365 Copilot, as well as the same orchestrator. The agent provides also custom knowledge and grounding data, and custom skills as actions, triggers, and workflows.. The user experience is available in Microsoft 365 Copilot.](../../assets/images/m365-declarative-agent.png)
 
-## 取り組む内容
+## このラボで行うこと
 
-Copilot Developer Camp の Extend Path では、人事部門向けにカスタマイズされたアシスタントを構築します。まず、宣言型エージェント作成の基本を理解し、基本的な宣言型エージェントを作成してから、十分なスキルを備えたアシスタントへと発展させていきます。  
-この高度なアシスタントには、組織データを取得するために Microsoft 365 テナントと連携した認証メカニズムなどのセキュリティ機能が組み込まれます。
+Copilot Developer Camp の Extend Path では、人事部門向けにカスタマイズされたアシスタントを構築します。まず Declarative エージェント作成の基本を理解し、シンプルな Declarative エージェントを作成してから、フル機能を備えたアシスタントへと発展させます。
+この高度なアシスタントには、組織データを取得するために Microsoft 365 テナントと連携した認証メカニズムを含むセキュリティ機能が搭載されます。
 
-| セクション                              | 目的                                                                                                  |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **セットアップ**                        | 前提条件を準備します。                                                                                |
-| **宣言型エージェントの基礎**            | 宣言型エージェントの概念に焦点を当て、ベース テンプレートから始めてさらに掘り下げます。               |
-| **API の構築と統合**                    | API の作成とエージェントへの接続を扱います。 Adaptive Card で UI を強化します。                       |
-| **認証**                                | すべての認証関連ラボをサブ項目として含みます。                                                        |
-| **統合**                                | Copilot コネクタなどで機能を拡張します。                                                              |
+| Section                            | Purpose                                                 |
+| ---------------------------------- | ------------------------------------------------------- |
+| **セットアップ**                     | 前提条件の準備を行います。                               |
+| **Declarative エージェントの基礎**    | Declarative エージェントの概念に集中し、ベース テンプレートから始めてさらに探求します。 |
+| **API の構築と統合**                | API の作成とエージェントへの接続を扱います。Adaptive Cards で UI を強化します。 |
+| **認証**                           | 認証関連のラボをすべて含みます。                         |
+| **統合**                           | Copilot コネクタなどで機能を拡張します。                |
 
-## [ここから開始](./00-prerequisites) — Lab E0 で開発環境をセットアップします
+## [Start here](./00-prerequisites) with Lab E0, where you'll set up development your environment
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index--ja" />

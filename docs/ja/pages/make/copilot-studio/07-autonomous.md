@@ -4,13 +4,13 @@ search:
 ---
 # Lab MCS7 - 自律型エージェントの作成
 
-このラボでは、 Microsoft Copilot Studio を使用して自律型エージェントを作成する方法を学びます。作成する自律型エージェントは、 SharePoint にアップロードされた PDF ファイルから候補者データを自動的に処理します。エージェントは SharePoint のドキュメント ライブラリを監視し、新しい PDF がアップロードされると AI を使って候補者情報を抽出し、前のラボ MCS6 で構築した MCP サーバーを通じて候補者レコードを自動生成します。このラボは、自律型エージェントがドキュメント処理とデータ入力を自動化し、 HR ワークフローを効率化できることを示しています。
+このラボでは、Microsoft Copilot Studio を使用して自律型エージェントを作成する方法を理解します。ここで作成する自律型エージェントは、SharePoint にアップロードされた PDF ファイルから候補者データを自動的に処理します。エージェントは SharePoint のドキュメント ライブラリを監視し、新しい PDF がアップロードされると AI を使って候補者情報を抽出し、Lab MCS6 で構築した MCP サーバーを使用して候補者レコードを自動的に作成します。このラボは、ドキュメント処理とデータ入力タスクを自動化することで、HR ワークフローを合理化できることを示しています。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/TPwJWZjLrDo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を短時間でご確認ください。</div>
+          <div>ビデオでラボの概要を確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
@@ -18,107 +18,107 @@ search:
 </div>
 
 !!! note
-    このラボは前回の [Lab MCS6](../06-mcp){target=_blank} を前提としています。前のラボで構成した同じ MCP サーバーをそのまま利用できます。
+    このラボは前回の [Lab MCS6](../06-mcp){target=_blank} を基にしています。前回設定した MCP サーバーをそのまま使用できます。
 
 このラボで学習する内容:
 
 - Microsoft Copilot Studio で自律型エージェントを作成する方法
 - SharePoint ドキュメント ライブラリのトリガーを構成する方法
-- AI で PDF ドキュメントを処理し構造化データを抽出する方法
+- AI で PDF ドキュメントを処理して構造化データを抽出する方法
 - 自律型エージェントを MCP サーバーと統合する方法
 
-## Exercise 1: SharePoint 環境のセットアップ
+## 演習 1: SharePoint 環境のセットアップ
 
-この演習では、自律型エージェントのトリガー ポイントとなる SharePoint ドキュメント ライブラリを準備します。エージェントはこのライブラリに新しい PDF ファイルが追加されるのを監視し、自動的に処理します。
+この演習では、自律型エージェントのトリガー ポイントとなる SharePoint ドキュメント ライブラリを準備します。エージェントはこのライブラリを監視し、候補者データを含む新しい PDF ファイルを自動的に処理します。
 
-### Step 1: SharePoint ドキュメント ライブラリの作成
+### 手順 1: SharePoint ドキュメント ライブラリの作成
 
-自律型エージェントを作成する前に、 HR 担当者が候補者の PDF ファイルをアップロードできる SharePoint ドキュメント ライブラリを設定します。
+自律型エージェントを作成する前に、HR 担当者が候補者の PDF ファイルをアップロードできるように SharePoint ドキュメント ライブラリを設定します。
 
-Microsoft 365 テナント内の任意の SharePoint サイト (または新規作成したサイト) に移動し、新しいドキュメント ライブラリを作成します。
+Microsoft 365 テナント内の任意の SharePoint サイト (または新規に作成したサイト) に移動し、新しいドキュメント ライブラリを作成します。
 
-1. **サイト コンテンツ** に移動し、 **新規** → **ドキュメント ライブラリ** を選択します  
-1. テンプレートとして **空のライブラリ** を選択します  
-1. ライブラリ名に `Candidates Data` と入力します  
-1. 説明に `Document library for candidate PDF data files` と入力します  
-1. **作成** を選択してライブラリを作成します  
+1. **サイト コンテンツ** に移動し、**新規** → **ドキュメント ライブラリ** を選択  
+1. テンプレートとして **空白のライブラリ** を選択  
+1. ライブラリ名: `Candidates Data`  
+1. 説明: `Document library for candidate PDF data files`  
+1. **作成** を選択してライブラリを作成  
 
-![SharePoint インターフェイスで新しいドキュメント ライブラリ「Candidate Data」を作成している画面。](../../../assets/images/make/copilot-studio-07/sharepoint-library-01.png)
+![「Candidate Data」という名前で新しいドキュメント ライブラリを作成している SharePoint インターフェイス。](../../../assets/images/make/copilot-studio-07/sharepoint-library-01.png)
 
-作成後、エージェントがアクセスできるようにライブラリの権限を設定します。
+作成後、エージェントがアクセスできるようにライブラリの権限を構成します。
 
 1. **設定** (歯車アイコン) → **ライブラリの設定** を選択  
-1. **権限と管理** セクションで **このドキュメント ライブラリの権限** を選択  
+1. **権限と管理** の下で **このドキュメント ライブラリの権限** を選択  
 1. Microsoft Copilot Studio で使用するアカウントに **投稿** 以上の権限があることを確認  
 
 <cc-end-step lab="mcs7" exercise="1" step="1" />
 
-### Step 2: サンプル PDF ファイルの準備
+### 手順 2: サンプル PDF ファイルの準備
 
 テスト用に、[resumes.zip](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/autonomous-agent&filename=resumes){target=_blank} をダウンロードして解凍します。  
-ダウンロードしたファイルには、以下のような架空の候補者情報が含まれています。
+ダウンロードしたファイルには、次のような仮想候補者の情報が含まれています。
 
-- 氏名  
+- 氏名
 - メール アドレス  
-- 現在の職務 / 役職  
-- スキルと専門分野  
-- 使用言語  
+- 現在の役職
+- スキルと専門分野
+- 使用言語
 
-または、任意のワード プロセッサーで簡単な PDF を作成して保存したり、既存の履歴書 / CV ファイルを使用してもかまいません。 AI が情報を正しく抽出できるよう、テキストが読み取り可能 (スキャン画像ではない) であることを確認してください。
+任意のワープロで簡単な PDF を作成して保存するか、既存の履歴書/CV ファイルを使用しても構いません。AI が正しく情報を抽出できるよう、テキストが読み取り可能 (スキャン画像ではない) であることを確認してください。
 
 <cc-end-step lab="mcs7" exercise="1" step="2" />
 
-### Step 3: 前提条件の確認
+### 手順 3: 前提条件の確認
 
-続行する前に、次の項目を完了していることを確認してください。
+次の項目を完了していることを確認してください。
 
-- **Lab MCS6**: HR MCP サーバーが起動しており dev tunnel 経由でアクセス可能  
+- **Lab MCS6**: HR MCP サーバーが dev tunnel からアクセス可能な状態で稼働している  
 - **SharePoint アクセス**: ドキュメント ライブラリを作成・管理できる権限  
-- **Power Platform 環境**: 前のラボと同じ環境へのアクセス  
-- **サンプル PDF ファイル**: 候補者データ入りのテスト用 PDF が 2～3 件以上  
+- **Power Platform 環境**: 前回のラボと同じ環境にアクセス可能  
+- **サンプル PDF ファイル**: 候補者データを含むテスト用 PDF ファイルを 2～3 つ以上  
 
-また、 Lab MCS6 の HR MCP サーバーがまだ起動しているか確認し、停止している場合は次のコマンドで起動します。
+また、Lab MCS6 の HR MCP サーバーが稼働しているか確認し、停止している場合は次のコマンドで起動します。
 
 ```console
 dotnet run
 ```
 
-dev tunnel がアクティブであることも確認します。
+さらに dev tunnel がアクティブであることを確認します。
 
 ```console
 devtunnel host hr-mcp
 ```
 
-このラボの間、エージェントが MCP サーバーへ通信できるように、両方のサービスを起動したままにしてください。
+このラボの間、エージェントが MCP サーバーと通信できるよう、両サービスを稼働したままにしてください。
 
 <cc-end-step lab="mcs7" exercise="1" step="3" />
 
-## Exercise 2: 自律型エージェントの作成
+## 演習 2: 自律型エージェントの作成
 
-この演習では、 SharePoint ドキュメント ライブラリを監視し、新しい PDF アップロードを自動処理する自律型エージェントを Microsoft Copilot Studio で作成します。
+この演習では、SharePoint ドキュメント ライブラリを監視し、新しい PDF を自動処理する自律型エージェントを Microsoft Copilot Studio で作成します。
 
-### Step 1: 自律型エージェントの作成
+### 手順 1: 自律型エージェントの作成
 
-ブラウザーで対象の Microsoft 365 テナントの職場アカウントを使用して [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、 Microsoft Copilot Studio を開きます。
+ブラウザーを開き、対象 Microsoft 365 テナントの業務アカウントで [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} にアクセスします。
 
-前のラボで作成した `Copilot Dev Camp` 環境を選択し、左ナビゲーション メニューの **作成** を選択してから **エージェント** を選択します。
+前回のラボで作成した `Copilot Dev Camp` 環境を選択し、左ナビゲーション メニューの **Create** を選択して **Agent** を選びます。
 
-**スキップして構成** を選び、次の設定で自律型エージェントを定義します。
+**Skip to configure** を選択し、以下の設定で自律型エージェントを定義します。
 
-- **名前**:  
+- **Name**:  
 
 ```text
 Autonomous HR Document Processor
 ```
 
-- **説明**:  
+- **Description**:  
 
 ```text
 An autonomous AI agent that monitors SharePoint for new candidate PDF uploads and 
 automatically processes them to create candidate records via MCP server integration
 ```
 
-- **手順**:  
+- **Instructions**:  
 
 ```text
 You are an autonomous HR assistant that specializes in processing candidate data 
@@ -136,169 +136,169 @@ DO NOT invent or assume fake data about candidates. AVOID allucinations.
 You MUST ONLY process real and existing data.
 ```
 
-**作成** を選択して自律型エージェントを作成します。
+**Create** を選択して自律型エージェントを作成します。
 
 <cc-end-step lab="mcs7" exercise="2" step="1" />
 
-### Step 2: エージェントの知能を強化
+### 手順 2: エージェントの知能強化
 
-エージェントを作成したら、生成 AI 推論とナレッジ統合で機能を強化します。
+エージェント作成後、生成 AI 推論とナレッジ統合で機能を強化します。
 
-**オーケストレーション** セクションで **生成 AI を使用してユーザーやイベントへの最適な応答方法を判断する** を有効にしていることを確認します。これにより、エージェントはさまざまなイベントをインテリジェントに処理し、適切なアクションを判断できます。
+**Orchestration** セクションで **Use generative AI to determine how best to respond to users and events** が有効になっていることを確認します。これにより、エージェントはさまざまなイベントをインテリジェントに処理し、適切なアクションを決定できます。
 
-![エージェント構成ページで生成 AI を有効にしたオーケストレーション設定。](../../../assets/images/make/copilot-studio-07/autonomous-agent-01.png)
+![自律型処理のために生成 AI が有効になっているオーケストレーション設定画面。](../../../assets/images/make/copilot-studio-07/autonomous-agent-01.png)
 
-**ナレッジ** セクションでは、 HR 文書や候補者処理ガイドラインなど特定のナレッジ ソースを追加することもできます。このラボでは、エージェントの組み込み AI 機能と MCP サーバー統合を利用します。
+**Knowledge** セクションでは、特定の HR ドキュメントや候補者処理ガイドラインがある場合にナレッジ ソースを追加できます。このラボでは、エージェントの組み込み AI 機能と MCP サーバー統合のみを使用します。
 
-設定を変更した場合は **保存** を選択して確定します。
+設定を変更した場合は **Save** を選択して保存します。
 
 <cc-end-step lab="mcs7" exercise="2" step="2" />
 
-### Step 3: MCP サーバー統合の追加
+### 手順 3: MCP サーバー統合の追加
 
-エージェントが候補者レコードを作成できるよう、 HR MCP サーバー ツールへアクセスを追加します。 **ツール** セクションに移動し、 **+ ツールを追加** を選択します。
+エージェントが候補者レコードを作成できるよう、HR MCP サーバーのツールへアクセスさせます。**Tools** セクションに移動し、**+ Add a tool** を選択します。
 
 1. **Model Context Protocol** グループを選択  
-2. Lab MCS6 で構成した **HR MCP Server** を選択  
-3. **追加して構成** を選択して MCP サーバー ツールを統合  
+2. Lab MCS6 で構成した **HR MCP Server** を探して選択  
+3. **Add and configure** を選択して MCP サーバー ツールを統合  
 
-![HR MCP Server を自律型エージェントに追加しているツール セクション。](../../../assets/images/make/copilot-studio-07/autonomous-agent-02.png)
+![HR MCP Server が追加され、候補者管理ツールが表示されているツール セクション。](../../../assets/images/make/copilot-studio-07/autonomous-agent-02.png)
 
-これによりエージェントは次の HR MCP サーバー ツールへアクセスできます。
+これでエージェントは次の HR MCP サーバー ツールにアクセスできます。
 
 - `list_candidates`
-- `search_candidates` 
+- `search_candidates`
 - `add_candidate`
 - `update_candidate`
 - `remove_candidate`
 
-エージェントは主に `add_candidate` ツールを使用して新しい PDF アップロードを処理します。
+エージェントは主に `add_candidate` ツールを使用して新しい PDF を処理します。
 
 <cc-end-step lab="mcs7" exercise="2" step="3" />
 
-## Exercise 3: SharePoint トリガーの構成
+## 演習 3: SharePoint トリガーの構成
 
-この演習では、新しい PDF ファイルが SharePoint ドキュメント ライブラリにアップロードされたときに自律型エージェントが自動的に起動するようトリガーを構成します。
+この演習では、新しい PDF が SharePoint ドキュメント ライブラリにアップロードされた際にエージェントが自動的に起動するようトリガーを構成します。
 
-### Step 1: SharePoint トリガーの追加
+### 手順 1: SharePoint トリガーの追加
 
-エージェントで 1️⃣ **概要** セクションに移動し、 2️⃣ **トリガー** パネルをスクロールして 3️⃣ **+ トリガーを追加** を選択します。
+エージェントで 1️⃣ **Overview** セクションに移動し、2️⃣ **Triggers** パネルをスクロールして 3️⃣ **+ Add trigger** を選択します。
 
-![自律型エージェントのトリガー セクションで「+ Add trigger」が強調表示されている。](../../../assets/images/make/copilot-studio-07/autonomous-agent-03.png)
+![「+ Add trigger」コマンドが強調表示されたトリガー セクション。](../../../assets/images/make/copilot-studio-07/autonomous-agent-03.png)
 
-**トリガーを追加** ダイアログで SharePoint コネクタ オプションの **ファイルが作成されたとき (プロパティのみ)** を選択し、 **次へ** を選択します。
+**Add trigger** ダイアログで SharePoint コネクタの **When a file is created (properties only)** を選択し、**Next** を選択して構成を続行します。
 
-![トリガー選択ダイアログで SharePoint の「ファイルが作成されたとき (プロパティのみ)」が強調表示されている。](../../../assets/images/make/copilot-studio-07/autonomous-agent-04.png)
+![SharePoint ファイル トリガー選択ダイアログ。「When a file is created (properties only)」が強調表示されている。](../../../assets/images/make/copilot-studio-07/autonomous-agent-04.png)
 
-次の手順ではトリガーに名前を付け、対象アプリへのアクセス許可を構成 / 接続します。今回は以下のアプリが対象です。
+次に、トリガー名を指定し、対象アプリへのアクセス権限を構成します。今回対象となるアプリは次のとおりです。
 
-- Microsoft Copilot Studio  
-- SharePoint  
+- Microsoft Copilot Studio
+- SharePoint
 
-次のようにトリガーを構成します。
+以下のようにトリガーを構成します。
 
-- **トリガー名**: `When PDF uploaded to Candidate Data library`
+- **Trigger name**: `When PDF uploaded to Candidate Data library`
 
-![SharePoint トリガーの構成画面。](../../../assets/images/make/copilot-studio-07/autonomous-agent-05.png)
+![トリガー名と必要なアプリ権限が表示された SharePoint トリガー設定画面。](../../../assets/images/make/copilot-studio-07/autonomous-agent-05.png)
 
-**次へ** を選択し、以下の追加設定を行います。
+**Next** を選択し、以下の追加設定を行います。
 
 - **Site Address**: 対象 SharePoint サイトを選択または URL を入力  
-- **Library Name**: `Candidate Data` を選択  
+- **Library Name**: `Candidate Data`  
 - **Folder**: 空欄 (ライブラリ全体を監視)  
 - **Limit columns by View (Optional)**: All Documents  
-- **Additional instructions to the agent when it's invoked by this trigger**: `Body` の内容を使用  
+- **Additional instructions to the agent when it's invoked by this trigger**: Use content from `Body`
 
-![SharePoint トリガーの詳細設定画面。](../../../assets/images/make/copilot-studio-07/autonomous-agent-06.png)
+![サイト アドレスやライブラリ名などの設定が表示された SharePoint トリガー設定画面。](../../../assets/images/make/copilot-studio-07/autonomous-agent-06.png)
 
-**トリガーを作成** を選択して SharePoint 監視トリガーを追加します。処理には少し時間がかかります。完了するとテストを促すダイアログが表示されます。
+**Create trigger** を選択してトリガーを追加します。処理が完了すると、テストを促すダイアログが表示されます。
 
-![トリガー作成完了の確認ダイアログ。](../../../assets/images/make/copilot-studio-07/autonomous-agent-07.png)
+![トリガー作成完了とテストを促すダイアログ。](../../../assets/images/make/copilot-studio-07/autonomous-agent-07.png)
 
-**閉じる** を選択してエージェントの **概要** セクションに戻ります。
+**Close** を選択して **Overview** セクションに戻ります。
 
 <cc-end-step lab="mcs7" exercise="3" step="1" />
 
-### Step 2: トリガーのテスト
+### 手順 2: トリガーのテスト
 
-**トリガー** の一覧に新しいトリガーが表示され、トリガー名の右側にあるフラスコ アイコンを選択してテストできます。
+**Triggers** の一覧に新しいトリガーが表示され、エリプシス (**...**) の横にあるフラスコを選択してテストできます。
 
-![トリガー一覧でテスト用フラスコ アイコンが強調表示されている。](../../../assets/images/make/copilot-studio-07/autonomous-agent-08.png)
+![テスト用のフラスコが強調表示されたトリガー一覧。](../../../assets/images/make/copilot-studio-07/autonomous-agent-08.png)
 
-フラスコを選択するとダイアログ ウィンドウが表示され、対象ライブラリへのファイル アップロードを待機します。
+フラスコを選択すると、SharePoint Online の対象ライブラリにファイルがアップロードされるのを待機するダイアログが開きます。
 
-![トリガー テスト ダイアログ。](../../../assets/images/make/copilot-studio-07/trigger-test-01.png)
+![アップロード待機中で「Start testing」コマンドがグレーアウトされたテスト ダイアログ。](../../../assets/images/make/copilot-studio-07/trigger-test-01.png)
 
-対象ライブラリにファイルが 1 件以上アップロードされるとダイアログが更新され、 **テストを開始** コマンドが有効になります。複数ファイルがある場合はテストに使用するファイルを選択できます。
+対象ライブラリにファイルがアップロードされるとダイアログが更新され、**Start testing** が有効になります。複数ファイルがある場合は使用するファイルを選択できます。
 
-事前にダウンロードした履歴書の PDF のいずれかをライブラリにアップロードし、エージェントが処理を開始するまで待ちます。
+事前にダウンロードした履歴書のいずれかをアップロードし、エージェントが処理するのを待ちます。
 
 !!! note
-    エージェントが新しいファイルを検知するまで最大 1 分ほどかかる場合があります。トリガー テスト ダイアログが準備完了となるまでお待ちください。
+    新しいファイルを検知するまで最大 1 分かかる場合があります。ダイアログがテスト可能になるまでお待ちください。
 
-![テスト開始が有効になったダイアログ。](../../../assets/images/make/copilot-studio-07/trigger-test-02.png)
+![「Start testing」コマンドが有効になったテスト ダイアログ。](../../../assets/images/make/copilot-studio-07/trigger-test-02.png)
 
-テストが開始すると、 **エージェントのテスト** サイド パネルでエージェントと対話できます。最初に HR MCP Server への接続を求められるので、エージェントからの自動メッセージの **接続マネージャーを開く** を選択し、 HR MCP Server に **接続** してから **リトライ** を選択します。
+テストが開始すると、**Test your agent** パネルでエージェントと対話できます。最初に HR MCP Server へ接続する必要があります。エージェントのメッセージにある **Open connection manager** を選択し、**Connect** で接続を確立した後、**Retry** を選択します。
 
-PDF の内容が正しく抽出され、 MCP サーバーに新しい候補者が追加されたことを示す確認メッセージが表示されます。
+アップロードした PDF に記載された候補者が HR MCP サーバーに追加されたことを示す確認メッセージが表示されるはずです。
 
-![トリガー テスト中の Copilot Studio テスト パネル。](../../../assets/images/make/copilot-studio-07/trigger-test-03.png)
+![HR MCP Server 接続要求と候補者追加確認が表示されたテスト パネル。](../../../assets/images/make/copilot-studio-07/trigger-test-03.png)
 
-必要に応じて `List all the candidates` とプロンプトを送信し、新しい候補者が一覧に含まれていることを確認できます。これで自律型エージェントは準備完了です。 **発行** するとエージェントは自動でファイルを処理し始めます。
+必要に応じて `List all the candidates` と入力し、新しい候補者が一覧に含まれていることを確認できます。エージェントが準備できました。**Publish** すればファイルを自律的に処理し始めます。
 
-発行時に次のような警告が表示される場合があります。
+公開時には、次のような警告が表示される場合があります。
 
-![発行ダイアログの警告。](../../../assets/images/make/copilot-studio-07/autonomous-agent-09.png)
+![公開ダイアログに表示される 2 つの警告。](../../../assets/images/make/copilot-studio-07/autonomous-agent-09.png)
 
-1. **エディターの完全アクセス**: Editor 権限を持つユーザーは、フローやトリガーで使用される埋め込み接続にフル アクセスできます。  
-1. **トリガーが著者の資格情報を使用**: これらのトリガーの手順が他のユーザーとデータを共有する場合、そのユーザーは元のエディターの資格情報で情報へアクセスまたはタスクを実行できます。  
+1. **Full access for editors**: Editor 権限を持つユーザーは、フローやトリガーで使用される組み込み接続へフル アクセスできます。  
+1. **Your agent includes triggers that use the author's credentials**: これらのトリガーの指示で他ユーザーとデータを共有すると、そのユーザーは元の編集者の資格情報を使用して情報にアクセスまたはタスクを実行できます。
 
-エージェントを発行したら、追加の PDF 履歴書ファイルをアップロードして動作を確認してみてください。 SharePoint ライブラリにファイルをアップロード後、エージェントの **アクティビティ** セクションで `Automated` 呼び出しが表示されます。
+エージェントを公開したら、新しい PDF 履歴書をアップロードして動作を確認してください。SharePoint Online の対象ライブラリにファイルをアップロードすると、エージェントの **Activity** セクションに `Automated` 呼び出しが表示されます。
 
-![エージェントの「Activity」ビューに自動呼び出しが表示されている。](../../../assets/images/make/copilot-studio-07/autonomous-agent-10.png)
+![ファイルアップロードにより自律型エージェントが呼び出されたことを示す「Activity」。](../../../assets/images/make/copilot-studio-07/autonomous-agent-10.png)
 
 <cc-end-step lab="mcs7" exercise="3" step="2" />
 
-## Exercise 4: 自律型エージェントの内部
+## 演習 4: 自律型エージェントの内部
 
-この演習では、自律型エージェントの動作と内部処理を理解します。
+この演習では、自律型エージェントがどのように動作するのか、背後で何が起こっているのかを理解します。
 
-### Step 1: トリガーの裏側
+### 手順 1: トリガーの裏側
 
-トリガーを作成・テストした後、エージェントの内部を確認したい場合は、トリガー横の省略記号 (**...**) を選び **Power Automate で編集** を選択します。
+トリガーの作成とテスト後、自律型エージェントの仕組みを確認したくなるかもしれません。トリガー横のエリプシス (**...**) を選択し、**Edit in Power Automate** を選びます。
 
-![SharePoint トリガーを Power Automate で編集するオプション。](../../../assets/images/make/copilot-studio-07/edit-trigger-01.png)
+![SharePoint トリガーを Power Automate で編集するオプションが表示されたインターフェイス。](../../../assets/images/make/copilot-studio-07/edit-trigger-01.png)
 
-Power Automate では、自律型エージェントのトリガーを裏で支えるフローが表示されます。
+Power Automate では、自律型エージェントのトリガーを裏で支えるフローが確認できます。 
 
-![Power Automate 上のトリガー フロー。](../../../assets/images/make/copilot-studio-07/edit-trigger-02.png)
+![SharePoint トリガーと Copilot へのプロンプト送信アクションから成る Power Automate フロー。](../../../assets/images/make/copilot-studio-07/edit-trigger-02.png)
 
-フローは非常にシンプルで、 SharePoint コネクタの **ファイルが作成されたとき (プロパティのみ)** トリガーと **指定された Copilot にプロンプトを送信して処理する** アクションのみで構成されています。つまり、自律型エージェントのトリガーは Copilot Studio へプロンプトを送信する Power Automate フローに他なりません。そのため、ほぼすべての Power Automate フロー トリガーを Copilot Studio の自律型エージェント トリガーとして使用できます。
+フローは非常にシンプルで、SharePoint コネクタの **When a file is created (properties only)** トリガー アクションと、**Sends a prompt to the specified copilot for processing** アクションのみで構成されています。つまり、自律型エージェントのトリガーは、エージェントへプロンプトを送信する Power Automate フローです。そのため、Power Automate のほぼすべてのトリガーを Copilot Studio 自律型エージェントのトリガーとして利用できます。
 
-必要に応じて、エージェントを呼び出す前にフロー内で追加処理を行うようカスタマイズできます。ただし、その場合は次のステップで説明する注意点を考慮してください。
+必要に応じて、フローをカスタマイズしてトリガー実行前に追加処理を行うことも可能ですが、その場合は次の手順で説明するポイントを考慮してください。
 
 <cc-end-step lab="mcs7" exercise="4" step="1" />
 
-### Step 2: 複数ファイルのアップロード処理
+### 手順 2: 複数ファイルのアップロード処理
 
-自律型エージェントのトリガーについてもう一つ重要なポイントは、 SharePoint へ複数ファイルをアップロードした場合、または複数のトリガー イベントが発生した場合でも、必ずしもファイル / イベントごとに Power Automate フローが 1 件ずつ実行されるわけではないことです。例えば SharePoint ドキュメント ライブラリに複数ファイルを同時にアップロードすると、 1 つのフロー インスタンスが一定時間内にアップロードされた複数ファイルをまとめて処理する可能性があります。  
-Power Automate フローは 1 つのエージェント インスタンスを呼び出し、そのエージェントがファイルを 1 件ずつ順に処理します。
+自律型エージェントのトリガーに関して興味深い点として、SharePoint に複数ファイルをアップロードするなど複数のトリガー イベントが発生した場合でも、必ずしもファイル/イベントごとに Power Automate フローが実行されるわけではありません。同様に、エージェント インスタンスもイベントごとに生成されるとは限りません。例えば SharePoint Online ドキュメント ライブラリでファイルを処理する際、一定時間内にアップロードされた複数ファイルを 1 つのフロー インスタンスがまとめて処理する場合があります。
+そのフローは 1 つのエージェント インスタンスを呼び出し、エージェントがファイルを 1 つずつ処理します。
 
-この動作は、ファイルを 2 件以上まとめてアップロードし、 Power Automate フローと Copilot Studio の自律型エージェントの実行を確認すると分かります。アップロードされたファイルのセットに対してフローは 1 つだけ実行され、エージェント インスタンスも 1 つだけ生成されます。
+この挙動は、複数ファイルを同時にアップロードし、Power Automate でフロー実行と Copilot Studio でエージェント呼び出しを確認すると明確です。アップロードされたファイルの集合を 1 つのフローが処理し、そのフローに対して 1 つのエージェント インスタンスが実行されます。
 
-エージェントの **アクティビティ** セクションで `Automated` インスタンスを選択すると、 `Completed steps` が複数あることを確認できます。
+**Activity** セクションで `Automated` インスタンスを選択し、`Completed steps` が複数あることを確認することで検証できます。
 
-![複数ファイルを処理したエージェント インスタンスの「Activity」。](../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-01.png)
+![「Completed steps」が 2 つある自律型エージェントの「Activity」。](../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-01.png)
 
-インスタンスを開くと、エージェントが `add_candidate` ツールをファイルごとに呼び出して 2 件 (またはそれ以上) のファイルを処理したことが分かります。エージェントで複雑なロジックを定義する必要はありません。エージェントの手順に次のように記述しているだけで十分です。
+インスタンスを選択すると、エージェントが `add_candidate` ツールを各ファイルに対して呼び出し、複数ファイルを自律的に処理したことがわかります。エージェントに複雑なロジックを定義する必要はありません。エージェントの指示に
 
 ```text
 ... When a new PDF file is uploaded to the SharePoint document library: ...
 ```
 
-これだけでエージェントの自律的な知能がすべてのアップロード ファイルをループ処理し、同じロジックを適用します。 AI の強力さが実感できるはずです。
+と記載しただけで、エージェントの自律型知能がすべてのアップロード ファイルをループ処理し、同じロジックを適用します。これは AI の強力さを示す素晴らしい例です。
 
-![2 件のファイルを処理し、各ファイルで "add_candidate" ツールを呼び出した実行詳細。](../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-02.png)
+![「add_candidate」ツールが 2 回実行されたことを示すエージェント実行詳細。](../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-02.png)
 
 <cc-end-step lab="mcs7" exercise="4" step="2" />
 

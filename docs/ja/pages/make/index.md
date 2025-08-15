@@ -2,12 +2,11 @@
 search:
   exclude: true
 ---
-# Microsoft 365 Copilot 用エージェント作成
+# Microsoft 365 Copilot 向けエージェントの作成
 
-Copilot Developer Camp の Maker 向けコースへようこそ。  
-このラボでは、 Microsoft 365 Copilot の全体的なエクスペリエンスを向上させるために、カスタマイズしたアシスタントを設計します。プロセスは、 Copilot Studio の agent builder、 SharePoint Online の SharePoint エージェント機能、または Copilot Studio を使用してベーシックなエージェントを作成することから始まります。
+Copilot Developer Camp の Maker 向けコースへようこそ！このラボでは、Microsoft 365 Copilot の総合的なエクスペリエンスを向上させるカスタマイズされたエージェントを設計します。まず、Copilot Studio の agent builder、SharePoint Online の SharePoint agent 機能、または Copilot Studio のいずれかを使用して、基本的なエージェントを作成するところから始めます。
 
-利用可能なオプションとそれぞれの使用タイミングをよりよく理解するために、以下に各オプションの概要を示した便利な表を用意しました。
+利用可能なオプションとその選択タイミングを理解するために、それぞれを簡潔に説明した参考表を以下に用意しました。
 
 ---
 

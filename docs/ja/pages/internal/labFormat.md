@@ -4,69 +4,69 @@ search:
 ---
 ---8<--- "ja/heading.md"
 
-# ラボ コンテンツのフォーマットガイド
+# ラボ コンテンツのフォーマット ガイド
 
 ## テキスト要素のフォーマット
 
-これらのテキスト要素はラボの手順に埋め込まれているため、常にインラインでフォーマットされます。
+これらのテキスト要素はラボの手順に組み込まれているため、フォーマットは常にインラインです。
 
-| 要素 | 取り扱い | 例 |
+| 要素 | 処理 | 例 |
 |---|---|---|
-| 関数名 | 等幅フォントと括弧 | Then, call `myFunction()` to do something ... |
+| 関数名 | 等幅フォント + 括弧 | Then, call `myFunction()` to do something ... |
 | 言語キーワード | 等幅フォント | ... insert at the top of the `try` block ... |
-| コード内のシンボル (変数名、オブジェクト名など) | 等幅フォント | ... the `foo` object contains something random ... |
+| コード内の記号 (変数、オブジェクト名など) | 等幅フォント | ... the `foo` object contains something random ... |
 | ファイル名・フォルダー名 | **太字** | **foo.js** の内容を **bar** フォルダーにコピーします |
 | 画面上のテキスト | 二重引用符で囲む | Now click on the "foo" button |
 
 ## インクルード
 
-複数のページで使用するコンテンツは `/docs/includes` フォルダー内のインクルードファイルに配置してください。
+複数のページで使用するコンテンツは /docs/includes フォルダーのインクルード ファイルに配置します。
 
-書式は次のとおりです：
+構文は次のとおりです:
 
-<blockquote>--8<-- "all-labs-toc.md"</blockquote>
+<blockquote>--8<-- "ja/all-labs-toc.md"</blockquote>
 
-例を示します::
+例を以下に示します::
 
---8<-- "all-labs-toc.md"
+--8<-- "ja/all-labs-toc.md"
 
 ## ラボ手順
 
-Copilot Developer Camp のラボでは、学習者が進捗を追跡できるようにカスタム Web コントロールを使用します。各ラボ手順の末尾に `<cc-end-step />` 要素を追加してください。詳細は [このテストページ](../../test) を参照してください。
+Copilot Developer Camp のラボでは、受講者が進捗を追跡できるようにカスタム Web コントロールを使用します。各ラボ手順の末尾に `<cc-end-step />` 要素を追加してください。詳細は [このテスト ページ](../../test) を参照してください。
 
 ## ハイパーリンク
 
-ラボ内リンクは相対パスとし、同じウィンドウで開くようにしてください [例](./labFormat.md)。
+ラボ内のリンクは相対リンクとし、現在のウィンドウで開くようにします [このように](./labFormat.md)。
 
-ラボ外へのリンク、同じリポジトリ内のソース コードへのリンクなどは新しいウィンドウで開くようにしてください [例](https://github.com/microsoft/app-camp/blob/main/src/create-core-app/aad/A01-begin-app/client/index.html){target=_blank}
+ラボ外へ移動するリンク (同じリポジトリ内のソース コードへのリンクを含む) は新しいウィンドウで開くようにします [このように](https://github.com/microsoft/app-camp/blob/main/src/create-core-app/aad/A01-begin-app/client/index.html){target=_blank}
 
 ## アドモニション
 
-[アドモニションのドキュメントはこちら](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)  
-Copilot Developer Camp では次のように使用します：
+[アドモニションのドキュメントはこちら](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)
+Copilot Developer Camp での使用例を示します:
 
 !!! example "チャレンジ"
     自分で試してみましょう
 
 !!! note
-    手順を補足・明確化する際に使用します
+    手順を強調または明確化するために使用します
 
 !!! tip
-    ヒントやベスト プラクティスを示す際に使用します
+    ヒントやベスト プラクティスを提示する際に使用します
 
 !!! warning
-    ラボを進める上での一般的な落とし穴について警告する際に使用します
+    ラボ実施時によくある落とし穴について警告する際に使用します
 
 !!! danger
-    本番アプリケーションで発生し得るセキュリティや安定性の問題について警告する際に使用します
+    本番アプリケーションで発生し得るセキュリティ問題や安定性問題について警告する際に使用します
 
-???+ info "ビデオ概要"
+???+ info "ビデオ ブリーフィング"
     <div class="video">
       <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
       <div>キャプション</div>
     </div>
 
-???+ info "ビデオ概要"
+???+ info "ビデオ ブリーフィング"
     <div class="video">
       <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
       <div>キャプション</div>
@@ -87,4 +87,4 @@ Copilot Developer Camp では次のように使用します：
     </div>
 
 ??? info "TL;DR"
-    補足的な詳細を提供する際に使用します。必須ではありません
+    必須ではないものの参考になる追加情報を提供する際に使用します

@@ -2,15 +2,15 @@
 search:
   exclude: true
 ---
-# ラボ MCS3 - ツールの定義
+# Lab MCS3 - ツールの定義
 
-このラボでは、Microsoft Copilot Studio でツールを作成する方法を学習します。ツールはエージェントのもう 1 つの主要な構成要素であり、外部の Power Platform コネクター（ネイティブまたはカスタム）、外部 REST API、Power Automate フロー、MCP (Model Context Protocol) サーバーなどを追加してエージェントの機能を拡張できます。
+このラボでは、Microsoft Copilot Studio でツールを作成する方法を学習します。ツールはエージェントのもう 1 つのコア構成要素です。ツールを追加することで、外部の Power Platform コネクタ（ネイティブまたはカスタム）、外部 REST API、Power Automate フロー、MCP (Model Context Protocol) サーバーなどを利用し、エージェントの機能を拡張できます。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/ZVHkBiH6RxQ" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要を確認してください。</div>
+          <div>このビデオでラボの概要を短時間で確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
@@ -18,192 +18,189 @@ search:
 </div>
 
 !!! note
-    このラボは前回の [ラボ MCS2](../02-topics){target=_blank} を基にしています。同じエージェントを引き続き使用し、新しい機能で改善できます。
+    本ラボは前回の [Lab MCS2](../02-topics){target=_blank} の続きです。同じエージェントを使い、新しい機能を追加してさらに改善します。
 
-ツールはグラフィカル デザイナーを使用して作成できます。ツールを作成した後、詳細な微調整が必要な場合は、低レベルのコード エディターで定義を編集することも可能です。
+ツールはグラフィカル デザイナーで作成できます。ツールを作成した後、詳細な調整が必要な場合は、低レベルのコード エディターで定義を編集することもできます。
 
 このラボで学習する内容:
 
-- Power Platform コネクターを呼び出すツールの作成方法
+- Power Platform コネクタを呼び出すツールの作成方法
 - Power Automate フローを呼び出すツールの作成方法
 - トピックからツールを呼び出す方法
 
-## 演習 1 : Microsoft Copilot Studio でツールを作成する
+## Exercise 1 : Microsoft Copilot Studio でのツール作成
 
-この演習では、[ラボ MCS2](../02-topics){target=_blank} で作成したエージェントを拡張し、SharePoint Online のドキュメント ライブラリに保存された Excel スプレッドシートから、候補者の仮想リストを取得できるようにします。その後、同じスプレッドシートに新しい候補者を追加できる Power Automate フローを呼び出すツールを追加します。
+この演習では、[Lab MCS2](../02-topics){target=_blank} で作成したエージェントを拡張し、SharePoint Online ドキュメント ライブラリに保存された Excel スプレッドシートから、候補者の仮想リストを取得するために Excel Online を使用します。さらに、同じスプレッドシートに新しい候補者を追加する Power Automate フローを呼び出すツールを追加します。
 
-### 手順 1: Power Platform コネクターの利用
+### Step 1: Power Platform コネクタの利用
 
-新しいツールを作成するには、画面上部の 1️⃣ **ツール** タブを選択し、2️⃣ **+ ツールを追加** を選択します。
+新しいツールを作成するには、画面上部で 1️⃣ **Tools** タブを選択し、2️⃣ **+ Add a tool** を選択します。
 
-![Microsoft Copilot Studio で新しいツールを作成する画面インターフェイス。**ツール** タブと **+ ツールを追加** コマンドが強調表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-01.png)
+![Microsoft Copilot Studio で新しいツールを作成するインターフェイス。**Tools** タブと **+ Add a tool** コマンドが強調表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-01.png)
 
-ツールの種類を選択するダイアログが表示されます。既定では **Featured** ツールがいくつか表示され、Excel Online などの一般的なサービスと連携できます。 
+ダイアログが表示され、作成するツールの種類を選択できます。既定では **Featured** ツールがいくつか用意されており、Excel Online などの一般的なサービスと連携できます。 
 
-![Microsoft Copilot Studio で新しいツールを作成するダイアログ。「Featured」ツールの一覧と、新しいツールを作成する **+ New tool** コマンドが表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-02a.png)
+![新しいツールを作成するインターフェイス。Featured ツールの一覧と "+ New tool" コマンドが表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-02a.png)
 
-**+ New tool** コマンドを選択すると、以下から選択してゼロからツールを作成できます。
+**+ New tool** を選択して、以下のオプションからツールをゼロから作成することもできます。
 
-- Prompt: 自然言語で記述したプロンプトによる AI ツールを利用します。
-- Agent flow: Power Automate フローを利用します（[手順 2](#step-2-consuming-a-power-automate-flow) を参照）。
-- Custom connector: Power Platform のカスタム コネクターを利用します。
-- REST API: 外部 REST API を利用します。詳細は [こちら](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}。
+- Prompt: 自然言語で書かれたプロンプトを使用して作成された AI ツールを利用します。
+- Agent flow: Power Automate フローを利用します（[Step 2](#step-2-consuming-a-power-automate-flow) を参照）。
+- Custom connector: Power Platform のカスタム コネクタを利用します。
+- REST API: 外部 REST API を利用します。詳細は [こちら](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank} を参照してください。
 - Model Context Protocol: 外部 MCP サーバーのツールを利用します。
 
-![新しいツールを作成するダイアログ。Prompt、Agent flow、Custom connector、REST API、Model Context Protocol のオプションが表示されている。「Back」で Featured ツールに戻ることもできる。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-02.png)
+![新しいツールを作成するダイアログ。Prompt、Agent flow、Custom connector、REST API、Model Context Protocol の各オプションが表示されている。"Back" コマンドで Featured ツールに戻れる。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-02.png)
 
-目的のオプションが Featured にない場合は **All** グループに切り替え、テキスト検索します。
+目的のオプションが Featured に見つからない場合は、**All** グループに切り替え、テキスト検索してください。
 
-今回は **Excel Online (Business)** の Featured ツールを選択し、**List rows present in a table** を選びます。まずは **Connection** を **Create new connection** で作成し、外部コネクターに接続します。
+ここでは **Excel Online (Business)** を選択し、**List rows present in a table** を選択します。まず **Connection** で **Create new connection** を選び、外部コネクタへの接続を作成します。
 
-![Power Platform コネクターへ接続するダイアログ。接続の詳細または新しい接続を作成するボタンが表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png)
+![対象 Power Platform コネクタへの接続ダイアログ。既存の接続情報と新しい接続を作成するボタンが表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png)
 
-アカウントでサインインし、Excel Online (Business) へのアクセスを許可します。接続が構成されると、**Add to agent** または **Add and configure** のコマンドが表示されます。
+アカウントでログインし、Excel Online (Business) へのアクセスを許可します。接続が構成されたら、**Add to agent** または **Add and configure** を選択できます。
 
-![エージェントにツールを追加するダイアログ。「Add to agent」または「Add and configure」のコマンドがある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03b.png)
+![エージェントにツールを追加するダイアログ。**Add to agent** と **Add and configure** のコマンドが表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03b.png)
 
-次にツールの設定ページが開きます。設定する項目:
+次にツールの設定ページが開きます。以下を設定します。
 
-- Name: ツールのわかりやすい名前
-- Description: ジェネレーティブ オーケストレーションがツール使用を判断するための自然言語説明
-- Inputs: ツールの入力引数
-- Completion: ユーザーへのリクエストとレスポンスの処理方法
+- Name: ツールの説明的な名前
+- Description: ジェネレーティブ オーケストレーションがツールを使用するタイミングを判断するための自然言語による説明
+- Inputs: 入力パラメーターの定義
+- Completion: ツールがリクエストとユーザーへのレスポンスをどのように処理するか
 
-ツールを構成する前に、候補者リスト用の Excel スプレッドシートを準備します。
-この [リンク](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true){target=_blank} からサンプル Excel ファイルをダウンロードしてください。
+ツールを構成する前に、候補者リスト用の Excel スプレッドシートを準備します。次の [リンク](https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true){target=_blank} からサンプル Excel ファイルをダウンロードしてください。
 
-同じテナントの SharePoint Teams サイトの **Documents** ライブラリにアップロードします。このドキュメントは仮想の候補者リストとして Microsoft 365 Copilot で生成されています。
+同じテナントの SharePoint Teams サイトの **Documents** ライブラリにアップロードします。このドキュメントは例示用です。
 
 - サイトの絶対 URL をコピー: 例 `https://xyz.sharepoint.com/sites/contoso/`
 - ドキュメント ライブラリ名をコピー: 例 `Shared documents`
 - ファイル名をコピー: 例 `Sample-list-of-candidates.xlsx`
 
-Microsoft Copilot Studio に戻り、ツール設定を完了します。
+Microsoft Copilot Studio に戻り、ツールの設定を完了します。
 
-![ツールの設定ダイアログ。Name、Description、Inputs、Completion がある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-04.png)
+![ツールの設定ダイアログ。Name、Description、Inputs、Completion を設定する。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-04.png)
 
-次の設定を使用します。
+設定例:
 
 - Name: List HR candidates
 - Description: List candidates for an HR role
 
-続いて **Inputs** タブを開き、入力引数を設定します。
-既定では必須の引数が **Fill as** に `Dynamically fill with AI` と設定されています。
+続いて **Inputs** タブを開き、入力パラメーターを設定します。既定では必須の入力パラメーターは **Fill as** が `Dynamically fill with AI` になっています。
 
-![ツールの入力引数を設定するタブ。各引数の「Fill as」が「Dynamically fill with AI」になっている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-05.png)
+![ツールの入力パラメーター設定タブ。各引数が表示され、"Fill as" が "Dynamically fill with AI"。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-05.png)
 
-各入力引数の **Fill using** を選択し、`Custom value` に切り替えて静的値を入力します。
+各入力の **Fill using** を `Custom value` に変更し、すべての入力を固定値にします。
 
-静的値:
-
-- Location: スプレッドシートを保存した SharePoint Online サイト コレクションの URL 例 `https://xyz.sharepoint.com/sites/contoso/`
-- Document Library: ドキュメント ライブラリ名 例 `Shared Documents`
-- File: Excel ファイル名 例 `Sample-list-of-candidates.xlsx`
+- Location: `https://xyz.sharepoint.com/sites/contoso/`
+- Document Library: `Shared Documents`
+- File: `Sample-list-of-candidates.xlsx`
 - Table: `Candidates_Table`
 
-Microsoft Copilot Studio の UI からサイト、ライブラリ、ファイル、テーブルを参照できます。
+サイト、ライブラリ、ファイル、テーブルは Copilot Studio の UI から参照できます。
 
-![入力引数を設定するタブ。各引数に静的値が設定されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-06.png)
+![入力パラメーターの設定が完了した画面。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-06.png)
 
-画面右上の **Save** ボタンを選択してツールを保存します。
+画面右上の **Save** を選択してツールを保存します。
 
 <cc-end-step lab="mcs3" exercise="1" step="1" />
 
-### 手順 2: 新しいツールのテスト
+### Step 2: 新しいツールのテスト
 
-更新したエージェントを発行し、統合テスト パネルまたは Microsoft Teams で試します。
+更新したエージェントを公開し、統合テスト パネルまたは Microsoft Teams で試してみましょう。
 
-[ラボ MCS2](../02-topics){target=_blank} でジェネレーティブ オーケストレーションを有効にしているため、次のようなプロンプトで簡単にツールを呼び出せます。
+[Lab MCS2](../02-topics){target=_blank} でジェネレーティブ オーケストレーションを有効にしたので、以下のようなプロンプトを送るだけでツールを呼び出せます。
 
 ```txt
 Show me the list of candidates for an HR role
 ```
 
-Copilot Studio でテスト パネルのプロンプトを使用すると、デフォルトでオーケストレーターの動作を確認できる Activity map が表示されます。次のスクリーンショットは前述のプロンプトの Activity map です。オーケストレーターがユーザーの意図を識別し、手順 1 で作成したツールをトリガーしています。手動で定義した入力引数も検証できます。
+Copilot Studio のテスト パネルでプロンプトを送ると、Activity map が表示されます。以下のスクリーンショットでは、オーケストレーターがユーザーの意図を認識し、Step 1 で作成したツールを呼び出している様子が確認できます。
 
-Power Platform コネクターは有効な接続が必要なため、エージェントはユーザーに **Connect** を促します。
+Power Platform コネクタの利用には有効な接続が必要なため、エージェントはまず **Connect** を促します。
 
-![提案したプロンプトを処理しているエージェント。Activity map には手動で設定した入力引数が表示され、テスト パネルには外部コネクターへの接続を促すメッセージがある。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-09.png)
+![Activity map と接続要求が表示された画面。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-09.png)
 
-**Connect** ボタンを選択し、接続を有効化します。新しいブラウザー タブに現在のセッションの接続一覧が表示され、その中に `Excel Online (Business)` の接続があります。**Connect** を選択し、**Create or pick a connection** ダイアログで接続を有効にします。接続が完了したらエージェントに戻り、**Retry** を選択してツールを実行します。テスト パネルにスプレッドシートから取得した候補者リストが表示されます。
+**Connect** を選択して接続を有効化し、ダイアログ **Create or pick a connection** で接続を確立します。その後エージェントに戻り **Retry** を選択すると、Excel スプレッドシートから候補者リストが取得されます。
 
-![テスト パネルに Excel スプレッドシートから取得した候補者リストが表示されている。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-10.png)
+![ツール実行後、スプレッドシートから取得した候補者リストが表示されるテストパネル。](../../../assets/images/make/copilot-studio-03/create-action-excel-connector-10.png)
 
-ここまで順調です。次の手順に進みましょう。
+ここまで順調です。次のステップへ進みましょう。
 
 <cc-end-step lab="mcs3" exercise="1" step="2" />
 
-### 手順 3: Agent flow の利用
+### Step 3: Agent flow の利用
 
-この手順では Power Automate フローを呼び出すツールを作成します。ユーザー入力に基づき、新しい候補者を Excel スプレッドシートに追加するとします。外部 Power Automate フローを呼び出すツールを作成し、テーブルに新しい行を追加します。
+このステップでは Power Automate フローを呼び出すツールを作成します。ユーザー入力に基づき、スプレッドシートに新しい候補者を追加します。
 
-まず画面上部の **ツール** タブを選択し、**+ ツールを追加** をクリックします。今回は **+ New tool** → **Agent flow** を選択します。**Agent flows** デザイナーが開き、新しいフローが表示されます。
+1. 画面上部の **Tools** タブ → **+ Add a tool** を選択  
+2. **+ New tool** → **Agent flow** を選択  
 
-![Agent flow の初期デザイン。トリガーアクション「When an agent calls the flow」と終了アクション「Respond to the agent」がある。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-01.png)
+新しい **Agent flows** デザイナーが開き、フローが生成されます。
 
-フローには `When an agent calls the flow` トリガーと `Respond to the agent` アクションがあります。この 2 つの間にビジネス プロセスを定義し、Copilot Studio のツールが入力を渡してプロセスを実行し、エージェントに応答を返します。最初のアクションを選択してプロパティを編集し、フローの入力パラメーターを構成します。
+![Agent flow デザイナー初期画面。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-01.png)
 
-![トリガーアクションのプロパティ。firstname、lastname、role、expertise の 4 つの入力引数がある。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-02.png)
+フローには `When an agent calls the flow` トリガーと `Respond to the agent` アクションがあらかじめ配置されています。Copilot Studio は、トリガーで入力パラメーターを受け取り、フローを実行し、最後にレスポンスを返します。まずトリガーを選択し、以下の入力パラメーターを追加します。
 
-候補者追加のため、次の 4 つの入力パラメーターを設定します。
+![トリガーアクションのプロパティ設定画面。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-02.png)
 
-- Firstname: text
-- Lastname: text
-- Role: text
-- Expertise: text
+- Firstname: text  
+- Lastname: text  
+- Role: text  
+- Expertise: text  
 
-次に 2 つのアクションの間に **Excel Online (Business)** コネクターの **Add a row into a table** アクションを追加します。
-スプレッドシートを指定し、列フィールドにトリガーの入力パラメーターをマップします。アクション名を `Add new candidate row` に変更します。
+次に **Add a row into a table**（Excel Online (Business) コネクタ）アクションを追加し、スプレッドシートを指定します。列フィールドをトリガーの入力にマッピングし、アクション名を `Add new candidate row` に変更します。
 
-![Excel スプレッドシートのテーブルに行を追加するフローアクションのプロパティ。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-03.png)
+![行追加アクションの設定例。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-03.png)
 
-続いて `Respond to Copilot` アクションを編集し、型 `Text` の出力パラメーター `Result` を追加します。出力値には入力パラメーターを使ったメッセージを設定します。
+最後に `Respond to Copilot` アクションのプロパティを開き、`Result` (Text) 出力を追加します。値には入力内容に基づくメッセージを設定します。
 
-![`Respond to Copilot` アクションのプロパティ。入力値を用いて候補者が追加されたことを示すメッセージが設定されている。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-04.png)
+![Respond to Copilot アクションのプロパティ設定。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-04.png)
 
-**Save draft** をクリックし、**Overview** タブの **Details** でフロー名を `Insert new candidate for HR` などに変更します。フローを発行し、ツールを編集していたエージェントに戻ります。再びツール追加ダイアログを開き、フィルターを **Flow** にすると先ほどの Agent flow が表示されます。表示されない場合は名前で検索してください。
+**Save draft** し、**Overview** タブでフロー名を `Insert new candidate for HR` などに変更して **Publish** します。
 
-![**Flow** グループに新しいフローが表示されているツールのリスト。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-05.png)
+再びエージェントに戻り **+ Add a tool** → **Flow** フィルターを選択すると、作成したフローが表示されます。
 
-新しいツールを選択し、**Add and configure** で設定を行います。例:
+![Flow グループに表示された新しいフロー。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-05.png)
 
-- Name: Insert new candidate for HR
-- Description: Insert new candidate into the Excel spreadsheet for HR
+ツールを選択し **Add and configure** で以下の設定を行います。
 
-**Save** を選択すると Agent flow ベースのツールが準備完了です。
-次のようなプロンプトでツールを呼び出します。
+- Name: Insert new candidate for HR  
+- Description: Insert new candidate into the Excel spreadsheet for HR  
+
+**Save** を選択するとツールが準備完了です。次のプロンプトでツールを呼び出してみましょう。
 
 ```txt
 Insert a new candidate into the Excel spreadsheet of HR. The candidate firstname is John, 
 the lastname is White, the role is "HR Administrator", and the expertise is "Compliance".
 ```
 
-前手順と同様、初回使用時は Excel Online への接続が必要です。**Connect** → **Retry** の順で実行してください。
+初回実行時には Excel Online への接続が必要です。**Connect** → **Retry** の順に進めてください。
 
-![新しいツール呼び出し時の Activity map。接続後に Retry を促す。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-06.png)
+![ツール呼び出し時の Activity map と接続要求。](../../../assets/images/make/copilot-studio-03/create-action-flow-connector-06.png)
 
-ツール実行後、Power Automate フローで定義した応答メッセージが表示され、スプレッドシートに新しい候補者が追加されます。
+実行後、フローで設定したメッセージが返り、スプレッドシートに候補者が追加されます。
 
 <cc-end-step lab="mcs3" exercise="1" step="3" />
 
-## 演習 2 : トピック内からツールを呼び出す
+## Exercise 2 : トピック内からツールを呼び出す
 
-この演習では、先ほど定義したツールをトピック内で使用します。
+この演習では、作成したツールをトピック内で利用します。
 
-### 手順 1: トピックからツールを呼び出す
+### Step 1: トピックからツールを呼び出す
 
-まず空のツールを作成し、名前を `Add a new candidate to Excel` とします。[ラボ MCS2 の演習 4](../02-topics#exercise-4--using-adaptive-cards){target=_blank} と同じ手順に従ってください。
+まず空のトピックを作成し、名前を `Add a new candidate to Excel` とします。[Lab MCS2 の Exercise 4](../02-topics#exercise-4--using-adaptive-cards){target=_blank} と同様の手順で進めてください。
 
-トリガー説明の例:
+トリガー用の説明例:
 
 ```txt
 This topic helps users to insert new candidates in the Excel spreadsheet of HR.
 Triggering sentences can be: add a new a new row to the persistence storage.
 ```
 
-詳しい手順は簡略化しますが、必要に応じてラボ MCS2 を参照してください。
+ここでは詳細を省略しますが、Lab MCS2 を参照してください。
 
-以下は **Ask with adaptive card** アクションで候補者情報を収集するためのアダプティブ カード JSON です。
+以下は **Ask with adaptive card** アクションで候補者情報を取得する際に使用できるアダプティブ カードの JSON です。
 
 ```json
 {
@@ -247,45 +244,42 @@ Triggering sentences can be: add a new a new row to the persistence storage.
 }
 ```
 
-続いて **Add an tool** グループから **Tool** タブを選択し、[演習 1 - 手順 3](#step-3-consuming-a-power-automate-flow) で作成したツールを選びます。
+続いて **Add an tool** グループ → **Tool** タブから、[Exercise 1 - Step 3](#step-3-consuming-a-power-automate-flow) で作成したツールを選択します。
 
-![トピック デザイナーでツールを追加している画面。エージェントに定義済みのツールが一覧表示されている。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-01.png)
+![トピックデザイナーでのツール追加画面。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-01.png)
 
-次に、ツールの入力引数をアダプティブ カードで取得した変数にマッピングします。
+ユーザーがアダプティブ カードで入力した値を、ツールの入力パラメーターにマッピングします。
 
-![ツール設定で入力引数に値を設定している画面。「+ Set value」コマンドがあり、text、text_1 などに Agent flow の引数をマッピングする。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-02a.png)
+![ツールの入力パラメーターとトピック変数のマッピング設定。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-02a.png)
 
-各入力引数の **+ Set value** を選択し、次のように対応させます。
+- text: 名  
+- text_1: 姓  
+- text_2: 役割  
+- text_3: 専門分野  
 
-- text: 名
-- text_1: 姓
-- text_2: 現在の役職
-- text_3: 専門分野
+Copilot Studio のデータ バインディングを利用して、各パラメーターをトピック レベル変数に設定します。
 
-Copilot Studio のデータ バインド機能で、それぞれを **Ask with adaptive card** で収集したトピック変数に設定します。
-最終的に次のようになります。
+![ツールの入力がトピック変数にマッピングされた最終状態。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-02b.png)
 
-![ツールのすべての入力引数が、ユーザーから取得したトピック変数にマッピングされている。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-02b.png)
+**End current topic** アクションを追加し、保存します。
 
-**End current topic** アクションを追加して保存します。
-
-次にラボ MCS2 で作成した他のトピックを無効化し、次のプロンプトで新しいトピックを呼び出して Excel スプレッドシートに新しい候補者を追加します。
+Lab MCS2 で作成した他のトピックを無効にし、以下のプロンプトで新しいトピックを呼び出してスプレッドシートに行を追加します。
 
 ```txt
 Add a new a new row to the persistence storage
 ```
 
-アダプティブ カードに入力して送信すると、トピック経由でツールが呼び出され、スプレッドシートに新しい候補者が追加されます。
+アダプティブ カードに入力して送信すると、トピック経由でツールが実行され、新しい候補者がスプレッドシートに追加されます。
 
-![トピックで候補者を追加し、Excel のテーブルが更新されたことを示すインターフェイス。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-02.png)
+![トピック操作と Excel の更新結果。](../../../assets/images/make/copilot-studio-03/use-action-in-topic-02.png)
 
 <cc-end-step lab="mcs3" exercise="2" step="1" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-これでエージェントがツールをサポートしました。次のラボでは、Copilot Studio を使用して Microsoft 365 Copilot Chat 用の Declarative Agents を作成する方法を学習します。
+あなたのエージェントはツールをサポートするようになりました。次のラボでは、Copilot Studio を使用して Microsoft 365 Copilot Chat 用の Declarative Agents を作成する方法を学びます。
 
-<a href="../04-extending-m365-copilot">こちらから Lab MCS4</a> を開始し、Copilot Studio で Microsoft 365 Copilot Chat 用の Declarative Agents を作成する方法を学びましょう。
+<a href="../04-extending-m365-copilot">Lab MCS4</a> で、Copilot Studio を使って Microsoft 365 Copilot Chat 用の Declarative Agents を作成する方法を学びましょう。
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/03-actions--ja" />

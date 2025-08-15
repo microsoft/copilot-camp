@@ -2,23 +2,24 @@
 search:
   exclude: true
 ---
-# Teams メッセージ拡張プラグインの拡張
-!!! pied-piper inline "Disclaimer"
-    これらのサンプルおよびラボは、教育およびデモンストレーションを目的としており、本番環境での使用を意図したものではありません。本番環境で使用する場合は、必ず production quality にアップグレードしてください。
+# Teams メッセージ拡張機能をプラグインとして拡張
 
-Extend のこのパスでは、Teams メッセージ拡張を Microsoft 365 Copilot の plugin として使用する方法を学習します。サンプルの [ソースコード](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind) に含まれる動作するメッセージ拡張から始め、これを Microsoft 365 Copilot の plugin として実行します。また、コードを拡張して追加機能を実装します。ソースコードは Northwind Database を利用しており、実際のシナリオと同様にエンタープライズ データを使って plugin をテストできます。  
+!!! pied-piper inline "注意事項"
+    これらのサンプルおよびラボは、学習とデモンストレーションを目的としており、本番環境での使用を想定していません。本番環境に導入する場合は、必ずコードを本番レベルの品質にアップグレードしてください。
+
+Extend コースでは、Teams メッセージ拡張機能を Microsoft 365 Copilot のプラグインとして使用する方法を学習します。まずは、サンプル[ ソースコード](https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind)に含まれる稼働中のメッセージ拡張機能を Microsoft 365 Copilot のプラグインとして実行します。その後、コードを拡張して追加機能を実装します。ソースコードでは Northwind Database を利用しており、企業データを用いた実践的なテストが可能です。  
 <hr />
 
-> このラボでは、Northwind はワシントン州ワラワラにある高級食品の e-commerce 事業として動作します。皆さんは Northwind Inventory アプリケーションを操作し、製品在庫と財務データへアクセスします。
+> このラボでは、Northwind はワシントン州ワラワラにある高級食品の e-commerce 企業として設定されています。Northwind Inventory アプリケーションを使用して、製品在庫および財務データにアクセスします。
 
-!!! info "ラボ一覧"
-    - [Lab M0 - Prerequisites](/copilot-camp/pages/extend-message-ext/00-prerequisites) 開発環境をセットアップする  
-    - [Lab M1 - Get to know Northwind message extension](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) Northwind メッセージ拡張を理解する  
-    - [Lab M2 - Run app in Microsoft 365 Copilot](/copilot-camp/pages/extend-message-ext/02-nw-plugin) Northwind メッセージ拡張を Microsoft 365 Copilot の plugin として実行する  
-    - [Lab M3 - Enhance plugin with new search command](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) 新しい検索コマンドで plugin を強化する  
-    - [Lab M4 - Add authentication](/copilot-camp/pages/extend-message-ext/04-add-authentication) Authentication で plugin を保護する  
-    - [Lab M5 - Enhance plugin with an action command](/copilot-camp/pages/extend-message-ext/05-add-action) 新しいアクション コマンドで plugin を強化する  
+!!! info "以下がラボです"
+    - [Lab M0 - 前提条件](/copilot-camp/pages/extend-message-ext/00-prerequisites) 開発環境をセットアップする
+    - [Lab M1 - Northwind メッセージ拡張機能の理解](/copilot-camp/pages/extend-message-ext/01-nw-teams-app) Northwind メッセージ拡張機能を理解する
+    - [Lab M2 - アプリを Microsoft 365 Copilot で実行](/copilot-camp/pages/extend-message-ext/02-nw-plugin) Northwind メッセージ拡張機能を Microsoft 365 Copilot のプラグインとして実行する
+    - [Lab M3 - 新しい検索コマンドでプラグインを強化](/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin) 新しい検索コマンドを追加してプラグインを強化する
+    - [Lab M4 - 認証を追加](/copilot-camp/pages/extend-message-ext/04-add-authentication) プラグインを認証で保護する
+    - [Lab M5 - アクション コマンドでプラグインを強化](/copilot-camp/pages/extend-message-ext/05-add-action) 新しいアクション コマンドを追加してプラグインを強化する
 
-## <a href="./00-prerequisites">ここから開始</a> — Lab M0 で開発環境をセットアップしましょう。
+## <a href="./00-prerequisites">こちら</a> の Lab M0 から開始し、開発環境をセットアップしてください。
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-message-ext/index--ja" />
