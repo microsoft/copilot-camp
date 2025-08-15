@@ -1,9 +1,15 @@
-name: ci
+name: 🚀 Deploy Documentation
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/main.yml'
+  workflow_call:
+    # Allows this workflow to be called by other workflows
 
 jobs:
   deploy:
@@ -11,11 +17,28 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3  # Updated to the latest version
-      - uses: actions/setup-python@v4  # Updated to the latest version
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - run: pip install "mkdocs-material" "mkdocs-static-i18n[material]"  # Install dependencies
-      - run: mkdocs gh-deploy --force
+          
+      - name: 📦 Install MkDocs dependencies
+        run: pip install "mkdocs-material" "mkdocs-static-i18n[material]"
+        
+      - name: 🚀 Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: 📊 Deployment summary
+        run: |
+          echo "## 🚀 Documentation Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** Push to main branch" >> $GITHUB_STEP_SUMMARY
+          echo "**Site URL:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployment time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
