@@ -2,27 +2,28 @@
 search:
   exclude: true
 ---
-# ラボ MAB - Copilot Studio エージェントビルダーによるエージェント作成
+# ラボ MAB - Copilot Studio エージェント ビルダーによるエージェント作成
 
-これは、 Microsoft 365 Copilot 向けのパーソナル エージェントを作成する最も簡単な方法です。実際に、 Microsoft 365 Copilot Chat と Microsoft 365 Copilot のネイティブ UI に統合されています。 Microsoft が提供するテンプレートから開始することも、一から作成することもできます。自然言語で実現したい内容を記述し、 Copilot Studio エージェントビルダーの自然言語理解機能に任せるだけで、エージェントを定義できます。プロンプトに基づいてエージェントが自動生成されます。また、設定ページでエージェントを構成することも可能です。既定ではエージェントは個人専用ですが、必要に応じて組織内の特定の ユーザー やすべての ユーザー と共有できます。
+これは、Microsoft 365 Copilot 向けのパーソナル エージェントを作成する最も簡単な方法です。実際には、Microsoft 365 Copilot Chat と Microsoft 365 Copilot のネイティブ UI に統合されています。Microsoft が提供するテンプレート セットから開始することも、ゼロから作成を始めることもできます。エージェントの目的を自然言語で説明するだけで、Copilot Studio エージェント ビルダーの自然言語理解機能によりエージェントを定義できます。ビルダーは入力したプロンプトに基づいてエージェントを作成します。また、設定ページを使用してエージェントを構成することも可能です。既定では、エージェントは個人用に限定されていますが、必要に応じて組織内の特定のメンバー、あるいはすべての ユーザー と共有することもできます。
 
-![Copilot Studio エージェントビルダーの UI。エージェント テンプレートの選択、またはエージェントの目的を自然言語で入力するダイアログが表示されている。](../../../assets/images/make-global-intro/copilot-agent-builder-01.png)
+![The Copilot Studio agent builder user interface with a dialog asking the user to choose an agent template or to describe with natural language the purpose of the agent to create.](../../../assets/images/make-global-intro/copilot-agent-builder-01.png)
 
-Copilot Studio エージェントビルダーで作成したエージェントは、次のようなナレッジベースを利用できます:
+Copilot Studio エージェント ビルダーで構築したエージェントは、次のようなナレッジ ベースを使用できます。
 
-- 汎用 Web コンテンツ
-- SharePoint Online に保存されているドキュメントの内容
+- 一般的な Web コンテンツ
+- SharePoint Online に保存されているドキュメントのコンテンツ
 - Microsoft Copilot Connectors
 
-さらに、画像を即座に生成したり、自然言語をコードに変換したりできます。
+さらに、オンザフライで画像を生成したり、自然言語をコードに変換したりすることも可能です。
 
-この機能は Microsoft 365 Copilot Chat で利用でき、 Microsoft 365 Copilot の ライセンス を持つすべての ユーザー が利用できます。対象となるナレッジベースや ユーザー の ライセンス によっては、従量課金のサービス料金が組織に発生する場合があります。
+これは Microsoft 365 Copilot Chat と、Microsoft 365 Copilot の ライセンス を持つすべての ユーザー に提供されています。
+対象となるナレッジ ベースや ユーザー の ライセンス に応じて、従量課金制のサービス料金が発生する場合があります。
 
 <hr />
 
 ---8<--- "ja/mab-labs-toc.md"
 
-<a href="./01-first-agent">ここから開始</a> 、ラボ MAB1 では Copilot Studio エージェントビルダーで最初のエージェントを作成します。
+<a href="./01-first-agent">ここから始めましょう</a>。Lab MAB1 では、Copilot Studio エージェント ビルダーを使用して最初のエージェントを作成します。  
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/index--ja" />

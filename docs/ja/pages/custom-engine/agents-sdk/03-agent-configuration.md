@@ -2,23 +2,23 @@
 search:
   exclude: true
 ---
-# ラボ BMA3 - Azure AI Foundry エージェント と M365 Agents SDK の統合
+# ラボ BMA3 - Azure AI Foundry エージェントを M365 Agents SDK と統合
 
-このラボでは、2 つの世界の長所を融合します。Azure AI Foundry エージェントの生成 AI パワーと Microsoft 365 Agents SDK のマルチチャネル柔軟性を組み合わせます。Semantic Kernel を構成し、エージェント プロパティを設定し、Foundry でホストされているエージェントへ安全に接続して、エンタープライズ対応のリッチな回答を Microsoft Teams に直接配信できるようにします。
+このラボでは、Azure AI Foundry エージェントによる生成 AI のパワーと Microsoft 365 Agents SDK のマルチチャネル柔軟性を組み合わせ、ベストな両世界を実現します。Semantic Kernel を構成し、エージェントのプロパティを設定し、Foundry でホストされているエージェントへ安全に接続して、エンタープライズ対応の豊富な回答を Microsoft Teams に直接提供できるようにします。
 
-## Exercise 1 : エージェント プロパティを構成して Teams でテストする
+## Exercise 1: エージェント プロパティの構成と Teams でのテスト
 
-基本的なボットを作成したら、生成 AI 機能で強化し、AI エージェントへアップグレードしましょう。この演習では、Semantic Kernel などの主要ライブラリをインストールし、よりインテリジェントに推論して応答できるようにエージェントを準備し、Teams や Copilot Chat に備えます。
+基本的なボットを作成したので、生成 AI 機能を追加して AI エージェントへアップグレードしましょう。この演習では、Semantic Kernel などの主要ライブラリをインストールし、Teams や Copilot Chat でより高度に推論・応答できるようにエージェントを準備します。
 
-### Step 1 : Semantic Kernel Nuget Package を追加する
+### Step 1: Semantic Kernel Nuget パッケージを追加
 
-このステップで追加するパッケージは Azure AI 連携をサポートします。**ContosoHRAgent** プロジェクトを右クリックし、**Manage Nuget Packages...** を選択します。**Browse** タブで `Microsoft.SemanticKernel.Agents.AzureAI` を検索し、**Include prerelease** チェックボックスをオンにします。パッケージを選択して **Install** をクリックします。
+このステップで追加するパッケージは Azure AI 連携をサポートします。**ContosoHRAgent** プロジェクトを右クリックし、**Manage Nuget Packages...** を選択して **Browse** タブを開き、`Microsoft.SemanticKernel.Agents.AzureAI` を検索します。**Include prerelease** チェックボックスにチェックを入れ、パッケージを選択して **Install** をクリックします。
 
 ![Semantic Kernel Nuget Package](https://github.com/user-attachments/assets/37a290f4-e825-4140-a294-b1a8d9e1f10a)
 
 <cc-end-step lab="bma3" exercise="1" step="1" />
 
-### Step 2 : Program.cs に Semantic Kernel を追加する
+### Step 2: Program.cs に Semantic Kernel を追加
 
 **Program.cs** を開き、次のコード スニペットを `var app = builder.Build();` の直前に追加します。
 
@@ -26,15 +26,15 @@ search:
 builder.Services.AddKernel();
 ```
 
-これにより、生成 AI モデルと対話するための中核コンポーネントである Semantic Kernel が登録されます。
+これにより、生成 AI モデルと連携するためのコア コンポーネントである Semantic Kernel が登録されます。
 
 <cc-end-step lab="bma3" exercise="1" step="2" />
 
-### Step 3 : ドキュメント引用とメッセージ追跡用のカスタム クラスを追加する
+### Step 3: ドキュメント引用とメッセージ トラッキング用のカスタム クラスを追加
 
-**ContosoHRAgent** プロジェクトを右クリックし、**Add > Class** を選択してクラス名を `FileReference.cs` に指定します。既存のコードを次の内容に置き換えます。
+**ContosoHRAgent** プロジェクトを右クリックし、**Add > Class** を選択してクラス名を `FileReference.cs` に設定します。既存コードを以下に置き換えてください。
 
-> このクラスは、アップロードしたファイルから引用した内容を応答で示すときに使用されるドキュメント参照の構造を定義します。
+> このクラスは、応答内で特定ドキュメントを参照する際の構造を定義します。アップロードされたファイルの内容を引用するときに役立ちます。
 
 ```
 using Microsoft.Agents.Core.Models;
@@ -51,9 +51,9 @@ namespace ContosoHRAgent
 }
 ```
 
-同様に **ContosoHRAgent** プロジェクトを右クリックし、**Add > Class** を選択してクラス名を `ConversationStateExtensions.cs` に指定します。既存のコードを次の内容に置き換えます。
+再度 **ContosoHRAgent** プロジェクトを右クリックし、**Add > Class** を選択してクラス名を `ConversationStateExtensions.cs` に設定します。既存コードを以下に置き換えてください。
 
-> このクラスは、進行中の会話で状態を保存・変更しながらユーザー メッセージ数を管理・追跡するためのヘルパー メソッドを追加します。
+> このクラスは、ユーザー メッセージ数を管理・追跡するヘルパー メソッドを追加し、進行中の会話で状態がどのように保存・変更されるかを示します。
 
 ```
 using Microsoft.Agents.Builder.State;
@@ -82,22 +82,22 @@ namespace ContosoHRAgent
 
 <cc-end-step lab="bma3" exercise="1" step="3" />
 
-## Exercise 2 : Azure AI Foundry エージェント を M365 Agents SDK と統合する
+## Exercise 2: Azure AI Foundry エージェントを M365 Agents SDK と統合
 
-M365 Agents SDK を使用してエージェントを構築し、生成 AI 機能を構成しました。次に、このローカル エージェントを先ほど作成した Azure AI Foundry エージェントへ接続します。これにより、Foundry プロジェクトに保存されているエンタープライズ データと指示を用いて応答できるようになり、すべてが一つにつながります。
+M365 Agents SDK を使ってエージェントを構築し、生成 AI 機能を設定しました。ここでは、このローカル エージェントを先ほど作成した Azure AI Foundry エージェントに接続します。これにより、Foundry プロジェクトに保存されたエンタープライズ データや指示を用いて応答できるようになり、すべてが一つにまとまります。
 
-### Step 1 : EchoBot.cs を構成して Azure AI Foundry エージェント に接続する
+### Step 1: EchoBot.cs を構成して Azure AI Foundry エージェントに接続
 
-このステップでは、EchoBot.cs 内で Foundry ホストのモデルを取得して呼び出すクライアントを追加し、Azure AI Foundry エージェントへ接続します。
+このステップでは、Foundry でホストされているモデルを取得・呼び出すクライアントを追加し、EchoBot.cs 内で Azure AI Foundry エージェントに接続します。
 
-**ContosoHRAgent** プロジェクトで **Bot/EchoBot.cs** を開き、EchoBot 公開クラス内に次の行を追加します。
+**ContosoHRAgent** プロジェクトの **Bot/EchoBot.cs** を開き、EchoBot パブリック クラス内に以下を追加します。
 
 ```
 private readonly PersistentAgentsClient _projectClient;
 private readonly string _agentId;
 ```
 
-既存の EchoBot コンストラクターを次の内容に置き換えます。
+既存の EchoBot コンストラクターを次のコードに置き換えます。
 
 ```
 public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : base(options)
@@ -126,7 +126,7 @@ public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : 
 }
 ```
 
-**OnMessageAsync** メソッドを次の内容に置き換えます。
+**OnMessageAsync** メソッドを次のコードに置き換えます。
 
 ```
 protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)
@@ -182,18 +182,19 @@ protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnSta
 
 ```
 
-> **⚠️ 注意:** 次のコードを貼り付けると、この機能がプレビュー段階のため警告 (SKEXP0110) が表示される場合があります。**AzureAIAgent** を右クリックし、**Quick Actions and Refactorings > Suppress or configure issues > Configure SKEXP0110 Severity > Silent** を選択して、一時的に警告を抑制できます。
+> **⚠️ 注意:** 次のコードを貼り付けると、機能がプレビュー段階のため警告 (SKEXP0110) が表示される場合があります。今は安全に無視できるので、AzureAIAgent を右クリックし **Quick Actions and Refactorings > Suppress or configure issues > Configure SKEXP0110 Severity > Silent** で警告を抑制してください。  
 > 
 > ![The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications.](https://github.com/user-attachments/assets/ac33b725-ede5-4b70-8186-72d393f1e169)
 
-???+ info "OnMessageAsync で何が起こるのか?"
-    *OnMessageAsync* メソッドはエージェント応答ロジックの心臓部です。既定のエコー動作を置き換えることで、ユーザーのメッセージを Azure AI Foundry エージェントへ送信し、応答をリアルタイムにストリーミング返却し、透明性のために引用とファイル参照を追跡・添付し、セキュリティと追跡性のために感度ラベルと AI 生成ラベルを追加できるようになりました。
+
+???+ info "OnMessageAsync で何が起こるか?"
+    *OnMessageAsync* メソッドはエージェント応答ロジックの中心です。既定のエコー動作を置き換えることで、ユーザー メッセージを Azure AI Foundry エージェントへ送信し、リアルタイムでストリーミング応答を返し、引用やファイル参照を添付して透明性を確保し、機密度や AI 生成ラベルを追加してセキュリティと追跡性を向上させます。
 
 <cc-end-step lab="bma3" exercise="2" step="1" />
 
-### Step 2 : Azure AI Agent サービス キーを構成する
+### Step 2: Azure AI Agent Service キーを構成
 
-Foundry 接続情報を appsettings.json に追加します。これらの値によって、M365 エージェントが正しい Foundry プロジェクトとエージェントへ接続します。**ContosoHRAgent** プロジェクトで **appsettings.json** を開き、appsettings リストの末尾に次の行を追加します。
+Foundry 接続情報を appsettings.json に追加します。これらの値により、M365 エージェントが正しい Foundry プロジェクトとエージェントへ接続します。**ContosoHRAgent** プロジェクトの **appsettings.json** を開き、appsettings リストの最後に以下を追加します。
 
 ```
 ,
@@ -203,13 +204,13 @@ Foundry 接続情報を appsettings.json に追加します。これらの値に
   }
 ```
 
-> これらの値は Azure AI Foundry の **Overview** セクションと **Agents Playground** セクションで確認できます。
+> これらの値は Azure AI Foundry の **Overview** と **Agents Playground** セクションで確認できます。
 
-**<AzureAIFoundryAgentId>** を **Agents Playground** で確認できる **Agent id** に置き換えます。
+**<AzureAIFoundryAgentId>** を **Agents Playground** に表示される **Agent id** に置き換えます。
 
 ![The Agents Playground of Azure AI Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
 
-**<ProjectEndpoint>** を AI Foundry の **Overview** ページ (Endpoints and keys) で確認できるプロジェクト エンドポイントに置き換えます。
+**<ProjectEndpoint>** を AI Foundry の **Overview** ページの Endpoints and keys に表示されるプロジェクト エンドポイントに置き換えます。
 
 最終的な **appsettings.json** は次のようになります。
 
@@ -263,7 +264,7 @@ Foundry 接続情報を appsettings.json に追加します。これらの値に
 
 <cc-end-step lab="bma3" exercise="2" step="2" />
 
-### Step 3 : Teams でエージェントをテストする
+### Step 3: Teams でエージェントをテスト
 
 **Tools > Command Line > Developer Command Prompt** を開き、次を実行します。
 
@@ -271,14 +272,14 @@ Foundry 接続情報を appsettings.json に追加します。これらの値に
 az login
 ```
 
-ブラウザー ウィンドウが開き、Microsoft アカウントでサインインして `az login` を完了する必要があります。
+ブラウザー ウィンドウが開いたら、Microsoft アカウントでサインインし、`az login` を完了します。
 
-**Start** を展開し、**Dev Tunnels > Create a Tunnel** を選択します。
+**Start** を展開し **Dev Tunnels > Create a Tunnel** を選択します。
  
-* **Sign in** と **Work or school account** を選択します。上記と同じ資格情報でログインしてください。
-* トンネル名に `DevTunnel` などを指定します。
+* **Sign in** を選び、**Work or school account** を選択します。上記と同じ資格情報でログインしてください。
+* トンネル名に `DevTunnel` などを入力します。
 * Tunnel Type は **Temporary** のままにします。
-* Access は **Public** を選択し、**Create** をクリックします。
+* Access を **Public** にして **Create** を選択します。
 
 ![The UI of Visual Studio to create a Dev Tunnel for the agent. There is a "Create a Tunnel" command highlighted.](https://github.com/user-attachments/assets/146fb3d4-256d-48b3-95a1-9e285f6bbc08)
 
@@ -286,21 +287,21 @@ az login
 
 ![The context menu of the the M365 Agents Toolkit when selecting the Microsoft 365 Account to use, highlighted in the screenshot.](https://github.com/user-attachments/assets/6981343d-8668-4b33-b36f-63b12739fc9d)
 
-同じアカウントを選択して **Continue** をクリックします。自動表示されない場合は **Sign in** と **Work or school account** を選択してください。
+同じアカウントを選択して **Continue** をクリックします。アカウントが自動表示されない場合は **Sign in > Work or school account** を選択してください。
   
-Visual Studio 上部のスタートアップ項目を展開し、既定の **<Multiple Startup Projects>** から **Microsoft Teams (browser)** を選択します。
+Visual Studio 上部のスタートアップ項目を展開し、既定では **<Multiple Startup Projects>** になっている部分を **Microsoft Teams (browser)** に変更します。
 
 ![The UI of Visual Studio when configuring Microsoft Teams (browser) for testing the agent in debug mode.](https://github.com/user-attachments/assets/0f564f0a-0394-49de-a679-6be59761b4fb)
 
-これで、統合エージェントを起動し Microsoft Teams でライブ テストする準備が整いました。Dev Tunnel が作成され、アカウントが認証されていることを確認してください。
+これで統合エージェントを実行し、Microsoft Teams でライブ テストする準備が整いました。Dev Tunnel が作成され、アカウントが認証されていることを確認してください。
 
-Dev Tunnel が作成されたら **Start** もしくは **F5** を押してデバッグを開始します。Microsoft Teams が自動的に起動し、エージェント アプリがウィンドウに表示されます。**Add** と **Open** を選択してエージェントとのチャットを開始します。  
+Dev Tunnel が作成できたら **Start** または **F5** を押してデバッグを開始します。Microsoft Teams が自動起動し、エージェント アプリが表示されます。**Add** と **Open** を選択してエージェントとのチャットを開始します。  
 
-次のような質問をしてエージェントと対話してみてください。
+次の質問例を使ってエージェントと対話できます。
 
-* Northwind Standard と Health Plus の緊急時およびメンタルヘルス補償の違いは何ですか?
-* PerksPlus でロッククライミング クラスとバーチャル フィットネス プログラムの両方を支払えますか?
-* Contoso Electronics で行動と意思決定を導く価値観は何ですか?
+* Northwind Standard と Health Plus の緊急およびメンタルヘルス補償の違いは何ですか?
+* PerksPlus を使ってロッククライミング クラスとオンライン フィットネス プログラムの両方を支払えますか?
+* Contoso Electronics の行動と意思決定を導く価値観は何ですか?
 
 Azure AI Foundry で作成したエージェントと同様の応答が得られるはずです。
 
@@ -310,9 +311,9 @@ Azure AI Foundry で作成したエージェントと同様の応答が得られ
 
 ---8<--- "ja/b-congratulations.md"
 
-ラボ BMA3 - Azure AI Foundry エージェント と M365 Agents SDK の統合 を完了しました!
+これで ラボ BMA3 - Azure AI Foundry エージェントを M365 Agents SDK と統合 を完了しました!
 
-次のラボ BMA4 - エージェントを Copilot Chat へ展開 に進む準備ができました。[Next] を選択してください。
+次は ラボ BMA4 - エージェントを Copilot Chat へ展開 へ進みましょう。Next を選択してください。
 
 <cc-next url="../04-bring-agent-to-copilot" />
 

@@ -2,18 +2,18 @@
 search:
   exclude: true
 ---
-# ラボ E3 - 宣言型エージェントと API プラグインの追加
+# ラボ E3 - 宣言型 エージェント と API プラグインの追加
 
-このラボでは、前のラボで作成した API プラグインと、特定の SharePoint ファイルに基づいて応答する宣言型エージェントを追加します。
+このラボでは、前のラボで作成した API プラグインと、特定の SharePoint ファイルに基づいて動作する宣言型 エージェントを追加します。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/XO2aG3YPbPc" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要をご覧ください。</div>
+          <div>このビデオでラボの概要を素早く確認できます。</div>
               <div class="note-box">
-            📘 <strong>注:</strong> このラボは前のラボ E2 を基にしています。ラボ E2～E6 は同じフォルダーで作業を続けられますが、参照用のソリューション フォルダーも用意されています。  
-    このラボの完成版ソリューションは <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END" target="_blank">/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END</a> フォルダーにあります。
+            📘 <strong>注意:</strong> このラボは前の Lab E2 を基にしています。ラボ E2〜E6 は同じフォルダーで作業を続けられますが、参照用にソリューション フォルダーも用意されています。  
+    このラボの完成版ソリューションは <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END" target="_blank">/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END</a> にあります。
         </div>
         </div>
     <div style="flex: 1; min-width: 0;">
@@ -23,58 +23,58 @@ search:
 
 ## 演習 1: サンプル ドキュメントのアップロード
 
-この手順では、宣言型エージェントがユーザー プロンプトに応答するために使用するサンプル ドキュメントをアップロードします。これには、Statement of Work などのコンサルティング文書と、コンサルタントの稼働時間を記録した簡単なスプレッドシートが含まれます。
+このステップでは、宣言型 エージェントがユーザーのプロンプトに応答するために使用するサンプル ドキュメントをアップロードします。これには Statement of Work などのコンサルティング ドキュメントと、コンサルタントとしての稼働時間を記録した簡単なスプレッドシートが含まれます。
 
-### 手順 1: SharePoint サイトの作成
-[https://m365.cloud.microsoft/apps/](https://m365.cloud.microsoft/apps/) にアクセスし、「アプリ」内の「SharePoint」を探します。
+### ステップ 1: SharePoint サイトを作成する
+[https://m365.cloud.microsoft/apps/](https://m365.cloud.microsoft/apps/) にアクセスし、「Apps」の中から **SharePoint** アプリを探します。
 
-![Microsoft 365 の UI。ワッフル メニューが展開され、SharePoint ワークロードが強調表示されている。](../../assets/images/extend-m365-copilot-05/upload-docs-01.png)
+![The UI of Microsoft 365 with the waffle menu expanded and the SharePoint workload highlighted.](../../assets/images/extend-m365-copilot-05/upload-docs-01.png)
 
-次に「サイトの作成」1️⃣ をクリックし、「チーム サイト」2️⃣ を選択します。
+次に「Create Site」 1️⃣ をクリックし、「Team site」 2️⃣ を選択します。
 
-![新しい SharePoint Online サイトを作成する UI。'Team Site' テンプレートが示されている。](../../assets/images/extend-m365-copilot-05/upload-docs-02.png)
+![The UI to create a new SharePoint Online site, with 'Team Site' template suggested.](../../assets/images/extend-m365-copilot-05/upload-docs-02.png)
 
-Standard team site テンプレートを選択すると、サイトのプレビューが表示されます。「テンプレートの使用」をクリックして続行します。
+Standard team site テンプレートを選択します。サイトのプレビューが表示されたら、「Use Template」をクリックして続行します。
 
-![ターゲット サイト用の 'Standard' サイト テンプレートを選択する UI。](../../assets/images/extend-m365-copilot-05/upload-docs-03.png)
+![The UI to select the 'Standard' site template for the target site.](../../assets/images/extend-m365-copilot-05/upload-docs-03.png)
 
-サイト名に「Trey Research legal documents」などを入力 1️⃣ し、「次へ」2️⃣ をクリックします。
+サイト名に「Trey Research legal documents」などを入力 1️⃣ し、「Next」 2️⃣ をクリックします。
 
-![ターゲット サイトの名前、説明などを入力する UI。](../../assets/images/extend-m365-copilot-05/upload-docs-05.png)
+![The UI to provide name, description, and other details for the target site to create.](../../assets/images/extend-m365-copilot-05/upload-docs-05.png)
 
-プライバシー設定と言語を選択し、「サイトの作成」をクリックします。
+プライバシー設定と言語を選択し、「Create Site」をクリックします。
 
-![ターゲット サイトのプライバシー設定と言語を選択する UI。](../../assets/images/extend-m365-copilot-05/upload-docs-06.png)
+![The UI to select the privacy settings and the language for the target site.](../../assets/images/extend-m365-copilot-05/upload-docs-06.png)
 
 数秒後、新しい SharePoint サイトが表示されます。
 
 <cc-end-step lab="e3" exercise="1" step="1" />
 
-### 手順 2: サンプル ドキュメントのアップロード
+### ステップ 2: サンプル ドキュメントをアップロードする
 
-Documents Web パーツで「すべて表示」を選択し、ドキュメント ライブラリ ページを開きます。
+Documents Web パートで「See all」を選択し、ドキュメント ライブラリのページを表示します。
 
-![サイトのホーム ページ。Documents Web パーツと 'See all' リンクが強調表示されている。](../../assets/images/extend-m365-copilot-05/upload-docs-07.png)
+![The home page of the site with the Documents web part and the 'See all' link highlighted.](../../assets/images/extend-m365-copilot-05/upload-docs-07.png)
 
-次にツールバーの「アップロード」1️⃣ をクリックし、「ファイル」2️⃣ を選択します。
+次に、ツールバーの「Upload」 1️⃣ をクリックし、「Files」 2️⃣ を選択します。
 
-![ドキュメント ライブラリのコマンド バー。'Upload' メニューが展開され 'Files' オプションが選択されている。](../../assets/images/extend-m365-copilot-05/upload-docs-08.png)
+![The command bar of the document library with the 'Upload' menu expanded and the 'Files' option selected.](../../assets/images/extend-m365-copilot-05/upload-docs-08.png)
 
-作業フォルダー内の **sampleDocs** ディレクトリに移動します。すべてのサンプル ドキュメントを選択 1️⃣ し、「開く」2️⃣ をクリックします。
+作業フォルダーを開くと **sampleDocs** ディレクトリがあります。すべてのサンプル ドキュメントを選択 1️⃣ し、「Open」 2️⃣ をクリックします。
 
-サイト URL は「https://&lt;your-tenant&gt;.sharepoint.com/sites/TreyResearchlegaldocuments」のようになります。次の演習で必要になるのでメモしておいてください。
+サイト URL をメモしておいてください。次の演習で必要になります。例: `https://<your-tenant>.sharepoint.com/sites/TreyResearchlegaldocuments`
 
-![アップロードするファイルを選択するファイル システム ダイアログ。](../../assets/images/extend-m365-copilot-05/upload-docs-09.png)
+![The file system browsing dialog to select the files to upload.](../../assets/images/extend-m365-copilot-05/upload-docs-09.png)
 
 <cc-end-step lab="e3" exercise="1" step="2" />
 
-## 演習 2: 宣言型エージェントの作成
+## 演習 2: 宣言型 エージェントを作成する
 
-### 手順 1: 宣言型エージェント JSON をプロジェクトに追加
+### ステップ 1: 宣言型 エージェント JSON をプロジェクトに追加する
 
 **appPackage** フォルダー内に **trey-declarative-agent.json** という新しいファイルを作成します。次の JSON をコピーして保存します。
 
-~~~json
+```json
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.4/schema.json",
     "version": "v1.4",
@@ -112,17 +112,17 @@ Documents Web パーツで「すべて表示」を選択し、ドキュメント
         }
     ]
 }
-~~~
+```
 
-ファイルには宣言型エージェントの name、description、instructions が含まれています。instructions の中で、Copilot に「Trey のモットー『Always be Billing!』を常にユーザーに思い出させる」よう指示している点に注目してください。次の演習で Copilot にプロンプトを送信した際に確認できます。
+このファイルにはエージェントの名前、説明、指示が含まれています。指示の中で Copilot に「Trey のモットー『Always be Billing!』を常にユーザーに思い出させる」よう記載している点に注目してください。次の演習で Copilot にプロンプトを送ると確認できます。
 
 <cc-end-step lab="e3" exercise="2" step="1" />
 
-### 手順 2: SharePoint サイトの URL を宣言型エージェントに追加
+### ステップ 2: SharePoint サイトの URL を宣言型 エージェントに追加する
 
-Capabilities セクションには SharePoint ファイル コンテナーがあります。Microsoft 365 Copilot は SharePoint や OneDrive 上のすべてのドキュメントを参照できますが、この宣言型エージェントは演習 1 で作成した Trey Research Legal Documents サイト内のファイルのみを参照します。
+「capabilities」セクションには SharePoint ファイル コンテナーがあります。Microsoft 365 Copilot は SharePoint や OneDrive のあらゆるドキュメントを参照できますが、この宣言型 エージェントは演習 1 で作成した Trey Research Legal Documents サイトのファイルのみアクセスします。
 
-~~~json
+```json
 "capabilities": [
     {
         "name": "OneDriveAndSharePoint",
@@ -133,41 +133,42 @@ Capabilities セクションには SharePoint ファイル コンテナーがあ
         ]
     }
 ],
-~~~
+```
 
-SharePoint URL は環境変数 `SHAREPOINT_DOCS_URL` になっているため、**env** フォルダーの **.env.local** ファイルに追加する必要があります。ファイルの末尾に次のように 1 行追加し、SharePoint URL を指定してください。
+SharePoint の URL は環境変数 `SHAREPOINT_DOCS_URL` なので、**env** フォルダーの **.env.local** に追記します。ファイルの末尾に次のように 1 行追加してください (自分の SharePoint URL に置き換えます)。
 
-~~~text
+```text
 SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocuments
-~~~
+```
 
 <cc-end-step lab="e3" exercise="2" step="2" />
 
-### 手順 3: API プラグイン ファイルを確認する
 
-**trey-declarative-agent.json** 内の "actions" セクションでは、宣言型エージェントが Trey Research API にアクセスするよう指定されています。
+### ステップ 3: API プラグイン ファイルを確認する
 
-~~~json
+**trey-declarative-agent.json** の中の「actions」セクションは、宣言型 エージェントに Trey Research API を利用させる設定です。
+
+```json
 "actions": [
     {
         "id": "treyresearch",
         "file": "trey-plugin.json"
     }
 ]
-~~~
+```
 
-ここでは **trey-plugin.json** と、もう 1 つのファイルが Copilot に API を説明し、REST 呼び出しを行えるようにする方法を確認します。
+ここでは **trey-plugin.json** を確認し、別のファイルとの関係で Copilot が REST 呼び出しを行う仕組みを見ていきます。
 
-これら 2 つのファイルは API を Copilot に説明するために使用されます。ラボ 2 でダウンロードしたプロジェクトに既に含まれているので、ここで確認してみましょう。
+これら 2 つのファイルは Copilot に API を説明するために使われます。Lab 2 でダウンロードしたプロジェクトに既に含まれているので、今確認してください。
 
- * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - これは業界標準の REST API 仕様である [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank}（いわゆる Swagger）ファイルです  
- * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - OAS ファイルでは説明されない Copilot 固有の詳細が含まれています
+ * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - 業界標準の REST API 定義フォーマット [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank} (Swagger) ファイル  
+ * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - OAS では記述されない Copilot 固有の情報を含むファイル
 
-この手順ではこれらのファイルをざっと確認します。次のラボでさらに機能を追加しながら、より深く理解していきます。
+このステップではこれらのファイルをざっと確認します。今後のラボでさらに詳しく扱います。
 
-**appPackage/trey-definition.json** ではアプリ全体の説明があります。サーバー URL を含み、Agents Toolkit が [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} を作成してローカル API をインターネットに公開し、`"${{OPENAPI_SERVER_URL}}"` トークンを公開 URL に置き換えます。その後、API の各リソース パス、verb、parameter を詳細に説明しています。詳細な説明は Copilot が API を理解するうえで重要です。
+**appPackage/trey-definition.json** にはアプリケーションの一般的な説明があります。ここにはサーバー URL が含まれており、Agents Toolkit が [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} を作成してローカル API を公開し、トークン `"${{OPENAPI_SERVER_URL}}` を公開 URL に置き換えます。その後、API の各リソース パス、HTTP 動詞、パラメーターが詳細に記述されています。詳細な説明は Copilot が API を理解するために重要です。
 
-~~~json
+```json
 {
   "openapi": "3.0.1",
   "info": {
@@ -175,12 +176,34 @@ SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocum
       "title": "Trey Research API",
       "description": "API to streamline consultant assignment and project management."
   },
-  ...
-~~~
+  "servers": [
+      {
+          "url": "${{OPENAPI_SERVER_URL}}/api/",
+          "description": "Production server"
+      }
+  ],
+  "paths": {
+      "/consultants/": {
+          "get": {
+              "operationId": "getConsultants",
+              "summary": "Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available",
+              "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+              "parameters": [
+                  {
+                      "name": "consultantName",
+                      "in": "query",
+                      "description": "Name of the consultant to retrieve",
+                      "required": false,
+                      "schema": {
+                          "type": "string"
+                      }
+                  },
+      ...
+```
 
-**appPackage/trey-plugin.json** には Copilot 固有の詳細があります。たとえば、`/consultants` へのすべての GET リクエストはさまざまなパラメーター オプションでコンサルタントを検索し、`getConsultants` 関数としてまとめられています。
+**appPackage/trey-plugin.json** には Copilot 固有の詳細があります。ここでは API 呼び出しを _functions_ に分割し、特定のユースケースで Copilot が呼び出せるようにしています。たとえば `/consultants` への GET リクエストは複数のパラメーターでコンサルタントを検索し、`getConsultants` という function にまとめられています。
 
-~~~json
+```json
   "functions": [
     {
       "name": "getConsultants",
@@ -196,11 +219,11 @@ SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocum
         }
       }
     },
-~~~
+```
 
-さらに下にはランタイム設定があります。
+下にスクロールするとランタイム設定があります。
 
-~~~json
+```json
 "runtimes": [
   {
     "type": "OpenApi",
@@ -217,17 +240,17 @@ SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocum
     ]
   }
 ],
-~~~
+```
 
-ここで **trey-definition.json** へのパスと、利用可能な関数の列挙を行っています。
+ここでは **trey-definition.json** への参照と、利用可能な functions の列挙が記載されています。
 
 <cc-end-step lab="e3" exercise="2" step="3" />
 
-### 手順 4: アプリ マニフェストに宣言型エージェントを追加
+### ステップ 4: 宣言型 エージェントをアプリ マニフェストに追加する
 
-**appPackage** ディレクトリ内の **manifest.json** を開き、`staticTabs` オブジェクトの直前に次の `copilotAgents` オブジェクトを追加して、先ほど作成した宣言型エージェント JSON ファイルを参照させます。
+**appPackage** ディレクトリの **manifest.json** を開きます。`staticTabs` オブジェクトの直前に、次のように `copilotAgents` オブジェクトを追加し、先ほど作成した宣言型 エージェント JSON ファイルを参照させます。
 
-~~~json
+```json
   "copilotAgents": {
     "declarativeAgents": [
       {
@@ -236,19 +259,19 @@ SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocum
       }
     ]
   }, 
-~~~
+```
 
 保存を忘れないでください。
 
 <cc-end-step lab="e3" exercise="2" step="4" />
 
-### 手順 5: アプリ マニフェストからダミー機能を削除
+### ステップ 5: アプリ マニフェストからダミー機能を削除する
 
-ラボ E2 の初期ソリューションには宣言型エージェントがまだなかったため、マニフェストに機能がないとインストールできませんでした。そのため、Teams、Outlook、Microsoft 365 アプリ（[https://office.com](https://office.com){target=_blank}）で Copilot Developer Camp のホーム ページを表示できる静的タブを「ダミー」機能として追加していました。
+Lab E2 で実行した初期ソリューションは宣言型 エージェントがなかったため、機能がないとマニフェストをインストールできませんでした。そのため Copilot Developer Camp のホームページを表示する静的タブという「ダミー」機能を追加していました。Teams、Outlook、Microsoft 365 アプリ ([https://office.com](https://office.com){target=_blank}) 内で Web サイトをタブとして表示できるようにするものです。
 
-[Teams App Camp](https://aka.ms/app-camp){target=_blank} を試したことがある方ならおなじみですが、ここでは不要なので **manifest.json** から以下の行を削除してください。
+もし [Teams App Camp](https://aka.ms/app-camp){target=_blank} を体験していればご存じでしょう。そうでなければ心配いりません。**manifest.json** から以下の行を削除してください。もう必要ありません。
 
-~~~json
+```json
 "staticTabs": [
   {
     "entityId": "index",
@@ -263,57 +286,56 @@ SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocum
 "validDomains": [
   "microsoft.github.io"
 ],
-~~~
+```
 
 <cc-end-step lab="e3" exercise="2" step="5" />
 
-## 演習 3: 宣言型エージェントの実行とテスト
+## 演習 3: 宣言型 エージェントを実行してテストする
 
-### 手順 1: 新しいプロジェクトの実行
+### ステップ 1: 新しいプロジェクトを実行する
 
-デバッガーが起動中の場合はいったん停止し、完全に再デプロイします。
+デバッガーがまだ動いている場合は停止し、完全に再デプロイします。
 
-その後、F5 キーを押すか矢印をクリックしてデバッガーを再起動し、Copilot のユーザー インターフェースに戻ります。現在ブラウザー版 Teams でテストしているかもしれませんが、office.com/chat でもエージェントをテストできます。
+その後、矢印をクリックするか F5 を押してデバッガーを起動し、Copilot のユーザー インターフェイスに戻ります。ブラウザーの Teams でテストしている場合もありますが、office.com/chat でテストすることも可能です。
 
-???+ info "エージェントが見つからない"
-    ブラウザーを更新し、下図のようにナビゲーションを折りたたんでから再度展開してください。F5 後にエージェントがすぐに表示されない場合があります。  
+???+ info "エージェントが見つからない場合"
+    F5 後すぐにエージェントが表示されない場合は、ブラウザーを更新し、ナビゲーションを折りたたんでから展開してください。  
     ![Expand and collapse navigation](../../assets/images/extend-m365-copilot-05/expand-nav.png)
 
 <cc-end-step lab="e3" exercise="3" step="1" />
 
-### 手順 2: 宣言型エージェントのテスト
+### ステップ 2: 宣言型 エージェントをテストする
 
-Copilot チャットを開き、右側のフライアウト 1️⃣ で過去のチャットと宣言型エージェントを表示し、Trey Genie Local エージェント 2️⃣ を選択します。
+Copilot チャットを開き、右側のフライアウト 1️⃣ を開いて過去のチャットと宣言型 エージェントを表示し、Trey Genie Local エージェント 2️⃣ を選択します。
 
-![Microsoft 365 Copilot に Trey Genie エージェントが表示されている様子。右側にカスタム宣言型エージェントが並び、中央に会話スターターとプロンプト入力欄がある。](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
 
-「Please list my projects along with details from the Statement of Work doc」のようなプロンプトを入力します。  
-API プラグインから取得したプロジェクトの一覧に、各プロジェクトの Statement of Work の詳細 1️⃣ が付加されて表示されるはずです。Copilot が Trey Research のモットー 2️⃣ とドキュメントへの参照 3️⃣ を含めている点に注目してください。参照をクリックするとドキュメントを確認できます。
+「Please list my projects along with details from the Statement of Work doc」のようなプロンプトを試してください。  
+API プラグインから取得したプロジェクトの一覧に、各プロジェクトの Statement of Work からの詳細が付加されて表示されるはずです 1️⃣。Copilot が Trey Research のモットー 2️⃣ とドキュメントへの参照 3️⃣ を含めている点に注目してください。参照をクリックするとドキュメントを確認できます。
 
-![エージェントの出力。ユーザーが取り組んでいるプロジェクト情報、SharePoint ドキュメントの参照、モットー 'Always be Billing!' が含まれている。](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
+![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
 
 !!! note
-    SharePoint ドキュメントが参照されない場合、ファイルへのアクセスに問題がある可能性があります。検索によるサイトのインデックス作成が完了しているか、ユーザーにサイトへのアクセス許可があるか、管理者が検索対象からサイトを除外していないかを確認してください。  
-    Copilot 外で次のような検索を試してください。  
-    
+    SharePoint ドキュメントが参照されない場合、ファイルへのアクセスに問題がある可能性があります。Search がサイトをインデックスする時間は十分にありましたか? エンド ユーザーにサイトへのアクセス権がありますか? 管理者がサイトを Search から除外していませんか?  
+    Copilot 以外で以下のような Search を試してください。  
     `woodgrove path:"https://<tenant>.sharepoint.com/sites/<sitename>"`  
-    
-    tenant とサイト名を capability に設定したものに置き換えて検索し、Woodgrove のドキュメント 3 件が表示されるか確認します。表示されなければ検索をトラブルシュートしてください。Copilot でも見つけられません。
+    テナントとサイト名を capability に設定したものに置き換えてください。Woodgrove のドキュメントが 3 つ表示されるはずです。表示されない場合は Search をトラブルシュートしてください。Copilot も見つけられません。
 
-API がどのように呼び出されているかも確認しましょう。再度「List my information」1️⃣ と入力し、エージェントに Trey Research API の api/me エンドポイントから情報を取得させます 2️⃣。
+API がどのように呼び出されているかも確認しましょう。次のプロンプトを送ります: 「List my information」 1️⃣。これは Trey Research API の api/me エンドポイントから詳細を取得するようエージェントに指示します 2️⃣。
 
-下図のように、ログイン ユーザー（認証はまだ実装していないため Avery Howard として表示）と担当プロジェクトが返されました。  
-![List my information のプロンプトとその応答](../../assets/images/extend-m365-copilot-05/my-info.png)
+以下のように、ログイン ユーザー (Auth 未実装のため Avery Howard で固定) の情報とプロジェクトが返ってきました。  
+![List my information prompt and response ](../../assets/images/extend-m365-copilot-05/my-info.png)
 
-VS Code のプロジェクトで「Terminal」を開くと、エージェントが API を呼び出したログも確認できます。
+VS Code プロジェクトで「Terminal」を開くと、エージェントが API を呼び出した様子が確認できます。
 
-![api/me への API 呼び出しを示すターミナル](../../assets/images/extend-m365-copilot-05/api-called.png)
+![Terminal showing API getting called for api/me ](../../assets/images/extend-m365-copilot-05/api-called.png)
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
+
 ---8<--- "ja/e-congratulations.md"
 
-宣言型エージェントを API プラグインに追加できました。次は API とプラグインを強化していきましょう。
+宣言型 エージェントを API プラグインに追加できました。次は API とプラグインを強化していきましょう。 
 
 <cc-next />
 
