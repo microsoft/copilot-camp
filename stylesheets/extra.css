@@ -1,0 +1,310 @@
+/* Extra CSS to override the mkdocs-material theme styles */
+
+:root  > * {
+  --md-default-fg-color:        #333333;
+  --md-default-fg-color--light: #606060;
+  --md-default-fg-color--lighter: #a1a1a1;
+  --md-primary-fg-color:        #fcfcfc;
+  --md-primary-fg-color--light: #ffffff;
+  --md-primary-fg-color--dark:  #e1e1e1;
+  --md-accent-fg-color:         #35B0FE;
+  --md-primary-bg-color:        #333333;
+  --md-typeset-color:           #333333;
+  --md-typeset-a-color:         #35B0FE;
+  --md-typeset-a-color--darker: #599FFF;
+  --md-gradient-color--start:   #35B0FE; /* gradient start */
+  --md-gradient-color--middle:  #7A8FFF;
+  --md-gradient-color--end:     #B86FFE; /* gradient end */
+
+  --sparkle-icon: url('data:image/svg+xml;charset=utf-8, <svg xmlns="http://www.w3.org/2000/svg"><path d="M7.4 12.8a1.04 1.04 0 0 0 1.59-.51l.45-1.37a2.34 2.34 0 0 1 1.47-1.48l1.4-.45A1.04 1.04 0 0 0 12.25 7l-1.37-.45A2.34 2.34 0 0 1 9.4 5.08L8.95 3.7a1.03 1.03 0 0 0-.82-.68 1.04 1.04 0 0 0-1.15.7l-.46 1.4a2.34 2.34 0 0 1-1.44 1.45L3.7 7a1.04 1.04 0 0 0 .02 1.97l1.37.45a2.33 2.33 0 0 1 1.48 1.48l.46 1.4c.07.2.2.37.38.5Zm.08-7.4.53-1.38.44 1.37a3.33 3.33 0 0 0 2.12 2.12l1.4.53-1.38.45a3.34 3.34 0 0 0-2.11 2.11l-.53 1.38-.45-1.38a3.34 3.34 0 0 0-2.1-2.12L4 7.96 5.4 7.5a3.36 3.36 0 0 0 2.08-2.12Zm6.06 11.45a.8.8 0 0 0 1.22-.4l.25-.76a1.09 1.09 0 0 1 .68-.68l.77-.25a.8.8 0 0 0-.02-1.52l-.77-.25a1.08 1.08 0 0 1-.68-.68l-.25-.77a.8.8 0 0 0-1.52.01l-.24.76a1.1 1.1 0 0 1-.67.68l-.77.25a.8.8 0 0 0 0 1.52l.77.25a1.09 1.09 0 0 1 .68.68l.25.77c.06.16.16.3.3.4Zm-.92-2.8-.18-.05.19-.06a2.09 2.09 0 0 0 1.3-1.32l.06-.18.05.18a2.08 2.08 0 0 0 1.32 1.32l.2.06-.18.06a2.08 2.08 0 0 0-1.32 1.32l-.06.18-.06-.18a2.07 2.07 0 0 0-1.32-1.32Z"/></svg>');
+  --md-admonition-icon--pied-piper: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M244 246c-3.2-2-6.3-2.9-10.1-2.9-6.6 0-12.6 3.2-19.3 3.7l1.7 4.9zm135.9 197.9c-19 0-64.1 9.5-79.9 19.8l6.9 45.1c35.7 6.1 70.1 3.6 106-9.8-4.8-10-23.5-55.1-33-55.1zM340.8 177c6.6 2.8 11.5 9.2 22.7 22.1 2-1.4 7.5-5.2 7.5-8.6 0-4.9-11.8-13.2-13.2-23 11.2-5.7 25.2-6 37.6-8.9 68.1-16.4 116.3-52.9 146.8-116.7C548.3 29.3 554 16.1 554.6 2l-2 2.6c-28.4 50-33 63.2-81.3 100-31.9 24.4-69.2 40.2-106.6 54.6l-6.3-.3v-21.8c-19.6 1.6-19.7-14.6-31.6-23-18.7 20.6-31.6 40.8-58.9 51.1-12.7 4.8-19.6 10-25.9 21.8 34.9-16.4 91.2-13.5 98.8-10zM555.5 0l-.6 1.1-.3.9.6-.6zm-59.2 382.1c-33.9-56.9-75.3-118.4-150-115.5l-.3-6c-1.1-13.5 32.8 3.2 35.1-31l-14.4 7.2c-19.8-45.7-8.6-54.3-65.5-54.3-14.7 0-26.7 1.7-41.4 4.6 2.9 18.6 2.2 36.7-10.9 50.3l19.5 5.5c-1.7 3.2-2.9 6.3-2.9 9.8 0 21 42.8 2.9 42.8 33.6 0 18.4-36.8 60.1-54.9 60.1-8 0-53.7-50-53.4-60.1l.3-4.6 52.3-11.5c13-2.6 12.3-22.7-2.9-22.7-3.7 0-43.1 9.2-49.4 10.6-2-5.2-7.5-14.1-13.8-14.1-3.2 0-6.3 3.2-9.5 4-9.2 2.6-31 2.9-21.5 20.1L15.9 298.5c-5.5 1.1-8.9 6.3-8.9 11.8 0 6 5.5 10.9 11.5 10.9 8 0 131.3-28.4 147.4-32.2 2.6 3.2 4.6 6.3 7.8 8.6 20.1 14.4 59.8 85.9 76.4 85.9 24.1 0 58-22.4 71.3-41.9 3.2-4.3 6.9-7.5 12.4-6.9.6 13.8-31.6 34.2-33 43.7-1.4 10.2-1 35.2-.3 41.1 26.7 8.1 52-3.6 77.9-2.9 4.3-21 10.6-41.9 9.8-63.5l-.3-9.5c-1.4-34.2-10.9-38.5-34.8-58.6-1.1-1.1-2.6-2.6-3.7-4 2.2-1.4 1.1-1 4.6-1.7 88.5 0 56.3 183.6 111.5 229.9 33.1-15 72.5-27.9 103.5-47.2-29-25.6-52.6-45.7-72.7-79.9zm-196.2 46.1v27.2l11.8-3.4-2.9-23.8zm-68.7-150.4l24.1 61.2 21-13.8-31.3-50.9zm84.4 154.9l2 12.4c9-1.5 58.4-6.6 58.4-14.1 0-1.4-.6-3.2-.9-4.6-26.8 0-36.9 3.8-59.5 6.3z"/></svg>')
+
+}
+
+/* Left nav */
+
+.md-nav {
+  font-size: .75rem;
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 76.25em) {
+  [dir=ltr] .md-nav--integrated>.md-nav__list>.md-nav__item--active .md-nav--secondary {
+      border-left: .05rem solid var(--md-typeset-a-color);
+  }
+}
+
+.md-nav__item:not(.md-nav__item .md-nav__item)>a,
+.md-nav__item:not(.md-nav__item .md-nav__item)>label {
+    border: 0;
+}
+
+/* Header */
+
+.md-header {
+  box-shadow: none;
+  border-bottom: solid 4px transparent;
+  border-image: linear-gradient(92deg, var(--md-gradient-color--start) 0.57%, var(--md-gradient-color--end) 99.43%) 1;
+}
+
+.md-header__topic:first-child {
+  font-weight: 400;
+}
+
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+  height: 0.9rem;
+}
+
+.md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
+  height: 1.8rem;
+}
+
+[dir=ltr] .md-header__title {
+  margin-left: 0;
+  margin-right: .4rem;
+}
+
+.md-search__form {
+  background-color: transparent;
+  border: 1px solid var(--md-default-fg-color--light);
+  border-radius: 6px;
+  opacity: .6;
+}
+
+[data-md-toggle=search]:checked~.md-header .md-search__form {
+  background-color: var(--md-primary-fg-color);
+  border: 1px solid var(--md-default-fg-color);
+  border-radius: 6px 6px 0 0;
+  box-shadow: none;
+  color: var(--md-default-fg-color);
+}
+
+.md-search-result__meta {
+  background-color: var(--md-default-fg-color--lighter);
+  border-radius: 0 0 6px 6px;
+  color: var(--md-default-fg-color--light);
+  font-size: .64rem;
+  line-height: 1.8rem;
+  padding: 0 .8rem;
+  scroll-snap-align: start;
+}
+
+/* i18n button */
+
+button.md-header__button {
+  color: currentcolor;
+  outline-color: inherit;
+  background: none;
+  box-shadow: none;
+}
+
+button.md-header__button:hover {
+  box-shadow: none;
+}
+
+/* Article */
+
+.md-typeset {
+  font-size: 0.9rem;
+}
+
+.md-typeset h3, .md-typeset a {
+  color: var(--md-typeset-a-color--darker);
+}
+
+.md-typeset a:focus, .md-typeset a:hover {
+  color: var(--md-typeset-a-color--darker);
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+.md-typeset svg {
+  height: 20px;
+  max-width: 100%;
+  position: relative;
+  top: 4px;
+}
+
+/* Button */
+button {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(92deg, var(--md-gradient-color--start) 0.57%, var(--md-gradient-color--end) 99.43%);
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25), 0px 1px 0px 0px rgba(255, 255, 255, 0.50) inset;
+  cursor: pointer;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 0px 0px 8px 2px rgba(184, 111, 254, 0.5), 0px 1px 0px 0px rgba(255, 255, 255, 0.50) inset;
+}
+
+button.md-clipboard.md-icon{
+    padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: grey;
+  background: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  box-shadow:none;
+  cursor: pointer;
+  transition: none;
+
+}
+button.md-clipboard.md-icon:hover{
+  box-shadow:none;
+}
+
+/* hr */
+
+.md-typeset hr {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  display: flow-root;
+  margin: 1.5em 0;
+}
+
+[dir=ltr] .md-typeset blockquote {
+  border-left: .2rem solid var(--md-accent-fg-color);
+}
+
+/* Table */
+
+/* .md-typeset table:not([class]) {
+  background-color: transparent;
+  border: 0;
+  display: inline-block;
+  font-size: .75rem;
+  max-width: 100%;
+  overflow: auto;
+  touch-action: auto;
+}
+
+.md-typeset table:not([class]) tbody tr {
+  transition: none;
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 0;
+  padding: 1em 1.25em;
+  vertical-align: top;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background-color: transparent;
+  box-shadow: none;
+}  */
+
+/* Alert Boxes */
+
+.md-typeset .admonition, .md-typeset details,
+.md-typeset .admonition.question, .md-typeset details.question,
+.md-typeset .admonition.info, .md-typeset details.info {
+  border: solid 1px var(--md-gradient-color--start);
+  border-radius: 6px;
+  padding: .25em 1em;
+}
+
+.md-typeset .admonition-title:before, 
+.md-typeset summary:before,
+.md-typeset .info>.admonition-title:before,
+.md-typeset .note>.admonition-title:before, 
+.md-typeset .note>summary:before,
+.md-typeset details>summary:before,
+.md-typeset .question>summary:before,
+.md-typeset .info>summary:before  {
+  background-color: var(--md-gradient-color--start);
+}
+
+
+.md-typeset .info>.admonition-title:after, 
+.md-typeset .info>summary:after,
+.md-typeset .question>.admonition-title:after, .md-typeset .question>summary:after {
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset .admonition, .md-typeset details {
+  font-size: .7rem;
+}
+
+.md-typeset .admonition-title, 
+.md-typeset .info>.admonition-title,
+.md-typeset .note>.admonition-title, .md-typeset .note>summary,
+.md-typeset .pied-piper>.admonition-title, .md-typeset .pied-piper>summary,
+.md-typeset .warning>.admonition-title, .md-typeset .warning>summary,
+.md-typeset .tip>.admonition-title, .md-typeset .tip>summary,
+.md-typeset .question>.admonition-title, .md-typeset .question>summary,
+.md-typeset .info>summary,
+.md-typeset .check>summary  {
+  background-color: transparent;
+}
+
+.md-typeset .admonition.tip  {
+  border: solid 1px var(--md-gradient-color--middle);
+}
+
+.md-typeset .tip>.admonition-title:before {
+  background-color: var(--md-gradient-color--middle);
+}
+
+.md-typeset .pied-piper,
+.md-typeset .admonition.warning  {
+  border: solid 1px var(--md-gradient-color--end);
+}
+
+.md-typeset .pied-piper>.admonition-title:before,
+.md-typeset .warning>.admonition-title:before {
+  background-color: var(--md-gradient-color--end);
+}
+
+.md-typeset .pied-piper>.admonition-title::before,
+.md-typeset .pied-piper>summary::before {
+  -webkit-mask-image: var(--sparkle-icon);
+  mask-image: var(--sparkle-icon);
+}
+
+/* Video */
+
+.video-caption {
+  font-size: smaller;
+}
+
+/* Footer */
+
+.md-footer-meta {
+  background-color: var(--md-primary-fg-color);
+}
+
+.md-copyright {
+  color: var(--md-default-fg-color--light);
+  opacity: 0.6;
+}
+
+html .md-footer-meta.md-typeset a {
+  color: var(--md-default-fg-color--light);
+}
+
+html .md-footer-meta.md-typeset a:hover {
+  color: var(--md-default-fg-color--light);
+  text-decoration: underline;
+}
+
+/* YOU ARE HERE indicator */
+.you-are-here {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--md-gradient-color--start);
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+}

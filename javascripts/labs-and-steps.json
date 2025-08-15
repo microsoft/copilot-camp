@@ -1,0 +1,1427 @@
+{
+    "paths": [
+        {
+            "pathId": "Make",
+            "title": "Maker Path - Make your agent",
+            "labs": [
+                {
+                    "labId": "mab1",
+                    "title": "MAB1 - Build your first agent",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating the Declarative agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Describe your agent"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test the agent"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Customizing the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Provide a custom icon"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Define the guess plant/flower game rules"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Add SharePoint Online knowledge base",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Upload the knowledge base documents"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add support for SharePoint Online documents"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Final touches to the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add support for image generation"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Share the agent"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs0",
+                    "title": "MCS0 - Setup",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating a Power Platform environment",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new Power Platform environment"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Microsoft Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Activating Microsoft Copilot Studio"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs1",
+                    "title": "MCS1 - First agent",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating an agent with Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new agent"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Changing the agent's icon"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Testing the agent"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Extending the knowledge base",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Adding SharePoint Online knowledge base documents"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the updated agent"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Disabling general knowledge"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Publishing the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Publishing the agent in Microsoft Teams"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the agent in Microsoft Teams"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs2",
+                    "title": "MCS2 - Defining Topics",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Orchestration based on Generative AI",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Enabling Orchestration based on generative AI"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Creating a single-turn topic",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new single-turn topic"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Collecting user's input"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Providing feedback to the user"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Ending the current topic"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Testing the current topic"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Creating a multi-turn topic",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating a new multi-turn topic"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Giving a feedback to the user"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Using Adaptive Cards",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Collecting input with Adaptive Cards"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Providing feedback with Adaptive Cards"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Testing the current topic"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs3",
+                    "title": "MCS3 - Defining Tools",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating tools in Microsoft Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Consuming a Power Platform connector"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the new tool"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Consuming a Power Automate flow"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Invoking tools from within a topic",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Invoking a tool from a topic"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs4",
+                    "title": "MCS4 - Extending Microsoft 365 Copilot",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating an agent for Microsoft 365 Copilot Chat",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating an agent for Copilot Chat"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Updating the agent's icon"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Adding a knowledge base to the agent"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Publishing the agent in Microsoft 365 Copilot Chat"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Adding an action to the agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Adding an action to an agent for Microsoft 365 Copilot"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the new action"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "mcs5",
+                    "title": "MCS5 - Consuming a custom connector",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Creating the REST API",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Downloading and testing the REST API"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Registering the API in Entra ID"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Configure the dev tunnel"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Registering the Consumer in Entra ID"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Creating the custom connector",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating the custom connector"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing the custom connector"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Consuming the custom connector",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Consuming the custom connector from the agent"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "pathId": "Extend",
+            "title": "Extend - Build a declarative agent",
+            "labs": [
+                {
+                    "labId": "e0",
+                    "title": "E0 - Setup",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Configure Teams upload policy",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Enable Teams custom application uploads"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Install Microsoft 365 Agents Toolkit and prerequisites",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install Visual Studio Code"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Install NodeJS"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Install Agents Toolkit"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                 {
+                    "labId": "e1",
+                    "title": "Lab E1 - Build your first Declarative agent with TypeSpec definition using Microsoft 365 Agents Toolkit",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Build the base agent with TypeSpec using Microsoft 365 Agents Toolkit",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Scaffold your base agent project using Microsoft 365 Agents Toolkit"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Sign into the Microsoft 365 Agents Toolkit "                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Define your agent"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "(Optional) Understand the decorators"                                    
+                                },
+ {
+                                    "stepId": "5",
+                                    "title": "Test your agent"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Enhance Agent capabilities",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Modify agent to add more operations"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add adaptive card to function reference"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Add code interpreter capabilities"                                    
+                                },
+   {
+                                    "stepId": "4",
+                                    "title": "Provision and Test the Agent"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Diagnosing and Debugging Agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Agent debugging in the chat"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e2",
+                    "title": "E2 - Build an API",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Configure and run the starting application",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install additional prerequisites"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Download the starting application"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Set up the local environment files"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Install the dependencies"                                    
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Run the application"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Test the app's web services",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "GET the /me resource"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Try the other methods and resources"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Examine the database (optional)"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e3",
+                    "title": "E3 - Add a declarative agent and API plugin",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Upload sample documents",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create a SharePoint site"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Upload the sample documents"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Create the declarative agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add the declarative agent JSON to your project"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add the URL of your SharePoint site to the declarative agent"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Examine the API Plugin files"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Add the declarative agent to your app manifest"                                    
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Remove the dummy feature from the app manifest"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Run and test the declarative agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Run the new project"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test the declarative agent"                                    
+                                }
+                              
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e4",
+                    "title": "E4 - Enhance the API and Plugin",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Add /projects resource",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add Azure function code"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Review the Azure function code (optional)"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Add HTTP test requests"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Test the new resource"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Add projects to the application package",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update the Open API Specification file"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Review the updates (optional)"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Add projects to the plugin definition file"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Review the changes to the plugin definition file (optional)"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Test the plugin in Copilot",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Restart the application"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Prompt the Trey Genie"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e5",
+                    "title": "E5 - Add adaptive cards",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Create and test a simple Adaptive Card",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Define Your Adaptive Card in JSON"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test Your Adaptive Card"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Update the plugin manifest",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add an adaptive card for GET /api/consultants requests"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add an adaptive card for GET /api/me requests"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Add an adaptive card for GET /api/projects requests"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Add an adaptive card for POST /api/billHours requests"                                    
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Add an adaptive card for POST /api/assignConsultant requests"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Test the plugin in Copilot",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install the plugin"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Display an adaptive card"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e6a",
+                    "title": "E6A - Add Entra ID authentication with OAuth (Agents Toolkit)",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Update the local Agents Toolkit configuration",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add an Entra ID app manifest"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Update the file version number in teamsapp.local.yml"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Provision an Entra ID application"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Update the Entra ID application"                                    
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Change the output path"                                    
+                                },
+                                {
+                                    "stepId": "6",
+                                    "title": "Make the Entra ID values available to your application code"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Update the general Agents Toolkit configuration",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Provision an Entra ID application"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Register the app in the Teams Developer Portal Vault"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Update your application package",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update the Open API Specification file"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Update the Plugin file"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Update the application code",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install the JWT validation library"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Update the identity service"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "5",
+                            "title": "Test the application",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Bump the application version number in the app manifest"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "(Re)start the application"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Run the declarative agent"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Add yourself to a project"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e6b",
+                    "title": "E6B - Add Entra ID authentication with OAuth (Manual Setup)",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Set up a persistent developer tunnel (optional)",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install the developer tunnel CLI"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create and host the tunnel"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Disable the dynamically created tunnel in your project"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Manually override the server URL"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Register an Entra ID application for your API",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add a new Entra ID app registration"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Copy application info to a safe place"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Create client secret"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Expose an API Scope"                                    
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Save the API Scope"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Register an Entra ID application for your plugin",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Register the plugin"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create a client secret"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Grant permission"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Update the API app registration with the plugin application ID",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add the Plugin app's ID to the API service app"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "5",
+                            "title": "Register the OAuth information in the Teams Developer Portal",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create a new OAuth client registration"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Save your OAuth registration ID"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "6",
+                            "title": "Update your application package",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update the Plugin file"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "7",
+                            "title": "Update the application code",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install the JWT validation library"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add environment variables for your API"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Update the identity service"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "8",
+                            "title": "Test the application",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "(Re)start the application"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e6c",
+                    "title": "E6C - Add Entra ID authentication with Single Sign-on",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Set up a persistent developer tunnel (optional)",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install the developer tunnel CLI"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create and host the tunnel"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Disable the dynamically created tunnel in your project"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Manually override the server URL"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Register an Entra ID application for your API",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add a new Entra ID app registration"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Copy application info to a safe place"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Register Microsoft Entra SSO client ID in the Teams Developer Portal",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Register an SSO client in Teams developer portal"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Update your application package",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update the Plugin file"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "5",
+                            "title": "Update the API's Microsoft Entra app registration",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update Application ID URI"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add API Scope"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Add authorized client apps"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Redirect URIs for Authentication"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "6",
+                            "title": "Update the application code",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install the JWT validation library"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Add environment variables for your API"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Update the identity service"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "7",
+                            "title": "Test the application",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "(Re)start the application"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "e7",
+                    "title": "Integrate - Add Knowldege capability to Trey Genie using a Microsoft Copilot Connector",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Deploy Copilot Connector",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Download sample project"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create external connection"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Test the connector data in Microsoft365 app"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Add Copilot Connector to Declarative Agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Get the connection id of the Microsoft Copilot Connector"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Update declarative agent manifest"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Test agent in Copilot",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Start the application"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test knowledge in Copilot"                                    
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "pathId": "Build",
+            "title": "Build - Build a custom engine agent",
+            "labs": [
+                {
+                    "labId": "bta0",
+                    "title": "Lab BTA0 - Prerequisites",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Setup Microsoft Teams",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Enable Teams custom application uploads"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Install Agents Toolkit and prerequisites",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Install Visual Studio Code"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Install NodeJS"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Install Agents Toolkit"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Get an Azure subscription",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create an Azure free account"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "bta1",
+                    "title": "Lab BTA1 - First custom engine agent",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Create Azure OpenAI service and models",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create Azure OpenAI service resource"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create a deployment model"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Scaffold a custom engine agent from a template",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Use Teams Toolkit to create a new custom engine agent"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Customize prompt and test the app"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "bta2",
+                    "title": "Lab BTA2 - Index your data in Azure AI Search",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Setup Azure Resources",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create Azure AI Search service resource"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create a storage account service resource"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Create a text-embedding-ada-002 model"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Upload your documents to Azure AI Search"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test your data on Azure AI Foundry"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Sneak peek to your index on Azure AI Search"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Integrate your app with Azure AI Search",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Configure environment variables"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Configure Azure AI Search as a data source"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Debug your app and chat with your data"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "bta3",
+                    "title": "Lab BTA3 - Enhance User Experience",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Enable Feedback Loop",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Integrate Feedback Loop in your app"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test the Feedback Loop feature"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Customize citations with Adaptive Cards",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create an Adaptive Card for citations"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Use PredictedSayCommand to customize the citation experience"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Test the customized citation experience"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Enable the Generated by AI label",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Use PredictedSayCommand to enable the Generated by AI label"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test the Generated by AI label"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Enable the Sensitivity label",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Use PredictedSayCommand to enable the Sensitivity label"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test the Sensitivity label"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "bta4",
+                    "title": "Lab BTA4 - Add single sign on authentication",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Set up your project for Entra ID Single Sign-on",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Add an Entra ID App manifest file to define the Entra ID Application"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Update Teams Toolkit configuration file to create the Entra ID App"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Add SSO in Teams app manifest",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update your Teams app manifest for SSO"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Update the application code for SSO",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Provide HTML pages for the consent dialog"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Update code to handle SSO"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Run the application",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "App installation in Teams"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Giving consent"                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "labId": "bta5",
+                    "title": "Lab BTA5 - Add actions to handle complex tasks",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Create a new prompt with actions",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create a \"monologue\" prompt"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Implement a logic in the planner to choose between prompts",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create a function for defaultPrompt in the planner"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Implement actions in the app",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Update ConversationState and define functions for each action"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Register action handlers in the app"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Test your app with the new actions"                                    
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Utilize actions together with the Microsoft Graph to automate workflows",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Define a new action in your prompt for sending emails"                                    
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Register sendLists action handler"                                    
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Update your Entra ID app registration"                                    
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Test your app and the new sendLists action"                                    
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

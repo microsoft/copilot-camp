@@ -1,0 +1,2576 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/02-topics/">
+      
+      
+        <link rel="prev" href="../01-first-agent/">
+      
+      
+        <link rel="next" href="../03-actions/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Lab MCS2 - Defining Topics - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-mcs2-defining-topics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab MCS2 - Defining Topics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../../ja/pages/make/copilot-studio/02-topics/" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Maker Path - Make your agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  
+  Extend - Build a declarative agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  Build - Build a custom engine agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../copilot-instructions/" class="md-tabs__link">
+          
+  
+  
+  Prompt engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maker Path - Make your agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Maker Path - Make your agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB - Copilot Studio agent builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB1 - Agent builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS - Microsoft Copilot Studio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS1 - First agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS2 - Defining Topics
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS2 - Defining Topics
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-orchestration-based-on-generative-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 : Orchestration based on Generative AI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-creating-a-single-turn-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 : Creating a single-turn topic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-creating-a-multi-turn-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3 : Creating a multi-turn topic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-using-adaptive-cards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4 : Using Adaptive Cards
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS3 - Defining Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS4 - Extending Microsoft 365 Copilot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS5 - Consuming a custom connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS6 - Consuming an MCP server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS7 - Creating Autonomous Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA - SharePoint agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA1 - Build your first SharePoint agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA2 - Sharing SharePoint agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Extend - Build a declarative agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Extend - Build a declarative agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E0 - Prerequisites and Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Declarative Agent Fundamentals
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Declarative Agent Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1 - Build a Detailed Declarative Agent using TypeSpec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1a - Build a game agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build and Integrate API from scratch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Build and Integrate API from scratch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build a Backend API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add Declarative Agent and API Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance API and Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add Adaptive Cards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6a - Add Entra ID Authentication (Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older Authentication Labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Older Authentication Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06b-add-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6b - Add Entra ID Authentication (Manual Setup)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06c-add-sso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6c - Add Entra ID Authentication (Single Sign-on manual)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Integration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E7 - Add Copilot Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build - Build a custom engine agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Build - Build a custom engine agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    M365 Agents SDK labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            M365 Agents SDK labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA1 - Prepare your agent in Azure AI Foundry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA2 - Build your first agent using M365 Agents SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA3 - Configure agent properties and test on Teams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA4 - Bring your agent to Copilot Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teams AI library labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Teams AI library labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA1 - First custom engine agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA2 - Index your data in Azure AI Search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA3 - Enhance user experience
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA4 - Add single sign on authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA5 - Add actions to handle complex tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Prompt engineering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Prompt engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../copilot-instructions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../copilot-instructions/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Level 1 - Simple agent instructions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-mcs2-defining-topics">Lab MCS2 - Defining Topics</h1>
+<p>In this lab, you'll learn how to create custom Topics in Microsoft Copilot Studio. Topics are core building blocks of an agent. With topics you can provide a conversational experience to your end users, where the conversation can be single-turn or multi-turn. Topics define how the conversation between the user and the agent can evolve, through discrete interaction paths.</p>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/ZVHkBiH6RxQ" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+
+   <div class="floatwide">
+   <div class="cc-lab-toc mcs-path">
+     <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
+     <div>
+       <p>Do these labs if you want to build agents with Microsoft Copilot Studio</p>
+       <ul>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/00-prerequisites/">MCS0 - Setup</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - First agent</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - Defining Topics</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - Defining Tools</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - Consuming a custom connector</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - Consuming an MCP server</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/07-autonomous/">MCS7 - Creating Autonomous Agents</a></li>
+       </ul>
+     </div>
+   </div>
+
+   <script>
+   (() => {
+
+   // This script decorates the table of contents with a "you are here" indicator.
+   const toc = document.getElementsByClassName('cc-lab-toc');
+   for (const div of toc) {
+       const lis = div.querySelectorAll('li');
+       for (const li of lis) {
+           const anchor = li.querySelector('a');
+           if (location.href.includes(anchor.href)) {
+               const span = document.createElement("span");
+               span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+               li.appendChild(span);
+           }
+       }    
+   }
+   })();
+   </script>
+
+
+   <!-- 
+     <div class="cc-mcs-lab-steps">
+       <h4>Table of Contents</h4>
+       <cc-table-of-contents />
+     </div> -->
+   </div>
+
+    </div>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lab builds on the previous one, <a href="../01-first-agent" target="_blank">Lab MCS1</a>. You should be able to continue working on the same agent, improving its functionalities with new capabilities.</p>
+</div>
+<p>Topics can be created with a graphical designer or describing the intent with natural language. Once you have created a new Topic, you can also edit its definition with a low level code editor, in case you need to apply detailed fine tuning.</p>
+<p>There are two different flavors of Topics:</p>
+<ul>
+<li>System Topics: automatically defined by Microsoft Copilot Studio. Can be disabled, but cannot be deleted.</li>
+<li>Custom Topics: created by agent authors to provide custom interaction paths.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Additional information about topics</p>
+<p>You can find additional information about Topics in agents made with Microsoft Copilot Studio reading the <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/topics-overview" target="_blank">following article</a>. You can also dig into the System Topics reading the article <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-system-topics" target="_blank">Use system topics</a>.</p>
+</div>
+<p>In this lab you will learn:</p>
+<ul>
+<li>How to rely on Orchestration based on generative AI</li>
+<li>How to create a single-turn topic</li>
+<li>How to create a multi-turn topic</li>
+<li>How to use adaptive cards to interact with users</li>
+</ul>
+<h2 id="exercise-1-orchestration-based-on-generative-ai">Exercise 1 : Orchestration based on Generative AI</h2>
+<p>In this first exercise you are going to enable the agent that you created in <a href="../01-first-agent" target="_blank">Lab MCS1</a> to use Orchestration based on Generative AI, which is a new feature under preview at the time of this writing.</p>
+<h3 id="step-1-enabling-orchestration-based-on-generative-ai">Step 1: Enabling Orchestration based on generative AI</h3>
+<p>One important feature of an agent made with Copilot Studio, is generative orchestration. With generative orchestration, your agent can choose the best knowledge base, topics, and actions to use to interact with the user and answer to the user's queries, or to respond to event triggers. </p>
+<p>By default agents use classic orchestration, which means that an agent responds to users by triggering a topic whose trigger phrases match most closely the user's query. With generative orchestration, Copilot Studio understands the intent of the user processing the prompt provided by the user in natural language and determines the best item to trigger. </p>
+<div class="admonition pied-piper">
+<p class="admonition-title">Disclaimer</p>
+<p>Enabling generative orchestration can impact how billing is calculated. Learn more about <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-billed-sessions" target="_blank">billing for generative mode</a>. There are key differences between classic and generative orchestration, such as how knowledge is searched, and the supported data sources. Before turning on generative mode for an existing agent, read about the <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-generative-actions#known-limitations-for-generative-orchestration" target="_blank">known limitations</a>.</p>
+</div>
+<p>To enable generative orchestration, open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> to start using Microsoft Copilot Studio.</p>
+<p>Select to view the list of 1️⃣ <strong>Agents</strong> and then 2️⃣ edit the agent that you created in the previous Lab MCS1.</p>
+<p><img alt="The interface of Microsoft Copilot Studio when browsing the agents and selecting one item to edit." src="../../../../assets/images/make/copilot-studio-02/edit-agent-01.png" /></p>
+<p>In the <strong>Overview</strong> tab enable the toggle with name <strong>Orchestration</strong> like illustrated in the following screenshot.</p>
+<p><img alt="The interface of Microsoft Copilot Studio with the generative orchestration enabled and highlighted." src="../../../../assets/images/make/copilot-studio-02/generative-orchestration-01.png" /></p>
+<p>It usually takes a while to enable the generative orchestration. Once the setting is applied, publish the agent to confirm the changes.</p>
+<p><cc-end-step lab="mcs2" exercise="1" step="1" /></p>
+<h2 id="exercise-2-creating-a-single-turn-topic">Exercise 2 : Creating a single-turn topic</h2>
+<p>In this exercise you are going to create a new topic to collect an input from the user and to provide a feedback based on the collected input. Specifically, the topic collects information about the current user's role and gives back guidance about what to do with the agent based on the provided role.</p>
+<h3 id="step-1-creating-a-new-single-turn-topic">Step 1: Creating a new single-turn topic</h3>
+<p>To create a new topic, in the upper side of the screen select the 1️⃣ <strong>Topics</strong> tab, then select 2️⃣ <strong>+ Add a topic</strong>, and then 3️⃣ <strong>From blank</strong> to start creating a new custom topic.</p>
+<div class="admonition info">
+<p class="admonition-title">Creating topics with Copilot</p>
+<p>Notice that you can also create a new topic simply providing a description with natural language, allowing Copilot to draft the topic for you.</p>
+</div>
+<p><img alt="The interface of Microsoft Copilot Studio when creating a new topic. There is the **Topics** tab highlighted, with the **+ Add a topic** dropdown menu, and the **From blank** option highlighted." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-01.png" /></p>
+<p>Copilot Studio will provide you the graphical designer to define the new topic. The very first building block of the topic is the <strong>Trigger</strong> action, which is used to describe what the topic does. When generative orchestration is enabled, in the action you can find a text area where you can define with natural language what the purpose of the topic is. For the sake of working on this lab, you can provide the following content:</p>
+<pre><code class="language-txt">This topic can handle queries like these: collect user's role and provide feedback, 
+give me a feedback based on my role, what's your feedback for my role?
+</code></pre>
+<p>If you use classic orchestration, you can specify between 5 and 10 triggering phrases or sentences, instead of a single descriptive text.</p>
+<p><img alt="The interface of Microsoft Copilot Studio when designing a new topic. There is a **Trigger** action with the value suggested in this exercise step as the trigger condition. There is also the button to add new actions highlighted." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-02.png" /></p>
+<p><cc-end-step lab="mcs2" exercise="2" step="1" /></p>
+<h3 id="step-2-collecting-users-input">Step 2: Collecting user's input</h3>
+<p>Select the <strong>+</strong> button in the middle of the screen to add new actions or steps to the current topic. By selecting the <strong>+</strong> button, a list of all the available actions appears. The main options are:</p>
+<ul>
+<li>Send a message: to send a message to the user. The message can be text, an image, a video, an adaptive card, etc.</li>
+<li>Ask a question: to ask an input to the user. The input can be text, an image, a video, an attachment, an adaptive card, etc.</li>
+<li>Ask with adaptive card: to collect content from the user utilizing an Adaptive Card.</li>
+<li>Add a condition: to add branches to the topic based on comparison between variables and/or constant values.</li>
+<li>Variable management: to manage variables, which can be scoped at topic level, global, system, or environment.</li>
+<li>Topic management: to manage the lifecycle of the current topic.</li>
+<li>Add an action: to consume external actions like Power Automate flows, custom connectors, or other agents in a multi-agent scenario.</li>
+<li>Advanced: to provide advanced capabilities like consuming an external HTTP REST API, using generative answers, sending events or activities, etc.</li>
+</ul>
+<p><img alt="The menu to select actions to add to the current topic. There available options are: send a message, ask a question, ask with adaptive card, add a condition, variable management, topic management, add an action, advanced." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-03.png" /></p>
+<p>In order to collect user's input, add an <strong>Ask a question</strong> action. Since we want to ask the user what her/his role is, let's provide the following value for the question text.</p>
+<pre><code class="language-txt">What is your role?
+</code></pre>
+<p>Notice that by default Copilot Studio assigns a <code>Multiple choice options</code> data type to the collected input, as highlighted in the <strong>Identify</strong> configuration field.
+Select the <strong>+ New option</strong> command just below the <strong>Identify</strong> configuration field and add one by one the following three values:</p>
+<ul>
+<li>Candidate</li>
+<li>Employee</li>
+<li>HR staff member</li>
+</ul>
+<p>The action automatically stores the value selected by the user into a variable stored at topic-level. You can select the three dots in the upper right corner of the action and select the <strong>Properties</strong> command to customize the action, or you can select the variable in the lower part of the action to update its name and other settings.</p>
+<p><img alt="The context menu of the action with commands to: see properties, rename the action, delete the action, add a comment to the action." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-04.png" /></p>
+<p>For example, you can rename the variable to <code>UserRole</code>. You can see how the action looks like once it is fully configured.</p>
+<p><img alt="The action fully configured with all the settings and commands highlighted. There is the question text, the data type for the result, the options, the variable to store the selected option, and the scope of the variable." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-05.png" /></p>
+<p><cc-end-step lab="mcs2" exercise="2" step="2" /></p>
+<h3 id="step-3-providing-feedback-to-the-user">Step 3: Providing feedback to the user</h3>
+<p>Now select the <strong>+</strong> button in the middle of the screen to <strong>Add a condition</strong>. In the branch on the left side, select the <strong>Select a variable</strong> option, and select the <strong>userRole</strong> variable that you created in the previous step. Then select the value for the condition, so that the condition will be like <code>userRole is equal to Candidate</code>.
+Repeat the previous instructions two more times to provide conditions for <code>userRole is equal to Employee</code> and <code>userRole is equal to HR staff member</code>. Leave the last condition for <code>All other conditions</code>.</p>
+<p>Inside each branch, you can specify some custom logic to provide a specialized feedback to the user. To do so, select the <strong>+</strong> command below each of the <strong>Condition</strong> branches and add one action of type <strong>Send a message</strong>. You can eventually add more than one action to each branch.</p>
+<p>For the three branches, you could for example provide the following feedback messages:</p>
+<ul>
+<li>Candidate</li>
+</ul>
+<pre><code class="language-txt">You are a new candidate, as such you can submit your resume for evaluation.
+</code></pre>
+<ul>
+<li>Employee</li>
+</ul>
+<pre><code class="language-txt">As an employee, you can ask me about how to improve your career or about 
+how to learn more about your growth mindset.
+</code></pre>
+<ul>
+<li>HR staff member</li>
+</ul>
+<pre><code class="language-txt">As an HR staff member, you can manage the list of candidates and all the hiring procedures.
+</code></pre>
+<p>For the <code>All other conditions</code> branch, you can configure a <strong>Redirect</strong> action, available under the <strong>Topic management</strong> group, to fallback to the System Topic with name <strong>Fallback</strong>.</p>
+<p><img alt="The condition branches with messages sent to the user for each option and a redirection to the **Fallback** topic in case the user did not provide any of the supported options." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-06.png" /></p>
+<p>The very simple logic of the topic is now ready.</p>
+<p><cc-end-step lab="mcs2" exercise="2" step="3" /></p>
+<h3 id="step-4-ending-the-current-topic">Step 4: Ending the current topic</h3>
+<p>To properly complete the flow of the custom topic, add a new action of type <strong>End current topic</strong>, which is available under the <strong>Topic management</strong> group. This last action will instruct Copilot Studio about the fact that your topic conversation is completed.</p>
+<p><img alt="The **End current topic** action inserted in the current topic flow." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-07.png" /></p>
+<p><cc-end-step lab="mcs2" exercise="2" step="4" /></p>
+<h3 id="step-5-testing-the-current-topic">Step 5: Testing the current topic</h3>
+<p>You are now ready to save and test the topic. Select the <strong>Save</strong> button in the upper right corner of the designer, provide a name for the topic through the dialog window that will appear, and select the <strong>Save</strong> button again.</p>
+<p><img alt="The dialog window to assign a name to the topic and to save it." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-08.png" /></p>
+<p>For example, name the topic as <code>Collect user's role</code>. Now open the test panel by selecting the <strong>Test</strong> command in the upper right corner of the designer. Type the following prompt:</p>
+<pre><code class="language-txt">What's your feedback for my role?
+</code></pre>
+<p>The agent will prompt you to choose a role and, based on your selection, you will get a specific feedback like illustrated in the following screenshot.</p>
+<p><img alt="The agent in action in the test panel inside Microsoft Copilot Studio." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-09.png" /></p>
+<p>Exercise 2 is now completed, well done! You can now move to Exercise 3 to create a multi-turn topic.</p>
+<p><cc-end-step lab="mcs2" exercise="2" step="5" /></p>
+<h2 id="exercise-3-creating-a-multi-turn-topic">Exercise 3 : Creating a multi-turn topic</h2>
+<p>For simple interactions, you create single-turn conversations with just one question and one answer. But more substantive topics require a multi-turn conversation with multiple back-and-forth interactions between the user and the agent. In this exercise, you are going to create a multi-turn topic to collect data about a potential candidate for a new role.</p>
+<h3 id="step-1-creating-a-new-multi-turn-topic">Step 1: Creating a new multi-turn topic</h3>
+<p>Imagine that you want to create a topic to collect the following information about a new candidate:</p>
+<ul>
+<li>First name</li>
+<li>Last name</li>
+<li>E-mail</li>
+<li>Current role</li>
+</ul>
+<p>To collect the above information, create a new topic following the instructions provided in Exercise 2 Step 1.
+The <strong>Trigger</strong> description for the topic could be:</p>
+<pre><code class="language-txt">This topic helps to collect information about a new candidate to process. Trigger sentences can be: 
+register a new candidate, create a new candidate, add a new candidate.
+</code></pre>
+<p>Then, for each of the above information fields, you need to prompt the user with an action of type <strong>Ask a question</strong>. However, in this exercise the value of the answer will vary depending on the requested field. For example: first name, last name, and current role will be simple text fields., while the e-mail field will need to be a valid e-mail.</p>
+<p>So for the first name, last name, and current role fields you can select the <strong>Identify</strong> property of the <strong>Ask a question</strong> action and you can select <strong>User's entire response</strong> as the actual entity type. This will get the text value provided by the user as the actual collected value. The variable type will be automatically updated to be a <code>string</code> by Copilot Studio. Give a meaningful name to each of the variables holding the values provided by the user.
+In the following screenshot you can see how the first name input action can be defined. You can do the same for last name and current job role.</p>
+<p><img alt="The **Ask a question** action configured to collect the candidate's first name and store it into a variable of type string, accepting any value provided by the user." src="../../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-01.png" /></p>
+<p>For the e-mail field, choose <strong>Email</strong> as the entity for the <strong>Identify</strong> property, so that Copilot Studio will automatically validate the user's input against the e-mail validation rules. The underlying variable will still be a <code>string</code>.</p>
+<p><img alt="The **Ask a question** action configured to collect the candidate's e-mail accepting only values of type email provided by the user." src="../../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-02.png" /></p>
+<p>Now you are ready to collect all of the information about the candidate and you can give a feedback to the user.</p>
+<p><cc-end-step lab="mcs2" exercise="3" step="1" /></p>
+<h3 id="step-2-giving-a-feedback-to-the-user">Step 2: Giving a feedback to the user</h3>
+<p>Based on the collected input, you can now send a message to the user confirming the collected data. Add a new action of type <strong>Send a message</strong> and build the content of the message using the variables where the collected inputs were stored.
+To add variables to the message, simply select the <strong>{x}</strong> command in the toolbar of the <strong>Send a message</strong> action and select the variable that you are looking for.</p>
+<p><img alt="The action **Send a message** with the insert variable command highlighted and the list of variables available in the current topic." src="../../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-03.png" /></p>
+<p>You can insert variables defined in the current topic, system variables, or environment variables.
+Once you have configured the recap message with all the variables, it should look like the following screenshot.</p>
+<p><img alt="The action **Send a message** with all the referenced variables." src="../../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-04.png" /></p>
+<p>Just for the sake of having a final confirmation from the user, insert an action of type <strong>Ask a question</strong>, provide the following message:</p>
+<pre><code class="language-txt">Is it ok for you to insert this new candidate?
+</code></pre>
+<p>And configure the action to support the answers <code>Yes</code> and <code>No</code>. As like as it happened in Exercise 2 Step 3, you can now configure the various branches for each of the outcomes. For the sake of simplicity, you can simply rely on a couple of <strong>Send a message</strong> actions, one for each branch, and put a thumb up or a thumb down emoji as the actual content on the message, depending on the user's feedback. Lastly, add an action of type <strong>End current topic</strong> to complete the topic.</p>
+<p><img alt="The final part of the topic with the last **Ask a question** action, three branches to manage the user's input and one final action to **End current topic**." src="../../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-05.png" /></p>
+<p>You can now save the topic, give it a name like for example <code>Register a new candidate</code> and test it in the integrated testing interface.
+Here follows a screenshot of the interaction with the multi-turn topic. You can also notice that when the value provided for the e-mail field is not correct, Copilot Studio automatically re-prompts the user to provide a correct value.</p>
+<p><img alt="The interaction with the multi-turn topic, where there are a set of questions and answers to collect all the candidate data." src="../../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-06.png" /></p>
+<p><cc-end-step lab="mcs2" exercise="3" step="2" /></p>
+<h2 id="exercise-4-using-adaptive-cards">Exercise 4 : Using Adaptive Cards</h2>
+<p>Collecting inputs using multiple instances of <strong>Ask a question</strong> actions is definitely one option that you have. However, when you need to collect a lot of data or when you want to have a nice looking interaction with the user you can consider using an Adaptive Card.</p>
+<details open>
+<summary>What are Adaptive Cards?</summary>
+
+Adaptive Cards are platform-independent UI snippets authored in JSON that can be exchanged between apps and services. Once delivered to an app, the JSON transforms into native UI that automatically adapts to its environment. This enables the design and integration of lightweight UI across major platforms and frameworks.
+    <div class="video">
+      <iframe src="//www.youtube.com/embed/pYe2NqKhJoM" frameborder="0" allowfullscreen></iframe>
+      <div>Adaptive cards are everywhere</div>
+    </div>
+</details>
+
+<h3 id="step-1-collecting-input-with-adaptive-cards">Step 1: Collecting input with Adaptive Cards</h3>
+<p>Imagine that you want to create yet another topic to collect the following information about a new candidate:</p>
+<ul>
+<li>First name</li>
+<li>Last name</li>
+<li>E-mail</li>
+<li>Current role</li>
+<li>Spoken languages</li>
+<li>Skills</li>
+</ul>
+<p>Specifically, spoken languages and skills are multi-select lists of values.</p>
+<p>So open the <strong>Topics</strong> tab, and disable the topic that you created in Exercise 3 to avoid any overlapping of trigger conditions. Then, create a new topic following the instructions provided in Exercise 2 Step 1. The <strong>Trigger</strong> description for the topic could be:</p>
+<pre><code class="language-txt">This topic helps to collect information about a new candidate to process. Trigger sentences can be: 
+register a new candidate, create a new candidate, add a new candidate.
+</code></pre>
+<p>Now add a new action of type <strong>Ask with adaptive card</strong>, 1️⃣ select the body of the new action and 2️⃣ then select the button <strong>Edit adaptive card</strong>. Then type the following JSON into the <strong>Card payload editor</strong> of the <strong>Adaptive card designer</strong> of the action.</p>
+<p><img alt="The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open to define the JSON of the adaptive card." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-01.png" /></p>
+<pre><code class="language-json">{
+    &quot;type&quot;: &quot;AdaptiveCard&quot;,
+    &quot;body&quot;: [
+        {
+            &quot;type&quot;: &quot;TextBlock&quot;,
+            &quot;size&quot;: &quot;Medium&quot;,
+            &quot;weight&quot;: &quot;Bolder&quot;,
+            &quot;text&quot;: &quot;New HR Candidate Information&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Input.Text&quot;,
+            &quot;id&quot;: &quot;firstname&quot;,
+            &quot;placeholder&quot;: &quot;First Name&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Input.Text&quot;,
+            &quot;id&quot;: &quot;lastname&quot;,
+            &quot;placeholder&quot;: &quot;Last Name&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Input.Text&quot;,
+            &quot;id&quot;: &quot;email&quot;,
+            &quot;placeholder&quot;: &quot;Email&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Input.Text&quot;,
+            &quot;id&quot;: &quot;current_role&quot;,
+            &quot;placeholder&quot;: &quot;Current Role&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Input.ChoiceSet&quot;,
+            &quot;id&quot;: &quot;spoken_languages&quot;,
+            &quot;placeholder&quot;: &quot;Spoken Languages&quot;,
+            &quot;isMultiSelect&quot;: true,
+            &quot;choices&quot;: [
+                {
+                    &quot;title&quot;: &quot;English&quot;,
+                    &quot;value&quot;: &quot;English&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;French&quot;,
+                    &quot;value&quot;: &quot;French&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;German&quot;,
+                    &quot;value&quot;: &quot;German&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;Italian&quot;,
+                    &quot;value&quot;: &quot;Italian&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;Portuguese&quot;,
+                    &quot;value&quot;: &quot;Portuguese&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;Spanish&quot;,
+                    &quot;value&quot;: &quot;Spanish&quot;
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Input.ChoiceSet&quot;,
+            &quot;id&quot;: &quot;skills&quot;,
+            &quot;placeholder&quot;: &quot;Skills&quot;,
+            &quot;isMultiSelect&quot;: true,
+            &quot;choices&quot;: [
+                {
+                    &quot;title&quot;: &quot;Computer Programming&quot;,
+                    &quot;value&quot;: &quot;Computer Programming&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;Project Management&quot;,
+                    &quot;value&quot;: &quot;Project Management&quot;
+                },
+                {
+                    &quot;title&quot;: &quot;Team Lead&quot;,
+                    &quot;value&quot;: &quot;Team Lead&quot;
+                }
+            ]
+        }
+    ],
+    &quot;actions&quot;: [
+        {
+            &quot;type&quot;: &quot;Action.Submit&quot;,
+            &quot;title&quot;: &quot;Submit&quot;
+        }
+    ],
+    &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
+    &quot;version&quot;: &quot;1.5&quot;
+}
+</code></pre>
+<p>Once you updated the JSON of the adaptive card, Copilot Studio renders the preview of the card in the UI of the topic designer, as you can see in the following screenshot. Copilot Studio also automatically defines a set of topic-level variables to collect the values provided by the user.</p>
+<p><img alt="The interface of the topic when adding an **Ask with adaptive card** action, with the side panel open and a proper JSON of the adaptive card defined. On the designer there is a preview of the actual adaptive card and a list of output arguments to collect the values provided by the user." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-02.png" /></p>
+<p><cc-end-step lab="mcs2" exercise="4" step="1" /></p>
+<h3 id="step-2-providing-feedback-with-adaptive-cards">Step 2: Providing feedback with Adaptive Cards</h3>
+<p>You can now use an adaptive card also to provide feedback to the user, showing a recap of the collected data. Select the <strong>+</strong> command to add a new action of type <strong>Send a message</strong>. Then select <strong>+ Add</strong> in the upper left corner of the new action and select <strong>Adaptive card</strong> to switch to a message of type adaptive card.</p>
+<p><img alt="The command box to add an adaptive card as the message to send with the **Send a message** action." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-03.png" /></p>
+<p>A side panel shows up allowing you to select the <strong>Edit adaptive card</strong> command and to define the content of the adaptive card. Copy and paste the following JSON into the <strong>Card payload editor</strong> of the <strong>Adaptive card designer</strong>.</p>
+<pre><code class="language-JSON">{
+  &quot;type&quot;: &quot;AdaptiveCard&quot;,
+  &quot;body&quot;:
+    [
+      {
+        &quot;type&quot;: &quot;TextBlock&quot;,
+        &quot;size&quot;: &quot;Medium&quot;,
+        &quot;weight&quot;: &quot;Bolder&quot;,
+        &quot;text&quot;: &quot;Candidate Summary&quot;
+      },
+      {
+        &quot;type&quot;: &quot;FactSet&quot;,
+        &quot;facts&quot;:
+          [
+            { &quot;title&quot;: &quot;First Name:&quot;, &quot;value&quot;: &quot;firstname&quot; },
+            { &quot;title&quot;: &quot;Last Name:&quot;, &quot;value&quot;: &quot;lastname&quot; },
+            { &quot;title&quot;: &quot;Email:&quot;, &quot;value&quot;: &quot;email&quot; },
+            { &quot;title&quot;: &quot;Current Role:&quot;, &quot;value&quot;: &quot;current_role&quot; },
+            { &quot;title&quot;: &quot;Spoken Languages:&quot;, &quot;value&quot;: &quot;spoken_languages&quot; },
+            { &quot;title&quot;: &quot;Skills:&quot;, &quot;value&quot;: &quot;skills&quot; }
+          ]
+      }
+    ],
+  &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
+  &quot;version&quot;: &quot;1.3&quot;
+}
+</code></pre>
+<p>It is very important that, when pasting the JSON of the adaptive card, you have the <strong>Edit JSON</strong> option selected (which is by the way the default one) at the top of the text area. That means that you are editing the actual JSON of the adaptive card. As soon as you will move the focus out of the text area where you pasted the JSON, the <strong>Send a message</strong> action will start previewing the adaptive card. As you can see the adaptive card is rendering static values for all the variables (firstname, lastname, etc.).</p>
+<p><img alt="The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-04.png" /></p>
+<p>Now, select the drop down with <strong>JSON Card</strong> and switch to <strong>Formula Card</strong> in order to replace the static values with the actual variables defined in the current Topic.</p>
+<p><img alt="The **Send a message** action configured to render an adaptive card. In the side panel on the right side there is the JSON of the adaptive card. In the body of the action there is a preview of the adaptive card." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-05.png" /></p>
+<p>Select the button to expand the editor and you can start replacing the static values with formulas that will refer to the actual value of the topic-level variables.</p>
+<p><img alt="The side panel of the **Send a message** action while editing the adaptive card JSON in **Formula card** mode. There is a button to expand the editor." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-06.png" /></p>
+<p>You will see a dialog popping up and providing an advanced editor with intellisense helping you to reference variables and PowerFx functions, like illustrated in the following screenshot.</p>
+<p><img alt="The adaptive card editor with intellisense to reference variables and PowerFx functions." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-07.png" /></p>
+<p>One by one, you can replace all the static values with the actual variables. In particular, the spoken languages and the skills are list of values (variables of type <code>Table</code>) so, in order to render their value, you need to rely on the PowerFx <code>Concat</code> function and then on the PowerFx <code>Text</code> function to convert the result into an actual string. Here you can find the content of the adaptive card JSON when all the formulas are in place.</p>
+<pre><code class="language-JSON">{
+  type: &quot;AdaptiveCard&quot;,
+  body: [
+    {
+      type: &quot;TextBlock&quot;,
+      size: &quot;Medium&quot;,
+      weight: &quot;Bolder&quot;,
+      text: &quot;Candidate Summary&quot;
+    },
+    {
+      type: &quot;FactSet&quot;,
+      facts: [
+        {
+          title: &quot;First Name:&quot;,
+          value: Topic.firstname
+        },
+        {
+          title: &quot;Last Name:&quot;,
+          value: Topic.lastname
+        },
+        {
+          title: &quot;E-mail:&quot;,
+          value: Topic.email
+        },
+        {
+          title: &quot;Current Role:&quot;,
+          value: Topic.current_role
+        },
+        {
+          title: &quot;Spoken Languages:&quot;,
+          value: Text(Concat(Topic.spoken_languages, Value, &quot;, &quot;))
+        },
+        {
+          title: &quot;Skills:&quot;,
+          value: Text(Concat(Topic.skills, Value, &quot;, &quot;))
+        }
+      ]
+    }
+  ],
+  '$schema': &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
+  version: &quot;1.3&quot;
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Additional information about PowerFx functions</p>
+<p>You can find additional information about the PowerFx functions reading the article <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-power-fx" target="_blank">Create expressions using Power Fx</a></p>
+</div>
+<p><cc-end-step lab="mcs2" exercise="4" step="2" /></p>
+<h3 id="step-3-testing-the-current-topic">Step 3: Testing the current topic</h3>
+<p>Now add an <strong>End current topic</strong> action at the end of the topic, save it, give it a name like for example <code>Register new candidate with adaptive cards</code>, and test it in the test panel on the right side of the agent designer. In the following screenshot you can see how the topic interacts with a user.</p>
+<p><img alt="The topic collecting information about a new candidate using an adaptive card and providing feedback through another adaptive card." src="../../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-08.png" /></p>
+<p>Now your topic is ready and fully functional. In the upcoming labs you will learn how to create a new candidate record for real, storing data in an external HR service.</p>
+<p><cc-end-step lab="mcs2" exercise="4" step="3" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>Now your agent supports multiple conversation paths through different topics. In the next labs you will learn how to work with custom Actions.</p>
+<p><a href="../03-actions">Start here</a> with Lab MCS3, to define actions in your agent with Copilot Studio.
+<cc-next /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/02-topics" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2343 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">
+      
+      
+        <link rel="prev" href="../03-actions/">
+      
+      
+        <link rel="next" href="../05-connectors/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Lab MCS4 - Microsoft 365 Copilot の拡張 - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-mcs4-microsoft-365-copilot" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../../../" title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab MCS4 - Microsoft 365 Copilot の拡張
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../../pages/make/copilot-studio/04-extending-m365-copilot/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ようこそ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Maker 向けエージェントの作成
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  
+  宣言型エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  カスタム エンジン エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../copilot-instructions/beginner-agent/" class="md-tabs__link">
+          
+  
+  
+  プロンプト エンジニアリング
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../awards/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  アワード
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  動画など
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../" title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ようこそ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maker 向けエージェントの作成
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Maker 向けエージェントの作成
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microsoft 365 Copilot 用エージェント作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB - Copilot Studio agent builder を使用したエージェント作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MAB1 - 最初のエージェント構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS - Microsoft Copilot Studio の概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS0 - セットアップ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS1 - 最初のエージェント
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS2 － トピックの定義
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS3 - ツールの定義
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS4 - Microsoft 365 Copilot の拡張
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS4 - Microsoft 365 Copilot の拡張
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-microsoft-365-copilot-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 : Microsoft 365 Copilot Chat 用エージェントの作成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 : エージェントにツールを追加する
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS5 - Power Platform custom connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS6 - MCP サーバーの利用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MSA - SharePoint エージェントの概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MSA1 - 最初の SharePoint エージェントを構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MSA2 - SharePoint エージェントの共有
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    宣言型エージェントの構築
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            宣言型エージェントの構築
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microsoft 365 Copilot の拡張
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    セットアップ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            セットアップ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E0 - セットアップ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    宣言型エージェントの基礎
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            宣言型エージェントの基礎
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を用いて初めての宣言型エージェントを構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E1 - インストラクションベースの Geo Locator Game エージェント
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API をゼロから構築して統合
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            API をゼロから構築して統合
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E2 - API の構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E3 - 宣言型エージェントと API プラグインの追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E4 - API とプラグインの拡張
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E5 - Adaptive Card の追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    認証
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            認証
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06b-add-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6b - Entra ID 認証を OAuth で追加 (手動セットアップ)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06c-add-sso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6c - Entra ID 認証とシングル サインオンの追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    インテグレーション
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            インテグレーション
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E7 - 統合: Microsoft Copilot Connector を使用して Trey Genie にナレッジ機能を追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    カスタム エンジン エージェントの構築
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            カスタム エンジン エージェントの構築
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    カスタム エンジン エージェントの構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    M365 Agents SDK ラボ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            M365 Agents SDK ラボ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要 - M365 Agents SDK と Semantic Kernel でエージェントを構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BMA0 - 前提条件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BMA1 - Azure AI Foundry でエージェントを準備する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA2 - M365 Agents SDK を使用した最初の エージェント 構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BMA3 - Azure AI Foundry エージェント と M365 Agents SDK の統合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MBA4 - エージェントを Copilot Chat に導入
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teams AI library ラボ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Teams AI library ラボ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    イントロ - Teams AI Library で独自の エージェント を構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA0 - 前提条件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA1 - 最初のカスタムエンジン エージェント (Teams AI library)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA2 - Azure AI Search でデータをインデックス化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA3 - ユーザー エクスペリエンスの強化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BTA4 - シングル サインオン認証の追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BTA5 - 複雑なタスクを処理するアクションの追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    プロンプト エンジニアリング
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            プロンプト エンジニアリング
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../copilot-instructions/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../awards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    アワード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    動画など
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-mcs4-microsoft-365-copilot">Lab MCS4 - Microsoft 365 Copilot の拡張</h1>
+<p>このラボでは、Microsoft Copilot Studio で作成した 宣言型 エージェントを使用して Microsoft 365 Copilot Chat を拡張する方法を学習します。これまでに Microsoft Copilot Studio で エージェント を作成し、Microsoft Teams で利用する方法を確認してきました。また、Copilot Studio で作成した エージェント は、<strong>Teams and Microsoft 365 Copilot</strong> チャネルのオプションを通じて Microsoft Teams と Microsoft 365 Copilot Chat の両方を対象にできることも見てきました。本ラボでは、Microsoft 365 Copilot Chat 用の 宣言型 エージェント に進みます。</p>
+<p>このラボで学習する内容:</p>
+<ul>
+<li>Microsoft 365 Copilot Chat 用の 宣言型 エージェント の作成方法</li>
+<li>エージェントのカスタム アイコンの設定方法</li>
+<li>エージェントのナレッジ ソースの設定方法</li>
+<li>Microsoft 365 Copilot Chat へのエージェントの公開方法</li>
+<li>Microsoft 365 Copilot Chat 用のツールの作成方法</li>
+</ul>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/JUctt1s5oj0" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>ビデオでラボの概要を確認してください。</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+   <div class="floatwide">
+   <div class="cc-lab-toc mcs-path">
+     <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
+     <div>
+       <p>Microsoft Copilot Studio でエージェントを構築したい場合は、次のラボを実施してください</p>
+       <ul>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/01-first-agent/">MCS1 - 最初のエージェント</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/02-topics/">MCS2 - トピックの定義</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/03-actions/">MCS3 - ツールの定義</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot の拡張</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの利用</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの利用</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律型エージェントの作成</a></li>
+       </ul>
+     </div>
+   </div>
+
+   <script>
+   (() => {
+
+   // This script decorates the table of contents with a "you are here" indicator.
+   const toc = document.getElementsByClassName('cc-lab-toc');
+   for (const div of toc) {
+       const lis = div.querySelectorAll('li');
+       for (const li of lis) {
+           const anchor = li.querySelector('a');
+           if (location.href.includes(anchor.href)) {
+               const span = document.createElement("span");
+               span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+               li.appendChild(span);
+           }
+       }    
+   }
+   })();
+   </script>
+   <!-- 
+     <div class="cc-mcs-lab-steps">
+       <h4>目次</h4>
+       <cc-table-of-contents />
+     </div> -->
+   </div>
+    </div>
+</div>
+
+<h2 id="exercise-1-microsoft-365-copilot-chat">Exercise 1 : Microsoft 365 Copilot Chat 用エージェントの作成</h2>
+<p>この演習では、Microsoft Copilot Studio で 宣言型 エージェント を作成し、Microsoft 365 Copilot Chat にホストします。</p>
+<h3 id="step-1-copilot-chat">Step 1: Copilot Chat 用エージェントの作成</h3>
+<p>Microsoft 365 Copilot Chat 用の 宣言型 エージェント を作成するには、1️⃣ Copilot Studio で エージェント の一覧を表示し、2️⃣ <strong>Microsoft 365 Copilot</strong> という名前の エージェント を選択します。</p>
+<p><img alt="The interface of Microsoft Copilot Studio when browsing the whole list of agents and selecting the **Microsoft 365 Copilot** agent." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-01.png" /></p>
+<p>Microsoft Copilot Studio の新しいセクションが開きます。ここで <strong>+ Add</strong> コマンドを選択し、Microsoft 365 Copilot Chat 用の新しい エージェント を作成します。</p>
+<p><img alt="The interface of Microsoft Copilot Studio editing Microsoft 365 Copilot agents. The **+ Add** button is highlighted. There is also a list of pre-defined tools." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png" /></p>
+<p>Copilot Studio から、エージェントの目的を自然言語で説明するよう求められます。<a href="../01-first-agent" target="_blank">Lab MCS1</a> と同様に、以下のプロンプト例のように自然言語で要件を記述できます。</p>
+<pre><code class="language-txt">You are an agent helping employees to find information about HR policies and procedures,
+about how to improve their career, and about how to define learning pathways.
+</code></pre>
+<p>Copilot Studio に名前を尋ねられたら、カスタム エージェント に「Agentic HR」と入力します。その後、次の指示を入力して、エージェントに特定のタスクやゴールを設定します。</p>
+<pre><code class="language-txt">Emphasize everything that helps team building, inclusion, and the growth mindset
+</code></pre>
+<p>次に、次の内容を入力してエージェントのトーンを「プロフェッショナル」に設定します。</p>
+<pre><code class="language-txt">It should have a professional tone
+</code></pre>
+<p><img alt="The interface of Microsoft Copilot Studio when defining the agent using natural language." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-03.png" /></p>
+<p>エージェントの説明が完了したら <strong>Create</strong> コマンドを選択して実際にエージェントを作成します。あるいは <strong>Skip to configure</strong> コマンドを選択して従来の設定 UI に進むこともできます。</p>
+<p>エージェントが作成されると、以下を設定できる構成ページが表示されます。</p>
+<ul>
+<li>Details: 名前、アイコン、説明、指示 (system prompt) などの一般情報</li>
+<li>Knowledge: エージェントのナレッジ ベースを定義</li>
+<li>Tools: エージェント用のカスタム ツールを定義</li>
+<li>Additional settings: 公開 Web コンテンツの利用有無を設定</li>
+<li>Starter prompts: 新しいチャット開始時に Copilot Chat に表示されるスターター プロンプト (最大 6 件)</li>
+<li>Publishing details: 公開後の利用方法に関する情報</li>
+</ul>
+<p><img alt="The configuration page of an agent for Microsoft 365 Copilot Chat in Microsoft Copilot Studio. There are sections to define general details, knowledge bases, tools, additional settings, starter prompts, and publishing details." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-04.png" /></p>
+<p>画面右側には、エージェントのプレビューが表示され、動作をテストできます。
+初期設定は完了しました。次のステップで詳細を調整しましょう。</p>
+<p><cc-end-step lab="mcs4" exercise="1" step="1" /></p>
+<h3 id="step-2">Step 2: エージェントのアイコンを更新する</h3>
+<p><strong>Details</strong> セクション右上の <strong>Edit</strong> コマンドを選択して詳細を編集します。
+編集モードで <strong>Change icon</strong> コマンドを選択し、カスタム アイコンをアップロードして背景色を設定します。
+必要に応じて <a href="https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/HR-agent-color.png?raw=true" target="_blank">こちらのアイコン</a> を使用できます。その場合、背景色は #B9BAB5 が適しています。</p>
+<p><img alt="The configuration page while editing the details of the agent and specifically updading the icon of the agent." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-05.png" /></p>
+<p><strong>Save</strong> コマンドを選択して新しいアイコンと背景色を保存し、さらに <strong>Save</strong> ボタンを選択してエージェントの詳細を更新します。</p>
+<p><cc-end-step lab="mcs4" exercise="1" step="2" /></p>
+<h3 id="step-3">Step 3: ナレッジ ベースを追加する</h3>
+<p><a href="../01-first-agent" target="_blank">Lab MCS1</a> と同様に、<a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/HR-documents&amp;filename=hr-documents" target="_blank">このリンク</a> から Word、PowerPoint、PDF ファイルを含む zip をダウンロードします。</p>
+<p>zip を解凍したら、同じテナントの SharePoint Teams サイトの <strong>Documents</strong> ライブラリにアップロードします。これらのドキュメントは本ラボ用に Microsoft 365 Copilot で生成されたものです。</p>
+<p>サイトの絶対 URL をコピーします。例: <code>https://xyz.sharepoint.com/sites/contoso</code></p>
+<p>ナレッジ ソースを追加するには、<strong>Knowledge</strong> セクション右上の <strong>+ Add knowledge</strong> コマンドを選択します。ポップアップ ダイアログでデータ ソースを選択します。現時点では <strong>SharePoint</strong> データ ソースを選択できます。<strong>SharePoint</strong> を選択し、データ ソースにするサイトを指定します。</p>
+<p><img alt="The dialog to configure additional knowledge base for the agent. There is a list of **Featured** knowledge bases, where right now there is only SharePoint. There is a command to browse **Advanced** data source, too." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-06.png" /></p>
+<p>ダイアログに SharePoint Online サイトの URL を貼り付けるか、<strong>Browse files</strong> コマンドでサイトを参照します。URL またはデータ ソースを選択したら、ナレッジ ベースの名前と説明を入力します。説明は Copilot がユーザーの意図を判断するときに使用されます。</p>
+<p><img alt="The dialog to configure a SharePoint Online data source. There is a command to **Browse files** and a textbox to paste a direct link to a data source. There is also an already selected data source with URL Link, Name, and Description. In the lower part of the dialog there are an **Add** command to save the new data source, a **Cancel** command to cancel the operation, and a **Back** command to go back to the previous stage." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-07.png" /></p>
+<p><strong>Add</strong> ボタンを選択してナレッジ ベースにデータ ソースを追加します。</p>
+<div class="admonition warning">
+<p class="admonition-title">重要</p>
+<p>Copilot Studio で SharePoint Online サイトをナレッジ ベースとして構成すると、ユーザーは自分がアクセス権を持つドキュメントからのみ回答やコンテンツを取得できます。Microsoft 365 のセキュリティ インフラストラクチャによってアクセス制御が保証され、Copilot Studio エージェントは現在の ユーザー の権限でドキュメントにアクセスします。</p>
+</div>
+<p><cc-end-step lab="mcs4" exercise="1" step="3" /></p>
+<h3 id="step-4-microsoft-365-copilot-chat">Step 4: エージェントを Microsoft 365 Copilot Chat に公開する</h3>
+<p>エージェントを Microsoft 365 Copilot Chat に公開してテストします。1️⃣ 画面右上の <strong>Publish</strong> コマンドを選択してエージェントを Copilot Chat で利用可能にします。次に 2️⃣ 必要事項を入力し、最後に 3️⃣ ダイアログ下部の <strong>Publish</strong> コマンドを選択します。</p>
+<p><img alt="The agent in Copilot Studio with the **Publish** button highlighted and the publishing dialog where there are fields to define, short description, long description, developer name, developer website URL, privacy statement URL, terms of use URL." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-08.png" /></p>
+<p>入力する詳細は Microsoft 365 アプリ マニフェストで要求される項目です。</p>
+<ul>
+<li>Short description: エージェントの短い説明 (最大 30 文字)</li>
+<li>Long description: エージェントの詳細説明 (最大 100 文字)</li>
+<li>Developer name: 開発者名 (最大 32 文字)</li>
+<li>Website: 開発者サイトの URL (最大 2048 文字)</li>
+<li>Privacy statement: プライバシー ステートメントの URL (最大 2048 文字)</li>
+<li>Terms of use: 利用規約の URL (最大 2048 文字)</li>
+</ul>
+<p>初回公開には 30〜60 秒ほどかかります。公開が完了すると、利用オプションの概要がダイアログに表示されます。</p>
+<p><img alt="The dialog confirming the successful publishing and providing a command to copy a direct link to the agent app, two commands to share the agent with selected group of people or with the whole organization, and a command to download a ZIP package to publish the agent in the store." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-09.png" /></p>
+<p>特に次の操作が可能です。</p>
+<ul>
+<li><strong>Copy</strong>: エージェント アプリへの直接リンク URL をコピー</li>
+<li><strong>Show to my teammates and shared users</strong>: 特定のグループや個人と共有</li>
+<li><strong>Show to everyone in my org</strong>: 組織全体と共有</li>
+<li><strong>Download .zip file</strong>: ストア公開用の zip パッケージをダウンロード</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Show to everyone in my org</p>
+<p>組織全体に公開する場合は、エージェントがリリース準備完了であり、社内の基準・規定・ポリシーに準拠していることを確認し、チームメイトと調整してください。提出後、管理者が承認または拒否するまで他の人が再提出できません。詳細は <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/publication-add-bot-to-microsoft-teams#show-to-the-organization" target="_blank">Show to the organization</a> を参照してください。</p>
+</div>
+<p><strong>Copy</strong> コマンドを選択し、新しいブラウザー タブで URL を開きます。
+ブラウザーに会社のアプリ ストアが表示され、<strong>Add</strong> ボタンを押してエージェントを Microsoft 365 Copilot に追加できます。</p>
+<p><img alt="The company store with the agent dialog allowing to add the agent to Microsoft 365 Copilot." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-10.png" /></p>
+<p>エージェントを Microsoft 365 Copilot Chat に追加すると、Copilot Chat 右側のエージェント一覧に表示されます。</p>
+<p><img alt="The &quot;Agentic HR&quot; agent in Microsoft 365 Copilot Chat." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-11.png" /></p>
+<p>エージェントを選択し、次のプロンプト例のように対話してみましょう。</p>
+<pre><code class="language-txt">How can we hire new people in our company?
+</code></pre>
+<p>エージェントは、ナレッジ ベースに設定したドキュメント <code>Hiring Procedures.docx</code> などを参照しながら、人材採用手順について詳細な情報を提供します。</p>
+<p><img alt="The &quot;Agentic HR&quot; agent in action in Microsoft 365 Copilot Chat, answering a prompt about the hiring procedures and providing a reference to a Word document stored in the SharePoint Online knowledge base of the agent." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-12.png" /></p>
+<p><cc-end-step lab="mcs4" exercise="1" step="4" /></p>
+<h2 id="exercise-2">Exercise 2 : エージェントにツールを追加する</h2>
+<p>この演習では、前の演習で作成したエージェントにカスタム ツールを追加します。Microsoft Copilot Studio で Microsoft 365 Copilot Chat 用のエージェントを作成する際、次の 4 種類のツールを追加できます。</p>
+<ul>
+<li>Prompt: 自然言語のプロンプトで作成した AI ツールを利用</li>
+<li>Custom connector: Power Platform のカスタム コネクタを利用</li>
+<li>REST API: 外部 REST API を利用。詳細は <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api" target="_blank">こちら</a></li>
+<li>Model Context Protocol: MCP サーバーとそのツールを利用</li>
+</ul>
+<div class="admonition information">
+<p class="admonition-title">エージェント用ツール</p>
+<p>Copilot Studio で エージェント にツールを追加する方法の詳細は、<a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-plugin-actions" target="_blank">Add tools to custom agents</a> を参照してください。</p>
+</div>
+<p>このラボでは <code>Custom connector</code> タイプのツールを追加し、SharePoint Online に保存した Excel スプレッドシートから候補者リストを取得します。</p>
+<h3 id="step-1-microsoft-365-copilot">Step 1: Microsoft 365 Copilot 用エージェントにツールを追加する</h3>
+<p>ツールを追加するには、エージェントの構成パネルの <strong>Tools</strong> セクションで <strong>+ Add tool</strong> コマンドを選択します。</p>
+<p><img alt="The **Tools** section of an agent with the **+ Add tool** command highlighted." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-01.png" /></p>
+<p>ダイアログが表示され、作成するツールの種類を選択します。既定では <strong>Featured</strong> ツールがいくつか表示され、Excel Online と連携するものなどが含まれています。<strong>+ New tool</strong> コマンドを選択し、前述のオプションから新規作成することもできます。</p>
+<p>目的のツールが表示されない場合は <strong>All</strong> グループに切り替え、テキスト検索してください。</p>
+<p>ここでは <strong>Excel Online (Business)</strong> の <strong>List rows present in a table</strong> を選択します。まず <strong>Connection</strong> で <strong>Create new connection</strong> を選び、コネクタへの接続を設定します。</p>
+<p><img alt="The dialog to connect to the target Power Platform connector with details about the connection, if any, or a button to create a new connection. There is also a back button to start over." src="../../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png" /></p>
+<p>アカウントでサインインし、Excel Online (Business) へのアクセスを許可します。接続が完了すると <strong>Add to agent</strong> または <strong>Add and configure</strong> のコマンドが表示されます。</p>
+<p><img alt="The dialog to add the actual tool to the agent. There are commands to **Add to agent** or **Add and configure** the tool. There is also a back button to start over." src="../../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03b.png" /></p>
+<p>ツールを追加すると Copilot Studio にツールの一覧が表示されます。作成したツールをクリックして設定を編集します。構成パネルでは以下を指定します。</p>
+<ul>
+<li>Name: ツールの説明的な名前</li>
+<li>Display name: ツールの表示名</li>
+<li>Description: ジェネレーティブ オーケストレーションがツール使用タイミングを判断するための自然言語説明</li>
+<li>Inputs and outputs: 入力・出力引数</li>
+<li>Response settings: リクエストと ユーザー への応答の扱い</li>
+</ul>
+<p>設定前に候補者リストの Excel ファイルを準備します。
+<a href="https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true" target="_blank">こちらのリンク</a> からサンプル Excel をダウンロードし、同じテナントの SharePoint Teams サイトの <strong>Documents</strong> ライブラリにアップロードします。</p>
+<ul>
+<li>サイト コレクションの URL 例: <code>https://xyz.sharepoint.com/sites/contoso/</code></li>
+<li>ドキュメント ライブラリ名 例: <code>Shared documents</code></li>
+<li>ファイル名 例: <code>Sample-list-of-candidates.xlsx</code></li>
+</ul>
+<p>Copilot Studio に戻りツールを設定します。
+以下を使用します:</p>
+<ul>
+<li>Name: List HR candidates</li>
+<li>Description: List candidates for an HR role</li>
+</ul>
+<p>ツール編集ダイアログで <strong>Tool name</strong> をわかりやすい名前に変更し、Inputs タブで入力引数を設定します。既定では必須の入力引数は <strong>Identify as</strong> が <code>User's entire response</code> になっています。</p>
+<p><img alt="The tab to configure the input arguments of the action. There is a list of arguments with specific settings for each of them." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png" /></p>
+<p>各入力引数の <strong>How will the agent fill this input?</strong> を <code>Set as a value</code> に変更し、静的値を設定します。設定変更を確認後、すべての入力引数に静的値を入力します。</p>
+<p><img alt="The configuration of the **Location** input argument where the source for the value is a static value manually configured." src="../../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-07.png" /></p>
+<p>静的値は次のとおりです。</p>
+<ul>
+<li>Location: Excel を保存した SharePoint Online サイトの URL 例: <code>https://xyz.sharepoint.com/sites/contoso/</code></li>
+<li>Document Library: ドキュメント ライブラリ名 例: <code>Shared Documents</code></li>
+<li>File: Excel ファイル名 例: <code>Sample-list-of-candidates.xlsx</code></li>
+<li>Table: <code>Candidates_Table</code></li>
+</ul>
+<p><img alt="The list of input arguments configured accordingly to the suggested settings. Every input argument is configured with a manually provided value." src="../../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-08.png" /></p>
+<p>画面右上の <strong>Save</strong> ボタンを選択してツールを保存します。</p>
+<p><cc-end-step lab="mcs4" exercise="2" step="1" /></p>
+<h3 id="step-2_1">Step 2: 新しいツールのテスト</h3>
+<p>更新したエージェントを公開し、統合テスト パネルまたは Microsoft Teams で試してみましょう。
+再度 <strong>Publish</strong> ボタンを選択し、公開が完了するまで待ちます。その後、エージェントの直接リンクを再度開くと <strong>Add</strong> の代わりに <strong>Update now</strong> が表示されます。<strong>Update now</strong> を選択して更新し、Microsoft 365 Copilot Chat をリフレッシュしてエージェントと対話します。</p>
+<p>次のプロンプト例で作成したツールを簡単に呼び出せます。</p>
+<pre><code class="language-txt">Show me the list of candidates for HR with role &quot;HR Director&quot; or &quot;HR Manager&quot;
+</code></pre>
+<p>Microsoft 365 Copilot Chat は外部 API (Excel Online) へのアクセス許可を求めてきますので、<strong>Allow once</strong> を選択してテストします。</p>
+<p><img alt="Microsoft 365 Copilot Chat asking consent to consume the external API for Excel Online. There are three command buttons to **Always allow**, **Allow once**, and **Cancel**." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png" /></p>
+<p>Power Platform コネクタには接続が必要なため、エージェントは <strong>Sign in to Agentic HR</strong> でサインインを促します。 </p>
+<p><img alt="Microsoft 365 Copilot Chat asking to sign in to consume the external Excel Online API." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-04.png" /></p>
+<p>コネクタに接続し、再度プロンプトを実行すると、エージェントが Excel スプレッドシートから取得した条件に一致する候補者一覧を返します。</p>
+<p><img alt="Microsoft 365 Copilot Chat asking to sign in to consume the external Excel Online API." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-05.png" /></p>
+<p>お疲れさまでした! Copilot Studio で作成した Microsoft 365 Copilot エージェントから外部コネクタを利用できました。</p>
+<p><cc-end-step lab="mcs4" exercise="2" step="2" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">おめでとうございます！</span></p>
+<p><a href="../05-connectors">ここから開始</a>して Lab MCS5 で Copilot Studio のカスタム コネクタ利用方法を学習しましょう。
+<cc-next /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/04-extending-m365-copilot--ja" /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>

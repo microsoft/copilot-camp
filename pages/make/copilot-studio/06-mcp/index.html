@@ -1,0 +1,2441 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/06-mcp/">
+      
+      
+        <link rel="prev" href="../05-connectors/">
+      
+      
+        <link rel="next" href="../07-autonomous/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Lab MCS6 - Consuming an MCP server - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-mcs6-consuming-an-mcp-server" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab MCS6 - Consuming an MCP server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../../ja/pages/make/copilot-studio/06-mcp/" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Maker Path - Make your agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  
+  Extend - Build a declarative agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  Build - Build a custom engine agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../copilot-instructions/" class="md-tabs__link">
+          
+  
+  
+  Prompt engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maker Path - Make your agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Maker Path - Make your agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB - Copilot Studio agent builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB1 - Agent builder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS - Microsoft Copilot Studio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS1 - First agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS2 - Defining Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS3 - Defining Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS4 - Extending Microsoft 365 Copilot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS5 - Consuming a custom connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS6 - Consuming an MCP server
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS6 - Consuming an MCP server
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-setting-up-the-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 : Setting up the MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-creating-a-new-agent-in-copilot-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 : Creating a New Agent in Copilot Studio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-integrating-mcp-server-with-copilot-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3 : Integrating MCP Server with Copilot Studio
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS7 - Creating Autonomous Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA - SharePoint agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA1 - Build your first SharePoint agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MSA2 - Sharing SharePoint agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Extend - Build a declarative agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Extend - Build a declarative agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E0 - Prerequisites and Environment Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Declarative Agent Fundamentals
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Declarative Agent Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1 - Build a Detailed Declarative Agent using TypeSpec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1a - Build a game agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build and Integrate API from scratch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Build and Integrate API from scratch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E2 - Build a Backend API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E3 - Add Declarative Agent and API Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E4 - Enhance API and Plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E5 - Add Adaptive Cards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6a - Add Entra ID Authentication (Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older Authentication Labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Older Authentication Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06b-add-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6b - Add Entra ID Authentication (Manual Setup)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06c-add-sso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E6c - Add Entra ID Authentication (Single Sign-on manual)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Integration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E7 - Add Copilot Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Build - Build a custom engine agent
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Build - Build a custom engine agent
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    M365 Agents SDK labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            M365 Agents SDK labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA1 - Prepare your agent in Azure AI Foundry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA2 - Build your first agent using M365 Agents SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA3 - Configure agent properties and test on Teams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA4 - Bring your agent to Copilot Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teams AI library labs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Teams AI library labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA0 - Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA1 - First custom engine agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA2 - Index your data in Azure AI Search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA3 - Enhance user experience
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA4 - Add single sign on authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA5 - Add actions to handle complex tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Prompt engineering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Prompt engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../copilot-instructions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../copilot-instructions/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Level 1 - Simple agent instructions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-mcs6-consuming-an-mcp-server">Lab MCS6 - Consuming an MCP server</h1>
+<p>In this lab, you are going to understand how to extend an agent made with Microsoft Copilot Studio using an MCP (Model Context Protocol) server. Specifically, you are going to consume an existing MCP server that provides tools for managing a hypothetical list of candidates for a job role. The MCP server will offer functionalities to:</p>
+<ul>
+<li>List all candidates </li>
+<li>Search for candidates by criteria</li>
+<li>Add new candidates </li>
+<li>Update existing candidate information</li>
+<li>Remove candidates </li>
+</ul>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/Y8KpHmmMqzc" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+
+   <div class="floatwide">
+   <div class="cc-lab-toc mcs-path">
+     <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
+     <div>
+       <p>Do these labs if you want to build agents with Microsoft Copilot Studio</p>
+       <ul>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/00-prerequisites/">MCS0 - Setup</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - First agent</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - Defining Topics</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - Defining Tools</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - Consuming a custom connector</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - Consuming an MCP server</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/07-autonomous/">MCS7 - Creating Autonomous Agents</a></li>
+       </ul>
+     </div>
+   </div>
+
+   <script>
+   (() => {
+
+   // This script decorates the table of contents with a "you are here" indicator.
+   const toc = document.getElementsByClassName('cc-lab-toc');
+   for (const div of toc) {
+       const lis = div.querySelectorAll('li');
+       for (const li of lis) {
+           const anchor = li.querySelector('a');
+           if (location.href.includes(anchor.href)) {
+               const span = document.createElement("span");
+               span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+               li.appendChild(span);
+           }
+       }    
+   }
+   })();
+   </script>
+
+
+   <!-- 
+     <div class="cc-mcs-lab-steps">
+       <h4>Table of Contents</h4>
+       <cc-table-of-contents />
+     </div> -->
+   </div>
+
+    </div>
+</div>
+
+<div class="admonition tip">
+<p class="admonition-title">Learn about MCP</p>
+<p>This lab introduces MCP concepts and shows how to integrate them with Copilot Studio. MCP is a new protocol that allows AI assistants to securely connect to external data sources and tools. You can learn more about MCP reading the content available in the <a href="https://github.com/microsoft/mcp-for-beginners" target="_blank">Model Context Protocol (MCP) for beginners</a> training class.</p>
+</div>
+<p>In this lab you will learn:</p>
+<ul>
+<li>How to configure and connect to an existing MCP server</li>
+<li>How to consume MCP tools and resources from an external server</li>
+<li>How to integrate MCP servers with Copilot Studio agents</li>
+</ul>
+<h2 id="exercise-1-setting-up-the-mcp-server">Exercise 1 : Setting up the MCP Server</h2>
+<p>In this exercise you are going to setup a pre-built MCP server that provides HR candidates management functionality. The server is based on Microsoft .NET and relies on the MCP SDK for C#. The server provides tools to manage a hypothetical list of job candidates. In this exercise you are going to download and configure the server, so that you can run it locally.</p>
+<h3 id="step-1-understanding-the-mcp-server-and-prerequisites">Step 1: Understanding the MCP Server and prerequisites</h3>
+<p>The HR MCP server that you will be consuming in this lab provides the following tools:</p>
+<ul>
+<li><strong>list_candidates</strong>: Provides the whole list of candidates</li>
+<li><strong>search_candidates</strong>: Searches for candidates by name, email, skills, or current role</li>
+<li><strong>add_candidate</strong>: Adds a new candidate to the list</li>
+<li><strong>update_candidate</strong>: Updates an existing candidate by email</li>
+<li><strong>remove_candidate</strong>: Removes a candidate by email</li>
+</ul>
+<p>The server manages candidates information including:</p>
+<ul>
+<li>Personal details (firstname, lastname, full name, email)</li>
+<li>Professional information (spoken languages, skills, current role)</li>
+</ul>
+<p>Before starting, make sure you have:</p>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/10.0" target="_blank">.NET 10.0 SDK (preview 6 or higher)</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+<li><a href="https://nodejs.org/en" target="_blank">Node.js v.22 or higher</a></li>
+<li><a href="https://github.com/modelcontextprotocol/inspector" target="_blank">MCP Inspector</a></li>
+</ul>
+<p><cc-end-step lab="mcs6" exercise="1" step="1" /></p>
+<h3 id="step-2-downloading-and-running-the-mcp-server">Step 2: Downloading and running the MCP Server</h3>
+<p>For this lab, you will use a pre-built HR MCP server. Download the server files <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/path-m-lab-mcs6-mcp/hr-mcp-server&amp;filename=hr-mcp-server" target="_blank">from here</a>.</p>
+<p>Extract the files from the zip and open the target folder with Visual Studio Code. The server is already implemented and ready to run.</p>
+<p><img alt="The outline of the HR MCP Server project in Visual Studio Code showing the server files and candidate data." src="../../../../assets/images/make/copilot-studio-06/mcp-server-01.png" /></p>
+<p>The main elements of the project outline are:</p>
+<ul>
+<li><code>Configuration</code>: folder with the <code>HRMCPServerConfiguration.cs</code> file defining the configuration settings for the MCP server.</li>
+<li><code>Data</code>: folder with the <code>candidates.json</code> file providing the list of candidates.</li>
+<li><code>Services</code>: folder with the <code>ICandidateService.cs</code> interface and the actual <code>CandidateService.cs</code> implementation of a service to load and manage the list of candidates.</li>
+<li><code>Tools</code>: folder with the <code>HRTools.cs</code> file defining the MCP tools and the <code>Models.cs</code> file defining the data models used by the tools.</li>
+<li><code>DevTunnel_Instructions.MD</code>: instructions about how to expose the MCP server via a dev tunnel.</li>
+<li><code>Progam.cs</code>: the main entry point of the project, where the MCP server gets initialized.</li>
+</ul>
+<p>Open a new terminal window from within Visual Studio Code or simply start a new terminal window, and then install dependencies, build, and start the .NET project by invoking the following command:</p>
+<pre><code class="language-console">dotnet run
+</code></pre>
+<p>Check that the MCP server is up and running. You should be able to consume the server via browser at the URL <a href="http://localhost:47002/" target="_blank">http://localhost:47002/</a>. You will see an error inside a JSON message, that's ok. It means that you are reaching the MCP server.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The pre-built HR MCP Server provided with this lab is not a production-ready solution. It operates using an in-memory list of candidates and does not retain data across multiple conversation sessions. It was developed specifically for the purpose of this lab, to offer a simple and accessible solution. If you are a professional developer, you may consider it a starting point for understanding the fundamentals of building an MCP server exposed via HTTP. If you like you can improve the server relying on a container app and adding persistence storage. For example, <a href="https://github.com/fabianwilliams/hr-mcp-server" target="_blank">here</a> you can find a more advanced version of the server, implemented by <a href="https://github.com/fabianwilliams/" target="_blank">Fabian Williams (Microsoft)</a>.</p>
+</div>
+<p><cc-end-step lab="mcs6" exercise="1" step="2" /></p>
+<h3 id="step-3-configure-the-dev-tunnel">Step 3: Configure the dev tunnel</h3>
+<p>Now, you need to expose the MCP server with a public URL. Since you are running the server locally on your development machine, you need to rely on a reverse proxy tool to expose your <code>localhost</code> via a public URL. For the sake of simplicity, you can use the dev tunnel tool provided by Microsoft, following these steps:</p>
+<ul>
+<li>Install dev tunnel on your environment following <a href="https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started" target="_blank">these instructions</a></li>
+<li>Login with dev tunnel, executing the following command:</li>
+</ul>
+<pre><code class="language-console">devtunnel user login
+</code></pre>
+<ul>
+<li>Host your dev tunnel, executing the following commands:</li>
+</ul>
+<pre><code class="language-console">devtunnel create hr-mcp -a --host-header unchanged
+devtunnel port create hr-mcp -p 47002
+devtunnel host hr-mcp
+</code></pre>
+<p>The command line will display the connection information, such as:</p>
+<p><img alt="The dev tunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../../assets/images/make/copilot-studio-06/mcp-server-02.png" /></p>
+<p>Copy the "Connect via browser" URL and save it in a safe place. Open a browser and navigate to the just copied URL. You might need to confirm that you want to consume the MCP server via the dev tunnel through a confirmation page like the following one.</p>
+<p><img alt="The confirmation page to access the MCP server via the dev tunnel. There is a button to &quot;Continue&quot; that you should select." src="../../../../assets/images/make/copilot-studio-06/mcp-server-03.png" /></p>
+<p>Be sure to leave both the dev tunnel command and the MCP server running as you do the exercises in this lab. If you need to restart it, just repeat the last command <code>devtunnel host hr-mcp</code>.</p>
+<p><cc-end-step lab="mcs6" exercise="1" step="3" /></p>
+<h3 id="step-4-testing-the-mcp-server">Step 4: Testing the MCP server</h3>
+<p>You are now ready to test the MCP server on your local environment. For the sake of simplicity, you can use the <a href="https://github.com/modelcontextprotocol/inspector" target="_blank">MCP Inspector</a>. Start a terminal window and run the following command:</p>
+<pre><code class="language-console">npx @modelcontextprotocol/inspector
+</code></pre>
+<p>The Node.js engine will download and run the MCP Inspector, in the terminal window you should see an output like the following one.</p>
+<p><img alt="The output of the MCP inspector when started in a terminal window. You have the proxy port that the MCP Inspector is listening on and the URL of the MCP Inspector." src="../../../../assets/images/make/copilot-studio-06/mcp-inspector-01.png" /></p>
+<p>The browser will start automatically and you will see the following interface.</p>
+<p><img alt="The web interface of the MCP Inspector. On the left there are the settings to configure the MCP Server and the &quot;Connect&quot; button to connect to the actual MCP server." src="../../../../assets/images/make/copilot-studio-06/mcp-inspector-02.png" /></p>
+<p>Configure the MCP Inspector with the following settings:</p>
+<ul>
+<li>1️⃣ <strong>Transport type</strong>: Streamable HTTP</li>
+<li>2️⃣ <strong>URL</strong>: the URL that you saved from the "Connect via browser" of the dev tunnel</li>
+</ul>
+<p>Then select the 3️⃣ <strong>Connect</strong> button to start consuming the MCP server. The connection should be successful, and you should be able to have a green bullet and the message <strong>Connected</strong> just below the connection handling commands.
+Now, in the Tools section of the screen, select the 1️⃣ <strong>List Tools</strong> command to retrieve the list of tools exposed by the MCP server.
+Then, select the 2️⃣ <strong>list_candidates</strong> tool, and then select 3️⃣ <strong>Run tool</strong> to invoke the selected tool.</p>
+<p><img alt="The web interface of the MCP Inspector when listing the tools and invoking the &quot;list_candidates&quot; tool. There are commands to &quot;List Tools&quot;, one item for each of the tools offered by the MCP server, and a command &quot;Run tool&quot; to invoke a single tool." src="../../../../assets/images/make/copilot-studio-06/mcp-inspector-03.png" /></p>
+<p>In case of successful response, you will see a <strong>Success</strong> message in green and the output of the tool invocation.
+In the <strong>History</strong> section you can always review all the invocations sent to the MCP server.</p>
+<p><img alt="The web interface of the MCP Inspector when invoking a tool. There is a green successful message and the actual output of the tool invocation." src="../../../../assets/images/make/copilot-studio-06/mcp-inspector-04.png" /></p>
+<p>You are now ready to consume the MCP server from an agent in Microsoft Copilot Studio.</p>
+<p><cc-end-step lab="mcs6" exercise="1" step="4" /></p>
+<h2 id="exercise-2-creating-a-new-agent-in-copilot-studio">Exercise 2 : Creating a New Agent in Copilot Studio</h2>
+<p>In this exercise you are going to create a new agent in Microsoft Copilot Studio that will consume the MCP server you configured in Exercise 1.</p>
+<h3 id="step-1-creating-the-new-agent">Step 1: Creating the new agent</h3>
+<p>Open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> to start using Microsoft Copilot Studio.</p>
+<p>Select the <code>Copilot Dev Camp</code> environment that you created in <strong>Exercise 1</strong> of <a href="../00-prerequisites/">Lab MCS0 - Setup</a>, and then select <strong>Create</strong> in the left navigation menu, then choose <strong>Agent</strong> to create a new agent.</p>
+<p>Choose to <strong>Skip to configure</strong> and define your new agent with the following settings:</p>
+<ul>
+<li><strong>Name</strong>: </li>
+</ul>
+<pre><code class="language-text">HR Agent with MCP
+</code></pre>
+<ul>
+<li><strong>Description</strong>: </li>
+</ul>
+<pre><code class="language-text">An AI assistant that helps manage HR candidates using MCP server integration 
+for comprehensive candidate management
+</code></pre>
+<ul>
+<li><strong>Instructions</strong>: </li>
+</ul>
+<pre><code class="language-text">You are a helpful HR assistant that specializes in candidate management. You can help users search 
+for candidates, check their availability, get detailed candidate information, and add new 
+candidates to the system. 
+Always provide clear and helpful information about candidates, including their skills, experience, 
+contact details, and availability status.
+</code></pre>
+<p><img alt="The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the HR Agent with MCP." src="../../../../assets/images/make/copilot-studio-06/create-agent-01.png" /></p>
+<p>Select <strong>Create</strong> to create your new agent.</p>
+<p><cc-end-step lab="mcs6" exercise="2" step="1" /></p>
+<h3 id="step-2-configuring-the-agents-conversation-starters">Step 2: Configuring the agent's conversation starters</h3>
+<p>After creating the agent, you'll be taken to the agent configuration page. In the <strong>Suggested prompts</strong> section, add these helpful prompts:</p>
+<ol>
+<li>Title: <code>List all candidates</code> - Prompt: <code>List all the candidates</code></li>
+<li>Title: <code>Search candidates</code> - Prompt: <code>Search for candidates with name [NAME_TO_SEARCH]</code></li>
+<li>Title: <code>Add new candidate</code> - Prompt: <code>Add a candidate with firstname [FIRSTNAME], lastname [LASTNAME],  e-mail [EMAIL], role [ROLE], spoken languages [LANGUAGES], and skills [SKILLS]</code></li>
+</ol>
+<p><img alt="The agent configuration page showing the &quot;Suggested prompts&quot; sections filled in with the suggested information." src="../../../../assets/images/make/copilot-studio-06/configure-agent-01.png" /></p>
+<p>Select the <strong>Save</strong> button to confirm your changes.</p>
+<p><cc-end-step lab="mcs6" exercise="2" step="2" /></p>
+<h2 id="exercise-3-integrating-mcp-server-with-copilot-studio">Exercise 3 : Integrating MCP Server with Copilot Studio</h2>
+<p>In this exercise you are going to configure the integration between your MCP server and the Copilot Studio agent.</p>
+<h3 id="step-1-adding-tools-exposed-by-the-mcp-server">Step 1: Adding tools exposed by the MCP server</h3>
+<p>In your agent, navigate to the 1️⃣ <strong>Tools</strong> section and select 2️⃣ <strong>+ Add a tool</strong>.</p>
+<p><img alt="The &quot;Tools&quot; section of the agent with the &quot;+ Add a tool&quot; command highlighted." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-01.png" /></p>
+<p>Choose 1️⃣ <strong>Model Context Protocol</strong> group to see all the already existing MCP servers available to you agent. Now select 2️⃣ <strong>+ New tool</strong> to add the actual HR MCP server.</p>
+<p><img alt="The panel to add new tools, with the &quot;+ New tool&quot; command highlighted." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-02.png" /></p>
+<p>A new dialog shows up allowing you to select the kind of tool that you want to add. At the time of this writing, if you select the <strong>Model Context Protocol</strong> option, you will be brought to the official Microsoft Copilot Studio documentation page <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp" target="_blank">Extend your agent with Model Context Protocol</a> that explains you how to add a new MCP server as a Power Platform custom connector.</p>
+<p>In this lab we are going to create the actual custom connector for the MCP server. So, select <strong>Custom connector</strong> and proceed with the following steps. </p>
+<p><img alt="The dialog to add a new tool with the &quot;Custom connector&quot; option highlighted." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-03.png" /></p>
+<p>A new browser tab will open, providing you access to the Power Apps configuration page to manage custom connectors. Select 1️⃣ <strong>+ New custom connector</strong> and then 2️⃣ <strong>Import an OpenAPI file</strong>.</p>
+<p><img alt="The dialog to add a new tool with the &quot;Custom connector&quot; option highlighted." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-04.png" /></p>
+<p>Keep this process on hold, move to Visual Studio Code, create a new file, and paste the following YAML schema into it.</p>
+<pre><code class="language-yaml">swagger: '2.0'
+info:
+  title: HR MCP Server
+  description: Allows to manage candidates for specific job roles providing tools to list, search, add, update, and remove candidates from a reference list
+  version: 1.0.0
+host: [Connect via browser host name of your dev tunnel]
+basePath: /
+schemes:
+  - https
+paths:
+  /:
+    post:
+      summary: HR MCP Server
+      x-ms-agentic-protocol: mcp-streamable-1.0
+      operationId: InvokeMCP
+      responses:
+        '200':
+          description: Success
+</code></pre>
+<p>Replace the <code>host</code> with the actual hostname of your dev tunnel public URL.
+The value for the <code>host</code> property should be something like <code>3dcwb74w-47002.euw.devtunnels.ms</code>, without the https:// prefix and without the closing /. Simply use the hostname. Save the file and go back to the browser. </p>
+<p>Provide a name for the connector, for example <code>HR MCP Server</code>.
+Select <strong>Import</strong> and browse for the OpenAPI file that you just created.
+Once you have selected the file, click on <strong>Continue</strong></p>
+<p><img alt="The dialog to create a new &quot;Custom connector&quot; in the current Power Platform environment. There are the name of the connector and the path to the OpenAPI specification YAML file." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-05.png" /></p>
+<p>In the page to configure the connector, select to enable the <strong>Swagger editor</strong> to switch to the source code of the OpenAPI specification.
+You can see the content of the YAML file that you just uploaded and you can validate that the specification file is correct.</p>
+<p><img alt="The &quot;Custom connector&quot; definition page in the current Power Platform environment. There is the &quot;Swagger editor&quot; option selected to see the source code of the OpenAPI specification file." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-06.png" /></p>
+<p>Select the <strong>Create connector</strong> command and wait for the connector to be ready. If you like, you can also provide a custom icon for the connector, to easily recognize it in the list of tools. If you like, you can download the <a href="https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/make/copilot-studio/path-m-lab-mcs6-mcp/hr-mcp-server-icon.png" target="_blank">following icon</a>, use it for the custom connector, and select <strong>Update connector</strong> to persist the change. </p>
+<p>Now go back to Copilot Studio, select the <strong>Refresh</strong> button and go back to the list of available tools. </p>
+<p><img alt="The dialog to add a new tool in Copilot Studio with a dialog waiting for you to select the &quot;Refresh&quot; button to reload the list of available tools." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-07.png" /></p>
+<p>Now, in the <strong>Model Context Protocol</strong> list, you should be able to find the <code>HR MCP Server</code>.</p>
+<p><img alt="The list of &quot;Model Context Protocol&quot; tools, including the new &quot;HR MCP Server&quot; connector." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-08.png" /></p>
+<p>Select the <code>HR MCP Server</code> connector, connect to the server using the default connection user experience of Copilot Studio, and when the connector is connected select <strong>Add and configure</strong></p>
+<p><img alt="The dialog to add the &quot;HR MCP Server&quot; connector as a tool to the current agent in Copilot Studio. There are buttons to &quot;Add to agent&quot; and to &quot;Add and configure&quot;, as well as a button to &quot;Cancel&quot;." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-09.png" /></p>
+<p>All the tools exposed by the MCP server are now available to your agent, as you can verify in the window displaying the MCP server details and tools.</p>
+<p><img alt="The details about the settings and tools of the MCP server that you just registered. There is the list of tools exposed by the server." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-10.png" /></p>
+<p><cc-end-step lab="mcs6" exercise="3" step="1" /></p>
+<h3 id="step-2-test-the-new-mcp-server-integration">Step 2: Test the new MCP server integration</h3>
+<p>Publish your agent by selecting <strong>Publish</strong> in the top right corner. Once published, test the agent in the integrated Test panel using the following prompt:</p>
+<pre><code class="language-text">List all candidates
+</code></pre>
+<p>The agent should use the MCP server's <code>list_candidates</code> tool to return a complete list of all candidates in your HR system.
+However, in order to being able to consume the list of candidates you will need to connect to the target connector. As such, Copilot Studio will ask you to <strong>Open connection manager</strong>, connect to the MCP server, and then <strong>Retry</strong> the request.</p>
+<p><img alt="The initial dialog with the agent, which prompts the user to open the connection manager to connect to the MCP server and then to retry the request, once the connection is established." src="../../../../assets/images/make/copilot-studio-06/mcp-test-01.png" /></p>
+<p>Once the connection is established, you can get the actual list of candidates from the HR MCP server.</p>
+<p><img alt="The list of candidates retrieved from the HR MCP Server." src="../../../../assets/images/make/copilot-studio-06/mcp-test-02.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Debugging the MCP server locally</p>
+<p>If you are a developer and you like to dig into the MCP server implementation, you can add breakpoints to the HRTools.cs file and attach a debugger from Visual Studio Code. You will be able to dig into the code and debug the actual MCP server in action.</p>
+</div>
+<p>You can also make the agent available in the Microsoft 365 Copilot Chat. Select the 1️⃣ <strong>Channels</strong> section, then select the 2️⃣ <strong>Teams and Microsoft 365 Copilot</strong> channel, check the 3️⃣ <strong>Make agent available in Microsoft 365 Copilot</strong> option, and then select the 4️⃣ <strong>Add channel</strong> command. Wait for the channel to be enabled, then close the channel side panel and publish the agent again selecting the <strong>Publish</strong> command of the agent in the top right corner.</p>
+<p><img alt="The interface to publish an agent in the &quot;Teams and Microsoft 365 Copilot&quot; channel. There is a checkbox to make the agent available in Microsoft 365 Copilot and a command to &quot;Add channel&quot;." src="../../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-01.png" /></p>
+<p>Now, open the <strong>Teams and Microsoft 365 Copilot</strong> channel again and select the command <strong>See agent in Microsoft 365</strong> to add the agent to Microsoft 365 Copilot.</p>
+<p><img alt="The interface to publish an agent in the &quot;Teams and Microsoft 365 Copilot&quot; channel with the &quot;See agent in Microsoft 365&quot; command highlighted." src="../../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-02.png" /></p>
+<p>You will see the interface to add the agent to Microsoft 365 Copilot, select <strong>Add</strong> and then <strong>Open</strong>, in order to play with the agent in Microsoft 365 Copilot.</p>
+<div class="admonition info">
+<p class="admonition-title">Agent details</p>
+<p>If you like, through the <strong>Teams and Microsoft 365 Copilot</strong> channel configuration panel, you can also provide additional details about the agent like a description, a custom icon, etc.</p>
+</div>
+<p><img alt="The interface to add the agent to Microsoft 365 Copilot. There are information about the agent and a command to &quot;Add&quot; the agent to Microsoft 365 Copilot." src="../../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-03.png" /></p>
+<p>You can now play with the agent in Microsoft 365 Copilot, notice the suggested prompts in the UI of the agent.
+Now, for example, you can try with another prompt like:</p>
+<pre><code class="language-text">Search for candidate Alice
+</code></pre>
+<p><img alt="The Microsoft 365 Copilot chat interface with the suggested prompts configured for the &quot;HR Agent with MCP&quot; and the prompt &quot;Search for candidate Alice&quot; ready to be processed." src="../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-01.png" /></p>
+<p>Now the agent should use the MCP server's <code>search_candidates</code> tool and return only one candidate matching the search criteria.
+However, since we are in the Microsoft 365 Copilot context, you will need to connect again to the MCP server, using the Microsoft Copilot Studio connections management interface.</p>
+<p><img alt="The Microsoft 365 Copilot chat instructing the user to &quot;Open the connection manager&quot; to verify credentials and connect to the MCP server." src="../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-02.png" /></p>
+<p>Once connected, you will be able to run again the prompt and get the expected response.</p>
+<p><img alt="Microsoft 365 Copilot showing information about the candidate Alice Johnson, who is matching the search criteria defined in the prompt." src="../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-03.png" /></p>
+<p>It is now time to test a much more advanced tool, like the <code>add_candidate</code> one to add a new candidate to the HR system. Use the following prompt:</p>
+<pre><code class="language-text">Add a new candidate: John Smith, Software Engineer, skills: React, Node.js, 
+email: john.smith@email.com, speaks English and Spanish
+</code></pre>
+<p>The agent will understand your intent, will extract the input arguments for the <code>add_candidate</code> tool, and will invoke it adding a new candidate to the list. The response from the MCP server will be a simple confirmation.</p>
+<p><img alt="The agent confirming that a new candidate has been added to the HR system via the MCP Server." src="../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-04.png" /></p>
+<p>You can double check the outcome by listing again the whole list of candidates. You can find <code>John Smith</code> as a new candidate at the end of the list.</p>
+<p><img alt="The updated list of candidates retrieved from the HR system via the MCP Server. The newly added candidate with name John Smith is at the end of the list." src="../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-05.png" /></p>
+<p>You can also have fun with other prompts like:</p>
+<pre><code class="language-text">Update the candidate with email bob.brown@example.com to speak also French
+</code></pre>
+<p>or:</p>
+<pre><code class="language-text">Add skill &quot;Project Management&quot; to candidate bob.brown@example.com
+</code></pre>
+<p>or:</p>
+<pre><code class="language-text">Remove candidate bob.brown@example.com
+</code></pre>
+<p>The agent will invoke the right tools for you and will act accordingly to your prompts.</p>
+<p>Well done! Your agent is fully functional and capable of consuming all the tools exposed by the HR MCP server.</p>
+<p><cc-end-step lab="mcs6" exercise="3" step="2" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab MCS6 - Consuming an MCP server!</p>
+<!-- <a href="../07-autonomous">Start here</a> with Lab MCS7, to learn how to create autonomous agents in Copilot Studio.
+<cc-next />  -->
+
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/06-mcp" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>

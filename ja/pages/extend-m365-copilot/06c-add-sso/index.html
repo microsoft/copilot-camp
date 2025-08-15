@@ -1,0 +1,2629 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/06c-add-sso/">
+      
+      
+        <link rel="prev" href="../06b-add-authentication/">
+      
+      
+        <link rel="next" href="../07-add-graphconnector/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>ラボ E6c - Entra ID 認証とシングル サインオンの追加 - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#e6c-entra-id" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../../" title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ラボ E6c - Entra ID 認証とシングル サインオンの追加
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../pages/extend-m365-copilot/06c-add-sso/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ようこそ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../make/" class="md-tabs__link">
+          
+  
+  
+  Maker 向けエージェントの作成
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  宣言型エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  カスタム エンジン エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../copilot-instructions/beginner-agent/" class="md-tabs__link">
+          
+  
+  
+  プロンプト エンジニアリング
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../awards/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  アワード
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  動画など
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../" title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ようこそ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Maker 向けエージェントの作成
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Maker 向けエージェントの作成
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microsoft 365 Copilot 用エージェント作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MAB - Copilot Studio agent builder を使用したエージェント作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MAB1 - 最初のエージェント構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS - Microsoft Copilot Studio の概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS0 - セットアップ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS1 - 最初のエージェント
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS2 － トピックの定義
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS3 - ツールの定義
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS4 - Microsoft 365 Copilot の拡張
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab MCS5 - Power Platform custom connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS6 - MCP サーバーの利用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MSA - SharePoint エージェントの概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MSA1 - 最初の SharePoint エージェントを構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MSA2 - SharePoint エージェントの共有
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    宣言型エージェントの構築
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            宣言型エージェントの構築
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microsoft 365 Copilot の拡張
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    セットアップ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            セットアップ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E0 - セットアップ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    宣言型エージェントの基礎
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            宣言型エージェントの基礎
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を用いて初めての宣言型エージェントを構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E1 - インストラクションベースの Geo Locator Game エージェント
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    API をゼロから構築して統合
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            API をゼロから構築して統合
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E2 - API の構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E3 - 宣言型エージェントと API プラグインの追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab E4 - API とプラグインの拡張
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E5 - Adaptive Card の追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    認証
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            認証
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06b-add-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6b - Entra ID 認証を OAuth で追加 (手動セットアップ)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6c - Entra ID 認証とシングル サインオンの追加
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6c - Entra ID 認証とシングル サインオンの追加
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 1: 永続的な developer トンネルをセットアップする (任意)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-api-entra-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 2: API 用の Entra ID アプリケーションを登録する
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-teams-developer-portal-microsoft-entra-sso-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 3: Teams Developer Portal で Microsoft Entra SSO クライアント ID を登録する
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 4: アプリケーション パッケージを更新する
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-api-microsoft-entra" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 5: API の Microsoft Entra アプリ登録を更新する
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 6: アプリケーション コードを更新する
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      エクササイズ 7: アプリケーションをテストする
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    インテグレーション
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            インテグレーション
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E7 - 統合: Microsoft Copilot Connector を使用して Trey Genie にナレッジ機能を追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    カスタム エンジン エージェントの構築
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            カスタム エンジン エージェントの構築
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    カスタム エンジン エージェントの構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    M365 Agents SDK ラボ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            M365 Agents SDK ラボ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要 - M365 Agents SDK と Semantic Kernel でエージェントを構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BMA0 - 前提条件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BMA1 - Azure AI Foundry でエージェントを準備する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BMA2 - M365 Agents SDK を使用した最初の エージェント 構築
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BMA3 - Azure AI Foundry エージェント と M365 Agents SDK の統合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MBA4 - エージェントを Copilot Chat に導入
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teams AI library ラボ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Teams AI library ラボ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    イントロ - Teams AI Library で独自の エージェント を構築する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA0 - 前提条件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA1 - 最初のカスタムエンジン エージェント (Teams AI library)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA2 - Azure AI Search でデータをインデックス化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab BTA3 - ユーザー エクスペリエンスの強化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BTA4 - シングル サインオン認証の追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ BTA5 - 複雑なタスクを処理するアクションの追加
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    プロンプト エンジニアリング
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            プロンプト エンジニアリング
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copilot-instructions/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../awards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    アワード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    動画など
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="e6c-entra-id">ラボ E6c - Entra ID 認証とシングル サインオンの追加</h1>
+<p>このラボでは、ユーザーが既存の Entra ID 資格情報で認証できるようにする Microsoft Entra ID SSO 認証を追加します。</p>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/1IhyztqkuJo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>このビデオでラボの概要をご覧ください。</div>
+            <div class="note-box">
+            📘 <strong>注意:</strong>   このラボは前回のラボ E5 を基にしています。ラボ E5 を完了している場合は、同じフォルダーで作業を続けられます。完了していない場合は、<a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END" target="_blank">/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END</a> のソリューション フォルダーをコピーして作業してください。  
+    このラボの完成版ソリューションは <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END" target="_blank">/src/extend-m365-copilot/path-e-lab06c-add-sso/trey-research-lab06c-END</a> フォルダーにあります。
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  <div class="floatwide">
+  <div class="cc-lab-toc e-path">
+      <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
+      <div>
+          <p>Microsoft 365 が AI モデルとオーケストレーションを提供する宣言型エージェントを構築したい場合は、これらのラボを実施してください。</p>
+          <ul id="lab-toc">
+              <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 はじめに</a></strong></li>
+              <li><strong>🔧 セットアップ</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">ラボ E0 - セットアップ</a></li>
+                  </ul>
+              </li>
+              <li><strong>🧰 宣言型エージェントの基礎</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent">ラボ E1 - 詳細な宣言型エージェントを構築する</a>
+                      </li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator">ラボ E1a - Geo ロケーターゲーム</a></li>
+                  </ul>
+              </li>
+              <li><strong>🛠️ API をゼロから構築して統合する</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">ラボ E2 - API を構築する</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent">ラボ E3 - 宣言型エージェント + API を追加する</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin">ラボ E4 - API + プラグインを強化する</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">ラボ E5 - Adaptive Card を追加する</a></li>
+                  </ul>
+              </li>
+              <li><strong>🔐 認証</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk">ラボ E6a - Toolkit</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/06b-add-authentication">ラボ E6b - 手動</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/06c-add-sso">ラボ E6c - SSO</a></li>
+                  </ul>
+              </li>
+              <li><strong>🔌 統合</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector">ラボ EB - Graph Connector を追加する</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <script>
+  (() => {
+
+  // This script decorates the table of contents with a "you are here" indicator.
+  const toc = document.getElementsByClassName('cc-lab-toc');
+  for (const div of toc) {
+      const lis = div.querySelectorAll('li');
+      for (const li of lis) {
+          const anchor = li.querySelector('a');
+          if (anchor) {            // Get the last segment of the current URL path
+              const currentPath = window.location.pathname.slice(0, -1).split('/').pop();
+
+              // Get the last segment of the link path
+              const linkPath = anchor.getAttribute('href').split('/').pop().replace('.md', '');
+
+              // Compare the last segments
+              if (currentPath === linkPath) {
+                  const existingSpan = document.querySelector('span.you-are-here');
+                  if (existingSpan) {
+                      existingSpan.remove();
+                  }
+                  const span = document.createElement("span");
+                  span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+                  span.className = "you-are-here";
+                  li.appendChild(span);
+              }
+          }
+      }
+  }
+  })();
+  </script>
+  </div>
+    </div>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>完成版サンプルでは永続的な developer トンネルを使用しています。永続的な developer トンネルを使用していない場合は調整が必要です。エクササイズ 1 をご確認ください。 </p>
+</div>
+<p>このラボでは API を登録する際、後続の手順で使用するために Entra ID ポータルと Teams Developer Portal からいくつかの値を保存する必要があります。保存する値は次のとおりです。</p>
+<pre><code class="language-text">API Base URL: 
+API's Entra ID application ID: 
+API's Tenant ID: 
+SSO Client registration: 
+API ID URI: 
+</code></pre>
+<h2 id="1-developer">エクササイズ 1: 永続的な developer トンネルをセットアップする (任意)</h2>
+<p>既定では、Agents Toolkit はプロジェクトを起動するたびに新しい developer トンネル (つまりローカルで実行中の API にアクセスするための新しい URL) を作成します。通常は Agents Toolkit が自動的に URL を更新するため問題ありませんが、このラボでは手動設定を行うため、デバッガーを開始するたびに Entra ID と Teams Developer Portal の URL を手動で更新する必要があります。そのため、URL が変わらない永続的な developer トンネルをセットアップすると便利です。</p>
+<details class="note">
+<summary>永続的なトンネルを設定しない場合はこちら ▶▶▶</summary>
+<p>このエクササイズをスキップして、Agents Toolkit が提供する developer トンネルを使用しても構いません。プロジェクトを実行後、ターミナル タブ 1️⃣ で "Start local tunnel" ターミナル 2️⃣ を選択し、Forwarding URL 3️⃣ をコピーできます。この URL はプロジェクトを開始するたびに変わるため、アプリ登録の返信 URL (エクササイズ 2 ステップ 1) と Teams Developer Portal の URL (エクササイズ 5 ステップ 1) を手動で更新する必要があります。<br />
+<img alt="Developer tunnel URL" src="../../../../assets/images/extend-m365-copilot-06/oauth-A0.png" /></p>
+</details>
+<h3 id="1-developer-cli">ステップ 1: developer トンネル CLI のインストール</h3>
+<p>以下は developer トンネルをインストールするためのコマンドです。<a href="https://learn.microsoft.com/azure/developer/dev-tunnels/get-started" target="_blank">Developer Tunnel の詳細な手順とダウンロード リンクはこちら</a> です。 </p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><code>winget install Microsoft.devtunnel</code></td>
+</tr>
+<tr>
+<td>Mac OS</td>
+<td><code>brew install --cask devtunnel</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>curl -sL https://aka.ms/DevTunnelCliInstall | bash</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>ファイル パスが更新されるよう、コマンド ラインを再起動する必要がある場合があります。</p>
+</div>
+<p>インストール後、ログインが必要です。Microsoft 365 アカウントでログインできます。</p>
+<pre><code class="language-sh">devtunnel user login
+</code></pre>
+<p>このラボを進める間、devtunnel コマンドは実行し続けてください。再起動が必要な場合は <code>devtunnel user login</code> コマンドを再実行します。</p>
+<p><cc-end-step lab="e6c" exercise="1" step="1" /></p>
+<h3 id="2">ステップ 2: トンネルの作成とホスト</h3>
+<p>次に、Azure Functions のローカル ポート (7071) への永続的トンネルをセットアップします。以下のコマンドを使用し、必要に応じて "mytunnel" を任意の名前に置き換えてください。</p>
+<pre><code class="language-sh">devtunnel create mytunnel -a --host-header unchanged
+devtunnel port create mytunnel -p 7071
+devtunnel host mytunnel
+</code></pre>
+<p>コマンド ラインに接続情報が表示されます:</p>
+<p><img alt="The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../../assets/images/extend-m365-copilot-06/devtunnel-output.png" /></p>
+<p>「Connect via browser」の URL をコピーし、"API Base URL" として保存します。</p>
+<p><cc-end-step lab="e6c" exercise="1" step="2" /></p>
+<h3 id="3">ステップ 3: プロジェクトで動的に作成されるトンネルを無効化</h3>
+<p>ローカルでプロジェクトが実行中の場合は停止します。次に <a href="https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json" target="_blank">.vscode\tasks.json</a> を編集し、"Start Teams App Locally" タスクを見つけます。"Start local tunnel" の依存関係をコメントアウトし、代わりに "Start Azurite emulator" の依存関係を追加します。結果は次のようになります。</p>
+<pre><code class="language-json">{
+    &quot;label&quot;: &quot;Start Teams App Locally&quot;,
+    &quot;dependsOn&quot;: [
+        &quot;Validate prerequisites&quot;,
+        //&quot;Start local tunnel&quot;,
+        &quot;Start Azurite emulator&quot;,
+        &quot;Create resources&quot;,
+        &quot;Build project&quot;,
+        &quot;Start application&quot;
+    ],
+    &quot;dependsOrder&quot;: &quot;sequence&quot;
+},
+</code></pre>
+<p><cc-end-step lab="e6c" exercise="1" step="3" /></p>
+<h3 id="4-server-url">ステップ 4: server URL の手動上書き</h3>
+<p><strong>env/.env.local</strong> を開き、<code>OPENAPI_SERVER_URL</code> の値を永続的トンネル URL に変更します。これは後続手順の構成で必要となる <code>API base URL</code> です。</p>
+<p><cc-end-step lab="e6c" exercise="1" step="4" /></p>
+<h2 id="2-api-entra-id">エクササイズ 2: API 用の Entra ID アプリケーションを登録する</h2>
+<h3 id="1-entra-id">ステップ 1: 新しい Entra ID アプリ登録を追加</h3>
+<p><a href="https://portal.office.com/AdminPortal/" target="_blank">Microsoft 365 管理センター</a> から、または直接 <a href="https://entra.microsoft.com/" target="_blank">https://entra.microsoft.com/</a> で Entra ID 管理センターを開きます。開発用テナントでログインしていることを確認してください。</p>
+<p>「Identity」 1️⃣ ➡ 「Applications」 2️⃣ ➡ 「App registrations」 3️⃣ の順にクリックし、"+" 4️⃣ をクリックして新しいアプリ登録を追加します。</p>
+<p><img alt="The Microsoft Entra admin center showing the list of applications registered and the button to create a 'New regitration'." src="../../../../assets/images/extend-m365-copilot-06/oauth-A2.png" /></p>
+<p>アプリケーションに "Trey API Service" などわかりやすい一意の名前を付けます 1️⃣。「Supported account types」では「Accounts in this organizational directory only (Microsoft only - single tenant)」を選択します 2️⃣。  </p>
+<p>最後に「Register」 3️⃣ をクリックしてアプリケーションを登録します。</p>
+<p><img alt="The app registration page, where you can provide the application name, supported application types, and redirect URI. There is also the 'Register' button to select." src="../../../../assets/images/extend-m365-copilot-06c/oauth-A4.png" /></p>
+<p><cc-end-step lab="e6c" exercise="2" step="1" /></p>
+<h3 id="2_1">ステップ 2: アプリ情報を安全な場所にコピー</h3>
+<p><code>API's Entra ID application ID</code> となる Application ID (Client ID) 1️⃣ と <code>Directory (tenant) ID</code> 2️⃣ をコピーして保存します。これらは後続の構成で使用します。</p>
+<p><img alt="The app registration page, where you see overview to copy the Application ID" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A5.png" /></p>
+<p><cc-end-step lab="e6c" exercise="2" step="2" /></p>
+<h2 id="3-teams-developer-portal-microsoft-entra-sso-id">エクササイズ 3: Teams Developer Portal で Microsoft Entra SSO クライアント ID を登録する</h2>
+<p>これで API は Microsoft Entra ID と連携しましたが、Microsoft 365 にはまだ認識されていません。追加の資格情報を要求することなく API を安全に接続するため、Teams Developer Portal に登録しましょう。</p>
+<h3 id="1-teams-developer-portal-sso">ステップ 1: Teams Developer Portal で SSO クライアントを登録</h3>
+<p><a href="https://dev.teams.microsoft.com" target="_blank">https://dev.teams.microsoft.com</a> にアクセスします。「Tools」 1️⃣ ➡ 「Microsoft Entra SSO client ID registration」 2️⃣ を選択します。</p>
+<p><img alt="The Entra ID SSO config page in Teams developer portal" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A6.png" /></p>
+<p><strong>Register client ID</strong> を選択し、次の値を入力します。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>後でわかりやすい名前</td>
+</tr>
+<tr>
+<td>Base URL</td>
+<td>API base URL</td>
+</tr>
+<tr>
+<td>Restrict usage by org</td>
+<td>"My organization only" を選択</td>
+</tr>
+<tr>
+<td>Restrict usage by app</td>
+<td>"Any Teams app" を選択</td>
+</tr>
+<tr>
+<td>Client (application) ID</td>
+<td>API's Entra ID application ID</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="The Entra ID SSO config page in Teams developer portal with new registration details filled" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A7.png" /></p>
+<p><strong>Save</strong> を選択すると、<strong>Microsoft Entra SSO registration ID</strong> と <strong>Application ID URI</strong> が生成されます。<br />
+これらを控えておき、プラグイン マニフェスト ファイルの SSO 有効化に使用します。</p>
+<p><img alt="Teams deveoper portal Entra SSO configuration" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A8.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">永続的トンネル URL を作成していない場合...</p>
+<p>...アプリケーションを Agents Toolkit で起動するたびに新しいトンネル URL に合わせて「Base URL」フィールドを更新する必要があります。</p>
+</div>
+<p><cc-end-step lab="e6c" exercise="3" step="1" /></p>
+<h2 id="4">エクササイズ 4: アプリケーション パッケージを更新する</h2>
+<h3 id="1">ステップ 1: プラグイン ファイルを更新</h3>
+<p>Visual Studio Code で作業フォルダーを開きます。<strong>appPackage</strong> フォルダー内の <strong>trey-plugin.json</strong> ファイルを開きます。ここには Open API Specification (OAS) ファイルに含まれていない Copilot が必要とする情報が格納されています。</p>
+<p><code>Runtimes</code> セクションに <code>auth</code> プロパティがあり、<code>"type"</code> が <code>"None"</code> になっています。これを以下のように変更し、Copilot に <strong>Microsoft Entra SSO registration ID</strong> を使用して認証するよう指示します。</p>
+<pre><code class="language-json">&quot;auth&quot;: {
+  &quot;type&quot;: &quot;OAuthPluginVault&quot;,
+  &quot;reference_id&quot;: &quot;&lt;Microsoft Entra SSO registration ID&gt;&quot;
+},
+</code></pre>
+<p><cc-end-step lab="e6c" exercise="4" step="1" /></p>
+<h2 id="5-api-microsoft-entra">エクササイズ 5: API の Microsoft Entra アプリ登録を更新する</h2>
+<h3 id="1-application-id-uri">ステップ 1: Application ID URI の更新</h3>
+<ul>
+<li><a href="https://entra.microsoft.com/" target="_blank">Microsoft Entra 管理センター</a> に戻り、API の Entra アプリ登録 (<strong>Trey API Service</strong>) を開きます。  </li>
+<li><strong>Expose an API</strong> を開き、<strong>Application ID URI</strong> を追加/編集します。Teams Developer Portal で生成された <strong>Application ID URI</strong> を貼り付け、<strong>Save</strong> を選択します。</li>
+</ul>
+<p><cc-end-step lab="e6c" exercise="5" step="1" /></p>
+<h3 id="2-api-scope">ステップ 2: API Scope の追加</h3>
+<p>API への呼び出しを検証するには、API Scope を公開する必要があります。ここでは "access_as_user" というシンプルなスコープを設定します。</p>
+<p>「Add a scope」 でスコープ名に "access_as_user" を入力します 1️⃣。残りのフィールドは次のように入力します。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who can consent?</td>
+<td>Admins and users</td>
+</tr>
+<tr>
+<td>Admin consent display name</td>
+<td>Access My API as the user</td>
+</tr>
+<tr>
+<td>Admin consent description</td>
+<td>Allows an API to access My API as a user</td>
+</tr>
+<tr>
+<td>User consent display name</td>
+<td>Access My API as you</td>
+</tr>
+<tr>
+<td>User consent description</td>
+<td>Allows an app to access My API as you</td>
+</tr>
+<tr>
+<td>State</td>
+<td>Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>完了したら「Add Scope」 2️⃣ をクリックします。</p>
+<p><img alt="Access as user scope" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A9.png" /></p>
+<p><cc-end-step lab="e6c" exercise="5" step="2" /></p>
+<h3 id="3_1">ステップ 3: 承認されたクライアント アプリの追加</h3>
+<p>同じ <strong>Expose an API</strong> ページで <strong>Add a client application</strong> 1️⃣ を選択し、Microsoft のエンタープライズ トークン ストアのクライアント ID <code>ab3be6b7-f5df-413d-ac2d-abf1e3fd9c0b</code> 2️⃣ を追加します。スコープを承認するため 3️⃣ を選択し、<strong>Add application</strong> 4️⃣ をクリックします。</p>
+<p><img alt="Add authorized client apps" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A10.png" /></p>
+<p><cc-end-step lab="e6c" exercise="5" step="3" /></p>
+<h3 id="4-uri">ステップ 4: 認証用リダイレクト URI</h3>
+<p>左側のナビゲーションで <strong>Authentication</strong> 1️⃣ ➡ <strong>Add a platform</strong> 2️⃣ ➡ <strong>Web</strong> 3️⃣ を選択します。 </p>
+<p><img alt="Add web platform" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A11.png" /></p>
+<p><strong>Redirect URIs</strong> に <code>https://teams.microsoft.com/api/platform/v1.0/oAuthConsentRedirect</code> を貼り付け 1️⃣、<strong>Configure</strong> 2️⃣ を選択します。</p>
+<p><img alt="Add web platform with Redirect URL" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A12.png" /></p>
+<p><cc-end-step lab="e6c" exercise="5" step="4" /></p>
+<h2 id="6">エクササイズ 6: アプリケーション コードを更新する</h2>
+<h3 id="1-jwt">ステップ 1: JWT 検証ライブラリをインストール</h3>
+<p>作業ディレクトリでコマンド ラインを開き、次を実行します。</p>
+<pre><code class="language-sh">npm i jwt-validate
+</code></pre>
+<p>これで Entra ID 認証トークンを検証するライブラリがインストールされます。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Microsoft は NodeJS 用の Entra ID トークン検証ライブラリを提供していませんが、代わりに <a href="https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens" target="_blank">詳細なドキュメント</a> で独自実装方法を案内しています。<a href="https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/" target="_blank">参考記事</a> も <a href="https://www.voitanos.io/pages/about/#whos-behind-voitanos" target="_blank">Microsoft MVP Andrew Connell</a> によって提供されています。本ラボでは <a href="https://github.com/waldekmastykarz" target="_blank">Waldek Mastykarz</a> による <a href="https://www.npmjs.com/package/jwt-validate" target="_blank">コミュニティ提供ライブラリ</a> を使用します。このライブラリはガイダンスに従って作成されていますが、Microsoft によりサポートされておらず MIT License で提供されています。利用は自己責任でお願いします。</p>
+</div>
+<p><cc-end-step lab="e6c" exercise="6" step="1" /></p>
+<h3 id="2-api">ステップ 2: API 用環境変数を追加</h3>
+<p>作業ディレクトリの <strong>env</strong> フォルダー内 <strong>.env.local</strong> を開き、テナント ID と Application ID URI を追加します。</p>
+<pre><code class="language-text">APP_ID_URI=&lt;Application ID URI&gt;
+API_TENANT_ID=&lt;Directory (tenant) ID&gt;
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Application ID URI を手動生成する場合</p>
+<p>Application ID URI が表示されない場合は、次の手順で一時的に作成してください:<br />
+1. <a href="https://www.base64decode.org/">Base64 Decode and Encode</a> にアクセス<br />
+2. エクササイズ 3, ステップ 1 で生成された auth registration ID を貼り付けてデコード<br />
+3. デコード結果の 2 つ目の部分 (## 以降) を使用し <code>api://auth-&lt;AuthConfigID_Decoded_SecondPart&gt;</code> の形式で組み立てます 例: <code>api://auth-16cfcd90-803e-40ba-8106-356aa4927bb9</code><br />
+<img alt="Generating Application ID URI manually" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A13.png" /></p>
+</div>
+<p>Agents Toolkit で実行中のコード内でこれらの値を利用できるように、作業フォルダーのルートにある <strong>teamsapp.local.yml</strong> も更新します。"Generate runtime environment variables" のコメントを探し、STORAGE_ACCOUNT_CONNECTION_STRING の下に新しい値を追加します。</p>
+<pre><code class="language-yaml">        APP_ID_URI: ${{APP_ID_URI}}
+        API_TENANT_ID: ${{API_TENANT_ID}}
+</code></pre>
+<p>完成した yaml は次のようになります。</p>
+<pre><code class="language-yaml">  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./.localConfigs
+      envs:
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
+        APP_ID_URI: ${{APP_ID_URI}}
+        API_TENANT_ID: ${{API_TENANT_ID}}
+</code></pre>
+<p><cc-end-step lab="e6c" exercise="6" step="2" /></p>
+<h3 id="3-identity">ステップ 3: Identity サービスの更新</h3>
+<p>この時点で SSO は機能し有効なアクセストークンが提供されますが、コードがトークンを検証しない限りセキュアではありません。このステップでは、トークンを検証しユーザー名や ID などの情報を抽出するコードを追加します。</p>
+<p><strong>src/services</strong> フォルダーの <strong>IdentityService.ts</strong> を開きます。<br />
+ファイル冒頭の <code>import</code> 文に次を追加します。</p>
+<pre><code class="language-typescript">import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
+</code></pre>
+<p>次に <code>class Identity</code> 文の直下に次の行を追加します。</p>
+<pre><code class="language-typescript">    private validator: TokenValidator;
+</code></pre>
+<p>以下のコメントを探します。</p>
+<pre><code class="language-typescript">// ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
+</code></pre>
+<p>コメントを次のコードに置き換えます。</p>
+<pre><code class="language-typescript">// Try to validate the token and get user's basic information
+try {
+    const { APP_ID_URI, API_TENANT_ID } = process.env;
+    const token = req.headers.get(&quot;Authorization&quot;)?.split(&quot; &quot;)[1];
+    if (!token) {
+        throw new HttpError(401, &quot;Authorization token not found&quot;);
+    }
+
+    // create a new token validator for the Microsoft Entra common tenant
+    if (!this.validator) {
+        // We need a new validator object which we will continue to use on subsequent
+        // requests so it can cache the Entra ID signing keys
+        // For multitenant, use:
+        // const entraJwksUri = await getEntraJwksUri();
+        const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
+        this.validator = new TokenValidator({
+            jwksUri: entraJwksUri
+        });
+        console.log (&quot;Token validator created&quot;);
+    }
+
+
+    const options: ValidateTokenOptions = {
+                audience: APP_ID_URI, 
+                issuer: `https://sts.windows.net/${API_TENANT_ID}/`,              
+                scp: [&quot;access_as_user&quot;],
+
+            };
+
+    // validate the token
+    const validToken = await this.validator.validateToken(token, options);
+
+    userId = validToken.oid;
+    userName = validToken.name;
+    userEmail = validToken.upn;
+    console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
+}
+catch (ex) {
+    // Token is missing or invalid - return a 401 error
+    console.error(ex);
+    throw new HttpError(401, &quot;Unauthorized&quot;);
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">コードを読み解く</p>
+<p>追加したコードを確認してみましょう。まず、<code>Authorization</code> ヘッダーからトークンを取得します。このヘッダーは "Bearer &lt;トークン&gt;" の形式なので、JavaScript の <code>split(" ")</code> でトークンのみを取り出しています。  </p>
+<p>認証が失敗した場合、例外をスローし Azure Function が適切なエラーを返す点にも注意してください。  </p>
+<p>次に <code>jwt-validate</code> ライブラリ用のバリデーターを作成します。この呼び出しは Entra ID から最新の秘密鍵を読み込むため非同期で時間がかかる場合があります。  </p>
+<p>その後 <code>ValidateTokenOptions</code> オブジェクトを設定します。このオブジェクトに基づき、ライブラリは以下を検証します:  </p>
+<ul>
+<li><em>audience</em> が API サービス アプリ URI と一致すること  </li>
+<li><em>issuer</em> がテナントのセキュリティ トークン サービスであること  </li>
+<li><em>scope</em> が <code>"access_as_user"</code> と一致すること  </li>
+</ul>
+<p>トークンが有効な場合、ライブラリはユーザーの一意の ID、名前、メールなどのクレームを返します。これらを使用して、架空の "Avery Howard" ではなく実際のユーザー情報を利用します。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">アプリがマルチテナントの場合</p>
+<p>マルチテナント アプリでのトークン検証に関するコメントを上記コード内に記載しています。</p>
+</div>
+<p><code>userId</code> を取得した後、コードは Consultant レコードを検索します。元のコードでは Avery Howard の ID がハードコーディングされていましたが、現在はログイン ユーザーの ID を使用し、データベースに存在しない場合は新しい Consultant レコードを作成します。</p>
+<p>その結果、アプリを初めて起動すると、デフォルトのスキルやロールを持つ新しい Consultant がログイン ユーザー用に作成されるはずです。独自デモ用に変更したい場合は <a href="https://azure.microsoft.com/en-us/products/storage/storage-explorer/" target="_blank">Azure Storage Explorer</a> を使って編集できます。</p>
+<p><img alt="The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted." src="../../../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png" /></p>
+<p>プロジェクト割り当ては <code>Assignment</code> テーブルに保存され、Project ID と Consultant ID を参照しています。</p>
+<p><cc-end-step lab="e6c" exercise="6" step="3" /></p>
+<h3 id="4_1">ステップ 4: ライブラリのバージョン問題の回避策</h3>
+<p>現時点では <code>jwt-validate</code> パッケージが <code>@types/jsonwebtoken</code> パッケージに対して型エラーを出します。回避策として、プロジェクト ルートの <strong>tsconfig.json</strong> を編集し <code>"skipLibCheck":true</code> を追加してください。この問題は将来のライブラリ バージョンで修正され、不要になる可能性があります。</p>
+<p><cc-end-step lab="e6c" exercise="6" step="4" /></p>
+<h2 id="7">エクササイズ 7: アプリケーションをテストする</h2>
+<p>テスト前に <code>appPackage\manifest.json</code> ファイルの manifest バージョンを更新してください:</p>
+<ol>
+<li>
+<p>プロジェクトの <code>appPackage</code> フォルダーにある <code>manifest.json</code> を開きます。</p>
+</li>
+<li>
+<p>JSON の <code>version</code> フィールドを見つけます。現在は次のようになっています: </p>
+</li>
+</ol>
+<pre><code class="language-json">&quot;version&quot;: &quot;1.0.0&quot;
+</code></pre>
+<ol>
+<li>バージョン番号を小さくインクリメントします。例:  </li>
+</ol>
+<pre><code class="language-json">&quot;version&quot;: &quot;1.0.1&quot;
+</code></pre>
+<ol>
+<li>ファイルを保存します。</li>
+</ol>
+<h3 id="1_1">ステップ 1: アプリケーションの起動 (または再起動)</h3>
+<p>アプリケーションを再起動し、Copilot アプリの Trey Genie を開きます。</p>
+<p>プロンプト例: "What projects am I assigned to?"<br />
+エージェントを許可すると、次のようにサインインを求められます (初回のみ)。</p>
+<p><img alt="Sign in button" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A14.png" /></p>
+<p>サインイン ボタンを選択後、アプリケーションの API が現在のユーザーとしてアクセスすることを許可する必要があります。「Accept」を選択してください。</p>
+<p><img alt="Accept permission" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A15.png" /></p>
+<p>これ以降、ユーザーはエージェントとのやり取りで毎回サインインする必要はありません。</p>
+<p><img alt="Single sign on" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A16.gif" /></p>
+<p><cc-end-step lab="e6c" exercise="7" step="1" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">おめでとうございます！</span></p>
+<p>ラボ E6c、SSO の追加が完了しました!</p>
+<p>何か面白いことを試してみませんか? ソリューションに Copilot Connector を追加してみましょう。</p>
+<p><cc-next url="../07-add-graphconnector" /></p>
+<p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06c-add-sso" /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
