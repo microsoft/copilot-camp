@@ -28,6 +28,14 @@ Documentation automatically deploys when you push to `main`:
 ```bash
 git push origin main
 ```
+
+### Manual Documentation Deployment
+You can also deploy documentation on-demand:
+1. Go to **Actions** tab in GitHub repository
+2. Select **"🚀 Deploy Documentation"** workflow
+3. Click **"Run workflow"**
+4. Optionally provide a reason for deployment (e.g., "Emergency rebuild", "Config update")
+5. Click **"Run workflow"** to start deployment
 ---
 
 ## 2. `translate-docs.yml` - Translation Automation
