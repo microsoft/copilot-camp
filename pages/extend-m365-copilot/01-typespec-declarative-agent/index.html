@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
@@ -2354,12 +2354,9 @@ Replace the entire block of code starting just after the SERVER_URL definition a
   @route(&quot;/repairs&quot;)
   @get  op listRepairs(@query assignedTo?: string): string;
 
-````
-
-Now go back to `main.tsp` file and add the action you just defined into the agent. After the conversation starters replace the entire block of code with below snippet.
-
-```typespec
-namespace RepairServiceAgent{  
+</code></pre>
+<p>Now go back to <code>main.tsp</code> file and add the action you just defined into the agent. After the conversation starters replace the entire block of code with below snippet.</p>
+<pre><code class="language-typespec">namespace RepairServiceAgent{  
   // Uncomment this part to add actions to the agent.
   @service
   @server(global.RepairsAPI.SERVER_URL)
