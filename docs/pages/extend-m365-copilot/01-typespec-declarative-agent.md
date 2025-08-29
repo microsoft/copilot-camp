@@ -188,7 +188,7 @@ Replace the entire block of code starting just after the SERVER_URL definition a
   @route("/repairs")
   @get  op listRepairs(@query assignedTo?: string): string;
 
-````
+```
 
 Now go back to `main.tsp` file and add the action you just defined into the agent. After the conversation starters replace the entire block of code with below snippet.
 
