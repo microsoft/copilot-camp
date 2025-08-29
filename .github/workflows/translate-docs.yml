@@ -1,0 +1,156 @@
+name: 🌐 Run Translation Script
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_retranslation:
+        description: 'Force re-translation of all files (ignore timestamps)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: ✅ Validate secrets
+        env:
+          AZURE_OPENAI_ENDPOINT_URL: ${{ secrets.AZURE_OPENAI_ENDPOINT_URL }}
+          AZURE_OPENAI_DEPLOYMENT_NAME: ${{ secrets.AZURE_OPENAI_DEPLOYMENT_NAME }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+        run: |
+          echo "Checking required secrets..."
+          if [ -z "$AZURE_OPENAI_ENDPOINT_URL" ]; then
+            echo "❌ AZURE_OPENAI_ENDPOINT_URL secret is not set"
+            exit 1
+          fi
+          if [ -z "$AZURE_OPENAI_DEPLOYMENT_NAME" ]; then
+            echo "❌ AZURE_OPENAI_DEPLOYMENT_NAME secret is not set"
+            exit 1
+          fi
+          if [ -z "$AZURE_OPENAI_API_KEY" ]; then
+            echo "❌ AZURE_OPENAI_API_KEY secret is not set"
+            exit 1
+          fi
+          echo "✅ All required secrets are configured"
+      
+      - name: 🔧 Configure translation script
+        run: |
+          echo "Force retranslation: ${{ github.event.inputs.force_retranslation }}"
+      
+      - name: 🌐 Run translation script
+        env:
+          AZURE_OPENAI_ENDPOINT_URL: ${{ secrets.AZURE_OPENAI_ENDPOINT_URL }}
+          AZURE_OPENAI_DEPLOYMENT_NAME: ${{ secrets.AZURE_OPENAI_DEPLOYMENT_NAME }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+        run: |
+          echo "Starting translation process..."
+          
+          # Check if script exists
+          if [ ! -f "docs/scripts/translate-docs.py" ]; then
+            echo "❌ docs/scripts/translate-docs.py not found"
+            exit 1
+          fi
+          
+          # Enable unbuffered output for real-time progress
+          export PYTHONUNBUFFERED=1
+          
+          # For force retranslation, we'll modify the script temporarily
+          if [ "${{ github.event.inputs.force_retranslation }}" == "true" ]; then
+            echo "🔄 Force retranslation enabled"
+            # Use sed to comment out the timestamp check lines
+            sed 's/^        if os\.path\.exists(target_path):/        # if os.path.exists(target_path):/' docs/scripts/translate-docs.py > translate-docs-temp.py
+            sed -i 's/^            src_mtime = os\.path\.getmtime(file_path)/            # src_mtime = os.path.getmtime(file_path)/' translate-docs-temp.py
+            sed -i 's/^            tgt_mtime = os\.path\.getmtime(target_path)/            # tgt_mtime = os.path.getmtime(target_path)/' translate-docs-temp.py
+            sed -i 's/^            if tgt_mtime >= src_mtime:/            # if tgt_mtime >= src_mtime:/' translate-docs-temp.py
+            sed -i 's/^                print(f"Skipping up-to-date file: {target_path}")/                # print(f"Skipping up-to-date file: {target_path}")/' translate-docs-temp.py
+            sed -i 's/^                continue/                # continue/' translate-docs-temp.py
+            echo "🚀 Running Python script with real-time output..."
+            python -u translate-docs-temp.py
+          else
+            echo "⏱️ Using standard script with timestamp checks"
+            echo "🚀 Running Python script with real-time output..."
+            python -u docs/scripts/translate-docs.py
+          fi
+          
+          echo "✅ Translation script completed"
+      
+      - name: 🔍 Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+            git status --porcelain
+          fi
+      
+      - name: 📝 Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Add all translation files
+          git add docs/ja/ docs/includes/ja/ || true
+          
+          # Create commit with timestamp
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          git commit -m "🌐 Auto-translation update - $TIMESTAMP
+
+          - Updated Japanese translations
+          - Generated by GitHub Actions workflow
+          - Triggered by: ${{ github.actor }}"
+          
+          # Push changes
+          git push
+      
+      - name: 📊 Create summary
+        run: |
+          echo "## 🌐 Translation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Force retranslation:** ${{ github.event.inputs.force_retranslation }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.check_changes.outputs.changes }}" == "true" ]; then
+            echo "✅ **Result:** Translation completed successfully with changes" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 📝 Files updated:" >> $GITHUB_STEP_SUMMARY
+            git diff --name-only HEAD~1 | grep -E '\.(md)$' | head -20 >> $GITHUB_STEP_SUMMARY || echo "No markdown files to show" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **Result:** Translation completed - no changes needed" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: 🚨 Notify on failure
+        if: failure()
+        run: |
+          echo "## ❌ Translation Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The translation script encountered an error. Please check the logs above." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Common issues:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Azure OpenAI credentials not properly configured" >> $GITHUB_STEP_SUMMARY
+          echo "- API rate limits exceeded" >> $GITHUB_STEP_SUMMARY
+          echo "- Network connectivity issues" >> $GITHUB_STEP_SUMMARY

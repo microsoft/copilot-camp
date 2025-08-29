@@ -12,8 +12,8 @@ In this final lab, you’ll bring your custom engine agent into Copilot Chat by 
 Go to **M365Agent/AppPackage/manifest.json**, update the manifest schema and version as following: 
 
 ``` 
-"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.20/MicrosoftTeams.schema.json", 
-"manifestVersion": "1.20", 
+"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+"manifestVersion": "1.22",
 ```
 
 Replace bots section with the following that will also add copilotAgents in the manifest:
@@ -21,45 +21,45 @@ Replace bots section with the following that will also add copilotAgents in the 
 > This block declares your agent as a custom engine agent for M365 Copilot. It tells Microsoft 365 to expose this agent in Copilot Chat and surface its command list in the conversation UI along with the conversation starters to help users get started quickly.
 
 ```   
-  "bots": [ 
-    { 
-      "botId": "${{BOT_ID}}", 
-      "scopes": [ 
-        "personal", 
-        "team", 
-        "groupChat" 
-      ], 
-      "supportsFiles": false, 
-      "isNotificationOnly": false, 
-      "commandLists": [ 
-        { 
-          "scopes": [ "personal", "team", "groupChat" ], 
-          "commands": [ 
-            { 
-              "title": "Emergency and Mental Health",
-              "description": "What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
-            }, 
-            { 
-              "title": "PerksPlus Details", 
-              "description": "Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?" 
-            }, 
-            { 
-              "title": "Contoso Electronics Values", 
-              "description": "What values guide behavior and decision making at Contoso Electronics?" 
-            } 
-          ] 
-        } 
-      ] 
-    } 
-  ], 
-  "copilotAgents": { 
-    "customEngineAgents": [ 
+"bots": [ 
+  { 
+    "botId": "${{BOT_ID}}", 
+    "scopes": [ 
+      "personal", 
+      "team", 
+      "groupChat" 
+    ], 
+    "supportsFiles": false, 
+    "isNotificationOnly": false, 
+    "commandLists": [ 
       { 
-        "id": "${{BOT_ID}}", 
-        "type": "bot" 
+        "scopes": [ "personal", "team", "groupChat" ], 
+        "commands": [ 
+          { 
+            "title": "Emergency and Mental Health",
+            "description": "What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
+          }, 
+          { 
+            "title": "PerksPlus Details", 
+            "description": "Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?" 
+          }, 
+          { 
+            "title": "Contoso Electronics Values", 
+            "description": "What values guide behavior and decision making at Contoso Electronics?" 
+          } 
+        ] 
       } 
     ] 
-  }, 
+  } 
+], 
+"copilotAgents": { 
+  "customEngineAgents": [ 
+    { 
+      "id": "${{BOT_ID}}", 
+      "type": "bot" 
+    } 
+  ] 
+}, 
 ```
 
 Hit **Start** or **F5** to start debugging. Microsoft Teams will launch automatically. When Microsoft Teams open in your browser, ignore the app pop-up and select **Apps > Manage your apps > Upload an app** and then select **Upload a custom app**. In the File Explorer go to your project folder `...\ContosoHRAgent\M365Agent\appPackage\build` select **appPackage.local.zip**.
@@ -72,11 +72,12 @@ Your app will pop-up on Teams again, select **Add**. This time there will be an 
 
 Select your **ContosoHRAgentlocal** from the list of agents in Copilot Chat. You can select one of the conversation starters to chat with your agent.
 
-![The agent hosted inside Microsoft 365 Copilot, showing the conversation starters configured in the application manifest.](https://github.com/user-attachments/assets/2aab299c-23ff-4369-a42c-bd74c66f854d)
+![The agent hosted inside Microsoft 365 Copilot, showing the conversation starters configured in the application manifest.](https://github.com/user-attachments/assets/a1d061c7-c58f-4a1e-9481-4d6a60d85e3b)
 
 Observe that your agent responds back with a similar behavior on Copilot Chat.
 
-![The agent hosted in Microsoft 365 Copilot providing the same feedback as the one provided in Microsoft Teams, including evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/4211f43d-8aef-4262-95e3-1efac7dba495)
+![The agent hosted in Microsoft 365 Copilot providing the same feedback as the one provided in Microsoft Teams, including evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/caedced5-1247-44ed-b12f-78827f4e4784)
+
 
 ---8<--- "b-congratulations.md"
 
