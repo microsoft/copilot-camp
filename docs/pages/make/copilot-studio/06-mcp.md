@@ -73,7 +73,7 @@ The main elements of the project outline are:
 - `DevTunnel_Instructions.MD`: instructions about how to expose the MCP server via a dev tunnel.
 - `Progam.cs`: the main entry point of the project, where the MCP server gets initialized.
 
-Open a new terminal window from within Visual Studio Code or simply start a new terminal window, and then install dependencies, build, and start the .NET project by invoking the following command:
+Open a new terminal window from within Visual Studio Code or simply start a new terminal window and move to the root folder of the MCP server project that you just extracted. Then install dependencies, build, and start the .NET project by invoking the following command:
 
 ```console
 dotnet run
@@ -98,6 +98,9 @@ devtunnel user login
 ```
 
 - Host your dev tunnel, executing the following commands:
+
+!!! important
+    Replace the `hr-mcp` name suggested below with whatever name you like, in order to have a unique name for your devtunnel. For example, if your name is Rose you can use `hr-mcp-rose` as the name for your tunnel. In case you will get an error like `Request not permitted. Unauthorized tunnel creation access ...` it means that someone else is already using that name. To solve the issue, simply provide a different name.
 
 ```console
 devtunnel create hr-mcp -a --host-header unchanged
@@ -168,7 +171,7 @@ Choose to **Skip to configure** and define your new agent with the following set
 - **Name**: 
 
 ```text
-HR Agent with MCP
+HR Candidate Management
 ```
 
 - **Description**: 
@@ -188,7 +191,7 @@ Always provide clear and helpful information about candidates, including their s
 contact details, and availability status.
 ```
 
-![The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the HR Agent with MCP.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
+![The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the "HR Candidate Management" agent.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
 
 Select **Create** to create your new agent.
 
@@ -222,64 +225,35 @@ Choose 1️⃣ **Model Context Protocol** group to see all the already existing 
 
 ![The panel to add new tools, with the "+ New tool" command highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-02.png)
 
-A new dialog shows up allowing you to select the kind of tool that you want to add. At the time of this writing, if you select the **Model Context Protocol** option, you will be brought to the official Microsoft Copilot Studio documentation page [Extend your agent with Model Context Protocol](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-mcp){target=_blank} that explains you how to add a new MCP server as a Power Platform custom connector.
+A new dialog shows up allowing you to select the kind of tool that you want to add. Select the **Model Context Protocol** option.
 
-In this lab we are going to create the actual custom connector for the MCP server. So, select **Custom connector** and proceed with the following steps. 
+![The dialog to add a new tool with the "Model Context Protocol" option highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-03.png)
 
-![The dialog to add a new tool with the "Custom connector" option highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-03.png)
+A new dialog will open, allowing you to configure the new MCP server providing name, description, URL, and authentication method.
 
-A new browser tab will open, providing you access to the Power Apps configuration page to manage custom connectors. Select 1️⃣ **+ New custom connector** and then 2️⃣ **Import an OpenAPI file**.
+Provide a name for the MCP server, for example:
 
-![The dialog to add a new tool with the "Custom connector" option highlighted.](../../../assets/images/make/copilot-studio-06/mcp-integration-04.png)
+`HR MCP Server`
 
-Keep this process on hold, move to Visual Studio Code, create a new file, and paste the following YAML schema into it.
+Provide a description, for example:
 
-```yaml
-swagger: '2.0'
-info:
-  title: HR MCP Server
-  description: Allows to manage candidates for specific job roles providing tools to list, search, add, update, and remove candidates from a reference list
-  version: 1.0.0
-host: [Connect via browser host name of your dev tunnel]
-basePath: /
-schemes:
-  - https
-paths:
-  /:
-    post:
-      summary: HR MCP Server
-      x-ms-agentic-protocol: mcp-streamable-1.0
-      operationId: InvokeMCP
-      responses:
-        '200':
-          description: Success
-```
+`Allows managing a list of candidates for the HR department`
 
-Replace the `host` with the actual hostname of your dev tunnel public URL.
-The value for the `host` property should be something like `3dcwb74w-47002.euw.devtunnels.ms`, without the https:// prefix and without the closing /. Simply use the hostname. Save the file and go back to the browser. 
+Configure the URL of the server, providing the URL that you copied from the devtunnel with name `[Connect via browser of your dev tunnel]`.
 
-Provide a name for the connector, for example `HR MCP Server`.
-Select **Import** and browse for the OpenAPI file that you just created.
-Once you have selected the file, click on **Continue**
+Select **None** as the authentication method and then select **Create** to configure the actual tool.
 
-![The dialog to create a new "Custom connector" in the current Power Platform environment. There are the name of the connector and the path to the OpenAPI specification YAML file.](../../../assets/images/make/copilot-studio-06/mcp-integration-05.png)
+![The dialog to add a new MCP server to the agent. There are settings to configure the server name, the server description, the server URL, and the authentication method. There is also a command to "Create" the MCP server.](../../../assets/images/make/copilot-studio-06/mcp-integration-04.png)
 
-In the page to configure the connector, select to enable the **Swagger editor** to switch to the source code of the OpenAPI specification.
-You can see the content of the YAML file that you just uploaded and you can validate that the specification file is correct.
+Once the tool will get created, you will see a new dialog window requesting you to connect to the MCP server.
 
-![The "Custom connector" definition page in the current Power Platform environment. There is the "Swagger editor" option selected to see the source code of the OpenAPI specification file.](../../../assets/images/make/copilot-studio-06/mcp-integration-06.png)
+![The dialog to connect to the MCP server. There is a "Connection" status with "Not connected" value.](../../../assets/images/make/copilot-studio-06/mcp-integration-05.png)
 
-Select the **Create connector** command and wait for the connector to be ready. If you like, you can also provide a custom icon for the connector, to easily recognize it in the list of tools. If you like, you can download the [following icon](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/make/copilot-studio/path-m-lab-mcs6-mcp/hr-mcp-server-icon.png){target=_blank}, use it for the custom connector, and select **Update connector** to persist the change. 
+Select the `Not connected` option and then select **Create a new connection**. Follow the steps and you will be able to connect to the target MCP server.
 
-Now go back to Copilot Studio, select the **Refresh** button and go back to the list of available tools. 
+![The option to "Create a new connection" to the MCP server.](../../../assets/images/make/copilot-studio-06/mcp-integration-06.png)
 
-![The dialog to add a new tool in Copilot Studio with a dialog waiting for you to select the "Refresh" button to reload the list of available tools.](../../../assets/images/make/copilot-studio-06/mcp-integration-07.png)
-
-Now, in the **Model Context Protocol** list, you should be able to find the `HR MCP Server`.
-
-![The list of "Model Context Protocol" tools, including the new "HR MCP Server" connector.](../../../assets/images/make/copilot-studio-06/mcp-integration-08.png)
-
-Select the `HR MCP Server` connector, connect to the server using the default connection user experience of Copilot Studio, and when the connector is connected select **Add and configure**
+Once the connection is completely configured, you can select the **Add and configure** command in the dialog window and see the MCP server and tools properly configured.
 
 ![The dialog to add the "HR MCP Server" connector as a tool to the current agent in Copilot Studio. There are buttons to "Add to agent" and to "Add and configure", as well as a button to "Cancel".](../../../assets/images/make/copilot-studio-06/mcp-integration-09.png)
 
@@ -331,7 +305,7 @@ Now, for example, you can try with another prompt like:
 Search for candidate Alice
 ```
 
-![The Microsoft 365 Copilot chat interface with the suggested prompts configured for the "HR Agent with MCP" and the prompt "Search for candidate Alice" ready to be processed.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-01.png)
+![The Microsoft 365 Copilot chat interface with the suggested prompts configured for the "HR Candidate Management" and the prompt "Search for candidate Alice" ready to be processed.](../../../assets/images/make/copilot-studio-06/mcp-test-copilot-01.png)
 
 Now the agent should use the MCP server's `search_candidates` tool and return only one candidate matching the search criteria.
 However, since we are in the Microsoft 365 Copilot context, you will need to connect again to the MCP server, using the Microsoft Copilot Studio connections management interface.

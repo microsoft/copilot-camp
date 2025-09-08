@@ -17,3 +17,7 @@ Gemfile.lock
 # Config and secrets
 .env
 .env.local
+
+# Ignore Azure files
+src/make/copilot-studio/path-m-lab-mcs6-mcp/hr-mcp-server/__azurite_db_blob__.json
+src/make/copilot-studio/path-m-lab-mcs6-mcp/hr-mcp-server/__azurite_db_blob_extent__.json
