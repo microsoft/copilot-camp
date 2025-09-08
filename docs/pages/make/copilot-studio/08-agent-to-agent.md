@@ -41,6 +41,7 @@ For this lab, you'll create a child agent architecture where:
 - **Connected Agent**: HR Candidate Management (the existing agent from previous labs)
 
 This design allows for:
+
 - Clear separation of concerns
 - Reusability of the HR Candidate Management functionality
 - Coordinated workflow execution
@@ -61,6 +62,7 @@ The agent-to-agent workflow you'll implement follows this sequence:
 7. **Confirmation**: User receives confirmation of scheduled interview
 
 This workflow demonstrates key agent-to-agent patterns:
+
 - **Orchestration**: Main agent coordinates multiple sub-processes
 - **Delegation**: Specific tasks are handed off to specialized agents
 - **Data Flow**: Information flows seamlessly between agents
