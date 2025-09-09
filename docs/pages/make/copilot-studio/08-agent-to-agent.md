@@ -36,11 +36,13 @@ Microsoft Copilot Studio supports two primary patterns for agent collaboration:
 2. **Connected Agents**: Independent, full-fledged agents that can be published and maintained separately
 
 For this lab, you'll create a child agent architecture where:
+
 - **Main Agent**: Interview Coordinator (orchestrates the overall process)
 - **Child Agent**: Interview Scheduler (handles meeting creation and calendar management)
 - **Connected Agent**: HR Candidate Management (the existing agent from previous labs)
 
 This design allows for:
+
 - Clear separation of concerns
 - Reusability of the HR Candidate Management functionality
 - Coordinated workflow execution
@@ -61,6 +63,7 @@ The agent-to-agent workflow you'll implement follows this sequence:
 7. **Confirmation**: User receives confirmation of scheduled interview
 
 This workflow demonstrates key agent-to-agent patterns:
+
 - **Orchestration**: Main agent coordinates multiple sub-processes
 - **Delegation**: Specific tasks are handed off to specialized agents
 - **Data Flow**: Information flows seamlessly between agents
@@ -388,6 +391,7 @@ Retrieve information about Alice Johnson and schedule an interview with her for 
 ```
 
 2. **Observe Agent Coordination**: Watch in the test panel as the agent:
+
    - Processes your request
    - Calls the HR Candidate Management agent to find John Smith
    - Retrieves candidate details
