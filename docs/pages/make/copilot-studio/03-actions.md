@@ -188,7 +188,7 @@ In this exercise you are going to consume the tool that you just defined from wi
 
 ### Step 1: Invoking a tool from a topic
 
-First of all, create a new tool from blank, give it name `Add a new candidate to Excel`, and follow the same steps defined in [Exercise 4 of Lab MCS2](../02-topics#exercise-4--using-adaptive-cards){target=_blank}.
+First of all, create a new topic from blank, give it name `Add a new candidate to Excel`, and follow the same steps defined in [Exercise 4 of Lab MCS2](../02-topics#exercise-4--using-adaptive-cards){target=_blank}.
 
 The triggering description can be something like the following:
 
