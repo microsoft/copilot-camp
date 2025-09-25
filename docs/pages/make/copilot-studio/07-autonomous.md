@@ -104,7 +104,7 @@ Choose to **Configure** and define your autonomous agent with the following sett
 - **Name**: 
 
 ```text
-Autonomous HR Document Processor
+Autonomous HR Docs Processor
 ```
 
 - **Description**: 

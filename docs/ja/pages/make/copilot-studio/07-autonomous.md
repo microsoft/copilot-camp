@@ -132,7 +132,7 @@ you automatically:
 
 Always ensure data accuracy and provide clear feedback about the processing results. 
 Handle errors gracefully and provide informative messages when processing fails.
-DO NOT invent or assume fake data about candidates. AVOID allucinations.
+DO NOT invent or assume fake data about candidates. AVOID hallucinations.
 You MUST ONLY process real and existing data.
 ```
 
