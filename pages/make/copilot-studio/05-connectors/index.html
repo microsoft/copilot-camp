@@ -2227,7 +2227,7 @@ On the right side of the screen you will see the output of the request, providin
     &quot;AAD_APP_CLIENT_ID&quot;: &quot;&lt;Client-ID&gt;&quot;,
     &quot;AAD_APP_TENANT_ID&quot;: &quot;&lt;Tenant-ID&gt;&quot;,
     &quot;AAD_APP_OAUTH_AUTHORITY&quot;: &quot;https://login.microsoftonline.com/&lt;Tenant-ID&gt;&quot;,
-    &quot;UseOAuth&quot;: false
+    &quot;UseOAuth&quot;: &quot;true&quot;
   }
 }
 </code></pre>
@@ -2270,7 +2270,7 @@ When the permission has been added, select the <strong>Grand admin consent for .
 <h2 id="exercise-2-creating-the-custom-connector">Exercise 2 : Creating the custom connector</h2>
 <p>In this excercise you are going to create the Power Platform custom connector to consume the HR Service API.</p>
 <h3 id="step-1-creating-the-custom-connector">Step 1: Creating the custom connector</h3>
-<p>To create a new custom connector, open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://make.powerautomate.com" target="_blank">https://make.powerautomate.com</a> to access Power Automate. On the left-side menu panel, select <strong>More</strong>, then <strong>Discover all</strong>, then look for <strong>Custom connectors</strong>. You can eventually pin the menu item if you plan to use it frequently. The page with the list of custom connectors will appear. Select the command <strong>+ New custom connector</strong> and choose <strong>Import an OpenAPI file</strong>.</p>
+<p>To create a new custom connector, open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://make.powerautomate.com" target="_blank">https://make.powerautomate.com</a> to access Power Automate. First of all, switch to the <code>Copilot Dev Camp</code> environment, using the environment selctor in the upper right corner of the screen. Then, on the left-side menu panel, select <strong>More</strong>, then <strong>Discover all</strong>, then look for <strong>Custom connectors</strong>. You can eventually pin the menu item if you plan to use it frequently. The page with the list of custom connectors will appear. Select the command <strong>+ New custom connector</strong> and choose <strong>Import an OpenAPI file</strong>.</p>
 <p><img alt="The menu to create a new Power Platform custom connector, highlighting the **Import an OpenAPI file** option." src="../../../../assets/images/make/copilot-studio-05/custom-connector-12.png" /></p>
 <p>Provide a name for the connector and browse for the OpenAPI JSON file of the <code>HR-Service</code>. You can also find the file <a href="https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/path-m-lab-mcs5-connectors/hr-service/src/openapi.json?raw=true" target="_blank">here</a>. Once you have provided a name and the Open API specification file, select the <strong>Continue</strong> button to complete the connector creation.</p>
 <p><img alt="The dialog to create a new custom connector starting from an OpenAPI JSON file. There is the name of the connector and the path of the OpenAPI specification file. The **Continue** command is highlighted." src="../../../../assets/images/make/copilot-studio-05/custom-connector-13.png" /></p>
