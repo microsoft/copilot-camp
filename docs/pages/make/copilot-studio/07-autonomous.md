@@ -99,7 +99,7 @@ Open a browser and, using the work account of your target Microsoft 365 tenant, 
 
 Select the `Copilot Dev Camp` environment that you created in previous labs, then select **Create** in the left navigation menu, and choose **Agent** to create a new agent.
 
-Choose to **Skip to configure** and define your autonomous agent with the following settings:
+Choose to **Configure** and define your autonomous agent with the following settings:
 
 - **Name**: 
 

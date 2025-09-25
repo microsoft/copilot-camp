@@ -489,6 +489,10 @@ h3[id*="step-"] {
     background-image: url('../assets/images/path-icons/icon-mcs7.png');
 }
 
+.mcs-path ul li:nth-child(9) {
+    background-image: url('../assets/images/path-icons/icon-mcs8.png');
+}
+
 /*** Style mkdocs features ***
 
 /* Sidebar 
