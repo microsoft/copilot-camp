@@ -94,42 +94,6 @@ Entra ID で保護されたアプリケーションは登録され、アクセ�
             "permissionIds": [
                 "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
             ]
-        },
-        {
-            "appId": "d3590ed6-52b3-4102-aeff-aad2292ab01c",
-            "permissionIds": [
-                "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
-            ]
-        },
-        {
-            "appId": "00000002-0000-0ff1-ce00-000000000000",
-            "permissionIds": [
-                "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
-            ]
-        },
-        {
-            "appId": "bc59ab01-8403-45c6-8796-ac3ef710b3e3",
-            "permissionIds": [
-                "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
-            ]
-        },
-        {
-            "appId": "0ec893e0-5785-4de6-99da-4ed124e5296c",
-            "permissionIds": [
-                "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
-            ]
-        },
-        {
-            "appId": "4765445b-32c6-49b0-83e6-1d93765276ca",
-            "permissionIds": [
-                "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
-            ]
-        },
-        {
-            "appId": "4345a7b9-9a63-4910-a426-35363201d503",
-            "permissionIds": [
-                "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"
-            ]
         }
     ],
     "identifierUris":[
