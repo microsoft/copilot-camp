@@ -49,10 +49,11 @@ The server manages candidates information including:
 
 Before starting, make sure you have:
 
-- [.NET 10.0 SDK (preview 6 or higher)](https://dotnet.microsoft.com/download/dotnet/10.0){target=_blank}
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0){target=_blank}
 - [Visual Studio Code](https://code.visualstudio.com/){target=_blank}
 - [Node.js v.22 or higher](https://nodejs.org/en){target=_blank}
 - [MCP Inspector](https://github.com/modelcontextprotocol/inspector){target=_blank}
+- [Dev tunnel](https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started){target=_blank}
 
 <cc-end-step lab="mcs6" exercise="1" step="1" />
 
