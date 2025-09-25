@@ -6,6 +6,6 @@
     "AAD_APP_CLIENT_ID": "<Client-ID>",
     "AAD_APP_TENANT_ID": "<Tenant-ID>",
     "AAD_APP_OAUTH_AUTHORITY": "https://login.microsoftonline.com/<Tenant-ID>",
-    "UseOAuth": false
+    "UseOAuth": "false"
   }
 }
