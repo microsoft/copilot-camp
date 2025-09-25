@@ -35,6 +35,7 @@ Before starting, make sure you have:
 - [Visual Studio Code](https://code.visualstudio.com/){target=_blank}
 - [REST Client extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client){target=_blank}
 - [Node.js v.22 or higher](https://nodejs.org/en){target=_blank}
+- [Dev tunnel](https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started){target=_blank}
 
 ## Exercise 1 : Creating the REST API
 

@@ -14,7 +14,7 @@ async function validateToken(req: HttpRequest, scope: string): Promise<void> {
     // Try to validate the token and get user's basic information
     const { AAD_APP_CLIENT_ID, AAD_APP_TENANT_ID, AAD_APP_OAUTH_AUTHORITY, UseOAuth } = process.env;
     const token = req.headers.get("Authorization")?.split(" ")[1];
-    if (token && UseOAuth === "true") {
+    if (token && UseOAuth.toLowerCase() === "true") {
 
         if (!validator) {
         const entraJwksUri = await getEntraJwksUri(AAD_APP_TENANT_ID);
