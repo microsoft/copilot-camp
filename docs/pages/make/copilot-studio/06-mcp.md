@@ -166,7 +166,7 @@ Open a browser and, using the work account of your target Microsoft 365 tenant, 
 
 Select the `Copilot Dev Camp` environment that you created in **Exercise 1** of [Lab MCS0 - Setup](00-prerequisites.md), and then select **Create** in the left navigation menu, then choose **Agent** to create a new agent.
 
-Choose to **Skip to configure** and define your new agent with the following settings:
+Choose to **Configure** and define your new agent with the following settings:
 
 - **Name**: 
 
