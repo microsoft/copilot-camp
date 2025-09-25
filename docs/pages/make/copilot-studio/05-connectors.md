@@ -120,7 +120,7 @@ Now you can go back to Visual Studio Code and configure the `local.settings.json
     "AAD_APP_CLIENT_ID": "<Client-ID>",
     "AAD_APP_TENANT_ID": "<Tenant-ID>",
     "AAD_APP_OAUTH_AUTHORITY": "https://login.microsoftonline.com/<Tenant-ID>",
-    "UseOAuth": false
+    "UseOAuth": "true"
   }
 }
 ```
@@ -191,7 +191,7 @@ In this excercise you are going to create the Power Platform custom connector to
 
 ### Step 1: Creating the custom connector
 
-To create a new custom connector, open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://make.powerautomate.com](https://make.powerautomate.com){target=_blank} to access Power Automate. On the left-side menu panel, select **More**, then **Discover all**, then look for **Custom connectors**. You can eventually pin the menu item if you plan to use it frequently. The page with the list of custom connectors will appear. Select the command **+ New custom connector** and choose **Import an OpenAPI file**.
+To create a new custom connector, open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://make.powerautomate.com](https://make.powerautomate.com){target=_blank} to access Power Automate. First of all, switch to the `Copilot Dev Camp` environment, using the environment selctor in the upper right corner of the screen. Then, on the left-side menu panel, select **More**, then **Discover all**, then look for **Custom connectors**. You can eventually pin the menu item if you plan to use it frequently. The page with the list of custom connectors will appear. Select the command **+ New custom connector** and choose **Import an OpenAPI file**.
 
 ![The menu to create a new Power Platform custom connector, highlighting the **Import an OpenAPI file** option.](../../../assets/images/make/copilot-studio-05/custom-connector-12.png)
 
