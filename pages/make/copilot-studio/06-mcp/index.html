@@ -2221,7 +2221,7 @@
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Replace the <code>hr-mcp</code> name suggested below with whatever name you like, in order to have a unique name for your devtunnel. For example, if your name is Rose you can use <code>hr-mcp-rose</code> as the name for your tunnel. In case you will get an error like <code>Request not permitted. Unauthorized tunnel creation access ...</code> it means that someone else is already using that name. To solve the issue, simply provide a different name.</p>
+<p>Replace the <code>hr-mcp</code> name suggested below with whatever name you like, in order to have a unique name for your dev tunnel. For example, if your name is Rose you can use <code>hr-mcp-rose</code> as the name for your tunnel. In case you will get an error like <code>Request not permitted. Unauthorized tunnel creation access ...</code> it means that someone else is already using that name. To solve the issue, simply provide a different name.</p>
 </div>
 <pre><code class="language-console">devtunnel create hr-mcp -a --host-header unchanged
 devtunnel port create hr-mcp -p 47002
@@ -2308,7 +2308,7 @@ contact details, and availability status.
 <p><code>HR MCP Server</code></p>
 <p>Provide a description, for example:</p>
 <p><code>Allows managing a list of candidates for the HR department</code></p>
-<p>Configure the URL of the server, providing the URL that you copied from the devtunnel with name <code>[Connect via browser of your dev tunnel]</code>.</p>
+<p>Configure the URL of the server, providing the URL that you copied from the dev tunnel with name <code>[Connect via browser of your dev tunnel]</code>.</p>
 <p>Select <strong>None</strong> as the authentication method and then select <strong>Create</strong> to configure the actual tool.</p>
 <p><img alt="The dialog to add a new MCP server to the agent. There are settings to configure the server name, the server description, the server URL, and the authentication method. There is also a command to &quot;Create&quot; the MCP server." src="../../../../assets/images/make/copilot-studio-06/mcp-integration-04.png" /></p>
 <p>Once the tool will get created, you will see a new dialog window requesting you to connect to the MCP server.</p>
@@ -2331,7 +2331,7 @@ However, in order to being able to consume the list of candidates you will need 
 <p><img alt="The list of candidates retrieved from the HR MCP Server." src="../../../../assets/images/make/copilot-studio-06/mcp-test-02.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Debugging the MCP server locally</p>
-<p>If you are a developer and you like to dig into the MCP server implementation, you can add breakpoints to the HRTools.cs file and attach a debugger from Visual Studio Code. You will be able to dig into the code and debug the actual MCP server in action.</p>
+<p>If you are a developer and you like to dig into the MCP server implementation, you can add breakpoints to the <code>HRTools.cs</code> file and attach a debugger from Visual Studio Code. You will be able to dig into the code and debug the actual MCP server in action.</p>
 </div>
 <p>You can also make the agent available in the Microsoft 365 Copilot Chat. Select the 1️⃣ <strong>Channels</strong> section, then select the 2️⃣ <strong>Teams and Microsoft 365 Copilot</strong> channel, check the 3️⃣ <strong>Make agent available in Microsoft 365 Copilot</strong> option, and then select the 4️⃣ <strong>Add channel</strong> command. Wait for the channel to be enabled, then close the channel side panel and publish the agent again selecting the <strong>Publish</strong> command of the agent in the top right corner.</p>
 <p><img alt="The interface to publish an agent in the &quot;Teams and Microsoft 365 Copilot&quot; channel. There is a checkbox to make the agent available in Microsoft 365 Copilot and a command to &quot;Add channel&quot;." src="../../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-01.png" /></p>

@@ -2249,9 +2249,9 @@ devtunnel port create hr-service -p 7071
 devtunnel host hr-service
 </code></pre>
 <p>The command line will display the connection information, such as:</p>
-<p><img alt="The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../../assets/images/extend-m365-copilot-06/devtunnel-output.png" /></p>
+<p><img alt="The dev tunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../../assets/images/extend-m365-copilot-06/devtunnel-output.png" /></p>
 <p>Copy the "Connect via browser" URL and save it in a safe place.</p>
-<p>Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command <code>devtunnel host hr-service</code>.</p>
+<p>Be sure to leave the dev tunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command <code>devtunnel host hr-service</code>.</p>
 <p><cc-end-step lab="mcs5" exercise="1" step="3" /></p>
 <h3 id="step-4-registering-the-consumer-in-entra-id">Step 4: Registering the Consumer in Entra ID</h3>
 <p>In order to consume the API from the Power Platform using a custom connector, you also need to register a consumer application in Microsoft Entra ID. Go back to the <a href="https://entra.microsoft.com" target="_blank">Microsoft Entra admin center</a> and select again <strong>App registrations</strong> in the menu bar on the left, and then select the <strong>+ New registration</strong> command to register a new application in the target tenant. This time, name the new application as <code>HR-Service-Consumer</code>. As like as in Step 1, configure the new application for single tenant authentication and register it.</p>
