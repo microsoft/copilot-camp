@@ -366,7 +366,7 @@ The knowledge source will appear in your knowledge sources table with a status o
 
 ## Exercise 4: Testing the agent
 
-In this exercise you will test your RAG-enabled agent and learn how to optimize its performance for different types of queries and use cases.
+In this exercise you will test your RAG-enabled agent and learn how to leverage different types of queries and use cases.
 
 ### Step 1: Testing Basic Knowledge Retrieval
 
