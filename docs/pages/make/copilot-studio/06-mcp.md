@@ -101,7 +101,7 @@ devtunnel user login
 - Host your dev tunnel, executing the following commands:
 
 !!! important
-    Replace the `hr-mcp` name suggested below with whatever name you like, in order to have a unique name for your devtunnel. For example, if your name is Rose you can use `hr-mcp-rose` as the name for your tunnel. In case you will get an error like `Request not permitted. Unauthorized tunnel creation access ...` it means that someone else is already using that name. To solve the issue, simply provide a different name.
+    Replace the `hr-mcp` name suggested below with whatever name you like, in order to have a unique name for your dev tunnel. For example, if your name is Rose you can use `hr-mcp-rose` as the name for your tunnel. In case you will get an error like `Request not permitted. Unauthorized tunnel creation access ...` it means that someone else is already using that name. To solve the issue, simply provide a different name.
 
 ```console
 devtunnel create hr-mcp -a --host-header unchanged
@@ -240,7 +240,7 @@ Provide a description, for example:
 
 `Allows managing a list of candidates for the HR department`
 
-Configure the URL of the server, providing the URL that you copied from the devtunnel with name `[Connect via browser of your dev tunnel]`.
+Configure the URL of the server, providing the URL that you copied from the dev tunnel with name `[Connect via browser of your dev tunnel]`.
 
 Select **None** as the authentication method and then select **Create** to configure the actual tool.
 
@@ -282,7 +282,7 @@ Once the connection is established, you can get the actual list of candidates fr
 ![The list of candidates retrieved from the HR MCP Server.](../../../assets/images/make/copilot-studio-06/mcp-test-02.png)
 
 !!! tip "Debugging the MCP server locally"
-    If you are a developer and you like to dig into the MCP server implementation, you can add breakpoints to the HRTools.cs file and attach a debugger from Visual Studio Code. You will be able to dig into the code and debug the actual MCP server in action.
+    If you are a developer and you like to dig into the MCP server implementation, you can add breakpoints to the `HRTools.cs` file and attach a debugger from Visual Studio Code. You will be able to dig into the code and debug the actual MCP server in action.
 
 You can also make the agent available in the Microsoft 365 Copilot Chat. Select the 1️⃣ **Channels** section, then select the 2️⃣ **Teams and Microsoft 365 Copilot** channel, check the 3️⃣ **Make agent available in Microsoft 365 Copilot** option, and then select the 4️⃣ **Add channel** command. Wait for the channel to be enabled, then close the channel side panel and publish the agent again selecting the **Publish** command of the agent in the top right corner.
 
