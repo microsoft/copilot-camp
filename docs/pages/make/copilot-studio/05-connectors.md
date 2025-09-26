@@ -150,11 +150,11 @@ devtunnel host hr-service
 
 The command line will display the connection information, such as:
 
-![The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity.](../../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
+![The dev tunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity.](../../../assets/images/extend-m365-copilot-06/devtunnel-output.png)
 
 Copy the "Connect via browser" URL and save it in a safe place.
 
-Be sure to leave the devtunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel host hr-service`.
+Be sure to leave the dev tunnel command running as you do the exercises in this lab. If you need to restart it, just repeat the last command `devtunnel host hr-service`.
 
 <cc-end-step lab="mcs5" exercise="1" step="3" />
 
