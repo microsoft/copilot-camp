@@ -11,7 +11,7 @@ If you are new to prompting and agent instructions, start here to learn the esse
 ## Featured agent prompts 
 <cc-card-grid gap="1rem">
 <cc-card 
-    title="Specific News research Agent" 
+    title="Specific News Research Agent" 
     description="Create an agent specialized in article research on a specific theme to improve operational intelligence."
     href="https://github.com/pnp/copilot-prompts/tree/main/samples/agent-instructions/specific-research-agent"
     image="https://raw.githubusercontent.com/pnp/copilot-prompts/refs/heads/main/samples/agent-instructions/specific-research-agent/assets/demo.png">
