@@ -11,15 +11,15 @@ If you are new to prompting and agent instructions, start here to learn the esse
 ## Featured prompts 
 <cc-card-grid gap="1rem">
 <cc-card 
-    title="AgriGuard – Smart Crop Doctor" 
-    description="An agent designed to assist farmers, agronomists, and agricultural extension workers in diagnosing crop health issues and recommending treatment strategies."
-    href="https://github.com/pnp/copilot-prompts/tree/main/samples/agent-instructions/smart-crop-doctor"
-    image="../../assets/images/copilot-instructions/featured-agents/agri-guard-demo.png">
+    title="Specific News research Agent" 
+    description="Create an agent specialized in article research on a specific theme to improve operational intelligence."
+    href="https://github.com/pnp/copilot-prompts/tree/main/samples/agent-instructions/specific-research-agent"
+    image="https://raw.githubusercontent.com/pnp/copilot-prompts/refs/heads/main/samples/agent-instructions/specific-research-agent/assets/demo.png">
 </cc-card>
 <cc-card 
-    title="Strategic Mindset Agent" 
-    description="Guide the user through five iterative rounds to develop a strategic mindset and avoid tactical thinking."
-    href="https://github.com/pnp/copilot-prompts/tree/main/samples/agent-instructions/strategic-mind-agent"
-    image="https://github.com/pnp/copilot-prompts/raw/main/samples/agent-instructions/strategic-mind-agent/assets/demo.png">
+    title="Promptly - helping you craft better AI prompts with clear guidance" 
+    description="An AI training assistant designed to help users craft effective and engaging prompts for AI systems."
+    href="https://github.com/pnp/copilot-prompts/blob/main/samples/agent-instructions/prompt-assistance/"
+    image="../../assets/images/copilot-instructions/featured-agents/promptly.png">
 </cc-card>
 </cc-card-grid>
