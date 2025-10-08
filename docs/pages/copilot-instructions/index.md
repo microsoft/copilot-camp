@@ -8,7 +8,7 @@ If you are new to prompting and agent instructions, start here to learn the esse
    
 </cc-card-grid>
 
-## Featured prompts 
+## Featured agent prompts 
 <cc-card-grid gap="1rem">
 <cc-card 
     title="Specific News research Agent" 
