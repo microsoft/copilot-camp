@@ -185,7 +185,7 @@ plugins:
                 - pages/custom-engine/teams-ai/04-authentication.md
                 - pages/custom-engine/teams-ai/05-actions.md
             - プロンプト エンジニアリング:
-              - pages/copilot-instructions/beginner-agent.md
+              - pages/beyond-agents/beginner-agent.md
             - アワード: 'awards.md'
             - 動画など: 'resources.md'
     
