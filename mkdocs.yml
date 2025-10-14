@@ -106,9 +106,9 @@ plugins:
             #   - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
             #   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
             #   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
-            - Prompt engineering:
-              - Introduction : 'pages/copilot-instructions/index.md'
-              - Level 1 - Simple agent instructions: 'pages/copilot-instructions/beginner-agent.md'
+            - Beyond Agents - AI concepts:
+              - Introduction : 'pages/beyond-agents/index.md'
+              - Level 1 - Simple agent instructions: 'pages/beyond-agents/beginner-agent.md'
             # - Awards: 'awards.md'
             - Resources: 'resources.md'
             # The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
