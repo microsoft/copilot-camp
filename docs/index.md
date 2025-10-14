@@ -42,7 +42,7 @@ There are three major pathways with several labs. If you want a no-code/low-code
 
     - **Agent Instructions Guide for Beginners**:
     New to Copilot? This lab walks you through the process of writing effective natural language instructions and testing your Copilot agent in a guided environment.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-instructions/beginner-agent/)
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/beyond-agents/beginner-agent/)
 
     - **SharePoint agents**:
     Learn how to create SharePoint agents starting from the basics, how to fine tune their settings, and how to share them with people or in Microsoft Teams group chats.
