@@ -24,6 +24,6 @@ search:
     title="Promptly - 明確なガイダンスで優れた AI プロンプト作成を支援" 
     description="ユーザーが AI システム向けの効果的で魅力的なプロンプトを作成できるよう設計された AI トレーニング アシスタント。"
     href="https://github.com/pnp/copilot-prompts/blob/main/samples/agent-instructions/prompt-assistance/"
-    image="../../assets/images/copilot-instructions/featured-agents/promptly.png">
+    image="../../../assets/images/copilot-instructions/featured-agents/promptly.png">
 </cc-card>
 </cc-card-grid>
