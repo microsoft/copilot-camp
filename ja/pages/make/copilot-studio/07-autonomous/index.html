@@ -11,10 +11,14 @@
         <link rel="canonical" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">
       
       
+        <link rel="prev" href="../06-mcp/">
+      
+      
+        <link rel="next" href="../08-rag/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
@@ -22,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -190,7 +194,7 @@
         <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     microsoft/copilot-camp
@@ -229,10 +233,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -293,34 +299,15 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../beyond-agents/beginner-agent/" class="md-tabs__link">
+        <a href="../../../beyond-agents/" class="md-tabs__link">
           
   
   
-  プロンプト エンジニアリング
+  AI の概念と手法
 
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../../awards/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  アワード
-
-      </a>
-    </li>
   
 
       
@@ -385,7 +372,7 @@
       <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     microsoft/copilot-camp
@@ -421,26 +408,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -453,7 +445,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Maker 向けエージェントの作成
@@ -717,6 +709,130 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS7 - 自律型エージェントの作成
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS7 - 自律型エージェントの作成
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: SharePoint 環境の準備
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: 自律型エージェントの作成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: SharePoint トリガーの構成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: 自律型エージェントの内部
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS8 - RAG のための Azure AI Search 統合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -748,7 +864,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ MSA1 - 最初の SharePoint エージェントを作成する
+    Lab MSA1 - はじめての SharePoint エージェント作成
     
   </span>
   
@@ -984,7 +1100,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する
+    ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築
     
   </span>
   
@@ -1161,6 +1277,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1197,7 +1336,7 @@
   
   
   <span class="md-ellipsis">
-    認証
+    認証 (旧ラボ)
     
   </span>
   
@@ -1208,32 +1347,9 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
-            認証
+            認証 (旧ラボ)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1625,218 +1741,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Teams AI library ラボ
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Teams AI library ラボ
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    イントロ ― Teams AI Library を使用した独自エージェント構築
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA0 - 前提条件
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA1 - Teams AI ライブラリでの最初のカスタム エンジン エージェント
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA2 - Azure AI Search でデータをインデックス
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA3 - ユーザー エクスペリエンスの向上
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA4 - シングル サインオン認証の追加
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA5 - 複雑なタスクを処理するアクションの追加
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1872,7 +1776,7 @@
   
   
   <span class="md-ellipsis">
-    プロンプト エンジニアリング
+    AI の概念と手法
     
   </span>
   
@@ -1883,9 +1787,32 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            プロンプト エンジニアリング
+            AI の概念と手法
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    始めてみましょう
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1899,7 +1826,7 @@
   
   
   <span class="md-ellipsis">
-    Agent Instruction Lab - Improve your agent instructions (Beginner friendly)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
     
   </span>
   
@@ -1913,28 +1840,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../awards/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    アワード
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1978,28 +1883,29 @@
 
 
 <h1 id="mcs7-">ラボ MCS7 - 自律型エージェントの作成</h1>
-<p>このラボでは、Microsoft Copilot Studio を使用して自律型エージェントを作成する方法を理解します。ここで作成する自律型エージェントは、SharePoint にアップロードされた PDF ファイルから候補者データを自動的に処理します。このエージェントは SharePoint のドキュメント ライブラリを監視し、新しい PDF がアップロードされると AI を用いて候補者情報を抽出し、前のラボ MCS6 で構築した MCP サーバーを使用して候補者レコードを自動的に作成します。本ラボは、ドキュメント処理とデータ入力タスクを自動化することで、人事ワークフローを効率化する自律型エージェントの活用方法を示します。</p>
+<p>このラボでは、Microsoft Copilot Studio を使用して自律型エージェントを作成する方法を学習します。作成する自律型エージェントは、SharePoint にアップロードされた PDF ファイルから候補者データを自動的に処理します。エージェントは SharePoint のドキュメント ライブラリを監視し、新しい PDF がアップロードされると AI を使用して候補者情報を抽出し、前のラボ MCS6 で構築した MCP サーバーを通じて候補者レコードを自動的に作成します。このラボでは、ドキュメント処理とデータ入力タスクを自動化することで、自律型エージェントが人事ワークフローをどのように合理化できるかを示します。</p>
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/TPwJWZjLrDo" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を素早く確認できます。</div>
+          <div>このビデオでラボの概要を手早く確認できます。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    <div class="floatwide">
    <div class="cc-lab-toc mcs-path">
      <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
      <div>
-       <p>Microsoft Copilot Studio でエージェントを構築したい場合は、次のラボを実施してください</p>
+       <p>Microsoft Copilot Studio で エージェントを構築したい場合は、これらの ラボ を実施してください</p>
        <ul>
          <li><a href="/copilot-camp/ja/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/01-first-agent/">MCS1 - 最初のエージェント</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/01-first-agent/">MCS1 - 最初の エージェント</a></li>
          <li><a href="/copilot-camp/ja/pages/make/copilot-studio/02-topics/">MCS2 - トピックの定義</a></li>
          <li><a href="/copilot-camp/ja/pages/make/copilot-studio/03-actions/">MCS3 - ツールの定義</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot の拡張</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot を拡張する</a></li>
          <li><a href="/copilot-camp/ja/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの利用</a></li>
          <li><a href="/copilot-camp/ja/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの利用</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律型エージェントの作成</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律型 エージェントの作成</a></li>
+         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/08-rag/">MCS8 - RAG のための Azure AI Search 統合</a></li>
        </ul>
      </div>
    </div>
@@ -2022,6 +1928,7 @@
    }
    })();
    </script>
+
    <!-- 
      <div class="cc-mcs-lab-steps">
        <h4>目次</h4>
@@ -2033,82 +1940,82 @@
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>このラボは前回の <a href="../06-mcp" target="_blank">ラボ MCS6</a> を前提としています。前回構成した MCP サーバーをそのまま使用できます。</p>
+<p>このラボは前回の <a href="../06-mcp" target="_blank">ラボ MCS6</a> を前提としています。前回設定した同じ MCP サーバーを引き続き利用できます。</p>
 </div>
-<p>このラボで学ぶこと:</p>
+<p>このラボで学習する内容:</p>
 <ul>
 <li>Microsoft Copilot Studio で自律型エージェントを作成する方法</li>
 <li>SharePoint ドキュメント ライブラリのトリガーを構成する方法</li>
 <li>AI で PDF ドキュメントを処理し構造化データを抽出する方法</li>
 <li>自律型エージェントを MCP サーバーと統合する方法</li>
 </ul>
-<h2 id="exercise-1-sharepoint">Exercise 1: SharePoint 環境のセットアップ</h2>
+<h2 id="exercise-1-sharepoint">Exercise 1: SharePoint 環境の準備</h2>
 <p>この演習では、自律型エージェントのトリガー ポイントとなる SharePoint ドキュメント ライブラリを準備します。エージェントはこのライブラリを監視し、候補者データを含む新しい PDF ファイルを自動的に処理します。</p>
 <h3 id="step-1-sharepoint">Step 1: SharePoint ドキュメント ライブラリの作成</h3>
-<p>自律型エージェントを作成する前に、HR 担当者が候補者の PDF ファイルをアップロードできる SharePoint ドキュメント ライブラリをセットアップする必要があります。</p>
-<p>Microsoft 365 テナント内の任意の SharePoint サイト (または新規作成したサイト) に移動し、新しいドキュメント ライブラリを作成します。</p>
+<p>自律型エージェントを作成する前に、HR 担当者が候補者の PDF ファイルをアップロードできる SharePoint ドキュメント ライブラリを設定します。</p>
+<p>Microsoft 365 テナント内の任意の SharePoint サイト（または新規作成したサイト）に移動し、新しいドキュメント ライブラリを作成します。</p>
 <ol>
-<li><strong>サイト コンテンツ</strong> に移動し、<strong>新規</strong> → <strong>ドキュメント ライブラリ</strong> を選択します  </li>
-<li><strong>空白のライブラリ</strong> をテンプレートとして選択します  </li>
+<li><strong>サイト コンテンツ</strong> に移動し <strong>新規</strong> → <strong>ドキュメント ライブラリ</strong> を選択  </li>
+<li>テンプレートとして <strong>空白のライブラリ</strong> を選択  </li>
 <li>ライブラリ名: <code>Candidates Data</code>  </li>
 <li>説明: <code>Document library for candidate PDF data files</code>  </li>
-<li><strong>作成</strong> を選択してライブラリを作成します  </li>
+<li><strong>作成</strong> を選択してライブラリを作成  </li>
 </ol>
 <p><img alt="The SharePoint interface showing the creation of a new document library called &quot;Candidate Data&quot; with the appropriate name and description filled in." src="../../../../../assets/images/make/copilot-studio-07/sharepoint-library-01.png" /></p>
-<p>作成後、エージェントがアクセスできるようにライブラリの権限を構成します。</p>
+<p>作成後、エージェントがアクセスできるようにライブラリのアクセス許可を構成します。</p>
 <ol>
 <li><strong>設定</strong> (歯車アイコン) → <strong>ライブラリの設定</strong> を選択  </li>
-<li><strong>権限と管理</strong> の下で <strong>このドキュメント ライブラリの権限</strong> を選択  </li>
-<li>Microsoft Copilot Studio で使用するアカウントが <strong>投稿 (Contribute)</strong> 以上の権限を持つことを確認  </li>
+<li><strong>アクセス許可と管理</strong> で <strong>このドキュメント ライブラリのアクセス許可</strong> を選択  </li>
+<li>Microsoft Copilot Studio 用に使用するアカウントが最低でも <strong>投稿</strong> 権限を持っていることを確認  </li>
 </ol>
 <p><cc-end-step lab="mcs7" exercise="1" step="1" /></p>
 <h3 id="step-2-pdf">Step 2: サンプル PDF ファイルの準備</h3>
-<p>テスト用に、<a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/autonomous-agent&amp;filename=resumes" target="_blank">resumes.zip</a> をダウンロードして展開してください。<br />
-ダウンロードしたファイルには次のような仮想候補者情報が含まれます。</p>
+<p>テスト用に <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/autonomous-agent&amp;filename=resumes" target="_blank">resumes.zip</a> をダウンロードし、フォルダーを解凍します。<br />
+ダウンロードしたファイルには以下のような架空の候補者情報が含まれています。</p>
 <ul>
 <li>氏名  </li>
 <li>メール アドレス  </li>
-<li>現在の役職  </li>
+<li>現在の役職 / ポジション  </li>
 <li>スキルと専門分野  </li>
 <li>使用言語  </li>
 </ul>
-<p>任意のワープロを使用して独自に PDF ファイルを作成してもかまいません。既存の履歴書/CV ファイルを使用することもできます。AI が情報を正確に抽出できるよう、テキストが読み取り可能 (スキャン画像ではない) であることを確認してください。</p>
+<p>任意のワープロを使用して簡単な PDF を作成するか、既存の履歴書 / CV を利用しても構いません。AI が正しく情報を抽出できるよう、テキストが読み取り可能であること（スキャン画像ではないこと）を確認してください。</p>
 <p><cc-end-step lab="mcs7" exercise="1" step="2" /></p>
 <h3 id="step-3">Step 3: 前提条件の確認</h3>
-<p>次の項目を完了していることを確認してください。</p>
+<p>次を完了していることを確認してください。</p>
 <ul>
-<li><strong>ラボ MCS6</strong>: HR MCP サーバーが dev tunnel 経由で実行中であること  </li>
-<li><strong>SharePoint アクセス</strong>: ドキュメント ライブラリを作成・管理できる権限  </li>
-<li><strong>Power Platform 環境</strong>: 前回のラボと同じ環境へのアクセス権  </li>
-<li><strong>サンプル PDF</strong>: 候補者データを含むテスト PDF が 2～3 件以上  </li>
+<li><strong>ラボ MCS6</strong>: HR MCP サーバーが dev tunnel 経由で起動しアクセス可能である  </li>
+<li><strong>SharePoint アクセス</strong>: ドキュメント ライブラリを作成・管理する権限  </li>
+<li><strong>Power Platform 環境</strong>: 前回のラボと同じ環境へのアクセス  </li>
+<li><strong>サンプル PDF</strong>: 候補者データを含む PDF ファイルを 2〜3 つ用意  </li>
 </ul>
-<p>また、ラボ MCS6 の HR MCP サーバーがまだ実行中であることを確認し、停止している場合は次のコマンドで起動します。</p>
+<p>また、ラボ MCS6 の HR MCP サーバーが起動していることを確認し、停止している場合は以下で起動します。</p>
 <pre><code class="language-console">dotnet run
 </code></pre>
-<p>そして dev tunnel が有効であることを確認します。</p>
+<p>続いて dev tunnel がアクティブであることを確認します。</p>
 <pre><code class="language-console">devtunnel host hr-mcp
 </code></pre>
-<p>エージェントが MCP サーバーと通信できるよう、本ラボの間は両方のサービスを稼働させたままにしてください。</p>
+<p>本ラボ中はエージェントが MCP サーバーへ通信できるよう、両サービスを起動したままにしてください。</p>
 <p><cc-end-step lab="mcs7" exercise="1" step="3" /></p>
 <h2 id="exercise-2">Exercise 2: 自律型エージェントの作成</h2>
-<p>この演習では、SharePoint ドキュメント ライブラリを監視し、新しい PDF を自動的に処理する自律型エージェントを Microsoft Copilot Studio で作成します。</p>
+<p>この演習では、SharePoint ドキュメント ライブラリを監視し、新しい PDF を自動処理する自律型エージェントを Microsoft Copilot Studio で作成します。</p>
 <h3 id="step-1">Step 1: 自律型エージェントの作成</h3>
-<p>ブラウザーを開き、対象の Microsoft 365 テナントの職場アカウントで <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> にアクセスし、Microsoft Copilot Studio を起動します。</p>
-<p>前のラボで作成した <code>Copilot Dev Camp</code> 環境を選択し、左ナビゲーションの <strong>Create</strong> を選択して <strong>Agent</strong> を選択します。</p>
-<p><strong>Skip to configure</strong> を選択し、以下の設定で自律型エージェントを定義します。</p>
+<p>ブラウザーを開き、対象 Microsoft 365 テナントの作業アカウントで <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> にアクセスします。</p>
+<p>前回のラボで作成した <code>Copilot Dev Camp</code> 環境を選択し、左ナビゲーションの <strong>作成</strong> を選択して <strong>エージェント</strong> を選びます。</p>
+<p><strong>構成</strong> を選択し、次の設定で自律型エージェントを定義します。</p>
 <ul>
-<li><strong>Name</strong>: </li>
+<li><strong>名前</strong>:  </li>
 </ul>
-<pre><code class="language-text">Autonomous HR Document Processor
+<pre><code class="language-text">Autonomous HR Docs Processor
 </code></pre>
 <ul>
-<li><strong>Description</strong>: </li>
+<li><strong>説明</strong>:  </li>
 </ul>
 <pre><code class="language-text">An autonomous AI agent that monitors SharePoint for new candidate PDF uploads and 
 automatically processes them to create candidate records via MCP server integration
 </code></pre>
 <ul>
-<li><strong>Instructions</strong>: </li>
+<li><strong>手順</strong>:  </li>
 </ul>
 <pre><code class="language-text">You are an autonomous HR assistant that specializes in processing candidate data 
 from PDF documents. When a new PDF file is uploaded to the SharePoint document library, 
@@ -2121,27 +2028,27 @@ you automatically:
 
 Always ensure data accuracy and provide clear feedback about the processing results. 
 Handle errors gracefully and provide informative messages when processing fails.
-DO NOT invent or assume fake data about candidates. AVOID hallucinations.
+DO NOT invent or assume fake data about candidates. AVOID allucinations.
 You MUST ONLY process real and existing data.
 </code></pre>
-<p><strong>Create</strong> を選択してエージェントを作成します。</p>
+<p><strong>作成</strong> を選択して自律型エージェントを生成します。</p>
 <p><cc-end-step lab="mcs7" exercise="2" step="1" /></p>
-<h3 id="step-2">Step 2: エージェントの知能を強化する</h3>
-<p>エージェント作成後、生成 AI の推論とナレッジ統合を有効にして能力を高めます。</p>
-<p><strong>Orchestration</strong> セクションで <strong>Use generative AI to determine how best to respond to users and events</strong> が有効になっていることを確認します。これにより、エージェントはさまざまなイベントを知的に処理し、適切なアクションを判断できます。</p>
+<h3 id="step-2">Step 2: エージェント知能の強化</h3>
+<p>エージェント作成後、生成 AI の推論とナレッジ統合を有効化して能力を強化します。</p>
+<p><strong>オーケストレーション</strong> セクションで <strong>生成 AI を使用してユーザーやイベントに最適な応答を決定する</strong> を有効にします。これによりエージェントはイベントに応じた適切なアクションを自律的に選択できます。</p>
 <p><img alt="The agent configuration page showing the orchestration settings with generative AI enabled for autonomous processing." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-01.png" /></p>
-<p><strong>Knowledge</strong> セクションでは、特定の HR ドキュメントや候補者処理ガイドラインがある場合にナレッジ ソースを追加できます。本ラボでは、エージェントの組み込み AI 機能と MCP サーバー統合に依存します。</p>
-<p>設定を変更した場合は <strong>Save</strong> を選択して保存します。</p>
+<p><strong>ナレッジ</strong> セクションでは、HR ドキュメントや候補者処理ガイドラインなど特定のナレッジ ソースを追加することもできますが、本ラボではエージェントの組み込み AI 機能と MCP サーバー統合に依存します。</p>
+<p>設定を変更した場合は <strong>保存</strong> を選択して確定します。</p>
 <p><cc-end-step lab="mcs7" exercise="2" step="2" /></p>
 <h3 id="step-3-mcp">Step 3: MCP サーバー統合の追加</h3>
-<p>自律型エージェントが候補者レコードを作成できるよう、HR MCP サーバーのツールにアクセスする必要があります。<strong>Tools</strong> セクションで <strong>+ Add a tool</strong> を選択します。</p>
+<p>エージェントが候補者レコードを作成できるよう、HR MCP サーバー ツールへアクセスを設定します。<strong>ツール</strong> セクションに移動し <strong>+ ツールを追加</strong> を選択します。</p>
 <ol>
 <li><strong>Model Context Protocol</strong> グループを選択  </li>
-<li>ラボ MCS6 で構成した <strong>HR MCP Server</strong> を見つけて選択  </li>
-<li><strong>Add and configure</strong> を選択し MCP サーバー ツールを統合  </li>
+<li>ラボ MCS6 で設定した <strong>HR MCP Server</strong> を選択  </li>
+<li><strong>追加して構成</strong> を選択し MCP サーバー ツールを統合  </li>
 </ol>
 <p><img alt="The tools section showing the HR MCP Server being added to the autonomous agent with all the available candidate management tools." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-02.png" /></p>
-<p>これにより、自律型エージェントは次の HR MCP サーバー ツールにアクセスできます。</p>
+<p>これでエージェントは HR MCP サーバーの全ツールにアクセスできます。</p>
 <ul>
 <li><code>list_candidates</code></li>
 <li><code>search_candidates</code></li>
@@ -2149,86 +2056,89 @@ You MUST ONLY process real and existing data.
 <li><code>update_candidate</code></li>
 <li><code>remove_candidate</code></li>
 </ul>
-<p>エージェントは主に <code>add_candidate</code> ツールを使用して新しい PDF の処理を行います。</p>
+<p>エージェントは主に <code>add_candidate</code> ツールを用いて新しい PDF の処理を行います。</p>
 <p><cc-end-step lab="mcs7" exercise="2" step="3" /></p>
 <h2 id="exercise-3-sharepoint">Exercise 3: SharePoint トリガーの構成</h2>
-<p>この演習では、自律型エージェントが SharePoint ドキュメント ライブラリに新しい PDF がアップロードされたときに自動的にトリガーされるよう構成します。</p>
+<p>この演習では、新しい PDF ファイルが SharePoint ドキュメント ライブラリにアップロードされた際に自律型エージェントが自動的に起動するよう設定します。</p>
 <h3 id="step-1-sharepoint_1">Step 1: SharePoint トリガーの追加</h3>
-<p>自律型エージェントで 1️⃣ <strong>Overview</strong> セクションに移動し、2️⃣ <strong>Triggers</strong> パネルまでスクロールして 3️⃣ <strong>+ Add trigger</strong> を選択します。</p>
+<p>自律型エージェントで 1️⃣ <strong>概要</strong> セクションに移動し、2️⃣ <strong>トリガー</strong> パネルで 3️⃣ <strong>+ トリガーを追加</strong> を選択します。</p>
 <p><img alt="The triggers section of the autonomous agent with the &quot;+ Add trigger&quot; command highlighted." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-03.png" /></p>
-<p><strong>Add trigger</strong> ダイアログで SharePoint コネクターの <strong>When a file is created (properties only)</strong> を選択し、<strong>Next</strong> を選択してトリガーを構成します。</p>
+<p><strong>トリガーを追加</strong> ダイアログから SharePoint コネクターの <strong>ファイルが作成されたとき (プロパティのみ)</strong> を選択し、<strong>次へ</strong> を選択します。</p>
 <p><img alt="The trigger selection dialog showing SharePoint file triggers available for the autonomous agent, together with other out of the box triggers. The trigger &quot;When a file is created (properties only)&quot; is highlighted. There is a &quot;Next&quot; button in the lower right side of the dialog, to proceed with the configuration." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-04.png" /></p>
-<p>次にトリガーに名前を付け、対象アプリへのアクセス権限を接続/構成します。今回の対象アプリは以下です。</p>
+<p>次にトリガー名を付け、対象アプリへの接続/アクセス許可を構成します。今回のアプリは以下です。</p>
 <ul>
-<li>Microsoft Copilot Studio</li>
-<li>SharePoint</li>
+<li>Microsoft Copilot Studio  </li>
+<li>SharePoint  </li>
 </ul>
-<p>以下のようにトリガーを構成します。</p>
+<p>次のように構成します。</p>
 <ul>
-<li><strong>Trigger name</strong>: <code>When PDF uploaded to Candidate Data library</code></li>
+<li><strong>トリガー名</strong>: <code>When PDF uploaded to Candidate Data library</code></li>
 </ul>
 <p><img alt="The SharePoint trigger configuration showing the name and the required apps permissions." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-05.png" /></p>
-<p><strong>Next</strong> を選択し、以下の追加設定を行います。</p>
+<p><strong>次へ</strong> を選択し、さらに以下を設定します。</p>
 <ul>
-<li><strong>Site Address</strong>: 目的の SharePoint サイトを選択または URL を入力  </li>
-<li><strong>Library Name</strong>: <code>Candidate Data</code>  </li>
-<li><strong>Folder</strong>: 空欄 (ライブラリ全体を監視)  </li>
-<li><strong>Limit columns by View (Optional)</strong>: All Documents  </li>
-<li><strong>Additional instructions to the agent when it's invoked by this trigger</strong>: Use content from <code>Body</code></li>
+<li><strong>サイト アドレス</strong>: 対象 SharePoint サイトを選択または URL を入力  </li>
+<li><strong>ライブラリ名</strong>: <code>Candidate Data</code>  </li>
+<li><strong>フォルダー</strong>: 空欄 (ライブラリ全体を監視)  </li>
+<li><strong>ビューで列を制限 (省略可)</strong>: All Documents  </li>
+<li><strong>このトリガーによって呼び出されたときにエージェントへ追加する手順</strong>: <code>Body</code> の内容を使用  </li>
 </ul>
 <p><img alt="The SharePoint trigger configuration showing the site address, library name, folder, view, and additional instructions to the agent." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-06.png" /></p>
-<p><strong>Create trigger</strong> を選択して SharePoint 監視トリガーをエージェントに追加します。処理が完了すると、トリガーをテストするよう促すダイアログが表示されます。</p>
+<p><strong>トリガーを作成</strong> を選択して監視トリガーを追加します。処理には少し時間がかかります。完了するとテストを促すダイアログが表示されます。</p>
 <p><img alt="The dialog with trigger creation confirmation and a message inviting you to test the just created trigger." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-07.png" /></p>
-<p><strong>Close</strong> を選択してエージェントの <strong>Overview</strong> セクションに戻ります。</p>
+<p><strong>閉じる</strong> を選択してエージェントの <strong>概要</strong> に戻ります。</p>
 <p><cc-end-step lab="mcs7" exercise="3" step="1" /></p>
 <h3 id="step-2_1">Step 2: トリガーのテスト</h3>
-<p><strong>Triggers</strong> の一覧に新しいトリガーが追加されているので、トリガー名横のフラスコアイコンを選択してテストします。</p>
+<p><strong>トリガー</strong> 一覧に新しいトリガーが表示され、トリガー名の横にあるフラスコアイコンを選択してテストできます。</p>
 <p><img alt="The trigger in the list of triggers with the little flask highligthed to start testing." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-08.png" /></p>
-<p>フラスコを選択すると、SharePoint Online の対象ライブラリにファイルがアップロードされるのを待機するダイアログが表示されます。</p>
+<p>フラスコを選択すると、SharePoint ライブラリへのファイルアップロードを待機するダイアログが表示されます。</p>
 <p><img alt="The dialog to test the trigger with files uploaded to the target SharePoint Online library. There is a command to start testing that is greyed out, waiting for an actual file to be uploaded in the target library." src="../../../../../assets/images/make/copilot-studio-07/trigger-test-01.png" /></p>
-<p>対象ライブラリに少なくとも 1 つのファイルをアップロードするとダイアログが更新され、<strong>Start testing</strong> コマンドが選択可能になります。複数ファイルをアップロードした場合は、テストに使用するファイルを選択できます。</p>
-<p>事前にダウンロードした履歴書のいずれかを SharePoint Online ライブラリにアップロードし、エージェントが処理するのを待ちます。</p>
+<p>対象ライブラリにファイルがアップロードされるとダイアログが更新され、<strong>テストを開始</strong> コマンドが有効になります。複数ファイルがアップロードされた場合はテストに使用するファイルを選択できます。</p>
+<p>事前にダウンロードした履歴書の PDF をアップロードし、エージェントが処理するのを待ちます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>エージェントが新しいファイルを検知するまで最大 1 分かかる場合があります。テスト ダイアログが準備完了になるまでお待ちください。</p>
+<p>新しいファイルを検出するまで最大 1 分ほどかかる場合があります。ダイアログが準備完了になるまでお待ちください。</p>
 </div>
 <p><img alt="The dialog to test the trigger with files uploaded to the target SharePoint Online library. The &quot;Start testing&quot; command is now enabled, because there is a new file to process." src="../../../../../assets/images/make/copilot-studio-07/trigger-test-02.png" /></p>
-<p>テストが開始されると、<strong>Test your agent</strong> サイド パネルを通じてエージェントと対話できます。最初に行う必要があるのは、エージェント インスタンスを HR MCP Server に接続することです。エージェントからの自動メッセージで <strong>Open connection manager</strong> を選択し、<strong>Connect</strong> で HR MCP Server に接続した後、<strong>Retry</strong> を選択してください。</p>
-<p>アップロードした PDF 履歴書に記載された候補者が HR MCP サーバーに追加されたという確認メッセージが表示されるはずです。</p>
+<p>テストが開始されると、<strong>エージェントをテスト</strong> サイド パネルでエージェントが対話を行います。まずエージェント インスタンスを HR MCP Server に接続する必要があります。自動メッセージの <strong>接続マネージャーを開く</strong> を選択し、HR MCP Server に <strong>接続</strong> してから <strong>エージェントをテスト</strong> パネルに戻り <strong>再試行</strong> を選択します。</p>
+<p>アップロードした PDF 履歴書の候補者が HR MCP サーバーに追加された旨の確認メッセージが表示されるはずです。</p>
 <p><img alt="The test panel of Copilot Studio while testing the trigger. There is the request to connect to the target HR MCP Server, as well as the confirmation that a new candidate was added to the list of candidates." src="../../../../../assets/images/make/copilot-studio-07/trigger-test-03.png" /></p>
-<p>必要に応じて <code>List all the candidates</code> というプロンプトを送信し、新しい候補者が一覧に含まれていることを確認できます。エージェントは準備完了です。<strong>Publish</strong> すると自律的にファイルを処理し始めます！</p>
-<p>エージェントを公開すると、次のような警告が表示される場合があります。</p>
+<p><code>List all the candidates</code> とプロンプトを送信して、新しい候補者が一覧に含まれていることを確認できます。自律型エージェントの準備は完了です。<strong>発行</strong> して自動処理を開始しましょう。</p>
+<p>エージェントを発行する際、次のような警告が表示される場合があります。</p>
 <p><img alt="The publishing dialog showing a couple of warnings to the user. One is about editors having full access to embedded connections used by Flows or Triggers added to the agent. Another one is about triggers using author's credentials." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-09.png" /></p>
 <ol>
-<li><strong>Full access for editors</strong>: 編集者権限を持つユーザーは、フローやトリガーで使用される埋め込み接続にフル アクセスできます。  </li>
-<li><strong>Your agent includes triggers that use the author's credentials</strong>: これらのトリガーの指示が他のユーザーとデータを共有する場合、そのユーザーは元の編集者の資格情報を使用して情報にアクセスまたはタスクを実行できます。  </li>
+<li><strong>編集者のフル アクセス</strong>: Editor 権限を持つユーザーはフローやトリガーで使用される埋め込み接続にアクセスできます。  </li>
+<li><strong>トリガーが作成者の資格情報を使用</strong>: これらのトリガーの手順が他のユーザーとデータを共有する場合、そのユーザーは作成者の資格情報を用いて情報へアクセスできます。</li>
 </ol>
-<p>エージェントを公開したら、新しい PDF 履歴書をアップロードして挙動を確認してみてください。SharePoint Online ライブラリにファイルをアップロードした後、エージェントの <strong>Activity</strong> セクションを開くと <code>Automated</code> 呼び出しが表示されます。</p>
+<p>エージェントを発行したら、新しい PDF 履歴書をアップロードして動作を確認しましょう。SharePoint ライブラリへファイルをアップロード後、エージェントの <strong>アクティビティ</strong> セクションに <code>自動</code> 呼び出しが表示されます。</p>
 <p><img alt="The &quot;Activity&quot; of the agent. There is an autonomous agent invocation, because of the upload of a file in the target library." src="../../../../../assets/images/make/copilot-studio-07/autonomous-agent-10.png" /></p>
 <p><cc-end-step lab="mcs7" exercise="3" step="2" /></p>
 <h2 id="exercise-4">Exercise 4: 自律型エージェントの内部</h2>
-<p>この演習では、自律型エージェントがどのように動作し、裏側で何が起こっているのかを理解します。</p>
+<p>この演習では、自律型エージェントがどのように動作するか、内部処理を理解します。</p>
 <h3 id="step-1_1">Step 1: トリガーの裏側</h3>
-<p>トリガーを作成・テストした後、自律型エージェントの動作を詳しく確認したい場合があります。トリガー横の ellipsis (<strong>...</strong>) を選択し、<strong>Edit in Power Automate</strong> を選択します。</p>
+<p>トリガーを作成・テストした後、その仕組みを確認したい場合は、トリガー横の省略記号 (<strong>...</strong>) を選択し <strong>Power Automate で編集</strong> を選びます。</p>
 <p><img alt="The trigger management interface showing the option to edit the SharePoint trigger in Power Automate for advanced configuration." src="../../../../../assets/images/make/copilot-studio-07/edit-trigger-01.png" /></p>
-<p>Power Automate では、自律型エージェントのトリガーの裏側にあるフローを確認できます。</p>
+<p>Power Automate では、自律型エージェントのトリガーの背後で動作するフローを確認できます。</p>
 <p><img alt="The trigger flow in Power Automate. There is a trigger action of type &quot;When a file is created (properties only)&quot; and another action &quot;Sends a prompt to the specified copilot for processing&quot;." src="../../../../../assets/images/make/copilot-studio-07/edit-trigger-02.png" /></p>
-<p>フローは非常にシンプルで、SharePoint コネクタの <strong>When a file is created (properties only)</strong> トリガー アクションと、対象エージェントを呼び出す <strong>Sends a prompt to the specified copilot for processing</strong> アクションのみで構成されています。実質的に、自律型エージェントのトリガーはエージェントへプロンプトを送信する Power Automate フローです。そのため、Power Automate フローのほぼすべてのトリガーを Copilot Studio 自律型エージェントのトリガーとして利用できます。</p>
-<p>必要に応じて、エージェントを呼び出す前にフロー内で追加の処理や機能を実装することも可能です。ただし、その場合は次のステップで説明するポイントを考慮してください。</p>
+<p>フローは非常にシンプルで、SharePoint コネクターの <strong>ファイルが作成されたとき (プロパティのみ)</strong> トリガーと <strong>指定した copilot へプロンプトを送信して処理</strong> アクションだけです。つまり、自律型エージェントのトリガーは、エージェントへプロンプトを送信する Power Automate フローに他なりません。そのため、Power Automate フローのほぼすべてのトリガーを Copilot Studio 自律型エージェントのトリガーとして利用できます。</p>
+<p>必要に応じて、フローをカスタマイズしてエージェント呼び出し前に追加の処理や機能を持たせることも可能ですが、その場合は次のステップで説明する点を考慮してください。</p>
 <p><cc-end-step lab="mcs7" exercise="4" step="1" /></p>
 <h3 id="step-2_2">Step 2: 複数ファイルのアップロード処理</h3>
-<p>自律型エージェントのトリガーについて知っておくべきもう 1 つの重要な点は、SharePoint に複数ファイルをアップロードする場合や、複数のトリガー イベントが発生する場合でも、ファイル/イベントごとに必ず Power Automate フローやエージェント インスタンスが 1 つずつ起動されるわけではないということです。たとえば SharePoint Online ドキュメント ライブラリにファイルをアップロードする場合、単位時間内にアップロードされた複数ファイルを 1 つのフロー インスタンスで処理する場合があります。フローは 1 つのエージェント インスタンスを呼び出し、そのインスタンスがファイルを 1 件ずつ処理します。</p>
-<p>この挙動は、複数ファイルを同時にアップロードし、Power Automate のフロー実行状況と Copilot Studio の自律型エージェント呼び出しを確認することで検証できます。アップロードされたファイルの集合に対して 1 つのフローが実行され、それに対応するエージェント インスタンスも 1 つになります。</p>
-<p>エージェントの <strong>Activity</strong> セクションを開き、<code>Automated</code> インスタンスのうち <code>Completed steps</code> が複数あるものを確認すると、この挙動を視覚的に確認できます。</p>
+<p>自律型エージェントのトリガーについてもう一つ重要なのは、SharePoint へ複数ファイルをアップロードした場合、必ずしもファイルごとに Power Automate フローが実行されるわけではない点です。同様に、ファイル / イベントごとにエージェント インスタンスが作成されるとも限りません。例えば、一定時間内にアップロードされた複数ファイルを 1 つのフロー インスタンスがまとめて処理することがあります。<br />
+フローは 1 つのエージェント インスタンスを呼び出し、そのインスタンスが各ファイルを順に処理します。</p>
+<p>試しに 2 ファイル以上を同時にアップロードし、Power Automate のフロー実行と Copilot Studio のエージェント呼び出しを確認してみてください。アップロードされたファイル セットに対し 1 つのフローと 1 つのエージェント インスタンスのみが生成されるはずです。</p>
+<p>エージェントの <strong>アクティビティ</strong> で <code>自動</code> インスタンスを選択し、<code>完了した手順</code> が複数あることを確認できます。</p>
 <p><img alt="The &quot;Activity&quot; section of the autonomous agent with an instance that has 2 &quot;Completed steps&quot;." src="../../../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-01.png" /></p>
-<p>インスタンスを選択すると、エージェントが 2 件 (またはそれ以上) のファイルを自律的に処理し、それぞれに対して <code>add_candidate</code> ツールを呼び出したことがわかります。エージェントに複雑なロジックを定義する必要はありません。エージェントの指示で</p>
+<p>インスタンスを開くと、エージェントが複数ファイルを自律的に処理し、ファイルごとに <code>add_candidate</code> ツールを呼び出していることがわかります。これは、エージェントの手順で</p>
 <pre><code class="language-text">... When a new PDF file is uploaded to the SharePoint document library: ...
 </code></pre>
-<p>と記述しただけで、エージェントの自律的な知能がアップロードされたすべてのファイルをループ処理し、同じロジックを適用してくれます。これは非常に強力で、今日の AI の能力を実感できます！</p>
+<p>と記述しただけで、ループ処理を AI が自律的に行っているためです。AI の高い能力を実感できるでしょう。</p>
 <p><img alt="The details about the execution of an agent with two files processed, invoking the &quot;add_candidate&quot; tool for each of them.&quot;." src="../../../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-02.png" /></p>
 <p><cc-end-step lab="mcs7" exercise="4" step="2" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">おめでとうございます！</span></p>
-<p>これで ラボ MCS7 - 自律型エージェントの作成 が完了しました!</p>
+<p>ラボ MCS7 - 自律型エージェントの作成 を完了しました!</p>
+<p><a href="../08-rag">こちら</a> からラボ MCS8 に進み、Copilot Studio で Microsoft Azure AI Search を使用した RAG を学びましょう。
+<cc-next /> </p>
 <!-- <cc-award path="Make" /> -->
 
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/07-autonomous--ja" /></p>

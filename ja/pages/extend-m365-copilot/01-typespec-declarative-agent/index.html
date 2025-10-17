@@ -18,15 +18,15 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する - Copilot Developer Camp</title>
+        <title>ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築 - Copilot Developer Camp</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する
+              ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築
             
           </span>
         </div>
@@ -194,7 +194,7 @@
         <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     microsoft/copilot-camp
@@ -299,34 +299,15 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../beyond-agents/beginner-agent/" class="md-tabs__link">
+        <a href="../../beyond-agents/" class="md-tabs__link">
           
   
   
-  プロンプト エンジニアリング
+  AI の概念と手法
 
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../awards/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  アワード
-
-      </a>
-    </li>
   
 
       
@@ -391,7 +372,7 @@
       <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     microsoft/copilot-camp
@@ -726,6 +707,52 @@
   
   
     <li class="md-nav__item">
+      <a href="../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS7 - 自律型エージェントの作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS8 - RAG のための Azure AI Search 統合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../make/sharepoint-agents/" class="md-nav__link">
         
   
@@ -754,7 +781,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ MSA1 - 最初の SharePoint エージェントを作成する
+    Lab MSA1 - はじめての SharePoint エージェント作成
     
   </span>
   
@@ -1012,7 +1039,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する
+    ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築
     
   </span>
   
@@ -1025,7 +1052,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する
+    ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築
     
   </span>
   
@@ -1068,7 +1095,7 @@
         <li class="md-nav__item">
   <a href="#1-microsoft-365-agents-toolkit-typespec" class="md-nav__link">
     <span class="md-ellipsis">
-      演習 1: Microsoft 365 Agents Toolkit を使ってベース エージェントを TypeSpec で構築する
+      エクササイズ 1: Microsoft 365 Agents Toolkit と TypeSpec でベース エージェントを構築する
     </span>
   </a>
   
@@ -1077,7 +1104,7 @@
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      演習 2: エージェント機能の拡張
+      エクササイズ 2: エージェント機能の強化
     </span>
   </a>
   
@@ -1086,7 +1113,7 @@
         <li class="md-nav__item">
   <a href="#3-code-interpreter" class="md-nav__link">
     <span class="md-ellipsis">
-      手順 3: Code Interpreter 機能を追加する
+      手順 3: code interpreter 機能の追加
     </span>
   </a>
   
@@ -1095,7 +1122,7 @@
         <li class="md-nav__item">
   <a href="#3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      演習 3: エージェントの診断とデバッグ
+      エクササイズ 3: エージェントの診断とデバッグ
     </span>
   </a>
   
@@ -1279,6 +1306,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1318,7 +1368,7 @@
   
   
   <span class="md-ellipsis">
-    認証
+    認証 (旧ラボ)
     
   </span>
   
@@ -1329,32 +1379,9 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
-            認証
+            認証 (旧ラボ)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1749,218 +1776,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Teams AI library ラボ
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Teams AI library ラボ
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    イントロ ― Teams AI Library を使用した独自エージェント構築
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/00-prerequisites/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA0 - 前提条件
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/01-custom-engine-agent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA1 - Teams AI ライブラリでの最初のカスタム エンジン エージェント
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/02-rag/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA2 - Azure AI Search でデータをインデックス
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/03-powered-by-ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA3 - ユーザー エクスペリエンスの向上
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/04-authentication/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA4 - シングル サインオン認証の追加
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../custom-engine/teams-ai/05-actions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA5 - 複雑なタスクを処理するアクションの追加
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1996,7 +1811,7 @@
   
   
   <span class="md-ellipsis">
-    プロンプト エンジニアリング
+    AI の概念と手法
     
   </span>
   
@@ -2007,9 +1822,32 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            プロンプト エンジニアリング
+            AI の概念と手法
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    始めてみましょう
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2023,7 +1861,7 @@
   
   
   <span class="md-ellipsis">
-    Agent Instruction Lab - Improve your agent instructions (Beginner friendly)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
     
   </span>
   
@@ -2037,28 +1875,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../awards/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    アワード
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2101,13 +1917,13 @@
 
 
 
-<h1 id="e1-microsoft-365-agents-toolkit-typespec-declarative">ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する</h1>
-<p>このラボでは Microsoft 365 Agents Toolkit を使用し、TypeSpec 定義を用いた Declarative エージェントを作成します。<code>RepairServiceAgent</code> というエージェントを作成し、既存の API サービスを介して修理データと対話し、ユーザーが車両修理レコードを管理できるようにします。</p>
+<h1 id="e1-microsoft-365-agents-toolkit-typespec-declarative">ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築</h1>
+<p>このラボでは、Microsoft 365 Agents Toolkit を使用して TypeSpec 定義付き Declarative エージェントを構築します。<code>RepairServiceAgent</code> というエージェントを作成し、既存の API サービスを介して修理データと対話し、ユーザーが自動車の修理記録を管理できるようにします。</p>
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/RNsa0kLsXgY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>このビデオでラボの概要をご覧ください。</div>
+          <div>この動画でラボの概要を短時間で確認できます。</div>
         </div>
     <div style="flex: 1; min-width: 0;">
   <div class="floatwide">
@@ -2189,9 +2005,9 @@
 </div>
 
 <h2 id="declarative">Declarative エージェントとは</h2>
-<p><strong>Declarative エージェント</strong> は Microsoft 365 Copilot と同じスケーラブルなインフラとプラットフォームを活用し、特定領域に特化したニーズを満たすよう調整されています。標準の Microsoft 365 Copilot チャットと同じインターフェイスを利用しつつ、特定タスクのみに集中する専門家の役割を果たします。</p>
+<p><strong>Declarative エージェント</strong> は、Microsoft 365 Copilot と同じスケーラブルなインフラストラクチャとプラットフォームを活用しつつ、特定分野にフォーカスしてニーズを満たすように最適化されたものです。標準の Microsoft 365 Copilot チャットと同じインターフェイスを使用しながら、専用タスクに専念する専門家として機能します。</p>
 <h3 id="declarative_1">Declarative エージェントの構成要素</h3>
-<p>Copilot 向けに複数のエージェントを作成すると、最終成果物は数個のファイルを ZIP にまとめたアプリ パッケージになります。これは Teams アプリを構築した経験があれば馴染みやすい構造で、追加要素が含まれます。以下の表で主な要素を確認してください。デプロイ手順も Teams アプリと非常によく似ています。</p>
+<p>Copilot 用に複数のエージェントを構築すると、最終的な成果物が数個のファイルをまとめた zip ファイル（アプリ パッケージ）であることに気付くでしょう。これはインストールして利用します。そのため、アプリ パッケージが何で構成されているかを理解することが重要です。Declarative エージェントのアプリ パッケージは、Teams アプリを構築したことがある場合はそれに似ていますが、追加要素があります。以下の表で主な要素を確認できます。アプリの展開プロセスも Teams アプリと非常によく似ています。</p>
 <table>
 <thead>
 <tr>
@@ -2202,96 +2018,96 @@
 </thead>
 <tbody>
 <tr>
-<td>Microsoft 365 アプリ マニフェスト</td>
-<td>Teams アプリ マニフェストを定義する JSON ファイル (<code>manifest.json</code>)</td>
+<td>Microsoft 365 App Manifest</td>
+<td>標準の Teams アプリ マニフェストを定義する JSON ファイル (<code>manifest.json</code>)。</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td>Declarative エージェント マニフェスト</td>
-<td>エージェントの名前、指示、機能、会話スターター、アクション（該当する場合）を含む JSON ファイル</td>
+<td>Declarative Agent Manifest</td>
+<td>エージェント名、指示、機能、会話スターター、アクション（該当する場合）を含む JSON ファイル。</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td>プラグイン マニフェスト</td>
-<td>アクションを API プラグインとして構成するための JSON ファイル。認証、必須フィールド、Adaptive Card 応答などを含む。アクションがある場合のみ必要</td>
+<td>Plugin Manifest</td>
+<td>アクションを API プラグインとして構成するための JSON ファイル。認証、必須フィールド、Adaptive Card 応答などを含む。アクションが存在する場合のみ必要。</td>
 <td>No</td>
 </tr>
 <tr>
-<td>OpenAPI 仕様</td>
-<td>API を定義する JSON または YAML ファイル。エージェントにアクションが含まれる場合のみ必要</td>
+<td>OpenAPI Spec</td>
+<td>API を定義する JSON または YAML ファイル。エージェントにアクションが含まれる場合のみ必要。</td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
 <h3 id="declarative_2">Declarative エージェントの機能</h3>
-<p>指示を追加するだけでなく、アクセスすべきナレッジベースを指定することで、エージェントのコンテキストとデータに対する集中度を高められます。これらは「機能」と呼ばれます。執筆時点で Declarative エージェントがサポートする主な機能は以下のとおりです。</p>
+<p>エージェントの焦点を文脈とデータに拡張するには、指示を追加するだけでなく、アクセスすべきナレッジ ベースを指定できます。これらを <strong>capabilities</strong>（機能）と呼びます。執筆時点で Declarative エージェントがサポートする機能は以下の通りです。</p>
 <ul>
-<li><strong>Copilot Connectors</strong> – 外部コンテンツを Microsoft 365 に取り込み、検索性と共有を向上させます。</li>
-<li><strong>OneDrive and SharePoint</strong> – OneDrive や SharePoint のファイル/サイトの URL を指定し、エージェントのナレッジベースに含められます。</li>
-<li><strong>Web search</strong> – Web コンテンツをナレッジベースに含めるかどうかを設定できます。最大 4 件までの Web サイト URL をソースとして渡せます。</li>
-<li><strong>Code interpreter</strong> – 数学問題の解決や Python コードを用いた高度なデータ分析・チャート生成を行える機能を追加します。</li>
-<li><strong>GraphicArt</strong> – DALL·E を用いた画像や動画生成が可能なエージェントを構築できます。</li>
-<li><strong>Email knowledge</strong> – 個人または共有メールボックス、任意のフォルダーをナレッジとして利用するエージェントを構築できます。</li>
-<li><strong>People knowledge</strong> – 組織内の人物に関する質問に回答できるエージェントを構築します。</li>
-<li><strong>Teams messages</strong> – Teams のチャネル、チーム、会議、1:1 チャット、グループチャットを検索できるようにします。</li>
-<li><strong>Dataverse knowledge</strong> – Dataverse インスタンスをナレッジ ソースとして追加できます。</li>
+<li><strong>Copilot Connectors</strong> - 外部コンテンツを Microsoft 365 に取り込み、情報の検索性を向上させ、組織内の他者が新しいコンテンツを発見できるようにします。</li>
+<li><strong>OneDrive and SharePoint</strong> - OneDrive と SharePoint のファイル／サイトの URL を指定し、エージェントのナレッジ ベースに含めることができます。</li>
+<li><strong>Web search</strong> - Web コンテンツをナレッジ ベースとして有効／無効にできます。ソースとして最大 4 件のウェブサイト URL を渡せます。</li>
+<li><strong>Code interpreter</strong> - 数学問題の解決や複雑なデータ分析、チャート生成のために Python コードを活用できるエージェントを構築できます。</li>
+<li><strong>GraphicArt</strong> - DALL·E を使用した画像や動画の生成が可能なエージェントを構築できます。</li>
+<li><strong>Email knowledge</strong> - 個人または共有メールボックス、オプションで特定フォルダーをナレッジとして利用するエージェントを構築できます。</li>
+<li><strong>People knowledge</strong> - 組織内の個人に関する質問に回答できるエージェントを構築できます。</li>
+<li><strong>Teams messages</strong> - Teams のチャネル、チーム、会議、1:1 チャット、グループ チャットを検索できるようにします。</li>
+<li><strong>Dataverse knowledge</strong> - Dataverse インスタンスをナレッジ ソースとして追加できます。</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">OnDrive and SharePoint</p>
-<p>URL は SharePoint アイテム（サイト、ドキュメント ライブラリ、フォルダー、ファイル）へのフル パスを指定してください。SharePoint でファイルやフォルダーを右クリックし [詳細] → [パス] → コピー アイコンを選択すると取得できます。<mark>URL を指定しない場合、ログイン ユーザーがアクセス可能な OneDrive と SharePoint の全コンテンツがエージェントのナレッジベースとして使用されます。</mark></p>
+<p>URL は SharePoint アイテム（サイト、ドキュメント ライブラリ、フォルダー、ファイル）のフル パスである必要があります。SharePoint の「リンクをコピー」オプションを使用して取得できます。ファイルまたはフォルダーを右クリックし、[詳細] を選択後、[パス] に移動してコピー アイコンをクリックしてください。<mark>URL を指定しない場合、サインインしているユーザーがアクセスできる OneDrive と SharePoint の全コンテンツがエージェントで使用されます。</mark></p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Microsoft Copilot Connector</p>
-<p>接続を指定しない場合、ログイン ユーザーがアクセスできる Copilot Connectors の全コンテンツがナレッジベースとして使用されます。</p>
+<p>接続を指定しない場合、サインイン ユーザーがアクセスできる Copilot Connectors の全コンテンツがエージェントで使用されます。</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Web search</p>
-<p>サイトを指定しない場合、エージェントはすべてのサイトを検索できます。サイトは最大 4 件まで、パス セグメントは 2 階層以内、クエリ文字列は含められません。 </p>
+<p>サイトを指定しない場合、エージェントはすべてのサイトを検索できます。最大 4 つのサイトを指定でき、パス セグメントは 2 つ以内、クエリ文字列は含められません。</p>
 </div>
 <h2 id="declarative-typespec">Declarative エージェントにおける TypeSpec の重要性</h2>
 <h3 id="typespec">TypeSpec とは</h3>
-<p>TypeSpec は、API 契約を構造化された型安全な方法で設計・記述するために Microsoft が開発した言語です。API が受け取るデータ、返すデータ、各アクションのつながりなど、API の「設計図」を定義するイメージです。</p>
-<h3 id="typespec_1">エージェントに TypeSpec を使う理由</h3>
-<p>TypeScript がフロントエンド/バックエンド コードの構造を強制するのと同じように、TypeSpec はエージェントとその API サービス（アクションなど）の構造を強制します。Visual Studio Code などのツールと相性が良いデザイン ファーストの開発ワークフローに最適です。</p>
+<p>TypeSpec は、API 契約を構造化かつ型安全な方法で設計・記述するために Microsoft が開発した言語です。API が受け入れるデータや返すデータ、API とそのアクションの接続方法など、API の設計図のようなものと考えてください。</p>
+<h3 id="typespec_1">エージェントに TypeSpec を使用する理由</h3>
+<p>TypeScript がフロントエンド／バックエンド コードに構造を強制するのと同様に、TypeSpec はエージェントとその API サービス（アクションなど）に構造を強制します。Visual Studio Code などのツールに適合したデザインファースト開発ワークフローに最適です。</p>
 <ul>
-<li>明確なコミュニケーション – 複数のマニフェスト ファイルを扱う場合でも、エージェントの挙動を 1 つのソース オブ トゥルースで定義できます。</li>
-<li>一貫性 – エージェントやアクション、機能など、すべての構成要素を統一パターンで設計できます。</li>
-<li>自動化しやすい – OpenAPI 仕様や各種マニフェストを自動生成し、時間短縮とヒューマン エラー削減を実現します。</li>
-<li>早期バリデーション – データ型の不一致や定義の不明確さなどの設計問題を実装前に検出できます。</li>
-<li>デザイン ファースト アプローチ – 実装に入る前にエージェントと API の構造・契約を考えることで、長期的な保守性を高めます。</li>
+<li>明確なコミュニケーション: 複数のマニフェスト ファイルを扱う際の混乱を避け、エージェントの動作を定義する単一のソース オブ トゥルースを提供します。</li>
+<li>一貫性: エージェントのすべての部分やアクション、機能などが同じパターンに従って設計されることを保証します。</li>
+<li>自動化対応: OpenAPI スペックやその他のマニフェストを自動生成し、時間を節約しヒューマン エラーを削減します。</li>
+<li>早期バリデーション: 実装コードを書く前に設計の問題（型不一致や定義の不明確さなど）を検出します。</li>
+<li>デザインファースト アプローチ: 実装に入る前にエージェントと API の構造・契約を考えるよう促し、長期的な保守性を向上させます。</li>
 </ul>
-<h2 id="1-microsoft-365-agents-toolkit-typespec">演習 1: Microsoft 365 Agents Toolkit を使ってベース エージェントを TypeSpec で構築する</h2>
+<h2 id="1-microsoft-365-agents-toolkit-typespec">エクササイズ 1: Microsoft 365 Agents Toolkit と TypeSpec でベース エージェントを構築する</h2>
 <h3 id="1-microsoft-365-agents-toolkit">手順 1: Microsoft 365 Agents Toolkit でベース エージェント プロジェクトをスキャフォールディングする</h3>
 <ul>
-<li>VS Code 左側メニューから Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択します。アクティビティ バーが開きます。  </li>
-<li>アクティビティ バーで「Create a New Agent/App」ボタンを選択すると、利用可能なテンプレート一覧が表示されます。  </li>
-<li>テンプレート一覧から「Declarative Agent」を選択します。  </li>
-<li>続いて「Start with TypeSpec for Microsoft 365 Copilot」を選択し、TypeSpec でエージェントを定義します。  </li>
-<li>次に、ツールキットがプロジェクトを生成するフォルダーを選択します。  </li>
-<li>アプリケーション名として "RepairServiceAgent" などを入力し、Enter キーを押して完了します。新しい VS Code ウィンドウが開き、エージェント プロジェクトが読み込まれます。</li>
+<li>VS Code 左メニューから Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択します。アクティビティ バーが開きます。  </li>
+<li>アクティビティ バーで 「Create a New Agent/App」 ボタンを選択すると、利用可能なアプリ テンプレートの一覧がパレットに表示されます。  </li>
+<li>一覧から 「Declarative Agent」 を選択します。  </li>
+<li>次に 「Start with TypeSpec for Microsoft 365 Copilot」 を選択し、TypeSpec でエージェントを定義します。  </li>
+<li>スキャフォールディング先のフォルダーを選択します。  </li>
+<li>アプリケーション名を「RepairServiceAgent」などと入力し、Enter を押して完了します。新しい VS Code ウィンドウにエージェント プロジェクトが読み込まれます。</li>
 </ul>
 <p><cc-end-step lab="e01" exercise="1" step="1" /></p>
 <h3 id="2-microsoft-365-agents-toolkit">手順 2: Microsoft 365 Agents Toolkit にサインインする</h3>
-<p>エージェントをアップロードしてテストするには、Microsoft 365 Agents Toolkit にサインインする必要があります。</p>
+<p>エージェントをアップロードしてテストするために Microsoft 365 Agents Toolkit へサインインする必要があります。</p>
 <ul>
-<li>プロジェクト ウィンドウで、再度 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択します。アクティビティ バーに Accounts、Environment、Development などのセクションが表示されます。  </li>
-<li>「Accounts」セクションで「Sign in to Microsoft 365」を選択します。サインイン ダイアログが表示されるので「Sign in」を選択します。  </li>
-<li>サインインが完了したらブラウザーを閉じ、プロジェクト ウィンドウに戻ります。</li>
+<li>プロジェクト ウィンドウ内で再度 Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択し、アクティビティ バーを開きます。  </li>
+<li>「Accounts」 セクションで 「Sign in to Microsoft 365」 を選択します。エディターからダイアログが開き、Microsoft 365 開発者サンドボックスを作成またはサインイン、もしくはキャンセルを選択できます。「Sign in」を選択してください。  </li>
+<li>サインイン後、ブラウザーを閉じてプロジェクト ウィンドウに戻ります。</li>
 </ul>
 <p><cc-end-step lab="e01" exercise="1" step="2" /></p>
 <h3 id="3">手順 3: エージェントを定義する</h3>
-<p>Agents Toolkit によって生成された Declarative エージェント プロジェクトには、GitHub API に接続してリポジトリの Issue を表示するテンプレートが含まれています。本ラボでは、車両修理サービスと統合し、修理データを管理する複数の操作をサポートする独自エージェントを構築します。</p>
+<p>Agents Toolkit によってスキャフォールディングされた Declarative エージェント プロジェクト テンプレートには、GitHub API に接続してリポジトリの issue を表示するサンプル コードが含まれています。本ラボでは、自動車修理サービスと統合し、複数の操作で修理データを管理する独自エージェントを構築します。</p>
 <p>プロジェクト フォルダーには <code>main.tsp</code> と <code>actions.tsp</code> の 2 つの TypeSpec ファイルがあります。<br />
-<code>main.tsp</code> にはエージェントのメタデータ、指示、機能が定義されています。<br />
-<code>actions.tsp</code> はエージェントのアクションを定義するファイルです。API サービスへの接続などアクションを含める場合はこのファイルに記述します。</p>
-<p><code>main.tsp</code> を開き、デフォルト テンプレートの内容を確認しましょう。これを修理サービスのシナリオ用に修正します。 </p>
+<code>main.tsp</code> にはエージェントのメタデータ、指示、機能が定義されます。<br />
+<code>actions.tsp</code> ではエージェントのアクションを定義します。API サービスへの接続などアクションがある場合は、このファイルで定義します。</p>
+<p><code>main.tsp</code> を開き、デフォルト テンプレートの内容を確認します。修理サービス シナリオに合わせて変更します。 </p>
 <h4 id="_1">エージェントのメタデータと指示を更新する</h4>
-<p><code>main.tsp</code> にはエージェントの基本構造が含まれています。テンプレートには以下が含まれています。
+<p><code>main.tsp</code> にはエージェントの基本構造が記載されています。Agents Toolkit テンプレートに含まれる内容を確認してください。
 - エージェント名と説明 1️⃣<br />
-- 基本的な指示 2️⃣<br />
-- アクションと機能のプレースホルダー コード（コメントアウト済み）3️⃣  </p>
+- 基本指示 2️⃣<br />
+- アクションと機能のプレースホルダー コード（コメントアウト）3️⃣  </p>
 <p><img alt="Visual Studio Code showing the initially scaffolded template for a Declarative Agent defined in TypeSpec. There TypeSpec syntax elements to define the agent, its instructions, and some commented out commands to define starter prompts and actions." src="https://github.com/user-attachments/assets/42da513c-d814-456f-b60f-a4d9201d1620" /></p>
-<p>最初に修理シナリオ用のエージェントを定義します。<code>@agent</code> と <code>@instructions</code> の定義を次のコード スニペットに置き換えます。</p>
+<p>まず、修理シナリオ用のエージェントを定義します。<code>@agent</code> と <code>@instructions</code> の定義を以下のコード スニペットに置き換えてください。</p>
 <pre><code class="language-typespec">@agent(
   &quot;RepairServiceAgent&quot;,
    &quot;An agent for managing repair information&quot;
@@ -2303,7 +2119,7 @@ You will assist the user in finding car repair records based on the information 
 &quot;&quot;&quot;)
 
 </code></pre>
-<p>次に会話スターターを追加します。指示のすぐ下にコメントアウトされた会話スターターのコードがあるので、コメントを外し、タイトルとテキストを以下に置き換えます。</p>
+<p>次に、エージェントの会話スターターを追加します。指示のすぐ下にコメントアウトされたコードがあるのでアンコメントし、タイトルとテキストを以下のように置き換えます。</p>
 <pre><code class="language-typespec">// Uncomment this part to add a conversation starter to the agent.
 // This will be shown to the user when the agent is first created.
 @conversationStarter(#{
@@ -2313,9 +2129,9 @@ You will assist the user in finding car repair records based on the information 
 
 </code></pre>
 <h4 id="_2">エージェントのアクションを更新する</h4>
-<p>次に <code>actions.tsp</code> ファイルを開き、エージェントのアクションを定義します。後で <code>main.tsp</code> に戻り、アクション参照を含むエージェントのメタデータを完成させますが、まずはアクション自体を定義します。</p>
-<p><code>actions.tsp</code> のプレースホルダー コードは、GitHub リポジトリのオープン Issue を検索するものです。アクションのメタデータ、API ホスト URL、操作や関数の定義方法を理解するための出発点です。これを修理サービス用にすべて置き換えます。</p>
-<p>インポートや using 文などのモジュール レベルのディレクティブの後から "SERVER_URL" が定義される箇所までの既存コードを、以下のスニペットに置き換えます。この更新によりアクション メタデータが追加され、サーバー URL が設定されます。また、名前空間が GitHubAPI から RepairsAPI に変更されています。</p>
+<p>次に <code>actions.tsp</code> を開き、エージェントのアクションを定義します。後で <code>main.tsp</code> に戻り、エージェント メタデータにアクション参照を追加しますが、まずアクション自体を定義する必要があります。</p>
+<p><code>actions.tsp</code> のプレースホルダー コードは GitHub リポジトリのオープン issue を検索するように設計されています。アクションのメタデータ、API ホスト URL、操作や関数の定義方法を理解するための出発点です。これを修理サービス用に置き換えます。</p>
+<p>インポートや using ステートメントなどモジュール レベルのディレクティブの後、<code>SERVER_URL</code> が定義される箇所までの既存コードを以下のスニペットで置き換えます。この更新ではアクションのメタデータを導入し、サーバー URL を設定します。また、名前空間を GitHubAPI から RepairsAPI に変更します。</p>
 <pre><code class="language-typespec">@service
 @server(RepairsAPI.SERVER_URL)
 @actions(RepairsAPI.ACTIONS_METADATA)
@@ -2337,7 +2153,7 @@ namespace RepairsAPI{
   const SERVER_URL = &quot;https://repairshub.azurewebsites.net&quot;;
 
 </code></pre>
-<p>次にテンプレート コードの <code>searchIssues</code> を <code>listRepairs</code> に置き換えます。これは修理一覧を取得する操作です。SERVER_URL 定義の直後から最終の閉じ括弧の <em>前</em> までのコード ブロック全体を以下のスニペットに置き換えてください。閉じ括弧自体は残します。</p>
+<p>次にテンプレート コードの <code>searchIssues</code> 操作を <code>listRepairs</code> に置き換えます。これは修理の一覧を取得する操作です。<code>SERVER_URL</code> 定義直後から最後の閉じ括弧の <em>前</em> までのコード ブロック全体を以下のスニペットで置き換えてください。閉じ括弧は残してください。</p>
 <pre><code class="language-typespec">  /**
    * List repairs from the API 
    * @param assignedTo The user assigned to a repair item.
@@ -2346,12 +2162,9 @@ namespace RepairsAPI{
   @route(&quot;/repairs&quot;)
   @get  op listRepairs(@query assignedTo?: string): string;
 
-````
-
-続いて `main.tsp` に戻り、定義済みアクションをエージェントに追加します。会話スターターの後にあるコード ブロック全体を次のスニペットに差し替えます。
-
-```typespec
-namespace RepairServiceAgent{  
+</code></pre>
+<p><code>main.tsp</code> に戻り、先ほど定義したアクションをエージェントに追加します。会話スターターの後に、以下のスニペットでコード ブロック全体を置き換えてください。</p>
+<pre><code class="language-typespec">namespace RepairServiceAgent{  
   // Uncomment this part to add actions to the agent.
   @service
   @server(global.RepairsAPI.SERVER_URL)
@@ -2362,10 +2175,10 @@ namespace RepairServiceAgent{
 }
 </code></pre>
 <p><cc-end-step lab="e01" exercise="1" step="3" /></p>
-<h3 id="4">手順 4: (任意) デコレーターを理解する</h3>
-<p>この手順は任意です。TypeSpec ファイルで何を定義したか確認したい場合に読んでください。すぐにエージェントをテストしたい場合は手順 5 に進んで構いません。<br />
-<code>main.tsp</code> と <code>actions.tsp</code> には、デコレーター（@ で始まる）、名前空間、モデルなど、エージェントの定義が含まれています。</p>
-<p>以下の表はこれらのファイルで使われている主なデコレーターの説明です。</p>
+<h3 id="4">手順 4: デコレーターの理解（オプション）</h3>
+<p>オプション手順です。TypeSpec ファイルで何を定義したかを理解したい場合に読み進めてください。すぐにエージェントをテストしたい場合は手順 5 へ進んでください。<br />
+<code>main.tsp</code> と <code>actions.tsp</code> には、デコレーター（@ で始まる）、名前空間、モデル、その他の定義が含まれています。</p>
+<p>これらのファイルで使用される主なデコレーターの意味は次の通りです。</p>
 <table>
 <thead>
 <tr>
@@ -2380,7 +2193,7 @@ namespace RepairServiceAgent{
 </tr>
 <tr>
 <td>@instructions</td>
-<td>エージェントの挙動を規定する指示を定義します。8,000 文字以内</td>
+<td>エージェントの行動を規定する指示を定義します。8,000 文字以内</td>
 </tr>
 <tr>
 <td>@conversationStarter</td>
@@ -2388,7 +2201,7 @@ namespace RepairServiceAgent{
 </tr>
 <tr>
 <td>op</td>
-<td>あらゆる操作を定義します。<em>op GraphicArt</em> や <em>op CodeInterpreter</em> など機能を定義する場合、または <strong>op listRepairs</strong> のように API 操作を定義する場合があります</td>
+<td>任意の操作を定義します。<em>op GraphicArt</em> や <em>op CodeInterpreter</em> など機能定義、または <strong>op listRepairs</strong> など API 操作を定義する場合があります</td>
 </tr>
 <tr>
 <td>@server</td>
@@ -2396,51 +2209,46 @@ namespace RepairServiceAgent{
 </tr>
 <tr>
 <td>@capabilities</td>
-<td>関数内で使用すると、操作の確認カードなど簡単な Adaptive Card を定義します</td>
+<td>関数内で使用すると、操作確認カードなどのシンプルな Adaptive Card を定義します</td>
 </tr>
 </tbody>
 </table>
 <p><cc-end-step lab="e01" exercise="1" step="4" /></p>
 <h3 id="5">手順 5: エージェントをテストする</h3>
-<p>次は Repair Service Agent をテストします。 </p>
+<p>次に Repair Service Agent をテストします。 </p>
 <ul>
-<li>Agents Toolkit 拡張機能のアイコンを選択し、プロジェクト内からアクティビティ バーを開きます。  </li>
-<li>アクティビティ バーの "LifeCycle" セクションで "Provision" を選択します。これにより、生成されたマニフェスト ファイルやアイコンを含むアプリ パッケージがビルドされ、カタログにサイドロード（自分だけがテスト可能な状態）されます。  </li>
+<li>エージェント Toolkit の拡張機能アイコンを選択し、アクティビティ バーを開きます。  </li>
+<li>アクティビティ バーの "LifeCycle" セクションで "Provision" を選択します。これにより、生成されたマニフェスト ファイルとアイコンを含むアプリ パッケージがビルドされ、カタログにサイドロードされます（自分専用でテスト用）。  </li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Knowledge</p>
-<p>Agents Toolkit は TypeSpec ファイルの定義を検証し、正確性を確保します。エラーも特定して開発体験を向上させます。</p>
+<p>Agents Toolkit はここで TypeSpec ファイルの定義を検証し、正確性を確保します。エラーも識別して開発者体験を向上させます。</p>
 </div>
 <ul>
-<li>次にブラウザーを開き、<a href="https://m365.cloud.microsoft/chat" target="_blank">https://m365.cloud.microsoft/chat</a> にアクセスして Copilot アプリを開きます。</li>
+<li>ブラウザーで <a href="https://m365.cloud.microsoft/chat" target="_blank">https://m365.cloud.microsoft/chat</a> を開き、Copilot アプリへ移動します。</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Help</p>
-<p>Copilot アプリで「Something went wrong」の画面が表示された場合は、ブラウザーを更新してください。  </p>
+<p>Copilot アプリで "Something went wrong" が表示された場合は、ブラウザーをリフレッシュしてください。  </p>
 </div>
 <ul>
-<li>
-<p>Microsoft 365 Copilot インターフェイスの <strong>Agents</strong> 一覧から <strong>RepairServiceAgent</strong> を選択します。<br />
-プロビジョニングの進行状況を示すトースター メッセージが表示されるまで少し時間がかかります。</p>
-</li>
-<li>
-<p>会話スターター <code>List repairs</code> を選択し、チャットに送信してエージェントとの対話を開始し、応答を確認します。</p>
-</li>
+<li>Microsoft 365 Copilot インターフェイスの <strong>Agents</strong> 一覧から <strong>RepairServiceAgent</strong> を選択します。  </li>
+<li>会話スターター <code>List repairs</code> を選択し、チャットに送信してエージェントとの対話を開始し、応答を確認します。</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Help</p>
-<p>クエリを処理するためにエージェントへの接続を求められたら、通常は最初の 1 回だけ表示されます。ラボをスムーズに進めるため <strong>"Always allow"</strong> を選択してください。<br />
+<p>クエリ処理のためエージェント接続を求められた場合、この画面は通常 1 回だけ表示されます。ラボを円滑に進めるため <strong>"Always allow"</strong> を選択してください。<br />
 <img alt="Screenshot of the agent in action with the response for the prompt 'List all repairs' showing repairs with pictures." src="https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7" /></p>
 </div>
 <ul>
-<li>今後の演習に備えてブラウザー セッションは開いたままにしておきます。 </li>
+<li>今後のエクササイズに備え、ブラウザー セッションは開いたままにしてください。 </li>
 </ul>
 <p><cc-end-step lab="e01" exercise="1" step="5" /></p>
-<h2 id="2">演習 2: エージェント機能の拡張</h2>
-<p>次に、さらに多くの操作を追加し、Adaptive Card での応答を有効にし、Code Interpreter 機能を組み込んでエージェントを強化します。VS Code のプロジェクトに戻り、各ステップを試してみましょう。</p>
-<h3 id="1">手順 1: 追加の操作をエージェントに組み込む</h3>
+<h2 id="2">エクササイズ 2: エージェント機能の強化</h2>
+<p>次に、操作を追加し、Adaptive Card で応答を強化し、code interpreter 機能を組み込みます。VS Code のプロジェクトに戻りましょう。</p>
+<h3 id="1">手順 1: 追加操作の実装</h3>
 <ul>
-<li><code>actions.tsp</code> ファイルに移動し、<code>listRepairs</code> 操作の直後に以下のスニペットを貼り付けて <code>createRepair</code>、<code>updateRepair</code>、<code>deleteRepair</code> の新しい操作を追加します。ここでは <code>Repair</code> アイテムのデータ モデルも定義しています。</li>
+<li><code>actions.tsp</code> を開き、<code>listRepairs</code> 操作の直後に以下のスニペットを貼り付けて <code>createRepair</code>、<code>updateRepair</code>、<code>deleteRepair</code> の新しい操作を追加します。また、<code>Repair</code> アイテムのデータ モデルも定義します。</li>
 </ul>
 <pre><code class="language-typespec">  /**
    * Create a new repair. 
@@ -2509,7 +2317,7 @@ namespace RepairServiceAgent{
 
 </code></pre>
 <ul>
-<li>次に <code>main.tsp</code> ファイルに戻り、これらの新しい操作がエージェントのアクションにも追加されていることを確認します。<code>RepairServiceActions</code> 名前空間内の <code>op listRepairs is global.RepairsAPI.listRepairs;</code> の後に以下のスニペットを貼り付けます。</li>
+<li><code>main.tsp</code> に戻り、これらの新しい操作がエージェントのアクションにも追加されていることを確認します。<code>RepairServiceActions</code> 名前空間内の <code>op listRepairs is global.RepairsAPI.listRepairs;</code> の後に以下のスニペットを貼り付けます。</li>
 </ul>
 <pre><code class="language-typespec">op createRepair is global.RepairsAPI.createRepair;
 op updateRepair is global.RepairsAPI.updateRepair;
@@ -2517,7 +2325,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 </code></pre>
 <ul>
-<li>さらに、最初の会話スターターの直後に新しい修理アイテム作成用の会話スターターを追加します。</li>
+<li>さらに、最初の会話スターターのすぐ後に新しい会話スターターを追加して、修理アイテムを作成できるようにします。</li>
 </ul>
 <pre><code class="language-typespec">@conversationStarter(#{
   title: &quot;Create repair&quot;,
@@ -2526,10 +2334,10 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="1" /></p>
-<h3 id="2-adaptive-card">手順 2: 関数参照に Adaptive Card を追加する</h3>
-<p>次に、参照カードや応答カードを Adaptive Card で強化します。<code>listRepairs</code> 操作に対して修理アイテム用の Adaptive Card を追加しましょう。 </p>
+<h3 id="2-adaptive-card">手順 2: 関数参照に Adaptive Card を追加</h3>
+<p>次に、参照カードや応答カードを Adaptive Card で強化します。<code>listRepairs</code> 操作に修理アイテム用の Adaptive Card を追加します。 </p>
 <ul>
-<li>プロジェクト フォルダーで <strong>appPackage</strong> フォルダーの下に <strong>cards</strong> フォルダーを新規作成します。<strong>cards</strong> フォルダー内に <code>repair.json</code> ファイルを作成し、以下のコード スニペットをそのまま貼り付けます。 </li>
+<li>プロジェクト フォルダーで <strong>appPackage</strong> フォルダーの下に <strong>cards</strong> フォルダーを新規作成します。<strong>cards</strong> フォルダー内に <code>repair.json</code> ファイルを作成し、以下のコード スニペットをそのまま貼り付けます。</li>
 </ul>
 <pre><code class="language-json">{
     &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
@@ -2581,42 +2389,42 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 </code></pre>
 <ul>
-<li><code>actions.tsp</code> に戻り、<code>listRepairs</code> 操作を探します。操作定義 <code>@get op listRepairs(@query assignedTo?: string): string;</code> の直上に、以下のスニペットでカード定義を貼り付けます。</li>
+<li><code>actions.tsp</code> に戻り、<code>listRepairs</code> 操作を探します。操作定義 <code>@get op listRepairs(@query assignedTo?: string): string;</code> の直前に、以下のスニペットを貼り付けてカード定義を追加します。</li>
 </ul>
 <pre><code class="language-typespec">
   @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;cards/repair.json&quot;}) 
 
 </code></pre>
-<p>上記のカード応答は、修理アイテムを問い合わせた際やエージェントがアイテムの一覧を返す際に使用されます。<br />
-続いて <code>createRepair</code> 操作に対しても、POST 操作後にエージェントが作成結果を表示するカード応答を追加します。</p>
+<p>上記のカード応答は、修理アイテムを尋ねたときやエージェントが一覧を参照として返すときに送信されます。<br />
+続いて <code>createRepair</code> 操作にも Adaptive Card を追加し、POST 操作後にエージェントが作成した内容を表示できるようにします。</p>
 <ul>
-<li><code>@post op createRepair(@body repair: Repair): Repair;</code> の直上に以下のスニペットを貼り付けます。</li>
+<li><code>@post op createRepair(@body repair: Repair): Repair;</code> の直前に以下のスニペットを貼り付けます。</li>
 </ul>
 <pre><code class="language-typespec">
    @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;cards/repair.json&quot;}) 
 
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="2" /></p>
-<h2 id="3-code-interpreter">手順 3: Code Interpreter 機能を追加する</h2>
-<p>Declarative エージェントは <em>OneDriveAndSharePoint</em>、<em>WebSearch</em>、<em>CodeInterpreter</em> など多くの機能を拡張できます。<br />
-次は Code Interpreter 機能を追加して、エージェントをさらに強化します。</p>
+<h2 id="3-code-interpreter">手順 3: code interpreter 機能の追加</h2>
+<p>Declarative エージェントは <em>OneDriveAndSharePoint</em>、<em>WebSearch</em>、<em>CodeInterpreter</em> など多数の機能で拡張できます。<br />
+ここでは code interpreter 機能を追加します。</p>
 <ul>
 <li>
-<p><code>main.tsp</code> ファイルを開き、<code>RepairServiceAgent</code> 名前空間を探します。</p>
+<p><code>main.tsp</code> を開き、<code>RepairServiceAgent</code> 名前空間を探します。</p>
 </li>
 <li>
-<p>この名前空間内に、コードを解釈・実行できるようにする新しい操作を定義する以下のスニペットを追加します。</p>
+<p>この名前空間内に、エージェントがコードを解釈・実行できるようにする新しい操作を以下のスニペットで定義します。</p>
 </li>
 </ul>
 <pre><code class="language-typespec">  op codeInterpreter is AgentCapabilities.CodeInterpreter;
 </code></pre>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>上記の <em>CodeInterpreter</em> 操作は、エージェントのアクションを定義する <code>RepairServiceActions</code> 名前空間ではなく、外側の <code>RepairServiceAgent</code> 名前空間内に貼り付けてください。  </p>
+<p>上記 <em>CodeInterpreter</em> 操作は、外側の <code>RepairServiceAgent</code> 名前空間内に貼り付けてください。アクションを定義する <code>RepairServiceActions</code> 名前空間ではありません。  </p>
 </div>
 <p>追加機能をサポートするようになったため、指示も更新して反映します。</p>
 <ul>
-<li>同じ <code>main.tsp</code> ファイルで <code>@instructions</code> 定義を更新し、エージェントへの追加指示を含めます。</li>
+<li>同じ <code>main.tsp</code> ファイルで、指示定義を以下のように更新します。</li>
 </ul>
 <pre><code class="language-typespec">@instructions(&quot;&quot;&quot;
   ## Purpose
@@ -2634,64 +2442,64 @@ You will assist the user in finding car repair records based on the information 
 
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="3" /></p>
-<h3 id="4_1">手順 4: エージェントをプロビジョニングしてテストする</h3>
-<p>更新されたエージェント（修理アナリスト機能付き）をテストしてみましょう。 </p>
+<h3 id="4_1">手順 4: エージェントのプロビジョニングとテスト</h3>
+<p>修理アナリストにもなった更新済みエージェントをテストしましょう。 </p>
 <ul>
-<li>Agents Toolkit の拡張機能アイコンを選択し、アクティビティ バーを開きます。  </li>
-<li>アクティビティ バーの "LifeCycle" セクションで "Provision" を選択して、新しいエージェントをパッケージ化してアップロードします。  </li>
-<li>その後、開いているブラウザー セッションに戻り、ページを更新します。  </li>
+<li>Agents Toolkit の拡張機能アイコンを選択してアクティビティ バーを開きます。  </li>
+<li>ツールキットの "LifeCycle" セクションで "Provision" を選択し、更新されたエージェントをパッケージ化してアップロードします。  </li>
+<li>ブラウザー セッションに戻り、リフレッシュします。  </li>
 <li><strong>Agents</strong> 一覧から <strong>RepairServiceAgent</strong> を選択します。  </li>
 <li>
-<p>会話スターター "Create repair" を選択し、タイトルなどを置き換えてチャットに送信し対話を開始します。例:  </p>
+<p>会話スターター 'Create repair' を使い、タイトルを含めて下記例のようにプロンプトを送信してください。</p>
 <p><code>Create a new repair titled "rear camera issue" and assign it to me.</code></p>
 </li>
 <li>
-<p>確認ダイアログでは、送信内容より多くのメタデータが含まれていることに注目してください。これは新しい指示のおかげです。 </p>
+<p>確認ダイアログには、送信した内容より多くのメタデータが表示されます。これは新しい指示のおかげです。  </p>
 </li>
 </ul>
 <p><img alt="The confirmation message provided by Microsoft 365 Copilot when sending a POST request to the target API. There are buttons to 'Confirm' or to 'Cancel' sending the request to the API." src="https://github.com/user-attachments/assets/56629979-b1e5-4a03-a413-0bb8bb438f00" /></p>
 <ul>
-<li>ダイアログを確認してアイテムを追加します。</li>
+<li>確認してアイテムを追加します。</li>
 </ul>
-<p>エージェントは作成されたアイテムをリッチな Adaptive Card で返します。</p>
+<p>エージェントは作成したアイテムをリッチな Adaptive Card で応答します。</p>
 <p><img alt="The response after creating a new item, with the information about the item to repair rendered through an adaptive card with a button to show the associated image." src="https://github.com/user-attachments/assets/6da0a38f-5de3-485a-999e-c695389853f8" /></p>
 <ul>
 <li>
-<p>次に参照カードが機能するか再確認します。以下のプロンプトを送信します。</p>
+<p>次に参照カードが機能するか再確認します。以下のプロンプトを送信してください。</p>
 <p><code>List all my repairs.</code></p>
 </li>
 </ul>
-<p>エージェントは修理一覧を返し、各アイテムに Adaptive Card の参照ボタンが付いています。</p>
+<p>エージェントは修理の一覧を返し、各アイテムに対して Adaptive Card が参照として表示されます。</p>
 <p><img alt="The response for the list of repairs with a reference button for each item, showing an adaptive card when hoovering on it." src="https://github.com/user-attachments/assets/880ad3aa-2ed3-4051-a68b-d988527d9d53" /></p>
 <ul>
-<li>続いてエージェントの新しい分析機能をテストします。エージェント画面右上の <strong>New chat</strong> ボタンで新しいチャットを開きます。  </li>
+<li>次にエージェントの新しい分析機能をテストします。エージェントの右上の <strong>New chat</strong> ボタンを選択して新しいチャットを開きます。  </li>
 <li>
-<p>以下のプロンプトをコピーしてメッセージ ボックスに貼り付け、Enter を押します。</p>
+<p>以下のプロンプトをコピーしてメッセージ ボックスに貼り付け、Enter キーを押します。</p>
 <p><code>Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.</code></p>
 </li>
 </ul>
-<p>以下のようなレスポンスが得られるはずです（内容は変動する場合があります）。 </p>
+<p>下図のような応答が得られます（内容は変わる場合があります）。 </p>
 <p><img alt="The response when using the Code Interpreter capability. There are a detailed text and a chart showing the percentage representation of each category of repair." src="https://github.com/user-attachments/assets/ea1a5b21-bc57-4ed8-a8a4-c187caff2c64" /></p>
 <p><cc-end-step lab="e01" exercise="2" step="3" /></p>
-<h2 id="3_1">演習 3: エージェントの診断とデバッグ</h2>
-<p>チャットで開発者モードを有効にすると、エージェントがタスクをどの程度理解しているか、サービスを適切に呼び出しているか、チューニングが必要な箇所、パフォーマンスの問題などを確認できます。</p>
+<h2 id="3_1">エクササイズ 3: エージェントの診断とデバッグ</h2>
+<p>チャットで開発者モードを有効にすると、エージェントがタスクをどれだけ正確に理解しているか、サービス呼び出しが適切か、チューニングの必要な箇所やパフォーマンス問題を特定し、やり取りを分析できます。</p>
 <h3 id="1_1">手順 1: チャットでのエージェント デバッグ</h3>
 <ul>
 <li>
-<p>以下の行をエージェントとのチャットに貼り付けてデバッグ モードを有効にします。</p>
+<p>エージェントとのチャットに次の行をコピーして貼り付け、デバッグ モードを有効にします。</p>
 <p><code>-developer on</code></p>
 </li>
 <li>
-<p>正常に有効化されると、<code>Successfully enabled developer mode.</code> と表示されます。</p>
+<p>問題なく有効化されると、エージェントから <code>Successfully enabled developer mode.</code> と応答があります。</p>
 </li>
 <li>
-<p>テストとして、次のようなプロンプトを送信します。</p>
+<p>次にテスト用に以下のプロンプトを送信します。</p>
 </li>
 </ul>
 <p><code>Find out what Karin is working on.</code></p>
 <ul>
-<li>修理サービスからの情報とともに <strong>Agent debug info</strong> カードが表示されます。</li>
-<li><strong>Agent debug info</strong> カードを展開すると、以下が確認できます。 <ul>
+<li>修理サービスからの情報が返るとともに <strong>Agent debug info</strong> カードも表示されます。  </li>
+<li><strong>Agent debug info</strong> カードを展開すると、以下の情報が確認できます。  <ul>
 <li>エージェント情報 1️⃣  </li>
 <li>エージェントの機能 2️⃣  </li>
 <li>アクションと選択された関数 3️⃣  </li>
@@ -2705,10 +2513,10 @@ You will assist the user in finding car repair records based on the information 
 </ul>
 <p><cc-end-step lab="e01" exercise="3" step="1" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">おめでとうございます！</span></p>
-<p>素晴らしい！初めてのエージェント作成お疲れさまでした 🎉 </p>
-<p>次に進み、API を作成して統合するには <strong>Next</strong> を選択してください。
+<p>素晴らしいですね、初めてのエージェントを構築できました 🎉 </p>
+<p>API を作成・ビルドして統合するには <strong>Next</strong> を選択してください。
 <cc-next url="../02-build-the-api" label="Next" /></p>
-<p>基礎をさらに探求したい場合は、Geolocator ゲームを作成する <strong>Create a game</strong> を選択してください。
+<p>ゲーム「Geolocator」を作りながら基礎を引き続き学びたい場合は、<strong>Create a game</strong> を選択してください。
 <cc-next url="../01a-geolocator" label="Create a game" /></p>
 <p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-typespec-declarative-agent--ja" /></p>
 

@@ -11,22 +11,18 @@
         <link rel="canonical" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/teams-ai/04-authentication/">
       
       
-        <link rel="prev" href="../03-powered-by-ai/">
-      
-      
-        <link rel="next" href="../05-actions/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>ラボ BTA4 - シングル サインオン認証の追加 - Copilot Developer Camp</title>
+        <title>Lab BTA4 - シングル サインオン認証の追加 - Copilot Developer Camp</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bta4-" class="md-skip">
+        <a href="#lab-bta4-" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ラボ BTA4 - シングル サインオン認証の追加
+              Lab BTA4 - シングル サインオン認証の追加
             
           </span>
         </div>
@@ -194,7 +190,7 @@
         <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     microsoft/copilot-camp
@@ -273,12 +269,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../" class="md-tabs__link">
           
   
@@ -299,34 +293,15 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../beyond-agents/beginner-agent/" class="md-tabs__link">
+        <a href="../../../beyond-agents/" class="md-tabs__link">
           
   
   
-  プロンプト エンジニアリング
+  AI の概念と手法
 
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../../awards/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  アワード
-
-      </a>
-    </li>
   
 
       
@@ -391,7 +366,7 @@
       <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     microsoft/copilot-camp
@@ -726,6 +701,52 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS7 - 自律型エージェントの作成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ MCS8 - RAG のための Azure AI Search 統合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../make/sharepoint-agents/" class="md-nav__link">
         
   
@@ -754,7 +775,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ MSA1 - 最初の SharePoint エージェントを作成する
+    Lab MSA1 - はじめての SharePoint エージェント作成
     
   </span>
   
@@ -990,7 +1011,7 @@
   
   
   <span class="md-ellipsis">
-    ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使用して初めての Declarative エージェントを構築する
+    ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築
     
   </span>
   
@@ -1167,6 +1188,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1203,7 +1247,7 @@
   
   
   <span class="md-ellipsis">
-    認証
+    認証 (旧ラボ)
     
   </span>
   
@@ -1214,32 +1258,9 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
-            認証
+            認証 (旧ラボ)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ E6a - Entra ID 認証を OAuth で追加 (Agents Toolkit)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1380,31 +1401,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -1417,7 +1433,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             カスタム エンジン エージェントの構築
@@ -1460,20 +1476,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
   
@@ -1639,310 +1652,6 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Teams AI library ラボ
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            Teams AI library ラボ
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    イントロ ― Teams AI Library を使用した独自エージェント構築
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../00-prerequisites/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA0 - 前提条件
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-custom-engine-agent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA1 - Teams AI ライブラリでの最初のカスタム エンジン エージェント
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-rag/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA2 - Azure AI Search でデータをインデックス
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-powered-by-ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA3 - ユーザー エクスペリエンスの向上
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA4 - シングル サインオン認証の追加
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA4 - シングル サインオン認証の追加
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-1-entra-id" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 1: Entra ID シングル サインオン用にプロジェクトを設定する
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-2-teams-manifest-sso" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 2: Teams アプリ manifest に SSO を追加する
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-3-sso" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 3: アプリケーション コードを SSO に対応させる
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 4: アプリを実行する
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-actions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ラボ BTA5 - 複雑なタスクを処理するアクションの追加
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1978,7 +1687,7 @@
   
   
   <span class="md-ellipsis">
-    プロンプト エンジニアリング
+    AI の概念と手法
     
   </span>
   
@@ -1989,9 +1698,32 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            プロンプト エンジニアリング
+            AI の概念と手法
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    始めてみましょう
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2005,7 +1737,7 @@
   
   
   <span class="md-ellipsis">
-    Agent Instruction Lab - Improve your agent instructions (Beginner friendly)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
     
   </span>
   
@@ -2019,28 +1751,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../awards/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    アワード
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2083,19 +1793,19 @@
 
 
 
-<h1 id="bta4-">ラボ BTA4 - シングル サインオン認証の追加</h1>
-<p>このラボでは、Career Genie に Entra シングル サインオン ( SSO ) を実装し、取得したトークンを使用して Microsoft Graph API を呼び出し、ログインしているユーザー情報を取得する方法を学びます。</p>
+<h1 id="lab-bta4-">Lab BTA4 - シングル サインオン認証の追加</h1>
+<p>このラボでは、Career Genie で Entra Single Sign-On を使用して ユーザー を認証し、取得したトークンで Microsoft Graph API を呼び出して ログイン中の ユーザー 情報を取得する方法を学びます。</p>
 <p>このラボで学ぶこと:</p>
 <ul>
-<li>アプリに Entra ID シングル サインオン ( SSO ) を追加し、ユーザーが Microsoft Teams と同じアカウントでシームレスにログインできるようにする  </li>
+<li>Entra ID シングル サインオン (SSO) をアプリに追加し、ユーザー が Microsoft Teams で使用しているのと同じアカウントでシームレスにログインできるようにする  </li>
 <li>Teams AI ライブラリと Bot Framework を使用して SSO を実装する  </li>
-<li>アプリ ユーザーのトークンを取得して使用し、セキュリティとユーザー エクスペリエンスを向上させる  </li>
+<li>アプリ ユーザー のトークンを取得して使用し、セキュリティと ユーザー エクスペリエンスを強化する  </li>
 </ul>
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/5oyftU9PRpM" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を素早く確認しましょう。</div>
+          <div>このビデオでラボの概要を確認しましょう。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
         <div class="floatwide">
@@ -2140,14 +1850,14 @@
     </div>
 </div>
 
-<h2 id="_1">はじめに</h2>
-<p>Career Genie を強化し、Entra ID (旧 Azure AD) シングル サインオン ( SSO ) を統合する準備をしましょう。これにより、アプリは Microsoft Graph を介して Microsoft 365 データにアクセスするためのトークンをシームレスに取得でき、スムーズな認証と認可を実現します。ここでは、Teams AI ライブラリと Bot Framework を使用し、特にマルチテナント構成に焦点を当てて SSO 機能を組み込みます。</p>
-<h2 id="exercise-1-entra-id">Exercise 1: Entra ID シングル サインオン用にプロジェクトを設定する</h2>
-<p>Entra ID で保護されたアプリケーションは登録され、アクセス許可が付与されている必要があります。M365 Agents Toolkit がこの作業を行いますが、そのためにはプロジェクトを更新する必要があります。この演習では、M365 Agents Toolkit プロジェクト ファイルを変更して、Entra ID にアプリ登録をプロビジョニングします。</p>
-<p>この演習では、<a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie" target="_blank">Lab B3 のソース コード</a> をベース プロジェクトとして使用し、次の手順を進めてください。</p>
-<h3 id="1-entra-id-app-manifest">手順 1: Entra ID アプリを定義する App manifest ファイルを追加する</h3>
-<p>この手順では、M365 Agents Toolkit が Entra ID に登録するアプリケーションを定義するファイルを追加します。この manifest ファイルでは、アプリ登録のさまざまな側面をカスタマイズできます。たとえば、ここでは Microsoft Graph API の <code>User.Read</code> アクセス許可を設定し、アプリがユーザー プロファイルを読み取れるようにしています。</p>
-<p>プロジェクト フォルダーのルートに <strong>aad.manifest.json</strong> ファイルを作成し、次の JSON を貼り付けます。</p>
+<h2 id="introduction">Introduction</h2>
+<p>Entra ID (旧 Azure AD) シングル サインオン (SSO) を統合して CareerGenie を強化しましょう。これにより、アプリは Microsoft Graph を介して Microsoft 365 データにアクセスするためのトークンをシームレスに取得でき、円滑な認証と承認を実現します。Teams AI ライブラリと Bot Framework を使用して、この SSO 機能をマルチテナント構成で組み込みます。</p>
+<h2 id="exercise-1-entra-id">Exercise 1: Entra ID シングル サインオンのためのプロジェクト設定</h2>
+<p>Entra ID で保護されたアプリケーションは登録され、アクセス許可を付与される必要があります。M365 Agents Toolkit がこの作業を行いますが、そのためにはプロジェクトを更新する必要があります。この演習では、M365 Agents Toolkit プロジェクト ファイルを変更して、Entra ID にアプリ登録をプロビジョニングします。</p>
+<p>この演習では、<a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab03-Powered-by-AI/CareerGenie" target="_blank">Lab B3 のソース コード</a> をベース プロジェクトとして使用し、次の手順に進みます。</p>
+<h3 id="step-1-entra-id-app-manifest">Step 1: Entra ID アプリを定義する App manifest ファイルを追加する</h3>
+<p>このステップでは、M365 Agents Toolkit が Entra ID に登録するアプリケーションを定義するファイルを追加します。この manifest ファイルにより、アプリ登録のさまざまな項目をカスタマイズできます。たとえば、このファイルでは Microsoft Graph API の <code>User.Read</code> 権限を設定し、ユーザー のプロファイルを読み取れるようにしています。</p>
+<p>プロジェクト フォルダーのルートに <strong>aad.manifest.json</strong> ファイルを作成し、以下の JSON を貼り付けます:</p>
 <pre><code class="language-JSON">{
     &quot;id&quot;: &quot;${{AAD_APP_OBJECT_ID}}&quot;,
     &quot;appId&quot;: &quot;${{AAD_APP_CLIENT_ID}}&quot;,
@@ -2215,14 +1925,14 @@
 }
 </code></pre>
 <p><cc-end-step lab="bta4" exercise="1" step="1" /></p>
-<h3 id="2-entra-id-m365-agents-toolkit">手順 2: Entra ID アプリを作成するように M365 Agents Toolkit 設定ファイルを更新する</h3>
-<p><code>teamsapp.local.yml</code> ファイルを開きます。これは、M365 Agents Toolkit がプロジェクトを実行する際の手順を定義する YAML ファイルです。M365 Agents Toolkit の UI で「LIFECYCLE」セクションには 3 つのフェーズがあります。</p>
+<h3 id="step-2-m365-agents-toolkit-entra-id">Step 2: M365 Agents Toolkit 設定ファイルを更新して Entra ID アプリを作成する</h3>
+<p><code>teamsapp.local.yml</code> ファイルを開きます。この YAML ファイルには、M365 Agents Toolkit がプロジェクトを実行するための手順が定義されています。M365 Agents Toolkit の UI には「LIFECYCLE」セクションに 3 つのステップがあります。</p>
 <ul>
-<li>Provision ‐ このフェーズでは、ボット登録や Teams アプリ パッケージ、今回の Entra ID アプリ登録など、アプリに必要なインフラが作成されます。  </li>
-<li>Deploy ‐ このフェーズでは、コードがローカルでビルド・実行されるか、ローカル以外の環境では Azure にアップロードされます。  </li>
-<li>Publish ‐ このフェーズでは、アプリ パッケージが Microsoft Teams に発行されます。  </li>
+<li>Provision ‑ このフェーズでは、ボット登録、Teams アプリ パッケージ、今回の場合は Entra ID アプリ登録 など、アプリが必要とするインフラが作成されます  </li>
+<li>Deploy ‑ このフェーズでは、コードがビルドされてローカルで実行されるか、「local」以外の環境では Azure にアップロードされます  </li>
+<li>Publish ‑ このフェーズでは、アプリ パッケージが Microsoft Teams に公開されます  </li>
 </ul>
-<p>Entra ID アプリをプロビジョニングするため、以下の行を <strong>teamsapp.local.yml</strong> の <code>provision</code> のすぐ下に追加します。</p>
+<p>Entra ID アプリをプロビジョニングするには、以下の行を <strong>teamsapp.local.yml</strong> の <code>provision</code> のすぐ下に追加します:</p>
 <pre><code class="language-yml">  - uses: aadApp/create # Creates a new Entra ID (AAD) app to authenticate users if the environment variable that stores clientId is empty
     with:
       name: CareerGenieBot-aad # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
@@ -2237,17 +1947,17 @@
       authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
 
 </code></pre>
-<p>続いて、<code>botFramework/create</code> の後に次の行を追加し、既存の AAD アプリを更新します。</p>
+<p>そして <code>botFramework/create</code> の後に、既存の AAD アプリを更新するために次を追加します。</p>
 <pre><code class="language-yml">  - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:
       manifestPath: ./aad.manifest.json # Relative path to teamsfx folder. Environment variables in manifest will be replaced before apply to AAD app
       outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
 </code></pre>
 <div class="admonition tip">
-<p class="admonition-title">ヒント: YAML ではインデントが重要</p>
-<p>YAML では適切なインデントが必須で、オブジェクト階層の各レベルをインデントして構造を示す必要があります。2 つの半角スペース (タブは使用しません) が推奨です。Visual Studio Code では赤い下線で構文エラーを示してくれるため、赤線が消えれば正しく記述できています。</p>
+<p class="admonition-title">Tip: YAML のインデント</p>
+<p>YAML では適切なインデントが必要です。オブジェクト階層の各レベルをインデントして構造を示します。2 つの半角スペース (タブ不可) が推奨です。Visual Studio Code はサポートしてくれ、構文エラーを赤線で示します。赤線が消えたら正しく書けています。</p>
 </div>
-<p>次に、deploy フェーズ内の <code>file/createOrUpdateEnvironmentFile</code> ディレクティブを探し、前のラボで追加したもののすぐ下に次の変数を envs コレクションとして追加します。</p>
+<p>次に下へスクロールし、デプロイ フェーズの <code>file/createOrUpdateEnvironmentFile</code> ディレクティブを探します。前のラボで追加したもののすぐ下に、次の変数を envs: コレクションへ追加します。</p>
 <pre><code class="language-yml"> BOT_DOMAIN: ${{BOT_DOMAIN}}
  AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
  AAD_APP_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
@@ -2258,32 +1968,32 @@
 <p><cc-end-step lab="bta4" exercise="1" step="2" /></p>
 <h2 id="exercise-2-teams-manifest-sso">Exercise 2: Teams アプリ manifest に SSO を追加する</h2>
 <p>この演習では、Teams アプリ manifest を更新してシングル サインオンを追加します。</p>
-<h3 id="1-sso-teams-manifest">手順 1: SSO 用に Teams アプリ manifest を更新する</h3>
-<p>シングル サインオン処理では、Teams が Entra ID のアクセス トークンをアプリに渡します。ただし Teams がアクセス トークンを提供するには、アプリについて知っておく必要があります。具体的には、アプリケーション (クライアント) ID と Teams に接続されたボットの ID が必要です。そのため、これらの情報を Teams アプリ manifest に追加する必要があります。</p>
-<p><strong>./appPackage/manifest.json</strong> にある Teams アプリ manifest テンプレートを開き、次の内容を追加します。</p>
+<h3 id="step-1-sso-teams-manifest">Step 1: SSO 用に Teams アプリ manifest を更新する</h3>
+<p>シングル サインオン プロセスでは、Teams がアプリケーション用の Entra ID アクセス トークンをコードに渡します。ただし Teams がこのアクセス トークンを提供するには、アプリケーションを認識している必要があります。具体的には、アプリケーション (クライアント) ID と Teams に接続されているボットの ID が必要です。そのため、これらを Teams アプリ manifest に追加します。</p>
+<p><strong>./appPackage/manifest.json</strong> にある Teams アプリ manifest テンプレートを開き、以下を追加します。</p>
 <pre><code class="language-json"> &quot;webApplicationInfo&quot;: {
         &quot;id&quot;: &quot;${{BOT_ID}}&quot;,
         &quot;resource&quot;: &quot;api://botid-${{BOT_ID}}&quot;
     }
 </code></pre>
-<p><code>validDomains</code> ノードの下にカンマを付けて追加してください。</p>
-<p>ここで、ボット ドメインからの Web ページを Teams に表示するよう設定する必要があります。これにより、Microsoft Graph へのアクセス許可をユーザーに取得するために使用される <code>auth-start.html</code> と <code>auth-end.html</code> へのアクセスが許可されます。これはユーザーが custom engine agent に最初にアクセスしたときのみ行われます。</p>
-<p>そのため、ボットのドメイン <strong>${{BOT_DOMAIN}}</strong> を <code>validDomains</code> 配列に追加します。これらの変更後、<code>manifest.json</code> ファイルの末尾は次のようになります。</p>
+<p><code>validDomains</code> ノードの下に、カンマを挟んで追加してください。</p>
+<p>同時に、ボットのドメインから表示される Web ページを Teams に許可する必要があります。これにより、Microsoft Graph へのアクセス許可を ユーザー が初回に付与する際に使用される <code>auth-start.html</code> と <code>auth-end.html</code> ページへアクセスできます。</p>
+<p>そのため、ボットのドメイン <strong>${{BOT_DOMAIN}}</strong> を <code>validDomains</code> 配列に追加します。変更後の <code>manifest.json</code> の末尾は次のようになります。</p>
 <pre><code class="language-JSON">  &quot;validDomains&quot;: [
         &quot;${{BOT_DOMAIN}}&quot;,
         &quot;*.botframework.com&quot;
     ],
 </code></pre>
 <p><cc-end-step lab="bta4" exercise="2" step="1" /></p>
-<h2 id="exercise-3-sso">Exercise 3: アプリケーション コードを SSO に対応させる</h2>
-<p>この演習では、SSO プロセスに対応するようコードを変更します。</p>
-<h3 id="1-html">手順 1: 同意ダイアログ用の HTML ページを用意する</h3>
-<p>ユーザーがアプリに初めてアクセスするとき、アプリにプロファイル情報の読み取り権限を付与するための同意が必要です。これは Teams AI ライブラリによって行われ、ポップアップ ウィンドウが表示されます。ここで作成する HTML ページはそのポップアップに表示され、実際の同意処理は Entra ID にリダイレクトされます。</p>
+<h2 id="exercise-3-sso">Exercise 3: SSO に対応するようアプリケーション コードを更新する</h2>
+<p>この演習では、SSO プロセスに合わせてコードを修正します。</p>
+<h3 id="step-1-html">Step 1: 同意ダイアログ用の HTML ページを提供する</h3>
+<p>ユーザー が初めてアプリにアクセスする際、アプリにプロファイル情報の読み取り許可を与えるために同意が必要になる場合があります。これは Teams AI ライブラリが行います。ポップアップ ウィンドウを表示し、ここで用意する HTML ページが表示された後、Entra ID にリダイレクトして同意を取得します。</p>
 <blockquote>
-<p>権限付与のポップアップ用コード スニペットは、公式の <a href="https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public" target="_blank">teams-ai library sample for Teams SSO</a> から引用しています。</p>
+<p>パーミッション付与のポップアップ用コード スニペットは、公式の <a href="https://github.com/microsoft/teams-ai/tree/main/js/samples/05.authentication/d.teamsSSO-bot/src/public" target="_blank">teams-ai ライブラリの Teams SSO サンプル</a> から引用しています。</p>
 </blockquote>
-<p>プロジェクトの <strong>src</strong> フォルダー内に <strong>public</strong> フォルダーを作成します。</p>
-<p><strong>auth-start.html</strong> ファイルを作成し、次の内容を貼り付けます。</p>
+<p>プロジェクトの <strong>src</strong> フォルダー内に <strong>public</strong> フォルダーを新規作成します。</p>
+<p><strong>auth-start.html</strong> ファイルを作成し、以下を貼り付けます:</p>
 <pre><code class="language-html">&lt;!--This file is used during the Teams Bot authentication flow to assist with retrieval of the access token.--&gt;
 &lt;!--If you're not familiar with this, do not alter or remove this file from your project.--&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -2457,7 +2167,7 @@
 
 &lt;/html&gt;
 </code></pre>
-<p><strong>auth-end.html</strong> ファイルを作成し、次の内容を貼り付けます。</p>
+<p><strong>auth-end.html</strong> ファイルを作成し、以下を貼り付けます:</p>
 <pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
         &lt;title&gt;Login End Page&lt;/title&gt;
@@ -2527,14 +2237,14 @@
 
 </code></pre>
 <p><cc-end-step lab="bta4" exercise="3" step="1" /></p>
-<h3 id="2-sso">手順 2: SSO を処理するコードを更新する</h3>
+<h3 id="step-2-sso">Step 2: SSO を処理するためにコードを更新する</h3>
 <ul>
-<li><strong>index.ts</strong> ファイルの変更点:</li>
+<li><strong>index.ts</strong> の変更点は次のとおりです:</li>
 </ul>
-<p><code>path</code> をインポートして <code>public</code> フォルダーから静的ファイルを提供します。</p>
+<p><code>public</code> フォルダーから静的ファイルを提供するため、<code>path</code> のインポートを追加します。</p>
 <pre><code class="language-TypeScript">import * as path from 'path';
 </code></pre>
-<p><code>expressApp.listen</code> メソッドで <code>server</code> オブジェクトを初期化する行の直後に、次のコードを追加します。</p>
+<p>その後、<code>expressApp.listen</code> で <code>server</code> オブジェクトを初期化している行の後に、次のコードを追加します。</p>
 <pre><code class="language-TypeScript">const authFilePattern = /^\/auth-(start|end)\.html$/;
 expressApp.get(
   authFilePattern, (req, res) =&gt; {
@@ -2543,21 +2253,16 @@ expressApp.get(
     res.sendFile(filePath);
 });
 </code></pre>
+<p><strong>adapter.ts</strong> の変更点は次のとおりです:</p>
 <ul>
-<li>
-<p><strong>adapter.ts</strong> ファイルの変更点:</p>
-</li>
-<li>
-<p>teams-ai ライブラリから <code>TeamsAdapter</code> をインポートします。</p>
-<p>```TypeScript
-import { TeamsAdapter } from '@microsoft/teams-ai';</p>
-</li>
+<li>teams-ai ライブラリから <code>TeamsAdapter</code> をインポートします。</li>
 </ul>
-<pre><code>
-  - アダプター定義を `CloudAdapter` から Teams SSO 用の `TeamsAdapter` に置き換えます。
-
-    ```JavaScript
-const adapter = new TeamsAdapter(
+<pre><code class="language-TypeScript">import { TeamsAdapter } from '@microsoft/teams-ai';
+</code></pre>
+<ul>
+<li>アダプター定義を <code>CloudAdapter</code> から Teams SSO 用の <code>TeamsAdapter</code> に置き換えます。</li>
+</ul>
+<pre><code class="language-JavaScript">const adapter = new TeamsAdapter(
   {},
   new ConfigurationServiceClientCredentialFactory({
     MicrosoftAppId: config.MicrosoftAppId,
@@ -2568,64 +2273,55 @@ const adapter = new TeamsAdapter(
 
 </code></pre>
 <ul>
-<li>
-<p>不要になった <code>botFrameworkAuthentication</code> の定義をコメント アウトします。</p>
-</li>
-<li>
-<p><strong>config.ts</strong> ファイルの変更点:</p>
-</li>
-<li>
-<p>定数 <code>config</code> に次のプロパティを追加します。<code>process.env.INDEX_NAME</code> の後ろにカンマを付けて下記スニペットを追記してください。</p>
-<p>```TypeScript
-aadAppClientId: process.env.AAD_APP_CLIENT_ID,
+<li>もう不要な <code>botFrameworkAuthentication</code> の定義をコメントアウトします。</li>
+</ul>
+<p><strong>config.ts</strong> の変更点は次のとおりです:</p>
+<ul>
+<li>定数 <code>config</code> に以下のプロパティを追加します。<code>process.env.INDEX_NAME</code> の後ろにカンマを付けて以下を追加してください。</li>
+</ul>
+<pre><code class="language-TypeScript">aadAppClientId: process.env.AAD_APP_CLIENT_ID,
 aadAppClientSecret: process.env.AAD_APP_CLIENT_SECRET,
 aadAppOauthAuthorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
 aadAppTenantId: process.env.AAD_APP_TENANT_ID,
 botDomain: process.env.BOT_DOMAIN,
-aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,</p>
-</li>
+aadAppOauthAuthority: process.env.AAD_APP_OAUTH_AUTHORITY,
+</code></pre>
+<p><strong>app.ts</strong> の変更点は次のとおりです:</p>
+<ul>
+<li><code>TurnState</code> と <code>AuthError</code> モジュールを使用するため、<code>@microsoft/teams-ai</code> からのインポート文に追加します。</li>
 </ul>
-<pre><code>
-- **app.ts** ファイルの変更点:
-
-  - `@microsoft/teams-ai` ライブラリから `TurnState` と `AuthError` をインポートします。
-
-    ```TypeScript
-import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, AuthError, TurnState } from &quot;@microsoft/teams-ai&quot;;
+<pre><code class="language-TypeScript">import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, AuthError, TurnState } from &quot;@microsoft/teams-ai&quot;;
 </code></pre>
 <ul>
-<li>
-<p>認証設定を渡すため、<code>const app</code> の定義を次のコードに置き換えます。</p>
-<p><code>``TypeScript
-const app = new Application({
+<li>認証設定を Application 定義に渡すため、<code>const app</code> の定義を次のコードに置き換えます。</li>
+</ul>
+<pre><code class="language-TypeScript">const app = new Application({
   storage,
   authentication: {settings: {
-graph: {
-  scopes: ['User.Read'],
-  msalConfig: {
-    auth: {
-      clientId: config.aadAppClientId!,
-      clientSecret: config.aadAppClientSecret!,
-      authority:</code>${config.aadAppOauthAuthorityHost}/common<code>}
-  },
-  signInLink:</code>https://${config.botDomain}/auth-start.html`,
-  endOnInvalidMessage: true
-}
+    graph: {
+      scopes: ['User.Read'],
+      msalConfig: {
+        auth: {
+          clientId: config.aadAppClientId!,
+          clientSecret: config.aadAppClientSecret!,
+          authority: `${config.aadAppOauthAuthorityHost}/common`
+        }
+      },
+      signInLink: `https://${config.botDomain}/auth-start.html`,
+      endOnInvalidMessage: true
+    }
   }},
   ai: {
-planner,
-//feedback loop is enabled
-enable_feedback_loop: true
+    planner,
+    //feedback loop is enabled
+    enable_feedback_loop: true
   },
-});</p>
-</li>
-</ul>
-<pre><code>
-Teams AI ライブラリは custom engine agent と Microsoft Teams 間のトークン交換を処理するため、トークンを受け取ったらすぐに Microsoft Graph を呼び出せます。  
-続いて、Teams AI ライブラリを使用して各種認証およびメッセージ イベントを定義・処理するコードを追加します。`app` 定義の後に次のコードを貼り付けます。
-
-```TypeScript
-interface ConversationState {
+});
+</code></pre>
+<p>Teams AI ライブラリは、カスタム エンジン エージェントと Microsoft Teams 間でトークンを交換する処理を行うため、トークンを受け取ったらすぐに Microsoft Graph を呼び出せます。<br />
+次に、Teams AI ライブラリを使用して各種認証イベントおよびメッセージング イベントを定義・処理するコードを追加します。<br />
+アプリ定義メソッドの後に以下を貼り付けます:</p>
+<pre><code class="language-TypeScript">interface ConversationState {
   count: number;
 }
 type ApplicationTurnState = TurnState&lt;ConversationState&gt;;
@@ -2654,14 +2350,14 @@ app.message('/signout', async (context: TurnContext, state: ApplicationTurnState
 });
 
 </code></pre>
-<p>上記コードでは、トークンを正常に受け取った後に Microsoft Graph を呼び出してユーザー情報を取得する <code>getUserDisplayName()</code> 関数を呼び出しています。まず <a href="https://github.com/microsoftgraph/msgraph-sdk-javascript" target="_blank">Graph SDK</a> をインストールしましょう。  </p>
-<p>ターミナルで次のスクリプトを実行します。</p>
+<p>上記コードでは、トークンを正常に取得した後に <code>getUserDisplayName()</code> 関数を呼び出しています。これにより Microsoft Graph を呼び出して ユーザー 情報を取得できます。まず <a href="https://github.com/microsoftgraph/msgraph-sdk-javascript" target="_blank">Graph SDK</a> をインストールします。</p>
+<p>ターミナルで次のスクリプトを実行して npm パッケージをインストールします:</p>
 <pre><code class="language-PowerShell">npm install @microsoft/microsoft-graph-client @microsoft/microsoft-graph-types
 </code></pre>
-<p>次に、<strong>app.ts</strong> ファイルでパッケージから必要なモジュールをインポートします。</p>
+<p>次に <strong>app.ts</strong> ファイルで必要なモジュールをインポートします。</p>
 <pre><code class="language-TypeScript">import { Client } from &quot;@microsoft/microsoft-graph-client&quot;;
 </code></pre>
-<p><code>app.message</code> メソッドの後に次のコード スニペットを貼り付けます。</p>
+<p><code>app.message</code> メソッドの後に次のコード スニペットを貼り付けます:</p>
 <pre><code class="language-TypeScript">async function getUserDisplayName(token: string): Promise&lt;string | undefined&gt; {
   let displayName: string | undefined;
 
@@ -2682,55 +2378,55 @@ app.message('/signout', async (context: TurnContext, state: ApplicationTurnState
 }
 </code></pre>
 <details open="open">
-<summary>このアプリをシングル テナントのみに対応させる場合は以下を変更してください</summary>
+<summary>シングル テナント のみで動作させる場合は次を変更</summary>
 <ul>
-<li><code>aad.manifest.json</code> の <code>signInAudience</code> ノードを <code>"signInAudience": "AzureADMyOrg"</code> に更新  </li>
-<li><code>teamsapp.local.yml</code> の <code>aadApp\create</code> にある <code>signInAudience</code> を <code>"signInAudience: "AzureADMyOrg"</code> に更新  </li>
-<li><code>src\app\app.ts</code> のアプリケーション定義内 auth 設定の <code>authority</code> を <code>authority: config.aadAppOauthAuthority</code> に更新  </li>
-<li><code>src\public\auth-start.html</code> の <code>authorizeEndpoint</code> 変数を <code>https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}</code> に設定  </li>
+<li><code>aad.manifest.json</code> の signInAudience ノードを <code>"signInAudience": "AzureADMyOrg"</code> に更新  </li>
+<li><code>teamsapp.local.yml</code> の aadApp\create の signInAudience ノードを <code>"signInAudience: "AzureADMyOrg"</code> に更新  </li>
+<li><code>src\app\app.ts</code> の Application 定義の auth 設定の authority を <code>authority: config.aadAppOauthAuthority</code> に更新  </li>
+<li><code>src\public\auth-start.html</code> の変数 <code>authorizeEndpoint</code> を <code>https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?${toQueryString(queryParams)}</code> に設定  </li>
 <li><code>src\adapter.ts</code> のアダプター定義を <code>MicrosoftAppType: 'SingleTenant'</code> に更新   </li>
 </ul>
 </details>
 <p><cc-end-step lab="bta4" exercise="3" step="2" /></p>
-<h2 id="exercise-4">Exercise 4: アプリを実行する</h2>
-<p>これで Career Genie に Teams SSO を実装するためのコードが完成しました。実際に動作を確認しましょう。</p>
-<h3 id="1-teams">手順 1: Teams へのアプリのインストール</h3>
-<p>Visual Studio Code の <strong>Run and Debug</strong> タブで <strong>Debug in Teams ( Edge )</strong> または <strong>Debug in Teams ( Chrome )</strong> を選択し、デバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら <strong>Add</strong> を選択してチャットを開始します。</p>
+<h2 id="exercise-4">Exercise 4: アプリケーションを実行する</h2>
+<p>これで Career Genie に Teams SSO を実装するためのコードが完成しました。早速動かしてみましょう。</p>
+<h3 id="step-1-teams">Step 1: Teams でのアプリ インストール</h3>
+<p>Visual Studio Code の <strong>Run and Debug</strong> タブを選択し、<strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開きます。アプリの詳細が表示されたら <strong>Add</strong> を選択し、チャットを始めます。</p>
 <div class="admonition tip">
-<p class="admonition-title">ヒント: この演習をローカルでテストする場合</p>
-<p>これまで実装してきた Teams AI ライブラリの一部機能は、Teams App Test Tool では円滑に動作しません。必ずローカルの Teams 上でテストおよびデバッグしてください。</p>
+<p class="admonition-title">Tip: ローカルでのテスト</p>
+<p>これまで実装してきた Teams AI ライブラリの機能はいくつか Test ツールでは正常に動作しない場合があるため、必ず Teams でローカル テストとデバッグを行ってください。</p>
 </div>
 <p><cc-end-step lab="bta4" exercise="4" step="1" /></p>
-<h3 id="2">手順 2: 同意の付与</h3>
-<p>Career Genie との会話を開始するには、メッセージを入力します。たとえば「Hi」と入力して送信してみてください。</p>
+<h3 id="step-2">Step 2: 同意の付与</h3>
+<p>Career Genie と会話を開始するには、メッセージを入力します。たとえば「Hi」と入力して送信してみてください。</p>
 <div class="admonition tip">
-<p class="admonition-title">ヒント: ブラウザーのポップアップ設定を確認する</p>
-<p>以下の手順をスムーズに行うため、ブラウザーで <code>Pop up</code> がブロックされていないことを確認してください。</p>
+<p class="admonition-title">Tip: ブラウザーのポップアップ設定</p>
+<p>以下の手順を円滑に行うため、ブラウザーで <code>Pop up</code> がブロックされていないことを確認してください。</p>
 </div>
-<p>追加のアクセス許可を求める小さなダイアログ ボックスが表示され、「Cancel」と「Continue」のボタンが並びます。これはログインとアクセス許可同意のためのダイアログです。<strong>Continue</strong> を選択します。</p>
+<p>追加のアクセス許可を求める小さなダイアログが表示され、「Cancel」と「Continue」ボタンが表示されます。これはログインと、必要なアクセス許可の同意を求めるダイアログです。<strong>Continue</strong> を選択します。</p>
 <p><img alt="The chat in Microsoft Teams shows a message asking the user to consent permissions to the app associated with the custom engine agent. There are a message, a 'Continue' button, and a 'Cancel' button." src="../../../../../assets/images/custom-engine-04/consent-teams.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">既知の問題</p>
 <ul>
-<li>Teams チャットで同意ダイアログが表示されるまでに遅延が発生することがあります。これはプラットフォームの問題として認識しており、監視中です。2～3 回メッセージを送信してください。</li>
+<li>Teams チャットで同意ダイアログが表示されるまでに遅延が発生することがあります。これはプラットフォームの問題として認識されており、現在監視中です。2 〜 3 回メッセージを送信してみてください。</li>
 </ul>
 </div>
-<p>ローカル環境で Developer Tunnels を使用している場合は警告画面が表示されます。<strong>Continue</strong> を選択してください。本番環境ではユーザーには表示されません。</p>
+<p>Developer Tunnels でローカル実行しているため、警告画面が表示されます。<strong>Continue</strong> を選択します。アプリをデプロイすると ユーザー には表示されません。</p>
 <p><img alt="A warning screen informing the user that the connection is going through Developer Tunnels with a button to 'Continue'." src="../../../../../assets/images/custom-engine-04/consent-devtunnel.png" /></p>
-<p>次に Entra ID にリダイレクトされ、アプリのアクセス許可に同意する画面が表示されます。(これは、同意がまだないことを検出した <code>public/auth-start.html</code> からリダイレクトされています)。</p>
+<p>Entra ID にリダイレクトされ、アプリのアクセス許可への同意を求められます。(同意がまだの場合、public/auth-start.html によりリダイレクトされました)</p>
 <p><img alt="The consent dialog provided by Microsoft Entra ID when asking the user to consent the app to access the current user's information. There are an 'Accept' and a 'Cancel' buttons." src="../../../../../assets/images/custom-engine-04/consent-graph.png" /></p>
 <div class="admonition tip">
-<p class="admonition-title">ヒント: 組織全体で同意する</p>
-<p>Microsoft 365 管理者の場合、「Consent on behalf of your organization」を選択してテナント内のすべてのユーザーに対して同意を付与することもできます。</p>
+<p class="admonition-title">Tip: 組織全体への同意</p>
+<p>Microsoft 365 管理者であれば、「Consent on behalf of your organization」オプションが表示され、テナント内の全 ユーザー に対して同意できます。</p>
 </div>
 <p><strong>Accept</strong> を選択してアクセス許可に同意し、Career Genie を実行します。</p>
-<p>ログインが成功すると、custom engine agent からログイン名が表示されたメッセージが届きます。</p>
+<p>ログイン名が表示され、認証が成功したメッセージがカスタム エンジン エージェントから届きます。</p>
 <p><img alt="Animation showing the whole authentication flow. The initial request to 'Continue' to the consent page, the alert from Developer Tunnels (happening only in dev mode when running the agent locally), the consent dialog from Microsoft Entra ID, and the final secured output in the custom engine agent." src="../../../../../assets/images/custom-engine-04/auth.gif" /></p>
-<p>これで custom engine agent と会話を開始できます。</p>
+<p>これでカスタム エンジン エージェントとチャットを開始できます。</p>
 <p><cc-end-step lab="bta4" exercise="4" step="2" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">おめでとうございます！</span></p>
-<p>シングル サインオン認証を追加して custom engine agent を保護するラボ BTA4 を完了しました! さらに詳しく調べたい場合は、このラボのソース コードが <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie" target="_blank">Copilot Developer Camp リポジトリ</a> にあります。</p>
-<p>次のラボ BTA5 - 複雑なタスクを処理するアクションの追加 に進みましょう。<strong>Next</strong> を選択してください。</p>
+<p>Lab BTA4 - カスタム エンジン エージェントを保護するシングル サインオン認証の追加 が完了しました! さらに探求したい場合は、このラボのソース コードが <a href="https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-agent/Lab04-Authentication-SSO/CareerGenie" target="_blank">Copilot Developer Camp リポジトリ</a> にあります。</p>
+<p>次の Lab BTA5 - 複雑なタスクを処理するアクションの追加 に進むことができます。Next を選択してください。</p>
 <p><cc-next url="../05-actions" /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/04-authentication--ja" /></p>
 
