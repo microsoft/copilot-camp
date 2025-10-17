@@ -4,18 +4,15 @@ search:
 ---
 # カスタムエンジン エージェントの構築
 
-**カスタムエンジン エージェント** は、Microsoft 365 Copilot 用のエージェントの一種で、完全な制御が可能です。宣言型エージェントが Microsoft 365 Copilot のモデルとオーケストレーションに依存するのに対し、カスタムエンジン エージェントでは独自の基盤モデル、オーケストレーター、セキュリティスタックを持ち込めます。エージェントの動作、データアクセス、推論ロジックを特定の要件やインフラストラクチャに合わせて調整する必要がある場合に最適です。
+**カスタムエンジン エージェント** は、 Microsoft 365 Copilot 向けのエージェントの一種で、完全な制御を提供します。宣言型エージェントが Microsoft 365 Copilot のモデルとオーケストレーションに依存するのに対し、カスタムエンジン エージェントでは独自の基盤モデル、オーケストレーター、セキュリティ スタックを利用できます。このアプローチは、エージェントの挙動、データ アクセス、推論ロジックを特定の要件やインフラストラクチャに合わせて調整する必要がある場合に最適です。
 
-![Custom engine agent architecture diagram. At the very basis you can have any foundational model of your choice. Also the orchestrator is completely customizable. Knowledge, skills, and autonomous capabilities can be implemented with custom code, relying on external SDKs and libraries. The user experience can be in Microsoft 365 Copilot, in Microsoft Teams, or any other supported channel.](../../assets/images/m365-custom-engine-agent.png)
+![カスタムエンジン エージェントのアーキテクチャ図。基盤として任意のファウンデーションモデルを選択できます。オーケストレーターも完全にカスタマイズ可能です。ナレッジ、スキル、自律機能は外部 SDK やライブラリを使用したカスタム コードで実装できます。ユーザー エクスペリエンスは Microsoft 365 Copilot、 Microsoft Teams、またはその他のサポートされるチャネルで提供できます。](../../assets/images/m365-custom-engine-agent.png)
 
 ## 実施内容
 
-Copilot Developer Camp の Build Path では、Microsoft 365 Copilot および/または Microsoft Teams と連携するカスタムエンジン エージェントの構築をさらに深掘りします。
+ Copilot Developer Camp の Build Path で、 Microsoft 365 Copilot と統合するカスタムエンジン エージェントの構築をさらに深く学びます。
 
-開発体験の好みに応じて、次の 2 つのハンズオン ラボから選択できます。
-
-* C#、 **Microsoft 365 Agents SDK**、Semantic Kernel を使用して、クロスチャネルのカスタムエンジン エージェントを作成します。このオプションでは、Microsoft Teams、Microsoft 365 Copilot、外部チャネルをサポートし、オーケストレーション層を完全に制御できます。
-* TypeScript と **Teams AI Library** を使用してカスタムエンジン エージェントを作成します。このオプションは Microsoft Teams に最適化されており、ライブラリがバックグラウンドで処理するシンプルなオーケストレーションを提供します。
+ C#、 **Microsoft 365 Agents SDK**、および Semantic Kernel を使用してクロスチャネルのカスタムエンジン エージェントを作成し、 Microsoft Teams、 Microsoft 365 Copilot、外部チャネルをサポートしながら、オーケストレーション レイヤーを完全に制御します。
 
 ---
 
