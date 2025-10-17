@@ -1,7 +1,7 @@
 <div class="cc-lab-toc mab-path">
   <img src="/copilot-camp/assets/images/path-icons/MAB-path-heading.png"></img>
   <div>
-    <p>Do these labs if you want to build a Declarative agent with Copilot Studio agent builder</p>
+    <p>Do these labs if you want to build a Declarative agent with Copilot Studio Lite</p>
     <ul>
       <li><a href="/copilot-camp/pages/make/agent-builder/01-first-agent/">MAB1 - Build your first agent</a></li>
     </ul>
