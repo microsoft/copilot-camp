@@ -22,7 +22,7 @@
     
     
       
-        <title>Lab MAB1 - Agent builder - Copilot Developer Camp</title>
+        <title>Lab MAB1 - Copilot Studio Lite - Copilot Developer Camp</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab MAB1 - Agent builder
+              Lab MAB1 - Copilot Studio Lite
             
           </span>
         </div>
@@ -487,7 +487,7 @@
   
   
   <span class="md-ellipsis">
-    Lab MAB - Copilot Studio agent builder
+    Lab MAB - Copilot Studio lite
     
   </span>
   
@@ -519,7 +519,7 @@
   
   
   <span class="md-ellipsis">
-    Lab MAB1 - Agent builder
+    Lab MAB1 - Copilot Studio Lite
     
   </span>
   
@@ -532,7 +532,7 @@
   
   
   <span class="md-ellipsis">
-    Lab MAB1 - Agent builder
+    Lab MAB1 - Copilot Studio Lite
     
   </span>
   
@@ -1905,7 +1905,7 @@
 <div class="cc-lab-toc mab-path">
   <img src="/copilot-camp/assets/images/path-icons/MAB-path-heading.png"></img>
   <div>
-    <p>Do these labs if you want to build a Declarative agent with Copilot Studio agent builder</p>
+    <p>Do these labs if you want to build a Declarative agent with Copilot Studio Lite</p>
     <ul>
       <li><a href="/copilot-camp/pages/make/agent-builder/01-first-agent/">MAB1 - Build your first agent</a></li>
     </ul>
@@ -1939,11 +1939,11 @@ for (const div of toc) {
   </div>
 </div>
 
-<p>In this lab, you'll create a simple declarative agent using Copilot Studio agent builder. Your agent is designed to help users to maintain and improve a home garden. The knowledge base of the agent is based on a set of documents stored in SharePoint Online and on the public web content. The agent can also engage the user in a nice game to guess the name of plants or flowers based on a set of clues.</p>
+<p>In this lab, you'll create a simple declarative agent using Copilot Studio Lite. Your agent is designed to help users to maintain and improve a home garden. The knowledge base of the agent is based on a set of documents stored in SharePoint Online and on the public web content. The agent can also engage the user in a nice game to guess the name of plants or flowers based on a set of clues.</p>
 <p>In this lab you will learn:</p>
 <ul>
 <li>What is a declarative agent for Microsoft 365 Copilot</li>
-<li>Make a declarative agent using Copilot Studio agent builder</li>
+<li>Make a declarative agent using Copilot Studio Lite</li>
 <li>Customise the agent to create a game using specific instructions </li>
 <li>Configure the agent to rely on a set of documents stored in SharePoint Online</li>
 <li>Enable the agent to generate images</li>
@@ -1954,25 +1954,25 @@ for (const div of toc) {
 <p>Declarative agents leverage the same scalable infrastructure and platform of Microsoft 365 Copilot, tailored specifically to meet focus on a special area of your needs.
 They function as subject matter experts in a specific area or business need, allowing you to use the same interface as a standard Microsoft 365 Copilot chat, while ensuring they focus exclusively on the specific task at hand. </p>
 <p>Welcome on board to making your own declarative agent ☺️! Let's dive in and make your Copilot work magic!</p>
-<p>In this lab you will start out building a declarative agent using Copilot Studio agent builder and providing a sample set of instructions. This is to help you get started with something. </p>
+<p>In this lab you will start out building a declarative agent using Copilot Studio Lite and providing a sample set of instructions. This is to help you get started with something. </p>
 <p>Next, you will modify your agent to be focused on a guess the plant or flower name game. </p>
 <p>You will also give your agent some files, stored in SharePoint Online, to refer to an hypothetical knowledge base. </p>
 <p>Lastly you will share the agent with other people in your organization.</p>
 <p><img alt="The initial UI of the Gardener agent with a couple of guesses from the user." src="../../../../assets/images/make/agent-builder-01/gardener-agent.gif" /></p>
 <h2 id="exercise-1-creating-the-declarative-agent">Exercise 1: Creating the Declarative agent</h2>
-<p>Let's get started! 💪🏼 Let's make the agent from scratch using Copilot Studio agent builder.</p>
+<p>Let's get started! 💪🏼 Let's make the agent from scratch using Copilot Studio Lite.</p>
 <h3 id="step-1-describe-your-agent">Step 1: Describe your agent</h3>
-<p>To create a declarative agent with Copilot Studio agent builder, open the <a href="https://www.microsoft365.com/copilot" target="_blank">Microsoft 365 Copilot chat home page</a> and select <strong>Create an agent</strong> in the right side panel, where there is the list of available agents, like illustrated in the following picture.</p>
+<p>To create a declarative agent with Copilot Studio Lite, open the <a href="https://www.microsoft365.com/copilot" target="_blank">Microsoft 365 Copilot chat home page</a> and select <strong>Create an agent</strong> in the right side panel, where there is the list of available agents, like illustrated in the following picture.</p>
 <p><img alt="Microsoft 365 Copilot Chat with the 'Create an agent' command highlighted." src="../../../../assets/images/make/agent-builder-01/create-agent-01.png" /></p>
-<p>The Copilot Studio agent builder pops up and you can start defining the custom agent. You can choose a template to start from, or you can simply <em>describe</em> the agent by providing a description in natural language. You can also choose to manually configure the agent, selecting the <strong>Configure</strong> option, but you will get there later. Let's provide the following initial description:</p>
+<p>The Copilot Studio Lite pops up and you can start defining the custom agent. You can choose a template to start from, or you can simply <em>describe</em> the agent by providing a description in natural language. You can also choose to manually configure the agent, selecting the <strong>Configure</strong> option, but you will get there later. Let's provide the following initial description:</p>
 <pre><code class="language-txt">You are an expert gardener and you help users to maintain and improve their home garden
 providing detailed instructions and advice about the best practices for home gardening.
 </code></pre>
-<p><img alt="The user experience of the Copilot Studio agent builder. On the lower left side there is a textbox that you can use to provide instructions to the agent builder, while on the right side there is a preview of the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-02.png" /></p>
+<p><img alt="The user experience of the Copilot Studio Lite. On the lower left side there is a textbox that you can use to provide instructions to the agent builder, while on the right side there is a preview of the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-02.png" /></p>
 <p>Once you have provided the instructions, the agent builder will ask you about the name for the new agent. Provide the name: <em>Gardener</em>. While you interact with the agent builder, on the right side of the dialog you can see there is a preview of the agent itself, including some suggested conversation starters. If the agent builder asks you about refining instructions further, provide the following sentence.</p>
 <pre><code class="language-txt">Suggest ways to keep plants and flowers shining and gorgeous
 </code></pre>
-<p><img alt="The user experience of the Copilot Studio agent builder. On the lower left side there is the interaction with the agent builder, while on the right side there is a preview of the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-03.png" /></p>
+<p><img alt="The user experience of the Copilot Studio Lite. On the lower left side there is the interaction with the agent builder, while on the right side there is a preview of the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-03.png" /></p>
 <p>Keep on interacting with the agent builder until it does have all the information needed to create the agent. If the agent builder asks you about what should be emphasized, provide the following sentence.</p>
 <pre><code class="language-txt">Highlight the importance of nature and plants/flowers to be present in every house!
 </code></pre>
@@ -1980,24 +1980,24 @@ providing detailed instructions and advice about the best practices for home gar
 <pre><code class="language-txt">Use a professional, yet friendly, tone.
 </code></pre>
 <p>Lastly, say that you don't have any further refinements and select the <strong>Create</strong> button in the upper right corner of the screen. </p>
-<p><img alt="The user experience of the Copilot Studio agent builder with the 'Create' button highlighted." src="../../../../assets/images/make/agent-builder-01/create-agent-04.png" /></p>
-<p>The Copilot Studio agent builder will create a new agent for you, based on the provided instructions. </p>
+<p><img alt="The user experience of the Copilot Studio Lite with the 'Create' button highlighted." src="../../../../assets/images/make/agent-builder-01/create-agent-04.png" /></p>
+<p>The Copilot Studio Lite will create a new agent for you, based on the provided instructions. </p>
 <p><cc-end-step lab="mab1" exercise="1" step="1" /></p>
 <h3 id="step-2-test-the-agent">Step 2: Test the agent</h3>
 <p>Once the agent is ready, you will see a popup dialog with a link to the agent and a link to share it with other people in your organization.</p>
 <p><img alt="The dialog confirming the creation of the new 'Gardener' agent, providing a link to the agent and actions to share the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-05.png" /></p>
 <p>Select the <strong>Go to agent</strong> button. You will be brought to the actual user experience of the new agent that you've just made.</p>
-<p><img alt="The user experience of the 'Gardener' agent that you have just created. There is the name of the agent at the top of the screen, followed by a set of conversation starters generated by the Copilot Studio agent builder, and then the textbox to provide a new prompt to the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-06.png" /></p>
+<p><img alt="The user experience of the 'Gardener' agent that you have just created. There is the name of the agent at the top of the screen, followed by a set of conversation starters generated by the Copilot Studio Lite, and then the textbox to provide a new prompt to the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-06.png" /></p>
 <p>To start interacting with the agent, click on the first suggested prompt and observe the response from the agent. Your agent is now ready. Congrats!</p>
 <p><img alt="The user experience of the 'Gardener' agent in action. There is a prompt at the top of the left side of the screen and the response from Microsoft 365 Copilot. On the right side there are the available agents and the recent chats." src="../../../../assets/images/make/agent-builder-01/create-agent-07.png" /></p>
 <p><cc-end-step lab="mab1" exercise="1" step="2" /></p>
 <h2 id="exercise-2-customizing-the-agent">Exercise 2: Customizing the agent</h2>
 <p>It is now time to slightly customize the agent. You are going to add a custom icon and define the rules of the game to guess plants or flowers names.</p>
 <p>Start over with a <strong>New chat</strong> selecting the corresponding button in the upper right corner of the Microsoft 365 Copilot Chat user interface. Select the <strong>Create an agent</strong> command in the right side of the screen, like you did before, while making your first agent.
-The same dialog you used before to make your first agent will show up. This time, select the name of the agent <strong>My Copilot Agent</strong> dropdown just beside the <strong>Copilot Studio</strong> logo in the upper left side of the dialog. From there, select <strong>View all agents</strong> to see the whole list of agents that you created with Copilot Studio agent builder.</p>
-<p><img alt="The user experience of Copilot Studio agent builder when editing an already existing agent. There is a command in the upper left side of the dialog to view all the agents that you already defined." src="../../../../assets/images/make/agent-builder-01/update-agent-01.png" /></p>
+The same dialog you used before to make your first agent will show up. This time, select the name of the agent <strong>My Copilot Agent</strong> dropdown just beside the <strong>Copilot Studio</strong> logo in the upper left side of the dialog. From there, select <strong>View all agents</strong> to see the whole list of agents that you created with Copilot Studio Lite.</p>
+<p><img alt="The user experience of Copilot Studio Lite when editing an already existing agent. There is a command in the upper left side of the dialog to view all the agents that you already defined." src="../../../../assets/images/make/agent-builder-01/update-agent-01.png" /></p>
 <p>A new dialog with the whole list of agents that you designed will show up.</p>
-<p><img alt="The user experience of Copilot Studio agent builder when showing the list of agents. There is the 'Gardener' agent highlighted with a list of action to edit, share, download, and delete the agent." src="../../../../assets/images/make/agent-builder-01/update-agent-02.png" /></p>
+<p><img alt="The user experience of Copilot Studio Lite when showing the list of agents. There is the 'Gardener' agent highlighted with a list of action to edit, share, download, and delete the agent." src="../../../../assets/images/make/agent-builder-01/update-agent-02.png" /></p>
 <p>For each agent, you have commands to edit, share, download, and delete it.</p>
 <h3 id="step-1-provide-a-custom-icon">Step 1: Provide a custom icon</h3>
 <p>Let's edit the <strong>Gardener</strong> agent that you just created. The dialog starts with the <strong>Configure</strong> panel active. You can go through the configuration settings and notice that all the descriptions that you provided in Exercise 1 of this lab are now specific settings of the agent.
@@ -2081,12 +2081,12 @@ At the end of the sharing process you will see a dialog with a URL that you can 
 <p><img alt="The panel to configure the sharing target. Available options are 'Anyone in your organization', 'Specific users in your organization via security groups', or 'Only you'. The panel also provides a button to 'Save' the sharing option and a URL to access the agent." src="../../../../assets/images/make/agent-builder-01/update-agent-10.png" /></p>
 <p><cc-end-step lab="mab1" exercise="4" step="2" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
-<p>Great job on making your agent 🎉 ! This is the end of the <strong>Copilot Studio agent builder</strong> path! Did you enjoy making the Gardener agent? Let us know about your experience and feedback. 💜</p>
+<p>Great job on making your agent 🎉 ! This is the end of the <strong>Copilot Studio Lite</strong> path! Did you enjoy making the Gardener agent? Let us know about your experience and feedback. 💜</p>
 <h2 id="resources">Resources</h2>
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot" target="_blank">Declarative agents</a></li>
-<li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build" target="_blank">Build agents with Copilot Studio agent builder</a></li>
-<li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish" target="_blank">Publish and manage Copilot Studio agent builder agents</a></li>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build" target="_blank">Build agents with Copilot Studio Lite</a></li>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish" target="_blank">Publish and manage Copilot Studio Lite agents</a></li>
 </ul>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent" /></p>
 
