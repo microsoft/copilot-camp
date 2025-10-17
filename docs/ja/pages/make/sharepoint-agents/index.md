@@ -27,7 +27,7 @@ Microsoft 365 Copilot のライセンス、Copilot Studio のキャパシティ�
 
 <!-- ---8<--- "ja/msa-labs-toc.md" -->
 
-<!-- ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio agent builder. -->
+<!-- ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio Lite. -->
 
 ## <a href="./01-first-agent">ここから開始</a> — Lab MSA1 で最初の SharePoint エージェントを作成します。
 <cc-next url="./01-first-agent" />

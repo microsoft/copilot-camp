@@ -49,8 +49,8 @@ plugins:
             - Home: 'index.md'
             - Maker Path - Make your agent:
               - Welcome: 'pages/make/index.md'
-              - Lab MAB - Copilot Studio agent builder: 'pages/make/agent-builder/index.md'
-              - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
+              - Lab MAB - Copilot Studio lite: 'pages/make/agent-builder/index.md'
+              - Lab MAB1 - Copilot Studio Lite: 'pages/make/agent-builder/01-first-agent.md'
               - Lab MCS - Microsoft Copilot Studio: 'pages/make/copilot-studio/index.md'
               - Lab MCS0 - Setup: 'pages/make/copilot-studio/00-prerequisites.md'
               - Lab MCS1 - First agent: 'pages/make/copilot-studio/01-first-agent.md'
@@ -112,9 +112,9 @@ plugins:
             # - Awards: 'awards.md'
             - Resources: 'resources.md'
             # The following is a 3-level navigation structure example that currently does not work due to required code changes to the next-button.js script
-            #  - Lab MAB - Copilot Studio agent builder:
+            #  - Lab MAB - Copilot Studio Lite:
             #      - Lab MAB - Welcome: 'pages/make/agent-builder/index.md'
-            #      - Lab MAB1 - Agent builder: 'pages/make/agent-builder/01-first-agent.md'
+            #      - Lab MAB1 - Copilot Studio Lite: 'pages/make/agent-builder/01-first-agent.md'
             #  - Lab MCS - Microsoft Copilot Studio:
             #      - Lab MCS - Welcome: 'pages/make/copilot-studio/index.md'
             #      - Lab MCS0 - Setup: 'pages/make/copilot-studio/00-prerequisites.md'

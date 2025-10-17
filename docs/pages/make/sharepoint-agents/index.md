@@ -23,7 +23,7 @@ If you are assigned with a Microsoft 365 Copilot license, or a Copilot Studio ca
 
 <!-- ---8<--- "msa-labs-toc.md" -->
 
-<!-- ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio agent builder. -->
+<!-- ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll make your first agent with Copilot Studio Lite. -->
 
 ## <a href="./01-first-agent">Start here</a> with Lab MSA1, where you'll create your first SharePoint agent.
 <cc-next url="./01-first-agent" />
