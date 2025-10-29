@@ -67,13 +67,19 @@ Now comes the fun part where you will actually test these models! The GitHub Mod
 ### Setup Requirements
 
 **Prerequisites:**
+
 1. **GitHub Account**: [Create one free](https://github.com/signup) if needed
+
 2. **Access Verification**: Visit [GitHub Models Marketplace](https://github.com/marketplace/models)
+
 3. **Catalog Familiarity**: Browse [available models](https://github.com/marketplace?type=models)
 
 **Navigation Strategy:**
+
 - **Filter by Publisher**: Focus on established AI providers
+
 - **Filter by Capability**: Select `Chat/Completion` for text tasks
+
 - **Filter by Category**: Choose based on your needs:
   - **All**: General question-answering
   - **Instruction**: Specialized domains
@@ -165,8 +171,11 @@ Keep records of what works well for different scenarios. This knowledge base bec
 ### Cost and Performance Analysis
 
 Use the [Azure AI Model Leaderboard](https://ai.azure.com/explore/models/leaderboard) to compare:
+
 - **Cost per request**: Budget planning and ROI calculation  
+
 - **Performance metrics**: Objective quality measurements
+
 - **Speed benchmarks**: Response time requirements
 
 ### Professional Tips
