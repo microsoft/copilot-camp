@@ -80,13 +80,14 @@ Now comes the fun part where you will actually test these models! The GitHub Mod
 
 - **Filter by Capability**: Select `Chat/Completion` for text tasks
 
-- **Filter by Category**: Choose based on your needs:
-  - **All**: General question-answering
-  - **Instruction**: Specialized domains
-  - **Multimodal**: Image and text processing
-  - **Audio**: Speech processing
-  - **Reasoning**: Complex problem-solving
-  - **Multilingual**: Multiple language support
+- **Filter by Category**: Choose based on your needs
+
+   - **All**: General question-answering
+   - **Instruction**: Specialized domains
+   - **Multimodal**: Image and text processing
+   - **Audio**: Speech processing
+   - **Reasoning**: Complex problem-solving
+   - **Multilingual**: Multiple language support
 
 ### Getting Started
 
