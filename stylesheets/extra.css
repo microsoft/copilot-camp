@@ -147,10 +147,10 @@ button:hover {
 }
 
 button.md-clipboard.md-icon{
-    padding: 6px 12px;
+  padding: 6px 12px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: grey;
+  color: var(--md-default-fg-color--lighter);
   background: none;
   border-radius: 5px;
   text-decoration: none;
@@ -161,7 +161,22 @@ button.md-clipboard.md-icon{
 
 }
 button.md-clipboard.md-icon:hover{
+  color: var(--md-default-fg-color--light);
   box-shadow:none;
+}
+
+/* workaround for the clipboard icon bug on prod */
+
+:hover>.md-code__nav {
+  color: var(--md-default-fg-color--light);
+  background: none;
+  box-shadow: none;
+}
+.md-code__button {
+  color: var(--md-default-fg-color--lighter);
+  width: 1.5em;
+  background: none;
+  box-shadow: none;
 }
 
 /* hr */
