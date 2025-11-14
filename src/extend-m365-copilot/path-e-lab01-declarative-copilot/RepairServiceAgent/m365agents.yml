@@ -1,7 +1,7 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.8/yaml.schema.json
+# yaml-language-server: $schema=https://aka.ms/m365-agents-toolkits/v1.9/yaml.schema.json
 # Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
 # Visit https://aka.ms/teamsfx-actions for details on actions
-version: v1.8
+version: v1.9
 
 environmentFolderPath: ./env
 
@@ -20,7 +20,7 @@ provision:
   - uses: cli/runNpmCommand
     name: install dependencies
     with:
-      args: install
+      args: install --no-audit --progress=false
 
   # Compile typespec files and generate necessary files for agent.
   # If you want to update the outputDir, please make sure the following paths are also updated.
@@ -66,6 +66,23 @@ provision:
 
 # Triggered when 'teamsapp publish' is executed
 publish:
+  - uses: cli/runNpmCommand
+    name: install dependencies
+    with:
+      args: install --no-audit --progress=false
+
+  # Compile typespec files and generate necessary files for agent.
+  # If you want to update the outputDir, please make sure the following paths are also updated.
+  # 1. File paths in tspconfig.yaml.
+  # 2. manifestPath in this action. Please make sure there is manifest.json under root folder of your outputDir and set the value to the path of this manifest.json.
+  # 3. manifestPath in teamsApp/zipAppPackage action. Please set the value to the same as manifestPath in this action.
+  - uses: typeSpec/compile
+    with:
+      path: ./main.tsp
+      manifestPath: ./appPackage/manifest.json
+      outputDir: ./appPackage/.generated
+      typeSpecConfigPath: ./tspconfig.yaml
+
   # Build app package with latest env value
   - uses: teamsApp/zipAppPackage
     with:
@@ -95,4 +112,4 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: 6e91e160-ca78-42a9-8741-60630846349e
+projectId: 6a65ace8-c4db-4665-9f12-6d5828299d4a

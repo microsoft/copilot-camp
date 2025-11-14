@@ -1,0 +1,37 @@
+@base_url = https://repairshub.azurewebsites.net
+
+### Get all repair requests
+{{base_url}}/repairs
+
+### Get a specific repair request by ID
+{{base_url}}/repairs/1
+
+### Create a new repair request
+POST {{base_url}}/repairs
+Content-Type: application/json
+
+{
+  "description": "Repair broken screen",
+  "date": "2023-10-01T12:00:00Z",
+  "image": "https://example.com/image.png"
+}
+
+### Update an existing repair request
+PATCH {{base_url}}/repairs
+Content-Type: application/json  
+
+{
+  "id": 1,
+  "description": "Repair broken screen - updated",
+  "date": "2023-10-01T12:00:00Z",
+  "image": "https://example.com/image-updated.png"
+}
+
+
+### Delete a repair request by ID
+DELETE {{base_url}}/repairs/10
+Content-Type: application/json
+
+{
+  "id": 10
+}
