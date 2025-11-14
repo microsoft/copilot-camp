@@ -46,7 +46,7 @@ namespace RepairServiceAgent{
   namespace RepairServiceActions {
     op listRepairs is global.RepairsAPI.listRepairs;   
     op createRepair is global.RepairsAPI.createRepair;
-op updateRepair is global.RepairsAPI.updateRepair;
-op deleteRepair is global.RepairsAPI.deleteRepair;  
+    op updateRepair is global.RepairsAPI.updateRepair;
+    op deleteRepair is global.RepairsAPI.deleteRepair;  
   }
 }
