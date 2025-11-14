@@ -409,7 +409,7 @@ Next, you will enhance the reference cards or response cards using adaptive card
 
 ```typespec
 
-  @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
+  @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "adaptiveCards/repair.json"}) 
   
 ```
 
@@ -420,7 +420,7 @@ Continue to add card response for the `createRepair` operation to show what the 
 
 ```typespec
 
-   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
+   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "adaptiveCards/repair.json"}) 
 
 ```
 

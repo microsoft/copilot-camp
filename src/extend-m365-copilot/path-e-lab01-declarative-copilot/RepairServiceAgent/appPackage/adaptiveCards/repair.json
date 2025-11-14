@@ -1,0 +1,46 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+  {
+    "type": "Container",
+    "$data": "${$root}",
+    "items": [
+      {
+        "type": "TextBlock",
+        "text": "Title: ${if(title, title, 'N/A')}",
+        "weight": "Bolder",
+        "wrap": true
+      },
+      {
+        "type": "TextBlock",
+        "text": "Description: ${if(description, description, 'N/A')}",
+        "wrap": true
+      },
+      {
+        "type": "TextBlock",
+        "text": "Assigned To: ${if(assignedTo, assignedTo, 'N/A')}",
+        "wrap": true
+      },
+      {
+        "type": "TextBlock",
+        "text": "Date: ${if(date, date, 'N/A')}",
+        "wrap": true
+      },
+      {
+        "type": "Image",
+        "url": "${image}",
+        "$when": "${image != null}"
+      }
+    ]
+  }
+],  
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "View Image",
+        "url": "https://www.howmuchisit.org/wp-content/uploads/2011/01/oil-change.jpg"
+      }
+    ]
+  }

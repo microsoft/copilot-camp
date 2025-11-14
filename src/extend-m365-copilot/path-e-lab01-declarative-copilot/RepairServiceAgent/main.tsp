@@ -11,6 +11,7 @@ using TypeSpec.M365.Copilot.Actions;
   "RepairServiceAgent",
    "An agent for managing repair information"
 )
+
 @instructions("""
   ## Purpose
 You will assist the user in finding car repair records based on the information provided by the user. When asked to display a report, you will use the code interpreter to generate a report based on the data you have.
@@ -27,14 +28,15 @@ You will assist the user in finding car repair records based on the information 
 
 // Uncomment this part to add a conversation starter to the agent.
 // This will be shown to the user when the agent is first created.
-@conversationStarter(#{
-   title: "List repairs",
-   text: "List all repairs"
+ @conversationStarter(#{
+  title: "List repairs",
+  text: "List all repairs"
 })
 @conversationStarter(#{
   title: "Create repair",
   text: "Create a new repair titled \"[TO_REPLACE]\" and assign it to me"
 })
+
 namespace RepairServiceAgent{  
   op codeInterpreter is AgentCapabilities.CodeInterpreter;
   // Uncomment this part to add actions to the agent.
@@ -42,9 +44,9 @@ namespace RepairServiceAgent{
   @server(global.RepairsAPI.SERVER_URL)
   @actions(global.RepairsAPI.ACTIONS_METADATA)
   namespace RepairServiceActions {
-    op listRepairs is global.RepairsAPI.listRepairs;  
+    op listRepairs is global.RepairsAPI.listRepairs;   
     op createRepair is global.RepairsAPI.createRepair;
-    op updateRepair is global.RepairsAPI.updateRepair;
-    op deleteRepair is global.RepairsAPI.deleteRepair;   
+op updateRepair is global.RepairsAPI.updateRepair;
+op deleteRepair is global.RepairsAPI.deleteRepair;  
   }
 }
