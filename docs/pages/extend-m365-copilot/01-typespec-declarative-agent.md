@@ -352,7 +352,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 Next, you will enhance the reference cards or response cards using adaptive cards. Let’s take the `listRepairs` operation and add an adaptive card for the repair item. 
 
-- In the project folder, create a new folder called **cards** under the **appPackage** folder. Create a file `repair.json` in the **cards** folder and paste the code snippet as is from below to the file. 
+- In the project folder, notice a folder called **adaptiveCards** inside the **appPackage** folder. Create a file `repair.json` in the **adaptiveCards** folder and paste the code snippet as is from below to the file. 
 
 ```json
 {
