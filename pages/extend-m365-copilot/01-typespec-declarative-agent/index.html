@@ -2709,7 +2709,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 <li>Next, go back to <code>actions.tsp</code> file and locate the <code>listRepairs</code> operation. Just above the operation definition <code>@get op listRepairs(@query assignedTo?: string): string;</code>, paste the card definition using below snippet.</li>
 </ul>
 <pre><code class="language-typespec">
-  @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;cards/repair.json&quot;}) 
+  @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;adaptiveCards/repair.json&quot;}) 
 
 </code></pre>
 <p>The above card response will be sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.
@@ -2718,7 +2718,7 @@ Continue to add card response for the <code>createRepair</code> operation to sho
 <li>Copy paste below snippet just above the code <code>@post op createRepair(@body repair: Repair): Repair;</code></li>
 </ul>
 <pre><code class="language-typespec">
-   @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;cards/repair.json&quot;}) 
+   @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;adaptiveCards/repair.json&quot;}) 
 
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="2" /></p>

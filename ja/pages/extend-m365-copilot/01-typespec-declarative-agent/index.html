@@ -2701,7 +2701,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 <li><code>actions.tsp</code> に戻り、<code>listRepairs</code> 操作を探します。操作定義 <code>@get op listRepairs(@query assignedTo?: string): string;</code> の直前に、以下のスニペットを貼り付けてカード定義を追加します。</li>
 </ul>
 <pre><code class="language-typespec">
-  @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;cards/repair.json&quot;}) 
+  @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;adaptiveCards/repair.json&quot;}) 
 
 </code></pre>
 <p>上記のカード応答は、修理アイテムを尋ねたときやエージェントが一覧を参照として返すときに送信されます。<br />
@@ -2710,7 +2710,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 <li><code>@post op createRepair(@body repair: Repair): Repair;</code> の直前に以下のスニペットを貼り付けます。</li>
 </ul>
 <pre><code class="language-typespec">
-   @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;cards/repair.json&quot;}) 
+   @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;adaptiveCards/repair.json&quot;}) 
 
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="2" /></p>
