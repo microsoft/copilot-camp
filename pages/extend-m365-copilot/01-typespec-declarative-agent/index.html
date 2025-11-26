@@ -1244,10 +1244,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-1-build-the-base-agent-with-typespec-using-microsoft-365-agents-toolkit" class="md-nav__link">
+  <a href="#exercise-1-build-your-first-declarative-agent-with-one-action-that-performs-a-single-operation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 1: Build the base agent with TypeSpec using Microsoft 365 Agents Toolkit
+        Exercise 1: Build your first Declarative Agent with one action that performs a single operation
       
     </span>
   </a>
@@ -1255,10 +1255,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-2-enhance-agent-capabilities" class="md-nav__link">
+  <a href="#exercise-2-add-more-operations-test-the-agent-and-learn-debugging-techniques" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 2: Enhance Agent capabilities
+        Exercise 2: Add more operations, test the agent, and learn debugging techniques
       
     </span>
   </a>
@@ -1266,21 +1266,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-add-code-interpreter-capabilities" class="md-nav__link">
+  <a href="#bonus-exercise-add-code-interpreter-capability-to-the-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Add code interpreter capabilities
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-3-diagnosing-and-debugging-agent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 3: Diagnosing and Debugging Agent
+        Bonus Exercise: Add code interpreter capability to the agent
       
     </span>
   </a>
@@ -2227,7 +2216,8 @@
 
 
 <h1 id="lab-e1-build-your-first-declarative-agent-with-typespec-definition-using-microsoft-365-agents-toolkit">Lab E1 - Build your first Declarative agent with TypeSpec definition using Microsoft 365 Agents Toolkit</h1>
-<p>In this lab your will build a Declarative Agent with TypeSpec definition using Microsoft 365 Agents Toolkit. You will create an agent called <code>RepairServiceAgent</code>, which interacts with repairs data via an existing API service to help users manage car repair records.</p>
+<p>In this lab your will build a Declarative Agent with TypeSpec definition using Microsoft 365 Agents Toolkit. You will create an agent called <code>RepairServiceAgent</code>, which interacts with repairs data via an existing API service to help users manage car repair records. 
+You will find the source code to the finished agent <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/RepairServiceAgent">here</a></p>
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/RNsa0kLsXgY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
@@ -2319,7 +2309,7 @@
 <h2 id="what-are-declarative-agents">What are Declarative Agents?</h2>
 <p><strong>Declarative Agents</strong> leverage the same scalable infrastructure and platform of Microsoft 365 Copilot, tailored specifically to meet focus on a special area of your needs. They function as subject matter experts in a specific area or business need, allowing you to use the same interface as a standard Microsoft 365 Copilot chat while ensuring they focus exclusively on the specific task at hand.</p>
 <h3 id="anatomy-of-a-declarative-agent">Anatomy of a Declarative Agent</h3>
-<p>As you build more agents for Copilot, you’ll notice that the final output is a set of a few files bundled into a zip file that we call an app package, which you'll install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a Declarative Agent is similar to a Teams app, if you have built one before, with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a teams app.</p>
+<p>As you build more agents for Copilot, you’ll notice that the final output is a set of a few files bundled into a zip file what we call an app package, that you'll install and use. So it's important you have a basic understanding of what the app package consists of. The app package of a Declarative Agent is similar to a Teams app if you have built one before with additonal elements. See the table to see all the core elements. You will also see that the app deployment process is very similar to deploying a Teams app.</p>
 <table>
 <thead>
 <tr>
@@ -2330,39 +2320,41 @@
 </thead>
 <tbody>
 <tr>
-<td>Microsoft 365 App Manifest</td>
-<td>A JSON file (<code>manifest.json</code>) that defines the standard Teams app manifest.</td>
+<td>App manifest</td>
+<td>A JSON file (<strong>manifest.json</strong>) that defines the standard Teams app manifest.</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td>Declarative Agent Manifest</td>
+<td>Declarative agents manifest</td>
 <td>A JSON file containing the agent's name, instructions, capabilities, conversation starters, and actions (if applicable).</td>
 <td>Yes</td>
 </tr>
 <tr>
-<td>Plugin Manifest</td>
+<td>Plugin manifest</td>
 <td>A JSON file used to configure your action as an API plugin. Includes authentication, required fields, adaptive card responses, etc. Only needed if actions exist.</td>
 <td>No</td>
 </tr>
 <tr>
-<td>OpenAPI Spec</td>
-<td>A JSON or YAML file defining your API. Required only if your agent includes actions.</td>
-<td>No</td>
+<td>App icons</td>
+<td>A color and outline icon for your declarative agent.</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
 <h3 id="capabilities-of-a-declarative-agent">Capabilities of a Declarative Agent</h3>
-<p>You can enhance the agent's focus on context and data by not only adding instructions but also specifying the knowledge base it should access. They are called capabilities. Below are the ones supported in a Declarative Agent at the time of this writing: </p>
+<p>You can enhance the agent's focus on context and data by not only adding instructions but also specifying the knowledge base it should access. They are called capabilities. Below are the ones supported in a Declarative Agent today: </p>
 <ul>
 <li><strong>Copilot Connectors</strong> - let you centralize content on Microsoft 365. By importing external content to Microsoft 365, you not only make it easier to find relevant information, but you also let others in your organization discover new content.</li>
-<li><strong>OneDrive and SharePoint</strong> - let you provide URLs of files/sites in OneDrive and SharePoint, which will be part of the agent's knowledge base.</li>
-<li><strong>Web search</strong> - let you enable or disable web content as part of the agent's knowledge base. You can also pass around up to 4 websites URLs as sources. </li>
+<li><strong>OneDrive and SharePoint</strong> - let you provide URLs of files/sites in OneDrive and SharePoint, which will part of the agent's knowledge base.</li>
+<li><strong>Web search</strong> - let you enable or disable web content as part of the agent's knowledge base. You can also pass around 4 websites URLs as source. </li>
 <li><strong>Code interpreter</strong> - enables you to build an agent with capabilities to better solve math problems and, when needed, leverage Python code for complex data analysis or chart generation.</li>
 <li><strong>GraphicArt</strong> - enables you to build an agent for image or video generation using DALL·E.</li>
 <li><strong>Email knowledge</strong> - enables you to build an agent to acces a personal or shared mailbox, and optionally, a specific mailbox folder as knowledge.</li>
 <li><strong>People knowledge</strong> - enables you to build an agent to answer questions about individuals in an organization.</li>
 <li><strong>Teams messages</strong> - enables you to equip the agent to search through Teams channels, teams, meetings, 1:1 chats, and group chats.</li>
 <li><strong>Dataverse knowledge</strong> - enables you to add a Dataverse instance as a knowledge source.</li>
+<li><strong>Scenario models</strong> - enables you to add task-specific models.</li>
+<li><strong>Teams Meetings</strong>- enables you to build an agent to search for information about meetings in the organization.</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">OnDrive and SharePoint</p>
@@ -2378,24 +2370,44 @@
 </div>
 <h2 id="significance-of-typespec-for-declarative-agents">Significance of TypeSpec for Declarative Agents</h2>
 <h3 id="what-is-typespec">What is TypeSpec</h3>
-<p>TypeSpec is a language developed by Microsoft for designing and describing API contracts in a structured and type-safe way. Think of it like a blueprint for how an API should look and behave including what data it accepts, returns, and how different parts of the API and its actions are connected.</p>
+<p><strong>TypeSpec</strong> is a language developed by Microsoft for designing and describing API contracts in a structured and type-safe way. Think of it like a blueprint for how an API should look and behave including what data it accepts, returns, and how different parts of the API and its actions are connected.</p>
 <h3 id="why-typespec-for-agents">Why TypeSpec for Agents?</h3>
 <p>If you like how TypeScript enforces structure in your frontend/backend code, you'll love how TypeSpec enforces structure in your agent and its API services like actions. It fits perfectly in design-first development workflows that align with tools like Visual Studio Code.</p>
-<p>Clear Communication - provides a single source of truth that defines how your agent should behave, avoiding confusion when dealing with multiple manifest files like in the case of Declarative Agents.</p>
-<p>Consistency - ensures all parts of your agent and its actions, capabilities, etc. are designed consistently following the same pattern.</p>
-<p>Automation Friendly - automatically generates OpenAPI specs and other manifests saving time and reducing human errors.</p>
-<p>Early Validation - catches design issues early before writing actual code for example, mismatched data types or unclear definintions.</p>
-<p>Design-First Approach - encourages thinking about agent and API structure and contracts before jumping into implementation, leading to better long-term maintainability.</p>
-<h2 id="exercise-1-build-the-base-agent-with-typespec-using-microsoft-365-agents-toolkit">Exercise 1: Build the base agent with TypeSpec using Microsoft 365 Agents Toolkit</h2>
+<ul>
+<li>
+<p><strong>Clear Communication</strong> - provides a single source of truth that defines how your agent should behave, avoiding confusion when dealing with multiple manifest files like in the case of Declarative Agents.</p>
+</li>
+<li>
+<p><strong>Consistency</strong> - ensures all parts of your agent and its actions, capabilities etc are designed consistently following the same pattern.</p>
+</li>
+<li>
+<p><strong>Automation Friendly</strong> - automatically generates OpenAPI specs and other manifests saving time and reducing human errors.</p>
+</li>
+<li>
+<p><strong>Early Validation</strong> - catches design issues early before writing actual code for example, mismatched data types or unclear definitions.</p>
+</li>
+<li>
+<p><strong>Design-First Approach</strong> - encourages thinking about agent and API structure and contracts before jumping into implementation, leading to better long-term maintainability.</p>
+</li>
+</ul>
+<p>☑️ Well done understanding all the basic concepts you need to know about Declarative agents and TypeSpec! Proceed to the first exercise.</p>
+<h2 id="exercise-1-build-your-first-declarative-agent-with-one-action-that-performs-a-single-operation">Exercise 1: Build your first Declarative Agent with one action that performs a single operation</h2>
+<p>It’s time to build your first Declarative Agent using Microsoft 365 Agents Toolkit. 
+You will create an agent called <strong>RepairServiceAgent</strong>, which interacts with repairs data via an existing Repairs API service to help users manage car repair records.</p>
+<p>Once signed into the machine, you will be able to access VS Code from the desktop. Open VS Code.</p>
 <h3 id="step-1-scaffold-your-base-agent-project-using-microsoft-365-agents-toolkit">Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit</h3>
 <ul>
-<li>Locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. </li>
+<li>In VS Code, locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. </li>
 <li>Select the "Create a New Agent/App" button in the activity bar which will open the palette with a list of app templates available on Microsoft 365 Agents Toolkit.</li>
 <li>Choose "Declarative Agent" from the list of templates.</li>
 <li>Next, select "Start with TypeSpec for Microsoft 365 Copilot" to define your agent using TypeSpec.</li>
-<li>Next, select the folder where you want the agents toolkit to scaffold the agent project.</li>
-<li>Next, give an application name like "RepairServiceAgent" and select Enter to complete the process. You will get a new VS Code window with the agent project preloaded.</li>
+<li>Next, select the <strong>Default folder</strong> where you want the agents toolkit to scaffold the agent project.</li>
+<li>Next, give an application name like - <code>RepairServiceAgent</code> and select Enter to complete the process. You will get a new VSCode window with the agent project preloaded.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may get a prompt window asking if you trust the authors of the files in the folder. This is expected and you can safely select <strong>Yes, I trust the authors</strong>. The dialog is a security safeguard that helps you decide whether to run all features or limit execution based on the trustworthiness of the code authors. If you're opening your own code or from a reliable source, it's safe to trust.</p>
+</div>
 <p><cc-end-step lab="e01" exercise="1" step="1" /></p>
 <h3 id="step-2-sign-into-the-microsoft-365-agents-toolkit">Step 2: Sign into the Microsoft 365 Agents Toolkit</h3>
 <p>You'll need to sign into the Microsoft 365 Agents Toolkit in order to upload and test your agent from within it.</p>
@@ -2406,31 +2418,144 @@
 </ul>
 <p><cc-end-step lab="e01" exercise="1" step="2" /></p>
 <h3 id="step-3-define-your-agent">Step 3: Define your agent</h3>
-<p>The Declarative Agent project scaffolded by the Agents Toolkit provides a template that includes code for connecting an agent to the GitHub API to display repository issues. In this lab, you’ll build your own agent that integrates with a car repair service, supporting multiple operations to manage repair data.</p>
-<p>In the project folder, you will find two TypeSpec files <code>main.tsp</code> and <code>actions.tsp</code>.
-The agent is defined with its metadata, instructions and capabilities in the <code>main.tsp</code> file.
-Use the <code>actions.tsp</code> file to define your agent’s actions. If your agent includes any actions like connecting to an API service, then this is the file where it should be defined.</p>
-<p>Open <code>main.tsp</code> and inspect what is there in the default template, which you will modify for our agent’s repair service scenario. </p>
+<p>The Declarative Agent project scaffolded by the Agents Toolkit provides a template that includes code for connecting an agent to the GitHub API to display repository issues. In this lab, you'll build your own agent that integrates with a Repairs API service, supporting multiple operations to manage repair data.</p>
+<p>Before proceeding with the agent definition, take a moment to examine the Repairs API service to gain a clearer understanding of its functionality.</p>
+<h4 id="get-to-know-the-repair-api-service">Get to know the repair API service</h4>
+<p>You'll need to explore endpoints and payloads of the API service interactively. Using a <strong>.http</strong> file in Visual Studio Code with the REST Client extension, which is already installed for you, allows you to define and send HTTP requests directly from your editor. It's a lightweight, code-friendly way to test APIs, inspect responses, and iterate quickly without switching to external tools.</p>
+<p>Inside the root folder of the project you just created, create a folder called <strong>http</strong>.
+Create a new file named <code>repairs-api.http</code> inside the http folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Creating folders and files in VS Code:</strong></p>
+<ul>
+<li>
+<p>To create a new folder: Right-click in the Explorer panel (file tree) on the left side of VS Code, select "New Folder", and type the folder name.</p>
+</li>
+<li>
+<p>To create a new file: Right-click on the folder where you want to add the file, select "New File", and type the filename with its extension.</p>
+</li>
+<li>
+<p>Alternatively, you can use the icons in the Explorer panel: the folder icon (📁) creates a new folder, and the file icon (📄) creates a new file in the currently selected location.</p>
+</li>
+</ul>
+</div>
+<p>Copy paste below content into the file.</p>
+<pre><code>@base_url = https://repairshub.azurewebsites.net
+
+### Get all repair requests
+{{base_url}}/repairs
+
+### Get a specific repair request by ID
+{{base_url}}/repairs/1
+
+### Create a new repair request
+POST {{base_url}}/repairs
+Content-Type: application/json
+
+{
+  &quot;description&quot;: &quot;Repair broken screen&quot;,
+  &quot;date&quot;: &quot;2023-10-01T12:00:00Z&quot;,
+  &quot;image&quot;: &quot;https://example.com/image.png&quot;
+}
+
+### Update an existing repair request
+PATCH {{base_url}}/repairs/1
+Content-Type: application/json  
+
+{
+  &quot;id&quot;: 1,
+  &quot;description&quot;: &quot;Repair broken screen - updated&quot;,
+  &quot;date&quot;: &quot;2023-10-01T12:00:00Z&quot;,
+  &quot;image&quot;: &quot;https://example.com/image-updated.png&quot;
+}
+
+
+### Delete a repair request by ID
+DELETE {{base_url}}/repairs/10
+Content-Type: application/json
+
+{
+  &quot;id&quot;: 10
+}
+</code></pre>
+<blockquote>
+<p>Note there is a small delay to process the request from the editor, but the response should come back in a few seconds.</p>
+</blockquote>
+<p>To run each request, hover over each request line (e.g., GET {{base_url}}/repairs) and click <strong>Send Request</strong> to see the response.
+Observe the structure of requests and responses and use the response data to understand how your agent will interact with the API.</p>
+<p><img alt="http request" src="https://github.com/user-attachments/assets/050ca976-4523-463d-920f-4f0f2da46249" /></p>
+<h4 id="repairs-api-overview">Repairs API Overview</h4>
+<p><strong>Base URL</strong>: <em>https://repairshub.azurewebsites.net</em></p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Payload required</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Get all repair requests</td>
+<td>GET</td>
+<td>/repairs</td>
+<td>No</td>
+<td>Retrieve all repair jobs</td>
+</tr>
+<tr>
+<td>Get repair by ID</td>
+<td>GET</td>
+<td>/repairs/{id}</td>
+<td>No</td>
+<td>Fetch a specific repair job</td>
+</tr>
+<tr>
+<td>Create a repair request</td>
+<td>POST</td>
+<td>/repairs</td>
+<td>Yes</td>
+<td>Submit a new repair job</td>
+</tr>
+<tr>
+<td>Update a repair request</td>
+<td>PATCH</td>
+<td>/repairs/{id}</td>
+<td>Yes</td>
+<td>Modify an existing repair job</td>
+</tr>
+<tr>
+<td>Delete a repair request</td>
+<td>DELETE</td>
+<td>/repairs/{id}</td>
+<td>No</td>
+<td>Remove a repair job by ID</td>
+</tr>
+</tbody>
+</table>
+<p>Now that you're familiar with the API service, let's move on to integrating it with your agent.</p>
+<h4 id="project-structure">Project structure</h4>
+<p>Within your agent project under <strong>src</strong> folder, you'll discover the core TypeSpec configuration files: <strong>main.tsp</strong> and <strong>env.tsp</strong>.</p>
+<p>The <strong>main.tsp</strong> file serves as the primary definition point for your agent, containing essential metadata, behavioral instructions, and capability specifications.</p>
+<p>The <strong>env.tsp</strong> file is used by the toolkit to process environment variables during compilation. This file is generated from <strong>env/.env.*</strong> files and offer variables for other TypeSpec files, so manual updates are not required.</p>
+<p>You'll also find an <strong>actions</strong> folder containing template files - initially including <strong>github.tsp</strong> which demonstrates GitHub API integration. For this lab, you'll replace this template with your own action definitions to establish connectivity with the Repairs API service.</p>
+<p>Additionally, there's a <strong>prompts</strong> folder housing the <strong>instructions.tsp</strong> file, which allows you to define detailed behavioral instructions and guidance for your agent.</p>
 <h4 id="update-the-agent-metadata-and-instructions">Update the Agent Metadata and Instructions</h4>
-<p>In the <code>main.tsp</code> file you will find the basic structure of the agent. Review the content provided by the agents toolkit template which includes:
+<p>Open <strong>main.tsp</strong> and inspect what is there in the default template, which you will modify for our agent's repair service scenario.</p>
+<p>In the <strong>main.tsp</strong> file, you will find the basic structure of the agent. Review the content provided by the agents toolkit template which includes:
 -   Agent name and description 1️⃣
 -   Basic instructions 2️⃣
 -   Placeholder code for actions and capabilities (commented out) 3️⃣</p>
-<p><img alt="Visual Studio Code showing the initially scaffolded template for a Declarative Agent defined in TypeSpec. There TypeSpec syntax elements to define the agent, its instructions, and some commented out commands to define starter prompts and actions." src="https://github.com/user-attachments/assets/42da513c-d814-456f-b60f-a4d9201d1620" /></p>
-<p>Begin by defining your agent for the repair scenario. Replace the "@agent" and "@instructions" definitions with below code snippet.</p>
+<p><img alt="image of main.tsp file" src="https://github.com/user-attachments/assets/9924db6f-930b-453c-92ec-72ac7534c1cb" /></p>
+<p>Begin by defining your agent for the repair scenario. Replace the <strong>@agent</strong> metadata with below code snippet.</p>
 <pre><code class="language-typespec">@agent(
   &quot;RepairServiceAgent&quot;,
-   &quot;An agent for managing repair information&quot;
+  &quot;An agent for managing repair information&quot;
 )
 
-@instructions(&quot;&quot;&quot;
-  ## Purpose
-You will assist the user in finding car repair records based on the information provided by the user. 
-&quot;&quot;&quot;)
-
 </code></pre>
-<p>Next, add a conversation starter for the agent. Just below the instructions you will see a commented out code for a conversation starter. Uncomment it.
-And replace title and text as below.</p>
+<p>Next, configure a conversation starter, the initial prompt that begins user-agent interaction. Uncomment the default template section and update the title and text fields to match the agent scenario.</p>
 <pre><code class="language-typespec">// Uncomment this part to add a conversation starter to the agent.
 // This will be shown to the user when the agent is first created.
 @conversationStarter(#{
@@ -2439,10 +2564,22 @@ And replace title and text as below.</p>
 })
 
 </code></pre>
-<h4 id="update-the-action-for-the-agent">Update the action for the agent</h4>
-<p>Next, you will define the action for your agent by opening the <code>actions.tsp</code> file. You’ll return to the <code>main.tsp</code> file later to complete the agent metadata with the action reference, but first, the action itself must be defined. For that open the file <code>actions.tsp</code>.</p>
-<p>The placeholder code in <code>actions.tsp</code> is designed to search for open issues in a GitHub repository. It serves as a starting point to help newcomers understand how to define an action for their agent like action’s metadata, API host url and operations or functions and their definitions. You will replace all this with repair service. </p>
-<p>After the module-level directives like import and using statements, replace the existing code up to the point where the "SERVER_URL" is defined with the snippet below. This update introduces the action metadata and sets the server URL. Also, note that the namespace has been changed from GitHubAPI to RepairsAPI.</p>
+<p>This starter prompt needs to trigger a GET operation to retrieve all repairs from the service. To enable this behaviour in the agent, you' ll need to define the corresponding action. Proceed to the next step to do so.</p>
+<p>Next, go to <strong>prompts/instructions.tsp</strong> and update the instructions.
+Replace the entire code block in the file with below code:</p>
+<pre><code class="language-typespec">namespace Prompts {
+  const INSTRUCTIONS = &quot;&quot;&quot;
+    ## Purpose
+    You will assist the user in finding car repair records based on the information provided by the user.
+  &quot;&quot;&quot;;
+}
+
+</code></pre>
+<h4 id="define-the-action-for-the-agent">Define the action for the agent</h4>
+<p>Next, you will define the action for your agent by opening the <strong>actions/github.tsp</strong> file. Rename this file to <strong>actions.tsp</strong>.  You can rename a file in VSCode by right clicking on the file and choosing "Rename". </p>
+<p>You'll return to the <strong>main.tsp</strong> file later to complete the agent metadata with the action reference, but first, the action itself must be defined. For that open the file <strong>actions.tsp</strong>.</p>
+<p>The default <strong>actions.tsp</strong> template demonstrates how to define an agent action, including metadata, service URL, and operation structure. Replace the sample GitHub logic entirely with definitions relevant to the Repairs API service.</p>
+<p>After the module-level directives like import and using statements, replace the existing code up to the point where the "SERVER_URL" is defined with the snippet below. </p>
 <pre><code class="language-typespec">@service
 @server(RepairsAPI.SERVER_URL)
 @actions(RepairsAPI.ACTIONS_METADATA)
@@ -2464,8 +2601,9 @@ namespace RepairsAPI{
   const SERVER_URL = &quot;https://repairshub.azurewebsites.net&quot;;
 
 </code></pre>
-<p>Next, replace the operation in the template code from "searchIssues" to "listRepairs" which is a repair operation to get the list of repairs.
-Replace the entire block of code starting just after the SERVER_URL definition and ending <em>before</em> the final closing braces with the snippet below. Be sure to leave the closing braces intact.</p>
+<p>Next, replace the operation in the template code from "searchIssues" to "listRepairs" to get the list of repairs.
+Replace the entire block of code starting just after the SERVER_URL definition and ending just <em>before</em> the final closing braces with the snippet below. Be sure to leave the closing braces intact. </p>
+<p><strong>Remember to alway copy the code comment section as well here, do not ignore as they form the documentation for this action and is needed at compile time</strong>. </p>
 <pre><code class="language-typespec">  /**
    * List repairs from the API 
    * @param assignedTo The user assigned to a repair item.
@@ -2475,21 +2613,21 @@ Replace the entire block of code starting just after the SERVER_URL definition a
   @get  op listRepairs(@query assignedTo?: string): string;
 
 </code></pre>
-<p>Now go back to <code>main.tsp</code> file and add the action you just defined into the agent. After the conversation starters replace the entire block of code with below snippet.</p>
+<p>Now go back to <strong>main.tsp</strong> file and verify the import statement for actions. If it still references <em>./actions/github.tsp</em>, replace <em>import "./actions/github.tsp";</em> with the statement below:</p>
+<pre><code class="language-typespec">import &quot;./actions/actions.tsp&quot;;
+</code></pre>
+<p>Next, in the same file, add the action you just defined into the agent. After the conversation starters replace the entire "RepairServiceAgent" namespace with below snippet:</p>
 <pre><code class="language-typespec">namespace RepairServiceAgent{  
-  // Uncomment this part to add actions to the agent.
-  @service
-  @server(global.RepairsAPI.SERVER_URL)
-  @actions(global.RepairsAPI.ACTIONS_METADATA)
-  namespace RepairServiceActions {
-    op listRepairs is global.RepairsAPI.listRepairs;   
-  }
+
+  op listRepairs is global.RepairsAPI.listRepairs;   
+
 }
+
 </code></pre>
 <p><cc-end-step lab="e01" exercise="1" step="3" /></p>
 <h3 id="step-4-optional-understand-the-decorators">Step 4: (Optional) Understand the decorators</h3>
-<p>This is an optional step but if curious to know what we have defined in the TypeSpec file just read through this step, or if you wish to test the agent right away go to Step 5.
-In the TypeSpec files <code>main.tsp</code> and <code>actions.tsp</code>, you'll find decorators (starting with @), namespaces, models, and other definitions for your agent.</p>
+<p>This is an optional step but if curious to know what we have defined in the TypeSpec file just read through this step.
+In the TypeSpec files <strong>main.tsp</strong> and <strong>actions.tsp</strong>, you'll find decorators (starting with @), namespaces, models, and other definitions for your agent.</p>
 <p>Check this table to understand some of the decorators used in these files </p>
 <table>
 <thead>
@@ -2512,8 +2650,8 @@ In the TypeSpec files <code>main.tsp</code> and <code>actions.tsp</code>, you'll
 <td>Defines conversation starters for the agent</td>
 </tr>
 <tr>
-<td>op</td>
-<td>Defines any operation. Either it can be an operation to define agent’s capabilities like <em>op GraphicArt</em>, <em>op CodeInterpreter</em> etc., or define API operations like <strong>op listRepairs</strong>.</td>
+<td>@op</td>
+<td>Defines any operation. Either it can be an operation to define agent's capabilities like <em>op GraphicArt</em>, <em>op CodeInterpreter</em> etc., or define API operations like <strong>op listRepairs</strong>. For a post operation, define it like: <em>op createRepair(@body repair: Repair): Repair;</em></td>
 </tr>
 <tr>
 <td>@server</td>
@@ -2525,53 +2663,21 @@ In the TypeSpec files <code>main.tsp</code> and <code>actions.tsp</code>, you'll
 </tr>
 </tbody>
 </table>
+<p>☑️ You've successfully completed the first exercise! You learned how to add an action to list repairs which is the GET operation. In the next exercise, you'll add more operations for managing repairs and test and debug them.</p>
+<p>Continue to the next exercise.</p>
 <p><cc-end-step lab="e01" exercise="1" step="4" /></p>
-<h3 id="step-5-test-your-agent">Step 5: Test your agent</h3>
-<p>Next step is to test the Repair Service Agent. </p>
-<ul>
-<li>Select the Agents Toolkit extension's icon, to open the activity bar from within your project.</li>
-<li>In the activity bar of the Agents Toolkit under "LifeCycle" select "Provision". This will build the app package consisting of the generated manifest files and icons and side load the app into the catalog only for you to test. </li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Knowledge</p>
-<p>Here the agents toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.</p>
-</div>
-<ul>
-<li>Next, open your web browser and navigate to <a href="https://m365.cloud.microsoft/chat" target="_blank">https://m365.cloud.microsoft/chat</a> to open Copilot app.</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Help</p>
-<p>If for any reason you see a "Something went wrong" screen in Copilot app, just refresh the browser.  </p>
-</div>
-<ul>
-<li>
-<p>Select the <strong>RepairServiceAgent</strong> from the list of <strong>Agents</strong> available in the Microsoft 365 Copilot interface.
-This will take a while and you will be able to see a toaster message showing the progress of the task to provision.</p>
-</li>
-<li>
-<p>Select the conversation starter <code>List repairs</code> and send the prompt to the chat to initiate conversation with your agent and see check out the response.</p>
-</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Help</p>
-<p>When prompted to connect the agent to process a query, you’ll usually see this screen just once. To streamline your experience in this lab, select <strong>"Always allow"</strong> when it appears.
-<img alt="Screenshot of the agent in action with the response for the prompt 'List all repairs' showing repairs with pictures." src="https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7" /></p>
-</div>
-<ul>
-<li>Keep the browser session open for upcoming exercises. </li>
-</ul>
-<p><cc-end-step lab="e01" exercise="1" step="5" /></p>
-<h2 id="exercise-2-enhance-agent-capabilities">Exercise 2:  Enhance Agent capabilities</h2>
-<p>Next, you will enhance the agent by adding more operations, enabling responses with Adaptive Cards, and incorporating code interpreter capabilities. Let’s explore each of these enhancements step by step. Go back to the project in VS Code.</p>
+<h2 id="exercise-2-add-more-operations-test-the-agent-and-learn-debugging-techniques">Exercise 2: Add more operations, test the agent, and learn debugging techniques</h2>
+<p>Next, you will enhance the agent by adding more operations in the Repairs API service and enabling responses with Adaptive Cards. Let's explore each of these enhancements step by step.
+If you are in the browser, go back to your project in VS Code.</p>
 <h3 id="step-1-modify-agent-to-add-more-operations">Step 1: Modify agent to add more operations</h3>
 <ul>
-<li>Go to file <code>actions.tsp</code> and copy paste below snippet just after <code>listRepairs</code> operation to add these new operations <code>createRepair</code>, <code>updateRepair</code> and <code>deleteRepair</code>. Here you are also defining the <code>Repair</code> item data model.</li>
+<li>Go to file <strong>actions/actions.tsp</strong> and copy paste below snippet just after <strong>listRepairs</strong> operation to add new operations <strong>createRepair</strong>, <strong>updateRepair</strong> and <strong>deleteRepair</strong>. Here you will also define the <strong>Repair</strong> item data model.</li>
 </ul>
-<pre><code class="language-typespec">  /**
-   * Create a new repair. 
+<pre><code class="language-typespec">/**
+   * Create a new repair using the API. 
    * When creating a repair, the `id` field is optional and will be generated by the server.
    * The `date` field should be in ISO 8601 format (e.g., &quot;2023-10-01T12:00:00Z&quot;).
-   * The `image` field should be a valid URL pointing to the image associated with the repair.
+   * The `title` field based on what repair user wants to create
    * @param repair The repair to create.
    */
   @route(&quot;/repairs&quot;)  
@@ -2585,7 +2691,9 @@ This will take a while and you will be able to see a toaster message showing the
    * @param repair The repair to update.
    */
   @route(&quot;/repairs&quot;)  
-  @patch  op updateRepair(@body repair: Repair): Repair;
+  @patch(#{implicitOptionality: true})
+  op updateRepair(@body repair: Repair): Repair;
+
 
   /**
    * Delete a repair.
@@ -2634,7 +2742,7 @@ This will take a while and you will be able to see a toaster message showing the
 
 </code></pre>
 <ul>
-<li>Next, go back to <code>main.tsp</code> file and make sure these new operations are also added into the agent's action. Paste the below snippet after the line <code>op listRepairs is global.RepairsAPI.listRepairs;</code> inside the <code>RepairServiceActions</code> namespace</li>
+<li>Next, go back to <strong>main.tsp</strong> file and make sure the new operations are also added as the agent's action. Paste the below snippet after the line <strong>op listRepairs is global.RepairsAPI.listRepairs;</strong> inside the <strong>RepairServiceActions</strong> namespace</li>
 </ul>
 <pre><code class="language-typespec">op createRepair is global.RepairsAPI.createRepair;
 op updateRepair is global.RepairsAPI.updateRepair;
@@ -2642,7 +2750,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 </code></pre>
 <ul>
-<li>Also add a new conversation starter for creating a new repair item just after the first conversation start definintion.</li>
+<li>Also add a new conversation starter for creating a new repair item just after the first conversation starter definition.</li>
 </ul>
 <pre><code class="language-typespec">@conversationStarter(#{
   title: &quot;Create repair&quot;,
@@ -2652,9 +2760,9 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="1" /></p>
 <h3 id="step-2-add-adaptive-card-to-function-reference">Step 2: Add adaptive card to function reference</h3>
-<p>Next, you will enhance the reference cards or response cards using adaptive cards. Let’s take the <code>listRepairs</code> operation and add an adaptive card for the repair item. </p>
+<p>Next, you will enhance the reference cards or response cards using adaptive cards. Let's create an adaptive card for the repair items.</p>
 <ul>
-<li>In the project folder, notice a folder called <strong>adaptiveCards</strong> inside the <strong>appPackage</strong> folder. Create a file <code>repair.json</code> in the <strong>adaptiveCards</strong> folder and paste the code snippet as is from below to the file. </li>
+<li>In the project, go to the <strong>adaptiveCards</strong> folder under <strong>appPackage</strong> folder. Create a new file named <code>repair.json</code> and paste the provided code snippet. This will define a new adaptive card for the repair object. Ignore the default template card that is already present in this folder.</li>
 </ul>
 <pre><code class="language-json">{
     &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
@@ -2706,135 +2814,217 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 </code></pre>
 <ul>
-<li>Next, go back to <code>actions.tsp</code> file and locate the <code>listRepairs</code> operation. Just above the operation definition <code>@get op listRepairs(@query assignedTo?: string): string;</code>, paste the card definition using below snippet.</li>
+<li>Next, go back to <strong>actions.tsp</strong> file and locate the listRepairs operation. Just above the operation definition <strong>@get  op listRepairs(@query assignedTo?: string): string;</strong>, paste the card definition using below snippet.</li>
 </ul>
 <pre><code class="language-typespec">
-  @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;adaptiveCards/repair.json&quot;}) 
+@card(#{  dataPath: &quot;$&quot;, file: &quot;adaptiveCards/repair.json&quot;,    properties: #{ title: &quot;$.title&quot;, url: &quot;$.image&quot; } })
 
 </code></pre>
-<p>The above card response will be sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.
-Continue to add card response for the <code>createRepair</code> operation to show what the agent created after the POST operation. </p>
+<p>The above card response will be sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.</p>
+<blockquote>
+<p>To keep things simple for this lab, you'll reuse the same card. In practice, you could create separate cards for different operations based on your needs.</p>
+</blockquote>
+<p>Continue to add card response for the <strong>createRepair</strong> operation to show what the agent created after the POST operation.</p>
 <ul>
-<li>Copy paste below snippet just above the code <code>@post op createRepair(@body repair: Repair): Repair;</code></li>
+<li>Copy paste below snippet just above the code <strong>@post  op createRepair(@body repair: Repair): Repair;</strong></li>
 </ul>
 <pre><code class="language-typespec">
-   @card( #{ dataPath: &quot;$&quot;,  title: &quot;$.title&quot;,   url: &quot;$.image&quot;, file: &quot;adaptiveCards/repair.json&quot;}) 
+@card(#{  dataPath: &quot;$&quot;, file: &quot;adaptiveCards/repair.json&quot;,    properties: #{ title: &quot;$.title&quot;, url: &quot;$.image&quot; } })
 
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="2" /></p>
-<h2 id="step-3-add-code-interpreter-capabilities">Step 3:  Add code interpreter capabilities</h2>
-<p>Declarative Agents can be extended to have many capabilities like <em>OneDriveAndSharePoint</em>, <em>WebSearch</em>, <em>CodeInterpreter</em>, etc.
-Next, you will enhance the agent by adding code interpreter capability to it.</p>
-<ul>
-<li>
-<p>To do this, open the <code>main.tsp</code> file and locate the <code>RepairServiceAgent</code> namespace.</p>
-</li>
-<li>
-<p>Within this namespace, insert the following snippet to define a new operation that enables the agent to interpret and execute code.</p>
-</li>
-</ul>
-<pre><code class="language-typespec">  op codeInterpreter is AgentCapabilities.CodeInterpreter;
-</code></pre>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>When you add above <em>Codeinterpreter</em> operation, paste it inside the outer <code>RepairServiceAgent</code> namespace and not the <code>RepairServiceActions</code> namespace which defines the action of the agent.  </p>
-</div>
-<p>Since the agent now supports additional functionality, update the instructions accordingly to reflect this enhancement.</p>
-<ul>
-<li>In the same <code>main.tsp</code> file, update instructions definition to have additional directives for the agent.</li>
-</ul>
-<pre><code class="language-typespec">@instructions(&quot;&quot;&quot;
-  ## Purpose
-You will assist the user in finding car repair records based on the information provided by the user. When asked to display a report, you will use the code interpreter to generate a report based on the data you have.
+<h3 id="step-3-update-agent-instruction-for-new-operations">Step 3: Update agent instruction for new operations</h3>
+<p>In the <strong>prompts/instructions.tsp</strong> file, update instructions definition to have additional directives for the agent.
+Replace the <strong>INSTRUCTIONS</strong> constant with below code:</p>
+<pre><code class="language-typespec">const INSTRUCTIONS =&quot;&quot;&quot;  
+    ## Purpose
+    You will assist the user in finding car repair records based on the information provided by the user.
 
-  ## Guidelines
-- You are a repair service agent.
-- You can use the code interpreter to generate reports based on the data you have.
-- You can use the actions to create, update, and delete repairs.
-- When creating a repair item, if the user did not provide a description or date , use title as description and put todays date in format YYYY-MM-DD
-- Do not show any code or technical details to the user. 
-- Do not use any technical jargon or complex terms.
-
-&quot;&quot;&quot;)
-
+    ## Guidelines
+    - You are a repair service agent.
+    - You can use the actions to create, update, and delete repairs.
+    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today's date in the format YYYY-MM-DD.
+    - Do not use any technical jargon or complex terms.
+  &quot;&quot;&quot;;
 </code></pre>
 <p><cc-end-step lab="e01" exercise="2" step="3" /></p>
 <h3 id="step-4-provision-and-test-the-agent">Step 4:  Provision and Test the Agent</h3>
-<p>Let’s take the updated agent who is also now a repairs analyst to test. </p>
-<ul>
-<li>Select the Agents Toolkit's extension icon to open its activity bar from within your project.</li>
-<li>In the activity bar of the toolkit under "LifeCycle" select "Provision" to package and upload the newly updated agent for testing. </li>
-<li>Next, go back to the open browser session and do a refresh. </li>
-<li>Select the <strong>RepairServiceAgent</strong> from the list under <strong>Agents</strong>.</li>
-<li>
-<p>Start by using the conversation starter 'Create repair'. Replace parts of the prompt to add a title, then send it to the chat to initiate the interaction. For example:</p>
-<p><code>Create a new repair titled "rear camera issue" and assign it to me.</code></p>
-</li>
-<li>
-<p>The confirmation dialog if you notice has more metadata that what you sent, thanks to the new instructions. </p>
-</li>
-</ul>
-<p><img alt="The confirmation message provided by Microsoft 365 Copilot when sending a POST request to the target API. There are buttons to 'Confirm' or to 'Cancel' sending the request to the API." src="https://github.com/user-attachments/assets/56629979-b1e5-4a03-a413-0bb8bb438f00" /></p>
-<ul>
-<li>Proceed to add the item by confirming the dialog.</li>
-</ul>
-<p>The agent responds with the created item shown in a rich adaptive card.</p>
-<p><img alt="The response after creating a new item, with the information about the item to repair rendered through an adaptive card with a button to show the associated image." src="https://github.com/user-attachments/assets/6da0a38f-5de3-485a-999e-c695389853f8" /></p>
+<h4 id="provision">Provision</h4>
+<p>Next step is to test the Repair Service Agent. For this first you need to provision the agent to your tenant. </p>
+<p>Follow below steps:</p>
 <ul>
 <li>
-<p>Next, re-check reference cards work. Send below prompt in the conversation:</p>
-<p><code>List all my repairs.</code></p>
+<p>Open your <strong>.env.dev</strong> file  in folder <strong>env</strong> in the root of the project to see if you have a variable <strong>AGENT_SCOPE</strong>. If present, change the variable value from <code>shared</code> to <code>personal</code>.</p>
 </li>
-</ul>
-<p>The agent will respond with the list of repairs, with each item referenced with an adaptive card.</p>
-<p><img alt="The response for the list of repairs with a reference button for each item, showing an adaptive card when hoovering on it." src="https://github.com/user-attachments/assets/880ad3aa-2ed3-4051-a68b-d988527d9d53" /></p>
-<ul>
-<li>Next, you will test the new analytical capability of your agent. Open a new chat by selecting the <strong>New chat</strong> button on the top right corner of your agent.</li>
 <li>
-<p>Next, copy the prompt below and paste it to the message box and hit enter to send it.</p>
-<p><code>Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.</code></p>
+<p>Select the Agents toolkit extension icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" />. This will open the activity bar for agents toolkit from within your project.</p>
+</li>
+<li>
+<p>In the activity bar of the agents toolkit under "LifeCycle" select "Provision". This will build the app package consisting of the generated manifest files and icons and side load the app package into the catalog only for you to test.</p>
 </li>
 </ul>
-<p>You should get some response similar to below screen. It may vary sometimes. </p>
-<p><img alt="The response when using the Code Interpreter capability. There are a detailed text and a chart showing the percentage representation of each category of repair." src="https://github.com/user-attachments/assets/ea1a5b21-bc57-4ed8-a8a4-c187caff2c64" /></p>
-<p><cc-end-step lab="e01" exercise="2" step="3" /></p>
-<h2 id="exercise-3-diagnosing-and-debugging-agent">Exercise 3: Diagnosing and Debugging Agent</h2>
+<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here the agents toolkit also helps validate all the definitions provided in the TypeSpec file to ensure accuracy. It also identifies errors to streamline the developer experience.</p>
+</div>
+</blockquote>
+<p>This will take a while and you will be able to see a toaster message in VS Code, showing the progress of the task to provision.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There are couple of known issues where the <strong>Provision</strong> action in Agents Toolkit may fail with the errors shown below. If this happens, simply retry the provisioning process until it succeeds.
+<img alt="provision 429 issue" src="https://github.com/user-attachments/assets/bf849c94-6f5a-406a-9902-ae5a07d47840" />
+<img alt="provision timeout issue" src="https://github.com/user-attachments/assets/fd13651e-d469-4ecb-91b2-c24045fb4264" /></p>
+</div>
+<ul>
+<li>
+<p>Next, open Microsoft Edge from lab machine from the taskbar and go to <code>https://m365.cloud.microsoft/chat</code> in the browser to open Copilot app. Login using your credentials.</p>
+</li>
+<li>
+<p>Select the <strong>RepairServiceAgent</strong> from the left side of the screen under <strong>Agents</strong>. </p>
+</li>
+</ul>
+<blockquote>
+<p>If you don't see left navigation to choose agent,  look for below icon and select it to show the navigation.
+<img alt="find agents nav" src="https://github.com/user-attachments/assets/0d603d1b-6458-4766-9063-4f87597f10dc" /></p>
+</blockquote>
+<h4 id="test-list-operation">Test list operation</h4>
+<ul>
+<li>
+<p>Select the conversation starter - <strong>List repairs</strong> and send the prompt to the chat to initiate conversation with your agent and check out the response. When prompted to connect the agent to process a query, you’ll usually get a message with buttons to Allow accessing your service through agent. </p>
+</li>
+<li>
+<p>To streamline your experience in this lab, select <strong>"Always allow"</strong> when it appears.</p>
+</li>
+</ul>
+<p>Once accepted you will see the response from the agent as below: </p>
+<p><img alt="ex1-dem0-01" src="https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7" /></p>
+<h4 id="diagnosing-and-debugging-agent">Diagnosing and Debugging Agent</h4>
 <p>You can enable developer mode in a chat to allow you as a developer to understand how well the agent understands the tasks, ensure it calls your services appropriately, identify areas that need fine-tuning, detect performance issues, and generally help you track and analyse its interactions.</p>
-<h3 id="step-1-agent-debugging-in-the-chat">Step 1:   Agent debugging in the chat</h3>
 <ul>
-<li>
-<p>Copy and paste the following line into the chat with your agent to enable debugging mode.</p>
-<p><code>-developer on</code></p>
-</li>
-<li>
-<p>The agent will respond with a success message if everything went well <code>Successfully enabled developer mode.</code></p>
-</li>
-<li>
-<p>Next to test, send a prompt to interact with the agent like the one below.</p>
-</li>
+<li>Send <code>-developer on</code> to the chat to enable debugging mode.</li>
 </ul>
-<p><code>Find out what Karin is working on.</code></p>
+<p>The agent will respond with a success message if everything went well <strong>Successfully enabled developer mode</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refresh the browser by pressing F5 to activate the agent debug info.</p>
+</div>
+<ul>
+<li>Next to test, send a prompt to interact with the agent like the one below.</li>
+</ul>
+<p><code>Find out what Karin is working on</code>.</p>
 <ul>
 <li>You will get a response with information from the repair service but also get the <strong>Agent debug info</strong> card along with the response.</li>
-<li>Expand the <strong>Agent debug info</strong> card to view all the details.</li>
-<li>You will be able to see: <ul>
+<li>Expand the Agent debug info card to view all the details. You will be able to see:</li>
 <li>Agent information 1️⃣</li>
 <li>Capabilities of the agent 2️⃣</li>
 <li>Actions and what function were selected 3️⃣</li>
 <li>Executed action info with detailed information about the request, latency, response data, etc. 4️⃣</li>
 </ul>
+<p><img alt="image of agent debug info" src="https://github.com/user-attachments/assets/cb8623c7-27e1-4ece-9ec6-4c43b76917fb" /></p>
+<ul>
+<li>Try expanding the Executed Actions and you will see the request url, parameters passed, request header, response, latency, etc.</li>
+</ul>
+<h4 id="test-create-operation">Test create operation</h4>
+<p>Now let's try to invoke a POST call to create a repair item.</p>
+<ul>
+<li>
+<p>Start by using the conversation starter 'Create repair'. Replace parts of the prompt to add a title, then send it to the chat to initiate the interaction. For e.g.</p>
+<p><code>Create a new repair titled "360 camera issue" and assign it to me.</code></p>
+</li>
+<li>
+<p>The confirmation dialog if you notice has more metadata that what you sent, thanks to updated instructions.</p>
 </li>
 </ul>
-<p><img alt="The developer debug information card in Microsoft 365 Copilot when analysing the request for an action. There are sections about agent info, capabilities, actions, connected agents, execution, etc." src="https://github.com/user-attachments/assets/b135f3b0-50f1-47a1-b608-a5a1b27b806e" /></p>
+<p><img alt="response from Create a new repair titled &quot;360 camera issue&quot; and assign it to me" src="https://github.com/user-attachments/assets/f570f9fd-fa85-4ab1-9c3d-f9baf993dc95" /></p>
 <ul>
-<li>Try expanding the <strong>Executed Actions</strong> and you will see the request url, parameters passed, request header, response, latency, etc. </li>
+<li>Proceed to add the item by confirming the dialog.</li>
 </ul>
+<p>The agent responds is with created item shown in a rich adaptive card.</p>
+<p><img alt="adaptive card response" src="https://github.com/user-attachments/assets/d4d5906d-e5fb-4728-bb0c-b7a9f54215c5" /></p>
+<ul>
+<li>
+<p>Next, recheck reference cards work. Open a new chat and then send below prompt in the conversation</p>
+<p><code>List all my repairs.</code></p>
+</li>
+</ul>
+<p>The agent with the list with each referenced with an adaptive card.</p>
+<p><img alt="list all repairs with new repair added" src="https://github.com/user-attachments/assets/8240525d-c683-40f9-aa68-d6ba9a19d0f2" /></p>
+<p>☑️ You've successfully completed the second exercise! You've enhanced your agent with additional repair operations and learned how to test and debug it. Continue to the bonus exercise.</p>
+<p><cc-end-step lab="e01" exercise="2" step="4" /></p>
+<h2 id="bonus-exercise-add-code-interpreter-capability-to-the-agent">Bonus Exercise: Add code interpreter capability to the agent</h2>
+<h3 id="step-1-add-code-interpreter-capability-to-your-agent">Step 1: Add code interpreter capability to your agent</h3>
+<p>Declarative Agents can be extended to have many capabilities like OneDriveAndSharePoint, WebSearch, CodeInterpreter etc
+Next, you will enhance the agent by adding code interpreter capability to it.</p>
+<ul>
+<li>
+<p>To do this, open the <strong>main.tsp</strong> file and locate the <strong>RepairServiceAgent</strong> namespace which is where you define the agent behaviour.</p>
+</li>
+<li>
+<p>Inside the namespace <strong>RepairServiceAgent</strong>, insert the following snippet above <strong>op listRepairs</strong> to define a new capability that enables the agent to interpret and execute code.</p>
+</li>
+</ul>
+<pre><code class="language-typespec">op codeInterpreter is AgentCapabilities.CodeInterpreter;
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you add above codeinterpreter operation, paste it inside the outer <strong>RepairServiceAgent</strong> namespace which defines the agent's behaviour including the capabilities and not the <strong>RepairServiceActions</strong> namespace which defines the agent's actions.</p>
+</div>
+<p>Since the agent now supports additional capability, update the instructions accordingly to reflect this enhancement.</p>
+<ul>
+<li>In the <strong>prompts/instructions.tsp</strong> file, update INSTRUCTIONS constant to have additional directives for the agent for new capability. Replace the const with below snippet:</li>
+</ul>
+<pre><code class="language-typespec">
+  const INSTRUCTIONS =&quot;&quot;&quot;
+   ## Purpose
+    You will assist the user in finding car repair records based on the information provided by the user. You can generate charts based on data. Use python execution for charting/visualization.
+
+    ## Guidelines
+    - You are a repair service agent.
+    - You can use the actions to create, update, and delete repairs.
+    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today's date in the format YYYY-MM-DD.
+    - when asked to generate report, generate charts using existing data.
+    - Do not use any technical jargon or complex terms.
+&quot;&quot;&quot;;
+
+</code></pre>
 <p><cc-end-step lab="e01" exercise="3" step="1" /></p>
+<h3 id="step-2-test-your-agents-new-capability">Step 2: Test your agent's new capability</h3>
+<p>Next, you will test the new analytical capability of your agent. You will need to reprovision the agent. Follow below steps:</p>
+<ul>
+<li>Update the version of your agent. Go to <strong>appPackage/manifest.json</strong> and update from <strong>"version": "1.0.0"</strong> to <strong>"version": "1.0.1"</strong></li>
+<li>Save all changes, select the Agents toolkit extension icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" />, to open the activity bar from within your project.</li>
+<li>In the activity bar of the agents toolkit under "LifeCycle" select "Provision". This will reprovision the agent.</li>
+<li>If you already have chat with the agent open, then open a new chat by selecting the <strong>New chat</strong> button on the top right corner of your agent.</li>
+<li>
+<p>If not, open Microsoft Edge from lab machine from the taskbar and go to <code>https://m365.cloud.microsoft/chat</code> in the browser to open Copilot app. Login using your credentials.</p>
+</li>
+<li>
+<p>Select the <strong>RepairServiceAgent</strong> from the left side of the screen under <strong>Agents</strong>. </p>
+</li>
+</ul>
+<blockquote>
+<p>If you don't see left navigation to choose agent,  look for below icon and select it to show the navigation.
+<img alt="find agents nav" src="https://github.com/user-attachments/assets/0d603d1b-6458-4766-9063-4f87597f10dc" /></p>
+</blockquote>
+<ul>
+<li>Next, copy the prompt below and paste it to the message box and hit enter to send it.</li>
+</ul>
+<p><code>Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.</code></p>
+<p>You should get some response similar to below screen. It may vary sometimes.
+<img alt="response with chart using code interpreter" src="https://github.com/user-attachments/assets/8ccc7758-28ec-42ff-96fd-2341cad6c9ed" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Known issue with code interpreter: If you see an error message in the response as below, don't worry—the chart will still be generated and displayed correctly. You can safely ignore the error.
+<img alt="error with CI" src="https://github.com/user-attachments/assets/d9d04b7f-5696-42ca-8767-178dbc51f342" /></p>
+</div>
+<p><cc-end-step lab="e01" exercise="3" step="2" /></p>
+<p>☑️ Great job completing all the exercises!</p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
-<p>Great job on building your first agent 🎉 </p>
+<p>Great job on building your first agent using TypeSpec 🎉 </p>
 <p>Proceed to create, build, and integrate an API selecting <strong>Next</strong>.
  <cc-next url="../02-build-the-api" label="Next" /></p>
-<p>If you still want to keep exploring the fundamentals by building a game called Geolocator game, select below <strong>Create a game</strong>
+<p>Continue practicing by building a Geolocator game agent—select <strong>Create a game</strong> below.
  <cc-next url="../01a-geolocator" label="Create a game" /></p>
 <p><img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-typespec-declarative-agent" /></p>
 
