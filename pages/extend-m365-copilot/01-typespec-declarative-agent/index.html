@@ -2217,7 +2217,8 @@
 
 <h1 id="lab-e1-build-your-first-declarative-agent-with-typespec-definition-using-microsoft-365-agents-toolkit">Lab E1 - Build your first Declarative agent with TypeSpec definition using Microsoft 365 Agents Toolkit</h1>
 <p>In this lab your will build a Declarative Agent with TypeSpec definition using Microsoft 365 Agents Toolkit. You will create an agent called <code>RepairServiceAgent</code>, which interacts with repairs data via an existing API service to help users manage car repair records. 
-You will find the source code to the finished agent <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/RepairServiceAgent">here</a></p>
+You will find the source code to the finished agent <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/RepairServiceAgent">here</a>.</p>
+<p>This lab has been updated to reflect Ignite 2025 announcements. TypeSpec is now GA, and Toolkit version 6.4.1 is released. This lab is based on Lab 560, the hands-on session delivered at Ignite in Nov 2025.</p>
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/RNsa0kLsXgY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
@@ -2393,11 +2394,15 @@ You will find the source code to the finished agent <a href="https://github.com/
 <p>☑️ Well done understanding all the basic concepts you need to know about Declarative agents and TypeSpec! Proceed to the first exercise.</p>
 <h2 id="exercise-1-build-your-first-declarative-agent-with-one-action-that-performs-a-single-operation">Exercise 1: Build your first Declarative Agent with one action that performs a single operation</h2>
 <p>It’s time to build your first Declarative Agent using Microsoft 365 Agents Toolkit. 
-You will create an agent called <strong>RepairServiceAgent</strong>, which interacts with repairs data via an existing Repairs API service to help users manage car repair records.</p>
-<p>Once signed into the machine, you will be able to access VS Code from the desktop. Open VS Code.</p>
+You will create an agent called <strong>RepairServiceAgent</strong>, which interacts with repairs data via an existing Repairs API service to help users manage car repair records.
+Checkout the  additional prerequisites for this lab, please install them now.</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">REST Client add-in for Visual Studio Code</a>: You will use one of these toolkits to test your API locally.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension">Microsoft 365 Agents Toolkit version 6.4.0 and up</a>. If you have an older version, update now.</li>
+</ul>
 <h3 id="step-1-scaffold-your-base-agent-project-using-microsoft-365-agents-toolkit">Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit</h3>
 <ul>
-<li>In VS Code, locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. </li>
+<li>Open VS Code, locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. </li>
 <li>Select the "Create a New Agent/App" button in the activity bar which will open the palette with a list of app templates available on Microsoft 365 Agents Toolkit.</li>
 <li>Choose "Declarative Agent" from the list of templates.</li>
 <li>Next, select "Start with TypeSpec for Microsoft 365 Copilot" to define your agent using TypeSpec.</li>
