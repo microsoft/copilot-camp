@@ -1,7 +1,9 @@
 # Lab E1 - Build your first Declarative agent with TypeSpec definition using Microsoft 365 Agents Toolkit
 
 In this lab your will build a Declarative Agent with TypeSpec definition using Microsoft 365 Agents Toolkit. You will create an agent called `RepairServiceAgent`, which interacts with repairs data via an existing API service to help users manage car repair records. 
-You will find the source code to the finished agent [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/RepairServiceAgent)
+You will find the source code to the finished agent [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/RepairServiceAgent).
+
+This lab has been updated to reflect Ignite 2025 announcements. TypeSpec is now GA, and Toolkit version 6.4.1 is released. This lab is based on Lab 560, the hands-on session delivered at Ignite in Nov 2025.
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
@@ -85,12 +87,14 @@ If you like how TypeScript enforces structure in your frontend/backend code, you
 
 It’s time to build your first Declarative Agent using Microsoft 365 Agents Toolkit. 
 You will create an agent called **RepairServiceAgent**, which interacts with repairs data via an existing Repairs API service to help users manage car repair records.
+Checkout the  additional prerequisites for this lab, please install them now.
 
-Once signed into the machine, you will be able to access VS Code from the desktop. Open VS Code.
+- [REST Client add-in for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): You will use one of these toolkits to test your API locally.
+- [Microsoft 365 Agents Toolkit version 6.4.0 and up](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension). If you have an older version, update now.
 
 ### Step 1: Scaffold your base agent project using Microsoft 365 Agents Toolkit
 
-- In VS Code, locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. 
+- Open VS Code, locate the Microsoft 365 Agents Toolkit icon <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> from the VS Code menu on the left and select it. An activity bar will be open. 
 -	Select the "Create a New Agent/App" button in the activity bar which will open the palette with a list of app templates available on Microsoft 365 Agents Toolkit.
 -	Choose "Declarative Agent" from the list of templates.
 -	Next, select "Start with TypeSpec for Microsoft 365 Copilot" to define your agent using TypeSpec.
