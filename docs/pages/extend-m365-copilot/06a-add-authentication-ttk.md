@@ -79,27 +79,11 @@ This file contains details for the Entra ID application to be registered or upda
 
 ### Step 2: Update the file version number in **teamsapp.local.yml**
 
-The **teamsapp.local.yml** file contains instructions for Agents Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
+The **m365agents.local.yml** file contains instructions for Agents Toolkit for running and debugging your solution locally. This is the file you will update in remainder of this exercise.
 
-!!! info "teamsapp.local.yml is now m365agents.local.yml"
-    The new Agents toolkit renamed the file for all toolkit related tasks to `m365agents.local.yml`. So if you started off creating agents with new Agents Toolkit, this will be the file name you will change. For these labs, since you work on existing agent project, there is nothing you need to rename or refactor. Proceed as per the steps.
 
 !!! warning Indentation is critical in yaml
     Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank}.
-
-These labs were originally written using a slightly older version of Agents Toolkit, which uses version 1.5 of this file. In this step you will update the file to version 1.7.
-
-Begin by replacing the first line with this new schema reference:
-
-```yaml
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.7/yaml.schema.json
-```
-
-Then on the 4th line, update the version number to 1.7.
-
-```yaml
-version: v1.7
-```
 
 <cc-end-step lab="e6a" exercise="1" step="2" />
 
@@ -151,9 +135,9 @@ Also note that this step will write several values into your environment files, 
 
 ### Step 4: Update the Entra ID application
 
-Locate this line in **teamsapp.local.yml**
+Locate this line in **m365agents.local.yml**
 ```yaml
-  # Build Teams app package with latest env value
+  # Build app package with latest env value
 ```
 
 Insert the following yaml before this line:
@@ -167,7 +151,7 @@ Insert the following yaml before this line:
       clientId: ${{AAD_APP_CLIENT_ID}}
       clientSecret: ${{SECRET_AAD_APP_CLIENT_SECRET}}
       # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/trey-definition.json
+      apiSpecPath: ./appPackage/apiSpecificationFile/trey-definition.json
     writeToEnvironmentFile:
       configurationId: OAUTH2AUTHCODE_CONFIGURATION_ID
 
@@ -177,7 +161,7 @@ Insert the following yaml before this line:
       appId: ${{TEAMS_APP_ID}}
       clientId: ${{AAD_APP_CLIENT_ID}}
       # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/trey-definition.json
+      apiSpecPath: ./appPackage/apiSpecificationFile/trey-definition.json
       configurationId: ${{OAUTH2AUTHCODE_CONFIGURATION_ID}}
 
   # Apply the Microsoft Entra manifest to an existing Microsoft Entra app. Will use the object id in
@@ -194,23 +178,8 @@ The `oauth/register` and `oauth/update` steps will register the application in t
 
 <cc-end-step lab="e6a" exercise="1" step="4" />
 
-### Step 5: Change the output path
 
-The new yaml schema changes the output path slightly. Locate this line:
-
-```yaml
-      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
-```
-
-and replace it with this one:
-
-```yaml
-      outputFolder: ./appPackage/build
-```
-
-<cc-end-step lab="e6a" exercise="1" step="5" />
-
-### Step 6: Make the Entra ID values available to your application code
+### Step 5: Make the Entra ID values available to your application code
 
 Locate these lines:
 
@@ -241,110 +210,16 @@ This code publishes environment variables for use within your application code. 
         AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
 ```
 
-<cc-end-step lab="e6a" exercise="1" step="6" />
+<cc-end-step lab="e6a" exercise="1" step="5" />
 
-## Exercise 2: Update the general Agents Toolkit configuration
 
-While **teamsapp-local.yml** controls Agents Toolkit behavior when debugging locally, **teamsapp.yml**
-controls its behavior when deploying to Microsoft Azure. In this exercise you'll update this file.
-
-!!! warning Indentation is critical in yaml
-    Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.yml){_target=blank}.
-
-### Step 1: Provision an Entra ID application
-
-In order for an application to authenticate a user and authorize it to do something, the application must first be registered in Entra ID. In this step we'll add this app registration if it's not already present.
-
-Locate these lines in the file:
-
-```yaml
-provision:
-  # Creates a Teams app
-```
-Insert the following yaml between these lines, directly under the `provision:` line. You may leave blank lines for readability if you wish.
-
-```yaml
-  # Creates a new Microsoft Entra app to authenticate users if
-  # the environment variable that stores clientId is empty
-  - uses: aadApp/create
-    with:
-      # Note: when you run aadApp/update, the Microsoft Entra app name will be updated
-      # based on the definition in manifest. If you don't want to change the
-      # name, make sure the name in Microsoft Entra manifest is the same with the name
-      # defined here.
-      name: Repairs-OAuth-aad
-      # If the value is false, the action will not generate client secret for you
-      generateClientSecret: true
-      # Authenticate users with a Microsoft work or school account in your
-      # organization's Microsoft Entra tenant (for example, single tenant).
-      signInAudience: AzureADMyOrg
-    # Write the information of created resources into environment file for the
-    # specified environment variable(s).
-    writeToEnvironmentFile:
-      clientId: AAD_APP_CLIENT_ID
-      # Environment variable that starts with `SECRET_` will be stored to the
-      # .env.{envName}.user environment file
-      clientSecret: SECRET_AAD_APP_CLIENT_SECRET
-      objectId: AAD_APP_OBJECT_ID
-      tenantId: AAD_APP_TENANT_ID
-      authority: AAD_APP_OAUTH_AUTHORITY
-      authorityHost: AAD_APP_OAUTH_AUTHORITY_HOST
-```
-
-Notice that by setting `signInAudience` to `AzureADMyOrg`, Agents Toolkit creates a single tenant application that can only be used within the Entra ID tenant where it is registered. If you want to allow the app to be used in other tenants, such as your customer's tenants, you would set this to `AzureADMultipleOrgs`. All three steps use the **aad.manifest.json** file you created in the previous step.
-
-Also note that this step will write several values into your environment files, where they will be inserted into **aad.manifest.json** as well as in your application package.
-
-<cc-end-step lab="e6a" exercise="2" step="1" />
-
-### Step 2: Register the app in the Teams Developer Portal Vault
-
-Locate these lines in **teamsapp.yml**
-
-```yaml
-  # Validate using manifest schema
-  # - uses: teamsApp/validateManifest
-  #   with:
-  #     # Path to manifest template
-  #     manifestPath: ./appPackage/manifest.json
-
-  # Build Teams app package with latest env value
-```
-
-Insert the following before the last line:
-
-```yaml
-  # Apply the Microsoft Entra manifest to an existing Microsoft Entra app. Will use the object id in
-  # manifest file to determine which Microsoft Entra app to update.
-  - uses: aadApp/update
-    with:
-      # Relative path to this file. Environment variables in manifest will
-      # be replaced before apply to Microsoft Entra app
-      manifestPath: ./aad.manifest.json
-      outputFilePath: ./build/aad.manifest.${{TEAMSFX_ENV}}.json
-
-  - uses: oauth/register
-    with:
-      name: oAuth2AuthCode
-      flow: authorizationCode
-      appId: ${{TEAMS_APP_ID}}
-      clientId: ${{AAD_APP_CLIENT_ID}}
-      clientSecret: ${{SECRET_AAD_APP_CLIENT_SECRET}}
-      # Path to OpenAPI description document
-      apiSpecPath: ./appPackage/trey-definition.json
-    writeToEnvironmentFile:
-      configurationId: OAUTH2AUTHCODE_CONFIGURATION_ID
-```
-
-<cc-end-step lab="e6a" exercise="2" step="2" />
-
-## Exercise 3: Update your application package
+## Exercise 2: Update your application package
 
 Now that you've got Agents Toolkit setting up the Entra ID registrations, it's time to update the application package so Copilot knows about the authentication. In this exercise you'll update the necessary files.
 
 ### Step 1: Update the Open API Specification file
 
-Open your working folder in Visual Studio Code. In the **appPackage** folder, open the **trey-definition.json** file. Locate the line:
+Open your working folder in Visual Studio Code. In the **appPackag/apiSpecificationFile** folder, open the **trey-definition.json** file. Locate the line:
 
 ```json
     "paths": {
@@ -393,11 +268,11 @@ Insert the following JSON before each of the `responses` (you will find 5 of the
 
 Be sure to save your changes after editing.
 
-<cc-end-step lab="e6a" exercise="3" step="1" />
+<cc-end-step lab="e6a" exercise="2" step="1" />
 
 ### Step 2: Update the Plugin file
 
-In the **appPackage** folder, open the **trey-plugin.json** file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.
+In the **appPackage/** folder, open the **trey-plugin.json** file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.
 
 Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the OAuth settings you saved in the vault.
 
@@ -408,11 +283,11 @@ Under `Runtimes` you will find an `auth` property with `type` of `"None"`, indic
   },
 ~~~
 
-In the next step you'll update the application code to check for a valid login and access the API as the actual Microsoft 365 user instead of "Avery Howard" (which is a name from Microsoft's fictitious name generator).
+In the next exercise you'll update the application code to check for a valid login and access the API as the actual Microsoft 365 user instead of "Avery Howard" (which is a name from Microsoft's fictitious name generator).
 
 <cc-end-step lab="e6a" exercise="3" step="2" />
 
-## Exercise 4: Update the application code
+## Exercise 3: Update the application code
 
 ### Step 1: Install the JWT validation library
 
@@ -431,7 +306,7 @@ This will install a library for validating the incoming Entra ID authorization t
     
     If you want to track progress on a supported library, please follow [this Github issue](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/6113){target=_blank}.
 
-<cc-end-step lab="e6a" exercise="4" step="1" />
+<cc-end-step lab="e6a" exercise="3" step="1" />
 
 ### Step 2: Update the identity service
 
@@ -520,9 +395,9 @@ Replace the comment with this code:
 
     If the token is valid, the library returns an object with all the "claims" that were inside, including the user's unique ID, name, and email. We will use these values instead of relying on the fictitious "Avery Howard".
 
-<cc-end-step lab="e6a" exercise="4" step="2" />
+<cc-end-step lab="e6a" exercise="3" step="2" />
 
-## Exercise 5: Test the application
+## Exercise 4: Test the application
 
 ### Step 1: Bump the application version number in the app manifest
 
@@ -545,7 +420,7 @@ Before you test the application, update the manifest version of your app package
 !!! warning "Compile issue with jwt-validate package "
     At the moment, the jwt-validate package throws typing error for @types/jsonwebtoken package. To work around the issue, edit the tsconfig.json file, found at the root of the project, and add "skipLibCheck":true. This will be fixed in a future version of the library, and may no longer be necessary by the time you do the lab.
 
-<cc-end-step lab="e6a" exercise="5" step="1" />
+<cc-end-step lab="e6a" exercise="4" step="1" />
 
 ### Step 2: (Re)start the application
 
@@ -553,7 +428,7 @@ If your app is still running from an earlier lab, stop it to force it to re-crea
 
 Then press F5 to run the application again, and install it as before.
 
-<cc-end-step lab="e6a" exercise="5" step="2" />
+<cc-end-step lab="e6a" exercise="4" step="2" />
 
 ### Step 3: Run the declarative agent
 
@@ -585,7 +460,7 @@ Recall that the user was hard coded to the fictitious user "Avery Howard". When 
 
     ![The Azure Storage Explorer in action while editing the Consultant table. The actual current user is highlighted.](../../assets/images/extend-m365-copilot-06/oauth-azure-storage-explorer.png)
     
-<cc-end-step lab="e6a" exercise="5" step="3" />
+<cc-end-step lab="e6a" exercise="4" step="3" />
 
 ### Step 4: Add yourself to a project
 
@@ -608,7 +483,7 @@ Finally once you confirm, agent fullfills the task by adding you to the project 
 
 Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"
 
-<cc-end-step lab="e6a" exercise="5" step="4" />
+<cc-end-step lab="e6a" exercise="4" step="4" />
 
 ---8<--- "e-congratulations.md"
 

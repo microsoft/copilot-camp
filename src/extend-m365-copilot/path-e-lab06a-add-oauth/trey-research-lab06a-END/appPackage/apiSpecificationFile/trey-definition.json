@@ -11,7 +11,7 @@
             "description": "Production server"
         }
     ],
-    "components": {
+        "components": {
         "securitySchemes": {
             "oAuth2AuthCode": {
                 "type": "oauth2",
@@ -90,11 +90,11 @@
                         }
                     }
                 ],
-                "security": [
-                    {
-                        "oAuth2AuthCode": []
-                    }
-                ],
+                    "security": [
+        {
+            "oAuth2AuthCode": []
+        }
+    ],
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -262,11 +262,11 @@
                 "operationId": "getUserInformation",
                 "summary": "Get consultant profile of the logged in user.",
                 "description": "Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.",
-                "security": [
-                    {
-                        "oAuth2AuthCode": []
-                    }
-                ],
+                    "security": [
+        {
+            "oAuth2AuthCode": []
+        }
+    ],
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -448,11 +448,11 @@
                         }
                     }
                 ],
-                "security": [
-                    {
-                        "oAuth2AuthCode": []
-                    }
-                ],
+                    "security": [
+        {
+            "oAuth2AuthCode": []
+        }
+    ],
                 "responses": {
                     "200": {
                         "description": "Successful response",
@@ -561,11 +561,11 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "oAuth2AuthCode": []
-                    }
-                ],
+                    "security": [
+        {
+            "oAuth2AuthCode": []
+        }
+    ],
                 "responses": {
                     "200": {
                         "description": "Successful charge",
@@ -637,11 +637,11 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "oAuth2AuthCode": []
-                    }
-                ],
+                    "security": [
+        {
+            "oAuth2AuthCode": []
+        }
+    ],
                 "responses": {
                     "200": {
                         "description": "Successful assignment",

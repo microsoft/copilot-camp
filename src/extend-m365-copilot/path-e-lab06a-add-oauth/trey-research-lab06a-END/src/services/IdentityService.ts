@@ -9,7 +9,6 @@ import ConsultantApiService from "./ConsultantApiService";
 
 class Identity {
     private validator: TokenValidator;
-
     private requestNumber = 1;  // Number the requests for logging purposes
 
 
@@ -20,16 +19,16 @@ class Identity {
         let userName = "Avery Howard";
         let userEmail = "avery@treyresearch.com";
 
-        // Try to validate the token and get user's basic information
-        try {
-            const { AAD_APP_CLIENT_ID, AAD_APP_TENANT_ID } = process.env;
-            const token = req.headers.get("Authorization")?.split(" ")[1];
-            if (!token) {
-                throw new HttpError(401, "Authorization token not found");
-            }
+         // Try to validate the token and get user's basic information
+  try {
+      const { AAD_APP_CLIENT_ID, AAD_APP_TENANT_ID } = process.env;
+      const token = req.headers.get("Authorization")?.split(" ")[1];
+      if (!token) {
+          throw new HttpError(401, "Authorization token not found");
+      }
 
-    // create a new token validator for the Microsoft Entra common tenant
-    if (!this.validator) {
+      // create a new token validator for the Microsoft Entra common tenant
+      if (!this.validator) {
         // We need a new validator object which we will continue to use on subsequent
         // requests so it can cache the Entra ID signing keys
         // For multitenant, use:
@@ -39,28 +38,28 @@ class Identity {
             jwksUri: entraJwksUri
         });
         console.log ("Token validator created");
-    }
+      }
 
-            const options: ValidateTokenOptions = {
-                allowedTenants: [AAD_APP_TENANT_ID],
-                audience: `${AAD_APP_CLIENT_ID}`,
-                issuer: `https://login.microsoftonline.com/${AAD_APP_TENANT_ID}/v2.0`,
-                scp: ["access_as_user"]
-            };
+      const options: ValidateTokenOptions = {
+          allowedTenants: [AAD_APP_TENANT_ID],
+          audience: `${AAD_APP_CLIENT_ID}`,
+          issuer: `https://login.microsoftonline.com/${AAD_APP_TENANT_ID}/v2.0`,
+          scp: ["access_as_user"]
+      };
 
-            // validate the token
-            const validToken = await this.validator.validateToken(token, options);
+      // validate the token
+      const validToken = await this.validator.validateToken(token, options);
 
-            userId = validToken.oid;
-            userName = validToken.name;
-            userEmail = validToken.preferred_username;
-            console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
-        }
-        catch (ex) {
-            // Token is missing or invalid - return a 401 error
-            console.error(ex);
-            throw new HttpError(401, "Unauthorized");
-        }
+      userId = validToken.oid;
+      userName = validToken.name;
+      userEmail = validToken.preferred_username;
+      console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
+  }
+  catch (ex) {
+      // Token is missing or invalid - return a 401 error
+      console.error(ex);
+      throw new HttpError(401, "Unauthorized");
+  }
 
         // Get the consultant record for this user; create one if necessary
         let consultant: ApiConsultant = null;
