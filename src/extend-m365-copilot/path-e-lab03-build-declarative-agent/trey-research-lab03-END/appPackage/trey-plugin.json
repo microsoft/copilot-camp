@@ -49,7 +49,7 @@
         "confirmation": {
           "type": "AdaptiveCard",
           "title": "Charge time to a project on behalf of the logged in user.",
-          "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **Hours**: {{function.parameters.hours}}"
+          "body": "**ProjectName**: {{function.parameters.projectName}}\n* **Hours**: {{function.parameters.hours}}"
         }
       }
     }
