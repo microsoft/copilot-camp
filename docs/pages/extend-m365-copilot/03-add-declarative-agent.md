@@ -291,26 +291,25 @@ If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you w
 
 ### Step 1: Run the new project
 
-If you're still in the debugger, stop it to force a complete re-deloyment.
+If you're still in the debugger, stop it to force a complete re-deloyment. Then start the debugger by clicking the arrow or pressing F5.
 
-Then start the debugger by clicking the arrow or pressing F5 and return to the Copilot user interface. You might be using Teams in browser at this point to test, but you could also use office.com/chat to test your agent.
+You should be automatically redirected to a browser tab where the "Trey Genie local" agent is launched in an immersive experience. If not, Open the Copilot chat and the left flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.
 
-???+ info "I cannot find the agent"
-    Refresh your browser and collapse and expand the navigation as shown in screen below the  if you cannot see your agents immediately after F5.
-    ![Expand and collapse navigation](../../assets/images/extend-m365-copilot-05/expand-nav.png)
+
+
+![navigation in copilot to find the agent](../../assets/images/extend-m365-copilot-03/test-nav-copilot-agent.png)
+
+
 
 <cc-end-step lab="e3" exercise="3" step="1" />
 
 ### Step 2: Test the declarative agent
 
-Open the Copilot chat and the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.
+Start chatting with your agent.
+Try a prompt such as "Please list my projects along with details from the Statement of Work doc" 1️⃣. 
+You should see a list of your projects from the API plugin 2️⃣, enhanced with details from each project's Statement of Work 3️⃣. Notice links the references to the documents as citations. Click on one of the references to check out the document.
 
-![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
-
-Try a prompt such as "Please list my projects along with details from the Statement of Work doc". 
-You should see a list of your projects from the API plugin, enhanced with details from each project's Statement of Work 1️⃣. Notice that Copilot includes the Trey Research motto 2️⃣ and references to the documents 3️⃣. Click one of the references to check out the document.
-
-![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
+![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-03/first-prompt.png)
 
 !!! note
     If the SharePoint documents aren't referenced, perhaps there is an issue accessing the files. Has there been time for Search to index the site? Does the end user have permission to the site? Has an administrator excluded the site from Search? Try doing a Search (outside of Copilot) such as 
@@ -322,11 +321,13 @@ You should see a list of your projects from the API plugin, enhanced with detail
 Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the api/me endpoint of the Trey Research project API 2️⃣.
 
 See below how it brought back my information (Avery Howard is logged in user as we have not yet implemented Auth, coming up in later labs), and my projects.
-![List my information prompt and response ](../../assets/images/extend-m365-copilot-05/my-info.png)
+
+![List my info and response](../../assets/images/extend-m365-copilot-03/my-info.png)
+
 
 If you go back to your VS Code project under "Terminal", you will also see how the agent called the API as shown below:
 
-![Terminal showing API getting called for api/me ](../../assets/images/extend-m365-copilot-05/api-called.png)
+![Terminal showing API getting called for api/me ](../../assets/images/extend-m365-copilot-03/api-called.png)
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 
