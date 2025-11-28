@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.2/schema.json",
+  "schema_version": "v2.2",
+  "namespace": "treyresearch",
+  "name_for_human": "Trey-Research${{APP_NAME_SUFFIX}}",
+  "description_for_human": "Plugin to streamline consultant assignment and project management.",
+  "description_for_model": "Plugin for managing repairs, consultant assignments, and project tracking within Trey Research. Provides functionalities to list repairs with details and images.",
+  
+  "functions": [
+    {
+      "name": "getConsultants",
+      "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          },
+           "static_template": {
+            "file": "adaptiveCards/getUserInformation.json"
+          }
+        }
+      }
+    },
+    {
+      "name": "getUserInformation",
+      "description": "Retrieve the consultant profile for the logged-in user including skills, roles, certifications, location, availability, and project assignments.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          },
+          "static_template": {
+            "file": "adaptiveCards/getUserInformation.json"
+          }
+        }
+      }
+    },
+    {
+      "name": "postBillhours",
+      "description": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.results.clientName",
+            "subtitle": "$.results.status"
+          }
+        },
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Charge time to a project on behalf of the logged in user.",
+          "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **Hours**: {{function.parameters.hours}}"
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "None"
+      },
+      "spec": {
+        "url": "apiSpecificationFile/trey-definition.json"
+      },
+      "run_for_functions": [
+        "getConsultants",
+        "getUserInformation",
+        "postBillhours"
+      ]
+    }
+  ],
+  "capabilities": {
+    "conversation_starters": [
+      {
+        "text": "What Trey projects am i assigned to?"
+      },
+      {
+        "text": "Charge 5 hours to the Contoso project for Trey Research"
+      },
+      {
+        "text": "Which Trey consultants are Azure certified?"
+      },
+      {
+        "text": "Find a Trey consultant who is available now and has Python skills"
+      }
+    ]
+  }
+}
