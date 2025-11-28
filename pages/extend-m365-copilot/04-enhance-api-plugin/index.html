@@ -2225,7 +2225,7 @@ In this exercise, you'll add information about the new /projects resource to the
 <h3 id="step-1-update-the-open-api-specification-file">Step 1: Update the Open API Specification file</h3>
 <p>An important part of the application package is the <a href="https://swagger.io/specification/" target="_blank">Open API Specification (OAS)</a> definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.</p>
 <p>To begin, in the <strong>/appPackage/apiSpecificationFile</strong> folder, open the file <strong>trey-definition.json</strong>. 
-Since editing large JSON files can be tricky, please just <a href="https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json" target="_blank">copy the updated file from here</a> and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.</p>
+Since editing large JSON files can be tricky, please just <a href="https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/apiSpecificationFile/trey-definition.json" target="_blank">copy the updated file from here</a> and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.</p>
 <p><cc-end-step lab="e4" exercise="2" step="1" /></p>
 <h3 id="step-2-review-the-updates-optional">Step 2: Review the updates (optional)</h3>
 <p>The first update was to add the <code>/projects/</code> path to the <code>paths</code> collection in the JSON. 
@@ -2406,7 +2406,7 @@ For e.g. look at the response semantics below:</p>
     &quot;confirmation&quot;: {
         &quot;type&quot;: &quot;AdaptiveCard&quot;,
         &quot;title&quot;: &quot;Assign consultant to a project when name, role and project name is specified.&quot;,
-        &quot;body&quot;: &quot;* **ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}&quot;
+        &quot;body&quot;: &quot;**ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}&quot;
     }
     }
 }
