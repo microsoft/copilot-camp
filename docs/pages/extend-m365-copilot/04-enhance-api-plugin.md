@@ -109,7 +109,7 @@ In this exercise, you'll add information about the new /projects resource to the
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
 To begin, in the **/appPackage/apiSpecificationFile** folder, open the file **trey-definition.json**. 
-Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json){target=_blank} and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
+Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/apiSpecificationFile/trey-definition.json){target=_blank} and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
 
 <cc-end-step lab="e4" exercise="2" step="1" />
 
@@ -314,7 +314,7 @@ The POST request has a similar function:
     "confirmation": {
         "type": "AdaptiveCard",
         "title": "Assign consultant to a project when name, role and project name is specified.",
-        "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"
+        "body": "**ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"
     }
     }
 }

@@ -306,8 +306,13 @@ You should be automatically redirected to a browser tab where the "Trey Genie lo
 ### Step 2: Test the declarative agent
 
 Start chatting with your agent.
-Try a prompt such as "Please list my projects along with details from the Statement of Work doc" 1️⃣. 
+Try a prompt such as:
+
+*Please list my projects along with details from the Statement of Work doc.* 1️⃣
+
 You should see a list of your projects from the API plugin 2️⃣, enhanced with details from each project's Statement of Work 3️⃣. Notice links the references to the documents as citations. Click on one of the references to check out the document.
+
+> If you see a message to connect to the your service to process query, select "Always allow" to proceed.
 
 ![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-03/first-prompt.png)
 
@@ -318,7 +323,9 @@ You should see a list of your projects from the API plugin 2️⃣, enhanced wit
     
     filling in your tenant and site name to match the one in the capability. You should see three Woodgrove documents; if you don't you need to troubleshoot Search since Copilot won't be able to find them either.
 
-Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the `api/me` endpoint of the Trey Research project API 2️⃣.
+Let's also see how the API is getting called. Try to send another prompt:
+
+ *List my information.* 1️⃣ to instruct the agent to retrieve details from the `api/me` endpoint of the Trey Research project API 2️⃣.
 
 See below how it brought back my information (Avery Howard is logged in user as we have not yet implemented Auth, coming up in later labs), and my projects.
 
