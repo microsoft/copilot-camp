@@ -41,7 +41,6 @@ Content-Type: application/json
 ### Get consultants by hours available this month
 {{base_url}}/consultants/?hoursAvailable=100
 
-
 ########## /api/projects - working with projects ##########
 
 ### Get all projects

@@ -83,532 +83,58 @@ Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
 
 <cc-end-step lab="e5" exercise="1" step="2" />
 
-## Exercise 2: Update the plugin manifest 
+## Exercise 2: Update agent response to be richer
 
-We are going to update the plugin manifest file called **trey-plugin.json** in the **appPackage** folder with a response template using adaptive cards. We will find each function or API call and update the templates.
+### Step 1: Add adaptive card files
+We are going to add some visibly appealing cards for functions `getConsultants` and `getUserInformation`.
+Copy files getConsultants.json and getUserInformation.json and paste them into the **appPackage/adaptiveCards** folder. 
 
-### Step 1: Add an adaptive card for GET /api/consultants requests
-
-- Locate the function **getConsultants** and after the `properties` node add below `static_template` node.
-
-```JSON
- "static_template": {
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "type": "AdaptiveCard",
-            "version": "1.5",
-            "body": [
-              {
-                "type": "Container",
-                "$data": "${$root}",
-                "items": [
-                  {
-                    "speak": "${name}",
-                    "type": "ColumnSet",
-                    "columns": [
-                      {
-                        "type": "Column",
-                        "items": [
-                          {
-                            "type": "TextBlock",
-                            "text": "${name}",
-                            "weight": "bolder",
-                            "size": "extraLarge",
-                            "spacing": "none",
-                            "wrap": true,
-                            "style": "heading"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${email}",
-                            "wrap": true,
-                            "spacing": "none"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${phone}",
-                            "wrap": true,
-                            "spacing": "none"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${location.city}, ${location.country}",
-                            "wrap": true
-                          }
-                        ]
-                      },
-                      {
-                        "type": "Column",
-                        "items": [
-                          {
-                            "type": "Image",
-                            "url": "${consultantPhotoUrl}",
-                            "altText": "${name}"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }   
-             
-            ]
- }
-```
+If you open this JSON file, you'll see the card's structure and how it uses data binding to connect with the API response. Template expressions in the card automatically populate with real data from your API, allowing your agent to present information in a polished, visually appealing format instead of plain text.
 
 <cc-end-step lab="e5" exercise="2" step="1" />
 
-### Step 2: Add an adaptive card for GET /api/me requests
+### Step 2: Update plugin manifest to inlcude adaptive cards
 
-- Locate the function **getUserInformation** and after the `properties` node add below `static_template` node.
+Open **appPackage/trey-plugin.json**. Inside the function `getConsultants` add inside the **response_semantics** node, after **properties** node add (including the comma):
 
 ```json
-
-  "static_template":{
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "type": "AdaptiveCard",
-            "version": "1.5",
-            "body": [
-              {
-                "type": "Container",
-                "$data": "${$root}",
-                "items": [
-                  {
-                    "speak": "${name}",
-                    "type": "ColumnSet",
-                    "columns": [
-                      {
-                        "type": "Column",
-                        "items": [
-                          {
-                            "type": "TextBlock",
-                            "text": "${name}",
-                            "weight": "bolder",
-                            "size": "extraLarge",
-                            "spacing": "none",
-                            "wrap": true,
-                            "style": "heading"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${email}",
-                            "wrap": true,
-                            "spacing": "none"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${phone}",
-                            "wrap": true,
-                            "spacing": "none"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${location.city}, ${location.country}",
-                            "wrap": true
-                          }
-                        ]
-                      },
-                      {
-                        "type": "Column",
-                        "items": [
-                          {
-                            "type": "Image",
-                            "url": "${consultantPhotoUrl}",
-                            "altText": "${name}"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }   
-             
-            ]
-  }
-```
-
-<cc-end-step lab="e5" exercise="2" step="2" />
-
-### Step 3: Add an adaptive card for GET /api/projects requests
-
-- Locate the function **getProjects** and after the `properties` node add below `static_template` node.
-
-```JSON
+,
   "static_template": {
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "type": "AdaptiveCard",
-            "version": "1.5",
-            "body": [
-              {
-                "type": "Container",
-                "$data": "${$root}",
-                "items": [
-                  {
-                    "speak": "${description}",
-                    "type": "ColumnSet",
-                    "columns": [
-                      {
-                        "type": "Column",
-                        "items": [
-                          {
-                            "type": "TextBlock",
-                            "text": "${name}",
-                            "weight": "bolder",
-                            "size": "extraLarge",
-                            "spacing": "none",
-                            "wrap": true,
-                            "style": "heading"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${description}",
-                            "wrap": true,
-                            "spacing": "none"
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${location.city}, ${location.country}",
-                            "wrap": true
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${clientName}",
-                            "weight": "Bolder",
-                            "size": "Large",
-                            "spacing": "Medium",
-                            "wrap": true,
-                            "maxLines": 3
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${clientContact}",
-                            "size": "small",
-                            "wrap": true
-                          },
-                          {
-                            "type": "TextBlock",
-                            "text": "${clientEmail}",
-                            "size": "small",
-                            "wrap": true
-                          }
-                        ]
-                      },
-                      {
-                        "type": "Column",
-                        "items": [
-                          {
-                            "type": "Image",
-                            "url": "${location.mapUrl}",
-                            "altText": "${location.street}"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "TextBlock",
-                "text": "Project Metrics",
-                "weight": "Bolder",
-                "size": "Large",
-                "spacing": "Medium",
-                "horizontalAlignment": "Center",
-                "separator": true
-              },
-              {
-                "type": "ColumnSet",
-                "columns": [
-                  {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "Forecast This Month",
-                        "weight": "Bolder",
-                        "spacing": "Small",
-                        "horizontalAlignment": "Center"
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "${forecastThisMonth} ",
-                        "size": "ExtraLarge",
-                        "weight": "Bolder",
-                        "horizontalAlignment": "Center"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "Forecast Next Month",
-                        "weight": "Bolder",
-                        "spacing": "Small",
-                        "horizontalAlignment": "Center"
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "${forecastNextMonth} ",
-                        "size": "ExtraLarge",
-                        "weight": "Bolder",
-                        "horizontalAlignment": "Center"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "ColumnSet",
-                "columns": [
-                  {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "Delivered Last Month",
-                        "weight": "Bolder",
-                        "spacing": "Small",
-                        "horizontalAlignment": "Center"
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "${deliveredLastMonth} ",
-                        "size": "ExtraLarge",
-                        "weight": "Bolder",
-                        "horizontalAlignment": "Center"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "Delivered This Month",
-                        "weight": "Bolder",
-                        "spacing": "Small",
-                        "horizontalAlignment": "Center"
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "${deliveredThisMonth} ",
-                        "size": "ExtraLarge",
-                        "weight": "Bolder",
-                        "horizontalAlignment": "Center"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "actions": [
-              {
-                "type": "Action.OpenUrl",
-                "title": "View map",
-                "url": "${location.mapUrl}"
-              }
-            ]
-  }
-```
-
-<cc-end-step lab="e5" exercise="2" step="3" />
-
-### Step 4: Add an adaptive card for POST /api/billHours requests
-
-- Locate the function **postBillhours** and after the `properties` node add below `static_template` node.
-
-```JSON
-"static_template": {
-            "type": "AdaptiveCard",
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "version": "1.5",
-            "body": [
-              {
-                "type": "TextBlock",
-                "text": "Project Status Summary",
-                "weight": "Bolder",
-                "size": "Large",
-                "separator": true
-              },              
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Client Name",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.clientName, results.clientName, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Project Name",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.projectName, results.projectName, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },  
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Remaining Forecast",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },           
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Message",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.message, results.message, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              }
-            ]
+            "file": "adaptiveCards/getConsultants.json"
           }
 ```
 
-<cc-end-step lab="e5" exercise="2" step="4" />
+After modification the function **getConsultants** looks as below:
 
-### Step 5: Add an adaptive card for POST /api/assignConsultant requests
-
-- Locate the function **postAssignConsultant** and after the `properties` node add below `static_template` node.
-
-```JSON
- "static_template": {
-            "type": "AdaptiveCard",
-            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-            "version": "1.5",
-            "body": [
-              {
-                "type": "TextBlock",
-                "text": "Project Overview",
-                "weight": "Bolder",
-                "size": "Large",
-                "separator": true,
-                "spacing": "Medium"
-              },              
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Client Name",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.clientName, results.clientName, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Project Name",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.projectName, results.projectName, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Consultant Name",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.consultantName, results.consultantName, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Remaining Forecast",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.remainingForecast, results.remainingForecast, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              },
-              {
-                "type": "Container",
-                "items": [
-                  {
-                    "type": "TextBlock",
-                    "text": "Message",
-                    "weight": "Bolder",
-                    "spacing": "Small"
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "${if(results.message, results.message, 'N/A')}",
-                    "wrap": true
-                  }
-                ]
-              }            
-            ]          
+```json
+    {
+      "name": "getConsultants",
+      "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.name",
+            "subtitle": "$.id",
+            "url": "$.consultantPhotoUrl"
+          },
+           "static_template": {
+            "file": "adaptiveCards/getConsultants.json"
           }
-
+        }
+      }
+    }
 ```
 
-<cc-end-step lab="e5" exercise="2" step="5" />
+Repeat for **getUserInformation** function with below:
+
+```json
+  ,
+  "static_template": {
+            "file": "adaptiveCards/getUserInformation.json"
+          }
+```
+<cc-end-step lab="e5" exercise="2" step="2" />
 
 ## Exercise 3: Test the plugin in Copilot
 
@@ -631,9 +157,9 @@ Before you test the application, update the manifest version of your app package
 ### Step 1: Install the plugin
 
 Stop and restart your project to force it to re-deploy the application package.
-You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.
+You will be in a window with direct chat with your agent in Copilot.
 
-![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run.png)
 
 <cc-end-step lab="e5" exercise="3" step="1" />
 
@@ -641,7 +167,7 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
 
 Now try a prompt such below
 
- *what projects are we doing for adatum?*
+ *List my information*
 
 Instead of just the text response you will also get a rich card with information of the project.
 
