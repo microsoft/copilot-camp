@@ -35,9 +35,9 @@ By default, end users can't upload applications directly; instead a Teams Admini
 
 1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
 
-2️⃣ In the left pane of the admin center, select **Show all** to open up the entire navigation. When the pane opens, select Teams to open the Microsoft Teams admin center.
+2️⃣ In the left pane of the admin center, select **Show all** to open up the entire navigation. When the pane opens, select **Teams** to open the Microsoft Teams admin center.
 
-3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup Policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default) policy**.
+3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default)** policy.
 
 4️⃣ Ensure the first switch, **Upload custom apps** is turned **On**.
 

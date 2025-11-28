@@ -17,9 +17,6 @@
             "title": "$.name",
             "subtitle": "$.id",
             "url": "$.consultantPhotoUrl"
-          },
-           "static_template": {
-            "file": "adaptiveCards/getUserInformation.json"
           }
         }
       }
@@ -34,9 +31,6 @@
             "title": "$.name",
             "subtitle": "$.id",
             "url": "$.consultantPhotoUrl"
-          },
-          "static_template": {
-            "file": "adaptiveCards/getUserInformation.json"
           }
         }
       }

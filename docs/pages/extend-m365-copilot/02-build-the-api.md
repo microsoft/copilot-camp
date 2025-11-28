@@ -15,7 +15,7 @@ In this lab you will set up an API based on Azure Functions and install it as an
 
 ## Introduction
 
-In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6](./06-add-authentication.md) you will add authentication and the ability to access the logged in user.
+In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6](./06a-add-authentication-ttk.md) you will add authentication and the ability to access the logged in user.
 
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
@@ -36,8 +36,7 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the source code zip file for the base project using [this link]
-(https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api)
+Begin by downloading the source code zip file for the base project using [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api)
 
 Unzip and copy `path-e-lab02-build-api` folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
@@ -107,6 +106,10 @@ You should see the response in the right panel, and a log of the request in the 
 Now try sending the POST request for `{{base_url}}/me/chargeTime`. This will charge 3 hours of Avery's time to the Woodgrove Bank project. This is stored in the project database, which is a locally hosted emulation of Azure Table Storage, so the system will remember that Avery has delivered these hours. (To test this, call the `/me` resource again and look at the `"deliveredThisMonth"` property under the Woodgrove project).
 
 Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to Copilot so it can answer user prompts.
+
+Once done testing, stop the debugger by going to the VS Code menu **Run > Stop Debugging**. Also close all windows inside VS Code like .http file 1️⃣ as well as the Response view 2️⃣.
+
+![Visual Studio Code close windows](../../assets/images/extend-m365-copilot-02/close-window.png)
 
 <cc-end-step lab="e2" exercise="2" step="2" />
 

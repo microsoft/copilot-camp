@@ -158,12 +158,12 @@ In this step we'll look at **trey-plugin.json** and how it and another file desc
 
 These two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
- * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
+ * [**appPackage/apiSpecificationFile/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/apiSpecificationFile/trey-definition.json){target=_blank} - This is the [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
  * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
 
- In **appPackage/trey-definition.json**, you'll find the general description of the application. This includes the server URL; Agents Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
+ In **appPackage/apiSpecificationFile/trey-definition.json**, you'll find the general description of the application. This includes the server URL; Agents Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
 
 ~~~json
 {
@@ -228,7 +228,7 @@ Scrolling down you can find the runtime settings:
       "type": "None"
     },
     "spec": {
-      "url": "trey-definition.json"
+      "url": "apiSpecificationFile/trey-definition.json"
     },
     "run_for_functions": [
       "getConsultants",
