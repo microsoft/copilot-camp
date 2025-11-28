@@ -396,6 +396,112 @@
                 }
             }
         },
+        "/projects/": {
+            "get": {
+                "operationId": "getProjects",
+                "summary": "Get projects matching a specified project name and/or consultant name",
+                "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
+                "parameters": [
+                    {
+                        "name": "consultantName",
+                        "in": "query",
+                        "description": "The name of the consultant assigned to the project",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectName",
+                        "in": "query",
+                        "description": "The name of the project or name of the client",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "results": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "location": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "street": {
+                                                                "type": "string"
+                                                            },
+                                                            "city": {
+                                                                "type": "string"
+                                                            },
+                                                            "state": {
+                                                                "type": "string"
+                                                            },
+                                                            "country": {
+                                                                "type": "string"
+                                                            },
+                                                            "postalCode": {
+                                                                "type": "string"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "number"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "number"
+                                                            }
+                                                        }
+                                                    },
+                                                    "mapUrl": {
+                                                        "type": "string",
+                                                        "format": "uri"
+                                                    },
+                                                    "role": {
+                                                        "type": "string"
+                                                    },
+                                                    "forecastThisMonth": {
+                                                        "type": "integer"
+                                                    },
+                                                    "forecastNextMonth": {
+                                                        "type": "integer"
+                                                    },
+                                                    "deliveredLastMonth": {
+                                                        "type": "integer"
+                                                    },
+                                                    "deliveredThisMonth": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Project not found"
+                    }
+                }
+            }
+        },
         "/me/chargeTime": {
             "post": {
                 "operationId": "postBillhours",
@@ -450,6 +556,83 @@
                                                     "type": "string"
                                                 }
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/assignConsultant": {
+            "post": {
+                "operationId": "postAssignConsultant",
+                "summary": "Assign consultant to a project when name, role and project name is specified.",
+                "description": "Assign (add) consultant to a project when name, role and project name is specified.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "projectName": {
+                                        "type": "string"
+                                    },
+                                    "consultantName": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string"
+                                    },
+                                    "forecast": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "projectName",
+                                    "consultantName",
+                                    "role",
+                                    "forecast"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful assignment",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "results": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer"
+                                                },
+                                                "clientName": {
+                                                    "type": "string"
+                                                },
+                                                "projectName": {
+                                                    "type": "string"
+                                                },
+                                                "consultantName": {
+                                                    "type": "string"
+                                                },
+                                                "remainingForecast": {
+                                                    "type": "integer"
+                                                },
+                                                "message": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer"
                                         }
                                     }
                                 }
