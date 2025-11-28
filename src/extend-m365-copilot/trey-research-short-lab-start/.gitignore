@@ -35,4 +35,7 @@ _storage_emulator
 # User-specific files
 appPackage/hand-built
 
+# Explicitly include .vscode
+!.vscode/
+
 
