@@ -91,9 +91,9 @@ Create three files `getConsultants.json`, `postBillhours.json` and `getUserInfor
 
 Copy contents from these raw files and paste them into appropriate files:
 
-- getConsultants.json
-- getUserInformation.json
-- postBillhours.json
+- [getConsultants.json](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END/appPackage/adaptiveCards/getConsultants.json){target=_blank}
+- [getUserInformation.json](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END/appPackage/adaptiveCards/getUserInformation.json){target=_blank}
+- [postBillhours.json](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/extend-m365-copilot/path-e-lab05-add-adaptive-cards/trey-research-lab05-END/appPackage/adaptiveCards/postBillhours.json){target=_blank}
 
 If you open this JSON file, you'll see the card's structure and how it uses data binding to connect with the API response. Template expressions in the card automatically populate with real data from your API, allowing your agent to present information in a polished, visually appealing format instead of plain text.
 

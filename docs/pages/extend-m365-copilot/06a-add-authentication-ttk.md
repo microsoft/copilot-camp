@@ -93,7 +93,7 @@ The **m365agents.local.yml** file contains instructions for Agents Toolkit for r
 
 
 !!! warning Indentation is critical in yaml
-    Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/teamsapp.local.yml){_target=blank}.
+    Editing yaml files is sometimes tricky because containment is indicated by indentation. Be sure to indent properly when making each change or the lab won't work. If in doubt, you can refer to the completed solution file [here](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab06a-add-oauth/trey-research-lab06a-END/m365agents.local.yml){_target=blank}.
 
 <cc-end-step lab="e6a" exercise="1" step="2" />
 
