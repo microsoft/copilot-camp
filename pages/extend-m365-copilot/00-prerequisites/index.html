@@ -1524,7 +1524,7 @@
   <span class="md-ellipsis">
     
   
-    Older Authentication Labs
+    Integration
   
 
     
@@ -1537,125 +1537,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Older Authentication Labs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06b-add-authentication/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6b - Add Entra ID Authentication (Manual Setup)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06c-add-sso/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6c - Add Entra ID Authentication (Single Sign-on manual)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Integration
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2289,8 +2170,8 @@
 <h3 id="step-1-enable-teams-custom-application-uploads">Step 1: Enable Teams custom application uploads</h3>
 <p>By default, end users can't upload applications directly; instead a Teams Administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Agents Toolkit.</p>
 <p>1️⃣ Navigate to <a href="https://admin.microsoft.com/" target="_blank">https://admin.microsoft.com/</a>, which is the Microsoft 365 Admin Center.</p>
-<p>2️⃣ In the left pane of the admin center, select <strong>Show all</strong> to open up the entire navigation. When the pane opens, select Teams to open the Microsoft Teams admin center.</p>
-<p>3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select <strong>Setup Policies</strong>, you will see a list of App setup policies. Then, select the <strong>Global (Org-wide default) policy</strong>.</p>
+<p>2️⃣ In the left pane of the admin center, select <strong>Show all</strong> to open up the entire navigation. When the pane opens, select <strong>Teams</strong> to open the Microsoft Teams admin center.</p>
+<p>3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select <strong>Setup policies</strong>, you will see a list of App setup policies. Then, select the <strong>Global (Org-wide default)</strong> policy.</p>
 <p>4️⃣ Ensure the first switch, <strong>Upload custom apps</strong> is turned <strong>On</strong>.</p>
 <p>5️⃣ Be sure to scroll down and select the <strong>Save</strong> button to persist your change.</p>
 <blockquote>
@@ -2300,14 +2181,15 @@
 <h2 id="exercise-2-install-agents-toolkit-and-prerequisites">Exercise 2: Install Agents Toolkit and prerequisites</h2>
 <p>You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.</p>
 <h3 id="step-1-install-visual-studio-code">Step 1: Install Visual Studio Code</h3>
-<p>It should be no surprise that <strong>Agents Toolkit for Visual Studio Code</strong> requires Visual Studio Code! You can download it here: <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code</a>.</p>
+<p>It should be no surprise that <strong>Agents Toolkit for Visual Studio Code</strong> requires Visual Studio Code! You can download it here: <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code</a>.
+The version of VS Code used for authoring these labs : 1.106.3</p>
 <p><cc-end-step lab="e0" exercise="2" step="1" /></p>
 <h3 id="step-2-install-nodejs">Step 2: Install Node.js</h3>
 <p>Node.js is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need Node.js to run the web server code used throughout this workshop.</p>
 <p>Browse to <a href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/</a> and install version v22. This lab was last tested in Node Version v22.18.0.  If you already have another version of Node.js installed, you may want to set up the <a href="https://github.com/nvm-sh/nvm" target="_blank">Node Version Manager</a> (or <a href="https://github.com/coreybutler/nvm-windows" target="_blank">this variation</a> for Microsoft Windows), which allows you to easily switch Node.js versions on the same computer.</p>
 <p><cc-end-step lab="e0" exercise="2" step="2" /></p>
 <h3 id="step-3-install-agents-toolkit">Step 3: Install Agents Toolkit</h3>
-<p>These labs are based on <strong>Microsoft 365 Agents Toolkit</strong> version 6.0.</p>
+<p>These labs are based on <strong>Microsoft 365 Agents Toolkit</strong> version 6.4.1.</p>
 <div class="admonition tip">
 <p class="admonition-title">What is Agents Toolkit?</p>
 <p>Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.</p>

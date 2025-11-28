@@ -1447,10 +1447,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-2-update-the-plugin-manifest" class="md-nav__link">
+  <a href="#exercise-2-update-agent-response-to-be-richer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 2: Update the plugin manifest
+        Exercise 2: Update agent response to be richer
       
     </span>
   </a>
@@ -1546,7 +1546,7 @@
   <span class="md-ellipsis">
     
   
-    Older Authentication Labs
+    Integration
   
 
     
@@ -1559,125 +1559,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Older Authentication Labs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06b-add-authentication/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6b - Add Entra ID Authentication (Manual Setup)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06c-add-sso/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6c - Add Entra ID Authentication (Single Sign-on manual)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Integration
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2343,525 +2224,69 @@ Adaptive Cards are platform-independent UI snippets authored in JSON that can be
 <p>This JSON defines a simple Adaptive Card with a text block and a button.</p>
 <p><cc-end-step lab="e5" exercise="1" step="1" /></p>
 <h3 id="step-2-test-your-adaptive-card">Step 2: Test Your Adaptive Card</h3>
-<p>To test your Adaptive Card, you can use the <a href="https://adaptivecards.io/designer/" target="_blank">Adaptive Cards Designer</a>.</p>
+<p>To test your Adaptive Card, you can use the <a href="https://adaptivecards.microsoft.com/designer" target="_blank">Adaptive Cards Designer</a>.</p>
 <ol>
-<li>Open the <a href="https://adaptivecards.io/designer/" target="_blank">Adaptive Cards Designer</a>  .</li>
-<li>Copy the JSON content from your <code>adaptiveCard.json</code> file.</li>
+<li>Open the <a href="https://adaptivecards.microsoft.com/designer" target="_blank">Adaptive Cards Designer</a>.</li>
 <li>Paste the JSON content into the "Card Payload Editor" section on the lower part of the designer.</li>
 <li>You will see a live preview of your Adaptive Card on the upper part of the designer.</li>
 </ol>
 <p>Congrats! You are now fully skilled to develop Adaptive cards for your plugin!</p>
 <p><cc-end-step lab="e5" exercise="1" step="2" /></p>
-<h2 id="exercise-2-update-the-plugin-manifest">Exercise 2: Update the plugin manifest</h2>
-<p>We are going to update the plugin manifest file called <strong>trey-plugin.json</strong> in the <strong>appPackage</strong> folder with a response template using adaptive cards. We will find each function or API call and update the templates.</p>
-<h3 id="step-1-add-an-adaptive-card-for-get-apiconsultants-requests">Step 1: Add an adaptive card for GET /api/consultants requests</h3>
+<h2 id="exercise-2-update-agent-response-to-be-richer">Exercise 2: Update agent response to be richer</h2>
+<h3 id="step-1-add-adaptive-card-files">Step 1: Add adaptive card files</h3>
+<p>We are going to add some visibly appealing cards for functions <code>getConsultants</code>, <code>getUserInformation</code> and <code>postBillhours</code>.</p>
+<p>Create three files <code>getConsultants.json</code>, <code>postBillhours.json</code> and <code>getUserInformation.json</code> in the <strong>appPackage/adaptiveCards</strong> folder. </p>
+<p>Copy contents from these raw files and paste them into appropriate files:</p>
 <ul>
-<li>Locate the function <strong>getConsultants</strong> and after the <code>properties</code> node add below <code>static_template</code> node.</li>
+<li>getConsultants.json</li>
+<li>getUserInformation.json</li>
+<li>postBillhours.json</li>
 </ul>
-<pre><code class="language-JSON"> &quot;static_template&quot;: {
-            &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
-            &quot;type&quot;: &quot;AdaptiveCard&quot;,
-            &quot;version&quot;: &quot;1.5&quot;,
-            &quot;body&quot;: [
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;$data&quot;: &quot;${$root}&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;speak&quot;: &quot;${name}&quot;,
-                    &quot;type&quot;: &quot;ColumnSet&quot;,
-                    &quot;columns&quot;: [
-                      {
-                        &quot;type&quot;: &quot;Column&quot;,
-                        &quot;items&quot;: [
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${name}&quot;,
-                            &quot;weight&quot;: &quot;bolder&quot;,
-                            &quot;size&quot;: &quot;extraLarge&quot;,
-                            &quot;spacing&quot;: &quot;none&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;style&quot;: &quot;heading&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${email}&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;spacing&quot;: &quot;none&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${phone}&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;spacing&quot;: &quot;none&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${location.city}, ${location.country}&quot;,
-                            &quot;wrap&quot;: true
-                          }
-                        ]
-                      },
-                      {
-                        &quot;type&quot;: &quot;Column&quot;,
-                        &quot;items&quot;: [
-                          {
-                            &quot;type&quot;: &quot;Image&quot;,
-                            &quot;url&quot;: &quot;${consultantPhotoUrl}&quot;,
-                            &quot;altText&quot;: &quot;${name}&quot;
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }   
-
-            ]
- }
-</code></pre>
+<p>If you open this JSON file, you'll see the card's structure and how it uses data binding to connect with the API response. Template expressions in the card automatically populate with real data from your API, allowing your agent to present information in a polished, visually appealing format instead of plain text.</p>
 <p><cc-end-step lab="e5" exercise="2" step="1" /></p>
-<h3 id="step-2-add-an-adaptive-card-for-get-apime-requests">Step 2: Add an adaptive card for GET /api/me requests</h3>
-<ul>
-<li>Locate the function <strong>getUserInformation</strong> and after the <code>properties</code> node add below <code>static_template</code> node.</li>
-</ul>
-<pre><code class="language-json">
-  &quot;static_template&quot;:{
-            &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
-            &quot;type&quot;: &quot;AdaptiveCard&quot;,
-            &quot;version&quot;: &quot;1.5&quot;,
-            &quot;body&quot;: [
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;$data&quot;: &quot;${$root}&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;speak&quot;: &quot;${name}&quot;,
-                    &quot;type&quot;: &quot;ColumnSet&quot;,
-                    &quot;columns&quot;: [
-                      {
-                        &quot;type&quot;: &quot;Column&quot;,
-                        &quot;items&quot;: [
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${name}&quot;,
-                            &quot;weight&quot;: &quot;bolder&quot;,
-                            &quot;size&quot;: &quot;extraLarge&quot;,
-                            &quot;spacing&quot;: &quot;none&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;style&quot;: &quot;heading&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${email}&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;spacing&quot;: &quot;none&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${phone}&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;spacing&quot;: &quot;none&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${location.city}, ${location.country}&quot;,
-                            &quot;wrap&quot;: true
-                          }
-                        ]
-                      },
-                      {
-                        &quot;type&quot;: &quot;Column&quot;,
-                        &quot;items&quot;: [
-                          {
-                            &quot;type&quot;: &quot;Image&quot;,
-                            &quot;url&quot;: &quot;${consultantPhotoUrl}&quot;,
-                            &quot;altText&quot;: &quot;${name}&quot;
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }   
-
-            ]
-  }
+<h3 id="step-2-update-plugin-manifest-to-inlcude-adaptive-cards">Step 2: Update plugin manifest to inlcude adaptive cards</h3>
+<ol>
+<li>Open <strong>appPackage/trey-plugin.json</strong></li>
+<li>Find the <code>getConsultants</code> function</li>
+<li>Inside <code>response_semantics</code>, add the following after the <code>properties</code> field (include the comma also from the snippet):</li>
+</ol>
+<pre><code class="language-json">,
+  &quot;static_template&quot;: {
+            &quot;file&quot;: &quot;adaptiveCards/getConsultants.json&quot;
+          }
+</code></pre>
+<p>After modification the function <strong>getConsultants</strong> looks as below:</p>
+<pre><code class="language-json">    {
+      &quot;name&quot;: &quot;getConsultants&quot;,
+      &quot;description&quot;: &quot;Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned&quot;,
+      &quot;capabilities&quot;: {
+        &quot;response_semantics&quot;: {
+          &quot;data_path&quot;: &quot;$.results&quot;,
+          &quot;properties&quot;: {
+            &quot;title&quot;: &quot;$.name&quot;,
+            &quot;subtitle&quot;: &quot;$.id&quot;,
+            &quot;url&quot;: &quot;$.consultantPhotoUrl&quot;
+          },
+           &quot;static_template&quot;: {
+            &quot;file&quot;: &quot;adaptiveCards/getConsultants.json&quot;
+          }
+        }
+      }
+    }
+</code></pre>
+<p>Repeat for <strong>getUserInformation</strong> function with below:</p>
+<pre><code class="language-json">  ,
+  &quot;static_template&quot;: {
+            &quot;file&quot;: &quot;adaptiveCards/getUserInformation.json&quot;
+          }
+</code></pre>
+<p>And finally for <strong>postBillhours</strong> function with below:</p>
+<pre><code class="language-json">  ,
+  &quot;static_template&quot;: {
+            &quot;file&quot;: &quot;adaptiveCards/postBillhours.json&quot;
+          }
 </code></pre>
 <p><cc-end-step lab="e5" exercise="2" step="2" /></p>
-<h3 id="step-3-add-an-adaptive-card-for-get-apiprojects-requests">Step 3: Add an adaptive card for GET /api/projects requests</h3>
-<ul>
-<li>Locate the function <strong>getProjects</strong> and after the <code>properties</code> node add below <code>static_template</code> node.</li>
-</ul>
-<pre><code class="language-JSON">  &quot;static_template&quot;: {
-            &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
-            &quot;type&quot;: &quot;AdaptiveCard&quot;,
-            &quot;version&quot;: &quot;1.5&quot;,
-            &quot;body&quot;: [
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;$data&quot;: &quot;${$root}&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;speak&quot;: &quot;${description}&quot;,
-                    &quot;type&quot;: &quot;ColumnSet&quot;,
-                    &quot;columns&quot;: [
-                      {
-                        &quot;type&quot;: &quot;Column&quot;,
-                        &quot;items&quot;: [
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${name}&quot;,
-                            &quot;weight&quot;: &quot;bolder&quot;,
-                            &quot;size&quot;: &quot;extraLarge&quot;,
-                            &quot;spacing&quot;: &quot;none&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;style&quot;: &quot;heading&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${description}&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;spacing&quot;: &quot;none&quot;
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${location.city}, ${location.country}&quot;,
-                            &quot;wrap&quot;: true
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${clientName}&quot;,
-                            &quot;weight&quot;: &quot;Bolder&quot;,
-                            &quot;size&quot;: &quot;Large&quot;,
-                            &quot;spacing&quot;: &quot;Medium&quot;,
-                            &quot;wrap&quot;: true,
-                            &quot;maxLines&quot;: 3
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${clientContact}&quot;,
-                            &quot;size&quot;: &quot;small&quot;,
-                            &quot;wrap&quot;: true
-                          },
-                          {
-                            &quot;type&quot;: &quot;TextBlock&quot;,
-                            &quot;text&quot;: &quot;${clientEmail}&quot;,
-                            &quot;size&quot;: &quot;small&quot;,
-                            &quot;wrap&quot;: true
-                          }
-                        ]
-                      },
-                      {
-                        &quot;type&quot;: &quot;Column&quot;,
-                        &quot;items&quot;: [
-                          {
-                            &quot;type&quot;: &quot;Image&quot;,
-                            &quot;url&quot;: &quot;${location.mapUrl}&quot;,
-                            &quot;altText&quot;: &quot;${location.street}&quot;
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;TextBlock&quot;,
-                &quot;text&quot;: &quot;Project Metrics&quot;,
-                &quot;weight&quot;: &quot;Bolder&quot;,
-                &quot;size&quot;: &quot;Large&quot;,
-                &quot;spacing&quot;: &quot;Medium&quot;,
-                &quot;horizontalAlignment&quot;: &quot;Center&quot;,
-                &quot;separator&quot;: true
-              },
-              {
-                &quot;type&quot;: &quot;ColumnSet&quot;,
-                &quot;columns&quot;: [
-                  {
-                    &quot;type&quot;: &quot;Column&quot;,
-                    &quot;width&quot;: &quot;stretch&quot;,
-                    &quot;items&quot;: [
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;Forecast This Month&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;spacing&quot;: &quot;Small&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      },
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;${forecastThisMonth} &quot;,
-                        &quot;size&quot;: &quot;ExtraLarge&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      }
-                    ]
-                  },
-                  {
-                    &quot;type&quot;: &quot;Column&quot;,
-                    &quot;width&quot;: &quot;stretch&quot;,
-                    &quot;items&quot;: [
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;Forecast Next Month&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;spacing&quot;: &quot;Small&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      },
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;${forecastNextMonth} &quot;,
-                        &quot;size&quot;: &quot;ExtraLarge&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;ColumnSet&quot;,
-                &quot;columns&quot;: [
-                  {
-                    &quot;type&quot;: &quot;Column&quot;,
-                    &quot;width&quot;: &quot;stretch&quot;,
-                    &quot;items&quot;: [
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;Delivered Last Month&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;spacing&quot;: &quot;Small&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      },
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;${deliveredLastMonth} &quot;,
-                        &quot;size&quot;: &quot;ExtraLarge&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      }
-                    ]
-                  },
-                  {
-                    &quot;type&quot;: &quot;Column&quot;,
-                    &quot;width&quot;: &quot;stretch&quot;,
-                    &quot;items&quot;: [
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;Delivered This Month&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;spacing&quot;: &quot;Small&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      },
-                      {
-                        &quot;type&quot;: &quot;TextBlock&quot;,
-                        &quot;text&quot;: &quot;${deliveredThisMonth} &quot;,
-                        &quot;size&quot;: &quot;ExtraLarge&quot;,
-                        &quot;weight&quot;: &quot;Bolder&quot;,
-                        &quot;horizontalAlignment&quot;: &quot;Center&quot;
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            &quot;actions&quot;: [
-              {
-                &quot;type&quot;: &quot;Action.OpenUrl&quot;,
-                &quot;title&quot;: &quot;View map&quot;,
-                &quot;url&quot;: &quot;${location.mapUrl}&quot;
-              }
-            ]
-  }
-</code></pre>
-<p><cc-end-step lab="e5" exercise="2" step="3" /></p>
-<h3 id="step-4-add-an-adaptive-card-for-post-apibillhours-requests">Step 4: Add an adaptive card for POST /api/billHours requests</h3>
-<ul>
-<li>Locate the function <strong>postBillhours</strong> and after the <code>properties</code> node add below <code>static_template</code> node.</li>
-</ul>
-<pre><code class="language-JSON">&quot;static_template&quot;: {
-            &quot;type&quot;: &quot;AdaptiveCard&quot;,
-            &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
-            &quot;version&quot;: &quot;1.5&quot;,
-            &quot;body&quot;: [
-              {
-                &quot;type&quot;: &quot;TextBlock&quot;,
-                &quot;text&quot;: &quot;Project Status Summary&quot;,
-                &quot;weight&quot;: &quot;Bolder&quot;,
-                &quot;size&quot;: &quot;Large&quot;,
-                &quot;separator&quot;: true
-              },              
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Client Name&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.clientName, results.clientName, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Project Name&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.projectName, results.projectName, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },  
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Remaining Forecast&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.remainingForecast, results.remainingForecast, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },           
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Message&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.message, results.message, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              }
-            ]
-          }
-</code></pre>
-<p><cc-end-step lab="e5" exercise="2" step="4" /></p>
-<h3 id="step-5-add-an-adaptive-card-for-post-apiassignconsultant-requests">Step 5: Add an adaptive card for POST /api/assignConsultant requests</h3>
-<ul>
-<li>Locate the function <strong>postAssignConsultant</strong> and after the <code>properties</code> node add below <code>static_template</code> node.</li>
-</ul>
-<pre><code class="language-JSON"> &quot;static_template&quot;: {
-            &quot;type&quot;: &quot;AdaptiveCard&quot;,
-            &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
-            &quot;version&quot;: &quot;1.5&quot;,
-            &quot;body&quot;: [
-              {
-                &quot;type&quot;: &quot;TextBlock&quot;,
-                &quot;text&quot;: &quot;Project Overview&quot;,
-                &quot;weight&quot;: &quot;Bolder&quot;,
-                &quot;size&quot;: &quot;Large&quot;,
-                &quot;separator&quot;: true,
-                &quot;spacing&quot;: &quot;Medium&quot;
-              },              
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Client Name&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.clientName, results.clientName, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Project Name&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.projectName, results.projectName, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Consultant Name&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.consultantName, results.consultantName, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Remaining Forecast&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.remainingForecast, results.remainingForecast, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              },
-              {
-                &quot;type&quot;: &quot;Container&quot;,
-                &quot;items&quot;: [
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;Message&quot;,
-                    &quot;weight&quot;: &quot;Bolder&quot;,
-                    &quot;spacing&quot;: &quot;Small&quot;
-                  },
-                  {
-                    &quot;type&quot;: &quot;TextBlock&quot;,
-                    &quot;text&quot;: &quot;${if(results.message, results.message, 'N/A')}&quot;,
-                    &quot;wrap&quot;: true
-                  }
-                ]
-              }            
-            ]          
-          }
-
-</code></pre>
-<p><cc-end-step lab="e5" exercise="2" step="5" /></p>
 <h2 id="exercise-3-test-the-plugin-in-copilot">Exercise 3: Test the plugin in Copilot</h2>
 <p>Before you test the application, update the manifest version of your app package in the <code>appPackage\manifest.json</code> file, follow these steps:</p>
 <ol>
@@ -2884,39 +2309,25 @@ Adaptive Cards are platform-independent UI snippets authored in JSON that can be
 </ol>
 <h3 id="step-1-install-the-plugin">Step 1: Install the plugin</h3>
 <p>Stop and restart your project to force it to re-deploy the application package.
-You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.</p>
-<p><img alt="Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent." src="../../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png" /></p>
+You will be in a window with direct chat with your agent in Copilot.</p>
+<p><img alt="Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent." src="../../../assets/images/extend-m365-copilot-05/run.png" /></p>
 <p><cc-end-step lab="e5" exercise="3" step="1" /></p>
 <h3 id="step-2-display-an-adaptive-card">Step 2: Display an adaptive card</h3>
-<p>Now try a prompt such below</p>
-<p><em>what projects are we doing for adatum?</em></p>
-<p>Instead of just the text response you will also get a rich card with information of the project.</p>
-<p><img alt="The response of the agent based on an Adaptive Card showing rich content, including a table with metrics and an image." src="../../../assets/images/extend-m365-copilot-04/project-adaptive.png" /></p>
+<p>Now try a prompt such below:</p>
+<p><em>Find consultants with TypeScript skills</em></p>
+<p>Instead of just the text response you will also get a rich card with information of the project.
+<img alt="A card generated by Copilot with consultant info" src="../../../assets/images/extend-m365-copilot-05/first-prompt.png" /></p>
 <p>Now try a POST operation prompt such below</p>
 <p><em>please charge 1 hour to woodgrove bank in trey research</em></p>
 <p>Since the request requires Copilot to send some data via POST to the API plugin, you need to confirm that you want to allow Copilot to do so selecting the <em>Confirm</em> button.</p>
-<p><img alt="A card generated by Copilot to confirm sending data to the API plugin." src="../../../assets/images/extend-m365-copilot-04/bill-hours-confirm.png" /></p>
+<p><img alt="A card generated by Copilot to confirm sending data to the API plugin." src="../../../assets/images/extend-m365-copilot-05/bill-hours-confirm.png" /></p>
 <p>Once confirmed, instead of just the text response you will also get a rich card with information of the project.</p>
-<p><img alt="The response of the agent based on an Adaptive Card showing rich content about the project status." src="../../../assets/images/extend-m365-copilot-04/bill-hours.png" /></p>
+<p><img alt="The response of the agent based on an Adaptive Card showing rich content about the project status." src="../../../assets/images/extend-m365-copilot-05/bill-hours.png" /></p>
 <p>You can now test other prompts as well to see the improved responses from Microsoft 365 Copilot.</p>
 <p><cc-end-step lab="e5" exercise="3" step="2" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
 <p>You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.</p>
-<p>Go to the lab <strong>Use OAuth 2.0 with Agents Toolkit</strong> to add authentication - This is the easiest approach; you will learn to set up Agents Toolkit's automated Entra ID registration for an F5 project start experience.</p>
 <p><cc-next url="../06a-add-authentication-ttk" label="Next" /></p>
-<details>
-<summary>Other labs on Authentication with manual steps </summary>
-There are older labs created before OAuth 2.0 support with the Agents Toolkit. They demonstrate how to add authentication to your app package and validate access tokens in your web service. The main difference lies in how the app is registered in Entra ID and Microsoft 365.
-
-Feel free to explore them and they all build on the project from this lab.
-
-  1. **Use OAuth 2.0 with Manual Setup** - Leads you through all the Entra ID registration details so you can really understand what's happening; this may help adapt your solution to work with another identity provider
-  <cc-next url="../06b-add-authentication" label="OAuth with Manual Setup" />
-
-  2. **Use Single Sign-on** - New capability for seamless Entra ID authentication, manual setup
-  <cc-next url="../06c-add-sso" label="Single Sign-on with Manual Setup" />
-</details>
-
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" /></p>
 
 

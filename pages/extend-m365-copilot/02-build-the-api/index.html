@@ -1535,7 +1535,7 @@
   <span class="md-ellipsis">
     
   
-    Older Authentication Labs
+    Integration
   
 
     
@@ -1548,125 +1548,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Older Authentication Labs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06b-add-authentication/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6b - Add Entra ID Authentication (Manual Setup)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06c-add-sso/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6c - Add Entra ID Authentication (Single Sign-on manual)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Integration
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2284,11 +2165,11 @@
 </div>
 
 <h2 id="introduction">Introduction</h2>
-<p>In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in <a href="./06-add-authentication.md">Lab E6</a> you will add authentication and the ability to access the logged in user.</p>
+<p>In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the <code>/api/consultants</code> path) and about the current user (using the <code>/api/me</code> path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in <a href="../06a-add-authentication-ttk/">Lab E6</a> you will add authentication and the ability to access the logged in user.</p>
 <p>The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.</p>
 <details class="question" open="open">
 <summary>How did you create this API?</summary>
-<p>The project was created using Agents Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Agents Toolkit. Create a new app project and select "Agent", then "Declarative Agent" and "Add plugin".</p>
+<p>The project was created using Microsoft 365 Agents Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Agents Toolkit. <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents" target="_blank">Read more</a>.</p>
 </details>
 <h2 id="exercise-1-configure-and-run-the-starting-application">Exercise 1: Configure and run the starting application</h2>
 <h3 id="step-1-install-additional-prerequisites">Step 1: Install additional prerequisites</h3>
@@ -2300,8 +2181,7 @@
 </ul>
 <p><cc-end-step lab="e2" exercise="1" step="1" /></p>
 <h3 id="step-2-download-the-starting-application">Step 2: Download the starting application</h3>
-<p>Begin by downloading the source code zip file for the base project using [this link]
-(https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&amp;filename=path-e-lab02-build-api)</p>
+<p>Begin by downloading the source code zip file for the base project using <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&amp;filename=path-e-lab02-build-api">this link</a></p>
 <p>Unzip and copy <code>path-e-lab02-build-api</code> folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2333,12 +2213,14 @@
 <p>Before proceeding, ensure the log file is in view by opening the "Debug console" tab 4️⃣ and ensuring that the console called "Attach to Backend" is selected 5️⃣.</p>
 <p>Now click the "Send Request" link in <strong>treyResearchAAPI.http</strong> just above the link <code>{{base_url}}/me</code> 6️⃣.</p>
 <p><img alt="Visual Studio Code with the sample treyResearchAPI.http file open and the shortcut to send a sample HTTP request while in debug mode." src="../../../assets/images/extend-m365-copilot-02/run-in-ttk04.png" /></p>
-<p>You should see the response in the right panel, and a log of the request in the bottom panel. The response shows the information about the logged-in user, but since we haven't implemented authentication as yet (that's coming in Lab 6), the app will return information on the fictitious consultant "Avery Howard". Take a moment to scroll through the response to see details about Avery, including a list of project assignments.</p>
+<p>You should see the response in the right panel, and a log of the request in the bottom panel. The response shows the information about the logged-in user, but since we haven't implemented authentication as yet (that's coming in Lab 6a), the app will return information on the fictitious consultant "Avery Howard". Take a moment to scroll through the response to see details about Avery, including a list of project assignments.</p>
 <p><img alt="Visual Studio Code with the output of the request triggered in the treyResearchAPI.http file." src="../../../assets/images/extend-m365-copilot-02/run-in-ttk05.png" /></p>
 <p><cc-end-step lab="e2" exercise="2" step="1" /></p>
 <h3 id="step-2-try-the-other-methods-and-resources">Step 2: Try the other methods and resources</h3>
 <p>Now try sending the POST request for <code>{{base_url}}/me/chargeTime</code>. This will charge 3 hours of Avery's time to the Woodgrove Bank project. This is stored in the project database, which is a locally hosted emulation of Azure Table Storage, so the system will remember that Avery has delivered these hours. (To test this, call the <code>/me</code> resource again and look at the <code>"deliveredThisMonth"</code> property under the Woodgrove project).</p>
-<p>Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to Copilot so it can answer user prompts.</p>
+<p>Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to your agent so it can answer user prompts.</p>
+<p>Once done testing, stop the debugger by going to the VS Code menu <strong>Run &gt; Stop Debugging</strong>. Also close all windows inside VS Code like .http file 1️⃣ as well as the Response view 2️⃣.</p>
+<p><img alt="Visual Studio Code close windows" src="../../../assets/images/extend-m365-copilot-02/close-window.png" /></p>
 <p><cc-end-step lab="e2" exercise="2" step="2" /></p>
 <h3 id="step-3-examine-the-database-optional">Step 3: Examine the database (optional)</h3>
 <p>If you've installed the <a href="https://azure.microsoft.com/products/storage/storage-explorer" target="_blank">Azure Storage Explorer</a>, you can examine and modify the application's data. The data is stored in Azure Table Storage, which in this case is running locally using the Azurite emulator.</p>
