@@ -77,9 +77,6 @@ plugins:
                   - Lab E4 - Enhance API and Plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
                   - Lab E5 - Add Adaptive Cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'   
                   - Lab E6a - Add Entra ID Authentication (Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'                      
-              - Older Authentication Labs:
-                  - Lab E6b - Add Entra ID Authentication (Manual Setup): 'pages/extend-m365-copilot/06b-add-authentication.md'
-                  - Lab E6c - Add Entra ID Authentication (Single Sign-on manual): 'pages/extend-m365-copilot/06c-add-sso.md'
               - Integration:
                   - Lab E7 - Add Copilot Connector: 'pages/extend-m365-copilot/07-add-graphconnector.md'
             - Build - Build a custom engine agent:

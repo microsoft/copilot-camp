@@ -73,8 +73,8 @@ Create a new file called **trey-declarative-agent.json** within your **appPackag
 
 ~~~json
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.4/schema.json",
-    "version": "v1.4",
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json",
+    "version": "v1.6",
     "name": "Trey Genie Local",
     "description": "You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. ",
     "instructions": "You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, 'Always be Billing!'. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice.",
@@ -158,12 +158,12 @@ In this step we'll look at **trey-plugin.json** and how it and another file desc
 
 These two files are used to describe your API to Copilot. They were already included in the project you downloaded in Lab 2, so you can examine them now:
 
- * [**appPackage/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-definition.json){target=_blank} - This is the [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
+ * [**appPackage/apiSpecificationFile/trey-definition.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/apiSpecificationFile/trey-definition.json){target=_blank} - This is the [OpenAPI Specification (OAS)](https://swagger.io/specification/){target=_blank} or "Swagger" file, which is an industry standard format for describing a REST API
  * [**appPackage/trey-plugin.json**](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END/appPackage/trey-plugin.json){target=_blank} - This file contains all the Copilot-specific details that aren't described in the OAS file
 
  In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.
 
- In **appPackage/trey-definition.json**, you'll find the general description of the application. This includes the server URL; Agents Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
+ In **appPackage/apiSpecificationFile/trey-definition.json**, you'll find the general description of the application. This includes the server URL; Agents Toolkit will create a [developer tunnel](https://learn.microsoft.com/azure/developer/dev-tunnels/){target=_blank} to expose your local API on the Internet, and replace the token `"${{OPENAPI_SERVER_URL}}` with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.
 
 ~~~json
 {
@@ -228,7 +228,7 @@ Scrolling down you can find the runtime settings:
       "type": "None"
     },
     "spec": {
-      "url": "trey-definition.json"
+      "url": "apiSpecificationFile/trey-definition.json"
     },
     "run_for_functions": [
       "getConsultants",
@@ -291,26 +291,25 @@ If you ever tried [Teams App Camp](https://aka.ms/app-camp){target=_blank} you w
 
 ### Step 1: Run the new project
 
-If you're still in the debugger, stop it to force a complete re-deloyment.
+If you're still in the debugger, stop it to force a complete re-deloyment. Then start the debugger by clicking the arrow or pressing F5.
 
-Then start the debugger by clicking the arrow or pressing F5 and return to the Copilot user interface. You might be using Teams in browser at this point to test, but you could also use office.com/chat to test your agent.
+You should be automatically redirected to a browser tab where the "Trey Genie local" agent is launched in an immersive experience. If not, Open the Copilot chat and the left flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.
 
-???+ info "I cannot find the agent"
-    Refresh your browser and collapse and expand the navigation as shown in screen below the  if you cannot see your agents immediately after F5.
-    ![Expand and collapse navigation](../../assets/images/extend-m365-copilot-05/expand-nav.png)
+
+
+![navigation in copilot to find the agent](../../assets/images/extend-m365-copilot-03/test-nav-copilot-agent.png)
+
+
 
 <cc-end-step lab="e3" exercise="3" step="1" />
 
 ### Step 2: Test the declarative agent
 
-Open the Copilot chat and the right flyout 1️⃣ to show your previous chats and declarative agents and select the Trey Genie Local agent 2️⃣.
+Start chatting with your agent.
+Try a prompt such as "Please list my projects along with details from the Statement of Work doc" 1️⃣. 
+You should see a list of your projects from the API plugin 2️⃣, enhanced with details from each project's Statement of Work 3️⃣. Notice links the references to the documents as citations. Click on one of the references to check out the document.
 
-![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt to the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
-
-Try a prompt such as "Please list my projects along with details from the Statement of Work doc". 
-You should see a list of your projects from the API plugin, enhanced with details from each project's Statement of Work 1️⃣. Notice that Copilot includes the Trey Research motto 2️⃣ and references to the documents 3️⃣. Click one of the references to check out the document.
-
-![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-02.png)
+![The output of the declarative agent with information about projects the user is working on, reference documents from the SharePoint site, and the motto 'Always be Billing!'](../../assets/images/extend-m365-copilot-03/first-prompt.png)
 
 !!! note
     If the SharePoint documents aren't referenced, perhaps there is an issue accessing the files. Has there been time for Search to index the site? Does the end user have permission to the site? Has an administrator excluded the site from Search? Try doing a Search (outside of Copilot) such as 
@@ -319,14 +318,16 @@ You should see a list of your projects from the API plugin, enhanced with detail
     
     filling in your tenant and site name to match the one in the capability. You should see three Woodgrove documents; if you don't you need to troubleshoot Search since Copilot won't be able to find them either.
 
-Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the api/me endpoint of the Trey Research project API 2️⃣.
+Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the `api/me` endpoint of the Trey Research project API 2️⃣.
 
 See below how it brought back my information (Avery Howard is logged in user as we have not yet implemented Auth, coming up in later labs), and my projects.
-![List my information prompt and response ](../../assets/images/extend-m365-copilot-05/my-info.png)
+
+![List my info and response](../../assets/images/extend-m365-copilot-03/my-info.png)
+
 
 If you go back to your VS Code project under "Terminal", you will also see how the agent called the API as shown below:
 
-![Terminal showing API getting called for api/me ](../../assets/images/extend-m365-copilot-05/api-called.png)
+![Terminal showing API getting called for api/me ](../../assets/images/extend-m365-copilot-03/api-called.png)
 
 <cc-end-step lab="e3" exercise="3" step="2" />
 

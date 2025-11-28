@@ -21,7 +21,7 @@ In this lab you will add additional REST calls to the API and add them to the AP
 
 ## Exercise 1: Add /projects resource
 
-In this exercise you will add a /projects resource to the Trey Research API. This will allow you to request information about projects using GET requests, and to assign a consultant to a project using a POST request. In the process, you'll learn about the **appPackage/trey-Plugin.json** and **trey-definition.json** files as you modify them to add the new projects API calls.
+In this exercise you will add a /projects resource to the Trey Research API. This will allow you to request information about projects using GET requests, and to assign a consultant to a project using a POST request. In the process, you'll learn about the **appPackage/trey-plugin.json** and **trey-definition.json** files as you modify them to add the new projects API calls.
 
 ### Step 1: Add Azure function code
 
@@ -108,7 +108,7 @@ In this exercise, you'll add information about the new /projects resource to the
 
 An important part of the application package is the [Open API Specification (OAS)](https://swagger.io/specification/){target=_blank} definition file. OAS defines a standard format for describing a REST API, and is based on the popular "Swagger" definition.
 
-To begin, in the **/appPackage** folder, open the file **trey-definition.json**. 
+To begin, in the **/appPackage/apiSpecificationFile** folder, open the file **trey-definition.json**. 
 Since editing large JSON files can be tricky, please just [copy the updated file from here](https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab04-enhance-api-plugin/trey-research-lab04-END/appPackage/trey-definition.json){target=_blank} and save the new trey-definition.json. In the steps that follow, you can review and understand the changes.
 
 <cc-end-step lab="e4" exercise="2" step="1" />
@@ -393,9 +393,7 @@ Before you test the application, update the manifest version of your app package
 ### Step 1: Restart the application
 
 Stop and restart your project to force it to re-deploy the application package.
-You will be brought into Microsoft Teams. Once you're back in Copilot, open the right flyout 1️⃣ to show your previous chats and agents and select the Trey Genie Local agent 2️⃣.
-
-![Microsoft 365 Copilot showing the Trey Genie agent in action. On the right side there is the custom declarative agent, together with other agents. In the main body of the page there are the conversation starters and the textbox to provide a prompt for the agent.](../../assets/images/extend-m365-copilot-05/run-declarative-copilot-01.png)
+You will be in a window with direct chat with your agent in Copilot.
 
 <cc-end-step lab="e4" exercise="3" step="1" />
 
@@ -403,11 +401,11 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
 
 Now try a prompt such as "what projects are we doing for adatum?"
 
-![Microsoft 365 Copilot prompting the user with a confirmation card to allow invoking the API plugin. There are three buttons to 'Always allow', 'Allow once', or 'Cancel' the request.](../../assets/images/extend-m365-copilot-03/test-projects-copilot-1.png)
+![Microsoft 365 Copilot prompting the user with a confirmation card to allow invoking the API plugin. There are three buttons to 'Always allow', 'Allow once', or 'Cancel' the request.](../../assets/images/extend-m365-copilot-04/adatum.png)
 
-You may see a confirmation card, even for the GET request. If you do, allow the request to view the project details.
+Your agent will ask permission to allow this action even for the GET request. Select "Always allow" and proceed to the request to view the project details.
 
-![Microsoft 365 Copilot showing the output of Trey Genie agent when invoking the API plugin](../../assets/images/extend-m365-copilot-04/test-projects-copilot-2.png)
+![Microsoft 365 Copilot showing the output of Trey Genie agent when invoking the API plugin](../../assets/images/extend-m365-copilot-04/response-adatum.png)
 
 <cc-end-step lab="e4" exercise="3" step="2" />
 
