@@ -443,12 +443,11 @@ Then press F5 to run the application again, and install it as before.
 ### Step 3: Run the declarative agent
 
 Proceed back to Microsoft 365 Copilot and select the Trey Research agent.
-Enter the prompt, "What Trey projects am I assigned to?". You may see a confirmation card asking if it's OK to call your API. No authentication is happening here; click "Allow Once" to proceed.
+Enter the prompt, "What Trey projects am I assigned to?". 
+You will be asked to "Sign in". This shows you that your agent is now using some sort of an authentication mechanism.
 
-![Microsoft 365 Copilot showing a confirmation card asking if it is ok to call your API. There are buttons to 'Always allow', 'Allow once', or 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-01small.png)
+Click "Sign in to Trey-Researchlocal" to sign in. At first you should see a pop-up window asking you to log in and to consent to permissions. On subsequent vists this may be hidden as your credentials have been cached by Entra ID in your local browser.
 
-The confirmation card will be replaced with a login card.
-Click "Sign in to Trey" to sign in. At first you should see a pop-up window asking you to log in and to consent to permissions. On subsequent vists this may be hidden as your credentials have been cached by Entra ID in your local browser.
 
 ![Microsoft 365 Copilot showing a login card with a button to 'Sign in to Trey' and another one to 'Cancel.'](../../assets/images/extend-m365-copilot-06/oauth-run-02small.png)
 
@@ -483,9 +482,6 @@ Ask Agent to add you to the Woodgrove project. Agent will press you for details 
 
 ![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to confirm them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-05.png)
 
-You would want to provide missing information, so your agent can confirm the details again before proceeding.
-
-![The response from the 'Trey Genie' agent when adding the current user to a project. If some information are missing, Copilot asks to confirm them. Once all the information are provided, the agent provides a confirmation of the action.](../../assets/images/extend-m365-copilot-06/oauth-run-06.png)
 
 Finally once you confirm, agent fullfills the task by adding you to the project with right role and forecast.
 
