@@ -29,45 +29,55 @@ Create a new file **aad.manifest.json** in the root of your working folder. Copy
 
 ```json
 {
-    "id": "${{AAD_APP_OBJECT_ID}}",
-    "appId": "${{AAD_APP_CLIENT_ID}}",
-    "name": "Trey-Research-OAuth-aad",
-    "accessTokenAcceptedVersion": 2,
-    "signInAudience": "AzureADMyOrg",
-    "optionalClaims": {
-        "idToken": [],
-        "accessToken": [
-            {
-                "name": "idtyp",
-                "source": null,
-                "essential": false,
-                "additionalProperties": []
-            }
-        ],
-        "saml2Token": []
-    },
-    "oauth2Permissions": [
-        {
-            "adminConsentDescription": "Allows Copilot to access the Trey Research API on the user's behalf.",
-            "adminConsentDisplayName": "Access Trey Research API",
-            "id": "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}",
-            "isEnabled": true,
-            "type": "User",
-            "userConsentDescription": "Allows Copilot to access the Trey Research API on your behalf.",
-            "userConsentDisplayName": "Access Trey Research API",
-            "value": "access_as_user"
-        }
-    ],
-    "replyUrlsWithType": [
-        {
-           "url": "https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect",
-           "type": "Web"
-        }
-    ],
-    "identifierUris": [
-        "api://${{AAD_APP_CLIENT_ID}}"
+  "id": "${{AAD_APP_OBJECT_ID}}",
+  "appId": "${{AAD_APP_CLIENT_ID}}",
+  "displayName": "Trey-Research-OAuth-aad",
+  "identifierUris": [
+    "api://${{AAD_APP_CLIENT_ID}}"
+  ],
+  "signInAudience": "AzureADMyOrg",
+  "api": {
+    "requestedAccessTokenVersion": 2,
+    "oauth2PermissionScopes": [
+      {
+        "adminConsentDescription": "Allows Copilot to access the Trey Research API on the user's behalf.",
+        "adminConsentDisplayName": "Access Trey Research API",
+        "id": "${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}",
+        "isEnabled": true,
+        "type": "User",
+        "userConsentDescription": "Allows Copilot to access the Trey Research API on your behalf.",
+        "userConsentDisplayName": "Access Trey Research API",
+        "value": "access_as_user"
+      }
     ]
+  },
+  "info": {},
+  "optionalClaims": {
+    "idToken": [],
+    "accessToken": [
+      {
+        "name": "idtyp",
+        "source": null,
+        "essential": false,
+        "additionalProperties": []
+      }
+    ],
+    "saml2Token": []
+  },
+  "publicClient": {
+    "redirectUris": []
+  },
+  "web": {
+    "redirectUris": [
+      "https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect"
+    ],
+    "implicitGrantSettings": {}
+  },
+  "spa": {
+    "redirectUris": []
+  }
 }
+
 ```
 
 This file contains details for the Entra ID application to be registered or updated. Notice that it contains various tokens such as `${{AAD_APP_CLIENT_ID}}` which will be replaced with actual values when Agents Toolkit provisions the application.
