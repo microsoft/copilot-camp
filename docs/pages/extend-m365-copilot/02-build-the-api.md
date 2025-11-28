@@ -36,7 +36,7 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the source code zip file for the base project using [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api)
+Begin by downloading the source code zip file for the base project using [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api){target=_blank}
 
 Unzip and copy `path-e-lab02-build-api` folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
@@ -57,7 +57,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 ### Step 4: Install the dependencies
 
-Open a command line in your working folder and type:
+Open a command line / VS Code terminal in your working folder to type and enter:
 
 ~~~sh
 npm install
@@ -69,9 +69,17 @@ npm install
 
 In Visual Studio Code, click the logo for Microsoft 365 Agents Toolkit in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 and that Custom App Uploads and Copilot Access Enabled indicators are both showing green checkmarks.
 
+> You'll need to sign into the Microsoft 365 Agents Toolkit in order to upload and test your agent from within it.
+Within the project window, select the Microsoft 365 Agents Toolkit icon from the left side menu. This will open the Agent Toolkit’s activity bar with sections like Accounts, Environment, Development etc.
+Under "Accounts" section select "Sign in to Microsoft 365". This will open a dialog from the editor to sign in or create a Microsoft 365 developer sandbox or Cancel. Select "Sign in".
+Once signed in, close the browser and go back to the project window.
+
+
 ![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/atk-accounts-logged.png)
 
-Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
+Now you can just hit F5 to debug using Microsoft Edge or in VS Code menu select **Run > Start Debugging**.
+
+Or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
 
 ![Visual Studio Code with the Agents Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/atk-debug.png)
 
