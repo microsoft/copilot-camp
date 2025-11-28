@@ -1,8 +1,11 @@
 {
-  "schema_version": "v2.1",
-  "name_for_human": "Trey",
-  "description_for_human": "API to streamline consultant assignment and project management.",
-  "namespace": "trey",
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.2/schema.json",
+  "schema_version": "v2.2",
+  "namespace": "treyresearch",
+  "name_for_human": "Trey-Research${{APP_NAME_SUFFIX}}",
+  "description_for_human": "Plugin to streamline consultant assignment and project management.",
+  "description_for_model": "Plugin for managing repairs, consultant assignments, and project tracking within Trey Research. Provides functionalities to list repairs with details and images.",
+  
   "functions": [
     {
       "name": "getConsultants",
@@ -33,19 +36,6 @@
       }
     },
     {
-      "name": "getProjects",
-      "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
-      "capabilities": {
-        "response_semantics": {
-          "data_path": "$.results",
-          "properties": {
-            "title": "$.name",
-            "subtitle": "$.description"
-          }
-        }
-      }
-    },
-    {
       "name": "postBillhours",
       "description": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.",
       "capabilities": {
@@ -62,24 +52,6 @@
           "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **Hours**: {{function.parameters.hours}}"
         }
       }
-    },
-    {
-      "name": "postAssignConsultant",
-      "description": "Assign (add) consultant to a project when name, role and project name is specified.",
-      "capabilities": {
-        "response_semantics": {
-          "data_path": "$",
-          "properties": {
-            "title": "$.results.clientName",
-            "subtitle": "$.results.status"
-          }
-        },
-        "confirmation": {
-          "type": "AdaptiveCard",
-          "title": "Assign consultant to a project when name, role and project name is specified.",
-          "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"
-        }
-      }
     }
   ],
   "runtimes": [
@@ -89,19 +61,16 @@
         "type": "None"
       },
       "spec": {
-        "url": "trey-definition.json"
+        "url": "apiSpecificationFile/trey-definition.json"
       },
       "run_for_functions": [
         "getConsultants",
         "getUserInformation",
-        "getProjects",
-        "postBillhours",
-        "postAssignConsultant"
+        "postBillhours"
       ]
     }
   ],
   "capabilities": {
-    "localization": {},
     "conversation_starters": [
       {
         "text": "What Trey projects am i assigned to?"
@@ -114,9 +83,6 @@
       },
       {
         "text": "Find a Trey consultant who is available now and has Python skills"
-      },
-      {
-        "text": "Add Avery as a developer on the Contoso project for Trey"
       }
     ]
   }
