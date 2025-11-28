@@ -73,8 +73,8 @@ Create a new file called **trey-declarative-agent.json** within your **appPackag
 
 ~~~json
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.4/schema.json",
-    "version": "v1.4",
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json",
+    "version": "v1.6",
     "name": "Trey Genie Local",
     "description": "You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. ",
     "instructions": "You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, 'Always be Billing!'. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice.",
@@ -318,7 +318,7 @@ You should see a list of your projects from the API plugin 2️⃣, enhanced wit
     
     filling in your tenant and site name to match the one in the capability. You should see three Woodgrove documents; if you don't you need to troubleshoot Search since Copilot won't be able to find them either.
 
-Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the api/me endpoint of the Trey Research project API 2️⃣.
+Let's also see how the API is getting called. Try to send another prompt: "List my information" 1️⃣ to instruct the agent to retrieve details from the `api/me` endpoint of the Trey Research project API 2️⃣.
 
 See below how it brought back my information (Avery Howard is logged in user as we have not yet implemented Auth, coming up in later labs), and my projects.
 

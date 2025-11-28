@@ -72,12 +72,11 @@ This JSON defines a simple Adaptive Card with a text block and a button.
 
 ### Step 2: Test Your Adaptive Card
 
-To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"}.
+To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer){target="_blank"}.
 
-1. Open the [Adaptive Cards Designer](https://adaptivecards.io/designer/){target="_blank"}	.
-2. Copy the JSON content from your `adaptiveCard.json` file.
-3. Paste the JSON content into the "Card Payload Editor" section on the lower part of the designer.
-4. You will see a live preview of your Adaptive Card on the upper part of the designer.
+1. Open the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer){target="_blank"}.
+2. Paste the JSON content into the "Card Payload Editor" section on the lower part of the designer.
+3. You will see a live preview of your Adaptive Card on the upper part of the designer.
 
 Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
 
@@ -87,7 +86,14 @@ Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
 
 ### Step 1: Add adaptive card files
 We are going to add some visibly appealing cards for functions `getConsultants`, `getUserInformation` and `postBillhours`.
-Copy files getConsultants.json, postBillhours.json and getUserInformation.json and paste them into the **appPackage/adaptiveCards** folder. 
+
+Create three files `getConsultants.json`, `postBillhours.json` and `getUserInformation.json` in the **appPackage/adaptiveCards** folder. 
+
+Copy contents from these raw files and paste them into appropriate files:
+
+- getConsultants.json
+- getUserInformation.json
+- postBillhours.json
 
 If you open this JSON file, you'll see the card's structure and how it uses data binding to connect with the API response. Template expressions in the card automatically populate with real data from your API, allowing your agent to present information in a polished, visually appealing format instead of plain text.
 
@@ -95,7 +101,9 @@ If you open this JSON file, you'll see the card's structure and how it uses data
 
 ### Step 2: Update plugin manifest to inlcude adaptive cards
 
-Open **appPackage/trey-plugin.json**. Inside the function `getConsultants` add inside the **response_semantics** node, after **properties** node add (including the comma):
+1. Open **appPackage/trey-plugin.json**
+2. Find the `getConsultants` function
+3. Inside `response_semantics`, add the following after the `properties` field (include the comma also from the snippet):
 
 ```json
 ,
@@ -174,7 +182,7 @@ You will be in a window with direct chat with your agent in Copilot.
 
 ### Step 2: Display an adaptive card
 
-Now try a prompt such below
+Now try a prompt such below:
 
  *Find consultants with TypeScript skills*
 
@@ -201,23 +209,7 @@ You can now test other prompts as well to see the improved responses from Micros
 
 You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.
 
-Go to the lab **Use OAuth 2.0 with Agents Toolkit** to add authentication - This is the easiest approach; you will learn to set up Agents Toolkit's automated Entra ID registration for an F5 project start experience.
-
-  <cc-next url="../06a-add-authentication-ttk" label="Next" />
-
-
-<details>
-<summary>Other labs on Authentication with manual steps </summary>
-There are older labs created before OAuth 2.0 support with the Agents Toolkit. They demonstrate how to add authentication to your app package and validate access tokens in your web service. The main difference lies in how the app is registered in Entra ID and Microsoft 365.
-
-Feel free to explore them and they all build on the project from this lab.
-
-  1. **Use OAuth 2.0 with Manual Setup** - Leads you through all the Entra ID registration details so you can really understand what's happening; this may help adapt your solution to work with another identity provider
-  <cc-next url="../06b-add-authentication" label="OAuth with Manual Setup" />
-
-  2. **Use Single Sign-on** - New capability for seamless Entra ID authentication, manual setup
-  <cc-next url="../06c-add-sso" label="Single Sign-on with Manual Setup" />
-</details>
+<cc-next url="../06a-add-authentication-ttk" label="Next" />
 
   
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-add-adaptive-card" />

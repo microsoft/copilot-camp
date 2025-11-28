@@ -21,7 +21,7 @@ In this lab you will add additional REST calls to the API and add them to the AP
 
 ## Exercise 1: Add /projects resource
 
-In this exercise you will add a /projects resource to the Trey Research API. This will allow you to request information about projects using GET requests, and to assign a consultant to a project using a POST request. In the process, you'll learn about the **appPackage/trey-Plugin.json** and **trey-definition.json** files as you modify them to add the new projects API calls.
+In this exercise you will add a /projects resource to the Trey Research API. This will allow you to request information about projects using GET requests, and to assign a consultant to a project using a POST request. In the process, you'll learn about the **appPackage/trey-plugin.json** and **trey-definition.json** files as you modify them to add the new projects API calls.
 
 ### Step 1: Add Azure function code
 

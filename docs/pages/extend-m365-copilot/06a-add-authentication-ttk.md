@@ -443,7 +443,10 @@ Then press F5 to run the application again, and install it as before.
 ### Step 3: Run the declarative agent
 
 Proceed back to Microsoft 365 Copilot and select the Trey Research agent.
-Enter the prompt, "What Trey projects am I assigned to?". 
+Enter the prompt, 
+
+*What Trey projects am I assigned to?*
+
 You will be asked to "Sign in". This shows you that your agent is now using some sort of an authentication mechanism.
 
 Click "Sign in to Trey-Researchlocal" to sign in. At first you should see a pop-up window asking you to log in and to consent to permissions. On subsequent vists this may be hidden as your credentials have been cached by Entra ID in your local browser.
@@ -460,7 +463,7 @@ Click "Sign in to Trey-Researchlocal" to sign in. At first you should see a pop-
 
     ![The 'API permissions' page of the 'API Plugin' application registered in Microsoft Entra with the 'Grant admin consent ...' command highlighted.](../../assets/images/extend-m365-copilot-06/approval-admin.png)
 
-The login card should be replaced by Copilot's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
+The login card should be replaced by agent's response to your prompt. Since you were just added to the database, you aren't assigned to any projects.
 
 Recall that the user was hard coded to the fictitious user "Avery Howard". When the new code runs for the first time, it won't find your user ID, so it will create a new consultant record that's not (yet) assigned to any projects.
 
@@ -487,7 +490,9 @@ Finally once you confirm, agent fullfills the task by adding you to the project 
 
 ![The response from the 'Trey Genie' agent after adding user to project](../../assets/images/extend-m365-copilot-06/oauth-run-07.png)
 
-Now check out your default skills and confirm the project assignment by asking, "What are my skills and what projects am I assigned to?"
+Now check out your default skills and confirm the project assignment by asking:
+
+*What are my skills and what projects am I assigned to?*
 
 <cc-end-step lab="e6a" exercise="4" step="4" />
 
