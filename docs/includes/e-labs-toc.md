@@ -28,7 +28,7 @@
             </li>       
             <li><strong>🔌 Integration</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab EB - Add Copilot Connector</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab E7 - Add Copilot Connector</a></li>
                 </ul>
             </li>
         </ul>
