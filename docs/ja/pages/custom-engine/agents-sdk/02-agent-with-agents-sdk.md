@@ -10,7 +10,7 @@ search:
 
 ### 手順 1: Visual Studio を使用した Echo Bot の作成
 
-Azure AI Foundry を使ってエージェントを構築する方法を確認したので、今度は Microsoft 365 Agents SDK を使用してローカルで独自のエージェントを構築してみましょう。この SDK を利用すると、Microsoft Teams、Microsoft 365 Copilot などのチャネルで動作するマルチチャネルかつ本番対応のエージェントを構築できます。
+Microsoft Foundry を使ってエージェントを構築する方法を確認したので、今度は Microsoft 365 Agents SDK を使用してローカルで独自のエージェントを構築してみましょう。この SDK を利用すると、Microsoft Teams、Microsoft 365 Copilot などのチャネルで動作するマルチチャネルかつ本番対応のエージェントを構築できます。
 
 1. Visual Studio 2022 を開き、 **Create a new project** を選択します。  
 1. **Microsoft 365 Agents** テンプレートを検索して選択します。  
@@ -38,9 +38,9 @@ Echo エージェントをテストするには、 **Start** または **F5** �
 
 ---8<--- "ja/b-congratulations.md"
 
-M365 Agents SDK を使用して最初のエージェントを構築するラボ BMA2 を完了しました！このシンプルなエージェントは、さらに強力な体験を実現するための基盤となります。次のステップでは、これを Azure AI Foundry エージェントと組み合わせ、よりリッチでコンテキストを考慮した回答を可能にします。
+M365 Agents SDK を使用して最初のエージェントを構築するラボ BMA2 を完了しました！このシンプルなエージェントは、さらに強力な体験を実現するための基盤となります。次のステップでは、これを Microsoft Foundry エージェントと組み合わせ、よりリッチでコンテキストを考慮した回答を可能にします。
 
-次のラボ BMA3 - Azure AI Foundry Agent を M365 Agents SDK と統合 に進む準備が整いました。Next を選択してください。
+次のラボ BMA3 - Microsoft Foundry Agent を M365 Agents SDK と統合 に進む準備が整いました。Next を選択してください。
 
 <cc-next url="../03-agent-configuration" />
 

@@ -66,7 +66,7 @@ do_not_translate = [
     "Microsoft 365",
     "M365",
     "Azure",
-    "Azure AI Foundry",
+    "Microsoft Foundry",
     "OpenAI",
     "Visual Studio",
     "Visual Studio Code",

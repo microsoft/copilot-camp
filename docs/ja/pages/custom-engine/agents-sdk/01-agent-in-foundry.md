@@ -2,31 +2,31 @@
 search:
   exclude: true
 ---
-# ラボ BMA1 - Azure AI Foundry でエージェントを準備する
+# ラボ BMA1 - Microsoft Foundry でエージェントを準備する
 
-このラボでは、Azure AI Foundry を使用してカスタム エンジン エージェントを準備するところから旅を始めます。Azure AI Foundry は AI エージェントを作成、構成、スケールするための Microsoft のプラットフォームです。**Agents Playground** を探索し、エージェントの役割を定義し、指示をパーソナライズし、関連する社内ドキュメントに接続して Retrieval-Augmented Generation (RAG) をサポートします。
+このラボでは、Microsoft Foundry を使用してカスタム エンジン エージェントを準備するところから旅を始めます。Microsoft Foundry は AI エージェントを作成、構成、スケールするための Microsoft のプラットフォームです。**Agents Playground** を探索し、エージェントの役割を定義し、指示をパーソナライズし、関連する社内ドキュメントに接続して Retrieval-Augmented Generation (RAG) をサポートします。
 
 この演習は、 **Microsoft 365 Agents SDK** と **Semantic Kernel** を使用する Build Path の基礎を築きます。アップロードした Employee Handbook、Role Library、Benefit Plans などのドキュメントに基づいて質問に答えられる Contoso Electronics の Human Resources エージェントをシミュレートします。
 
-???+ info "Azure AI Foundry とは?"
-    Azure AI Foundry は、大規模言語モデルを活用したインテリジェント エージェントを構築、管理、テストできる開発プラットフォームです。集中化されたワークスペースで、エージェントの指示を定義し、ツール使用を構成し、ナレッジ ソースをアップロードし、対話形式でエージェントの動作をテストできます。Semantic Kernel などのカスタム オーケストレーターや、Teams や Copilot Chat といった下流エンドポイントとの統合をサポートしています。
+???+ info "Microsoft Foundry とは?"
+    Microsoft Foundry は、大規模言語モデルを活用したインテリジェント エージェントを構築、管理、テストできる開発プラットフォームです。集中化されたワークスペースで、エージェントの指示を定義し、ツール使用を構成し、ナレッジ ソースをアップロードし、対話形式でエージェントの動作をテストできます。Semantic Kernel などのカスタム オーケストレーターや、Teams や Copilot Chat といった下流エンドポイントとの統合をサポートしています。
 
-## 演習 1: Azure AI Foundry でエージェントを準備する
+## 演習 1: Microsoft Foundry でエージェントを準備する
 
-この演習では、開発者が AI エージェントを簡単に構築、デプロイ、スケールできるプラットフォームである Azure AI Foundry を体験します。エージェントを構成し、Agents Playground を使用してその機能をテストする方法を学びます。このハンズオンを通じて、Azure AI Agent Service の機能と、さまざまな AI モデルやツールとの統合方法を理解できます。
+この演習では、開発者が AI エージェントを簡単に構築、デプロイ、スケールできるプラットフォームである Microsoft Foundry を体験します。エージェントを構成し、Agents Playground を使用してその機能をテストする方法を学びます。このハンズオンを通じて、Azure AI Agent Service の機能と、さまざまな AI モデルやツールとの統合方法を理解できます。
 
-### 手順 1: Azure AI Foundry の開始
+### 手順 1: Microsoft Foundry の開始
 
-Azure AI Foundry は AI エージェントを構築するための発射台です。この手順では、Azure サブスクリプションが有効になっているアカウントで Azure AI Foundry にサインインします。
+Microsoft Foundry は AI エージェントを構築するための発射台です。この手順では、Azure サブスクリプションが有効になっているアカウントで Microsoft Foundry にサインインします。
 
 1. ブラウザーで [https://ai.azure.com](https://ai.azure.com) にアクセスし、Azure アカウントにサインインします。  
-1. Azure AI Foundry のホームページで **+ Create new**、**Azure AI Foundry resource**、続けて **Next** を選択します。  
+1. Microsoft Foundry のホームページで **+ Create new**、**Microsoft Foundry resource**、続けて **Next** を選択します。  
 1. プロジェクト名は推奨値のままにして **Create** を選択します。  
-1. これにより Azure AI Foundry に新しいプロジェクトが作成されます。通常 3～5 分かかります。  
+1. これにより Microsoft Foundry に新しいプロジェクトが作成されます。通常 3～5 分かかります。  
 1. プロジェクトが作成されたら自動的にプロジェクト画面にリダイレクトされます。左サイドバーを展開して **Agents** を選択すると Agents Playground が開きます。  
 1. Agents Playground に入ると最初に **Deploy a model** ウィンドウが表示されます。**gpt-4o** を検索して選択し、**Confirm** を選択してから次のウィンドウで **Deploy** をクリックします。  
 1. **Agents Playground** では、リストに既に作成済みのエージェントが 1 つ表示されていることに気づくでしょう。そのエージェントを選択して **Try in playground** をクリックします。  
-    ![The Azure AI Foundry list of Agents with the custom agent and the "Try in playground" command highlighted.](https://github.com/user-attachments/assets/dd481101-c15d-4aed-af62-aeb7d3c8e5ed){width="1029"}
+    ![The Microsoft Foundry list of Agents with the custom agent and the "Try in playground" command highlighted.](https://github.com/user-attachments/assets/dd481101-c15d-4aed-af62-aeb7d3c8e5ed){width="1029"}
 
 > エージェントをクリックしても **Try in playground** オプションを含むサイドバーが表示されない場合は、ブラウザーのウィンドウ サイズを広げて右側に表示されるまで調整してください。
 
@@ -61,7 +61,7 @@ Example scenarios you should support:
 
 > ドキュメントをアップロードすると、Foundry は自動的にそれらをベクターに変換し、エージェントが効率的に検索・取得できるようにします。
 
-![The UI of Azure AI Foundry when adding files as knowledge base, with the "Select local files".](https://github.com/user-attachments/assets/64bb7392-15f6-458c-9e74-d8ab100ca8fd)
+![The UI of Microsoft Foundry when adding files as knowledge base, with the "Select local files".](https://github.com/user-attachments/assets/64bb7392-15f6-458c-9e74-d8ab100ca8fd)
 
 指示をカスタマイズし、関連ドキュメントをアップロードすることで、エージェントにどのように行動し、どの知識に依拠するかを教えています。これは Retrieval-Augmented Generation (RAG) の簡易的な形態です。
 
@@ -86,13 +86,13 @@ Agent Playground でプロンプトを入力してエージェントと対話し
 
 !!! tip "次の演習に備えて Agent id を保存する"
     次の演習で必要になる **Agent id** を保存してください。Agent id はエージェントの詳細パネルで確認できます。  
-    ![The Agents Playground of Azure AI Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
+    ![The Agents Playground of Microsoft Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
 
 <cc-end-step lab="bma1" exercise="1" step="3" />
 
 ---8<--- "ja/b-congratulations.md"
 
-Azure AI Foundry でエージェントを準備するラボ BMA1 を完了しました! さらに探求したい場合はどうぞ。
+Microsoft Foundry でエージェントを準備するラボ BMA1 を完了しました! さらに探求したい場合はどうぞ。
 
 次は Lab BMA2 - M365 Agents SDK を使用して最初のエージェントを構築する準備ができました。Next を選択してください。
 

@@ -23,7 +23,7 @@ public class EchoBot : AgentApplication
         // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
         OnActivity(ActivityTypes.Message, OnMessageAsync);
 
-        // Azure AI Foundry Project ConnectionString
+        // Microsoft Foundry Project ConnectionString
         string projectEndpoint = configuration["AIServices:ProjectEndpoint"];
         if (string.IsNullOrEmpty(projectEndpoint))
         {
@@ -31,7 +31,7 @@ public class EchoBot : AgentApplication
         }
         _projectClient = new PersistentAgentsClient(projectEndpoint, new AzureCliCredential());
 
-        // Azure AI Foundry Agent Id
+        // Microsoft Foundry Agent Id
         _agentId = configuration["AIServices:AgentID"];
         if (string.IsNullOrEmpty(_agentId))
         {

@@ -84,7 +84,7 @@ plugins:
               - M365 Agents SDK labs:
                 - Introduction : 'pages/custom-engine/agents-sdk/index.md'
                 - Lab BMA0 - Setup: 'pages/custom-engine/agents-sdk/00-prerequisites.md'
-                - Lab BMA1 - Prepare your agent in Azure AI Foundry: 'pages/custom-engine/agents-sdk/01-agent-in-foundry.md'
+                - Lab BMA1 - Prepare your agent in Microsoft Foundry: 'pages/custom-engine/agents-sdk/01-agent-in-foundry.md'
                 - Lab BMA2 - Build your first agent using M365 Agents SDK: 'pages/custom-engine/agents-sdk/02-agent-with-agents-sdk.md'
                 - Lab BMA3 - Configure agent properties and test on Teams: 'pages/custom-engine/agents-sdk/03-agent-configuration.md'
                 - Lab BMA4 - Bring your agent to Copilot Chat: 'pages/custom-engine/agents-sdk/04-bring-agent-to-copilot.md'

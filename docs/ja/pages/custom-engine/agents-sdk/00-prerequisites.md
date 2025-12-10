@@ -82,7 +82,7 @@ Azure 無料アカウントを有効化する手順:
 ---8<--- "ja/b-congratulations.md"
 
 ラボ BMA0 - セットアップが完了しました!  
-次はラボ BMA1 - Azure AI Foundry でエージェントを準備 に進みます。**Next** を選択してください。
+次はラボ BMA1 - Microsoft Foundry でエージェントを準備 に進みます。**Next** を選択してください。
 
 <cc-next url="../01-agent-in-foundry" />
 

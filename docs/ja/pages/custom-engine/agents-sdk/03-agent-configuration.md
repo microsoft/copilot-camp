@@ -2,9 +2,9 @@
 search:
   exclude: true
 ---
-# ラボ BMA3 - Azure AI Foundry エージェントを M365 Agents SDK と統合
+# ラボ BMA3 - Microsoft Foundry エージェントを M365 Agents SDK と統合
 
-このラボでは、Azure AI Foundry エージェントによる生成 AI のパワーと Microsoft 365 Agents SDK のマルチチャネル柔軟性を組み合わせ、ベストな両世界を実現します。Semantic Kernel を構成し、エージェントのプロパティを設定し、Foundry でホストされているエージェントへ安全に接続して、エンタープライズ対応の豊富な回答を Microsoft Teams に直接提供できるようにします。
+このラボでは、Microsoft Foundry エージェントによる生成 AI のパワーと Microsoft 365 Agents SDK のマルチチャネル柔軟性を組み合わせ、ベストな両世界を実現します。Semantic Kernel を構成し、エージェントのプロパティを設定し、Foundry でホストされているエージェントへ安全に接続して、エンタープライズ対応の豊富な回答を Microsoft Teams に直接提供できるようにします。
 
 ## Exercise 1: エージェント プロパティの構成と Teams でのテスト
 
@@ -82,13 +82,13 @@ namespace ContosoHRAgent
 
 <cc-end-step lab="bma3" exercise="1" step="3" />
 
-## Exercise 2: Azure AI Foundry エージェントを M365 Agents SDK と統合
+## Exercise 2: Microsoft Foundry エージェントを M365 Agents SDK と統合
 
-M365 Agents SDK を使ってエージェントを構築し、生成 AI 機能を設定しました。ここでは、このローカル エージェントを先ほど作成した Azure AI Foundry エージェントに接続します。これにより、Foundry プロジェクトに保存されたエンタープライズ データや指示を用いて応答できるようになり、すべてが一つにまとまります。
+M365 Agents SDK を使ってエージェントを構築し、生成 AI 機能を設定しました。ここでは、このローカル エージェントを先ほど作成した Microsoft Foundry エージェントに接続します。これにより、Foundry プロジェクトに保存されたエンタープライズ データや指示を用いて応答できるようになり、すべてが一つにまとまります。
 
-### Step 1: EchoBot.cs を構成して Azure AI Foundry エージェントに接続
+### Step 1: EchoBot.cs を構成して Microsoft Foundry エージェントに接続
 
-このステップでは、Foundry でホストされているモデルを取得・呼び出すクライアントを追加し、EchoBot.cs 内で Azure AI Foundry エージェントに接続します。
+このステップでは、Foundry でホストされているモデルを取得・呼び出すクライアントを追加し、EchoBot.cs 内で Microsoft Foundry エージェントに接続します。
 
 **ContosoHRAgent** プロジェクトの **Bot/EchoBot.cs** を開き、EchoBot パブリック クラス内に以下を追加します。
 
@@ -108,7 +108,7 @@ public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : 
     // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
     OnActivity(ActivityTypes.Message, OnMessageAsync);
 
-    // Azure AI Foundry Project ConnectionString
+    // Microsoft Foundry Project ConnectionString
     string projectEndpoint = configuration["AIServices:ProjectEndpoint"];
     if (string.IsNullOrEmpty(projectEndpoint))
     {
@@ -116,7 +116,7 @@ public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : 
     }
     _projectClient = new PersistentAgentsClient(projectEndpoint, new AzureCliCredential());
 
-    // Azure AI Foundry Agent Id
+    // Microsoft Foundry Agent Id
     _agentId = configuration["AIServices:AgentID"];
     if (string.IsNullOrEmpty(_agentId))
     {
@@ -188,7 +188,7 @@ protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnSta
 
 
 ???+ info "OnMessageAsync で何が起こるか?"
-    *OnMessageAsync* メソッドはエージェント応答ロジックの中心です。既定のエコー動作を置き換えることで、ユーザー メッセージを Azure AI Foundry エージェントへ送信し、リアルタイムでストリーミング応答を返し、引用やファイル参照を添付して透明性を確保し、機密度や AI 生成ラベルを追加してセキュリティと追跡性を向上させます。
+    *OnMessageAsync* メソッドはエージェント応答ロジックの中心です。既定のエコー動作を置き換えることで、ユーザー メッセージを Microsoft Foundry エージェントへ送信し、リアルタイムでストリーミング応答を返し、引用やファイル参照を添付して透明性を確保し、機密度や AI 生成ラベルを追加してセキュリティと追跡性を向上させます。
 
 <cc-end-step lab="bma3" exercise="2" step="1" />
 
@@ -204,11 +204,11 @@ Foundry 接続情報を appsettings.json に追加します。これらの値に
   }
 ```
 
-> これらの値は Azure AI Foundry の **Overview** と **Agents Playground** セクションで確認できます。
+> これらの値は Microsoft Foundry の **Overview** と **Agents Playground** セクションで確認できます。
 
 **<AzureAIFoundryAgentId>** を **Agents Playground** に表示される **Agent id** に置き換えます。
 
-![The Agents Playground of Azure AI Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
+![The Agents Playground of Microsoft Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
 
 **<ProjectEndpoint>** を AI Foundry の **Overview** ページの Endpoints and keys に表示されるプロジェクト エンドポイントに置き換えます。
 
@@ -303,7 +303,7 @@ Dev Tunnel が作成できたら **Start** または **F5** を押してデバ�
 * PerksPlus を使ってロッククライミング クラスとオンライン フィットネス プログラムの両方を支払えますか?
 * Contoso Electronics の行動と意思決定を導く価値観は何ですか?
 
-Azure AI Foundry で作成したエージェントと同様の応答が得られるはずです。
+Microsoft Foundry で作成したエージェントと同様の応答が得られるはずです。
 
 ![The Agent running in Microsoft Teams with evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/73ef491f-eaff-4743-bb2d-79a52a9ae301)
 
@@ -311,7 +311,7 @@ Azure AI Foundry で作成したエージェントと同様の応答が得られ
 
 ---8<--- "ja/b-congratulations.md"
 
-これで ラボ BMA3 - Azure AI Foundry エージェントを M365 Agents SDK と統合 を完了しました!
+これで ラボ BMA3 - Microsoft Foundry エージェントを M365 Agents SDK と統合 を完了しました!
 
 次は ラボ BMA4 - エージェントを Copilot Chat へ展開 へ進みましょう。Next を選択してください。
 
