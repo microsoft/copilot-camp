@@ -81,22 +81,22 @@ Observe that your agent responds back with a similar behavior on Copilot Chat.
 
 ---8<--- "b-congratulations.md"
 
-🎉 Congratulations! You've just built your first Custom Engine Agent using the Microsoft 365 Agents SDK and Azure AI Foundry!
+🎉 Congratulations! You've just built your first Custom Engine Agent using the Microsoft 365 Agents SDK and Microsoft Foundry!
 
 In this lab, you learned how to:
 
-* Configure an AI agent in Azure AI Foundry using the Agent Playground
+* Configure an AI agent in Microsoft Foundry using the Agent Playground
 * Upload enterprise documents to ground your agent’s responses
 * Scaffold a bot using the M365 Agents SDK in Visual Studio
 * Add Semantic Kernel and connect to Azure AI Agent Service
-* Integrate your bot with the Azure AI Foundry agent for real-time, grounded reasoning
+* Integrate your bot with the Microsoft Foundry agent for real-time, grounded reasoning
 * Deploy and test your agent in **Microsoft Teams** and **Copilot Chat**
 
 ## Resources
 
 - [Copilot Developer Camp](https://aka.ms/copilotdevcamp)
 - [M365 Agents SDK docs](https://aka.ms/open-hack/m365agentssdk)
-- [Azure AI Foundry](https://ai.azure.com)
+- [Microsoft Foundry](https://ai.azure.com)
 - [Learn more about Copilot extensibility](https://aka.ms/extensibility-docs)
 
 <cc-next label="Home" url="/" />

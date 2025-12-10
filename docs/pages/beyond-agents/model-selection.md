@@ -191,7 +191,7 @@ Use the [Azure AI Model Leaderboard](https://ai.azure.com/explore/models/leaderb
 
 Want to dive deeper? Explore these resources:
 
-| Task | GitHub  |Azure AI Foundry | Watch a video | Deep dive labs |
+| Task | GitHub  |Microsoft Foundry | Watch a video | Deep dive labs |
 |------|-------------------|--------------|-------------|-------------|
 | **Summarize Document** | [Mistral Small](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503)|[Mistal Small](https://ai.azure.com/explore/models/Mistral-small/version/1/registry/azureml-mistral?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18)| [Watch now](https://www.youtube.com/watch?v=tqOecUt_wCc&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=5&pp=iAQB) | [Learn more](https://github.com/microsoft/Build25-LAB324) |
 | **Transcribe Audio** | [Phi-4 Multimodal](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct)|[Phi-4-multimodal-instruct](https://ai.azure.com/explore/models/Phi-4-multimodal-instruct/version/2/registry/azureml?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18)| [Watch now](https://www.youtube.com/watch?v=VLQKZq8L9Uk&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=2) | [Learn more](https://github.com/microsoft/PhiCookBook/blob/main/md/02.Application/05.Audio/Phi4/Transciption/README.md) |

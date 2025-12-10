@@ -8,7 +8,7 @@ Microsoft Copilot Studio を使用すると、カスタム エージェントを
 
 Copilot Studio のエージェントは、Microsoft 365 Copilot と同じインフラストラクチャ、オーケストレーター、基盤モデル、およびセキュリティ コントロールを利用するため、ユーザーへ一貫した慣れ親しんだエクスペリエンスを提供します。
 
-![Copilot Studio エージェントのアーキテクチャ図。基盤となるモデルは Microsoft Copilot Studio によって提供されますが、カスタマイズも可能です。オーケストレーターは Copilot Studio が提供します。エージェントはカスタム ナレッジやグラウンディング データ、カスタム スキル、自律機能も提供します。ユーザー エクスペリエンスは Microsoft Teams、Microsoft 365 Copilot、Microsoft SharePoint Online などで提供されます。](../../../assets/images/copilot-studio-agent.png)
+![Copilot Studio エージェントのアーキテクチャ図。基盤となるモデルは Microsoft Copilot Studio によって提供されますが、カスタマイズも可能です。オーケストレーターは Copilot Studio が提供します。エージェントはカスタム ナレッジやグラウンディング データ、カスタム スキル、自律機能も提供します。ユーザー エクスペリエンスは Microsoft Teams、Microsoft 365 Copilot、Microsoft SharePoint Online などで提供されます。](../../../assets/images/copilot-studio-full-agent.png)
 
 ナレッジ ベースとして利用できるデータ ソースの例:
 

@@ -94,7 +94,7 @@ search:
     </div>
     <div class="tinyVideo">
       <iframe src="//www.youtube.com/embed/xAXlFGSH1II" frameborder="0" allowfullscreen></iframe>
-      <div>Azure AI Foundry から AI アプリを Microsoft Teams に導入する</div>
+      <div>Microsoft Foundry から AI アプリを Microsoft Teams に導入する</div>
     </div>
 
 ???+ info "Microsoft Mechanics"
