@@ -1813,7 +1813,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BMA1 - Azure AI Foundry でエージェントを準備する
+    ラボ BMA1 - Microsoft Foundry でエージェントを準備する
   
 
     
@@ -1869,7 +1869,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BMA3 - Azure AI Foundry エージェントを M365 Agents SDK と統合
+    ラボ BMA3 - Microsoft Foundry エージェントを M365 Agents SDK と統合
   
 
     
@@ -2202,14 +2202,14 @@
 <p>Azure OpenAI サービスが作成されたら、リソースに移動し、左ペインの <strong>Keys and Endpoint</strong> を選択します。<code>KEY 1</code> と <code>Endpoint</code> をコピーして保存してください。これらは演習 2 で使用します。</p>
 <p><cc-end-step lab="bta1" exercise="1" step="1" /></p>
 <h3 id="2">手順 2: デプロイ モデルの作成</h3>
-<p>Azure OpenAI サービスで <code>Azure AI Foundry</code> に移動し、デプロイ モデルを作成します。</p>
+<p>Azure OpenAI サービスで <code>Microsoft Foundry</code> に移動し、デプロイ モデルを作成します。</p>
 <details class="check">
-<summary>Azure AI Foundry とは?</summary>
-<p>Azure AI Foundry は、<code>gpt-35-turbo</code>、<code>gpt-4</code>、<code>Dall-e</code> などの OpenAI モデルを試しながら、ユースケースに合わせたプロンプトを作成・微調整できるプレイグラウンドです。<code>Phi-3</code>、<code>Llama 3.1</code> など OpenAI 以外のモデルも扱え、Speech や Vision など他の Azure AI サービスへの入口にもなります。</p>
+<summary>Microsoft Foundry とは?</summary>
+<p>Microsoft Foundry は、<code>gpt-35-turbo</code>、<code>gpt-4</code>、<code>Dall-e</code> などの OpenAI モデルを試しながら、ユースケースに合わせたプロンプトを作成・微調整できるプレイグラウンドです。<code>Phi-3</code>、<code>Llama 3.1</code> など OpenAI 以外のモデルも扱え、Speech や Vision など他の Azure AI サービスへの入口にもなります。</p>
 <p><em>Generative AI とプロンプティングについては、この Doodle to Code ビデオで学びましょう!</em>  </p>
 <p><iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe></p>
 </details>
-<p>Azure AI Foundry で <strong>Deployments</strong> タブを選択し <strong>Deploy model</strong> &gt; <strong>Deploy base model</strong> をクリックします。<code>gpt-4</code> など使用したいモデルを検索し <strong>Confirm</strong> をクリックします。次の項目を入力し <strong>Deploy</strong> を選択します:</p>
+<p>Microsoft Foundry で <strong>Deployments</strong> タブを選択し <strong>Deploy model</strong> &gt; <strong>Deploy base model</strong> をクリックします。<code>gpt-4</code> など使用したいモデルを検索し <strong>Confirm</strong> をクリックします。次の項目を入力し <strong>Deploy</strong> を選択します:</p>
 <ul>
 <li><strong>Deployment name:</strong> モデル名と同じにすることを推奨 (例 <code>gpt-4</code>)  </li>
 <li><strong>Select a model:</strong> <code>gpt-4</code> を推奨  </li>
@@ -2223,7 +2223,7 @@
 </div>
 <p>モデルが作成されたら <strong>Open in playground</strong> をクリックし、上部の <strong>Prompt samples</strong> を選択して任意のプロンプトを試します。</p>
 <p>例として "Shakespearean Writing Assistant" を選び <strong>Use prompt</strong> をクリックし、「tell me about Istanbul」などと質問してみましょう。詩的で描写豊かな回答に驚くはずです ✍️。</p>
-<p><img alt="The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer." src="../../../../../assets/images/custom-engine-01/azure-openai-studio-chat.png" /></p>
+<p><img alt="The UI of Microsoft Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer." src="../../../../../assets/images/custom-engine-01/azure-openai-studio-chat.png" /></p>
 <p><cc-end-step lab="bta1" exercise="1" step="2" /></p>
 <h2 id="2_1">演習 2: テンプレートからカスタム エンジン エージェントをスキャフォールディング</h2>
 <p>開始前にすべての <a href="../00-prerequisites/" target="_blank">必須前提条件</a> を完了してください。</p>

@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-bma3-integrate-azure-ai-foundry-agent-with-m365-agents-sdk" class="md-skip">
+        <a href="#lab-bma3-integrate-microsoft-foundry-agent-with-m365-agents-sdk" class="md-skip">
           Skip to content
         </a>
       
@@ -1713,7 +1713,7 @@
   <span class="md-ellipsis">
     
   
-    Lab BMA1 - Prepare your agent in Azure AI Foundry
+    Lab BMA1 - Prepare your agent in Microsoft Foundry
   
 
     
@@ -1833,10 +1833,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-2-integrate-azure-ai-foundry-agent-with-m365-agents-sdk" class="md-nav__link">
+  <a href="#exercise-2-integrate-microsoft-foundry-agent-with-m365-agents-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 2: Integrate Azure AI Foundry Agent with M365 Agents SDK
+        Exercise 2: Integrate Microsoft Foundry Agent with M365 Agents SDK
       
     </span>
   </a>
@@ -2054,8 +2054,8 @@
 
 
 
-<h1 id="lab-bma3-integrate-azure-ai-foundry-agent-with-m365-agents-sdk">Lab BMA3 - Integrate Azure AI Foundry Agent with M365 Agents SDK</h1>
-<p>In this lab, you’ll bring together the best of both worlds—combining the generative AI power of your Azure AI Foundry agent with the multi-channel flexibility of the Microsoft 365 Agents SDK. You’ll configure Semantic Kernel, set up agent properties, and securely connect to your Foundry-hosted agent to deliver rich, enterprise-aware answers directly in Microsoft Teams.</p>
+<h1 id="lab-bma3-integrate-microsoft-foundry-agent-with-m365-agents-sdk">Lab BMA3 - Integrate Microsoft Foundry Agent with M365 Agents SDK</h1>
+<p>In this lab, you’ll bring together the best of both worlds—combining the generative AI power of your Microsoft Foundry agent with the multi-channel flexibility of the Microsoft 365 Agents SDK. You’ll configure Semantic Kernel, set up agent properties, and securely connect to your Foundry-hosted agent to deliver rich, enterprise-aware answers directly in Microsoft Teams.</p>
 <h2 id="exercise-1-configure-agent-properties-and-test-on-teams">Exercise 1: Configure agent properties and test on Teams</h2>
 <p>Now that you’ve created a basic bot, it’s time to enhance it with generative AI capabilities and upgrade it to an AI agent. In this exercise, you’ll install key libraries such as Semantic Kernel and prepare your agent to reason and respond more intelligently, ready for Teams or Copilot Chat.</p>
 <h3 id="step-1-add-semantic-kernel-nuget-package">Step 1: Add Semantic Kernel Nuget Package</h3>
@@ -2114,10 +2114,10 @@ namespace ContosoHRAgent
 }
 </code></pre>
 <p><cc-end-step lab="bma3" exercise="1" step="3" /></p>
-<h2 id="exercise-2-integrate-azure-ai-foundry-agent-with-m365-agents-sdk">Exercise 2: Integrate Azure AI Foundry Agent with M365 Agents SDK</h2>
-<p>You’ve built an agent using the M365 Agents SDK and configured it with generative AI capabilities. Now, you’ll connect this local agent to the Azure AI Foundry agent you created earlier. This enables your agent to respond using enterprise data and instructions stored in the Foundry project, bringing everything full circle.</p>
-<h3 id="step-1-configure-echobotcs-to-connect-with-azure-ai-foundry-agent">Step 1: Configure EchoBot.cs to Connect with Azure AI Foundry Agent</h3>
-<p>In this step, you’ll connect to the Azure AI Foundry agent by adding a client to fetch and invoke your Foundry-hosted model inside the EchoBot.cs.</p>
+<h2 id="exercise-2-integrate-microsoft-foundry-agent-with-m365-agents-sdk">Exercise 2: Integrate Microsoft Foundry Agent with M365 Agents SDK</h2>
+<p>You’ve built an agent using the M365 Agents SDK and configured it with generative AI capabilities. Now, you’ll connect this local agent to the Microsoft Foundry agent you created earlier. This enables your agent to respond using enterprise data and instructions stored in the Foundry project, bringing everything full circle.</p>
+<h3 id="step-1-configure-echobotcs-to-connect-with-microsoft-foundry-agent">Step 1: Configure EchoBot.cs to Connect with Microsoft Foundry Agent</h3>
+<p>In this step, you’ll connect to the Microsoft Foundry agent by adding a client to fetch and invoke your Foundry-hosted model inside the EchoBot.cs.</p>
 <p>In <strong>ContosoHRAgent</strong> project, open <strong>Bot/EchoBot.cs</strong> and add the following lines inside the EchoBot public class:</p>
 <pre><code>private readonly PersistentAgentsClient _projectClient;
 private readonly string _agentId;
@@ -2131,7 +2131,7 @@ private readonly string _agentId;
     // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
     OnActivity(ActivityTypes.Message, OnMessageAsync);
 
-    // Azure AI Foundry Project ConnectionString
+    // Microsoft Foundry Project ConnectionString
     string projectEndpoint = configuration[&quot;AIServices:ProjectEndpoint&quot;];
     if (string.IsNullOrEmpty(projectEndpoint))
     {
@@ -2139,7 +2139,7 @@ private readonly string _agentId;
     }
     _projectClient = new PersistentAgentsClient(projectEndpoint, new AzureCliCredential());
 
-    // Azure AI Foundry Agent Id
+    // Microsoft Foundry Agent Id
     _agentId = configuration[&quot;AIServices:AgentID&quot;];
     if (string.IsNullOrEmpty(_agentId))
     {
@@ -2207,7 +2207,7 @@ private readonly string _agentId;
 </blockquote>
 <details class="info" open="open">
 <summary>What happens in OnMessageAsync?</summary>
-<p>The <em>OnMessageAsync</em> method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to send the user’s message to your Azure AI Foundry agent, stream the response back to the user in real time, track and attach citations and file references for transparency and add sensitivity and AI-generated labels for security and traceability.</p>
+<p>The <em>OnMessageAsync</em> method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to send the user’s message to your Microsoft Foundry agent, stream the response back to the user in real time, track and attach citations and file references for transparency and add sensitivity and AI-generated labels for security and traceability.</p>
 </details>
 <p><cc-end-step lab="bma3" exercise="2" step="1" /></p>
 <h3 id="step-2-configure-azure-ai-agent-service-keys">Step 2: Configure Azure AI Agent Service Keys</h3>
@@ -2219,10 +2219,10 @@ private readonly string _agentId;
   }
 </code></pre>
 <blockquote>
-<p>You can find these values in the <strong>Overview</strong> and <strong>Agents Playground</strong> sections of Azure AI Foundry.</p>
+<p>You can find these values in the <strong>Overview</strong> and <strong>Agents Playground</strong> sections of Microsoft Foundry.</p>
 </blockquote>
 <p>Replace the <strong><AzureAIFoundryAgentId></strong> with your <strong>Agent id</strong> which can be found in <strong>Agents Playground</strong>.</p>
-<p><img alt="The Agents Playground of Azure AI Foundry with the Agent id field highlighted." src="https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8" /></p>
+<p><img alt="The Agents Playground of Microsoft Foundry with the Agent id field highlighted." src="https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8" /></p>
 <p>Replace <strong><ProjectEndpoint></strong> with your AI Foundry project endpoing which can be found in the <strong>Overview</strong> page of the AI Foundry, under Endpoints and keys.</p>
 <p>Final version of the <strong>appsettings.json</strong> will look like below:</p>
 <pre><code>{
@@ -2298,11 +2298,11 @@ private readonly string _agentId;
 <li>Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?</li>
 <li>What values guide behavior and decision-making at Contoso Electronics?</li>
 </ul>
-<p>You should observe that you are getting similar responses with the agent you've created on Azure AI Foundry.</p>
+<p>You should observe that you are getting similar responses with the agent you've created on Microsoft Foundry.</p>
 <p><img alt="The Agent running in Microsoft Teams with evidence of the counter to count the number of interactions with the user." src="https://github.com/user-attachments/assets/73ef491f-eaff-4743-bb2d-79a52a9ae301" /></p>
 <p><cc-end-step lab="bma3" exercise="2" step="3" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
-<p>You have completed Lab BMA3 - Integrate Azure AI Foundry Agent with M365 Agents SDK!</p>
+<p>You have completed Lab BMA3 - Integrate Microsoft Foundry Agent with M365 Agents SDK!</p>
 <p>You are now ready to proceed to Lab BMA4 - Bring your agent to Copilot Chat. Select Next.</p>
 <p><cc-next url="../04-bring-agent-to-copilot" /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/03-agent-configuration" /></p>

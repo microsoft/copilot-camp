@@ -29,7 +29,7 @@
     
     
       
-        <title>Lab BMA1 - Prepare your agent in Azure AI Foundry - Copilot Developer Camp</title>
+        <title>Lab BMA1 - Prepare your agent in Microsoft Foundry - Copilot Developer Camp</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-bma1-prepare-your-agent-in-azure-ai-foundry" class="md-skip">
+        <a href="#lab-bma1-prepare-your-agent-in-microsoft-foundry" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab BMA1 - Prepare your agent in Azure AI Foundry
+              Lab BMA1 - Prepare your agent in Microsoft Foundry
             
           </span>
         </div>
@@ -1722,7 +1722,7 @@
   <span class="md-ellipsis">
     
   
-    Lab BMA1 - Prepare your agent in Azure AI Foundry
+    Lab BMA1 - Prepare your agent in Microsoft Foundry
   
 
     
@@ -1740,7 +1740,7 @@
   <span class="md-ellipsis">
     
   
-    Lab BMA1 - Prepare your agent in Azure AI Foundry
+    Lab BMA1 - Prepare your agent in Microsoft Foundry
   
 
     
@@ -1766,10 +1766,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#exercise-1-prepare-your-agent-in-azure-ai-foundry" class="md-nav__link">
+  <a href="#exercise-1-prepare-your-agent-in-microsoft-foundry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 1: Prepare your agent in Azure AI Foundry
+        Exercise 1: Prepare your agent in Microsoft Foundry
       
     </span>
   </a>
@@ -2043,26 +2043,26 @@
 
 
 
-<h1 id="lab-bma1-prepare-your-agent-in-azure-ai-foundry">Lab BMA1 - Prepare your agent in Azure AI Foundry</h1>
-<p>In this lab, you’ll begin your journey by preparing a custom engine agent using Azure AI Foundry, Microsoft’s platform for creating, configuring, and scaling AI agents. You'll explore the <strong>Agents Playground</strong>, define your agent's role, personalize its instructions, and connect it to relevant internal documents to support Retrieval-Augmented Generation (RAG).</p>
+<h1 id="lab-bma1-prepare-your-agent-in-microsoft-foundry">Lab BMA1 - Prepare your agent in Microsoft Foundry</h1>
+<p>In this lab, you’ll begin your journey by preparing a custom engine agent using Microsoft Foundry, Microsoft’s platform for creating, configuring, and scaling AI agents. You'll explore the <strong>Agents Playground</strong>, define your agent's role, personalize its instructions, and connect it to relevant internal documents to support Retrieval-Augmented Generation (RAG).</p>
 <p>This exercise sets the foundation for the rest of the Build Path using the <strong>Microsoft 365 Agents SDK</strong> and <strong>Semantic Kernel</strong>. You’ll simulate a real-world Human Resources agent for Contoso Electronics that can answer questions based on uploaded documents like the Employee Handbook, Role Library, and Benefit Plans.</p>
 <details class="info" open="open">
-<summary>What is Azure AI Foundry?</summary>
-<p>Azure AI Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.</p>
+<summary>What is Microsoft Foundry?</summary>
+<p>Microsoft Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.</p>
 </details>
-<h2 id="exercise-1-prepare-your-agent-in-azure-ai-foundry">Exercise 1: Prepare your agent in Azure AI Foundry</h2>
-<p>In this exercise, you'll explore Azure AI Foundry, a platform that enables developers to build, deploy, and scale AI agents with ease. You'll learn how to configure an agent, and test its functionality using the Agents Playground. This hands-on experience will provide insight into the capabilities of Azure AI Agent Service and how it integrates with various AI models and tools.</p>
-<h3 id="step-1-get-started-with-azure-ai-foundry">Step 1: Get started with Azure AI Foundry</h3>
-<p>Azure AI Foundry is your launchpad for building AI agents. In this step, you’ll log in to Azure AI Foundry with the account that has Azure subscription enabled.</p>
+<h2 id="exercise-1-prepare-your-agent-in-microsoft-foundry">Exercise 1: Prepare your agent in Microsoft Foundry</h2>
+<p>In this exercise, you'll explore Microsoft Foundry, a platform that enables developers to build, deploy, and scale AI agents with ease. You'll learn how to configure an agent, and test its functionality using the Agents Playground. This hands-on experience will provide insight into the capabilities of Azure AI Agent Service and how it integrates with various AI models and tools.</p>
+<h3 id="step-1-get-started-with-microsoft-foundry">Step 1: Get started with Microsoft Foundry</h3>
+<p>Microsoft Foundry is your launchpad for building AI agents. In this step, you’ll log in to Microsoft Foundry with the account that has Azure subscription enabled.</p>
 <ol>
 <li>Open the browser and navigate to <a href="https://ai.azure.com">https://ai.azure.com</a> and sign to your Azure account.</li>
-<li>From the Azure AI Foundry homepage, select <strong>+ Create new</strong>, <strong>Azure AI Foundry resource</strong> and then <strong>Next</strong>.</li>
+<li>From the Microsoft Foundry homepage, select <strong>+ Create new</strong>, <strong>Microsoft Foundry resource</strong> and then <strong>Next</strong>.</li>
 <li>Leave the project name as recommended and select <strong>Create</strong>.</li>
-<li>This will scaffold a new project for you in Azure AI Foundry, it usually takes 3-5 minutes.</li>
+<li>This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.</li>
 <li>When your project is created, you'll be redirected to your project, extend the left side bar and select <strong>Agents</strong>. This will open the Agents Playground.</li>
 <li>In the Agent Playground, the first time you'll see the <strong>Deploy a model</strong> window. Search for <strong>gpt-4o</strong> and select <strong>Confirm</strong>, then select <strong>Deploy</strong> in the following window.</li>
 <li>Once you are in the <strong>Agents Playground</strong>, you'll recognize there is a pre-populated agent for you in the list. Select the agent and select <strong>Try in playground</strong>.
-    <img alt="The Azure AI Foundry list of Agents with the custom agent and the &quot;Try in playground&quot; command highlighted." src="https://github.com/user-attachments/assets/dd481101-c15d-4aed-af62-aeb7d3c8e5ed" width="1029" /></li>
+    <img alt="The Microsoft Foundry list of Agents with the custom agent and the &quot;Try in playground&quot; command highlighted." src="https://github.com/user-attachments/assets/dd481101-c15d-4aed-af62-aeb7d3c8e5ed" width="1029" /></li>
 </ol>
 <blockquote>
 <p>If you don't see the agent side bar with <strong>Try in playground</strong> option when you click on the agent, extend the browser size on your screen until it shows up on the right side.</p>
@@ -2096,7 +2096,7 @@ Example scenarios you should support:
 <blockquote>
 <p>When you upload documents, Foundry automatically converts them into vectors, a format that allows the agent to search and retrieve relevant information efficiently.</p>
 </blockquote>
-<p><img alt="The UI of Azure AI Foundry when adding files as knowledge base, with the &quot;Select local files&quot;." src="https://github.com/user-attachments/assets/64bb7392-15f6-458c-9e74-d8ab100ca8fd" /></p>
+<p><img alt="The UI of Microsoft Foundry when adding files as knowledge base, with the &quot;Select local files&quot;." src="https://github.com/user-attachments/assets/64bb7392-15f6-458c-9e74-d8ab100ca8fd" /></p>
 <p>By customizing the instructions and uploading relevant documents, you're teaching the agent how to behave and what knowledge to rely on. This is a simplified form of Retrieval-Augmented Generation (RAG).</p>
 <p><cc-end-step lab="bma1" exercise="1" step="2" /></p>
 <h3 id="step-3-test-your-agent-in-the-playground">Step 3: Test your agent in the playground</h3>
@@ -2117,11 +2117,11 @@ Example scenarios you should support:
 <div class="admonition tip">
 <p class="admonition-title">Save Agents id for the next exercises</p>
 <p>Save the <strong>Agent id</strong> that'll be required in the next exercises. You can find your Agent id in the agent’s details panel.
-<img alt="The Agents Playground of Azure AI Foundry with the Agent id field highlighted." src="https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8" /></p>
+<img alt="The Agents Playground of Microsoft Foundry with the Agent id field highlighted." src="https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8" /></p>
 </div>
 <p><cc-end-step lab="bma1" exercise="1" step="3" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
-<p>You have completed Lab BMA1 - Prepare your agent in Azure AI Foundry! If you want explore further.</p>
+<p>You have completed Lab BMA1 - Prepare your agent in Microsoft Foundry! If you want explore further.</p>
 <p>You are now ready to proceed to Lab BMA2 - Build your first agent using M365 Agents SDK. Select Next.</p>
 <p><cc-next url="../02-agent-with-agents-sdk" /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/01-agent-in-foundry" /></p>

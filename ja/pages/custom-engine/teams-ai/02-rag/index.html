@@ -1813,7 +1813,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BMA1 - Azure AI Foundry でエージェントを準備する
+    ラボ BMA1 - Microsoft Foundry でエージェントを準備する
   
 
     
@@ -1869,7 +1869,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BMA3 - Azure AI Foundry エージェントを M365 Agents SDK と統合
+    ラボ BMA3 - Microsoft Foundry エージェントを M365 Agents SDK と統合
   
 
     
@@ -2145,7 +2145,7 @@
 </div>
 
 <h2 id="_1">はじめに</h2>
-<p>前の演習では、カスタム engine エージェントを作成し、AI チャットボット「Career Genie」の動作を定義するプロンプトをカスタマイズしました。本演習では、求人要件に最適な候補者を見つけるために、レジュメのコレクションに対してベクトル検索を適用します。Career Genie でベクトル検索を有効化するため、「Azure AI Foundry on your data」機能を使用して次を行います。</p>
+<p>前の演習では、カスタム engine エージェントを作成し、AI チャットボット「Career Genie」の動作を定義するプロンプトをカスタマイズしました。本演習では、求人要件に最適な候補者を見つけるために、レジュメのコレクションに対してベクトル検索を適用します。Career Genie でベクトル検索を有効化するため、「Microsoft Foundry on your data」機能を使用して次を行います。</p>
 <ul>
 <li>Azure AI Search でインデックスを作成</li>
 <li>レジュメ (PDF) のベクトル embedding を生成</li>
@@ -2229,7 +2229,7 @@
 <summary><code>text-embedding-ada-002</code> の役割</summary>
 <p>Azure OpenAI の <code>text-embedding-ada-002</code> モデルは、テキストを意味を表す数値ベクトルに変換します。これによりベクトル検索が可能となり、複数言語や形式に対応した高度な検索ソリューションを実現できます。</p>
 </details>
-<p><a href="https://oai.azure.com/portal" target="_blank">Azure AI Foundry</a> を開き <strong>Deployments</strong> を選択し、<strong>Create a new deployment</strong> をクリックして次を入力後 <strong>Create</strong>:</p>
+<p><a href="https://oai.azure.com/portal" target="_blank">Microsoft Foundry</a> を開き <strong>Deployments</strong> を選択し、<strong>Create a new deployment</strong> をクリックして次を入力後 <strong>Create</strong>:</p>
 <ul>
 <li><strong>Select a model:</strong> <code>text-embedding-ada-002</code></li>
 <li><strong>Model version:</strong> Default</li>
@@ -2244,17 +2244,17 @@
 2. <a href="https://oai.azure.com/portal/96d4a6668daf4335bc1273c1bb46cb4f/quota" target="_blank">クォータを増やす/調整</a></p>
 </div>
 <p><cc-end-step lab="bta2" exercise="1" step="3" /></p>
-<h2 id="2-azure-ai-foundry-chat-playground-azure-ai-search">演習 2: Azure AI Foundry Chat Playground でドキュメントを Azure AI Search にアップロード</h2>
+<h2 id="2-microsoft-foundry-chat-playground-azure-ai-search">演習 2: Microsoft Foundry Chat Playground でドキュメントを Azure AI Search にアップロード</h2>
 <p><a href="https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip">fictitious_resumes.zip</a> をダウンロードし、解凍してください。</p>
 <h3 id="1-azure-ai-search_1">手順 1: ドキュメントを Azure AI Search にアップロード</h3>
 <ol>
 <li>
-<p><a href="https://oai.azure.com/portal" target="_blank">Azure AI Foundry</a> を開き <strong>Chat</strong> playground を選択。<strong>Setup</strong> セクションで <strong>Reset</strong> を選び、シェイクスピア調ライティングの例を削除して空の状態にします。すでに初期状態の場合は次へ。  </p>
-<p><img alt="The Setup section of the Chat Playground in Azure AI Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted." src="../../../../../assets/images/custom-engine-02/reset-chat-playground.png" /></p>
+<p><a href="https://oai.azure.com/portal" target="_blank">Microsoft Foundry</a> を開き <strong>Chat</strong> playground を選択。<strong>Setup</strong> セクションで <strong>Reset</strong> を選び、シェイクスピア調ライティングの例を削除して空の状態にします。すでに初期状態の場合は次へ。  </p>
+<p><img alt="The Setup section of the Chat Playground in Microsoft Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted." src="../../../../../assets/images/custom-engine-02/reset-chat-playground.png" /></p>
 </li>
 <li>
 <p><strong>Add your data</strong> → <strong>Add a data source</strong> を選択。  </p>
-<p><img alt="The UI of Azure AI Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground." src="../../../../../assets/images/custom-engine-02/add-your-data-aoai.png" /></p>
+<p><img alt="The UI of Microsoft Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground." src="../../../../../assets/images/custom-engine-02/add-your-data-aoai.png" /></p>
 </li>
 <li>
 <p><strong>Upload files (preview)</strong> を選び、次を入力して <strong>Next</strong>:  </p>
@@ -2281,18 +2281,18 @@
 <p class="admonition-title">注意</p>
 <p>一度データをインデックス化すると、そのインデックスは Chat Playground を閉じても Azure AI Search に残ります。Playground がリセットされ再度 Add Your Data が必要になった場合は、既存のインデックスを選択するだけで再アップロードは不要です。</p>
 </div>
-<h3 id="2-azure-ai-foundry">手順 2: Azure AI Foundry でデータをテスト</h3>
+<h3 id="2-microsoft-foundry">手順 2: Microsoft Foundry でデータをテスト</h3>
 <p>データ取り込み完了後、Chat playground でデータに関する質問をします。</p>
 <p>例: <em>「2 年以上の .NET 経験とスペイン語を必要とするポジションに適した候補者を提案してください」</em> など。</p>
 <div class="admonition tip">
 <p class="admonition-title">データを最大限活用するコツ</p>
 <p>検索を試す前に <code>resumes</code> フォルダーを確認し、言語・職種・経験年数・スキルなどの多様性を把握しましょう。要件を組み合わせて検索体験を試してください。</p>
 </div>
-<p><img alt="The Chat Playground in Azure AI Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents." src="../../../../../assets/images/custom-engine-02/chat-with-your-data-aoai.png" /></p>
+<p><img alt="The Chat Playground in Microsoft Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents." src="../../../../../assets/images/custom-engine-02/chat-with-your-data-aoai.png" /></p>
 <p><cc-end-step lab="bta2" exercise="2" step="2" /></p>
 <h3 id="3-azure-ai-search">手順 3: Azure AI Search でインデックスを確認</h3>
 <p>データセットを詳しく理解するため、Chat playground の Add your data セクションで <strong>resumes</strong> を選択すると Azure AI Search のインデックスページへ移動します。</p>
-<p><img alt="The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Azure AI Foundry" src="../../../../../assets/images/custom-engine-02/index-aoai.png" /></p>
+<p><img alt="The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Microsoft Foundry" src="../../../../../assets/images/custom-engine-02/index-aoai.png" /></p>
 <p>まずベクトル内容を表示できるようにします。インデックスページで <strong>Fields</strong> タブを開き <strong>contentVector</strong> にチェックを入れて <strong>Save</strong>。</p>
 <p><img alt="The UI of Azure AI Search when adding the contentVector field to the search index with the fields tab, the contentVector field, and the save button highlighted." src="../../../../../assets/images/custom-engine-02/add-contentvector.png" /></p>
 <p><strong>Search explorer</strong> タブに戻り <strong>Query options</strong> を開いて <strong>API version</strong> を <code>2024-11-01-preview</code> に変更し <strong>Close</strong>。<strong>Search</strong> を押してデータを表示します。</p>
@@ -2412,7 +2412,7 @@ Copilot Studio
 Microsoft 365
 M365
 Azure
-Azure AI Foundry
+Microsoft Foundry
 OpenAI
 Visual Studio
 Visual Studio Code
