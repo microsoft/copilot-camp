@@ -23,7 +23,7 @@ In this lab you will:
 
 ## Introduction
 
-In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Azure AI Foundry on your data" feature to:
+In the previous exercise, you learned how to create a custom engine agent and customize the prompt for defining the behavior of the AI chatbot, Career Genie. In this exercise, you'll apply vector search to a collection of resumes to find the best candidate for the job requirements. To enable vector search in Career Genie, you'll use the "Microsoft Foundry on your data" feature to:
 
 - Create an index on Azure AI Search.
 - Generate vector embeddings for the resumes (PDF documents).
@@ -110,7 +110,7 @@ Once your Azure AI Search service resource is created successfully, navigate to 
 ??? info "What does `text-embedding-ada-002` do?"
     The `text-embedding-ada-002` model on Azure OpenAI converts text into numeric vectors that represent the meaning of the text. This allows for vector search, where instead of matching exact words, the search finds text with similar meanings. It works with multiple languages and different content types, making it useful for comparing text across languages and formats. When used with Azure AI Search, it improves search results by finding the most relevant and contextually accurate information. This model is perfect for creating advanced search solutions and applications that need to understand natural language.
 
-Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
+Open [Microsoft Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Deployments**. Select **Create a new deployment**. Fill out the following details and select **Create**:
 
 - **Select a model:** `text-embedding-ada-002`.
 - **Model version:** Default.
@@ -125,19 +125,19 @@ Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your bro
 
 <cc-end-step lab="bta2" exercise="1" step="3" />
 
-## Exercise 2: Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground
+## Exercise 2: Upload your documents to Azure AI Search using Microsoft Foundry Chat Playground
 
 For this exercise, download [fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) and unzip the folder.
 
 ### Step 1: Upload your documents to Azure AI Search
 
-1. Open [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
+1. Open [Microsoft Foundry](https://oai.azure.com/portal){target=_blank} in your browser, then select **Chat** playground. In the **Setup** section, first make sure you reset the model instructions by selecting **Reset** and delete examples related to Shakespearean writing to start from scratch. If you already have the Chat playground in empty and default setup, you can proceed to the next step.
 
-     ![The Setup section of the Chat Playground in Azure AI Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted.](../../../assets/images/custom-engine-02/reset-chat-playground.png)
+     ![The Setup section of the Chat Playground in Microsoft Foundry with the commands to reset the content of the system prompt and of the user prompt highlighted.](../../../assets/images/custom-engine-02/reset-chat-playground.png)
 
 1. Select **Add your data** and then **Add a data source**.
 
-    ![The UI of Azure AI Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground.](../../../assets/images/custom-engine-02/add-your-data-aoai.png)
+    ![The UI of Microsoft Foundry with the 'Add a data source' command highlighted in the Setup section, to upload custom data sources for the current model in the Chat Playground.](../../../assets/images/custom-engine-02/add-your-data-aoai.png)
 
 1. Select **Upload files (preview)**, then fill the details as the following and select **Next**:
 
@@ -163,7 +163,7 @@ It takes couple of minutes to complete the data ingestion. Once the data is read
 !!! note "Note"
     Once you index your data, your index remains on Azure AI Search even if you close or refresh the Chat Playground. If the Chat Playground resets itself and you have to add your data again, you don't have to index your data for the second time using Upload files, instead you can select Azure AI Search from Add Your Data section and select your existing index to test out your data.
 
-### Step 2: Test your data on Azure AI Foundry
+### Step 2: Test your data on Microsoft Foundry
 
 Once your data  ingestion is completed, use Chat playground to ask questions about your data. 
 
@@ -172,7 +172,7 @@ You can ask questions such as *"Can you suggest me a candidate who is suitable f
 !!! tip "Tip: Making the most out of your data"
     Review your dataset before asking questions testing the vector search. Go through the `resumes` folder and recognize the resumes provided in different languages with diverse professions, years of experience, skills and more. Start chatting with your data by asking questions to find out the right candidate for a skill, language, profession, years of experience and other categories. Try to test out the combination of requirements to challenge the search experience!
 
-![The Chat Playground in Azure AI Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents.](../../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
+![The Chat Playground in Microsoft Foundry once custom data has been processed. On the left side, in the Setup section, there is the configuration of the Azure AI Search service as a custom data source. On the right side, in the chat there is a sample prompt with a detailed answer based on the processed documents.](../../../assets/images/custom-engine-02/chat-with-your-data-aoai.png)
 
 <cc-end-step lab="bta2" exercise="2" step="2" />
 
@@ -180,7 +180,7 @@ You can ask questions such as *"Can you suggest me a candidate who is suitable f
 
 To understand more about your dataset and explore more, select **resumes** from the Add your data section of the Chat playground. This will redirect you to your resumes index on Azure AI Search.
 
-![The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Azure AI Foundry](../../../assets/images/custom-engine-02/index-aoai.png)
+![The image highlights the link to the index in Azure AI Search configured in the Setup section of the Chat Playground in Microsoft Foundry](../../../assets/images/custom-engine-02/index-aoai.png)
 
 First, let's include the vector content in our data. Select **Fields** tab in your Resumes index page, then check the box for **contentVector**, finally select **Save**.
 

@@ -121,13 +121,17 @@ You are an autonomous HR assistant that specializes in processing candidate data
 from PDF documents. When a new PDF file is uploaded to the SharePoint document library, 
 you automatically:
 
-1. Extract candidate information from the PDF including name, email, skills, languages, and role
+1. Extract candidate information from the PDF file content including name, email, skills, languages, and role
 2. Validate and structure the extracted data
 3. Create a new candidate record using the 'add_candidate' tool of the HR MCP server
 4. Provide confirmation of successful processing
+5. Send me an email with confirmation that the new candidate record was created and with a recap of candidate's data
 
 Always ensure data accuracy and provide clear feedback about the processing results. 
 Handle errors gracefully and provide informative messages when processing fails.
+
+IMPORTANT: Do not wait for any user input. Work completely autonomously.
+
 DO NOT invent or assume fake data about candidates. AVOID allucinations.
 You MUST ONLY process real and existing data.
 ```
@@ -172,6 +176,19 @@ The agent will primarily use the `add_candidate` tool for processing new PDF upl
 
 <cc-end-step lab="mcs7" exercise="2" step="3" />
 
+### Step 4: Adding the Email Management MCP Server
+
+Your autonomous agent also needs access to the **Email Management MCP Server** to being able to send e-mails. Navigate to the **Tools** section and select **+ Add a tool**.
+
+1. Choose **Model Context Protocol** group
+2. Find and select **Email Management MCP Server**
+3. Select **Add and configure** to integrate the MCP server tools
+
+This gives your autonomous agent access to a wide set of tools to manage the e-mails in the current user's mailbox.
+The agent will primarily use the `SendEmail` tool for sending notification e-mails.
+
+<cc-end-step lab="mcs7" exercise="2" step="4" />
+
 ## Exercise 3: Configuring SharePoint Triggers
 
 In this exercise you will configure the autonomous agent to automatically trigger when new PDF files are uploaded to the SharePoint document library.
@@ -203,7 +220,7 @@ Select **Next** and proceed to configure the trigger with the following addition
 - **Library Name**: Select `Candidate Data` (the library you created)
 - **Folder**: Leave blank to monitor the entire library
 - **Limit columns by View (Optional)**: All Documents
-- **Additional instructions to the agent when it's invoked by this trigger**: Use content from `Body`
+- **Additional instructions to the agent when it's invoked by this trigger**: Use content from `Body` and read content of the PDF file.
 
 ![The SharePoint trigger configuration showing the site address, library name, folder, view, and additional instructions to the agent.](../../../assets/images/make/copilot-studio-07/autonomous-agent-06.png)
 

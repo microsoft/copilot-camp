@@ -186,7 +186,7 @@ POST リクエストにも同様の function があります。
     "confirmation": {
         "type": "AdaptiveCard",
         "title": "Assign consultant to a project when name, role and project name is specified.",
-        "body": "* **ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"
+        "body": "**ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"
     }
     }
 }

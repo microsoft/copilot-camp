@@ -129,7 +129,7 @@ If you don't already have an Azure OpenAI service instance, create one first:
 1. Wait for the deployment to complete (this may take a few minutes)
 1. Once created, navigate to your Azure OpenAI resource and note the endpoint URL for later use
 
-Now navigate to [Azure AI Foundry](https://oai.azure.com/portal){target=_blank}. If it is the first time that you access the Azure AI Foundry portal, you might need to select the Azure OpenAI instance that you just created. Select the service instance and proceed with the creation of an embedding model going through the following steps:
+Now navigate to [Microsoft Foundry](https://oai.azure.com/portal){target=_blank}. If it is the first time that you access the Microsoft Foundry portal, you might need to select the Azure OpenAI instance that you just created. Select the service instance and proceed with the creation of an embedding model going through the following steps:
 
 1. Select 1️⃣ **Deployments** from the left navigation
 1. Select 2️⃣ **+ Deploy model**

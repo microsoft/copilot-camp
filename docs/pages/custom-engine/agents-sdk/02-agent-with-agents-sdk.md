@@ -6,7 +6,7 @@ This lab introduces you to the Microsoft 365 Agents SDK and Microsoft 365 Agents
 
 ### Step 1: Create an echo bot using Visual Studio
 
-Now that you’ve seen how to build an agent using Azure AI Foundry, let’s switch gears and explore how to build your own agent locally using the Microsoft 365 Agents SDK. This SDK lets you build multi-channel, production-ready agents that can run in Microsoft Teams, Microsoft 365 Copilot, and other preferred channels.
+Now that you’ve seen how to build an agent using Microsoft Foundry, let’s switch gears and explore how to build your own agent locally using the Microsoft 365 Agents SDK. This SDK lets you build multi-channel, production-ready agents that can run in Microsoft Teams, Microsoft 365 Copilot, and other preferred channels.
 
 1. Open Visual Studio 2022 and select **Create a new project**.
 1. Search and select **Microsoft 365 Agents** template.
@@ -34,9 +34,9 @@ Stop the debugging session on Visual Studio before moving to the next exercise.
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab BMA2 - Build your first agent using M365 Agents SDK! This simple agent forms the base for more powerful experiences. In the next step, you'll combine this with your Azure AI Foundry agent to enable richer, context-aware answers.
+You have completed Lab BMA2 - Build your first agent using M365 Agents SDK! This simple agent forms the base for more powerful experiences. In the next step, you'll combine this with your Microsoft Foundry agent to enable richer, context-aware answers.
 
-You are now ready to proceed to Lab BMA3 - Integrate Azure AI Foundry Agent with M365 Agents SDK. Select Next.
+You are now ready to proceed to Lab BMA3 - Integrate Microsoft Foundry Agent with M365 Agents SDK. Select Next.
 
 <cc-next url="../03-agent-configuration" />
 

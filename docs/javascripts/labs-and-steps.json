@@ -1195,7 +1195,7 @@
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Upload your documents to Azure AI Search using Azure AI Foundry Chat Playground",
+                            "title": "Upload your documents to Azure AI Search using Microsoft Foundry Chat Playground",
                             "steps": [
                                 {
                                     "stepId": "1",
@@ -1203,7 +1203,7 @@
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test your data on Azure AI Foundry"                                    
+                                    "title": "Test your data on Microsoft Foundry"                                    
                                 },
                                 {
                                     "stepId": "3",

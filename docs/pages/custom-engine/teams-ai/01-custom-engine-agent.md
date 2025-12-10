@@ -74,16 +74,16 @@ Once your Azure OpenAI service is created successfully, navigate to your resourc
 
 ### Step 2: Create a deployment model
 
-In your Azure OpenAI service, navigate to `Azure AI Foundry` where you can create your deployment model.
+In your Azure OpenAI service, navigate to `Microsoft Foundry` where you can create your deployment model.
 
-??? check "What is Azure AI Foundry?"
-    Azure AI Foundry is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. It's also a playground to models other than OpenAI such as `Phi-3`, `Llama 3.1` and a starting point to other Azure AI services such as Speech, Vision and more.
+??? check "What is Microsoft Foundry?"
+    Microsoft Foundry is a playground to explore OpenAI models like `gpt-35-turbo`, `gpt-4` or `Dall-e` that helps you craft unique prompts for your use cases, and fine-tune your models. It's also a playground to models other than OpenAI such as `Phi-3`, `Llama 3.1` and a starting point to other Azure AI services such as Speech, Vision and more.
 
     *Learn more about the Generative AI, prompting by watching this Doodle to Code video!*
     
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
-In Azure AI Foundry, select **Deployments** tab, **Deploy model** and then **Deploy base model**. Search the model you prefer to use such as `gpt-4` and **Confirm**. Fill out the following details and select **Deploy**:
+In Microsoft Foundry, select **Deployments** tab, **Deploy model** and then **Deploy base model**. Search the model you prefer to use such as `gpt-4` and **Confirm**. Fill out the following details and select **Deploy**:
 
 - **Deployment name:** Recommended to use the same name with the selected deployment model, such as `gpt-4`.
 - **Select a model:** Select a model, `gpt-4` is recommended.
@@ -98,7 +98,7 @@ Once your model is successfully created, select **Open in playground**, and test
 
 For example, choose "Shakespearean Writing Assistant" and select **Use prompt**. and ask questions such as "tell me about Istanbul". You'll be amazed by the descriptive and poetic style of the response ✍️.
 
-![The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
+![The UI of Microsoft Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 <cc-end-step lab="bta1" exercise="1" step="2" />
 
