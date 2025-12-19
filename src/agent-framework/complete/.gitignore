@@ -1,0 +1,49 @@
+# TeamsFx files
+build
+appPackage/build
+env/.env.*.user
+env/.env.local
+env/.env.dev
+.deployment
+appsettings.json
+appsettings.*.json
+
+# User-specific files
+*.user
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Notification local store
+.notification.localstore.json
+.notification.testtoolstore.json
+
+# devTools
+devTools/
+
+# Azurite
+_storage_emulator/
+__blobstorage__
+__queuestorage__
+__azurite_db_*
+AzuriteConfig
+
+# M365 Manual deployment files
+M365Agent/appPackage/manual/
+
+# Copilot transcription files
+*.transcript
+
+# Visual Studio files
+.vs/
+*.suo
+*.user

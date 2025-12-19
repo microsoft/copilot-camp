@@ -1,0 +1,131 @@
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.8/yaml.schema.json
+# Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
+# Visit https://aka.ms/teamsfx-actions for details on actions
+version: v1.8
+
+provision:
+
+  - uses: teamsApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-${{APP_NAME_SUFFIX}}
+    writeToEnvironmentFile:
+      teamsAppId: TEAMS_APP_ID
+
+  - uses: aadApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-bot-${{APP_NAME_SUFFIX}}
+      generateClientSecret: true
+      signInAudience: AzureADMyOrg
+    writeToEnvironmentFile:
+      clientId: BOT_ID
+      clientSecret: SECRET_BOT_PASSWORD
+      objectId: BOT_OBJECT_ID
+      tenantId: BOT_TENANT_ID
+      authority: BOT_AUTHORITY
+
+  - uses: aadApp/update
+    with:
+      manifestPath: ./infra/entra/entra.bot.manifest.json
+      outputFilePath : ./infra/entra/build/entra.bot.manifest.${{TEAMSFX_ENV}}.json
+  
+  - uses: arm/deploy
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+      templates:
+        - path: ./infra/local.azure.bicep
+          parameters: ./infra/local.azure.parameters.json
+          deploymentName: Create-resources-for-${{APP_INTERNAL_NAME}}
+      bicepCliVersion: v0.9.1
+
+  # this script will create a service principal and write the ID to env file
+  - uses: script
+    with:
+      run: |
+        node ./infra/scripts/create-service-principal-wrapper.js "${{BOT_ID}}" "${{AZURE_SUBSCRIPTION_ID}}" "${{BOT_SERVICE_PRINCIPAL_ID}}"
+
+  - uses: file/createOrUpdateJsonFile
+    with:
+      target: ./appsettings.local.json
+      content:
+        AgentType: ZavaInsurance
+        AgentApplication:
+          StartTypingTimer: false
+          RemoveRecipientMention: false
+          NormalizeMentions: false
+          UserAuthorization:
+            DefaultHandlerName: me
+            AutoSignin: true
+            Handlers:
+              me:
+                Settings:
+                  AzureBotOAuthConnectionName: "Microsoft Graph"
+                  OBOConnectionName: "BotServiceConnection"
+                  OBOScopes:
+                    - "https://graph.microsoft.com/.default"
+                  Title: "Sign in"
+                  Text: "Sign in to Microsoft Graph"
+        TokenValidation:
+          Audiences:
+            ClientId: ${{BOT_ID}}
+          TenantId: ${{BOT_TENANT_ID}}
+        Logging:
+          LogLevel:
+            Default: Information
+            Microsoft.AspNetCore: Warning
+            Microsoft.Agents: Warning
+            Microsoft.Hosting.Lifetime: Information
+        Connections:
+          BotServiceConnection:
+            Settings:
+              AuthType: ClientSecret
+              AuthorityEndpoint: ${{BOT_AUTHORITY}}
+              ClientId: ${{BOT_ID}}
+              ClientSecret: ${{SECRET_BOT_PASSWORD}}
+              Scopes:
+                - https://api.botframework.com/.default
+        BlobsStorageOptions:
+          ContainerName: state
+        AIModels:
+          Endpoint: ${{MODELS_ENDPOINT}}
+          ApiKey: ${{SECRET_MODELS_API_KEY}}
+          LanguageModel:
+            Name: ${{LANGUAGE_MODEL_NAME}}
+          VisionModel:
+            Name: ${{VISION_MODEL_NAME}}
+          EmbeddingModel:
+            Name: ${{EMBEDDING_MODEL_NAME}}
+        AzureStorage:
+          ConnectionString: ${{AZURE_STORAGE_CONNECTION_STRING}}
+          StorageAccountName: ${{AZURE_STORAGE_ACCOUNT_NAME}}
+          ClaimsContainerName: claims-documents
+          StateContainerName: state
+
+
+  - uses: teamsApp/validateManifest
+    with:
+      manifestPath: ./appPackage/manifest.json
+      
+  - uses: teamsApp/zipAppPackage
+    with:
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputFolder: ./appPackage/build
+
+  - uses: teamsApp/validateAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: teamsApp/update
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: teamsApp/extendToM365
+    with:
+      # Relative path to the build app package.
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+    # Write the information of created resources into environment file for
+    # the specified environment variable(s).
+    writeToEnvironmentFile:
+      titleId: M365_TITLE_ID
+      appId: M365_APP_ID
