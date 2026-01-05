@@ -15,6 +15,8 @@ A SharePoint agent can be used from within the SharePoint Online user experience
 
 A SharePoint agent can also be shared in Microsoft Teams to enhance the user experience in chats (one to one or group chats).
 
+Last but not least, a SharePoint agent automatically becomes available in the Microsoft 365 Copilot Chat as a custom agent.
+
 ![The welcome screen when creating a new SharePoint agent in a document library. There is a dialog with the basic information about the new SharePoint agent that is going to be created.](../../../assets/images/make-global-intro/sharepoint-agent-01.png)
 
 If you are assigned with a Microsoft 365 Copilot license, or a Copilot Studio capacity, or your organization has the Pay-As-You-Go billing set up, you can use SharePoint agents.
