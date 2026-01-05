@@ -37,11 +37,11 @@ Let's paste the link into a group chat in order to see what happens.
 
 ![The Microsoft Teams chat when pasting the link to the SharePoint agent. There is a link unfurling extension that renders the link with a nice looking card, providing information about the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-05.png)
 
-When you paste the link into a group chat, you will see a nice looking adaptive card providing information about the agent. This happens due to a custom link unfurling extension for Teams that handles the .agent files. Send the chat message with the link. The adaptive card will slightly change its rendering and will provide you a command to **Add to this chat** the agent.
+When you paste the link into a group chat, you will see a nice looking adaptive card providing information about the agent. This happens due to a custom link unfurling extension for Teams that handles the .agent files. Send the chat message with the link. The adaptive card will slightly change its rendering and will provide you a command to **Add to this chat** the agent and another command to **View details** about the agent.
 
-![The Microsoft Teams chat rendering the adaptive card for the link to the agent. There is a command button to "Add to this chat" the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-06.png)
+![The Microsoft Teams chat rendering the adaptive card for the link to the agent. There is a command button to "Add to this chat" the agent and another command to "View details" about the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-06.png)
 
-Select the command, and wait few seconds. In case of successful result you will see a message confirming that the agent was added to the chat and you will also promptly see a welcome message from the agent itself. In case of any issue, the command button to **Add to this chat** will become disabled and the text will change to **Error adding to chat**. You can always try to refresh the chat and try again adding the agent.
+Select the command **Add to this chat**, and wait few seconds. In case of successful result you will see a message confirming that the agent was added to the chat and you will also promptly see a welcome message from the agent itself. In case of any issue, the command button to **Add to this chat** will become disabled and the text will change to **Error adding to chat**. You can always try to refresh the chat and try again adding the agent.
 
 ![The Microsoft Teams chat informing that the agent was added and with the welcome message from the agent itself.](../../../assets/images/make/sharepoint-agents-02/share-spagent-07.png)
 
