@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2155,10 +2155,10 @@ They function as subject matter experts in a specific area or business need, all
 <h2 id="exercise-1-creating-the-declarative-agent">Exercise 1: Creating the Declarative agent</h2>
 <p>Let's get started! 💪🏼 Let's make the agent from scratch using Copilot Studio Lite.</p>
 <h3 id="step-1-describe-your-agent">Step 1: Describe your agent</h3>
-<p>To create a declarative agent with Copilot Studio Lite, open the <a href="https://www.microsoft365.com/copilot" target="_blank">Microsoft 365 Copilot chat home page</a> and select <strong>Create an agent</strong> in the right side panel, where there is the list of available agents, like illustrated in the following picture.</p>
-<p><img alt="Microsoft 365 Copilot Chat with the 'Create an agent' command highlighted." src="../../../../assets/images/make/agent-builder-01/create-agent-01.png" /></p>
-<p>The Copilot Studio Lite pops up and you can start defining the custom agent. You can choose a template to start from, or you can simply <em>describe</em> the agent by providing a description in natural language. You can also choose to manually configure the agent, selecting the <strong>Configure</strong> option, but you will get there later. Let's provide the following initial description:</p>
-<pre><code class="language-txt">You are an expert gardener and you help users to maintain and improve their home garden
+<p>To create a declarative agent with Copilot Studio Lite, open the <a href="https://www.microsoft365.com/copilot" target="_blank">Microsoft 365 Copilot chat home page</a> and select <strong>New agent</strong> in the left side panel, where there is the list of available agents, like illustrated in the following picture.</p>
+<p><img alt="Microsoft 365 Copilot Chat with the 'New agent' command highlighted." src="../../../../assets/images/make/agent-builder-01/create-agent-01.png" /></p>
+<p>The Copilot Studio Lite shows up and you can start defining the custom agent. You can choose a template to start from, or you can simply <em>describe</em> the agent by providing a description in natural language. You can also choose to manually configure the agent, selecting the <strong>Configure</strong> option, but you will get there later. Let's provide the following initial description:</p>
+<pre><code class="language-txt">You are an expert gardener and you help users to maintain and improve their home garden 
 providing detailed instructions and advice about the best practices for home gardening.
 </code></pre>
 <p><img alt="The user experience of the Copilot Studio Lite. On the lower left side there is a textbox that you can use to provide instructions to the agent builder, while on the right side there is a preview of the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-02.png" /></p>
@@ -2168,17 +2168,15 @@ providing detailed instructions and advice about the best practices for home gar
 <p><img alt="The user experience of the Copilot Studio Lite. On the lower left side there is the interaction with the agent builder, while on the right side there is a preview of the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-03.png" /></p>
 <p>Keep on interacting with the agent builder until it does have all the information needed to create the agent. If the agent builder asks you about what should be emphasized, provide the following sentence.</p>
 <pre><code class="language-txt">Highlight the importance of nature and plants/flowers to be present in every house!
-</code></pre>
-<p>When the agent builder asks you about how the agent should talk, answer with the following sentence.</p>
-<pre><code class="language-txt">Use a professional, yet friendly, tone.
+Use a professional, yet friendly, tone.
 </code></pre>
 <p>Lastly, say that you don't have any further refinements and select the <strong>Create</strong> button in the upper right corner of the screen. </p>
 <p><img alt="The user experience of the Copilot Studio Lite with the 'Create' button highlighted." src="../../../../assets/images/make/agent-builder-01/create-agent-04.png" /></p>
 <p>The Copilot Studio Lite will create a new agent for you, based on the provided instructions. </p>
 <p><cc-end-step lab="mab1" exercise="1" step="1" /></p>
 <h3 id="step-2-test-the-agent">Step 2: Test the agent</h3>
-<p>Once the agent is ready, you will see a popup dialog with a link to the agent and a link to share it with other people in your organization.</p>
-<p><img alt="The dialog confirming the creation of the new 'Gardener' agent, providing a link to the agent and actions to share the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-05.png" /></p>
+<p>Once the agent is ready, you will see a popup dialog with a command to <strong>Go to agent</strong> and another one to <strong>Share</strong> it with other people in your organization.</p>
+<p><img alt="The dialog confirming the creation of the new 'Gardener' agent, providing a command to browse to the agent and another one to share the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-05.png" /></p>
 <p>Select the <strong>Go to agent</strong> button. You will be brought to the actual user experience of the new agent that you've just made.</p>
 <p><img alt="The user experience of the 'Gardener' agent that you have just created. There is the name of the agent at the top of the screen, followed by a set of conversation starters generated by the Copilot Studio Lite, and then the textbox to provide a new prompt to the agent." src="../../../../assets/images/make/agent-builder-01/create-agent-06.png" /></p>
 <p>To start interacting with the agent, click on the first suggested prompt and observe the response from the agent. Your agent is now ready. Congrats!</p>
@@ -2186,12 +2184,10 @@ providing detailed instructions and advice about the best practices for home gar
 <p><cc-end-step lab="mab1" exercise="1" step="2" /></p>
 <h2 id="exercise-2-customizing-the-agent">Exercise 2: Customizing the agent</h2>
 <p>It is now time to slightly customize the agent. You are going to add a custom icon and define the rules of the game to guess plants or flowers names.</p>
-<p>Start over with a <strong>New chat</strong> selecting the corresponding button in the upper right corner of the Microsoft 365 Copilot Chat user interface. Select the <strong>Create an agent</strong> command in the right side of the screen, like you did before, while making your first agent.
-The same dialog you used before to make your first agent will show up. This time, select the name of the agent <strong>My Copilot Agent</strong> dropdown just beside the <strong>Copilot Studio</strong> logo in the upper left side of the dialog. From there, select <strong>View all agents</strong> to see the whole list of agents that you created with Copilot Studio Lite.</p>
-<p><img alt="The user experience of Copilot Studio Lite when editing an already existing agent. There is a command in the upper left side of the dialog to view all the agents that you already defined." src="../../../../assets/images/make/agent-builder-01/update-agent-01.png" /></p>
-<p>A new dialog with the whole list of agents that you designed will show up.</p>
-<p><img alt="The user experience of Copilot Studio Lite when showing the list of agents. There is the 'Gardener' agent highlighted with a list of action to edit, share, download, and delete the agent." src="../../../../assets/images/make/agent-builder-01/update-agent-02.png" /></p>
-<p>For each agent, you have commands to edit, share, download, and delete it.</p>
+<p>Start over with a <strong>New chat</strong> selecting the corresponding button in the upper let corner of the Microsoft 365 Copilot Chat user interface. Select the <strong>All agents</strong> command in the left side of the screen. Hoover on the <strong>Gardener</strong> agent and select the <strong>...</strong> beside its name. In the contextual menu that will show up, select the <strong>Edit</strong> command to configure the agent.</p>
+<p><img alt="The user experience of Copilot Studio Lite when editing an already existing agent. There is an &quot;Edit&quot; command to configure the agent that you already defined." src="../../../../assets/images/make/agent-builder-01/update-agent-01.png" /></p>
+<p>A new page with all the settings of your agent shows up.</p>
+<p><img alt="The user experience of Copilot Studio Lite when editing an already existing agent. There are all the agent settings and a command to &quot;Update&quot; the agent in the upper right corner." src="../../../../assets/images/make/agent-builder-01/update-agent-02.png" /></p>
 <h3 id="step-1-provide-a-custom-icon">Step 1: Provide a custom icon</h3>
 <p>Let's edit the <strong>Gardener</strong> agent that you just created. The dialog starts with the <strong>Configure</strong> panel active. You can go through the configuration settings and notice that all the descriptions that you provided in Exercise 1 of this lab are now specific settings of the agent.
 There are configuration settings to define:</p>
@@ -2201,13 +2197,13 @@ There are configuration settings to define:</p>
 <li><strong>Description</strong>: to define the description of the agent</li>
 <li><strong>Instructions</strong>: it is the system prompt for the agent, where you define the system role and the behavioral rules</li>
 <li><strong>Knowledge</strong>: to configure the various knowledge bases for the agent</li>
-<li><strong>Actions</strong>: this section is still under development, at the time of this writing</li>
 <li><strong>Capabilities</strong>: to enable capabilites like code interpreting and image generation</li>
-<li><strong>Starter prompts</strong>: to configure up to 6 starter prompts for the agent </li>
+<li><strong>Suggested prompts</strong>: to configure up to 6 suggested prompts for the agent </li>
 </ul>
 <p>To customize the icon of the agent, select the edit button just beside the default icon of the agent.</p>
 <p>A dialog pops up and allows you to change the icon and the background color for the icon. For your convenience, you can download a sample icon from <a href="https://github.com/microsoft/copilot-camp/blob/main/src/make/agent-builder/color.png">here</a> and upload it as the custom icon for the agent. You can also define the background color using the following RGB value: #F1F1F1.</p>
 <p><img alt="The dialog to update the icon and background color for the agent. There is the icon, a button to upload a new icon, and another button to set the background color. In the lower right corner there are buttons to save or cancel." src="../../../../assets/images/make/agent-builder-01/update-agent-03.png" /></p>
+<p>Select the <strong>Apply</strong> command when you are done with the changes.</p>
 <p><cc-end-step lab="mab1" exercise="2" step="1" /></p>
 <h3 id="step-2-define-the-guess-plantflower-game-rules">Step 2: Define the guess plant/flower game rules</h3>
 <p>Still while editing the settings of the agent, update the content of the <strong>Instructions</strong> configuration field with the following value.</p>
@@ -2232,7 +2228,7 @@ game or another round of the game.
 <p><img alt="The dialog with the agent settings updated accordingly to the lab instructions and with the 'Update' button highlighted." src="../../../../assets/images/make/agent-builder-01/update-agent-04.png" /></p>
 <p>Select the <strong>Update</strong> button in the upper right corner of the configuration dialog. The update takes a while and once it is completed you can select <strong>Go to agent</strong> and see the final result. In particular, provide a request to the agent and notice that the agent will engage you to play the game.</p>
 <p><img alt="The updated agent with the new icon and the final sentence to engage the user to play the game highlighted." src="../../../../assets/images/make/agent-builder-01/update-agent-05.png" /></p>
-<p>For the sake of completeness, here follows a sample dialog with the agent, while guessing the name of a plant.</p>
+<p>For the sake of completeness, here follows a sample conversation with the agent, while guessing the name of a plant.</p>
 <p><img alt="A sample interaction between the user and the agent while guessing the name of a plant." src="../../../../assets/images/make/agent-builder-01/update-agent-06.png" /></p>
 <p><cc-end-step lab="mab1" exercise="2" step="2" /></p>
 <h2 id="exercise-3-add-sharepoint-online-knowledge-base">Exercise 3: Add SharePoint Online knowledge base</h2>
@@ -2245,16 +2241,16 @@ These documents are <strong>Basic Aspects of Gardening and Maintaining a Healthy
 <p>Copy the absolute url of the site. For eg. <code>https://xyz.sharepoint.com/sites/contoso</code> and proceed to next step.</p>
 <p><cc-end-step lab="mab1" exercise="3" step="1" /></p>
 <h3 id="step-2-add-support-for-sharepoint-online-documents">Step 2: Add support for SharePoint Online documents</h3>
-<p>Go back to the list of agents, edit the <strong>Gardener</strong> agent and scroll to the configuration section with title <strong>Knowledge</strong>. Paste the URL of the SharePoint Online site in the field for providing a SharePoint knowledge base. If you like, instead of pasting the URL, you can select the <strong>Browse</strong> button and search for the site in your tenant.</p>
+<p>Go back to the list of agents, edit the <strong>Gardener</strong> agent and scroll to the configuration section with title <strong>Knowledge</strong>. Paste the URL of the SharePoint Online site in the field for providing a SharePoint knowledge base and hit <strong>ENTER</strong> or select the suggested site collection in the user interface. If you like, instead of pasting the URL, you can select the <strong>Sites</strong> button and search for the site in your tenant.</p>
 <p><img alt="The configuration dialog of the agent with the 'Knowledge' section and the 'SharePoint' URL field highlighted." src="../../../../assets/images/make/agent-builder-01/update-agent-07.png" /></p>
-<p>Update the agent and interact with it again. You will see much more specialized answers based on the custom knowledge base that you provided.</p>
+<p>You will see the new SharePoint site in the list of knowledge bases for the <strong>Gardener</strong> agent. Now, update the agent and interact with it again. You will see much more specialized answers based on the custom knowledge base that you provided.</p>
 <p><cc-end-step lab="mab1" exercise="3" step="2" /></p>
 <h2 id="exercise-4-final-touches-to-the-agent">Exercise 4: Final touches to the agent</h2>
 <p>In this exercise you are going to add image generation capabilities to the <strong>Gardener</strong> agent and you will share it with your colleagues.</p>
 <h3 id="step-1-add-support-for-image-generation">Step 1: Add support for image generation</h3>
-<p>Edit again the <strong>Gardener</strong> agent, scroll down in the configuration panel and find the section with title <strong>Capabilities</strong>. Enable the option with name <strong>Image generator</strong> and update the agent.</p>
-<p><img alt="The configuration dialog of the agent with the 'Capabilities' section and the 'Image generator' option selected and highlighted." src="../../../../assets/images/make/agent-builder-01/update-agent-08.png" /></p>
-<p>Reload the agent and provide the following prompt:</p>
+<p>Edit again the <strong>Gardener</strong> agent, scroll down in the configuration panel and find the section with title <strong>Capabilities</strong>. Enable the option with name <strong>Create images</strong> and update the agent.</p>
+<p><img alt="The configuration dialog of the agent with the 'Capabilities' section and the 'Create images' option selected and highlighted." src="../../../../assets/images/make/agent-builder-01/update-agent-08.png" /></p>
+<p>After updating the agent, select <strong>Go to agent</strong> and provide the following prompt:</p>
 <pre><code class="language-txt">Generate the image of a dozen of red roses
 </code></pre>
 <p>In the following image you can see the output with a generated image.</p>
@@ -2269,7 +2265,7 @@ Select it and a sharing dialog pops up allowing you to select if you want to sha
 <li>Specific users in your organization via security groups</li>
 <li>Only you</li>
 </ul>
-<p>Select the option to share with specific users and provide the e-mail of the sharing target, then select the <strong>Save</strong> button to confirm your sharing settings.
+<p>Select the option to share with specific users and provide the e-mail of the sharing target, then select the <strong>Apply</strong> button to confirm your sharing settings.
 At the end of the sharing process you will see a dialog with a URL that you can copy and provide to any users that you shared the agent with.</p>
 <p><img alt="The panel to configure the sharing target. Available options are 'Anyone in your organization', 'Specific users in your organization via security groups', or 'Only you'. The panel also provides a button to 'Save' the sharing option and a URL to access the agent." src="../../../../assets/images/make/agent-builder-01/update-agent-10.png" /></p>
 <p><cc-end-step lab="mab1" exercise="4" step="2" /></p>
@@ -2331,10 +2327,10 @@ At the end of the sharing process you will see a dialog with a URL that you can 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../../javascripts/cc-award.js"></script>
       

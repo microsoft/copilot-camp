@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2139,8 +2139,8 @@ for (const div of toc) {
 <h2 id="exercise-2-creating-your-first-sharepoint-agent">Exercise 2 : Creating your first SharePoint agent</h2>
 <p>In this exercise you are going to create the initial version of the SharePoint agent for managing HR documents.</p>
 <h3 id="step-1-creating-the-agent">Step 1: Creating the agent</h3>
-<p>Select all the files in the document library that you created in the previous exercise by clicking on the selection button 1️⃣, then select the <strong>Create an agent</strong> 2️⃣ command in the command bar.</p>
-<p><img alt="The SharePoint Online interface of a document library with all the documents selected and the &quot;Create an agent&quot; command highlighted in the command bar." src="../../../../assets/images/make/sharepoint-agents-01/create-sp-agent-01.png" /></p>
+<p>Select the <strong>AI actions</strong> command 1️⃣, then select the <strong>Create an agent</strong> 2️⃣ command in the command bar.</p>
+<p><img alt="The SharePoint Online interface of a document library and the &quot;Create an agent&quot; command highlighted in the command bar." src="../../../../assets/images/make/sharepoint-agents-01/create-sp-agent-01.png" /></p>
 <div class="admonition important">
 <p class="admonition-title">Creating SharePoint agents from files or folders</p>
 <p>If you do not select any file in the library and you select the <strong>Create an agent</strong> command, the agent will target the whole content of the current document library. If you explicitly select files or sub-folders in the library and then you select the <strong>Create an agent</strong> command, the agent will target only the selected content. Keep into account that you cannot select more than 20 items for a specific agent. In case you will select more than 20 items, you will see an error message like <em>"Sources limit exceeded. The maximum number of sources you can add is 20. Remove XX sources to save this copilot."</em> and you will not be able to create the agent.</p>
@@ -2151,25 +2151,32 @@ for (const div of toc) {
 <p class="admonition-title">Permissions to create a SharePoint agent</p>
 <p>In order to being able to create a SharePoint agent, you need contribute permissions on the target library or site. In fact, under the cover of the agent a new <strong>.agent</strong> file will be created and users need to have proper permissions to do so.</p>
 </div>
+<p>Select the <strong>Create</strong> command to create the agent and start using it.</p>
+<p><img alt="The dialog confirming that a new SharePoint agent was created. There is a command to &quot;Chat with agent&quot; and another one to &quot;Share agent&quot;." src="../../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02b.png" /></p>
+<p>A new dialog window shows up and allows you to <strong>Chat with agent</strong>, which opens a new browser tab in Microsoft 365 Copilot Chat and allows you to interact with the new agent. Feel free to interact with the agent providing prompts about the content of the documents in the knowledge base. For example, you can use the following prompt:</p>
+<pre><code class="language-txt">What are the hiring procedures of our company?
+</code></pre>
+<p>When you are done playing with the new agent in the Microsoft 365 Copilot Chat, close the current browser tab and go back to the SharePoint Online document library that you used to create the SharePoint agent.</p>
 <p><cc-end-step lab="msa1" exercise="2" step="1" /></p>
 <h3 id="step-2-testing-the-agent">Step 2: Testing the agent</h3>
-<p>Select the <strong>Open agent</strong> button in the previous dialog window and start playing with your new SharePoint agent. A full screen dialog will show up and you will able to write prompts to interact with the agent.</p>
+<p>You can see there is a new file with <strong>.agent</strong> extension that was created in the current document library. Select the <strong>...</strong> menu of the file and then select <strong>Preview</strong> to interact with the agent from within the SharePoint Online user experience. A full screen dialog will show up and you will able to write prompts to interact with the agent.</p>
 <p><img alt="The SharePoint Online interface showing the new SharePoint agent. There are suggested starter prompts at the top of the page and a textarea to write a prompt in the lower part of the screen." src="../../../../assets/images/make/sharepoint-agents-01/create-sp-agent-03.png" /></p>
 <p>Try writing the following prompts and see the results:</p>
-<ul>
-<li>What is the process to hire new employees?</li>
-<li>How can I improve my career?</li>
-</ul>
+<pre><code class="language-txt">What is the process to hire new employees?
+</code></pre>
+<p>or </p>
+<pre><code class="language-txt">How can I improve my career?
+</code></pre>
 <p>The proposed answers will summarize the content of the documents selected as the knowledge base for the agent. Notice that the engine processing the prompts is Microsoft 365 Copilot and there is a clear disclaimer about the AI-generated content 1️⃣. At the bottom of the response there are references to documents 2️⃣ used to produce the response. The agent also suggests follow up prompts 3️⃣ to dig into the topic.</p>
 <p><img alt="The SharePoint Online interface showing the new SharePoint agent. There is a prompt and the answer provided by the agent. The answer includes a disclaimer about the content generated by AI, a reference to an actual document in the library, and a list of suggested prompts." src="../../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-01.png" /></p>
-<p>If you close the agent dialog, you can notice that in the library there is a new file with name <strong>New agent.agent</strong>. That's the file representing the new SharePoint agent definition. You can rename the file using the standard file rename feature of SharePoint Online and the name of the agent, as well as the title in the agent's dialog, will change accordingly. For example, let's rename it to <strong>HR agent</strong>.</p>
+<p>The <strong>.agent</strong> file represents the new SharePoint agent definition. You can rename the file using the standard file rename feature of SharePoint Online and the name of the agent, as well as the title in the agent's dialog, will change accordingly. For example, let's rename it to <strong>HR agent</strong>. Selecting the agent file in the document library will always open a new tab and give the user experience of the agent in the Microsoft 365 Copilot Chat.</p>
 <p><cc-end-step lab="msa1" exercise="2" step="2" /></p>
 <h2 id="exercise-3-fine-tuning-the-agent">Exercise 3 : Fine tuning the agent</h2>
 <p>In this exercise you will learn how to fine tune the <strong>HR agent</strong> configuring additional settings, adjusting the instructions, etc. </p>
 <h3 id="step-1-updating-icon-and-title">Step 1: Updating icon and title</h3>
-<p>Select the <strong>HR agent.agent</strong> file in the document library, select the <strong>...</strong> to open the ECB menu of SharePoint Online and select the <strong>Edit</strong> command. As a suitable alternative, you can also select the <strong>Edit</strong> command in the library command bar, if you like.</p>
+<p>Select the <strong>...</strong> of the <strong>HR agent.agent</strong> file in the document library, select to open the ECB menu of SharePoint Online and select the <strong>Edit</strong> command. As a suitable alternative, you can also select the <strong>Edit</strong> command in the library command bar, if you like.</p>
 <p><img alt="The ECB menu of SharePoint Online when the .agent file is selected. The &quot;Edit&quot; command is highlighted." src="../../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-01.png" /></p>
-<p>A new dialog window will show up and will allow you to manage the following settings:</p>
+<p>A new dialog window shows up and allows you to manage the following settings:</p>
 <ul>
 <li>Overview: name, icon, and purpose/description</li>
 <li>Sources: you can configure the data sources (sites, libraries, or files) to use as the knowledge base</li>
@@ -2180,12 +2187,10 @@ for (const div of toc) {
 <pre><code class="language-text">This is an agent supporting users to find information, policies, and rules based on the HR department knowledge base
 </code></pre>
 <p><img alt="The dialog window to edit the agent settings when it comes to update the agent name, icon, and purpose." src="../../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-02.png" /></p>
-<p>There is also a button to <strong>Add advanced customization in Copilot Studio</strong>. However, this is a functionality that is not yet available and that will come in the future.</p>
 <p>Now select the <strong>Sources</strong> tab in the dialog window to configure the knowledge base of the agent. At the time of this writing, the only data sources that you can configure are SharePoint Online sites, document libraries, or documents. In the future it will be possible to rely on Microsoft Copilot Studio to configure additional knowledge sources. At the moment, SharePoint Online is the only supported data source for a SharePoint agent.</p>
 <p><img alt="The dialog window to manage the data sources for the agent. There are fields to configure additional sites, libraries, or documents." src="../../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-03.png" /></p>
-<p>There is a section to <strong>Add a SharePoint site</strong> 1️⃣, which allows you to add additional site collections to the data sources of the agent. You can search sites by title, or you can simply provide the actual URL of the site that you want to add.
-You can also select the <strong>Remove</strong> 2️⃣ command to remove an already existing site. Be careful that, in case you remove the current site, from which you've built the agent, the configuration tool will completely remove all the documents that you selected when you initially configured the agent.
-Lastly, you can <strong>Add document libraries, folders or files</strong> 3️⃣ as long as the overall number of data source items will not exceed the limit of 20 items.</p>
+<p>There is a section to <strong>Add a source</strong> 1️⃣, which allows you to add additional site collections to the data sources of the agent or specific files and folders from OneDrive for Business. You can search sites by title, or you can simply provide the actual URL of the site that you want to add. You can also select <strong>Add contents from this site</strong> 2️⃣, as long as the overall number of data source items will not exceed the limit of 20 items.
+Lastly, you can select the <strong>Remove this site and all contents</strong> 3️⃣ command to remove an already selected site. Be careful that, in case you remove the current site, from which you've built the agent, the configuration tool will completely remove all the documents that you selected when you initially configured the agent.</p>
 <p><cc-end-step lab="msa1" exercise="3" step="1" /></p>
 <h3 id="step-2-updating-the-instructions">Step 2: Updating the instructions</h3>
 <p>On the <strong>Behavior</strong> tab of the configuration dialog, you can configure an initial <strong>Welcome messaging</strong> 1️⃣ for your agent.
@@ -2216,18 +2221,18 @@ Do not allow the user to ask you questions about other employees' personal and s
 In case of any error or issue, inform the user with the following prompt:
 I'm sorry, something wrong happened. Please, try again soon.
 </code></pre>
-<p>The above instructions are just for the sake of providing an example, they are not fully complete and do not aim to be a perfect and bullet proof template. Notice that the instructions rely on MD document structure to highlight the various sections of the instructions text.</p>
+<p>The above instructions are just for the sake of providing an example, they are not fully complete and do not aim to be a perfect and bullet proof template. Notice that the instructions rely on MD document structure to highlight the various sections of the instructions text. When you are done with the changes, select the <strong>Save and close</strong> command to update the SharePoint agent definition.</p>
 <p>Remember that you can write instructions long up to 8000 characters, and you are kindly invited to use as much details as you can. <a href="../../../beyond-agents/beginner-agent" target="_blank">Here</a> you can find the <strong>Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)</strong> lab, which provides you detailed information about how to write professional prompt instructions for your agents. You can also refer to the article <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-instructions" target="_blank">Write effective instructions for declarative agents</a> to learn detailed information about how to write effective prompts.</p>
 <p><cc-end-step lab="msa1" exercise="3" step="2" /></p>
 <h3 id="step-3-testing-the-agent">Step 3: Testing the agent</h3>
-<p>Once you have updated the agent icon, purpose, and instructions select the <strong>Save and close</strong> button. Close the dialog and interact again with the agent.</p>
+<p>Once you have updated the agent icon, purpose, and instructions select the agent and interact with it again.</p>
 <p>For example, provide the following prompts:</p>
 <pre><code class="language-text">Hello!
 </code></pre>
 <pre><code class="language-text">How can I improve my career? Provide me a list of suggested actions.
 </code></pre>
 <p><img alt="The updated behavior of the agent, based on the improved instructions. There are emojis, tables to render lists of items and generally speaking a more accurate respose." src="../../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-02.png" /></p>
-<p>You can notice that the agent will reply to the "Hello!" message with the welcome message configured in the instructions. Moreover, responses are more accurate, with emojis here and there, and with tables to render lists of items, accordingly to the provided instructions.</p>
+<p>You can notice that the agent will reply to the "Hello!" message with a comprehensive welcome message. Moreover, responses are more accurate, with emojis here and there, and with tables to render lists of items, accordingly to the provided instructions.</p>
 <p><cc-end-step lab="msa1" exercise="3" step="3" /></p>
 <h2 id="exercise-4-configuring-the-agent-as-default-for-the-site">Exercise 4 : Configuring the agent as default for the site</h2>
 <p>One more thing you can do with your agent is to promote it as the default agent for your site. In fact, nowadays every SharePoint Online site comes with a ready made agent. You simply need to select the Copilot command in the suite bar and the ready made agent will show up.</p>
@@ -2303,10 +2308,10 @@ Go back to the document library where you created the agent and open it. Select 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../../javascripts/cc-award.js"></script>
       
