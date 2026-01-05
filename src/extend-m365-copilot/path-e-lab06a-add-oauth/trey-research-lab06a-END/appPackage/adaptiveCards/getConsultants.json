@@ -1,0 +1,193 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "${consultantPhotoUrl}",
+                  "size": "Medium",
+                  "style": "Person"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "${name}",
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "wrap": true,
+                  "color": "Accent"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "ID: ${id}",
+                  "isSubtle": true,
+                  "spacing": "None",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "📧 ${email}",
+                  "spacing": "Small",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "📞 ${phone}",
+                  "spacing": "None",
+                  "wrap": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "FactSet",
+          "facts": [
+            {
+              "title": "📍 Location:",
+              "value": "${location.city}, ${location.state}, ${location.country}"
+            },
+            {
+              "title": "📊 Hours Available:",
+              "value": "This Month: ${forecastThisMonth}h | Next Month: ${forecastNextMonth}h"
+            },
+            {
+              "title": "⏱️ Hours Delivered:",
+              "value": "Last Month: ${deliveredLastMonth}h | This Month: ${deliveredThisMonth}h"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "💼 Skills",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Accent"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${join(skills, ', ')}",
+          "wrap": true,
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "🏆 Certifications",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Accent"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${join(certifications, ', ')}",
+          "wrap": true,
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "👔 Roles",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Accent"
+        },
+        {
+          "type": "TextBlock",
+          "text": "${join(roles, ', ')}",
+          "wrap": true,
+          "spacing": "Small"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📁 Current Projects",
+          "weight": "Bolder",
+          "size": "Medium",
+          "color": "Accent"
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "$data": "${projects}",
+              "type": "Container",
+              "spacing": "Small",
+              "style": "emphasis",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "**${projectName}** - ${role}",
+                  "wrap": true,
+                  "weight": "Bolder"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${projectDescription}",
+                  "wrap": true,
+                  "isSubtle": true,
+                  "spacing": "None"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "Client: ${clientName} | ${clientEmail}",
+                  "wrap": true,
+                  "spacing": "Small",
+                  "size": "Small"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -64,7 +64,30 @@ Think of these models like a kitchen full of specialized tools. You wouldn't use
 
 Now comes the fun part where you will actually test these models! The GitHub Models Playground is your sandbox for experimentation. Here's where the magic happens.
 
-> You'll need a [GitHub account](https://github.com/signup) to proceed. 
+### Setup Requirements
+
+**Prerequisites:**
+
+1. **GitHub Account**: [Create one free](https://github.com/signup) if needed
+
+2. **Access Verification**: Visit [GitHub Models Marketplace](https://github.com/marketplace/models)
+
+3. **Catalog Familiarity**: Browse [available models](https://github.com/marketplace?type=models)
+
+**Navigation Strategy:**
+
+- **Filter by Publisher**: Focus on established AI providers
+
+- **Filter by Capability**: Select `Chat/Completion` for text tasks
+
+- **Filter by Category**: Choose based on your needs
+
+   - **All**: General question-answering
+   - **Instruction**: Specialized domains
+   - **Multimodal**: Image and text processing
+   - **Audio**: Speech processing
+   - **Reasoning**: Complex problem-solving
+   - **Multilingual**: Multiple language support
 
 ### Getting Started
 
@@ -113,21 +136,62 @@ The playground removes the guesswork and you see real results in real time.
 
 ---
 
-## 🔄 Step 4: Review, Iterate, and Improve
+## 🔄 Step 4: Continuous Optimization Strategy
 
-Model selection isn't a one-and-done decision. It's a process of continuous refinement.
+Model selection requires ongoing refinement as your needs evolve and new models become available.
 
+### Optimization Approach
 
-## 🚀 Bonus step: Cost and other important stuff
+**Initial Implementation:**
+Choose your best-performing model based on testing results and deploy it for regular use.
 
- This final step is a bonus, but powerful.
-You can compare costs, quality and other things for models using [leaderboard](https://ai.azure.com/explore/models/leaderboard)
+**Performance Monitoring:**
+Track real-world performance over time. Note any patterns where results don't meet expectations.
+
+**Periodic Evaluation:**
+Quarterly, test new or updated models against your current choice using your standard test cases.
+
+**Strategic Adjustment:**
+Update your model selection when you find measurably better performance for your specific use cases.
+
+### Advanced Considerations
+
+**Cost-Benefit Analysis:**
+Evaluate whether premium models justify their cost through improved efficiency or quality that saves time or delivers better outcomes.
+
+**Edge Case Management:**
+Maintain a collection of challenging requests that reveal model limitations. Use these for testing new models.
+
+**Performance Documentation:**
+Keep records of what works well for different scenarios. This knowledge base becomes invaluable for future decisions.
+
+---
+
+## 🚀 Practical Considerations
+
+### Cost and Performance Analysis
+
+Use the [Azure AI Model Leaderboard](https://ai.azure.com/explore/models/leaderboard) to compare:
+
+- **Cost per request**: Budget planning and ROI calculation  
+
+- **Performance metrics**: Objective quality measurements
+
+- **Speed benchmarks**: Response time requirements
+
+### Professional Tips
+
+**Efficiency Focus**: Most tasks work well with mid-tier models. Reserve premium options for scenarios where quality differences significantly impact outcomes.
+
+**Documentation Practice**: Maintain simple records of successful model-task combinations for future reference.
+
+**Stay Current**: Test new models regularly as capabilities and options evolve rapidly.
 
 ## 📚 Resources
 
 Want to dive deeper? Explore these resources:
 
-| Task | GitHub  |Azure AI Foundry | Watch a video | Deep dive labs |
+| Task | GitHub  |Microsoft Foundry | Watch a video | Deep dive labs |
 |------|-------------------|--------------|-------------|-------------|
 | **Summarize Document** | [Mistral Small](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503)|[Mistal Small](https://ai.azure.com/explore/models/Mistral-small/version/1/registry/azureml-mistral?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18)| [Watch now](https://www.youtube.com/watch?v=tqOecUt_wCc&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=5&pp=iAQB) | [Learn more](https://github.com/microsoft/Build25-LAB324) |
 | **Transcribe Audio** | [Phi-4 Multimodal](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct)|[Phi-4-multimodal-instruct](https://ai.azure.com/explore/models/Phi-4-multimodal-instruct/version/2/registry/azureml?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18)| [Watch now](https://www.youtube.com/watch?v=VLQKZq8L9Uk&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=2) | [Learn more](https://github.com/microsoft/PhiCookBook/blob/main/md/02.Application/05.Audio/Phi4/Transciption/README.md) |

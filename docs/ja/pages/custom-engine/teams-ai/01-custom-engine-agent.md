@@ -78,16 +78,16 @@ Azure OpenAI サービスが作成されたら、リソースに移動し、左�
 
 ### 手順 2: デプロイ モデルの作成
 
-Azure OpenAI サービスで `Azure AI Foundry` に移動し、デプロイ モデルを作成します。
+Azure OpenAI サービスで `Microsoft Foundry` に移動し、デプロイ モデルを作成します。
 
-??? check "Azure AI Foundry とは?"
-    Azure AI Foundry は、`gpt-35-turbo`、`gpt-4`、`Dall-e` などの OpenAI モデルを試しながら、ユースケースに合わせたプロンプトを作成・微調整できるプレイグラウンドです。`Phi-3`、`Llama 3.1` など OpenAI 以外のモデルも扱え、Speech や Vision など他の Azure AI サービスへの入口にもなります。
+??? check "Microsoft Foundry とは?"
+    Microsoft Foundry は、`gpt-35-turbo`、`gpt-4`、`Dall-e` などの OpenAI モデルを試しながら、ユースケースに合わせたプロンプトを作成・微調整できるプレイグラウンドです。`Phi-3`、`Llama 3.1` など OpenAI 以外のモデルも扱え、Speech や Vision など他の Azure AI サービスへの入口にもなります。
 
     *Generative AI とプロンプティングについては、この Doodle to Code ビデオで学びましょう!*  
     
     <iframe src="//www.youtube.com/embed/PGI6oxbcYDc?si=02JzvwHpnOx3rsSD" frameborder="0" allowfullscreen></iframe>
 
-Azure AI Foundry で **Deployments** タブを選択し **Deploy model** > **Deploy base model** をクリックします。`gpt-4` など使用したいモデルを検索し **Confirm** をクリックします。次の項目を入力し **Deploy** を選択します:
+Microsoft Foundry で **Deployments** タブを選択し **Deploy model** > **Deploy base model** をクリックします。`gpt-4` など使用したいモデルを検索し **Confirm** をクリックします。次の項目を入力し **Deploy** を選択します:
 
 - **Deployment name:** モデル名と同じにすることを推奨 (例 `gpt-4`)  
 - **Select a model:** `gpt-4` を推奨  
@@ -102,7 +102,7 @@ Azure AI Foundry で **Deployments** タブを選択し **Deploy model** > **Dep
 
 例として "Shakespearean Writing Assistant" を選び **Use prompt** をクリックし、「tell me about Istanbul」などと質問してみましょう。詩的で描写豊かな回答に驚くはずです ✍️。
 
-![The UI of Azure AI Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
+![The UI of Microsoft Foundry while testing a model in the Chat Playground. There are setup settings on the left and a chat on the right where the 'tell me about Istanbul' prompt gets a long and detailed answer.](../../../assets/images/custom-engine-01/azure-openai-studio-chat.png)
 
 <cc-end-step lab="bta1" exercise="1" step="2" />
 

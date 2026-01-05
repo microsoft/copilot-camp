@@ -15,12 +15,12 @@ In this lab you will set up an API based on Azure Functions and install it as an
 
 ## Introduction
 
-In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the /api/consultants path) and about the current user (using the /api/me path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6](./06-add-authentication.md) you will add authentication and the ability to access the logged in user.
+In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the `/api/consultants` path) and about the current user (using the `/api/me` path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6](./06a-add-authentication-ttk.md) you will add authentication and the ability to access the logged in user.
 
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
 ???+ Question "How did you create this API?"
-    The project was created using Agents Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Agents Toolkit. Create a new app project and select "Agent", then "Declarative Agent" and "Add plugin".
+    The project was created using Microsoft 365 Agents Toolkit. You can create the same scaffolding for your own project by opening an empty folder in VS Code and going to Agents Toolkit. [Read more](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents){target=_blank}.
 
 ## Exercise 1: Configure and run the starting application
 
@@ -36,8 +36,7 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the source code zip file for the base project using [this link]
-(https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api)
+Begin by downloading the source code zip file for the base project using [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api){target=_blank}
 
 Unzip and copy `path-e-lab02-build-api` folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
@@ -58,7 +57,7 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 ### Step 4: Install the dependencies
 
-Open a command line in your working folder and type:
+Open a command line / VS Code terminal in your working folder to type and enter:
 
 ~~~sh
 npm install
@@ -70,9 +69,17 @@ npm install
 
 In Visual Studio Code, click the logo for Microsoft 365 Agents Toolkit in the left sidebar to open Agents Toolkit. Ensure you are logged into Microsoft 365 and that Custom App Uploads and Copilot Access Enabled indicators are both showing green checkmarks.
 
+> You'll need to sign into the Microsoft 365 Agents Toolkit in order to upload and test your agent from within it.
+Within the project window, select the Microsoft 365 Agents Toolkit icon from the left side menu. This will open the Agent Toolkit’s activity bar with sections like Accounts, Environment, Development etc.
+Under "Accounts" section select "Sign in to Microsoft 365". This will open a dialog from the editor to sign in or create a Microsoft 365 developer sandbox or Cancel. Select "Sign in".
+Once signed in, close the browser and go back to the project window.
+
+
 ![Visual Studio Code with the Agents Toolkit enabled and the accounts section with green checkmarks.](../../assets/images/extend-m365-copilot-02/atk-accounts-logged.png)
 
-Now you can just hit F5 to debug using Microsoft Edge, or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
+Now you can just hit F5 to debug using Microsoft Edge or in VS Code menu select **Run > Start Debugging**.
+
+Or you can hover over the "local" enviroment and click the debugger symbol that will be displayed 1️⃣, then select the browser of your choice 2️⃣.
 
 ![Visual Studio Code with the Agents Toolkit enabled, the debug mode active for local environment, and the option to start debugging in the Microsoft Edge browser.](../../assets/images/extend-m365-copilot-02/atk-debug.png)
 
@@ -96,7 +103,7 @@ Now click the "Send Request" link in **treyResearchAAPI.http** just above the li
 
 ![Visual Studio Code with the sample treyResearchAPI.http file open and the shortcut to send a sample HTTP request while in debug mode.](../../assets/images/extend-m365-copilot-02/run-in-ttk04.png)
 
-You should see the response in the right panel, and a log of the request in the bottom panel. The response shows the information about the logged-in user, but since we haven't implemented authentication as yet (that's coming in Lab 6), the app will return information on the fictitious consultant "Avery Howard". Take a moment to scroll through the response to see details about Avery, including a list of project assignments.
+You should see the response in the right panel, and a log of the request in the bottom panel. The response shows the information about the logged-in user, but since we haven't implemented authentication as yet (that's coming in Lab 6a), the app will return information on the fictitious consultant "Avery Howard". Take a moment to scroll through the response to see details about Avery, including a list of project assignments.
 
 ![Visual Studio Code with the output of the request triggered in the treyResearchAPI.http file.](../../assets/images/extend-m365-copilot-02/run-in-ttk05.png)
 
@@ -106,7 +113,11 @@ You should see the response in the right panel, and a log of the request in the 
 
 Now try sending the POST request for `{{base_url}}/me/chargeTime`. This will charge 3 hours of Avery's time to the Woodgrove Bank project. This is stored in the project database, which is a locally hosted emulation of Azure Table Storage, so the system will remember that Avery has delivered these hours. (To test this, call the `/me` resource again and look at the `"deliveredThisMonth"` property under the Woodgrove project).
 
-Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to Copilot so it can answer user prompts.
+Continue to try the various GET requests in the .http file to find consultants with various skills, certifications, roles, and availability. All this information will be available to your agent so it can answer user prompts.
+
+Once done testing, stop the debugger by going to the VS Code menu **Run > Stop Debugging**. Also close all windows inside VS Code like .http file 1️⃣ as well as the Response view 2️⃣.
+
+![Visual Studio Code close windows](../../assets/images/extend-m365-copilot-02/close-window.png)
 
 <cc-end-step lab="e2" exercise="2" step="2" />
 
