@@ -35,9 +35,9 @@ By default, end users can't upload applications directly; instead a Teams Admini
 
 1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
 
-2️⃣ In the left pane of the admin center, select **Show all** to open up the entire navigation. When the pane opens, select Teams to open the Microsoft Teams admin center.
+2️⃣ In the left pane of the admin center, select **Show all** to open up the entire navigation. When the pane opens, select **Teams** to open the Microsoft Teams admin center.
 
-3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup Policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default) policy**.
+3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default)** policy.
 
 4️⃣ Ensure the first switch, **Upload custom apps** is turned **On**.
 
@@ -54,6 +54,7 @@ You can complete these labs on a Windows, Mac, or Linux machine, but you do need
 ### Step 1: Install Visual Studio Code
 
 It should be no surprise that **Agents Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
+The version of VS Code used for authoring these labs : 1.106.3
 
 <cc-end-step lab="e0" exercise="2" step="1" />
 
@@ -67,7 +68,7 @@ Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){tar
 
 ### Step 3: Install Agents Toolkit
 
-These labs are based on **Microsoft 365 Agents Toolkit** version 6.0.
+These labs are based on **Microsoft 365 Agents Toolkit** version 6.4.1.
 
 !!! tip "What is Agents Toolkit?"
     Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.

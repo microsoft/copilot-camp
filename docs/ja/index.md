@@ -18,9 +18,9 @@ Microsoft 365 Copilot と同じインフラストラクチャ、オーケスト�
 
 ## 🧪 エージェント構築を始めるには
 
-ラボは大きく 3 つのパスに分かれています。ノーコード/ローコード アプローチを希望する場合は ** Maker ** パス（「MAB」「MSA」「MCS」ラボ）を選択してください。Microsoft 365 Copilot を拡張したい場合は ** Extend ** パス（「E」ラボ）を選択します。Azure AI Foundry など任意の AI を使用して完全なカスタム エージェントを構築したい場合は ** Build ** パス（「BMA」ラボ）を選びます。
+ラボは大きく 3 つのパスに分かれています。ノーコード/ローコード アプローチを希望する場合は ** Maker ** パス（「MAB」「MSA」「MCS」ラボ）を選択してください。Microsoft 365 Copilot を拡張したい場合は ** Extend ** パス（「E」ラボ）を選択します。Microsoft Foundry など任意の AI を使用して完全なカスタム エージェントを構築したい場合は ** Build ** パス（「BMA」ラボ）を選びます。
 
-![ノーコード/ローコード アプローチを希望する場合は Maker ラボ（「MAB」「MSA」「MCS」）を選択。Microsoft 365 Copilot を拡張する場合は Extend ラボ（「E」）。Azure AI Foundry などで完全なカスタム エージェントを構築する場合は Build ラボ（「BMA」）を選択。](../assets/images/CopilotCamp-Flow-Chart.png)
+![ノーコード/ローコード アプローチを希望する場合は Maker ラボ（「MAB」「MSA」「MCS」）を選択。Microsoft 365 Copilot を拡張する場合は Extend ラボ（「E」）。Microsoft Foundry などで完全なカスタム エージェントを構築する場合は Build ラボ（「BMA」）を選択。](../assets/images/CopilotCamp-Flow-Chart.png)
 
 ---8<--- "ja/main-links.md"
 

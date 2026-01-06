@@ -84,22 +84,22 @@ Copilot Chat 上でも、エージェントが同様の動作で応答するこ�
 
 ---8<--- "ja/b-congratulations.md"
 
-🎉 おめでとうございます! Microsoft 365 Agents SDK と Azure AI Foundry を使用して、初めてのカスタム エンジン エージェントを構築しました。
+🎉 おめでとうございます! Microsoft 365 Agents SDK と Microsoft Foundry を使用して、初めてのカスタム エンジン エージェントを構築しました。
 
 このラボで学んだこと:
 
-* Agent Playground を使用して Azure AI Foundry に AI エージェントを構成する方法
+* Agent Playground を使用して Microsoft Foundry に AI エージェントを構成する方法
 * 企業ドキュメントをアップロードしてエージェントの応答を根拠付ける方法
 * Visual Studio で M365 Agents SDK を使用してボットをスキャフォールディングする方法
 * Semantic Kernel を追加し、Azure AI Agent Service に接続する方法
-* ボットを Azure AI Foundry のエージェントと統合してリアルタイムで根拠のある推論を行う方法
+* ボットを Microsoft Foundry のエージェントと統合してリアルタイムで根拠のある推論を行う方法
 * **Microsoft Teams** と **Copilot Chat** にエージェントをデプロイしてテストする方法
 
 ## リソース
 
 - [Copilot Developer Camp](https://aka.ms/copilotdevcamp)
 - [M365 Agents SDK docs](https://aka.ms/open-hack/m365agentssdk)
-- [Azure AI Foundry](https://ai.azure.com)
+- [Microsoft Foundry](https://ai.azure.com)
 - [Copilot 拡張性の詳細](https://aka.ms/extensibility-docs)
 
 <cc-next label="Home" url="/" />

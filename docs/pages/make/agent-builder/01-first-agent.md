@@ -37,14 +37,14 @@ Let's get started! 💪🏼 Let's make the agent from scratch using Copilot Stud
 
 ### Step 1: Describe your agent
 
-To create a declarative agent with Copilot Studio Lite, open the [Microsoft 365 Copilot chat home page](https://www.microsoft365.com/copilot){target=_blank} and select **Create an agent** in the right side panel, where there is the list of available agents, like illustrated in the following picture.
+To create a declarative agent with Copilot Studio Lite, open the [Microsoft 365 Copilot chat home page](https://www.microsoft365.com/copilot){target=_blank} and select **New agent** in the left side panel, where there is the list of available agents, like illustrated in the following picture.
 
-![Microsoft 365 Copilot Chat with the 'Create an agent' command highlighted.](../../../assets/images/make/agent-builder-01/create-agent-01.png)
+![Microsoft 365 Copilot Chat with the 'New agent' command highlighted.](../../../assets/images/make/agent-builder-01/create-agent-01.png)
 
-The Copilot Studio Lite pops up and you can start defining the custom agent. You can choose a template to start from, or you can simply *describe* the agent by providing a description in natural language. You can also choose to manually configure the agent, selecting the **Configure** option, but you will get there later. Let's provide the following initial description:
+The Copilot Studio Lite shows up and you can start defining the custom agent. You can choose a template to start from, or you can simply *describe* the agent by providing a description in natural language. You can also choose to manually configure the agent, selecting the **Configure** option, but you will get there later. Let's provide the following initial description:
 
 ```txt
-You are an expert gardener and you help users to maintain and improve their home garden
+You are an expert gardener and you help users to maintain and improve their home garden 
 providing detailed instructions and advice about the best practices for home gardening.
 ```
 
@@ -62,11 +62,6 @@ Keep on interacting with the agent builder until it does have all the informatio
 
 ```txt
 Highlight the importance of nature and plants/flowers to be present in every house!
-```
-
-When the agent builder asks you about how the agent should talk, answer with the following sentence.
-
-```txt
 Use a professional, yet friendly, tone.
 ```
 
@@ -80,9 +75,9 @@ The Copilot Studio Lite will create a new agent for you, based on the provided i
 
 ### Step 2: Test the agent
 
-Once the agent is ready, you will see a popup dialog with a link to the agent and a link to share it with other people in your organization.
+Once the agent is ready, you will see a popup dialog with a command to **Go to agent** and another one to **Share** it with other people in your organization.
 
-![The dialog confirming the creation of the new 'Gardener' agent, providing a link to the agent and actions to share the agent.](../../../assets/images/make/agent-builder-01/create-agent-05.png)
+![The dialog confirming the creation of the new 'Gardener' agent, providing a command to browse to the agent and another one to share the agent.](../../../assets/images/make/agent-builder-01/create-agent-05.png)
 
 Select the **Go to agent** button. You will be brought to the actual user experience of the new agent that you've just made.
 
@@ -98,16 +93,13 @@ To start interacting with the agent, click on the first suggested prompt and obs
 
 It is now time to slightly customize the agent. You are going to add a custom icon and define the rules of the game to guess plants or flowers names.
 
-Start over with a **New chat** selecting the corresponding button in the upper right corner of the Microsoft 365 Copilot Chat user interface. Select the **Create an agent** command in the right side of the screen, like you did before, while making your first agent.
-The same dialog you used before to make your first agent will show up. This time, select the name of the agent **My Copilot Agent** dropdown just beside the **Copilot Studio** logo in the upper left side of the dialog. From there, select **View all agents** to see the whole list of agents that you created with Copilot Studio Lite.
+Start over with a **New chat** selecting the corresponding button in the upper let corner of the Microsoft 365 Copilot Chat user interface. Select the **All agents** command in the left side of the screen. Hoover on the **Gardener** agent and select the **...** beside its name. In the contextual menu that will show up, select the **Edit** command to configure the agent.
 
-![The user experience of Copilot Studio Lite when editing an already existing agent. There is a command in the upper left side of the dialog to view all the agents that you already defined.](../../../assets/images/make/agent-builder-01/update-agent-01.png)
+![The user experience of Copilot Studio Lite when editing an already existing agent. There is an "Edit" command to configure the agent that you already defined.](../../../assets/images/make/agent-builder-01/update-agent-01.png)
 
-A new dialog with the whole list of agents that you designed will show up.
+A new page with all the settings of your agent shows up.
 
-![The user experience of Copilot Studio Lite when showing the list of agents. There is the 'Gardener' agent highlighted with a list of action to edit, share, download, and delete the agent.](../../../assets/images/make/agent-builder-01/update-agent-02.png)
-
-For each agent, you have commands to edit, share, download, and delete it.
+![The user experience of Copilot Studio Lite when editing an already existing agent. There are all the agent settings and a command to "Update" the agent in the upper right corner.](../../../assets/images/make/agent-builder-01/update-agent-02.png)
 
 ### Step 1: Provide a custom icon
 
@@ -119,15 +111,16 @@ There are configuration settings to define:
 - **Description**: to define the description of the agent
 - **Instructions**: it is the system prompt for the agent, where you define the system role and the behavioral rules
 - **Knowledge**: to configure the various knowledge bases for the agent
-- **Actions**: this section is still under development, at the time of this writing
 - **Capabilities**: to enable capabilites like code interpreting and image generation
-- **Starter prompts**: to configure up to 6 starter prompts for the agent 
+- **Suggested prompts**: to configure up to 6 suggested prompts for the agent 
 
 To customize the icon of the agent, select the edit button just beside the default icon of the agent.
 
 A dialog pops up and allows you to change the icon and the background color for the icon. For your convenience, you can download a sample icon from [here](https://github.com/microsoft/copilot-camp/blob/main/src/make/agent-builder/color.png) and upload it as the custom icon for the agent. You can also define the background color using the following RGB value: #F1F1F1.
 
 ![The dialog to update the icon and background color for the agent. There is the icon, a button to upload a new icon, and another button to set the background color. In the lower right corner there are buttons to save or cancel.](../../../assets/images/make/agent-builder-01/update-agent-03.png)
+
+Select the **Apply** command when you are done with the changes.
 
 <cc-end-step lab="mab1" exercise="2" step="1" />
 
@@ -161,7 +154,7 @@ Select the **Update** button in the upper right corner of the configuration dial
 
 ![The updated agent with the new icon and the final sentence to engage the user to play the game highlighted.](../../../assets/images/make/agent-builder-01/update-agent-05.png)
 
-For the sake of completeness, here follows a sample dialog with the agent, while guessing the name of a plant.
+For the sake of completeness, here follows a sample conversation with the agent, while guessing the name of a plant.
 
 ![A sample interaction between the user and the agent while guessing the name of a plant.](../../../assets/images/make/agent-builder-01/update-agent-06.png)
 
@@ -186,11 +179,11 @@ Copy the absolute url of the site. For eg. `https://xyz.sharepoint.com/sites/con
 
 ### Step 2: Add support for SharePoint Online documents
 
-Go back to the list of agents, edit the **Gardener** agent and scroll to the configuration section with title **Knowledge**. Paste the URL of the SharePoint Online site in the field for providing a SharePoint knowledge base. If you like, instead of pasting the URL, you can select the **Browse** button and search for the site in your tenant.
+Go back to the list of agents, edit the **Gardener** agent and scroll to the configuration section with title **Knowledge**. Paste the URL of the SharePoint Online site in the field for providing a SharePoint knowledge base and hit **ENTER** or select the suggested site collection in the user interface. If you like, instead of pasting the URL, you can select the **Sites** button and search for the site in your tenant.
 
 ![The configuration dialog of the agent with the 'Knowledge' section and the 'SharePoint' URL field highlighted.](../../../assets/images/make/agent-builder-01/update-agent-07.png)
 
-Update the agent and interact with it again. You will see much more specialized answers based on the custom knowledge base that you provided.
+You will see the new SharePoint site in the list of knowledge bases for the **Gardener** agent. Now, update the agent and interact with it again. You will see much more specialized answers based on the custom knowledge base that you provided.
 
 <cc-end-step lab="mab1" exercise="3" step="2" />
 
@@ -200,11 +193,11 @@ In this exercise you are going to add image generation capabilities to the **Gar
 
 ### Step 1: Add support for image generation
 
-Edit again the **Gardener** agent, scroll down in the configuration panel and find the section with title **Capabilities**. Enable the option with name **Image generator** and update the agent.
+Edit again the **Gardener** agent, scroll down in the configuration panel and find the section with title **Capabilities**. Enable the option with name **Create images** and update the agent.
 
-![The configuration dialog of the agent with the 'Capabilities' section and the 'Image generator' option selected and highlighted.](../../../assets/images/make/agent-builder-01/update-agent-08.png)
+![The configuration dialog of the agent with the 'Capabilities' section and the 'Create images' option selected and highlighted.](../../../assets/images/make/agent-builder-01/update-agent-08.png)
 
-Reload the agent and provide the following prompt:
+After updating the agent, select **Go to agent** and provide the following prompt:
 
 ```txt
 Generate the image of a dozen of red roses
@@ -226,7 +219,7 @@ Select it and a sharing dialog pops up allowing you to select if you want to sha
 - Specific users in your organization via security groups
 - Only you
 
-Select the option to share with specific users and provide the e-mail of the sharing target, then select the **Save** button to confirm your sharing settings.
+Select the option to share with specific users and provide the e-mail of the sharing target, then select the **Apply** button to confirm your sharing settings.
 At the end of the sharing process you will see a dialog with a URL that you can copy and provide to any users that you shared the agent with.
 
 ![The panel to configure the sharing target. Available options are 'Anyone in your organization', 'Specific users in your organization via security groups', or 'Only you'. The panel also provides a button to 'Save' the sharing option and a URL to access the agent.](../../../assets/images/make/agent-builder-01/update-agent-10.png)

@@ -133,7 +133,7 @@ Playground なら推測ではなく、リアルタイムに実際の結果が確
 
 さらに深掘りしたい方はこちらをどうぞ:
 
-| Task | GitHub | Azure AI Foundry | 動画を見る | ラボで学ぶ |
+| Task | GitHub | Microsoft Foundry | 動画を見る | ラボで学ぶ |
 |------|--------|-----------------|------------|-----------|
 | **ドキュメント要約** | [ Mistral Small ](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503) | [ Mistal Small ](https://ai.azure.com/explore/models/Mistral-small/version/1/registry/azureml-mistral?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [ Watch now ](https://www.youtube.com/watch?v=tqOecUt_wCc&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=5&pp=iAQB) | [ Learn more ](https://github.com/microsoft/Build25-LAB324) |
 | **音声文字起こし** | [ Phi-4 Multimodal ](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct) | [ Phi-4-multimodal-instruct ](https://ai.azure.com/explore/models/Phi-4-multimodal-instruct/version/2/registry/azureml?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [ Watch now ](https://www.youtube.com/watch?v=VLQKZq8L9Uk&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=2) | [ Learn more ](https://github.com/microsoft/PhiCookBook/blob/main/md/02.Application/05.Audio/Phi4/Transciption/README.md) |

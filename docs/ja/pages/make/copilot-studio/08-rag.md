@@ -133,7 +133,7 @@ Azure OpenAI サービス インスタンスがない場合は、まず作成し
 1. デプロイ完了を待機 (数分かかる場合あり)  
 1. 作成後、Azure OpenAI リソースのエンドポイント URL を控える  
 
-次に [Azure AI Foundry](https://oai.azure.com/portal){target=_blank} にアクセスします。初回アクセス時は先ほど作成した Azure OpenAI インスタンスを選択します。サービス インスタンスを選び、埋め込みモデルを以下の手順で作成します。
+次に [Microsoft Foundry](https://oai.azure.com/portal){target=_blank} にアクセスします。初回アクセス時は先ほど作成した Azure OpenAI インスタンスを選択します。サービス インスタンスを選び、埋め込みモデルを以下の手順で作成します。
 
 1. 左ナビで 1️⃣ **Deployments**  
 1. 2️⃣ **+ Deploy model**  

@@ -403,7 +403,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 ```typespec
 
-  @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
+  @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "adaptiveCards/repair.json"}) 
   
 ```
 
@@ -414,7 +414,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 ```typespec
 
-   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "cards/repair.json"}) 
+   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "adaptiveCards/repair.json"}) 
 
 ```
 

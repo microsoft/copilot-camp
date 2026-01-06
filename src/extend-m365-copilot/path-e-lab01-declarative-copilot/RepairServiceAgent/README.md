@@ -1,35 +1,8 @@
-# Repair Service Agent - Microsoft 365 Copilot Declarative Agent
+# Overview of the Declarative Agent with TypeSpec for Microsoft 365 template
 
-The Repair Service Agent is a specialized Microsoft 365 Copilot declarative agent designed to help users manage car repair records and maintenance tasks. This agent provides an intuitive interface for tracking repairs, generating reports, and maintaining service history through natural language interactions.
+With the declarative agent, you can build a custom version of Copilot that can be used for specific scenarios, such as for specialized knowledge, implementing specific processes, or simply to save time by reusing a set of AI prompts. For example, a grocery shopping Copilot declarative agent can be used to create a grocery list based on a meal plan that you send to Copilot.
 
-## Features
-
-The Repair Service Agent provides the following capabilities:
-
-### Core Functionality
-- **Repair Management**: Create, update, and delete repair records
-- **Repair Tracking**: List and search repair records by assigned user
-- **Report Generation**: Use code interpreter to generate reports based on repair data
-- **Visual Cards**: Display repair information in rich adaptive cards with images
-
-### Repair Record Fields
-Each repair record includes:
-- **Title**: Short summary of the repair
-- **Description**: Detailed description of the repair work
-- **Assigned To**: User responsible for the repair
-- **Date**: Scheduled or completion date (ISO 8601 format)
-- **Image**: URL to associated repair images
-
-### Conversation Starters
-- "List all repairs" - View all repair records
-- "Create a new repair titled '[repair name]' and assign it to me" - Quick repair creation
-
-### Integration
-- Connects to the Repairs API at `https://repairshub.azurewebsites.net`
-- Displays rich adaptive cards with repair details and images
-- Supports natural language interactions for all repair operations
-
-## Get started with the Repair Service Agent
+## Get started with the template
 
 > **Prerequisites**
 >
@@ -40,82 +13,62 @@ Each repair record includes:
 > - [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
 > - [Microsoft 365 Copilot license](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites#prerequisites)
 
-
+![image](./assets/image.png)
 
 1. First, select the Microsoft 365 Agents Toolkit icon on the left in the VS Code toolbar.
 2. In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
 3. Run `npm install` to install dependencies before working with TypeSpec files.
 4. Update the [`main.tsp`](./main.tsp) to configure your agent and its plugins. This is the default entry point for TypeSpec files. 
-5. Create app by clicking `Provision` in "Lifecycle" section.
-6. Select `Preview in Copilot (Edge)` or `Preview in Copilot (Chrome)` from the launch configuration dropdown.
-7. Once the Copilot agent is loaded in the browser, click on the "…" menu and select "Copilot chats". You will see the Repair Service Agent on the right rail. Clicking on it will change the experience to showcase the repair service branding.
-8. Try these example interactions with your repair service agent:
-   - "List all repairs"
-   - "Create a new repair for oil change and assign it to John"
-   - "Show me repairs assigned to Sarah"
-   - "Generate a report of all completed repairs"
-   - "Update repair #123 to mark it as completed"
+5. Select `Preview Local in Copilot (Edge)` or `Preview Local in Copilot (Chrome)` from the launch configuration dropdown.
+6. Select your declarative agent from the `Copilot` app.
+7. Ask a question to your declarative agent and it should respond based on the instructions provided.
 
 ## What's included in the template
 
-| Folder       | Contents                                                                                 |
-| ------------ | ---------------------------------------------------------------------------------------- |
-| `.vscode`    | VSCode files for debugging                                                               |
-| `appPackage` | Application manifest and adaptive card templates for repair display                     |
-| `env`        | Environment configuration files                                                          |
+| Folder               | Contents                                                                                 |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| `.vscode`            | VSCode files for debugging                                                               |
+| `appPackage`         | Templates for the application manifest, the manifest and the API specification           |
+| `src/agent/actions`  | All action files representing API surfaces                                               |
+| `env`                | Environment files                                                                        |
+| `src/agent/prompts`  | All prompt files used for instructions                                                   |
+| `scripts`            | Scripts helping with automation across the build process                                 |
 
-The following files can be customized and demonstrate the repair service implementation:
+The following files can be customized and demonstrate an example implementation to get you started.
 
 | File                               | Contents                                                                     |
 | ---------------------------------- | ---------------------------------------------------------------------------- |
-| `appPackage/manifest.json`         | Application manifest defining the Repair Service Agent metadata             |
-| `appPackage/cards/repair.json`     | Adaptive card template for displaying repair records with images            |
+| `appPackage/manifest.json`         | application manifest that defines metadata for your declarative agent. |
 
-The following are Microsoft 365 Agents Toolkit specific project files:
+The following are Microsoft 365 Agents Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Microsoft 365 Agents Toolkit works.
 
 | File           | Contents                                                                                                                                  |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `m365agents.yml` | Main Microsoft 365 Agents Toolkit project configuration file with properties and stage definitions                                       |
+| `m365agents.yml` | This is the main Microsoft 365 Agents Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
 
-The following are TypeSpec files that define the repair service functionality:
+The following are TypeSpec template files. You need to customize these files to configure your agent.
 
-| File          | Contents                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------- |
-| `main.tsp`    | Root TypeSpec file defining the Repair Service Agent with instructions and conversation starters |
-| `actions.tsp` | API endpoints and data models for repair operations (CRUD operations for repair records)   |
+| File                      | Contents                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------- |
+| `src/agent/main.tsp`      | This is the root file of TSP files. Please manually update this file to add your own agent. |
+| `src/agent/actions/*.tsp` | These are action files containing API endpoints to extend your declarative agent.           |
+| `src/agent/prompts/*.tsp` | These are prompt files used for instructions inf your declarative agent.                    |
+| `src/agent/env.tsp`       | This is the file containing all environment variables to be used in TypeSpec files.         |
 
+## Extend the template
 
-### Advanced Features
-- [Add web content search](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=4) for repair documentation
-- [Integrate OneDrive/SharePoint](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=5) for repair manuals and documentation
-- [Add Microsoft Copilot Connectors](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=6) for enterprise repair management systems
+- [Add instructions](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-instructions): Instructions change how an agent behaves. 
+- [Add conversation starters](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-conversation-starters): Conversation starters are hints that are displayed to the user to demonstrate how they can get started using the declarative agent.
+- [Add web content](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-web-content): The web search capability enables agents to use the search index in Bing to respond to user prompts.
+- [Add OneDrive and SharePoint content](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-onedrive-and-sharepoint-content) as grounding knowledge for the agent.
+- [Add Teams messages](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-teams-messages): The Teams messages capability allows the agent to use Teams channels, team, and meeting chat as knowledge.
+- [Add people knowledge](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-people-knowledge): The people capability allows you to scope your agent to answer questions about individuals in an organization.
+- [Add email knowledge](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-email-knowledge): The email capability allows you to scope your agent to use email from the user's mailbox or a shared mailbox as a knowledge source.
+- [Add image generator](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-image-generator): The image generator capability enables agents to generate images based on user prompts.
+- [Add code interpreter](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-code-interpreter): The code interpreter capability is an advanced tool designed to solve complex tasks via Python code.
+- [Add Copilot Connectors content](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-declarative-agents-typespec#add-copilot-connectors-content): You can add items ingested by a Copilot connector to the available knowledge for the agent.
+- [Add actions](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-api-plugins-typespec): API plugins are custom actions for declarative agents that connect a REST API with an OpenAPI specification to Microsoft 365 Copilot. 
 
-## API Reference
-
-The Repair Service Agent uses the following API endpoints:
-
-### Repair Operations
-- **GET /repairs**: List all repairs (optionally filtered by `assignedTo`)
-- **POST /repairs**: Create a new repair record
-- **PATCH /repairs**: Update an existing repair record  
-- **DELETE /repairs**: Delete a repair record
-
-### Repair Data Model
-```typescript
-{
-  id?: string;           // Unique identifier (auto-generated)
-  title: string;         // Required: Short summary
-  description?: string;  // Detailed description
-  assignedTo?: string;   // User assigned to repair
-  date?: string;        // ISO 8601 date-time format
-  image?: string;       // URL to repair image
-}
-```
-
-## Additional Information and References
+## Addition information and references
 
 - [Declarative agents for Microsoft 365](https://aka.ms/teams-toolkit-declarative-agent)
-- [Microsoft 365 Agents Toolkit](https://aka.ms/teams-toolkit)
-- [TypeSpec for Microsoft 365 Copilot](https://learn.microsoft.com/microsoft-365-copilot/extensibility/overview-declarative-agent)
-- [Adaptive Cards Documentation](https://adaptivecards.io/)
-- [Repair Hub API](https://repairshub.azurewebsites.net) - The backend service for this agent
