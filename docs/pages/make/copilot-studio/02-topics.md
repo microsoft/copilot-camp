@@ -99,7 +99,7 @@ Select the **+** button in the middle of the screen to add new actions or steps 
 - Add a condition: to add branches to the topic based on comparison between variables and/or constant values.
 - Variable management: to manage variables, which can be scoped at topic level, global, system, or environment.
 - Topic management: to manage the lifecycle of the current topic.
-- Add an tool: to consume external actions like Power Automate flows, custom connectors, MCP tools, etc.
+- Add an tool: to consume external tools like Power Automate flows, custom connectors, MCP tools, etc.
 - Add an agent: to add an agent in a multi-agent scenario.
 - Advanced: to provide advanced capabilities like consuming an external HTTP REST API, using generative answers, sending events or activities, etc.
 
