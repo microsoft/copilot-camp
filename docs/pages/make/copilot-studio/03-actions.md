@@ -42,6 +42,7 @@ You can also create a new tool from scratch, selecting the **+ New tool** comman
 
 - Prompt: allows consuming an AI tool built using a prompt written in natural language.
 - Agent flow: allows consuming a Power Automate flow (see [Step 2](#step-2-consuming-a-power-automate-flow)).
+- Computer use: to allow your agent to directly use web and desktop apps.
 - Custom connector: allows consuming a Power Platform custom connector.
 - REST API: allows consuming an external REST API. You can find additional details [here](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api){target=_blank}.
 - Model Context Protocol: to consume tools from an external Model Context Protocol (MCP) server.
