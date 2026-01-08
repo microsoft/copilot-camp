@@ -253,11 +253,8 @@ Microsoft 365 Copilot Chat will ask you the permission to consume an external AP
 
 ![Microsoft 365 Copilot Chat asking consent to consume the external API for Excel Online. There are three command buttons to **Always allow**, **Allow once**, and **Cancel**.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png)
 
-Since the Power Platform connector requires a valid connection in place, the agent prompts the user to **Sign in to Agentic HR** before being able to consume the external data source. 
-
-![Microsoft 365 Copilot Chat asking to sign in to consume the external Excel Online API.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-04.png)
-
-Connect to the external connector and run again the prompt. The agent will reply back providing the list of candidates retrieved from the Excel spreadsheet and matching the criteria that you provided in the prompt.
+Since the Power Platform connector requires a valid connection in place, the agent might prompt the user to **Sign in to Agentic HR** before being able to consume the external data source. 
+Once you are connected to the external connector, the agent will reply back providing the list of candidates retrieved from the Excel spreadsheet and matching the criteria that you provided in the prompt.
 
 ![Microsoft 365 Copilot Chat asking to sign in to consume the external Excel Online API.](../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-05.png)
 

@@ -165,9 +165,9 @@ In this exercise you are going to create a new agent in Microsoft Copilot Studio
 
 Open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} to start using Microsoft Copilot Studio.
 
-Select the `Copilot Dev Camp` environment that you created in **Exercise 1** of [Lab MCS0 - Setup](00-prerequisites.md), and then select **Create** in the left navigation menu, then choose **Agent** to create a new agent.
+Select the `Copilot Dev Camp` environment that you created in **Exercise 1** of [Lab MCS0 - Setup](00-prerequisites.md), and then select the **Create an agent** command in the middle of the screen to create a new agent.
 
-Choose to **Configure** and define your new agent with the following settings:
+Configure the new agent accordingly to the following settings:
 
 - **Name**: 
 
@@ -192,15 +192,17 @@ Always provide clear and helpful information about candidates, including their s
 contact details, and availability status.
 ```
 
-![The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the "HR Candidate Management" agent.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
+- **Agent's Model**: select GTP-5 Chat
 
-Select **Create** to create your new agent.
+![The agent "Overview" page in Copilot Studio with the name, description, model, and instructions filled in for the "HR Candidate Management" agent.](../../../assets/images/make/copilot-studio-06/create-agent-01.png)
+
+Select **Publish** to publish your new agent.
 
 <cc-end-step lab="mcs6" exercise="2" step="1" />
 
 ### Step 2: Configuring the agent's conversation starters
 
-After creating the agent, you'll be taken to the agent configuration page. In the **Suggested prompts** section, add these helpful prompts:
+Now in the **Overview** page, configure the **Suggested prompts** section, adding the following helpful prompts:
 
 1. Title: `List all candidates` - Prompt: `List all the candidates`
 1. Title: `Search candidates` - Prompt: `Search for candidates with name [NAME_TO_SEARCH]`
