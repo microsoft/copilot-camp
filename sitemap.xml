@@ -771,11 +771,11 @@
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/08-rag/"/>
     </url>
     <url>
-        <loc>https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-agent-to-agent/</loc>
+        <loc>https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/</loc>
         <lastmod>2026-01-09</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-agent-to-agent/"/>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-agent-to-agent/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/"/>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/"/>
     </url>
     <url>
         <loc>https://microsoft.github.io/copilot-camp/pages/make/sharepoint-agents/</loc>
@@ -1572,7 +1572,6 @@
         <lastmod>2026-01-09</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-agent-to-agent/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-agent-to-agent/"/>
     </url>
     <url>
         <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/sharepoint-agents/</loc>
@@ -1601,5 +1600,12 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/javascripts/card-usage/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/javascripts/card-usage/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/</loc>
+        <lastmod>2026-01-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/"/>
     </url>
 </urlset>
