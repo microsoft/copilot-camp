@@ -97,9 +97,9 @@ In this exercise you are going to create the autonomous agent in Microsoft Copil
 
 Open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} to start using Microsoft Copilot Studio.
 
-Select the `Copilot Dev Camp` environment that you created in previous labs, then select **Create** in the left navigation menu, and choose **Agent** to create a new agent.
+Select the `Copilot Dev Camp` environment that you created in previous labs, then from the middle of the home page of Copilot Studio select **Create an agent** to create a new agent.
 
-Choose to **Configure** and define your autonomous agent with the following settings:
+Configure your autonomous agent with the following settings:
 
 - **Name**: 
 
@@ -136,7 +136,7 @@ DO NOT invent or assume fake data about candidates. AVOID allucinations.
 You MUST ONLY process real and existing data.
 ```
 
-Select **Create** to create your autonomous agent.
+Select **Publish** to publish your autonomous agent.
 
 <cc-end-step lab="mcs7" exercise="2" step="1" />
 
@@ -144,11 +144,7 @@ Select **Create** to create your autonomous agent.
 
 After creating the agent, you need to ensure that its capabilities are enhanced with generative AI reasoning and knowledge integration.
 
-In the **Orchestration** section, ensure that the **Use generative AI to determine how best to respond to users and events** is enabled. This enables the agent to intelligently process different types of events and determine the appropriate actions.
-
-![The agent configuration page showing the orchestration settings with generative AI enabled for autonomous processing.](../../../assets/images/make/copilot-studio-07/autonomous-agent-01.png)
-
-In the **Knowledge** section, you can optionally add knowledge sources if you have specific HR documentation or candidate processing guidelines. For this lab, we'll rely on the agent's built-in AI capabilities and the MCP server integration.
+In the **Knowledge** section of the agent, you can optionally add knowledge sources if you have specific HR documentation or candidate processing guidelines. For this lab, we'll rely on the agent's built-in AI capabilities and the MCP server integration.
 
 In case of any configuration changes, select **Save** to confirm them.
 
