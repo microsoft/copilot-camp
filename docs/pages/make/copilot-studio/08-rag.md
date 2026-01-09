@@ -272,12 +272,7 @@ In this exercise you will create a Microsoft Copilot Studio agent that leverages
 
 Navigate to [Microsoft Copilot Studio](https://copilotstudio.microsoft.com){target=_blank} and create a new agent optimized for knowledge search.
 
-Using your work account, access your `Copilot Dev Camp` environment and create a new agent:
-
-1. Select **Create** → **+ New agent**
-1. Choose to manually **Configure** the agent
-
-Define your agent as follows:
+Using your work account, access your `Copilot Dev Camp` environment and create a new agent defining your agent as follows:
 
 - **Name**: 
 
@@ -320,11 +315,9 @@ Always provide helpful, accurate information while respecting privacy and being 
 
 ![The Microsoft Copilot Studio user experience when creating the "HR Knowledge Agent". There are name, description, and instructions accordingly to the above suggeted settings.](../../../assets/images/make/copilot-studio-08/mcs-agent-01.png)
 
-Select **Create** to create your knowledge-enabled agent.
+Select **Publish** to publish your knowledge-enabled agent.
 
-Once the agent is created, double check that the option to **Use generative AI to determine how best to respond to users and events** is enabled, in order to have the Generative AI based orchestrator configured. Also verify that `GPT-4o` model is selected in the **Details** panel of the agent's settings.
-
-![The Microsoft Copilot Studio settings for the new agent with Generative Orchestrator enabled and GPT-4o model highlighted.](../../../assets/images/make/copilot-studio-08/mcs-agent-02.png)
+Once the agent is created and published, verify that `GPT-4.1` model is selected in the agent's **Overview** tab.
 
 <cc-end-step lab="mcs8" exercise="3" step="1" />
 

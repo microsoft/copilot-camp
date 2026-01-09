@@ -46,22 +46,17 @@ To play with these labs you are going to create a new dedicated environment, so 
 ![The user interface of the Microsoft Power Platform Admin center to create a new environment.](../../../assets/images/make/copilot-studio-00/new-environment-01.png)
 
 - Specify a unique name for the environment. For example, you could use "Copilot Dev Camp".
-
 - Leave the default value (off) for the **Make this a Managed Environment** setting.
-
+- Leave the **Group** setting blank
 - Choose a **Region** accordingly to your needs.
-
 - Leave the default value (off) for the **Get new features early** setting.
-
 - Choose **Developer** for the **Type** setting.
 
 !!! note "Understanding the environment types"
     If you like, you can also choose **Trial** for the **Type** setting, so that you will have a fully functional environment that will last for 30 days and then will get automatically deleted. [Here](https://learn.microsoft.com/en-gb/microsoft-copilot-studio/environments-first-run-experience#trial-environments){target=_blank} you can find additional information about **Trial** environments. Moreover, [here](https://learn.microsoft.com/en-us/power-platform/admin/environments-overview#power-platform-environment-types){target=_blank} you can find a detailed explanation of all the available environment types.
 
 - Leave all the other settings as they are.
-
 - Select **Next**.
-
 - Choose a **Language** and a **Currency**, or leave the default ones.
 
 ![The user interface of the Microsoft Power Platform Admin center to configure language, currency and final settings for a new environment.](../../../assets/images/make/copilot-studio-00/new-environment-02.png)
