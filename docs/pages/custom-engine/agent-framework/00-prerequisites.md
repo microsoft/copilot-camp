@@ -128,7 +128,7 @@ devtunnel --version
 
 ## Exercise 3: Setup Azure Environment
 
-To complete the exercises in this path, you'll need an Azure subscription to create Azure AI Foundry resources and deploy AI models.
+To complete the exercises in this path, you'll need an Azure subscription to create Microsoft Foundry resources and deploy AI models.
 
 ### Step 1: Get an Azure subscription
 
@@ -151,15 +151,14 @@ Follow the steps to activate an Azure free account:
 
 <cc-end-step lab="baf0" exercise="3" step="1" />
 
-### Step 2: Create Azure AI Foundry Project and Deploy Model
+### Step 2: Create Microsoft Foundry Project and Deploy Model
 
-For this lab path, you'll need an Azure AI Foundry project with a deployed language model.
+For this lab path, you'll need a Microsoft Foundry project with a deployed language model.
 
-1️⃣ Navigate to [Azure AI Foundry](https://ai.azure.com){target=_blank} and sign in with your Azure account.
+1️⃣ Navigate to [Microsoft Foundry](https://ai.azure.com){target=_blank} and sign in with your Azure account.
+2️⃣ Select **+ Create new**, then **Microsoft Foundry resource** and then **Next**.
 
-2️⃣ Select **+ Create new**, then **Azure AI Foundry resource** and then **Next**.
-
-3️⃣ Leave the project name as recommended and select **Create**. This will scaffold a new project for you in Azure AI Foundry, it usually takes 3-5 minutes.
+3️⃣ Leave the project name as recommended and select **Create**. This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.
 
 !!! tip "Region Selection"
     Choose **France Central** region as it supports all the models you'll need throughout the labs.
@@ -168,13 +167,13 @@ For this lab path, you'll need an Azure AI Foundry project with a deployed langu
 
 5️⃣ Click **+ Deploy model** and select **Deploy base model**.
 
-6️⃣ Search for **gpt-4.1** and select the **gpt-4.1-turbo** model, then select **Confirm** and **Deploy**.
+6️⃣ Search for **gpt-4.1** and select the **gpt-4.1** model, then select **Confirm** and **Deploy**.
 
 !!! important "Model Selection"
     Please use **gpt-4.1** for a smooth experience . The labs use knowledge base answer synthesis which is optimized for gpt-4.1. Using other models may lead to unexpected behavior.
 
 !!! tip "Save Your Credentials"
-    You'll need the following information from your Azure AI Foundry project:
+    You'll need the following information from your Microsoft Foundry project:
 
     - **Endpoint URL**: Found in project settings → Properties (e.g., `https://your-resource.cognitiveservices.azure.com/`)
     - **API Key**: Found under "Keys and Endpoint" section
@@ -191,7 +190,7 @@ For this lab path, you'll need an Azure AI Foundry project with a deployed langu
 
 The insurance domain uses terms like "injury", "collision", "damage" that may trigger default content filters. You need to create a custom content filter with lower thresholds.
 
-1️⃣ In Azure AI Foundry, navigate to your project.
+1️⃣ In Microsoft Foundry, navigate to your project.
 
 2️⃣ In the left sidebar, select **Guardrails + Controls** → **Content filters**.
 
