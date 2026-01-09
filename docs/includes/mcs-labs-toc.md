@@ -12,6 +12,7 @@
       <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - Consuming an MCP server</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/07-autonomous/">MCS7 - Creating Autonomous Agents</a></li>
       <li><a href="/copilot-camp/pages/make/copilot-studio/08-rag/">MCS8 - Integrating Azure AI Search for RAG</a></li>
+      <li><a href="/copilot-camp/pages/make/copilot-studio/09-connected-agents/">MCS9 - Connected Agents (Preview)</a></li>
     </ul>
   </div>
 </div>
