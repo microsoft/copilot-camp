@@ -2153,19 +2153,18 @@
 </ul>
 <h2 id="exercise-1-orchestration-based-on-generative-ai">Exercise 1 : Orchestration based on Generative AI</h2>
 <p>In this first exercise you are going to enable the agent that you created in <a href="../01-first-agent" target="_blank">Lab MCS1</a> to use Orchestration based on Generative AI, which is a new feature under preview at the time of this writing.</p>
-<h3 id="step-1-enabling-orchestration-based-on-generative-ai">Step 1: Enabling Orchestration based on generative AI</h3>
+<h3 id="step-1-understanding-generative-ai-orchestration">Step 1: Understanding generative AI orchestration</h3>
 <p>One important feature of an agent made with Copilot Studio, is generative orchestration. With generative orchestration, your agent can choose the best knowledge base, topics, and actions to use to interact with the user and answer to the user's queries, or to respond to event triggers. </p>
-<p>By default agents use classic orchestration, which means that an agent responds to users by triggering a topic whose trigger phrases match most closely the user's query. With generative orchestration, Copilot Studio understands the intent of the user processing the prompt provided by the user in natural language and determines the best item to trigger. </p>
-<div class="admonition pied-piper">
-<p class="admonition-title">Disclaimer</p>
-<p>Enabling generative orchestration can impact how billing is calculated. Learn more about <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/analytics-billed-sessions" target="_blank">billing for generative mode</a>. There are key differences between classic and generative orchestration, such as how knowledge is searched, and the supported data sources. Before turning on generative mode for an existing agent, read about the <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-generative-actions#known-limitations-for-generative-orchestration" target="_blank">known limitations</a>.</p>
-</div>
-<p>To enable generative orchestration, open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> to start using Microsoft Copilot Studio.</p>
+<p>Nowadays and by default, Copilot Studio agents use generative AI orchestration, which means that Copilot Studio understands the intent of the user processing the prompt provided by the user in natural language and determines the best item to trigger. If you like, you can revert the agent back to classic orchestration, where an agent responds to users by triggering a topic whose trigger phrases match most closely the user's query.</p>
+<p>In Copilot Studio, you can also enable <strong>Deep reasoning</strong> (which is a preview feature) to enable advanced reasoning for AI actions.</p>
+<p>To configure orchestration and deep reasoning, open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> to start using Microsoft Copilot Studio.</p>
 <p>Select to view the list of 1️⃣ <strong>Agents</strong> and then 2️⃣ edit the agent that you created in the previous Lab MCS1.</p>
 <p><img alt="The interface of Microsoft Copilot Studio when browsing the agents and selecting one item to edit." src="../../../../assets/images/make/copilot-studio-02/edit-agent-01.png" /></p>
-<p>In the <strong>Overview</strong> tab enable the toggle with name <strong>Orchestration</strong> like illustrated in the following screenshot.</p>
-<p><img alt="The interface of Microsoft Copilot Studio with the generative orchestration enabled and highlighted." src="../../../../assets/images/make/copilot-studio-02/generative-orchestration-01.png" /></p>
-<p>It usually takes a while to enable the generative orchestration. Once the setting is applied, publish the agent to confirm the changes.</p>
+<p>Select the <strong>Settings</strong> command in the upper right corner of the screen like illustrated in the following screenshot.</p>
+<p><img alt="The interface of Microsoft Copilot Studio with the &quot;Settings&quot; command highlighted." src="../../../../assets/images/make/copilot-studio-02/edit-settings-01.png" /></p>
+<p>The first section of settings is the <strong>Orchestration</strong> one, from where you can choose between <strong>generative AI orchestration</strong> and <strong>classic orchestration</strong>, as well as you can enable <strong>Deep reasoning</strong>. It usually takes a while to update the orchestration settings. Once the setting is applied, close the settings window and publish the agent to confirm the changes.</p>
+<p><img alt="The interface of Microsoft Copilot Studio with the &quot;Settings&quot; command highlighted." src="../../../../assets/images/make/copilot-studio-02/generative-orchestration-01.png" /></p>
+<p>In this lab you stick with <strong>generative AI orchestration</strong>, to enjoy the beauty of generative AI, and you don't need to enable <strong>Deep reasoning</strong>.</p>
 <p><cc-end-step lab="mcs2" exercise="1" step="1" /></p>
 <h2 id="exercise-2-creating-a-single-turn-topic">Exercise 2 : Creating a single-turn topic</h2>
 <p>In this exercise you are going to create a new topic to collect an input from the user and to provide a feedback based on the collected input. Specifically, the topic collects information about the current user's role and gives back guidance about what to do with the agent based on the provided role.</p>
@@ -2192,7 +2191,8 @@ give me a feedback based on my role, what's your feedback for my role?
 <li>Add a condition: to add branches to the topic based on comparison between variables and/or constant values.</li>
 <li>Variable management: to manage variables, which can be scoped at topic level, global, system, or environment.</li>
 <li>Topic management: to manage the lifecycle of the current topic.</li>
-<li>Add an action: to consume external actions like Power Automate flows, custom connectors, or other agents in a multi-agent scenario.</li>
+<li>Add an tool: to consume external tools like Power Automate flows, custom connectors, MCP tools, etc.</li>
+<li>Add an agent: to add an agent in a multi-agent scenario.</li>
 <li>Advanced: to provide advanced capabilities like consuming an external HTTP REST API, using generative answers, sending events or activities, etc.</li>
 </ul>
 <p><img alt="The menu to select actions to add to the current topic. There available options are: send a message, ask a question, ask with adaptive card, add a condition, variable management, topic management, add an action, advanced." src="../../../../assets/images/make/copilot-studio-02/create-topic-single-turn-03.png" /></p>

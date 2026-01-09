@@ -2234,8 +2234,8 @@ In the <strong>History</strong> section you can always review all the invocation
 <p>In this exercise you are going to create a new agent in Microsoft Copilot Studio that will consume the MCP server you configured in Exercise 1.</p>
 <h3 id="step-1-creating-the-new-agent">Step 1: Creating the new agent</h3>
 <p>Open a browser and, using the work account of your target Microsoft 365 tenant, go to <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> to start using Microsoft Copilot Studio.</p>
-<p>Select the <code>Copilot Dev Camp</code> environment that you created in <strong>Exercise 1</strong> of <a href="../00-prerequisites/">Lab MCS0 - Setup</a>, and then select <strong>Create</strong> in the left navigation menu, then choose <strong>Agent</strong> to create a new agent.</p>
-<p>Choose to <strong>Configure</strong> and define your new agent with the following settings:</p>
+<p>Select the <code>Copilot Dev Camp</code> environment that you created in <strong>Exercise 1</strong> of <a href="../00-prerequisites/">Lab MCS0 - Setup</a>, and then select the <strong>Create an agent</strong> command in the middle of the screen to create a new agent.</p>
+<p>Configure the new agent accordingly to the following settings:</p>
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
@@ -2256,11 +2256,14 @@ candidates to the system.
 Always provide clear and helpful information about candidates, including their skills, experience, 
 contact details, and availability status.
 </code></pre>
-<p><img alt="The agent creation dialog in Copilot Studio with the name, description, and instructions filled in for the &quot;HR Candidate Management&quot; agent." src="../../../../assets/images/make/copilot-studio-06/create-agent-01.png" /></p>
-<p>Select <strong>Create</strong> to create your new agent.</p>
+<ul>
+<li><strong>Agent's Model</strong>: select GTP-5 Chat</li>
+</ul>
+<p><img alt="The agent &quot;Overview&quot; page in Copilot Studio with the name, description, model, and instructions filled in for the &quot;HR Candidate Management&quot; agent." src="../../../../assets/images/make/copilot-studio-06/create-agent-01.png" /></p>
+<p>Select <strong>Publish</strong> to publish your new agent.</p>
 <p><cc-end-step lab="mcs6" exercise="2" step="1" /></p>
 <h3 id="step-2-configuring-the-agents-conversation-starters">Step 2: Configuring the agent's conversation starters</h3>
-<p>After creating the agent, you'll be taken to the agent configuration page. In the <strong>Suggested prompts</strong> section, add these helpful prompts:</p>
+<p>Now in the <strong>Overview</strong> page, configure the <strong>Suggested prompts</strong> section, adding the following helpful prompts:</p>
 <ol>
 <li>Title: <code>List all candidates</code> - Prompt: <code>List all the candidates</code></li>
 <li>Title: <code>Search candidates</code> - Prompt: <code>Search for candidates with name [NAME_TO_SEARCH]</code></li>

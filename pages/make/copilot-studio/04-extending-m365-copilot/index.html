@@ -2141,8 +2141,8 @@ about how to improve their career, and about how to define learning pathways.
 <li>Knowledge: to define the various knowledge bases for the agent.</li>
 <li>Tools: to define custom tools for the agent.</li>
 <li>Additional settings: to configure whether the agent will rely on public web content or not.</li>
-<li>Starter prompts: to configure up to 6 starter prompts that will be shown in the Copilot Chat when starting a new chat.</li>
-<li>Publishing details: to get information about how to consume the agent, once it will be published.</li>
+<li>Suggested prompts: to configure up to 6 suggested prompts that will be shown in the Copilot Chat when starting a new chat.</li>
+<li>Publish details: to get information about how to consume the agent, once it will be published.</li>
 </ul>
 <p><img alt="The configuration page of an agent for Microsoft 365 Copilot Chat in Microsoft Copilot Studio. There are sections to define general details, knowledge bases, tools, additional settings, starter prompts, and publishing details." src="../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-04.png" /></p>
 <p>On the right side of the screen, you can already see a preview of the agent that you can use to test its behaviour.
@@ -2206,12 +2206,11 @@ The company app store will show in the browser and a dialog will allow you to se
 <p><img alt="The &quot;Agentic HR&quot; agent in action in Microsoft 365 Copilot Chat, answering a prompt about the hiring procedures and providing a reference to a Word document stored in the SharePoint Online knowledge base of the agent." src="../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-12.png" /></p>
 <p><cc-end-step lab="mcs4" exercise="1" step="4" /></p>
 <h2 id="exercise-2-adding-a-tool-to-the-agent">Exercise 2 : Adding a tool to the agent</h2>
-<p>In this excercise you are going to add a custom tool to the agent that you made in the previous exercise. In Microsoft Copilot Studio, when making agents for Microsoft 365 Copilot Chat, you can add four different types of tools:</p>
+<p>In this excercise you are going to add a custom tool to the agent that you made in the previous exercise. In Microsoft Copilot Studio, when making agents for Microsoft 365 Copilot Chat (Declarative Agents), you can add four different types of tools:</p>
 <ul>
 <li>Prompt: allows consuming an AI tool built using a prompt written in natural language.</li>
 <li>Custom connector: allows consuming a Power Platform custom connector.</li>
 <li>REST API: allows consuming an external REST API. You can find additional details <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api" target="_blank">here</a>.</li>
-<li>Model Context Protocol: allows consuming an MCP server and its tools.</li>
 </ul>
 <div class="admonition information">
 <p class="admonition-title">Tools for agents</p>
@@ -2225,15 +2224,15 @@ The company app store will show in the browser and a dialog will allow you to se
 <p>If you don't find the option you are looking for in the list of featured items, simply switch to the <strong>All</strong> group and search by text what you are looking for.</p>
 <p>To complete the current step, choose the featured tool <strong>Excel Online (Business)</strong> and then select <strong>List rows present in a table</strong>. First of all, you will need to connect to the external connector simply selecting the <strong>Connection</strong> and then <strong>Create new connection</strong> and proceeding with the process.</p>
 <p><img alt="The dialog to connect to the target Power Platform connector with details about the connection, if any, or a button to create a new connection. There is also a back button to start over." src="../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03.png" /></p>
-<p>You will need to login with your account and to allow access to Excel Online (Business). Once the connection is configured, you will see a dialog with commands to <strong>Add to agent</strong> or <strong>Add and configure</strong> the tool.</p>
-<p><img alt="The dialog to add the actual tool to the agent. There are commands to **Add to agent** or **Add and configure** the tool. There is also a back button to start over." src="../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-03b.png" /></p>
+<p>You will need to login with your account and to allow access to Excel Online (Business). Once the connection is configured, you will see a dialog with a command to <strong>Add and configure</strong> the tool.</p>
+<p><img alt="The dialog to add the actual tool to the agent. There are commands to **Add and configure** the tool. There is also a back button to start over." src="../../../../assets/images/make/copilot-studio-04/create-action-excel-connector-03c.png" /></p>
 <p>After adding the tool, you will get the list of tools in Copilot Studio. Click on the tool that you just created to edit its settings. In the configuration panel you need to provide:</p>
 <ul>
-<li>Name: simply a descriptive name for the tools.</li>
-<li>Display name: a display name for the tool.</li>
+<li>Name: a display name for the tool.</li>
 <li>Description: a description in natural language that will be used by generative orchestration to determine when to use your tool. </li>
-<li>Inputs and outpus: to define the input and output arguments for the action, if any.</li>
-<li>Response settings: defines how the action handles the request and response to the user.</li>
+<li>Inputs and outputs: to define the input and output arguments for the action, if any.</li>
+<li>Additional details: defines how the action handles the request and response to the user.</li>
+<li>Completion: to specify what the agent does when it finishes using the tool.</li>
 </ul>
 <p>Before configuring the tool, you need to prepare the Excel spreadsheet with the list of candidates.
 Download a sample Excel file by selecting this <a href="https://github.com/microsoft/copilot-camp/blob/main/src/make/copilot-studio/Candidates/Sample-list-of-candidates.xlsx?raw=true" target="_blank">link</a>.</p>
@@ -2244,24 +2243,24 @@ Download a sample Excel file by selecting this <a href="https://github.com/micro
 <li>Copy also the name of the file. For example: <code>Sample-list-of-candidates.xlsx</code></li>
 </ul>
 <p>Now go back to Microsoft Copilot Studio and finalize the tool configuration.
-Use the following settings:</p>
+In the dialog for editing the tool, update the <strong>Name</strong> and <strong>Description</strong> to give it more descriptive and informative settings. Use the following settings:</p>
 <ul>
-<li>Name: List HR candidates</li>
-<li>Description: List candidates for an HR role</li>
+<li>Name: </li>
 </ul>
-<p>In the dialog for editing the tool, update the <strong>Tool name</strong> to give it a more descriptive and informative name. Then select the Inputs tab and start configuring the input arguments. By default, all the mandatory input arguments have been configured so that their value will be exctracted by the User's entire response as you can notice in the <strong>Identify as</strong> property of each input argument.</p>
-<p><img alt="The tab to configure the input arguments of the action. There is a list of arguments with specific settings for each of them." src="../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png" /></p>
-<p>Select the <strong>How will the agent fill this input?</strong> setting for each of the input arguments and switch to <code>Set as a value</code> in order to provide static values for all of the input arguments. Confirm that you want to change the setting and proceed configuring a static value for each of the input arguments.</p>
-<p><img alt="The configuration of the **Location** input argument where the source for the value is a static value manually configured." src="../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-07.png" /></p>
-<p>Use the following static values:</p>
+<pre><code class="language-txt">List HR candidates
+</code></pre>
 <ul>
-<li>Location: use the URL of the SharePoint Online site collection where you stored the Excel spreadsheet. For example: <code>https://xyz.sharepoint.com/sites/contoso/</code>.</li>
-<li>Document Library: use the name of the document library where you stored the Excel spreadsheet. For example: <code>Shared Documents</code>.</li>
-<li>File: provide the name of the Excel file. For example: <code>Sample-list-of-candidates.xlsx</code>.</li>
-<li>Table: <code>Candidates_Table</code></li>
+<li>Description: </li>
 </ul>
-<p><img alt="The list of input arguments configured accordingly to the suggested settings. Every input argument is configured with a manually provided value." src="../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-08.png" /></p>
-<p>Now select the <strong>Save</strong> button in the upper right corner of the screen to save the updated action.</p>
+<pre><code class="language-txt">List candidates for an HR role
+</code></pre>
+<p>Now, select the <strong>Inputs</strong> section and start configuring the input arguments. By default, all the mandatory input arguments have been configured so that their value will be exctracted by the User's entire response as you can notice in the <strong>Fill using</strong> property of each input argument, which is configured with value <code>Dynamically fill with AI</code>.</p>
+<p><img alt="The section to configure the input arguments of the tool. There is a list of arguments with specific settings for each of them." src="../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png" /></p>
+<p>For each input argument, you will configure an explicit value. Select the <strong>Fill using</strong> field of the <strong>Location</strong> input argument, switch its value to <code>Custom value</code>, then using the dropdown list select the site collection where you stored the Excel spreadsheet with the list of candidates.</p>
+<p><img alt="The field &quot;Location&quot; configured with a custom value and the dropdown to select the target site collection." src="../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02b.png" /></p>
+<p>Now configure the <strong>Document Library</strong> input argument to <code>Custom value</code> and select the library where you stored the Excel file. Configure the <strong>File</strong> input argument to <code>Custom value</code> and browse for the Excel file. Lastly, configure <strong>Table</strong> to <code>Custom value</code> and select the table with name <code>Candidates_Table</code>. Once you are done with the settings, the input arguments should look like in the following screenshot.</p>
+<p><img alt="The list of input arguments configured accordingly to the suggested settings. Every input argument is configured with a manually provided value." src="../../../../assets/images/make/copilot-studio-04/create-action-excel-connector-08.png" /></p>
+<p>Now select the <strong>Save</strong> button in the upper right corner of the screen to save the updated tool.</p>
 <p><cc-end-step lab="mcs4" exercise="2" step="1" /></p>
 <h3 id="step-2-testing-the-new-tool">Step 2: Testing the new tool</h3>
 <p>You are now ready to publish the updated agent and to play with it in the integrated test panel or in Microsoft Teams.
@@ -2271,9 +2270,8 @@ Select the <strong>Publish</strong> button again, to update the publishing of th
 </code></pre>
 <p>Microsoft 365 Copilot Chat will ask you the permission to consume an external API (Excel Online) and you will have to select the option to <strong>Always allow</strong> or <strong>Allow once</strong>. For the sake of testing purposes, choose <strong>Allow once</strong> so that you will be able to test the authorization process again in the future.</p>
 <p><img alt="Microsoft 365 Copilot Chat asking consent to consume the external API for Excel Online. There are three command buttons to **Always allow**, **Allow once**, and **Cancel**." src="../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png" /></p>
-<p>Since the Power Platform connector requires a valid connection in place, the agent prompts the user to <strong>Sign in to Agentic HR</strong> before being able to consume the external data source. </p>
-<p><img alt="Microsoft 365 Copilot Chat asking to sign in to consume the external Excel Online API." src="../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-04.png" /></p>
-<p>Connect to the external connector and run again the prompt. The agent will reply back providing the list of candidates retrieved from the Excel spreadsheet and matching the criteria that you provided in the prompt.</p>
+<p>Since the Power Platform connector requires a valid connection in place, the agent might prompt the user to <strong>Sign in to Agentic HR</strong> before being able to consume the external data source. 
+Once you are connected to the external connector, the agent will reply back providing the list of candidates retrieved from the Excel spreadsheet and matching the criteria that you provided in the prompt.</p>
 <p><img alt="Microsoft 365 Copilot Chat asking to sign in to consume the external Excel Online API." src="../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-05.png" /></p>
 <p>Well done! You were able to consume an external connector from a Copilot Studio agent made for Microsoft 365 Copilot!</p>
 <p><cc-end-step lab="mcs4" exercise="2" step="2" /></p>
