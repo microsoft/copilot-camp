@@ -2187,7 +2187,7 @@ for (const div of toc) {
 
 <p>In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with Declarative Agent in Microsoft 365 Copilot that you will create, enabling natural language interactions with real claims data through secure, standardized AI agent communication.</p>
 <h2 id="scenario">Scenario</h2>
-<p><strong>Zava Insurance</strong>, a mid-sized home fictious insurance company serving 150,000+ homes across the Pacific Northwest, struggled with manual claims operations that caused 3-week delays and coordination issues when severe storms brought 2,000 claims in 48 hours during October 2025. To address this crisis, Zava's CTO envisioned AI-powered claims operations where intelligent agents could handle routine tasks, enabling adjusters to focus on complex cases and customer care. The development team built a <strong>Model Context Protocol (MCP) server</strong> using Azure infrastructure to provide standardized, secure access to claims data for AI agents, offering real-time synchronization and rich contextual information about damage assessments, contractor specialties, and inspection scheduling. After successfully deploying the MCP server, Zava integrated it with <strong>Microsoft 365 Copilot</strong> using <strong>Declarative Agents</strong>, enabling claims adjusters to interact with the system through natural language conversations like "Show me all urgent storm damage claims" rather than complex API calls, seamlessly embedding AI-powered claims management into their existing Microsoft 365 workflows.</p>
+<p><strong>Zava Insurance</strong>, a mid-sized home fictitious insurance company serving 150,000+ homes across the Pacific Northwest, struggled with manual claims operations that caused 3-week delays and coordination issues when severe storms brought 2,000 claims in 48 hours during October 2025. To address this crisis, Zava's CTO envisioned AI-powered claims operations where intelligent agents could handle routine tasks, enabling adjusters to focus on complex cases and customer care. The development team built a <strong>Model Context Protocol (MCP) server</strong> using Azure infrastructure to provide standardized, secure access to claims data for AI agents, offering real-time synchronization and rich contextual information about damage assessments, contractor specialties, and inspection scheduling. After successfully deploying the MCP server, Zava integrated it with <strong>Microsoft 365 Copilot</strong> using <strong>Declarative Agents</strong>, enabling claims adjusters to interact with the system through natural language conversations like "Show me all urgent storm damage claims" rather than complex API calls, seamlessly embedding AI-powered claims management into their existing Microsoft 365 workflows.</p>
 <hr />
 <h2 id="lab-objectives">🎯 Lab Objectives</h2>
 <p>By completing this lab, you will:</p>
@@ -2462,7 +2462,7 @@ Save this URL - you'll need it for the next step. We'll refer to this as <code>&
 <li>Next choose <strong>"Add an Action"</strong> to add to your agent</li>
 <li>Next select <strong>Start with an MCP server (preview)</strong></li>
 <li>Enter the publicly accessible MCP Server URl from previous exercise</li>
-<li>Choose the Default folder to scafold the agent (or choose a prefered location in your machine)</li>
+<li>Choose the Default folder to scaffold the agent (or choose a preferred location in your machine)</li>
 <li>When prompted for project details:</li>
 <li><strong>Application Name</strong>: <code>Zava Claims Assistant</code></li>
 </ol>
@@ -2470,11 +2470,11 @@ Save this URL - you'll need it for the next step. We'll refer to this as <code>&
 <ul>
 <li>Select <strong>Start</strong> button to fetch tools from your server.</li>
 <li>Once started you will see the number of tools and prompts available 1️⃣. </li>
-<li>Select <strong>ATK:Fecth action from MCP</strong> 2️⃣ to select tools you want to add to the agent. </li>
+<li>Select <strong>ATK:Fetch action from MCP</strong> 2️⃣ to select tools you want to add to the agent. </li>
 </ul>
 <p><img alt="image ATK picking mcp tools" src="../../../assets/images/integrate/ICA/images/atk.png" /></p>
 <ul>
-<li>When you select  <strong>ATK:Fecth action from MCP</strong>, you will be asked to provide the action manifest, select <strong>ai-plugin.json</strong>.</li>
+<li>When you select  <strong>ATK:Fetch action from MCP</strong>, you will be asked to provide the action manifest, select <strong>ai-plugin.json</strong>.</li>
 <li>
 <p>Select the tools you want to add to the agent. Let's select 10 tools for now.</p>
 <ul>
@@ -2619,10 +2619,10 @@ You are an intelligent insurance claims management assistant with access to the 
 <pre><code class="language-json">{
     &quot;$schema&quot;: &quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json&quot;,
     &quot;manifestVersion&quot;: &quot;1.23&quot;,
-    &quot;version&quot;: &quot;${{APP_VERSION}}&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
     &quot;id&quot;: &quot;${{TEAMS_APP_ID}}&quot;,
     &quot;developer&quot;: {
-        &quot;name&quot;: &quot;Zava Insurance&quot;,
+        &quot;name&quot;: &quot;Microsoft 365 Cloud Advocates&quot;,
         &quot;websiteUrl&quot;: &quot;https://www.zavainsurance.com&quot;,
         &quot;privacyUrl&quot;: &quot;https://www.zavainsurance.com/privacy&quot;,
         &quot;termsOfUseUrl&quot;: &quot;https://www.zavainsurance.com/terms&quot;

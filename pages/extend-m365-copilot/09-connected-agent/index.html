@@ -2095,7 +2095,7 @@ for (const div of toc) {
 <li><strong>Active Microsoft 365 Copilot license</strong> for testing </li>
 </ul>
 <hr />
-<h2 id="exercise-1-create-a-new-declarative-agent-for-embedd-knowledge">Exercise 1: Create a New Declarative Agent for Embedd knowledge</h2>
+<h2 id="exercise-1-create-a-new-declarative-agent-for-embedded-knowledge">Exercise 1: Create a New Declarative Agent for Embedded knowledge</h2>
 <p>In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that will use files stored locally in the project</p>
 <h3 id="step-1-create-new-agent-using-microsoft-365-agents-toolkit">Step 1: Create New Agent using Microsoft 365 Agents Toolkit</h3>
 <ol>
@@ -2110,7 +2110,7 @@ for (const div of toc) {
 </ol>
 <p>This will create the new agent and open up the project in a new VS Code window.</p>
 <p><cc-end-step lab="e9" exercise="1" step="1" /></p>
-<h3 id="step-2-understand-how-to-embedd-files">Step 2: Understand how to embedd files</h3>
+<h3 id="step-2-understand-how-to-embed-files">Step 2: Understand how to embed files</h3>
 <p>Navigate to the <code>appPackage</code> folder and explore its contents. You'll recognize familiar files from your previous declarative agent work: the <code>manifest.json</code> file (which defines your agent's capabilities) and the <code>declarativeAgent.json</code> file (which configures your agent's behavior).</p>
 <p>The key addition you'll notice is the <code>EmbeddedKnowledge</code> folder. This is where you'll store Zava's contractor pricing data files that will be embedded directly into your agent, enabling instant access to pricing intelligence without requiring live database queries.</p>
 <p><cc-end-step lab="e9" exercise="1" step="2" /></p>
@@ -2118,8 +2118,8 @@ for (const div of toc) {
 <h3 id="step-1-download-files-to-your-machine">Step 1: Download files to your machine</h3>
 <p>Go to <a href="../../../assets/docs/extend-m365-copilot-09">this url</a> and copy all files.
 Paste these files to the <code>appPackage/EmbeddedKnowledge</code> folder inside your newly created declarative agent project.</p>
-<p>The project should look like bwlow after you have copied the files.</p>
-<p><img alt="Embedd knowledge" src="../../../assets/images/extend-m365-copilot-08/embedd.png" /></p>
+<p>The project should look like below after you have copied the files.</p>
+<p><img alt="Embedded knowledge" src="../../../assets/images/extend-m365-copilot-08/embedd.png" /></p>
 <p><cc-end-step lab="e9" exercise="2" step="1" /></p>
 <h3 id="step-2-update-agent-identity-and-description">Step 2: Update Agent Identity and Description</h3>
 <p>Replace the content of <code>appPackage/declarativeAgent.json</code> with below configuration:</p>
@@ -2235,7 +2235,7 @@ When answering queries:
     &quot;version&quot;: &quot;1.0.0&quot;,
     &quot;id&quot;: &quot;${{TEAMS_APP_ID}}&quot;,
     &quot;developer&quot;: {
-        &quot;name&quot;: &quot;My App, Inc.&quot;,
+        &quot;name&quot;: &quot;Microsoft 365 Cloud Advocates&quot;,
         &quot;websiteUrl&quot;: &quot;https://www.example.com&quot;,
         &quot;privacyUrl&quot;: &quot;https://www.example.com/privacy&quot;,
         &quot;termsOfUseUrl&quot;: &quot;https://www.example.com/termofuse&quot;
@@ -2290,7 +2290,7 @@ When answering queries:
 <li>"What are the rates for emergency water extraction and drying services?"</li>
 <li>"Which contractors offer 24/7 emergency response and what are their rates?"</li>
 </ol>
-<p><img alt="Embedd knowledge in Copilot" src="../../../assets/images/extend-m365-copilot-08/ek.png" /></p>
+<p><img alt="Embedded knowledge in Copilot" src="../../../assets/images/extend-m365-copilot-08/ek.png" /></p>
 <p><cc-end-step lab="e9" exercise="3" step="2" /></p>
 <hr />
 <h2 id="exercise-4-build-the-orchestrator-agent">Exercise 4: Build the Orchestrator Agent</h2>
