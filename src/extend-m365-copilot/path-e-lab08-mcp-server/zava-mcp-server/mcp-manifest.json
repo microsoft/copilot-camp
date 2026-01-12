@@ -1,0 +1,135 @@
+{
+  "mcpVersion": "2025-06-18",
+  "name": "zava-claims-mcp-server",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for Zava Insurance Claims Operations - provides AI agents with comprehensive access to insurance claims data, contractor management, and inspection workflows",
+  "author": "Zava Insurance",
+  "license": "MIT",
+  "homepage": "https://github.com/rabwill/zava-claims-api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rabwill/zava-claims-api"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": true,
+      "callTool": true
+    }
+  },
+  "server": {
+    "command": "node",
+    "args": ["dist/src/mcp-server.js"],
+    "env": {}
+  },
+  "httpServer": {
+    "url": "http://127.0.0.1:3001/mcp"
+  },
+  "tools": [
+    {
+      "name": "get_claims",
+      "description": "Retrieve all insurance claims from the system",
+      "category": "claims"
+    },
+    {
+      "name": "get_claim", 
+      "description": "Retrieve a specific insurance claim by ID",
+      "category": "claims"
+    },
+    {
+      "name": "create_claim",
+      "description": "Create a new insurance claim",
+      "category": "claims"
+    },
+    {
+      "name": "update_claim",
+      "description": "Update an existing insurance claim",
+      "category": "claims"
+    },
+    {
+      "name": "delete_claim",
+      "description": "Delete an insurance claim",
+      "category": "claims"
+    },
+    {
+      "name": "get_inspections",
+      "description": "Retrieve inspection tasks, optionally filtered by claim ID or status",
+      "category": "inspections"
+    },
+    {
+      "name": "get_inspection",
+      "description": "Retrieve a specific inspection task by ID",
+      "category": "inspections"
+    },
+    {
+      "name": "create_inspection",
+      "description": "Create a new inspection task",
+      "category": "inspections"
+    },
+    {
+      "name": "update_inspection",
+      "description": "Update an existing inspection task",
+      "category": "inspections"
+    },
+    {
+      "name": "delete_inspection",
+      "description": "Delete an inspection task",
+      "category": "inspections"
+    },
+    {
+      "name": "get_inspectors",
+      "description": "Retrieve all inspectors with optional filtering by specialization",
+      "category": "inspectors"
+    },
+    {
+      "name": "get_inspector",
+      "description": "Retrieve a specific inspector by ID",
+      "category": "inspectors"
+    }
+  ],
+  "configuration": {
+    "required": [],
+    "optional": [
+      {
+        "name": "AZURE_STORAGE_CONNECTION_STRING",
+        "description": "Connection string for Azure Table Storage (defaults to local Azurite)"
+      },
+      {
+        "name": "LOG_LEVEL",
+        "description": "Logging level (debug, info, warn, error)"
+      },
+      {
+        "name": "OAUTH_CLIENT_ID",
+        "description": "OAuth Client ID for authentication"
+      },
+      {
+        "name": "OAUTH_CLIENT_SECRET",
+        "description": "OAuth Client Secret for authentication"
+      },
+      {
+        "name": "OAUTH_AUTHORITY",
+        "description": "OAuth Authority URL"
+      },
+      {
+        "name": "OAUTH_REDIRECT_URI",
+        "description": "OAuth Redirect URI"
+      },
+      {
+        "name": "OAUTH_SCOPES",
+        "description": "OAuth Scopes for access"
+      },
+      {
+        "name": "ADDITIONAL_ALLOWED_ORIGINS",
+        "description": "Additional allowed CORS origins"
+      }
+
+    ]
+  },
+  "tags": [
+    "insurance",
+    "claims-processing",
+    "contractor-management",
+    "property-inspection",
+    "azure",
+    "typescript"
+  ]
+}
