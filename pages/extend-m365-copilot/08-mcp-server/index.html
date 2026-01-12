@@ -1,0 +1,2589 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../../../ja/pages/extend-m365-copilot/08-mcp-server/" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lab 08 : Connect Declarative agent to MCP Server - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-08-connect-declarative-agent-to-mcp-server" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 08 : Connect Declarative agent to MCP Server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ja/pages/extend-m365-copilot/08-mcp-server/" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../make/" class="md-tabs__link">
+          
+  
+  
+  Maker Path - Make your agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Extend - Build a declarative agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  Build - Build a custom engine agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../beyond-agents/" class="md-tabs__link">
+          
+  
+  
+  Beyond Agents - AI concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maker Path - Make your agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Maker Path - Make your agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MAB - Copilot Studio lite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MAB1 - Copilot Studio Lite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS - Microsoft Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS0 - Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS1 - First agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS2 - Defining Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS3 - Defining Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS4 - Extending Microsoft 365 Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS5 - Consuming a custom connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS6 - Consuming an MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS7 - Creating Autonomous Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS8 - Integrating Azure AI Search for RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/09-connected-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS9 - Connected Agents (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA - SharePoint agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA1 - Build your first SharePoint agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA2 - Sharing SharePoint agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extend - Build a declarative agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extend - Build a declarative agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E0 - Prerequisites and Environment Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Agent Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Declarative Agent Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1 - Build a Detailed Declarative Agent using TypeSpec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1a - Build a game agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Integrate API from scratch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build and Integrate API from scratch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E2 - Build a Backend API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E3 - Add Declarative Agent and API Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E4 - Enhance API and Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E5 - Add Adaptive Cards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E6a - Add Entra ID Authentication (Toolkit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E7 - Add Copilot Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build - Build a custom engine agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build - Build a custom engine agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M365 Agents SDK labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    M365 Agents SDK labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA0 - Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA1 - Prepare your agent in Microsoft Foundry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA2 - Build your first agent using M365 Agents SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA3 - Configure agent properties and test on Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA4 - Bring your agent to Copilot Chat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beyond Agents - AI concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Beyond Agents - AI concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 - Simple agent instructions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-08-connect-declarative-agent-to-mcp-server">Lab 08 : Connect Declarative agent to MCP Server</h1>
+<p><strong>Zava Insurance</strong>, a mid-sized home fictious insurance company serving 150,000+ homes across the Pacific Northwest, struggled with manual claims operations that caused 3-week delays and coordination issues when severe storms brought 2,000 claims in 48 hours during October 2025. To address this crisis, Zava's CTO envisioned AI-powered claims operations where intelligent agents could handle routine tasks, enabling adjusters to focus on complex cases and customer care. The development team built a <strong>Model Context Protocol (MCP) server</strong> using Azure infrastructure to provide standardized, secure access to claims data for AI agents, offering real-time synchronization and rich contextual information about damage assessments, contractor specialties, and inspection scheduling. After successfully deploying the MCP server, Zava integrated it with <strong>Microsoft 365 Copilot</strong> using <strong>Declarative Agents</strong>, enabling claims adjusters to interact with the system through natural language conversations like "Show me all urgent storm damage claims" rather than complex API calls, seamlessly embedding AI-powered claims management into their existing Microsoft 365 workflows.</p>
+<hr />
+<h2 id="lab-objectives">🎯 Lab Objectives</h2>
+<p>By completing this lab, you will:</p>
+<ul>
+<li>Understand how MCP servers connect AI agents to backend systems</li>
+<li>Build and run Zava's MCP server with insurance claims data</li>
+<li>Create a Declarative Agent using Microsoft 365 Agents Toolkit</li>
+<li>Connect your agent to the MCP server and configure claims management capabilities</li>
+<li>Test the agent with natural language queries and real claims data</li>
+</ul>
+<hr />
+<h2 id="prerequisites">📚 Prerequisites</h2>
+<p>Before starting this lab, ensure you have:</p>
+<ul>
+<li><strong>Node.js 22+</strong> installed on your machine</li>
+<li><strong>VS Code</strong> with Microsoft 365 Agents Toolkit extension</li>
+<li><strong>Microsoft 365 developer account</strong> with Copilot license</li>
+<li>Basic knowledge of <strong>TypeScript/JavaScript</strong>,<strong>REST APIs</strong> and <strong>JSON</strong></li>
+<li>GitHub account for using VS Code tunneling</li>
+</ul>
+<hr />
+<h2 id="exercise-1-set-up-your-development-environment">Exercise 1: Set Up Your Development Environment</h2>
+<p>In this exercise, you'll clone Zava's MCP server codebase and set up your local development environment.</p>
+<h3 id="step-1-clone-the-repository">Step 1: Clone the Repository</h3>
+<p>Open your terminal and run:</p>
+<pre><code class="language-bash">git clone https://github.com/microsoft/copilot-camp.git
+cd src/extend-m365-copilot/path-e-lab08-mcp-server/zava-mcp-server
+</code></pre>
+<p><cc-end-step lab="e8" exercise="1" step="1" /></p>
+<h3 id="step-2-install-dependencies">Step 2: Install Dependencies</h3>
+<p>Install all required packages:</p>
+<pre><code class="language-bash">npm install
+</code></pre>
+<p>This installs key dependencies:</p>
+<ul>
+<li><code>@modelcontextprotocol/sdk</code> - MCP protocol implementation</li>
+<li><code>@azure/data-tables</code> - Azure Table Storage client</li>
+<li><code>express</code> - HTTP server framework</li>
+<li><code>zod</code> - Runtime type validation</li>
+</ul>
+<p><cc-end-step lab="e8" exercise="1" step="2" /></p>
+<h3 id="step-3-examine-the-project-structure">Step 3: Examine the Project Structure</h3>
+<p>Explore the codebase structure, open the project in VSCode by typing and enter</p>
+<pre><code>code .
+</code></pre>
+<p>Key directories:</p>
+<ul>
+<li><code>src/</code> - TypeScript source code</li>
+<li><code>data/</code> - Sample JSON data files</li>
+</ul>
+<p><cc-end-step lab="e8" exercise="1" step="3" /></p>
+<p>You have the code base ready with sample data. </p>
+<hr />
+<h2 id="exercise-2-start-zavas-local-claims-database">Exercise 2: Start Zava's Local Claims Database</h2>
+<p>Zava uses Azure Table Storage for their claims database. In this exercise, you'll start a local emulator and load sample data.</p>
+<h3 id="step-1-start-azure-storage-emulator">Step 1: Start Azure Storage Emulator</h3>
+<p>In <strong>Terminal 1</strong>, start the Azurite emulator:</p>
+<pre><code class="language-bash">npm run start:azurite
+</code></pre>
+<p>You should see:</p>
+<pre><code>Azurite Blob service is starting at http://127.0.0.1:10000
+Azurite Queue service is starting at http://127.0.0.1:10001
+Azurite Table service is starting at http://127.0.0.1:10002
+</code></pre>
+<p><strong>Keep this terminal running</strong> - it's your local database server.
+<cc-end-step lab="e8" exercise="2" step="1" /></p>
+<h3 id="step-2-load-sample-claims-data">Step 2: Load Sample Claims Data</h3>
+<p>In <strong>Terminal 2</strong>, initialize Zava's sample data:</p>
+<pre><code class="language-bash">npm run init-data
+</code></pre>
+<p>This loads realistic data including:</p>
+<ul>
+<li><strong>Claims</strong>: Storm damage, water damage, fire damage cases</li>
+<li><strong>Contractors</strong>: Roofing specialists, water restoration, general contractors</li>
+<li><strong>Inspections</strong>: Scheduled and completed inspection tasks</li>
+<li><strong>Inspectors</strong>: Available field inspectors with specialties</li>
+</ul>
+<p><cc-end-step lab="e8" exercise="2" step="2" /></p>
+<h2 id="step-3-verify-data-loading">Step 3: Verify Data Loading</h2>
+<p>Check the console output. You should see:</p>
+<pre><code>🚀 Starting data initialization...
+📋 Initializing table: claims
+✅ Table 'claims' created or already exists
+📄 Loaded 2 items from claims.json
+✅ Upserted entity: CN202504990
+✅ Upserted entity: CN202504991
+✅ Completed initialization for table: claims
+📋 Initializing table: inspections
+✅ Table 'inspections' created or already exists
+📄 Loaded 2 items from inspections.json
+✅ Upserted entity: insp-001
+✅ Upserted entity: insp-002
+✅ Completed initialization for table: inspections
+📋 Initializing table: inspectors
+✅ Table 'inspectors' created or already exists
+📄 Loaded 4 items from inspectors.json
+✅ Upserted entity: inspector-001
+✅ Upserted entity: inspector-002
+✅ Upserted entity: inspector-003
+✅ Upserted entity: inspector-004
+✅ Completed initialization for table: inspectors
+📋 Initializing table: contractors
+✅ Table 'contractors' created or already exists
+📄 Loaded 3 items from contractors.json
+✅ Upserted entity: contractor-001
+✅ Upserted entity: contractor-002
+✅ Upserted entity: contractor-003
+✅ Completed initialization for table: contractors
+📋 Initializing table: purchaseOrders
+✅ Table 'purchaseOrders' created or already exists
+📄 Loaded 2 items from purchaseOrders.json
+✅ Upserted entity: po-001
+✅ Upserted entity: po-002
+✅ Completed initialization for table: purchaseOrders
+🎉 Data initialization completed successfully!
+✨ All tables initialized successfully
+</code></pre>
+<p>Your local claims database is now running with sample data that mirrors Zava's production environment.
+<cc-end-step lab="e8" exercise="2" step="3" /></p>
+<hr />
+<h2 id="exercise-3-launch-the-mcp-server">Exercise 3: Launch the MCP Server</h2>
+<p>Now you'll start Zava's MCP server that enables AI agents to interact with the claims system.</p>
+<h3 id="step-1-start-the-mcp-server">Step 1: Start the MCP Server</h3>
+<p>In <strong>Terminal 2</strong> (keeping Azurite running in Terminal 1):</p>
+<pre><code class="language-bash">npm run start:mcp-http
+</code></pre>
+<p>You should see a message as below (parts of the message):</p>
+<pre><code>🚀 Zava Claims MCP HTTP Server started on 127.0.0.1:3001 
+...
+</code></pre>
+<p><cc-end-step lab="e8" exercise="3" step="1" /></p>
+<h3 id="step-2-test-server-health">Step 2: Test Server Health</h3>
+<p>Open a new browser tab and visit:</p>
+<pre><code>http://127.0.0.1:3001/health
+</code></pre>
+<p>You should see a JSON response confirming the server is healthy in the browser.</p>
+<pre><code class="language-json">{&quot;status&quot;:&quot;healthy&quot;,&quot;timestamp&quot;:&quot;2025-11-11T01:46:11.618Z&quot;,&quot;service&quot;:&quot;zava-claims-mcp-server&quot;,&quot;authentication&quot;:&quot;No authentication&quot;}
+</code></pre>
+<p><cc-end-step lab="e8" exercise="3" step="2" /></p>
+<h3 id="step-33-explore-available-endpoints">Step 3.3: Explore Available Endpoints</h3>
+<p>Visit these URLs to explore the API:
+- <strong>Health Check</strong>: <code>http://127.0.0.1:3001/health</code>
+- <strong>API Documentation</strong>: <code>http://127.0.0.1:3001/docs</code>
+- <strong>MCP Tools List</strong>: <code>http://127.0.0.1:3001/tools</code></p>
+<p>Your MCP server is now running and ready. 
+<cc-end-step lab="e8" exercise="3" step="3" /></p>
+<hr />
+<h2 id="exercise-4-test-ai-agent-interactions">Exercise 4: Test AI Agent Interactions</h2>
+<p>Experience how AI agents interact with Zava's claims system using the MCP Inspector tool.</p>
+<h3 id="step-1-launch-mcp-inspector">Step 1: Launch MCP Inspector</h3>
+<p>In <strong>Terminal 3</strong>, start the interactive MCP testing tool:</p>
+<pre><code class="language-bash">npm run inspector
+</code></pre>
+<p>This opens a web interface where you can test MCP tools as if you were an AI agent.</p>
+<p><cc-end-step lab="e8" exercise="4" step="1" /></p>
+<h3 id="step-2-explore-available-tools">Step 2: Explore Available Tools</h3>
+<p>In the MCP Inspector interface, you'll see <strong>15 tools</strong> available to AI agents:</p>
+<p><strong>Claims Management Tools:</strong></p>
+<ul>
+<li><code>get_claims</code> - List all insurance claims</li>
+<li><code>get_claim</code> - Get specific claim details</li>
+<li><code>create_claim</code> - File a new claim</li>
+<li><code>update_claim</code> - Update claim status</li>
+<li><code>delete_claim</code> - Close/delete claims</li>
+</ul>
+<p><strong>Inspection Tools:</strong></p>
+<ul>
+<li><code>get_inspections</code> - List inspection tasks</li>
+<li><code>create_inspection</code> - Schedule new inspections</li>
+<li><code>update_inspection</code> - Update inspection status</li>
+</ul>
+<p><strong>Contractor &amp; Inspector Tools:</strong></p>
+<ul>
+<li><code>get_contractors</code> - Find contractors by specialty</li>
+<li><code>get_inspectors</code> - List available inspectors</li>
+</ul>
+<p><cc-end-step lab="e8" exercise="4" step="2" /></p>
+<h3 id="step-3-test-the-get-claims-tool">Step 3: Test the "Get Claims" Tool</h3>
+<ol>
+<li>Click on <code>get_claims</code> tool</li>
+<li>Click <strong>"Run Tool"</strong> (no parameters needed)</li>
+<li>Observe the JSON response with Zava's current claims</li>
+</ol>
+<p>You should see claims like:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;1&quot;,
+  &quot;claimNumber&quot;: &quot;CN202504990&quot;, 
+  &quot;policyHolderName&quot;: &quot;John Smith&quot;,
+  &quot;property&quot;: &quot;123 Main St, Seattle, WA 98101&quot;,
+  &quot;status&quot;: &quot;Open - Claim is under investigation&quot;,
+  &quot;damageTypes&quot;: [&quot;Roof damage - moderate severity&quot;, &quot;Storm damage&quot;],
+  &quot;estimatedLoss&quot;: 15000
+}
+</code></pre>
+<p><img alt="image of mcp inspector tool interacting with zava mcp server" src="../../../assets/images/extend-m365-copilot-08/mcp-inspector.png" /></p>
+<p><cc-end-step lab="e8" exercise="4" step="3" /></p>
+<h3 id="step-4-set-up-public-access-with-dev-tunnel">Step 4: Set Up Public Access with Dev Tunnel</h3>
+<p>To enable external access to your MCP server (useful for testing with cloud-based AI agents or sharing with team members), you'll use VS Code's built-in Dev Tunnel feature to create a public HTTPS endpoint.</p>
+<h4 id="why-use-https-instead-of-http">Why Use HTTPS Instead of HTTP?</h4>
+<ul>
+<li><strong>Security</strong>: HTTPS encrypts communication between AI agents and your MCP server</li>
+<li><strong>Cloud Compatibility</strong>: Many cloud-based AI services require HTTPS endpoints</li>
+<li><strong>Production Readiness</strong>: Mirrors real-world deployment scenarios where MCP servers are accessed over secure connections</li>
+<li><strong>Cross-Origin Support</strong>: HTTPS tunnels handle CORS (Cross-Origin Resource Sharing) better than local HTTP servers</li>
+</ul>
+<h4 id="create-a-dev-tunnel-in-vs-code">Create a Dev Tunnel in VS Code</h4>
+<ul>
+<li>
+<p>In VS Code's terminal panel, locate the Ports tab.</p>
+</li>
+<li>
+<p>Click the Forward a Port button and enter port number 3001.</p>
+</li>
+<li>
+<p>Right-click on the forwarded port address and select Configure the Tunnel:</p>
+</li>
+<li>
+<p>Port Visibility: Select "Public" to make it accessible externally</p>
+</li>
+<li>Set Port Label: Enter zava-mcp-server (optional but recommended)</li>
+<li>Copy Local Address: Click to copy the tunnel URL to your clipboard</li>
+<li>
+<p>Authenticate: If prompted, sign in with your Microsoft/GitHub account to create the tunnel.</p>
+<p>The copied URL will look similar to this:</p>
+<p><code>https://abc123def456.use.devtunnels.ms</code>
+Save this URL - you'll need it for the next step. We'll refer to this as <code>&lt;tunnel-url&gt;</code>.</p>
+</li>
+</ul>
+<h4 id="update-packagejson-with-tunnel-url">Update Package.json with Tunnel URL</h4>
+<p>Now update your package.json to use the tunnel URL for testing:</p>
+<ul>
+<li>
+<p>Open <strong>package.json</strong> in the zava-mcp-server directory.</p>
+</li>
+<li>
+<p>Locate the inspector script and update it from:</p>
+</li>
+</ul>
+<pre><code class="language-json">&quot;inspector&quot;: &quot;npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp/messages&quot;
+</code></pre>
+<p>to</p>
+<pre><code class="language-json">&quot;inspector&quot;: &quot;npx @modelcontextprotocol/inspector --transport http --server-url &lt;tunnel-url&gt;/mcp/messages&quot;
+</code></pre>
+<ul>
+<li>
+<p>Replace <tunnel-url> with your actual tunnel URL from above step. </p>
+</li>
+<li>
+<p>Keep a copy of <code>&lt;tunnel-url&gt;/mcp/messages</code> - this is your  public HTTPS MCP server endpoint for agent integration.</p>
+</li>
+<li>
+<p>If the inspector is currently running, stop it by pressing Ctrl+C in the terminal, then restart it:</p>
+</li>
+</ul>
+<pre><code>npm run inspector
+</code></pre>
+<p>The MCP Inspector now opens a new browser session with a publicly accessible endpoint. Test all tools and prompts available to see how it works and brings back data. </p>
+<p>You've successfully tested how AI agents interact with Zava's claims system through the MCP protocol and you now have a public HTTPS endpoint for your MCP server that can be accessed by external AI agents and services.</p>
+<h2 id="_1"><cc-end-step lab="e8" exercise="4" step="4" /></h2>
+<h2 id="exercise-5-create-a-new-declarative-agent-project">Exercise 5: Create a New Declarative Agent Project</h2>
+<p>In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that will connect to Zava's claims system.</p>
+<h3 id="step-1-create-new-agent-using-microsoft-365-agents-toolkit">Step 1: Create New Agent using Microsoft 365 Agents Toolkit</h3>
+<ol>
+<li>Open a new window in <strong>VS Code</strong></li>
+<li>Click the <strong>Microsoft 365 Agents Toolkit</strong> icon in the Activity Bar (left sidebar)</li>
+<li>Sign in with your Microsoft 365 developer account if prompted</li>
+</ol>
+<h4 id="create-new-agent-project">Create New Agent Project</h4>
+<ol>
+<li>In the Agents Toolkit panel, click <strong>"Create a New Agent/App"</strong></li>
+<li>Select <strong>"Declarative Agent"</strong> from the template options</li>
+<li>Next choose <strong>"Add an Action"</strong> to add to your agent</li>
+<li>Next select <strong>Start with an MCP server (preview)</strong></li>
+<li>Enter the publicly accessible MCP Server URl from previous exercise</li>
+<li>Choose the Default folder to scafold the agent (or choose a prefered location in your machine)</li>
+<li>When prompted for project details:</li>
+<li><strong>Application Name</strong>: <code>Zava Claims Assistant</code></li>
+</ol>
+<p>You will be directed to the newly created project which has the file .vscode/mcp.json open. This is the MCP server configuration file for VS Code to use.</p>
+<ul>
+<li>Select <strong>Start</strong> button to fetch tools from your server.</li>
+<li>Once started you will see the number of tools and prompts available 1️⃣. </li>
+<li>Select <strong>ATK:Fecth action from MCP</strong> 2️⃣ to select tools you want to add to the agent. </li>
+</ul>
+<p><img alt="image ATK picking mcp tools" src="../../../assets/images/integrate/ICA/images/atk.png" /></p>
+<ul>
+<li>When you select  <strong>ATK:Fecth action from MCP</strong>, you will be asked to provide the action manifest, select <strong>ai-plugin.json</strong>.</li>
+<li>
+<p>Select the tools you want to add to the agent. Let's select 10 tools for now.</p>
+<ul>
+<li>create_claim</li>
+<li>create_inspection</li>
+<li>get_claim</li>
+<li>get_claims</li>
+<li>get_contractors</li>
+<li>get_inspection</li>
+<li>get_inspections</li>
+<li>update_claim</li>
+<li>update_inspection</li>
+<li>get_inspectors</li>
+</ul>
+</li>
+</ul>
+<p>This step will populate the action manifest <strong>ai-plugin.json</strong> with the required functions, MCP server url etc that is needed for actions in an agent.</p>
+<p><cc-end-step lab="e8" exercise="5" step="1" /></p>
+<h3 id="step-2-understand-the-action-manifest-update-from-previous-step">Step 2: Understand the Action manifest update from previous step</h3>
+<p>Open <code>appPackage/ai-plugin.json</code> and examine the structure with your chosen tools and MCP server url prepopulated:</p>
+<pre><code class="language-json">{
+     &quot;$schema&quot;: &quot;https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json&quot;,
+    &quot;schema_version&quot;: &quot;v2.4&quot;,
+    &quot;name_for_human&quot;: &quot;Zava Claims Assistant&quot;,
+    &quot;description_for_human&quot;: &quot;Zava Claims Assistant${{APP_NAME_SUFFIX}}&quot;,
+    &quot;contact_email&quot;: &quot;publisher-email@example.com&quot;,
+    &quot;namespace&quot;: &quot;zavaclaimsassistant&quot;,
+    &quot;functions&quot;: [
+        {
+            &quot;name&quot;: &quot;create_claim&quot;,
+            &quot;description&quot;: &quot;Create a new insurance claim&quot;,
+            &quot;parameters&quot;: {
+                ...
+}
+</code></pre>
+<p>You now have a basic Declarative Agent that is connected to your MCP Server with 10 tools ready for use.
+<cc-end-step lab="e8" exercise="5" step="2" /></p>
+<hr />
+<h2 id="exercise-6-configure-the-agent-for-zavas-claims-operations">Exercise 6: Configure the Agent for Zava's Claims Operations</h2>
+<p>Transform the basic agent into Zava's intelligent claims assistant by configuring its identity, instructions,  capabilities, and conversation starters.</p>
+<h3 id="step-1-update-agent-identity-and-description">Step 1: Update Agent Identity and Description</h3>
+<p>Replace the content of <code>appPackage/declarativeAgent.json</code> with Zava's configuration:</p>
+<pre><code class="language-json">{
+    &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;,
+    &quot;version&quot;: &quot;v1.6&quot;,
+    &quot;name&quot;: &quot;Zava Claims&quot;,
+    &quot;description&quot;: &quot;An intelligent insurance claims management assistant that leverages MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing&quot;,
+    &quot;instructions&quot;: &quot;$[file('instruction.txt')]&quot;,
+    &quot;conversation_starters&quot;: [
+        {
+            &quot;title&quot;: &quot;Find Inspections by Claim Number&quot;,
+            &quot;text&quot;: &quot;Find all inspections for claim number CN202504991&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Create Inspection &amp; Find Contractors&quot;,
+            &quot;text&quot;: &quot;Create an urgent inspection for claim CN202504990 and recommend water damage contractors&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Analyze Claims Trends&quot;,
+            &quot;text&quot;: &quot;Show me all high-priority claims and their inspection status&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Find Emergency Contractors&quot;,
+            &quot;text&quot;: &quot;Find preferred contractors specializing in storm damage for immediate deployment&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Claims Operation Summary&quot;,
+            &quot;text&quot;: &quot;Generate a summary of all pending inspections and contractor assignments&quot;
+        }
+    ]
+}
+</code></pre>
+<p><cc-end-step lab="e8" exercise="6" step="1" /></p>
+<h3 id="step-2-create-detailed-agent-instructions">Step 2: Create Detailed Agent Instructions</h3>
+<p>Update <code>appPackage/instruction.txt</code> with comprehensive instructions for the agent:</p>
+<pre><code class="language-plaintext"># Zava Claims Operations Assistant
+
+## Role
+You are an intelligent insurance claims management assistant with access to the Zava Claims Operations MCP Server. Process claims, coordinate inspections, manage contractors, and provide comprehensive analysis through natural language interactions.
+
+## Core Functions
+
+### Claims Management
+- Retrieve and analyze all claims using natural language queries
+- Get specific claim details by claim number or partial information
+- Create new insurance claims with complete documentation
+- Update existing claim information and status
+- Use fuzzy matching for partial claim information to help users find what they need
+
+### Inspection Operations
+- Filter inspections by claim ID, status, priority, or workload
+- Retrieve detailed inspection data and schedules
+- Create new inspection tasks with appropriate priority levels
+- Modify existing inspection details and assignments
+- Access inspector availability and specialties
+- Automatically determine priorities: safety hazards = 'urgent', water damage = 'high', routine = 'medium'
+
+### Contractor Services
+- Find contractors by specialty, location, and preferred status
+- Access contractor ratings, availability, and past performance
+- Coordinate contractor assignments with inspection schedules
+- Track purchase orders and contractor costs
+
+## Decision Framework
+
+### For Inspections:
+1. Assess urgency based on damage type and safety requirements
+2. Select appropriate task type: 'initial', 'reinspection', 'emergency', 'final'  
+3. Generate detailed instructions with specific focus areas
+4. Consider inspector specialties and contractor availability for scheduling
+
+### For Claims Analysis:
+1. Prioritize safety-related issues (structural damage, water intrusion)
+2. Group similar damage types for efficient processing
+3. Identify patterns that might indicate fraud or systemic issues
+4. Recommend preventive measures based on damage trends
+
+## Response Guidelines
+
+**Always Include:**
+- Relevant claim numbers and context
+- Clear next steps and action items
+- Priority levels and urgency indicators
+- Safety risk assessments when applicable
+
+**For Complex Requests:**
+1. Break down the request into specific components
+2. Retrieve relevant claim and inspection data
+3. Execute appropriate MCP server functions
+4. Provide integrated analysis with actionable recommendations
+5. Suggest follow-up actions or monitoring
+
+**Communication Style:**
+- Professional yet approachable for insurance professionals
+- Use industry terminology appropriately
+- Provide clear explanations for complex procedures
+- Always prioritize customer service and regulatory compliance
+</code></pre>
+<p><cc-end-step lab="e8" exercise="6" step="2" /></p>
+<h3 id="step-3-update-the-teams-app-manifest">Step 3: Update the Teams App Manifest</h3>
+<p>Open <code>appPackage/manifest.json</code> and update it with Zava's branding:</p>
+<pre><code class="language-json">{
+    &quot;$schema&quot;: &quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json&quot;,
+    &quot;manifestVersion&quot;: &quot;1.23&quot;,
+    &quot;version&quot;: &quot;${{APP_VERSION}}&quot;,
+    &quot;id&quot;: &quot;${{TEAMS_APP_ID}}&quot;,
+    &quot;developer&quot;: {
+        &quot;name&quot;: &quot;Zava Insurance&quot;,
+        &quot;websiteUrl&quot;: &quot;https://www.zavainsurance.com&quot;,
+        &quot;privacyUrl&quot;: &quot;https://www.zavainsurance.com/privacy&quot;,
+        &quot;termsOfUseUrl&quot;: &quot;https://www.zavainsurance.com/terms&quot;
+    },
+    &quot;icons&quot;: {
+        &quot;color&quot;: &quot;color.png&quot;,
+        &quot;outline&quot;: &quot;outline.png&quot;
+    },
+    &quot;name&quot;: {
+        &quot;short&quot;: &quot;Zava Claims&quot;,
+        &quot;full&quot;: &quot;Zava Insurance Claims Assistant&quot;
+    },
+    &quot;description&quot;: {
+        &quot;short&quot;: &quot;An intelligent insurance claims management assistant&quot;,
+        &quot;full&quot;: &quot;An AI-powered claims management assistant that leverages MCP server capabilities to streamline inspection workflows, coordinate contractors, and provide comprehensive operational insights for efficient claims processing.&quot;
+    },
+    &quot;accentColor&quot;: &quot;#0078D4&quot;,
+    &quot;composeExtensions&quot;: [],
+    &quot;copilotAgents&quot;: {
+        &quot;declarativeAgents&quot;: [            
+            {
+                &quot;id&quot;: &quot;declarativeAgent&quot;,
+                &quot;file&quot;: &quot;declarativeAgent.json&quot;
+            }
+        ]
+    },
+    &quot;permissions&quot;: [
+        &quot;identity&quot;,
+        &quot;messageTeamMembers&quot;
+    ],
+    &quot;validDomains&quot;: []
+}
+</code></pre>
+<p>Your agent now has a clear identity as Zava's claims assistant with comprehensive instructions.
+<cc-end-step lab="e8" exercise="6" step="3" /></p>
+<hr />
+<h2 id="exercise-7-test-the-agent-integration">Exercise 7: Test the Agent Integration</h2>
+<p>Test your Declarative Agent to ensure it can successfully communicate with the MCP server and handle claims operations.</p>
+<h3 id="step-1-ensure-mcp-server-is-running">Step 1: Ensure MCP Server is Running</h3>
+<p>Before testing, make sure your MCP server from previous exercise is still running:</p>
+<ol>
+<li>Open the window where zava-mcp-server project is running</li>
+<li>In the terminal, verify Azurite is running: <code>npm run start:azurite</code></li>
+<li>Verify MCP server is running: <code>npm run start:mcp-http</code></li>
+</ol>
+<p><cc-end-step lab="e8" exercise="7" step="1" /></p>
+<h3 id="step-2-provision-the-agent">Step 2: Provision the Agent</h3>
+<p>In VS Code with your <code>zava-claims-agent</code> project open:</p>
+<ol>
+<li>Open the <strong>Microsoft 365 Agents Toolkit</strong> panel</li>
+<li>Click <strong>"Provision"</strong> in the Lifecycle section</li>
+<li>Select <strong>"dev"</strong> environment when prompted</li>
+<li>Wait for provisioning to complete - this creates and uploads the agent package</li>
+</ol>
+<p><cc-end-step lab="e8" exercise="7" step="2" /></p>
+<h3 id="step-3-test-in-microsoft-365-copilot">Step 3: Test in Microsoft 365 Copilot</h3>
+<ol>
+<li>Click <strong>"Preview"</strong> in the Agents Toolkit panel</li>
+<li>This will open Microsoft Teams with your agent available</li>
+<li>In Teams, open <strong>Copilot</strong> and look for your <strong>"Zava Claims"</strong> agent</li>
+<li>Try the conversation starters:</li>
+<li>"Find all inspections for claim number CN202504991"</li>
+<li>"Show me all high-priority claims and their inspection status"</li>
+</ol>
+<p><cc-end-step lab="e8" exercise="7" step="3" /></p>
+<h3 id="step-4-test-natural-language-queries">Step 4: Test Natural Language Queries</h3>
+<p>Try these natural language queries to test the agent's capabilities:</p>
+<pre><code>1. &quot;What claims do we have for storm damage?&quot;
+
+2. &quot;Create a new urgent inspection for claim CN202504990 to assess water damage in the basement&quot;
+
+3. &quot;Find contractors who specialize in roofing and are marked as preferred&quot;
+
+4. &quot;Show me the details for claim number CN202504991&quot;
+
+5. &quot;Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday&quot;
+</code></pre>
+<p>Your agent should successfully respond to natural language queries and interact with the MCP server data.
+<cc-end-step lab="e8" exercise="7" step="4" /></p>
+<p>Congratulations! You've successfully created and deployed Zava Insurance's Declarative Agent that seamlessly integrates with their MCP server. Proceed "Next" to add another Declarative agent to help prepare you for multi-agent orchestration. 
+<cc-next /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/08-mcp-server" /></p>
+<h3 id="additional-resources">🔗 Additional Resources</h3>
+<ul>
+<li><strong>MCP Protocol Documentation</strong>: <a href="https://modelcontextprotocol.io/">https://modelcontextprotocol.io/</a></li>
+<li><strong>Azure Table Storage</strong>: <a href="https://docs.microsoft.com/en-us/azure/storage/tables/">Azure Documentation</a></li>
+<li><strong>Zava Insurance Demo</strong>: <a href="https://github.com/microsoft/Ignite25-BRK319-Demos/src/DA/zava-mcp-server">GitHub Repository</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
