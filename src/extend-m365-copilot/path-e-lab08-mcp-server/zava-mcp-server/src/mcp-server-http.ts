@@ -1038,7 +1038,8 @@ ${reportType === 'preliminary' ?
 // Create Express app
 const app = express();
 const port = parseInt(process.env.PORT || '3001', 10);
-const host = process.env.HOST || '127.0.0.1'; // Bind to localhost only for security
+// Bind to 0.0.0.0 for production (Azure Container Apps) or localhost for local dev
+const host = process.env.HOST || (process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1');
 
 // Security: Allowlist of permitted origins to prevent DNS rebinding attacks
 const allowedOrigins = [
@@ -1046,6 +1047,8 @@ const allowedOrigins = [
   'https://onlinemcpinspector.com',
   'https://localhost:3001',
   'http://127.0.0.1:3001',
+  // Production Azure Container Apps URL
+  'https://claims-mcp-app.yellowcliff-c66c6908.eastus.azurecontainerapps.io',
   // Allow all localhost ports for development tools (MCP Inspector, etc.)
   'http://localhost:',
   'http://127.0.0.1:',
