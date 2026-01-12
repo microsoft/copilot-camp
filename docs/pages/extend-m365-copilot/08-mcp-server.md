@@ -6,7 +6,7 @@ In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava 
 
 ## Scenario
 
-**Zava Insurance**, a mid-sized home fictious insurance company serving 150,000+ homes across the Pacific Northwest, struggled with manual claims operations that caused 3-week delays and coordination issues when severe storms brought 2,000 claims in 48 hours during October 2025. To address this crisis, Zava's CTO envisioned AI-powered claims operations where intelligent agents could handle routine tasks, enabling adjusters to focus on complex cases and customer care. The development team built a **Model Context Protocol (MCP) server** using Azure infrastructure to provide standardized, secure access to claims data for AI agents, offering real-time synchronization and rich contextual information about damage assessments, contractor specialties, and inspection scheduling. After successfully deploying the MCP server, Zava integrated it with **Microsoft 365 Copilot** using **Declarative Agents**, enabling claims adjusters to interact with the system through natural language conversations like "Show me all urgent storm damage claims" rather than complex API calls, seamlessly embedding AI-powered claims management into their existing Microsoft 365 workflows.
+**Zava Insurance**, a mid-sized home fictitious insurance company serving 150,000+ homes across the Pacific Northwest, struggled with manual claims operations that caused 3-week delays and coordination issues when severe storms brought 2,000 claims in 48 hours during October 2025. To address this crisis, Zava's CTO envisioned AI-powered claims operations where intelligent agents could handle routine tasks, enabling adjusters to focus on complex cases and customer care. The development team built a **Model Context Protocol (MCP) server** using Azure infrastructure to provide standardized, secure access to claims data for AI agents, offering real-time synchronization and rich contextual information about damage assessments, contractor specialties, and inspection scheduling. After successfully deploying the MCP server, Zava integrated it with **Microsoft 365 Copilot** using **Declarative Agents**, enabling claims adjusters to interact with the system through natural language conversations like "Show me all urgent storm damage claims" rather than complex API calls, seamlessly embedding AI-powered claims management into their existing Microsoft 365 workflows.
 
 ---
 
@@ -364,7 +364,7 @@ In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new De
 3. Next choose **"Add an Action"** to add to your agent
 4. Next select **Start with an MCP server (preview)**
 5. Enter the publicly accessible MCP Server URl from previous exercise
-6. Choose the Default folder to scafold the agent (or choose a prefered location in your machine)
+6. Choose the Default folder to scaffold the agent (or choose a preferred location in your machine)
 7. When prompted for project details:
    - **Application Name**: `Zava Claims Assistant`
 
@@ -372,11 +372,11 @@ You will be directed to the newly created project which has the file .vscode/mcp
 
 - Select **Start** button to fetch tools from your server.
 - Once started you will see the number of tools and prompts available 1️⃣. 
-- Select **ATK:Fecth action from MCP** 2️⃣ to select tools you want to add to the agent. 
+- Select **ATK:Fetch action from MCP** 2️⃣ to select tools you want to add to the agent. 
 
 ![image ATK picking mcp tools](../../../assets/images/integrate/ICA/images/atk.png)
 
-- When you select  **ATK:Fecth action from MCP**, you will be asked to provide the action manifest, select **ai-plugin.json**.
+- When you select  **ATK:Fetch action from MCP**, you will be asked to provide the action manifest, select **ai-plugin.json**.
 - Select the tools you want to add to the agent. Let's select 10 tools for now.
 
     - create_claim
@@ -543,7 +543,7 @@ Open `appPackage/manifest.json` and update it with Zava's branding:
     "version": "1.0.0",
     "id": "${{TEAMS_APP_ID}}",
     "developer": {
-        "name": "Zava Insurance",
+        "name": "Microsoft 365 Cloud Advocates",
         "websiteUrl": "https://www.zavainsurance.com",
         "privacyUrl": "https://www.zavainsurance.com/privacy",
         "termsOfUseUrl": "https://www.zavainsurance.com/terms"

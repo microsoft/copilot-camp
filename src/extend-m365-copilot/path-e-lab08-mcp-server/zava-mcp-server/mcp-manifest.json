@@ -3,7 +3,7 @@
   "name": "zava-claims-mcp-server",
   "version": "1.0.0",
   "description": "Model Context Protocol server for Zava Insurance Claims Operations - provides AI agents with comprehensive access to insurance claims data, contractor management, and inspection workflows",
-  "author": "Zava Insurance",
+  "author": "Microsoft 365 Cloud Advocates",
   "license": "MIT",
   "homepage": "https://github.com/rabwill/zava-claims-api",
   "repository": {
