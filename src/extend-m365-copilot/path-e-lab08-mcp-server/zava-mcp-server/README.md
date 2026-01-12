@@ -380,6 +380,7 @@ LOG_LEVEL=info
 PORT=3001
 ```
 
+
 ### Available Configuration Options
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
@@ -557,8 +558,60 @@ az containerapp create \
   --max-replicas 5 \
   --cpu 0.5 \
   --memory 1.0Gi
+
+# 7. Configure registry authentication (CRITICAL - prevents ImagePullUnauthorized error)
+# RECOMMENDED: Use managed identity (no password needed)
+az containerapp registry set \
+  --name $CONTAINER_APP_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --server $CONTAINER_REGISTRY.azurecr.io \
+  --identity system
+
+# ALTERNATIVE: Use admin credentials (less secure)
+# az containerapp registry set \
+#   --name $CONTAINER_APP_NAME \
+#   --resource-group $RESOURCE_GROUP \
+#   --server $CONTAINER_REGISTRY.azurecr.io \
+#   --username $CONTAINER_REGISTRY \
+#   --password $(az acr credential show --name $CONTAINER_REGISTRY --query "passwords[0].value" -o tsv)
 ```
 
+**Important**: After deploying, configure environment variables and registry authentication:
+
+```bash
+# Set environment variables for production
+az containerapp update \
+  --name $CONTAINER_APP_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --set-env-vars \
+    "NODE_ENV=production" \
+    "AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string --name $STORAGE_ACCOUNT --resource-group $RESOURCE_GROUP --query connectionString -o tsv)"
+```
+
+### Using Managed Identity (Recommended)
+To avoid passing passwords and use Azure managed identity:
+
+```bash
+# 1. Enable system-assigned managed identity
+az containerapp identity assign \
+  --name $CONTAINER_APP_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --system-assigned
+
+# 2. Grant the managed identity pull permission to the registry
+PRINCIPAL_ID=$(az containerapp identity show --name $CONTAINER_APP_NAME --resource-group $RESOURCE_GROUP --query principalId -o tsv)
+az role assignment create \
+  --assignee $PRINCIPAL_ID \
+  --scope $(az acr show --name $CONTAINER_REGISTRY --query id -o tsv) \
+  --role AcrPull
+
+# 3. Update container app to use managed identity for registry
+az containerapp registry set \
+  --name $CONTAINER_APP_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --server $CONTAINER_REGISTRY.azurecr.io \
+  --identity system
+```
 
 
 ## 🔍 Testing and Monitoring
@@ -604,7 +657,7 @@ npm run inspector
 ```bash
 # Test deployed server
 npm run inspector-prod
-# Connects to: https://claims-mcp-app.proudglacier-5e06022c.eastus.azurecontainerapps.io
+# Connects to: https://claims-mcp-app.yellowcliff-c66c6908.eastus.azurecontainerapps.io
 ```
 
 #### Inspector Features
@@ -840,6 +893,7 @@ This project is provided as-is for educational and development purposes. The sam
 - **express**: MIT License
 - **zod**: MIT License
 - See [package.json](package.json) for complete dependency list
+
 
 
 
