@@ -40,7 +40,7 @@ Before starting this lab, ensure you have:
 
 ---
 
-## Exercise 1: Create a New Declarative Agent for Embedd knowledge
+## Exercise 1: Create a New Declarative Agent for Embedded knowledge
 
 
 In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that will use files stored locally in the project
@@ -60,7 +60,7 @@ This will create the new agent and open up the project in a new VS Code window.
 
   <cc-end-step lab="e9" exercise="1" step="1" />
 
-### Step 2: Understand how to embedd files 
+### Step 2: Understand how to embed files 
 
 Navigate to the `appPackage` folder and explore its contents. You'll recognize familiar files from your previous declarative agent work: the `manifest.json` file (which defines your agent's capabilities) and the `declarativeAgent.json` file (which configures your agent's behavior).
 
@@ -74,9 +74,9 @@ The key addition you'll notice is the `EmbeddedKnowledge` folder. This is where 
 Go to [this url](../../../assets/docs/extend-m365-copilot-09) and copy all files.
 Paste these files to the `appPackage/EmbeddedKnowledge` folder inside your newly created declarative agent project.
 
-The project should look like bwlow after you have copied the files.
+The project should look like below after you have copied the files.
 
-![Embedd knowledge](../../../assets/images/extend-m365-copilot-08/embedd.png)
+![Embedded knowledge](../../../assets/images/extend-m365-copilot-08/embedd.png)
 
   <cc-end-step lab="e9" exercise="2" step="1" />
 
@@ -205,7 +205,7 @@ Open `appPackage/manifest.json` and update it with Zava's branding:
     "version": "1.0.0",
     "id": "${{TEAMS_APP_ID}}",
     "developer": {
-        "name": "My App, Inc.",
+        "name": "Microsoft 365 Cloud Advocates",
         "websiteUrl": "https://www.example.com",
         "privacyUrl": "https://www.example.com/privacy",
         "termsOfUseUrl": "https://www.example.com/termofuse"
@@ -267,7 +267,7 @@ In VS Code with your project open:
    - "What are the rates for emergency water extraction and drying services?"
    - "Which contractors offer 24/7 emergency response and what are their rates?"
 
-   ![Embedd knowledge in Copilot](../../../assets/images/extend-m365-copilot-08/ek.png)
+   ![Embedded knowledge in Copilot](../../../assets/images/extend-m365-copilot-08/ek.png)
 
   <cc-end-step lab="e9" exercise="3" step="2" />
 
