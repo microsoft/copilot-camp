@@ -2211,13 +2211,15 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <pre><code class="language-json">{&quot;status&quot;:&quot;healthy&quot;,&quot;timestamp&quot;:&quot;2025-11-11T01:46:11.618Z&quot;,&quot;service&quot;:&quot;zava-claims-mcp-server&quot;,&quot;authentication&quot;:&quot;No authentication&quot;}
 </code></pre>
 <p><cc-end-step lab="e8" exercise="3" step="2" /></p>
-<h3 id="step-33-explore-available-endpoints">Step 3.3: Explore Available Endpoints</h3>
-<p>Visit these URLs to explore the API:
-- <strong>Health Check</strong>: <code>http://127.0.0.1:3001/health</code>
-- <strong>API Documentation</strong>: <code>http://127.0.0.1:3001/docs</code>
-- <strong>MCP Tools List</strong>: <code>http://127.0.0.1:3001/tools</code></p>
-<p>Your MCP server is now running and ready. 
-<cc-end-step lab="e8" exercise="3" step="3" /></p>
+<h3 id="step-3-explore-available-endpoints">Step 3: Explore Available Endpoints</h3>
+<p>Visit these URLs to explore the API:</p>
+<ul>
+<li><strong>Health Check</strong>: <code>http://127.0.0.1:3001/health</code></li>
+<li><strong>API Documentation</strong>: <code>http://127.0.0.1:3001/docs</code></li>
+<li><strong>MCP Tools List</strong>: <code>http://127.0.0.1:3001/tools</code></li>
+</ul>
+<p>Your MCP server is now running and ready. </p>
+<p><cc-end-step lab="e8" exercise="3" step="3" /></p>
 <hr />
 <h2 id="exercise-4-test-ai-agent-interactions">Exercise 4: Test AI Agent Interactions</h2>
 <p>Experience how AI agents interact with Zava's claims system using the MCP Inspector tool.</p>
@@ -2296,8 +2298,8 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <li>
 <p>Authenticate: If prompted, sign in with your Microsoft/GitHub account to create the tunnel.</p>
 <p>The copied URL will look similar to this:</p>
-<p><code>https://abc123def456.use.devtunnels.ms</code>
-Save this URL - you'll need it for the next step. We'll refer to this as <code>&lt;tunnel-url&gt;</code>.</p>
+<p><code>https://abc123def456.use.devtunnels.ms</code></p>
+<p>Save this URL - you'll need it for the next step. We'll refer to this as <code>&lt;tunnel-url&gt;</code>.</p>
 </li>
 </ul>
 <h4 id="update-packagejson-with-tunnel-url">Update Package.json with Tunnel URL</h4>
@@ -2347,10 +2349,14 @@ Save this URL - you'll need it for the next step. We'll refer to this as <code>&
 <li>Next select <strong>Start with an MCP server (preview)</strong></li>
 <li>Enter the publicly accessible MCP Server URl from previous exercise</li>
 <li>Choose the Default folder to scaffold the agent (or choose a preferred location in your machine)</li>
-<li>When prompted for project details:</li>
-<li><strong>Application Name</strong>: <code>Zava Claims Assistant</code></li>
+<li>
+<p>When prompted for project details:</p>
+</li>
+<li>
+<p><strong>Application Name</strong>: <code>Zava Claims Assistant</code></p>
+</li>
 </ol>
-<p>You will be directed to the newly created project which has the file .vscode/mcp.json open. This is the MCP server configuration file for VS Code to use.</p>
+<p>You will be directed to the newly created project which has the file <code>.vscode/mcp.json</code> open. This is the MCP server configuration file for VS Code to use.</p>
 <ul>
 <li>Select <strong>Start</strong> button to fetch tools from your server.</li>
 <li>Once started you will see the number of tools and prompts available 1️⃣. </li>
@@ -2375,10 +2381,10 @@ Save this URL - you'll need it for the next step. We'll refer to this as <code>&
 </ul>
 </li>
 </ul>
-<p>This step will populate the action manifest <strong>ai-plugin.json</strong> with the required functions, MCP server url etc that is needed for actions in an agent.</p>
+<p>This step will populate the action manifest <strong>ai-plugin.json</strong> with the required functions, MCP server url, etc. that is needed for actions in an agent.</p>
 <p><cc-end-step lab="e8" exercise="5" step="1" /></p>
 <h3 id="step-2-understand-the-action-manifest-update-from-previous-step">Step 2: Understand the Action manifest update from previous step</h3>
-<p>Open <code>appPackage/ai-plugin.json</code> and examine the structure with your chosen tools and MCP server url prepopulated:</p>
+<p>Open <code>appPackage/ai-plugin.json</code> and examine the structure with your chosen tools and MCP server url pre-populated:</p>
 <pre><code class="language-json">{
      &quot;$schema&quot;: &quot;https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json&quot;,
     &quot;schema_version&quot;: &quot;v2.4&quot;,
@@ -2577,21 +2583,21 @@ You are an intelligent insurance claims management assistant with access to the 
 <p><cc-end-step lab="e8" exercise="7" step="3" /></p>
 <h3 id="step-4-test-natural-language-queries">Step 4: Test Natural Language Queries</h3>
 <p>Try these natural language queries to test the agent's capabilities:</p>
-<pre><code>1. &quot;What claims do we have for storm damage?&quot;
-
-2. &quot;Create a new urgent inspection for claim CN202504990 to assess water damage in the basement&quot;
-
-3. &quot;Find contractors who specialize in roofing and are marked as preferred&quot;
-
-4. &quot;Show me the details for claim number CN202504991&quot;
-
-5. &quot;Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday&quot;
+<pre><code>What claims do we have for storm damage?
 </code></pre>
-<p>Your agent should successfully respond to natural language queries and interact with the MCP server data.
-<cc-end-step lab="e8" exercise="7" step="4" /></p>
+<pre><code>Create a new urgent inspection for claim CN202504990 to assess water damage in the basement
+</code></pre>
+<pre><code>Find contractors who specialize in roofing and are marked as preferred
+</code></pre>
+<pre><code>Show me the details for claim number CN202504991
+</code></pre>
+<pre><code>Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday
+</code></pre>
+<p>Your agent should successfully respond to natural language queries and interact with the MCP server data.</p>
+<p><cc-end-step lab="e8" exercise="7" step="4" /></p>
 <h3 id="step-5-debug-the-agent">Step 5: Debug the agent</h3>
 <ol>
-<li>In the chat with the Zava Claims agent, send message “-developer on” </li>
+<li>In the chat with the Zava Claims agent, send message <code>-developer on</code></li>
 <li>This will enable debugging of these conversations </li>
 <li>Continue testing the agent with queries  </li>
 </ol>

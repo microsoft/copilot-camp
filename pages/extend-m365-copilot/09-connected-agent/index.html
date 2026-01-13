@@ -2073,12 +2073,14 @@ for (const div of toc) {
 <h2 id="what-are-connected-agents">What are Connected Agents?</h2>
 <p><strong>Connected Agents</strong> represent the next evolution in AI agent architecture, enabling multiple specialized agents to work together seamlessly. Instead of building monolithic agents that try to do everything, Connected Agents orchestrate specialized agents, each optimized for specific tasks while maintaining a unified user experience.</p>
 <h3 id="benefits-for-enterprise-workflows">Benefits for Enterprise Workflows</h3>
-<p>For complex business scenarios like insurance claims processing, Connected Agents provide:
-- <strong>Domain expertise</strong> from specialized agents
-- <strong>Comprehensive coverage</strong> across multiple data sources
-- <strong>Efficient scaling</strong> by adding focused agents
-- <strong>Consistent user experience</strong> despite backend complexity
-- <strong>Maintainable architecture</strong> with clear separation of concerns</p>
+<p>For complex business scenarios like insurance claims processing, Connected Agents provide:</p>
+<ul>
+<li><strong>Domain expertise</strong> from specialized agents</li>
+<li><strong>Comprehensive coverage</strong> across multiple data sources</li>
+<li><strong>Efficient scaling</strong> by adding focused agents</li>
+<li><strong>Consistent user experience</strong> despite backend complexity</li>
+<li><strong>Maintainable architecture</strong> with clear separation of concerns</li>
+</ul>
 <h2 id="lab-objectives">🎯 Lab Objectives</h2>
 <p>By completing this lab, you will:</p>
 <ol>
@@ -2116,9 +2118,8 @@ for (const div of toc) {
 <p><cc-end-step lab="e9" exercise="1" step="2" /></p>
 <h2 id="exercise-2-configure-the-agent-for-zavas-contractor-procurement-knowledge">Exercise 2: Configure the Agent for Zava's contractor procurement knowledge</h2>
 <h3 id="step-1-download-files-to-your-machine">Step 1: Download files to your machine</h3>
-<p>Go to <a href="../../../assets/docs/extend-m365-copilot-09">this url</a> and copy all files.
-Paste these files to the <code>appPackage/EmbeddedKnowledge</code> folder inside your newly created declarative agent project.</p>
-<p>The project should look like below after you have copied the files.</p>
+<p>Go to <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&amp;filename=EmbeddedKnowledge" target="_blank">this url</a> and extract all files into the <code>appPackage/EmbeddedKnowledge</code> folder inside your newly created declarative agent project.</p>
+<p>The project should look like below after you have downloaded and extracted the files.</p>
 <p><img alt="Embedded knowledge" src="../../../assets/images/extend-m365-copilot-08/embedd.png" /></p>
 <p><cc-end-step lab="e9" exercise="2" step="1" /></p>
 <h3 id="step-2-update-agent-identity-and-description">Step 2: Update Agent Identity and Description</h3>
@@ -2271,7 +2272,7 @@ When answering queries:
 </code></pre>
 <p><cc-end-step lab="e9" exercise="2" step="4" /></p>
 <h2 id="exercise-3-test-the-agent-integration">Exercise 3: Test the Agent Integration</h2>
-<p>Test your Declarative Agent to ensure it can successfully retrieves contractor pricing data from it's native embedded knowledge.</p>
+<p>Test your Declarative Agent to ensure it can successfully retrieve contractor pricing data from it's native embedded knowledge.</p>
 <h3 id="step-1-provision-the-agent">Step 1: Provision the Agent</h3>
 <p>In VS Code with your project open:</p>
 <ol>
@@ -2286,8 +2287,12 @@ When answering queries:
 <li>Click <strong>"Preview"</strong> in the Agents Toolkit panel</li>
 <li>This will open Microsoft Teams with your agent available</li>
 <li>In Teams, open <strong>Copilot</strong> and look for your <strong>"Zava Procurement"</strong> agent</li>
-<li>Try the conversation starters:</li>
-<li>"What are the rates for emergency water extraction and drying services?"</li>
+<li>
+<p>Try the conversation starters:</p>
+</li>
+<li>
+<p>"What are the rates for emergency water extraction and drying services?"</p>
+</li>
 <li>"Which contractors offer 24/7 emergency response and what are their rates?"</li>
 </ol>
 <p><img alt="Embedded knowledge in Copilot" src="../../../assets/images/extend-m365-copilot-08/ek.png" /></p>
@@ -2305,7 +2310,7 @@ When answering queries:
 <li>Choose your default folder location</li>
 <li>Enter the application name: <code>ZavaCare</code></li>
 </ol>
-<p>This creates a new Declarative Agent project which you will then use to connect your existing two agents.</p>
+<p>This creates a new Declarative Agent project, which you will then use to connect your existing two agents.</p>
 <p><cc-end-step lab="e9" exercise="4" step="1" /></p>
 <h3 id="step-2-update-agent-identity-and-description_1">Step 2: Update Agent Identity and Description</h3>
 <p>Replace the content of <code>appPackage/declarativeAgent.json</code> with Zava's configuration:</p>
@@ -2473,14 +2478,14 @@ When answering queries:
 <h4 id="41-get-the-zava-claims-agent-id">4.1: Get the Zava Claims Agent ID</h4>
 <ol>
 <li><strong>Open your ZavaClaims project</strong> (created in Lab 08) in VS Code</li>
-<li>Navigate to the <a href="env/.env.dev">env/.env.dev</a> file</li>
+<li>Navigate to the <code>env/.env.dev</code> file</li>
 <li>Find the <code>M365_TITLE_ID</code> value (looks like: <code>12345678-abcd-1234-abcd-123456789abc</code>)</li>
 <li><strong>Copy this entire GUID</strong> and paste it somewhere safe - label it as <strong>Claims Agent ID</strong></li>
 </ol>
 <h4 id="42-get-the-zava-procurement-agent-id">4.2: Get the Zava Procurement Agent ID</h4>
 <ol>
 <li><strong>Open your ZavaProcurement project</strong> (created earlier in this lab) in VS Code</li>
-<li>Navigate to the <a href="env/.env.dev">env/.env.dev</a> file</li>
+<li>Navigate to the <code>env/.env.dev</code> file</li>
 <li>Find the <code>M365_TITLE_ID</code> value</li>
 <li><strong>Copy this entire GUID</strong> and paste it somewhere safe - label it as <strong>Procurement Agent ID</strong></li>
 </ol>
@@ -2502,8 +2507,12 @@ When answering queries:
 ]
 </code></pre>
 <ol>
-<li><strong>Replace the placeholder values:</strong></li>
-<li>Replace <code>PASTE_CLAIMS_AGENT_ID_HERE</code> with your <strong>Claims Agent ID</strong></li>
+<li>
+<p><strong>Replace the placeholder values:</strong></p>
+</li>
+<li>
+<p>Replace <code>PASTE_CLAIMS_AGENT_ID_HERE</code> with your <strong>Claims Agent ID</strong></p>
+</li>
 <li>Replace <code>PASTE_PROCUREMENT_AGENT_ID_HERE</code> with your <strong>Procurement Agent ID</strong></li>
 </ol>
 <p><strong>Example of final structure:</strong></p>
@@ -2537,10 +2546,10 @@ When answering queries:
 <h3 id="step-2-test-multi-agent-workflows">Step 2: Test Multi-Agent Workflows</h3>
 <p>Open Microsoft 365 Copilot and test these orchestrated workflows:</p>
 <p><strong>Complex Workflow 1: End-to-End Processing</strong></p>
-<pre><code>&quot;Process claim CN202504990 completely: get claim details, create an urgent inspection, find the most cost-effective roofing contractors, and provide a comprehensive cost analysis&quot;
+<pre><code>Process claim CN202504990 completely: get claim details, create an urgent inspection, find the most cost-effective roofing contractors, and provide a comprehensive cost analysis
 </code></pre>
 <p><strong>Complex Workflow 2: Emergency Coordination</strong>  </p>
-<pre><code>&quot;We have multiple storm damage claims from yesterday. Show me all urgent claims, their inspection needs, available emergency contractors, and emergency service pricing&quot;
+<pre><code>We have multiple storm damage claims from yesterday. Show me all urgent claims, their inspection needs, available emergency contractors, and emergency service pricing
 </code></pre>
 <p><cc-end-step lab="e9" exercise="2" step="2" /></p>
 <h2 id="congratulations">Congratulations! 🎉</h2>
