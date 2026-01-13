@@ -2203,7 +2203,7 @@ for (const div of toc) {
 <p>Before starting this lab, ensure you have:</p>
 <ul>
 <li><strong>Node.js 22+</strong> installed on your machine</li>
-<li><strong>VS Code</strong> with Microsoft 365 Agents Toolkit extension</li>
+<li><strong>VS Code</strong> with <strong>Microsoft 365 Agents Toolkit extension</strong> V 6.4.2 or higher</li>
 <li><strong>Microsoft 365 developer account</strong> with Copilot license</li>
 <li>Basic knowledge of <strong>TypeScript/JavaScript</strong>,<strong>REST APIs</strong> and <strong>JSON</strong></li>
 <li>GitHub account for using VS Code tunneling</li>
@@ -2518,7 +2518,6 @@ Save this URL - you'll need it for the next step. We'll refer to this as <code>&
 <h3 id="step-1-update-agent-identity-and-description">Step 1: Update Agent Identity and Description</h3>
 <p>Replace the content of <code>appPackage/declarativeAgent.json</code> with Zava's configuration:</p>
 <pre><code class="language-json">{
-    &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;,
     &quot;version&quot;: &quot;v1.6&quot;,
     &quot;name&quot;: &quot;Zava Claims&quot;,
     &quot;description&quot;: &quot;An intelligent insurance claims management assistant that leverages MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing&quot;,
@@ -2680,15 +2679,13 @@ You are an intelligent insurance claims management assistant with access to the 
 <ol>
 <li>Open the <strong>Microsoft 365 Agents Toolkit</strong> panel</li>
 <li>Click <strong>"Provision"</strong> in the Lifecycle section</li>
-<li>Select <strong>"dev"</strong> environment when prompted</li>
 <li>Wait for provisioning to complete - this creates and uploads the agent package</li>
 </ol>
 <p><cc-end-step lab="e8" exercise="7" step="2" /></p>
 <h3 id="step-3-test-in-microsoft-365-copilot">Step 3: Test in Microsoft 365 Copilot</h3>
 <ol>
-<li>Click <strong>"Preview"</strong> in the Agents Toolkit panel</li>
-<li>This will open Microsoft Teams with your agent available</li>
-<li>In Teams, open <strong>Copilot</strong> and look for your <strong>"Zava Claims"</strong> agent</li>
+<li>Open Copilot using URL https://m365.cloud.microsoft/chat/ </li>
+<li>Under Agents on left hand side, find Zava Claims agent, and select it.  </li>
 <li>Try the conversation starters:</li>
 <li>"Find all inspections for claim number CN202504991"</li>
 <li>"Show me all high-priority claims and their inspection status"</li>
@@ -2708,6 +2705,14 @@ You are an intelligent insurance claims management assistant with access to the 
 </code></pre>
 <p>Your agent should successfully respond to natural language queries and interact with the MCP server data.
 <cc-end-step lab="e8" exercise="7" step="4" /></p>
+<h3 id="step-5-debug-the-agent">Step 5: Debug the agent</h3>
+<ol>
+<li>In the chat with the Zava Claims agent, send message “-developer on” </li>
+<li>This will enable debugging of these conversations </li>
+<li>Continue testing the agent with queries  </li>
+</ol>
+<p>Analyze debugger information in the Agent debug info panel at the end of each agent response. </p>
+<p><img alt="agent debugger" src="../../../../assets/images/extend-m365-copilot-08/agent-debugger.png" /></p>
 <p>Congratulations! You've successfully created and deployed Zava Insurance's Declarative Agent that seamlessly integrates with their MCP server. Proceed "Next" to add another Declarative agent to help prepare you for multi-agent orchestration. 
 <cc-next /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/08-mcp-server" /></p>
