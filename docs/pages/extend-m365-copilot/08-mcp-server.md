@@ -206,14 +206,16 @@ You should see a JSON response confirming the server is healthy in the browser.
 
 <cc-end-step lab="e8" exercise="3" step="2" />
 
-### Step 3.3: Explore Available Endpoints
+### Step 3: Explore Available Endpoints
 
 Visit these URLs to explore the API:
+
 - **Health Check**: `http://127.0.0.1:3001/health`
 - **API Documentation**: `http://127.0.0.1:3001/docs`
 - **MCP Tools List**: `http://127.0.0.1:3001/tools`
 
 Your MCP server is now running and ready. 
+
 <cc-end-step lab="e8" exercise="3" step="3" />
 
 ---
@@ -311,6 +313,7 @@ To enable external access to your MCP server (useful for testing with cloud-base
     ```
     https://abc123def456.use.devtunnels.ms 
     ```
+
     Save this URL - you'll need it for the next step. We'll refer to this as `<tunnel-url>`.
 
 #### Update Package.json with Tunnel URL
@@ -366,9 +369,10 @@ In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new De
 5. Enter the publicly accessible MCP Server URl from previous exercise
 6. Choose the Default folder to scaffold the agent (or choose a preferred location in your machine)
 7. When prompted for project details:
+
    - **Application Name**: `Zava Claims Assistant`
 
-You will be directed to the newly created project which has the file .vscode/mcp.json open. This is the MCP server configuration file for VS Code to use.
+You will be directed to the newly created project which has the file `.vscode/mcp.json` open. This is the MCP server configuration file for VS Code to use.
 
 - Select **Start** button to fetch tools from your server.
 - Once started you will see the number of tools and prompts available 1️⃣. 
@@ -390,13 +394,13 @@ You will be directed to the newly created project which has the file .vscode/mcp
     - update_inspection
     - get_inspectors
 
-This step will populate the action manifest **ai-plugin.json** with the required functions, MCP server url etc that is needed for actions in an agent.
+This step will populate the action manifest **ai-plugin.json** with the required functions, MCP server url, etc. that is needed for actions in an agent.
 
 <cc-end-step lab="e8" exercise="5" step="1" />
 
 ### Step 2: Understand the Action manifest update from previous step
 
-Open `appPackage/ai-plugin.json` and examine the structure with your chosen tools and MCP server url prepopulated:
+Open `appPackage/ai-plugin.json` and examine the structure with your chosen tools and MCP server url pre-populated:
 
 ```json
 {
@@ -628,24 +632,33 @@ In VS Code with your `zava-claims-agent` project open:
 Try these natural language queries to test the agent's capabilities:
 
 ```
-1. "What claims do we have for storm damage?"
+What claims do we have for storm damage?
+```
 
-2. "Create a new urgent inspection for claim CN202504990 to assess water damage in the basement"
+```
+Create a new urgent inspection for claim CN202504990 to assess water damage in the basement
+```
 
-3. "Find contractors who specialize in roofing and are marked as preferred"
+```
+Find contractors who specialize in roofing and are marked as preferred
+```
 
-4. "Show me the details for claim number CN202504991"
+```
+Show me the details for claim number CN202504991
+```
 
-5. "Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday"
+```
+Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday
 ```
 
 Your agent should successfully respond to natural language queries and interact with the MCP server data.
+
 <cc-end-step lab="e8" exercise="7" step="4" />
 
 
 ### Step 5: Debug the agent 
 
-1. In the chat with the Zava Claims agent, send message “-developer on” 
+1. In the chat with the Zava Claims agent, send message `-developer on`
 2. This will enable debugging of these conversations 
 3. Continue testing the agent with queries  
 
