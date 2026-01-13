@@ -456,6 +456,12 @@ Replace the content of `appPackage/declarativeAgent.json` with Zava's configurat
             "title": "Claims Operation Summary",
             "text": "Generate a summary of all pending inspections and contractor assignments"
         }
+    ],
+  "actions": [
+        {
+            "id": "action_1",
+            "file": "ai-plugin.json"
+        }
     ]
 }
 ```
