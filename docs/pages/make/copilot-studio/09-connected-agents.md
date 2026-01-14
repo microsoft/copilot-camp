@@ -1,13 +1,13 @@
-# Lab MCS9 - Agent to Agent Communication (Preview)
+# Lab MCS9 - Connected Agents (Preview)
 
 In this lab, you are going to understand how to create agents in Microsoft Copilot Studio that can communicate with other agents. You'll build a specialized Interview Scheduler agent that consumes data from the HR Candidate Management agent created in previous labs. The Interview Scheduler agent will automatically process candidate data and send interview meeting requests based on selected candidates, demonstrating how modular agents can work together to create comprehensive business solutions.
 
 <div class="lab-intro-video">
-    <div style="flex: 1; min-width: 0;">
+    <!-- <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/placeholder" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
-    </div>
+    </div> -->
     <div style="flex: 1; min-width: 0;">
    ---8<--- "mcs-labs-prelude.md"
     </div>
@@ -35,6 +35,10 @@ Microsoft Copilot Studio supports two primary patterns for agent collaboration:
 1. **Child Agents**: Lightweight agents that live within a main agent, managed as part of the parent solution
 2. **Connected Agents**: Independent, full-fledged agents that can be published and maintained separately
 
+!!! info
+    You can find additional information about connected agents in Microsoft Copilot Studio reading the article [Add other agents overview](https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-add-other-agents){target=_blank}.
+
+
 For this lab, you'll create a child agent architecture where:
 
 - **Main Agent**: Interview Coordinator (orchestrates the overall process)
@@ -52,7 +56,7 @@ This design allows for:
 
 ### Step 2: Designing the Interview Process Workflow
 
-The agent-to-agent workflow you'll implement follows this sequence:
+The connected agents workflow you'll implement follows this sequence:
 
 1. **User Request**: User asks to schedule an interview for a specific candidate
 2. **Main Agent Processing**: Interview Coordinator validates the request and identifies the candidate
@@ -62,7 +66,7 @@ The agent-to-agent workflow you'll implement follows this sequence:
 6. **Meeting Creation**: Child agent creates calendar meeting and sends invitation
 7. **Confirmation**: User receives confirmation of scheduled interview
 
-This workflow demonstrates key agent-to-agent patterns:
+This workflow demonstrates key connected agents patterns:
 
 - **Orchestration**: Main agent coordinates multiple sub-processes
 - **Delegation**: Specific tasks are handed off to specialized agents
@@ -122,6 +126,7 @@ Interview Coordinator
 Main agent that coordinates interview scheduling by working with HR candidate 
 management and interview scheduling child agents to create comprehensive interview workflows
 ```
+- **Select your agent's model**: GPT-5 Chat
 
 - **Instructions**: 
 
@@ -180,19 +185,21 @@ Your Interview Coordinator needs to communicate with the existing HR agent to re
 
 A new dialog appears, allowing you to choose between any of the following options:
 
-- **Create an agent**: to create a new child agent
-- **Copilot Studio**: to select an already existing agent defined with Copilot Studio
-- **Microsoft Fabric**: to select an agent built with Microsoft Fabric
+- **New child agent**: to create a new child agent
+- **Select an agent in your environment**: to select an already existing agent defined with Copilot Studio
+- **Connect to an external agent**: to connect to any of the following external agents (preview)
+    - **Microsoft Fabric**: connect to a Fabric Data Agent
+    - **Microsoft Foundry**: connect to an agent in Microsoft Foundry
+    - **Microsoft 365 Agents SDK**: connect to an agent built with Microsoft 365 Agents SDK
+    - **Agent2Agent**: connect to an agent using A2A protocol
 
-Select **Copilot Studio**.
+![The dialog to select the kind of agent to connect. The available options are "New child agent", already existing Copilot Studio agents, and "Connect to an external agent".](../../../assets/images/make/copilot-studio-09/connect-agent-02.png)
 
-![The dialog to select the kind of agent to connect. The available options are "Create an agent", "Copilot Studio", and "Microsoft Fabric". The "Copilot Studio" option is highlighted.](../../../assets/images/make/copilot-studio-09/connect-agent-02.png)
+From the list of available Copilot Studio agents, select the **HR Candidate Management** agent (or similar name) that you created in previous labs. If you don't see it, ensure it's published and configured to allow connections from other agents. To check if the **HR Candidate Management** agent is configured to allow connections from other agents, edit the agent, go to **Settings**, and check that the option **Let other agents connect to and use this one** is enabled in the **Connected agents** section, like illustrated in the following screenshot.
 
-From the list of available agents, select the **HR Candidate Management** agent (or similar name) that you created in previous labs. If you don't see it, ensure it's published and configured to allow connections from other agents.
+![The setting to allow connections from other agents highlighted in the agent's settings.](../../../assets/images/make/copilot-studio-09/connect-agent-settings-01.png)
 
-![The list of agent that you can connect to. There is also the "HR Candidate Management" agent that you created in lab MCS6](../../../assets/images/make/copilot-studio-09/connect-agent-03.png)
-
-Configure the connected agent:
+Once you selected the **HR Canidated Management** agent, configure the connection:
 
 - **Description**: Update the description to be more specific for this context:
 
@@ -208,7 +215,9 @@ The description is used by the main agent to understand when the connected agent
 
 ![The agent connection configuration showing the HR Candidate Management agent being connected to the Interview Coordinator. There is a textbox to specificy a "Description" for the connected agent to provide a more specific context.](../../../assets/images/make/copilot-studio-09/connect-agent-04.png)
 
-Select **Add agent** to establish the connection between agents. Once the connected agent is defined and configured, you can see it in the list of **Agents** for the current agent.
+Select **Add and configure** to establish the connection between agents. Once the connected agent is defined and configured, you can see it in the list of **Agents** for the current agent and you are presented with a page to manage the configuration of the connected agent.
+
+![The agent connection configuration showing the HR Candidate Management agent being connected to the Interview Coordinator. There are fields to configure "Name", "Description", whether to pass the conversation history to the connected agent or not, input fields, and completion settings.](../../../assets/images/make/copilot-studio-09/connect-agent-result-01.png)
 
 <cc-end-step lab="mcs9" exercise="2" step="3" />
 
@@ -222,9 +231,9 @@ In your Interview Coordinator agent, navigate to the 1️⃣ **Agents** section 
 
 ![The list of agents connected to the main agent. There is the "HR Candidate Management" one enabled, with relationship status of "Connected", and with trigger value "By agent". There is also the "Add an agent" command highlighted to add a new agent.](../../../assets/images/make/copilot-studio-09/connect-agent-05.png)
 
-Select **Create an agent** to create a new child agent.
+Select **New child agent** to create a new child agent.
 
-![The dialog to select the kind of agent to connect. The available options are "Create an agent", "Copilot Studio", and "Microsoft Fabric". The "Create an agent" option is highlighted.](../../../assets/images/make/copilot-studio-09/child-agent-01.png)
+![The dialog to select the kind of agent to connect. The available options are "New child agent", already existing Copilot Studio agents, and "Connect to an external agent".](../../../assets/images/make/copilot-studio-09/child-agent-01.png)
 
 Configure the child agent with these settings:
 
@@ -272,38 +281,27 @@ Select the **Save** command in the upper right corner of the screen to save the 
 
 <cc-end-step lab="mcs9" exercise="3" step="1" />
 
-### Step 2: Configuring Calendar Integration
+### Step 2: Configuring Meetings Management Integration
 
-To enable the Interview Scheduler to create calendar meetings, you need to add Microsoft Graph integration for calendar management.
+To enable the Interview Scheduler to create calendar meetings, you need to add a specific MCP server integration for meetings management.
 
-In the **Tools** section of the Interview Scheduler child agent, select **Add**.
+![The dialog to search for the "Meeting Management MCP Server" in the list of available MCP servers. There is a search filter for "Calendar" applied in the dialog.](../../../assets/images/make/copilot-studio-09/child-agent-03.png)
 
-1. Choose 1️⃣ **Connector** to filter the available connectors
+In the **Tools** section of the **Interview Scheduler** child agent, select **Add**.
+
+1. Choose 1️⃣ **Model Context Protocol** to filter the available MCP servers
 1. Search for 2️⃣ **Calendar** in the search box and hit the 3️⃣ search command
-1. Select the 4️⃣ **Create event (V4)** tool
-1. Connect to the Office 365 Outlook connector
+1. Select the 4️⃣ **Meeting Management MCP Server**
+1. Connect to the Meeting Management MCP Server
 1. Once the connection is configured, select **Add and configure** to finalize the configuration of the tool
 
-![The dialog to search for the "Create event (V4)" tool in the list of available connectors. There is a search filter for "Calendar" applied in the dialog.](../../../assets/images/make/copilot-studio-09/child-agent-03.png)
+![The dialog to connect to the Meeting Management MCP Server. There is a command "Add and configure" to add the MCP server to the child agent and a command to "Cancel" the current operation.](../../../assets/images/make/copilot-studio-09/child-agent-04.png)
 
-You will see the panel with the configuration of the new tool. Update the **Name** accordingly to the following value:
+Once the connection is established and the MCP server is added to the child agent, you will see the panel with the configuration of the new tool. Update the **Name** accordingly to the following value:
 
 ```text
-Creates a calendar event
+Manage meetings
 ```
-
-Then, select the **Add input** command in the **Inputs** section and add the following inputs:
-
-- **Required attendees**
-- **Body**
-
-Select the **Save** command to update the tool.
-
-![The panel with the finalized configuration of the "Create a calendar event" tool. There is the updated name and the "Add input" panel visible on top.](../../../assets/images/make/copilot-studio-09/child-agent-04.png)
-
-In the following screenshot you can see the final configuration of the **Inputs** for the **Create a calendar event** tool.
-
-![The list of input for the "Create a calendar event" tool. There are: Calendar id, Subject, Start time, End time, Time zone, Required attendees, and Body.](../../../assets/images/make/copilot-studio-09/child-agent-05.png)
 
 This integration allows the child agent to:
 
@@ -315,15 +313,13 @@ This integration allows the child agent to:
 
 ### Step 3: Finalizing Child Agent Configuration
 
-Go back to the **Overview** tab of the child agent, selecting the left arrow beside the name of the tool, and complete the configuration of your Interview Scheduler child agent:
+Go back to the **Overview** tab of the child **Interview Scheduler** agent, selecting the left arrow beside the name of the tool, and complete the configuration of your **Interview Scheduler** child agent:
 
 ![The child agent additional configuration showing priority settings and activation conditions.](../../../assets/images/make/copilot-studio-09/child-agent-06.png)
 
 1. Open the **Details** section, expand the **Advanced** panel and set the **Priority** to **1** to ensure this agent has high priority for interview scheduling tasks
 
 1. **Condition**: Optionally, add conditions to limit when this agent activates. For example, you might want it to only activate for messages containing interview-related keywords
-
-1. **Additional Details**: Configure any additional settings such as specific activity types or custom client events if needed
 
 1. Ensure the **Enabled** toggle is turned on
 
@@ -333,9 +329,9 @@ Your Interview Scheduler child agent is now configured and ready to handle meeti
 
 <cc-end-step lab="mcs9" exercise="3" step="3" />
 
-## Exercise 4: Implementing Agent-to-Agent Workflows
+## Exercise 4: Implementing Connected Agents Workflows
 
-In this exercise you will implement and test the complete agent-to-agent workflow for interview scheduling.
+In this exercise you will implement and test the complete connected agents workflow for interview scheduling.
 
 ### Step 1: Configuring Agent References in Instructions
 
@@ -347,6 +343,8 @@ Navigate to the **Overview** section of your Interview Coordinator agent and upd
 1. Type `/` to open the reference menu
 1. Select the **Interview Scheduler** child agent from the list
 1. Also reference the **HR Candidate Management** connected agent
+
+![The Instructions field browsing for both connected and child agents when pressing "/" in the text of the instructions.](../../../assets/images/make/copilot-studio-09/coordinator-agent-03.png)
 
 Your updated instructions should look like this:
 
@@ -362,7 +360,7 @@ scheduling processes. Your role includes:
 When a user requests to schedule an interview:
 - First, use /HR Candidate Management to identify and validate the candidate
 - Extract necessary candidate details (name, email, current role, skills)
-- Coordinate with /Interview Scheduler to create the meeting with candidate details
+- Coordinate with /Interview Scheduler to create the meeting with candidate details using the ID of the calendar with name "main" of the current user
 - Confirm successful scheduling with relevant details
 
 Always ensure proper validation of candidate data and provide clear communication 
@@ -370,7 +368,7 @@ throughout the process. Handle errors gracefully and provide informative feedbac
 when coordination between agents fails.
 ```
 
-![The Instructions field showing agent references using the slash notation for both connected and child agents.](../../../assets/images/make/copilot-studio-09/coordinator-agent-03.png)
+![The Instructions field showing agent references using the slash notation for both connected and child agents.](../../../assets/images/make/copilot-studio-09/coordinator-agent-04.png)
 
 Select **Save** to update the instructions with agent references.
 
@@ -384,22 +382,30 @@ In this exercise you will test the agent scheduling a real interview in your age
 
 Now test the complete agent-to-agent workflow to ensure proper coordination between all components.
 
-1. **Test the Interview Coordinator**: In the test panel, try a request like:
+#### Test the Interview Coordinator
+
+In the test panel, try a request like:
 
 ```text
-Retrieve information about Alice Johnson and schedule an interview with her for next Monday 10am.
+Retrieve information about candidate alice.johnson@example.com and schedule an interview with her for next Monday 10am.
 ```
 
-2. **Observe Agent Coordination**: Watch in the test panel as the agent:
+#### Observe Agent Coordination
 
-   - Processes your request
-   - Calls the HR Candidate Management agent to find John Smith
-   - Retrieves candidate details
-   - Invokes the Interview Scheduler child agent
-   - Creates the calendar meeting
-   - Provides confirmation
+Watch in the test panel as the agent:
 
-![The test panel showing the agent coordination workflow with multiple agents working together to schedule an interview.](../../../assets/images/make/copilot-studio-09/coordinator-agent-04.png)
+- Processes your request
+- Calls the HR Candidate Management agent to find Alice Johnson
+- Retrieves candidate details
+- Invokes the Interview Scheduler child agent
+- Creates the calendar meeting, requesting you to connect to the Meeting Management MCP server if it is the first time you use it
+- Provides confirmation
+
+![The test panel showing the agent coordination workflow with multiple agents working together to schedule an interview.](../../../assets/images/make/copilot-studio-09/coordinator-agent-05.png)
+
+And in the following screenshot you can see a sample of the interview meeting scheduled by the agent relying on both the child and the connected agent.
+
+![The interview meeting scheduled in the calendar of the current user. There are information about the interview in the body of the meeting. The meeting itselft has been sent to the current user and to the candidate's e-mail address.](../../../assets/images/make/copilot-studio-09/coordinator-agent-06.png)
 
 <cc-end-step lab="mcs9" exercise="5" step="1" />
 
@@ -409,15 +415,15 @@ You have completed Lab MCS9 - Agent to Agent Communication!
 
 In this lab, you learned how to:
 
-- Design and implement agent-to-agent communication architectures
+- Design and implement connected agents architectures
 - Create child agents for specialized tasks within a main agent solution
 - Connect existing agents to enable cross-agent data sharing and coordination
 - Implement complex workflows that span multiple specialized agents
 
 Your Interview Coordinator agent now demonstrates advanced agent orchestration patterns, coordinating between the HR Candidate Management system and specialized Interview Scheduler functionality to deliver comprehensive interview scheduling automation.
 
-The agent-to-agent patterns you've learned can be applied to many other business scenarios where complex workflows benefit from modular, specialized agents working together to deliver end-to-end solutions.
+The connected agents patterns you've learned can be applied to many other business scenarios where complex workflows benefit from modular, specialized agents working together to deliver end-to-end solutions.
 
 <!-- <cc-award path="Make" /> -->
 
-<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-agent-to-agent" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-connected-agents" />

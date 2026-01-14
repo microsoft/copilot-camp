@@ -33,71 +33,97 @@ In this first exercise you are going to create a new agent using Generative AI a
 
 To create a new agent, open a browser and, using the work account of your target Microsoft 365 tenant, go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com){target=_blank} to start using Microsoft Copilot Studio.
 
-Select **Create** button on the left side of the screen, like illustrated in the following screenshot.
+Select **Create an agent** command in the middle of the screen, like illustrated in the following screenshot.
 
-![The home page of Microsoft Copilot Studio with the **Create** button highlighted to create a new agent.](../../../assets/images/make/copilot-studio-01/make-agent-01.png)
+![The home page of Microsoft Copilot Studio with the **Create an agent** command highlighted to create a new agent.](../../../assets/images/make/copilot-studio-01/make-agent-01a.png)
 
-You will be redirected to the page from which you can create a new agent. Copilot Studio allows you to create a new agent from scratch, selecting the option **New agent**, or to start from a template available in a set of pre-defined and useful agent templates. For the sake of simplicity, in this lab you are going to start from scratch, selecting **New agent**.
+You can achieve the same result also selecting **Agents** on the left side of the screen and then selecting **+ Create blank agent** in the upper right side of the screen.
 
-![The **Create agent** page of Microsoft Copilot Studio with the **New agent** option highlighted to create a new agent from scratch.](../../../assets/images/make/copilot-studio-01/make-agent-02.png)
+![The "Agents" page of Microsoft Copilot Studio with the **Create blank agent** command highlighted to create a new agent.](../../../assets/images/make/copilot-studio-01/make-agent-01b.png)
 
-By default, Copilot Studio allows you to describe using natural language what the agent will be. This is a really convenient way of creating a new agent, because you can simply describe what you are looking for and Copilot Studio will process your input and create the agent accordingly to your needs. If you don't like to describe your agent in natural language, you can always select **Configure** and manually configure the agent.
+After waiting a little while, you will be redirected to the page from which you can configure a newly created agent. From here you can configure all the settings of your agent, like for example:
 
-![The **Create agent** page of Microsoft Copilot Studio when describing the agent behavior and capabilities with natural language.](../../../assets/images/make/copilot-studio-01/make-agent-03.png)
+- Name
+- Icon
+- Description
+- Model
+- Triggers
+- Instructions
+- Knowledge
+- Web Search
+- Tools
+- Agents
+- Topics
+- Suggested prompts
 
-In this lab you can provide the following initial description:
+![The home page of a new agent in Microsoft Copilot Studio with all the options to define Name, Icon, Description, Model selection, Triggers, Instructions, etc..](../../../assets/images/make/copilot-studio-01/make-agent-03a.png)
 
-```txt
-You are an agent helping employees to find information about HR policies and procedures,
-about how to improve their career, and about how to define learning pathways.
-```
-
-When requested by Copilot Studio, give the name "HR Agent" to your custom agent. Then, instruct Copilot Studio to emphasize
-or avoid specific information providing the following instruction:
-
-```txt
-Emphasize everything that helps team building, inclusion, and the growth mindset
-```
-
-Then, define a professional tone for your agent, providing the following input:
-
-```txt
-It should have a professional tone
-```
-
-When asked by Copilot Studio, configure an initial data source for your agent providing the following instruction:
+Select the **Edit** command in the upper right corner of the **Details** section and give the name "HR Agent" to your custom agent. Then, provide the following value for the **Description** field:
 
 ```txt
-Let's use this website: https://www.microsoft.com/en-us/human-resources
+You help employees to find information about HR related policies
 ```
 
-You will need to confirm that your organization owns the site that you provided.
+![The section to edit "Name" and "Description" for the newly created agent.](../../../assets/images/make/copilot-studio-01/make-agent-04a.png)
 
-![The message from Copilot Studio asking for confirmation that the current user's organization owns the provided website and that Bing search results can be used.](../../../assets/images/make/copilot-studio-01/make-agent-confirm-web-datasource-04.png)
+Select the **Save** command in the upper right corner of the **Details** section, when you are done with the changes.
+Now, leave the suggested model as **GPT-4.1 (Default)** and select the **Edit** command in the upper right corner of the **Instructions** section. Provide the following content for the instructions:
+
+```txt
+- Provide employees with clear, accurate information about HR policies and procedures.
+- Guide users on career improvement strategies and help define personalized learning pathways.
+- Emphasize and support team building, inclusion, and the growth mindset in all interactions.
+- Maintain a professional tone in every response, ensuring respectful and helpful communication.
+- Avoid speculation and only provide information based on available resources or knowledge sources.
+- Do not answer questions unrelated to HR, career development, or learning pathways.
+- Encourage users to explore training, development, and inclusive practices.
+- Respond promptly and clearly to all user queries.
+```
+
+Select **Save** in the upper right corner of the **Instructions** section.
+
+![The section to edit the "Instructions" for the newly created agent.](../../../assets/images/make/copilot-studio-01/make-agent-05a.png)
+
+Scroll down to the **Knowledge** section and select the **+ Add knowledge** command to add an initial data source for your agent.
+
+![The dialog to add knowledge to the agent with the "Public website" option highlighted.](../../../assets/images/make/copilot-studio-01/make-agent-06a.png)
+
+Then select **Public website** and provide the following URL in the dialog that will show up:
+
+```txt
+https://careers.microsoft.com/
+```
+
+![The dialog to add knowledge to the agent with the "Add" command highlighted.](../../../assets/images/make/copilot-studio-01/make-agent-07a.png)
+
+Then select **Add** to add the URL to the list of knowledge bases, provide a name and a description for the new site, like for example:
+
+- Name: 
+
+```txt
+Microsoft Careers site
+```
+
+- Description: 
+
+```txt
+A public website for careers with information about benefits, culture, diversity and inclusion, and hiring tips.
+```
+
+![The dialog to add knowledge to the agent with the "Add to agent" command highlighted.](../../../assets/images/make/copilot-studio-01/make-agent-08a.png)
 
 !!! pied-piper "Important"
-    In this sample agent, we are going to use some of the public content available on the HR website of Microsoft as the data source. You will also need to confirm that your organization owns the provided data source, to enable Microsoft Bing search results on that site. While creating your own agent, you should provide the URL of a HR site that your company actually owns.
+    In this sample agent, we are going to use some of the public content available on the Careers website of Microsoft as the data source. Feel free to use any other public website of your choice, as long as it covers content related to HR and careers.
 
-
-You are now ready with the creation of your agent. On the right side of the screen, you always see a recap of the features and capabilities that you configured for your agent, based on the instructions that you provided to Copilot Studio.
-Select the **Create** button in the upper right corner and wait for Copilot Studio to create the agent for you.
-
-Once the agent will be ready, you will see a new screen like the following one.
-
-![The page of Copilot Studio with the new agent just created and all the settings available for further refinement.](../../../assets/images/make/copilot-studio-01/make-agent-05.png)
-
-You can now start testing your agent using the testing panel on the right side, or you can fine tune the agent settings using the configuration options in the **Overview** tab.
+You are now ready with the basic configuration of your agent. You can now start testing your agent using the testing panel on the right side, or you can fine tune the agent settings using the configuration options in the **Overview** tab.
 
 <cc-end-step lab="mcs1" exercise="1" step="1" />
 
 ### Step 2: Changing the agent's icon
 
-Let's start changing the icon of the agent by selecting the **Edit** button in the upper right corner of the **Overview** tab.
-The **Details** section will switch to edit mode, like in the following screen.
+Let's start changing the icon of the agent by selecting the **Edit** button in the upper right corner of the **Details** section in the **Overview** tab, like in the following screen.
 
-![The **Details** panel of the agent in edit mode, where it is possible to update the Name, the icon, the description, and the instructions for the agent.](../../../assets/images/make/copilot-studio-01/make-agent-edit-06.png)
-
-You can notice that the input statements provided in step 1 of this exercise are now part of the **Description** and **Instructions** fields of the agent.
+![The **Details** panel of the agent in edit mode, where it is possible to update the Name, the icon, the description, and the instructions for the agent.](../../../assets/images/make/copilot-studio-01/make-agent-04a.png)
 
 Select the **Change icon** button to show a dialog from where you can upload a custom icon. If you like, you can use the [following icon](https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/src/make/copilot-studio/HR-agent-color.png){target=_blank}.
 
@@ -115,11 +141,11 @@ To test the agent you simply rely on the right panel and start writing prompts. 
 What is our mission?
 ```
 
-In the following screenshot you can see the answer provided by the agent and based on the content of the website that we provided as the data source.
+In the following screenshot you can see the answer provided by the agent and based on the content of the website that we provided as the data source. You can also notice, in the main part of the screen, that the agent relied on the knowledge base that you just configured.
 
 ![The **Test** panel with the interaction between the user, asking for 'What is our mission?', and the agent providing a response based on the actua content available on the data source, with direct references to the pages on the data source website.](../../../assets/images/make/copilot-studio-01/make-agent-test-08.png)
 
-Notice also that the agent provides references to pages from the websites provided as the data source and highlights that the answer comes from Azure OpenAI.
+Notice also that the agent provides references to pages from the websites provided as the data source.
 
 <cc-end-step lab="mcs1" exercise="1" step="3" />
 
@@ -146,18 +172,31 @@ From the dialog window that pops up you can add additional knowledge sources lik
 - Files: to manually upload files that will become part of the knowledge base
 - Public websites: to add additional websites
 - SharePoint: to configure sites or libraries in SharePoint Online
+- Azure AI Search: to consume indexes of Azure AI Search
 - Dataverse: to add tables in Dataverse
-- Advanced: to consume enterprise data connections like Azure AI Search, Azure SQL, Microsoft Copilot Connectors, or third party data connections
+- and more ...
 
-Select **SharePoint** and, in the dialog popping up, provide the URL of the site where you uploaded the files and select **Add**.
+Select **SharePoint** and, in the dialog popping up, provide the URL of the site where you uploaded the files and select **Add**. You can also browse for the document library you are looking for, selecting the **Browse items** command just beside the URL textbox.
 
 ![The dialog to add a SharePoint data source. There is a **Browse files** button to search for specific files, a textbox to provide the URL of a site, and an **Add** button.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-03.png)
 
-When you configure a SharePoint data source, you also need to specify a **Name** and a **Description**. It is fundamental to provide a meaningful name and description. In fact, Copilot Studio will be able to better understand what's inside the data source and, when in the upcoming labs you will enable generative orchestration, it will be possible to identify the right data source to use when answering to users' prompts via generative AI.
+When you configure a SharePoint data source, you also need to specify a **Name** and a **Description**. It is fundamental to provide a meaningful name and description. In fact, Copilot Studio will be able to better understand what's inside the data source and, when in the upcoming labs you will enable generative orchestration, it will be possible to identify the right data source to use when answering to users' prompts via generative AI. For this exercise you can use the following values:
+
+- Name: 
+
+```txt
+HR Documents
+```
+
+- Description: 
+
+```txt
+Provides documents about policies, procedures, and rules related to the HR department.
+```
 
 ![The dialog to add a SharePoint data source. There is a datasource selected with proper name and description.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-04.png)
 
-Select the **Add** button in the lower part of the screen and wait for Copilot Studio to process the new knowledge base that you just added.
+Select the **Add to agent** button in the lower part of the screen and wait for Copilot Studio to process the new knowledge base that you just added.
 
 When the knowledge base will be updated, in the **Overview** tab you will see both the public website and the SharePoint Online site.
 
@@ -176,7 +215,7 @@ Now you can test again the agent, using the right side panel. For example, let's
 How can we hire new people in our company?
 ```
 
-The agent will reply back with information about the hiring procedures and providing references to the documents stored in the SharePoint Online knowledge base that you provided.
+The agent will reply back with information about the hiring procedures and providing references to the documents stored in the SharePoint Online knowledge base that you provided, as well as to the public web site that you referenced in the knowledge base.
 
 ![The test panel with a conversation with the agent and a set of references to documents retrieved from the SharePoint Online knowledge base.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-06.png)
 
@@ -186,27 +225,11 @@ Now, for the sake of completeness, try to provide the following prompt to the ag
 How can I cook spaghetti alla carbonara?
 ```
 
-You will notice that you still get back an answer from the agent, even if the request does not pertain to HR related topics. Of course, you can try to cook spaghetti alla carbonara, if you like pasta! 🍝 However, what you see is not necessarily the intended behavior for your agent. In fact, an agent should be a specialized assistant focused on a specific topic or area.
+You will notice that, despite spaghetti alla carbonara is always a good choice 🍝, the agent will not give you back an answer. In fact, by default the agent will stick with the instructions and knowledge sources that you configured for it. It is a specialized agent, fully focused on HR-related content.
+
+![The agent refusing to cover topics not defined in its list of instructions or knowledge bases.](../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-07.png)
 
 <cc-end-step lab="mcs1" exercise="2" step="2" />
-
-### Step 3: Disabling general knowledge
-
-If you want to have your agent fully focused on your custom knowledge base only, you need to disable the **General knowledge**.
-Select the **Settings** command in the upper right corner, activate the **Generative AI** tab (active by default), scroll to the **Knowledge** section and disable the option "Use general knowledge", like illustrated in the following screenshot.
-
-![The option to disable "AI general knowledge" when configuring the **Knowledge** of an agent in the agent **Settings**.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-01.png)
-
-When the general knowledge will be disabled, try again asking to the agent something completely out of context. 
-
-![The answer from the agent when asking something that is not related to its configured knowledge base.](../../../assets/images/make/copilot-studio-01/make-agent-general-knowledge-04.png)
-
-Now, you will get a proper answer, informing you that the agent cannot help you with what you are looking for.
-
-!!! note "Additional information about general knowledge"
-    You can find additional information about knowledge sources in agents made with Microsoft Copilot Studio reading the [following article](https://learn.microsoft.com/en-us/microsoft-copilot-studio/knowledge-copilot-studio){target=_blank}.
-
-<cc-end-step lab="mcs1" exercise="2" step="3" />
 
 ## Exercise 3 : Publishing the agent
 
@@ -218,14 +241,14 @@ To publish an agent made with Copilot Studio you need to select the **Publish** 
 
 ![The button to publish an agent highlighted in the user interface of the agent editor.](../../../assets/images/make/copilot-studio-01/make-agent-publish-01.png)
 
-Selecting the command will prompt you for confirmation. Once confirmed, the publishing process takes a while and in the meantime you see a "Publishing ..." message. Publishing an agent registers it in the target Power Platform environment, but does not make it available in any target platform.
+Selecting the command will prompt you for confirmation. While confirming the publishing, you can also choose if you want to **Force newest version**, which ensures users in Teams receive your latest updates right away. Once confirmed, the publishing process takes a while and in the meantime you see a "Publishing ..." message. Publishing an agent registers it in the target Power Platform environment, but does not make it available in any target platform.
 
 In order to make the agent actually available in a specific target platform (channel), you need to 1️⃣ select the **Channels** tab in the agent editor and then you can choose one or more target channels to make the agent available for. For example, to publish the agent in Microsoft Teams, as a bot, you need to 2️⃣ select **Teams + Microsoft 365** as the target channel.
 
 ![The **Channels** tab where you can make an agent available in one or more channels. There is a list of available channels like "Telephony", "Teams + Microsoft 365", "Demo website", "Custom website", etc.](../../../assets/images/make/copilot-studio-01/make-agent-publish-02.png)
 
 By default, when you make and agent and publish it with default settings, the agent will be configured for Microsoft authentication, which means that the agent will rely on Microsoft Entra ID authentication in Teams, Power Apps, or Microsoft 365 Copilot.
-With the default authentication settings, the agent can only be published in Microsoft Teams, as you can notice from the warning message displayed at the top of the **Channels** tab in the previous screenshot. 
+With the default authentication settings, the agent can only be published in **Microsoft Teams and Microsoft 365 Copilot** and **SharePoint** channels, as you can notice from the warning message displayed at the top of the **Channels** tab in the previous screenshot. 
 
 !!! note "Copilot Studio Authentication model"
     You can learn more about authentication of agents in Copilot Studio reading the document [Configure user authentication in Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/configuration-end-user-authentication){target=_blank}.
@@ -233,7 +256,7 @@ With the default authentication settings, the agent can only be published in Mic
 !!! note "Premium license for Microsoft Copilot Studio"
     In the screenshot above, there is also an information bar about the licensing model and the potential requirement of a Premium license. In fact, when you use Copilot Studio  and you rely on premium features like premium connectors, you need to upgrade your license accordingly. Luckily, if you are just learning and testing with Microsoft Copilot Studio, you can activate a 60-days free trial period with the Premium license.
 
-When you select the **Teams + Microsoft 365** channel a side panel shows up and allows you to select the **Add channel** button.
+When you select the **Teams and Microsoft 365** channel a side panel shows up and allows you to select the **Add channel** button.
 
 ![The side panel to enable the Microsoft Teams channel. There is a description of the current state and a button to **Add channel**.](../../../assets/images/make/copilot-studio-01/make-agent-publish-03.png)
 
