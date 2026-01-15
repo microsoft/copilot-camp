@@ -5,7 +5,7 @@ In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava 
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/ifVCKb1Ca3I" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        <iframe  src="//www.youtube.com/embed/vbkcntieMmI" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
             <div class="note-box">
@@ -16,7 +16,6 @@ In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava 
   ---8<--- "e-labs-prelude.md"
     </div>
 </div>
-
 
 
 
