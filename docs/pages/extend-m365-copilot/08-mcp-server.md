@@ -4,6 +4,23 @@
 In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with Declarative Agent in Microsoft 365 Copilot that you will create, enabling natural language interactions with real claims data through secure, standardized AI agent communication.
 
 
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/ifVCKb1Ca3I" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="note-box">
+            📘 <strong>Note:</strong>   MCP Server + Declarative Agents using Agents Toolkit is still in Preview
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
+
+
+
+
 ## Scenario
 
 **Zava Insurance**, a mid-sized home fictitious insurance company serving 150,000+ homes across the Pacific Northwest, struggled with manual claims operations that caused 3-week delays and coordination issues when severe storms brought 2,000 claims in 48 hours during October 2025. To address this crisis, Zava's CTO envisioned AI-powered claims operations where intelligent agents could handle routine tasks, enabling adjusters to focus on complex cases and customer care. The development team built a **Model Context Protocol (MCP) server** using Azure infrastructure to provide standardized, secure access to claims data for AI agents, offering real-time synchronization and rich contextual information about damage assessments, contractor specialties, and inspection scheduling. After successfully deploying the MCP server, Zava integrated it with **Microsoft 365 Copilot** using **Declarative Agents**, enabling claims adjusters to interact with the system through natural language conversations like "Show me all urgent storm damage claims" rather than complex API calls, seamlessly embedding AI-powered claims management into their existing Microsoft 365 workflows.

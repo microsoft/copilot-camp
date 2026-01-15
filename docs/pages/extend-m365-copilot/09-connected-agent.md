@@ -10,6 +10,7 @@ In this lab, you'll build a multi-agent orchestration system for Zava Insurance.
 
 **Connected Agents** represent the next evolution in AI agent architecture, enabling multiple specialized agents to work together seamlessly. Instead of building monolithic agents that try to do everything, Connected Agents orchestrate specialized agents, each optimized for specific tasks while maintaining a unified user experience.
 
+> Connected agents in Declarative agent is still be in Public Preview.
 
 ### Benefits for Enterprise Workflows
 
