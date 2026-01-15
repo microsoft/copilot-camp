@@ -40,13 +40,21 @@ Before we can search policy documents, we need to set them up in SharePoint.
 
 2️⃣ Click **+ Create site** → Choose **Team site**.
 
-3️⃣ Configure your site:
+3️⃣ Select the **Standard team** site template and select **Use template**
+
+4️⃣ Configure your site:
 
 - **Site name**: "Zava Insurance Policy Documents"
 - **Description**: "Insurance policy terms, coverage guides, and FAQs"
-- **Privacy settings**: Private (only members can access)
 
-4️⃣ Click **Finish** to create the site.
+5️⃣ Select **Next**
+
+- **Privacy settings**: Private (only members can access)
+- **Select language**: English
+
+6️⃣ Select the **Create site** command and wait for site creation
+
+4️⃣ When the site is ready, select **Finish** to browse to the site.
 
 <cc-end-step lab="baf4" exercise="1" step="1" />
 
@@ -71,6 +79,7 @@ Now let's upload the sample policy documents from your project.
 
 !!! tip "Verify Indexing"
     You can verify documents are indexed by:
+
     - Opening Microsoft 365 Copilot (copilot.microsoft.com)
     - Asking: "What policy documents are in my SharePoint?"
     - If documents appear, they're ready to use with your agent
@@ -234,7 +243,7 @@ public async Task CreateKnowledgeSourcesAsync()
 
 Now update the knowledge base definition to include the policies knowledge source.
 
-1️⃣ Find the `new KnowledgeSourceReference(name: ClaimsKnowledgeSource)` method and add the following line right after it, so it includes both claims and policies:
+1️⃣ Find the `new KnowledgeSourceReference(name: ClaimsKnowledgeSource)` syntax, add a comma and add the following line right after it, so it includes both claims and policies:
 
 ```csharp
  new KnowledgeSourceReference(name: PoliciesKnowledgeSource)
@@ -272,6 +281,7 @@ public async Task IndexSampleDataAsync()
 {
     await IndexClaimsDataAsync();
     await IndexPoliciesDataAsync();
+
     // Upload damage photos to blob storage if BlobStorageService is available
     if (_blobStorageService != null)
     {
@@ -432,9 +442,9 @@ Now let's create the PolicyPlugin with policy search, policy details, and ShareP
 ??? note "What this plugin does"
     The `PolicyPlugin` provides three main capabilities:
     
-    **SearchPolicies**: Searches policies using Azure AI Search Knowledge Base with natural language (similar to ClaimsPlugin)
-    **GetPolicyDetails**: Retrieves structured policy information for a specific policy number
-    **SearchPolicyDocuments**: Uses Microsoft Graph Copilot Retrieval API to search SharePoint policy documents (terms, coverage guides, FAQs)
+    - **SearchPolicies**: Searches policies using Azure AI Search Knowledge Base with natural language (similar to ClaimsPlugin)
+    - **GetPolicyDetails**: Retrieves structured policy information for a specific policy number
+    - **SearchPolicyDocuments**: Uses Microsoft Graph Copilot Retrieval API to search SharePoint policy documents (terms, coverage guides, FAQs)
     
     The SharePoint integration requires user authentication (OBO token) to respect document permissions.
 
@@ -770,8 +780,9 @@ Update the agent instructions to include policy tools.
 private readonly string AgentInstructions = """
 You are a professional insurance claims assistant for Zava Insurance.
 
-Whenever the user starts a new conversation or asks "what can you do?", "how can you help me?", "start over", etc. 
-use {{StartConversationPlugin.StartConversation}} and provide the exact message from the plugin.
+Whenever the user starts a new conversation or provides a prompt to start a new conversation like "start over", "restart", 
+"new conversation", "what can you do?", "how can you help me?", etc. use {{StartConversationPlugin.StartConversation}} and 
+provide to the user exactly the message you get back from the plugin.
 
 **Available Tools:**
 Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
@@ -894,25 +905,49 @@ Now let's test all policy capabilities!
 
 ### Step 2: Test Policy Search
 
-1️⃣ In Microsoft 365 Copilot, try: **"Find all active auto insurance policies"**
+1️⃣ In Microsoft 365 Copilot, try: 
+
+```text
+Find all active auto insurance policies
+```
 
 The agent should use `SearchPolicies` and return matching policies with details.
 
-2️⃣ Try: **"Show me policies for Sarah Martinez"**
+2️⃣ Try: 
 
-3️⃣ Try: **"Find homeowners insurance policies with Active status"**
+```text
+Show me policies for Sarah Martinez
+```
+
+3️⃣ Try: 
+
+```text
+Find homeowners insurance policies with Active status
+```
 
 <cc-end-step lab="baf4" exercise="5" step="2" />
 
 ### Step 3: Test Policy Details
 
-1️⃣ Try: **"Get details for policy POL-AUTO-001"**
+1️⃣ Try: 
+
+```text
+Get details for policy POL-AUTO-001
+```
 
 The agent should use `GetPolicyDetails` and return structured information including coverage, vehicle info, etc.
 
-2️⃣ Try: **"Show me policy POL-HOME-001"**
+2️⃣ Try: 
 
-3️⃣ Try the claim-to-policy workflow: **"Get details for claim CLM-2025-001001, then show me the policy for that claim"**
+```text
+Show me policy POL-HOME-001
+```
+
+3️⃣ Try the claim-to-policy workflow: 
+
+```text
+Get details for claim CLM-2025-001001, then show me the policy for that claim
+```
 
 The agent should first get the claim details (which includes policy number), then retrieve the policy details.
 
@@ -923,15 +958,28 @@ The agent should first get the claim details (which includes policy number), the
 !!! warning "Prerequisite"
     Ensure you completed Exercise 1 and waited 10-15 minutes for SharePoint to index your documents before testing this.
 
-1️⃣ Try: **"What does the policy say about water damage coverage?"**
+1️⃣ Try: 
+
+```text
+What does the policy say about water damage coverage
+```
 
 The agent should use `SearchPolicyDocuments` to search SharePoint and return relevant excerpts.
 
-2️⃣ Try: **"Search policy documents for deductible information"**
+2️⃣ Try: 
 
-3️⃣ Try: **"Find information about filing an auto insurance claim in the policy documents"**
+```text
+Search policy documents for deductible information
+```
+
+3️⃣ Try: 
+
+```text
+Find information about filing an auto insurance claim in the policy documents
+```
 
 4️⃣ **Troubleshooting**:
+
    - If you get authentication errors, ensure you're signed in to Microsoft 365 Copilot
    - If no results are returned, wait longer for SharePoint indexing (can take up to 30 minutes)
    - Check that documents were uploaded to your SharePoint site successfully
