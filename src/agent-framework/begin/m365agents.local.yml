@@ -102,7 +102,7 @@ provision:
           StateContainerName: state
         AzureAISearch:
           Endpoint: ${{AZURE_AI_SEARCH_ENDPOINT}}
-          ApiKey: ${{AZURE_AI_SEARCH_API_KEY}}
+          ApiKey: ${{SECRET_AZURE_AI_SEARCH_API_KEY}}
 
 
   - uses: teamsApp/validateManifest

@@ -56,7 +56,6 @@ EMBEDDING_MODEL_NAME=text-embedding-ada-002
 
 # Get these from Azure AI Search
 AZURE_AI_SEARCH_ENDPOINT=https://YOUR-SEARCH.search.windows.net
-AZURE_AI_SEARCH_API_KEY=YOUR_API_KEY
 ```
 
 Edit `env/.env.local.user` (for API keys - this file is gitignored):
@@ -67,6 +66,9 @@ SECRET_MODELS_APIKEY=YOUR_AI_FOUNDRY_API_KEY
 
 # Azure storage will be auto-generated during provisioning
 SECRET_AZURE_STORAGE_CONNECTION_STRING=
+
+# Get these from Azure AI Search
+SECRET_AZURE_AI_SEARCH_API_KEY=YOUR_API_KEY
 ```
 
 ### Step 5: Press F5 🎉

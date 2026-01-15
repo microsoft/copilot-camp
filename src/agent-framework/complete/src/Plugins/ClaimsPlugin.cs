@@ -67,7 +67,7 @@ namespace ZavaInsurance.Plugins
             var instructions = @"You are an insurance claims specialist. Provide a clear, structured summary of matching claims.
                 Format your response as follows:
                 - Total number of claims found
-                - For each claim, include: Claim Number, Policyholder, Claim Type, Amount, Status, Date Filed, Severity
+                - For each claim, include: Claim Number, Policyholder, Claim Type, Amount, Status, Date Filed, Severity, Region
                 - Use bullet points for readability
                 - Include relevant details like adjuster notes or special circumstances
                 - Cite sources using [ref_id:X] format";

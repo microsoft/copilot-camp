@@ -72,7 +72,15 @@ Now let's add your Azure AI Search credentials to the project.
 ```bash
 # Azure AI Search
 AZURE_AI_SEARCH_ENDPOINT=https://your-search.search.windows.net
-AZURE_AI_SEARCH_API_KEY=your-primary-admin-key
+```
+
+3️⃣ Open `env/.env.local.user` in VS Code.
+
+4️⃣ Find the Azure AI Search section and update:
+
+```bash
+# Azure AI Search
+SECRET_AZURE_AI_SEARCH_API_KEY=your-primary-admin-key
 ```
 
 !!! tip "Finding Your Credentials"
@@ -141,8 +149,8 @@ public class KnowledgeBaseService
         // Load Azure AI Search configuration
         _searchEndpoint = configuration["AZURE_AI_SEARCH_ENDPOINT"]
             ?? throw new InvalidOperationException("AZURE_AI_SEARCH_ENDPOINT not configured");
-        _searchApiKey = configuration["AZURE_AI_SEARCH_API_KEY"]
-            ?? throw new InvalidOperationException("AZURE_AI_SEARCH_API_KEY not configured");
+        _searchApiKey = configuration["SECRET_AZURE_AI_SEARCH_API_KEY"]
+            ?? throw new InvalidOperationException("SECRET_AZURE_AI_SEARCH_API_KEY not configured");
         
         // Load Azure OpenAI configuration for embeddings and LLM
         _aiEndpoint = configuration["MODELS_ENDPOINT"]
@@ -589,9 +597,9 @@ Now let's create the ClaimsPlugin that uses the KnowledgeBaseService to provide 
 ??? note "What this code does"
     The `ClaimsPlugin` provides claim search capabilities to your agent:
     
-    **SearchClaims**: Searches for claims by region, type, severity, or status - builds natural language query and uses agentic retrieval with structured output instructions
-    **GetClaimDetails**: Retrieves comprehensive information for a specific claim ID with detailed formatting instructions for the LLM
-    **NotifyUserAsync**: Helper method to send real-time status updates to users ("Searching...", "Retrieved data...") using StreamingResponse
+    - **SearchClaims**: Searches for claims by region, type, severity, or status - builds natural language query and uses agentic retrieval with structured output instructions
+    - **GetClaimDetails**: Retrieves comprehensive information for a specific claim ID with detailed formatting instructions for the LLM
+    - **NotifyUserAsync**: Helper method to send real-time status updates to users ("Searching...", "Retrieved data...") using StreamingResponse
     
     Each method has a `[Description]` attribute that tells the AI agent when and how to use the tool. The AI automatically decides which tool to call based on user intent.
 
@@ -659,7 +667,7 @@ namespace ZavaInsurance.Plugins
             var instructions = @"You are an insurance claims specialist. Provide a clear, structured summary of matching claims.
                 Format your response as follows:
                 - Total number of claims found
-                - For each claim, include: Claim Number, Policyholder, Claim Type, Amount, Status, Date Filed, Severity
+                - For each claim, include: Claim Number, Policyholder, Claim Type, Amount, Status, Date Filed, Severity, Region
                 - Use bullet points for readability
                 - Include relevant details like adjuster notes or special circumstances
                 - Cite sources using [ref_id:X] format";
@@ -777,9 +785,12 @@ Now let's wire everything together by registering services in Program.cs and add
 ### Step 1: Register KnowledgeBaseService and Initialize Data
 
 ??? note "What this code does"
-    **Service Registration**: Registers KnowledgeBaseService as a singleton so it's available throughout the app
-    **Initialization**: Creates index → knowledge source → knowledge base → indexes sample data (must be done in this order)
-    **Error Handling**: Catches initialization errors without stopping the app (useful for development)
+
+    The `Program.cs` takes care of registering the services:
+
+    - **Service Registration**: Registers KnowledgeBaseService as a singleton so it's available throughout the app
+    - **Initialization**: Creates index → knowledge source → knowledge base → indexes sample data (must be done in this order)
+    - **Error Handling**: Catches initialization errors without stopping the app (useful for development)
 
 1️⃣ Open `src/Program.cs`.
 
@@ -828,9 +839,12 @@ using (var scope = app.Services.CreateScope())
 ### Step 2: Configure Agent with ClaimsPlugin
 
 ??? note "What this code does"
-    **Agent Instructions**: Updates the agent's system prompt to include ClaimsPlugin tools (tells AI when to use them)
-    **Plugin Creation**: Instantiates ClaimsPlugin with required dependencies (context, knowledge base service, configuration)
-    **Tool Registration**: Registers SearchClaims and GetClaimDetails as callable tools for the AI agent
+
+    In the `ZavaInsuranceAgent.cs` file you need to instruct the agent to use the new ClaimsPlugin:
+
+    - **Agent Instructions**: Updates the agent's system prompt to include ClaimsPlugin tools (tells AI when to use them)
+    - **Plugin Creation**: Instantiates ClaimsPlugin with required dependencies (context, knowledge base service, configuration)
+    - **Tool Registration**: Registers SearchClaims and GetClaimDetails as callable tools for the AI agent
 
 1️⃣ Open `src/Agent/ZavaInsuranceAgent.cs`.
 
@@ -846,8 +860,7 @@ using InsuranceAgent.Services;
 private readonly string AgentInstructions = """
 You are a professional insurance claims assistant for Zava Insurance.
 
-Whenever the user starts a new conversation or asks "what can you do?", "how can you help me?", "start over", etc. 
-use {{StartConversationPlugin.StartConversation}} and provide the exact message from the plugin.
+Whenever the user starts a new conversation or provides a prompt to start a new conversation like "start over", "restart", "new conversation", "what can you do?", "how can you help me?", etc. use {{StartConversationPlugin.StartConversation}} and provide to the user exactly the message you get back from the plugin.
 
 **Available Tools:**
 Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
@@ -871,7 +884,7 @@ var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
 ClaimsPlugin claimsPlugin = new(context, knowledgeBaseService, configuration);
 ```
 
-5️⃣ Find where tools are added (after `toolOptions.Tools.Add(AIFunctionFactory.Create(startConversationPlugin.StartConversation))`) and add:
+5️⃣ Find where tools are registered and add the following snippet to register the ClaimsPlugin, right after `toolOptions.Tools.Add(AIFunctionFactory.Create(startConversationPlugin.StartConversation))`:
 
 ```csharp
 // Register ClaimsPlugin tools
@@ -948,19 +961,35 @@ Now let's test the new claims search capabilities!
 
 ### Step 2: Test Claim Search
 
-1️⃣ In Microsoft 365 Copilot, try a more specific search: **"Find claims in the South region"**
+1️⃣ In Microsoft 365 Copilot, try a more specific search: 
 
-2️⃣ Try: **"Show me auto claims with medium severity"**
+```text
+Find claims in the South region
+```
+
+2️⃣ Try: 
+
+```text
+Show me auto claims with medium severity
+```
 
 <cc-end-step lab="baf2" exercise="5" step="2" />
 
 ### Step 3: Test Claim Details
 
-1️⃣ Try: **"Get details for claim CLM-2025-001007"**
+1️⃣ Try: 
+
+```text
+Get details for claim CLM-2025-001007
+```
 
 The agent should use `GetClaimDetails` and return detailed information. Note that we'll continue adding more data in future labs that will enhance the responses such as showing policy or claim history in claim details.
 
-2️⃣ Try another claim: **"Show me information about claim CLM-2025-001003"**
+2️⃣ Try another claim: 
+
+```text
+Show me information about claim CLM-2025-001003
+```
 
 <cc-end-step lab="baf2" exercise="5" step="3" />
 

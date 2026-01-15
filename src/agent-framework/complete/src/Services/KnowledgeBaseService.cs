@@ -47,8 +47,8 @@ public class KnowledgeBaseService
     {
         _searchEndpoint = configuration["AZURE_AI_SEARCH_ENDPOINT"]
             ?? throw new InvalidOperationException("AZURE_AI_SEARCH_ENDPOINT not configured");
-        _searchApiKey = configuration["AZURE_AI_SEARCH_API_KEY"]
-            ?? throw new InvalidOperationException("AZURE_AI_SEARCH_API_KEY not configured");
+        _searchApiKey = configuration["SECRET_AZURE_AI_SEARCH_API_KEY"]
+            ?? throw new InvalidOperationException("SECRET_AZURE_AI_SEARCH_API_KEY not configured");
         
         _aiEndpoint = configuration["MODELS_ENDPOINT"]
             ?? throw new InvalidOperationException("MODELS_ENDPOINT not configured");

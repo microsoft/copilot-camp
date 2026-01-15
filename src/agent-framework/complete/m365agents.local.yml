@@ -100,7 +100,9 @@ provision:
           StorageAccountName: ${{AZURE_STORAGE_ACCOUNT_NAME}}
           ClaimsContainerName: claims-documents
           StateContainerName: state
-
+        AzureAISearch:
+          Endpoint: ${{AZURE_AI_SEARCH_ENDPOINT}}
+          ApiKey: ${{SECRET_AZURE_AI_SEARCH_API_KEY}}
 
   - uses: teamsApp/validateManifest
     with:
