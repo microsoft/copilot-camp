@@ -38,6 +38,7 @@ By completing this lab, you will:
 Before starting this lab, ensure you have:
 
 - **Completed Lab 8**: Zava's Declarative Agent with MCP server integration working properly
+- **Microsoft 365 Agents Toolkit** Pre-release version (For Embedded Knowledge)
 - **Active Microsoft 365 Copilot license** for testing 
 
 ---
