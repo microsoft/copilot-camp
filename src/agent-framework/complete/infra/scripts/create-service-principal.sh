@@ -49,8 +49,32 @@ if [[ "$BOT_SERVICE_PRINCIPAL_ID" != "_" ]]; then
 fi
 
 echo "Ensuring Azure authentication..."
-if ! az account show --output none 2>/dev/null; then
-    az login --only-show-errors
+
+# Check if already logged in
+CURRENT_ACCOUNT=$(az account show --output json 2>/dev/null)
+if [[ $? -eq 0 ]]; then
+    CURRENT_SUBSCRIPTION_ID=$(echo "$CURRENT_ACCOUNT" | jq -r '.id')
+    
+    echo "Currently logged in to subscription: $CURRENT_SUBSCRIPTION_ID"
+    
+    # Check if current subscription matches the desired one
+    if [[ "$CURRENT_SUBSCRIPTION_ID" != "$SUBSCRIPTION_ID" ]]; then
+        echo "Current subscription ($CURRENT_SUBSCRIPTION_ID) does not match target subscription ($SUBSCRIPTION_ID)"
+        echo "Forcing logout and re-login to ensure correct subscription..."
+        az logout
+        echo "Opening browser for Azure login..."
+        az login
+        if [[ $? -ne 0 ]]; then
+            echo "Error: Azure login failed. Exiting."
+            exit 1
+        fi
+    else
+        echo "Already logged in to the correct subscription."
+    fi
+else
+    # Not logged in, perform login
+    echo "Not logged in. Opening browser for Azure login..."
+    az login
     if [[ $? -ne 0 ]]; then
         echo "Error: Azure login failed. Exiting."
         exit 1
@@ -63,6 +87,14 @@ if [[ $? -ne 0 ]]; then
     echo "Error: Failed to set subscription. Exiting."
     exit 1
 fi
+
+# Verify the subscription was set correctly
+VERIFY_SUBSCRIPTION_ID=$(az account show --output json 2>/dev/null | jq -r '.id')
+if [[ "$VERIFY_SUBSCRIPTION_ID" != "$SUBSCRIPTION_ID" ]]; then
+    echo "Error: Failed to switch to subscription $SUBSCRIPTION_ID. Current subscription is $VERIFY_SUBSCRIPTION_ID. Exiting."
+    exit 1
+fi
+echo "Successfully set subscription to $SUBSCRIPTION_ID"
 
 echo "Checking if service principal exists for App ID: $APP_ID..."
 SP_EXISTS=$(az ad sp list --filter "appId eq '$APP_ID'" --query "[].appId" -o tsv)

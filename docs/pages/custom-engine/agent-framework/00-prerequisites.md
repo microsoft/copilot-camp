@@ -37,7 +37,7 @@ By default, end users can't upload applications directly; instead a Teams admini
 
 ## Exercise 2: Setup Development Environment
 
-You can complete these labs on a Windows, macOS, or Linux machine and you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
+You can complete these labs on a Windows, macOS, or Linux machine and you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use.
 
 ### Step 1: Install Visual Studio Code
 

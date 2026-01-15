@@ -10,13 +10,7 @@
 			"Handlers": {
 				"me": {
 					"Settings": {
-						"AzureBotOAuthConnectionName": "Microsoft Graph",
-						"OBOConnectionName": "BotServiceConnection",
-						"OBOScopes": [
-							"https://graph.microsoft.com/.default"
-						],
-						"Title": "Sign in",
-						"Text": "Sign in to Microsoft Graph"
+						"AzureBotOAuthConnectionName": "Microsoft Graph"
 					}
 				}
 			}
