@@ -145,7 +145,7 @@ public class KnowledgeBaseService
     public KnowledgeBaseService(IConfiguration configuration)
     {
         _configuration = configuration;
-    {
+
         // Load Azure AI Search configuration
         _searchEndpoint = configuration["AZURE_AI_SEARCH_ENDPOINT"]
             ?? throw new InvalidOperationException("AZURE_AI_SEARCH_ENDPOINT not configured");
@@ -173,7 +173,6 @@ public class KnowledgeBaseService
             new Uri(_aiEndpoint), 
             new AzureKeyCredential(_aiApiKey)
         );
-    }
     }
 
     /// <summary>

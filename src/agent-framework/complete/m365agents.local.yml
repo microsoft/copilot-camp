@@ -96,7 +96,7 @@ provision:
           EmbeddingModel:
             Name: ${{EMBEDDING_MODEL_NAME}}
         AzureStorage:
-          ConnectionString: ${{AZURE_STORAGE_CONNECTION_STRING}}
+          ConnectionString: ${{SECRET_AZURE_STORAGE_CONNECTION_STRING}}
           StorageAccountName: ${{AZURE_STORAGE_ACCOUNT_NAME}}
           ClaimsContainerName: claims-documents
           StateContainerName: state

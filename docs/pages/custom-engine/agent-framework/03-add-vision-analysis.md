@@ -114,7 +114,6 @@ Add the vision model and blob storage configuration to your environment variable
 VISION_MODEL_NAME=mistral-medium-2505
 
 # Storage
-AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=YOUR-STORAGE-ACCOUNT;AccountKey=YOUR-STORAGE-KEY;EndpointSuffix=core.windows.net
 AZURE_STORAGE_ACCOUNT_NAME=YOUR-STORAGE-ACCOUNT
 
 # Blob Storage for Damage Photos
@@ -122,8 +121,17 @@ BLOB_STORAGE_CONTAINER_NAME=claim-photos
 BLOB_STORAGE_BASE_URL=https://YOUR-STORAGE-ACCOUNT.blob.core.windows.net
 ```
 
+3️⃣ Open your `.env.local.user` file.
+
+4️⃣ Add the blob storage connection string:
+
+```bash
+# Storage
+SECRET_AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=YOUR-STORAGE-ACCOUNT;AccountKey=YOUR-STORAGE-KEY;EndpointSuffix=core.windows.net
+```
+
 ???+ note "Configuration Notes"
-    - **AZURE_STORAGE_CONNECTION_STRING**: Paste the connection string you copied from Azure Portal
+    - **SECRET_AZURE_STORAGE_CONNECTION_STRING**: Paste the connection string you copied from Azure Portal
     - **AZURE_STORAGE_ACCOUNT_NAME**: Your storage account name
     - **BLOB_STORAGE_CONTAINER_NAME**: Must be `claim-photos` (the container you just created)
     - **BLOB_STORAGE_BASE_URL**: Replace `YOUR-STORAGE-ACCOUNT` with your actual storage account name
@@ -138,6 +146,7 @@ Now let's create the services that handle AI vision analysis and blob storage fo
 
 ??? note "What this code does"
     **VisionService**: Analyzes damage photos using Mistral AI vision model
+    
     - Connects to Azure OpenAI with mistral-medium-2505 deployment
     - Takes image bytes and generates structured JSON damage analysis
     - Provides damage type, severity, cost estimates, safety concerns, repair recommendations
@@ -145,6 +154,7 @@ Now let's create the services that handle AI vision analysis and blob storage fo
     - Uses low temperature (0.3) for consistent, factual responses
     
     **BlobStorageService**: Manages damage photos in Azure Blob Storage
+
     - Uploads photos organized by claim number with timestamp naming
     - Downloads photos for AI analysis
     - Deletes photos when needed
@@ -351,8 +361,8 @@ public class BlobStorageService
 
     public BlobStorageService(IConfiguration configuration)
     {
-        var connectionString = configuration["AZURE_STORAGE_CONNECTION_STRING"]
-            ?? throw new InvalidOperationException("AZURE_STORAGE_CONNECTION_STRING not configured");
+        var connectionString = configuration["SECRET_AZURE_STORAGE_CONNECTION_STRING"]
+            ?? throw new InvalidOperationException("SECRET_AZURE_STORAGE_CONNECTION_STRING not configured");
         
         _containerName = configuration["BLOB_STORAGE_CONTAINER_NAME"] ?? "claim-photos";
         _baseUrl = configuration["BLOB_STORAGE_BASE_URL"] ?? "";
@@ -499,6 +509,7 @@ public KnowledgeBaseService(IConfiguration configuration, BlobStorageService? bl
     **GetClaimImageUrlAsync**: Direct query to claims index for imageUrl field - more efficient than RetrieveAsync for simple field lookups. Returns nullable string.
     
     **UploadSampleDamagePhotosAsync**: Complete photo upload workflow:
+
     - Reads claims from JSON file
     - Matches images using policyholder name pattern (firstname-lastname-*.jpg)
     - Uploads to blob storage with claim number organization
@@ -673,6 +684,7 @@ private async Task UploadSampleDamagePhotosAsync()
     - **Automatic execution**: Runs during first app startup when IndexSampleDataAsync is called
     
     This simplified approach:
+
     - ✅ Uploads images to Azure Blob Storage for persistent storage
     - ✅ Updates claims index with imageUrl field pointing to blob URLs
     - ✅ No separate document index needed - claims contain image URLs directly
@@ -689,7 +701,7 @@ Find the `IndexSampleDataAsync` method and update the method with the below code
 ```csharp
 public async Task IndexSampleDataAsync()
 {
-    await IndexSampleClaimsAsync();
+    await IndexClaimsDataAsync();
     
     // Upload damage photos to blob storage if BlobStorageService is available
     if (_blobStorageService != null)
@@ -712,10 +724,10 @@ Now that KnowledgeBaseService has all the necessary methods, let's create the Vi
 ??? note "What this code does"
     The `VisionPlugin` provides complete AI vision analysis capabilities:
     
-    **ShowDamagePhoto**: Retrieves and displays damage photos from claims without analysis - proxies images through devtunnel for inline display in chat
-    **AnalyzeAndShowDamagePhoto**: Downloads photo, uses Mistral AI to analyze damage, extracts structured results (damage type, severity, cost, affected areas, safety concerns, recommendations, specialist needs), presents formatted analysis to user
-    **ApproveAnalysis/RejectAnalysis**: Approval workflow methods that handle user feedback on AI analysis - in production would update claim database and trigger workflows
-    **NotifyUserAsync**: Helper for real-time streaming updates during long operations
+    - **ShowDamagePhoto**: Retrieves and displays damage photos from claims without analysis - proxies images through devtunnel for inline display in chat
+    - **AnalyzeAndShowDamagePhoto**: Downloads photo, uses Mistral AI to analyze damage, extracts structured results (damage type, severity, cost, affected areas, safety concerns, recommendations, specialist needs), presents formatted analysis to user
+    - **ApproveAnalysis/RejectAnalysis**: Approval workflow methods that handle user feedback on AI analysis - in production would update claim database and trigger workflows
+    - **NotifyUserAsync**: Helper for real-time streaming updates during long operations
     
     Each method has `[Description]` attribute so the AI agent knows when to call them based on user intent.
 
@@ -966,30 +978,7 @@ namespace ZavaInsurance.Plugins
 
 ## Exercise 5: Update ClaimsPlugin to Display Damage Photos
 
-1️⃣ Open `src/Program.cs`.
-
-2️⃣ Find the `KnowledgeBaseService` registration and replace it with this factory function:
-
-```csharp
-// Register Knowledge Base Service with BlobStorageService dependency
-builder.Services.AddSingleton<KnowledgeBaseService>(serviceProvider =>
-{
-    var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-    var blobStorageService = serviceProvider.GetRequiredService<BlobStorageService>();
-    
-    return new KnowledgeBaseService(configuration, blobStorageService);
-});
-```
-
-??? note "Simplified constructor"
-    The updated KnowledgeBaseService constructor now only requires:
-    
-    - **IConfiguration**: For all connection strings and endpoints
-    - **BlobStorageService**: For damage photo uploads (optional parameter)
-    
-    The service creates its own SearchIndexClient, KnowledgeBaseRetrievalClient, and AzureOpenAIClient internally from the configuration. This simplifies the factory function and reduces coupling.
-
-### Step 3: Update ClaimsPlugin to Display Damage Photos
+### Step 1: Update ClaimsPlugin to Display Damage Photos
 
 ??? note "What this code does"
     Now that `GetClaimImageUrlAsync` is available in KnowledgeBaseService, we can update the ClaimsPlugin to display damage photos in claim details. This adds back the image display functionality that was removed in Lab BAF2.
@@ -1047,7 +1036,7 @@ builder.Services.AddSingleton<KnowledgeBaseService>(serviceProvider =>
 ```
 
 ??? note "Why this update is needed"
-    In Lab BAF2, we removed the image display code because `GetClaimImageUrlAsync` didn't exist yet. Now that we've added it to KnowledgeBaseService in Exercise 3, we can add back the image display functionality to ClaimsPlugin.
+    In Lab BAF2, we omitted the image display code because `GetClaimImageUrlAsync` didn't exist yet. Now that we've added it to KnowledgeBaseService in Exercise 3, we can add the image display functionality to `ClaimsPlugin`.
 
 <cc-end-step lab="baf3" exercise="5" step="1" />
 
@@ -1058,8 +1047,9 @@ Now let's wire everything together by updating Program.cs and the agent configur
 ### Step 1: Update Service Registration and KnowledgeBaseService Factory
 
 ??? note "What this code does"
-    **Service Registration**: Registers BlobStorageService (singleton) and VisionService (scoped) for dependency injection
-    **KnowledgeBaseService Factory**: Updates factory to pass BlobStorageService to simplified constructor
+
+    - **Service Registration**: Registers BlobStorageService (singleton) and VisionService (scoped) for dependency injection
+    - **KnowledgeBaseService Factory**: Updates factory to pass BlobStorageService to simplified constructor
     
     The factory pattern ensures proper service resolution and initialization order.
 
@@ -1084,6 +1074,14 @@ builder.Services.AddSingleton<KnowledgeBaseService>(serviceProvider =>
 });
 ```
 
+??? note "Simplified constructor"
+    The updated `KnowledgeBaseService` constructor now requires:
+    
+    - **IConfiguration**: For all connection strings and endpoints
+    - **BlobStorageService**: For damage photo uploads (optional parameter)
+    
+    The service creates its own SearchIndexClient, KnowledgeBaseRetrievalClient, and AzureOpenAIClient internally from the configuration. This simplifies the factory function and reduces coupling.
+
 <cc-end-step lab="baf3" exercise="6" step="1" />
 
 ### Step 2: Update Agent with VisionPlugin
@@ -1101,8 +1099,9 @@ builder.Services.AddSingleton<KnowledgeBaseService>(serviceProvider =>
 private readonly string AgentInstructions = """
 You are a professional insurance claims assistant for Zava Insurance.
 
-Whenever the user starts a new conversation or asks "what can you do?", "how can you help me?", "start over", etc. 
-use {{StartConversationPlugin.StartConversation}} and provide the exact message from the plugin.
+Whenever the user starts a new conversation or provides a prompt to start a new conversation like "start over", "restart", 
+"new conversation", "what can you do?", "how can you help me?", etc. use {{StartConversationPlugin.StartConversation}} and 
+provide to the user exactly the message you get back from the plugin.
 
 **Available Tools:**
 Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
@@ -1260,20 +1259,32 @@ Let's test the vision analysis capabilities!
 
 ### Step 2: Test Viewing Damage Photos
 
-1️⃣ In Microsoft 365 Copilot, try: **"Show me the damage photo for claim CLM-2025-001007"**
+1️⃣ In Microsoft 365 Copilot, try: 
+
+```text
+Show me the damage photo for claim CLM-2025-001007
+```
 
 The agent should use the `ShowDamagePhoto` tool and display the damage photo.
 
 ???+ note "Image Loading Time"
     Images may take a few seconds to load in the chat as they are being proxied through the bot endpoint from Azure Blob Storage. This is normal behavior.
 
-2️⃣ Try another claim: **"View the damage photo for claim CLM-2025-001003"**
+2️⃣ Try another claim: 
+
+```text
+View the damage photo for claim CLM-2025-001003
+```
 
 <cc-end-step lab="baf3" exercise="7" step="1" />
 
 ### Step 2: Test AI Vision Analysis
 
-1️⃣ Try: **"Analyze the damage photo for claim CLM-2025-001007"**
+1️⃣ Try: 
+
+```text
+Analyze the damage photo for claim CLM-2025-001007
+```
 
 The agent should:
 - Use the `AnalyzeAndShowDamagePhoto` tool
@@ -1281,7 +1292,11 @@ The agent should:
 - Present detailed analysis including damage type, severity, cost estimates, and recommendations
 - Ask for approval or rejection
 
-2️⃣ After reviewing the analysis, try: **"Approve the analysis"**
+2️⃣ After reviewing the analysis, try: 
+
+```text
+Approve the analysis
+```
 
 The agent should use `ApproveAnalysis` and confirm the approval with next steps.
 
@@ -1289,7 +1304,11 @@ The agent should use `ApproveAnalysis` and confirm the approval with next steps.
 
 ### Step 3: Test Combined Workflows
 
-1️⃣ Try: **"Show me high severity claims in the Northeast region, then analyze their damage photos"**
+1️⃣ Try: 
+
+```text
+Show me high severity claims in the Northeast region, then analyze their damage photos
+```
 
 The agent should search for claims first, then analyze the damage photos for matching claims.
 

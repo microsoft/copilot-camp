@@ -16,8 +16,8 @@ public class BlobStorageService
 
     public BlobStorageService(IConfiguration configuration)
     {
-        _connectionString = configuration["AZURE_STORAGE_CONNECTION_STRING"]
-            ?? throw new InvalidOperationException("AZURE_STORAGE_CONNECTION_STRING not configured");
+        _connectionString = configuration["SECRET_AZURE_STORAGE_CONNECTION_STRING"]
+            ?? throw new InvalidOperationException("SECRET_AZURE_STORAGE_CONNECTION_STRING not configured");
         
         _containerName = configuration["BLOB_STORAGE_CONTAINER_NAME"] ?? "claim-photos"; // Default to claim-photos for blob KS
         _baseUrl = configuration["BLOB_STORAGE_BASE_URL"] ?? "";
