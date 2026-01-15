@@ -1,5 +1,4 @@
 # Lab 08 : Connect Declarative agent to MCP Server
----8<--- "e-labs-prelude.md"
 
 In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with Declarative Agent in Microsoft 365 Copilot that you will create, enabling natural language interactions with real claims data through secure, standardized AI agent communication.
 
