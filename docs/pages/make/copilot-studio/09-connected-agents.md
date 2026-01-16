@@ -150,30 +150,28 @@ throughout the process. Handle errors gracefully and provide informative feedbac
 when coordination between agents fails.
 ```
 
-Select **Create** to create your coordinator agent.
+In the **Knowledge** section, you can optionally add documents with interview scheduling guidelines or company-specific HR policies. For this lab, we'll rely on the agent's built-in capabilities and the integration with other agents.
+
+![The Interview Coordinator agent configuration showing the "GPT-5 Chat" model.](../../../assets/images/make/copilot-studio-09/coordinator-agent-01.png)
+
+Select **Save** in the sections you edited to upate your coordinator agent configuration.
 
 <cc-end-step lab="mcs9" exercise="2" step="1" />
 
-### Step 2: Enabling Generative AI Orchestration
+### Step 2: Configure agent settings
 
-After creating the agent, configure its orchestration capabilities to enable intelligent coordination between multiple agents.
+After creating the agent, configure its orchestration capabilities and knowledge settings. Select the **Settings** command in the upper right corner and configure the agent.
 
-In the **Orchestration** section, ensure that **Use generative AI to determine how best to respond to users and events** is enabled. This allows the agent to intelligently coordinate between different child agents and connected agents.
+In the **Orchestration** section, ensure that **Use generative AI orchestration for your agent's responses?** is configured with value `Yes - Responses will be dynamic, using available tools and knowledge as appropriate`. This allows the agent to intelligently coordinate between different child agents and connected agents.
 
-![The Interview Coordinator agent configuration showing orchestration settings with generative AI enabled for multi-agent coordination.](../../../assets/images/make/copilot-studio-09/coordinator-agent-01.png)
-
-In the **Knowledge** section, you can optionally add interview scheduling guidelines or company-specific HR policies. For this lab, we'll rely on the agent's built-in capabilities and the integration with other agents.
-
-Select **Save** to confirm the configuration, in case you made any changes.
-
-Select the **Settings** command in the upper right corner and configure the agent, in the **Generative AI** section accordingly to the following settings:
+In the **Knowledge** section accordingly to the following settings:
 
 - **Use general knowledge**: off
 - **Use information from the web**: off
 
 ![The "Generative AI" settings for the agent, with general knowledge and information from the web turned off.](../../../assets/images/make/copilot-studio-09/coordinator-agent-02.png)
 
-Select **Save** to confirm the new settings.
+Select **Save** to confirm the configuration.
 
 <cc-end-step lab="mcs9" exercise="2" step="2" />
 
