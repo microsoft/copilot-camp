@@ -2229,11 +2229,11 @@
 <h1 id="lab-mcs9-connected-agents-preview">Lab MCS9 - Connected Agents (Preview)</h1>
 <p>In this lab, you are going to understand how to create agents in Microsoft Copilot Studio that can communicate with other agents. You'll build a specialized Interview Scheduler agent that consumes data from the HR Candidate Management agent created in previous labs. The Interview Scheduler agent will automatically process candidate data and send interview meeting requests based on selected candidates, demonstrating how modular agents can work together to create comprehensive business solutions.</p>
 <div class="lab-intro-video">
-    <!-- <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/placeholder" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/JFzxTCIoihY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
-    </div> -->
+    </div>
     <div style="flex: 1; min-width: 0;">
 
    <div class="floatwide">
@@ -2405,21 +2405,20 @@ Always ensure proper validation of candidate data and provide clear communicatio
 throughout the process. Handle errors gracefully and provide informative feedback 
 when coordination between agents fails.
 </code></pre>
-<p>Select <strong>Create</strong> to create your coordinator agent.</p>
+<p>In the <strong>Knowledge</strong> section, you can optionally add documents with interview scheduling guidelines or company-specific HR policies. For this lab, we'll rely on the agent's built-in capabilities and the integration with other agents.</p>
+<p><img alt="The Interview Coordinator agent configuration showing the &quot;GPT-5 Chat&quot; model." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-01.png" /></p>
+<p>Select <strong>Save</strong> in the sections you edited to upate your coordinator agent configuration.</p>
 <p><cc-end-step lab="mcs9" exercise="2" step="1" /></p>
-<h3 id="step-2-enabling-generative-ai-orchestration">Step 2: Enabling Generative AI Orchestration</h3>
-<p>After creating the agent, configure its orchestration capabilities to enable intelligent coordination between multiple agents.</p>
-<p>In the <strong>Orchestration</strong> section, ensure that <strong>Use generative AI to determine how best to respond to users and events</strong> is enabled. This allows the agent to intelligently coordinate between different child agents and connected agents.</p>
-<p><img alt="The Interview Coordinator agent configuration showing orchestration settings with generative AI enabled for multi-agent coordination." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-01.png" /></p>
-<p>In the <strong>Knowledge</strong> section, you can optionally add interview scheduling guidelines or company-specific HR policies. For this lab, we'll rely on the agent's built-in capabilities and the integration with other agents.</p>
-<p>Select <strong>Save</strong> to confirm the configuration, in case you made any changes.</p>
-<p>Select the <strong>Settings</strong> command in the upper right corner and configure the agent, in the <strong>Generative AI</strong> section accordingly to the following settings:</p>
+<h3 id="step-2-configure-agent-settings">Step 2: Configure agent settings</h3>
+<p>After creating the agent, configure its orchestration capabilities and knowledge settings. Select the <strong>Settings</strong> command in the upper right corner and configure the agent.</p>
+<p>In the <strong>Orchestration</strong> section, ensure that <strong>Use generative AI orchestration for your agent's responses?</strong> is configured with value <code>Yes - Responses will be dynamic, using available tools and knowledge as appropriate</code>. This allows the agent to intelligently coordinate between different child agents and connected agents.</p>
+<p>In the <strong>Knowledge</strong> section accordingly to the following settings:</p>
 <ul>
 <li><strong>Use general knowledge</strong>: off</li>
 <li><strong>Use information from the web</strong>: off</li>
 </ul>
 <p><img alt="The &quot;Generative AI&quot; settings for the agent, with general knowledge and information from the web turned off." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-02.png" /></p>
-<p>Select <strong>Save</strong> to confirm the new settings.</p>
+<p>Select <strong>Save</strong> to confirm the configuration.</p>
 <p><cc-end-step lab="mcs9" exercise="2" step="2" /></p>
 <h3 id="step-3-connecting-to-the-hr-candidate-management-agent">Step 3: Connecting to the HR Candidate Management Agent</h3>
 <p>Your Interview Coordinator needs to communicate with the existing HR agent to retrieve candidate information. Navigate to the 1️⃣ <strong>Agents</strong> section and select 2️⃣ <strong>Add</strong>.</p>
