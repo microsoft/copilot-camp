@@ -10,6 +10,7 @@ In this lab, you'll build a multi-agent orchestration system for Zava Insurance.
 
 **Connected Agents** represent the next evolution in AI agent architecture, enabling multiple specialized agents to work together seamlessly. Instead of building monolithic agents that try to do everything, Connected Agents orchestrate specialized agents, each optimized for specific tasks while maintaining a unified user experience.
 
+> Connected agents in Declarative agent is still be in Public Preview.
 
 ### Benefits for Enterprise Workflows
 
@@ -37,6 +38,7 @@ By completing this lab, you will:
 Before starting this lab, ensure you have:
 
 - **Completed Lab 8**: Zava's Declarative Agent with MCP server integration working properly
+- **Microsoft 365 Agents Toolkit** Pre-release version (For Embedded Knowledge)
 - **Active Microsoft 365 Copilot license** for testing 
 
 ---
@@ -253,17 +255,15 @@ In VS Code with your project open:
 
 1. Open the **Microsoft 365 Agents Toolkit** panel
 2. Click **"Provision"** in the Lifecycle section
-3. Select **"dev"** environment when prompted
 4. Wait for provisioning to complete - this creates and uploads the agent package
 
 <cc-end-step lab="e9" exercise="3" step="1" />
 
 ### Step 2: Test in Microsoft 365 Copilot
 
-1. Click **"Preview"** in the Agents Toolkit panel
-2. This will open Microsoft Teams with your agent available
-3. In Teams, open **Copilot** and look for your **"Zava Procurement"** agent
-4. Try the conversation starters:
+1. Open browser from the machine and go to Copilot chat using URL https://m365.cloud.microsoft/chat/ 
+2. Under Agents on left hand side, find **"Zava Procurement"** agent
+3. Try the conversation starters:
 
    - "What are the rates for emergency water extraction and drying services?"
    - "Which contractors offer 24/7 emergency response and what are their rates?"
@@ -532,22 +532,18 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 
 1. In VS Code, open the **Microsoft 365 Agents Toolkit** panel
 2. Click **"Provision"** in the Lifecycle section  
-3. Select **"dev"** environment when prompted
-4. Wait for provisioning to complete
+3. Wait for provisioning to complete
 
 <cc-end-step lab="e9" exercise="2" step="1" />
 
 ### Step 2: Test Multi-Agent Workflows
 
-Open Microsoft 365 Copilot and test these orchestrated workflows:
 
-**Complex Workflow 1: End-to-End Processing**
+1. Open browser from the machine and go to Copilot chat using URL https://m365.cloud.microsoft/chat/ 
+2. Under Agents on left hand side, find **Zava Care** agent and test below orchestrated workflow:
 
-```
-Process claim CN202504990 completely: get claim details, create an urgent inspection, find the most cost-effective roofing contractors, and provide a comprehensive cost analysis
-```
 
-**Complex Workflow 2: Emergency Coordination**  
+**Complex Workflow : Emergency Coordination**  
 ```
 We have multiple storm damage claims from yesterday. Show me all urgent claims, their inspection needs, available emergency contractors, and emergency service pricing
 ```
