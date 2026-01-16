@@ -5,10 +5,10 @@ In this lab, you'll enhance the Zava Insurance Agent with professional communica
 ???+ info "Understanding Communication Plugin"
     The **CommunicationPlugin** enables your agent to:
     
-    **Send Professional Emails**: Use Microsoft Graph Mail API to send HTML-formatted claim details  
-    **Generate Investigation Reports**: Create comprehensive reports combining data from ClaimsPlugin, VisionPlugin, and PolicyPlugin  
-    **Knowledge Base Aggregation**: Pull all available claim data including vision analysis, fraud assessment, and policy details  
-    **OAuth Token Management**: Use cached On-Behalf-Of (OBO) tokens for secure Graph API calls
+    - **Send Professional Emails**: Use Microsoft Graph Mail API to send HTML-formatted claim details  
+    - **Generate Investigation Reports**: Create comprehensive reports combining data from ClaimsPlugin, VisionPlugin, and PolicyPlugin  
+    - **Knowledge Base Aggregation**: Pull all available claim data including vision analysis, fraud assessment, and policy details  
+    - **OAuth Token Management**: Use cached On-Behalf-Of (OBO) tokens for secure Graph API calls
     
     This completes the claim processing workflow by adding communication and reporting capabilities.
 
@@ -22,6 +22,7 @@ Now that you have claims search, vision analysis, and policy search capabilities
     The `CommunicationPlugin` provides two main capabilities:
     
     **SendClaimDetailsByEmail**:
+
     - Retrieves comprehensive claim data from Knowledge Base Service
     - Creates professional HTML-formatted email
     - Sends via Microsoft Graph API
@@ -29,6 +30,7 @@ Now that you have claims search, vision analysis, and policy search capabilities
     - Defaults to current user's email if no recipient specified
     
     **GenerateInvestigationReport**:
+
     - Gathers all claim data including vision analysis and fraud assessment
     - Formats a comprehensive investigation report with recommendations
     - Returns formatted markdown report with professional structure
@@ -324,37 +326,22 @@ Now let's wire up the CommunicationPlugin in your ZavaInsuranceAgent.
 4️⃣ Add the CommunicationPlugin instantiation:
 
 ```csharp
-// Setup the plugins with access to the Agent SDK current context and services
-StartConversationPlugin startConversationPlugin = new();
-ClaimsPlugin claimsPlugin = new(context, knowledgeBaseService, configuration);
-PolicyPlugin policyPlugin = new(context, turnState, knowledgeBaseService, _httpClient);
-CommunicationPlugin communicationPlugin = new(context, turnState, knowledgeBaseService, _httpClient);
-VisionPlugin visionPlugin = new(context, knowledgeBaseService, visionService, blobStorageService, configuration);
+// Create CommunicationPlugin with required dependencies
+CommunicationPlugin communicationPlugin = new(context, turnState, knowledgeBaseService, httpClient);
 ```
 
 <cc-end-step lab="baf5" exercise="2" step="1" />
 
 ### Step 2: Register Communication Tools
 
-In the same `GetClientAgent` method, scroll down to where tools are added to `toolOptions.Tools` (around line 210).
+In the same `GetClientAgent` method, scroll down to where tools are added to `toolOptions.Tools` (around line 180).
 
 Find the Policy tools section and add Communication tools right after:
 
 ```csharp
-// Add Policy tools (BAF 4: Vector Search with Citations using Azure AI Search)
-toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.SearchPolicies));
-toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
-toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.SearchPolicyDocuments));
-
-// Add Communication tools (Lab BAF5)
+// Register Communication tools
 toolOptions.Tools.Add(AIFunctionFactory.Create(communicationPlugin.SendClaimDetailsByEmail));
 toolOptions.Tools.Add(AIFunctionFactory.Create(communicationPlugin.GenerateInvestigationReport));
-
-// Add Vision tools for AI damage photo analysis
-toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.AnalyzeAndShowDamagePhoto));
-toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.ShowDamagePhoto));
-toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.ApproveAnalysis));
-toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.RejectAnalysis));
 ```
 
 ??? note "Tool Registration Pattern"
@@ -376,8 +363,9 @@ Update your agent's instructions to include communication capabilities.
 private readonly string AgentInstructions = """
 You are a professional insurance claims assistant for Zava Insurance.
 
-Whenever the user starts a new conversation or asks "what can you do?", "how can you help me?", "start over", etc. 
-use {{StartConversationPlugin.StartConversation}} and provide the exact message from the plugin.
+Whenever the user starts a new conversation or provides a prompt to start a new conversation like "start over", "restart", 
+"new conversation", "what can you do?", "how can you help me?", etc. use {{StartConversationPlugin.StartConversation}} and 
+provide to the user exactly the message you get back from the plugin.
 
 **Available Tools:**
 Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
@@ -387,6 +375,7 @@ For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} an
 For policy search, use {{PolicyPlugin.SearchPolicies}} and {{PolicyPlugin.GetPolicyDetails}}.
 For policy coverage questions and terms, use {{PolicyPlugin.SearchPolicyDocuments}}.
 For sending investigation reports and claim details via email, use {{CommunicationPlugin.GenerateInvestigationReport}} and {{CommunicationPlugin.SendClaimDetailsByEmail}}.
+
 **IMPORTANT**: When user asks to "check policy for this claim", first use GetClaimDetails to get the claim's policy number, then use GetPolicyDetails with that policy number.
 
 Stick to the scenario above and use only the information from the tools when answering questions.
@@ -434,8 +423,6 @@ var welcomeMessage = "👋 Welcome to Zava Insurance Claims Assistant!\n\n" +
                     "9. \"Generate investigation report for claim CLM-2025-001007\"\n" +
                     "10. \"Send the report by email\"\n\n" +
                     "Ready to complete a full claims investigation? What would you like to start with?";
-
-return welcomeMessage;
 ```
 
 ??? note "Complete Workflow"
@@ -461,7 +448,11 @@ Now let's test the complete communication capabilities!
 
 ### Step 2: Test Investigation Report Generation
 
-1️⃣ In Microsoft 365 Copilot, say: **"Generate investigation report for CLM-2025-001007"**
+1️⃣ In Microsoft 365 Copilot, say: 
+
+```text
+Generate investigation report for CLM-2025-001007
+```
 
 The agent should:
 
@@ -492,13 +483,21 @@ The agent should:
 **Next Steps:** Review findings and proceed with recommended claim resolution action.
 ```
 
-2️⃣ Try with different claims: **"Generate report for CLM-2024-1003"**
+2️⃣ Try with different claims: 
+
+```text
+Generate report for CLM-2024-1003
+```
 
 <cc-end-step lab="baf5" exercise="5" step="2" />
 
 ### Step 3: Test Email Functionality
 
-1️⃣ Say: **"Send claim details for CLM-2025-001007 by email"**
+1️⃣ Say: 
+
+```text
+Send claim details for CLM-2025-001007 by email
+```
 
 The agent should:
 
@@ -521,7 +520,11 @@ The email includes comprehensive claim information, documentation status, timeli
 
 2️⃣ Check your email inbox - you should receive a professional HTML-formatted claim details email.
 
-3️⃣ Try sending to a specific recipient: **"Send claim details for CLM-2025-001001 to john.doe@contoso.com"**
+3️⃣ Try sending to a specific recipient: 
+
+```text
+Send claim details for CLM-2025-001001 to john.doe@contoso.com
+```
 
 <cc-end-step lab="baf5" exercise="5" step="3" />
 
