@@ -3,11 +3,11 @@
 In this lab, you are going to understand how to create agents in Microsoft Copilot Studio that can communicate with other agents. You'll build a specialized Interview Scheduler agent that consumes data from the HR Candidate Management agent created in previous labs. The Interview Scheduler agent will automatically process candidate data and send interview meeting requests based on selected candidates, demonstrating how modular agents can work together to create comprehensive business solutions.
 
 <div class="lab-intro-video">
-    <!-- <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/placeholder" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/JFzxTCIoihY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
-    </div> -->
+    </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "mcs-labs-prelude.md"
     </div>
