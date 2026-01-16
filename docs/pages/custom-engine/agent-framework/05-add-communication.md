@@ -349,9 +349,9 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(communicationPlugin.GenerateInves
 
 <cc-end-step lab="baf5" exercise="2" step="2" />
 
-## Exercise 3: Update Agent Instructions
+## Exercise 3: Update Agent Instructions and security
 
-Update your agent's instructions to include communication capabilities.
+Update your agent's instructions to include communication capabilities and the agent security to support user's authentication and On-Behalf-Of (OBO) token support.
 
 ### Step 1: Add Communication Tools to Instructions
 
@@ -387,6 +387,80 @@ Be concise and professional in your responses.
     The agent instructions guide the LLM on when to use each tool. Adding communication tools ensures the agent knows it can send emails and generate reports when requested.
 
 <cc-end-step lab="baf5" exercise="3" step="1" />
+
+### Step 2: Configure OBO settings
+
+1️⃣ In `m365agents.local.yml`, find the `OnMessageAsyncfile/createOrUpdateJsonFile` action (around line 47).
+
+2️⃣ Uncomment the `me` settings in the `UserAuthorization` group of settings in order to enable the settings with name `OBOConnectionName`, `OBOScopes`, `Title`, and `Text`. The code should look like the following:
+
+```yaml
+          UserAuthorization:
+            DefaultHandlerName: me
+            AutoSignin: true
+            Handlers:
+              me:
+                Settings:
+                  AzureBotOAuthConnectionName: "Microsoft Graph"
+                  OBOConnectionName: "BotServiceConnection"
+                  OBOScopes:
+                    - "https://graph.microsoft.com/.default"
+                  Title: "Sign in"
+                  Text: "Sign in to Microsoft Graph"
+```
+
+??? note "What this code does"
+    The new code enables settings to support On-Behalf-Of (OBO) flow for the Azure Bot backing the agent.
+ 
+<cc-end-step lab="baf5" exercise="3" step="2" />
+
+### Step 3: Implement user's authentication and OBO
+
+1️⃣ In `src/Agent/ZavaInsuranceAgent.cs`, find the `OnMessageAsync` method (around line 87).
+
+2️⃣ Right after the first line of the method `await turnContext.StreamingResponse.QueueInformativeUpdateAsync( ...` add the following code excerpt:
+
+```csharp
+            // Check if user profile is already cached, if not fetch and cache it
+            var userProfile = turnState.Conversation.GetCachedUserProfile();
+            if (userProfile == null)
+            {
+                try
+                {
+                    // Get the access token and store it in the conversation state
+                    var accessToken = await UserAuthorization.ExchangeTurnTokenAsync(turnContext, UserAuthorization.DefaultHandlerName, exchangeScopes: new[] { "https://graph.microsoft.com/.default" }, cancellationToken: cancellationToken);
+                    turnState.Conversation.SetCachedOBOAccessToken(accessToken);
+
+                    // Get the user profile and store it in the conversation state
+                    userProfile = await GetUserProfile(accessToken, cancellationToken);
+                    turnState.Conversation.SetCachedUserProfile(userProfile);
+
+                    // Show current user profile information to let clients that support streaming know that we are processing the request for the current user.
+                    await turnContext.StreamingResponse.QueueInformativeUpdateAsync($"⚒️ Working on your request {userProfile.DisplayName} ...", cancellationToken).ConfigureAwait(false);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    System.Diagnostics.Trace.WriteLine($"Exception occurred: {ex.Message}");
+                    // User is not signed in, proceed as anonymous and inform the user
+                    await turnContext.StreamingResponse.QueueInformativeUpdateAsync("⚠️ Please sign in if you want to use authenticated features.", cancellationToken).ConfigureAwait(false);
+                }
+            }
+```
+
+??? note "What this code does"
+    The code excerpt you just added takes care of the following activities:
+    
+    - Tries to retrieve the current user profile from the conversation
+    - If the user profile does not exist in the cache
+        - Retrieves an OBO token for the current user
+        - Caches the OBO token in the current conversation
+        - Retrieves the user profile via Microsoft Graph
+        - Caches the user profile in the current conversation
+        - Informs the user that the agent is working for her/him
+    
+    In case of failure while retrieving the user profile, the agent informs via streaming the user to sign in 
+    
+<cc-end-step lab="baf5" exercise="3" step="3" />
 
 ## Exercise 4: Update StartConversationPlugin
 
