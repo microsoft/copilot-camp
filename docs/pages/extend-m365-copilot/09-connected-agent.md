@@ -545,7 +545,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 
 **Complex Workflow : Emergency Coordination**  
 ```
-We have multiple storm damage claims from yesterday. Show me all urgent claims, their inspection needs, available emergency contractors, and emergency service pricing
+Find me all open roof damage claims along with contractor pricing insights.
 ```
 
 <cc-end-step lab="e9" exercise="2" step="2" />
