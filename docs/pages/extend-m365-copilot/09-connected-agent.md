@@ -306,20 +306,16 @@ Replace the content of `appPackage/declarativeAgent.json` with Zava's configurat
     "instructions": "$[file('instruction.txt')]",
     "conversation_starters": [
         {
-            "title": "End-to-End Claim Processing",
-            "text": "Process claim CN202504990: get details, create inspection, and find cost-effective contractors"
+            "title": "End-to-End Claims Processing",
+            "text": "For all moderate-severity roof or water damage claims , group them by city and propose contractor assignments using our approved network. For each claim, estimate the repair cost using current pricing for inspection, repair, and materials, and highlight where contractor selection changes the total cost by more than 15%."
         },
         {
-            "title": "Claims Analysis with Pricing",
-            "text": "Show all storm damage claims and compare against historical contractor pricing data"
+            "title": "Contractor Recommendations for Emergency Roof Damage",
+            "text": "Find all open roof damage claims that require emergency work, then recommend the top three approved contractors with 24/7 response coverage and include their latest pricing for tarping and temporary roof repairs. Prioritize by claim severity and estimated loss"
         },
         {
             "title": "Emergency Response Coordination",
             "text": "Find urgent claims needing immediate attention and match with emergency contractor pricing"
-        },
-        {
-            "title": "Procurement Intelligence Report",
-            "text": "Generate comprehensive report combining claims data with contractor cost analysis"
         }
     ]
 }
@@ -547,6 +543,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 ```
 Find me all open roof damage claims along with contractor pricing insights.
 ```
+Test the conversation starters of this agent as well to understand how multi-agent co-ordination works.
 
 <cc-end-step lab="e9" exercise="2" step="2" />
 
