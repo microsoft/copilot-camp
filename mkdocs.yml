@@ -70,7 +70,7 @@ plugins:
               - Setup:
                   - Lab E0 - Prerequisites and Environment Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
               - Declarative Agent Fundamentals :
-                  - Lab E1 - Build a Detailed Declarative Agent using TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
+                  - Lab E1 - Build a Declarative Agent using TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
                   - Lab E1a - Build a game agent: 'pages/extend-m365-copilot/01a-geolocator.md'
               - Build and Integrate API from scratch:
                   - Lab E2 - Build a Backend API: 'pages/extend-m365-copilot/02-build-the-api.md'
@@ -80,6 +80,9 @@ plugins:
                   - Lab E6a - Add Entra ID Authentication (Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'                      
               - Integration:
                   - Lab E7 - Add Copilot Connector: 'pages/extend-m365-copilot/07-add-graphconnector.md'
+                  - Lab E8 - Connect Declarative agent to MCP Server: 'pages/extend-m365-copilot/08-mcp-server.md'
+                  - Lab E9 - Connected Agents: 'pages/extend-m365-copilot/09-connected-agent.md'
+                  
             - Build - Build a custom engine agent:
               - Welcome : 'pages/custom-engine/index.md'
               - M365 Agents SDK labs:
