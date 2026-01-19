@@ -80,8 +80,8 @@ plugins:
                   - Lab E6a - Add Entra ID Authentication (Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'                      
               - Integration:
                   - Lab E7 - Add Copilot Connector: 'pages/extend-m365-copilot/07-add-graphconnector.md'
-                  - Lab E8 - Connect Declarative agent to MCP Server: 'pages/extend-m365-copilot/08-mcp-server.md'
-                  - Lab E9 - Connected Agents: 'pages/extend-m365-copilot/09-connected-agent.md'
+                  - Lab E8 - Connect Declarative agent to MCP Server (Preview): 'pages/extend-m365-copilot/08-mcp-server.md'
+                  - Lab E9 - Connected Agents using VS Code (Preview): 'pages/extend-m365-copilot/09-connected-agent.md'
                   
             - Build - Build a custom engine agent:
               - Welcome : 'pages/custom-engine/index.md'
