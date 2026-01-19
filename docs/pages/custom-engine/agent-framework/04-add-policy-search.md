@@ -1,94 +1,18 @@
-# Lab BAF4 - Add Policy Search and SharePoint Integration
+# Lab BAF4 - Add Policy Search
 
-In this lab, you'll extend your Zava Insurance Agent with policy search capabilities. You'll add the ability to search insurance policies in Azure AI Search and search policy documents in SharePoint using Microsoft Graph Copilot Retrieval API.
+In this lab, you'll extend your Zava Insurance Agent with policy search capabilities. You'll add the ability to search insurance policies in Azure AI Search using the Knowledge Base API.
 
-???+ info "Understanding Policy Search and SharePoint Integration"
-    This lab adds two powerful capabilities:
-
-    **Policy Search with Azure AI Search**:
+???+ info "Understanding Policy Search"
+    This lab adds policy search capabilities using Azure AI Search:
 
     - Search insurance policies (Auto, Homeowners, Commercial) by type, status, or policyholder
     - Retrieve structured policy details including coverage limits, deductibles, and premiums
     - Access vehicle and property information associated with policies
+    - Use natural language queries with the Knowledge Base API
     
-    **Policy Document Search with Copilot Retrieval API**:
+    These features allow adjusters to quickly find policy information and validate coverage for claims.
 
-    - Search policy terms, coverage guides, and FAQs stored in SharePoint
-    - Leverage Microsoft 365 Copilot's semantic search capabilities
-    - Get real-time access to the latest policy documentation
-    - Respect SharePoint permissions with user authentication
-    
-    Together, these features allow adjusters to quickly find policy information and understand coverage terms.
-
-## Exercise 1: Set Up SharePoint Site with Policy Documents
-
-Before we can search policy documents, we need to set them up in SharePoint.
-
-### Step 1: Create SharePoint Site
-
-??? note "About SharePoint and Copilot Retrieval API"
-    The **Microsoft Graph Copilot Retrieval API** allows your agent to search content in SharePoint using the same powerful semantic search that powers Microsoft 365 Copilot. It provides:
-    
-    - **Semantic Search**: Natural language queries across SharePoint documents
-    - **Real-time Access**: Always searches the latest document versions
-    - **Security**: Respects SharePoint permissions (requires user authentication)
-    - **Citations**: Returns document snippets with links to sources
-    
-    This is perfect for searching policy terms, coverage guides, and FAQ documents.
-
-1️⃣ Go to [SharePoint](https://www.office.com/launch/sharepoint){target=_blank} and sign in with your Microsoft 365 account.
-
-2️⃣ Click **+ Create site** → Choose **Team site**.
-
-3️⃣ Select the **Standard team** site template and select **Use template**
-
-4️⃣ Configure your site:
-
-- **Site name**: "Zava Insurance Policy Documents"
-- **Description**: "Insurance policy terms, coverage guides, and FAQs"
-
-5️⃣ Select **Next**
-
-- **Privacy settings**: Private (only members can access)
-- **Select language**: English
-
-6️⃣ Select the **Create site** command and wait for site creation
-
-4️⃣ When the site is ready, select **Finish** to browse to the site.
-
-<cc-end-step lab="baf4" exercise="1" step="1" />
-
-### Step 2: Upload Policy Documents
-
-Now let's upload the sample policy documents from your project.
-
-1️⃣ In your VS Code workspace, navigate to `src/agent-framework/complete/infra/data/sample-documents/`
-
-2️⃣ You should see these documents:
-
-   - `Auto Insurance Claims Policies.docx`
-   - `Homeowners Insurance Claims Policies.docx`
-   - `Step-by-Step Guide - Creating an Insurance Quote.docx`
-   - `Zava Claims Insurance Policies.docx`
-
-3️⃣ In SharePoint, go to your new site → Click **Documents** in the left menu.
-
-4️⃣ Click **Upload** → **Files** and upload all 4 documents from the sample-documents folder.
-
-5️⃣ **Wait 10-15 minutes** for SharePoint to index the documents. The Copilot Retrieval API needs time to process and make documents searchable.
-
-!!! tip "Verify Indexing"
-    You can verify documents are indexed by:
-
-    - Opening Microsoft 365 Copilot (copilot.microsoft.com)
-    - Asking: "What policy documents are in my SharePoint?"
-    - If documents appear, they're ready to use with your agent
-
-6️⃣ Copy your SharePoint site URL - you'll need it for testing later.
-
-<cc-end-step lab="baf4" exercise="1" step="2" />
-
-## Exercise 2: Add Policies Index and Knowledge Source
+## Exercise 1: Add Policies Index and Knowledge Source
 
 Now let's extend the KnowledgeBaseService to support policies alongside claims.
 
@@ -169,7 +93,7 @@ public async Task EnsurePoliciesIndexAsync()
 }
 ```
 
-<cc-end-step lab="baf4" exercise="2" step="1" />
+<cc-end-step lab="baf4" exercise="1" step="1" />
 
 ### Step 2: Update Knowledge Sources to Include Policies
 
@@ -237,7 +161,7 @@ public async Task CreateKnowledgeSourcesAsync()
 }
 ```
 
-<cc-end-step lab="baf4" exercise="2" step="2" />
+<cc-end-step lab="baf4" exercise="1" step="2" />
 
 ### Step 3: Update Knowledge Base to Include Policies
 
@@ -268,7 +192,7 @@ var knowledgeBase = new KnowledgeBase(
 };
 ```
 
-<cc-end-step lab="baf4" exercise="2" step="3" />
+<cc-end-step lab="baf4" exercise="1" step="3" />
 
 ### Step 4: Add Policy Data Indexing
 
@@ -395,7 +319,7 @@ private async Task IndexPoliciesDataAsync()
 }
 ```
 
-<cc-end-step lab="baf4" exercise="2" step="4" />
+<cc-end-step lab="baf4" exercise="1" step="4" />
 
 ### Step 5: Add GetPolicyByNumberAsync Helper Method
 
@@ -431,34 +355,28 @@ public async Task<SearchDocument?> GetPolicyByNumberAsync(string policyNumber)
 }
 ```
 
-<cc-end-step lab="baf4" exercise="2" step="5" />
+<cc-end-step lab="baf4" exercise="1" step="5" />
 
-## Exercise 3: Create the PolicyPlugin
+## Exercise 2: Create the PolicyPlugin
 
-Now let's create the PolicyPlugin with policy search, policy details, and SharePoint document search capabilities.
+Now let's create the PolicyPlugin with policy search and policy details capabilities.
 
 ### Step 1: Create Complete PolicyPlugin
 
 ??? note "What this plugin does"
-    The `PolicyPlugin` provides three main capabilities:
+    The `PolicyPlugin` provides two main capabilities:
     
     - **SearchPolicies**: Searches policies using Azure AI Search Knowledge Base with natural language (similar to ClaimsPlugin)
     - **GetPolicyDetails**: Retrieves structured policy information for a specific policy number
-    - **SearchPolicyDocuments**: Uses Microsoft Graph Copilot Retrieval API to search SharePoint policy documents (terms, coverage guides, FAQs)
-    
-    The SharePoint integration requires user authentication (OBO token) to respect document permissions.
 
 1️⃣ Create a new file `src/Plugins/PolicyPlugin.cs` with the complete implementation:
 
 ```csharp
 using Microsoft.Agents.Builder;
-using Microsoft.Agents.Builder.State;
 using Microsoft.Agents.Core.Models;
 using System.ComponentModel;
 using System.Text;
-using System.Text.Json;
 using Azure.Search.Documents.Models;
-using InsuranceAgent;
 using InsuranceAgent.Services;
 
 namespace ZavaInsurance.Plugins
@@ -466,22 +384,17 @@ namespace ZavaInsurance.Plugins
     /// <summary>
     /// Policy Plugin for Zava Insurance
     /// Provides policy search and retrieval using Azure AI Search Knowledge Base
-    /// Provides policy document search using Copilot Retrieval API for real-time SharePoint access
     /// Supports filtering by policy type, status, and policyholder name
     /// </summary>
     public class PolicyPlugin
     {
         private readonly ITurnContext _turnContext;
-        private readonly Microsoft.Agents.Builder.State.ITurnState _turnState;
         private readonly KnowledgeBaseService _knowledgeBaseService;
-        private readonly HttpClient _httpClient;
 
-        public PolicyPlugin(ITurnContext turnContext, Microsoft.Agents.Builder.State.ITurnState turnState, KnowledgeBaseService knowledgeBaseService, HttpClient httpClient)
+        public PolicyPlugin(ITurnContext turnContext, KnowledgeBaseService knowledgeBaseService)
         {
             _turnContext = turnContext ?? throw new ArgumentNullException(nameof(turnContext));
-            _turnState = turnState ?? throw new ArgumentNullException(nameof(turnState));
             _knowledgeBaseService = knowledgeBaseService ?? throw new ArgumentNullException(nameof(knowledgeBaseService));
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
         /// <summary>
@@ -529,120 +442,6 @@ namespace ZavaInsurance.Plugins
             {
                 Console.WriteLine($"Error in SearchPolicies: {ex.Message}");
                 return $"❌ Error searching policies: {ex.Message}";
-            }
-        }
-
-        /// <summary>
-        /// Searches policy documents (terms, coverage guides, handbooks, FAQs) using Copilot Retrieval API
-        /// </summary>
-        /// <param name="query">Natural language query about policy terms, coverage, or claims procedures</param>
-        /// <returns>Relevant policy documentation with citations from SharePoint</returns>
-        [Description("Searches policy documentation (coverage guides, policy terms, handbooks, FAQs) in SharePoint using Copilot API. Perfect for finding coverage details, claims procedures, and policy questions.")]
-        public async Task<string> SearchPolicyDocuments(string query)
-        {
-            if (string.IsNullOrWhiteSpace(query))
-                return "❌ Error: Search query cannot be empty.";
-
-            await NotifyUserAsync($"🔍 Searching policy documents in SharePoint for: {query}");
-
-            try
-            {
-                // Get OBO access token from turn state
-                var accessToken = _turnState.Conversation.GetCachedOBOAccessToken();
-                if (string.IsNullOrEmpty(accessToken))
-                {
-                    Console.WriteLine("No OBO token available, authentication may be required");
-                    return "❌ Error: Unable to access SharePoint. Please sign in to continue.";
-                }
-
-                // Call Copilot Retrieval API (using beta endpoint)
-                var payload = new
-                {
-                    queryString = query,
-                    dataSource = "SharePoint",
-                    resourceMetadata = new[] { "title", "author" }
-                };
-
-                var httpContent = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
-                _httpClient.DefaultRequestHeaders.Clear();
-                _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
-
-                var response = await _httpClient.PostAsync("https://graph.microsoft.com/beta/copilot/retrieval", httpContent);
-                
-                if (!response.IsSuccessStatusCode)
-                {
-                    var errorContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Copilot Retrieval API error: {response.StatusCode}");
-                    Console.WriteLine($"Error details: {errorContent}");
-                    return $"❌ Error: Unable to retrieve policy documents from SharePoint (Status: {response.StatusCode}). The Copilot Retrieval API may not be available in your tenant.";
-                }
-
-                var responseContent = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Copilot API Response: {responseContent}");
-                
-                var jsonResponse = JsonDocument.Parse(responseContent);
-                
-                // Parse results and format response
-                var results = new StringBuilder();
-                results.AppendLine("📄 **Policy Documentation from SharePoint:**\n");
-
-                // Copilot Retrieval API returns "retrievalHits" array
-                if (jsonResponse.RootElement.TryGetProperty("retrievalHits", out var retrievalHits) && retrievalHits.GetArrayLength() > 0)
-                {
-                    foreach (var hit in retrievalHits.EnumerateArray())
-                    {
-                        // Get document title from resourceMetadata
-                        string title = "Policy Document";
-                        if (hit.TryGetProperty("resourceMetadata", out var metadata) &&
-                            metadata.TryGetProperty("title", out var titleProp))
-                        {
-                            title = titleProp.GetString() ?? title;
-                        }
-
-                        // Get extracts (text snippets)
-                        if (hit.TryGetProperty("extracts", out var extracts) && extracts.GetArrayLength() > 0)
-                        {
-                            results.AppendLine($"**{title}**");
-                            
-                            foreach (var extract in extracts.EnumerateArray())
-                            {
-                                if (extract.TryGetProperty("text", out var textProp))
-                                {
-                                    var text = textProp.GetString();
-                                    if (!string.IsNullOrWhiteSpace(text))
-                                    {
-                                        // Clean up and limit text length
-                                        text = text.Trim().Replace("\r\n", " ").Replace("\n", " ");
-                                        if (text.Length > 500)
-                                        {
-                                            text = text.Substring(0, 500) + "...";
-                                        }
-                                        results.AppendLine($"- {text}");
-                                    }
-                                }
-                            }
-                            
-                            results.AppendLine();
-                        }
-                    }
-                }
-                else
-                {
-                    results.AppendLine("ℹ️ No policy documents found matching your query. Try rephrasing your question or check if the documents exist in SharePoint.");
-                }
-
-                return results.ToString();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in SearchPolicyDocuments: {ex.Message}");
-                Console.WriteLine($"Error type: {ex.GetType().Name}");
-                Console.WriteLine($"Stack trace: {ex.StackTrace}");
-                if (ex.InnerException != null)
-                {
-                    Console.WriteLine($"Inner exception: {ex.InnerException.Message}");
-                }
-                return $"❌ Error searching policy documents: {ex.Message}";
             }
         }
 
@@ -739,9 +538,9 @@ namespace ZavaInsurance.Plugins
 }
 ```
 
-<cc-end-step lab="baf4" exercise="3" step="1" />
+<cc-end-step lab="baf4" exercise="2" step="1" />
 
-## Exercise 4: Register PolicyPlugin in Agent
+## Exercise 3: Register PolicyPlugin in Agent
 
 Now let's wire up the PolicyPlugin in your ZavaInsuranceAgent.
 
@@ -766,7 +565,7 @@ await kbService.IndexSampleDataAsync();            // 5. Index sample data (clai
 Console.WriteLine("✅ Knowledge Base initialized successfully");
 ```
 
-<cc-end-step lab="baf4" exercise="4" step="1" />
+<cc-end-step lab="baf4" exercise="3" step="1" />
 
 ### Step 2: Update Agent Instructions
 
@@ -790,7 +589,6 @@ For claims search, use {{ClaimsPlugin.SearchClaims}} and {{ClaimsPlugin.GetClaim
 For damage photo viewing, use {{VisionPlugin.ShowDamagePhoto}}.
 For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} and require approval via {{VisionPlugin.ApproveAnalysis}}.
 For policy search, use {{PolicyPlugin.SearchPolicies}} and {{PolicyPlugin.GetPolicyDetails}}.
-For policy coverage questions and terms, use {{PolicyPlugin.SearchPolicyDocuments}}.
 
 **IMPORTANT**: When user asks to "check policy for this claim", first use GetClaimDetails to get the claim's policy number, then use GetPolicyDetails with that policy number.
 
@@ -799,7 +597,7 @@ Be concise and professional in your responses.
 """;
 ```
 
-<cc-end-step lab="baf4" exercise="4" step="2" />
+<cc-end-step lab="baf4" exercise="3" step="2" />
 
 ### Step 3: Register PolicyPlugin
 
@@ -808,26 +606,19 @@ Add the PolicyPlugin to your agent's tools.
 1️⃣ In the `GetClientAgent` method, find where `ClaimsPlugin claimsPlugin = new(context, knowledgeBaseService, configuration);` is and add PolicyPlugin right after:
 
 ```csharp
-
-// Get HttpClient for API calls
-var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
-var httpClient = httpClientFactory.CreateClient();
-
 // Create PolicyPlugin with required dependencies
-PolicyPlugin policyPlugin = new(context, turnState, knowledgeBaseService, httpClient);
+PolicyPlugin policyPlugin = new(context, knowledgeBaseService);
 ```
 
 2️⃣ Find where ClaimsPlugin tools are registered and add PolicyPlugin tools:
 
 ```csharp
-
 // Register PolicyPlugin tools
 toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.SearchPolicies));
 toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
-toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.SearchPolicyDocuments));
 ```
 
-<cc-end-step lab="baf4" exercise="4" step="3" />
+<cc-end-step lab="baf4" exercise="3" step="3" />
 
 ### Step 4: Update StartConversationPlugin Welcome Message
 
@@ -843,27 +634,24 @@ Now that we've added policy search and SharePoint integration, let's update the 
                                 "**What I can do:**\n\n" +
                                 "- Search and retrieve detailed claim information\n" +
                                 "- Validate policy coverage and check expiration dates\n" +
-                                "- Search policy documentation from SharePoint\n" +
                                 "- Use Mistral AI to analyze damage photos instantly\n" +
                                 "- Provide damage assessments with cost estimates\n" +
                                 "- Track claim timelines and identify processing bottlenecks\n\n" +
                                 "🎯 Try this complete workflow:\n" +
                                 "1. \"Get details for claim CLM-2025-001007\"\n" +
                                 "2. \"Check policy for this claim\"\n" +
-                                "3. \"What coverage does auto insurance include?\"\n" +
-                                "4. \"Show damage photo for this claim\"\n" +
-                                "5. \"Analyze this damage photo\"\n" +
-                                "6. \"Approve the analysis\" or \"Reject the analysis\"\n" +
-                                "7. \"What's the claims filing procedure?\"\n\n" +
+                                "3. \"Show damage photo for this claim\"\n" +
+                                "4. \"Analyze this damage photo\"\n" +
+                                "5. \"Approve the analysis\" or \"Reject the analysis\"\n\n" +
                                 "Ready to complete a full claims investigation? What would you like to start with?";
 ```
 
 ??? note "Complete feature set"
-    The welcome message now includes all capabilities: claims search, policy validation, SharePoint document search, and vision analysis. This matches the full feature set of the completed agent.
+    The welcome message now includes all capabilities: claims search, policy validation, and vision analysis. This matches the full feature set of the completed agent.
 
-<cc-end-step lab="baf4" exercise="4" step="4" />
+<cc-end-step lab="baf4" exercise="3" step="4" />
 
-## Exercise 5: Test Policy Search and SharePoint Integration
+## Exercise 4: Test Policy Search
 
 Now let's test all policy capabilities!
 
@@ -901,7 +689,7 @@ Now let's test all policy capabilities!
 - Click **Indexes** → You should see both `claims-index` and `policies-index`
 - Click **Agentic retrieval** > **Knowledge Bases** → `zava-insurance-kb` should show 2 knowledge sources
 
-<cc-end-step lab="baf4" exercise="5" step="1" />
+<cc-end-step lab="baf4" exercise="4" step="1" />
 
 ### Step 2: Test Policy Search
 
@@ -925,7 +713,7 @@ Show me policies for Sarah Martinez
 Find homeowners insurance policies with Active status
 ```
 
-<cc-end-step lab="baf4" exercise="5" step="2" />
+<cc-end-step lab="baf4" exercise="4" step="2" />
 
 ### Step 3: Test Policy Details
 
@@ -951,54 +739,20 @@ Get details for claim CLM-2025-001001, then show me the policy for that claim
 
 The agent should first get the claim details (which includes policy number), then retrieve the policy details.
 
-<cc-end-step lab="baf4" exercise="5" step="3" />
-
-### Step 4: Test SharePoint Document Search
-
-!!! warning "Prerequisite"
-    Ensure you completed Exercise 1 and waited 10-15 minutes for SharePoint to index your documents before testing this.
-
-1️⃣ Try: 
-
-```text
-What does the policy say about water damage coverage
-```
-
-The agent should use `SearchPolicyDocuments` to search SharePoint and return relevant excerpts.
-
-2️⃣ Try: 
-
-```text
-Search policy documents for deductible information
-```
-
-3️⃣ Try: 
-
-```text
-Find information about filing an auto insurance claim in the policy documents
-```
-
-4️⃣ **Troubleshooting**:
-
-   - If you get authentication errors, ensure you're signed in to Microsoft 365 Copilot
-   - If no results are returned, wait longer for SharePoint indexing (can take up to 30 minutes)
-   - Check that documents were uploaded to your SharePoint site successfully
-
-<cc-end-step lab="baf4" exercise="5" step="4" />
+<cc-end-step lab="baf4" exercise="4" step="3" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab BAF4 - Add Policy Search and SharePoint Integration!
+You have completed Lab BAF4 - Add Policy Search!
 
 You've learned how to:
 
-- ✅ Set up SharePoint site with policy documents
 - ✅ Add policies index and knowledge source to Azure AI Search
-- ✅ Create a PolicyPlugin with search, details, and document capabilities
-- ✅ Integrate Microsoft Graph Copilot Retrieval API for SharePoint search
-- ✅ Test policy search and SharePoint document retrieval
+- ✅ Create a PolicyPlugin with search and policy details capabilities
+- ✅ Register the PolicyPlugin in your agent
+- ✅ Test policy search and retrieval
 
-Your Zava Insurance Agent can now search both claims and policies, and access policy documentation from SharePoint in real-time!
+Your Zava Insurance Agent can now search both claims and policies using Azure AI Search!
 
 <cc-next url="../05-add-communication" />
 
