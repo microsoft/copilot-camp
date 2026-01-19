@@ -755,14 +755,10 @@ The claim is currently open and has a high severity rating due to a multi-vehicl
 
 ### Step 3: Test with Different Claims
 
-1️⃣ Try different claim types:
+1️⃣ Try a different prompt with another claim:
 
 ```text
-Analyze compliance for CLM-2025-001001
-```
-
-```text
-Check if claim CLM-2024-1003 follows our policies
+Check if claim CLM-2025-001001 follows our policies
 ```
 
 2️⃣ The agent should use the Copilot Retrieval API to fetch the appropriate policies based on the claim type (Auto, Homeowners, etc.) and region.
@@ -815,6 +811,6 @@ Your Zava Insurance Agent now includes:
     
     These APIs maintain strict security and compliance by keeping data in place and respecting permissions.
 
-🎉 **Congratulations!** You've built a production-ready AI agent with Microsoft 365 Copilot integration! 🎊
+🎉 **Congratulations!** You've built a production-ready AI agent with Microsoft 365 Copilot API integration! 🎊
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/06-add-copilot-api" />
