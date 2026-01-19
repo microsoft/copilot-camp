@@ -2256,12 +2256,14 @@
 <h3 id="step-2-understand-how-to-embed-files">Step 2: Understand how to embed files</h3>
 <p>Navigate to the <code>appPackage</code> folder and explore its contents. You'll recognize familiar files from your previous declarative agent work: the <code>manifest.json</code> file (which defines your agent's capabilities) and the <code>declarativeAgent.json</code> file (which configures your agent's behavior).</p>
 <p>The key addition you'll notice is the <code>EmbeddedKnowledge</code> folder. This is where you'll store Zava's contractor pricing data files that will be embedded directly into your agent, enabling instant access to pricing intelligence without requiring live database queries.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sample PDF files without sensitivity labels are provided for testing purposes. If you choose to test with your own files—especially Office documents—ensure they comply with the sensitivity labels configured in your tenant.</p>
+</div>
 <p><cc-end-step lab="e9" exercise="1" step="2" /></p>
 <h2 id="exercise-2-configure-the-agent-for-zavas-contractor-procurement-knowledge">Exercise 2: Configure the Agent for Zava's contractor procurement knowledge</h2>
 <h3 id="step-1-download-files-to-your-machine">Step 1: Download files to your machine</h3>
 <p>Go to <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&amp;filename=EmbeddedKnowledge" target="_blank">this url</a> and extract all files into the <code>appPackage/EmbeddedKnowledge</code> folder inside your newly created declarative agent project.</p>
-<p>The project should look like below after you have downloaded and extracted the files.</p>
-<p><img alt="Embedded knowledge" src="../../../assets/images/extend-m365-copilot-08/embedd.png" /></p>
 <p><cc-end-step lab="e9" exercise="2" step="1" /></p>
 <h3 id="step-2-update-agent-identity-and-description">Step 2: Update Agent Identity and Description</h3>
 <p>Replace the content of <code>appPackage/declarativeAgent.json</code> with below configuration:</p>
@@ -2305,13 +2307,13 @@
                     &quot;file&quot;: &quot;EmbeddedKnowledge/Claims_Inspection_Guidelines.pdf&quot;
                 },
                 {
-                    &quot;file&quot;: &quot;EmbeddedKnowledge/Pacific Water Restoration-Pricing.docx&quot;
+                    &quot;file&quot;: &quot;EmbeddedKnowledge/Pacific Water Restoration-Pricing.pdf&quot;
                 },
                 {
                     &quot;file&quot;: &quot;EmbeddedKnowledge/Thompson Roofing Solutions-Pricing.pdf&quot;
                 },
                 {
-                    &quot;file&quot;: &quot;EmbeddedKnowledge/Wilson General Contractors-Pricing.docx&quot;
+                    &quot;file&quot;: &quot;EmbeddedKnowledge/Wilson General Contractors-Pricing.pdf&quot;
                 }
             ]
         }
@@ -2434,7 +2436,6 @@ When answering queries:
 </li>
 <li>"Which contractors offer 24/7 emergency response and what are their rates?"</li>
 </ol>
-<p><img alt="Embedded knowledge in Copilot" src="../../../assets/images/extend-m365-copilot-08/ek.png" /></p>
 <p><cc-end-step lab="e9" exercise="3" step="2" /></p>
 <hr />
 <h2 id="exercise-4-build-the-orchestrator-agent">Exercise 4: Build the Orchestrator Agent</h2>
