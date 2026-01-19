@@ -82,6 +82,9 @@ Navigate to the `appPackage` folder and explore its contents. You'll recognize f
 
 The key addition you'll notice is the `EmbeddedKnowledge` folder. This is where you'll store Zava's contractor pricing data files that will be embedded directly into your agent, enabling instant access to pricing intelligence without requiring live database queries.
 
+!!! note
+    Sample PDF files without sensitivity labels are provided for testing purposes. If you choose to test with your own files—especially Office documents—ensure they comply with the sensitivity labels configured in your tenant.
+
   <cc-end-step lab="e9" exercise="1" step="2" />
 
 ## Exercise 2: Configure the Agent for Zava's contractor procurement knowledge
@@ -89,9 +92,6 @@ The key addition you'll notice is the `EmbeddedKnowledge` folder. This is where 
 ### Step 1: Download files to your machine
 Go to [this url](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&filename=EmbeddedKnowledge){target=_blank} and extract all files into the `appPackage/EmbeddedKnowledge` folder inside your newly created declarative agent project.
 
-The project should look like below after you have downloaded and extracted the files.
-
-![Embedded knowledge](../../../assets/images/extend-m365-copilot-08/embedd.png)
 
   <cc-end-step lab="e9" exercise="2" step="1" />
 
@@ -141,13 +141,13 @@ Replace the content of `appPackage/declarativeAgent.json` with below configurati
                     "file": "EmbeddedKnowledge/Claims_Inspection_Guidelines.pdf"
                 },
                 {
-                    "file": "EmbeddedKnowledge/Pacific Water Restoration-Pricing.docx"
+                    "file": "EmbeddedKnowledge/Pacific Water Restoration-Pricing.pdf"
                 },
                 {
                     "file": "EmbeddedKnowledge/Thompson Roofing Solutions-Pricing.pdf"
                 },
                 {
-                    "file": "EmbeddedKnowledge/Wilson General Contractors-Pricing.docx"
+                    "file": "EmbeddedKnowledge/Wilson General Contractors-Pricing.pdf"
                 }
             ]
         }
@@ -281,7 +281,6 @@ In VS Code with your project open:
    - "What are the rates for emergency water extraction and drying services?"
    - "Which contractors offer 24/7 emergency response and what are their rates?"
 
-   ![Embedded knowledge in Copilot](../../../assets/images/extend-m365-copilot-08/ek.png)
 
   <cc-end-step lab="e9" exercise="3" step="2" />
 
