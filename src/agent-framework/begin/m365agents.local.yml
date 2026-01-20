@@ -86,6 +86,8 @@ provision:
                 - https://api.botframework.com/.default
         BlobsStorageOptions:
           ContainerName: state
+        MCPServer:
+          Url: ${{MCP_SERVER_URL}}
         AIModels:
           Endpoint: ${{MODELS_ENDPOINT}}
           ApiKey: ${{SECRET_MODELS_API_KEY}}

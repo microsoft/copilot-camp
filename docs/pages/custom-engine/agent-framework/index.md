@@ -17,7 +17,7 @@ The labs follow a **Build with Agent Framework (BAF)** approach where you progre
 
 * **Lab BAF0**: Prerequisites - Set up your development environment
 * **Lab BAF1**: Build and Run - Create a basic conversational agent with plugins and tools
-* **Lab BAF2**: Add Claims Search - Integrate Azure AI Search Knowledge Base API for intelligent claims lookup
+* **Lab BAF2**: Add Claims Search - Integrate Azure AI Search Knowledgebases for intelligent claims lookup
 * **Lab BAF3**: Add Vision Analysis - Enable AI-powered damage photo analysis using Mistral vision model
 * **Lab BAF4**: Add Policy Search - Implement policy validation and SharePoint document search
 * **Lab BAF5**: Add Communication Capabilities - Send professional emails via Microsoft Graph and generate investigation reports

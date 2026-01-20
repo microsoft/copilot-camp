@@ -15,7 +15,7 @@ namespace InsuranceAgent.Services;
 
 /// <summary>
 /// Azure AI Search Knowledge Base service for agentic retrieval
-/// Uses the new agentic knowledge base APIs for unified data access
+/// Uses the new agentic Knowledgebasess for unified data access
 /// Replaces TableStorageService, BlobStorageService, and manual indexing
 /// </summary>
 public class KnowledgeBaseService
@@ -474,10 +474,10 @@ public class KnowledgeBaseService
     #region Retrieval
 
     /// <summary>
-    /// Performs agentic retrieval across all knowledge sources using the Knowledge Base API
+    /// Performs agentic retrieval across all knowledge sources using the Knowledgebases
     /// </summary>
     /// <param name="query">Natural language query</param>
-    /// <param name="topResults">Not used - Knowledge Base API handles result ranking</param>
+    /// <param name="topResults">Not used - Knowledgebases handles result ranking</param>
     /// <returns>LLM-synthesized answer with citations from all knowledge sources</returns>
     public async Task<string> RetrieveAsync(string query, int topResults = 5)
     {
@@ -489,7 +489,7 @@ public class KnowledgeBaseService
     /// </summary>
     /// <param name="query">Natural language query</param>
     /// <param name="instructions">Custom instructions for the LLM (e.g., formatting, structure, tone)</param>
-    /// <param name="topResults">Not used - Knowledge Base API handles result ranking</param>
+    /// <param name="topResults">Not used - Knowledgebases handles result ranking</param>
     /// <returns>LLM-synthesized answer following the provided instructions</returns>
     public async Task<string> RetrieveAsync(string query, string? instructions = null, int topResults = 5)
     {
@@ -593,7 +593,7 @@ public class KnowledgeBaseService
 
     /// <summary>
     /// Gets claim details directly from the claims index using filter query
-    /// This bypasses the Knowledge Base API for structured data retrieval
+    /// This bypasses the Knowledgebases for structured data retrieval
     /// </summary>
     /// <param name="claimNumber">The claim number to retrieve</param>
     /// <returns>SearchDocument with all claim fields or null if not found</returns>
@@ -619,7 +619,7 @@ public class KnowledgeBaseService
 
     /// <summary>
     /// Gets policy details directly from the policies index using filter query
-    /// This bypasses the Knowledge Base API for structured data retrieval
+    /// This bypasses the Knowledgebases for structured data retrieval
     /// </summary>
     /// <param name="policyNumber">The policy number to retrieve</param>
     /// <returns>SearchDocument with all policy fields or null if not found</returns>
