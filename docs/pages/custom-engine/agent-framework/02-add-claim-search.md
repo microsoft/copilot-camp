@@ -99,7 +99,7 @@ The KnowledgeBaseService handles all interactions with Azure AI Search, includin
     The `KnowledgeBaseService` is the core service for Azure AI Search integration:
     
     - **Constructor**: Initializes connections to Azure AI Search and Azure OpenAI using configuration
-    - **EnsureClaimsIndexAsync**: Creates the search index with semantic and vector search (required by Knowledge Base API)
+    - **EnsureClaimsIndexAsync**: Creates the search index with semantic and vector search (required by Knowledgebases)
     - **CreateKnowledgeSourcesAsync**: Sets up knowledge source that defines data fields for indexing
     - **CreateKnowledgeBaseAsync**: Creates knowledge base with LLM model for answer synthesis
     - **RetrieveAsync**: Main agentic retrieval method - uses LLM to search and synthesize answers with optional instructions for formatting
@@ -177,7 +177,7 @@ public class KnowledgeBaseService
 
     /// <summary>
     /// Creates the claims search index if it doesn't exist
-    /// Includes semantic search (required by Knowledge Base API) and vector search
+    /// Includes semantic search (required by Knowledgebases) and vector search
     /// </summary>
     public async Task EnsureClaimsIndexAsync()
     {
@@ -311,7 +311,7 @@ public class KnowledgeBaseService
     }
 
     /// <summary>
-    /// Performs agentic retrieval using Knowledge Base API with optional instructions
+    /// Performs agentic retrieval using Knowledgebases with optional instructions
     /// The LLM searches, ranks, and synthesizes a natural language response
     /// </summary>
     /// <param name="query">Natural language query</param>
@@ -369,7 +369,7 @@ public class KnowledgeBaseService
 
     /// <summary>
     /// Gets claim details directly from the claims index using filter query
-    /// This bypasses the Knowledge Base API for structured data retrieval
+    /// This bypasses the Knowledgebases for structured data retrieval
     /// </summary>
     /// <param name="claimNumber">The claim number to retrieve</param>
     /// <returns>SearchDocument with all claim fields or null if not found</returns>
@@ -563,7 +563,7 @@ public class KnowledgeBaseService
     }
 
     /// <summary>
-    /// Creates semantic search configuration (required by Knowledge Base API)
+    /// Creates semantic search configuration (required by Knowledgebases)
     /// </summary>
     private SemanticSearch CreateSemanticConfig(string configName, string titleField, string contentField, string keywordsField)
     {

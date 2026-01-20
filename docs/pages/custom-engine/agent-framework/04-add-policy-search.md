@@ -1,6 +1,6 @@
 # Lab BAF4 - Add Policy Search
 
-In this lab, you'll extend your Zava Insurance Agent with policy search capabilities. You'll add the ability to search insurance policies in Azure AI Search using the Knowledge Base API.
+In this lab, you'll extend your Zava Insurance Agent with policy search capabilities. You'll add the ability to search insurance policies in Azure AI Search using the Knowledgebases.
 
 ???+ info "Understanding Policy Search"
     This lab adds policy search capabilities using Azure AI Search:
@@ -8,7 +8,7 @@ In this lab, you'll extend your Zava Insurance Agent with policy search capabili
     - Search insurance policies (Auto, Homeowners, Commercial) by type, status, or policyholder
     - Retrieve structured policy details including coverage limits, deductibles, and premiums
     - Access vehicle and property information associated with policies
-    - Use natural language queries with the Knowledge Base API
+    - Use natural language queries with the Knowledgebases
     
     These features allow adjusters to quickly find policy information and validate coverage for claims.
 
@@ -330,7 +330,7 @@ Add a helper method to retrieve policy details directly from the index.
 ```csharp
 /// <summary>
 /// Gets policy details directly from the policies index using filter query
-/// This bypasses the Knowledge Base API for structured data retrieval
+/// This bypasses the Knowledgebases for structured data retrieval
 /// </summary>
 /// <param name="policyNumber">The policy number to retrieve</param>
 /// <returns>SearchDocument with all policy fields or null if not found</returns>

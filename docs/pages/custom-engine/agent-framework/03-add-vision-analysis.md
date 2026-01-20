@@ -12,7 +12,7 @@ In this lab, you'll add AI vision capabilities to analyze damage photos from ins
 
 ## Overview
 
-In Lab BAF2, you added claim search using Azure AI Search Knowledge Base API. Now you'll enhance your agent with multimodal AI vision capabilities to analyze damage photos and provide detailed assessment reports.
+In Lab BAF2, you added claim search using Azure AI Search Knowledgebases. Now you'll enhance your agent with multimodal AI vision capabilities to analyze damage photos and provide detailed assessment reports.
 
 The Vision Service uses the **mistral-medium-2505** model deployed in Azure AI Services, which can analyze images and generate structured JSON responses with damage assessments.
 
