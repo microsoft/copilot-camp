@@ -3,8 +3,6 @@
 In this lab, you'll run a **OAuth 2.0 protected** Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. This builds on Lab 08 by adding **Microsoft Entra ID authentication** for secure, enterprise-grade access to claims data.
 
 
-
-
 ## Scenario
 
 Building on the MCP server Lab 08, **Zava Insurance** now needs to secure their claims operations system for production use. While the anonymous MCP server was excellent for development and testing, the security team requires OAuth 2.0 authentication before deploying to production. The development team must now integrate **Microsoft Entra ID** authentication to ensure only authorized users can access sensitive claims data. This authenticated MCP server will validate JWT tokens, implement scope-based permissions, and comply with **RFC 9728** for protected resource metadata discovery, enabling secure integration with **Microsoft 365 Copilot** Declarative Agents.
@@ -374,7 +372,26 @@ In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new De
 
 You will be directed to the newly created project which has the file `.vscode/mcp.json` open. This is the MCP server configuration file for VS Code to use.
 
-//TODO: New DA steps for Auth
+- Select **Start** button to fetch tools from your server.
+- A new dialog opens up that tells you that Agent Toolkit identifies your MCP Server is authenticated and since the MCP Server does not yet support Dynamic Client Registration to proceed manually registering.
+- You have already updated your Entra ID wuth the redirect URIs Agent Tookit expects like `https://vscode.dev/redirect` and `http://127.0.0.1:33418` but continue by selecting **Copy URIs & Proceed**
+- Agents toolkit now uses it's wizard which you used to create the agent, to capture the OAuth clied ID and secret. Paste the values from when you configured the Entra ID 
+- Agents toolkit will now ask you to allow authentication into your MCP Server for rest of the configuration
+- It opens a new browser with address `http://127.0.0.1:33418` and if the Entra ID configuration is correct it will show below screen. Close the browser and return to your agent project
+
+![image of vs code signed in with mcp server](../../assets/images/extend-m365-copilot-10/vscode-mcp.png)
+
+- Now, the server is started. You will see the number of tools and prompts available
+- Select **ATK:Fetch action from MCP** to select tools you want to add to the agent. 
+- Select `get_claims` tool for ease of testing.
+- Next, you will be prompted to configure the agent in Teams Developer portal, so follow direction.
+- Select Authentication Type **OAuth(with static registration)**, at this point your plugin manifest will be created by toolkit.
+- Select **Provision** to provision the agent to the tenant for your testing
+- Toolkit wizard will again ask for the client ID, secret. Provide as earlier. Again this is for toolkit to store client ID and secret for OAuth Registration to Developer Portal. It is then used by client to securely access your MCP Server. Toolkit will not store the id and secret.
+- Add scope as `api://<your-client-id>/access_as_user`
+- Select **Confirm** when prompted, this kicks off provisioning
+- Once provisioned notice how the developer portal token is automatically created for the agent and shows up in .env.dev file as as variable like **MCP_DA_AUTH_ID_XXXX**
+
  
 You now have a Declarative Agent connected to your OAuth-protected MCP Server.
 
@@ -382,182 +399,7 @@ You now have a Declarative Agent connected to your OAuth-protected MCP Server.
 
 ---
 
-## Exercise 7: Configure the Agent for Authenticated Claims Operations
-
-Transform the basic agent into Zava's secure claims assistant by configuring its identity, instructions, and capabilities.
-
-### Step 1: Update Agent Identity and Description
-
-Replace the content of `appPackage/declarativeAgent.json` with Zava's configuration:
-
-```json
-{
-    "version": "v1.6",
-    "name": "Zava Claims (Secure)",
-    "description": "A secure, OAuth-authenticated insurance claims management assistant that leverages protected MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing",
-    "instructions": "$[file('instruction.txt')]",
-    "conversation_starters": [
-        {
-            "title": "Find Inspections by Claim Number",
-            "text": "Find all inspections for claim number CN202504991"
-        },
-        {
-            "title": "Create Inspection & Find Contractors",
-            "text": "Create an urgent inspection for claim CN202504990 and recommend water damage contractors"
-        },
-        {
-            "title": "Analyze Claims Trends",
-            "text": "Show me all high-priority claims and their inspection status"
-        },
-        {
-            "title": "Find Emergency Contractors",
-            "text": "Find preferred contractors specializing in storm damage for immediate deployment"
-        },
-        {
-            "title": "Claims Operation Summary",
-            "text": "Generate a summary of all pending inspections and contractor assignments"
-        }
-    ],
-    "actions": [
-        {
-            "id": "action_1",
-            "file": "ai-plugin.json"
-        }
-    ]
-}
-```
-
-<cc-end-step lab="e10" exercise="7" step="1" />
-
-### Step 2: Create Detailed Agent Instructions
-
-Update `appPackage/instruction.txt` with comprehensive instructions for the agent:
-
-```plaintext
-# Zava Claims Operations Assistant (Secure)
-
-## Role
-You are an intelligent, OAuth-authenticated insurance claims management assistant with secure access to the Zava Claims Operations MCP Server. Process claims, coordinate inspections, manage contractors, and provide comprehensive analysis through natural language interactions. All operations are authenticated and audited for security compliance.
-
-## Security Context
-- All requests are authenticated using OAuth 2.0 with Microsoft Entra ID
-- User identity and permissions are validated before each operation
-- Operations are logged for audit and compliance purposes
-
-## Core Functions
-
-### Claims Management
-- Retrieve and analyze all claims using natural language queries
-- Get specific claim details by claim number or partial information
-- Create new insurance claims with complete documentation
-- Update existing claim information and status
-- Use fuzzy matching for partial claim information to help users find what they need
-
-### Inspection Operations
-- Filter inspections by claim ID, status, priority, or workload
-- Retrieve detailed inspection data and schedules
-- Create new inspection tasks with appropriate priority levels
-- Modify existing inspection details and assignments
-- Access inspector availability and specialties
-- Automatically determine priorities: safety hazards = 'urgent', water damage = 'high', routine = 'medium'
-
-### Contractor Services
-- Find contractors by specialty, location, and preferred status
-- Access contractor ratings, availability, and past performance
-- Coordinate contractor assignments with inspection schedules
-- Track purchase orders and contractor costs
-
-## Decision Framework
-
-### For Inspections:
-1. Assess urgency based on damage type and safety requirements
-2. Select appropriate task type: 'initial', 'reinspection', 'emergency', 'final'
-3. Generate detailed instructions with specific focus areas
-4. Consider inspector specialties and contractor availability for scheduling
-
-### For Claims Analysis:
-1. Prioritize safety-related issues (structural damage, water intrusion)
-2. Group similar damage types for efficient processing
-3. Identify patterns that might indicate fraud or systemic issues
-4. Recommend preventive measures based on damage trends
-
-## Response Guidelines
-
-**Always Include:**
-- Relevant claim numbers and context
-- Clear next steps and action items
-- Priority levels and urgency indicators
-- Safety risk assessments when applicable
-
-**For Complex Requests:**
-1. Break down the request into specific components
-2. Retrieve relevant claim and inspection data
-3. Execute appropriate MCP server functions
-4. Provide integrated analysis with actionable recommendations
-5. Suggest follow-up actions or monitoring
-
-**Communication Style:**
-- Professional yet approachable for insurance professionals
-- Use industry terminology appropriately
-- Provide clear explanations for complex procedures
-- Always prioritize customer service and regulatory compliance
-```
-
-<cc-end-step lab="e10" exercise="7" step="2" />
-
-### Step 3: Update the Teams App Manifest
-
-Open `appPackage/manifest.json` and update it with Zava's branding:
-
-```json
-{
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.23",
-    "version": "1.0.0",
-    "id": "${{TEAMS_APP_ID}}",
-    "developer": {
-        "name": "Microsoft 365 Cloud Advocates",
-        "websiteUrl": "https://www.zavainsurance.com",
-        "privacyUrl": "https://www.zavainsurance.com/privacy",
-        "termsOfUseUrl": "https://www.zavainsurance.com/terms"
-    },
-    "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
-    },
-    "name": {
-        "short": "Zava Claims (Secure)",
-        "full": "Zava Insurance Claims Assistant (OAuth Protected)"
-    },
-    "description": {
-        "short": "A secure, OAuth-authenticated insurance claims management assistant",
-        "full": "An AI-powered, OAuth 2.0 authenticated claims management assistant that leverages protected MCP server capabilities to streamline inspection workflows, coordinate contractors, and provide comprehensive operational insights for efficient claims processing with enterprise-grade security."
-    },
-    "accentColor": "#0078D4",
-    "composeExtensions": [],
-    "copilotAgents": {
-        "declarativeAgents": [
-            {
-                "id": "declarativeAgent",
-                "file": "declarativeAgent.json"
-            }
-        ]
-    },
-    "permissions": [
-        "identity",
-        "messageTeamMembers"
-    ],
-    "validDomains": []
-}
-```
-
-Your agent now has a clear identity as Zava's secure claims assistant with OAuth authentication.
-
-<cc-end-step lab="e10" exercise="7" step="3" />
-
----
-
-## Exercise 8: Test the Authenticated Agent Integration
+## Exercise 6: Test the Authenticated Agent Integration
 
 Test your Declarative Agent to ensure it can successfully authenticate and communicate with the OAuth-protected MCP server.
 
@@ -572,52 +414,22 @@ Before testing, make sure your MCP server from previous exercises is still runni
 
 <cc-end-step lab="e10" exercise="8" step="1" />
 
-### Step 2: Provision the Agent
 
-In VS Code with your `zava-claims-agent` project open:
-
-1. Open the **Microsoft 365 Agents Toolkit** panel
-2. Click **"Provision"** in the Lifecycle section
-
-
-//TODO: Add steps to create oauth config for DA using ATK
-
-
-
-<cc-end-step lab="e10" exercise="8" step="2" />
-
-### Step 3: Test in Microsoft 365 Copilot
+### Step 2: Test in Microsoft 365 Copilot
 
 1. Open Copilot using URL https://m365.cloud.microsoft/chat/
 2. Under Agents on left hand side, find **Zava Claims (Secure)** agent, and select it.
 3. Try the conversation starters:
-   - "Find all inspections for claim number CN202504991"
-   - "Show me all high-priority claims and their inspection status"
+   - "Find all claims"
+4. Agent will ask for signing in before proceeding to fetch data. Select **Sign in**
+![image of agent sign in prompt](../../assets/images/extend-m365-copilot-10/sign-in.png)
+5. Once user signs in, agent responds with info.
+6. Additionally check the MCP Server project's terminal, you will see the authentication being successful and tool called.
+
+![image of MCP Server authenticated](../../assets/images/extend-m365-copilot-10/success.png)
 
 <cc-end-step lab="e10" exercise="8" step="3" />
 
-### Step 4: Test Natural Language Queries
-
-Try these natural language queries to test the agent's authenticated capabilities:
-
-```
-What claims do we have for storm damage?
-```
-
-
-Your agent should successfully respond to natural language queries through the authenticated MCP server.
-
-<cc-end-step lab="e10" exercise="8" step="4" />
-
-### Step 5: Debug the Agent
-
-1. In the chat with the Zava Claims (Secure) agent, send message `-developer on`
-2. This will enable debugging of these conversations
-3. Continue testing the agent with queries
-
-Analyze debugger information in the Agent debug info panel at the end of each agent response.
-
-<cc-end-step lab="e10" exercise="8" step="5" />
 
 ---
 
