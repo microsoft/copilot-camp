@@ -1,0 +1,3041 @@
+[
+  {
+    "id": "1",
+    "claimNumber": "CN202504990",
+    "policyNumber": "POL-HO-2025-001",
+    "policyHolderName": "Kimberly King",
+    "policyHolderEmail": "policyholder1@email.com",
+    "property": "9901 Valley Rd, Spokane, WA 99201",
+    "dateOfLoss": "2025-08-01T12:21:49.883Z",
+    "dateReported": "2025-08-02T15:21:49.883Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Fire damage - severe severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 23391,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Awaiting documentation",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-08-02T15:21:49.883Z",
+    "updatedAt": "2025-08-03T06:21:49.883Z"
+  },
+  {
+    "id": "2",
+    "claimNumber": "CN202504991",
+    "policyNumber": "POL-HO-2025-002",
+    "policyHolderName": "Christopher Thompson",
+    "policyHolderEmail": "policyholder2@email.com",
+    "property": "259 Valley Rd, Vancouver, WA 98660",
+    "dateOfLoss": "2025-12-08T21:41:05.337Z",
+    "dateReported": "2025-12-10T07:41:05.337Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 29794,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-12-10T07:41:05.337Z",
+    "updatedAt": "2025-12-15T10:41:05.337Z"
+  },
+  {
+    "id": "3",
+    "claimNumber": "CN202504992",
+    "policyNumber": "POL-HO-2025-003",
+    "policyHolderName": "Angela Young",
+    "policyHolderEmail": "policyholder3@email.com",
+    "property": "8006 Oak Ave, Seattle, WA 98101",
+    "dateOfLoss": "2025-12-04T13:20:21.023Z",
+    "dateReported": "2025-12-05T03:20:21.023Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 44024,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-12-05T03:20:21.023Z",
+    "updatedAt": "2025-12-06T23:20:21.023Z"
+  },
+  {
+    "id": "4",
+    "claimNumber": "CN202504993",
+    "policyNumber": "POL-HO-2025-004",
+    "policyHolderName": "Christopher Anderson",
+    "policyHolderEmail": "policyholder4@email.com",
+    "property": "6927 Lake View Dr, Salem, OR 97301",
+    "dateOfLoss": "2025-10-19T16:30:06.931Z",
+    "dateReported": "2025-10-19T18:30:06.931Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Mold damage - minor severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 3195,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Urgent priority"
+    ],
+    "createdAt": "2025-10-19T18:30:06.931Z",
+    "updatedAt": "2025-10-21T04:30:06.931Z"
+  },
+  {
+    "id": "5",
+    "claimNumber": "CN202504994",
+    "policyNumber": "POL-HO-2025-005",
+    "policyHolderName": "Mark Thomas",
+    "policyHolderEmail": "policyholder5@email.com",
+    "property": "9978 Washington Blvd, Bellevue, WA 98004",
+    "dateOfLoss": "2025-08-21T10:40:04.181Z",
+    "dateReported": "2025-08-23T03:40:04.181Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Water damage - moderate severity",
+      "Pipe leak damage"
+    ],
+    "description": "Water damage to property requiring assessment and repair",
+    "estimatedLoss": 17549,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-23T03:40:04.181Z",
+    "updatedAt": "2025-08-28T04:40:04.181Z"
+  },
+  {
+    "id": "6",
+    "claimNumber": "CN202504995",
+    "policyNumber": "POL-HO-2025-006",
+    "policyHolderName": "Emily Johnson",
+    "policyHolderEmail": "policyholder6@email.com",
+    "property": "2380 Lake View Dr, Eugene, OR 97401",
+    "dateOfLoss": "2025-08-19T21:24:43.175Z",
+    "dateReported": "2025-08-20T18:24:43.175Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Water damage - severe severity",
+      "Pipe leak damage"
+    ],
+    "description": "Water damage to property requiring assessment and repair",
+    "estimatedLoss": 36683,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-20T18:24:43.175Z",
+    "updatedAt": "2025-08-26T15:24:43.175Z"
+  },
+  {
+    "id": "7",
+    "claimNumber": "CN202504996",
+    "policyNumber": "POL-HO-2025-007",
+    "policyHolderName": "Amanda Lee",
+    "policyHolderEmail": "policyholder7@email.com",
+    "property": "9338 Elm St, Vancouver, WA 98660",
+    "dateOfLoss": "2025-09-13T05:03:31.335Z",
+    "dateReported": "2025-09-15T05:03:31.335Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 29840,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-15T05:03:31.335Z",
+    "updatedAt": "2025-09-21T06:03:31.335Z"
+  },
+  {
+    "id": "8",
+    "claimNumber": "CN202504997",
+    "policyNumber": "POL-HO-2025-008",
+    "policyHolderName": "Christopher Taylor",
+    "policyHolderEmail": "policyholder8@email.com",
+    "property": "2167 Lincoln Ave, Portland, OR 97201",
+    "dateOfLoss": "2025-09-19T18:22:24.528Z",
+    "dateReported": "2025-09-20T19:22:24.528Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 38577,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Awaiting documentation",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-09-20T19:22:24.528Z",
+    "updatedAt": "2025-09-21T03:22:24.528Z"
+  },
+  {
+    "id": "9",
+    "claimNumber": "CN202504998",
+    "policyNumber": "POL-HO-2025-009",
+    "policyHolderName": "Maria Wilson",
+    "policyHolderEmail": "policyholder9@email.com",
+    "property": "292 Main St, Vancouver, WA 98660",
+    "dateOfLoss": "2025-11-17T15:27:57.613Z",
+    "dateReported": "2025-11-18T05:27:57.613Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 43069,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-11-18T05:27:57.613Z",
+    "updatedAt": "2025-11-24T19:27:57.613Z"
+  },
+  {
+    "id": "10",
+    "claimNumber": "CN202504999",
+    "policyNumber": "POL-HO-2025-010",
+    "policyHolderName": "Amanda Rodriguez",
+    "policyHolderEmail": "policyholder10@email.com",
+    "property": "1069 Lake View Dr, Tacoma, WA 98401",
+    "dateOfLoss": "2025-08-30T17:37:01.908Z",
+    "dateReported": "2025-08-31T00:37:01.908Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Structural damage - severe severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 31486,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-31T00:37:01.908Z",
+    "updatedAt": "2025-09-06T00:37:01.908Z"
+  },
+  {
+    "id": "11",
+    "claimNumber": "CN202505000",
+    "policyNumber": "POL-HO-2025-011",
+    "policyHolderName": "John King",
+    "policyHolderEmail": "policyholder11@email.com",
+    "property": "3929 River St, Salem, OR 97301",
+    "dateOfLoss": "2025-09-19T09:21:46.570Z",
+    "dateReported": "2025-09-21T00:21:46.570Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Fire damage - severe severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 29887,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-21T00:21:46.570Z",
+    "updatedAt": "2025-09-21T10:21:46.570Z"
+  },
+  {
+    "id": "12",
+    "claimNumber": "CN202505001",
+    "policyNumber": "POL-HO-2025-012",
+    "policyHolderName": "Angela King",
+    "policyHolderEmail": "policyholder12@email.com",
+    "property": "3702 Mountain Rd, Portland, OR 97201",
+    "dateOfLoss": "2025-08-01T18:30:51.531Z",
+    "dateReported": "2025-08-02T04:30:51.531Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Wind damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Wind damage to property requiring assessment and repair",
+    "estimatedLoss": 38308,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-02T04:30:51.531Z",
+    "updatedAt": "2025-08-08T03:30:51.531Z"
+  },
+  {
+    "id": "13",
+    "claimNumber": "CN202505002",
+    "policyNumber": "POL-HO-2025-013",
+    "policyHolderName": "Anthony Walker",
+    "policyHolderEmail": "policyholder13@email.com",
+    "property": "1647 Lake View Dr, Eugene, OR 97401",
+    "dateOfLoss": "2025-08-17T11:33:03.662Z",
+    "dateReported": "2025-08-19T07:33:03.662Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Flooding - severe severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 41135,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-08-19T07:33:03.662Z",
+    "updatedAt": "2025-08-21T01:33:03.662Z"
+  },
+  {
+    "id": "14",
+    "claimNumber": "CN202505003",
+    "policyNumber": "POL-HO-2025-014",
+    "policyHolderName": "Jessica Walker",
+    "policyHolderEmail": "policyholder14@email.com",
+    "property": "2824 Park Pl, Eugene, OR 97401",
+    "dateOfLoss": "2025-08-23T15:16:46.673Z",
+    "dateReported": "2025-08-24T23:16:46.673Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Roof damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 33627,
+    "adjusterAssigned": "adj-005",
+    "notes": [],
+    "createdAt": "2025-08-24T23:16:46.673Z",
+    "updatedAt": "2025-08-29T23:16:46.673Z"
+  },
+  {
+    "id": "15",
+    "claimNumber": "CN202505004",
+    "policyNumber": "POL-HO-2025-015",
+    "policyHolderName": "Thomas Anderson",
+    "policyHolderEmail": "policyholder15@email.com",
+    "property": "4549 Cedar Ln, Olympia, WA 98501",
+    "dateOfLoss": "2025-08-19T16:37:04.909Z",
+    "dateReported": "2025-08-20T14:37:04.909Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Flooding - moderate severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 9009,
+    "adjusterAssigned": "adj-002",
+    "notes": [],
+    "createdAt": "2025-08-20T14:37:04.909Z",
+    "updatedAt": "2025-08-24T23:37:04.909Z"
+  },
+  {
+    "id": "16",
+    "claimNumber": "CN202505005",
+    "policyNumber": "POL-HO-2025-016",
+    "policyHolderName": "Thomas Jackson",
+    "policyHolderEmail": "policyholder16@email.com",
+    "property": "405 Lake View Dr, Eugene, OR 97401",
+    "dateOfLoss": "2025-09-20T00:36:15.797Z",
+    "dateReported": "2025-09-20T10:36:15.797Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Mold damage - moderate severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 17826,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-20T10:36:15.797Z",
+    "updatedAt": "2025-09-22T04:36:15.797Z"
+  },
+  {
+    "id": "17",
+    "claimNumber": "CN202505006",
+    "policyNumber": "POL-HO-2025-017",
+    "policyHolderName": "Donald Moore",
+    "policyHolderEmail": "policyholder17@email.com",
+    "property": "5379 Lake View Dr, Olympia, WA 98501",
+    "dateOfLoss": "2025-10-17T12:48:03.586Z",
+    "dateReported": "2025-10-19T10:48:03.586Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Mold damage - severe severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 13534,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-19T10:48:03.586Z",
+    "updatedAt": "2025-10-20T00:48:03.586Z"
+  },
+  {
+    "id": "18",
+    "claimNumber": "CN202505007",
+    "policyNumber": "POL-HO-2025-018",
+    "policyHolderName": "Kimberly Williams",
+    "policyHolderEmail": "policyholder18@email.com",
+    "property": "7631 Valley Rd, Olympia, WA 98501",
+    "dateOfLoss": "2025-10-26T21:53:03.243Z",
+    "dateReported": "2025-10-27T02:53:03.243Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 37578,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-27T02:53:03.243Z",
+    "updatedAt": "2025-10-28T13:53:03.243Z"
+  },
+  {
+    "id": "19",
+    "claimNumber": "CN202505008",
+    "policyNumber": "POL-HO-2025-019",
+    "policyHolderName": "Stephanie Davis",
+    "policyHolderEmail": "policyholder19@email.com",
+    "property": "2843 River St, Seattle, WA 98101",
+    "dateOfLoss": "2025-11-14T20:10:52.709Z",
+    "dateReported": "2025-11-15T15:10:52.709Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Structural damage - moderate severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 33246,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-15T15:10:52.709Z",
+    "updatedAt": "2025-11-20T09:10:52.709Z"
+  },
+  {
+    "id": "20",
+    "claimNumber": "CN202505009",
+    "policyNumber": "POL-HO-2025-020",
+    "policyHolderName": "Nicole White",
+    "policyHolderEmail": "policyholder20@email.com",
+    "property": "7294 Lake View Dr, Seattle, WA 98101",
+    "dateOfLoss": "2025-09-19T23:30:40.049Z",
+    "dateReported": "2025-09-21T19:30:40.049Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 32132,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-21T19:30:40.049Z",
+    "updatedAt": "2025-09-27T05:30:40.049Z"
+  },
+  {
+    "id": "21",
+    "claimNumber": "CN202505010",
+    "policyNumber": "POL-HO-2025-021",
+    "policyHolderName": "Rebecca Jackson",
+    "policyHolderEmail": "policyholder21@email.com",
+    "property": "9922 Main St, Spokane, WA 99201",
+    "dateOfLoss": "2025-09-24T12:04:26.199Z",
+    "dateReported": "2025-09-25T04:04:26.199Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 41048,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-25T04:04:26.199Z",
+    "updatedAt": "2025-09-28T02:04:26.199Z"
+  },
+  {
+    "id": "22",
+    "claimNumber": "CN202505011",
+    "policyNumber": "POL-HO-2025-022",
+    "policyHolderName": "James Johnson",
+    "policyHolderEmail": "policyholder22@email.com",
+    "property": "6116 Elm St, Seattle, WA 98101",
+    "dateOfLoss": "2025-12-06T11:39:13.106Z",
+    "dateReported": "2025-12-08T03:39:13.106Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Fire damage - moderate severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 32435,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-12-08T03:39:13.106Z",
+    "updatedAt": "2025-12-08T22:39:13.106Z"
+  },
+  {
+    "id": "23",
+    "claimNumber": "CN202505012",
+    "policyNumber": "POL-HO-2025-023",
+    "policyHolderName": "Stephanie Jackson",
+    "policyHolderEmail": "policyholder23@email.com",
+    "property": "3695 Lake View Dr, Salem, OR 97301",
+    "dateOfLoss": "2025-08-14T17:28:13.313Z",
+    "dateReported": "2025-08-15T21:28:13.313Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Flooding - moderate severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 24793,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-15T21:28:13.313Z",
+    "updatedAt": "2025-08-20T10:28:13.313Z"
+  },
+  {
+    "id": "24",
+    "claimNumber": "CN202505013",
+    "policyNumber": "POL-HO-2025-024",
+    "policyHolderName": "William Jackson",
+    "policyHolderEmail": "policyholder24@email.com",
+    "property": "1592 Hill Crest Dr, Bellevue, WA 98004",
+    "dateOfLoss": "2025-09-20T06:54:38.397Z",
+    "dateReported": "2025-09-20T13:54:38.397Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 6786,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-20T13:54:38.397Z",
+    "updatedAt": "2025-09-25T16:54:38.397Z"
+  },
+  {
+    "id": "25",
+    "claimNumber": "CN202505014",
+    "policyNumber": "POL-HO-2025-025",
+    "policyHolderName": "Lisa Thompson",
+    "policyHolderEmail": "policyholder25@email.com",
+    "property": "5448 Oak Ave, Bellevue, WA 98004",
+    "dateOfLoss": "2025-08-20T01:58:11.122Z",
+    "dateReported": "2025-08-20T04:58:11.122Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 3936,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-20T04:58:11.122Z",
+    "updatedAt": "2025-08-22T08:58:11.122Z"
+  },
+  {
+    "id": "26",
+    "claimNumber": "CN202505015",
+    "policyNumber": "POL-HO-2025-026",
+    "policyHolderName": "Melissa Taylor",
+    "policyHolderEmail": "policyholder26@email.com",
+    "property": "284 Elm St, Portland, OR 97201",
+    "dateOfLoss": "2025-09-08T09:26:10.010Z",
+    "dateReported": "2025-09-08T23:26:10.010Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Mold damage - severe severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 20144,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-08T23:26:10.010Z",
+    "updatedAt": "2025-09-15T19:26:10.010Z"
+  },
+  {
+    "id": "27",
+    "claimNumber": "CN202505016",
+    "policyNumber": "POL-HO-2025-027",
+    "policyHolderName": "Emily Thomas",
+    "policyHolderEmail": "policyholder27@email.com",
+    "property": "2955 Lake View Dr, Tacoma, WA 98401",
+    "dateOfLoss": "2025-10-23T08:58:13.710Z",
+    "dateReported": "2025-10-24T17:58:13.710Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 23020,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed"
+    ],
+    "createdAt": "2025-10-24T17:58:13.710Z",
+    "updatedAt": "2025-10-25T10:58:13.710Z"
+  },
+  {
+    "id": "28",
+    "claimNumber": "CN202505017",
+    "policyNumber": "POL-HO-2025-028",
+    "policyHolderName": "John Miller",
+    "policyHolderEmail": "policyholder28@email.com",
+    "property": "8537 Lincoln Ave, Olympia, WA 98501",
+    "dateOfLoss": "2025-08-23T01:16:59.537Z",
+    "dateReported": "2025-08-24T00:16:59.537Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Wind damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Wind damage to property requiring assessment and repair",
+    "estimatedLoss": 16677,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-08-24T00:16:59.537Z",
+    "updatedAt": "2025-08-27T23:16:59.537Z"
+  },
+  {
+    "id": "29",
+    "claimNumber": "CN202505018",
+    "policyNumber": "POL-HO-2025-029",
+    "policyHolderName": "Sarah Lee",
+    "policyHolderEmail": "policyholder29@email.com",
+    "property": "7478 Elm St, Salem, OR 97301",
+    "dateOfLoss": "2025-08-31T14:11:46.256Z",
+    "dateReported": "2025-09-02T01:11:46.256Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 21168,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-09-02T01:11:46.256Z",
+    "updatedAt": "2025-09-07T20:11:46.256Z"
+  },
+  {
+    "id": "30",
+    "claimNumber": "CN202505019",
+    "policyNumber": "POL-HO-2025-030",
+    "policyHolderName": "Maria Anderson",
+    "policyHolderEmail": "policyholder30@email.com",
+    "property": "3526 Washington Blvd, Eugene, OR 97401",
+    "dateOfLoss": "2025-08-14T10:44:48.866Z",
+    "dateReported": "2025-08-14T21:44:48.866Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 13109,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-08-14T21:44:48.866Z",
+    "updatedAt": "2025-08-16T09:44:48.866Z"
+  },
+  {
+    "id": "31",
+    "claimNumber": "CN202505020",
+    "policyNumber": "POL-HO-2025-031",
+    "policyHolderName": "David Taylor",
+    "policyHolderEmail": "policyholder31@email.com",
+    "property": "5111 Main St, Olympia, WA 98501",
+    "dateOfLoss": "2025-11-08T08:24:12.440Z",
+    "dateReported": "2025-11-08T17:24:12.440Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Structural damage - severe severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 6460,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-08T17:24:12.440Z",
+    "updatedAt": "2025-11-13T18:24:12.440Z"
+  },
+  {
+    "id": "32",
+    "claimNumber": "CN202505021",
+    "policyNumber": "POL-HO-2025-032",
+    "policyHolderName": "Emily Taylor",
+    "policyHolderEmail": "policyholder32@email.com",
+    "property": "7054 Elm St, Spokane, WA 99201",
+    "dateOfLoss": "2025-11-03T23:28:51.989Z",
+    "dateReported": "2025-11-05T12:28:51.989Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 2971,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-05T12:28:51.989Z",
+    "updatedAt": "2025-11-09T04:28:51.989Z"
+  },
+  {
+    "id": "33",
+    "claimNumber": "CN202505022",
+    "policyNumber": "POL-HO-2025-033",
+    "policyHolderName": "Lisa Scott",
+    "policyHolderEmail": "policyholder33@email.com",
+    "property": "4603 Valley Rd, Salem, OR 97301",
+    "dateOfLoss": "2025-12-21T20:47:55.173Z",
+    "dateReported": "2025-12-22T15:47:55.173Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Roof damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 20364,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-12-22T15:47:55.173Z",
+    "updatedAt": "2025-12-28T04:47:55.173Z"
+  },
+  {
+    "id": "34",
+    "claimNumber": "CN202505023",
+    "policyNumber": "POL-HO-2025-034",
+    "policyHolderName": "Christopher Williams",
+    "policyHolderEmail": "policyholder34@email.com",
+    "property": "5081 Cedar Ln, Bellevue, WA 98004",
+    "dateOfLoss": "2025-10-01T09:04:42.310Z",
+    "dateReported": "2025-10-01T18:04:42.310Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Mold damage - severe severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 6852,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-01T18:04:42.310Z",
+    "updatedAt": "2025-10-07T13:04:42.310Z"
+  },
+  {
+    "id": "35",
+    "claimNumber": "CN202505024",
+    "policyNumber": "POL-HO-2025-035",
+    "policyHolderName": "Matthew Lee",
+    "policyHolderEmail": "policyholder35@email.com",
+    "property": "3498 Main St, Portland, OR 97201",
+    "dateOfLoss": "2025-11-29T20:22:45.153Z",
+    "dateReported": "2025-12-01T07:22:45.153Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 19543,
+    "adjusterAssigned": "adj-006",
+    "notes": [],
+    "createdAt": "2025-12-01T07:22:45.153Z",
+    "updatedAt": "2025-12-03T18:22:45.153Z"
+  },
+  {
+    "id": "36",
+    "claimNumber": "CN202505025",
+    "policyNumber": "POL-HO-2025-036",
+    "policyHolderName": "Stephanie Allen",
+    "policyHolderEmail": "policyholder36@email.com",
+    "property": "9676 Elm St, Portland, OR 97201",
+    "dateOfLoss": "2025-09-25T17:15:18.352Z",
+    "dateReported": "2025-09-26T14:15:18.352Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 17834,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-26T14:15:18.352Z",
+    "updatedAt": "2025-10-02T13:15:18.352Z"
+  },
+  {
+    "id": "37",
+    "claimNumber": "CN202505026",
+    "policyNumber": "POL-HO-2025-037",
+    "policyHolderName": "Steven Allen",
+    "policyHolderEmail": "policyholder37@email.com",
+    "property": "5606 Park Pl, Bellevue, WA 98004",
+    "dateOfLoss": "2025-09-16T04:30:40.381Z",
+    "dateReported": "2025-09-16T12:30:40.381Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Structural damage - minor severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 44882,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-09-16T12:30:40.381Z",
+    "updatedAt": "2025-09-20T10:30:40.381Z"
+  },
+  {
+    "id": "38",
+    "claimNumber": "CN202505027",
+    "policyNumber": "POL-HO-2025-038",
+    "policyHolderName": "Maria Walker",
+    "policyHolderEmail": "policyholder38@email.com",
+    "property": "7052 Pine Rd, Bellevue, WA 98004",
+    "dateOfLoss": "2025-11-28T20:48:59.674Z",
+    "dateReported": "2025-11-30T19:48:59.674Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 16153,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-11-30T19:48:59.674Z",
+    "updatedAt": "2025-12-03T03:48:59.674Z"
+  },
+  {
+    "id": "39",
+    "claimNumber": "CN202505028",
+    "policyNumber": "POL-HO-2025-039",
+    "policyHolderName": "Jennifer King",
+    "policyHolderEmail": "policyholder39@email.com",
+    "property": "7710 Maple Dr, Tacoma, WA 98401",
+    "dateOfLoss": "2025-12-07T07:11:16.040Z",
+    "dateReported": "2025-12-07T15:11:16.040Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 29142,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-12-07T15:11:16.040Z",
+    "updatedAt": "2025-12-10T16:11:16.040Z"
+  },
+  {
+    "id": "40",
+    "claimNumber": "CN202505029",
+    "policyNumber": "POL-HO-2025-040",
+    "policyHolderName": "Maria Martinez",
+    "policyHolderEmail": "policyholder40@email.com",
+    "property": "2297 Washington Blvd, Seattle, WA 98101",
+    "dateOfLoss": "2025-10-26T20:02:48.003Z",
+    "dateReported": "2025-10-28T14:02:48.003Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Electrical damage - moderate severity",
+      "Fire hazard"
+    ],
+    "description": "Electrical damage to property requiring assessment and repair",
+    "estimatedLoss": 43678,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed"
+    ],
+    "createdAt": "2025-10-28T14:02:48.003Z",
+    "updatedAt": "2025-11-02T20:02:48.003Z"
+  },
+  {
+    "id": "41",
+    "claimNumber": "CN202505030",
+    "policyNumber": "POL-HO-2025-041",
+    "policyHolderName": "Melissa Moore",
+    "policyHolderEmail": "policyholder41@email.com",
+    "property": "6248 Cedar Ln, Tacoma, WA 98401",
+    "dateOfLoss": "2025-10-08T16:52:18.063Z",
+    "dateReported": "2025-10-09T17:52:18.063Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Water damage - moderate severity",
+      "Pipe leak damage"
+    ],
+    "description": "Water damage to property requiring assessment and repair",
+    "estimatedLoss": 45633,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-09T17:52:18.063Z",
+    "updatedAt": "2025-10-12T11:52:18.063Z"
+  },
+  {
+    "id": "42",
+    "claimNumber": "CN202505031",
+    "policyNumber": "POL-HO-2025-042",
+    "policyHolderName": "Amanda Johnson",
+    "policyHolderEmail": "policyholder42@email.com",
+    "property": "598 Pine Rd, Tacoma, WA 98401",
+    "dateOfLoss": "2025-09-19T07:58:35.734Z",
+    "dateReported": "2025-09-20T07:58:35.734Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Roof damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 18404,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-20T07:58:35.734Z",
+    "updatedAt": "2025-09-21T04:58:35.734Z"
+  },
+  {
+    "id": "43",
+    "claimNumber": "CN202505032",
+    "policyNumber": "POL-HO-2025-043",
+    "policyHolderName": "Rebecca Wilson",
+    "policyHolderEmail": "policyholder43@email.com",
+    "property": "9139 Washington Blvd, Spokane, WA 99201",
+    "dateOfLoss": "2025-10-14T05:21:45.320Z",
+    "dateReported": "2025-10-15T06:21:45.320Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Flooding - moderate severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 33158,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-15T06:21:45.320Z",
+    "updatedAt": "2025-10-21T10:21:45.320Z"
+  },
+  {
+    "id": "44",
+    "claimNumber": "CN202505033",
+    "policyNumber": "POL-HO-2025-044",
+    "policyHolderName": "Jennifer Young",
+    "policyHolderEmail": "policyholder44@email.com",
+    "property": "8551 River St, Tacoma, WA 98401",
+    "dateOfLoss": "2025-09-29T03:21:24.604Z",
+    "dateReported": "2025-09-30T19:21:24.604Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Structural damage - minor severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 49898,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-30T19:21:24.604Z",
+    "updatedAt": "2025-10-02T04:21:24.604Z"
+  },
+  {
+    "id": "45",
+    "claimNumber": "CN202505034",
+    "policyNumber": "POL-HO-2025-045",
+    "policyHolderName": "John Harris",
+    "policyHolderEmail": "policyholder45@email.com",
+    "property": "3976 Elm St, Seattle, WA 98101",
+    "dateOfLoss": "2025-09-14T02:14:24.716Z",
+    "dateReported": "2025-09-14T17:14:24.716Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 47181,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-14T17:14:24.716Z",
+    "updatedAt": "2025-09-21T13:14:24.716Z"
+  },
+  {
+    "id": "46",
+    "claimNumber": "CN202505035",
+    "policyNumber": "POL-HO-2025-046",
+    "policyHolderName": "Steven Young",
+    "policyHolderEmail": "policyholder46@email.com",
+    "property": "5157 Oak Ave, Vancouver, WA 98660",
+    "dateOfLoss": "2025-10-20T12:22:12.049Z",
+    "dateReported": "2025-10-22T04:22:12.049Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Flooding - minor severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 46230,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-10-22T04:22:12.049Z",
+    "updatedAt": "2025-10-23T03:22:12.049Z"
+  },
+  {
+    "id": "47",
+    "claimNumber": "CN202505036",
+    "policyNumber": "POL-HO-2025-047",
+    "policyHolderName": "Lisa Allen",
+    "policyHolderEmail": "policyholder47@email.com",
+    "property": "907 Lake View Dr, Salem, OR 97301",
+    "dateOfLoss": "2025-07-28T13:40:19.107Z",
+    "dateReported": "2025-07-29T21:40:19.107Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Electrical damage - moderate severity",
+      "Fire hazard"
+    ],
+    "description": "Electrical damage to property requiring assessment and repair",
+    "estimatedLoss": 16978,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-07-29T21:40:19.107Z",
+    "updatedAt": "2025-07-31T13:40:19.107Z"
+  },
+  {
+    "id": "48",
+    "claimNumber": "CN202505037",
+    "policyNumber": "POL-HO-2025-048",
+    "policyHolderName": "William Allen",
+    "policyHolderEmail": "policyholder48@email.com",
+    "property": "5331 Elm St, Bend, OR 97701",
+    "dateOfLoss": "2025-11-19T01:09:46.112Z",
+    "dateReported": "2025-11-19T23:09:46.112Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 27029,
+    "adjusterAssigned": "adj-003",
+    "notes": [],
+    "createdAt": "2025-11-19T23:09:46.112Z",
+    "updatedAt": "2025-11-25T20:09:46.112Z"
+  },
+  {
+    "id": "49",
+    "claimNumber": "CN202505038",
+    "policyNumber": "POL-HO-2025-049",
+    "policyHolderName": "Robert Garcia",
+    "policyHolderEmail": "policyholder49@email.com",
+    "property": "9743 Mountain Rd, Salem, OR 97301",
+    "dateOfLoss": "2025-10-25T20:31:41.031Z",
+    "dateReported": "2025-10-26T23:31:41.031Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Electrical damage - moderate severity",
+      "Fire hazard"
+    ],
+    "description": "Electrical damage to property requiring assessment and repair",
+    "estimatedLoss": 47481,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-10-26T23:31:41.031Z",
+    "updatedAt": "2025-11-01T10:31:41.031Z"
+  },
+  {
+    "id": "50",
+    "claimNumber": "CN202505039",
+    "policyNumber": "POL-HO-2025-050",
+    "policyHolderName": "Michelle Young",
+    "policyHolderEmail": "policyholder50@email.com",
+    "property": "3105 Elm St, Spokane, WA 99201",
+    "dateOfLoss": "2025-09-10T04:55:52.324Z",
+    "dateReported": "2025-09-10T06:55:52.324Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 37076,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-10T06:55:52.324Z",
+    "updatedAt": "2025-09-12T19:55:52.324Z"
+  },
+  {
+    "id": "51",
+    "claimNumber": "CN202505040",
+    "policyNumber": "POL-HO-2025-051",
+    "policyHolderName": "John Lewis",
+    "policyHolderEmail": "policyholder51@email.com",
+    "property": "3094 Valley Rd, Bend, OR 97701",
+    "dateOfLoss": "2025-08-12T04:48:17.666Z",
+    "dateReported": "2025-08-13T18:48:17.666Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Flooding - severe severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 26552,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-13T18:48:17.666Z",
+    "updatedAt": "2025-08-20T14:48:17.666Z"
+  },
+  {
+    "id": "52",
+    "claimNumber": "CN202505041",
+    "policyNumber": "POL-HO-2025-052",
+    "policyHolderName": "Emily Jones",
+    "policyHolderEmail": "policyholder52@email.com",
+    "property": "9876 Valley Rd, Bellevue, WA 98004",
+    "dateOfLoss": "2025-07-28T11:18:25.611Z",
+    "dateReported": "2025-07-28T13:18:25.611Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Fire damage - moderate severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 26343,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-07-28T13:18:25.611Z",
+    "updatedAt": "2025-07-30T22:18:25.611Z"
+  },
+  {
+    "id": "53",
+    "claimNumber": "CN202505042",
+    "policyNumber": "POL-HO-2025-053",
+    "policyHolderName": "Mark Rodriguez",
+    "policyHolderEmail": "policyholder53@email.com",
+    "property": "2235 Oak Ave, Bend, OR 97701",
+    "dateOfLoss": "2025-11-03T06:58:42.249Z",
+    "dateReported": "2025-11-05T00:58:42.249Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Mold damage - moderate severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 15808,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-11-05T00:58:42.249Z",
+    "updatedAt": "2025-11-10T07:58:42.249Z"
+  },
+  {
+    "id": "54",
+    "claimNumber": "CN202505043",
+    "policyNumber": "POL-HO-2025-054",
+    "policyHolderName": "David Davis",
+    "policyHolderEmail": "policyholder54@email.com",
+    "property": "6561 Main St, Vancouver, WA 98660",
+    "dateOfLoss": "2025-12-10T23:34:20.567Z",
+    "dateReported": "2025-12-11T07:34:20.567Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Vandalism - moderate severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 19321,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-12-11T07:34:20.567Z",
+    "updatedAt": "2025-12-15T08:34:20.567Z"
+  },
+  {
+    "id": "55",
+    "claimNumber": "CN202505044",
+    "policyNumber": "POL-HO-2025-055",
+    "policyHolderName": "Thomas Lewis",
+    "policyHolderEmail": "policyholder55@email.com",
+    "property": "3625 Maple Dr, Portland, OR 97201",
+    "dateOfLoss": "2025-12-18T16:26:09.103Z",
+    "dateReported": "2025-12-20T03:26:09.103Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Roof damage to property requiring assessment and repair",
+    "estimatedLoss": 9727,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-12-20T03:26:09.103Z",
+    "updatedAt": "2025-12-26T10:26:09.103Z"
+  },
+  {
+    "id": "56",
+    "claimNumber": "CN202505045",
+    "policyNumber": "POL-HO-2025-056",
+    "policyHolderName": "Donald Williams",
+    "policyHolderEmail": "policyholder56@email.com",
+    "property": "8247 Oak Ave, Bend, OR 97701",
+    "dateOfLoss": "2025-08-12T02:30:15.682Z",
+    "dateReported": "2025-08-13T16:30:15.682Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Vandalism - moderate severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 45475,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-08-13T16:30:15.682Z",
+    "updatedAt": "2025-08-14T15:30:15.682Z"
+  },
+  {
+    "id": "57",
+    "claimNumber": "CN202505046",
+    "policyNumber": "POL-HO-2025-057",
+    "policyHolderName": "Steven Scott",
+    "policyHolderEmail": "policyholder57@email.com",
+    "property": "5328 Main St, Bend, OR 97701",
+    "dateOfLoss": "2025-11-09T12:55:09.507Z",
+    "dateReported": "2025-11-09T22:55:09.507Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 18153,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed"
+    ],
+    "createdAt": "2025-11-09T22:55:09.507Z",
+    "updatedAt": "2025-11-10T11:55:09.507Z"
+  },
+  {
+    "id": "58",
+    "claimNumber": "CN202505047",
+    "policyNumber": "POL-HO-2025-058",
+    "policyHolderName": "Amanda Young",
+    "policyHolderEmail": "policyholder58@email.com",
+    "property": "3796 Elm St, Salem, OR 97301",
+    "dateOfLoss": "2025-10-10T04:21:42.675Z",
+    "dateReported": "2025-10-12T04:21:42.675Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Mold damage - moderate severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 39212,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed"
+    ],
+    "createdAt": "2025-10-12T04:21:42.675Z",
+    "updatedAt": "2025-10-15T13:21:42.675Z"
+  },
+  {
+    "id": "59",
+    "claimNumber": "CN202505048",
+    "policyNumber": "POL-HO-2025-059",
+    "policyHolderName": "Jessica Harris",
+    "policyHolderEmail": "policyholder59@email.com",
+    "property": "9316 Oak Ave, Tacoma, WA 98401",
+    "dateOfLoss": "2025-10-04T00:55:14.983Z",
+    "dateReported": "2025-10-05T15:55:14.983Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 36960,
+    "adjusterAssigned": "adj-001",
+    "notes": [],
+    "createdAt": "2025-10-05T15:55:14.983Z",
+    "updatedAt": "2025-10-08T00:55:14.983Z"
+  },
+  {
+    "id": "60",
+    "claimNumber": "CN202505049",
+    "policyNumber": "POL-HO-2025-060",
+    "policyHolderName": "William Johnson",
+    "policyHolderEmail": "policyholder60@email.com",
+    "property": "1212 Washington Blvd, Bellevue, WA 98004",
+    "dateOfLoss": "2025-11-20T11:07:51.020Z",
+    "dateReported": "2025-11-21T10:07:51.020Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Flooding - severe severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 3532,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-11-21T10:07:51.020Z",
+    "updatedAt": "2025-11-21T13:07:51.020Z"
+  },
+  {
+    "id": "61",
+    "claimNumber": "CN202505050",
+    "policyNumber": "POL-HO-2025-061",
+    "policyHolderName": "Rebecca Allen",
+    "policyHolderEmail": "policyholder61@email.com",
+    "property": "1028 Valley Rd, Tacoma, WA 98401",
+    "dateOfLoss": "2025-08-09T23:01:37.839Z",
+    "dateReported": "2025-08-10T22:01:37.839Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 8206,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed"
+    ],
+    "createdAt": "2025-08-10T22:01:37.839Z",
+    "updatedAt": "2025-08-14T17:01:37.839Z"
+  },
+  {
+    "id": "62",
+    "claimNumber": "CN202505051",
+    "policyNumber": "POL-HO-2025-062",
+    "policyHolderName": "Daniel Walker",
+    "policyHolderEmail": "policyholder62@email.com",
+    "property": "4795 Lake View Dr, Vancouver, WA 98660",
+    "dateOfLoss": "2025-09-17T11:58:18.553Z",
+    "dateReported": "2025-09-17T20:58:18.553Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Structural damage - minor severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 37702,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-17T20:58:18.553Z",
+    "updatedAt": "2025-09-20T14:58:18.553Z"
+  },
+  {
+    "id": "63",
+    "claimNumber": "CN202505052",
+    "policyNumber": "POL-HO-2025-063",
+    "policyHolderName": "Christopher Allen",
+    "policyHolderEmail": "policyholder63@email.com",
+    "property": "540 Main St, Olympia, WA 98501",
+    "dateOfLoss": "2025-09-05T10:18:10.396Z",
+    "dateReported": "2025-09-06T01:18:10.396Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Electrical damage - moderate severity",
+      "Fire hazard"
+    ],
+    "description": "Electrical damage to property requiring assessment and repair",
+    "estimatedLoss": 7447,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-06T01:18:10.396Z",
+    "updatedAt": "2025-09-07T15:18:10.396Z"
+  },
+  {
+    "id": "64",
+    "claimNumber": "CN202505053",
+    "policyNumber": "POL-HO-2025-064",
+    "policyHolderName": "James Garcia",
+    "policyHolderEmail": "policyholder64@email.com",
+    "property": "7764 River St, Eugene, OR 97401",
+    "dateOfLoss": "2025-11-20T08:45:20.093Z",
+    "dateReported": "2025-11-20T20:45:20.093Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 44272,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-20T20:45:20.093Z",
+    "updatedAt": "2025-11-26T07:45:20.093Z"
+  },
+  {
+    "id": "65",
+    "claimNumber": "CN202505054",
+    "policyNumber": "POL-HO-2025-065",
+    "policyHolderName": "Maria Jones",
+    "policyHolderEmail": "policyholder65@email.com",
+    "property": "3101 Washington Blvd, Seattle, WA 98101",
+    "dateOfLoss": "2025-08-14T08:34:21.153Z",
+    "dateReported": "2025-08-16T04:34:21.153Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Water damage - severe severity",
+      "Pipe leak damage"
+    ],
+    "description": "Water damage to property requiring assessment and repair",
+    "estimatedLoss": 49781,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-08-16T04:34:21.153Z",
+    "updatedAt": "2025-08-20T03:34:21.153Z"
+  },
+  {
+    "id": "66",
+    "claimNumber": "CN202505055",
+    "policyNumber": "POL-HO-2025-066",
+    "policyHolderName": "Angela Thomas",
+    "policyHolderEmail": "policyholder66@email.com",
+    "property": "4289 Maple Dr, Salem, OR 97301",
+    "dateOfLoss": "2025-10-02T00:54:18.665Z",
+    "dateReported": "2025-10-03T13:54:18.665Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Mold damage - severe severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 35649,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-10-03T13:54:18.665Z",
+    "updatedAt": "2025-10-05T06:54:18.665Z"
+  },
+  {
+    "id": "67",
+    "claimNumber": "CN202505056",
+    "policyNumber": "POL-HO-2025-067",
+    "policyHolderName": "Melissa Moore",
+    "policyHolderEmail": "policyholder67@email.com",
+    "property": "4071 Lincoln Ave, Seattle, WA 98101",
+    "dateOfLoss": "2025-11-13T12:30:23.290Z",
+    "dateReported": "2025-11-14T22:30:23.290Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 34758,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-11-14T22:30:23.290Z",
+    "updatedAt": "2025-11-21T13:30:23.290Z"
+  },
+  {
+    "id": "68",
+    "claimNumber": "CN202505057",
+    "policyNumber": "POL-HO-2025-068",
+    "policyHolderName": "Robert Johnson",
+    "policyHolderEmail": "policyholder68@email.com",
+    "property": "5291 Oak Ave, Olympia, WA 98501",
+    "dateOfLoss": "2025-11-09T03:07:53.476Z",
+    "dateReported": "2025-11-10T09:07:53.476Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Mold damage - minor severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 36414,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-10T09:07:53.476Z",
+    "updatedAt": "2025-11-12T19:07:53.476Z"
+  },
+  {
+    "id": "69",
+    "claimNumber": "CN202505058",
+    "policyNumber": "POL-HO-2025-069",
+    "policyHolderName": "Sarah Garcia",
+    "policyHolderEmail": "policyholder69@email.com",
+    "property": "746 Cedar Ln, Spokane, WA 99201",
+    "dateOfLoss": "2025-08-20T00:53:27.494Z",
+    "dateReported": "2025-08-21T10:53:27.494Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Structural damage - minor severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 31080,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-21T10:53:27.494Z",
+    "updatedAt": "2025-08-26T03:53:27.494Z"
+  },
+  {
+    "id": "70",
+    "claimNumber": "CN202505059",
+    "policyNumber": "POL-HO-2025-070",
+    "policyHolderName": "Jessica Robinson",
+    "policyHolderEmail": "policyholder70@email.com",
+    "property": "5343 Washington Blvd, Salem, OR 97301",
+    "dateOfLoss": "2025-08-31T12:46:29.206Z",
+    "dateReported": "2025-09-02T08:46:29.206Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Vandalism - moderate severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 36718,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-02T08:46:29.206Z",
+    "updatedAt": "2025-09-07T22:46:29.206Z"
+  },
+  {
+    "id": "71",
+    "claimNumber": "CN202505060",
+    "policyNumber": "POL-HO-2025-071",
+    "policyHolderName": "Rebecca Thomas",
+    "policyHolderEmail": "policyholder71@email.com",
+    "property": "3190 Lincoln Ave, Vancouver, WA 98660",
+    "dateOfLoss": "2025-10-20T12:17:20.197Z",
+    "dateReported": "2025-10-21T11:17:20.197Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Vandalism - severe severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 19692,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-21T11:17:20.197Z",
+    "updatedAt": "2025-10-24T06:17:20.197Z"
+  },
+  {
+    "id": "72",
+    "claimNumber": "CN202505061",
+    "policyNumber": "POL-HO-2025-072",
+    "policyHolderName": "Anthony Taylor",
+    "policyHolderEmail": "policyholder72@email.com",
+    "property": "404 Lincoln Ave, Vancouver, WA 98660",
+    "dateOfLoss": "2025-11-27T11:59:19.529Z",
+    "dateReported": "2025-11-27T18:59:19.529Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Structural damage - severe severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 8523,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-27T18:59:19.529Z",
+    "updatedAt": "2025-12-02T10:59:19.529Z"
+  },
+  {
+    "id": "73",
+    "claimNumber": "CN202505062",
+    "policyNumber": "POL-HO-2025-073",
+    "policyHolderName": "Maria Lee",
+    "policyHolderEmail": "policyholder73@email.com",
+    "property": "1775 Lincoln Ave, Portland, OR 97201",
+    "dateOfLoss": "2025-09-12T15:27:06.654Z",
+    "dateReported": "2025-09-14T02:27:06.654Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Mold damage - moderate severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 27824,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-14T02:27:06.654Z",
+    "updatedAt": "2025-09-18T13:27:06.654Z"
+  },
+  {
+    "id": "74",
+    "claimNumber": "CN202505063",
+    "policyNumber": "POL-HO-2025-074",
+    "policyHolderName": "David King",
+    "policyHolderEmail": "policyholder74@email.com",
+    "property": "976 Park Pl, Bellevue, WA 98004",
+    "dateOfLoss": "2025-08-15T15:49:35.460Z",
+    "dateReported": "2025-08-16T08:49:35.460Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Flooding - severe severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 37362,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-08-16T08:49:35.460Z",
+    "updatedAt": "2025-08-19T02:49:35.460Z"
+  },
+  {
+    "id": "75",
+    "claimNumber": "CN202505064",
+    "policyNumber": "POL-HO-2025-075",
+    "policyHolderName": "Rebecca Taylor",
+    "policyHolderEmail": "policyholder75@email.com",
+    "property": "1063 Oak Ave, Salem, OR 97301",
+    "dateOfLoss": "2025-10-22T10:09:21.286Z",
+    "dateReported": "2025-10-23T08:09:21.286Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 44623,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-23T08:09:21.286Z",
+    "updatedAt": "2025-10-25T14:09:21.286Z"
+  },
+  {
+    "id": "76",
+    "claimNumber": "CN202505065",
+    "policyNumber": "POL-HO-2025-076",
+    "policyHolderName": "Matthew Walker",
+    "policyHolderEmail": "policyholder76@email.com",
+    "property": "3318 Lincoln Ave, Olympia, WA 98501",
+    "dateOfLoss": "2025-12-21T07:24:09.233Z",
+    "dateReported": "2025-12-21T09:24:09.233Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Vandalism - moderate severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 44718,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-12-21T09:24:09.233Z",
+    "updatedAt": "2025-12-23T00:24:09.233Z"
+  },
+  {
+    "id": "77",
+    "claimNumber": "CN202505066",
+    "policyNumber": "POL-HO-2025-077",
+    "policyHolderName": "Steven Garcia",
+    "policyHolderEmail": "policyholder77@email.com",
+    "property": "3331 Main St, Salem, OR 97301",
+    "dateOfLoss": "2025-08-28T03:32:13.298Z",
+    "dateReported": "2025-08-30T01:32:13.298Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Structural damage - severe severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 27508,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-08-30T01:32:13.298Z",
+    "updatedAt": "2025-09-05T16:32:13.298Z"
+  },
+  {
+    "id": "78",
+    "claimNumber": "CN202505067",
+    "policyNumber": "POL-HO-2025-078",
+    "policyHolderName": "Emily Allen",
+    "policyHolderEmail": "policyholder78@email.com",
+    "property": "8036 Valley Rd, Tacoma, WA 98401",
+    "dateOfLoss": "2025-11-07T08:08:19.698Z",
+    "dateReported": "2025-11-07T13:08:19.698Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 31630,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-11-07T13:08:19.698Z",
+    "updatedAt": "2025-11-09T03:08:19.698Z"
+  },
+  {
+    "id": "79",
+    "claimNumber": "CN202505068",
+    "policyNumber": "POL-HO-2025-079",
+    "policyHolderName": "Matthew Jackson",
+    "policyHolderEmail": "policyholder79@email.com",
+    "property": "6919 Lincoln Ave, Seattle, WA 98101",
+    "dateOfLoss": "2025-09-18T23:05:03.449Z",
+    "dateReported": "2025-09-19T21:05:03.449Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Flooding - moderate severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 30451,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-19T21:05:03.449Z",
+    "updatedAt": "2025-09-25T15:05:03.449Z"
+  },
+  {
+    "id": "80",
+    "claimNumber": "CN202505069",
+    "policyNumber": "POL-HO-2025-080",
+    "policyHolderName": "Anthony Anderson",
+    "policyHolderEmail": "policyholder80@email.com",
+    "property": "2485 Oak Ave, Seattle, WA 98101",
+    "dateOfLoss": "2025-09-25T05:14:58.904Z",
+    "dateReported": "2025-09-26T14:14:58.904Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Fire damage - minor severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 47320,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-09-26T14:14:58.904Z",
+    "updatedAt": "2025-09-30T20:14:58.904Z"
+  },
+  {
+    "id": "81",
+    "claimNumber": "CN202505070",
+    "policyNumber": "POL-HO-2025-081",
+    "policyHolderName": "Thomas King",
+    "policyHolderEmail": "policyholder81@email.com",
+    "property": "4411 Main St, Bellevue, WA 98004",
+    "dateOfLoss": "2025-12-13T18:37:58.107Z",
+    "dateReported": "2025-12-15T06:37:58.107Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Fire damage - severe severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 31371,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-12-15T06:37:58.107Z",
+    "updatedAt": "2025-12-18T12:37:58.107Z"
+  },
+  {
+    "id": "82",
+    "claimNumber": "CN202505071",
+    "policyNumber": "POL-HO-2025-082",
+    "policyHolderName": "Amanda Davis",
+    "policyHolderEmail": "policyholder82@email.com",
+    "property": "7629 Mountain Rd, Portland, OR 97201",
+    "dateOfLoss": "2025-12-21T04:37:33.853Z",
+    "dateReported": "2025-12-21T15:37:33.853Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Fire damage - minor severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 23659,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-12-21T15:37:33.853Z",
+    "updatedAt": "2025-12-26T12:37:33.853Z"
+  },
+  {
+    "id": "83",
+    "claimNumber": "CN202505072",
+    "policyNumber": "POL-HO-2025-083",
+    "policyHolderName": "Thomas Robinson",
+    "policyHolderEmail": "policyholder83@email.com",
+    "property": "5551 Lake View Dr, Seattle, WA 98101",
+    "dateOfLoss": "2025-11-25T08:19:29.242Z",
+    "dateReported": "2025-11-26T00:19:29.242Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 23479,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed"
+    ],
+    "createdAt": "2025-11-26T00:19:29.242Z",
+    "updatedAt": "2025-11-26T09:19:29.242Z"
+  },
+  {
+    "id": "84",
+    "claimNumber": "CN202505073",
+    "policyNumber": "POL-HO-2025-084",
+    "policyHolderName": "Michael Wilson",
+    "policyHolderEmail": "policyholder84@email.com",
+    "property": "5185 Hill Crest Dr, Bellevue, WA 98004",
+    "dateOfLoss": "2025-11-14T20:07:40.314Z",
+    "dateReported": "2025-11-16T07:07:40.314Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Vandalism - moderate severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 31792,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Standard processing"
+    ],
+    "createdAt": "2025-11-16T07:07:40.314Z",
+    "updatedAt": "2025-11-18T09:07:40.314Z"
+  },
+  {
+    "id": "85",
+    "claimNumber": "CN202505074",
+    "policyNumber": "POL-HO-2025-085",
+    "policyHolderName": "Amanda Young",
+    "policyHolderEmail": "policyholder85@email.com",
+    "property": "5609 Hill Crest Dr, Olympia, WA 98501",
+    "dateOfLoss": "2025-08-18T00:25:12.900Z",
+    "dateReported": "2025-08-18T05:25:12.900Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Hail damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 25936,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-08-18T05:25:12.900Z",
+    "updatedAt": "2025-08-22T17:25:12.900Z"
+  },
+  {
+    "id": "86",
+    "claimNumber": "CN202505075",
+    "policyNumber": "POL-HO-2025-086",
+    "policyHolderName": "Melissa Walker",
+    "policyHolderEmail": "policyholder86@email.com",
+    "property": "4322 Valley Rd, Vancouver, WA 98660",
+    "dateOfLoss": "2025-10-31T02:32:55.797Z",
+    "dateReported": "2025-10-31T04:32:55.797Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Flooding - moderate severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 21613,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-31T04:32:55.797Z",
+    "updatedAt": "2025-11-06T07:32:55.797Z"
+  },
+  {
+    "id": "87",
+    "claimNumber": "CN202505076",
+    "policyNumber": "POL-HO-2025-087",
+    "policyHolderName": "James Lewis",
+    "policyHolderEmail": "policyholder87@email.com",
+    "property": "4528 Mountain Rd, Spokane, WA 99201",
+    "dateOfLoss": "2025-12-09T03:07:18.563Z",
+    "dateReported": "2025-12-10T02:07:18.563Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Hail damage to property requiring assessment and repair",
+    "estimatedLoss": 3561,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-12-10T02:07:18.563Z",
+    "updatedAt": "2025-12-12T11:07:18.563Z"
+  },
+  {
+    "id": "88",
+    "claimNumber": "CN202505077",
+    "policyNumber": "POL-HO-2025-088",
+    "policyHolderName": "Donald Lewis",
+    "policyHolderEmail": "policyholder88@email.com",
+    "property": "5716 Main St, Salem, OR 97301",
+    "dateOfLoss": "2025-10-15T06:42:49.399Z",
+    "dateReported": "2025-10-16T22:42:49.399Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Electrical damage - moderate severity",
+      "Fire hazard"
+    ],
+    "description": "Electrical damage to property requiring assessment and repair",
+    "estimatedLoss": 48047,
+    "adjusterAssigned": "adj-001",
+    "notes": [],
+    "createdAt": "2025-10-16T22:42:49.399Z",
+    "updatedAt": "2025-10-23T14:42:49.399Z"
+  },
+  {
+    "id": "89",
+    "claimNumber": "CN202505078",
+    "policyNumber": "POL-HO-2025-089",
+    "policyHolderName": "John Walker",
+    "policyHolderEmail": "policyholder89@email.com",
+    "property": "3268 Maple Dr, Portland, OR 97201",
+    "dateOfLoss": "2025-10-08T01:07:27.729Z",
+    "dateReported": "2025-10-08T11:07:27.729Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 30339,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-08T11:07:27.729Z",
+    "updatedAt": "2025-10-15T00:07:27.729Z"
+  },
+  {
+    "id": "90",
+    "claimNumber": "CN202505079",
+    "policyNumber": "POL-HO-2025-090",
+    "policyHolderName": "Michael Lewis",
+    "policyHolderEmail": "policyholder90@email.com",
+    "property": "5060 Lake View Dr, Salem, OR 97301",
+    "dateOfLoss": "2025-10-03T15:29:08.976Z",
+    "dateReported": "2025-10-04T15:29:08.976Z",
+    "status": "Approved - Claim approved for payment",
+    "damageTypes": [
+      "Water damage - minor severity",
+      "Pipe leak damage"
+    ],
+    "description": "Water damage to property requiring assessment and repair",
+    "estimatedLoss": 8738,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-10-04T15:29:08.976Z",
+    "updatedAt": "2025-10-09T08:29:08.976Z"
+  },
+  {
+    "id": "91",
+    "claimNumber": "CN202505080",
+    "policyNumber": "POL-HO-2025-091",
+    "policyHolderName": "Kimberly King",
+    "policyHolderEmail": "policyholder91@email.com",
+    "property": "4545 Washington Blvd, Spokane, WA 99201",
+    "dateOfLoss": "2025-12-11T11:16:58.325Z",
+    "dateReported": "2025-12-12T20:16:58.325Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Water damage - moderate severity",
+      "Pipe leak damage"
+    ],
+    "description": "Water damage to property requiring assessment and repair",
+    "estimatedLoss": 38780,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-12-12T20:16:58.325Z",
+    "updatedAt": "2025-12-16T07:16:58.325Z"
+  },
+  {
+    "id": "92",
+    "claimNumber": "CN202505081",
+    "policyNumber": "POL-HO-2025-092",
+    "policyHolderName": "Maria Miller",
+    "policyHolderEmail": "policyholder92@email.com",
+    "property": "3485 Oak Ave, Seattle, WA 98101",
+    "dateOfLoss": "2025-09-22T19:57:02.249Z",
+    "dateReported": "2025-09-24T05:57:02.249Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Wind damage to property requiring assessment and repair",
+    "estimatedLoss": 37827,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-09-24T05:57:02.249Z",
+    "updatedAt": "2025-09-28T07:57:02.249Z"
+  },
+  {
+    "id": "93",
+    "claimNumber": "CN202505082",
+    "policyNumber": "POL-HO-2025-093",
+    "policyHolderName": "Sarah Taylor",
+    "policyHolderEmail": "policyholder93@email.com",
+    "property": "2214 Oak Ave, Vancouver, WA 98660",
+    "dateOfLoss": "2025-07-29T09:04:41.537Z",
+    "dateReported": "2025-07-30T11:04:41.537Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Flooding - severe severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 17260,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-07-30T11:04:41.537Z",
+    "updatedAt": "2025-08-02T05:04:41.537Z"
+  },
+  {
+    "id": "94",
+    "claimNumber": "CN202505083",
+    "policyNumber": "POL-HO-2025-094",
+    "policyHolderName": "William Clark",
+    "policyHolderEmail": "policyholder94@email.com",
+    "property": "3345 Lincoln Ave, Bend, OR 97701",
+    "dateOfLoss": "2025-07-28T04:18:54.445Z",
+    "dateReported": "2025-07-28T22:18:54.445Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Structural damage - minor severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 2797,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation"
+    ],
+    "createdAt": "2025-07-28T22:18:54.445Z",
+    "updatedAt": "2025-08-01T08:18:54.445Z"
+  },
+  {
+    "id": "95",
+    "claimNumber": "CN202505084",
+    "policyNumber": "POL-HO-2025-095",
+    "policyHolderName": "David Jackson",
+    "policyHolderEmail": "policyholder95@email.com",
+    "property": "4481 Lincoln Ave, Olympia, WA 98501",
+    "dateOfLoss": "2025-10-25T10:11:50.214Z",
+    "dateReported": "2025-10-25T14:11:50.214Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Vandalism - minor severity",
+      "Property damage"
+    ],
+    "description": "Vandalism to property requiring assessment and repair",
+    "estimatedLoss": 10810,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-10-25T14:11:50.214Z",
+    "updatedAt": "2025-10-30T03:11:50.214Z"
+  },
+  {
+    "id": "96",
+    "claimNumber": "CN202505085",
+    "policyNumber": "POL-HO-2025-096",
+    "policyHolderName": "James Miller",
+    "policyHolderEmail": "policyholder96@email.com",
+    "property": "2566 Elm St, Seattle, WA 98101",
+    "dateOfLoss": "2025-07-29T07:36:56.484Z",
+    "dateReported": "2025-07-30T14:36:56.484Z",
+    "status": "In Repair - Repairs in progress",
+    "damageTypes": [
+      "Electrical damage - moderate severity",
+      "Fire hazard"
+    ],
+    "description": "Electrical damage to property requiring assessment and repair",
+    "estimatedLoss": 6708,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded"
+    ],
+    "createdAt": "2025-07-30T14:36:56.484Z",
+    "updatedAt": "2025-08-06T08:36:56.484Z"
+  },
+  {
+    "id": "97",
+    "claimNumber": "CN202505086",
+    "policyNumber": "POL-HO-2025-097",
+    "policyHolderName": "Nicole Lee",
+    "policyHolderEmail": "policyholder97@email.com",
+    "property": "9970 Oak Ave, Olympia, WA 98501",
+    "dateOfLoss": "2025-12-09T05:43:09.860Z",
+    "dateReported": "2025-12-09T15:43:09.860Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Fire damage - severe severity",
+      "Smoke damage"
+    ],
+    "description": "Fire damage to property requiring assessment and repair",
+    "estimatedLoss": 5967,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Urgent priority"
+    ],
+    "createdAt": "2025-12-09T15:43:09.860Z",
+    "updatedAt": "2025-12-13T08:43:09.860Z"
+  },
+  {
+    "id": "98",
+    "claimNumber": "CN202505087",
+    "policyNumber": "POL-HO-2025-098",
+    "policyHolderName": "Maria Smith",
+    "policyHolderEmail": "policyholder98@email.com",
+    "property": "4377 Mountain Rd, Eugene, OR 97401",
+    "dateOfLoss": "2025-10-01T12:41:29.382Z",
+    "dateReported": "2025-10-03T11:41:29.382Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Structural damage - moderate severity",
+      "Foundation issues"
+    ],
+    "description": "Structural damage to property requiring assessment and repair",
+    "estimatedLoss": 31432,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-03T11:41:29.382Z",
+    "updatedAt": "2025-10-04T12:41:29.382Z"
+  },
+  {
+    "id": "99",
+    "claimNumber": "CN202505088",
+    "policyNumber": "POL-HO-2025-099",
+    "policyHolderName": "Rebecca Smith",
+    "policyHolderEmail": "policyholder99@email.com",
+    "property": "8488 Cedar Ln, Olympia, WA 98501",
+    "dateOfLoss": "2025-12-19T10:29:06.373Z",
+    "dateReported": "2025-12-21T03:29:06.373Z",
+    "status": "Closed - Claim settled and closed",
+    "damageTypes": [
+      "Flooding - minor severity",
+      "Water damage"
+    ],
+    "description": "Flooding to property requiring assessment and repair",
+    "estimatedLoss": 43279,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "Urgent priority"
+    ],
+    "createdAt": "2025-12-21T03:29:06.373Z",
+    "updatedAt": "2025-12-22T13:29:06.373Z"
+  },
+  {
+    "id": "100",
+    "claimNumber": "CN202505089",
+    "policyNumber": "POL-HO-2025-100",
+    "policyHolderName": "Steven Martinez",
+    "policyHolderEmail": "policyholder100@email.com",
+    "property": "3903 Oak Ave, Bend, OR 97701",
+    "dateOfLoss": "2025-10-27T12:34:37.036Z",
+    "dateReported": "2025-10-29T12:34:37.036Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Mold damage - severe severity",
+      "Water damage"
+    ],
+    "description": "Mold damage to property requiring assessment and repair",
+    "estimatedLoss": 27352,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Awaiting documentation",
+      "Standard processing"
+    ],
+    "createdAt": "2025-10-29T12:34:37.036Z",
+    "updatedAt": "2025-11-01T09:34:37.036Z"
+  },
+  {
+    "id": "101",
+    "claimNumber": "CN202505090",
+    "policyNumber": "POL-HO-2025-101",
+    "policyHolderName": "Melissa Thomas",
+    "policyHolderEmail": "policyholder101@email.com",
+    "property": "9628 Main St, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T03:10:43.092Z",
+    "dateReported": "2026-01-20T04:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 35140,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 22 hours after incident"
+    ],
+    "createdAt": "2026-01-20T04:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "102",
+    "claimNumber": "CN202505091",
+    "policyNumber": "POL-HO-2025-102",
+    "policyHolderName": "James Davis",
+    "policyHolderEmail": "policyholder102@email.com",
+    "property": "7992 Cedar Ln, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T04:10:43.092Z",
+    "dateReported": "2026-01-20T06:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Hail damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 31955,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 21 hours after incident"
+    ],
+    "createdAt": "2026-01-20T06:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "103",
+    "claimNumber": "CN202505092",
+    "policyNumber": "POL-HO-2025-103",
+    "policyHolderName": "Maria Martinez",
+    "policyHolderEmail": "policyholder103@email.com",
+    "property": "2055 Valley Rd, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T02:10:43.092Z",
+    "dateReported": "2026-01-20T04:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Wind damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 27866,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 23 hours after incident"
+    ],
+    "createdAt": "2026-01-20T04:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "104",
+    "claimNumber": "CN202505093",
+    "policyNumber": "POL-HO-2025-104",
+    "policyHolderName": "John Taylor",
+    "policyHolderEmail": "policyholder104@email.com",
+    "property": "3593 Pine Rd, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T07:10:43.092Z",
+    "dateReported": "2026-01-20T10:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 57416,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 18 hours after incident"
+    ],
+    "createdAt": "2026-01-20T10:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "105",
+    "claimNumber": "CN202505094",
+    "policyNumber": "POL-HO-2025-105",
+    "policyHolderName": "James Lewis",
+    "policyHolderEmail": "policyholder105@email.com",
+    "property": "9917 Forest Ave, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T07:10:43.092Z",
+    "dateReported": "2026-01-20T10:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 35915,
+    "adjusterAssigned": "adj-008",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 18 hours after incident"
+    ],
+    "createdAt": "2026-01-20T10:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "106",
+    "claimNumber": "CN202505095",
+    "policyNumber": "POL-HO-2025-106",
+    "policyHolderName": "Emily Martinez",
+    "policyHolderEmail": "policyholder106@email.com",
+    "property": "1592 Hill Crest Dr, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T17:10:43.092Z",
+    "dateReported": "2026-01-20T21:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 39202,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 8 hours after incident"
+    ],
+    "createdAt": "2026-01-20T21:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "107",
+    "claimNumber": "CN202505096",
+    "policyNumber": "POL-HO-2025-107",
+    "policyHolderName": "Mark Taylor",
+    "policyHolderEmail": "policyholder107@email.com",
+    "property": "3929 Mountain Rd, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T23:10:43.092Z",
+    "dateReported": "2026-01-21T00:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 15994,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 2 hours after incident"
+    ],
+    "createdAt": "2026-01-21T00:10:43.092Z",
+    "updatedAt": "2026-01-21T00:10:43.092Z"
+  },
+  {
+    "id": "108",
+    "claimNumber": "CN202505097",
+    "policyNumber": "POL-HO-2025-108",
+    "policyHolderName": "Anthony Jackson",
+    "policyHolderEmail": "policyholder108@email.com",
+    "property": "2350 Valley Rd, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T12:10:43.092Z",
+    "dateReported": "2026-01-20T13:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 48027,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 13 hours after incident"
+    ],
+    "createdAt": "2026-01-20T13:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "109",
+    "claimNumber": "CN202505098",
+    "policyNumber": "POL-HO-2025-109",
+    "policyHolderName": "John Allen",
+    "policyHolderEmail": "policyholder109@email.com",
+    "property": "9276 Maple Dr, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T09:10:43.092Z",
+    "dateReported": "2026-01-20T12:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Roof damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 58041,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 16 hours after incident"
+    ],
+    "createdAt": "2026-01-20T12:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "110",
+    "claimNumber": "CN202505099",
+    "policyNumber": "POL-HO-2025-110",
+    "policyHolderName": "Robert Brown",
+    "policyHolderEmail": "policyholder110@email.com",
+    "property": "5331 Elm St, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T02:10:43.092Z",
+    "dateReported": "2026-01-20T04:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 29849,
+    "adjusterAssigned": "adj-007",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 23 hours after incident"
+    ],
+    "createdAt": "2026-01-20T04:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "111",
+    "claimNumber": "CN202505100",
+    "policyNumber": "POL-HO-2025-111",
+    "policyHolderName": "Robert Jackson",
+    "policyHolderEmail": "policyholder111@email.com",
+    "property": "8776 River St, Vancouver, WA 98660",
+    "dateOfLoss": "2026-01-20T13:10:43.092Z",
+    "dateReported": "2026-01-20T17:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Roof damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 52202,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 12 hours after incident"
+    ],
+    "createdAt": "2026-01-20T17:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "112",
+    "claimNumber": "CN202505101",
+    "policyNumber": "POL-HO-2025-112",
+    "policyHolderName": "William Walker",
+    "policyHolderEmail": "policyholder112@email.com",
+    "property": "2250 Maple Dr, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-20T12:10:43.092Z",
+    "dateReported": "2026-01-20T13:10:43.092Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Wind damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 46505,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 13 hours after incident"
+    ],
+    "createdAt": "2026-01-20T13:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "113",
+    "claimNumber": "CN202505102",
+    "policyNumber": "POL-HO-2025-113",
+    "policyHolderName": "Melissa White",
+    "policyHolderEmail": "policyholder113@email.com",
+    "property": "6391 Cedar Ln, Spokane, WA 99201",
+    "dateOfLoss": "2026-01-20T04:10:43.092Z",
+    "dateReported": "2026-01-20T05:10:43.092Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Hail damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 25860,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 21 hours after incident"
+    ],
+    "createdAt": "2026-01-20T05:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "114",
+    "claimNumber": "CN202505103",
+    "policyNumber": "POL-HO-2025-114",
+    "policyHolderName": "Stephanie Davis",
+    "policyHolderEmail": "policyholder114@email.com",
+    "property": "7127 Mountain Rd, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-19T07:10:43.092Z",
+    "dateReported": "2026-01-19T08:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 68397,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 42 hours after incident"
+    ],
+    "createdAt": "2026-01-19T08:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "115",
+    "claimNumber": "CN202505104",
+    "policyNumber": "POL-HO-2025-115",
+    "policyHolderName": "Sarah Anderson",
+    "policyHolderEmail": "policyholder115@email.com",
+    "property": "2265 River St, Vancouver, WA 98660",
+    "dateOfLoss": "2026-01-19T06:10:43.092Z",
+    "dateReported": "2026-01-19T07:10:43.092Z",
+    "status": "Open - Claim is under investigation",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 61493,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 43 hours after incident"
+    ],
+    "createdAt": "2026-01-19T07:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "116",
+    "claimNumber": "CN202505105",
+    "policyNumber": "POL-HO-2025-116",
+    "policyHolderName": "Rebecca Harris",
+    "policyHolderEmail": "policyholder116@email.com",
+    "property": "1725 Valley Rd, Spokane, WA 99201",
+    "dateOfLoss": "2026-01-20T17:10:43.092Z",
+    "dateReported": "2026-01-20T20:10:43.092Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Hail damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 18424,
+    "adjusterAssigned": "adj-001",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 8 hours after incident"
+    ],
+    "createdAt": "2026-01-20T20:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "117",
+    "claimNumber": "CN202505106",
+    "policyNumber": "POL-HO-2025-117",
+    "policyHolderName": "Lisa Jones",
+    "policyHolderEmail": "policyholder117@email.com",
+    "property": "8030 Hill Crest Dr, Vancouver, WA 98660",
+    "dateOfLoss": "2026-01-19T07:10:43.092Z",
+    "dateReported": "2026-01-19T12:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 69824,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 42 hours after incident"
+    ],
+    "createdAt": "2026-01-19T12:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "118",
+    "claimNumber": "CN202505107",
+    "policyNumber": "POL-HO-2025-118",
+    "policyHolderName": "Stephanie Smith",
+    "policyHolderEmail": "policyholder118@email.com",
+    "property": "1578 Elm St, Vancouver, WA 98660",
+    "dateOfLoss": "2026-01-19T07:10:43.092Z",
+    "dateReported": "2026-01-19T09:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 53263,
+    "adjusterAssigned": "adj-006",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 42 hours after incident"
+    ],
+    "createdAt": "2026-01-19T09:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "119",
+    "claimNumber": "CN202505108",
+    "policyNumber": "POL-HO-2025-119",
+    "policyHolderName": "Richard Clark",
+    "policyHolderEmail": "policyholder119@email.com",
+    "property": "9030 Pine Rd, Bellevue, WA 98004",
+    "dateOfLoss": "2026-01-20T11:10:43.092Z",
+    "dateReported": "2026-01-20T13:10:43.092Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 57199,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 14 hours after incident"
+    ],
+    "createdAt": "2026-01-20T13:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "120",
+    "claimNumber": "CN202505109",
+    "policyNumber": "POL-HO-2025-120",
+    "policyHolderName": "Anthony Martinez",
+    "policyHolderEmail": "policyholder120@email.com",
+    "property": "9708 Maple Dr, Olympia, WA 98501",
+    "dateOfLoss": "2026-01-19T15:10:43.092Z",
+    "dateReported": "2026-01-19T18:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 33737,
+    "adjusterAssigned": "adj-004",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 34 hours after incident"
+    ],
+    "createdAt": "2026-01-19T18:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "121",
+    "claimNumber": "CN202505110",
+    "policyNumber": "POL-HO-2025-121",
+    "policyHolderName": "Steven Jackson",
+    "policyHolderEmail": "policyholder121@email.com",
+    "property": "7223 Hill Crest Dr, Seattle, WA 98101",
+    "dateOfLoss": "2026-01-18T16:10:43.092Z",
+    "dateReported": "2026-01-18T22:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Wind damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 38289,
+    "adjusterAssigned": "adj-002",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 57 hours after incident"
+    ],
+    "createdAt": "2026-01-18T22:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "122",
+    "claimNumber": "CN202505111",
+    "policyNumber": "POL-HO-2025-122",
+    "policyHolderName": "Melissa White",
+    "policyHolderEmail": "policyholder122@email.com",
+    "property": "7656 Mountain Rd, Vancouver, WA 98660",
+    "dateOfLoss": "2026-01-20T22:10:43.092Z",
+    "dateReported": "2026-01-21T02:10:43.092Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Hail damage - minor severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Hail damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 42786,
+    "adjusterAssigned": "adj-009",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 3 hours after incident"
+    ],
+    "createdAt": "2026-01-21T02:10:43.092Z",
+    "updatedAt": "2026-01-21T02:10:43.092Z"
+  },
+  {
+    "id": "123",
+    "claimNumber": "CN202505112",
+    "policyNumber": "POL-HO-2025-123",
+    "policyHolderName": "Sarah Martin",
+    "policyHolderEmail": "policyholder123@email.com",
+    "property": "3629 Mountain Rd, Tacoma, WA 98401",
+    "dateOfLoss": "2026-01-18T12:10:43.092Z",
+    "dateReported": "2026-01-18T14:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Hail damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Hail damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 33681,
+    "adjusterAssigned": "adj-005",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 61 hours after incident"
+    ],
+    "createdAt": "2026-01-18T14:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  },
+  {
+    "id": "124",
+    "claimNumber": "CN202505113",
+    "policyNumber": "POL-HO-2025-124",
+    "policyHolderName": "Mark Davis",
+    "policyHolderEmail": "policyholder124@email.com",
+    "property": "3913 Forest Ave, Bellevue, WA 98004",
+    "dateOfLoss": "2026-01-20T21:10:43.092Z",
+    "dateReported": "2026-01-21T03:10:43.092Z",
+    "status": "Under Investigation - Claim is being reviewed by adjusters",
+    "damageTypes": [
+      "Wind damage - moderate severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Wind damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 31813,
+    "adjusterAssigned": "adj-010",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "High priority storm claim",
+      "Reported 4 hours after incident"
+    ],
+    "createdAt": "2026-01-21T03:10:43.092Z",
+    "updatedAt": "2026-01-21T03:10:43.092Z"
+  },
+  {
+    "id": "125",
+    "claimNumber": "CN202505114",
+    "policyNumber": "POL-HO-2025-125",
+    "policyHolderName": "Daniel Miller",
+    "policyHolderEmail": "policyholder125@email.com",
+    "property": "4910 Cedar Ln, Spokane, WA 99201",
+    "dateOfLoss": "2026-01-18T12:10:43.092Z",
+    "dateReported": "2026-01-18T13:10:43.092Z",
+    "status": "Pending Documentation - Awaiting additional information",
+    "damageTypes": [
+      "Roof damage - severe severity",
+      "Storm damage"
+    ],
+    "description": "Emergency: Roof damage from recent storm event requiring immediate assessment",
+    "estimatedLoss": 31548,
+    "adjusterAssigned": "adj-003",
+    "notes": [
+      "Initial report filed",
+      "Photos uploaded",
+      "URGENT - Emergency response required",
+      "Reported 61 hours after incident"
+    ],
+    "createdAt": "2026-01-18T13:10:43.092Z",
+    "updatedAt": "2026-01-20T23:10:43.092Z"
+  }
+]
