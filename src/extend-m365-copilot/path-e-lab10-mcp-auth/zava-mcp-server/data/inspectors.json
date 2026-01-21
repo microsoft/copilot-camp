@@ -1,0 +1,228 @@
+[
+  {
+    "id": "inspector-001",
+    "name": "Melissa Robinson",
+    "email": "inspector1@zava.com",
+    "phone": "555-2179",
+    "licenseNumber": "INS-55363",
+    "specializations": [
+      "HVAC",
+      "Mechanical Systems"
+    ]
+  },
+  {
+    "id": "inspector-002",
+    "name": "Matthew Wilson",
+    "email": "inspector2@zava.com",
+    "phone": "555-4276",
+    "licenseNumber": "INS-44283",
+    "specializations": [
+      "Roofing",
+      "Storm Damage"
+    ]
+  },
+  {
+    "id": "inspector-003",
+    "name": "Jennifer Davis",
+    "email": "inspector3@zava.com",
+    "phone": "555-1266",
+    "licenseNumber": "INS-91547",
+    "specializations": [
+      "Fire Damage",
+      "Smoke Assessment",
+      "Electrical"
+    ]
+  },
+  {
+    "id": "inspector-004",
+    "name": "Rebecca Davis",
+    "email": "inspector4@zava.com",
+    "phone": "555-8881",
+    "licenseNumber": "INS-15266",
+    "specializations": [
+      "HVAC",
+      "Mechanical Systems"
+    ]
+  },
+  {
+    "id": "inspector-005",
+    "name": "Donald Walker",
+    "email": "inspector5@zava.com",
+    "phone": "555-5020",
+    "licenseNumber": "INS-81175",
+    "specializations": [
+      "Wind Damage",
+      "Storm Damage"
+    ]
+  },
+  {
+    "id": "inspector-006",
+    "name": "Christopher Brown",
+    "email": "inspector6@zava.com",
+    "phone": "555-3175",
+    "licenseNumber": "INS-74437",
+    "specializations": [
+      "Hail Damage",
+      "Roof Assessment"
+    ]
+  },
+  {
+    "id": "inspector-007",
+    "name": "James Anderson",
+    "email": "inspector7@zava.com",
+    "phone": "555-9471",
+    "licenseNumber": "INS-14790",
+    "specializations": [
+      "General",
+      "Property Assessment"
+    ]
+  },
+  {
+    "id": "inspector-008",
+    "name": "Anthony Taylor",
+    "email": "inspector8@zava.com",
+    "phone": "555-6391",
+    "licenseNumber": "INS-31900",
+    "specializations": [
+      "Fire Damage",
+      "Smoke Assessment",
+      "Electrical"
+    ]
+  },
+  {
+    "id": "inspector-009",
+    "name": "Emily Martin",
+    "email": "inspector9@zava.com",
+    "phone": "555-8293",
+    "licenseNumber": "INS-88822",
+    "specializations": [
+      "Roofing",
+      "Storm Damage"
+    ]
+  },
+  {
+    "id": "inspector-010",
+    "name": "Robert Rodriguez",
+    "email": "inspector10@zava.com",
+    "phone": "555-3454",
+    "licenseNumber": "INS-48842",
+    "specializations": [
+      "Wind Damage",
+      "Storm Damage"
+    ]
+  },
+  {
+    "id": "inspector-011",
+    "name": "John Smith",
+    "email": "inspector11@zava.com",
+    "phone": "555-5259",
+    "licenseNumber": "INS-17919",
+    "specializations": [
+      "General",
+      "Property Assessment"
+    ]
+  },
+  {
+    "id": "inspector-012",
+    "name": "Michael White",
+    "email": "inspector12@zava.com",
+    "phone": "555-4462",
+    "licenseNumber": "INS-42333",
+    "specializations": [
+      "Mold",
+      "Water Damage",
+      "Air Quality"
+    ]
+  },
+  {
+    "id": "inspector-013",
+    "name": "James Smith",
+    "email": "inspector13@zava.com",
+    "phone": "555-2540",
+    "licenseNumber": "INS-37054",
+    "specializations": [
+      "Fire Damage",
+      "Smoke Assessment",
+      "Electrical"
+    ]
+  },
+  {
+    "id": "inspector-014",
+    "name": "Jennifer Martinez",
+    "email": "inspector14@zava.com",
+    "phone": "555-2228",
+    "licenseNumber": "INS-80214",
+    "specializations": [
+      "Fire Damage",
+      "Smoke Assessment",
+      "Electrical"
+    ]
+  },
+  {
+    "id": "inspector-015",
+    "name": "David Thompson",
+    "email": "inspector15@zava.com",
+    "phone": "555-1793",
+    "licenseNumber": "INS-42769",
+    "specializations": [
+      "Flood Damage",
+      "Water Intrusion"
+    ]
+  },
+  {
+    "id": "inspector-016",
+    "name": "Melissa Lewis",
+    "email": "inspector16@zava.com",
+    "phone": "555-5477",
+    "licenseNumber": "INS-60019",
+    "specializations": [
+      "Flood Damage",
+      "Water Intrusion"
+    ]
+  },
+  {
+    "id": "inspector-017",
+    "name": "Nicole Taylor",
+    "email": "inspector17@zava.com",
+    "phone": "555-8668",
+    "licenseNumber": "INS-38267",
+    "specializations": [
+      "HVAC",
+      "Mechanical Systems"
+    ]
+  },
+  {
+    "id": "inspector-018",
+    "name": "Robert Allen",
+    "email": "inspector18@zava.com",
+    "phone": "555-3076",
+    "licenseNumber": "INS-80983",
+    "specializations": [
+      "HVAC",
+      "Mechanical Systems"
+    ]
+  },
+  {
+    "id": "inspector-019",
+    "name": "Sarah Allen",
+    "email": "inspector19@zava.com",
+    "phone": "555-9902",
+    "licenseNumber": "INS-65592",
+    "specializations": [
+      "Water Damage",
+      "Plumbing"
+    ]
+  },
+  {
+    "id": "inspector-020",
+    "name": "Thomas Jones",
+    "email": "inspector20@zava.com",
+    "phone": "555-7418",
+    "licenseNumber": "INS-63313",
+    "specializations": [
+      "Fire Damage",
+      "Smoke Assessment",
+      "Electrical"
+    ]
+  }
+]
