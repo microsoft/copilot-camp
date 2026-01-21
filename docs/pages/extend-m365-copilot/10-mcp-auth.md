@@ -1,6 +1,6 @@
 # Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server
 
-In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. This builds on Lab 08 by adding **Microsoft Entra ID authentication** for secure, enterprise-grade access to claims data.
+In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. While Lab 08 demonstrates an anonymous MCP server, this lab adds **Microsoft Entra ID authentication** for secure, enterprise-grade access to claims data.
 
 
 ## Scenario
@@ -58,13 +58,7 @@ Install all required packages:
 npm install
 ```
 
-This installs key dependencies including:
-
-- `@modelcontextprotocol/sdk` - MCP protocol implementation
-- `@azure/data-tables` - Azure Table Storage client
-- `express` - HTTP server framework
-- `zod` - Runtime type validation
-- `jwt-validate` - JWT token validation with JWKS support
+This installs key dependencies.
 
 <cc-end-step lab="e10" exercise="1" step="2" />
 
@@ -145,18 +139,16 @@ After registration, configure redirect URIs for different platforms:
 3. Click **Add a scope** and configure:
    - **Scope name**: `access_as_user`
    - **Who can consent**: Admins and users
-   - **Admin consent display name**: `Read Zava as Admin`
-   - **Admin consent description**: `Read Zava as Admin`
-   - **User consent display name**: `Read Zava as User`
-   - **User consent description**: `Read Zava as User`
+   - **Admin consent display name**: `Access Zava Claims System`
+   - **Admin consent description**: `Allows the app to access Zava Claims data on behalf of the signed-in user`
+   - **User consent display name**: `Access Zava Claims System`
+   - **User consent description**: `Allows this app to access your Zava Claims data on your behalf`
    - **State**: Enabled
 4. Click **Add scope**
 
-<cc-end-step lab="e10" exercise="2" step="4" />
-
 Your Microsoft Entra ID app registration is now complete!
 
-<cc-end-step lab="e10" exercise="2" step="5" />
+<cc-end-step lab="e10" exercise="2" step="4" />
 
 ---
 
@@ -206,6 +198,7 @@ AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devst
 ```
 
 Replace the placeholders:
+
 - `<your-application-client-id>` - Application (client) ID from Entra ID app registration
 - `<your-client-secret-value>` - Client secret value you copied
 - `<your-tunnel-url>` - Dev tunnel URL from Step 1 (e.g., `https://abc123def456.use.devtunnels.ms`)
@@ -394,6 +387,9 @@ You'll be directed to the newly created project with the `.vscode/mcp.json` file
 
 Once provisioned, notice how the Developer Portal token is automatically created for the agent and appears in the `.env.dev` file as a variable like `MCP_DA_AUTH_ID_XXXX`.
 
+!!! note "OAuth registration in Developer Portal"
+    Read more about configuring [OAuth registration in Developer Portal](https://learn.microsoft.com/en-us/microsoftteams/platform/messaging-extensions/api-based-oauth#configure-oauth-in-developer-portal). Here Agents Toolkit automatically configures it for your agent.
+
 You now have a Declarative Agent connected to your OAuth-protected MCP Server.
 
 <cc-end-step lab="e10" exercise="5" step="3" />
@@ -418,7 +414,7 @@ Before testing, verify your MCP server from previous exercises is still running:
 ### Step 2: Test in Microsoft 365 Copilot
 
 1. Open Copilot at [https://m365.cloud.microsoft/chat/](https://m365.cloud.microsoft/chat/)
-2. In the left sidebar under **Agents**, find and select **Zava Claims (Secure)**
+2. In the left sidebar under **Agents**, find and select **Zava Claims Assistant (Auth)**
 3. Try the conversation starter: "Find all claims"
 4. The agent prompts you to sign in before fetching data. Select **Sign in**
 
