@@ -1,6 +1,6 @@
-# Lab 10 : Connect Declarative Agent to OAuth-Protected MCP Server
+# Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server
 
-In this lab, you'll run a **OAuth 2.0 protected** Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. This builds on Lab 08 by adding **Microsoft Entra ID authentication** for secure, enterprise-grade access to claims data.
+In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. This builds on Lab 08 by adding **Microsoft Entra ID authentication** for secure, enterprise-grade access to claims data.
 
 
 ## Scenario
@@ -27,12 +27,12 @@ By completing this lab, you will:
 Before starting this lab, ensure you have:
 
 - **Node.js 22+** installed on your machine
-- **VS Code** with **Microsoft 365 Agents Toolkit extension** V 6.4.2 or higher
+- **VS Code** with **Microsoft 365 Agents Toolkit extension** v6.4.2 or higher
 - **Microsoft 365 developer account** with Copilot license
 - **Azure subscription** with access to Microsoft Entra ID (for app registration)
-- Basic knowledge of **TypeScript/JavaScript**, **REST APIs**, **JSON**, and **OAuth 2.0**
-- GitHub account for using VS Code tunneling
-- Completion of **Lab 08** is recommended but not required
+- Basic knowledge of TypeScript/JavaScript, REST APIs, JSON, and OAuth 2.0
+- GitHub account for VS Code Dev Tunnels
+- Completion of **Lab 08** (recommended but not required)
 
 ---
 
@@ -70,23 +70,23 @@ This installs key dependencies including:
 
 ### Step 3: Examine the Project Structure
 
-Explore the codebase structure, open the project in VSCode by typing and enter:
+Open the project in VS Code:
 
-```
+```bash
 code .
 ```
 
 Key directories:
 
 - `src/` - TypeScript source code
-- `src/auth/` - **NEW**: OAuth authentication module
+- `src/auth/` - OAuth authentication module (new in this lab)
 - `data/` - Sample JSON data files
 
-Notice the new `src/auth/oauth.ts` file - this contains the OAuth 2.0 implementation for token validation and protected resource metadata.
+The `src/auth/oauth.ts` file contains the OAuth 2.0 implementation for token validation and protected resource metadata.
 
 <cc-end-step lab="e10" exercise="1" step="3" />
 
-You have the code base ready with sample data and authentication support.
+Your codebase is now ready with sample data and authentication support.
 
 ---
 
@@ -116,11 +116,13 @@ After registration, configure redirect URIs for different platforms:
 2. **Add a Web platform**:
    - Click **Add a platform** → **Web**
    - Add these redirect URIs:
-     ```
-     http://127.0.0.1:33418
-     https://vscode.dev/redirect
-     https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect
-     ```
+  
+     - `http://127.0.0.1:33418`
+
+     - `https://vscode.dev/redirect`
+
+     - `https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect`
+   
    - Under **Implicit grant and hybrid flows**, leave both options **unchecked** (disabled)
    - Click **Configure**
 
@@ -146,17 +148,11 @@ After registration, configure redirect URIs for different platforms:
    - **Admin consent display name**: `Read Zava as Admin`
    - **Admin consent description**: `Read Zava as Admin`
    - **User consent display name**: `Read Zava as User`
-   - **User consent description**: `Read Zava as Admin`
+   - **User consent description**: `Read Zava as User`
    - **State**: Enabled
 4. Click **Add scope**
 
 <cc-end-step lab="e10" exercise="2" step="4" />
-
-### Step 5: Verify API Permissions
-
-1. Go to **API permissions**
-2. Verify that **Microsoft Graph** → **User.Read** (delegated) is listed
-3. This permission allows the app to sign in users and read their basic profile
 
 Your Microsoft Entra ID app registration is now complete!
 
@@ -170,14 +166,14 @@ In this exercise, you'll configure the OAuth environment variables and start the
 
 ### Step 1: Set Up Public Access with Dev Tunnel
 
-Before configuring environment variables, you need a public HTTPS URL for your MCP server.
+You need a public HTTPS URL for your MCP server before configuring environment variables.
 
-1. In VS Code's terminal panel, locate the **Ports** tab
-2. Click the **Forward a Port** button and enter port number `3001`
-3. Right-click on the forwarded port address and select **Port Visibility** → **Public**
+1. In VS Code's terminal panel, select the **Ports** tab
+2. Click **Forward a Port** and enter port `3001`
+3. Right-click the forwarded port address and select **Port Visibility** → **Public**
 4. Copy the tunnel URL (e.g., `https://abc123def456.use.devtunnels.ms`)
 
-Save this URL - you'll need it for the environment configuration.
+**Save this URL** - you'll need it for the environment configuration.
 
 <cc-end-step lab="e10" exercise="3" step="1" />
 
@@ -206,7 +202,7 @@ HOST=127.0.0.1
 NODE_ENV=development
 
 # Storage Configuration
-AZURE_STORAGE_CONNECTION_STRING=UseDevelopmentStorage=true
+AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;"
 ```
 
 Replace the placeholders:
@@ -245,10 +241,10 @@ npm run init-data
 
 This loads realistic data including:
 
-- **Claims**: Storm damage, water damage, fire damage cases
-- **Contractors**: Roofing specialists, water restoration, general contractors
-- **Inspections**: Scheduled and completed inspection tasks
-- **Inspectors**: Available field inspectors with specialties
+- **Claims** - Storm damage, water damage, fire damage cases
+- **Contractors** - Roofing specialists, water restoration, general contractors
+- **Inspections** - Scheduled and completed inspection tasks
+- **Inspectors** - Available field inspectors with specialties
 
 You should see confirmation messages for all tables being initialized.
 
@@ -311,6 +307,7 @@ http://127.0.0.1:3001/.well-known/oauth-authorization-server
 ```
 
 You should see OAuth metadata including:
+
 - `issuer` - Your server's base URL
 - `authorization_endpoint` - Microsoft login URL
 - `token_endpoint` - Token exchange URL
@@ -350,52 +347,56 @@ This confirms that authentication is working correctly.
 
 ## Exercise 5: Create a New Declarative Agent Project
 
-In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that will connect to Zava's authenticated claims system.
+In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that connects to Zava's authenticated claims system.
 
 ### Step 1: Create New Agent using Microsoft 365 Agents Toolkit
 
 1. Open a new window in **VS Code**
 2. Click the **Microsoft 365 Agents Toolkit** icon in the Activity Bar (left sidebar)
 3. Sign in with your Microsoft 365 developer account if prompted
+4. In the Agents Toolkit panel, click **Create a New Agent/App**
+5. Select **Declarative Agent** from the template options
+6. Choose **Add an Action** to add to your agent
+7. Select **Start with an MCP server (preview)**
+8. Enter the publicly accessible MCP Server URL from Exercise 3 (your tunnel URL + `/mcp/messages`)
+9. Choose the default folder to scaffold the agent (or choose a preferred location)
+10. When prompted for project details, enter:
+    - **Application Name**: `Zava Claims Assistant (Auth)`
 
-#### Create New Agent Project
+<cc-end-step lab="e10" exercise="5" step="1" />
 
-1. In the Agents Toolkit panel, click **"Create a New Agent/App"**
-2. Select **"Declarative Agent"** from the template options
-3. Next choose **"Add an Action"** to add to your agent
-4. Next select **Start with an MCP server (preview)**
-5. Enter the publicly accessible MCP Server URL from Exercise 3 (your tunnel URL + `/mcp/messages`)
-6. Choose the Default folder to scaffold the agent (or choose a preferred location on your machine)
-7. When prompted for project details:
+### Step 2: Configure MCP Server Authentication
 
-   - **Application Name**: `Zava Claims Assistant (Auth)`
+You'll be directed to the newly created project with the `.vscode/mcp.json` file open. This is the MCP server configuration file.
 
-You will be directed to the newly created project which has the file `.vscode/mcp.json` open. This is the MCP server configuration file for VS Code to use.
+1. Select the **Start** button to fetch tools from your server
+2. A dialog appears indicating that your MCP Server requires authentication and doesn't support Dynamic Client Registration. You'll need to register manually
+3. Since you already configured your Entra ID with the redirect URIs (`https://vscode.dev/redirect` and `http://127.0.0.1:33418`), select **Copy URIs & Proceed**
+4. The Agents Toolkit wizard prompts for OAuth credentials. Enter the client ID and secret from your Entra ID app registration
+5. The toolkit asks you to authenticate with your MCP Server
+6. A browser opens at `http://127.0.0.1:33418`. If your Entra ID configuration is correct, you'll see the sign-in success screen. Close the browser and return to your project
 
-- Select **Start** button to fetch tools from your server.
-- A new dialog opens up that tells you that Agent Toolkit identifies your MCP Server is authenticated and since the MCP Server does not yet support Dynamic Client Registration to proceed manually registering.
-- You have already updated your Entra ID wuth the redirect URIs Agent Tookit expects like `https://vscode.dev/redirect` and `http://127.0.0.1:33418` but continue by selecting **Copy URIs & Proceed**
-- Agents toolkit now uses it's wizard which you used to create the agent, to capture the OAuth clied ID and secret. Paste the values from when you configured the Entra ID 
-- Agents toolkit will now ask you to allow authentication into your MCP Server for rest of the configuration
-- It opens a new browser with address `http://127.0.0.1:33418` and if the Entra ID configuration is correct it will show below screen. Close the browser and return to your agent project
+![VS Code signed in with MCP server](../../assets/images/extend-m365-copilot-10/vscode-mcp.png)
 
-![image of vs code signed in with mcp server](../../assets/images/extend-m365-copilot-10/vscode-mcp.png)
+<cc-end-step lab="e10" exercise="5" step="2" />
 
-- Now, the server is started. You will see the number of tools and prompts available
-- Select **ATK:Fetch action from MCP** to select tools you want to add to the agent. 
-- Select `get_claims` tool for ease of testing.
-- Next, you will be prompted to configure the agent in Teams Developer portal, so follow direction.
-- Select Authentication Type **OAuth(with static registration)**, at this point your plugin manifest will be created by toolkit.
-- Select **Provision** to provision the agent to the tenant for your testing
-- Toolkit wizard will again ask for the client ID, secret. Provide as earlier. Again this is for toolkit to store client ID and secret for OAuth Registration to Developer Portal. It is then used by client to securely access your MCP Server. Toolkit will not store the id and secret.
-- Add scope as `api://<your-client-id>/access_as_user`
-- Select **Confirm** when prompted, this kicks off provisioning
-- Once provisioned notice how the developer portal token is automatically created for the agent and shows up in .env.dev file as as variable like **MCP_DA_AUTH_ID_XXXX**
+### Step 3: Add Tools and Provision the Agent
 
- 
+1. The server is now started. You'll see the number of tools and prompts available
+2. Select **ATK: Fetch action from MCP** to choose which tools to add to the agent
+3. Select the `get_claims` tool for testing
+4. When prompted to configure the agent in Teams Developer Portal, follow the directions
+5. Select Authentication Type: **OAuth (with static registration)**. The toolkit creates your plugin manifest
+6. Select **Provision** to provision the agent to your tenant
+7. The wizard prompts for the client ID and secret again. Enter them as before. This is for OAuth registration with the Developer Portal - the toolkit doesn't store these credentials
+8. Add scope: `api://<your-client-id>/access_as_user`
+9. Select **Confirm** to start provisioning
+
+Once provisioned, notice how the Developer Portal token is automatically created for the agent and appears in the `.env.dev` file as a variable like `MCP_DA_AUTH_ID_XXXX`.
+
 You now have a Declarative Agent connected to your OAuth-protected MCP Server.
 
-<cc-end-step lab="e10" exercise="6" step="2" />
+<cc-end-step lab="e10" exercise="5" step="3" />
 
 ---
 
@@ -405,44 +406,44 @@ Test your Declarative Agent to ensure it can successfully authenticate and commu
 
 ### Step 1: Ensure MCP Server is Running
 
-Before testing, make sure your MCP server from previous exercises is still running:
+Before testing, verify your MCP server from previous exercises is still running:
 
-1. Open the window where zava-mcp-server project is running
-2. In the terminal, verify Azurite is running: `npm run start:azurite`
+1. Open the window where the zava-mcp-server project is running
+2. Verify Azurite is running: `npm run start:azurite`
 3. Verify MCP server is running: `npm run start:mcp-http`
 4. Verify the Dev Tunnel port forwarding is active
 
-<cc-end-step lab="e10" exercise="8" step="1" />
-
+<cc-end-step lab="e10" exercise="6" step="1" />
 
 ### Step 2: Test in Microsoft 365 Copilot
 
-1. Open Copilot using URL https://m365.cloud.microsoft/chat/
-2. Under Agents on left hand side, find **Zava Claims (Secure)** agent, and select it.
-3. Try the conversation starters:
-   - "Find all claims"
-4. Agent will ask for signing in before proceeding to fetch data. Select **Sign in**
-![image of agent sign in prompt](../../assets/images/extend-m365-copilot-10/sign-in.png)
-5. Once user signs in, agent responds with info.
-6. Additionally check the MCP Server project's terminal, you will see the authentication being successful and tool called.
+1. Open Copilot at [https://m365.cloud.microsoft/chat/](https://m365.cloud.microsoft/chat/)
+2. In the left sidebar under **Agents**, find and select **Zava Claims (Secure)**
+3. Try the conversation starter: "Find all claims"
+4. The agent prompts you to sign in before fetching data. Select **Sign in**
 
-![image of MCP Server authenticated](../../assets/images/extend-m365-copilot-10/success.png)
+![Agent sign-in prompt](../../assets/images/extend-m365-copilot-10/sign-in.png)
 
-<cc-end-step lab="e10" exercise="8" step="3" />
+5. After signing in, the agent responds with the claims information
+6. Check the MCP Server project's terminal - you'll see the successful authentication and tool call
+
+![MCP Server authenticated](../../assets/images/extend-m365-copilot-10/success.png)
+
+<cc-end-step lab="e10" exercise="6" step="2" />
 
 
 ---
 
 ## 🎉 Congratulations!
 
-You've successfully created and deployed Zava Insurance's **OAuth-protected** Declarative Agent that securely integrates with their authenticated MCP server. 
+You've successfully created and deployed Zava Insurance's **OAuth-protected** Declarative Agent that securely integrates with their authenticated MCP server.
 
 ### What You Accomplished
 
 - ✅ Created a Microsoft Entra ID app registration for OAuth 2.0
 - ✅ Configured environment variables for secure authentication
 - ✅ Ran an OAuth-protected MCP server with JWT token validation
-- ✅ Tested RFC 9728 compliant OAuth discovery endpoints
+- ✅ Tested RFC 9728-compliant OAuth discovery endpoints
 - ✅ Created a Declarative Agent with authenticated MCP integration
 - ✅ Tested secure natural language queries with claims data
 
