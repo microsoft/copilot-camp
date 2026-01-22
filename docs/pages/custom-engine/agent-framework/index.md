@@ -21,7 +21,7 @@ The labs follow a **Build with Agent Framework (BAF)** approach where you progre
 * [**Lab BAF3**](./03-add-vision-analysis): Add Vision Analysis - Enable AI-powered damage photo analysis using Mistral vision model
 * [**Lab BAF4**](./04-add-policy-search): Add Policy Search - Implement policy validation and SharePoint document search
 * [**Lab BAF5**](./05-add-communication): Add Communication Capabilities - Send professional emails via Microsoft Graph and generate investigation reports
-* [**Lab BAF6**](06-add-copilot-api): Add Copilot APIs - Rely on content stored in SharePoint Online via Copilot Retrieval API to add RAG to the agent
+* [**Lab BAF6**](06-add-copilot-api): Add Work IQ API - Rely on content stored in SharePoint Online via Copilot Retrieval API to add RAG to the agent
 * [**Lab BAF7**](./07-add-mcp-tools): Add MCP Tools - Enrich the agent with MCP tools provided by an external MCP server
 
 Each lab builds on the previous one, following the pattern: **Services → Plugins → Integration → Testing**

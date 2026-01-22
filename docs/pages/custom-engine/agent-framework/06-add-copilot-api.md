@@ -1,9 +1,9 @@
-# Lab BAF6 - Add Microsoft 365 Copilot APIs Integration
+# Lab BAF6 - Add Microsoft 365 Work IQ API Integration
 
-In this lab, you'll enhance the Zava Insurance Agent with Microsoft 365 Copilot APIs. You'll add the ability to analyze claim compliance using policy documents from SharePoint via the **Copilot Retrieval API** and leverage the power of Microsoft 365 Copilot's enterprise search grounding.
+In this lab, you'll enhance the Zava Insurance Agent with Microsoft 365 Work IQ API. You'll add the ability to analyze claim compliance using policy documents from SharePoint via the **Copilot Retrieval API** and leverage the power of Microsoft 365 Copilot's enterprise search grounding.
 
-???+ info "Understanding Microsoft 365 Copilot APIs"
-    The **Microsoft 365 Copilot APIs** enable your agent to:
+???+ info "Understanding Microsoft 365 Work IQ API"
+    The **Microsoft 365 Work IQ API** enable your agent to:
     
     - **Copilot Retrieval API**: Retrieve relevant text chunks from SharePoint, OneDrive, and Copilot connectors while respecting permissions and compliance settings
     - **Secure Data Access**: Access Microsoft 365 data within the trust boundary without data egress
@@ -16,7 +16,7 @@ In this lab, you'll enhance the Zava Insurance Agent with Microsoft 365 Copilot 
 
 ## Overview
 
-In Lab BAF5, you added communication capabilities with email and report generation. Now you'll enhance your agent with Microsoft 365 Copilot APIs to retrieve policy documents from SharePoint and analyze claim compliance using AI-powered analysis.
+In Lab BAF5, you added communication capabilities with email and report generation. Now you'll enhance your agent with Microsoft 365 Work IQ API to retrieve policy documents from SharePoint and analyze claim compliance using AI-powered analysis.
 
 The **Copilot Retrieval API** offers a streamlined solution for Retrieval Augmented Generation (RAG) without the need to replicate, index, chunk, and secure your data in a separate index. The API understands the user's context and intent and performs query transformations to yield the most relevant results.
 
@@ -784,7 +784,7 @@ The agent should seamlessly integrate the Copilot Retrieval API alongside all ot
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab BAF6 - Add Microsoft 365 Copilot APIs Integration!
+You have completed Lab BAF6 - Add Microsoft 365 Work IQ API Integration!
 
 You've learned how to:
 
@@ -803,8 +803,8 @@ Your Zava Insurance Agent now includes:
 - **Compliance**: Copilot Retrieval API for policy compliance analysis from SharePoint
 - **Communication**: Email reports and investigation summaries
 
-???+ info "About Microsoft 365 Copilot APIs"
-    The Microsoft 365 Copilot APIs provide access to components that power Copilot experiences:
+???+ info "About Microsoft 365 Work IQ API"
+    The Microsoft 365 Work IQ API provide access to components that power Copilot experiences:
     
     - **Retrieval API**: Ground your AI solutions with Microsoft 365 data without data egress
     - **Chat API** (preview): Engage in multi-turn conversations with enterprise search grounding
