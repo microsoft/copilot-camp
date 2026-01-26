@@ -2992,8 +2992,23 @@ Azurite Table service is starting at http://127.0.0.1:10002
                 ...
 }
 </code></pre>
-<p>You now have a basic Declarative Agent that is connected to your MCP Server with 10 tools ready for use.
-<cc-end-step lab="e8" exercise="5" step="2" /></p>
+<p>You now have a basic Declarative Agent that is connected to your MCP Server with 10 tools ready for use.</p>
+<div class="admonition note">
+<p class="admonition-title">Known issue in Agents Toolkit (Pre-release)</p>
+<p>In the pre-release version of the Agents Toolkit, tool definitions cannot be referenced from a separate file during testing.</p>
+<p>To work around this issue, copy the contents of the tool definition file and paste them directly into the tool description as outlined below:</p>
+<ul>
+<li>Copy the contents of <strong>appPackage/mcp-tools.json</strong></li>
+<li>Open <strong>appPackage/ai-plugin.json</strong></li>
+<li>Locate the <strong>mcp_tool_description</strong> property:
+  <code>json
+  "mcp_tool_description": {
+      "file": "mcp-tools.json"
+  }</code></li>
+<li>Replace the value of <strong>mcp_tool_description</strong> by pasting the contents of <strong>appPackage/mcp-tools.json</strong></li>
+</ul>
+</div>
+<p><cc-end-step lab="e8" exercise="5" step="2" /></p>
 <hr />
 <h2 id="exercise-6-configure-the-agent-for-zavas-claims-operations">Exercise 6: Configure the Agent for Zava's Claims Operations</h2>
 <p>Transform the basic agent into Zava's intelligent claims assistant by configuring its identity, instructions,  capabilities, and conversation starters.</p>
