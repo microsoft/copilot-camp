@@ -4,148 +4,195 @@ search:
 ---
 # 🎯 モデル選択アドベンチャー
 
-**あなたが行うこと:**
+**今回達成すること:**
 
-- **問題を特定**: エージェントにおいてモデル選択が重要な理由を理解する  
-- **モデルの全体像を探索**: さまざまな AI モデルとその強みを発見する  
-- **モデルを実際にテスト**: GitHub Models Playground を使って出力を比較する  
-- **選択に自信を持つ**: 自分のエージェントに最適なモデルを判断する  
-- **反復して改善**: 実験を通じてアプローチを洗練する  
+- **課題の特定**: エージェントにおいてモデル選択がなぜ重要かを理解します  
+- **モデルの全体像を把握**:  多様な AI モデルとその強みを知ります  
+- **モデルをハンズオンでテスト**:  GitHub Models Playground で実際の出力を比較します  
+- **選択に自信を持つ**:  自身のエージェントに最適なモデルを判断できるようになります  
+- **継続的に改善**:  実験を通じてアプローチを洗練させます  
 
-このブログでは、エージェントに適した AI モデルを選ぶ方法を順を追って説明します。適切なツールを選ぶことは作業の成功を左右します。正しく選べばエージェントは本当に役立ち、「まあまあ」では終わりません。
+このブログでは、エージェントに適した AI モデルの選び方を解説します。いわば「適材適所」のツール選び。合うモデルを使えばエージェントは本領を発揮し、「まあまあ」ではなく「しっかり」働きます。  
 
 ---
 
 ## 📖 はじめに
 
-Copilot エージェントの構築はワクワクしますが、実は **指示文だけでは半分** なのです。エージェントを動かす AI モデルは、その挙動・できること・パフォーマンスに大きく影響します。
+Copilot エージェント開発はわくわくしますが、実は秘密があります。あなたが書く指示文だけでは半分に過ぎません。エージェントを動かす AI モデルが、その挙動・能力・パフォーマンスに大きく影響します。  
 
-たとえば、医用画像を解析する完璧な指示を書いても、テキスト専用モデルを選んだら機能しません。また、速度に最適化されたモデルに創作ストーリーを書かせれば、味気ない文章やひどいラップが返ってくるかもしれません。
+例えば、医用画像を解析するエージェント向けに完璧な指示を書いても、テキスト専用モデルを選んでしまえば機能しません。また、速度に最適化されたモデルにクリエイティブな物語を書くよう指示すると、ありきたりな結果や、最悪の場合は雑なラップ曲が返ってくるかもしれません。  
 
-このブログ (ハンズオン ワークショップとしても利用可能) では、 **GitHub Models Playground** を使ってさまざまな AI モデルを探索・テスト・比較し、モデル選択に自信を持てるようにします。最後には、どのモデルがどのタスクに強いかを理解し、自分で選択できる実践力が身につきます。
+このブログ兼ハンズオンワークショップを通して、**GitHub Models Playground** を使いながら複数モデルを探索・テスト・比較し、モデル選択への自信を高めましょう。終了時には、各モデルが得意とするタスクを理解し、自分で選択できる実践力が身に付きます。  
 
 ---
 
 ## 🔍 Step 1: 課題の特定
 
-**課題:** Copilot エージェントを構築したいが、どの AI モデルを使えばよいかわからない。高速だが汎用的なモデルもあれば、高性能だが高価なモデルもある。どう選ぶ？
+**課題:** Copilot エージェントを構築しているが、どの AI モデルを選べばよいかわからない。高速だが凡庸なモデルもあれば、高性能だが高価なモデルもある。どう選択すべきか?  
 
-**実際のシナリオ:** チームの長い会議録を要約するエージェントを作るとします。あるモデルでは役立たない長文が返り、別のモデルでは簡潔で行動可能な要約が返る。その違いは？ モデルです。
+**実際のシナリオ:** チームの長大な会議録を要約するエージェントを作成するとします。あるモデルでは役立たない長文が返り、別のモデルでは簡潔で実用的な要約が得られました。違いは何か? それがモデルです。  
 
-**解決策:** ハンズオン実験を通じてタスクに合ったモデルをマッチさせる方法を学ぶ。
+**解決策:** ハンズオンでの実験を通して、タスクとモデルをマッチングする方法を学びましょう。  
 
-**目標:** この旅の終わりまでに、以下の一般的なタスクに適したモデルを自信を持って選べるようになります。
+**目標:** この旅の終わりには、次のような一般的タスクに最適なモデルを自信を持って選択できるようになります。  
 
-- 📄 ドキュメント要約
-- 🎙️ 音声の文字起こし
-- 🖼️ 画像解析
-- ✍️ クリエイティブコンテンツ生成
+- ドキュメントの要約 📄  
+- 音声の文字起こし 🎙️  
+- 画像解析 🖼️  
+- クリエイティブコンテンツの生成 ✍️  
 
 ---
 
-## 🗺️ Step 2: モデルランドスケープの探索
+## 🗺️ Step 2: モデルの全体像を把握
 
-AI エージェントに明確な役割が必要なように、モデルにも個性と強みがあります。さっそくキャストを紹介しましょう。
+AI エージェントに役割があるように、モデルにも個性と強みがあります。ではラインナップを見てみましょう。  
 
 ### 🎭 モデルツールキット
 
-| Task | 推奨モデル | 主な特徴 | 使用シーン |
-|------|-----------|----------|-----------|
-| **ドキュメント要約** | [ Mistral Small ](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503) | 簡潔、文脈理解、正確 | レポート・記事・議事録の要約 |
-| **音声文字起こし** | [ Phi-4 Multimodal ](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct) | マルチモーダル、高精度音声認識 | ポッドキャスト・会議・インタビューのテキスト化 |
-| **画像解析** | [ OpenAI o3 ](https://github.com/marketplace/models/azure-openai/o3) | ビジョン機能、注釈、詳細抽出 | グラフ読み取り、写真解析、データ抽出 |
-| **コンテンツ生成** | [ GPT-5 mini ](https://github.com/marketplace/models/azure-openai/gpt-5-mini) | 流暢、創造的、多用途 | メール・投稿・レポート・ストーリーの下書き |
+| タスク | 推奨モデル | 主要特長 | 推奨シナリオ |
+|------|-------------------|--------------|-------------|
+| **ドキュメント要約** | [Mistral Small](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503) | 簡潔・文脈理解・高精度 | レポート・記事・会議メモの要約 |
+| **音声文字起こし** | [Phi-4 Multimodal](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct) | マルチモーダル・高精度音声認識 | ポッドキャスト・会議・インタビューのテキスト化 |
+| **画像解析** | [OpenAI o3](https://github.com/marketplace/models/azure-openai/o3) | ビジョン機能・アノテーション・詳細抽出 | グラフ読取・写真解析・データ抽出 |
+| **コンテンツ生成** | [GPT-5 mini](https://github.com/marketplace/models/azure-openai/gpt-5-mini) | 流暢・創造性・多用途 | メール・投稿・レポート・物語の作成 |
 
-???+ info "why these models?"
-     Mistral、Phi-4、OpenAI o シリーズ、OpenAI gpt シリーズを選んだのは、明確な出発点を提示するためです。これらのファミリーは多様な強みとアプローチを代表しており、他の選択肢を探る前に主要なオプションを理解できます。
+???+ info "なぜこれらのモデル？"
+     Mistral、Phi-4、OpenAI o シリーズ、OpenAI gpt シリーズを選択したのは、出発点としてわかりやすい多様な強みとアプローチを示すためです。他のモデルを試す前に、まずは主要な選択肢を理解しましょう。
 
-これらのモデルは、専門ツールがそろったキッチンのようなものです。バターナイフで野菜は切らないし、肉用の出刃包丁でジャムは塗りません。モデルにも得意分野があるのです。
+これらのモデルは、専門道具が並ぶキッチンのようなものです。バターナイフで野菜は切れませんし、肉切り包丁でジャムは塗りません。各モデルには“おいしい仕事”があります。  
 
 ---
 
 ## 🧪 Step 3: GitHub Models Playground でのハンズオン実験
 
-いよいよモデルを実際に試す楽しい時間です。GitHub Models Playground は実験用サンドボックス。ここで魔法が起こります。
+いよいよテストの時間です! GitHub Models Playground は実験用のサンドボックス。ここで魔法が起こります。  
 
-> 続行するには [ GitHub アカウント ](https://github.com/signup) が必要です。 
+### セットアップ要件
 
-### スタートガイド
+**前提条件:**
+
+1. **GitHub アカウント**: 必要であれば [無料で作成](https://github.com/signup)  
+2. **アクセス確認**: [GitHub Models Marketplace](https://github.com/marketplace/models) にアクセス  
+3. **カタログの把握**: [利用可能なモデル](https://github.com/marketplace?type=models) を閲覧  
+
+**ナビゲーションのコツ:**
+
+- **Publisher でフィルター**: 定評ある AI プロバイダーに絞る  
+- **Capability でフィルター**: テキストタスクには `Chat/Completion` を選択  
+- **Category でフィルター**: 目的に応じて選択  
+  - **All**: 一般的な Q&A  
+  - **Instruction**: 専門ドメイン  
+  - **Multimodal**: 画像 & テキスト処理  
+  - **Audio**: 音声処理  
+  - **Reasoning**: 複雑な問題解決  
+  - **Multilingual**: 多言語対応  
+
+### はじめてみよう
 
 **ステップバイステップ:**
 
 1. **Playground にアクセス**  
-   [ GitHub Models Marketplace ](https://github.com/marketplace/models) へ
-
+   [GitHub Models Marketplace](https://github.com/marketplace/models) へ  
 2. **最初のモデルを選ぶ**  
-   ドキュメント要約ならおなじみの GPT-4 から始めましょう
-
-3. **テスト用プロンプトを作成**  
-   要約したいドキュメントを貼り付けるか、解析したい画像をアップロード
-
+   ドキュメント要約用に馴染みのある GPT-4 から試してみましょう  
+3. **テストプロンプトを作成**  
+   要約したいドキュメントを貼り付けるか、解析したい画像をアップロード  
 4. **実行してレビュー**  
-   出力を確認。簡潔か？ 正確か？ 読みやすいか？
-
+   出力を確認。簡潔か? 正確か? 読みやすいか?  
 5. **モデルを切り替えて比較**  
-   同じプロンプトを Mistral や Phi-4 など別モデルでも試す
-
+   同じプロンプトを Mistral や Phi-4 など他モデルでも試します  
 6. **メモを取る**  
-   明確さ・正確さ・文体・速度の違いを記録
+   明瞭さ・精度・文体・速度の違いを記録します  
 
-### 💡 テストのプロ向けヒント
+### 💡 テストのプロ技
 
-**同一プロンプト法:**  
-複数モデルでまったく同じプロンプトを使うのがコツです。これは対照変数となります。出力が異なれば、指示ではなくモデルの違いが原因だとわかります。
+**Same-Prompt メソッド:**  
+複数モデルへ同一プロンプトを入力しましょう。これがコントロール変数になります。出力が異なれば、それは指示ではなく“モデルの違い”です。  
 
 **テスト例:**  
-気候変動に関する 2,000 文字の研究記事を要約するとしましょう。
+たとえば、気候変動に関する 2 000 語の論文を要約したいとします。  
 
-- ** GPT-4 でテスト:** 重要ポイントの整理方法を確認  
-- ** Mistral Small でテスト:** より簡潔か詳細かを比較  
-- ** Phi-4 でテスト:** 読みやすさと構成を比較  
+- **GPT-4 でテスト**: 重要ポイントの整理方法を確認  
+- **Mistral Small でテスト**: さらに簡潔か詳細かを比較  
+- **Phi-4 でテスト**: 可読性と構成を比較  
 
-GPT-4 は洞察に富むまとめを、Mistral Small は高速で概要を返す、などの発見があるかもしれません。
+GPT-4 は洞察に富む要約を返し、Mistral Small は高速で概要を提供する――そんな違いに気づくかもしれません。  
 
 ### 🎨 画像解析のテスト
 
-同じ画像をビジョン対応モデルにアップロードして比較:
+同じ画像を複数のビジョン対応モデルにアップロードしてみましょう。  
 
-- ** OpenAI o3:** 詳細な説明に秀でる可能性  
-- ** GPT-5 mini:** グラフから特定データを抽出するのが得意かも  
+- **OpenAI o3**: 詳細な説明に優れる可能性あり  
+- **GPT-5 mini**: グラフからのデータ抽出が得意かもしれません  
 
-Playground なら推測ではなく、リアルタイムに実際の結果が確認できます。
-
----
-
-## 🔄 Step 4: レビュー、反復、改善
-
-モデル選択は「一度決めて終わり」ではありません。継続的に洗練していくプロセスです。
+Playground を使えば、推測ではなくリアルタイムで結果を確認できます。  
 
 ---
 
-## 🚀 追加ステップ: コストとその他の重要事項
+## 🔄 Step 4: 継続的最適化戦略
 
-このステップはオプションですが非常に有用です。  
-[ リーダーボード ](https://ai.azure.com/explore/models/leaderboard) を使えば、モデルのコスト・品質などを比較できます。
+モデル選択は、一度決めたら終わりではなく、ニーズの変化や新モデルの登場に応じて常に見直しが必要です。  
+
+### 最適化アプローチ
+
+**初期導入:**  
+テスト結果を基に最適なモデルを選び、実運用にデプロイします。  
+
+**パフォーマンス監視:**  
+実環境での成果を継続的に追跡し、期待を下回るパターンを特定します。  
+
+**定期評価:**  
+四半期ごとに、新モデルや更新版を既存のテストケースで評価します。  
+
+**戦略的調整:**  
+特定のユースケースで定量的に優れた性能が確認できたら、モデルを更新します。  
+
+### 高度な検討事項
+
+**費用対効果分析:**  
+高価なモデルが、時短や品質向上などでコストに見合うか評価します。  
+
+**エッジケース管理:**  
+モデルの限界を露呈する難易度の高いリクエストを蓄積し、新モデルのテストに活用します。  
+
+**パフォーマンスドキュメント:**  
+シナリオごとに有効だったモデルを記録し、将来の意思決定に役立てます。  
 
 ---
+
+## 🚀 実践的なポイント
+
+### コスト & パフォーマンス分析
+
+[Azure AI Model Leaderboard](https://ai.azure.com/explore/models/leaderboard) を活用して以下を比較しましょう。  
+
+- **リクエスト当たりのコスト**: 予算計画と ROI の計算  
+- **性能指標**: 客観的な品質評価  
+- **速度ベンチマーク**: 応答時間要件  
+
+### プロフェッショナルヒント
+
+- **効率重視**: 多くのタスクは中位クラスのモデルで十分。品質が成果に直結する場合のみプレミアムモデルを使用しましょう。  
+- **ドキュメント整備**: 成功したモデルとタスクの組み合わせを簡潔に記録しておくと便利です。  
+- **最新情報の追跡**: 機能や選択肢は急速に進化します。定期的に新モデルをテストしましょう。  
 
 ## 📚 リソース
 
-さらに深掘りしたい方はこちらをどうぞ:
+さらに深掘りしたい方はこちら:
 
-| Task | GitHub | Microsoft Foundry | 動画を見る | ラボで学ぶ |
-|------|--------|-----------------|------------|-----------|
-| **ドキュメント要約** | [ Mistral Small ](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503) | [ Mistal Small ](https://ai.azure.com/explore/models/Mistral-small/version/1/registry/azureml-mistral?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [ Watch now ](https://www.youtube.com/watch?v=tqOecUt_wCc&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=5&pp=iAQB) | [ Learn more ](https://github.com/microsoft/Build25-LAB324) |
-| **音声文字起こし** | [ Phi-4 Multimodal ](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct) | [ Phi-4-multimodal-instruct ](https://ai.azure.com/explore/models/Phi-4-multimodal-instruct/version/2/registry/azureml?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [ Watch now ](https://www.youtube.com/watch?v=VLQKZq8L9Uk&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=2) | [ Learn more ](https://github.com/microsoft/PhiCookBook/blob/main/md/02.Application/05.Audio/Phi4/Transciption/README.md) |
-| **画像解析** | [ OpenAI o3 ](https://github.com/marketplace/models/azure-openai/o3) | [ OpenAI o3 ](https://ai.azure.com/explore/models/o3/version/2025-04-16/registry/azure-openai?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [ Watch now ](https://www.youtube.com/watch?v=ffxUEenM4B8&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=12&pp=iAQB) | [ Learn more ](https://github.com/microsoft/BUILD25-LAB333) |
-| **コンテンツ生成** | [ GPT-5 mini ](https://github.com/marketplace/models/azure-openai/gpt-5-mini) | [ gpt-5-mini ](https://ai.azure.com/explore/models/gpt-5-mini/version/2025-08-07/registry/azure-openai?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [ Explore ](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-model-mondays-%E2%80%93-your-ai-model-power-up/4390773) | TBD |
+| タスク | GitHub | Microsoft Foundry | 動画を見る | 詳細ラボ |
+|------|-------------------|--------------|-------------|-------------|
+| **ドキュメント要約** | [Mistral Small](https://github.com/marketplace/models/azureml-mistral/mistral-small-2503) | [Mistal Small](https://ai.azure.com/explore/models/Mistral-small/version/1/registry/azureml-mistral?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [Watch now](https://www.youtube.com/watch?v=tqOecUt_wCc&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=5&pp=iAQB) | [Learn more](https://github.com/microsoft/Build25-LAB324) |
+| **音声文字起こし** | [Phi-4 Multimodal](https://github.com/marketplace/models/azureml/Phi-4-multimodal-instruct) | [Phi-4-multimodal-instruct](https://ai.azure.com/explore/models/Phi-4-multimodal-instruct/version/2/registry/azureml?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [Watch now](https://www.youtube.com/watch?v=VLQKZq8L9Uk&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=2) | [Learn more](https://github.com/microsoft/PhiCookBook/blob/main/md/02.Application/05.Audio/Phi4/Transciption/README.md) |
+| **画像解析** | [OpenAI o3](https://github.com/marketplace/models/azure-openai/o3) | [OpenAI o3](https://ai.azure.com/explore/models/o3/version/2025-04-16/registry/azure-openai?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [Watch now](https://www.youtube.com/watch?v=ffxUEenM4B8&list=PLmsFUfdnGr3wzz6a4E-Szksg92JPng-AL&index=12&pp=iAQB) | [Learn more](https://github.com/microsoft/BUILD25-LAB333) |
+| **コンテンツ生成** | [GPT-5 mini](https://github.com/marketplace/models/azure-openai/gpt-5-mini) | [gpt-5-mini](https://ai.azure.com/explore/models/gpt-5-mini/version/2025-08-07/registry/azure-openai?tid=3724f11b-e7b2-41d9-92a6-05ff649e1c18) | [Explore](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-model-mondays-%E2%80%93-your-ai-model-power-up/4390773) | TBD |
 
 ---
 
 ## 🎬 まとめ
 
-適切な AI モデルを選ぶことは、役にぴったりの俳優をキャスティングするのと同じです。アクション俳優をロマンチックコメディに配役しないように、速度特化モデルに詩を書かせるべきではありません。
+適切な AI モデルを選ぶことは、役者をキャスティングするのと同じです。アクションヒーローをラブコメに起用しないように、速度重視のモデルに詩的な文章を求めるのは適切ではありません。  
 
-GitHub Models Playground は、リスクのない舞台でモデルをオーディションし、そのパフォーマンスを確認し、エージェントのために適切なキャスティング決定を下せるようにします。
+GitHub Models Playground は、リスクなくモデルを“オーディション”できる舞台です。実際に動かしてみて、その演技を確認し、エージェントに最適なキャスティングを行いましょう。  
 
-実験を重ねるほど直感は研ぎ澄まされます。すぐに、タスクを見ただけでどのモデルが輝くかがわかるようになるでしょう。
+実験を重ねるほど、勘は研ぎ澄まされます。やがて、タスクを見ただけで「このモデルが光る」と直感できるようになるはずです。

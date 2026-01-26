@@ -1,9 +1,9 @@
 <div class="cc-lab-toc mab-path">
   <img src="/copilot-camp/assets/images/path-icons/MAB-path-heading.png"></img>
   <div>
-    <p>Copilot Studio Lite で宣言型エージェントを構築したい場合は、次のラボを実施してください。</p>
+    <p>Copilot Studio Lite で 宣言型 エージェント を構築したい場合は、以下の ラボ を実施してください</p>
     <ul>
-      <li><a href="/copilot-camp/ja/pages/make/agent-builder/01-first-agent/">MAB1 - 最初のエージェントを構築する</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/agent-builder/01-first-agent/">MAB1 - はじめての エージェント を構築する</a></li>
     </ul>
   </div>
 </div>
@@ -19,7 +19,7 @@ for (const div of toc) {
         const anchor = li.querySelector('a');
         if (location.href.includes(anchor.href)) {
             const span = document.createElement("span");
-            span.innerHTML = "現在地";
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
             li.appendChild(span);
         }
     }    

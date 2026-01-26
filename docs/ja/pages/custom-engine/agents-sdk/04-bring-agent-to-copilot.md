@@ -2,27 +2,27 @@
 search:
   exclude: true
 ---
-# Lab MBA4 - エージェントを Copilot Chat に導入
+# ラボ MBA4 - エージェントを Copilot Chat に追加
 
-この最後のラボでは、カスタム エンジン エージェントを Copilot Chat に導入するために、エージェントのマニフェストを更新します。`copilotAgents` をアプリ マニフェストで有効にすると、AI 搭載アシスタントを Copilot 体験内で直接利用できるようになります。
+In this final lab, you’ll bring your custom engine agent into Copilot Chat by updating the agent's manifest. By enabling copilotAgents in the app manifest, you’ll make your AI-powered assistant available directly inside the Copilot experience.
 
-## Exercise 1: エージェントを Copilot Chat に導入
+## 演習 1: エージェントを Copilot Chat に追加
 
-### Step 1: マニフェストの更新
+### Step 1: マニフェストを更新する
 
 !!!tip "デバッグを停止"
     この演習を始める前に、前回のデバッグ セッションを終了してください。
 
-**M365Agent/AppPackage/manifest.json** に移動し、マニフェストのスキーマとバージョンを次のように更新します。
+**M365Agent/AppPackage/manifest.json** に移動し、次のようにマニフェストの schema と version を更新します。 
 
 ``` 
 "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
 "manifestVersion": "1.22",
 ```
 
-`bots` セクションを以下の内容に置き換え、`copilotAgents` もマニフェストに追加します。
+bots セクションを次の内容に置き換え、`copilotAgents` をマニフェストに追加します:
 
-> このブロックでは、エージェントを M365 Copilot 向けのカスタム エンジン エージェントとして宣言しています。Microsoft 365 はこのエージェントを Copilot Chat に公開し、会話 UI にコマンド リストと会話スターターを表示して、ユーザーがすぐに開始できるようにします。
+> このブロックは、エージェントを Microsoft 365 Copilot 用の Custom Engine エージェントとして宣言します。Microsoft 365 に対し、Copilot Chat にこのエージェントを表示し、会話 UI にコマンド リストと会話スターターを表示して ユーザー がすばやく開始できるように指示します。
 
 ```   
 "bots": [ 
@@ -66,34 +66,35 @@ search:
 }, 
 ```
 
-**Start** または **F5** を押してデバッグを開始します。Microsoft Teams が自動的に起動します。ブラウザーで Microsoft Teams が開いたら、アプリのポップアップを無視し、**Apps > Manage your apps > Upload an app** を選択して **Upload a custom app** をクリックします。ファイル エクスプローラーでプロジェクト フォルダー `...\ContosoHRAgent\M365Agent\appPackage\build` に移動し、**appPackage.local.zip** を選択します。
+**Start** または **F5** を押してデバッグを開始します。Microsoft Teams が自動的に起動します。ブラウザーで Microsoft Teams が開いたら、アプリのポップアップは無視し、**Apps > Manage your apps > Upload an app** を選択してから **Upload a custom app** を選択します。エクスプローラーでプロジェクト フォルダー `...\ContosoHRAgent\M365Agent\appPackage\build` に移動し、**appPackage.local.zip** を選択します。
 
-![The UI of Microsoft Teams when uploading an app, with the "Upload an app" command highlighted.](https://github.com/user-attachments/assets/5fad723f-b087-4481-8c8c-d5ad87c1bead)
+![アプリをアップロードする際の Microsoft Teams の UI。「Upload an app」コマンドが強調表示されています。](https://github.com/user-attachments/assets/5fad723f-b087-4481-8c8c-d5ad87c1bead)
 
-アプリが Teams に表示されたら **Add** を選択します。今回は **Open with Copilot** のオプションが表示されるので、**Open with Copilot** を選択して Copilot 上でエージェントをテストします。
+アプリが Teams に再度表示されたら **Add** を選択します。今回は **Open with Copilot** のオプションが表示されるので、**Open with Copilot** を選択して Copilot 上でエージェントをテストします。
 
-![The UI of Microsoft Teams when the agents gets added, with the "Open with Copilot" command highlighted.](https://github.com/user-attachments/assets/97f9d9fd-bd90-48b5-983b-b1fea3f85721)
+![エージェントが追加された際の Microsoft Teams の UI。「Open with Copilot」コマンドが強調表示されています。](https://github.com/user-attachments/assets/97f9d9fd-bd90-48b5-983b-b1fea3f85721)
 
-Copilot Chat のエージェント一覧から **ContosoHRAgentlocal** を選択します。会話スターターのいずれかをクリックしてエージェントとチャットを始められます。
+Copilot Chat のエージェント一覧から **ContosoHRAgentlocal** を選択します。会話スターターのいずれかを選択して、エージェントと対話できます。
 
-![The agent hosted inside Microsoft 365 Copilot, showing the conversation starters configured in the application manifest.](https://github.com/user-attachments/assets/a1d061c7-c58f-4a1e-9481-4d6a60d85e3b)
+![Microsoft 365 Copilot 内にホストされたエージェント。アプリケーション マニフェストで設定した会話スターターが表示されています。](https://github.com/user-attachments/assets/a1d061c7-c58f-4a1e-9481-4d6a60d85e3b)
 
-Copilot Chat 上でも、エージェントが同様の動作で応答することを確認してください。
+エージェントが Copilot Chat 上でも同様の動作で応答することを確認してください。
 
-![The agent hosted in Microsoft 365 Copilot providing the same feedback as the one provided in Microsoft Teams, including evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/caedced5-1247-44ed-b12f-78827f4e4784)
+![ユーザー との対話回数をカウントするカウンターを含め、Microsoft Teams と同じ応答を返す Microsoft 365 Copilot 内のエージェント。](https://github.com/user-attachments/assets/caedced5-1247-44ed-b12f-78827f4e4784)
+
 
 ---8<--- "ja/b-congratulations.md"
 
-🎉 おめでとうございます! Microsoft 365 Agents SDK と Microsoft Foundry を使用して、初めてのカスタム エンジン エージェントを構築しました。
+🎉 おめでとうございます! Microsoft 365 Agents SDK と Microsoft Foundry を使用して、初めての Custom Engine エージェントを構築しました。
 
-このラボで学んだこと:
+このラボでは、次の内容を学習しました:
 
-* Agent Playground を使用して Microsoft Foundry に AI エージェントを構成する方法
-* 企業ドキュメントをアップロードしてエージェントの応答を根拠付ける方法
-* Visual Studio で M365 Agents SDK を使用してボットをスキャフォールディングする方法
-* Semantic Kernel を追加し、Azure AI Agent Service に接続する方法
-* ボットを Microsoft Foundry のエージェントと統合してリアルタイムで根拠のある推論を行う方法
-* **Microsoft Teams** と **Copilot Chat** にエージェントをデプロイしてテストする方法
+* Agent Playground を使用して Microsoft Foundry で AI エージェントを構成する
+* 企業ドキュメントをアップロードしてエージェントの回答を根拠付ける
+* Visual Studio で M365 Agents SDK を使用してボットをスキャフォールディングする
+* Semantic Kernel を追加し、Azure AI Agent Service に接続する
+* 実時間で根拠に基づいた推論を行うため Microsoft Foundry エージェントとボットを統合する
+* **Microsoft Teams** と **Copilot Chat** でエージェントをデプロイしてテストする
 
 ## リソース
 
