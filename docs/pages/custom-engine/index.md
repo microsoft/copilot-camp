@@ -15,23 +15,21 @@ You'll create a cross-channel custom engine agent using C# and the **Microsoft 3
 
 We offer two hands-on learning paths to build custom engine agents. Choose the one that matches your scenario and interests:
 
-### Option 1: [Microsoft 365 Agents SDK with Semantic Kernel](./agents-sdk/)
+### Option 1: [Start with Microsoft Foundry](./agents-sdk/)
 
-Build an agent starting from **Azure AI Foundry**, where you'll define your agent's instructions and tools. Then bring it to life using the Microsoft 365 Agents SDK and Semantic Kernel for orchestration.
+This journey begins in **Microsoft Foundry**, where you'll define your agent's core instructions, tools, and personality. From there, you'll use the Microsoft 365 Agents SDK and Visual Studio to bring your agent to life, customizing its behaviors and integrating it with Semantic Kernel for orchestration. You'll then test your agent in Microsoft Teams, bring it into Copilot Chat, and see it come to life across Microsoft 365 applications.
 
-**Best for:** Teams who want to start with Azure AI Foundry and use Semantic Kernel for multi-step reasoning
+**Best for:** Developers who want to start with Microsoft Foundry and use Semantic Kernel for multi-step reasoning
 
-**You'll build:** An agent that starts in Azure AI Foundry and integrates with Teams and Microsoft 365 Copilot
+**You'll build:** A custom engine agent with intent handling, planner integration, and system message configuration that runs across Microsoft 365
 
-### Option 2: [Microsoft 365 Agents SDK with Agents Framework](./agent-framework/)
+### Option 2: [Start with Agent Framework](./agent-framework/)
 
-Build the **Zava Insurance Agent** using the Microsoft 365 Agents SDK and the Agents Framework. You'll progressively add features through a Build-A-Feature approach, from basic conversation to document search, vision analysis, and authentication.
+Build an AI-powered assistant for insurance claims processing from the ground up. You'll start with a basic conversational agent and progressively enhance it with real-world capabilities like document search, semantic policy lookup, multi-modal vision analysis, and secure authentication. Each lab builds on the previous one using a Build-A-Feature approach.
 
-**Best for:** Teams who want to use the latest Agents Framework (successor to Semantic Kernel and AutoGen) with a progressive, hands-on learning approach
+**Best for:** Developers who want hands-on experience building production-ready agents with the Agent Framework
 
-**You'll build:** A complete insurance claims assistant with AI-powered document search, policy lookup, photo analysis, and email notifications
-
----
+**You'll build:** A complete insurance claims assistant that integrates Azure AI Search, vision models, SharePoint, Microsoft Graph, and MCP tools
 
 ---8<--- "b-labs-branches.md"
 
