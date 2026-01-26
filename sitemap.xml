@@ -1303,6 +1303,69 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/"/>
     </url>
     <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/00-prerequisites/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/00-prerequisites/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/00-prerequisites/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/01-build-and-run/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/01-build-and-run/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/01-build-and-run/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/02-add-claim-search/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/02-add-claim-search/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/02-add-claim-search/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/03-add-vision-analysis/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/03-add-vision-analysis/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/03-add-vision-analysis/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/04-add-policy-search/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/04-add-policy-search/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/04-add-policy-search/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/05-add-communication/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/05-add-communication/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/05-add-communication/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/06-add-copilot-api/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/06-add-copilot-api/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/06-add-copilot-api/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/07-add-mcp-tools/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/07-add-mcp-tools/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/07-add-mcp-tools/"/>
+    </url>
+    <url>
         <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agents-sdk/</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>daily</changefreq>
@@ -1476,6 +1539,27 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/07-add-graphconnector/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/08-mcp-server/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/08-mcp-server/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/09-connected-agent/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/09-connected-agent/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/09-connected-agent/"/>
+    </url>
+    <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/10-mcp-auth/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/10-mcp-auth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/10-mcp-auth/"/>
     </url>
     <url>
         <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/auth/</loc>
@@ -1658,6 +1742,13 @@
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-agent-to-agent/"/>
     </url>
     <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/</loc>
+        <lastmod>2026-01-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/"/>
+    </url>
+    <url>
         <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/sharepoint-agents/</loc>
         <lastmod>2026-01-26</lastmod>
         <changefreq>daily</changefreq>
@@ -1684,96 +1775,5 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/javascripts/card-usage/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/javascripts/card-usage/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/00-prerequisites/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/00-prerequisites/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/00-prerequisites/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/01-build-and-run/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/01-build-and-run/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/01-build-and-run/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/02-add-claim-search/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/02-add-claim-search/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/02-add-claim-search/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/03-add-vision-analysis/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/03-add-vision-analysis/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/03-add-vision-analysis/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/04-add-policy-search/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/04-add-policy-search/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/04-add-policy-search/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/05-add-communication/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/05-add-communication/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/05-add-communication/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/06-add-copilot-api/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/06-add-copilot-api/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/06-add-copilot-api/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/07-add-mcp-tools/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/custom-engine/agent-framework/07-add-mcp-tools/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/07-add-mcp-tools/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/08-mcp-server/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/08-mcp-server/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/09-connected-agent/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/09-connected-agent/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/09-connected-agent/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/10-mcp-auth/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/extend-m365-copilot/10-mcp-auth/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/10-mcp-auth/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/</loc>
-        <lastmod>2026-01-26</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/"/>
     </url>
 </urlset>
