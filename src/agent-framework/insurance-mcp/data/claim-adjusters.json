@@ -1,0 +1,227 @@
+[
+  {
+    "id": "ADJ-PT-0001",
+    "firstName": "Emilia",
+    "lastName": "Faria",
+    "email": "emilia.faria@zava-insurance.com",
+    "phone": "+351-21-234-5678",
+    "country": "Portugal",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-EE-0001",
+    "firstName": "Indrek",
+    "lastName": "Vain",
+    "email": "indrek.vain@zava-insurance.com",
+    "phone": "+372-5-123-4567",
+    "country": "Estonia",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-DZ-0001",
+    "firstName": "Baraa",
+    "lastName": "Mestaghanmi",
+    "email": "baraa.mestaghanmi@zava-insurance.com",
+    "phone": "+213-21-234-567",
+    "country": "Algeria",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-LT-0001",
+    "firstName": "Linas",
+    "lastName": "Saltis",
+    "email": "linas.saltis@zava-insurance.com",
+    "phone": "+370-5-234-5678",
+    "country": "Lithuania",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-TR-0001",
+    "firstName": "Mahmut",
+    "lastName": "Koc",
+    "email": "mahmut.koc@zava-insurance.com",
+    "phone": "+90-212-345-6789",
+    "country": "Turkey",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-TH-0001",
+    "firstName": "Pimchanok",
+    "lastName": "Orawan",
+    "email": "pimchanok.orawan@zava-insurance.com",
+    "phone": "+66-2-123-4567",
+    "country": "Thailand",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-UA-0001",
+    "firstName": "Stepan",
+    "lastName": "Kovalevskyi",
+    "email": "stepan.kovalevskyi@zava-insurance.com",
+    "phone": "+380-44-234-5678",
+    "country": "Ukraine",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-US-0001",
+    "firstName": "Lisa",
+    "lastName": "Taylor",
+    "email": "lisa.taylor@zava-insurance.com",
+    "phone": "+1-555-234-5678",
+    "country": "USA",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-PK-0001",
+    "firstName": "Nabila",
+    "lastName": "Ansari",
+    "email": "nabila.ansari@zava-insurance.com",
+    "phone": "+92-21-234-5678",
+    "country": "Pakistan",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-LU-0001",
+    "firstName": "Pauline",
+    "lastName": "Zweber",
+    "email": "pauline.zweber@zava-insurance.com",
+    "phone": "+352-26-12-34-56",
+    "country": "Luxembourg",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-KE-0001",
+    "firstName": "Akila",
+    "lastName": "Kadija",
+    "email": "akila.kadija@zava-insurance.com",
+    "phone": "+254-20-123-4567",
+    "country": "Kenya",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-NP-0001",
+    "firstName": "Suman",
+    "lastName": "Rai",
+    "email": "suman.rai@zava-insurance.com",
+    "phone": "+977-1-234-5678",
+    "country": "Nepal",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-HU-0001",
+    "firstName": "Agnes",
+    "lastName": "Fulop",
+    "email": "agnes.fulop@zava-insurance.com",
+    "phone": "+36-1-234-5678",
+    "country": "USA",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-LT-0002",
+    "firstName": "Andzelika",
+    "lastName": "Juskaite",
+    "email": "andzelika.juskaite@zava-insurance.com",
+    "phone": "+370-5-345-6789",
+    "country": "Lithuania",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-ET-0001",
+    "firstName": "Abeba",
+    "lastName": "Tesfaye",
+    "email": "abeba.tesfaye@zava-insurance.com",
+    "phone": "+251-11-234-5678",
+    "country": "Ethiopia",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-BY-0001",
+    "firstName": "Liavon",
+    "lastName": "Bantsevich",
+    "email": "liavon.bantsevich@zava-insurance.com",
+    "phone": "+375-17-234-5678",
+    "country": "Belarus",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-PL-0001",
+    "firstName": "Maciej",
+    "lastName": "Czarnecki",
+    "email": "maciej.czarnecki@zava-insurance.com",
+    "phone": "+48-22-234-5678",
+    "country": "Poland",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-GR-0001",
+    "firstName": "Dora",
+    "lastName": "Balli",
+    "email": "dora.balli@zava-insurance.com",
+    "phone": "+30-21-234-5678",
+    "country": "Greece",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-NL-0001",
+    "firstName": "Ilene",
+    "lastName": "De Crom",
+    "email": "ilene.decrom@zava-insurance.com",
+    "phone": "+31-20-234-5678",
+    "country": "Netherlands",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-MN-0001",
+    "firstName": "Javkhlan",
+    "lastName": "Tugskhuu",
+    "email": "javkhlan.tugskhuu@zava-insurance.com",
+    "phone": "+976-11-234-567",
+    "country": "Mongolia",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-SE-0001",
+    "firstName": "Jens",
+    "lastName": "Persson",
+    "email": "jens.persson@zava-insurance.com",
+    "phone": "+46-8-234-5678",
+    "country": "Sweden",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-IL-0001",
+    "firstName": "Dor",
+    "lastName": "Simhon",
+    "email": "dor.simhon@zava-insurance.com",
+    "phone": "+972-2-234-5678",
+    "country": "Israel",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-KG-0001",
+    "firstName": "Kubanychbek",
+    "lastName": "Sagynbek",
+    "email": "kubanychbek.sagynbek@zava-insurance.com",
+    "phone": "+996-312-234-567",
+    "country": "Kyrgyzstan",
+    "area": "Auto"
+  },
+  {
+    "id": "ADJ-IN-0001",
+    "firstName": "Simran",
+    "lastName": "Kapoor",
+    "email": "simran.kapoor@zava-insurance.com",
+    "phone": "+91-11-2345-6789",
+    "country": "India",
+    "area": "Homeowners"
+  },
+  {
+    "id": "ADJ-TH-0002",
+    "firstName": "Wichid",
+    "lastName": "Sriwarunyu",
+    "email": "wichid.sriwarunyu@zava-insurance.com",
+    "phone": "+66-2-234-5678",
+    "country": "Thailand",
+    "area": "Auto"
+  }
+]

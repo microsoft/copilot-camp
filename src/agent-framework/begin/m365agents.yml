@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.8/yaml.schema.json
+# Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
+# Visit https://aka.ms/teamsfx-actions for details on actions
+version: v1.8
+
+environmentFolderPath: ./env
+
+provision:
+
+  - uses: teamsApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-${{APP_NAME_SUFFIX}}
+    writeToEnvironmentFile:
+      teamsAppId: TEAMS_APP_ID
+
+  - uses: arm/deploy
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+      templates:
+        - path: ./infra/azure.bicep
+          parameters: ./infra/azure.parameters.json
+          deploymentName: Create-resources-for-${{APP_INTERNAL_NAME}}
+      bicepCliVersion: v0.9.1
+
+  - uses: teamsApp/validateManifest
+    with:
+      manifestPath: ./appPackage/manifest.json
+
+  - uses: teamsApp/zipAppPackage
+    with:
+
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputFolder: ./appPackage/build
+
+  - uses: teamsApp/validateAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: teamsApp/update
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+deploy:
+  - uses: cli/runDotnetCommand
+    with:
+      args: publish --configuration Release InsuranceAgent.csproj
+      workingDirectory: ..
+
+  - uses: azureAppService/zipDeploy
+    with:
+      artifactFolder: bin/Release/net9.0/publish
+      resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}}
+      workingDirectory: ..
+projectId: 1e9bcc3f-237b-46b7-9e2e-a0d227f559dd
