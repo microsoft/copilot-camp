@@ -70,7 +70,7 @@ plugins:
               - Setup:
                   - Lab E0 - Prerequisites and Environment Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
               - Declarative Agent Fundamentals :
-                  - Lab E1 - Build a Detailed Declarative Agent using TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
+                  - Lab E1 - Build a Declarative Agent using TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
                   - Lab E1a - Build a game agent: 'pages/extend-m365-copilot/01a-geolocator.md'
               - Build and Integrate API from scratch:
                   - Lab E2 - Build a Backend API: 'pages/extend-m365-copilot/02-build-the-api.md'
@@ -80,15 +80,28 @@ plugins:
                   - Lab E6a - Add Entra ID Authentication (Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'                      
               - Integration:
                   - Lab E7 - Add Copilot Connector: 'pages/extend-m365-copilot/07-add-graphconnector.md'
+                  - Lab E8 - Connect Declarative agent to MCP Server (Preview): 'pages/extend-m365-copilot/08-mcp-server.md'
+                  - Lab E9 - Connected Agents using VS Code (Preview): 'pages/extend-m365-copilot/09-connected-agent.md'
+                  
             - Build - Build a custom engine agent:
               - Welcome : 'pages/custom-engine/index.md'
-              - M365 Agents SDK labs:
+              - Start with Microsoft Foundry:
                 - Introduction : 'pages/custom-engine/agents-sdk/index.md'
                 - Lab BMA0 - Setup: 'pages/custom-engine/agents-sdk/00-prerequisites.md'
                 - Lab BMA1 - Prepare your agent in Microsoft Foundry: 'pages/custom-engine/agents-sdk/01-agent-in-foundry.md'
                 - Lab BMA2 - Build your first agent using M365 Agents SDK: 'pages/custom-engine/agents-sdk/02-agent-with-agents-sdk.md'
                 - Lab BMA3 - Configure agent properties and test on Teams: 'pages/custom-engine/agents-sdk/03-agent-configuration.md'
                 - Lab BMA4 - Bring your agent to Copilot Chat: 'pages/custom-engine/agents-sdk/04-bring-agent-to-copilot.md'
+              - Start with Agent Framework:
+                - Introduction : 'pages/custom-engine/agent-framework/index.md'
+                - Lab BAF0 - Prerequisites: 'pages/custom-engine/agent-framework/00-prerequisites.md'
+                - Lab BAF1 - Build and Run Your First Agent: 'pages/custom-engine/agent-framework/01-build-and-run.md'
+                - Lab BAF2 - Add Document Search with Azure AI Search: 'pages/custom-engine/agent-framework/02-add-claim-search.md'
+                - Lab BAF3 - Add Vision Analysis with Mistral AI: 'pages/custom-engine/agent-framework/03-add-vision-analysis.md'
+                - Lab BAF4 - Add Policy Search: 'pages/custom-engine/agent-framework/04-add-policy-search.md'
+                - Lab BAF5 - Add Communication Capabilities: 'pages/custom-engine/agent-framework/05-add-communication.md'
+                - Lab BAF6 - Add Microsoft 365 Work IQ API Integration: 'pages/custom-engine/agent-framework/06-add-copilot-api.md'
+                - Lab BAF7 - Add MCP Tools Integration: 'pages/custom-engine/agent-framework/07-add-mcp-tools.md'
               # - Teams AI library labs:
               #   - Introduction : 'pages/custom-engine/teams-ai/index.md'
               #   - Lab BTA0 - Setup: 'pages/custom-engine/teams-ai/00-prerequisites.md'
@@ -97,13 +110,13 @@ plugins:
               #   - Lab BTA3 - Enhance user experience: 'pages/custom-engine/teams-ai/03-powered-by-ai.md'
               #   - Lab BTA4 - Add single sign on authentication: 'pages/custom-engine/teams-ai/04-authentication.md'
               #   - Lab BTA5 - Add actions to handle complex tasks: 'pages/custom-engine/teams-ai/05-actions.md'
-            # - Agent instructions:
-            #   - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
-            #   - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
-            #   - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
-            #   - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
-            #   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
-            #   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
+              # - Agent instructions:
+              #   - Lab B0 - Setup: 'pages/custom-engine/00-prerequisites.md'
+              #   - Lab B1 - First custom engine agent: 'pages/custom-engine/01-custom-engine-agent.md'
+              #   - Lab B2 - Index your data in Azure AI Search: 'pages/custom-engine/02-rag.md'
+              #   - Lab B3 - Enhance user experience: 'pages/custom-engine/03-powered-by-ai.md'
+              #   - Lab B4 - Add single sign on authentication: 'pages/custom-engine/04-authentication.md'
+              #   - Lab B5 - Add actions to handle complex tasks: 'pages/custom-engine/05-actions.md'
             - Beyond Agents - AI concepts:
               - Introduction : 'pages/beyond-agents/index.md'
               - Level 1 - Simple agent instructions: 'pages/beyond-agents/beginner-agent.md'

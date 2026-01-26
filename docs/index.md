@@ -28,25 +28,23 @@ There are three major pathways with several labs. If you want a no-code/low-code
 
 ## 🆕 What's New?
 
-!!! example "Updated in June 2025"
+!!! example "Updated in Jan 2026"
 
-    We’re excited to introduce **four new hands-on labs** designed to help you build powerful Copilot experiences. 
+    We’re excited to introduce **three new hands-on labs** designed to help you build powerful Copilot experiences. 
+
+    - **Connect Declarative agent to MCP Server**:
+    Run a complete Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with Declarative Agent in Microsoft 365 Copilot.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/)
+
+     - **Connected Agents using Copilot Studio**:
+    Understand how to create agents in Microsoft Copilot Studio that can communicate with other agents.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/)
 
     - **Build with Microsoft 365 Agents SDK**:
     Leverage the full capabilities of the Microsoft 365 Agents SDK to create production-ready Copilot agents that integrate with real business data.
     [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/)
 
-    - **Build Copilot Agents Using TypeSpec**:
-    Use TypeSpec to define your agent and capabilities declaratively. Ideal for developers looking to build Copilot agents that connect to API services with seamless orchestration.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent/)
-
-    - **Agent Instructions Guide for Beginners**:
-    New to Copilot? This lab walks you through the process of writing effective natural language instructions and testing your Copilot agent in a guided environment.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/beyond-agents/beginner-agent/)
-
-    - **SharePoint agents**:
-    Learn how to create SharePoint agents starting from the basics, how to fine tune their settings, and how to share them with people or in Microsoft Teams group chats.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/make/sharepoint-agents/)
+   
 
 ## 🧑‍💻 More
 
