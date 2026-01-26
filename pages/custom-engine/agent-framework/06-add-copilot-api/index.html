@@ -1,0 +1,3271 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/06-add-copilot-api/">
+      
+      
+        <link rel="prev" href="../05-add-communication/">
+      
+      
+        <link rel="next" href="../07-add-mcp-tools/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../../../../ja/pages/custom-engine/agent-framework/06-add-copilot-api/" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lab BAF6 - Add Microsoft 365 Work IQ API Integration - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-baf6-add-microsoft-365-work-iq-api-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab BAF6 - Add Microsoft 365 Work IQ API Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../../ja/pages/custom-engine/agent-framework/06-add-copilot-api/" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../make/" class="md-tabs__link">
+          
+  
+  
+  Maker Path - Make your agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  
+  Extend - Build a declarative agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Build - Build a custom engine agent
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../beyond-agents/" class="md-tabs__link">
+          
+  
+  
+  Beyond Agents - AI concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maker Path - Make your agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Maker Path - Make your agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MAB - Copilot Studio lite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MAB1 - Copilot Studio Lite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS - Microsoft Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS0 - Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS1 - First agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS2 - Defining Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS3 - Defining Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS4 - Extending Microsoft 365 Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS5 - Consuming a custom connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS6 - Consuming an MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS7 - Creating Autonomous Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS8 - Integrating Azure AI Search for RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/copilot-studio/09-connected-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS9 - Connected Agents (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA - SharePoint agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA1 - Build your first SharePoint agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../make/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA2 - Sharing SharePoint agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extend - Build a declarative agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extend - Build a declarative agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E0 - Prerequisites and Environment Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Agent Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Declarative Agent Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1 - Build a Declarative Agent using TypeSpec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1a - Build a game agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Integrate API from scratch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build and Integrate API from scratch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E2 - Build a Backend API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E3 - Add Declarative Agent and API Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E4 - Enhance API and Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E5 - Add Adaptive Cards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E6a - Add Entra ID Authentication (Toolkit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E7 - Add Copilot Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/08-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E8 - Connect Declarative agent to MCP Server (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/09-connected-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E9 - Connected Agents using VS Code (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build - Build a custom engine agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build - Build a custom engine agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start with Microsoft Foundry
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start with Microsoft Foundry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA0 - Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA1 - Prepare your agent in Microsoft Foundry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA2 - Build your first agent using M365 Agents SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA3 - Configure agent properties and test on Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA4 - Bring your agent to Copilot Chat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start with Agent Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start with Agent Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF0 - Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-build-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF1 - Build and Run Your First Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-add-claim-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF2 - Add Document Search with Azure AI Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-add-vision-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF3 - Add Vision Analysis with Mistral AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-add-policy-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF4 - Add Policy Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF5 - Add Communication Capabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF6 - Add Microsoft 365 Work IQ API Integration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF6 - Add Microsoft 365 Work IQ API Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-set-up-sharepoint-site-with-policy-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Set Up SharePoint Site with Policy Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-create-the-languagemodelservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Create the LanguageModelService
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-create-the-claimspoliciesplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: Create the ClaimsPoliciesPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-register-claimspoliciesplugin-in-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4: Register ClaimsPoliciesPlugin in Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-5-test-copilot-api-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5: Test Copilot API Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-mcp-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF7 - Add MCP Tools Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beyond Agents - AI concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Beyond Agents - AI concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beyond-agents/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 - Simple agent instructions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-baf6-add-microsoft-365-work-iq-api-integration">Lab BAF6 - Add Microsoft 365 Work IQ API Integration</h1>
+<p>In this lab, you'll enhance the Zava Insurance Agent with Microsoft 365 Work IQ API. You'll add the ability to analyze claim compliance using policy documents from SharePoint via the <strong>Copilot Retrieval API</strong> and leverage the power of Microsoft 365 Copilot's enterprise search grounding.</p>
+<details class="info" open="open">
+<summary>Understanding Microsoft 365 Work IQ API</summary>
+<p>The <strong>Microsoft 365 Work IQ API</strong> enable your agent to:</p>
+<ul>
+<li><strong>Copilot Retrieval API</strong>: Retrieve relevant text chunks from SharePoint, OneDrive, and Copilot connectors while respecting permissions and compliance settings</li>
+<li><strong>Secure Data Access</strong>: Access Microsoft 365 data within the trust boundary without data egress</li>
+<li><strong>Enterprise Search Grounding</strong>: Ground LLM responses on organization-specific information the same way Microsoft 365 Copilot does</li>
+<li><strong>Compliance &amp; Security</strong>: Maintain strict security standards with built-in permission models</li>
+</ul>
+<p>This enables the agent to analyze claim compliance against policy documents stored in SharePoint.</p>
+</details>
+<hr />
+
+<h2 id="overview">Overview</h2>
+<p>In Lab BAF5, you added communication capabilities with email and report generation. Now you'll enhance your agent with Microsoft 365 Work IQ API to retrieve policy documents from SharePoint and analyze claim compliance using AI-powered analysis.</p>
+<p>The <strong>Copilot Retrieval API</strong> offers a streamlined solution for Retrieval Augmented Generation (RAG) without the need to replicate, index, chunk, and secure your data in a separate index. The API understands the user's context and intent and performs query transformations to yield the most relevant results.</p>
+<details class="warning" open="open">
+<summary>Licensing Requirements</summary>
+<p>The Copilot Retrieval API is available at no extra cost to users with a <strong>Microsoft 365 Copilot add-on license</strong>. Support for users without a Microsoft 365 Copilot add-on license isn't currently available.</p>
+</details>
+<h2 id="exercise-1-set-up-sharepoint-site-with-policy-documents">Exercise 1: Set Up SharePoint Site with Policy Documents</h2>
+<p>Before using the Copilot Retrieval API, you need to set up a SharePoint site with policy documents.</p>
+<h3 id="step-1-create-sharepoint-site">Step 1: Create SharePoint Site</h3>
+<details class="note">
+<summary>About SharePoint and Copilot Retrieval API</summary>
+<p>The <strong>Microsoft Graph Copilot Retrieval API</strong> allows your agent to search content in SharePoint using the same powerful semantic search that powers Microsoft 365 Copilot. It provides:</p>
+<ul>
+<li><strong>Semantic Search</strong>: Natural language queries across SharePoint documents</li>
+<li><strong>Real-time Access</strong>: Always searches the latest document versions</li>
+<li><strong>Security</strong>: Respects SharePoint permissions (requires user authentication)</li>
+<li><strong>Citations</strong>: Returns document snippets with links to sources</li>
+</ul>
+<p>This is perfect for searching policy terms, coverage guides, and FAQ documents.</p>
+</details>
+<p>1️⃣ Go to <a href="https://www.office.com/launch/sharepoint" target="_blank">SharePoint</a> and sign in with your Microsoft 365 account.</p>
+<p>2️⃣ Click <strong>+ Create site</strong> → Choose <strong>Team site</strong>.</p>
+<p>3️⃣ Select the <strong>Standard team</strong> site template and select <strong>Use template</strong></p>
+<p>4️⃣ Configure your site:</p>
+<ul>
+<li><strong>Site name</strong>: "Zava Insurance Policy Documents"</li>
+<li><strong>Description</strong>: "Insurance policy terms, coverage guides, and FAQs"</li>
+</ul>
+<p>5️⃣ Select <strong>Next</strong></p>
+<ul>
+<li><strong>Privacy settings</strong>: Private (only members can access)</li>
+<li><strong>Select language</strong>: English</li>
+</ul>
+<p>6️⃣ Select the <strong>Create site</strong> command and wait for site creation</p>
+<p>7️⃣ When the site is ready, select <strong>Finish</strong> to browse to the site.</p>
+<p><cc-end-step lab="baf6" exercise="1" step="1" /></p>
+<h3 id="step-2-upload-policy-documents">Step 2: Upload Policy Documents</h3>
+<p>Now let's upload the sample policy documents from your project.</p>
+<p>1️⃣ In your VS Code workspace, navigate to <code>src/agent-framework/complete/infra/data/sample-documents/</code></p>
+<p>2️⃣ You should see these documents:</p>
+<ul>
+<li><code>Auto Insurance Claims Policies.docx</code></li>
+<li><code>Homeowners Insurance Claims Policies.docx</code></li>
+<li><code>Step-by-Step Guide - Creating an Insurance Quote.docx</code></li>
+<li><code>Zava Claims Insurance Policies.docx</code></li>
+</ul>
+<p>3️⃣ In SharePoint, go to your new site → Click <strong>Documents</strong> in the left menu.</p>
+<p>4️⃣ Click <strong>Upload</strong> → <strong>Files</strong> and upload all 4 documents from the sample-documents folder.</p>
+<p>5️⃣ <strong>Wait 10-15 minutes</strong> for SharePoint to index the documents. The Copilot Retrieval API needs time to process and make documents searchable.</p>
+<div class="admonition tip">
+<p class="admonition-title">Verify Indexing</p>
+<p>You can verify documents are indexed by:</p>
+<ul>
+<li>Opening Microsoft 365 Copilot (copilot.microsoft.com)</li>
+<li>Asking: "What policy documents are in my SharePoint?"</li>
+<li>If documents appear, they're ready to use with your agent</li>
+</ul>
+</div>
+<p>6️⃣ Copy your SharePoint site URL - you'll need it for testing later.</p>
+<p><cc-end-step lab="baf6" exercise="1" step="2" /></p>
+<h2 id="exercise-2-create-the-languagemodelservice">Exercise 2: Create the LanguageModelService</h2>
+<p>Before creating the ClaimsPoliciesPlugin, we need a service to interact with the language model for AI-powered compliance analysis.</p>
+<h3 id="step-1-create-languagemodelservice">Step 1: Create LanguageModelService</h3>
+<details class="note">
+<summary>What this service does</summary>
+<p>The <code>LanguageModelService</code> provides centralized access to language model capabilities:</p>
+<ul>
+<li><strong>Chat Completions</strong>: Send prompts to the language model and receive responses</li>
+<li><strong>Configurable Model</strong>: Uses the language model deployment configured in your settings</li>
+<li><strong>Shared Endpoint</strong>: Uses the same Azure OpenAI endpoint as other AI services</li>
+</ul>
+<p>This service will be used by the ClaimsPoliciesPlugin to analyze claim compliance against retrieved policy documents.</p>
+</details>
+<p>1️⃣ Create a new file <code>src/Services/LanguageModelService.cs</code> with the following implementation:</p>
+<pre><code class="language-csharp">using Azure;
+using Azure.AI.OpenAI;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using OpenAI.Chat;
+
+namespace InsuranceAgent.Services;
+
+/// &lt;summary&gt;
+/// Service for language model operations using gpt-4o-mini
+/// Provides centralized access to language understanding and text generation capabilities
+/// &lt;/summary&gt;
+public class LanguageModelService
+{
+    private readonly ChatClient _chatClient;
+    private readonly IConfiguration _configuration;
+    private readonly ILogger&lt;LanguageModelService&gt; _logger;
+
+    public LanguageModelService(
+        IConfiguration configuration,
+        ILogger&lt;LanguageModelService&gt; logger)
+    {
+        _configuration = configuration;
+        _logger = logger;
+
+        // Use shared endpoint and API key with language model for general understanding
+        var endpoint = configuration[&quot;AIModels:Endpoint&quot;]
+            ?? throw new InvalidOperationException(&quot;AIModels:Endpoint not configured&quot;);
+        var apiKey = configuration[&quot;AIModels:ApiKey&quot;]
+            ?? throw new InvalidOperationException(&quot;AIModels:ApiKey not configured&quot;);
+        var deployment = configuration[&quot;LANGUAGE_MODEL_NAME&quot;] 
+            ?? throw new InvalidOperationException(&quot;LANGUAGE_MODEL_NAME not configured&quot;);
+
+        _logger.LogInformation(&quot;🔍 LanguageModelService Configuration:&quot;);
+        _logger.LogInformation(&quot;   Endpoint: {Endpoint}&quot;, endpoint);
+        _logger.LogInformation(&quot;   Deployment: {DeploymentName}&quot;, deployment);
+
+        var azureClient = new AzureOpenAIClient(new Uri(endpoint), new AzureKeyCredential(apiKey));
+        _chatClient = azureClient.GetChatClient(deployment);
+    }
+
+    /// &lt;summary&gt;
+    /// Completes a chat request with the language model
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;messages&quot;&gt;The chat messages&lt;/param&gt;
+    /// &lt;param name=&quot;options&quot;&gt;Optional chat completion options&lt;/param&gt;
+    /// &lt;returns&gt;Chat completion response&lt;/returns&gt;
+    public async Task&lt;ChatCompletion&gt; CompleteChatAsync(
+        IEnumerable&lt;ChatMessage&gt; messages, 
+        ChatCompletionOptions? options = null)
+    {
+        try
+        {
+            _logger.LogDebug(&quot;Sending chat completion request with {MessageCount} messages&quot;, messages.Count());
+
+            var response = await _chatClient.CompleteChatAsync(messages, options);
+
+            _logger.LogDebug(&quot;Received chat completion response&quot;);
+
+            return response.Value;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, &quot;Error completing chat request&quot;);
+            throw;
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Gets the underlying ChatClient for advanced scenarios
+    /// &lt;/summary&gt;
+    public ChatClient ChatClient =&gt; _chatClient;
+}
+</code></pre>
+<p><cc-end-step lab="baf6" exercise="2" step="1" /></p>
+<h3 id="step-2-register-languagemodelservice-in-dependency-injection">Step 2: Register LanguageModelService in Dependency Injection</h3>
+<p>Now register the service in your application's dependency injection container.</p>
+<p>1️⃣ Open <code>src/Program.cs</code>.</p>
+<p>2️⃣ Find where other services are registered (look for <code>builder.Services.AddScoped&lt;VisionService&gt;();</code> or similar) and add the following right after that:</p>
+<pre><code class="language-csharp">// Register LanguageModelService for AI-powered analysis
+builder.Services.AddSingleton&lt;LanguageModelService&gt;();
+</code></pre>
+<p><cc-end-step lab="baf6" exercise="2" step="2" /></p>
+<h3 id="step-3-update-configuration">Step 3: Update Configuration</h3>
+<p>Ensure your configuration includes the language model settings.</p>
+<p>1️⃣ Open your <code>.env.local</code> file.</p>
+<p>2️⃣ Verify you have the language model configuration (add if missing):</p>
+<pre><code class="language-bash"># Language Model (for compliance analysis)
+LANGUAGE_MODEL_NAME=gpt-4o
+</code></pre>
+<details class="note">
+<summary>Configuration Notes</summary>
+<ul>
+<li><strong>LANGUAGE_MODEL_NAME</strong>: The deployment name for your language model in Azure OpenAI</li>
+<li>The service uses the same endpoint and API key as your other AI models</li>
+<li>You can use <code>gpt-4o-mini</code> for cost-effective analysis instead of <code>gpt-4o</code>, which you can use for more complex reasoning</li>
+</ul>
+</details>
+<p><cc-end-step lab="baf6" exercise="2" step="3" /></p>
+<h2 id="exercise-3-create-the-claimspoliciesplugin">Exercise 3: Create the ClaimsPoliciesPlugin</h2>
+<p>Now let's create the ClaimsPoliciesPlugin that uses the Copilot Retrieval API to analyze claim compliance against SharePoint policy documents.</p>
+<h3 id="step-1-understand-the-copilot-retrieval-api">Step 1: Understand the Copilot Retrieval API</h3>
+<details class="note">
+<summary>How the Copilot Retrieval API Works</summary>
+<p>The <strong>Microsoft 365 Copilot Retrieval API</strong> allows you to:</p>
+<ul>
+<li><strong>Query SharePoint content</strong>: Send natural language queries to retrieve relevant text chunks from SharePoint documents</li>
+<li><strong>Respect permissions</strong>: Results are filtered based on the user's access permissions</li>
+<li><strong>Get structured responses</strong>: Receive text extracts with metadata like titles and authors</li>
+<li><strong>Use KQL filters</strong>: Optionally filter by URLs, date ranges, file types, and more</li>
+</ul>
+<p><strong>API Endpoint</strong>: <code>POST https://graph.microsoft.com/v1.0/copilot/retrieval</code></p>
+<p><strong>Request Payload</strong>:</p>
+<p><code>json
+{
+    "queryString": "Your natural language query",
+    "dataSource": "SharePoint",
+    "resourceMetadata": ["title", "author"]
+}</code></p>
+<p><strong>Best Practices</strong>:</p>
+<ul>
+<li>Provide as much context in the query as possible</li>
+<li>Your <code>queryString</code> should be a single sentence</li>
+<li>Avoid generic queries that might apply to a wide variety of content</li>
+<li>Send all extracts returned to your LLM for answer generation</li>
+</ul>
+</details>
+<p><cc-end-step lab="baf6" exercise="3" step="1" /></p>
+<h3 id="step-2-create-the-claimspoliciesplugin">Step 2: Create the ClaimsPoliciesPlugin</h3>
+<details class="note">
+<summary>What this plugin does</summary>
+<p>The <code>ClaimsPoliciesPlugin</code> provides claim compliance analysis capabilities.</p>
+<p><strong>AnalyzeClaimCompliance</strong>:</p>
+<ul>
+<li>Retrieves claim details from KnowledgeBaseService</li>
+<li>Queries SharePoint policy documents using Copilot Retrieval API</li>
+<li>Uses AI to analyze claim compliance against retrieved policies</li>
+<li>Returns structured compliance analysis with citations</li>
+<li>Adds SharePoint document citations to the streaming response</li>
+</ul>
+<p>The plugin uses the <strong>On-Behalf-Of (OBO) token</strong> to call Microsoft Graph, ensuring user permissions are respected.</p>
+</details>
+<p>1️⃣ Create a new file <code>src/Plugins/ClaimsPoliciesPlugin.cs</code> with the following implementation:</p>
+<pre><code class="language-csharp">using Microsoft.Agents.Builder;
+using Microsoft.Agents.Core.Models;
+using System.ComponentModel;
+using System.Text.Json;
+using InsuranceAgent;
+using Microsoft.Agents.Builder.State;
+using InsuranceAgent.Services;
+using Azure.Search.Documents.Models;
+using OpenAI.Chat;
+
+namespace ZavaInsurance.Plugins
+{
+    /// &lt;summary&gt;
+    /// Claims Policies Plugin for Zava Insurance
+    /// Provides tools for analyzing claim compliance using Copilot Retrieval API
+    /// Retrieves policy documents from SharePoint and uses AI for compliance analysis
+    /// &lt;/summary&gt;
+    public class ClaimsPoliciesPlugin
+    {
+        private readonly ITurnContext _turnContext;
+        private readonly ITurnState _turnState;
+        private readonly HttpClient _httpClient;
+        private readonly KnowledgeBaseService _knowledgeBaseService;
+        private readonly LanguageModelService _languageModelService;
+        private readonly IConfiguration _configuration;
+
+        public ClaimsPoliciesPlugin(ITurnContext turnContext, 
+            ITurnState turnState,
+            KnowledgeBaseService knowledgeBaseService,
+            LanguageModelService languageModelService,
+            IConfiguration configuration, 
+            HttpClient httpClient)
+        {
+            _turnContext = turnContext ?? throw new ArgumentNullException(nameof(turnContext));
+            _turnState = turnState ?? throw new ArgumentNullException(nameof(turnState));
+            _knowledgeBaseService = knowledgeBaseService ?? throw new ArgumentNullException(nameof(knowledgeBaseService));
+            _languageModelService = languageModelService ?? throw new ArgumentNullException(nameof(languageModelService));
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        }
+
+        /// &lt;summary&gt;
+        /// Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;claimId&quot;&gt;The unique claim identifier&lt;/param&gt;
+        /// &lt;returns&gt;The claim compliance with policies&lt;/returns&gt;
+        [Description(&quot;Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance&quot;)]
+        public async Task&lt;string&gt; AnalyzeClaimCompliance(string claimId)
+        {
+            await NotifyUserAsync($&quot;Retrieving policies for claim {claimId}...&quot;);
+
+            // Read the user profile and OBO token from conversation state
+            var userProfile = _turnState.Conversation.GetCachedUserProfile();
+            var accessToken = _turnState.Conversation.GetCachedOBOAccessToken();
+
+            // Use direct search to get structured data (more reliable than Knowledge Base answer synthesis)
+            var claimDoc = await _knowledgeBaseService.GetClaimByNumberAsync(claimId);
+
+            if (claimDoc == null)
+            {
+                return $&quot;❌ Claim {claimId} not found in the system.&quot;;
+            }
+
+            try
+            {
+                // Build the Copilot Retrieval API request payload
+                var retrievalPayload = new
+                {
+                    queryString = $&quot;Retrieve the claims policies for claims of type '{GetFieldValue(claimDoc, &quot;claimType&quot;)}' in region '{GetFieldValue(claimDoc, &quot;region&quot;)}'&quot;,
+                    dataSource = &quot;SharePoint&quot;,
+                    resourceMetadata = new[] { &quot;title&quot;, &quot;author&quot; }
+                };
+
+                var jsonContent = JsonSerializer.Serialize(retrievalPayload);
+                var httpContent = new StringContent(jsonContent, System.Text.Encoding.UTF8, &quot;application/json&quot;);
+
+                // Configure HTTP client with OBO token
+                _httpClient.DefaultRequestHeaders.Clear();
+                _httpClient.DefaultRequestHeaders.Add(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
+                _httpClient.DefaultRequestHeaders.Add(&quot;Accept&quot;, &quot;application/json&quot;);
+
+                await NotifyUserAsync($&quot;Using Copilot Retrieval APIs to fetch policies from SharePoint...&quot;);
+
+                // Call the Microsoft 365 Copilot Retrieval API
+                var response = await _httpClient.PostAsync(&quot;https://graph.microsoft.com/v1.0/copilot/retrieval&quot;, httpContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await NotifyUserAsync($&quot;✅ Policies successfully retrieved from SharePoint!&quot;);
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    await NotifyUserAsync($&quot;❌ Failed to retrieve policies: {response.StatusCode}&quot;);
+                    return $&quot;❌ Error retrieving policies from SharePoint: {response.StatusCode} - {errorContent}&quot;;
+                }
+
+                var policiesContent = await response.Content.ReadAsStringAsync();
+                var estimatedCost = GetFieldValue(claimDoc, &quot;estimatedCost&quot;);
+                var isComplete = GetFieldValue(claimDoc, &quot;isDocumentationComplete&quot;);
+                var missingDocs = GetFieldValue(claimDoc, &quot;missingDocumentation&quot;);
+
+                // Build AI prompt for compliance analysis
+                var prompt = $@&quot;You are an insurance claims expert and you need to analyze the claim policies for a specific claim.
+
+                    **CLAIM DETAILS:**
+                    - Claim Number: {GetFieldValue(claimDoc, &quot;claimNumber&quot;)}
+                    - Claim Type: {GetFieldValue(claimDoc, &quot;claimType&quot;)}
+                    - Region: {GetFieldValue(claimDoc, &quot;region&quot;)}
+                    - Amount: ${estimatedCost:N2}
+                    - Status: {GetFieldValue(claimDoc, &quot;status&quot;)}
+                    - Severity: {GetFieldValue(claimDoc, &quot;severity&quot;)}
+                    - Description: {GetFieldValue(claimDoc, &quot;description&quot;)}
+                    - Policy Number: {GetFieldValue(claimDoc, &quot;policyNumber&quot;)}
+                    - Policyholder: {GetFieldValue(claimDoc, &quot;policyholderName&quot;)}
+                    - Assigned Adjuster: {GetFieldValue(claimDoc, &quot;assignedAdjuster&quot;)}
+                    - Documentation Complete: {(isComplete == &quot;True&quot; || isComplete == &quot;true&quot; ? &quot;Yes&quot; : &quot;No&quot;)}
+                    - Missing Documentation: {(string.IsNullOrWhiteSpace(missingDocs) ? &quot;None&quot; : missingDocs)}
+
+                    Here are the claim policies retrieved from SharePoint in JSON format:
+                    {policiesContent}
+
+                    Provide analysis in this JSON format:
+                    {{
+                    &quot;&quot;complianceScore&quot;&quot;: &lt;0-100&gt;,
+                    &quot;&quot;complianceLevel&quot;&quot;: &quot;&quot;&lt;Low/Medium/High/Critical&gt;&quot;&quot;,
+                    &quot;&quot;analysis&quot;&quot;: &quot;&quot;&lt;detailed explanation of claim compliance with policies&gt;&quot;&quot;,
+                    &quot;&quot;keyIndicators&quot;&quot;: [&quot;&quot;&lt;list of specific compliance indicators with references citations to policies using the [1], [2], ... [n] format&gt;&quot;&quot;],
+                    &quot;&quot;recommendations&quot;&quot;: [&quot;&quot;&lt;recommended actions&gt;&quot;&quot;],
+                    &quot;&quot;citationsTitles&quot;&quot;: [&quot;&quot;&lt;list of titles corresponding to the citations&gt;&quot;&quot;],
+                    &quot;&quot;citationsLinks&quot;&quot;: [&quot;&quot;&lt;list of URLs corresponding to the citations&gt;&quot;&quot;]
+                    }}
+
+                    &quot;;
+
+                await NotifyUserAsync($&quot;🤖 Running AI compliance analysis...&quot;);
+
+                Console.WriteLine($&quot;🔍 ClaimsPoliciesPlugin.AnalyzeClaimCompliance calling LanguageModelService with Temperature=0.2&quot;);
+
+                // Use AI to analyze compliance
+                var messages = new List&lt;ChatMessage&gt;
+                {
+                    new UserChatMessage(prompt)
+                };
+
+                var chatOptions = new ChatCompletionOptions
+                {
+                    Temperature = 0.2f,
+                    ResponseFormat = ChatResponseFormat.CreateJsonObjectFormat()
+                };
+
+                var chatResponse = await _languageModelService.CompleteChatAsync(messages, chatOptions);
+                var analysisJson = chatResponse.Content[0].Text ?? &quot;{}&quot;;
+
+                var complianceResult = JsonSerializer.Deserialize&lt;ComplianceAnalysisResult&gt;(analysisJson, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (complianceResult == null)
+                {
+                    return $&quot;❌ Error: Unable to parse compliance analysis for claim {claimId}.&quot;;
+                }
+
+                await NotifyUserAsync($&quot;✅ Compliance analysis complete. Compliance Score: {complianceResult.ComplianceScore}/100&quot;);
+
+                // Add citations to streaming response
+                for (int i = 0; i &lt; complianceResult.CitationsTitles.Count; i++)
+                {
+                    var citationTitle = complianceResult.CitationsTitles.Count &gt; i ? complianceResult.CitationsTitles[i] : $&quot;Policy Document {i + 1}&quot;;
+                    var citationLink = complianceResult.CitationsLinks.Count &gt; i ? complianceResult.CitationsLinks[i] : null;
+                    citationLink = citationLink != null ? GetCitationUrl(citationLink) : citationLink;
+
+                    _turnContext.StreamingResponse.AddCitation(
+                        new ClientCitation(
+                            position: i + 1,
+                            title: citationTitle,
+                            abstractText: &quot;Claims Policy&quot;,
+                            text: &quot;Claims Policy&quot;,
+                            keywords: null,
+                            citationLink: citationLink,
+                            imageName: ClientCitationsIconNameEnum.MicrosoftWord,
+                            useDefaultAdaptiveCard: true));
+
+                    Console.WriteLine($&quot;🔗 Added citation for \&quot;{citationTitle}\&quot; with link {citationLink ?? &quot;[no link]&quot;}&quot;);
+                }
+
+                // Format the response
+                return $&quot;🚨 **Compliance Analysis for {claimId}**\n\n&quot; +
+                       $&quot;**Compliance Score:** {complianceResult.ComplianceScore}/100\n&quot; +
+                       $&quot;**Compliance Level:** {complianceResult.ComplianceLevel}\n\n&quot; +
+                       $&quot;**Analysis:**\n{complianceResult.Analysis}\n\n&quot; +
+                       (complianceResult.KeyIndicators != null &amp;&amp; complianceResult.KeyIndicators.Count &gt; 0
+                           ? $&quot;**Key Compliance Indicators:**\n{string.Join(&quot;\n&quot;, complianceResult.KeyIndicators.Select(i =&gt; $&quot;• {i}&quot;))}\n\n&quot;
+                           : &quot;&quot;) +
+                       (complianceResult.Recommendations != null &amp;&amp; complianceResult.Recommendations.Count &gt; 0
+                           ? $&quot;**Recommendations:**\n{string.Join(&quot;\n&quot;, complianceResult.Recommendations.Select(r =&gt; $&quot;• {r}&quot;))}\n\n&quot;
+                           : &quot;&quot;);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($&quot;❌ Error analyzing claim compliance: {ex.Message}&quot;);
+                return $&quot;❌ Error analyzing claim compliance: {ex.Message}&quot;;
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Helper method to safely extract field values from SearchDocument
+        /// &lt;/summary&gt;
+        private string GetFieldValue(SearchDocument doc, string fieldName)
+        {
+            if (doc.ContainsKey(fieldName) &amp;&amp; doc[fieldName] != null)
+            {
+                return doc[fieldName].ToString() ?? &quot;Not available&quot;;
+            }
+            return &quot;Not available&quot;;
+        }
+
+        // Helper method to construct citation URL through the bot's proxy endpoint
+        private string GetCitationUrl(string targetUrl)
+        {
+            var botEndpoint = _configuration[&quot;BOT_ENDPOINT&quot;];
+
+            Console.WriteLine($&quot;🔍 BOT_ENDPOINT from config: {botEndpoint ?? &quot;NULL&quot;}&quot;);
+
+            if (string.IsNullOrEmpty(botEndpoint))
+            {
+                var botDomain = _configuration[&quot;BOT_DOMAIN&quot;];
+                if (!string.IsNullOrEmpty(botDomain))
+                {
+                    botEndpoint = $&quot;https://{botDomain}&quot;;
+                    Console.WriteLine($&quot;🔍 Using BOT_DOMAIN: {botEndpoint}&quot;);
+                }
+                else
+                {
+                    botEndpoint = &quot;http://localhost:3978&quot;;
+                    Console.WriteLine($&quot;⚠️ Falling back to localhost&quot;);
+                }
+            }
+
+            botEndpoint = botEndpoint.TrimEnd('/');
+            var citationUrl = $&quot;{botEndpoint}/api/citation?targetUrl={Uri.EscapeDataString(targetUrl)}&quot;;
+            Console.WriteLine($&quot;⚙️ Generated citation URL: {citationUrl}&quot;);
+
+            return citationUrl;
+        }
+
+        // Helper method to notify user via streaming
+        private async Task NotifyUserAsync(string message)
+        {
+            if (!_turnContext.Activity.ChannelId.Channel!.Contains(Channels.Webchat))
+            {
+                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message);
+            }
+            else
+            {
+                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message).ConfigureAwait(false);
+            }
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Result of AI-powered compliance analysis
+    /// &lt;/summary&gt;
+    public class ComplianceAnalysisResult
+    {
+        public int ComplianceScore { get; set; }
+        public string ComplianceLevel { get; set; } = &quot;&quot;;
+        public string Analysis { get; set; } = &quot;&quot;;
+        public List&lt;string&gt; KeyIndicators { get; set; } = new();
+        public List&lt;string&gt; Recommendations { get; set; } = new();
+        public List&lt;string&gt; CitationsTitles { get; set; } = new();
+        public List&lt;string&gt; CitationsLinks { get; set; } = new();
+    }
+}
+</code></pre>
+<details class="info" open="open">
+<summary>How Citations Work with StreamingResponse</summary>
+<p>The <code>ClaimsPoliciesPlugin</code> adds citations to the response using the <code>StreamingResponse.AddCitation()</code> method on the <code>ITurnContext</code>. Here's how it works:</p>
+<ol>
+<li>
+<p><strong>AI generates citation references</strong>: The language model returns references like <code>[1]</code>, <code>[2]</code> in its analysis text, along with <code>CitationsTitles</code> and <code>CitationsLinks</code> arrays.</p>
+</li>
+<li>
+<p><strong>Create ClientCitation objects</strong>: For each citation, create a <code>ClientCitation</code> with:</p>
+<ul>
+<li><code>position</code>: The citation number (1-based, matching <code>[1]</code>, <code>[2]</code> in text)</li>
+<li><code>title</code>: Display title for the citation</li>
+<li><code>citationLink</code>: URL to the source document (routed through the bot's proxy endpoint)</li>
+<li><code>imageName</code>: Icon to display (e.g., <code>ClientCitationsIconNameEnum.MicrosoftWord</code>)</li>
+</ul>
+</li>
+<li>
+<p><strong>Add to StreamingResponse</strong>: Call <code>_turnContext.StreamingResponse.AddCitation(citation)</code> to queue the citation.</p>
+</li>
+<li>
+<p><strong>M365 Copilot renders citations</strong>: Microsoft 365 Copilot automatically renders clickable citation links that users can follow to view the source documents.</p>
+</li>
+</ol>
+<p><strong>Why use a proxy endpoint?</strong> SharePoint URLs require authentication. The <code>GetCitationUrl()</code> method routes links through your bot's <code>/api/citation</code> endpoint, which handles authentication and redirects users to the actual document.</p>
+</details>
+<p><cc-end-step lab="baf6" exercise="3" step="2" /></p>
+<h2 id="exercise-4-register-claimspoliciesplugin-in-agent">Exercise 4: Register ClaimsPoliciesPlugin in Agent</h2>
+<p>Now let's wire up the ClaimsPoliciesPlugin in your ZavaInsuranceAgent.</p>
+<h3 id="step-1-instantiate-claimspoliciesplugin">Step 1: Instantiate ClaimsPoliciesPlugin</h3>
+<p>1️⃣ Open <code>src/Agent/ZavaInsuranceAgent.cs</code>.</p>
+<p>2️⃣ Find the <code>GetClientAgent</code> method (around line 169).</p>
+<p>3️⃣ Locate where the service instances are retrieved and right after the <code>var visionService = scope.ServiceProvider.GetRequiredService&lt;VisionService&gt;();</code> line add the following:</p>
+<pre><code class="language-csharp">var languageModelService = scope.ServiceProvider.GetRequiredService&lt;LanguageModelService&gt;();
+</code></pre>
+<p>4️⃣ Locate where plugins are instantiated (after <code>CommunicationPlugin communicationPlugin = ...</code>).</p>
+<p>5️⃣ Add the ClaimsPoliciesPlugin instantiation:</p>
+<pre><code class="language-csharp">// Create ClaimsPoliciesPlugin with required dependencies
+ClaimsPoliciesPlugin claimsPoliciesPlugin = new(context, turnState, knowledgeBaseService, languageModelService, configuration, httpClient);
+</code></pre>
+<p><cc-end-step lab="baf6" exercise="4" step="1" /></p>
+<h3 id="step-2-register-claimspoliciesplugin-tools">Step 2: Register ClaimsPoliciesPlugin Tools</h3>
+<p>In the same <code>GetClientAgent</code> method, scroll down to where tools are added to <code>toolOptions.Tools</code>.</p>
+<p>Find the Communication tools section and add ClaimsPoliciesPlugin tools right after:</p>
+<pre><code class="language-csharp">// Register ClaimsPolicies tools (Copilot Retrieval API)
+toolOptions.Tools.Add(AIFunctionFactory.Create(claimsPoliciesPlugin.AnalyzeClaimCompliance));
+</code></pre>
+<details class="note">
+<summary>Tool Registration Pattern</summary>
+<p>The agent uses <strong>AIFunctionFactory</strong> to register plugin methods as AI tools. The <code>[Description]</code> attribute on the plugin method becomes the tool description that helps the LLM decide when to call it.</p>
+</details>
+<p><cc-end-step lab="baf6" exercise="4" step="2" /></p>
+<h3 id="step-3-update-agent-instructions">Step 3: Update Agent Instructions</h3>
+<p>Update the agent instructions to include the claims compliance analysis tool.</p>
+<p>1️⃣ In <code>src/Agent/ZavaInsuranceAgent.cs</code>, find the <code>AgentInstructions</code> field.</p>
+<p>2️⃣ Add the claims compliance tool to the instructions. Find the existing tool list and add:</p>
+<pre><code class="language-csharp">For claims compliance analysis, use {{ClaimsPoliciesPlugin.AnalyzeClaimCompliance}}.
+</code></pre>
+<p>Your complete <code>AgentInstructions</code> should now include all tools:</p>
+<pre><code class="language-csharp">private readonly string AgentInstructions = &quot;&quot;&quot;
+You are a professional insurance claims assistant for Zava Insurance.
+
+Whenever the user starts a new conversation or provides a prompt to start a new conversation like &quot;start over&quot;, &quot;restart&quot;, 
+&quot;new conversation&quot;, &quot;what can you do?&quot;, &quot;how can you help me?&quot;, etc. use {{StartConversationPlugin.StartConversation}} and 
+provide to the user exactly the message you get back from the plugin.
+
+**Available Tools:**
+Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
+For claims search, use {{ClaimsPlugin.SearchClaims}} and {{ClaimsPlugin.GetClaimDetails}}.
+For damage photo viewing, use {{VisionPlugin.ShowDamagePhoto}}.
+For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} and require approval via {{VisionPlugin.ApproveAnalysis}}.
+For policy search, use {{PolicyPlugin.SearchPolicies}} and {{PolicyPlugin.GetPolicyDetails}}.
+For sending investigation reports and claim details via email, use {{CommunicationPlugin.GenerateInvestigationReport}} and {{CommunicationPlugin.SendClaimDetailsByEmail}}.
+For claims compliance analysis, use {{ClaimsPoliciesPlugin.AnalyzeClaimCompliance}}.
+
+**IMPORTANT**: When user asks to &quot;check policy for this claim&quot;, first use GetClaimDetails to get the claim's policy number, then use GetPolicyDetails with that policy number.
+
+**IMPORTANT**: If in the response there are references to citations like [1], [2], etc., make sure to include those citations in the response so that M365 Copilot can render them properly.
+
+Stick to the scenario above and use only the information from the tools when answering questions.
+Be concise and professional in your responses.
+&quot;&quot;&quot;;
+</code></pre>
+<p><cc-end-step lab="baf6" exercise="4" step="3" /></p>
+<h3 id="step-4-update-welcome-message">Step 4: Update Welcome Message</h3>
+<p>Update the StartConversationPlugin to include the compliance analysis in the suggested workflow.</p>
+<p>1️⃣ Open <code>src/Plugins/StartConversationPlugin.cs</code>.</p>
+<p>2️⃣ Find the <code>welcomeMessage</code> variable in the <code>StartConversation</code> method.</p>
+<p>3️⃣ Add the compliance check prompt to the workflow list. After the "Analyze this damage photo" step, add:</p>
+<pre><code class="language-csharp">&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
+</code></pre>
+<p>4️⃣ Update the numbering for the remaining steps (Generate investigation report becomes 9, Update claim status becomes 10).</p>
+<p>Your updated workflow section should look like:</p>
+<pre><code class="language-csharp">&quot;🎯 Try this complete investigation workflow:\n&quot; +
+&quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot; +
+&quot;2. \&quot;Check policy for this claim\&quot;\n&quot; +
+&quot;3. \&quot;What coverage does auto insurance include?\&quot;\n&quot; +
+&quot;4. \&quot;Analyze fraud risk for this claim\&quot;\n&quot; +
+&quot;5. \&quot;Show damage photo for this claim\&quot;\n&quot; +
+&quot;6. \&quot;Analyze this damage photo\&quot;\n&quot; +
+&quot;7. \&quot;What's the claims filing procedure?\&quot;\n&quot; +
+&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
+&quot;9. \&quot;Generate investigation report for claim CLM-2025-001007\&quot;\n&quot; +
+&quot;10. \&quot;Update claim status to 'Approved for Payment'\&quot;\n\n&quot; +
+</code></pre>
+<p><cc-end-step lab="baf6" exercise="4" step="4" /></p>
+<h2 id="exercise-5-test-copilot-api-integration">Exercise 5: Test Copilot API Integration</h2>
+<p>Now let's test the complete Copilot API integration!</p>
+<h3 id="step-1-run-and-verify">Step 1: Run and Verify</h3>
+<p>1️⃣ Press <strong>F5</strong> in VS Code to start debugging.</p>
+<p>2️⃣ Select <strong>(Preview) Debug in Copilot (Edge)</strong> if prompted.</p>
+<p>3️⃣ The terminal should show normal initialization.</p>
+<p>4️⃣ A browser window will open with Microsoft 365 Copilot.</p>
+<p><cc-end-step lab="baf6" exercise="5" step="1" /></p>
+<h3 id="step-2-test-claim-compliance-analysis">Step 2: Test Claim Compliance Analysis</h3>
+<p>1️⃣ In Microsoft 365 Copilot, say:</p>
+<pre><code class="language-text">Check compliance for claim CLM-2025-001007
+</code></pre>
+<p>The agent should:</p>
+<ul>
+<li>Use <code>ClaimsPoliciesPlugin.AnalyzeClaimCompliance</code></li>
+<li>Retrieve the claim details from Table Storage</li>
+<li>Call the Copilot Retrieval API to fetch policies from SharePoint</li>
+<li>Use AI to analyze compliance</li>
+<li>Return a structured compliance report with citations</li>
+</ul>
+<p><strong>Expected Response:</strong></p>
+<pre><code>Retrieving policies for claim CLM-2025-001007...
+Using Copilot Retrieval APIs to fetch policies from SharePoint...
+✅ Policies successfully retrieved from SharePoint!
+🤖 Running AI compliance analysis...
+✅ Compliance analysis complete. Compliance Score: 85/100
+
+## 📋 Compliance Analysis for Claim CLM-2025-001007
+
+**Compliance Score**: 40/100 (High)
+**Compliance Level**: Low
+
+### Analysis
+The claim is currently open and has a high severity rating due to a multi-vehicle...
+
+### Key Compliance Indicators
+- Incomplete documentation [1]
+- High severity claim requires thorough investigation [2]
+- ...
+
+### Recommendations
+- Contact the policyholder, Arnel Cruz, to gather missing documentation related to the accident.
+- ...
+</code></pre>
+<p>2️⃣ Notice the <strong>citations</strong> in the response (like <code>[1]</code>, <code>[2]</code>). These link back to the SharePoint policy documents that were used for the analysis.</p>
+<p><cc-end-step lab="baf6" exercise="5" step="2" /></p>
+<h3 id="step-3-test-with-different-claims">Step 3: Test with Different Claims</h3>
+<p>1️⃣ Try a different prompt with another claim:</p>
+<pre><code class="language-text">Check if claim CLM-2025-001001 follows our policies
+</code></pre>
+<p>2️⃣ The agent should use the Copilot Retrieval API to fetch the appropriate policies based on the claim type (Auto, Homeowners, etc.) and region.</p>
+<p><cc-end-step lab="baf6" exercise="5" step="3" /></p>
+<h3 id="step-4-test-complete-workflow-with-compliance">Step 4: Test Complete Workflow with Compliance</h3>
+<p>Test the complete workflow including compliance analysis:</p>
+<pre><code class="language-text">1. Get details for claim CLM-2025-001007
+2. Check policy for this claim
+3. Analyze fraud risk for this claim
+4. Check compliance for this claim
+5. Generate investigation report for this claim
+6. Send the report by email
+</code></pre>
+<p>The agent should seamlessly integrate the Copilot Retrieval API alongside all other capabilities!</p>
+<p><cc-end-step lab="baf6" exercise="5" step="4" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab BAF6 - Add Microsoft 365 Work IQ API Integration!</p>
+<p>You've learned how to:</p>
+<ul>
+<li>✅ Set up SharePoint site with policy documents for the Copilot Retrieval API</li>
+<li>✅ Create a centralized LanguageModelService for AI operations</li>
+<li>✅ Understand the Microsoft 365 Copilot Retrieval API and its capabilities</li>
+<li>✅ Create a ClaimsPoliciesPlugin that uses Copilot Retrieval API</li>
+<li>✅ Integrate SharePoint policy document search via Microsoft Graph</li>
+<li>✅ Combine AI analysis with retrieved policy documents</li>
+<li>✅ Add citations from SharePoint documents to agent responses</li>
+</ul>
+<p>Your Zava Insurance Agent now includes:</p>
+<ul>
+<li><strong>Search</strong>: Claims and policies via Azure AI Search</li>
+<li><strong>Analysis</strong>: AI vision with Mistral for damage assessment</li>
+<li><strong>Compliance</strong>: Copilot Retrieval API for policy compliance analysis from SharePoint</li>
+<li><strong>Communication</strong>: Email reports and investigation summaries</li>
+</ul>
+<details class="info" open="open">
+<summary>About Microsoft 365 Work IQ API</summary>
+<p>The Microsoft 365 Work IQ API provide access to components that power Copilot experiences:</p>
+<ul>
+<li><strong>Retrieval API</strong>: Ground your AI solutions with Microsoft 365 data without data egress</li>
+<li><strong>Chat API</strong> (preview): Engage in multi-turn conversations with enterprise search grounding</li>
+</ul>
+<p>These APIs maintain strict security and compliance by keeping data in place and respecting permissions.</p>
+</details>
+<p>🎉 <strong>Congratulations!</strong> You've built a production-ready AI agent with Microsoft 365 Copilot API integration! 🎊</p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/06-add-copilot-api" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
