@@ -1,15 +1,15 @@
 # Lab BAF1 - Build and Run Your First Agent
 
-In this lab, you'll build and run a custom engine agent using the **Microsoft 365 Agents SDK** with the **Agents Framework**. You'll explore the starter project, understand the core components, and see your agent come to life in Microsoft 365 Copilot.
+In this lab, you'll build and run a custom engine agent using the **Microsoft 365 Agents SDK** with the **Agent Framework**. You'll explore the starter project, understand the core components, and see your agent come to life in Microsoft 365 Copilot.
 
 The Zava Insurance Agent is designed to help insurance adjusters streamline claims processing. In this initial lab, you'll start with a basic conversational agent that can greet users and provide information using AI-powered responses.
 
-???+ info "What are the Microsoft 365 Agents SDK and Agents Framework?"
+???+ info "What are the Microsoft 365 Agents SDK and Agent Framework?"
     **Microsoft 365 Agents SDK** provides the container and scaffolding to deploy agents across Microsoft 365 channels (Teams, Copilot, etc.), handling activities, events, and communication. It's AI-agnostic, allowing you to use any AI services you choose.
     
-    **Agents Framework** is an open-source development kit for building AI agents with LLMs, tool calling, and multi-agent workflows. It's the successor to Semantic Kernel and AutoGen, providing the AI capabilities and agent logic.
+    **Agent Framework** is an open-source development kit for building AI agents with LLMs, tool calling, and multi-agent workflows. It's the successor to Semantic Kernel and AutoGen, providing the AI capabilities and agent logic.
     
-    Together, they allow you to build intelligent agents with the Agents Framework and deploy them to Microsoft 365 using the Agents SDK.
+    Together, they allow you to build intelligent agents with the Agent Framework and deploy them to Microsoft 365 using the Agents SDK.
 
 ## Exercise 1: Clone and Explore the Project
 

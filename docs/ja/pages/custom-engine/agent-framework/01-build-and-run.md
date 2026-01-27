@@ -4,16 +4,16 @@ search:
 ---
 # ラボ BAF1 - 最初のエージェントの構築と実行
 
-このラボでは、 **Microsoft 365 Agents SDK** と **Agents Framework** を使用してカスタム エンジン エージェントを構築し、実行します。スターター プロジェクトを調査し、主要コンポーネントを理解し、Microsoft 365 Copilot 内でエージェントがどのように動作するかを確認します。
+このラボでは、 **Microsoft 365 Agents SDK** と **Agent Framework** を使用してカスタム エンジン エージェントを構築し、実行します。スターター プロジェクトを調査し、主要コンポーネントを理解し、Microsoft 365 Copilot 内でエージェントがどのように動作するかを確認します。
 
 Zava Insurance エージェントは、保険査定担当者がクレーム処理を効率化するために設計されています。この最初のラボでは、ユーザーにあいさつし、AI による回答で情報を提供できる基本的な会話エージェントから始めます。
 
-???+ info "Microsoft 365 Agents SDK と Agents Framework とは？"
+???+ info "Microsoft 365 Agents SDK と Agent Framework とは？"
     **Microsoft 365 Agents SDK** は、アクティビティ、イベント、通信を処理しながら、Microsoft 365 の各チャネル（Teams、Copilot など）にエージェントをデプロイするためのコンテナーとスキャフォールディングを提供します。AI 非依存で、任意の AI サービスを利用できます。  
       
-    **Agents Framework** は、LLM、ツール呼び出し、マルチ エージェント ワークフローを用いて AI エージェントを構築するためのオープンソース開発キットです。Semantic Kernel と AutoGen の後継であり、AI 機能とエージェント ロジックを提供します。  
+    **Agent Framework** は、LLM、ツール呼び出し、マルチ エージェント ワークフローを用いて AI エージェントを構築するためのオープンソース開発キットです。Semantic Kernel と AutoGen の後継であり、AI 機能とエージェント ロジックを提供します。  
       
-    これらを組み合わせることで、Agents Framework で知能エージェントを構築し、Agents SDK を使って Microsoft 365 にデプロイできます。
+    これらを組み合わせることで、Agent Framework で知能エージェントを構築し、Agents SDK を使って Microsoft 365 にデプロイできます。
 
 ## Exercise 1: プロジェクトのクローンと調査
 

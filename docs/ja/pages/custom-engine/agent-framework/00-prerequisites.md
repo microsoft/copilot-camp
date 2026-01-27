@@ -4,7 +4,7 @@ search:
 ---
 # Lab BAF0 - 事前準備
 
-このラボでは、 Microsoft 365 Agents SDK と Agents Framework を使用して開発するカスタムエンジン エージェントをビルド、テスト、デプロイするための開発環境をセットアップします。
+このラボでは、 Microsoft 365 Agents SDK と Agent Framework を使用して開発するカスタムエンジン エージェントをビルド、テスト、デプロイするための開発環境をセットアップします。
 
 このラボで学習する内容:
 
@@ -53,7 +53,7 @@ search:
 
 ### Step 2: .NET 9 SDK のインストール
 
-Microsoft 365 Agents SDK と Agents Framework でエージェントをビルドおよび実行するには .NET 9 SDK が必要です。
+Microsoft 365 Agents SDK と Agent Framework でエージェントをビルドおよび実行するには .NET 9 SDK が必要です。
 
 1️⃣ [https://dotnet.microsoft.com/download/dotnet/9.0](https://dotnet.microsoft.com/download/dotnet/9.0){target=_blank} から .NET 9 SDK をダウンロードしてインストールします。
 

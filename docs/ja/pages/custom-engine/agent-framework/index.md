@@ -2,16 +2,16 @@
 search:
   exclude: true
 ---
-# Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agents Framework
+# Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agent Framework
 
-このラーニングパスでは、保険査定人のクレーム処理を効率化する AI 搭載アシスタント **Zava Insurance エージェント** を作成します。Microsoft 365 Agents SDK と Agents Framework を使用して、Microsoft Teams および Microsoft 365 Copilot 全体で動作するカスタムエンジン エージェントを構築します。
+このラーニングパスでは、保険査定人のクレーム処理を効率化する AI 搭載アシスタント **Zava Insurance エージェント** を作成します。Microsoft 365 Agents SDK と Agent Framework を使用して、Microsoft Teams および Microsoft 365 Copilot 全体で動作するカスタムエンジン エージェントを構築します。
 
 ???+ info "Zava Insurance エージェントについて"
     Zava Insurance は架空の保険会社で、査定人がクレームの迅速な処理、ポリシー情報の検索、損害写真の分析、通知の送信を行う必要があります。ここでは AI を活用し、シンプルなところから始めて Build-A-Feature (BAF) 方式で段階的に高度な機能を追加するエージェントを作成します。
 
 まずは基本的な対話型エージェントから始め、ドキュメント検索、セマンティック ポリシー検索、マルチモーダル ビジョン分析、安全な認証など、実運用レベルの機能を段階的に強化していきます。
 
-Microsoft 365 Agents SDK は、Microsoft 365 Copilot と Teams へのデプロイに必要なインフラを提供し、メッセージルーティング、アクティビティ、チャネル固有の動作を処理します。Agents Framework は、LLM との対話、ツール呼び出し、インテリジェントな意思決定など、エージェントの AI 機能を支えます。
+Microsoft 365 Agents SDK は、Microsoft 365 Copilot と Teams へのデプロイに必要なインフラを提供し、メッセージルーティング、アクティビティ、チャネル固有の動作を処理します。Agent Framework は、LLM との対話、ツール呼び出し、インテリジェントな意思決定など、エージェントの AI 機能を支えます。
 
 <hr />
 
