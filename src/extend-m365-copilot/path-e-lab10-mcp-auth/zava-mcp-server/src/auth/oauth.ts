@@ -247,7 +247,7 @@ export function createOAuthMiddleware(
 
       }
 
-          // Construct the full authorization URL from base URL
+    // Construct the full authorization URL from base URL
     const baseUrl = process.env.SERVER_BASE_URL || resourceMetadataUrl?.split('/.well-known')[0] || '';
     const authUrl = `${baseUrl}/oauth/authorize`;
 

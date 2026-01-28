@@ -1,0 +1,6 @@
+@hr_mcp_server_secured_HostAddress = http://localhost:5211
+
+GET {{hr_mcp_server_secured_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
