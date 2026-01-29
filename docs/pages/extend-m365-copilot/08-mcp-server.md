@@ -395,6 +395,9 @@ You will be directed to the newly created project which has the file `.vscode/mc
 
 ![image ATK picking mcp tools](../../assets/images/extend-m365-copilot-08/atk.png)
 
+!!! note "Don't see the ATK: Fetch action from MCP option?"
+    If you don't see the **ATK: Fetch action from MCP** option, try restarting VS Code and reopening the project.
+
 - When you select  **ATK:Fetch action from MCP**, you will be asked to provide the action manifest, select **ai-plugin.json**.
 - Select the tools you want to add to the agent. Let's select 10 tools for now.
 
