@@ -2503,7 +2503,7 @@
 <p>These additions work alongside the existing claims functionality without modifying it.</p>
 </details>
 <p>1️⃣ Open <code>src/Services/KnowledgeBaseService.cs</code>.</p>
-<p>2️⃣ Find <code>private const string ClaimsKnowledgeSource = "claims-knowledge-source";</code> and and <strong>add</strong> the policies constant and index:</p>
+<p>2️⃣ Find <code>private const string ClaimsKnowledgeSource = "claims-knowledge-source";</code> and add the policies constant and index right after it:</p>
 <pre><code class="language-csharp">// Knowledge source names
 private const string PoliciesKnowledgeSource = &quot;policies-knowledge-source&quot;;
 
@@ -3082,27 +3082,27 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
 </ul>
 <p><cc-end-step lab="baf4" exercise="4" step="1" /></p>
 <h3 id="step-2-test-policy-search">Step 2: Test Policy Search</h3>
-<p>1️⃣ In Microsoft 365 Copilot, try: </p>
-<pre><code class="language-text">Find all active auto insurance policies
+<p>1️⃣ In Insurance Agent, try: </p>
+<pre><code class="language-text">What's covered in auto insurance policy
 </code></pre>
 <p>The agent should use <code>SearchPolicies</code> and return matching policies with details.</p>
-<p>2️⃣ Try: </p>
-<pre><code class="language-text">Show me policies for Sarah Martinez
-</code></pre>
-<p>3️⃣ Try: </p>
-<pre><code class="language-text">Find homeowners insurance policies with Active status
-</code></pre>
 <p><cc-end-step lab="baf4" exercise="4" step="2" /></p>
 <h3 id="step-3-test-policy-details">Step 3: Test Policy Details</h3>
 <p>1️⃣ Try: </p>
-<pre><code class="language-text">Get details for policy POL-AUTO-001
+<pre><code class="language-text">Get details for policy AU-78902
 </code></pre>
 <p>The agent should use <code>GetPolicyDetails</code> and return structured information including coverage, vehicle info, etc.</p>
 <p>2️⃣ Try: </p>
-<pre><code class="language-text">Show me policy POL-HOME-001
+<pre><code class="language-text">Show me policy AU-34569
 </code></pre>
 <p>3️⃣ Try the claim-to-policy workflow: </p>
-<pre><code class="language-text">Get details for claim CLM-2025-001001, then show me the policy for that claim
+<pre><code class="language-text">does claim CLM-2025-001001 owner have active policy
+</code></pre>
+<p>4️⃣ Try getting policy details for that claim:</p>
+<pre><code class="language-text">show me policy for claim CLM-2025-001001
+</code></pre>
+<p>5️⃣ Follow-up with another question to check policy coverage for a claim:</p>
+<pre><code class="language-text">does their policy cover the claim
 </code></pre>
 <p>The agent should first get the claim details (which includes policy number), then retrieve the policy details.</p>
 <p><cc-end-step lab="baf4" exercise="4" step="3" /></p>

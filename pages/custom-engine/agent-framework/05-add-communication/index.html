@@ -2798,7 +2798,11 @@ namespace ZavaInsurance.Plugins
 <p>2️⃣ Find the <code>GetClientAgent</code> method (around line 159).</p>
 <p>3️⃣ Locate where plugins are instantiated (after <code>PolicyPlugin policyPlugin = ...</code>).</p>
 <p>4️⃣ Add the CommunicationPlugin instantiation:</p>
-<pre><code class="language-csharp">// Create CommunicationPlugin with required dependencies
+<pre><code class="language-csharp">
+// Get HttpClient for API calls
+var httpClientFactory = scope.ServiceProvider.GetRequiredService&lt;IHttpClientFactory&gt;();
+var httpClient = httpClientFactory.CreateClient();
+// Create CommunicationPlugin with required dependencies
 CommunicationPlugin communicationPlugin = new(context, turnState, knowledgeBaseService, httpClient);
 </code></pre>
 <p><cc-end-step lab="baf5" exercise="2" step="1" /></p>
@@ -2847,7 +2851,7 @@ Be concise and professional in your responses.
 </details>
 <p><cc-end-step lab="baf5" exercise="3" step="1" /></p>
 <h3 id="step-2-configure-obo-settings">Step 2: Configure OBO settings</h3>
-<p>1️⃣ In <code>m365agents.local.yml</code>, find the <code>OnMessageAsyncfile/createOrUpdateJsonFile</code> action (around line 47).</p>
+<p>1️⃣ In <code>m365agents.local.yml</code>, find the <code>file/createOrUpdateJsonFile</code> action (around line 47).</p>
 <p>2️⃣ Uncomment the <code>me</code> settings in the <code>UserAuthorization</code> group of settings in order to enable the settings with name <code>OBOConnectionName</code>, <code>OBOScopes</code>, <code>Title</code>, and <code>Text</code>. The code should look like the following:</p>
 <pre><code class="language-yaml">          UserAuthorization:
             DefaultHandlerName: me
@@ -2984,12 +2988,29 @@ Be concise and professional in your responses.
 **Report Prepared By:** Zava Insurance Claims Investigation System
 **Next Steps:** Review findings and proceed with recommended claim resolution action.
 </code></pre>
-<p>2️⃣ Try with different claims: </p>
-<pre><code class="language-text">Generate report for CLM-2024-1003
-</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">OBO Token Configuration Error</p>
+<p>If you receive the following error message after sending a message to the agent:</p>
+<p><code>Sign in for 'me' completed without a token. Status=Exception/OBO for 'BotServiceConnection' is not setup for exchangeable tokens. For Token Service handlers, the 'Scopes' field on the Azure Bot OAuth Connection should be in the format of 'api://{appid_uri}/{scopeName}'.</code></p>
+<p>Follow these steps to fix it:</p>
+<ol>
+<li>Go to <strong>Azure Portal</strong> and find your <strong>Resource Group</strong> containing your <strong>Azure Bot</strong></li>
+<li>Open the Azure Bot resource and go to the <strong>Configuration</strong> tab</li>
+<li>Click on the <strong>Microsoft Graph</strong> Azure Active Directory v2 service provider</li>
+<li><strong>Take note</strong> of the existing <strong>Token Exchange URL</strong> and <strong>Scopes</strong> values (you'll need them later)</li>
+<li>Replace the <strong>Token Exchange URL</strong> with: <code>https://graph.microsoft.com</code></li>
+<li>Replace the <strong>Scopes</strong> with: <code>email openid profile User.Read Mail.Send</code></li>
+<li><strong>Save</strong> the changes</li>
+<li>Select the <strong>Microsoft Graph</strong> service provider again and click <strong>Test Connection</strong></li>
+<li><strong>Grant all consent</strong> when prompted</li>
+<li>Go back to the configuration and <strong>restore</strong> the original <strong>Token Exchange URL</strong> and <strong>Scopes</strong> values</li>
+<li><strong>Save</strong> the changes again</li>
+<li>Return to your agent, <strong>refresh the page</strong>, and test again</li>
+</ol>
+</div>
 <p><cc-end-step lab="baf5" exercise="5" step="2" /></p>
 <h3 id="step-3-test-email-functionality">Step 3: Test Email Functionality</h3>
-<p>1️⃣ Say: </p>
+<p>1️⃣ Try: </p>
 <pre><code class="language-text">Send claim details for CLM-2025-001007 by email
 </code></pre>
 <p>The agent should:</p>
@@ -3046,6 +3067,7 @@ The email includes comprehensive claim information, documentation status, timeli
 <li><strong>Communication</strong>: Email reports and investigation summaries</li>
 </ul>
 <p>🎉 <strong>Congratulations!</strong> You've built a production-ready AI agent! 🎊</p>
+<p><cc-next url="../06-add-copilot-api" /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/05-add-communication" /></p>
 
 

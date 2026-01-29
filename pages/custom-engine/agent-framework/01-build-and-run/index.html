@@ -2648,16 +2648,16 @@ cd copilot-camp/src/agent-framework/begin
 </code></pre>
 <p><cc-end-step lab="baf1" exercise="2" step="1" /></p>
 <h3 id="step-2-add-your-azure-ai-credentials">Step 2: Add Your Azure AI Credentials</h3>
-<p>Now let's configure the agent to use your Azure AI Foundry deployment.</p>
+<p>Now let's configure the agent to use your Microsoft Foundry deployment.</p>
 <p>1️⃣ Open <code>env/.env.local</code> in Visual Studio Code.</p>
 <p>2️⃣ Find the <code>MODELS_ENDPOINT</code> variable and update it with your Azure AI endpoint from Lab BAF0:</p>
-<pre><code class="language-bash">MODELS_ENDPOINT=https://your-resource.cognitiveservices.azure.com/
+<pre><code class="language-bash">MODELS_ENDPOINT=https://your-resource.services.ai.azure.com/
 </code></pre>
 <div class="admonition tip">
 <p class="admonition-title">Finding Your Endpoint</p>
 <p>If you don't remember your endpoint:</p>
 <ol>
-<li>Go to <a href="https://ai.azure.com">Azure AI Foundry</a></li>
+<li>Go to <a href="https://ai.azure.com">Microsoft Foundry</a></li>
 <li>Select your project</li>
 <li>Go to <strong>Settings</strong> → <strong>Properties</strong></li>
 <li>Copy the <strong>Endpoint</strong> URL</li>
@@ -2697,7 +2697,7 @@ cd copilot-camp/src/agent-framework/begin
 <ul>
 <li>Prompt you to select an <strong>Azure subscription</strong></li>
 <li>Ask you to create a new <strong>resource group</strong> or select existing one</li>
-<li>Select a <strong>region</strong> for your resources (choose one close to your Azure AI Foundry project)</li>
+<li>Select a <strong>region</strong> for your resources (choose one close to your Microsoft Foundry project)</li>
 <li>Provision Azure resources (Azure Bot Service, App Registration)</li>
 </ul>
 <p>This provisioning process usually takes 2-3 minutes.</p>

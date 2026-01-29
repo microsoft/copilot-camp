@@ -2541,6 +2541,21 @@
 <p>DevTunnel is also included with Visual Studio 2022. If you have Visual Studio 2022 installed, you already have DevTunnel.</p>
 </div>
 <p><cc-end-step lab="baf0" exercise="2" step="6" /></p>
+<h3 id="step-7-install-azure-functions-core-tools">Step 7: Install Azure Functions Core Tools</h3>
+<p>Azure Functions Core Tools is required for running Azure Functions locally during development.</p>
+<p>1️⃣ Install Azure Functions Core Tools:</p>
+<p><strong>Windows:</strong></p>
+<pre><code class="language-bash">winget install Microsoft.Azure.FunctionsCoreTools
+</code></pre>
+<p><strong>macOS:</strong></p>
+<pre><code class="language-bash">brew tap azure/functions
+brew install azure-functions-core-tools@4
+</code></pre>
+<p>2️⃣ Verify the installation by running:</p>
+<pre><code class="language-bash">func --version
+</code></pre>
+<p>You should see version 4.x or higher.</p>
+<p><cc-end-step lab="baf0" exercise="2" step="7" /></p>
 <h2 id="exercise-3-setup-azure-environment">Exercise 3: Setup Azure Environment</h2>
 <p>To complete the exercises in this path, you'll need an Azure subscription to create Microsoft Foundry resources and deploy AI models.</p>
 <h3 id="step-1-get-an-azure-subscription">Step 1: Get an Azure subscription</h3>

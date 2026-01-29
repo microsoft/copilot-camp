@@ -7,8 +7,8 @@ USAGE:
    source venv/bin/activate
 2. Install requirements:
    pip install -r requirements.txt
-3. Set up an Azure AI Foundry project:
-   - Create a project in Azure AI Foundry
+3. Set up an Microsoft Foundry project:
+   - Create a project in Microsoft Foundry
    - Deploy o3 model 
    - Note your project endpoint, API key, and model deployment name
 4. Set up your .env file in the root with the credentials:

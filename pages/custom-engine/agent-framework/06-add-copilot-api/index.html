@@ -2675,14 +2675,14 @@ builder.Services.AddSingleton&lt;LanguageModelService&gt;();
 <p>1️⃣ Open your <code>.env.local</code> file.</p>
 <p>2️⃣ Verify you have the language model configuration (add if missing):</p>
 <pre><code class="language-bash"># Language Model (for compliance analysis)
-LANGUAGE_MODEL_NAME=gpt-4o
+LANGUAGE_MODEL_NAME=gpt-4.1
 </code></pre>
 <details class="note">
 <summary>Configuration Notes</summary>
 <ul>
 <li><strong>LANGUAGE_MODEL_NAME</strong>: The deployment name for your language model in Azure OpenAI</li>
 <li>The service uses the same endpoint and API key as your other AI models</li>
-<li>You can use <code>gpt-4o-mini</code> for cost-effective analysis instead of <code>gpt-4o</code>, which you can use for more complex reasoning</li>
+<li>You can use <code>gpt-4o-mini</code> for cost-effective analysis instead of <code>gpt-4.1</code>, which you can use for more complex reasoning</li>
 </ul>
 </details>
 <p><cc-end-step lab="baf6" exercise="2" step="3" /></p>
@@ -3203,6 +3203,7 @@ The claim is currently open and has a high severity rating due to a multi-vehicl
 <p>These APIs maintain strict security and compliance by keeping data in place and respecting permissions.</p>
 </details>
 <p>🎉 <strong>Congratulations!</strong> You've built a production-ready AI agent with Microsoft 365 Copilot API integration! 🎊</p>
+<p><cc-next url="../07-add-mcp-tools" /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/06-add-copilot-api" /></p>
 
 
