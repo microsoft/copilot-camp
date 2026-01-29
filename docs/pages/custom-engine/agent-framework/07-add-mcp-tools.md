@@ -54,7 +54,7 @@ The MCP server architecture consists of:
 
 ### Step 2: Create the Azure Function Project
 
-1️⃣ Create a new folder for your MCP server project:
+1️⃣ Open a terminal in VSCode and create a new folder for your MCP server under your project:
 
 ```bash
 mkdir InsuranceMCPServer
@@ -74,7 +74,7 @@ npm install @azure/data-tables dotenv
 npm install --save-dev @types/node
 ```
 
-4️⃣ Create the environment configuration file `env/.env.local`:
+4️⃣ Create the environment configuration file `env/.env.local` under your InsuranceMCPServer and fill in your Azure Table Storage details:
 
 ```bash
 AZURE_STORAGE_ACCOUNT=your_storage_account
@@ -83,7 +83,7 @@ TABLE_NAME=ClaimsAdjusters
 ALLOW_INSECURE_CONNECTION=false
 ```
 
-5️⃣ Create the environment configuration file `env/.env.local.user`:
+5️⃣ Create the environment configuration file `env/.env.local.user` under your InsuranceMCPServer and fill in your Azure Storage account key:
 
 ```bash
 SECRET_AZURE_STORAGE_KEY=your_storage_key
@@ -372,7 +372,7 @@ app.mcpTool("assign_claim_adjuster", {
 
 ### Step 5: Deploy the MCP Server
 
-1️⃣ Create the Azure Function App in Azure:
+1️⃣ Replace the placeholders in below script and run it in your terminal to create the Azure Function App in Azure:
 
 ```bash
 az functionapp create --name your-mcp-server --resource-group your-rg --consumption-plan-location eastus --runtime node --runtime-version 20 --functions-version 4 --storage-account your-storage
@@ -423,20 +423,20 @@ Now let's configure the Custom Engine Agent to connect to your MCP server.
 
 ```bash
 # MCP Server Configuration
-MCP_SERVER_URL=https://your-mcp-server-url/runtime/webhooks/mcp
+MCP_SERVER_URL=https://your-mcp-server.azurewebsites.net/runtime/webhooks/mcp
 ```
 
 <cc-end-step lab="baf7" exercise="2" step="1" />
 
 ### Step 2: Register MCP Client in Dependency Injection
 
-1️⃣ Install the ModelContextProtocol NuGet package. Open a terminal in your agent project folder and run:
+1️⃣ Open a new Terminal under your agent project root and install the ModelContextProtocol NuGet package by running the following script:
 
 ```bash
 dotnet add package ModelContextProtocol --version 0.4.1-preview.1
 ```
 
-2️⃣ Open `src/Program.cs`.
+2️⃣ Open `src/Program.cs` in your agent project.
 
 3️⃣ Add the required using statements at the top of the file:
 
@@ -445,7 +445,7 @@ using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol;
 ```
 
-4️⃣ Find where services are registered and add the MCP client registration:
+4️⃣ Find where other services (VisionService, LanguageModelService etc.) are registered and add the MCP client registration:
 
 ```csharp
 // Register MCP Client for claims adjusters

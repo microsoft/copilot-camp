@@ -243,20 +243,20 @@ cp env/.env.local.user.sample env/.env.local.user
 
 ### Step 2: Add Your Azure AI Credentials
 
-Now let's configure the agent to use your Azure AI Foundry deployment.
+Now let's configure the agent to use your Microsoft Foundry deployment.
 
 1️⃣ Open `env/.env.local` in Visual Studio Code.
 
 2️⃣ Find the `MODELS_ENDPOINT` variable and update it with your Azure AI endpoint from Lab BAF0:
 
 ```bash
-MODELS_ENDPOINT=https://your-resource.cognitiveservices.azure.com/
+MODELS_ENDPOINT=https://your-resource.services.ai.azure.com/
 ```
 
 !!! tip "Finding Your Endpoint"
     If you don't remember your endpoint:
 
-    1. Go to [Azure AI Foundry](https://ai.azure.com)
+    1. Go to [Microsoft Foundry](https://ai.azure.com)
     2. Select your project
     3. Go to **Settings** → **Properties**
     4. Copy the **Endpoint** URL
@@ -310,7 +310,7 @@ Let's run the agent using the F5 debug experience.
 
 - Prompt you to select an **Azure subscription**
 - Ask you to create a new **resource group** or select existing one
-- Select a **region** for your resources (choose one close to your Azure AI Foundry project)
+- Select a **region** for your resources (choose one close to your Microsoft Foundry project)
 - Provision Azure resources (Azure Bot Service, App Registration)
 
 This provisioning process usually takes 2-3 minutes.

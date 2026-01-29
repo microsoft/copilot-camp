@@ -27,7 +27,7 @@ If you haven't created an Azure AI Search service yet (from Lab BAF0), create on
 
 3️⃣ Configure:
 
-- **Resource Group**: Use the same as your Azure AI Foundry project
+- **Resource Group**: Use the same as your Microsoft Foundry project
 - **Service Name**: Choose a unique name (e.g., `zava-insurance-search`)
 - **Region**: Any supported location (Central US, East US, West Europe, etc.)
 - **Pricing Tier**: Basic

@@ -14,7 +14,7 @@ AI-powered insurance claims assistant built with Microsoft 365 Agents Toolkit.
 - Azure subscription
 
 **Azure Resources (create these first):**
-1. **Azure AI Foundry project** with deployed models:
+1. **Microsoft Foundry project** with deployed models:
    - `gpt-4.1` (language model)
    - `mistral-medium-2505` (vision analysis)
    - `text-embedding-ada-002` (embeddings)
@@ -48,7 +48,7 @@ Open **Microsoft 365 Agents Toolkit** panel in VS Code:
 Edit `env/.env.local`:
 
 ```env
-# Get these from Azure AI Foundry (ai.azure.com)
+# Get these from Microsoft Foundry (ai.azure.com)
 MODELS_ENDPOINT=https://YOUR-RESOURCE.cognitiveservices.azure.com/
 LANGUAGE_MODEL_NAME=gpt-4.1
 VISION_MODEL_NAME=mistral-medium-2505
@@ -61,7 +61,7 @@ AZURE_AI_SEARCH_ENDPOINT=https://YOUR-SEARCH.search.windows.net
 Edit `env/.env.local.user` (for API keys - this file is gitignored):
 
 ```env
-# Get API key from Azure AI Foundry → Keys and Endpoint
+# Get API key from Microsoft Foundry → Keys and Endpoint
 SECRET_MODELS_APIKEY=YOUR_AI_FOUNDRY_API_KEY
 
 # Azure storage will be auto-generated during provisioning

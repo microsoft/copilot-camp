@@ -326,6 +326,10 @@ Now let's wire up the CommunicationPlugin in your ZavaInsuranceAgent.
 4️⃣ Add the CommunicationPlugin instantiation:
 
 ```csharp
+
+// Get HttpClient for API calls
+var httpClientFactory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
+var httpClient = httpClientFactory.CreateClient();
 // Create CommunicationPlugin with required dependencies
 CommunicationPlugin communicationPlugin = new(context, turnState, knowledgeBaseService, httpClient);
 ```
@@ -390,7 +394,7 @@ Be concise and professional in your responses.
 
 ### Step 2: Configure OBO settings
 
-1️⃣ In `m365agents.local.yml`, find the `OnMessageAsyncfile/createOrUpdateJsonFile` action (around line 47).
+1️⃣ In `m365agents.local.yml`, find the `file/createOrUpdateJsonFile` action (around line 47).
 
 2️⃣ Uncomment the `me` settings in the `UserAuthorization` group of settings in order to enable the settings with name `OBOConnectionName`, `OBOScopes`, `Title`, and `Text`. The code should look like the following:
 
@@ -557,17 +561,33 @@ The agent should:
 **Next Steps:** Review findings and proceed with recommended claim resolution action.
 ```
 
-2️⃣ Try with different claims: 
-
-```text
-Generate report for CLM-2024-1003
-```
+!!! warning "OBO Token Configuration Error"
+    If you receive the following error message after sending a message to the agent:
+    
+    ```
+    Sign in for 'me' completed without a token. Status=Exception/OBO for 'BotServiceConnection' is not setup for exchangeable tokens. For Token Service handlers, the 'Scopes' field on the Azure Bot OAuth Connection should be in the format of 'api://{appid_uri}/{scopeName}'.
+    ```
+    
+    Follow these steps to fix it:
+    
+    1. Go to **Azure Portal** and find your **Resource Group** containing your **Azure Bot**
+    2. Open the Azure Bot resource and go to the **Configuration** tab
+    3. Click on the **Microsoft Graph** Azure Active Directory v2 service provider
+    4. **Take note** of the existing **Token Exchange URL** and **Scopes** values (you'll need them later)
+    5. Replace the **Token Exchange URL** with: `https://graph.microsoft.com`
+    6. Replace the **Scopes** with: `email openid profile User.Read Mail.Send`
+    7. **Save** the changes
+    8. Select the **Microsoft Graph** service provider again and click **Test Connection**
+    9. **Grant all consent** when prompted
+    10. Go back to the configuration and **restore** the original **Token Exchange URL** and **Scopes** values
+    11. **Save** the changes again
+    12. Return to your agent, **refresh the page**, and test again
 
 <cc-end-step lab="baf5" exercise="5" step="2" />
 
 ### Step 3: Test Email Functionality
 
-1️⃣ Say: 
+1️⃣ Try: 
 
 ```text
 Send claim details for CLM-2025-001007 by email
@@ -643,5 +663,7 @@ Your Zava Insurance Agent is now a complete claims processing solution with:
 - **Communication**: Email reports and investigation summaries
 
 🎉 **Congratulations!** You've built a production-ready AI agent! 🎊
+
+<cc-next url="../06-add-copilot-api" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/05-add-communication" />

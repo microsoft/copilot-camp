@@ -31,7 +31,7 @@ search:
 
 3️⃣ 以下を設定します:
 
-- **Resource Group**: Azure AI Foundry プロジェクトと同じリソースグループ
+- **Resource Group**: Microsoft Foundry プロジェクトと同じリソースグループ
 - **Service Name**: 一意の名前（例: `zava-insurance-search`）
 - **Region**: 任意のサポート対象リージョン (Central US, East US, West Europe など)
 - **Pricing Tier**: Basic

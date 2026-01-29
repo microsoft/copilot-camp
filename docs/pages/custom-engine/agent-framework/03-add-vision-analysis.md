@@ -1302,18 +1302,6 @@ The agent should use `ApproveAnalysis` and confirm the approval with next steps.
 
 <cc-end-step lab="baf3" exercise="7" step="2" />
 
-### Step 3: Test Combined Workflows
-
-1️⃣ Try: 
-
-```text
-Show me high severity claims in the Northeast region, then analyze their damage photos
-```
-
-The agent should search for claims first, then analyze the damage photos for matching claims.
-
-<cc-end-step lab="baf3" exercise="7" step="3" />
-
 ## 🎉 Congratulations!
 
 You've successfully added AI vision analysis to your insurance agent! 

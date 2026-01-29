@@ -247,7 +247,7 @@ cp env/.env.local.user.sample env/.env.local.user
 
 ### Step 2: Azure AI 資格情報の追加
 
-次に、Azure AI Foundry デプロイメントを使用するようエージェントを構成します。
+次に、Microsoft Foundry デプロイメントを使用するようエージェントを構成します。
 
 1️⃣ `env/.env.local` を Visual Studio Code で開きます。
 
@@ -260,7 +260,7 @@ MODELS_ENDPOINT=https://your-resource.cognitiveservices.azure.com/
 !!! tip "エンドポイントの確認方法"
     エンドポイントを忘れた場合:
 
-    1. [Azure AI Foundry](https://ai.azure.com) にアクセス  
+    1. [Microsoft Foundry](https://ai.azure.com) にアクセス  
     2. プロジェクトを選択  
     3. **Settings** → **Properties** を選択  
     4. **Endpoint** URL をコピー
@@ -314,7 +314,7 @@ F5 デバッグ体験を使ってエージェントを実行します。
 
 - **Azure subscription** の選択
 - 新しい **resource group** の作成または既存グループの選択
-- リソースの **region** の選択（Azure AI Foundry プロジェクトに近いリージョン）
+- リソースの **region** の選択（Microsoft Foundry プロジェクトに近いリージョン）
 - Azure リソースのプロビジョニング（Azure Bot Service、App Registration）
 
 このプロビジョニングは通常 2～3 分で完了します。

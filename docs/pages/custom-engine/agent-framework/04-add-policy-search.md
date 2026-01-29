@@ -30,7 +30,7 @@ Now let's extend the KnowledgeBaseService to support policies alongside claims.
 
 1️⃣ Open `src/Services/KnowledgeBaseService.cs`.
 
-2️⃣ Find `private const string ClaimsKnowledgeSource = "claims-knowledge-source";` and and **add** the policies constant and index:
+2️⃣ Find `private const string ClaimsKnowledgeSource = "claims-knowledge-source";` and add the policies constant and index right after it:
 
 ```csharp
 // Knowledge source names
@@ -693,25 +693,14 @@ Now let's test all policy capabilities!
 
 ### Step 2: Test Policy Search
 
-1️⃣ In Microsoft 365 Copilot, try: 
+1️⃣ In Insurance Agent, try: 
 
 ```text
-Find all active auto insurance policies
+What's covered in auto insurance policy
 ```
 
 The agent should use `SearchPolicies` and return matching policies with details.
 
-2️⃣ Try: 
-
-```text
-Show me policies for Sarah Martinez
-```
-
-3️⃣ Try: 
-
-```text
-Find homeowners insurance policies with Active status
-```
 
 <cc-end-step lab="baf4" exercise="4" step="2" />
 
@@ -720,7 +709,7 @@ Find homeowners insurance policies with Active status
 1️⃣ Try: 
 
 ```text
-Get details for policy POL-AUTO-001
+Get details for policy AU-78902
 ```
 
 The agent should use `GetPolicyDetails` and return structured information including coverage, vehicle info, etc.
@@ -728,13 +717,25 @@ The agent should use `GetPolicyDetails` and return structured information includ
 2️⃣ Try: 
 
 ```text
-Show me policy POL-HOME-001
+Show me policy AU-34569
 ```
 
 3️⃣ Try the claim-to-policy workflow: 
 
 ```text
-Get details for claim CLM-2025-001001, then show me the policy for that claim
+does claim CLM-2025-001001 owner have active policy
+```
+
+4️⃣ Try getting policy details for that claim:
+
+```text
+show me policy for claim CLM-2025-001001
+```
+
+5️⃣ Follow-up with another question to check policy coverage for a claim:
+
+```text
+does their policy cover the claim
 ```
 
 The agent should first get the claim details (which includes policy number), then retrieve the policy details.

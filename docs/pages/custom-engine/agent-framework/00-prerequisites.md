@@ -126,6 +126,35 @@ devtunnel --version
 
 <cc-end-step lab="baf0" exercise="2" step="6" />
 
+### Step 7: Install Azure Functions Core Tools
+
+Azure Functions Core Tools is required for running Azure Functions locally during development.
+
+1️⃣ Install Azure Functions Core Tools:
+
+**Windows:**
+
+```bash
+winget install Microsoft.Azure.FunctionsCoreTools
+```
+
+**macOS:**
+
+```bash
+brew tap azure/functions
+brew install azure-functions-core-tools@4
+```
+
+2️⃣ Verify the installation by running:
+
+```bash
+func --version
+```
+
+You should see version 4.x or higher.
+
+<cc-end-step lab="baf0" exercise="2" step="7" />
+
 ## Exercise 3: Setup Azure Environment
 
 To complete the exercises in this path, you'll need an Azure subscription to create Microsoft Foundry resources and deploy AI models.

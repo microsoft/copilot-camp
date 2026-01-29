@@ -211,13 +211,13 @@ Ensure your configuration includes the language model settings.
 
 ```bash
 # Language Model (for compliance analysis)
-LANGUAGE_MODEL_NAME=gpt-4o
+LANGUAGE_MODEL_NAME=gpt-4.1
 ```
 
 ??? note "Configuration Notes"
     - **LANGUAGE_MODEL_NAME**: The deployment name for your language model in Azure OpenAI
     - The service uses the same endpoint and API key as your other AI models
-    - You can use `gpt-4o-mini` for cost-effective analysis instead of `gpt-4o`, which you can use for more complex reasoning
+    - You can use `gpt-4o-mini` for cost-effective analysis instead of `gpt-4.1`, which you can use for more complex reasoning
 
 <cc-end-step lab="baf6" exercise="2" step="3" />
 
@@ -812,5 +812,7 @@ Your Zava Insurance Agent now includes:
     These APIs maintain strict security and compliance by keeping data in place and respecting permissions.
 
 🎉 **Congratulations!** You've built a production-ready AI agent with Microsoft 365 Copilot API integration! 🎊
+
+<cc-next url="../07-add-mcp-tools" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/06-add-copilot-api" />

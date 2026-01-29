@@ -26,7 +26,7 @@ AI-powered insurance claims assistant built with Microsoft 365 Agents SDK.
    ```
 
 2. **Get Azure AI Credentials**
-   - Go to [Azure AI Foundry](https://ai.azure.com)
+   - Go to [Microsoft Foundry](https://ai.azure.com)
    - Create project → Deploy **gpt-4.1**
    - Copy **Endpoint** and **API Key**
 
