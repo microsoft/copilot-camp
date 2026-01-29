@@ -36,6 +36,9 @@
                 <ul>
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent"> Lab E9 - Connected Agents</a></li>
                 </ul>
+                 <ul>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth"> Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
+                </ul>
             </li>
         </ul>
     </div>
