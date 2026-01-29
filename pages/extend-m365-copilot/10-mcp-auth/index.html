@@ -2398,7 +2398,7 @@
 <h3 id="step-1-clone-the-repository">Step 1: Clone the Repository</h3>
 <p>Open your terminal and run:</p>
 <pre><code class="language-bash">git clone https://github.com/microsoft/copilot-camp.git
-cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
+cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
 </code></pre>
 <p><cc-end-step lab="e10" exercise="1" step="1" /></p>
 <h3 id="step-2-install-dependencies">Step 2: Install Dependencies</h3>
@@ -2436,33 +2436,63 @@ cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 </ol>
 <p><cc-end-step lab="e10" exercise="2" step="1" /></p>
 <h3 id="step-2-configure-platform-redirect-uris">Step 2: Configure Platform Redirect URIs</h3>
-<p>After registration, configure redirect URIs for different platforms:</p>
+<p>After registration, configure redirect URIs for different platforms. <strong>Redirect URIs</strong> are critical in OAuth 2.0 authentication—they specify where Microsoft Entra ID sends the user (along with authorization tokens) after successful authentication. Each redirect URI must exactly match a URL your application uses to receive these tokens, ensuring that authorization codes and tokens are only sent to legitimate, registered endpoints.</p>
 <ol>
 <li>
-<p>Go to <strong>Authentication</strong> → <strong>Platform configurations</strong></p>
+<p>Go to <strong>Authentication</strong> in the left navigation</p>
 </li>
 <li>
-<p><strong>Add a Web platform</strong>:</p>
+<p><strong>Add the first Web redirect URI</strong>:</p>
 </li>
-<li>Click <strong>Add a platform</strong> → <strong>Web</strong></li>
+<li>Click <strong>Add a platform</strong> (or if using the new preview UI, click <strong>Add redirect URI</strong>)</li>
+<li>Select <strong>Web</strong></li>
+<li>Add the first redirect URI: <code>https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect</code></li>
 <li>
-<p>Add these redirect URIs:</p>
-<ul>
-<li>
-<p><code>http://127.0.0.1:33418</code></p>
-</li>
-<li>
-<p><code>https://vscode.dev/redirect</code></p>
+<p>Click <strong>Configure</strong></p>
 </li>
 <li>
-<p><code>https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect</code></p>
+<p><strong>Add additional redirect URIs</strong>:</p>
 </li>
+<li>After the initial configuration, click <strong>Add URI</strong> (or <strong>Edit</strong> in the preview UI) to add more redirect URIs</li>
+<li>Add: <code>https://vscode.dev/redirect</code></li>
+<li>
+<p>Click <strong>Save</strong></p>
+</li>
+<li>
+<p><strong>Add the localhost redirect URI via Manifest</strong>:</p>
+<div class="admonition warning">
+<p class="admonition-title">Important: Non-HTTPS URIs require manual configuration</p>
+<p>The Azure Portal UI only supports adding redirect URIs that use HTTPS or <code>localhost</code>. Since MCP Inspector uses <code>http://127.0.0.1:33418</code> (not <code>localhost</code>), you must add this URI manually through the app manifest.</p>
+</div>
+</li>
+<li>
+<p>Go to <strong>Manifest</strong> in the left navigation</p>
+</li>
+<li>Find the <code>"web"</code> section and locate <code>"redirectUriSettings"</code> (or <code>"redirectUris"</code> in some manifest versions)</li>
+<li>Add <code>http://127.0.0.1:33418</code> to the redirect URIs array. The section should look similar to:
+     <code>json
+     "web": {
+         "redirectUris": [
+             "https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect",
+             "https://vscode.dev/redirect",
+             "http://127.0.0.1:33418"
+         ],
+         ...
+     }</code></li>
+<li>
+<p>Click <strong>Save</strong> at the top of the page</p>
+</li>
+<li>
+<p><strong>Verify your configuration</strong>:</p>
+</li>
+<li>Go back to <strong>Authentication</strong> </li>
+<li>Under <strong>Platform configurations</strong> → <strong>Web</strong>, confirm all three redirect URIs are listed:<ul>
+<li><code>https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect</code></li>
+<li><code>https://vscode.dev/redirect</code></li>
+<li><code>http://127.0.0.1:33418</code></li>
 </ul>
 </li>
-<li>
-<p>Under <strong>Implicit grant and hybrid flows</strong>, leave both options <strong>unchecked</strong> (disabled)</p>
-</li>
-<li>Click <strong>Configure</strong></li>
+<li>Under <strong>Implicit grant and hybrid flows</strong>, ensure both options remain <strong>unchecked</strong> (disabled)</li>
 </ol>
 <p><cc-end-step lab="e10" exercise="2" step="2" /></p>
 <h3 id="step-3-create-client-secret">Step 3: Create Client Secret</h3>
@@ -2477,7 +2507,7 @@ cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 <h3 id="step-4-expose-an-api">Step 4: Expose an API</h3>
 <ol>
 <li>Go to <strong>Expose an API</strong></li>
-<li>Click <strong>Set</strong> next to <strong>Application ID URI</strong> and accept the default format: <code>api://your-client-id</code></li>
+<li>Click <strong>Add</strong> next to <strong>Application ID URI</strong> and accept the default format: <code>api://your-client-id</code></li>
 <li>Click <strong>Add a scope</strong> and configure:</li>
 <li><strong>Scope name</strong>: <code>access_as_user</code></li>
 <li><strong>Who can consent</strong>: Admins and users</li>
@@ -2497,14 +2527,26 @@ cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 <p>You need a public HTTPS URL for your MCP server before configuring environment variables.</p>
 <ol>
 <li>In VS Code's terminal panel, select the <strong>Ports</strong> tab</li>
-<li>Click <strong>Forward a Port</strong> and enter port <code>3001</code></li>
-<li>Right-click the forwarded port address and select <strong>Port Visibility</strong> → <strong>Public</strong></li>
+<li>
+<p>Click <strong>Forward a Port</strong> and enter port <code>3001</code></p>
+<div class="admonition note">
+<p class="admonition-title">GitHub authentication may be required</p>
+<p>If this is your first time using Dev Tunnels in VS Code, you may be prompted to sign in with your GitHub account. Complete the authentication to continue.</p>
+</div>
+</li>
+<li>
+<p>Right-click the forwarded port address and select <strong>Port Visibility</strong> → <strong>Public</strong></p>
+</li>
 <li>Copy the tunnel URL (e.g., <code>https://abc123def456.use.devtunnels.ms</code>)</li>
 </ol>
 <p><strong>Save this URL</strong> - you'll need it for the environment configuration.</p>
 <p><cc-end-step lab="e10" exercise="3" step="1" /></p>
 <h3 id="step-2-configure-environment-variables">Step 2: Configure Environment Variables</h3>
-<p>Create or update the <code>.env</code> file in the <code>zava-mcp-server</code> directory with your OAuth configuration:</p>
+<p>Create a new <code>.env</code> file in the <strong>root</strong> of the <code>zava-mcp-server</code> directory (at the same level as <code>package.json</code>, not inside the <code>src</code> folder):</p>
+<div class="admonition warning">
+<p class="admonition-title">Important: File location matters</p>
+<p>The <code>.env</code> file must be created in the project root directory. If you create it inside the <code>src</code> folder or elsewhere, the environment variables will not be loaded correctly.</p>
+</div>
 <pre><code class="language-bash"># OAuth Configuration (Required for authentication)
 OAUTH_CLIENT_ID=&lt;your-application-client-id&gt;
 OAUTH_CLIENT_SECRET=&lt;your-client-secret-value&gt;
@@ -2646,14 +2688,23 @@ Security: OAuth 2.0 authentication enabled
 <li>Since you already configured your Entra ID with the redirect URIs (<code>https://vscode.dev/redirect</code> and <code>http://127.0.0.1:33418</code>), select <strong>Copy URIs &amp; Proceed</strong></li>
 <li>The Agents Toolkit wizard prompts for OAuth credentials. Enter the client ID and secret from your Entra ID app registration</li>
 <li>The toolkit asks you to authenticate with your MCP Server</li>
-<li>A browser opens at <code>http://127.0.0.1:33418</code>. If your Entra ID configuration is correct, you'll see the sign-in success screen. Close the browser and return to your project</li>
+<li>A browser opens to the Microsoft Entra ID authorization endpoint (<code>https://login.microsoftonline.com/...</code>). Sign in with your Microsoft 365 account. After successful authentication, you'll be redirected to <code>http://127.0.0.1:33418</code> where you'll see the sign-in success screen. Close the browser and return to your project</li>
 </ol>
 <p><img alt="VS Code signed in with MCP server" src="../../../assets/images/extend-m365-copilot-10/vscode-mcp.png" /></p>
 <p><cc-end-step lab="e10" exercise="5" step="2" /></p>
 <h3 id="step-3-add-tools-and-provision-the-agent">Step 3: Add Tools and Provision the Agent</h3>
 <ol>
 <li>The server is now started. You'll see the number of tools and prompts available</li>
-<li>Select <strong>ATK: Fetch action from MCP</strong> to choose which tools to add to the agent</li>
+<li>
+<p>Select <strong>ATK: Fetch action from MCP</strong> to choose which tools to add to the agent</p>
+<div class="admonition note">
+<p class="admonition-title">Don't see the ATK: Fetch action from MCP option?</p>
+<p>If you don't see the <strong>ATK: Fetch action from MCP</strong> option, try restarting VS Code and reopening the project.</p>
+</div>
+</li>
+<li>
+<p>When prompted, select the plugin manifest file you want to update (typically <code>appPackage/ai-plugin.json</code>)</p>
+</li>
 <li>Select the <code>get_claims</code> tool for testing</li>
 <li>When prompted to configure the agent in Teams Developer Portal, follow the directions</li>
 <li>Select Authentication Type: <strong>OAuth (with static registration)</strong>. The toolkit creates your plugin manifest</li>
@@ -2685,8 +2736,9 @@ Security: OAuth 2.0 authentication enabled
 <ol>
 <li>Open Copilot at <a href="https://m365.cloud.microsoft/chat/">https://m365.cloud.microsoft/chat/</a></li>
 <li>In the left sidebar under <strong>Agents</strong>, find and select <strong>Zava Claims Assistant (Auth)</strong></li>
-<li>Try the conversation starter: "Find all claims"</li>
-<li>The agent prompts you to sign in before fetching data. Select <strong>Sign in</strong></li>
+<li>Type a prompt like: "Find all claims"</li>
+<li>Copilot may first ask you to confirm sending data to the plugin. Select <strong>Confirm</strong> or <strong>Allow</strong> to proceed</li>
+<li>The agent then prompts you to sign in before fetching data. Select <strong>Sign in</strong></li>
 </ol>
 <p><img alt="Agent sign-in prompt" src="../../../assets/images/extend-m365-copilot-10/sign-in.png" /></p>
 <ol>
