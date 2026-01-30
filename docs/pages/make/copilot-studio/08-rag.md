@@ -442,8 +442,8 @@ Your HR Knowledge Agent now demonstrates the power of combining conversational A
 
 The RAG patterns you've learned can be applied to many other scenarios including customer support knowledge bases, technical documentation, policy and procedure guides, and any domain where users need to search and understand large document collections through conversational interfaces.
 
-<!-- <a href="../09-agent-to-agent">Start here</a> with Lab MCS9, to learn how to create agent to agent solutions in Copilot Studio.
-<cc-next />  -->
+<a href="../09-connected-agents">Start here</a> with Lab MCS9, to learn how to create connected agents in Copilot Studio.
+<cc-next /> 
 
 <!-- <cc-award path="Make" /> -->
 
