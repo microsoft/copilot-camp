@@ -62,6 +62,7 @@ plugins:
               - Lab MCS7 - Creating Autonomous Agents: 'pages/make/copilot-studio/07-autonomous.md'
               - Lab MCS8 - Integrating Azure AI Search for RAG: 'pages/make/copilot-studio/08-rag.md'              
               - Lab MCS9 - Connected Agents (Preview): 'pages/make/copilot-studio/09-connected-agents.md'              
+              - Lab MCS10 - Consuming an MCP server with OAuth 2.0: 'pages/make/copilot-studio/10-mcp-oauth.md'
               - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
               - Lab MSA1 - Build your first SharePoint agent: 'pages/make/sharepoint-agents/01-first-agent.md'
               - Lab MSA2 - Sharing SharePoint agents: 'pages/make/sharepoint-agents/02-sharing-agents.md'

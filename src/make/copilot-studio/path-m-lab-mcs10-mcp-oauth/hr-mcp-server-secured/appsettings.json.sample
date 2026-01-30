@@ -1,0 +1,26 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },    
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://*:47002"
+      }
+    }
+  },
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "TenantId": "<YOUR_TENANT_ID>",
+    "ClientId": "<YOUR_CLIENT_ID>",
+    "Audience": "<YOUR_CLIENT_ID>",
+    "Scopes": "api://<YOUR_CLIENT_ID>/HR.Manage"
+  },
+  "HRMCPServer": {
+    "CandidatesPath": ".\\Data\\candidates.json"
+  },
+  "AllowedHosts": "*"
+}
