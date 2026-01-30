@@ -1,0 +1,3068 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/10-mcp-oauth/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="../../../../../pages/make/copilot-studio/10-mcp-oauth/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lab MCS10 - Consuming an MCP server with OAuth 2.0 - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-mcs10-consuming-an-mcp-server-with-oauth-20" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../../../" title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab MCS10 - Consuming an MCP server with OAuth 2.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../../pages/make/copilot-studio/10-mcp-oauth/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ようこそ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Maker 向けエージェントの作成
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  
+  宣言型エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  カスタム エンジン エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../beyond-agents/" class="md-tabs__link">
+          
+  
+  
+  AI の概念と手法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  動画など
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../" title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ようこそ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maker 向けエージェントの作成
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Maker 向けエージェントの作成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft 365 Copilot 向けエージェントの作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MAB - Copilot Studio Lite によるエージェント作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MAB1 - 最初のエージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS - Microsoft Copilot Studio の理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS0 - セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS1 - 最初のエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS2 - トピックの定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS3 - ツールの定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS4 - Microsoft 365 Copilot の拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS5 - Power Platform カスタム コネクター
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS6 - MCP サーバーの利用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS7 - Autonomous エージェントの作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS8 - RAG のための Azure AI Search 統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-connected-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS9 - Connected エージェント (プレビュー)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA - SharePoint エージェントの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MSA1 - 最初の SharePoint エージェントを構築する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA2 - SharePoint エージェントの共有
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    宣言型エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    宣言型エージェントの構築
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft 365 Copilot の拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セットアップ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セットアップ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E0 - セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    宣言型エージェントの基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    宣言型エージェントの基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使って Declarative エージェントを初めて作成する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E1 - Geo Locator ゲーム エージェントのインストラクション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API をゼロから構築して統合
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API をゼロから構築して統合
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E2 - API の構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E3 - 宣言型エージェントと API プラグインの追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E4 - API とプラグインの強化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E5 - Adaptive Card の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E6a - OAuth で Entra ID 認証を追加 (Agents Toolkit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インテグレーション
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    インテグレーション
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E7 - 統合: Microsoft Copilot Connector を使用して Trey Genie に Knowledge 機能を追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/08-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ 08 : Declarative エージェントを MCP サーバーに接続する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extend-m365-copilot/09-connected-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ 09: Connected Agent - Zava のマルチ エージェント請求オーケストレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カスタム エンジン エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    カスタム エンジン エージェントの構築
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カスタム エンジン エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft Foundry で構築する
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Microsoft Foundry で構築する
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに - M365 Agents SDK と Semantic Kernel で独自エージェントを構築する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA0 - 前提条件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA1 - Microsoft Foundry でエージェントを準備する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA2 - M365 Agents SDK を使用した初めてのエージェント構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA3 - Microsoft Foundry エージェントと M365 Agents SDK の統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MBA4 - エージェントを Copilot Chat に追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Framework で構築する
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent Framework で構築する
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agent Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF1 - 最初のエージェントの構築と実行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF2 - Azure AI Search を使用したドキュメント検索の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/03-add-vision-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF3 - Mistral AI を使用したビジョン解析の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/04-add-policy-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF4 - ポリシー検索の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/05-add-communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF5 - 通信機能の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/06-add-copilot-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF6 - Microsoft 365 Work IQ API 統合を追加する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-engine/agent-framework/07-add-mcp-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF7 - MCP ツール統合の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI の概念と手法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI の概念と手法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../beyond-agents/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エージェント指示ラボ - エージェント指示の改善 (初心者向け)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画など
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-mcs10-consuming-an-mcp-server-with-oauth-20">Lab MCS10 - Consuming an MCP server with OAuth 2.0</h1>
+<p>In this lab, you are going to consume an MCP (Model Context Protocol) server with OAuth 2.0 authorization from an agent made with Microsoft Copilot Studio. This lab builds upon the concepts introduced in <a href="../06-mcp" target="_blank">Lab MCS6 - Consuming an MCP server</a>, where you worked with the HR MCP server without authentication. Now, you will configure the same HR MCP server with OAuth 2.0 Authorization Code Flow to ensure secure access to the HR candidate management tools.</p>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <!-- <iframe  src="//www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div> -->
+    </div>
+    <div style="flex: 1; min-width: 0;">
+
+   <div class="floatwide">
+   <div class="cc-lab-toc mcs-path">
+     <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
+     <div>
+       <p>Do these labs if you want to build agents with Microsoft Copilot Studio</p>
+       <ul>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/00-prerequisites/">MCS0 - Setup</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - First agent</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - Defining Topics</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - Defining Tools</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - Consuming a custom connector</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - Consuming an MCP server</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/07-autonomous/">MCS7 - Creating Autonomous Agents</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/08-rag/">MCS8 - Integrating Azure AI Search for RAG</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/09-connected-agents/">MCS9 - Connected Agents (Preview)</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/10-mcp-oauth/">MCS10 - Consuming MCP with OAuth 2.0</a></li>
+       </ul>
+     </div>
+   </div>
+
+   <script>
+   (() => {
+
+   // This script decorates the table of contents with a "you are here" indicator.
+   const toc = document.getElementsByClassName('cc-lab-toc');
+   for (const div of toc) {
+       const lis = div.querySelectorAll('li');
+       for (const li of lis) {
+           const anchor = li.querySelector('a');
+           if (location.href.includes(anchor.href)) {
+               const span = document.createElement("span");
+               span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+               li.appendChild(span);
+           }
+       }    
+   }
+   })();
+   </script>
+
+
+   <!-- 
+     <div class="cc-mcs-lab-steps">
+       <h4>Table of Contents</h4>
+       <cc-table-of-contents />
+     </div> -->
+   </div>
+
+    </div>
+</div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lab builds on the concepts from <a href="../06-mcp" target="_blank">Lab MCS6 - Consuming an MCP server</a>. While you don't need to complete Lab MCS6 first, familiarity with MCP concepts and Copilot Studio agent creation will be helpful.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Learn about OAuth 2.0</p>
+<p>OAuth 2.0 Authorization Code Flow is the industry standard for secure delegated access. It enables applications to obtain tokens on behalf of users without exposing credentials. You can learn more about OAuth 2.0 reading the <a href="https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow" target="_blank">Microsoft identity platform and OAuth 2.0 authorization code flow</a> documentation.</p>
+</div>
+<p>In this lab you will learn:</p>
+<ul>
+<li>How to configure an MCP server with OAuth 2.0 authentication</li>
+<li>How to register Microsoft Entra ID applications for secure API access</li>
+<li>How to configure OAuth 2.0 Authorization Code Flow in Copilot Studio</li>
+<li>How to consume secured MCP tools from a Copilot Studio agent</li>
+</ul>
+<h2 id="exercise-1-setting-up-the-secured-mcp-server">Exercise 1 : Setting up the Secured MCP Server</h2>
+<p>In this exercise you are going to setup a pre-built MCP server that provides HR candidates management functionality with OAuth 2.0 security. The server is based on Microsoft .NET and includes JWT token validation to ensure only authenticated users can access the HR tools.</p>
+<h3 id="step-1-understanding-the-secured-mcp-server-and-prerequisites">Step 1: Understanding the Secured MCP Server and prerequisites</h3>
+<p>The secured HR MCP server is an enhanced version of the server used in <a href="../06-mcp" target="_blank">Lab MCS6</a>. It provides the same tools:</p>
+<ul>
+<li><strong>list_candidates</strong>: Provides the whole list of candidates</li>
+<li><strong>search_candidates</strong>: Searches for candidates by name, email, skills, or current role</li>
+<li><strong>add_candidate</strong>: Adds a new candidate to the list</li>
+<li><strong>update_candidate</strong>: Updates an existing candidate by email</li>
+<li><strong>remove_candidate</strong>: Removes a candidate by email</li>
+</ul>
+<p>The key difference is that this version requires a valid OAuth 2.0 access token in the Authorization header for all requests. The server validates the JWT token against your Microsoft Entra ID tenant to ensure secure access.</p>
+<p>Before starting, make sure you have:</p>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/10.0" target="_blank">.NET 10.0 SDK</a></li>
+<li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></li>
+<li><a href="https://nodejs.org/en" target="_blank">Node.js v.22 or higher</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started" target="_blank">Dev tunnel</a></li>
+<li>Access to <a href="https://entra.microsoft.com" target="_blank">Microsoft Entra admin center</a> to register applications</li>
+</ul>
+<p><cc-end-step lab="mcs10" exercise="1" step="1" /></p>
+<h3 id="step-2-downloading-and-reviewing-the-secured-mcp-server">Step 2: Downloading and reviewing the Secured MCP Server</h3>
+<p>For this lab, you will use a pre-built secured HR MCP server. Download the server files <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/make/copilot-studio/path-m-lab-mcs10-mcp-oauth/hr-mcp-server-secured&amp;filename=hr-mcp-server" target="_blank">from here</a>.</p>
+<p>Extract the files from the zip and open the target folder with Visual Studio Code. The server is already implemented with OAuth 2.0 security and ready to configure.</p>
+<p><img alt="The outline of the Secured HR MCP Server project in Visual Studio Code showing the server files including authentication middleware." src="../../../../../assets/images/make/copilot-studio-10/mcp-server-secured-01.png" /></p>
+<p>The main elements of the project outline are:</p>
+<ul>
+<li><code>Configuration</code>: folder with the <code>HRMCPServerConfiguration.cs</code> file defining the configuration settings for the MCP server, including OAuth settings.</li>
+<li><code>Data</code>: folder with the <code>candidates.json</code> file providing the list of candidates.</li>
+<li><code>Services</code>: folder with the <code>ICandidateService.cs</code> and <code>IAuthorizationService.cs</code> interfaces and the actual <code>CandidateService.cs</code> and <code>AuthorizationService.cs</code> implementations of a services to load and manage the list of candidates and to handle security and authorization respectively. </li>
+<li><code>Tools</code>: folder with the <code>HRTools.cs</code> file defining the MCP tools and the <code>Models.cs</code> file defining the data models used by the tools.</li>
+<li><code>appsettings.json.sample</code>: sample configuration file to start from when configuring your Entra ID settings.</li>
+<li><code>Program.cs</code>: the main entry point of the project, where the MCP server gets initialized with JWT authentication.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The secured MCP server includes JWT bearer token authentication middleware that validates incoming tokens against your Microsoft Entra ID tenant. This ensures that only authenticated users with valid tokens can access the HR tools.</p>
+</div>
+<p><cc-end-step lab="mcs10" exercise="1" step="2" /></p>
+<h3 id="step-3-understanding-oauth-20-authorization-code-flow">Step 3: Understanding OAuth 2.0 Authorization Code Flow</h3>
+<p>Before configuring the applications, let's understand how OAuth 2.0 Authorization Code Flow works in this scenario:</p>
+<ol>
+<li>
+<p><strong>User Authentication</strong>: When a user interacts with your Copilot Studio agent and triggers an MCP tool, they are requested to connect to your target MCP server relying on Microsoft Entra ID for authentication.</p>
+</li>
+<li>
+<p><strong>Authorization Code Issued</strong>: After successful login, Microsoft Entra ID sends an authorization code to Copilot Studio via the redirect URI.</p>
+</li>
+<li>
+<p><strong>Token Exchange</strong>: Copilot Studio exchanges the authorization code (plus client credentials) for an access token.</p>
+</li>
+<li>
+<p><strong>API Access</strong>: Copilot Studio includes the access token in requests to your MCP server, which validates the token before processing the request.</p>
+</li>
+</ol>
+<p>This flow ensures that:</p>
+<ul>
+<li>User credentials are never exposed to the MCP server</li>
+<li>Access tokens have limited lifetimes and scopes</li>
+<li>The MCP server can verify the user's identity and permissions</li>
+</ul>
+<p><cc-end-step lab="mcs10" exercise="1" step="3" /></p>
+<h2 id="exercise-2-configuring-microsoft-entra-id-applications">Exercise 2 : Configuring Microsoft Entra ID Applications</h2>
+<p>In this exercise you are going to register two Microsoft Entra ID applications: one for the HR MCP Server (backend) and one for the Copilot Studio client (frontend).</p>
+<h3 id="step-1-registering-the-hr-mcp-server-application-backend">Step 1: Registering the HR MCP Server Application (Backend)</h3>
+<p>Open a browser and navigate to <a href="https://entra.microsoft.com" target="_blank">https://entra.microsoft.com</a> using your work account.</p>
+<p>In the left navigation, select 1️⃣ <strong>App registrations</strong> → 2️⃣ <strong>+ New registration</strong>.</p>
+<p><img alt="The Microsoft Entra admin center showing the App registrations page with the New registration button highlighted." src="../../../../../assets/images/make/copilot-studio-10/entra-app-registration-01.png" /></p>
+<p>Then configure the new application with these settings:</p>
+<ul>
+<li><strong>Name</strong>: </li>
+</ul>
+<pre><code class="language-text">HR MCP Server
+</code></pre>
+<ul>
+<li>
+<p><strong>Supported account types</strong>: Select <strong>Accounts in this organizational directory only</strong></p>
+</li>
+<li>
+<p><strong>Redirect URI</strong>: Leave blank for now (we'll configure this later if needed)</p>
+</li>
+</ul>
+<p>Select <strong>Register</strong> to create the application.</p>
+<p><img alt="The Register an application page with the HR MCP Server name and single tenant option selected." src="../../../../../assets/images/make/copilot-studio-10/entra-app-registration-02.png" /></p>
+<p><cc-end-step lab="mcs10" exercise="2" step="1" /></p>
+<h3 id="step-2-configuring-the-hr-mcp-server-application">Step 2: Configuring the HR MCP Server Application</h3>
+<p>After the application is registered, you need to configure it to expose an API that the client application can access.</p>
+<h4 id="configure-expose-an-api-settings">Configure Expose an API settings</h4>
+<ol>
+<li>In your <strong>HR MCP Server</strong> application, select <strong>Expose an API</strong> from the left menu</li>
+<li>Next to <strong>Application ID URI</strong>, select <strong>Add</strong></li>
+<li>So far, accept the default value (format: <code>api://&lt;client-id&gt;</code>)</li>
+<li>Select <strong>Save</strong></li>
+</ol>
+<p><img alt="The Expose an API page showing the Application ID URI configuration." src="../../../../../assets/images/make/copilot-studio-10/entra-expose-api-01.png" /></p>
+<h4 id="add-a-scope">Add a Scope</h4>
+<ol>
+<li>In the <strong>Scopes defined by this API</strong> section, select <strong>+ Add a scope</strong></li>
+<li>
+<p>Configure the scope with these settings:</p>
+</li>
+<li>
+<p><strong>Scope name</strong>: </p>
+</li>
+</ol>
+<pre><code class="language-text">HR.Manage
+</code></pre>
+<ul>
+<li>
+<p><strong>Who can consent?</strong>: <strong>Admins and users</strong></p>
+</li>
+<li>
+<p><strong>Admin consent display name</strong>: </p>
+</li>
+</ul>
+<pre><code class="language-text">Manage HR Data
+</code></pre>
+<ul>
+<li><strong>Admin consent description</strong>: </li>
+</ul>
+<pre><code class="language-text">Allows managing HR data as an Admin
+</code></pre>
+<ul>
+<li><strong>User consent display name</strong>: </li>
+</ul>
+<pre><code class="language-text">Manage HR Data
+</code></pre>
+<ul>
+<li><strong>User consent description</strong>: </li>
+</ul>
+<pre><code class="language-text">Allows managing HR data as a user
+</code></pre>
+<ul>
+<li>
+<p><strong>State</strong>: <strong>Enabled</strong></p>
+</li>
+<li>
+<p>Select <strong>Add scope</strong></p>
+</li>
+</ul>
+<p><img alt="The Add a scope dialog with all fields configured for the access_as_user scope." src="../../../../../assets/images/make/copilot-studio-10/entra-add-scope-01.png" /></p>
+<h4 id="record-important-values">Record Important Values</h4>
+<p>Navigate to the <strong>Overview</strong> page and record the following values - you will need them later:</p>
+<ul>
+<li><strong>Application (client) ID</strong>: Copy and save this value</li>
+<li><strong>Directory (tenant) ID</strong>: Copy and save this value</li>
+</ul>
+<p><cc-end-step lab="mcs10" exercise="2" step="2" /></p>
+<h3 id="step-3-registering-the-copilot-studio-client-application">Step 3: Registering the Copilot Studio Client Application</h3>
+<p>Now you need to create a second application that represents Copilot Studio as a client consuming the HR MCP Server.</p>
+<p>As like as you just did in the previous steps, browse to the Microsoft Entra admin center, go to <strong>Applications</strong> → <strong>App registrations</strong> and select <strong>+ New registration</strong>.</p>
+<p>Configure the new application with these settings:</p>
+<ul>
+<li><strong>Name</strong>: </li>
+</ul>
+<pre><code class="language-text">HR MCP Consumer
+</code></pre>
+<ul>
+<li>
+<p><strong>Supported account types</strong>: Select <strong>Accounts in this organizational directory only</strong></p>
+</li>
+<li>
+<p><strong>Redirect URI</strong>: Leave blank for now (Copilot Studio will provide this URL later)</p>
+</li>
+</ul>
+<p>Select <strong>Register</strong> to create the application.</p>
+<p><cc-end-step lab="mcs10" exercise="2" step="3" /></p>
+<h3 id="step-4-configuring-the-copilot-studio-client-application">Step 4: Configuring the Copilot Studio Client Application</h3>
+<p>After registration, configure the client application with the necessary permissions and credentials.</p>
+<h4 id="create-a-client-secret">Create a Client Secret</h4>
+<ol>
+<li>In your <strong>HR MCP Consumer</strong> application, select <strong>Certificates &amp; secrets</strong> from the left menu</li>
+<li>Select <strong>+ New client secret</strong></li>
+<li>
+<p>Configure the secret:</p>
+</li>
+<li>
+<p><strong>Description</strong>: </p>
+</li>
+</ol>
+<pre><code class="language-text">ClientSecret
+</code></pre>
+<ul>
+<li>
+<p><strong>Expires</strong>: Select an appropriate expiration period (e.g., 12 months)</p>
+</li>
+<li>
+<p>Select <strong>Add</strong></p>
+</li>
+</ul>
+<p><strong>Important</strong>: Copy the <strong>Value</strong> of the secret immediately and save it securely. This value will not be shown again!</p>
+<h4 id="configure-api-permissions">Configure API Permissions</h4>
+<ol>
+<li>Select <strong>API permissions</strong> from the left menu</li>
+<li>Select <strong>+ Add a permission</strong></li>
+<li>Select the <strong>APIs my organization uses</strong> tab</li>
+<li>Type <strong>HR MCP Server</strong></li>
+<li>
+<p>Select <strong>HR MCP Server</strong> from the list</p>
+<p><img alt="The Request API permissions dialog showing the &quot;APIs my organization uses&quot; tab with HR MCP Server selected." src="../../../../../assets/images/make/copilot-studio-10/entra-api-permissions-01.png" /></p>
+</li>
+<li>
+<p>Select 1️⃣ <strong>Delegated permissions</strong></p>
+</li>
+<li>Check the 2️⃣ <strong>HR.Manage</strong> permission</li>
+<li>
+<p>Select 3️⃣ <strong>Add permissions</strong></p>
+<p><img alt="The permission selection dialog with access_as_user selected." src="../../../../../assets/images/make/copilot-studio-10/entra-api-permissions-02.png" /></p>
+</li>
+<li>
+<p>Additionally, add Microsoft Graph permissions. Select <strong>+ Add a permission</strong> → <strong>Microsoft Graph</strong> → <strong>Delegated permissions</strong></p>
+</li>
+<li>
+<p>Select the following permissions:</p>
+<ul>
+<li><strong>email</strong></li>
+<li><strong>openid</strong></li>
+<li><strong>profile</strong></li>
+<li><strong>User.Read</strong></li>
+</ul>
+</li>
+<li>
+<p>Select <strong>Add permissions</strong> again</p>
+</li>
+</ol>
+<h4 id="grant-admin-consent">Grant Admin Consent</h4>
+<ol>
+<li>In the API permissions list, select <strong>Grant admin consent for [Your Tenant]</strong></li>
+<li>Confirm by selecting <strong>Yes</strong></li>
+</ol>
+<p><img alt="The API permissions page showing all permissions with admin consent granted." src="../../../../../assets/images/make/copilot-studio-10/entra-admin-consent-01.png" /></p>
+<h4 id="record-important-values_1">Record Important Values</h4>
+<p>From the <strong>Overview</strong> page of your client application, record:</p>
+<ul>
+<li><strong>Application (client) ID</strong>: Copy and save this value</li>
+<li><strong>Client Secret Value</strong>: You should have saved this earlier</li>
+</ul>
+<p><cc-end-step lab="mcs10" exercise="2" step="4" /></p>
+<h3 id="step-5-configuring-and-running-the-mcp-server">Step 5: Configuring and Running the MCP Server</h3>
+<p>Now configure the MCP server with your Entra ID settings.</p>
+<p>Copy the <code>appsettings.json.sample</code> file into a new file with name <code>appsettings.json</code>. Now edit the new file and update the <code>AzureAd</code> section with your values:</p>
+<pre><code class="language-json">{
+  &quot;AzureAd&quot;: {
+    &quot;Instance&quot;: &quot;https://login.microsoftonline.com/&quot;,
+    &quot;TenantId&quot;: &quot;[YOUR_TENANT_ID]&quot;,
+    &quot;ClientId&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
+    &quot;Audience&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
+    &quot;Scopes&quot;: &quot;[YOUR_APPLICATION_ID_URI]/HR.Manage&quot;
+  }
+}
+</code></pre>
+<p>Replace the placeholders:</p>
+<ul>
+<li><code>[YOUR_TENANT_ID]</code>: The Directory (tenant) ID from your HR MCP Server app registration</li>
+<li><code>[YOUR_HR_MCP_SERVER_CLIENT_ID]</code>: The Application (client) ID from your HR MCP Server app registration</li>
+<li><code>[YOUR_APPLICATION_ID_URI]</code>: The Application ID URI from your HR MCP Server app (e.g., <code>api://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>)</li>
+</ul>
+<p>Save the file and run the MCP server:</p>
+<pre><code class="language-console">dotnet run
+</code></pre>
+<p>The server should start and listen for requests. Note that now any requests without a valid access token will be rejected with a 401 Unauthorized response.</p>
+<p><cc-end-step lab="mcs10" exercise="2" step="5" /></p>
+<h3 id="step-6-configuring-the-dev-tunnel">Step 6: Configuring the Dev Tunnel</h3>
+<p>Expose the MCP server with a public URL using dev tunnel. If you haven't already installed dev tunnel, follow <a href="https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started" target="_blank">these instructions</a>.</p>
+<p>Login with dev tunnel:</p>
+<pre><code class="language-console">devtunnel user login
+</code></pre>
+<p>Host your dev tunnel:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Replace the <code>hr-mcp-secured</code> name suggested below with a unique name for your dev tunnel. For example, if your name is Alex you can use <code>hr-mcp-secured-alex</code> as the name for your tunnel.</p>
+</div>
+<pre><code class="language-console">devtunnel create hr-mcp-secured -a --host-header unchanged
+devtunnel port create hr-mcp-secured -p 47002
+devtunnel host hr-mcp-secured
+</code></pre>
+<p>Copy the "Connect via browser" URL and save it. You will need this URL when configuring the MCP tool in Copilot Studio as well as to update the <strong>HR MCP Consumer</strong> application in Entra ID.</p>
+<p><img alt="The dev tunnel running showing the connection URLs." src="../../../../../assets/images/make/copilot-studio-10/devtunnel-hosting-01.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keep both the MCP server and dev tunnel running throughout this lab. If you need to restart, run <code>dotnet run</code> for the server and <code>devtunnel host hr-mcp-secured</code> for the tunnel.</p>
+</div>
+<p><cc-end-step lab="mcs10" exercise="2" step="6" /></p>
+<h3 id="step-7-updating-the-application-id-uri-and-configuration">Step 7: Updating the Application ID URI and Configuration</h3>
+<p>Now that you have the dev tunnel URL, you need to update the <strong>HR MCP Server</strong> application in Microsoft Entra ID to use this URL as the Application ID URI instead of the default <code>api://&lt;guid&gt;</code> format.</p>
+<h4 id="update-the-application-id-uri-in-entra-id">Update the Application ID URI in Entra ID</h4>
+<ol>
+<li>Go to the <a href="https://entra.microsoft.com" target="_blank">Microsoft Entra admin center</a></li>
+<li>Navigate to <strong>Applications</strong> → <strong>App registrations</strong></li>
+<li>Select your <strong>HR MCP Server</strong> application</li>
+<li>Select <strong>Expose an API</strong> from the left menu</li>
+<li>Next to <strong>Application ID URI</strong>, select <strong>Edit</strong></li>
+<li>Replace the current value (<code>api://&lt;guid&gt;</code>) with your dev tunnel URL (the "Connect via browser" URL you saved earlier)</li>
+<li>For example: <code>https://hr-mcp-secured.devtunnels.ms</code></li>
+<li>Select <strong>Save</strong></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">URL Format</p>
+<p>Make sure to use the dev tunnel URL without a trailing slash. The URL should look like <code>https://your-tunnel-name.devtunnels.ms</code>.</p>
+</div>
+<h4 id="update-the-appsettingsjson-configuration">Update the appsettings.json Configuration</h4>
+<p>Now update your <code>appsettings.json</code> file to use the dev tunnel URL in the <code>Scopes</code> properties:</p>
+<pre><code class="language-json">{
+  &quot;AzureAd&quot;: {
+    &quot;Instance&quot;: &quot;https://login.microsoftonline.com/&quot;,
+    &quot;TenantId&quot;: &quot;[YOUR_TENANT_ID]&quot;,
+    &quot;ClientId&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
+    &quot;Audience&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
+    &quot;Scopes&quot;: &quot;[YOUR_DEVTUNNEL_URL]/HR.Manage&quot;
+  }
+}
+</code></pre>
+<p>Replace <code>[YOUR_DEVTUNNEL_URL]</code> with the same dev tunnel URL you configured in Entra ID (e.g., <code>https://hr-mcp-secured.devtunnels.ms</code>).</p>
+<p>Your final configuration should look similar to:</p>
+<pre><code class="language-json">{
+  &quot;AzureAd&quot;: {
+    &quot;Instance&quot;: &quot;https://login.microsoftonline.com/&quot;,
+    &quot;TenantId&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
+    &quot;ClientId&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
+    &quot;Audience&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
+    &quot;Scopes&quot;: &quot;https://hr-mcp-secured.devtunnels.ms/HR.Manage&quot;
+  }
+}
+</code></pre>
+<h4 id="restart-the-mcp-server">Restart the MCP Server</h4>
+<p>After updating the configuration, save the <code>appsettings.json</code> file and restart the MCP server:</p>
+<ol>
+<li>Stop the currently running server (press <code>Ctrl+C</code> in the terminal)</li>
+<li>Start the server again:</li>
+</ol>
+<pre><code class="language-console">dotnet run
+</code></pre>
+<p>The server will now validate tokens using the dev tunnel URL matching the Application ID URI configured in Entra ID.</p>
+<p><cc-end-step lab="mcs10" exercise="2" step="7" /></p>
+<h2 id="exercise-3-creating-an-agent-in-copilot-studio">Exercise 3 : Creating an Agent in Copilot Studio</h2>
+<p>In this exercise you are going to create a new agent in Microsoft Copilot Studio that will consume the secured MCP server.</p>
+<h3 id="step-1-creating-the-hr-agent">Step 1: Creating the HR Agent</h3>
+<p>Open a browser and navigate to <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> using your work account.</p>
+<p>Select the <code>Copilot Dev Camp</code> environment that you created in previous labs, and then select <strong>Create an agent</strong> to create a new agent.</p>
+<p>Configure the new agent. Select <strong>Edit</strong> in the <strong>Details</strong> section and configure:</p>
+<ul>
+<li><strong>Name</strong>: </li>
+</ul>
+<pre><code class="language-text">HR Candidate Management (Secured)
+</code></pre>
+<ul>
+<li><strong>Description</strong>: </li>
+</ul>
+<pre><code class="language-text">An AI assistant that helps manage HR candidates using a secured MCP server 
+with OAuth 2.0 authentication for enterprise-grade security
+</code></pre>
+<p>Select <strong>Save</strong> to save your agent configuration.
+Now, select <strong>Edit</strong> in the <strong>Instructions</strong> section and configure the following instructions</p>
+<pre><code class="language-text">You are a helpful HR assistant that specializes in secure candidate management. You can help users 
+search for candidates, check their availability, get detailed candidate information, and add new 
+candidates to the system. 
+
+All operations require user authentication through OAuth 2.0 to ensure data security and compliance 
+with enterprise policies.
+
+Always provide clear and helpful information about candidates, including their skills, experience, 
+contact details, and availability status.
+</code></pre>
+<p>Select <strong>Save</strong> to save your agent configuration.</p>
+<p>Now update the <strong>Agent's Model</strong> to use <strong>GPT-5 Chat</strong>.</p>
+<p><img alt="The agent Overview page with name, description, model, and instructions configured for the secured HR agent." src="../../../../../assets/images/make/copilot-studio-10/create-agent-01.png" /></p>
+<p><cc-end-step lab="mcs10" exercise="3" step="1" /></p>
+<h3 id="step-2-configuring-agent-settings">Step 2: Configuring Agent Settings</h3>
+<p>Configure the agent's knowledge settings for optimal performance.</p>
+<p>Select the <strong>Settings</strong> command in the upper right corner and configure:</p>
+<p>In the <strong>Knowledge</strong> section:</p>
+<ul>
+<li><strong>Use general knowledge</strong>: off</li>
+<li><strong>Use information from the web</strong>: off</li>
+</ul>
+<p>Select <strong>Save</strong> to confirm the configuration.</p>
+<p><cc-end-step lab="mcs10" exercise="3" step="2" /></p>
+<h3 id="step-3-configuring-conversation-starters">Step 3: Configuring Conversation Starters</h3>
+<p>In the <strong>Overview</strong> page, configure the <strong>Suggested prompts</strong> section with helpful prompts:</p>
+<ol>
+<li>Title: <code>List all candidates</code> - Prompt: <code>Show me all candidates in the HR system</code></li>
+<li>Title: <code>Search candidates</code> - Prompt: <code>Search for candidates with skills in [SKILL]</code></li>
+<li>Title: <code>Add new candidate</code> - Prompt: <code>Add a new candidate with firstname [FIRSTNAME], lastname [LASTNAME], email [EMAIL], role [ROLE], languages [LANGUAGES], and skills [SKILLS]</code></li>
+</ol>
+<p><img alt="The Suggested prompts section configured with sample prompts." src="../../../../../assets/images/make/copilot-studio-10/conversation-starters-01.png" /></p>
+<p>Select <strong>Save</strong> to confirm your changes.</p>
+<p><cc-end-step lab="mcs10" exercise="3" step="3" /></p>
+<h2 id="exercise-4-registering-the-mcp-tool-with-oauth-20">Exercise 4 : Registering the MCP Tool with OAuth 2.0</h2>
+<p>In this exercise you are going to configure the secured MCP server as a tool in your Copilot Studio agent with OAuth 2.0 authentication.</p>
+<h3 id="step-1-adding-the-mcp-server-tool">Step 1: Adding the MCP Server Tool</h3>
+<p>In your agent, navigate to the 1️⃣ <strong>Tools</strong> section and select 2️⃣ <strong>+ Add a tool</strong>.</p>
+<p><img alt="The Tools section with the Add a tool command highlighted." src="../../../../../assets/images/make/copilot-studio-10/add-tool-01.png" /></p>
+<p>In the 1️⃣ <strong>Create new</strong> section, choose 2️⃣ <strong>Model Context Protocol</strong> to add a new MCP server.</p>
+<p><img alt="The Add tool panel with Model Context Protocol selected and New tool highlighted." src="../../../../../assets/images/make/copilot-studio-10/add-tool-02.png" /></p>
+<p><cc-end-step lab="mcs10" exercise="4" step="1" /></p>
+<h3 id="step-2-configuring-oauth-20-authentication">Step 2: Configuring OAuth 2.0 Authentication</h3>
+<p>Configure the MCP server connection with OAuth 2.0 settings:</p>
+<p><strong>Basic Settings:</strong></p>
+<ul>
+<li><strong>Server name</strong>: </li>
+</ul>
+<pre><code class="language-text">HR MCP Server Secured
+</code></pre>
+<ul>
+<li><strong>Server description</strong>: </li>
+</ul>
+<pre><code class="language-text">Securely manages HR candidates with OAuth 2.0 authentication for enterprise compliance
+</code></pre>
+<ul>
+<li><strong>URL</strong>: Enter the dev tunnel URL you saved earlier (the "Connect via browser" URL)</li>
+</ul>
+<p><strong>Authentication Settings:</strong></p>
+<p>Select <strong>OAuth 2.0</strong> as the authentication method and then <strong>Manual</strong> to manually configure the authentication settings.</p>
+<p><img alt="The MCP server configuration dialog showing OAuth 2.0 Manual selected as authentication method." src="../../../../../assets/images/make/copilot-studio-10/oauth-config-01.png" /></p>
+<p>Configure the OAuth 2.0 settings:</p>
+<ul>
+<li>
+<p><strong>Client ID</strong>: Enter the Application (client) ID from your <strong>HR MCP Client - Copilot Studio</strong> app registration</p>
+</li>
+<li>
+<p><strong>Client secret</strong>: Enter the client secret value you saved earlier</p>
+</li>
+<li>
+<p><strong>Authorization URL template</strong>: </p>
+</li>
+</ul>
+<pre><code class="language-text">https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/authorize
+</code></pre>
+<ul>
+<li><strong>Token URL template</strong>: </li>
+</ul>
+<pre><code class="language-text">https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/token
+</code></pre>
+<ul>
+<li><strong>Refresh URL template</strong>: </li>
+</ul>
+<pre><code class="language-text">https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/token
+</code></pre>
+<ul>
+<li><strong>Scopes</strong>: Enter the scopes separated by spaces:</li>
+</ul>
+<pre><code class="language-text">openid profile email
+</code></pre>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The provided scopes are temporary and you will replace them later with the actual scope required by the secured HR MCP Server.</p>
+</div>
+<p><img alt="The OAuth 2.0 configuration section with all fields filled in." src="../../../../../assets/images/make/copilot-studio-10/oauth-config-02.png" /></p>
+<p>Select <strong>Create</strong> to create the MCP server configuration.</p>
+<p><cc-end-step lab="mcs10" exercise="4" step="2" /></p>
+<h3 id="step-3-configuring-the-redirect-uri-in-entra-id">Step 3: Configuring the Redirect URI in Entra ID</h3>
+<p>After creating the MCP tool, Copilot Studio generates a <strong>Redirect URL</strong> that you need to configure in your Entra ID <strong>HR MCP Consumer</strong> application.</p>
+<ol>
+<li>Copy the Redirect URL provided by Copilot Studio</li>
+</ol>
+<p><img alt="The MCP tool configuration showing the Redirect URL that needs to be configured in Entra ID." src="../../../../../assets/images/make/copilot-studio-10/redirect-url-01.png" /></p>
+<ol>
+<li>Go to the <a href="https://entra.microsoft.com" target="_blank">Microsoft Entra admin center</a></li>
+<li>Navigate to <strong>Applications</strong> → <strong>App registrations</strong></li>
+<li>Select your <strong>HR MCP Consumer</strong> application</li>
+<li>Select <strong>Authentication</strong> from the left menu</li>
+<li>Select <strong>+ Add Redirect URI</strong> and then select <strong>Web</strong></li>
+<li>Paste the Redirect URL copied from Copilot Studio into the <strong>Redirect URI</strong> field</li>
+<li>Select <strong>Configure</strong></li>
+</ol>
+<p><img alt="The Authentication page showing the Redirect URI configured." src="../../../../../assets/images/make/copilot-studio-10/entra-redirect-uri-01.png" /></p>
+<p><cc-end-step lab="mcs10" exercise="4" step="3" /></p>
+<p>Return to Copilot Studio and complete the tool configuration. Select <strong>Next</strong> to proceed with the MCP server configuration. A new dialog will prompt you to connect to the target MCP server. Don't connect now, keep it on hold and proceed with the following Step 4.</p>
+<h3 id="step-4-configuring-the-power-apps-connector-optional">Step 4: Configuring the Power Apps Connector (Optional)</h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This step may be required depending on your environment configuration. The MCP connector created in Copilot Studio is also registered in Power Apps, where you might need to configure additional settings.</p>
+</div>
+<p>If you need to modify the connector settings:</p>
+<ol>
+<li>Navigate to <a href="https://make.powerautomate.com" target="_blank">https://make.powerautomate.com</a></li>
+<li>Select the <code>Copilot Dev Camp</code> environment from the environment picker in the top right corner</li>
+<li>Select <strong>More</strong> → <strong>Discover all</strong> → <strong>Custom connectors</strong></li>
+<li>Find the connector for your secured MCP server. The name should be the same that you selected for the MCP tool, so it should be <strong>HR MCP Server Secured</strong></li>
+<li>Select the pencil to <strong>Edit</strong> the connector</li>
+</ol>
+<p><img alt="The Power Platform connectors page with the connector for the MCP server highlighted and the pencil to edit highligthed." src="../../../../../assets/images/make/copilot-studio-10/power-connector-01.png" /></p>
+<ol>
+<li>Navigate to the <strong>Security</strong> tab</li>
+<li>Then select <strong>Edit</strong> to update the OAuth 2.0 settings</li>
+</ol>
+<p><img alt="The Power Platform connectors page with the connector for the MCP server highlighted and the pencil to edit highligthed." src="../../../../../assets/images/make/copilot-studio-10/power-connector-02.png" /></p>
+<ol>
+<li>Configure the <strong>Client Secret</strong> with the value you copied before from Entra ID in the <strong>HR MCP Consumer</strong> application</li>
+<li>In the <strong>Resource URL</strong> field, enter your Application ID URI that should be the [YOUR_DEVTUNNEL_URL] that you copied from the dev tunnel (e.g., <code>https://hr-mcp-secured.devtunnels.ms</code>)</li>
+<li>In the <strong>Scope</strong> field, enter the name of the custom scope <strong>HR.Manage</strong> that you registered before</li>
+<li>Select <strong>Update connector</strong> in the upper side of the screen</li>
+</ol>
+<p><img alt="The Power Platform connector security configuration page with updated settings." src="../../../../../assets/images/make/copilot-studio-10/power-connector-03.png" /></p>
+<p><cc-end-step lab="mcs10" exercise="4" step="4" /></p>
+<h3 id="step-5-complete-mcp-tool-configuration">Step 5: Complete MCP tool configuration</h3>
+<p>Now go back to Copilot Studio to complete the MCP tool configuration and create the connection.</p>
+<ol>
+<li>In the MCP tool configuration dialog, you should see the <strong>Connection</strong> section showing <strong>Not connected</strong></li>
+<li>Select <strong>Not connected</strong> to open the connection options</li>
+<li>Select <strong>Create new connection</strong></li>
+</ol>
+<p><img alt="The MCP tool configuration dialog showing the Not connected status and the option to create a new connection." src="../../../../../assets/images/make/copilot-studio-10/complete-connection-01.png" /></p>
+<ol>
+<li>In the dialog that appears, select <strong>Create</strong> to start creating the connection</li>
+<li>Copilot Studio will prompt you to authenticate with Microsoft Entra ID</li>
+<li>Select a valid user account or provide credentials for a valid user in your tenant</li>
+<li>If prompted, grant permission for the application to access the HR MCP Server</li>
+</ol>
+<p><img alt="The authentication dialog prompting for user credentials to establish the connection." src="../../../../../assets/images/make/copilot-studio-10/complete-connection-02.png" /></p>
+<ol>
+<li>Once authentication is successful, the connection will be configured and you will see a green checkmark indicating the connection is established</li>
+<li>Select <strong>Add and configure</strong> to add the MCP tool to your agent</li>
+</ol>
+<p><img alt="The MCP tool configuration dialog showing the connection established and the Add and configure button." src="../../../../../assets/images/make/copilot-studio-10/complete-connection-03.png" /></p>
+<p>You will now see the MCP server configuration page with all available tools listed:</p>
+<ul>
+<li>list_candidates</li>
+<li>search_candidates</li>
+<li>add_candidate</li>
+<li>update_candidate</li>
+<li>remove_candidate</li>
+</ul>
+<p><img alt="The MCP server details page showing all available tools." src="../../../../../assets/images/make/copilot-studio-10/tool-details-01.png" /></p>
+<p>The secured MCP server is now configured and ready for testing.</p>
+<p><cc-end-step lab="mcs10" exercise="4" step="5" /></p>
+<h2 id="exercise-5-testing-the-agent">Exercise 5 : Testing the Agent</h2>
+<p>In this exercise you will test the agent and verify that OAuth 2.0 authentication is working correctly.</p>
+<h3 id="step-1-publishing-the-agent">Step 1: Publishing the Agent</h3>
+<p>Before testing, publish your agent:</p>
+<ol>
+<li>Select <strong>Publish</strong> in the top right corner of Copilot Studio</li>
+<li>Wait for the publishing process to complete</li>
+</ol>
+<p><cc-end-step lab="mcs10" exercise="5" step="1" /></p>
+<h3 id="step-2-testing-authentication-flow">Step 2: Testing Authentication Flow</h3>
+<p>Open the test panel in Copilot Studio and try a prompt:</p>
+<pre><code class="language-text">List all candidates
+</code></pre>
+<p>Since this is the first time using the secured MCP server, Copilot Studio will prompt you to <strong>Allow</strong> the agent using your credentials to access the external MCP server. Select the <strong>Allow</strong> command to proceed.</p>
+<p><img alt="The message asking to &quot;Allow&quot; using user's credentials to access the external service." src="../../../../../assets/images/make/copilot-studio-10/allow-secure-connection-01.png" /></p>
+<p>In case you are not connected to the target MCP server or if the connection token is expired, you will be prompted to connect the connection in <strong>Open connection manager</strong>. If that is the case, follow these steps:</p>
+<ol>
+<li>Select <strong>Open connection manager</strong></li>
+<li>A new tab will open in the browser to connect to the target MCP server</li>
+<li>Select <strong>Connect</strong></li>
+<li>Sign in with your work account</li>
+<li>If prompted, grant consent for the application to access the HR MCP Server</li>
+<li>After successful authentication, the connection will be marked as <strong>Connected</strong></li>
+</ol>
+<p><img alt="The message asking to &quot;Allow&quot; using user's credentials to access the external service." src="../../../../../assets/images/make/copilot-studio-10/connection-01.png" /></p>
+<p><cc-end-step lab="mcs10" exercise="5" step="2" /></p>
+<h3 id="step-3-testing-mcp-tools">Step 3: Testing MCP Tools</h3>
+<p>Once authenticated your prompt will be processed. If not, provide the prompt again:</p>
+<pre><code class="language-text">List all candidates
+</code></pre>
+<p>The agent should now successfully call the secured MCP server and return the list of candidates.</p>
+<p><img alt="The test panel showing successful retrieval of candidates after authentication." src="../../../../../assets/images/make/copilot-studio-10/test-success-01.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Token Caching</p>
+<p>After the initial authentication, your access token is cached for a period of time. You won't need to re-authenticate for every request unless the token expires or is revoked.</p>
+</div>
+<p>Try additional prompts to test other tools:</p>
+<p><strong>Search for candidates:</strong></p>
+<pre><code class="language-text">Search for candidates with Training skills
+</code></pre>
+<p><strong>Get a specific candidate:</strong></p>
+<pre><code class="language-text">Get candidate with email bob.brown@example.com
+</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Monitoring MCP Server Activity</p>
+<p>While consuming the MCP server from your agent in Copilot Studio, the .NET application hosting the MCP server continues to run and logs all activity in the terminal window. You can observe each tool method call being invoked in real-time, along with evidence of the OAuth bearer token provided in the request headers. This is useful for debugging and verifying that authentication is working correctly. Look for log entries showing the incoming requests with the <code>Authorization: Bearer</code> header containing the JWT access token.</p>
+<p><img alt="The terminal window showing MCP server logs with tool method calls and OAuth bearer token evidence." src="../../../../../assets/images/make/copilot-studio-10/dotnet-terminal-mcp-call-secured.png" /></p>
+</div>
+<p><cc-end-step lab="mcs10" exercise="5" step="4" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab MCS10 - Consuming an MCP server with OAuth 2.0!</p>
+<p>In this lab, you learned how to:</p>
+<ul>
+<li>Configure an MCP server with OAuth 2.0 JWT token validation</li>
+<li>Register Microsoft Entra ID applications for secure API access (backend and client)</li>
+<li>Configure the OAuth 2.0 Authorization Code Flow in Copilot Studio</li>
+<li>Consume secured MCP tools with enterprise-grade authentication</li>
+</ul>
+<p>By implementing OAuth 2.0 authentication, you have ensured that your HR candidate management system is protected with industry-standard security practices. This approach is essential for production environments where data security and user authentication are critical requirements.</p>
+<!-- <cc-next />  -->
+
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/10-mcp-oauth" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
