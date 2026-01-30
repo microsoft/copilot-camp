@@ -422,6 +422,9 @@ Your Interview Coordinator agent now demonstrates advanced agent orchestration p
 
 The connected agents patterns you've learned can be applied to many other business scenarios where complex workflows benefit from modular, specialized agents working together to deliver end-to-end solutions.
 
+<a href="../10-mcp-oauth">Start here</a> with Lab MCS10, to learn how to consume an MCP server secured with OAuth in Copilot Studio.
+<cc-next /> 
+
 <!-- <cc-award path="Make" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-connected-agents" />

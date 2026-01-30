@@ -2,15 +2,18 @@
 search:
   exclude: true
 ---
-# ラボ E1 - Microsoft 365 Agents Toolkit と TypeSpec 定義による Declarative エージェントの初構築
+# ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使って Declarative エージェントを初めて作成する
 
-このラボでは、Microsoft 365 Agents Toolkit を使用して TypeSpec 定義付き Declarative エージェントを構築します。`RepairServiceAgent` というエージェントを作成し、既存の API サービスを介して修理データと対話し、ユーザーが自動車の修理記録を管理できるようにします。
+このラボでは、Microsoft 365 Agents Toolkit を使用して TypeSpec 定義を持つ Declarative エージェントを構築します。修理データと対話して自動車修理レコードを管理するための `RepairServiceAgent` というエージェントを作成します。  
+完成版エージェントのソースコードは [こちら](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab01-declarative-copilot/RepairServiceAgent) で確認できます。
+
+このラボは Ignite 2025 の発表内容を反映して更新されています。TypeSpec は GA となり、Toolkit バージョン 6.4.1 がリリースされました。このラボは 2025 年 11 月の Ignite で提供された Lab 560 をベースにしています。
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/RNsa0kLsXgY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を短時間で確認できます。</div>
+          <div>ビデオでラボの概要を短く確認しましょう。</div>
         </div>
     <div style="flex: 1; min-width: 0;">
   ---8<--- "ja/e-labs-prelude.md"
@@ -18,120 +21,223 @@ search:
 </div>
 
 
-## Declarative エージェントとは
+## Declarative エージェントとは何か
 
-**Declarative エージェント** は、Microsoft 365 Copilot と同じスケーラブルなインフラストラクチャとプラットフォームを活用しつつ、特定分野にフォーカスしてニーズを満たすように最適化されたものです。標準の Microsoft 365 Copilot チャットと同じインターフェイスを使用しながら、専用タスクに専念する専門家として機能します。
+**Declarative エージェント** は、Microsoft 365 Copilot のスケーラブルなインフラストラクチャとプラットフォームを活用し、特定のニーズにフォーカスした形で提供されるものです。Microsoft 365 Copilot の標準チャット インターフェイスと同じ UI を使いながら、対象タスクに専念できる専門家として機能します。
 
 ### Declarative エージェントの構成要素
 
-Copilot 用に複数のエージェントを構築すると、最終的な成果物が数個のファイルをまとめた zip ファイル（アプリ パッケージ）であることに気付くでしょう。これはインストールして利用します。そのため、アプリ パッケージが何で構成されているかを理解することが重要です。Declarative エージェントのアプリ パッケージは、Teams アプリを構築したことがある場合はそれに似ていますが、追加要素があります。以下の表で主な要素を確認できます。アプリの展開プロセスも Teams アプリと非常によく似ています。
+Copilot 用に複数のエージェントを作成すると、最終的な成果物が zip ファイルにまとめられた数個のファイルのセット (アプリ パッケージ) であることに気付くでしょう。これは Teams アプリをデプロイした経験がある方には馴染みのある構成で、追加要素が含まれています。以下の表で主な要素を確認してください。また、アプリの展開プロセスは Teams アプリの展開と非常によく似ています。
 
-| ファイル種別                        | 説明                                                                                                                                                               | 必須 |
-|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
-| Microsoft 365 App Manifest        | 標準の Teams アプリ マニフェストを定義する JSON ファイル (`manifest.json`)。                                                                                     | Yes  |
-| Declarative Agent Manifest        | エージェント名、指示、機能、会話スターター、アクション（該当する場合）を含む JSON ファイル。                                                                      | Yes  |
-| Plugin Manifest                   | アクションを API プラグインとして構成するための JSON ファイル。認証、必須フィールド、Adaptive Card 応答などを含む。アクションが存在する場合のみ必要。                        | No   |
-| OpenAPI Spec                      | API を定義する JSON または YAML ファイル。エージェントにアクションが含まれる場合のみ必要。                                                                     | No   |
+| ファイル種別 | 説明 | 必須 |
+|--------------|------|------|
+| アプリ マニフェスト | 標準の Teams アプリ マニフェストを定義する JSON ファイル (**manifest.json**) | Yes |
+| Declarative エージェント マニフェスト | エージェントの名前、指示、機能、会話スターター、アクション (該当する場合) を含む JSON ファイル | Yes |
+| プラグイン マニフェスト | アクションを API プラグインとして構成するための JSON ファイル。認証、必須フィールド、Adaptive Card 応答などを含む。アクションが存在する場合のみ必要 | No |
+| アプリ アイコン | Declarative エージェント用のカラー アイコンおよびアウトライン アイコン | Yes |
 
 ### Declarative エージェントの機能
 
-エージェントの焦点を文脈とデータに拡張するには、指示を追加するだけでなく、アクセスすべきナレッジ ベースを指定できます。これらを **capabilities**（機能）と呼びます。執筆時点で Declarative エージェントがサポートする機能は以下の通りです。
+指示を追加するだけでなく、エージェントがアクセスすべきナレッジ ベースを指定することで、対象データに対する集中度を高められます。これらを「機能 (capabilities)」と呼びます。現在 Declarative エージェントでサポートされている機能は次のとおりです。
 
-- **Copilot Connectors** - 外部コンテンツを Microsoft 365 に取り込み、情報の検索性を向上させ、組織内の他者が新しいコンテンツを発見できるようにします。
-- **OneDrive and SharePoint** - OneDrive と SharePoint のファイル／サイトの URL を指定し、エージェントのナレッジ ベースに含めることができます。
-- **Web search** - Web コンテンツをナレッジ ベースとして有効／無効にできます。ソースとして最大 4 件のウェブサイト URL を渡せます。
-- **Code interpreter** - 数学問題の解決や複雑なデータ分析、チャート生成のために Python コードを活用できるエージェントを構築できます。
-- **GraphicArt** - DALL·E を使用した画像や動画の生成が可能なエージェントを構築できます。
-- **Email knowledge** - 個人または共有メールボックス、オプションで特定フォルダーをナレッジとして利用するエージェントを構築できます。
-- **People knowledge** - 組織内の個人に関する質問に回答できるエージェントを構築できます。
-- **Teams messages** - Teams のチャネル、チーム、会議、1:1 チャット、グループ チャットを検索できるようにします。
-- **Dataverse knowledge** - Dataverse インスタンスをナレッジ ソースとして追加できます。
+- **Copilot Connectors** – Microsoft 365 上にコンテンツを一元化します。外部コンテンツを Microsoft 365 に取り込むことで、関連情報の検索を容易にし、組織内の他者が新しいコンテンツを発見しやすくなります。
+- **OneDrive and SharePoint** – OneDrive や SharePoint のファイル/サイトの URL を指定して、エージェントのナレッジ ベースに含められます。
+- **Web 検索** – Web コンテンツをナレッジ ベースに含めるかどうかを設定できます。最大 4 件の Web サイト URL をソースとして渡すことも可能です。
+- **Code Interpreter** – 数学的問題をより良く解決し、必要に応じて Python コードで高度なデータ分析やチャート作成を行う能力をエージェントに付与します。
+- **GraphicArt** – DALL·E を利用した画像または動画生成機能をエージェントに追加します。
+- **Email Knowledge** – 個人または共有メールボックス (オプションで特定フォルダー) をナレッジとして使用できます。
+- **People Knowledge** – 組織内の人物に関する質問に回答するエージェントを構築できます。
+- **Teams Messages** – Teams のチャネル、チーム、会議、1:1 チャット、グループ チャットを検索できるようにします。
+- **Dataverse Knowledge** – Dataverse インスタンスをナレッジ ソースとして追加できます。
+- **Scenario Models** – タスク固有のモデルを追加できます。
+- **Teams Meetings** – 組織内の会議情報を検索できるエージェントを構築できます。
 
-!!! tip "OnDrive and SharePoint"
-    URL は SharePoint アイテム（サイト、ドキュメント ライブラリ、フォルダー、ファイル）のフル パスである必要があります。SharePoint の「リンクをコピー」オプションを使用して取得できます。ファイルまたはフォルダーを右クリックし、[詳細] を選択後、[パス] に移動してコピー アイコンをクリックしてください。<mark>URL を指定しない場合、サインインしているユーザーがアクセスできる OneDrive と SharePoint の全コンテンツがエージェントで使用されます。</mark>
+!!! tip "OneDrive and SharePoint"
+    URL は SharePoint アイテム (サイト、ドキュメント ライブラリ、フォルダー、ファイル) の完全パスである必要があります。SharePoint の「リンクをコピー」オプションを使用してフル パスを取得できます。ファイルまたはフォルダーを右クリックして [詳細] を選択し、[パス] 項目のコピー アイコンをクリックしてください。  
+    <mark>URL を指定しない場合、ログイン ユーザーがアクセス可能な OneDrive と SharePoint の全コンテンツがエージェントのナレッジとして使用されます。</mark>
 
 !!! tip "Microsoft Copilot Connector"
-    接続を指定しない場合、サインイン ユーザーがアクセスできる Copilot Connectors の全コンテンツがエージェントで使用されます。
+    接続を指定しない場合、ログイン ユーザーがアクセス可能な Copilot Connectors の全コンテンツがナレッジとして使用されます。
 
-!!! tip "Web search"
-    サイトを指定しない場合、エージェントはすべてのサイトを検索できます。最大 4 つのサイトを指定でき、パス セグメントは 2 つ以内、クエリ文字列は含められません。
+!!! tip "Web 検索"
+    サイトを指定しない場合、エージェントはすべてのサイトを検索できます。指定できるサイトはパス セグメントが 2 つ以内で、クエリ ストリングのない URL を最大 4 件までです。
 
 
 ## Declarative エージェントにおける TypeSpec の重要性
 
 ### TypeSpec とは
 
-TypeSpec は、API 契約を構造化かつ型安全な方法で設計・記述するために Microsoft が開発した言語です。API が受け入れるデータや返すデータ、API とそのアクションの接続方法など、API の設計図のようなものと考えてください。
+**TypeSpec** は、API 契約を構造化され型安全な方法で設計・記述するために Microsoft が開発した言語です。API がどのようなデータを受け取り、返し、各部分やアクションがどのように接続されるかを示す設計図のようなものと考えてください。
 
-### エージェントに TypeSpec を使用する理由
+### エージェントになぜ TypeSpec か
 
-TypeScript がフロントエンド／バックエンド コードに構造を強制するのと同様に、TypeSpec はエージェントとその API サービス（アクションなど）に構造を強制します。Visual Studio Code などのツールに適合したデザインファースト開発ワークフローに最適です。
+TypeScript がフロントエンド/バックエンド コードに構造を提供するのと同様に、TypeSpec はエージェントとその API サービス (アクションなど) に構造を提供します。Visual Studio Code などのツールと整合するデザイン ファースト開発ワークフローに最適です。
 
-- 明確なコミュニケーション: 複数のマニフェスト ファイルを扱う際の混乱を避け、エージェントの動作を定義する単一のソース オブ トゥルースを提供します。
-- 一貫性: エージェントのすべての部分やアクション、機能などが同じパターンに従って設計されることを保証します。
-- 自動化対応: OpenAPI スペックやその他のマニフェストを自動生成し、時間を節約しヒューマン エラーを削減します。
-- 早期バリデーション: 実装コードを書く前に設計の問題（型不一致や定義の不明確さなど）を検出します。
-- デザインファースト アプローチ: 実装に入る前にエージェントと API の構造・契約を考えるよう促し、長期的な保守性を向上させます。
-
-## エクササイズ 1: Microsoft 365 Agents Toolkit と TypeSpec でベース エージェントを構築する
+- **明確なコミュニケーション** – 複数のマニフェスト ファイルを扱う混乱を避ける単一のソース オブ トゥルースを提供します。
+- **一貫性** – エージェント、アクション、機能などの全要素が同じパターンに従って設計されることを保証します。
+- **自動化に適合** – OpenAPI スペックやその他マニフェストを自動生成し、時間を節約し人的ミスを削減します。
+- **早期検証** – 実装前に設計上の問題 (データ型の不一致や定義の不明確さなど) を早期に検出します。
+- **デザイン ファースト アプローチ** – 実装に入る前にエージェントと API の構造・契約を考えることを促し、長期的な保守性を向上させます。
 
 
-### 手順 1: Microsoft 365 Agents Toolkit でベース エージェント プロジェクトをスキャフォールディングする
-- VS Code 左メニューから Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択します。アクティビティ バーが開きます。  
-- アクティビティ バーで 「Create a New Agent/App」 ボタンを選択すると、利用可能なアプリ テンプレートの一覧がパレットに表示されます。  
-- 一覧から 「Declarative Agent」 を選択します。  
-- 次に 「Start with TypeSpec for Microsoft 365 Copilot」 を選択し、TypeSpec でエージェントを定義します。  
-- スキャフォールディング先のフォルダーを選択します。  
-- アプリケーション名を「RepairServiceAgent」などと入力し、Enter を押して完了します。新しい VS Code ウィンドウにエージェント プロジェクトが読み込まれます。
+☑️ Declarative エージェントと TypeSpec に関する基本概念を理解できました！最初の演習に進みましょう。
+
+## 演習 1: 単一操作を実行するアクションを持つ Declarative エージェントを構築する
+
+Microsoft 365 Agents Toolkit を使用して、最初の Declarative エージェントを作りましょう。  
+修理データと対話して自動車修理レコードを管理する **RepairServiceAgent** を作成します。  
+追加の前提条件をインストールしてください。
+
+- [Visual Studio Code 用 REST Client アドイン](https://marketplace.visualstudio.com/items?itemName=humao.rest-client): API をローカルでテストするために使用します。
+- [Microsoft 365 Agents Toolkit バージョン 6.4.0 以上](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)。古いバージョンをお使いの場合は更新してください。
+
+### 手順 1: Microsoft 365 Agents Toolkit でエージェント プロジェクトをスキャフォールディングする
+
+- VS Code を開き、左メニューの Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択します。アクティビティ バーが開きます。  
+- アクティビティ バーで "Create a New Agent/App" ボタンを選択すると、利用可能なアプリ テンプレートのリストが表示されます。  
+- テンプレートの一覧から "Declarative Agent" を選択します。  
+- 次に "Start with TypeSpec for Microsoft 365 Copilot" を選択して、TypeSpec でエージェントを定義します。  
+- エージェント プロジェクトを作成する **デフォルト フォルダー** を選択します。  
+- アプリケーション名として `RepairServiceAgent` などを入力し Enter を押すと完了です。新しい VS Code ウィンドウにプロジェクトが読み込まれます。
+
+
+!!! note
+    フォルダー内のファイルの作成者を信頼するかどうかを尋ねるプロンプトが表示される場合があります。これは想定されたもので、**Yes, I trust the authors** を選択して問題ありません。このダイアログはセキュリティ保護の一環で、コード作成者の信頼性に応じて機能の実行を制限するかどうかを判断するためのものです。自分のコード、または信頼できるソースからのコードであれば安心して信頼してください。
+
 
 <cc-end-step lab="e01" exercise="1" step="1" />
 
 ### 手順 2: Microsoft 365 Agents Toolkit にサインインする
 
-エージェントをアップロードしてテストするために Microsoft 365 Agents Toolkit へサインインする必要があります。
+エージェントをアップロードしてテストするには、Microsoft 365 Agents Toolkit にサインインする必要があります。
 
-- プロジェクト ウィンドウ内で再度 Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択し、アクティビティ バーを開きます。  
-- 「Accounts」 セクションで 「Sign in to Microsoft 365」 を選択します。エディターからダイアログが開き、Microsoft 365 開発者サンドボックスを作成またはサインイン、もしくはキャンセルを選択できます。「Sign in」を選択してください。  
-- サインイン後、ブラウザーを閉じてプロジェクト ウィンドウに戻ります。
+- プロジェクト ウィンドウで再度 Microsoft 365 Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択します。Accounts、Environment、Development などのセクションが表示されます。  
+- "Accounts" セクションの "Sign in to Microsoft 365" を選択します。サインイン ダイアログが表示されるので **Sign in** を選択します。  
+- サインインが完了したらブラウザーを閉じ、プロジェクト ウィンドウに戻ります。
 
 <cc-end-step lab="e01" exercise="1" step="2" />
 
 ### 手順 3: エージェントを定義する
 
-Agents Toolkit によってスキャフォールディングされた Declarative エージェント プロジェクト テンプレートには、GitHub API に接続してリポジトリの issue を表示するサンプル コードが含まれています。本ラボでは、自動車修理サービスと統合し、複数の操作で修理データを管理する独自エージェントを構築します。
+Agents Toolkit によってスキャフォールディングされた Declarative エージェント プロジェクトには、GitHub API と接続してリポジトリの issue を表示するためのテンプレート コードが含まれています。本ラボでは、修理 API サービスと統合し、複数の操作をサポートする独自のエージェントを構築します。
 
-プロジェクト フォルダーには `main.tsp` と `actions.tsp` の 2 つの TypeSpec ファイルがあります。  
-`main.tsp` にはエージェントのメタデータ、指示、機能が定義されます。  
-`actions.tsp` ではエージェントのアクションを定義します。API サービスへの接続などアクションがある場合は、このファイルで定義します。
+エージェント定義に進む前に、修理 API サービスの機能を把握しましょう。
 
-`main.tsp` を開き、デフォルト テンプレートの内容を確認します。修理サービス シナリオに合わせて変更します。 
+#### 修理 API サービスを理解する
+
+API サービスのエンドポイントとペイロードを対話的に調べる必要があります。REST Client 拡張機能を使用すると、VS Code 内で **.http** ファイルを使って HTTP リクエストを定義し送信できます。外部ツールを開く必要がなく、テストやレスポンスの確認、反復が素早く行えます。
+
+プロジェクトのルート フォルダーで **http** フォルダーを作成します。  
+その中に `repairs-api.http` というファイルを作成します。
+
+!!! note
+    **VS Code でフォルダーとファイルを作成する方法:**
+
+      - フォルダーを作成する場合: Explorer パネルで右クリックし、"New Folder" を選択してフォルダー名を入力します。
+      - ファイルを作成する場合: 目的のフォルダーを右クリックし、"New File" を選択してファイル名と拡張子を入力します。
+      - Explorer パネルのアイコン (📁 フォルダー、📄 ファイル) を使うこともできます。
+
+ファイルに以下の内容を貼り付けます。
+
+```
+@base_url = https://repairshub.azurewebsites.net
+
+### Get all repair requests
+{{base_url}}/repairs
+
+### Get a specific repair request by ID
+{{base_url}}/repairs/1
+
+### Create a new repair request
+POST {{base_url}}/repairs
+Content-Type: application/json
+
+{
+  "description": "Repair broken screen",
+  "date": "2023-10-01T12:00:00Z",
+  "image": "https://example.com/image.png"
+}
+
+### Update an existing repair request
+PATCH {{base_url}}/repairs/1
+Content-Type: application/json  
+
+{
+  "id": 1,
+  "description": "Repair broken screen - updated",
+  "date": "2023-10-01T12:00:00Z",
+  "image": "https://example.com/image-updated.png"
+}
+
+
+### Delete a repair request by ID
+DELETE {{base_url}}/repairs/10
+Content-Type: application/json
+
+{
+  "id": 10
+}
+```
+
+> エディターからリクエストを送信すると若干の遅延がありますが、数秒でレスポンスが返るはずです。
+
+各リクエスト行 (例: GET {{base_url}}/repairs) にカーソルを合わせ、**Send Request** をクリックしてレスポンスを確認してください。リクエストとレスポンスの構造を観察し、エージェントが API とどのようにやり取りするかを理解します。
+
+![http request](https://github.com/user-attachments/assets/050ca976-4523-463d-920f-4f0f2da46249)
+
+
+
+
+#### Repairs API の概要
+
+**ベース URL**: *https://repairshub.azurewebsites.net*
+
+| 操作 | メソッド | エンドポイント | ペイロード | 目的 |
+|------|----------|----------------|------------|------|
+| すべての修理リクエスト取得 | GET | /repairs | なし | すべての修理ジョブを取得 |
+| ID で修理取得 | GET | /repairs/{id} | なし | 特定の修理ジョブを取得 |
+| 修理リクエスト作成 | POST | /repairs | 必須 | 新しい修理ジョブを登録 |
+| 修理リクエスト更新 | PATCH | /repairs/{id} | 必須 | 既存の修理ジョブを更新 |
+| 修理リクエスト削除 | DELETE | /repairs/{id} | なし | 修理ジョブを ID 指定で削除 |
+
+API サービスを理解できたら、次にエージェントへの統合に進みます。
+
+#### プロジェクト構成
+
+エージェント プロジェクトの **src** フォルダーには、主要な TypeSpec 構成ファイル **main.tsp** と **env.tsp** があります。
+
+- **main.tsp**: エージェントのメタデータ、挙動を定義する指示、機能など、主要な定義を含みます。  
+- **env.tsp**: 環境変数をコンパイル時に処理するために Toolkit が使用します。**env/.env.\*** から生成されるため手動更新は不要です。
+
+さらに **actions** フォルダーにテンプレート ファイル (初期状態では **github.tsp**) があり、GitHub API 統合の例が示されています。このラボでは、これを置き換えて Repairs API サービスとの接続を定義します。
+
+**prompts** フォルダーには **instructions.tsp** があり、エージェントの詳細な挙動やガイダンスを定義できます。
+
 
 #### エージェントのメタデータと指示を更新する
 
-`main.tsp` にはエージェントの基本構造が記載されています。Agents Toolkit テンプレートに含まれる内容を確認してください。
+**main.tsp** を開き、デフォルト テンプレートの内容を修理サービス シナリオ向けにどのように変更するか確認します。
+
+**main.tsp** の基本構造には以下が含まれます。
 - エージェント名と説明 1️⃣  
-- 基本指示 2️⃣  
-- アクションと機能のプレースホルダー コード（コメントアウト）3️⃣  
+- 基本的な指示 2️⃣  
+- アクションと機能のプレースホルダー コード (コメントアウト) 3️⃣
 
-![Visual Studio Code showing the initially scaffolded template for a Declarative Agent defined in TypeSpec. There TypeSpec syntax elements to define the agent, its instructions, and some commented out commands to define starter prompts and actions.](https://github.com/user-attachments/assets/42da513c-d814-456f-b60f-a4d9201d1620)
+![image of main.tsp file](https://github.com/user-attachments/assets/9924db6f-930b-453c-92ec-72ac7534c1cb)
 
 
-まず、修理シナリオ用のエージェントを定義します。`@agent` と `@instructions` の定義を以下のコード スニペットに置き換えてください。
+
+まず修理シナリオ用にエージェントを定義します。**@agent** メタデータを以下のコード スニペットに置き換えてください。
 
 ```typespec
 @agent(
   "RepairServiceAgent",
-   "An agent for managing repair information"
+  "An agent for managing repair information"
 )
-
-@instructions("""
-  ## Purpose
-You will assist the user in finding car repair records based on the information provided by the user. 
-""")
 
 ```
 
-次に、エージェントの会話スターターを追加します。指示のすぐ下にコメントアウトされたコードがあるのでアンコメントし、タイトルとテキストを以下のように置き換えます。
+次に会話スターターを設定します。これはユーザーとエージェントの対話を開始する初期プロンプトです。テンプレートの該当セクションをコメント解除し、title と text をシナリオに合わせて更新します。
 
 ```typespec
 // Uncomment this part to add a conversation starter to the agent.
@@ -142,14 +248,26 @@ You will assist the user in finding car repair records based on the information 
 })
 
 ```
+このスタータープロンプトでは GET 操作を呼び出してサービスからすべての修理を取得する必要があります。その動作を可能にするため、対応するアクションを定義します。次の手順に進んでください。
 
-#### エージェントのアクションを更新する
+続いて **prompts/instructions.tsp** を開き、指示を更新します。  
+ファイル全体を以下のコードに置き換えます。
 
-次に `actions.tsp` を開き、エージェントのアクションを定義します。後で `main.tsp` に戻り、エージェント メタデータにアクション参照を追加しますが、まずアクション自体を定義する必要があります。
+```typespec
+namespace Prompts {
+  const INSTRUCTIONS = """
+    ## Purpose
+    You will assist the user in finding car repair records based on the information provided by the user.
+  """;
+}
 
-`actions.tsp` のプレースホルダー コードは GitHub リポジトリのオープン issue を検索するように設計されています。アクションのメタデータ、API ホスト URL、操作や関数の定義方法を理解するための出発点です。これを修理サービス用に置き換えます。
+```
 
-インポートや using ステートメントなどモジュール レベルのディレクティブの後、`SERVER_URL` が定義される箇所までの既存コードを以下のスニペットで置き換えます。この更新ではアクションのメタデータを導入し、サーバー URL を設定します。また、名前空間を GitHubAPI から RepairsAPI に変更します。
+#### エージェントのアクションを定義する
+
+次に **actions/github.tsp** を **actions.tsp** にリネームします。VS Code でファイルを右クリックし "Rename" を選択してください。
+
+**main.tsp** でアクション参照を完了させる前に、アクション自体を定義する必要があります。**actions.tsp** を開き、サービス URL が定義される行までのコードを以下に置き換えます。
 
 ```typespec
 @service
@@ -174,7 +292,9 @@ namespace RepairsAPI{
 
 ```
 
-次にテンプレート コードの `searchIssues` 操作を `listRepairs` に置き換えます。これは修理の一覧を取得する操作です。`SERVER_URL` 定義直後から最後の閉じ括弧の *前* までのコード ブロック全体を以下のスニペットで置き換えてください。閉じ括弧は残してください。
+次にテンプレートの `searchIssues` 操作を `listRepairs` に置換して修理一覧を取得します。SERVER_URL 定義の直後から最終の閉じ括弧直前までを以下のスニペットに置き換えてください。閉じ括弧は残します。  
+
+**コメント部分もドキュメントとして必要なので必ずコピーしてください**。
 
 ```typespec
   /**
@@ -187,79 +307,62 @@ namespace RepairsAPI{
 
 ```
 
-`main.tsp` に戻り、先ほど定義したアクションをエージェントに追加します。会話スターターの後に、以下のスニペットでコード ブロック全体を置き換えてください。
+**main.tsp** に戻り、インポート文を確認します。まだ *./actions/github.tsp* を参照している場合は、以下の文に置換します。
+
+```typespec
+import "./actions/actions.tsp";
+```
+
+同じファイルで、会話スターターの後にエージェントにアクションを追加します。**RepairServiceAgent** 名前空間全体を以下のスニペットに置換してください。
 
 ```typespec
 namespace RepairServiceAgent{  
-  // Uncomment this part to add actions to the agent.
-  @service
-  @server(global.RepairsAPI.SERVER_URL)
-  @actions(global.RepairsAPI.ACTIONS_METADATA)
-  namespace RepairServiceActions {
-    op listRepairs is global.RepairsAPI.listRepairs;   
-  }
+
+  op listRepairs is global.RepairsAPI.listRepairs;   
+
 }
+
 ```
+
+
 <cc-end-step lab="e01" exercise="1" step="3" />
 
-### 手順 4: デコレーターの理解（オプション）
+### 手順 4: デコレーターを理解する (任意)
 
-オプション手順です。TypeSpec ファイルで何を定義したかを理解したい場合に読み進めてください。すぐにエージェントをテストしたい場合は手順 5 へ進んでください。  
-`main.tsp` と `actions.tsp` には、デコレーター（@ で始まる）、名前空間、モデル、その他の定義が含まれています。
+任意のステップですが、TypeSpec ファイルで何を定義したか気になる場合はお読みください。  
+**main.tsp** と **actions.tsp** には、デコレーター (@ で始まる), namespace, model などが記述されています。
 
-これらのファイルで使用される主なデコレーターの意味は次の通りです。
+以下の表で主要なデコレーターを確認できます。
 
-| アノテーション              | 説明                                                                                                                                                       |
-|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| @agent                 | エージェントの名前空間（名前）と説明を定義します                                                                                                               |
-| @instructions          | エージェントの行動を規定する指示を定義します。8,000 文字以内                                                                                                   |
-| @conversationStarter   | エージェントの会話スターターを定義します                                                                                                                       |
-| op                     | 任意の操作を定義します。*op GraphicArt* や *op CodeInterpreter* など機能定義、または **op listRepairs** など API 操作を定義する場合があります |
-| @server                | API のサーバー エンドポイントとその名前を定義します                                                                                                             |
-| @capabilities          | 関数内で使用すると、操作確認カードなどのシンプルな Adaptive Card を定義します                                                                                    |
+| アノテーション | 説明 |
+|----------------|------|
+| @agent | エージェントの namespace (名前) と説明を定義 |
+| @instructions | エージェントの挙動を規定する指示 (最大 8000 文字) |
+| @conversationStarter | エージェントの会話スターターを定義 |
+| @op | 任意の操作を定義。エージェントの機能 (例: *op GraphicArt*, *op CodeInterpreter*) や API 操作 (**op listRepairs** など) を定義する。POST 操作は `op createRepair(@body repair: Repair): Repair;` のように記述 |
+| @server | API のサーバー エンドポイントと名前を定義 |
+| @capabilities | 関数内で使用すると、操作用の小規模な Adaptive Card (確認カードなど) を定義 |
 
+☑️ 第一演習を完了しました！GET 操作で修理一覧を取得するアクションを追加する方法を学びました。次の演習では、修理管理用のさらなる操作を追加し、テストとデバッグを行います。
+
+次の演習へ進みましょう。
 
 <cc-end-step lab="e01" exercise="1" step="4" />
 
-### 手順 5: エージェントをテストする
+## 演習 2: 追加操作を実装し、エージェントをテストしてデバッグ手法を学ぶ
 
-次に Repair Service Agent をテストします。 
+ここでは Repairs API サービスのさらなる操作と Adaptive Card 応答を追加してエージェントを拡張します。手順を追って進めましょう。ブラウザーをご利用の場合は VS Code のプロジェクトに戻ってください。
 
-- エージェント Toolkit の拡張機能アイコンを選択し、アクティビティ バーを開きます。  
-- アクティビティ バーの "LifeCycle" セクションで "Provision" を選択します。これにより、生成されたマニフェスト ファイルとアイコンを含むアプリ パッケージがビルドされ、カタログにサイドロードされます（自分専用でテスト用）。  
+### 手順 1: エージェントを修正して追加操作を実装する
 
-!!! tip "Knowledge"
-    Agents Toolkit はここで TypeSpec ファイルの定義を検証し、正確性を確保します。エラーも識別して開発者体験を向上させます。
-
-- ブラウザーで [https://m365.cloud.microsoft/chat](https://m365.cloud.microsoft/chat){target=_blank} を開き、Copilot アプリへ移動します。
-
-!!! note "Help"
-    Copilot アプリで "Something went wrong" が表示された場合は、ブラウザーをリフレッシュしてください。  
-
-- Microsoft 365 Copilot インターフェイスの **Agents** 一覧から **RepairServiceAgent** を選択します。  
-- 会話スターター `List repairs` を選択し、チャットに送信してエージェントとの対話を開始し、応答を確認します。
-
-!!! tip "Help"
-    クエリ処理のためエージェント接続を求められた場合、この画面は通常 1 回だけ表示されます。ラボを円滑に進めるため **"Always allow"** を選択してください。  
-    ![Screenshot of the agent in action with the response for the prompt 'List all repairs' showing repairs with pictures.](https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7)
-
-- 今後のエクササイズに備え、ブラウザー セッションは開いたままにしてください。 
-
-<cc-end-step lab="e01" exercise="1" step="5" />
-
-## エクササイズ 2: エージェント機能の強化
-次に、操作を追加し、Adaptive Card で応答を強化し、code interpreter 機能を組み込みます。VS Code のプロジェクトに戻りましょう。
-
-### 手順 1: 追加操作の実装
-
-- `actions.tsp` を開き、`listRepairs` 操作の直後に以下のスニペットを貼り付けて `createRepair`、`updateRepair`、`deleteRepair` の新しい操作を追加します。また、`Repair` アイテムのデータ モデルも定義します。
+- **actions/actions.tsp** を開き、**listRepairs** 操作の直後に以下のスニペットを貼り付けて **createRepair**, **updateRepair**, **deleteRepair** の各操作を追加します。また **Repair** データモデルも定義します。
 
 ```typespec
-  /**
-   * Create a new repair. 
+/**
+   * Create a new repair using the API. 
    * When creating a repair, the `id` field is optional and will be generated by the server.
    * The `date` field should be in ISO 8601 format (e.g., "2023-10-01T12:00:00Z").
-   * The `image` field should be a valid URL pointing to the image associated with the repair.
+   * The `title` field based on what repair user wants to create
    * @param repair The repair to create.
    */
   @route("/repairs")  
@@ -273,7 +376,9 @@ namespace RepairServiceAgent{
    * @param repair The repair to update.
    */
   @route("/repairs")  
-  @patch  op updateRepair(@body repair: Repair): Repair;
+  @patch(#{implicitOptionality: true})
+  op updateRepair(@body repair: Repair): Repair;
+
 
   /**
    * Delete a repair.
@@ -322,7 +427,7 @@ namespace RepairServiceAgent{
 
 ```
 
-- `main.tsp` に戻り、これらの新しい操作がエージェントのアクションにも追加されていることを確認します。`RepairServiceActions` 名前空間内の `op listRepairs is global.RepairsAPI.listRepairs;` の後に以下のスニペットを貼り付けます。
+- **main.tsp** に戻り、エージェントのアクションとして新しい操作が追加されているか確認します。**RepairServiceActions** 名前空間内の `op listRepairs is global.RepairsAPI.listRepairs;` の次に以下のスニペットを貼り付けます。
 
 ```typespec
 op createRepair is global.RepairsAPI.createRepair;
@@ -330,7 +435,7 @@ op updateRepair is global.RepairsAPI.updateRepair;
 op deleteRepair is global.RepairsAPI.deleteRepair;   
 
 ```
-- さらに、最初の会話スターターのすぐ後に新しい会話スターターを追加して、修理アイテムを作成できるようにします。
+- さらに、新しい修理アイテムを作成する会話スターターを最初のスターター定義の直後に追加します。
 
 ```typespec
 @conversationStarter(#{
@@ -342,11 +447,11 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 <cc-end-step lab="e01" exercise="2" step="1" />
 
-### 手順 2: 関数参照に Adaptive Card を追加
+### 手順 2: 関数参照に Adaptive Card を追加する
 
-次に、参照カードや応答カードを Adaptive Card で強化します。`listRepairs` 操作に修理アイテム用の Adaptive Card を追加します。 
+次に応答カードを Adaptive Card で強化します。修理アイテム用のカードを作成しましょう。
 
-- プロジェクト フォルダーで **appPackage** フォルダーの下に **cards** フォルダーを新規作成します。**cards** フォルダー内に `repair.json` ファイルを作成し、以下のコード スニペットをそのまま貼り付けます。
+- **appPackage** フォルダー内の **adaptiveCards** フォルダーに `repair.json` を作成し、提供されたコード スニペットを貼り付けます。既存のテンプレート カードは無視してください。
 
 ```json
 {
@@ -399,146 +504,217 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 
 ```
 
-- `actions.tsp` に戻り、`listRepairs` 操作を探します。操作定義 `@get op listRepairs(@query assignedTo?: string): string;` の直前に、以下のスニペットを貼り付けてカード定義を追加します。
+- **actions.tsp** に戻り、`@get op listRepairs(@query assignedTo?: string): string;` の直前に以下のスニペットを貼り付けてカード定義を追加します。
 
 ```typespec
 
-  @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "adaptiveCards/repair.json"}) 
+@card(#{  dataPath: "$", file: "adaptiveCards/repair.json",    properties: #{ title: "$.title", url: "$.image" } })
   
 ```
+このカード応答は、修理アイテムを問い合わせた場合やエージェントがアイテム一覧を返す際に使用されます。
 
-上記のカード応答は、修理アイテムを尋ねたときやエージェントが一覧を参照として返すときに送信されます。  
-続いて `createRepair` 操作にも Adaptive Card を追加し、POST 操作後にエージェントが作成した内容を表示できるようにします。
+> このラボでは簡略化のため同じカードを再利用します。実際には操作ごとに異なるカードを作成しても構いません。
 
-- `@post op createRepair(@body repair: Repair): Repair;` の直前に以下のスニペットを貼り付けます。
+**createRepair** 操作に対してもカード応答を追加し、POST の結果を表示します。
+
+- `@post  op createRepair(@body repair: Repair): Repair;` の直前に以下のスニペットを貼り付けます。
 
 ```typespec
 
-   @card( #{ dataPath: "$",  title: "$.title",   url: "$.image", file: "adaptiveCards/repair.json"}) 
+@card(#{  dataPath: "$", file: "adaptiveCards/repair.json",    properties: #{ title: "$.title", url: "$.image" } })
 
 ```
 
 <cc-end-step lab="e01" exercise="2" step="2" />
 
-## 手順 3: code interpreter 機能の追加
+### 手順 3: 新しい操作に合わせてエージェントの指示を更新する
 
-Declarative エージェントは *OneDriveAndSharePoint*、*WebSearch*、*CodeInterpreter* など多数の機能で拡張できます。  
-ここでは code interpreter 機能を追加します。
-
-- `main.tsp` を開き、`RepairServiceAgent` 名前空間を探します。
-
-- この名前空間内に、エージェントがコードを解釈・実行できるようにする新しい操作を以下のスニペットで定義します。
+**prompts/instructions.tsp** の INSTRUCTIONS 定義を追加機能に対応させます。以下のコードで置き換えてください。
 
 ```typespec
-  op codeInterpreter is AgentCapabilities.CodeInterpreter;
-```
-
-!!! tip
-    上記 *CodeInterpreter* 操作は、外側の `RepairServiceAgent` 名前空間内に貼り付けてください。アクションを定義する `RepairServiceActions` 名前空間ではありません。  
-
-追加機能をサポートするようになったため、指示も更新して反映します。
-
-- 同じ `main.tsp` ファイルで、指示定義を以下のように更新します。
-
-```typespec
-@instructions("""
-  ## Purpose
-You will assist the user in finding car repair records based on the information provided by the user. When asked to display a report, you will use the code interpreter to generate a report based on the data you have.
-
-  ## Guidelines
-- You are a repair service agent.
-- You can use the code interpreter to generate reports based on the data you have.
-- You can use the actions to create, update, and delete repairs.
-- When creating a repair item, if the user did not provide a description or date , use title as description and put todays date in format YYYY-MM-DD
-- Do not show any code or technical details to the user. 
-- Do not use any technical jargon or complex terms.
-
-""")
-
+const INSTRUCTIONS ="""  
+    ## Purpose
+    You will assist the user in finding car repair records based on the information provided by the user.
+   
+    ## Guidelines
+    - You are a repair service agent.
+    - You can use the actions to create, update, and delete repairs.
+    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today's date in the format YYYY-MM-DD.
+    - Do not use any technical jargon or complex terms.
+  """;
 ```
 
 <cc-end-step lab="e01" exercise="2" step="3" />
 
-### 手順 4: エージェントのプロビジョニングとテスト
+### 手順 4: エージェントをプロビジョニングしてテストする
 
-修理アナリストにもなった更新済みエージェントをテストしましょう。 
+#### プロビジョニング
 
-- Agents Toolkit の拡張機能アイコンを選択してアクティビティ バーを開きます。  
-- ツールキットの "LifeCycle" セクションで "Provision" を選択し、更新されたエージェントをパッケージ化してアップロードします。  
-- ブラウザー セッションに戻り、リフレッシュします。  
-- **Agents** 一覧から **RepairServiceAgent** を選択します。  
-- 会話スターター 'Create repair' を使い、タイトルを含めて下記例のようにプロンプトを送信してください。
+まずエージェントをテナントにプロビジョニングしてテストします。以下の手順に従ってください。
 
-    `Create a new repair titled "rear camera issue" and assign it to me.`
+- プロジェクト ルートの **env** フォルダー内にある **.env.dev** を開き、**AGENT_SCOPE** 変数があれば値を `shared` から `personal` に変更します。
+- Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択し、アクティビティ バーを開きます。
+- アクティビティ バーの "LifeCycle" セクションで "Provision" を選択します。これにより TypeSpec から生成されたマニフェストとアイコンを含むアプリ パッケージがビルドされ、テスト用にカタログへサイドロードされます。
+  
+>!!! note
+     Agents Toolkit は TypeSpec ファイルに記述された定義を検証し、エラーを特定して開発者体験を向上させます。
 
-- 確認ダイアログには、送信した内容より多くのメタデータが表示されます。これは新しい指示のおかげです。  
+処理には時間がかかりますが、VS Code のトースト メッセージで進捗が確認できます。
 
-![The confirmation message provided by Microsoft 365 Copilot when sending a POST request to the target API. There are buttons to 'Confirm' or to 'Cancel' sending the request to the API.](https://github.com/user-attachments/assets/56629979-b1e5-4a03-a413-0bb8bb438f00)
+!!! warning
+    **Provision** が失敗し、次のようなエラーが表示される既知の問題があります。発生した場合は成功するまで再試行してください。  
+    ![provision 429 issue](https://github.com/user-attachments/assets/bf849c94-6f5a-406a-9902-ae5a07d47840)  
+    ![provision timeout issue](https://github.com/user-attachments/assets/fd13651e-d469-4ecb-91b2-c24045fb4264)
+
+
+- ラボ マシンのタスクバーから Microsoft Edge を開き、`https://m365.cloud.microsoft/chat` にアクセスして Copilot アプリを開き、サインインします。
+- 左側の **Agents** から **RepairServiceAgent** を選択します。  
+
+> ナビゲーションが見当たらない場合は、以下のアイコンを選択して表示してください。  
+> ![find agents nav](https://github.com/user-attachments/assets/0d603d1b-6458-4766-9063-4f87597f10dc)
+
+#### list 操作をテストする
+
+- 会話スターター **List repairs** を選択し、チャットに送信してエージェントとの対話を開始します。サービスへのアクセス許可を求めるメッセージが表示された場合は **"Always allow"** を選択してください。
+
+  許可すると、以下のようなレスポンスが返ります。  
+
+![ex1-dem0-01](https://github.com/user-attachments/assets/02400c13-0766-4440-999b-93c88ca45dc7)
+
+#### エージェントの診断とデバッグ
+
+チャットで開発者モードを有効にすると、エージェントがタスクをどの程度理解しているか、サービス呼び出しが正しいか、チューニングが必要な箇所、パフォーマンス問題などを確認できます。
+
+- チャットに `-developer on` と送信してデバッグ モードを有効にします。
+
+成功すると **Successfully enabled developer mode** と返ります。
+
+!!! note
+    F5 キーでブラウザーを更新するとデバッグ情報が表示されます。
+
+- 例として以下のプロンプトを送信し、エージェントの応答を確認します。
+
+`Find out what Karin is working on`
+
+- 修理サービスからの情報に加え **Agent debug info** カードが表示されます。
+- カードを展開すると以下が確認できます。  
+  1️⃣ エージェント情報  
+  2️⃣ エージェントの機能  
+  3️⃣ 選択されたアクションと関数  
+  4️⃣ 実行されたアクションの詳細 (リクエスト、レイテンシ、レスポンス データなど)
+
+  ![image of agent debug info](https://github.com/user-attachments/assets/cb8623c7-27e1-4ece-9ec6-4c43b76917fb)
+
+
+- Executed Actions を展開するとリクエスト URL、パラメーター、ヘッダー、レスポンス、レイテンシなどが確認できます。
+
+#### create 操作をテストする
+
+POST 呼び出しで修理アイテムを作成してみましょう。
+
+- 会話スターター **Create repair** を選択し、プロンプト内容を置換して送信します。例:
+
+    `Create a new repair titled "360 camera issue" and assign it to me.`
+
+- 送信すると、拡張した指示のおかげで入力した内容より詳細なメタデータが含まれる確認ダイアログが表示されます。
+
+![response from Create a new repair titled "360 camera issue" and assign it to me](https://github.com/user-attachments/assets/f570f9fd-fa85-4ab1-9c3d-f9baf993dc95)
+
  
- - 確認してアイテムを追加します。
+ - ダイアログを承認してアイテムを追加します。
 
- エージェントは作成したアイテムをリッチな Adaptive Card で応答します。
+ エージェントはリッチな Adaptive Card で作成されたアイテムを返します。
 
- ![The response after creating a new item, with the information about the item to repair rendered through an adaptive card with a button to show the associated image.](https://github.com/user-attachments/assets/6da0a38f-5de3-485a-999e-c695389853f8)
+![adaptive card response](https://github.com/user-attachments/assets/d4d5906d-e5fb-4728-bb0c-b7a9f54215c5)
 
- - 次に参照カードが機能するか再確認します。以下のプロンプトを送信してください。
+
+- 参照カードが機能するか再確認します。新しいチャットを開き、次のプロンプトを送信します。
 
      `List all my repairs.`
 
-エージェントは修理の一覧を返し、各アイテムに対して Adaptive Card が参照として表示されます。
+エージェントはアイテムごとに Adaptive Card を添えて一覧を返します。
 
-![The response for the list of repairs with a reference button for each item, showing an adaptive card when hoovering on it.](https://github.com/user-attachments/assets/880ad3aa-2ed3-4051-a68b-d988527d9d53)
+![list all repairs with new repair added](https://github.com/user-attachments/assets/8240525d-c683-40f9-aa68-d6ba9a19d0f2)
 
-- 次にエージェントの新しい分析機能をテストします。エージェントの右上の **New chat** ボタンを選択して新しいチャットを開きます。  
-- 以下のプロンプトをコピーしてメッセージ ボックスに貼り付け、Enter キーを押します。
 
-    `Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.`
 
-下図のような応答が得られます（内容は変わる場合があります）。 
+☑️ 第二演習を完了しました！修理操作を追加し、テストとデバッグ方法を学習しました。ボーナス演習に進みましょう。
 
-![The response when using the Code Interpreter capability. There are a detailed text and a chart showing the percentage representation of each category of repair.](https://github.com/user-attachments/assets/ea1a5b21-bc57-4ed8-a8a4-c187caff2c64)
+<cc-end-step lab="e01" exercise="2" step="4" />
 
-<cc-end-step lab="e01" exercise="2" step="3" />
+## ボーナス演習: エージェントに Code Interpreter 機能を追加する
 
-## エクササイズ 3: エージェントの診断とデバッグ
+### 手順 1: エージェントに Code Interpreter 機能を追加する
 
-チャットで開発者モードを有効にすると、エージェントがタスクをどれだけ正確に理解しているか、サービス呼び出しが適切か、チューニングの必要な箇所やパフォーマンス問題を特定し、やり取りを分析できます。
+Declarative エージェントは OneDriveAndSharePoint、WebSearch、CodeInterpreter など多くの機能を拡張できます。ここでは Code Interpreter 機能を追加します。
 
-### 手順 1: チャットでのエージェント デバッグ
+- **main.tsp** を開き、エージェント挙動を定義する **RepairServiceAgent** 名前空間を探します。
+- 名前空間 **RepairServiceAgent** 内で **op listRepairs** の上に以下のスニペットを挿入して、コード実行を可能にする新しい機能を定義します。
 
-- エージェントとのチャットに次の行をコピーして貼り付け、デバッグ モードを有効にします。
+```typespec
+op codeInterpreter is AgentCapabilities.CodeInterpreter;
+```
 
-    ```
-    -developer on
-    ```
+!!! note
+    この codeinterpreter 操作は、エージェントの機能を定義する外側の **RepairServiceAgent** 名前空間に追加してください。アクションを定義する **RepairServiceActions** 名前空間ではありません。
 
-- 問題なく有効化されると、エージェントから `Successfully enabled developer mode.` と応答があります。
+追加機能に対応するよう指示も更新します。
 
-- 次にテスト用に以下のプロンプトを送信します。
+- **prompts/instructions.tsp** を開き、INSTRUCTIONS 定数を以下のスニペットに置き換えます。
 
-   `Find out what Karin is working on.`
+```typespec
 
-- 修理サービスからの情報が返るとともに **Agent debug info** カードも表示されます。  
-- **Agent debug info** カードを展開すると、以下の情報が確認できます。  
-    - エージェント情報 1️⃣  
-    - エージェントの機能 2️⃣  
-    - アクションと選択された関数 3️⃣  
-    - 実行されたアクションの詳細（リクエスト、レイテンシ、レスポンス データなど）4️⃣  
+  const INSTRUCTIONS ="""
+   ## Purpose
+    You will assist the user in finding car repair records based on the information provided by the user. You can generate charts based on data. Use python execution for charting/visualization.
+   
+    ## Guidelines
+    - You are a repair service agent.
+    - You can use the actions to create, update, and delete repairs.
+    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today's date in the format YYYY-MM-DD.
+    - when asked to generate report, generate charts using existing data.
+    - Do not use any technical jargon or complex terms.
+""";
 
-![The developer debug information card in Microsoft 365 Copilot when analysing the request for an action. There are sections about agent info, capabilities, actions, connected agents, execution, etc.](https://github.com/user-attachments/assets/b135f3b0-50f1-47a1-b608-a5a1b27b806e)
-
-- **Executed Actions** を展開すると、リクエスト URL、渡されたパラメーター、リクエスト ヘッダー、レスポンス、レイテンシなどが確認できます。 
+```
 
 <cc-end-step lab="e01" exercise="3" step="1" />
 
+### 手順 2: 追加機能をテストする
+
+新しい分析機能をテストします。再度エージェントをプロビジョニングする必要があります。以下の手順を実行してください。
+
+- **appPackage/manifest.json** を開き、バージョンを **"version": "1.0.0"** から **"version": "1.0.1"** に更新します。
+- 変更を保存し、Agents Toolkit アイコン <img width="24" alt="m365atk-icon" src="https://github.com/user-attachments/assets/b5a5a093-2344-4276-b7e7-82553ee73199" /> を選択し、アクティビティ バーで "Provision" を選択して再プロビジョニングします。
+- 既にエージェントとのチャットを開いている場合は **New chat** ボタンで新しいチャットを作成します。
+- または Microsoft Edge で `https://m365.cloud.microsoft/chat` を開き、Copilot アプリでサインインします。
+- 左側の **Agents** から **RepairServiceAgent** を選択します。  
+
+> ナビゲーションが見当たらない場合は、以下のアイコンを選択して表示してください。  
+> ![find agents nav](https://github.com/user-attachments/assets/0d603d1b-6458-4766-9063-4f87597f10dc)
+
+- 次のプロンプトをコピーしてメッセージ ボックスに貼り付け、送信します。
+
+`Classify repair items based on title into three distinct categories: Routine Maintenance, Critical, and Low Priority. Then, generate a pie chart displaying the percentage representation of each category. Use unique colours for each group and incorporate tooltips to show the precise values for each segment.`
+
+以下のようなレスポンスが返ります (結果は異なる場合があります)。  
+![response with chart using code interpreter](https://github.com/user-attachments/assets/8ccc7758-28ec-42ff-96fd-2341cad6c9ed)
+
+!!! warning
+    Code Interpreter の既知の問題: 応答に次のようなエラーメッセージが表示されても、チャートは正しく生成されますので無視して構いません。  
+    ![error with CI](https://github.com/user-attachments/assets/d9d04b7f-5696-42ca-8767-178dbc51f342)
+
+<cc-end-step lab="e01" exercise="3" step="2" />
+
+☑️ すべての演習を完了しました。お疲れさまでした！
+
 ---8<--- "ja/e-congratulations.md"
+Great job on building your first agent using TypeSpec 🎉 
 
-素晴らしいですね、初めてのエージェントを構築できました 🎉 
+ Proceed to create, build, and integrate an API selecting **Next**.
+ <cc-next url="../02-build-the-api" label="Next" />
 
-API を作成・ビルドして統合するには **Next** を選択してください。
-<cc-next url="../02-build-the-api" label="Next" />
-
-ゲーム「Geolocator」を作りながら基礎を引き続き学びたい場合は、**Create a game** を選択してください。
-<cc-next url="../01a-geolocator" label="Create a game" />
+Continue practicing by building a Geolocator game agent—select **Create a game** below.
+ <cc-next url="../01a-geolocator" label="Create a game" />
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/01-typespec-declarative-agent--ja" />

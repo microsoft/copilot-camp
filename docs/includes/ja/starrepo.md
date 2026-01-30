@@ -1,1 +1,1 @@
-<a href="https://github.com/microsoft/copilot-camp" target="_blank"  class="star-button">⭐️ リポジトリにスターを付ける</a>
+<a href="https://github.com/microsoft/copilot-camp" target="_blank"  class="star-button">⭐️ レポジトリにスターを付ける</a>

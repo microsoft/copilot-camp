@@ -1,17 +1,18 @@
 <div class="cc-lab-toc mcs-path">
   <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
   <div>
-    <p>Microsoft Copilot Studio で エージェントを構築したい場合は、これらの ラボ を実施してください</p>
+    <p>Microsoft Copilot Studio で エージェント を構築したい場合は、次の ラボ を実施してください</p>
     <ul>
       <li><a href="/copilot-camp/ja/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
       <li><a href="/copilot-camp/ja/pages/make/copilot-studio/01-first-agent/">MCS1 - 最初の エージェント</a></li>
       <li><a href="/copilot-camp/ja/pages/make/copilot-studio/02-topics/">MCS2 - トピックの定義</a></li>
       <li><a href="/copilot-camp/ja/pages/make/copilot-studio/03-actions/">MCS3 - ツールの定義</a></li>
-      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot を拡張する</a></li>
-      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの利用</a></li>
-      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの利用</a></li>
-      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律型 エージェントの作成</a></li>
-      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/08-rag/">MCS8 - RAG のための Azure AI Search 統合</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot の拡張</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの使用</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの使用</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律型 エージェント の作成</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/08-rag/">MCS8 - RAG のための Azure AI Search の統合</a></li>
+      <li><a href="/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/">MCS9 - 接続された エージェント (プレビュー)</a></li>
     </ul>
   </div>
 </div>

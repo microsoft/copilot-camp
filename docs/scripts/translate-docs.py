@@ -1,5 +1,5 @@
 """
-translate-docs.py: Translate Markdown documentation to multiple languages using Azure OpenAI.
+translate-docs.py: Translate Markdown documentation to multiple languages using OpenAI.
 
 USAGE:
 1. (Recommended) Create and activate a Python virtual environment:
@@ -7,10 +7,14 @@ USAGE:
    source venv/bin/activate
 2. Install requirements:
    pip install -r requirements.txt
-3. Set up your .env file with Azure OpenAI credentials:
-   AZURE_OPENAI_ENDPOINT_URL=...
-   AZURE_OPENAI_DEPLOYMENT_NAME=...
-   AZURE_OPENAI_API_KEY=...
+3. Set up an Azure AI Foundry project:
+   - Create a project in Azure AI Foundry
+   - Deploy o3 model 
+   - Note your project endpoint, API key, and model deployment name
+4. Set up your .env file in the root with the credentials:
+   AZURE_OPENAI_ENDPOINT_URL=YOUR-RESOURCE-NAME.openai.azure.com/openai/v1/
+   OPENAI_API_KEY=your-api-key
+   OPENAI_MODEL=o3
 4. Run the script:
    python docs/scripts/translate-docs.py
 
@@ -25,20 +29,17 @@ If new sections have been added in ToC in mkdocs.yml, you still need to edit it 
 import os
 import shutil
 from dotenv import load_dotenv
-from openai import AzureOpenAI
+from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor
 
 load_dotenv()
 
-endpoint = os.getenv("AZURE_OPENAI_ENDPOINT_URL")
-model = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "o3")
-subscription_key = os.getenv("AZURE_OPENAI_API_KEY")
+model = os.getenv("OPENAI_MODEL")
 
-# Initialize Azure OpenAI client with key-based authentication
-client = AzureOpenAI(
-    azure_endpoint=endpoint,
-    api_key=subscription_key,
-    api_version="2025-01-01-preview",
+# Initialize OpenAI client
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("AZURE_OPENAI_ENDPOINT_URL")
 )
 
 ENABLE_CODE_SNIPPET_EXCLUSION = True
@@ -119,6 +120,7 @@ You must return **only** the translated markdown. Do not include any commentary,
 - Keep the tone **natural** and concise.
 - Do not omit any content. If a segment should stay in English, copy it verbatim.
 - Do not change the markdown data structure, including the indentations.
+- Do not alter SVG paths or any code snippets. Maintain their original formatting.
 - Section titles starting with # or ## must be a noun form rather than a sentence.
 - Section titles must be translated except for the Do-Not-Translate list.
 - Keep all placeholders such as `CODE_BLOCK_*` and `CODE_LINE_PREFIX` unchanged.

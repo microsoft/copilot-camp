@@ -4,102 +4,102 @@ search:
 ---
 # ラボ MCS8 - RAG のための Azure AI Search 統合
 
-このラボでは、Azure AI Search を使用して Retrieval-Augmented Generation (RAG) 機能を Microsoft Copilot Studio エージェントに強化する方法を学びます。ベクトル検索を活用して候補者ドキュメントを検索し、組織のデータを裏付けとしたインテリジェントかつコンテキストに沿った応答を返す、専門的な HR Knowledge エージェントを作成します。このラボでは、Copilot Studio の会話機能と Azure AI Search の高度な検索機能を組み合わせた、パワフルな AI エージェントの作成方法を説明します。
+このラボでは、Microsoft Copilot Studio のエージェントに Azure AI Search を活用した RAG (Retrieval-Augmented Generation) 機能を追加する方法を学習します。ベクトル検索によって候補者のドキュメントを検索し、組織のデータに裏付けられたインテリジェントかつコンテキストに応じた回答を提供する、人事向けの特化型 HR Knowledge エージェントを作成します。本ラボでは、Copilot Studio の会話能力と Azure AI Search の高度な検索機能を組み合わせた強力な AI エージェントの作成方法を紹介します。
 
 <div class="lab-intro-video">
-    <!-- <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/placeholder" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/ofd2pLMVvS0" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>Get a quick overview of the lab in this video.</div>
-    </div> -->
+          <div>このビデオでラボの概要をご確認ください。</div>
+    </div>
     <div style="flex: 1; min-width: 0;">
    ---8<--- "ja/mcs-labs-prelude.md"
     </div>
 </div>
 
 !!! important
-    Microsoft Copilot Studio でのエージェント作成と、基本的な Azure リソース管理の経験があることを前提としています。
+    Microsoft Copilot Studio でのエージェント作成と、基本的な Azure リソース管理の経験が必要です。
 
-このラボで学ぶ内容:
+このラボで学ぶこと:
 
-- Azure AI Search サービスを作成し、ナレッジ インデックスを構成する方法
-- Azure AI Search を使って PDF ドキュメントをインポートし、ベクトル化する方法
-- Azure AI Search を Microsoft Copilot Studio のナレッジ ソースとして統合する方法
-- RAG を活用してインテリジェントなドキュメント検索を行うエージェントを作成する方法
+- 知識インデックス用に Azure AI Search サービスを作成・構成する方法
+- Azure AI Search を使用して PDF ドキュメントをインポートし、ベクトル化する方法
+- Azure AI Search を Microsoft Copilot Studio の知識ソースとして統合する方法
+- RAG を活用したインテリジェントなドキュメント検索エージェントを作成する方法
 
 ??? info "Retrieval-Augmented Generation (RAG) とは?"
-    Retrieval-Augmented Generation (RAG) は、言語モデルが生成する回答の品質を向上させる AI 技術です。簡単な例で説明します。
+    Retrieval-Augmented Generation (RAG) は、言語モデルが生成する回答の品質を向上させるための AI 技術です。簡単な例で説明します。
 
-    スマート アシスタントが質問に答えるとき、そのアシスタントがすべての情報を知らない場合があります。そこで RAG は、インターネット検索のように大量のドキュメントから情報を検索 (Retrieval) し、その情報を利用してより良い回答を生成 (Generation) します。
+    スマートアシスタントが質問に答えるとき、必要な情報がすべて揃っていない場合があります。RAG は、アシスタントが大量のドキュメントを検索して関連情報を取得し、その情報を使ってより正確な回答を作成できるようにします。
 
-    RAG は次の 2 ステップを組み合わせています。
+    RAG は次の 2 つのステップを組み合わせます:
 
-    - **Retrieval:** 大量データから関連情報を検索  
-    - **Generation:** 検索した情報を使って詳細かつ正確な回答を生成  
+    - **Retrieval:** 大量のデータから関連情報を検索する
+    - **Generation:** 検索結果を基に詳細で正確な回答を生成する
+    
+    これにより、質問応答、記事作成、調査支援などで、より有益で信頼性の高い回答が得られます。
 
-    これにより、質問応答、記事執筆、リサーチ支援などで、より有用で正確な回答を提供できます。
-
-    *Doodle to Code の動画で RAG についてさらに学びましょう！*
+    *RAG について詳しくは、こちらの Doodle to Code ビデオをご覧ください。*
 
     <iframe src="//www.youtube.com/embed/1k4XGgsqfTM?si=P6O9baroreDKizb" frameborder="0" allowfullscreen></iframe>
 
 ??? tip "Vector Search を使用する利点"
-    Vector Search は、単なるキーワード一致ではなく「意味」に基づいて情報を高速かつ正確に検索する高度な手法です。従来のテキスト検索がキーワード一致に頼るのに対し、Vector Search は数値ベクトルを用いて、クエリと意味的に近いコンテンツを見つけます。これにより、次のような検索が可能になります。
+    ベクトル検索は、単なるキーワード一致ではなく “意味” に基づいて情報を高速かつ正確に見つける高度な技術です。従来のテキスト検索がキーワードの完全一致に依存するのに対し、ベクトル検索は数値ベクトルを用いてクエリと類似した内容を探します。これにより、以下が可能になります。
 
-    - **意味・概念の類似性:** 異なる単語でも意味が近いものをマッチ (例: "recruitment" と "hiring")  
-    - **多言語コンテンツ:** 異なる言語でも同等の内容を検索 (例: "resume" と "curriculum vitae")  
-    - **複数コンテンツ タイプ:** テキスト、PDF など異種フォーマットを横断検索  
+    - **意味・概念の類似性:** 異なる単語でも意味が近いコンセプトをマッチング (例: 「recruitment」と「hiring」)
+    - **多言語コンテンツ:** 異なる言語間の同義内容を検索 (例: 「resume」と「curriculum vitae」)
+    - **複数コンテンツ形式:** テキストドキュメントや PDF など、形式をまたいだ検索
+    
+    ベクトル検索の仕組み:
 
-    Vector Search のしくみ:
+    1. **テキストをベクトルへ変換:** テキストやドキュメントを、その意味を表す数値 (ベクトル) に変換 (Embedding モデルを使用)
+    2. **ベクトルを保存:** これらのベクトルを効率的に扱う専用データベース (例: Azure AI Search インデックス) に保存
+    3. **ベクトルで検索:** クエリもベクトルに変換し、インデックス内で意味的に近いベクトルを検索
 
-    1. **テキストをベクトル化:** テキストやドキュメントを、内容の本質を数値化したベクトルへ変換 (埋め込みモデルを使用)  
-    2. **ベクトルを保存:** 生成されたベクトルを、効率的に扱えるデータベース (Azure AI Search インデックスなど) に保存  
-    3. **ベクトル検索:** クエリもベクトル化し、意味的に最も近いベクトルをインデックスから検索  
-
-    たとえば「software engineering skills」で検索すると、「programming expertise」や「development capabilities」を持つ候補者もヒットします。
+    例えば「software engineering skills」で検索すると、「programming expertise」や「development capabilities」を持つ候補者もヒットします。
 
 ## Exercise 1: Azure AI Search サービスのセットアップ
 
-この演習では、RAG 対応エージェントのナレッジ基盤として機能する Azure AI Search サービスを作成・構成します。
+この演習では、RAG 対応エージェントの知識基盤となる Azure AI Search サービスを作成・構成します。
 
 ### Step 1: Azure AI Search サービス リソースの作成
 
-Microsoft Copilot Studio と統合する前に、ドキュメントを保存・インデックス化する Azure AI Search サービスを設定します。
+Microsoft Copilot Studio と統合する前に、ドキュメントを格納・インデックス化する Azure AI Search サービスをセットアップします。
 
-[Azure Portal](https://portal.azure.com){target=_blank} で Azure AI Search サービスを次の手順で作成します。
+[Azure Portal](https://portal.azure.com){target=_blank} にアクセスし、Azure AI Search サービスを作成します。
 
 1. **Create a resource** を選択し `Azure AI Search` を検索  
 1. Azure AI Search サービスを選択し **Create**  
-1. 以下を入力し **Review + Create** をクリック  
+1. 次の項目を入力し **Review + Create** を選択  
 
-    - **Subscription:** ご利用のサブスクリプション  
-    - **Resource group:** 既存のラボと同じリソース グループ、または新規で `copilot-camp-rg`  
+    - **Subscription:** ご自身の Azure サブスクリプション  
+    - **Resource group:** 他のラボで使用したもの、または新規作成 (例: `copilot-camp-rg`)  
     - **Service name:** `copilotcamp-ai-search` など一意の名前  
     - **Location:** 他の Azure リソースと同じリージョン  
     - **Pricing tier:** Basic (本ラボでは十分)  
 
-![Azure ポータルで Azure AI Search サービス作成画面。サブスクリプション、リソース グループ、サービス名、リージョン、価格帯などが入力済み。](../../../assets/images/make/copilot-studio-08/azure-search-01.png)
+![The Azure portal interface showing the creation of a new Azure AI Search service with the required fields filled in including subscription, resource group, service name, location, and pricing tier.](../../../assets/images/make/copilot-studio-08/azure-search-01.png)
 
-作成後、リソースを開きます。
+サービス作成後、リソース画面で次を取得して保存します。
 
-1. **Overview** で **URL** をコピーして保存  
+1. **Overview** で **URL** をコピー  
 1. 左ナビの **Settings** → **Keys** で **Primary admin key** をコピー  
 
-これらの URL と admin key は、Microsoft Copilot Studio から Azure AI Search に接続するときに使用します。
+これらは後ほど Microsoft Copilot Studio から Azure AI Search に接続する際に使用します。
 
 <cc-end-step lab="mcs8" exercise="1" step="1" />
 
 ### Step 2: Azure Storage Account の作成
 
-インデックス対象ドキュメントを保存するために、Azure Storage Account が必要です。
+インデックス化するドキュメントを保管するため、Azure Storage Account を作成します。
 
-Azure Portal で Storage Account を作成します。
+Azure Portal で Storage Account を作成:
 
 1. **Create a resource** を選択し `Storage Account` を検索  
 1. Storage Account を選択し **Create**  
-1. 以下を入力し **Review + Create** をクリック  
+1. 次の項目を入力し **Review + Create** を選択  
 
-    - **Subscription:** ご利用のサブスクリプション  
+    - **Subscription:** ご自身の Azure サブスクリプション  
     - **Resource group:** Azure AI Search と同じリソース グループ  
     - **Storage account name:** `copilotcampstorage` など一意の名前  
     - **Region:** Azure AI Search と同じリージョン  
@@ -107,181 +107,167 @@ Azure Portal で Storage Account を作成します。
     - **Performance:** Standard  
     - **Redundancy:** Locally redundant storage (LRS)  
 
-![Azure ポータルで Storage Account 作成画面。基本設定としてサブスクリプション、リソース グループ、アカウント名、リージョン、パフォーマンス、冗長性が設定されている。](../../../assets/images/make/copilot-studio-08/azure-storage-01.png)
+![The Azure portal interface showing the creation of a storage account with the basic configuration including subscription, resource group, storage account name, region, performance, and redundancy settings.](../../../assets/images/make/copilot-studio-08/azure-storage-01.png)
 
-作成後、このストレージ アカウントに PDF ドキュメントを保存し、Azure AI Search がインデックス化できるようにします。
+ストレージ アカウントが作成されたら、PDF ドキュメントを保存するために使用します。
 
 <cc-end-step lab="mcs8" exercise="1" step="2" />
 
-### Step 3: テキスト埋め込み (Embedding) モデルの作成
+### Step 3: テキスト埋め込みモデルの作成
 
-ベクトル検索を有効にするため、Azure OpenAI にテキスト埋め込みモデルを作成し、ドキュメントとクエリをベクトル化します。
+ベクトル検索を有効化するため、Azure OpenAI でテキストをベクトルに変換する埋め込みモデルを作成します。
 
-Azure OpenAI サービス インスタンスがない場合は、まず作成します。
+まだ Azure OpenAI サービス インスタンスがない場合は、先に作成します。
 
 1. Azure Portal で **Create a resource** → `Azure OpenAI` を検索  
-1. **Azure OpenAI** を選択し **Create**  
+1. **Azure OpenAI** → **Create**  
 1. 次を入力  
 
-    - **Subscription:** ご利用のサブスクリプション  
-    - **Resource group:** 他リソースと同じリソース グループ  
-    - **Region:** East US、West Europe、South Central US など Azure OpenAI 対応リージョン  
+    - **Subscription:** ご自身の Azure サブスクリプション  
+    - **Resource group:** 他のリソースと同じ  
+    - **Region:** East US、West Europe など Azure OpenAI 対応リージョン  
     - **Name:** `copilotcamp-openai` など  
     - **Pricing tier:** Standard S0  
 
-1. **Next** を進め **Create**  
-1. デプロイ完了を待機 (数分かかる場合あり)  
-1. 作成後、Azure OpenAI リソースのエンドポイント URL を控える  
+1. **Next** でウィザードを進め **Create**  
+1. デプロイ完了を待機 (数分)  
+1. リソース作成後、エンドポイント URL を控える  
 
-次に [Microsoft Foundry](https://oai.azure.com/portal){target=_blank} にアクセスします。初回アクセス時は先ほど作成した Azure OpenAI インスタンスを選択します。サービス インスタンスを選び、埋め込みモデルを以下の手順で作成します。
+次に [Microsoft Foundry](https://oai.azure.com/portal){target=_blank} に移動します。初回アクセス時は先ほど作成した Azure OpenAI インスタンスを選択します。以下の手順で埋め込みモデルを作成します。
 
 1. 左ナビで 1️⃣ **Deployments**  
 1. 2️⃣ **+ Deploy model**  
-1. 3️⃣ **Deploy base model**  
+1. 3️⃣ **Deploy base model** を選択  
 1. ポップアップで 4️⃣ `text-embedding-ada-002` を検索  
 1. 5️⃣ **Confirm**  
 1. 設定ダイアログで次を入力  
 
-    - **Deployment name:** `text-embeddings`  
+    - **Deployment name:** `text-embeddings` (後で使用)  
     - **Deployment type:** Standard  
     - **Model version:** 2 (Default)  
     - **Content Filter:** DefaultV2  
 
-1. 6️⃣ **Deploy** を選択し、完了を待機  
+1. 6️⃣ **Deploy** を選択し完了を待機  
 
-![Azure OpenAI のデプロイ画面で text-embedding-ada-002 モデルを設定している様子。モデル選択、バージョン、デプロイタイプ、名前、コンテンツフィルターが設定されている。](../../../assets/images/make/copilot-studio-08/openai-embedding-01.png)
+![The Azure OpenAI deployment interface showing the creation of a text-embedding-ada-002 model with the specified configuration including model selection, version, deployment type, name, and content filter settings.](../../../assets/images/make/copilot-studio-08/openai-embedding-01.png)
 
-
-??? info "`text-embedding-ada-002` の機能"
-    `text-embedding-ada-002` モデルはテキストを数値ベクトルへ変換し、意味的な類似度検索を可能にします。複数言語や多様なコンテンツ タイプを扱え、Azure AI Search と組み合わせることで、文脈に合った関連性の高い検索結果を返します。高度な検索ソリューションや自然言語を理解するアプリ開発に最適です。
-
-埋め込みモデルは、インデックス化されたドキュメントとユーザー クエリをベクトル化し、意味的類似度を比較するために不可欠です。
+??? info "`text-embedding-ada-002` は何をするのか?"
+    Azure OpenAI の `text-embedding-ada-002` モデルは、テキストをその意味を表す数値ベクトルに変換します。これによりキーワード一致ではなく意味的類似性で検索が可能になります。多言語・多形式に対応しており、Azure AI Search と組み合わせることで最も関連性の高い情報を取得します。高度な検索ソリューションや自然言語理解が必要なアプリに最適です。
 
 !!! tip "ヒント: クォータ制限への対処"
-    「No quota available」と表示された場合は次のいずれかを検討してください。  
+    「No quota available」と表示された場合は次のいずれかを試してください。
 
-    1. 別リージョンでデプロイ  
-    1. Azure OpenAI クォータ管理ページで追加クォータを申請  
-    1. 使用していないデプロイを削除してリソースを解放  
+    1. 別のリージョンでデプロイ  
+    1. Azure OpenAI のクォータ管理ページから追加クォータを申請  
+    1. 使っていないデプロイメントを削除してリソースを解放  
 
 <cc-end-step lab="mcs8" exercise="1" step="3" />
 
 ## Exercise 2: 検索インデックスの作成とデータ投入
 
-この演習では、Azure AI Search で検索インデックスを作成し、履歴書ドキュメントをベクトル化して投入します。
+この演習では、Azure AI Search に検索インデックスを作成し、ベクトル化機能を使って候補者の履歴書 (レジュメ) を登録します。
 
-### Step 1: サンプル ドキュメントの準備
+### Step 1: サンプルドキュメントの準備
 
-本ラボ用に、検索対象となるサンプル履歴書ドキュメントをダウンロードします。[fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) をダウンロードし、解凍して PDF ファイルを取得してください。
+まず、検索対象となるサンプルの履歴書をダウンロードします。[fictitious_resumes.zip](https://github.com/microsoft/copilot-camp/raw/main/src/custom-engine-agent/Lab02-RAG/CareerGenie/fictitious_resumes.zip) を取得し、解凍して PDF ファイルを取り出します。
 
-サンプル履歴書には以下のような情報が含まれています。
+これらのサンプル履歴書には、以下のような情報が含まれています。
 
-- 候補者名と連絡先  
-- 技術スキルと専門分野  
-- 職務経験と役割履歴  
-- 学歴  
-- 言語スキル  
-- 資格・認定  
+- 候補者の氏名・連絡先
+- 技術スキルや専門分野
+- 職務経験と役割
+- 学歴
+- 語学力
+- 資格・認定
 
-これらのファイル内容を確認し、RAG 対応エージェントで検索可能となる情報タイプを把握してください。文書は複数言語で書かれていますが、`text-embedding-ada-002` とベクトル インデックスでは問題ありません。
+ドキュメントの内容を確認して、RAG 対応エージェントが検索できる情報を把握しましょう。文書は複数言語で書かれていますが、`text-embedding-ada-002` モデルとベクトルインデックスでは問題ありません。
 
 <cc-end-step lab="mcs8" exercise="2" step="1" />
 
-### Step 2: Storage Account へのサンプル ドキュメントのアップロード
+### Step 2: サンプルドキュメントを Storage Account にアップロード
 
-Azure AI Search を使用して、履歴書ドキュメントをベクトル化機能付きでインデックス化します。
+Azure AI Search でベクトルインデックスを作成するため、先ほどの履歴書をストレージにアップロードします。
 
-[Azure Portal](https://portal.azure.com/){target=_blank} で Storage Account を開きます。 
+[Azure Portal](https://portal.azure.com/){target=_blank} で Storage Account サービス インスタンスを開きます。
 
-1. 左ナビ **Data storage** グループの 1️⃣ **Containers**  
-1. コマンド バーの 2️⃣ **+ Add container**  
-1. 任意の名前 3️⃣ (例: `resumes`)  
+1. 左ナビ **Data storage** グループから 1️⃣ **Containers**  
+1. コマンドバーで 2️⃣ **+ Add container**  
+1. 3️⃣ コンテナー名を入力 (例: `resumes`)  
 1. 4️⃣ **Create**  
 
-![Azure Storage Account の「Containers」ページで「+ Add container」が強調表示されている。](../../../assets/images/make/copilot-studio-08/azure-storage-02.png)
+![The Azure Storage Account service instance while showing the "Containers" page. There is a command to "+ Add container" highlighted.](../../../assets/images/make/copilot-studio-08/azure-storage-02.png)
 
-コンテナー作成後、履歴書ファイルをアップロードします。
+コンテナー作成後、次の手順でファイルをアップロードします。
 
-1. 1️⃣ **Upload**  
-1. ドラッグ & ドロップ、または 2️⃣ **Browse for files** でファイル選択  
-1. 3️⃣ **Upload** をクリックし完了を待つ  
+1. 1️⃣ **Upload** を選択  
+1. ドラッグ & ドロップ、または 2️⃣ **Browse for files** で履歴書ファイルを選択  
+1. 3️⃣ **Upload** をクリックし完了を待機  
 
-![Azure Storage Account のコンテナーにファイルをアップロードする画面。アップロード手順が強調表示。](../../../assets/images/make/copilot-studio-08/azure-storage-03.png)
+![The Azure Storage Account service instance while uploading files in target container. The commands to upload files are highlighted.](../../../assets/images/make/copilot-studio-08/azure-storage-03.png)
 
 <cc-end-step lab="mcs8" exercise="2" step="2" />
 
-### Step 3: 統合ベクトル化によるインデックス投入
+### Step 3: 統合ベクトル化によるインデックス作成
 
-ファイルをアップロードしたら [Azure Portal](https://portal.azure.com/){target=_blank} に戻り、Azure AI Search サービスを開きます。上部コマンド バーから **Import data (new)** を選択します。
+履歴書ファイルのアップロード後、[Azure Portal](https://portal.azure.com/){target=_blank} のホームに戻り、Azure AI Search サービス インスタンスを開きます。上部コマンドバーの **Import data (new)** を選択します。
 
-![Azure AI Search サービス概要ページ。「Import data (new)」コマンドが強調表示されている。](../../../assets/images/make/copilot-studio-08/azure-search-02.png)
+![The Azure AI Search service instance overview page with basic information about the service instance. There is a command to "Import data (new)" highlighted.](../../../assets/images/make/copilot-studio-08/azure-search-02.png)
 
-データ インポートを設定する新しいページで **Azure Blob Storage** を選択します。
+表示されたページでデータインポートを設定します。データソースとして **Azure Blob Storage** を選択。
 
-![データインポートのデータ ソース選択ページ。「Azure Blob Storage」が強調表示。](../../../assets/images/make/copilot-studio-08/azure-search-03.png)
+![The Azure AI Search service instance page to start importing data. There is the "Azure Blob Storage" data source highlighted.](../../../assets/images/make/copilot-studio-08/azure-search-03.png)
 
-続いて **RAG** シナリオを選択します。
+続いてターゲット シナリオに **RAG** を選択。
 
-![ターゲット シナリオ選択ページ。「RAG」が強調表示。](../../../assets/images/make/copilot-studio-08/azure-search-04.png)
+![The Azure AI Search service instance page to choose the target scenario. There is the "RAG" scenario highlighted.](../../../assets/images/make/copilot-studio-08/azure-search-04.png)
 
-次の設定で RAG シナリオを構成します。
+RAG シナリオを次の設定で構成します。
 
 1. **Configure your Azure Blob Storage**  
-
-    - **Subscription:** ご利用のサブスクリプション  
+    - **Subscription:** ご自身のサブスクリプション  
     - **Storage account:** 先ほど作成した Storage Account  
     - **Blob container:** `resumes` などアップロード先コンテナー  
-    - **Blob folder:** フォルダー構成がなければ空欄  
+    - **Blob folder:** フォルダー構造を作成していない場合は空白  
     - **Parsing mode:** `Default`  
-    - **Next** を選択  
+    - **Next** へ進む  
 
 1. **Vectorize your text**  
-
     - **Kind:** Azure OpenAI  
-    - **Subscription:** ご利用のサブスクリプション  
-    - **Azure Open AI service:** 作成した Azure OpenAI  
+    - **Subscription:** ご自身のサブスクリプション  
+    - **Azure Open AI service:** 作成した Azure OpenAI インスタンス  
     - **Model deployment:** `text-embeddings`  
-    - **Authentication type:** `API Key`  
-    - `I acknowledge ...` チェック  
+    - **Authentication type:** `API Key` (既定)  
+    - コスト承認のチェックボックスをオン  
     - **Next**  
 
 1. **Vectorize your images**  
-
-    - 画像を処理する場合のみ設定  
-    - ここでは **Next**  
+    - 画像を処理しない場合はそのまま **Next**  
 
 1. **Advanced ranking and relevancy**  
-
-    - スケジュール更新やセマンティック ランカー、フィールド設定が可能  
+    - スケジュール更新やセマンティックランカーなど必要に応じて設定  
     - ここでは **Next**  
 
 1. **Review and create**  
+    - インデックス・インデクサーなどのプレフィックスに `resumes` などを入力  
+    - 設定を確認し **Create** を選択  
 
-    - インデックス等のプレフィックス: 例 `resumes`  
-    - 設定確認後 **Create**  
+![The Azure AI Search service instance page to recap the settings that will be applied when creating and feeding the vector index.](../../../assets/images/make/copilot-studio-08/azure-search-05.png)
 
-![インデックス作成設定の最終確認ページ。](../../../assets/images/make/copilot-studio-08/azure-search-05.png)
+インデックス作成完了後、ダイアログが表示されます。**Start searching** を選択してインデックスを確認できます。**Search** を実行すると結果が表示され、各ドキュメントには `text_vector` フィールドがあり、`text-embedding-ada-002` モデルでベクトル化されていることがわかります。
 
-インデックス作成後、確認ダイアログが表示されます。**Start searching** をクリックすると検索を試せます。インデックス ページで **Search** を選択し結果を確認します。各レコードに `text_vector` フィールドがあり、`text-embedding-ada-002` でベクトル化されたことが分かります。
-
-![Azure AI Search ベクトル インデックスで全件取得結果を表示し、"text_vector" フィールドが強調表示されている。](../../../assets/images/make/copilot-studio-08/azure-search-06.png)
+![The Azure AI Search vector index showing the results of a get all query with the "text_vector" field highlighted.](../../../assets/images/make/copilot-studio-08/azure-search-06.png)
 
 <cc-end-step lab="mcs8" exercise="2" step="3" />
 
 ## Exercise 3: RAG 対応エージェントの作成
 
-この演習では、Azure AI Search インデックスを利用して HR 候補者に関するドキュメント バックの応答を返す Microsoft Copilot Studio エージェントを作成します。
+この演習では、Azure AI Search インデックスを利用して候補者情報を提供する Microsoft Copilot Studio エージェントを作成します。
 
 ### Step 1: HR Knowledge エージェントの作成
 
-[Microsoft Copilot Studio](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、ナレッジ検索向けの新しいエージェントを作成します。
+[Microsoft Copilot Studio](https://copilotstudio.microsoft.com){target=_blank} にアクセスし、知識検索に最適化された新しいエージェントを作成します。
 
-作業アカウントで `Copilot Dev Camp` 環境に入り、新規エージェントを作成:
-
-1. **Create** → **+ New agent**  
-1. **Configure** を選択し手動設定  
-
-エージェントの定義:
+作業アカウントで `Copilot Dev Camp` 環境に入り、以下のようにエージェントを定義します。
 
 - **Name**: 
 
@@ -322,27 +308,25 @@ You excel at:
 Always provide helpful, accurate information while respecting privacy and being professional.
 ```
 
-![Microsoft Copilot Studio で "HR Knowledge Agent" を作成する画面。名前、説明、指示が入力されている。](../../../assets/images/make/copilot-studio-08/mcs-agent-01.png)
+![The Microsoft Copilot Studio user experience when creating the "HR Knowledge Agent". There are name, description, and instructions accordingly to the above suggeted settings.](../../../assets/images/make/copilot-studio-08/mcs-agent-01.png)
 
-**Create** を押してエージェントを作成します。
+**Publish** を選択してエージェントを公開します。
 
-作成後、**Use generative AI to determine how best to respond to users and events** が有効になっていることを確認し、**Details** パネルで `GPT-4o` モデルが選択されていることを確認します。
-
-![新しいエージェントの設定画面。Generative Orchestrator が有効で GPT-4o モデルが強調表示。](../../../assets/images/make/copilot-studio-08/mcs-agent-02.png)
+公開後、エージェントの **Overview** タブで `GPT-4.1` モデルが選択されていることを確認してください。
 
 <cc-end-step lab="mcs8" exercise="3" step="1" />
 
-### Step 2: Azure AI Search をナレッジ ソースとして追加
+### Step 2: Azure AI Search を知識ソースとして追加
 
-Azure AI Search インデックスをエージェントのナレッジ ソースとして統合します。
+Azure AI Search インデックスをエージェントの知識ソースとして統合します。
 
-**Knowledge** セクションでインデックスを追加:
+**Knowledge** セクションで次を実行:
 
-1. **+ Add knowledge**  
+1. **+ Add knowledge** を選択  
 1. **Add knowledge** ダイアログで **Featured**  
 1. **Azure AI Search** を選択  
 
-![ナレッジ ソース追加画面で Azure AI Search を選択している様子。](../../../assets/images/make/copilot-studio-08/mcs-add-knowledge-01.png)
+![The knowledge sources interface showing the option to add Azure AI Search as a featured knowledge source, with various other knowledge source options visible.](../../../assets/images/make/copilot-studio-08/mcs-add-knowledge-01.png)
 
 Azure AI Search 接続を構成:
 
@@ -350,33 +334,33 @@ Azure AI Search 接続を構成:
 1. 認証を設定  
 
     - **Authentication type:** Access Key  
-    - **Azure AI Search Endpoint URL:** 保存しておいた URL  
-    - **Azure AI Search Admin Key:** コピーしておいた admin key  
+    - **Azure AI Search Endpoint URL:** 先ほど保存した URL  
+    - **Azure AI Search Admin Key:** コピーした Admin Key  
 
-1. **Create** を選択 (成功すると緑のチェックマーク)  
+1. **Create** をクリック (成功すると緑のチェックマーク)
 
-![Azure AI Search 接続設定ダイアログ。認証タイプ、エンドポイント URL、admin key が入力されている。](../../../assets/images/make/copilot-studio-08/mcs-add-knowledge-02.png)
+![The Azure AI Search connection configuration dialog showing the authentication type selection, endpoint URL field, and admin key field for establishing the connection.](../../../assets/images/make/copilot-studio-08/mcs-add-knowledge-02.png)
 
-ナレッジ ソース設定を完了:
+知識ソースの設定を完了:
 
-1. インデックス名 `resumes` (または作成時の名前) を選択  
-1. **Add to agent**  
+1. インデックス `resumes` (作成時の名前) を選択  
+1. **Add to agent** をクリック  
 
-![エージェントに追加するインデックスを選択する画面。](../../../assets/images/make/copilot-studio-08/mcs-add-knowledge-03.png)
+![The Azure AI Search connection configuration dialog allowing you to select the index to use as the new knowledge base in the agent.](../../../assets/images/make/copilot-studio-08/mcs-add-knowledge-03.png)
 
-ナレッジ ソースがテーブルに「In progress」と表示されます。ステータスが「Ready」になるまで待ってから次へ進みます。
+知識ソースはテーブルに「In progress」と表示されます。Copilot Studio がメタデータをインデックス化し、「Ready」になるまで待ちます。
 
 <cc-end-step lab="mcs8" exercise="3" step="2" />
 
 ## Exercise 4: エージェントのテスト
 
-この演習では、RAG 対応エージェントをテストし、さまざまなクエリとユースケースを確認します。
+この演習では、RAG 対応エージェントをテストし、さまざまなクエリでの活用方法を確認します。
 
-### Step 1: 基本的なナレッジ取得のテスト
+### Step 1: 基本的な知識検索のテスト
 
-まずは基本的な検索機能をテストし、インデックス化されたナレッジを正しく利用できるか確認します。
+まず、基本的な検索機能をテストして、インデックス化された知識にアクセスできることを確認します。
 
-テスト パネルで次のクエリを実行:
+テストパネルで以下のクエリを実行:
 
 ```text
 Hello! Can you help me find candidates with software engineering experience?
@@ -390,22 +374,22 @@ I'm looking for candidates who speak multiple languages. Can you help?
 Show me candidates with machine learning or AI experience.
 ```
 
-![テスト パネルで HR Knowledge Agent と会話し、ソフトウェア エンジニア候補について質問し、引用付きで詳細回答を得ている様子。](../../../assets/images/make/copilot-studio-08/mcs-agent-03.png)
+![The test panel showing a conversation with the HR Knowledge Agent where the user asks about software engineering candidates and receives detailed responses with proper citations from the indexed documents.](../../../assets/images/make/copilot-studio-08/mcs-agent-03.png)
 
-エージェントの動作:
+エージェントが以下を行うことを確認してください。
 
-- ベクトル検索でドキュメントを検索  
+- ベクトル検索でインデックス内を検索  
 - 関連する候補者情報を提供  
-- 出典ドキュメントへの引用を付与  
-- キーワード一致ではなく意味理解に基づいて応答  
+- 出典を引用  
+- キーワード一致ではなくセマンティックに理解  
 
 <cc-end-step lab="mcs8" exercise="4" step="1" />
 
-### Step 2: 複雑なクエリ シナリオのテスト
+### Step 2: 複雑なクエリシナリオのテスト
 
 RAG とベクトル検索の威力を示す高度なシナリオをテストします。
 
-複数条件を組み合わせたクエリ例:
+複数条件を組み合わせた次のクエリを試してください。
 
 ```text
 Find candidates suitable for a senior role that requires 5+ years of Python 
@@ -426,32 +410,32 @@ experience with machine learning frameworks?
 Who has project management experience combined with technical skills?
 ```
 
-![複雑な複数条件クエリでエージェントが候補者を提案し、市場洞察や推奨理由を提供する様子。](../../../assets/images/make/copilot-studio-08/mcs-agent-04.png)
+![The test panel showing complex multi-criteria queries with the agent providing detailed candidate recommendations, explanations of market insights, and suggestions for the best candidate to select.](../../../assets/images/make/copilot-studio-08/mcs-agent-04.png)
 
-エージェントのポイント:
+エージェントの挙動に注目してください。
 
-- 複数の検索条件を知的に組み合わせ  
-- 推薦理由を説明  
-- 完全一致がない場合は代替案を提示  
-- 候補者資格に関するコンテキストを提供  
+- 複数の検索条件をインテリジェントに組み合わせる  
+- 推薦理由を説明する  
+- 完全一致がない場合に代替案を提案  
+- 候補者の資格について文脈を提供  
 
 <cc-end-step lab="mcs8" exercise="4" step="2" />
 
 ---8<--- "ja/mcs-congratulations.md"
 
-ラボ MCS8 - RAG のための Azure AI Search 統合を完了しました！
+ラボ MCS8 - RAG のための Azure AI Search 統合を完了しました!
 
 このラボで学んだこと:
 
-- 企業ナレッジ管理向け Azure AI Search サービスの作成と構成  
-- 埋め込みモデルを用いた統合ベクトル化でのベクトル検索インデックス構築  
-- Azure AI Search を Microsoft Copilot Studio のナレッジ ソースとして接続  
-- ドキュメント バックの会話を実現する RAG 対応エージェント設計  
-- さまざまなクエリでベクトル検索をテスト  
+- 企業知識管理のための Azure AI Search サービスの作成と構成
+- 埋め込みモデルを使った統合ベクトル化でのベクトル検索インデックス構築
+- Azure AI Search を Microsoft Copilot Studio の知識ソースとして接続
+- RAG を活用したドキュメント裏付け会話エージェントの設計
+- さまざまなクエリでのベクトル検索のテスト
 
-HR Knowledge Agent により、会話型 AI と企業検索機能を組み合わせたパワーを体験できます。ユーザーは自然言語で組織ナレッジにアクセスし、実際のドキュメントに基づく正確で引用付きの回答を受け取れます。
+HR Knowledge エージェントは、会話型 AI と企業検索機能を組み合わせることで、自然言語を用いたやり取りと、実際のドキュメントに基づく正確で引用付きの回答を実現しました。
 
-今回学んだ RAG パターンは、カスタマー サポート ナレッジベース、技術文書、ポリシー & 手順ガイドなど、大規模ドキュメント コレクションを会話インターフェイスで検索・理解するあらゆるシナリオに応用できます。
+今回学んだ RAG パターンは、カスタマーサポートのナレッジベース、技術ドキュメント、ポリシー・手順ガイドなど、大量ドキュメントを会話型インターフェースで検索・理解するあらゆるシナリオに応用できます。
 
 <!-- <a href="../09-agent-to-agent">Start here</a> with Lab MCS9, to learn how to create agent to agent solutions in Copilot Studio.
 <cc-next />  -->

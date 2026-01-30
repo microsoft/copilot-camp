@@ -2,83 +2,82 @@
 search:
   exclude: true
 ---
-# ラボ MSA2 - SharePoint エージェントの共有
+# Lab MSA2 - SharePoint エージェントの共有
 
 ---8<--- "ja/msa-labs-prelude.md"
 
-このラボでは、SharePoint エージェントを直接リンクで共有する方法や Microsoft Teams のチャット内で共有する方法を学びます。
+このラボでは、SharePoint エージェントを直接リンクで共有する方法と Microsoft Teams チャット内で共有する方法を学習します。
 
 ## Exercise 1: SharePoint エージェントの共有
 
-すべての SharePoint エージェントはファイルとして保存されるため、簡単に他の人と共有できます。
+すべての SharePoint エージェントはファイルであるため、簡単に他の人と共有できます。
 
-### Step 1: SharePoint エージェントを人と共有する
+### Step 1: 人と SharePoint エージェントを共有する
 
-エージェントがドキュメント ライブラリ ローカルであっても、サイト レベルで承認・昇格されたものであっても、エージェント名の横にある **...** 1️⃣ を選択し、**共有** 2️⃣ を選びます。
+ドキュメント ライブラリにローカル保存されている場合でも、サイト レベルで承認・公開されている場合でも、SharePoint エージェントを共有するには、エージェント名の横にある **...** 1️⃣ を選択し、**Share** 2️⃣ を選びます。
 
-![The context menu of a SharePoint agent with the option to "Share" the agent highlighted.](../../../assets/images/make/sharepoint-agents-02/share-spagent-01.png)
+![SharePoint エージェントのコンテキスト メニューで、エージェントを **Share** するオプションが強調表示されている。](../../../assets/images/make/sharepoint-agents-02/share-spagent-01.png)
 
-SharePoint Online の最新のファイル共有エクスペリエンスが表示され、.agent ファイルを組織内の他の人と共有できます。ほかの SharePoint Online ファイルと同様に、共有対象（ユーザー、グループ、メール）を選択し、リンクを取得するか共有通知メールを送信するかを選べます。リンクをコピーした場合は、必要な場所に貼り付けてください。
+SharePoint Online のモダンなファイル共有エクスペリエンスが表示され、.agent ファイルを組織内の他の人と共有できます。ほかの SharePoint Online ファイルと同様に、共有相手（ユーザー、グループ、メール）を指定し、リンクを取得するか共有通知メールを送信するかを選択できます。リンクをコピーする場合は、好きな場所に貼り付けられます。
 
-![The sharing UX of SharePoint Online when sharing an agent with others. There are the field to search for targets of sharing. There is a field to write a text message to use in the body of the sharing notification email. And there are couple of buttons to "Copy link" or "Send" the shared resource.](../../../assets/images/make/sharepoint-agents-02/share-spagent-02.png)
+![SharePoint Online でエージェントを共有する際の共有 UI。共有相手を検索するフィールドや、共有通知メール本文のメッセージ入力欄、「Copy link」「Send」のボタンが表示されている。](../../../assets/images/make/sharepoint-agents-02/share-spagent-02.png)
 
-共有リンクを開くと、対象ユーザーはエージェント ダイアログに直接移動し、没入感のある全画面の SharePoint エージェント エクスペリエンス内でエージェントと対話できます。
+共有リンクを開くと、対象ユーザーはエージェント ダイアログへ直接アクセスでき、没入型のフルスクリーン SharePoint エージェント エクスペリエンス内でエージェントと対話できます。
 
 <cc-end-step lab="msa2" exercise="1" step="1" />
 
 ### Step 2: Microsoft Teams 経由で SharePoint エージェントを共有する
 
-エージェントを Microsoft Teams で共有することもできます。その場合は、エージェント名の横にある **...** 1️⃣ を選択し、**Teams 用リンクをコピー** 2️⃣ を選びます。
+Microsoft Teams を通じてエージェントを共有することもできます。エージェント名の横にある **...** 1️⃣ を選び、**Copy link for Teams** 2️⃣ を選択するだけです。
 
-![The context menu of a SharePoint agent with the option to "Copy link for Teams" for the agent highlighted.](../../../assets/images/make/sharepoint-agents-02/share-spagent-03.png)
+![SharePoint エージェントのコンテキスト メニューで、エージェントの **Copy link for Teams** オプションが強調表示されている。](../../../assets/images/make/sharepoint-agents-02/share-spagent-03.png)
 
-これによりエージェント ファイルの共有リンクが生成され、クリップボードにコピーされます。確認メッセージにも、生成されたリンクが Microsoft Teams のグループ チャットへ貼り付ける準備ができていることが示されています。
+すると、エージェント ファイルの共有リンクが生成されクリップボードにコピーされます。確認メッセージにも、生成されたリンクを Microsoft Teams のグループ チャットに貼り付ける準備ができていると表示されます。
 
-![The confirmation dialog for the request to get a link for Teams for the agent. There is a clear text stating that you need to "Paste this link in a Teams group chat to add this agent" in Microsoft Teams.](../../../assets/images/make/sharepoint-agents-02/share-spagent-04.png)
+![Teams 用リンク取得の確認ダイアログ。「Paste this link in a Teams group chat to add this agent」と明記されている。](../../../assets/images/make/sharepoint-agents-02/share-spagent-04.png)
 
-ダイアログの **設定** リンクを選ぶと、共有リンクへのアクセス権やリンクの有効期限を設定できます。内部的には通常の SharePoint Online 共有リンクが作成されます。
-では、このリンクをグループ チャットに貼り付けてみましょう。
+ダイアログで **Settings** を選ぶと、リンクへアクセスできる人の設定や有効期限の設定が可能です。内部的には通常の SharePoint Online の共有リンクが作成されます。リンクをグループ チャットに貼り付けてみましょう。
 
-![The Microsoft Teams chat when pasting the link to the SharePoint agent. There is a link unfurling extension that renders the link with a nice looking card, providing information about the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-05.png)
+![SharePoint エージェントのリンクを貼り付けた Microsoft Teams チャット。リンクのアンファーリング拡張機能により、エージェント情報を表示するカードが展開されている。](../../../assets/images/make/sharepoint-agents-02/share-spagent-05.png)
 
-リンクをグループ チャットに貼り付けると、エージェント情報を表示する見栄えの良いアダプティブ カードが展開されます。これは .agent ファイルを処理するカスタムのリンク アンファーリング拡張機能によるものです。リンクを含むチャット メッセージを送信しましょう。アダプティブ カードは表示が少し変わり、エージェントを **このチャットに追加** するコマンドが表示されます。
+リンクを貼り付けると、エージェント情報を示す見栄えの良いアダプティブカードが表示されます。これは .agent ファイルを処理するカスタム リンク アンファーリング拡張機能によるものです。リンク付きメッセージを送信すると、カードの表示が少し変わり、エージェントを **Add to this chat** するコマンドと **View details** コマンドが表示されます。
 
-![The Microsoft Teams chat rendering the adaptive card for the link to the agent. There is a command button to "Add to this chat" the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-06.png)
+![エージェントのリンクのアダプティブカードを表示する Microsoft Teams チャット。「Add to this chat」と「View details」のボタンがある。](../../../assets/images/make/sharepoint-agents-02/share-spagent-06.png)
 
-コマンドを選択し、数秒待ちます。成功すると、エージェントがチャットに追加された旨のメッセージとエージェントからの歓迎メッセージが表示されます。問題がある場合は **このチャットに追加** のボタンが無効になり、テキストが **チャットへの追加エラー** に変わります。チャットを更新して再度試すことも可能です。
+**Add to this chat** を選択して数秒待ちます。成功するとエージェントがチャットに追加された旨のメッセージと、エージェントからのウェルカム メッセージが表示されます。問題が発生した場合、**Add to this chat** ボタンは無効になり **Error adding to chat** と表示されます。チャットを更新して再試行することもできます。
 
-![The Microsoft Teams chat informing that the agent was added and with the welcome message from the agent itself.](../../../assets/images/make/sharepoint-agents-02/share-spagent-07.png)
+![エージェントが追加されたことを通知し、エージェント自身のウェルカム メッセージが表示された Microsoft Teams チャット。](../../../assets/images/make/sharepoint-agents-02/share-spagent-07.png)
 
 <cc-end-step lab="msa2" exercise="1" step="2" />
 
-### Step 3: Microsoft Teams で共有されたエージェントと対話する
+### Step 3: Microsoft Teams で共有されたエージェントとの対話
 
-これで、Microsoft Teams のグループ チャット内でエージェントと対話できます。エージェントを呼び出すときは、名前でメンション (@HR Agent) し、処理してほしいプロンプトを送信します。たとえば、次のようなプロンプトを使用できます。
+これで Microsoft Teams のグループ チャット内でエージェントと対話できます。エージェントを呼び出すときは、名前でメンション (@HR Agent) し、処理してほしいプロンプトを送ります。たとえば、次のようなプロンプトを使用できます。
 
 ```text
 How can I improve my career?
 ```
 
-![The Microsoft Teams chat when at mentioning @HR Agent in a new chat message.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-01.png)
+![新しいチャット メッセージで @HR Agent をメンションした Microsoft Teams チャット。](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-01.png)
 
-SharePoint エージェントはプロンプトを処理して回答を生成しますが、セキュリティ上の理由から回答はすぐにチャットに投稿されません。内容と、回答生成に参照されたドキュメントを確認する必要があります。**応答を表示** コマンドを選択して回答を確認してください。 
+SharePoint エージェントはプロンプトを処理し、回答を生成しますが、セキュリティ上の理由から回答はすぐにチャットへは投稿されません。内容と引用されたドキュメントを確認する必要があります。**View response** を選び、回答を確認しましょう。
 
-![The Microsoft Teams chat when the agent replies back to a prompt. There is a command to "View response", which allows you to evaluate the AI-generated response before sending it to others.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-02.png)
+![エージェントが返答した際の Microsoft Teams チャット。「View response」を選択すると、生成された回答を共有前に確認できる。](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-02.png)
 
-**応答を表示** を選ぶとポップアップ ダイアログが表示され、回答全文と参照された添付ファイル（ある場合）を共有前に確認できます。問題なければ、実際の回答メッセージをチャットに送信できます。
+**View response** を選択するとポップアップ ダイアログが表示され、回答全文と必要に応じて参照された添付ファイルを確認できます。問題なければ、実際の回答メッセージをチャットへ送信できます。
 
-![A dialog providing a preview of the response from the agent. At the bottom of the dialog there are two commands: "Send" and "Don't send" to choose what to do with the current answers. There is also a checkbox that you can select to trust and send answer from the agent for the next 24 hours.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-03.png)
+![エージェントの回答プレビュー ダイアログ。下部に「Send」と「Don't send」のボタン、さらに次の 24 時間エージェントの回答を信頼して自動送信するチェックボックスがある。](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-03.png)
 
-内容と添付ファイルに問題がなければ **送信** を選択します。次の 24 時間、エージェントからの回答を自動的に信頼して送信するよう Microsoft Teams に指示することもできます。回答に満足できない場合や、参照されたドキュメントの一部を公開したくない場合は **送信しない** を選択してください。グループ チャットのユーザーには、エージェントから「[あなたの表示名] が私の回答を確認し、現時点では共有しないよう提案しました。」というメッセージが表示されます。
+回答と添付ファイルに問題がなければ **Send** を選択して送信します。今後 24 時間はエージェントの回答を信頼し、確認を省略するよう指示することも可能です。回答に満足できない場合や、参照ドキュメントを共有したくない場合は **Don't send** を選択します。するとチャットには「[YOUR USER DISPLAY NAME] reviewed my response to the request made and suggested that I don't share it at this time.」というエージェントからのメッセージが表示されます。
 
-![The message sent by the agent when the content provided is not approved.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-04.png)
+![内容が承認されなかった場合にエージェントが送信するメッセージ。](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-04.png)
 
-これで Microsoft Teams と SharePoint エージェントの統合を楽しむことができます。
+これで Microsoft Teams と SharePoint エージェントの連携を楽しめます。
 
 <cc-end-step lab="msa2" exercise="1" step="3" />
 
 ---8<--- "ja/msa-congratulations.md"
 
-ラボ MSA2 - SharePoint エージェントの共有 を完了しました!
+Lab MSA2 - SharePoint エージェントの共有 を完了しました!
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agents/02-sharing-agents--ja" />

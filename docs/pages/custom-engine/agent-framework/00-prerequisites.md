@@ -1,6 +1,6 @@
 # Lab BAF0 - Prerequisites
 
-In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop using the Microsoft 365 Agents SDK and Agents Framework throughout this path.
+In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop using the Microsoft 365 Agents SDK and Agent Framework throughout this path.
 
 In this lab you will learn how to:
 
@@ -49,7 +49,7 @@ You can complete these labs on a Windows, macOS, or Linux machine and you do nee
 
 ### Step 2: Install .NET 9 SDK
 
-The Microsoft 365 Agents SDK and Agents Framework require .NET 9 SDK to build and run the agent.
+The Microsoft 365 Agents SDK and Agent Framework require .NET 9 SDK to build and run the agent.
 
 1️⃣ Download and install .NET 9 SDK from [https://dotnet.microsoft.com/download/dotnet/9.0](https://dotnet.microsoft.com/download/dotnet/9.0){target=_blank}.
 

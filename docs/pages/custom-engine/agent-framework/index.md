@@ -1,13 +1,13 @@
-# Build the Zava Insurance Agent - Microsoft 365 Agents SDK with Agents Framework
+# Build the Zava Insurance Agent with Microsoft 365 Agents SDK and Agent Framework
 
-In this learning path, you'll build the **Zava Insurance Agent** - an AI-powered assistant designed to help insurance adjusters streamline claims processing. Using the Microsoft 365 Agents SDK and Agents Framework, you'll create a custom engine agent that runs across Microsoft Teams and Microsoft 365 Copilot.
+In this learning path, you'll build the **Zava Insurance Agent** - an AI-powered assistant designed to help insurance adjusters streamline claims processing. Using the Microsoft 365 Agents SDK and Agent Framework, you'll create a custom engine agent that runs across Microsoft Teams and Microsoft 365 Copilot.
 
 ???+ info "About the Zava Insurance Agent"
     Zava Insurance is a fictional insurance company that needs to help their adjusters quickly process claims, look up policy information, analyze damage photos, and send notifications. You'll build an agent that does all of this using AI, starting simple and progressively adding advanced capabilities through a Build-A-Feature (BAF) approach.
 
 You'll start with a basic conversational agent and progressively enhance it with real-world capabilities like document search, semantic policy lookup, multi-modal vision analysis, and secure authentication.
 
-The Microsoft 365 Agents SDK provides the infrastructure to deploy your agent to Microsoft 365 Copilot and Teams, handling message routing, activities, and channel-specific behaviors. The Agents Framework powers your agent's AI capabilities, including LLM interactions, tool calling, and intelligent decision-making.
+The Microsoft 365 Agents SDK provides the infrastructure to deploy your agent to Microsoft 365 Copilot and Teams, handling message routing, activities, and channel-specific behaviors. The Agent Framework powers your agent's AI capabilities, including LLM interactions, tool calling, and intelligent decision-making.
 
 <hr />
 

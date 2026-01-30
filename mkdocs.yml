@@ -62,6 +62,7 @@ plugins:
               - Lab MCS7 - Creating Autonomous Agents: 'pages/make/copilot-studio/07-autonomous.md'
               - Lab MCS8 - Integrating Azure AI Search for RAG: 'pages/make/copilot-studio/08-rag.md'              
               - Lab MCS9 - Connected Agents (Preview): 'pages/make/copilot-studio/09-connected-agents.md'              
+              - Lab MCS10 - Consuming an MCP server with OAuth 2.0: 'pages/make/copilot-studio/10-mcp-oauth.md'
               - Lab MSA - SharePoint agents: 'pages/make/sharepoint-agents/index.md'
               - Lab MSA1 - Build your first SharePoint agent: 'pages/make/sharepoint-agents/01-first-agent.md'
               - Lab MSA2 - Sharing SharePoint agents: 'pages/make/sharepoint-agents/02-sharing-agents.md'
@@ -176,31 +177,29 @@ plugins:
                   - pages/extend-m365-copilot/04-enhance-api-plugin.md
                   - pages/extend-m365-copilot/05-add-adaptive-card.md 
                   - pages/extend-m365-copilot/06a-add-authentication-ttk.md                       
-              - 認証 (旧ラボ):
-                  - pages/extend-m365-copilot/06b-add-authentication.md
-                  - pages/extend-m365-copilot/06c-add-sso.md
               - インテグレーション:
                   - pages/extend-m365-copilot/07-add-graphconnector.md
+                  - pages/extend-m365-copilot/08-mcp-server.md
+                  - pages/extend-m365-copilot/09-connected-agent.md
             - カスタム エンジン エージェントの構築:
               - pages/custom-engine/index.md
-              - M365 Agents SDK ラボ:
+              - Microsoft Foundry で構築する:
                 - pages/custom-engine/agents-sdk/index.md
                 - pages/custom-engine/agents-sdk/00-prerequisites.md
                 - pages/custom-engine/agents-sdk/01-agent-in-foundry.md
                 - pages/custom-engine/agents-sdk/02-agent-with-agents-sdk.md
                 - pages/custom-engine/agents-sdk/03-agent-configuration.md
                 - pages/custom-engine/agents-sdk/04-bring-agent-to-copilot.md
-              # - Teams AI library ラボ:
-              #   - pages/custom-engine/teams-ai/index.md
-              #   - pages/custom-engine/teams-ai/00-prerequisites.md
-              #   - pages/custom-engine/teams-ai/01-custom-engine-agent.md
-              #   - pages/custom-engine/teams-ai/02-rag.md
-              #   - pages/custom-engine/teams-ai/03-powered-by-ai.md
-              #   - pages/custom-engine/teams-ai/04-authentication.md
-              #   - pages/custom-engine/teams-ai/05-actions.md
+              - Agent Framework で構築する:
+                - pages/custom-engine/agent-framework/index.md
+                - pages/custom-engine/agent-framework/01-build-and-run.md
+                - pages/custom-engine/agent-framework/02-add-claim-search.md
+                - pages/custom-engine/agent-framework/03-add-vision-analysis.md
+                - pages/custom-engine/agent-framework/04-add-policy-search.md
+                - pages/custom-engine/agent-framework/05-add-communication.md
+                - pages/custom-engine/agent-framework/06-add-copilot-api.md
+                - pages/custom-engine/agent-framework/07-add-mcp-tools.md
             - AI の概念と手法:
               - pages/beyond-agents/index.md
               - pages/beyond-agents/beginner-agent.md
-            # - アワード: 'awards.md'
             - 動画など: 'resources.md'
-    
