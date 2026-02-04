@@ -2637,6 +2637,10 @@ code .
 <h3 id="step-3-configuring-the-environment">Step 3: Configuring the Environment</h3>
 <p>Before running the MCP server, you need to configure your Azure Table Storage connection.</p>
 <p>1️⃣ In the <code>env</code> folder, copy the <code>.env.local.sample</code> file to a new file named <code>.env.local</code>:</p>
+<p><strong>Windows PowerShell:</strong></p>
+<pre><code class="language-powershell">Copy-Item env/.env.local.sample env/.env.local
+</code></pre>
+<p><strong>macOS/Linux:</strong></p>
 <pre><code class="language-bash">cp env/.env.local.sample env/.env.local
 </code></pre>
 <p>2️⃣ Edit the <code>env/.env.local</code> file and fill in your Azure Table Storage details:</p>
@@ -2650,6 +2654,10 @@ ALLOW_INSECURE_CONNECTION=false
 TUNNEL_ID=
 </code></pre>
 <p>3️⃣ Copy the <code>.env.local.user.sample</code> file to a new file named <code>.env.local.user</code>:</p>
+<p><strong>Windows PowerShell:</strong></p>
+<pre><code class="language-powershell">Copy-Item env/.env.local.user.sample env/.env.local.user
+</code></pre>
+<p><strong>macOS/Linux:</strong></p>
 <pre><code class="language-bash">cp env/.env.local.user.sample env/.env.local.user
 </code></pre>
 <p>4️⃣ Edit the <code>env/.env.local.user</code> file and fill in your Azure Storage account key:</p>
