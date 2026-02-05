@@ -25,7 +25,7 @@
     
     
       
-        <title>ラボ 10: OAuth 保護付き MCP サーバーへの Declarative エージェント接続 - Copilot Developer Camp</title>
+        <title>ラボ 10: Declarative エージェントを OAuth 保護された MCP サーバーに接続 - Copilot Developer Camp</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#10-oauth-mcp-declarative" class="md-skip">
+        <a href="#10-declarative-oauth-mcp" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ラボ 10: OAuth 保護付き MCP サーバーへの Declarative エージェント接続
+              ラボ 10: Declarative エージェントを OAuth 保護された MCP サーバーに接続
             
           </span>
         </div>
@@ -811,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS8 - RAG のための Azure AI Search 統合
+    ラボ MCS8 - Azure AI Search を使用した RAG 連携
   
 
     
@@ -839,7 +839,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS9 - Connected エージェント (プレビュー)
+    ラボ MCS9 - Connected Agents (プレビュー)
   
 
     
@@ -1522,7 +1522,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 08 : Declarative エージェントを MCP サーバーに接続する
+    ラボ 08 : 宣言型エージェントを MCP サーバーに接続する
   
 
     
@@ -1550,7 +1550,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 09: Connected Agent - Zava のマルチ エージェント請求オーケストレーション
+    ラボ 09: Connected Agents - Zava のマルチエージェント請求オーケストレーション
   
 
     
@@ -1953,7 +1953,7 @@
   <span class="md-ellipsis">
     
   
-    Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agent Framework
+    Microsoft 365 Agents SDK と Agent Framework を使用した Zava Insurance エージェントの構築
   
 
     
@@ -1981,7 +1981,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF1 - 最初のエージェントの構築と実行
+    ラボ BAF1 - はじめてのエージェントの構築と実行
   
 
     
@@ -2037,7 +2037,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF3 - Mistral AI を使用したビジョン解析の追加
+    ラボ BAF3 - Mistral AI を使用したビジョン分析の追加
   
 
     
@@ -2065,7 +2065,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF4 - ポリシー検索の追加
+    ラボ BAF4 - Policy 検索の追加
   
 
     
@@ -2093,7 +2093,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF5 - 通信機能の追加
+    ラボ BAF5 - コミュニケーション機能の追加
   
 
     
@@ -2121,7 +2121,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF6 - Microsoft 365 Work IQ API 統合を追加する
+    ラボ BAF6 - Microsoft 365 Work IQ API 統合の追加
   
 
     
@@ -2272,7 +2272,7 @@
   <span class="md-ellipsis">
     
   
-    エージェント指示ラボ - エージェント指示の改善 (初心者向け)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
   
 
     
@@ -2337,44 +2337,123 @@
 
 
 
-<h1 id="10-oauth-mcp-declarative">ラボ 10: OAuth 保護付き MCP サーバーへの Declarative エージェント接続</h1>
-<p>このラボでは、<strong>OAuth 2.0 保護</strong>された Model Context Protocol (MCP) サーバーを使用して Zava Insurance の請求システムを稼働させ、Microsoft 365 Copilot の Declarative エージェントと統合します。ラボ 08 では匿名 MCP サーバーを扱いましたが、本ラボでは<strong>Microsoft Entra ID 認証</strong>を追加し、企業レベルのセキュリティで請求データへアクセスできるようにします。</p>
+<h1 id="10-declarative-oauth-mcp">ラボ 10: Declarative エージェントを OAuth 保護された MCP サーバーに接続</h1>
+<p>このラボでは、<strong>OAuth 2.0 で保護された</strong> Model Context Protocol (MCP) サーバーを Zava Insurance の保険金請求システム向けに実行し、Microsoft 365 Copilot の Declarative エージェントと統合します。ラボ 08 では匿名 MCP サーバーを扱いましたが、このラボでは <strong>Microsoft Entra ID 認証</strong> を追加し、保険金データへのエンタープライズレベルのセキュアなアクセスを実現します。</p>
+<div class="floatwide">
+  <div class="cc-lab-toc e-path">
+      <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
+      <div>
+          <p>Microsoft 365 が AI モデルとオーケストレーションを提供する宣言型エージェントを構築したい場合は、次のラボを実施してください。</p>
+          <ul id="lab-toc">
+              <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 ようこそ</a></strong></li>
+              <li><strong>🔧 セットアップ</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">ラボ E0 - セットアップ</a></li>
+                  </ul>
+              </li>
+              <li><strong>🧰 宣言型エージェントの基礎</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent">ラボ E1 - TypeSpec を使用して宣言型エージェントを構築する</a>
+                      </li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator">ラボ E1a - 位置情報ゲーム</a></li>
+                  </ul>
+              </li>
+              <li><strong>🛠️ API のゼロからの構築と統合</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">ラボ E2 - API を構築する</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent">ラボ E3 - 宣言型エージェントと API を追加する</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin">ラボ E4 - API とプラグインを強化する</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">ラボ E5 - アダプティブカードを追加する</a></li>
+                       <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk">ラボ E6a - 認証を追加する</a></li>
+                  </ul>
+              </li>       
+              <li><strong>🔌 統合</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector">ラボ E7 - Copilot コネクタを追加する</a></li>
+                  </ul>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server">ラボ E8 - 宣言型エージェントを MCP サーバーに接続する</a></li>
+                  </ul>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent">ラボ E9 - 接続されたエージェント</a></li>
+                  </ul>
+                   <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth">ラボ 10 - 宣言型エージェントを OAuth で保護された MCP サーバーに接続する</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <script>
+  (() => {
+
+  // This script decorates the table of contents with a "you are here" indicator.
+  const toc = document.getElementsByClassName('cc-lab-toc');
+  for (const div of toc) {
+      const lis = div.querySelectorAll('li');
+      for (const li of lis) {
+          const anchor = li.querySelector('a');
+          if (anchor) {            // Get the last segment of the current URL path
+              const currentPath = window.location.pathname.slice(0, -1).split('/').pop();
+
+              // Get the last segment of the link path
+              const linkPath = anchor.getAttribute('href').split('/').pop().replace('.md', '');
+
+              // Compare the last segments
+              if (currentPath === linkPath) {
+                  const existingSpan = document.querySelector('span.you-are-here');
+                  if (existingSpan) {
+                      existingSpan.remove();
+                  }
+                  const span = document.createElement("span");
+                  span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+                  span.className = "you-are-here";
+                  li.appendChild(span);
+              }
+          }
+      }
+  }
+  })();
+  </script>
+  </div>
+
 <h2 id="_1">シナリオ</h2>
-<p>ラボ 08 の MCP サーバーを基盤として、<strong>Zava Insurance</strong> は本番運用のために請求システムを保護する必要があります。匿名 MCP サーバーは開発とテストには最適でしたが、セキュリティ チームは本番環境へのデプロイ前に OAuth 2.0 認証を必須としています。開発チームは <strong>Microsoft Entra ID</strong> 認証を組み込み、認可されたユーザーのみが機密性の高い請求データにアクセスできるようにしなければなりません。この認証付き MCP サーバーは JWT トークンを検証し、スコープベースの権限を実装し、<strong>RFC 9728</strong> に準拠した保護リソース メタデータのディスカバリーを行います。これにより、<strong>Microsoft 365 Copilot</strong> の Declarative エージェントとの安全な統合が実現します。</p>
+<p>MCP サーバーを構築したラボ 08 を踏まえ、<strong>Zava Insurance</strong> は本番運用に向けて保険金請求システムを保護する必要があります。匿名 MCP サーバーは開発およびテストには最適でしたが、本番環境へ移行する前にセキュリティ チームは OAuth 2.0 認証を必須としています。開発チームは、<strong>Microsoft Entra ID</strong> 認証を統合し、認可されたユーザーのみが機密性の高い保険金データへアクセスできるようにする必要があります。この認証付き MCP サーバーは JWT トークンを検証し、スコープ ベースのアクセス許可を実装し、保護リソース メタデータ検出の <strong>RFC 9728</strong> に準拠して <strong>Microsoft 365 Copilot</strong> の Declarative エージェントとのセキュアな統合を可能にします。</p>
 <hr />
-<h2 id="_2">🎯 ラボの目標</h2>
+<h2 id="_2">🎯 ラボの目的</h2>
 <p>このラボを完了すると、次のことができるようになります。</p>
 <ul>
-<li>Microsoft Entra ID アプリ登録を作成し、OAuth 2.0 認証を設定する  </li>
-<li>セキュアな MCP サーバー運用のための環境変数を構成する  </li>
-<li>OAuth 保護付き Zava MCP サーバーをビルドして実行する  </li>
-<li>Microsoft Entra ID での JWT トークン検証の仕組みを理解する  </li>
+<li>OAuth 2.0 認証用の Microsoft Entra ID アプリ登録を設定する  </li>
+<li>セキュアな MCP サーバー運用のために環境変数を構成する  </li>
+<li>Zava の OAuth で保護された MCP サーバーを構築して実行する  </li>
+<li>Microsoft Entra ID を用いた JWT トークン検証の仕組みを理解する  </li>
 <li>保護された MCP サーバーに対して認証を行う Declarative エージェントを作成する  </li>
-<li>認証済みの自然言語クエリでエージェントをテストする  </li>
+<li>認証付きの自然言語クエリでエージェントをテストする  </li>
 </ul>
 <hr />
 <h2 id="_3">📚 前提条件</h2>
-<p>ラボを始める前に、以下が準備できていることを確認してください。</p>
+<p>次の準備を行ってください。</p>
 <ul>
-<li><strong>Node.js 22+</strong>  </li>
-<li><strong>VS Code</strong> と <strong>Microsoft 365 Agents Toolkit 拡張機能</strong> v6.4.2 以降  </li>
-<li>Copilot ライセンスを含む <strong>Microsoft 365 開発者アカウント</strong>  </li>
-<li>Microsoft Entra ID にアクセスできる <strong>Azure サブスクリプション</strong>  </li>
-<li>TypeScript/JavaScript、REST API、JSON、OAuth 2.0 の基礎知識  </li>
+<li>お使いのマシンに <strong>Node.js 22+</strong> がインストールされている  </li>
+<li><strong>VS Code</strong> と <strong>Microsoft 365 Agents Toolkit 拡張機能</strong> v 6.4.2 以上がインストールされている  </li>
+<li>Copilot ライセンスを持つ <strong>Microsoft 365 開発者アカウント</strong>  </li>
+<li>Microsoft Entra ID へのアクセス権を持つ <strong>Azure サブスクリプション</strong>（アプリ登録用）  </li>
+<li>TypeScript / JavaScript、REST API、JSON、OAuth 2.0 の基礎知識  </li>
 <li>VS Code Dev Tunnels 用の GitHub アカウント  </li>
-<li><strong>ラボ 08</strong> を完了していること（推奨）  </li>
+<li><strong>ラボ 08</strong> の完了（推奨だが必須ではありません）  </li>
 </ul>
 <hr />
 <h2 id="exercise-1">Exercise 1: 開発環境のセットアップ</h2>
-<p>この演習では、認証付き MCP サーバーのコードをクローンし、ローカル開発環境を構築します。</p>
+<p>この演習では、Zava の認証付き MCP サーバーのコードベースをクローンし、ローカル開発環境をセットアップします。</p>
 <h3 id="step-1">Step 1: リポジトリをクローンする</h3>
-<p>ターミナルを開き、次を実行します。</p>
+<p>ターミナルを開き、次のコマンドを実行します。</p>
 <pre><code class="language-bash">git clone https://github.com/microsoft/copilot-camp.git
-cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
+cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
 </code></pre>
 <p><cc-end-step lab="e10" exercise="1" step="1" /></p>
 <h3 id="step-2">Step 2: 依存関係をインストールする</h3>
-<p>必須パッケージをインストールします。</p>
+<p>必要なパッケージをインストールします。</p>
 <pre><code class="language-bash">npm install
 </code></pre>
 <p>主要な依存関係がインストールされます。</p>
@@ -2385,58 +2464,102 @@ cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 </code></pre>
 <p>主なディレクトリ:</p>
 <ul>
-<li><code>src/</code> - TypeScript ソースコード  </li>
+<li><code>src/</code> - TypeScript ソース コード  </li>
 <li><code>src/auth/</code> - OAuth 認証モジュール（本ラボで追加）  </li>
-<li><code>data/</code> - サンプル JSON データ  </li>
+<li><code>data/</code> - サンプル JSON データ ファイル  </li>
 </ul>
 <p><code>src/auth/oauth.ts</code> にはトークン検証と保護リソース メタデータのための OAuth 2.0 実装が含まれています。</p>
 <p><cc-end-step lab="e10" exercise="1" step="3" /></p>
-<p>これでサンプル データと認証機能を備えたコードベースが準備できました。</p>
+<p>これでサンプル データと認証機能を備えたコードベースの準備が整いました。</p>
 <hr />
 <h2 id="exercise-2-microsoft-entra-id">Exercise 2: Microsoft Entra ID アプリ登録の作成</h2>
-<p>認証付き MCP サーバーを実行する前に、OAuth 2.0 認証を処理するためのアプリケーションを Microsoft Entra ID に登録します。</p>
+<p>認証付き MCP サーバーを実行する前に、OAuth 2.0 認証を処理する Microsoft Entra ID でアプリケーションを登録します。</p>
 <h3 id="step-1_1">Step 1: アプリ登録を作成する</h3>
 <ol>
 <li><a href="https://portal.azure.com">Azure Portal</a> → <strong>Microsoft Entra ID</strong> → <strong>App registrations</strong> に移動  </li>
 <li><strong>New registration</strong> をクリック  </li>
-<li>以下を設定  </li>
+<li>次のように構成  </li>
 <li><strong>Name</strong>: <code>Zava Claims MCP Server</code>  </li>
 <li><strong>Supported account types</strong>: <code>Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)</code>  </li>
-<li><strong>Redirect URI</strong>: 空欄（次のステップで設定）  </li>
+<li><strong>Redirect URI</strong>: いったん空欄のまま（次の手順で設定します）  </li>
 <li><strong>Register</strong> をクリック  </li>
-<li><strong>Application (client) ID</strong> をコピーしておく  </li>
+<li><strong>Application (client) ID</strong> をコピー - 後で使用します  </li>
 </ol>
 <p><cc-end-step lab="e10" exercise="2" step="1" /></p>
-<h3 id="step-2-uri">Step 2: プラットフォーム リダイレクト URI の構成</h3>
-<p>登録後、各プラットフォーム用のリダイレクト URI を設定します。</p>
+<h3 id="step-2-uri">Step 2: プラットフォームのリダイレクト URI を構成する</h3>
+<p>登録後、プラットフォームごとにリダイレクト URI を構成します。<strong>リダイレクト URI</strong> は OAuth 2.0 認証において極めて重要で、Microsoft Entra ID が認証後にユーザー（および認証トークン）を送信する先を指定します。各リダイレクト URI は、トークンを受信するアプリケーションの URL と完全に一致する必要があります。</p>
 <ol>
-<li><strong>Authentication</strong> → <strong>Platform configurations</strong> に移動  </li>
-<li><strong>Add a Web platform</strong> を追加:  </li>
-<li><strong>Add a platform</strong> → <strong>Web</strong> を選択  </li>
-<li>以下のリダイレクト URI を追加  <ul>
-<li><code>http://127.0.0.1:33418</code>  </li>
-<li><code>https://vscode.dev/redirect</code>  </li>
+<li>
+<p>左ナビゲーションで <strong>Authentication</strong> を選択  </p>
+</li>
+<li>
+<p><strong>最初の Web リダイレクト URI</strong> を追加  </p>
+</li>
+<li><strong>Add a platform</strong>（新しいプレビュー UI では <strong>Add redirect URI</strong>）をクリック  </li>
+<li><strong>Web</strong> を選択  </li>
+<li>リダイレクト URI として <code>https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect</code> を追加  </li>
+<li>
+<p><strong>Configure</strong> をクリック  </p>
+</li>
+<li>
+<p><strong>追加のリダイレクト URI</strong> を追加  </p>
+</li>
+<li>初期設定後に <strong>Add URI</strong>（プレビュー UI では <strong>Edit</strong>）をクリック  </li>
+<li><code>https://vscode.dev/redirect</code> を追加  </li>
+<li>
+<p><strong>Save</strong> をクリック  </p>
+</li>
+<li>
+<p><strong>Manifest で localhost リダイレクト URI を追加</strong>  </p>
+<div class="admonition warning">
+<p class="admonition-title">重要: 非 HTTPS URI は手動設定が必要です</p>
+<p>Azure Portal UI では HTTPS または <code>localhost</code> を使用する URI しか追加できません。MCP Inspector は <code>http://127.0.0.1:33418</code> を使用するため、この URI をアプリ マニフェストで手動追加する必要があります。</p>
+</div>
+</li>
+<li>
+<p>左ナビゲーションで <strong>Manifest</strong> を選択  </p>
+</li>
+<li><code>"web"</code> セクション内の <code>"redirectUriSettings"</code>（またはマニフェストのバージョンによっては <code>"redirectUris"</code>）を探す  </li>
+<li>リダイレクト URI 配列に <code>http://127.0.0.1:33418</code> を追加します。セクションは次のようになります。<br />
+<code>json
+     "web": {
+         "redirectUris": [
+             "https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect",
+             "https://vscode.dev/redirect",
+             "http://127.0.0.1:33418"
+         ],
+         ...
+     }</code></li>
+<li>
+<p>ページ上部の <strong>Save</strong> をクリック  </p>
+</li>
+<li>
+<p><strong>構成を確認する</strong>  </p>
+</li>
+<li><strong>Authentication</strong> に戻る  </li>
+<li><strong>Platform configurations</strong> → <strong>Web</strong> で 3 つのリダイレクト URI が登録されていることを確認  <ul>
 <li><code>https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect</code>  </li>
+<li><code>https://vscode.dev/redirect</code>  </li>
+<li><code>http://127.0.0.1:33418</code>  </li>
 </ul>
 </li>
-<li><strong>Implicit grant and hybrid flows</strong> の両方を <strong>無効</strong> のままにする  </li>
-<li><strong>Configure</strong> をクリック  </li>
+<li><strong>Implicit grant and hybrid flows</strong> の両オプションが <strong>未選択</strong>（無効）であることを確認  </li>
 </ol>
 <p><cc-end-step lab="e10" exercise="2" step="2" /></p>
 <h3 id="step-3_1">Step 3: クライアント シークレットを作成する</h3>
 <ol>
 <li><strong>Certificates &amp; secrets</strong> → <strong>Client secrets</strong> に移動  </li>
 <li><strong>New client secret</strong> をクリック  </li>
-<li>説明を入力（例: <code>zava-mcp-secret</code>）し、有効期限を選択（推奨: 24 か月）  </li>
+<li>説明（例: <code>zava-mcp-secret</code>）を入力し、有効期限（推奨: 24 か月）を選択  </li>
 <li><strong>Add</strong> をクリック  </li>
-<li><strong>シークレット値を即座にコピー</strong> - 再表示されません  </li>
+<li><strong>シークレット値をすぐにコピー</strong> - 再表示されません！  </li>
 </ol>
 <p><cc-end-step lab="e10" exercise="2" step="3" /></p>
 <h3 id="step-4-api">Step 4: API を公開する</h3>
 <ol>
 <li><strong>Expose an API</strong> に移動  </li>
-<li><strong>Application ID URI</strong> の横にある <strong>Set</strong> をクリックし、デフォルト形式 <code>api://your-client-id</code> を承認  </li>
-<li><strong>Add a scope</strong> をクリックし、次を設定  </li>
+<li><strong>Application ID URI</strong> 横の <strong>Add</strong> をクリックし、デフォルト形式 <code>api://your-client-id</code> を採用  </li>
+<li><strong>Add a scope</strong> をクリックし、次を構成  </li>
 <li><strong>Scope name</strong>: <code>access_as_user</code>  </li>
 <li><strong>Who can consent</strong>: Admins and users  </li>
 <li><strong>Admin consent display name</strong>: <code>Access Zava Claims System</code>  </li>
@@ -2446,23 +2569,35 @@ cd src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 <li><strong>State</strong>: Enabled  </li>
 <li><strong>Add scope</strong> をクリック  </li>
 </ol>
-<p>Microsoft Entra ID のアプリ登録が完了しました。</p>
+<p>これで Microsoft Entra ID のアプリ登録が完了しました！</p>
 <p><cc-end-step lab="e10" exercise="2" step="4" /></p>
 <hr />
-<h2 id="exercise-3">Exercise 3: 環境設定とローカル データベースの起動</h2>
+<h2 id="exercise-3">Exercise 3: 環境構成とローカル データベースの起動</h2>
 <p>この演習では、OAuth 用の環境変数を設定し、ローカル データベースを起動します。</p>
-<h3 id="step-1-dev-tunnel-url">Step 1: Dev Tunnel で公開 URL を取得する</h3>
-<p>MCP サーバー用に HTTPS の公開 URL が必要です。</p>
+<h3 id="step-1-dev-tunnel">Step 1: Dev Tunnel で公開アクセスを設定する</h3>
+<p>MCP サーバー用に公開 HTTPS URL が必要です。</p>
 <ol>
 <li>VS Code のターミナル パネルで <strong>Ports</strong> タブを選択  </li>
-<li><strong>Forward a Port</strong> をクリックし、ポート <code>3001</code> を入力  </li>
-<li>転送されたポート アドレスを右クリック → <strong>Port Visibility</strong> → <strong>Public</strong>  </li>
-<li>トンネル URL をコピー（例: <code>https://abc123def456.use.devtunnels.ms</code>）  </li>
+<li>
+<p><strong>Forward a Port</strong> をクリックし、ポート <code>3001</code> を入力  </p>
+<div class="admonition note">
+<p class="admonition-title">GitHub 認証が必要となる場合があります</p>
+<p>VS Code で Dev Tunnels を初めて使用する場合は、GitHub アカウントでのサインインを求められることがあります。認証を完了してください。</p>
+</div>
+</li>
+<li>
+<p>転送されたポートのアドレスを右クリックし、<strong>Port Visibility</strong> → <strong>Public</strong> を選択  </p>
+</li>
+<li>トンネル URL（例: <code>https://abc123def456.use.devtunnels.ms</code>）をコピー  </li>
 </ol>
-<p><strong>この URL を保存</strong> - 後ほど環境変数に使用します。</p>
+<p><strong>この URL を保存</strong> してください。次の環境設定で使用します。</p>
 <p><cc-end-step lab="e10" exercise="3" step="1" /></p>
 <h3 id="step-2_1">Step 2: 環境変数を設定する</h3>
-<p><code>zava-mcp-server</code> ディレクトリの <code>.env</code> ファイルを作成または更新し、OAuth 設定を追加します。</p>
+<p><code>zava-mcp-server</code> ディレクトリの <strong>ルート</strong>（<code>package.json</code> と同じ階層、<code>src</code> フォルダーの外）に新しく <code>.env</code> ファイルを作成します。</p>
+<div class="admonition warning">
+<p class="admonition-title">重要: ファイルの配置場所に注意</p>
+<p><code>.env</code> ファイルはプロジェクトのルート ディレクトリに配置する必要があります。<code>src</code> フォルダー内などに配置すると、環境変数が正しく読み込まれません。</p>
+</div>
 <pre><code class="language-bash"># OAuth Configuration (Required for authentication)
 OAUTH_CLIENT_ID=&lt;your-application-client-id&gt;
 OAUTH_CLIENT_SECRET=&lt;your-client-secret-value&gt;
@@ -2485,46 +2620,46 @@ NODE_ENV=development
 # Storage Configuration
 AZURE_STORAGE_CONNECTION_STRING=&quot;DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;&quot;
 </code></pre>
-<p>プレースホルダーを置き換えてください。</p>
+<p>プレースホルダーを置き換えてください：</p>
 <ul>
 <li><code>&lt;your-application-client-id&gt;</code> - Entra ID アプリ登録の Application (client) ID  </li>
-<li><code>&lt;your-client-secret-value&gt;</code> - コピーしたクライアント シークレット  </li>
-<li><code>&lt;your-tunnel-url&gt;</code> - Step 1 で取得した Dev トンネル URL（例: <code>https://abc123def456.use.devtunnels.ms</code>）  </li>
+<li><code>&lt;your-client-secret-value&gt;</code> - コピーしたクライアント シークレット値  </li>
+<li><code>&lt;your-tunnel-url&gt;</code> - Step 1 の Dev トンネル URL（例: <code>https://abc123def456.use.devtunnels.ms</code>）  </li>
 </ul>
 <p><cc-end-step lab="e10" exercise="3" step="2" /></p>
 <h3 id="step-3-azure-storage">Step 3: Azure Storage エミュレーターを起動する</h3>
 <p><strong>Terminal 1</strong> で Azurite エミュレーターを起動します。</p>
 <pre><code class="language-bash">npm run start:azurite
 </code></pre>
-<p>次のような出力が表示されます。  </p>
+<p>出力例:</p>
 <pre><code>Azurite Blob service is starting at http://127.0.0.1:10000
 Azurite Queue service is starting at http://127.0.0.1:10001
 Azurite Table service is starting at http://127.0.0.1:10002
 </code></pre>
-<p><strong>このターミナルは開いたままにしてください</strong> - これがローカル データベース サーバーです。</p>
+<p><strong>このターミナルは開いたまま</strong> にしておいてください。ローカル データベース サーバーです。</p>
 <p><cc-end-step lab="e10" exercise="3" step="3" /></p>
-<h3 id="step-4">Step 4: サンプル請求データを読み込む</h3>
+<h3 id="step-4">Step 4: サンプル保険金データをロードする</h3>
 <p><strong>Terminal 2</strong> で Zava のサンプル データを初期化します。</p>
 <pre><code class="language-bash">npm run init-data
 </code></pre>
-<p>読み込まれるデータ:</p>
+<p>これにより、以下のような実際的なデータが読み込まれます。</p>
 <ul>
-<li><strong>Claims</strong> - 風害、水害、火災などの事例  </li>
-<li><strong>Contractors</strong> - 屋根修理、水害復旧、総合請負業者  </li>
-<li><strong>Inspections</strong> - 予定済みおよび完了済みの検査タスク  </li>
-<li><strong>Inspectors</strong> - 専門分野を持つフィールド検査員  </li>
+<li><strong>Claims</strong> - 風害、水害、火災被害の案件  </li>
+<li><strong>Contractors</strong> - 屋根工事業者、水害復旧業者、総合請負業者  </li>
+<li><strong>Inspections</strong> - 予定済みおよび完了した調査タスク  </li>
+<li><strong>Inspectors</strong> - 専門分野を持つ現地調査員  </li>
 </ul>
-<p>すべてのテーブルが初期化された旨のメッセージが表示されます。</p>
+<p>すべてのテーブルが初期化されたことを示すメッセージが表示されます。</p>
 <p><cc-end-step lab="e10" exercise="3" step="4" /></p>
 <hr />
-<h2 id="exercise-4-oauth-mcp">Exercise 4: OAuth 保護付き MCP サーバーを起動する</h2>
-<p>次に、OAuth トークンを検証してからアクセスを許可する認証付き MCP サーバーを起動します。</p>
+<h2 id="exercise-4-oauth-mcp">Exercise 4: OAuth で保護された MCP サーバーを起動する</h2>
+<p>次に、OAuth トークンを検証してからアクセスを許可する Zava の認証付き MCP サーバーを起動します。</p>
 <h3 id="step-1-mcp">Step 1: MCP サーバーをビルドして起動する</h3>
-<p><strong>Terminal 2</strong> で（Terminal 1 の Azurite はそのまま）:</p>
+<p><strong>Terminal 2</strong> で（Terminal 1 で Azurite を実行したまま）以下を実行します。</p>
 <pre><code class="language-bash">npm run build
 npm run start:mcp-http
 </code></pre>
-<p>OAuth が有効になっていることを示すメッセージが表示されます。  </p>
+<p>OAuth が有効になっていることを示すメッセージが表示されます。</p>
 <pre><code>🚀 Zava Claims MCP HTTP Server started on 127.0.0.1:3001
 Security: OAuth 2.0 authentication enabled
 ...
@@ -2534,10 +2669,10 @@ Security: OAuth 2.0 authentication enabled
 </code></pre>
 <p><cc-end-step lab="e10" exercise="4" step="1" /></p>
 <h3 id="step-2-oauth">Step 2: OAuth が有効か確認する</h3>
-<p>ブラウザーで次を開きます。  </p>
+<p>ブラウザーで次の URL を開きます。</p>
 <pre><code>http://127.0.0.1:3001/health
 </code></pre>
-<p>OAuth が有効であることを示す JSON 応答が返ります。</p>
+<p>OAuth が有効であることを示す JSON 応答が表示されます。</p>
 <pre><code class="language-json">{
   &quot;status&quot;: &quot;healthy&quot;,
   &quot;timestamp&quot;: &quot;2025-01-21T10:00:00.000Z&quot;,
@@ -2545,28 +2680,28 @@ Security: OAuth 2.0 authentication enabled
   &quot;authentication&quot;: &quot;OAuth enabled&quot;
 }
 </code></pre>
-<p><code>"authentication": "OAuth enabled"</code> と表示されれば、認証モードで実行されています。</p>
+<p><code>"authentication": "OAuth enabled"</code> が表示されていれば、サーバーが認証モードで稼働していることを示します。</p>
 <p><cc-end-step lab="e10" exercise="4" step="2" /></p>
 <h3 id="step-3-oauth">Step 3: OAuth ディスカバリー エンドポイントをテストする</h3>
-<p>OAuth ディスカバリー エンドポイントを開きます。  </p>
+<p>OAuth ディスカバリー エンドポイントを開きます。</p>
 <pre><code>http://127.0.0.1:3001/.well-known/oauth-authorization-server
 </code></pre>
-<p>以下のような OAuth メタデータが表示されます。</p>
+<p>以下の OAuth メタデータが表示されます。</p>
 <ul>
 <li><code>issuer</code> - サーバーのベース URL  </li>
 <li><code>authorization_endpoint</code> - Microsoft ログイン URL  </li>
 <li><code>token_endpoint</code> - トークン交換 URL  </li>
 <li><code>scopes_supported</code> - 利用可能な OAuth スコープ  </li>
 </ul>
-<p>この RFC 9728 準拠のエンドポイントにより、MCP クライアントは認証要件をディスカバーできます。</p>
+<p>この RFC 9728 準拠のエンドポイントにより、MCP クライアントが認証要件を検出できます。</p>
 <p><cc-end-step lab="e10" exercise="4" step="3" /></p>
-<h3 id="step-4_1">Step 4: 認証が必須か確認する</h3>
+<h3 id="step-4_1">Step 4: 認証必須を確認する</h3>
 <p>認証なしで MCP ツールにアクセスしてみます。</p>
 <pre><code class="language-bash">curl -X POST &quot;http://127.0.0.1:3001/mcp/tools/call&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d '{&quot;name&quot;:&quot;get_claims&quot;,&quot;arguments&quot;:{}}'
 </code></pre>
-<p><code>WWW-Authenticate</code> ヘッダー付きで 401 Unauthorized が返ります。</p>
+<p><code>WWW-Authenticate</code> ヘッダーと共に 401 Unauthorized 応答が返されます。</p>
 <pre><code class="language-json">{
   &quot;error&quot;: &quot;Missing Authorization header&quot;,
   &quot;description&quot;: &quot;Please include Bearer token in Authorization header&quot;,
@@ -2578,94 +2713,104 @@ Security: OAuth 2.0 authentication enabled
 <p><cc-end-step lab="e10" exercise="4" step="4" /></p>
 <hr />
 <h2 id="exercise-5-declarative">Exercise 5: 新しい Declarative エージェント プロジェクトを作成する</h2>
-<p>Microsoft 365 Agents Toolkit を使用して、Zava の認証付き請求システムに接続する Declarative エージェント プロジェクトを作成します。</p>
-<h3 id="step-1-microsoft-365-agents-toolkit">Step 1: Microsoft 365 Agents Toolkit でエージェントを作成する</h3>
+<p>この演習では、Microsoft 365 Agents Toolkit を使用して、Zava の認証付き保険金システムへ接続する Declarative エージェント プロジェクトを作成します。</p>
+<h3 id="step-1-microsoft-365-agents-toolkit">Step 1: Microsoft 365 Agents Toolkit で新しいエージェントを作成する</h3>
 <ol>
 <li><strong>VS Code</strong> で新しいウィンドウを開く  </li>
-<li>左側のアクティビティ バーで <strong>Microsoft 365 Agents Toolkit</strong> アイコンをクリック  </li>
-<li>プロンプトが表示されたら Microsoft 365 開発者アカウントでサインイン  </li>
+<li>左サイドバーの <strong>Microsoft 365 Agents Toolkit</strong> アイコンをクリック  </li>
+<li>サインインを求められたら Microsoft 365 開発者アカウントでサインイン  </li>
 <li>Agents Toolkit パネルで <strong>Create a New Agent/App</strong> をクリック  </li>
 <li>テンプレートから <strong>Declarative Agent</strong> を選択  </li>
 <li><strong>Add an Action</strong> を選択  </li>
 <li><strong>Start with an MCP server (preview)</strong> を選択  </li>
-<li>Exercise 3 で取得した公開 MCP Server URL（トンネル URL + <code>/mcp/messages</code>）を入力  </li>
-<li>既定のフォルダー（または任意の場所）を選択してエージェントをスキャフォールド  </li>
-<li>プロジェクト詳細の入力を求められたら次を設定  <ul>
+<li>演習 3 で取得した公開 MCP Server URL（トンネル URL + <code>/mcp/messages</code>）を入力  </li>
+<li>エージェントをスキャフォルドするフォルダーを指定（デフォルトまたは任意）  </li>
+<li>プロジェクト詳細の入力を求められたら次を入力  <ul>
 <li><strong>Application Name</strong>: <code>Zava Claims Assistant (Auth)</code>  </li>
 </ul>
 </li>
 </ol>
 <p><cc-end-step lab="e10" exercise="5" step="1" /></p>
 <h3 id="step-2-mcp">Step 2: MCP サーバー認証を構成する</h3>
-<p>生成されたプロジェクトで <code>.vscode/mcp.json</code> が開きます。これは MCP サーバーの設定ファイルです。</p>
+<p>新しく作成されたプロジェクトが開き、<code>.vscode/mcp.json</code> ファイルが表示されます。これは MCP サーバー設定ファイルです。</p>
 <ol>
 <li><strong>Start</strong> ボタンを選択してサーバーからツールを取得  </li>
 <li>MCP サーバーが認証を要求し、Dynamic Client Registration をサポートしていない旨のダイアログが表示されます。手動で登録する必要があります  </li>
-<li>すでに Entra ID にリダイレクト URI (<code>https://vscode.dev/redirect</code>, <code>http://127.0.0.1:33418</code>) を設定済みなので <strong>Copy URIs &amp; Proceed</strong> を選択  </li>
-<li>OAuth 資格情報の入力を求められたら、クライアント ID とシークレットを入力  </li>
-<li>MCP サーバーとの認証を求められます  </li>
-<li>ブラウザーが <code>http://127.0.0.1:33418</code> を開き、サインイン成功画面が表示されます。ブラウザーを閉じ、プロジェクトに戻ります  </li>
+<li>すでに Entra ID に <code>https://vscode.dev/redirect</code> と <code>http://127.0.0.1:33418</code> をリダイレクト URI として構成済みなので <strong>Copy URIs &amp; Proceed</strong> を選択  </li>
+<li>Agents Toolkit のウィザードで OAuth 資格情報の入力を求められます。アプリ登録の client ID と secret を入力  </li>
+<li>MCP サーバーへの認証を求められます  </li>
+<li>ブラウザーが Microsoft Entra ID の認可エンドポイント (<code>https://login.microsoftonline.com/...</code>) を開きます。Microsoft 365 アカウントでサインイン後、<code>http://127.0.0.1:33418</code> にリダイレクトされ、サインイン成功画面が表示されます。ブラウザーを閉じ、プロジェクトに戻ります  </li>
 </ol>
-<p><img alt="VS Code signed in with MCP server" src="../assets/images/extend-m365-copilot-10/vscode-mcp.png" /></p>
+<p><img alt="VS Code signed in with MCP server" src="../../../../assets/images/extend-m365-copilot-10/vscode-mcp.png" /></p>
 <p><cc-end-step lab="e10" exercise="5" step="2" /></p>
 <h3 id="step-3_2">Step 3: ツールを追加しエージェントをプロビジョニングする</h3>
 <ol>
-<li>サーバーが起動し、利用可能なツールとプロンプト数が表示されます  </li>
-<li><strong>ATK: Fetch action from MCP</strong> を選択し、エージェントに追加するツールを選択  </li>
+<li>サーバーが起動しており、利用可能なツール数とプロンプトが表示されます  </li>
+<li>
+<p><strong>ATK: Fetch action from MCP</strong> を選択してエージェントに追加するツールを選びます  </p>
+<div class="admonition note">
+<p class="admonition-title">ATK: Fetch action from MCP が表示されない場合</p>
+<p><strong>ATK: Fetch action from MCP</strong> が表示されない場合は、VS Code を再起動してプロジェクトを再度開いてください。</p>
+</div>
+</li>
+<li>
+<p>プラグイン マニフェスト ファイル（通常 <code>appPackage/ai-plugin.json</code>）を選択  </p>
+</li>
 <li>テスト用に <code>get_claims</code> ツールを選択  </li>
-<li>Teams Developer Portal でエージェントを構成するよう指示が出たら、手順に従う  </li>
-<li>Authentication Type として <strong>OAuth (with static registration)</strong> を選択。ツールキットがプラグイン マニフェストを作成  </li>
-<li><strong>Provision</strong> を選択してテナントへプロビジョニング  </li>
-<li>クライアント ID とシークレットの再入力を求められたら、前と同じ値を入力（Developer Portal の OAuth 登録用。ツールキットは資格情報を保存しません）  </li>
+<li>Teams Developer Portal でエージェントを構成するよう求められたら手順に従います  </li>
+<li>Authentication Type として <strong>OAuth (with static registration)</strong> を選択。ツールキットがプラグイン マニフェストを作成します  </li>
+<li><strong>Provision</strong> を選択し、テナントにエージェントをプロビジョニング  </li>
+<li>ウィザードが再度 client ID と secret を求めます。先ほどと同じ値を入力（Developer Portal での OAuth 登録用）  </li>
 <li>スコープを追加: <code>api://&lt;your-client-id&gt;/access_as_user</code>  </li>
-<li><strong>Confirm</strong> を選択してプロビジョニング開始  </li>
+<li><strong>Confirm</strong> を選択してプロビジョニングを開始  </li>
 </ol>
-<p>プロビジョニングが完了すると、Developer Portal 用のトークンが自動的に生成され、<code>.env.dev</code> に <code>MCP_DA_AUTH_ID_XXXX</code> のような変数として表示されます。</p>
+<p>プロビジョニングが完了すると、Developer Portal 用トークンが自動的に生成され、<code>.env.dev</code> ファイルに <code>MCP_DA_AUTH_ID_XXXX</code> のような変数として追加されます。</p>
 <div class="admonition note">
 <p class="admonition-title">Developer Portal での OAuth 登録</p>
-<p><a href="https://learn.microsoft.com/en-us/microsoftteams/platform/messaging-extensions/api-based-oauth#configure-oauth-in-developer-portal">Developer Portal での OAuth 登録方法</a> を参照してください。Agents Toolkit はこれを自動で構成します。</p>
+<p><a href="https://learn.microsoft.com/en-us/microsoftteams/platform/messaging-extensions/api-based-oauth#configure-oauth-in-developer-portal">Developer Portal での OAuth 登録の構成</a> の詳細をご覧ください。今回、Agents Toolkit が自動でエージェント用に構成を行いました。</p>
 </div>
-<p>これで OAuth 保護付き MCP サーバーに接続する Declarative エージェントが完成しました。</p>
+<p>これで OAuth で保護された MCP サーバーに接続された Declarative エージェントが完成しました。</p>
 <p><cc-end-step lab="e10" exercise="5" step="3" /></p>
 <hr />
-<h2 id="exercise-6">Exercise 6: 認証済みエージェント統合のテスト</h2>
-<p>Declarative エージェントが正常に認証し、OAuth 保護付き MCP サーバーと通信できるかテストします。</p>
-<h3 id="step-1-mcp_1">Step 1: MCP サーバーが稼働中か確認する</h3>
-<p>テスト前に MCP サーバーが実行中であることを確認します。</p>
+<h2 id="exercise-6">Exercise 6: 認証付きエージェント統合のテスト</h2>
+<p>Declarative エージェントが OAuth で保護された MCP サーバーと正常に通信できるかテストします。</p>
+<h3 id="step-1-mcp_1">Step 1: MCP サーバーが稼働中であることを確認する</h3>
+<p>テスト前に、前の演習で起動した MCP サーバーが動作中か確認します。</p>
 <ol>
 <li>zava-mcp-server プロジェクトを実行しているウィンドウを開く  </li>
 <li>Azurite が稼働中か確認: <code>npm run start:azurite</code>  </li>
 <li>MCP サーバーが稼働中か確認: <code>npm run start:mcp-http</code>  </li>
-<li>Dev トンネルのポート転送が有効か確認  </li>
+<li>Dev Tunnel のポート転送が有効か確認  </li>
 </ol>
 <p><cc-end-step lab="e10" exercise="6" step="1" /></p>
 <h3 id="step-2-microsoft-365-copilot">Step 2: Microsoft 365 Copilot でテストする</h3>
 <ol>
-<li><a href="https://m365.cloud.microsoft/chat/">https://m365.cloud.microsoft/chat/</a> を開く  </li>
+<li><a href="https://m365.cloud.microsoft/chat/">https://m365.cloud.microsoft/chat/</a> で Copilot を開く  </li>
 <li>左サイドバーの <strong>Agents</strong> から <strong>Zava Claims Assistant (Auth)</strong> を選択  </li>
-<li>会話スターター「Find all claims」を入力  </li>
+<li>「 Find all claims 」のようなプロンプトを入力  </li>
+<li>Copilot がプラグインへのデータ送信確認を求めたら <strong>Confirm</strong> または <strong>Allow</strong> を選択  </li>
 <li>エージェントがデータ取得前にサインインを促します。<strong>Sign in</strong> を選択  </li>
 </ol>
-<p><img alt="Agent sign-in prompt" src="../assets/images/extend-m365-copilot-10/sign-in.png" /></p>
+<p><img alt="Agent sign-in prompt" src="../../../../assets/images/extend-m365-copilot-10/sign-in.png" /></p>
 <ol>
-<li>サインイン後、エージェントが請求情報を返します  </li>
-<li>MCP サーバーのターミナルで認証成功とツール呼び出しを確認できます  </li>
+<li>サインイン後、エージェントが保険金情報を返します  </li>
+<li>MCP サーバー側のターミナルで、認証成功とツール呼び出しが確認できます  </li>
 </ol>
-<p><img alt="MCP Server authenticated" src="../assets/images/extend-m365-copilot-10/success.png" /></p>
+<p><img alt="MCP Server authenticated" src="../../../../assets/images/extend-m365-copilot-10/success.png" /></p>
 <p><cc-end-step lab="e10" exercise="6" step="2" /></p>
 <hr />
-<h2 id="_4">🎉 お疲れさまでした!</h2>
-<p>Zava Insurance の <strong>OAuth 保護</strong>付き Declarative エージェントを作成・デプロイし、認証付き MCP サーバーと安全に統合できました。</p>
-<h3 id="_5">達成した内容</h3>
+<h2 id="_4">🎉 お疲れさまでした！</h2>
+<p>Zava Insurance の <strong>OAuth で保護された</strong> Declarative エージェントを作成し、認証付き MCP サーバーと安全に統合することに成功しました。</p>
+<h3 id="_5">実施した内容</h3>
 <ul>
 <li>✅ OAuth 2.0 用の Microsoft Entra ID アプリ登録を作成  </li>
-<li>✅ セキュリティを考慮した環境変数を設定  </li>
-<li>✅ JWT トークン検証付き OAuth 保護 MCP サーバーを実行  </li>
+<li>✅ セキュアな認証のために環境変数を構成  </li>
+<li>✅ JWT トークン検証を備えた OAuth 保護 MCP サーバーを実行  </li>
 <li>✅ RFC 9728 準拠の OAuth ディスカバリー エンドポイントをテスト  </li>
-<li>✅ 認証付き MCP 統合の Declarative エージェントを作成  </li>
-<li>✅ 請求データへのセキュアな自然言語クエリをテスト  </li>
+<li>✅ 認証付き MCP 統合を備えた Declarative エージェントを作成  </li>
+<li>✅ 保険金データに対するセキュアな自然言語クエリをテスト  </li>
 </ul>
-<h3 id="08">ラボ 08 との主な違い</h3>
+<h3 id="08">ラボ 08 からの主な違い</h3>
 <table>
 <thead>
 <tr>
@@ -2678,17 +2823,17 @@ Security: OAuth 2.0 authentication enabled
 <tr>
 <td>認証</td>
 <td>なし - すべてのエンドポイントが公開</td>
-<td>OAuth 2.0 (Microsoft Entra ID)</td>
+<td>Microsoft Entra ID による OAuth 2.0</td>
 </tr>
 <tr>
 <td>トークン検証</td>
 <td>なし</td>
-<td>JWKS に対する JWT 検証</td>
+<td>JWKS に基づく JWT 検証</td>
 </tr>
 <tr>
 <td>セキュリティ ヘッダー</td>
 <td>なし</td>
-<td>WWW-Authenticate とメタデータ URL</td>
+<td>メタデータ URL を含む WWW-Authenticate</td>
 </tr>
 <tr>
 <td>ディスカバリー</td>
@@ -2697,8 +2842,8 @@ Security: OAuth 2.0 authentication enabled
 </tr>
 <tr>
 <td>エンタープライズ対応</td>
-<td>開発のみ</td>
-<td>本番運用向けセキュリティ</td>
+<td>開発用途のみ</td>
+<td>本番環境向けセキュリティ</td>
 </tr>
 </tbody>
 </table>
@@ -2706,8 +2851,12 @@ Security: OAuth 2.0 authentication enabled
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/10-mcp-auth--ja" /></p>
 <h3 id="_6">🔗 追加リソース</h3>
 <ul>
-<li><strong>Build declarative agents for Microsoft 365 Copilot with MCP</strong>: <a href="https://devblogs.microsoft.com/microsoft365dev/build-declarative-agents-for-microsoft-365-copilot-with-mcp/">https://devblogs.microsoft.com/microsoft365dev/build-declarative-agents-for-microsoft-365-copilot-with-mcp/</a></li>
-<li><strong>MCP Protocol Documentation</strong>: <a href="https://modelcontextprotocol.io/">https://modelcontextprotocol.io/</a></li>
+<li>
+<p><strong>Build declarative agents for Microsoft 365 Copilot with MCP</strong>: <a href="https://devblogs.microsoft.com/microsoft365dev/build-declarative-agents-for-microsoft-365-copilot-with-mcp/">https://devblogs.microsoft.com/microsoft365dev/build-declarative-agents-for-microsoft-365-copilot-with-mcp/</a></p>
+</li>
+<li>
+<p><strong>MCP Protocol Documentation</strong>: <a href="https://modelcontextprotocol.io/">https://modelcontextprotocol.io/</a></p>
+</li>
 <li><strong>Microsoft Entra ID Documentation</strong>: <a href="https://docs.microsoft.com/en-us/azure/active-directory/">https://docs.microsoft.com/en-us/azure/active-directory/</a></li>
 <li><strong>RFC 9728 - OAuth 2.0 Protected Resource Metadata</strong>: <a href="https://datatracker.ietf.org/doc/html/rfc9728">https://datatracker.ietf.org/doc/html/rfc9728</a></li>
 <li><strong>Azure Table Storage</strong>: <a href="https://docs.microsoft.com/en-us/azure/storage/tables/">Azure Documentation</a></li>

@@ -1639,6 +1639,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/in-a-box/"/>
     </url>
     <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/integrate/</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/integrate/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/integrate/"/>
+    </url>
+    <url>
         <loc>https://microsoft.github.io/copilot-camp/ja/pages/internal/labFormat/</loc>
         <lastmod>2026-02-05</lastmod>
         <changefreq>daily</changefreq>
@@ -1763,6 +1770,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/"/>
     </url>
     <url>
+        <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/10-mcp-oauth/</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/10-mcp-oauth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/10-mcp-oauth/"/>
+    </url>
+    <url>
         <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/sharepoint-agents/</loc>
         <lastmod>2026-02-05</lastmod>
         <changefreq>daily</changefreq>
@@ -1789,19 +1803,5 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/javascripts/card-usage/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/javascripts/card-usage/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/integrate/</loc>
-        <lastmod>2026-02-05</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/integrate/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/integrate/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/10-mcp-oauth/</loc>
-        <lastmod>2026-02-05</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="ja" href="https://microsoft.github.io/copilot-camp/ja/pages/make/copilot-studio/10-mcp-oauth/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/10-mcp-oauth/"/>
     </url>
 </urlset>

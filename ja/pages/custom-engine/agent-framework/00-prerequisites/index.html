@@ -25,7 +25,7 @@
     
     
       
-        <title>Lab BAF0 - 事前準備 - Copilot Developer Camp</title>
+        <title>ラボ BAF0 - 前提条件 - Copilot Developer Camp</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-baf0-" class="md-skip">
+        <a href="#baf0-" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab BAF0 - 事前準備
+              ラボ BAF0 - 前提条件
             
           </span>
         </div>
@@ -811,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS8 - RAG のための Azure AI Search 統合
+    ラボ MCS8 - Azure AI Search を使用した RAG 連携
   
 
     
@@ -839,7 +839,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS9 - Connected エージェント (プレビュー)
+    ラボ MCS9 - Connected Agents (プレビュー)
   
 
     
@@ -1522,7 +1522,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 08 : Declarative エージェントを MCP サーバーに接続する
+    ラボ 08 : 宣言型エージェントを MCP サーバーに接続する
   
 
     
@@ -1550,7 +1550,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 09: Connected Agent - Zava のマルチ エージェント請求オーケストレーション
+    ラボ 09: Connected Agents - Zava のマルチエージェント請求オーケストレーション
   
 
     
@@ -1953,7 +1953,7 @@
   <span class="md-ellipsis">
     
   
-    Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agent Framework
+    Microsoft 365 Agents SDK と Agent Framework を使用した Zava Insurance エージェントの構築
   
 
     
@@ -1981,7 +1981,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF1 - 最初のエージェントの構築と実行
+    ラボ BAF1 - はじめてのエージェントの構築と実行
   
 
     
@@ -2037,7 +2037,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF3 - Mistral AI を使用したビジョン解析の追加
+    ラボ BAF3 - Mistral AI を使用したビジョン分析の追加
   
 
     
@@ -2065,7 +2065,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF4 - ポリシー検索の追加
+    ラボ BAF4 - Policy 検索の追加
   
 
     
@@ -2093,7 +2093,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF5 - 通信機能の追加
+    ラボ BAF5 - コミュニケーション機能の追加
   
 
     
@@ -2121,7 +2121,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF6 - Microsoft 365 Work IQ API 統合を追加する
+    ラボ BAF6 - Microsoft 365 Work IQ API 統合の追加
   
 
     
@@ -2272,7 +2272,7 @@
   <span class="md-ellipsis">
     
   
-    エージェント指示ラボ - エージェント指示の改善 (初心者向け)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
   
 
     
@@ -2337,69 +2337,69 @@
 
 
 
-<h1 id="lab-baf0-">Lab BAF0 - 事前準備</h1>
-<p>このラボでは、 Microsoft 365 Agents SDK と Agent Framework を使用して開発するカスタムエンジン エージェントをビルド、テスト、デプロイするための開発環境をセットアップします。</p>
+<h1 id="baf0-">ラボ BAF0 - 前提条件</h1>
+<p>このラボでは <strong>Microsoft 365 Agents SDK</strong> と <strong>Agent Framework</strong> を使用して開発するカスタム エンジン エージェントをビルド、テスト、デプロイするための開発環境を構築します。</p>
 <p>このラボで学習する内容:</p>
 <ul>
-<li>Microsoft 365 環境のセットアップ  </li>
-<li>Visual Studio Code への Microsoft 365 Agents Toolkit のインストールと構成  </li>
-<li>必要なリソースを作成するための Azure 環境の準備  </li>
-<li>必要な開発ツールのインストール  </li>
+<li>Microsoft 365 環境のセットアップ</li>
+<li>Visual Studio Code と Microsoft 365 Agents Toolkit のインストールと構成</li>
+<li>必要な Azure リソースを作成するための Azure 環境の準備</li>
+<li>必要な開発ツールのインストール</li>
 </ul>
 <div class="admonition pied-piper">
 <p class="admonition-title">注意事項</p>
-<p>これらのサンプルおよびラボは、教育目的とデモンストレーション目的で提供されています。運用環境での利用を想定していません。運用環境に導入する場合は、必ずプロダクション品質に更新してください。</p>
+<p>これらのサンプルおよびラボは教育およびデモンストレーション目的で提供されています。本番環境で使用する場合は必ず本番レベルにアップグレードしてください。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注</p>
-<p>独自のカスタムエンジン エージェントをインストールして実行するには、管理者権限を持つ Microsoft 365 テナントが必要です。カスタムエンジン エージェントをテストするために Microsoft 365 Copilot ライセンスは不要です。</p>
+<p>カスタム エンジン エージェントをインストールして実行するには、管理者権限を持つ Microsoft 365 テナントが必要です。カスタム エンジン エージェントのテストに Microsoft 365 Copilot ライセンスは不要です。</p>
 </div>
 <h2 id="exercise-1-microsoft-teams">Exercise 1 : Microsoft Teams のセットアップ</h2>
-<h3 id="step-1-teams">Step 1: Teams へのカスタムアプリのアップロードを有効化する</h3>
-<p>既定では、エンド ユーザーはアプリを直接アップロードできず、 Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。この手順では、 M365 Agents Toolkit による直接アップロードが可能になるようにテナントを設定します。</p>
-<p>1️⃣ <a href="https://admin.microsoft.com/" target="_blank">https://admin.microsoft.com/</a> に移動して Microsoft 365 管理センターを開きます。</p>
-<p>2️⃣ 管理センター左側のパネルで <strong>すべてを表示</strong> を選択し、ナビゲーションを展開します。パネルが開いたら <strong>Teams</strong> を選択して Microsoft Teams 管理センターを開きます。</p>
-<p>3️⃣ Microsoft Teams 管理センター左側で <strong>Teams アプリ</strong> を展開し、 <strong>セットアップ ポリシー</strong> を選択します。アプリのセットアップ ポリシー一覧が表示されるので <strong>Global (Org-wide default)</strong> ポリシーを選択します。</p>
-<p>4️⃣ <strong>カスタムアプリのアップロード</strong> スイッチが <strong>オン</strong> になっていることを確認します。</p>
-<p>5️⃣ 画面を下までスクロールし、 <strong>保存</strong> ボタンを選択して変更を保存します。</p>
+<h3 id="step-1-teams">Step 1: Teams でカスタム アプリのアップロードを有効化</h3>
+<p>既定では、エンド ユーザーはアプリを直接アップロードできず、Teams 管理者がエンタープライズ アプリ カタログにアップロードする必要があります。この手順では、M365 Agents Toolkit が直接アップロードできるようにテナントを設定します。</p>
+<p>1️⃣ <a href="https://admin.microsoft.com/" target="_blank">https://admin.microsoft.com/</a> にアクセスし、Microsoft 365 Admin Center を開きます。  </p>
+<p>2️⃣ 管理センターの左側パネルで <strong>Show all</strong> を選択し、すべてのナビゲーションを表示します。次に <strong>Teams</strong> を選択して Microsoft Teams admin center を開きます。  </p>
+<p>3️⃣ Microsoft Teams admin center の左側で <strong>Teams apps</strong> を展開し、<strong>Setup Policies</strong> を選択します。App setup policy の一覧が表示されるので <strong>Global (Org-wide default) policy</strong> を選択します。  </p>
+<p>4️⃣ <strong>Upload custom apps</strong> のスイッチが <strong>On</strong> になっていることを確認します。  </p>
+<p>5️⃣ ページ下部の <strong>Save</strong> ボタンを選択して変更を保存します。  </p>
 <blockquote>
-<p>変更が反映されるまで最大 24 時間かかる場合がありますが、通常はもっと早く反映されます。</p>
+<p>変更が反映されるまで最大 24 時間かかる場合がありますが、通常はもっと早く完了します。</p>
 </blockquote>
 <p><cc-end-step lab="baf0" exercise="1" step="1" /></p>
 <h2 id="exercise-2">Exercise 2: 開発環境のセットアップ</h2>
-<p>このラボは Windows、 macOS、 Linux いずれのマシンでも実施できますが、前提条件をインストールできる権限が必要です。アプリケーションをインストールできない場合は、別のマシン（または仮想マシン）を使用してください。</p>
-<h3 id="step-1-visual-studio-code">Step 1: Visual Studio Code のインストール</h3>
-<p>1️⃣ <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a> から Visual Studio Code をダウンロードしてインストールします。</p>
-<p>2️⃣ インストール後に Visual Studio Code を起動します。</p>
+<p>Windows、macOS、Linux のいずれのマシンでもラボを進められますが、前提条件をインストールできる権限が必要です。権限がない場合は、別のマシンまたは仮想マシンを使用してください。</p>
+<h3 id="step-1-visual-studio-code">Step 1: Visual Studio Code をインストール</h3>
+<p>1️⃣ <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a> から Visual Studio Code をダウンロードしてインストールします。  </p>
+<p>2️⃣ インストール後、Visual Studio Code を起動します。  </p>
 <p><cc-end-step lab="baf0" exercise="2" step="1" /></p>
-<h3 id="step-2-net-9-sdk">Step 2: .NET 9 SDK のインストール</h3>
-<p>Microsoft 365 Agents SDK と Agent Framework でエージェントをビルドおよび実行するには .NET 9 SDK が必要です。</p>
-<p>1️⃣ <a href="https://dotnet.microsoft.com/download/dotnet/9.0" target="_blank">https://dotnet.microsoft.com/download/dotnet/9.0</a> から .NET 9 SDK をダウンロードしてインストールします。</p>
-<p>2️⃣ ターミナルを開き、次のコマンドを実行してインストールを確認します。</p>
+<h3 id="step-2-net-9-sdk">Step 2: .NET 9 SDK をインストール</h3>
+<p>Microsoft 365 Agents SDK と Agent Framework のビルドおよび実行には .NET 9 SDK が必要です。</p>
+<p>1️⃣ <a href="https://dotnet.microsoft.com/download/dotnet/9.0" target="_blank">https://dotnet.microsoft.com/download/dotnet/9.0</a> から .NET 9 SDK をダウンロードしてインストールします。  </p>
+<p>2️⃣ ターミナルを開き、次のコマンドでインストールを確認します:  </p>
 <pre><code class="language-bash">dotnet --version
 </code></pre>
-<p>バージョン 9.0.x 以上が表示されれば成功です。</p>
+<p>9.0.x 以上のバージョンが表示されれば成功です。  </p>
 <p><cc-end-step lab="baf0" exercise="2" step="2" /></p>
-<h3 id="step-3-c-dev-kit">Step 3: C# Dev Kit 拡張機能のインストール</h3>
-<p>1️⃣ Visual Studio Code で、サイドバーの拡張機能アイコンをクリックするか <code>Ctrl+Shift+X</code> (Windows/Linux) または <code>Cmd+Shift+X</code> (Mac) を押して <strong>拡張機能ビュー</strong> を開きます。</p>
-<p>2️⃣ <strong>C# Dev Kit</strong> を検索し、 <strong>Install</strong> をクリックします。</p>
+<h3 id="step-3-c-dev-kit">Step 3: C# Dev Kit 拡張機能をインストール</h3>
+<p>1️⃣ Visual Studio Code で、サイドバーの <strong>Extensions</strong> アイコンをクリックするか <code>Ctrl+Shift+X</code> (Windows/Linux) または <code>Cmd+Shift+X</code> (Mac) を押して Extensions ビューを開きます。  </p>
+<p>2️⃣ <strong>C# Dev Kit</strong> を検索し、<strong>Install</strong> をクリックします。  </p>
 <p><cc-end-step lab="baf0" exercise="2" step="3" /></p>
-<h3 id="step-4-microsoft-365-agents-toolkit">Step 4: Microsoft 365 Agents Toolkit 拡張機能のインストール</h3>
-<p>1️⃣ Visual Studio Code の拡張機能ビューで <strong>Microsoft 365 Agents Toolkit</strong> を検索し、 <strong>Install</strong> をクリックします。</p>
-<p>2️⃣ インストール後、サイドバーに Microsoft 365 Agents Toolkit のアイコンが表示されます。</p>
+<h3 id="step-4-microsoft-365-agents-toolkit">Step 4: Microsoft 365 Agents Toolkit 拡張機能をインストール</h3>
+<p>1️⃣ Extensions ビューで <strong>Microsoft 365 Agents Toolkit</strong> を検索し、<strong>Install</strong> をクリックします。  </p>
+<p>2️⃣ インストールが完了すると、サイドバーに Microsoft 365 Agents Toolkit のアイコンが表示されます。  </p>
 <p><cc-end-step lab="baf0" exercise="2" step="4" /></p>
-<h3 id="step-5-azure-cli">Step 5: Azure CLI のインストール</h3>
+<h3 id="step-5-azure-cli">Step 5: Azure CLI をインストール</h3>
 <p>Azure CLI は Azure リソースのプロビジョニングと管理に必要です。</p>
-<p>1️⃣ <a href="https://learn.microsoft.com/cli/azure/install-azure-cli" target="_blank">https://learn.microsoft.com/cli/azure/install-azure-cli</a> から Azure CLI をダウンロードしてインストールします。</p>
-<p>2️⃣ ターミナルを開き、次のコマンドを実行してインストールを確認します。</p>
+<p>1️⃣ <a href="https://learn.microsoft.com/cli/azure/install-azure-cli" target="_blank">https://learn.microsoft.com/cli/azure/install-azure-cli</a> から Azure CLI をダウンロードしてインストールします。  </p>
+<p>2️⃣ ターミナルを開き、次のコマンドでインストールを確認します:  </p>
 <pre><code class="language-bash">az --version
 </code></pre>
-<p>3️⃣ Azure にサインインします。</p>
+<p>3️⃣ 続いて Azure にサインインします:  </p>
 <pre><code class="language-bash">az login
 </code></pre>
 <p><cc-end-step lab="baf0" exercise="2" step="5" /></p>
-<h3 id="step-6-devtunnel">Step 6: DevTunnel のインストール</h3>
-<p>DevTunnel はローカル開発とデバッグに必要です。インターネットからローカルマシンへの安全なトンネルを作成します。</p>
+<h3 id="step-6-devtunnel">Step 6: DevTunnel をインストール</h3>
+<p>DevTunnel はローカル開発とデバッグのため、インターネットからローカル マシンへのセキュアなトンネルを作成します。</p>
 <p><strong>Windows:</strong></p>
 <pre><code class="language-bash">winget install Microsoft.DevTunnel
 </code></pre>
@@ -2410,96 +2410,108 @@
 <pre><code class="language-bash">devtunnel --version
 </code></pre>
 <div class="admonition tip">
-<p class="admonition-title">DevTunnel の代替案</p>
-<p>DevTunnel は Visual Studio 2022 にも含まれています。 Visual Studio 2022 をインストール済みの場合、すでに DevTunnel が利用可能です。</p>
+<p class="admonition-title">DevTunnel の代替</p>
+<p>Visual Studio 2022 には DevTunnel が同梱されています。すでに Visual Studio 2022 をお使いの場合、追加インストールは不要です。</p>
 </div>
 <p><cc-end-step lab="baf0" exercise="2" step="6" /></p>
+<h3 id="step-7-azure-functions-core-tools">Step 7: Azure Functions Core Tools をインストール</h3>
+<p>ローカルで Azure Functions を実行するには Azure Functions Core Tools が必要です。</p>
+<p>1️⃣ Azure Functions Core Tools をインストールします:</p>
+<p><strong>Windows:</strong></p>
+<pre><code class="language-bash">winget install Microsoft.Azure.FunctionsCoreTools
+</code></pre>
+<p><strong>macOS:</strong></p>
+<pre><code class="language-bash">brew tap azure/functions
+brew install azure-functions-core-tools@4
+</code></pre>
+<p>2️⃣ 次のコマンドでインストールを確認します:</p>
+<pre><code class="language-bash">func --version
+</code></pre>
+<p>4.x 以上のバージョンが表示されれば成功です。  </p>
+<p><cc-end-step lab="baf0" exercise="2" step="7" /></p>
 <h2 id="exercise-3-azure">Exercise 3: Azure 環境のセットアップ</h2>
-<p>このコースを完了するには、 Microsoft Foundry リソースを作成して AI モデルをデプロイするための Azure サブスクリプションが必要です。</p>
-<h3 id="step-1-azure">Step 1: Azure サブスクリプションの取得</h3>
-<p>まだ Azure サブスクリプションをお持ちでない場合は、 <a href="https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p" target="_blank">Azure 無料アカウント</a> を有効化できます。最初の 30 日間で使用できる 200 ドル分のクレジットが付与されます。</p>
-<p>Azure 無料アカウントを有効化する手順:</p>
-<p>1️⃣ <a href="https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p" target="_blank">Azure free account</a> ページにアクセスし、 <strong>Activate</strong> を選択します。</p>
-<p>2️⃣ 任意のアカウントでログインします。ラボで使用する Microsoft 365 テナント アカウントの使用を推奨します。</p>
-<p>3️⃣ Privacy Statement にチェックを入れ、 <strong>Next</strong> を選択します。</p>
-<p>4️⃣ 本人確認のため携帯電話番号を入力します。</p>
-<p>5️⃣ 一時的な認証のため支払い情報を入力します。従量課金制へ移行しない限り請求されません。完了したら <strong>Sign up</strong> を選択します。</p>
+<p>このコースを完了するには、Microsoft Foundry リソースを作成し AI モデルをデプロイするための Azure サブスクリプションが必要です。</p>
+<h3 id="step-1-azure">Step 1: Azure サブスクリプションを取得</h3>
+<p>まだ Azure サブスクリプションをお持ちでない場合は、$200 のクレジットが 30 日間利用できる <a href="https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p" target="_blank">Azure free account</a> を有効化できます。</p>
+<p>手順:</p>
+<p>1️⃣ <a href="https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0044p" target="_blank">Azure free account</a> ページで <strong>Activate</strong> を選択します。<br />
+2️⃣ 利用するアカウントでサインインします (演習で使用する Microsoft 365 テナント アカウントを推奨)。<br />
+3️⃣ <strong>Privacy Statement</strong> にチェックを入れ、<strong>Next</strong> を選択します。<br />
+4️⃣ 本人確認のため携帯電話番号を入力します。<br />
+5️⃣ 一時的な認証のため支払い情報を入力し、<strong>Sign up</strong> を選択します。課金は発生しません (従量課金に移行しない限り)。  </p>
 <div class="admonition tip">
-<p class="admonition-title">ヒント: 30 日以降の Azure リソース管理</p>
-<p>無料アカウントは 30 日間のみ利用可能です。30 日終了時点で無料サブスクリプションに稼働中のサービスがないか確認してください。継続して Azure サービスを使用する場合は、支出制限を解除して従量課金サブスクリプションへアップグレードする必要があります。</p>
+<p class="admonition-title">ヒント: 30 日後のリソース管理</p>
+<p>Azure free account は 30 日間のみ有効です。期限までに無料サブスクリプションで実行中のサービスがないか確認してください。30 日以降も利用する場合は、支出制限を解除して従量課金制サブスクリプションへアップグレードしてください。</p>
 </div>
 <p><cc-end-step lab="baf0" exercise="3" step="1" /></p>
-<h3 id="step-2-microsoft-foundry">Step 2: Microsoft Foundry プロジェクトの作成とモデルのデプロイ</h3>
-<p>このラボでは、言語モデルをデプロイした Microsoft Foundry プロジェクトが必要です。</p>
-<p>1️⃣ <a href="https://ai.azure.com" target="_blank">Microsoft Foundry</a> にアクセスし、 Azure アカウントでサインインします。<br />
-2️⃣ <strong>+ Create new</strong> → <strong>Microsoft Foundry resource</strong> → <strong>Next</strong> の順に選択します。</p>
-<p>3️⃣ プロジェクト名は推奨値のままにし、 <strong>Create</strong> を選択します。プロジェクトのスキャフォールディングには通常 3～5 分かかります。</p>
+<h3 id="step-2-microsoft-foundry">Step 2: Microsoft Foundry プロジェクトを作成しモデルをデプロイ</h3>
+<p>このラボでは、複数のモデルがデプロイされた Microsoft Foundry プロジェクトが必要です。</p>
+<p>1️⃣ <a href="https://ai.azure.com" target="_blank">Microsoft Foundry</a> にアクセスし、Azure アカウントでサインインします。<br />
+2️⃣ <strong>+ Create new</strong> → <strong>Microsoft Foundry resource</strong> → <strong>Next</strong> を選択します。<br />
+3️⃣ 推奨されたプロジェクト名のまま <strong>Create</strong> を選択します (3～5 分ほどで作成されます)。  </p>
 <div class="admonition tip">
-<p class="admonition-title">リージョン選択</p>
-<p>すべてのラボで必要なモデルをサポートしている <strong>France Central</strong> リージョンを選択してください。</p>
+<p class="admonition-title">リージョンの選択</p>
+<p>すべてのラボで必要なモデルをサポートする <strong>France Central</strong> リージョンを選択してください。</p>
 </div>
-<p>4️⃣ プロジェクト作成後、左側の <strong>Deployments</strong> に移動します。</p>
-<p>5️⃣ <strong>+ Deploy model</strong> をクリックし、 <strong>Deploy base model</strong> を選択します。</p>
-<p>6️⃣ <strong>gpt-4.1</strong> を検索して選択し、 <strong>Confirm</strong> → <strong>Deploy</strong> を選択します。</p>
+<p>4️⃣ プロジェクトが作成されたら、左側の <strong>Deployments</strong> を開きます。<br />
+5️⃣ <strong>+ Deploy model</strong> をクリックし <strong>Deploy base model</strong> を選択します。<br />
+6️⃣ <strong>gpt-4.1</strong> を検索して選択し、<strong>Confirm</strong> → <strong>Deploy</strong> をクリックします。  </p>
 <div class="admonition important">
-<p class="admonition-title">モデル選択</p>
-<p>スムーズに進めるため、必ず <strong>gpt-4.1</strong> を使用してください。ラボでは gpt-4.1 向けに最適化された知識ベース回答合成を使用しています。他のモデルを使用すると予期しない動作になる場合があります。</p>
+<p class="admonition-title">モデルの選択</p>
+<p>スムーズな体験のため <strong>gpt-4.1</strong> を使用してください。本ラボでは knowledge base answer synthesis を利用しており、gpt-4.1 に最適化されています。他のモデルでは予期しない動作が起こる場合があります。</p>
 </div>
+<p>7️⃣ 続いて <strong>text-embedding-ada-002</strong> を検索して選択し、<strong>Confirm</strong> → <strong>Deploy</strong> をクリックします。  </p>
 <div class="admonition tip">
 <p class="admonition-title">認証情報の保存</p>
-<p>次の情報を Microsoft Foundry プロジェクトから取得して安全な場所に保存してください。次のラボで必要になります。  </p>
+<p>次のラボで必要になるため、以下の情報を安全な場所に控えておいてください。  </p>
 <ul>
-<li><strong>Endpoint URL</strong>: Project settings → Properties（例: <code>https://your-resource.cognitiveservices.azure.com/</code>）  </li>
+<li><strong>Endpoint URL</strong>: Project settings → Properties (例: <code>https://your-resource.cognitiveservices.azure.com/</code>)  </li>
 <li><strong>API Key</strong>: 「Keys and Endpoint」セクション  </li>
-<li><strong>Model Deployment Name</strong>: gpt-4.1 デプロイ時に指定した名前  </li>
+<li><strong>Model Deployment Name</strong>: gpt-4.1 デプロイ時に付けた名前  </li>
 </ul>
 </div>
 <div class="admonition note">
 <p class="admonition-title">追加モデル</p>
-<p>埋め込みや画像解析用の追加モデルのデプロイや、 Azure AI Search などの他の Azure サービスの作成は、後続のラボで行います。</p>
+<p>Embeddings や Vision 分析用などの追加モデルや <strong>Azure AI Search</strong> などの他の Azure サービスは、後続のラボで必要になった際にデプロイします。</p>
 </div>
 <p><cc-end-step lab="baf0" exercise="3" step="2" /></p>
-<h3 id="step-3">Step 3: コンテンツ セーフティ フィルターの構成</h3>
-<p>保険分野では「injury」「collision」「damage」のような用語がデフォルトのコンテンツ フィルターによりブロックされる可能性があります。閾値を下げたカスタム コンテンツ フィルターを作成します。</p>
-<p>1️⃣ Microsoft Foundry でプロジェクトを開きます。</p>
-<p>2️⃣ 左側の <strong>Guardrails + Controls</strong> → <strong>Content filters</strong> を選択します。</p>
-<p>3️⃣ <strong>+ Create content filter</strong> をクリックします。</p>
-<p>4️⃣ フィルター名を <strong>InsuranceLowFilter</strong> と入力します。</p>
-<p>5️⃣ <strong>Input filters</strong>（ユーザーが送信する内容）の設定を次のように変更します:</p>
-<ul>
-<li><strong>Violence</strong>: <strong>Low</strong></li>
-<li><strong>Hate</strong>: <strong>Low</strong></li>
-<li><strong>Sexual</strong>: <strong>Low</strong></li>
-<li><strong>Self-harm</strong>: <strong>Low</strong></li>
-<li>Prompt shields for jailbreak attacks: Off</li>
-<li>Prompt shields for indirect attacks: Off</li>
-</ul>
-<p>6️⃣ <strong>Next</strong> を選択し、 <strong>Output filters</strong>（ AI が生成する内容）にも同じ設定を行います:</p>
-<ul>
-<li><strong>Violence</strong>: <strong>Low</strong></li>
-<li><strong>Hate</strong>: <strong>Low</strong></li>
-<li><strong>Sexual</strong>: <strong>Low</strong></li>
-<li><strong>Self-harm</strong>: <strong>Low</strong></li>
-<li>Protected material for text: Off</li>
-<li>Protected material for code: Off</li>
-<li>Groundedness (Preview): Off</li>
-</ul>
-<p>7️⃣ <strong>Next</strong> を選択します。</p>
-<p>8️⃣ 「Apply filter to deployments」で <strong>gpt-4.1</strong> デプロイメントを選択します。</p>
-<p>9️⃣ <strong>Replace</strong> を選択して新しいフィルターを適用します。</p>
-<p>🔟 最後に <strong>Create filter</strong> を選択します。</p>
+<h3 id="step-3">Step 3: コンテンツ セーフティ フィルターを構成</h3>
+<p>保険業務では "injury"、"collision"、"damage" などの用語がデフォルトのコンテンツ フィルターに引っかかる場合があります。低いしきい値のカスタム コンテンツ フィルターを作成します。</p>
+<p>1️⃣ Microsoft Foundry でプロジェクトを開きます。<br />
+2️⃣ 左サイドバーで <strong>Guardrails + Controls</strong> → <strong>Content filters</strong> を選択します。<br />
+3️⃣ <strong>+ Create content filter</strong> をクリックします。<br />
+4️⃣ フィルター名に <strong>InsuranceLowFilter</strong> と入力します。<br />
+5️⃣ <strong>Input filters</strong> を次のとおり設定します:<br />
+   - <strong>Violence</strong>: Low<br />
+   - <strong>Hate</strong>: Low<br />
+   - <strong>Sexual</strong>: Low<br />
+   - <strong>Self-harm</strong>: Low<br />
+   - Prompt shields for jailbreak attacks: Off<br />
+   - Prompt shields for indirect attacks: Off  </p>
+<p>6️⃣ <strong>Next</strong> を選択し、<strong>Output filters</strong> も同様に設定します:<br />
+   - <strong>Violence</strong>: Low<br />
+   - <strong>Hate</strong>: Low<br />
+   - <strong>Sexual</strong>: Low<br />
+   - <strong>Self-harm</strong>: Low<br />
+   - Protected material for text: Off<br />
+   - Protected material for code: Off<br />
+   - Groundedness (Preview): Off  </p>
+<p>7️⃣ <strong>Next</strong> をクリックします。<br />
+8️⃣ 「Apply filter to deployments」で <strong>gpt-4.1</strong> デプロイメントを選択します。<br />
+9️⃣ <strong>Replace</strong> を選択して新しいフィルターを適用します。<br />
+🔟 <strong>Create filter</strong> をクリックして完了します。  </p>
 <div class="admonition warning">
-<p class="admonition-title">この設定が必要な理由</p>
-<p>保険請求には「injury」「accident」「collision」「bodily harm」などの正当な用語が含まれますが、デフォルトのコンテンツ フィルターではこれらがブロックされる可能性があります。閾値を <strong>Low</strong> に設定することで、極端なコンテンツのみをブロックし、通常の保険用語を許可します。</p>
+<p class="admonition-title">必要な理由</p>
+<p>保険請求には "injury"、"accident"、"collision"、"bodily harm" などの用語が含まれますが、これらはデフォルトのコンテンツ フィルターでブロックされる場合があります。しきい値を <strong>Low</strong> に設定することで、通常の保険用語を許可しつつ、過度なコンテンツのみをブロックできます。</p>
 </div>
 <div class="admonition tip">
-<p class="admonition-title">運用環境へのデプロイ</p>
-<p>運用環境では、組織のコンテンツ セーフティ ポリシーを確認し、フィルター設定を適切に調整してください。ここでの設定は開発とテストを目的としています。</p>
+<p class="admonition-title">本番環境でのデプロイ</p>
+<p>本番環境では、組織のコンテンツ セーフティ ポリシーを確認し、フィルター設定を適切に調整してください。ここでの設定は開発およびテスト環境向けです。</p>
 </div>
 <p><cc-end-step lab="baf0" exercise="3" step="3" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">おめでとうございます！</span></p>
-<p>Lab BAF0 - 事前準備 が完了しました！</p>
-<p>次は Lab BAF1 - 最初のエージェントの構築と実行 に進みましょう。 <strong>Next</strong> を選択してください。</p>
+<p>Lab BAF0 - Prerequisites が完了しました！</p>
+<p>次は Lab BAF1 - Build and Run Your First Agent に進みます。<strong>Next</strong> を選択してください。</p>
 <p><cc-next url="../01-build-and-run" /></p>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/00-prerequisites--ja" /></p>
 

@@ -29,7 +29,7 @@
     
     
       
-        <title>ラボ MCS9 - Connected エージェント (プレビュー) - Copilot Developer Camp</title>
+        <title>ラボ MCS9 - Connected Agents (プレビュー) - Copilot Developer Camp</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mcs9-connected" class="md-skip">
+        <a href="#mcs9-connected-agents" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ラボ MCS9 - Connected エージェント (プレビュー)
+              ラボ MCS9 - Connected Agents (プレビュー)
             
           </span>
         </div>
@@ -822,7 +822,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS8 - RAG のための Azure AI Search 統合
+    ラボ MCS8 - Azure AI Search を使用した RAG 連携
   
 
     
@@ -859,7 +859,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS9 - Connected エージェント (プレビュー)
+    ラボ MCS9 - Connected Agents (プレビュー)
   
 
     
@@ -877,7 +877,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS9 - Connected エージェント (プレビュー)
+    ラボ MCS9 - Connected Agents (プレビュー)
   
 
     
@@ -925,10 +925,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-3-interview-scheduler-child-agent" class="md-nav__link">
+  <a href="#exercise-3-interview-scheduler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 3: Interview Scheduler Child Agent の作成
+        Exercise 3: Interview Scheduler 子エージェントの作成
       
     </span>
   </a>
@@ -936,10 +936,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-4-connected" class="md-nav__link">
+  <a href="#exercise-4-connected-agents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 4: Connected エージェント ワークフローの実装
+        Exercise 4: Connected Agents ワークフローの実装
       
     </span>
   </a>
@@ -1635,7 +1635,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 08 : Declarative エージェントを MCP サーバーに接続する
+    ラボ 08 : 宣言型エージェントを MCP サーバーに接続する
   
 
     
@@ -1663,7 +1663,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 09: Connected Agent - Zava のマルチ エージェント請求オーケストレーション
+    ラボ 09: Connected Agents - Zava のマルチエージェント請求オーケストレーション
   
 
     
@@ -2066,7 +2066,7 @@
   <span class="md-ellipsis">
     
   
-    Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agent Framework
+    Microsoft 365 Agents SDK と Agent Framework を使用した Zava Insurance エージェントの構築
   
 
     
@@ -2094,7 +2094,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF1 - 最初のエージェントの構築と実行
+    ラボ BAF1 - はじめてのエージェントの構築と実行
   
 
     
@@ -2150,7 +2150,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF3 - Mistral AI を使用したビジョン解析の追加
+    ラボ BAF3 - Mistral AI を使用したビジョン分析の追加
   
 
     
@@ -2178,7 +2178,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF4 - ポリシー検索の追加
+    ラボ BAF4 - Policy 検索の追加
   
 
     
@@ -2206,7 +2206,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF5 - 通信機能の追加
+    ラボ BAF5 - コミュニケーション機能の追加
   
 
     
@@ -2234,7 +2234,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF6 - Microsoft 365 Work IQ API 統合を追加する
+    ラボ BAF6 - Microsoft 365 Work IQ API 統合の追加
   
 
     
@@ -2385,7 +2385,7 @@
   <span class="md-ellipsis">
     
   
-    エージェント指示ラボ - エージェント指示の改善 (初心者向け)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
   
 
     
@@ -2450,31 +2450,32 @@
 
 
 
-<h1 id="mcs9-connected">ラボ MCS9 - Connected エージェント (プレビュー)</h1>
-<p>このラボでは、Microsoft Copilot Studio で他のエージェントと通信できるエージェントの作成方法を理解します。前のラボで作成した HR Candidate Management エージェントからデータを受け取り、自動的に候補者データを処理し面接招待を送信する Interview Scheduler という特化型エージェントを構築します。モジュール化されたエージェントが連携して包括的なビジネス ソリューションを実現する方法を体験できます。</p>
+<h1 id="mcs9-connected-agents">ラボ MCS9 - Connected Agents (プレビュー)</h1>
+<p>このラボでは、Microsoft Copilot Studio でエージェント同士が通信できる方法を学習します。前のラボで作成した HR Candidate Management エージェントのデータを利用する、面接日程調整専用の Interview Scheduler エージェントを構築します。Interview Scheduler エージェントは候補者データを自動処理し、選択した候補者に基づいて面接の会議招待を送信します。これにより、モジュール化されたエージェントが連携して包括的なビジネス ソリューションを作成する方法を体験できます。</p>
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/JFzxTCIoihY" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>この動画でラボの概要を短時間で確認できます。</div>
+          <div>このビデオでラボの概要を短時間で確認しましょう。</div>
     </div>
     <div style="flex: 1; min-width: 0;">
    <div class="floatwide">
    <div class="cc-lab-toc mcs-path">
      <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
      <div>
-       <p>Microsoft Copilot Studio で エージェント を構築したい場合は、次の ラボ を実施してください</p>
+       <p>Microsoft Copilot Studio でエージェントを構築したい場合は、これらのラボを実施してください</p>
        <ul>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/01-first-agent/">MCS1 - 最初の エージェント</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/02-topics/">MCS2 - トピックの定義</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/03-actions/">MCS3 - ツールの定義</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot の拡張</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの使用</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの使用</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律型 エージェント の作成</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/08-rag/">MCS8 - RAG のための Azure AI Search の統合</a></li>
-         <li><a href="/copilot-camp/ja/pages/make/copilot-studio/09-connected-agents/">MCS9 - 接続された エージェント (プレビュー)</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/00-prerequisites/">MCS0 - セットアップ</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - 初めてのエージェント</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - トピックの定義</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - ツールの定義</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Microsoft 365 Copilot の拡張</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - カスタム コネクタの利用</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - MCP サーバーの利用</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/07-autonomous/">MCS7 - 自律エージェントの作成</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/08-rag/">MCS8 - RAG 向け Azure AI Search の統合</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/09-connected-agents/">MCS9 - 連携エージェント (プレビュー)</a></li>
+         <li><a href="/copilot-camp/pages/make/copilot-studio/10-mcp-oauth/">MCS10 - OAuth 2.0 を使用した MCP の利用</a></li>
        </ul>
      </div>
    </div>
@@ -2497,7 +2498,6 @@
    }
    })();
    </script>
-
    <!-- 
      <div class="cc-mcs-lab-steps">
        <h4>Table of Contents</h4>
@@ -2509,86 +2509,86 @@
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>このラボは前のラボ、特に <a href="../06-mcp" target="_blank">Lab MCS6 - Consuming an MCP server</a> を前提にしています。動作する HR MCP サーバーと、前のラボで構成した「HR Agent with MCP」が必要です。</p>
+<p>このラボは前のラボ、特に <a href="../06-mcp" target="_blank">ラボ MCS6 - Consuming an MCP server</a> を前提としています。前のラボで稼働中の HR MCP サーバーと、「HR Agent with MCP」エージェントが構成済みである必要があります。</p>
 </div>
-<p>このラボで学ぶ内容:</p>
+<p>このラボで学習する内容:</p>
 <ul>
-<li>Microsoft Copilot Studio で子エージェントを作成する方法</li>
+<li>Microsoft Copilot Studio での子エージェントの作成方法</li>
 <li>エージェント間通信の構成方法</li>
-<li>複雑なワークフロー向けにモジュール化されたエージェント アーキテクチャを設計する方法</li>
-<li>特化型エージェント間のハンドオフ メカニズムを実装する方法</li>
-<li>エンドツーエンドのビジネス プロセスを複数エージェントで調整する方法</li>
+<li>複雑なワークフロー向けのモジュラー型エージェント アーキテクチャの設計方法</li>
+<li>専門エージェント間のハンドオフ メカニズムの実装方法</li>
+<li>エンドツーエンドのビジネス プロセスで複数のエージェントを調整する方法</li>
 </ul>
 <h2 id="exercise-1">Exercise 1: エージェント間アーキテクチャの理解</h2>
-<p>この演習では、エージェント間通信の概念を理解し、面接スケジュール ソリューションのアーキテクチャを設計します。</p>
+<p>この演習では、エージェント間通信の概念を理解し、面接日程調整ソリューションのアーキテクチャを設計します。</p>
 <h3 id="step-1">Step 1: エージェント通信パターンの確認</h3>
-<p>Microsoft Copilot Studio では、エージェント連携の主要なパターンが 2 つあります。</p>
+<p>Microsoft Copilot Studio では、エージェント連携のために主に 2 つのパターンをサポートしています:</p>
 <ol>
-<li><strong>Child Agents</strong>: 親エージェント内に存在する軽量エージェント。親ソリューションの一部として管理</li>
-<li><strong>Connected Agents</strong>: 独立したフル機能エージェント。個別に発行・保守が可能</li>
+<li><strong>子エージェント</strong>: 親ソリューションの一部として管理される軽量エージェント  </li>
+<li><strong>Connected Agents</strong>: 別個に公開・管理できる独立したエージェント</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Microsoft Copilot Studio の Connected Agents については、記事 <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-add-other-agents" target="_blank">Add other agents overview</a> を参照してください。</p>
+<p>Microsoft Copilot Studio の Connected Agents については、<a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/authoring-add-other-agents" target="_blank">Add other agents overview</a> を参照してください。</p>
 </div>
-<p>本ラボでは次のような Child Agent アーキテクチャを作成します。</p>
+<p>本ラボでは、次のような子エージェント アーキテクチャを作成します:</p>
 <ul>
-<li><strong>Main Agent</strong>: Interview Coordinator (全体プロセスをオーケストレーション)</li>
-<li><strong>Child Agent</strong>: Interview Scheduler (会議作成とカレンダー管理を担当)</li>
-<li><strong>Connected Agent</strong>: HR Candidate Management (前のラボで作成した既存エージェント)</li>
+<li><strong>メイン エージェント</strong>: Interview Coordinator (全体のプロセスをオーケストレーション)</li>
+<li><strong>子エージェント</strong>: Interview Scheduler (会議作成とカレンダー管理を担当)</li>
+<li><strong>Connected Agent</strong>: HR Candidate Management (前回のラボで作成した既存エージェント)</li>
 </ul>
-<p>この設計により次が可能になります。</p>
+<p>この設計により、以下が実現できます:</p>
 <ul>
-<li>関心事の明確な分離</li>
+<li>役割の明確な分離</li>
 <li>HR Candidate Management 機能の再利用</li>
-<li>ワークフロー実行の調整</li>
-<li>保守しやすく拡張性の高いアーキテクチャ</li>
+<li>調整されたワークフロー実行</li>
+<li>保守性と拡張性の高いソリューション アーキテクチャ</li>
 </ul>
 <p><cc-end-step lab="mcs9" exercise="1" step="1" /></p>
 <h3 id="step-2">Step 2: 面接プロセス ワークフローの設計</h3>
-<p>実装する Connected エージェントのワークフローは次の順序で進みます。</p>
+<p>今回実装する Connected Agents ワークフローは次のシーケンスで進行します:</p>
 <ol>
-<li><strong>ユーザー リクエスト</strong>: ユーザーが特定候補者の面接を依頼</li>
-<li><strong>Main Agent 処理</strong>: Interview Coordinator がリクエストを検証し候補者を特定</li>
-<li><strong>エージェント ハンドオフ</strong>: Main Agent が HR Candidate Management へ委任し候補者情報を取得</li>
-<li><strong>データ処理</strong>: 候補者情報を抽出・検証</li>
-<li><strong>Child Agent 呼び出し</strong>: Interview Scheduler Child Agent に候補者データを渡してトリガー</li>
-<li><strong>会議作成</strong>: Child Agent がカレンダー会議を作成し招待を送信</li>
-<li><strong>確認</strong>: ユーザーが面接設定完了の確認を受け取る</li>
+<li><strong>ユーザー リクエスト</strong>: ユーザーが特定の候補者との面接を依頼  </li>
+<li><strong>メイン エージェント処理</strong>: Interview Coordinator がリクエストを検証し、候補者を特定  </li>
+<li><strong>エージェント ハンドオフ</strong>: メイン エージェントが HR Candidate Management に委任して候補者情報を取得  </li>
+<li><strong>データ処理</strong>: 候補者情報を抽出して検証  </li>
+<li><strong>子エージェント呼び出し</strong>: Interview Scheduler 子エージェントを候補者データでトリガー  </li>
+<li><strong>会議作成</strong>: 子エージェントがカレンダー会議を作成し、招待を送信  </li>
+<li><strong>確認</strong>: ユーザーが面接予定の確認を受信  </li>
 </ol>
-<p>このワークフローは以下の Connected エージェント パターンを示します。</p>
+<p>このワークフローは次の Connected Agents パターンを示します:</p>
 <ul>
-<li><strong>Orchestration</strong>: Main Agent が複数サブプロセスを調整</li>
-<li><strong>Delegation</strong>: 特定タスクを特化型エージェントへ委任</li>
-<li><strong>Data Flow</strong>: エージェント間で情報がシームレスに流れる</li>
-<li><strong>Event-Driven Processing</strong>: エージェントが特定トリガーや条件に応答</li>
+<li><strong>オーケストレーション</strong>: メイン エージェントが複数のサブプロセスを統括  </li>
+<li><strong>委任</strong>: 特定タスクを専門エージェントへハンドオフ  </li>
+<li><strong>データ フロー</strong>: エージェント間で情報がシームレスに流通  </li>
+<li><strong>イベント駆動処理</strong>: エージェントが特定のトリガーと条件に反応  </li>
 </ul>
 <p><cc-end-step lab="mcs9" exercise="1" step="2" /></p>
 <h3 id="step-3">Step 3: 前提条件の確認</h3>
-<p>次の前提条件が満たされていることを確認してください。</p>
+<p>次の前提条件が満たされていることを確認してください:</p>
 <ul>
-<li><strong>Lab MCS6</strong>: HR MCP サーバーが dev tunnel 経由で稼働・アクセス可能</li>
-<li><strong>Microsoft Graph アクセス</strong>: カレンダー イベント作成とメール送信の権限</li>
-<li><strong>サンプル候補者データ</strong>: 前ラボで HR システムに 2〜3 名以上の候補者</li>
+<li><strong>ラボ MCS6</strong>: HR MCP サーバーが dev tunnel 経由で稼働中  </li>
+<li><strong>Microsoft Graph アクセス</strong>: カレンダー イベント作成およびメール送信の権限  </li>
+<li><strong>サンプル候補者データ</strong>: 前のラボで少なくとも 2〜3 名の候補者が HR システムに登録済み  </li>
 </ul>
-<p>HR MCP サーバーが稼働していない場合は、MCP サーバー プロジェクトのルート フォルダーで次のコマンドを実行してください。</p>
+<p>HR MCP サーバーが稼働していることを確認し、停止している場合は MCP サーバー プロジェクトのルート フォルダーで次のコマンドを実行してください:</p>
 <pre><code class="language-console">dotnet run
 </code></pre>
-<p>dev tunnel がアクティブであることも確認します。</p>
+<p>次に dev tunnel が有効になっていることを確認します:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>下記の <code>hr-mcp</code> 名は <a href="../06-mcp" target="_blank">Lab MCS6 - Consuming an MCP server</a> で使用した一意の名前に置き換えてください。</p>
+<p><code>hr-mcp</code> は例です。必ず <a href="../06-mcp" target="_blank">ラボ MCS6 - Consuming an MCP server</a> で使用した一意の名前に置き換えてください。</p>
 </div>
 <pre><code class="language-console">devtunnel host hr-mcp
 </code></pre>
-<p>また、Interview Scheduler が扱う候補者が存在するか、HR MCP サーバーを直接テストして確認してください。</p>
+<p>また、Interview Scheduler が使用する候補者データが存在するか、HR MCP サーバーを直接テストして確認してください。</p>
 <p><cc-end-step lab="mcs9" exercise="1" step="3" /></p>
 <h2 id="exercise-2-interview-coordinator">Exercise 2: メイン Interview Coordinator エージェントの作成</h2>
-<p>この演習では、面接スケジュール プロセスをオーケストレーションし他エージェントを調整するメイン エージェントを作成します。</p>
+<p>この演習では、面接日程調整プロセスをオーケストレーションし、他のエージェントと連携するメイン エージェントを作成します。</p>
 <h3 id="step-1-interview-coordinator">Step 1: Interview Coordinator エージェントの作成</h3>
-<p>ブラウザーで <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> を開き、職場アカウントでサインインします。</p>
-<p><code>Copilot Dev Camp</code> 環境を選択し、<strong>Create</strong> → <strong>New Agent</strong> を選択します。</p>
-<p><strong>Configure</strong> を選択し、次の設定でメイン コーディネーター エージェントを定義します。</p>
+<p>ブラウザーで <a href="https://copilotstudio.microsoft.com" target="_blank">https://copilotstudio.microsoft.com</a> にアクセスし、職場アカウントでサインインします。</p>
+<p><code>Copilot Dev Camp</code> 環境を選択し、<strong>Create</strong> → <strong>New Agent</strong> を選択して新しいエージェントを作成します。</p>
+<p><strong>Configure</strong> を選択し、以下の設定でメイン コーディネーター エージェントを定義します:</p>
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
@@ -2626,63 +2626,63 @@ Always ensure proper validation of candidate data and provide clear communicatio
 throughout the process. Handle errors gracefully and provide informative feedback 
 when coordination between agents fails.
 </code></pre>
-<p><strong>Knowledge</strong> セクションでは、面接スケジュール ガイドラインや自社 HR ポリシーのドキュメントを任意で追加できます。本ラボでは組み込み機能と他エージェントの連携に依存します。</p>
+<p><strong>Knowledge</strong> セクションでは、面接日程調整ガイドラインや会社固有の HR ポリシー文書を任意で追加できます。本ラボでは、エージェントの組み込み機能と他エージェントとの統合に依存します。</p>
 <p><img alt="The Interview Coordinator agent configuration showing the &quot;GPT-5 Chat&quot; model." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-01.png" /></p>
-<p>編集したセクションで <strong>Save</strong> を選択し、コーディネーター エージェントを更新します。</p>
+<p>編集した各セクションで <strong>Save</strong> を選択して、コーディネーター エージェントの設定を更新します。</p>
 <p><cc-end-step lab="mcs9" exercise="2" step="1" /></p>
 <h3 id="step-2_1">Step 2: エージェント設定の構成</h3>
-<p>エージェント作成後、オーケストレーション機能と Knowledge 設定を構成します。右上の <strong>Settings</strong> を選択し、エージェントを構成します。</p>
-<p><strong>Orchestration</strong> セクションで <strong>Use generative AI orchestration for your agent's responses?</strong> を <code>Yes - Responses will be dynamic, using available tools and knowledge as appropriate</code> に設定します。これにより、エージェントが Child Agent や Connected Agent を賢く調整できます。</p>
-<p><strong>Knowledge</strong> セクションは以下の設定にします。</p>
+<p>エージェントを作成したら、オーケストレーション機能とナレッジ設定を構成します。右上の <strong>Settings</strong> コマンドを選択し、エージェントを設定します。</p>
+<p><strong>Orchestration</strong> セクションで <strong>Use generative AI orchestration for your agent's responses?</strong> を <code>Yes - Responses will be dynamic, using available tools and knowledge as appropriate</code> に設定します。これにより、エージェントは子エージェントや Connected Agents の間でインテリジェントに調整できます。</p>
+<p><strong>Knowledge</strong> セクションは次の設定にします:</p>
 <ul>
-<li><strong>Use general knowledge</strong>: off</li>
+<li><strong>Use general knowledge</strong>: off  </li>
 <li><strong>Use information from the web</strong>: off</li>
 </ul>
 <p><img alt="The &quot;Generative AI&quot; settings for the agent, with general knowledge and information from the web turned off." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-02.png" /></p>
-<p><strong>Save</strong> を選択して設定を確定します。</p>
+<p><strong>Save</strong> を選択し、設定を確定します。</p>
 <p><cc-end-step lab="mcs9" exercise="2" step="2" /></p>
 <h3 id="step-3-hr-candidate-management">Step 3: HR Candidate Management エージェントへの接続</h3>
-<p>Interview Coordinator が候補者情報を取得できるよう、既存 HR エージェントと接続します。1️⃣ <strong>Agents</strong> セクションに移動し 2️⃣ <strong>Add</strong> を選択します。</p>
+<p>Interview Coordinator が候補者情報を取得するために既存の HR エージェントと通信できるようにします。1️⃣ <strong>Agents</strong> セクションに移動し、2️⃣ <strong>Add</strong> を選択します。</p>
 <p><img alt="The tab to connect an agent to other agents. There is an &quot;Add&quot; command to add an agent to the current one." src="../../../../../assets/images/make/copilot-studio-09/connect-agent-01.png" /></p>
-<p>新しいダイアログが表示され、次の選択肢が提示されます。</p>
+<p>ダイアログが表示され、次の選択肢が提示されます:</p>
 <ul>
-<li><strong>New child agent</strong>: 新しい Child Agent を作成</li>
-<li><strong>Select an agent in your environment</strong>: 既存の Copilot Studio エージェントを選択</li>
-<li><strong>Connect to an external agent</strong>: 外部エージェントへ接続 (プレビュー)<ul>
-<li><strong>Microsoft Fabric</strong>: Fabric Data Agent へ接続</li>
-<li><strong>Microsoft Foundry</strong>: Microsoft Foundry のエージェントへ接続</li>
-<li><strong>Microsoft 365 Agents SDK</strong>: Microsoft 365 Agents SDK で構築したエージェントへ接続</li>
-<li><strong>Agent2Agent</strong>: A2A プロトコルでエージェントへ接続</li>
+<li><strong>New child agent</strong>: 新しい子エージェントを作成  </li>
+<li><strong>Select an agent in your environment</strong>: 既存の Copilot Studio エージェントを選択  </li>
+<li><strong>Connect to an external agent</strong>: 以下の外部エージェントへ接続 (プレビュー)  <ul>
+<li><strong>Microsoft Fabric</strong>: Fabric Data Agent への接続  </li>
+<li><strong>Microsoft Foundry</strong>: Microsoft Foundry 内のエージェントへの接続  </li>
+<li><strong>Microsoft 365 Agents SDK</strong>: Microsoft 365 Agents SDK で構築したエージェントへの接続  </li>
+<li><strong>Agent2Agent</strong>: A2A プロトコルを使用するエージェントへの接続  </li>
 </ul>
 </li>
 </ul>
 <p><img alt="The dialog to select the kind of agent to connect. The available options are &quot;New child agent&quot;, already existing Copilot Studio agents, and &quot;Connect to an external agent&quot;." src="../../../../../assets/images/make/copilot-studio-09/connect-agent-02.png" /></p>
-<p>利用可能な Copilot Studio エージェント一覧から、前のラボで作成した <strong>HR Candidate Management</strong> (同様の名前) エージェントを選択します。表示されない場合は、公開済みで他エージェントからの接続を許可しているか確認してください。<strong>HR Candidate Management</strong> エージェントの <strong>Settings</strong> → <strong>Connected agents</strong> で <strong>Let other agents connect to and use this one</strong> が有効になっていることを確認します。</p>
+<p>利用可能な Copilot Studio エージェントの一覧から、前のラボで作成した <strong>HR Candidate Management</strong> (または類似名称) エージェントを選択します。表示されない場合は、エージェントが発行済みで他エージェントからの接続を許可するよう構成されているか確認してください。確認するには <strong>HR Candidate Management</strong> エージェントを編集し、<strong>Settings</strong> で <strong>Let other agents connect to and use this one</strong> オプションが <strong>Connected agents</strong> セクションで有効になっていることを確認します。</p>
 <p><img alt="The setting to allow connections from other agents highlighted in the agent's settings." src="../../../../../assets/images/make/copilot-studio-09/connect-agent-settings-01.png" /></p>
-<p><strong>HR Candidate Management</strong> エージェントを選択したら、接続を構成します。</p>
+<p><strong>HR Candidate Management</strong> エージェントを選択したら接続を構成します:</p>
 <ul>
-<li><strong>Description</strong>: 次のように状況に即した説明を入力</li>
+<li><strong>Description</strong>: 文脈に合わせてわかりやすく更新</li>
 </ul>
 <pre><code class="language-text">HR system integration for retrieving and managing candidate information during 
 interview scheduling processes. Provides candidate lookup, data validation, and 
 comprehensive candidate details.
 </code></pre>
-<p>説明は、メイン エージェントがいつ Connected Agent を呼び出すか判断するために使用されます。具体的かつ明確に記述してください。</p>
+<p>説明は、メイン エージェントが接続エージェントを呼び出すタイミングを理解するために使用します。具体的かつ明確に記述してください。</p>
 <ul>
-<li><strong>Pass conversation history</strong>: エージェント ハンドオフ時にコンテキストを保持するため有効のままに</li>
+<li><strong>Pass conversation history</strong>: 有効のままにして、ハンドオフ時にコンテキストを維持</li>
 </ul>
 <p><img alt="The agent connection configuration showing the HR Candidate Management agent being connected to the Interview Coordinator. There is a textbox to specificy a &quot;Description&quot; for the connected agent to provide a more specific context." src="../../../../../assets/images/make/copilot-studio-09/connect-agent-04.png" /></p>
-<p><strong>Add and configure</strong> を選択しエージェント間の接続を確立します。接続後、<strong>Agents</strong> リストに表示され、設定ページが開きます。</p>
+<p><strong>Add and configure</strong> を選択して、エージェント間の接続を確立します。接続エージェントが定義・構成されると、現在のエージェントの <strong>Agents</strong> リストに表示され、接続エージェントの構成を管理するページが表示されます。</p>
 <p><img alt="The agent connection configuration showing the HR Candidate Management agent being connected to the Interview Coordinator. There are fields to configure &quot;Name&quot;, &quot;Description&quot;, whether to pass the conversation history to the connected agent or not, input fields, and completion settings." src="../../../../../assets/images/make/copilot-studio-09/connect-agent-result-01.png" /></p>
 <p><cc-end-step lab="mcs9" exercise="2" step="3" /></p>
-<h2 id="exercise-3-interview-scheduler-child-agent">Exercise 3: Interview Scheduler Child Agent の作成</h2>
-<p>この演習では、面接スケジュールの会議作成とカレンダー管理を担当する特化型 Child Agent を作成します。</p>
-<h3 id="step-1-interview-scheduler-child-agent">Step 1: Interview Scheduler Child Agent の作成</h3>
+<h2 id="exercise-3-interview-scheduler">Exercise 3: Interview Scheduler 子エージェントの作成</h2>
+<p>この演習では、会議作成とカレンダー管理を担当する専用子エージェントを作成します。</p>
+<h3 id="step-1-interview-scheduler">Step 1: Interview Scheduler 子エージェントの作成</h3>
 <p>Interview Coordinator エージェントで 1️⃣ <strong>Agents</strong> セクションに移動し、2️⃣ <strong>Add an agent</strong> を選択します。</p>
 <p><img alt="The list of agents connected to the main agent. There is the &quot;HR Candidate Management&quot; one enabled, with relationship status of &quot;Connected&quot;, and with trigger value &quot;By agent&quot;. There is also the &quot;Add an agent&quot; command highlighted to add a new agent." src="../../../../../assets/images/make/copilot-studio-09/connect-agent-05.png" /></p>
-<p><strong>New child agent</strong> を選択します。</p>
+<p><strong>New child agent</strong> を選択して新しい子エージェントを作成します。</p>
 <p><img alt="The dialog to select the kind of agent to connect. The available options are &quot;New child agent&quot;, already existing Copilot Studio agents, and &quot;Connect to an external agent&quot;." src="../../../../../assets/images/make/copilot-studio-09/child-agent-01.png" /></p>
-<p>次の設定で Child Agent を構成します。</p>
+<p>以下の設定で子エージェントを構成します:</p>
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
@@ -2690,7 +2690,7 @@ comprehensive candidate details.
 </code></pre>
 <ul>
 <li>
-<p><strong>When will this be used?</strong>: <strong>The agent chooses</strong> を選択し、メイン エージェントからの調整要求に応答できるようにします。</p>
+<p><strong>When will this be used?</strong>: <strong>The agent chooses</strong> を選択し、メイン エージェントからの調整要求に応答できるようにします</p>
 </li>
 <li>
 <p><strong>Description</strong>:</p>
@@ -2722,54 +2722,54 @@ Always confirm successful meeting creation with meeting details including date, 
 attendees, and meeting link if applicable.
 </code></pre>
 <p><img alt="The child agent creation page showing the Interview Scheduler configuration with message-based triggering." src="../../../../../assets/images/make/copilot-studio-09/child-agent-02.png" /></p>
-<p>画面右上の <strong>Save</strong> を選択して Child Agent を保存します。作成成功の緑色メッセージが表示されます。</p>
+<p>画面右上の <strong>Save</strong> コマンドを選択して新しい子エージェントを保存します。子エージェントが作成されたことを示す緑色の確認メッセージが表示されます。</p>
 <p><cc-end-step lab="mcs9" exercise="3" step="1" /></p>
-<h3 id="step-2_2">Step 2: 会議管理統合の構成</h3>
-<p>Interview Scheduler がカレンダー会議を作成できるよう、会議管理用 MCP サーバー統合を追加します。</p>
+<h3 id="step-2-meetings-management">Step 2: Meetings Management 連携の構成</h3>
+<p>Interview Scheduler がカレンダー会議を作成できるように、会議管理用 MCP サーバーとの統合を追加します。</p>
 <p><img alt="The dialog to search for the &quot;Meeting Management MCP Server&quot; in the list of available MCP servers. There is a search filter for &quot;Calendar&quot; applied in the dialog." src="../../../../../assets/images/make/copilot-studio-09/child-agent-03.png" /></p>
-<p><strong>Interview Scheduler</strong> Child Agent の <strong>Tools</strong> セクションで <strong>Add</strong> を選択します。</p>
+<p><strong>Interview Scheduler</strong> 子エージェントの <strong>Tools</strong> セクションで <strong>Add</strong> を選択します。</p>
 <ol>
-<li>1️⃣ <strong>Model Context Protocol</strong> を選択し MCP サーバーを絞り込み</li>
-<li>2️⃣ 検索ボックスに <strong>Calendar</strong> と入力し 3️⃣ 検索を実行</li>
-<li>4️⃣ <strong>Meeting Management MCP Server</strong> を選択</li>
-<li>Meeting Management MCP Server に接続</li>
-<li>構成後、<strong>Add and configure</strong> を選択してツール設定を完了</li>
+<li>1️⃣ <strong>Model Context Protocol</strong> を選択して利用可能な MCP サーバーをフィルター  </li>
+<li>検索ボックスで 2️⃣ <strong>Calendar</strong> と入力し、3️⃣ 検索を実行  </li>
+<li>4️⃣ <strong>Meeting Management MCP Server</strong> を選択  </li>
+<li>Meeting Management MCP Server に接続  </li>
+<li>接続が構成できたら <strong>Add and configure</strong> を選択してツールの設定を完了  </li>
 </ol>
 <p><img alt="The dialog to connect to the Meeting Management MCP Server. There is a command &quot;Add and configure&quot; to add the MCP server to the child agent and a command to &quot;Cancel&quot; the current operation." src="../../../../../assets/images/make/copilot-studio-09/child-agent-04.png" /></p>
-<p>接続が確立され MCP サーバーが追加されたら、ツールの設定パネルで <strong>Name</strong> を次の値に更新します。</p>
+<p>接続が確立され MCP サーバーが子エージェントに追加されたら、新しいツールの構成パネルが表示されます。<strong>Name</strong> を次の値に更新してください:</p>
 <pre><code class="language-text">Manage meetings
 </code></pre>
-<p>この統合により Child Agent は以下を実行できます。</p>
+<p>この連携により、子エージェントは次の操作を実行できます:</p>
 <ul>
-<li>カレンダー イベントの作成</li>
-<li>会議招待の送信</li>
-<li>会議詳細と出席者の管理</li>
+<li>カレンダー イベントの作成  </li>
+<li>会議招待の送信  </li>
+<li>会議詳細と出席者の管理  </li>
 </ul>
 <p><cc-end-step lab="mcs9" exercise="3" step="2" /></p>
-<h3 id="step-3-child-agent">Step 3: Child Agent 構成の最終化</h3>
-<p>ツール名横の左矢印を選択し Child <strong>Interview Scheduler</strong> エージェントの <strong>Overview</strong> タブに戻り、構成を完了します。</p>
+<h3 id="step-3_1">Step 3: 子エージェント設定の最終調整</h3>
+<p>左上のツール名の横にある矢印を選択して子エージェント <strong>Interview Scheduler</strong> の <strong>Overview</strong> タブに戻り、設定を完了します。</p>
 <p><img alt="The child agent additional configuration showing priority settings and activation conditions." src="../../../../../assets/images/make/copilot-studio-09/child-agent-06.png" /></p>
 <ol>
-<li><strong>Details</strong> セクションを開き <strong>Advanced</strong> パネルを展開、<strong>Priority</strong> を <strong>1</strong> に設定して面接スケジュール タスクで優先度を高くします。</li>
-<li><strong>Condition</strong>: 任意で条件を追加し、面接関連キーワードを含むメッセージのみに発動させるなど制限可能</li>
-<li><strong>Enabled</strong> トグルがオンであることを確認</li>
-<li><strong>Save</strong> を選択して Child Agent を作成</li>
+<li><strong>Details</strong> セクションを開き、<strong>Advanced</strong> パネルを展開して <strong>Priority</strong> を <strong>1</strong> に設定し、面接日程調整タスクで高い優先度を与えます  </li>
+<li><strong>Condition</strong>: 必要に応じて、面接関連のキーワードを含むメッセージのみに反応するなど、発動条件を追加  </li>
+<li><strong>Enabled</strong> トグルがオンになっていることを確認  </li>
+<li><strong>Save</strong> を選択して子エージェントを作成  </li>
 </ol>
-<p>Interview Scheduler Child Agent の準備が整い、メイン Interview Coordinator エージェントから呼び出された際に会議作成タスクを処理できます。</p>
+<p>これで Interview Scheduler 子エージェントの設定が完了し、メインの Interview Coordinator エージェントから呼び出された際に会議作成タスクを処理できるようになりました。</p>
 <p><cc-end-step lab="mcs9" exercise="3" step="3" /></p>
-<h2 id="exercise-4-connected">Exercise 4: Connected エージェント ワークフローの実装</h2>
-<p>この演習では、面接スケジュールの Connected エージェント ワークフローを実装・テストします。</p>
-<h3 id="step-1-instructions">Step 1: Instructions でのエージェント参照設定</h3>
-<p>適切なエージェント調整を行うため、メイン エージェントの Instructions で Child Agent と Connected Agent を参照します。</p>
-<p>Interview Coordinator エージェントの <strong>Overview</strong> セクションに移動し、<strong>Instructions</strong> 欄で <strong>Edit</strong> を選択します。</p>
+<h2 id="exercise-4-connected-agents">Exercise 4: Connected Agents ワークフローの実装</h2>
+<p>この演習では、面接日程調整のための完全な Connected Agents ワークフローを実装し、テストします。</p>
+<h3 id="step-1-instructions">Step 1: Instructions でのエージェント参照の構成</h3>
+<p>正しくエージェントを調整するため、メイン エージェントの instructions で子エージェントおよび Connected エージェントを参照する必要があります。</p>
+<p>Interview Coordinator エージェントの <strong>Overview</strong> セクションに移動し、<strong>Instructions</strong> フィールドで <strong>Edit</strong> コマンドを選択して更新します:</p>
 <ol>
-<li>参照を挿入したい位置にカーソルを置き</li>
-<li><code>/</code> を入力して参照メニューを開く</li>
-<li><strong>Interview Scheduler</strong> Child Agent を選択</li>
-<li><strong>HR Candidate Management</strong> Connected Agent も参照</li>
+<li>エージェントを参照したい位置にカーソルを置きます  </li>
+<li><code>/</code> を入力して参照メニューを開きます  </li>
+<li><strong>Interview Scheduler</strong> 子エージェントをリストから選択  </li>
+<li><strong>HR Candidate Management</strong> Connected エージェントも参照  </li>
 </ol>
 <p><img alt="The Instructions field browsing for both connected and child agents when pressing &quot;/&quot; in the text of the instructions." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-03.png" /></p>
-<p>更新後の Instructions は次のようになります。</p>
+<p>更新後の instructions は次のようになります:</p>
 <pre><code class="language-text">You are the Interview Coordinator, responsible for managing end-to-end interview 
 scheduling processes. Your role includes:
 
@@ -2789,41 +2789,43 @@ throughout the process. Handle errors gracefully and provide informative feedbac
 when coordination between agents fails.
 </code></pre>
 <p><img alt="The Instructions field showing agent references using the slash notation for both connected and child agents." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-04.png" /></p>
-<p><strong>Save</strong> を選択してエージェント参照を含む Instructions を更新します。</p>
+<p><strong>Save</strong> を選択してエージェント参照付きの instructions を更新します。</p>
 <p><cc-end-step lab="mcs9" exercise="4" step="1" /></p>
 <h2 id="exercise-5">Exercise 5: エージェントのテスト</h2>
 <p>この演習では、実際に面接を予定に登録してエージェントをテストします。</p>
 <h3 id="step-1_1">Step 1: エージェント間通信のテスト</h3>
-<p>完全なエージェント間ワークフローをテストし、すべてのコンポーネントが正しく連携することを確認します。</p>
+<p>すべてのコンポーネント間で正しく調整が行われるか、完全なエージェント間ワークフローをテストします。</p>
 <h4 id="interview-coordinator">Interview Coordinator のテスト</h4>
-<p>テスト パネルで次のように入力します。</p>
+<p>テスト パネルで次のように入力します:</p>
 <pre><code class="language-text">Retrieve information about candidate alice.johnson@example.com and schedule an interview with her for next Monday 10am.
 </code></pre>
 <h4 id="_1">エージェント調整の観察</h4>
-<p>テスト パネルで以下の流れを確認します。</p>
+<p>テスト パネルでエージェントが次を行う様子を確認します:</p>
 <ul>
-<li>リクエストの解析</li>
-<li>HR Candidate Management エージェントを呼び出し “Alice Johnson” を検索</li>
-<li>候補者詳細を取得</li>
-<li>Interview Scheduler Child Agent を呼び出し</li>
-<li>カレンダー会議を作成。初回の場合 Meeting Management MCP サーバーへの接続を要求</li>
-<li>確認を返答</li>
+<li>リクエストを処理  </li>
+<li>HR Candidate Management エージェントを呼び出し Alice Johnson を検索  </li>
+<li>候補者詳細を取得  </li>
+<li>Interview Scheduler 子エージェントを呼び出し  </li>
+<li>初回利用の場合は Meeting Management MCP サーバーへの接続を促しつつカレンダー会議を作成  </li>
+<li>確認を返答  </li>
 </ul>
 <p><img alt="The test panel showing the agent coordination workflow with multiple agents working together to schedule an interview." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-05.png" /></p>
-<p>次のスクリーンショットは、Child Agent と Connected Agent を利用してエージェントがスケジュールした面接例です。</p>
+<p>以下のスクリーンショットは、子エージェントと Connected エージェントを利用してエージェントがスケジュールした面接会議の例です。</p>
 <p><img alt="The interview meeting scheduled in the calendar of the current user. There are information about the interview in the body of the meeting. The meeting itselft has been sent to the current user and to the candidate's e-mail address." src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-06.png" /></p>
 <p><cc-end-step lab="mcs9" exercise="5" step="1" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">おめでとうございます！</span></p>
-<p>Lab MCS9 - Agent to Agent Communication を完了しました!</p>
-<p>このラボで学んだこと:</p>
+<p>ラボ MCS9 - Agent to Agent Communication を完了しました!</p>
+<p>このラボでは、次のことを学習しました:</p>
 <ul>
-<li>Connected エージェント アーキテクチャの設計と実装</li>
-<li>メイン エージェント内で特化タスクを担う Child Agent の作成</li>
-<li>既存エージェントを接続し、エージェント間でデータ共有と調整を可能に</li>
-<li>複数の特化エージェントにまたがる複雑なワークフローの実装</li>
+<li>Connected Agents アーキテクチャの設計と実装  </li>
+<li>メイン エージェント ソリューション内での専門タスク向け子エージェントの作成  </li>
+<li>既存エージェントを接続してエージェント間のデータ共有と調整を実現  </li>
+<li>複数の専門エージェントにまたがる複雑なワークフローの実装  </li>
 </ul>
-<p>Interview Coordinator エージェントは、高度なエージェント オーケストレーション パターンを実証し、HR Candidate Management システムと特化型 Interview Scheduler の機能を連携して面接スケジューリングを自動化します。</p>
-<p>学んだ Connected エージェント パターンは、モジュール化された特化エージェントが協調してエンドツーエンドのソリューションを提供できる、他の多くのビジネス シナリオにも応用できます。</p>
+<p>Interview Coordinator エージェントは、高度なエージェント オーケストレーション パターンを示し、HR Candidate Management システムと専門的な Interview Scheduler 機能を連携させて面接日程調整を自動化します。</p>
+<p>本ラボで学んだ Connected Agents パターンは、複雑なワークフローがモジュラーで専門化されたエージェントの連携によってエンドツーエンド ソリューションを実現する、多くのビジネス シナリオに適用できます。</p>
+<p><a href="../10-mcp-oauth">こちら</a> からラボ MCS10 を開始し、Copilot Studio で OAuth で保護された MCP サーバーを利用する方法を学びましょう。<br />
+<cc-next /> </p>
 <!-- <cc-award path="Make" /> -->
 
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-connected-agents--ja" /></p>

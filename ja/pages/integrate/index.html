@@ -25,7 +25,7 @@
     
     
       
-        <title>Integrate with Microsoft 365 Copilot - Copilot Developer Camp</title>
+        <title>Microsoft 365 Copilot との統合 - Copilot Developer Camp</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#integrate-with-microsoft-365-copilot" class="md-skip">
+        <a href="#microsoft-365-copilot" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Integrate with Microsoft 365 Copilot
+              Microsoft 365 Copilot との統合
             
           </span>
         </div>
@@ -811,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS8 - RAG のための Azure AI Search 統合
+    ラボ MCS8 - Azure AI Search を使用した RAG 連携
   
 
     
@@ -839,7 +839,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ MCS9 - Connected エージェント (プレビュー)
+    ラボ MCS9 - Connected Agents (プレビュー)
   
 
     
@@ -1522,7 +1522,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 08 : Declarative エージェントを MCP サーバーに接続する
+    ラボ 08 : 宣言型エージェントを MCP サーバーに接続する
   
 
     
@@ -1550,7 +1550,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ 09: Connected Agent - Zava のマルチ エージェント請求オーケストレーション
+    ラボ 09: Connected Agents - Zava のマルチエージェント請求オーケストレーション
   
 
     
@@ -1953,7 +1953,7 @@
   <span class="md-ellipsis">
     
   
-    Zava Insurance エージェントの構築 - Microsoft 365 Agents SDK と Agent Framework
+    Microsoft 365 Agents SDK と Agent Framework を使用した Zava Insurance エージェントの構築
   
 
     
@@ -1981,7 +1981,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF1 - 最初のエージェントの構築と実行
+    ラボ BAF1 - はじめてのエージェントの構築と実行
   
 
     
@@ -2037,7 +2037,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF3 - Mistral AI を使用したビジョン解析の追加
+    ラボ BAF3 - Mistral AI を使用したビジョン分析の追加
   
 
     
@@ -2065,7 +2065,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF4 - ポリシー検索の追加
+    ラボ BAF4 - Policy 検索の追加
   
 
     
@@ -2093,7 +2093,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF5 - 通信機能の追加
+    ラボ BAF5 - コミュニケーション機能の追加
   
 
     
@@ -2121,7 +2121,7 @@
   <span class="md-ellipsis">
     
   
-    ラボ BAF6 - Microsoft 365 Work IQ API 統合を追加する
+    ラボ BAF6 - Microsoft 365 Work IQ API 統合の追加
   
 
     
@@ -2272,7 +2272,7 @@
   <span class="md-ellipsis">
     
   
-    エージェント指示ラボ - エージェント指示の改善 (初心者向け)
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
   
 
     
@@ -2337,90 +2337,93 @@
 
 
 
-<h1 id="integrate-with-microsoft-365-copilot">Integrate with Microsoft 365 Copilot</h1>
-<p>In this series of labs and articles, you can learn how to connect agents, how to integrate external tools and data sources, and how to consume Work IQ API. Overall, you can understand how to create Microsoft 365 Copilot agents using modern integration patterns.</p>
-<h2 id="understanding-connected-agents">Understanding Connected Agents</h2>
-<p>Connected Agents enable Microsoft 365 Copilot agents to extend their capabilities by integrating with other agents. This allows to delegate specialized tasks to other agents that have domain-specific expertise or access to external systems. This approach allows to create multi-agent architectures.</p>
-<p>Multi-agent architecture is based on the principle of <strong>modularity and specialization</strong>. Instead of building a single monolithic agent that handles every possible scenario, you break complex problems into multiple specialized agents, each focused on a specific domain or task. This approach improves <strong>scalability</strong>, <strong>manageability</strong>, and <strong>maintainability</strong> of your AI solutions.</p>
-<p>The core philosophy follows these principles:</p>
+<h1 id="microsoft-365-copilot">Microsoft 365 Copilot との統合</h1>
+<p>この一連のラボおよび記事では、エージェントを接続する方法、外部ツールやデータ ソースを統合する方法、Work IQ API を利用する方法を学習できます。これらを通じて、最新の統合パターンを使用して Microsoft 365 Copilot エージェントを作成する方法を理解できます。</p>
+<h2 id="_1">接続型エージェントの概要</h2>
+<p>接続型エージェントを使用すると、Microsoft 365 Copilot エージェントは他のエージェントと統合して機能を拡張できます。これにより、ドメイン固有の専門知識や外部システムへのアクセスを持つエージェントに特化したタスクを委任できます。このアプローチにより、マルチ エージェント アーキテクチャを構築できます。</p>
+<p>マルチ エージェント アーキテクチャは <strong>モジュール化と専門化</strong> の原則に基づいています。すべてのシナリオを 1 つのモノリシックなエージェントで処理する代わりに、複雑な問題を複数の専門エージェントに分割し、それぞれが特定のドメインやタスクに専念します。この手法により <strong>スケーラビリティ</strong>、<strong>管理性</strong>、<strong>保守性</strong> が向上します。</p>
+<p>この哲学は次の原則に従います。</p>
 <ul>
-<li><strong>Single Responsibility</strong>: Each agent focuses on one domain or task, making it easier to develop, test, and maintain</li>
-<li><strong>Delegation</strong>: A main (orchestrator) agent identifies when to hand off tasks to specialized agents based on user intent</li>
-<li><strong>Reusability</strong>: Specialized agents can be shared across multiple solutions, creating a library of capabilities</li>
-<li><strong>Separation of Concerns</strong>: Different teams can own different agents with their own governance, security, and deployment lifecycles</li>
+<li><strong>単一責任</strong>: 各エージェントは 1 つのドメインまたはタスクに集中するため、開発・テスト・保守が容易です  </li>
+<li><strong>委任</strong>: メイン (オーケストレーター) エージェントがユーザーの意図に基づき、特化エージェントへのタスク移譲を判断します  </li>
+<li><strong>再利用性</strong>: 特化エージェントは複数のソリューションで共有でき、機能のライブラリを形成します  </li>
+<li><strong>関心の分離</strong>: 各チームが各エージェントを所有し、それぞれのガバナンス、セキュリティ、デプロイ ライフサイクルを管理できます  </li>
 </ul>
-<p>Connected Agents can be leveraged in all the different flavours of agents like Microsoft Copilot Studio Agents, Declarative Agents, or Custom Engine Agents.</p>
-<h2 id="understanding-mcp-model-context-protocol">Understanding MCP (Model Context Protocol)</h2>
-<p>MCP is a new open-source standard protocol that allows AI assistants to securely connect to external data sources and tools. Think of MCP as a "universal plug" that lets AI models connect to tools, apps, and data—just like USB-C connects your smartphone to anything else. MCP helps AI agents do more (like calling APIs, reading files, sending messages, writing data, etc.) without needing custom code for each task.</p>
-<p>With MCP, developers save time and make AI solutions more powerful, flexible, and easier to maintain.</p>
-<h3 id="mcp-architecture">MCP Architecture</h3>
-<p>The following diagram illustrates the high-level architecture of MCP:</p>
+<p>接続型エージェントは、Microsoft Copilot Studio エージェント、宣言型エージェント、カスタム エンジン エージェントなど、あらゆる種類のエージェントで活用できます。</p>
+<h2 id="mcp-model-context-protocol">MCP (Model Context Protocol) の概要</h2>
+<p>MCP は、AI アシスタントが外部データ ソースやツールに安全に接続できるようにするオープンソースの標準プロトコルです。MCP は、スマートフォンをあらゆる機器に接続する USB-C のように、AI モデルがツール、アプリ、データへ接続するための「ユニバーサル プラグ」と言えます。MCP により、AI エージェントは (API 呼び出し、ファイルの読み取り、メッセージ送信、データ書き込みなど) を個別にコードを書くことなく実行できます。</p>
+<p>これにより、開発者は時間を節約し、AI ソリューションをより強力・柔軟で保守しやすいものにできます。</p>
+<h3 id="mcp">MCP のアーキテクチャ</h3>
+<p>次の図は、MCP のハイレベル アーキテクチャを示しています。</p>
 <p><img alt="The general architecture of MCP (Model Context Protocol). There is a MCP Host on the left side, which leverages a LLM/Orchestrator to consume MCP via a MCP client. On the right side there are MCP servers offering tools, resources, and prompts. The communication happens over STDIO or HTTP and can be secured with variout technologies." src="../../../assets/images/MCP-Architecture.png" /></p>
-<p>The architecture defines the following key components:</p>
+<p>アーキテクチャでは、以下の主要コンポーネントを定義しています。</p>
 <ul>
-<li><strong>MCP Host</strong>: The AI application that coordinates and manages one or multiple MCP clients</li>
-<li><strong>MCP Client</strong>: A component that maintains a connection to an MCP server and obtains context from an MCP server for the MCP host to use</li>
-<li><strong>MCP Server</strong>: A program that provides context to MCP clients</li>
+<li><strong>MCP Host</strong>: 1 つまたは複数の <code>MCP Client</code> を調整・管理する AI アプリケーション  </li>
+<li><strong>MCP Client</strong>: <code>MCP Server</code> と接続を維持し、<code>MCP Host</code> が利用するコンテキストを取得するコンポーネント  </li>
+<li><strong>MCP Server</strong>: <code>MCP Client</code> にコンテキストを提供するプログラム  </li>
 </ul>
-<h3 id="what-mcp-servers-can-expose">What MCP Servers Can Expose</h3>
-<p>Every MCP Server can expose three types of capabilities:</p>
+<h3 id="mcp-server">MCP Server が公開できる機能</h3>
+<p>各 MCP Server は、次の 3 種類の機能を公開できます。</p>
 <ul>
-<li><strong>Tools</strong>: Functions that your LLM can actively call and decides when to use them based on user requests. Tools can write to databases, call external APIs, modify files, or trigger any other logic.</li>
-<li><strong>Resources</strong>: Passive data sources that provide read-only access to information for context, such as file contents, database schemas, API documentation, etc.</li>
-<li><strong>Prompts</strong>: Pre-built instruction templates that tell the model to work with specific tools and resources.</li>
+<li><strong>Tools</strong>: LLM がユーザーの要求に基づき能動的に呼び出す関数。データベースへの書き込み、外部 API 呼び出し、ファイルの変更、その他のロジック実行などを行えます。  </li>
+<li><strong>Resources</strong>: ファイル コンテンツ、データベース スキーマ、API ドキュメントなど、コンテキスト提供用の読み取り専用データ ソース。  </li>
+<li><strong>Prompts</strong>: 具体的な Tools や Resources と連携してモデルに指示を与える事前構築済みのインストラクション テンプレート。  </li>
 </ul>
-<h3 id="communication-protocols">Communication Protocols</h3>
-<p>The communication between an MCP Client and the corresponding MCP Server relies on two available protocols:</p>
+<h3 id="_2">通信プロトコル</h3>
+<p><code>MCP Client</code> と対応する <code>MCP Server</code> 間の通信は、次の 2 種類のプロトコルに基づきます。</p>
 <ul>
-<li><strong>stdio (local)</strong>: for MCP Servers running locally on your environment</li>
-<li><strong>Streamable HTTP (remote)</strong>: for MCP Servers publicly available, such as those deployed to Azure</li>
+<li><strong>stdio (ローカル)</strong>: ローカル環境で稼働する MCP Server 向け  </li>
+<li><strong>Streamable HTTP (リモート)</strong>: Azure などにデプロイされた公開 MCP Server 向け  </li>
 </ul>
-<p>Regardless of the transport protocol, the communication relies on JSON-RPC 2.0 messages and can be accessed anonymously or secured over HTTPS with API Keys or OAuth 2.0.</p>
-<h3 id="learn-more">Learn More</h3>
-<p>You can learn more about MCP by exploring the <a href="https://github.com/microsoft/mcp-for-beginners">Model Context Protocol (MCP) for beginners</a> training class.</p>
-<h2 id="understanding-work-iq-api">Understanding Work IQ API</h2>
-<p>Work IQ API provide programmatic access to Copilot's powerful AI capabilities, enabling developers to build custom experiences, automate workflows, and integrate Copilot into their applications. Unlike declarative approaches, the Work IQ API give you fine-grained control over conversations, context, and user interactions.</p>
-<p>The API available are:</p>
+<p>トランスポート プロトコルにかかわらず、通信は <code>JSON-RPC 2.0</code> メッセージを使用し、匿名アクセスまたは API Key や OAuth 2.0 による HTTPS でのセキュリティ保護が可能です。</p>
+<h3 id="_3">さらに学ぶ</h3>
+<p>MCP については、<a href="https://github.com/microsoft/mcp-for-beginners">Model Context Protocol (MCP) for beginners</a> トレーニング クラスで学習できます。</p>
+<h2 id="work-iq-api">Work IQ API の概要</h2>
+<p>Work IQ API は Copilot の強力な AI 機能へプログラムからアクセスできる手段を提供し、開発者がカスタム エクスペリエンスの構築、ワークフローの自動化、アプリケーションへの Copilot 統合を実現します。宣言的アプローチとは異なり、Work IQ API を使用すると、会話、コンテキスト、ユーザー インタラクションをきめ細かく制御できます。</p>
+<p>利用可能な API は次のとおりです。</p>
 <ul>
-<li>Retrieval API</li>
-<li>Search API (preview)</li>
-<li>Interaction Export API</li>
-<li>Change Notifications API (preview)</li>
-<li>Meeting Insights API (preview)</li>
-<li>Chat API (preview)</li>
+<li>Retrieval API  </li>
+<li>Search API (プレビュー)  </li>
+<li>Interaction Export API  </li>
+<li>Change Notifications API (プレビュー)  </li>
+<li>Meeting Insights API (プレビュー)  </li>
+<li>Chat API (プレビュー)  </li>
 </ul>
-<h3 id="learn-more_1">Learn More</h3>
-<p>You can learn more about Copilot APIs by exploring the <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-apis-overview">Microsoft 365 Copilot APIs overview</a> documentation.</p>
+<h3 id="_4">さらに学ぶ</h3>
+<p>Copilot API については、<a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-apis-overview">Microsoft 365 Copilot APIs overview</a> を参照してください。</p>
 <hr />
-<h2 id="choose-your-integration-path">Choose Your Integration Path</h2>
-<p>Below are various labs to integrate your agents for Microsoft 365 Copilot with external agents, platforms, and systems. Choose the labs that best fit your scenario and needs:</p>
+<h2 id="_5">統合パスの選択</h2>
+<p>以下は、Microsoft 365 Copilot のエージェントを外部エージェント、プラットフォーム、システムと統合するための各種ラボです。シナリオやニーズに最も適したラボを選択してください。</p>
 <ul>
-<li>Microsoft Copilot Studio<ul>
-<li><a href="../make/copilot-studio/06-mcp">Lab MCS6 - Consuming an MCP Server</a></li>
-<li><a href="../make/copilot-studio/08-rag">Lab MCS8 - Integrating Azure AI Search for RAG</a></li>
-<li><a href="../make/copilot-studio/09-connected-agents">Lab MCS9 - Connected Agents</a></li>
-<li><a href="../make/copilot-studio/10-mcp-oauth">Lab MCS10 - Consuming an MCP Server with OAuth 2.0</a></li>
+<li>Microsoft Copilot Studio  <ul>
+<li><a href="../make/copilot-studio/06-mcp">Lab MCS6 - MCP Server を利用する</a>  </li>
+<li><a href="../make/copilot-studio/08-rag">Lab MCS8 - Azure AI Search を使用した RAG の統合</a>  </li>
+<li><a href="../make/copilot-studio/09-connected-agents">Lab MCS9 - Connected Agents</a>  </li>
+<li><a href="../make/copilot-studio/10-mcp-oauth">Lab MCS10 - OAuth 2.0 で保護された MCP Server を利用する</a>  </li>
 </ul>
 </li>
-<li>Declarative Agents<ul>
-<li><a href="../extend-m365-copilot/08-mcp-server">Lab E08 - Connect Declarative agent to MCP Server</a></li>
-<li><a href="../extend-m365-copilot/09-connected-agent">Lab E09 - Connected Agents - Zava's Multi-Agent Claims Orchestration</a></li>
-<li><a href="../extend-m365-copilot/10-mcp-auth">Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
+<li>Declarative Agents  <ul>
+<li><a href="../extend-m365-copilot/08-mcp-server">Lab E08 - 宣言型エージェントを MCP Server に接続する</a>  </li>
+<li><a href="../extend-m365-copilot/09-connected-agent">Lab E09 - Connected Agents - Zava のマルチ エージェント請求オーケストレーション</a>  </li>
+<li><a href="../extend-m365-copilot/10-mcp-auth">Lab E10 - 宣言型エージェントを OAuth 保護された MCP Server に接続する</a>  </li>
 </ul>
 </li>
-<li>Custom Engine Agents<ul>
-<li><a href="../custom-engine/agent-framework/06-add-copilot-api">Lab BAF06 - Add Microsoft 365 Work IQ API Integration</a></li>
-<li><a href="../custom-engine/agent-framework/07-add-mcp-tools">Lab BAF07 - Add MCP Tools Integration</a></li>
+<li>Custom Engine Agents  <ul>
+<li><a href="../custom-engine/agent-framework/06-add-copilot-api">Lab BAF06 - Microsoft 365 Work IQ API 統合を追加する</a>  </li>
+<li><a href="../custom-engine/agent-framework/07-add-mcp-tools">Lab BAF07 - MCP Tools 統合を追加する</a>  </li>
 </ul>
 </li>
 </ul>
-<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/integrate/index" /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/integrate/index--ja" /></p>
 
 
 
 
 
 
+
+  
+  
 
 
 
