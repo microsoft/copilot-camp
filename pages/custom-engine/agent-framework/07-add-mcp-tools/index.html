@@ -2686,8 +2686,9 @@ SECRET_AZURE_STORAGE_KEY=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVEr
 <li>Launch the Azure Functions runtime</li>
 <li>Install, run, and open the MCP Inspector in your browser for testing and debugging MCP tools</li>
 </ul>
-<p>3️⃣ Once the server is running, note the dev tunnel URL displayed in the terminal (e.g., <code>https://your_devtunnel_id.devtunnels.ms</code>). Your MCP server endpoint URL will be:</p>
-<pre><code class="language-text">https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
+<p>3️⃣ Once the server is running, select the terminal window with name <code>Ensure DevTunnel</code> note the dev tunnel URL displayed in the terminal just beside the <strong>Connect via browser</strong>: https://devtunnel-host.devtunnels.ms
+ (e.g., <code>https://devtunnel-host.devtunnels.ms</code>). Your MCP server endpoint URL will be:</p>
+<pre><code class="language-text">https://devtunnel-host.devtunnels.ms/runtime/webhooks/mcp
 </code></pre>
 <div class="admonition tip">
 <p class="admonition-title">Keep the Server Running</p>
@@ -2700,11 +2701,11 @@ SECRET_AZURE_STORAGE_KEY=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVEr
 <p>1️⃣ Open your <code>.env.local</code> file in the agent project.</p>
 <p>2️⃣ Add the MCP server configuration using your dev tunnel URL from Exercise 1:</p>
 <pre><code class="language-bash"># MCP Server Configuration
-MCP_SERVER_URL=https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
+MCP_SERVER_URL=https://devtunnel-host.devtunnels.ms/runtime/webhooks/mcp
 </code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Replace <code>your_devtunnel_id</code> with the actual tunnel ID displayed in the terminal when you started the MCP server in Exercise 1.</p>
+<p>Replace <code>devtunnel-host</code> with the actual tunnel URL copied from the terminal when you started the MCP server in Exercise 1.</p>
 </div>
 <p><cc-end-step lab="baf7" exercise="2" step="1" /></p>
 <h3 id="step-2-register-mcp-client-in-dependency-injection">Step 2: Register MCP Client in Dependency Injection</h3>
