@@ -2643,12 +2643,12 @@ code .
 <p><strong>macOS/Linux:</strong></p>
 <pre><code class="language-bash">cp env/.env.local.sample env/.env.local
 </code></pre>
-<p>2️⃣ Edit the <code>env/.env.local</code> file and fill in your Azure Table Storage details:</p>
+<p>2️⃣ Edit the <code>env/.env.local</code> file and fill in your Azure Table Storage details, targeting the local emulator via Azurite:</p>
 <pre><code class="language-bash"># Azure Table Storage Configuration
-AZURE_STORAGE_ACCOUNT=your_storage_account_name
-AZURE_TABLE_ENDPOINT=https://your_storage_account_name.table.core.windows.net
+AZURE_STORAGE_ACCOUNT=devstoreaccount1
+AZURE_TABLE_ENDPOINT=http://127.0.0.1:10012/devstoreaccount1
 TABLE_NAME=ClaimAdjusters
-ALLOW_INSECURE_CONNECTION=false
+ALLOW_INSECURE_CONNECTION=true
 
 # DevTunnel Configuration
 TUNNEL_ID=
@@ -2664,27 +2664,23 @@ TUNNEL_ID=
 <pre><code class="language-bash"># Azure Table Storage Configuration
 SECRET_AZURE_STORAGE_KEY=your_storage_account_key
 </code></pre>
+<p>Since in this lab we are using the Azurite local storage emulator, the storage key is always the same as per the <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string#configure-a-connection-string-for-azurite" target="_blank">official documentation</a> and the value should be like the following:</p>
+<pre><code class="language-bash"># Azure Table Storage Configuration
+SECRET_AZURE_STORAGE_KEY=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Keep Secrets Secure</p>
 <p>The <code>.env.local.user</code> file contains sensitive credentials and should never be committed to source control. It is already included in <code>.gitignore</code> to prevent accidental commits.</p>
 </div>
 <p><cc-end-step lab="baf7" exercise="1" step="3" /></p>
-<h3 id="step-4-installing-dependencies-and-initializing-data">Step 4: Installing Dependencies and Initializing Data</h3>
-<p>1️⃣ Install the project dependencies by running:</p>
-<pre><code class="language-bash">npm install
-</code></pre>
-<p>2️⃣ Initialize the claims adjuster data in Azure Table Storage:</p>
-<pre><code class="language-bash">npm run init-data
-</code></pre>
-<p>This script creates the <code>ClaimAdjusters</code> table in your Azure Storage account and populates it with sample claims adjuster records.</p>
-<p><cc-end-step lab="baf7" exercise="1" step="4" /></p>
-<h3 id="step-5-running-the-mcp-server-with-dev-tunnel">Step 5: Running the MCP Server with Dev Tunnel</h3>
-<p>The project includes pre-configured VS Code tasks that automate starting the dev tunnel and running the Azure Functions locally.</p>
+<h3 id="step-4-running-the-mcp-server-with-dev-tunnel">Step 4: Running the MCP Server with Dev Tunnel</h3>
+<p>The project includes pre-configured VS Code tasks that automate starting Azurite, the dev tunnel, installing npm dependencies, and running the Azure Functions locally.</p>
 <p>1️⃣ If you haven't already installed dev tunnel, follow <a href="https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started" target="_blank">these instructions</a>.</p>
 <p>2️⃣ Press <strong>F5</strong> in Visual Studio Code to start the MCP server.</p>
 <p>The pre-configured VS Code tasks will automatically:</p>
 <ul>
 <li>Start Azurite (Azure Storage emulator) for local development</li>
+<li>Install npm dependencies</li>
 <li>Build the TypeScript project</li>
 <li>Create and start the dev tunnel</li>
 <li>Launch the Azure Functions runtime</li>
@@ -2697,7 +2693,7 @@ SECRET_AZURE_STORAGE_KEY=your_storage_account_key
 <p class="admonition-title">Keep the Server Running</p>
 <p>Keep both the MCP server and dev tunnel running throughout this lab. The tunnel remains active as long as VS Code is running the debug session. If you need to restart, simply press <strong>F5</strong> again.</p>
 </div>
-<p><cc-end-step lab="baf7" exercise="1" step="5" /></p>
+<p><cc-end-step lab="baf7" exercise="1" step="4" /></p>
 <h2 id="exercise-2-configure-mcp-client-in-the-agent">Exercise 2: Configure MCP Client in the Agent</h2>
 <p>Now let's configure the Custom Engine Agent to connect to your MCP server.</p>
 <h3 id="step-1-add-mcp-client-configuration">Step 1: Add MCP Client Configuration</h3>
