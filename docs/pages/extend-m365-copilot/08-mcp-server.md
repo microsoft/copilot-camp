@@ -439,21 +439,6 @@ Open `appPackage/ai-plugin.json` and examine the structure with your chosen tool
 
 You now have a basic Declarative Agent that is connected to your MCP Server with 10 tools ready for use.
 
-!!! note "Known issue in Agents Toolkit (Pre-release)"
-    In the pre-release version of the Agents Toolkit, tool definitions cannot be referenced from a separate file during testing.
-
-    To work around this issue, copy the contents of the tool definition file and paste them directly into the tool description as outlined below:
-
-    - Copy the contents of **appPackage/mcp-tools.json**
-    - Open **appPackage/ai-plugin.json**
-    - Locate the **mcp_tool_description** property:
-      ```json
-      "mcp_tool_description": {
-          "file": "mcp-tools.json"
-      }
-      ```
-    - Replace the value of **mcp_tool_description** by pasting the contents of **appPackage/mcp-tools.json**
-
 
 <cc-end-step lab="e8" exercise="5" step="2" />
 
