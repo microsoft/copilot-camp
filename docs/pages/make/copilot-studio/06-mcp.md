@@ -356,6 +356,9 @@ The agent will invoke the right tools for you and will act accordingly to your p
 
 Well done! Your agent is fully functional and capable of consuming all the tools exposed by the HR MCP server.
 
+!!! tip
+    To learn more about consuming first party MCP tools in Microsoft Copilot Studio, you can refer to [Agent Academy - Operative - Mission 10: Integrate with MCP Servers](https://microsoft.github.io/agent-academy/operative/10-mcp/){target=_blank}.
+
 <cc-end-step lab="mcs6" exercise="3" step="2" />
 
 ---8<--- "mcs-congratulations.md"

@@ -256,6 +256,8 @@ Here follows a screenshot of the interaction with the multi-turn topic. You can 
 
 ![The interaction with the multi-turn topic, where there are a set of questions and answers to collect all the candidate data.](../../../assets/images/make/copilot-studio-02/create-topic-multi-turn-06.png)
 
+!!! tip
+    To learn more about creating agents with Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 07: Add new topic with trigger and nodes](https://microsoft.github.io/agent-academy/recruit/07-add-new-topic-with-trigger/){target=_blank}.
 
 <cc-end-step lab="mcs2" exercise="3" step="2" />
 
@@ -509,6 +511,9 @@ Now add an **End current topic** action at the end of the topic, save it, give i
 ![The topic collecting information about a new candidate using an adaptive card and providing feedback through another adaptive card.](../../../assets/images/make/copilot-studio-02/create-topic-adaptive-card-08.png)
 
 Now your topic is ready and fully functional. In the upcoming labs you will learn how to create a new candidate record for real, storing data in an external HR service.
+
+!!! tip
+    To learn more about using Adaptive Cards in agents with Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 08: Enhance user interactions in Topics with Adaptive Cards](https://microsoft.github.io/agent-academy/recruit/08-add-adaptive-card/){target=_blank}.
 
 <cc-end-step lab="mcs2" exercise="4" step="3" />
 

@@ -720,6 +720,9 @@ Get candidate with email bob.brown@example.com
 
     ![The terminal window showing MCP server logs with tool method calls and OAuth bearer token evidence.](../../../assets/images/make/copilot-studio-10/dotnet-terminal-mcp-call-secured.png)
 
+!!! tip
+    To learn more about consuming first party MCP tools in Microsoft Copilot Studio, you can refer to [Agent Academy - Operative - Mission 10: Integrate with MCP Servers](https://microsoft.github.io/agent-academy/operative/10-mcp/){target=_blank}.
+    
 <cc-end-step lab="mcs10" exercise="5" step="4" />
 
 ---8<--- "mcs-congratulations.md"
