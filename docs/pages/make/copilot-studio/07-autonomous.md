@@ -310,6 +310,9 @@ That's enough for the agent's autonomous intelligence to loop across all the upl
 
 ![The details about the execution of an agent with two files processed, invoking the "add_candidate" tool for each of them.".](../../../assets/images/make/copilot-studio-07/inspect-autonomous-agent-02.png)
 
+!!! tip
+    To learn more about Autonomous Agents in Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 10: Add Event Triggers - Enable autonomous agent capabilities](https://microsoft.github.io/agent-academy/recruit/10-add-event-triggers/){target=_blank} and [Agent Academy - Operative - Mission 04: Add Event Triggers to act autonomously](https://microsoft.github.io/agent-academy/operative/04-automate-triggers/){target=_blank}.
+    
 <cc-end-step lab="mcs7" exercise="4" step="2" />
 
 ---8<--- "mcs-congratulations.md"

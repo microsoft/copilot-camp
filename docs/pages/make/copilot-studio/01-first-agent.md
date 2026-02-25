@@ -117,6 +117,9 @@ A public website for careers with information about benefits, culture, diversity
 
 You are now ready with the basic configuration of your agent. You can now start testing your agent using the testing panel on the right side, or you can fine tune the agent settings using the configuration options in the **Overview** tab.
 
+!!! tip
+    To learn more about creating agents with Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 06: Create a custom agent using natural language with AI and grounding it with your data](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/){target=_blank}.
+
 <cc-end-step lab="mcs1" exercise="1" step="1" />
 
 ### Step 2: Changing the agent's icon
@@ -275,6 +278,9 @@ Selecting the **Availability options** button you can:
 ![The side panel to see the availability options for the agent in Microsoft Teams. There are buttons to copy a link to the agent in Teams, to make the agent available in the Teams app store, and to download a zip with the agent package for sharing the agent on other tenants.](../../../assets/images/make/copilot-studio-01/make-agent-publish-05.png)
 
 Publishing of the agent in Microsoft Temas is now completed.
+
+!!! tip
+    To learn more about publishing Microsoft Copilot Studio agents, you can refer to [Agent Academy - Recruit - Mission 11: Publish Your Agent](https://microsoft.github.io/agent-academy/recruit/11-publish-your-agent/){target=_blank}.
 
 <cc-end-step lab="mcs1" exercise="3" step="1" />
 

@@ -71,6 +71,9 @@ Once the new environment will be ready, the list of environments will show the i
 
 ![The list of environment with the new one in "Ready" status and a green box informing you that the new environment was successfully created.](../../../assets/images/make/copilot-studio-00/new-environment-04.png)
 
+!!! tip
+    To learn more about setting up your environment for Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 00: Course Setup](https://microsoft.github.io/agent-academy/recruit/00-course-setup/){target=_blank}.
+
 <cc-end-step lab="mcs0" exercise="1" step="1" />
 
 ## Exercise 2 : Microsoft Copilot Studio

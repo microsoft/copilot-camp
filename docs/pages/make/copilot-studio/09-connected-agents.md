@@ -405,6 +405,9 @@ And in the following screenshot you can see a sample of the interview meeting sc
 
 ![The interview meeting scheduled in the calendar of the current user. There are information about the interview in the body of the meeting. The meeting itselft has been sent to the current user and to the candidate's e-mail address.](../../../assets/images/make/copilot-studio-09/coordinator-agent-06.png)
 
+!!! tip
+    To learn more about connected agents in Microsoft Copilot Studio, you can refer to [Agent Academy - Operative - Mission 03: Multi-Agent Systems](https://microsoft.github.io/agent-academy/operative/03-multi-agent/){target=_blank}.
+
 <cc-end-step lab="mcs9" exercise="5" step="1" />
 
 ---8<--- "mcs-congratulations.md"

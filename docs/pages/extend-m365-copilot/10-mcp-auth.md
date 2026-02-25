@@ -47,7 +47,7 @@ Open your terminal and run:
 
 ```bash
 git clone https://github.com/microsoft/copilot-camp.git
-cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
+cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 ```
 <cc-end-step lab="e10" exercise="1" step="1" />
 

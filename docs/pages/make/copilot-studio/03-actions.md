@@ -181,6 +181,9 @@ As like as it was with the previous Step, the first time you use the tool you ne
 
 After the execution of the tool, you will see the agent replying back to you with the response message that you defined in the Power Automate flow. Moreover, the new candidate will be added to the table in the Excel spreadsheet.
 
+!!! tip
+    To learn more about Agent Flows in Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 09: Add an agent flow to your Topic for automation](https://microsoft.github.io/agent-academy/recruit/09-add-an-agent-flow/){target=_blank}.
+
 <cc-end-step lab="mcs3" exercise="1" step="3" />
 
 ## Exercise 2 : Invoking tools from within a topic
