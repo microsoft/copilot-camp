@@ -260,6 +260,9 @@ Once you are connected to the external connector, the agent will reply back prov
 
 Well done! You were able to consume an external connector from a Copilot Studio agent made for Microsoft 365 Copilot!
 
+!!! tip
+    To learn more about creating Declarative Agents for Microsoft 365 Copilot with Microsoft Copilot Studio, you can refer to [Agent Academy - Recruit - Mission 03: Deploy a Declarative Agent for Microsoft 365 Copilot](https://microsoft.github.io/agent-academy/recruit/03-create-a-declarative-agent-for-M365Copilot/){target=_blank}.
+
 <cc-end-step lab="mcs4" exercise="2" step="2" />
 
 ---8<--- "mcs-congratulations.md"
