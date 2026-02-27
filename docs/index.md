@@ -14,9 +14,9 @@ Or you can pick your own foundation model, orchestrator, and responsible AI cont
 
 ## 🧪 Where should I start to build agents?
 
-There are three major pathways with several labs. If you want a no-code/low-code approach, choose the **Maker** path ("MAB", "MSA", or "MCS" lab). If you want to extend Microsoft 365 Copilot, choose the **Extend** path ("E" lab). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the **Build** path ("BMA" lab).
+There are three major pathways with several labs. If you want a no-code/low-code approach, choose the **Maker** path (["Agent Academy"](https://aka.ms/agentacademy), "MAB", "MSA", or "MCS" labs). If you want to extend Microsoft 365 Copilot, choose the **Extend** path ("E" lab). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the **Build** path ("BMA" and "BAF" labs).
 
-![If you want a no-code/low-code approach, choose the Maker labs ("MAB", "MSA", or "MCS"). If you want to extend Microsoft 365 Copilot, choose the Extend lab ("E"). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the Build labs ("BMA")](./assets/images/CopilotCamp-Flow-Chart.png)
+![If you want a no-code/low-code approach, choose the Maker labs ("Agent Academy", "MAB", "MSA", or "MCS"). If you want to extend Microsoft 365 Copilot, choose the Extend lab ("E"). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the Build labs ("BMA" and "BAF")](./assets/images/CopilotCamp-Flow-Chart.png)
 
 ---8<--- "main-links.md"
 
