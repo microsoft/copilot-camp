@@ -6,12 +6,12 @@ search:
 
 ---8<--- "ja/mab-labs-prelude.md"
 
-このラボでは、Copilot Studio Lite を使用してシンプルな宣言型エージェントを作成します。エージェントはユーザーが家庭菜園を維持・改善するのを支援するよう設計されています。エージェントのナレッジ ベースは SharePoint Online に保存された一連のドキュメントとパブリック Web コンテンツに基づいています。また、ユーザーに植物や花の名前を当てるゲームを出題することもできます。
+このラボでは、Agent Builder を使用してシンプルな宣言型エージェントを作成します。エージェントはユーザーが家庭菜園を維持・改善するのを支援するよう設計されています。エージェントのナレッジ ベースは SharePoint Online に保存された一連のドキュメントとパブリック Web コンテンツに基づいています。また、ユーザーに植物や花の名前を当てるゲームを出題することもできます。
 
 このラボで学習する内容:
 
 - Microsoft 365 Copilot の宣言型エージェントとは何か
-- Copilot Studio Lite を使って宣言型エージェントを作成する方法
+- Agent Builder を使って宣言型エージェントを作成する方法
 - 特定の指示を追加してゲームをカスタマイズする方法
 - SharePoint Online に保存されたドキュメントをナレッジ ベースとして設定する方法
 - エージェントで画像生成を有効にする方法
@@ -25,7 +25,7 @@ search:
 
 宣言型エージェントの作成へようこそ ☺️! それでは、あなたの Copilot に魔法をかけましょう!
 
-このラボでは、まず Copilot Studio Lite を使用して宣言型エージェントを作成し、サンプルの指示を与えて開始します。  
+このラボでは、まず Agent Builder を使用して宣言型エージェントを作成し、サンプルの指示を与えて開始します。  
 
 次に、植物や花の名前を当てるゲームにフォーカスするようエージェントを変更します。  
 
@@ -37,22 +37,22 @@ search:
 
 ## 演習 1: 宣言型エージェントの作成
 
-さあ始めましょう! 💪🏼 Copilot Studio Lite を使ってゼロからエージェントを作成します。
+さあ始めましょう! 💪🏼 Agent Builder を使ってゼロからエージェントを作成します。
 
 ### 手順 1: エージェントを説明する
 
-宣言型エージェントを Copilot Studio Lite で作成するには、[Microsoft 365 Copilot チャットのホーム ページ](https://www.microsoft365.com/copilot){target=_blank} を開き、左側のパネルで利用可能なエージェントの一覧から **New agent** を選択します。以下の図を参照してください。
+宣言型エージェントを Agent Builder で作成するには、[Microsoft 365 Copilot チャットのホーム ページ](https://www.microsoft365.com/copilot){target=_blank} を開き、左側のパネルで利用可能なエージェントの一覧から **New agent** を選択します。以下の図を参照してください。
 
 ![Microsoft 365 Copilot Chat。'New agent' コマンドが強調表示されている。](../../../assets/images/make/agent-builder-01/create-agent-01.png)
 
-Copilot Studio Lite が起動し、カスタム エージェントの定義を開始できます。テンプレートを選択して始めることも、自然言語でエージェントを *説明* することも可能です。**Configure** オプションを選択してエージェントを手動で構成することもできますが、ここでは後ほど説明します。まず次の初期説明を入力してください。
+Agent Builder が起動し、カスタム エージェントの定義を開始できます。テンプレートを選択して始めることも、自然言語でエージェントを *説明* することも可能です。**Configure** オプションを選択してエージェントを手動で構成することもできますが、ここでは後ほど説明します。まず次の初期説明を入力してください。
 
 ```txt
 You are an expert gardener and you help users to maintain and improve their home garden 
 providing detailed instructions and advice about the best practices for home gardening.
 ```
 
-![Copilot Studio Lite のユーザー エクスペリエンス。左下にエージェント ビルダーに指示を入力するテキスト ボックス、右側にエージェントのプレビュー。](../../../assets/images/make/agent-builder-01/create-agent-02.png)
+![Agent Builder のユーザー エクスペリエンス。左下にエージェント ビルダーに指示を入力するテキスト ボックス、右側にエージェントのプレビュー。](../../../assets/images/make/agent-builder-01/create-agent-02.png)
 
 指示を入力すると、エージェント ビルダーから新しいエージェントの名前を尋ねられます。名前には **Gardener** と入力してください。エージェント ビルダーとやり取りしている間、ダイアログの右側にエージェントのプレビューが表示され、会話を始めるための提案プロンプトも確認できます。エージェント ビルダーから指示の詳細化を求められた場合は、次の文章を入力してください。
 
@@ -60,7 +60,7 @@ providing detailed instructions and advice about the best practices for home gar
 Suggest ways to keep plants and flowers shining and gorgeous
 ```
 
-![Copilot Studio Lite のユーザー エクスペリエンス。左下にエージェント ビルダーとの対話、右側にエージェントのプレビュー。](../../../assets/images/make/agent-builder-01/create-agent-03.png)
+![Agent Builder のユーザー エクスペリエンス。左下にエージェント ビルダーとの対話、右側にエージェントのプレビュー。](../../../assets/images/make/agent-builder-01/create-agent-03.png)
 
 エージェント ビルダーがエージェント作成に必要な情報をすべて取得するまで対話を続けます。強調すべき点を尋ねられた場合は、次の文章を入力してください。
 
@@ -71,9 +71,9 @@ Use a professional, yet friendly, tone.
 
 最後に「これ以上の調整は不要」と伝え、画面右上の **Create** ボタンを選択します。
 
-![Copilot Studio Lite のユーザー エクスペリエンス。'Create' ボタンが強調表示されている。](../../../assets/images/make/agent-builder-01/create-agent-04.png)
+![Agent Builder のユーザー エクスペリエンス。'Create' ボタンが強調表示されている。](../../../assets/images/make/agent-builder-01/create-agent-04.png)
 
-Copilot Studio Lite が、提供した指示を基に新しいエージェントを作成します。
+Agent Builder が、提供した指示を基に新しいエージェントを作成します。
 
 <cc-end-step lab="mab1" exercise="1" step="1" />
 
@@ -99,11 +99,11 @@ Copilot Studio Lite が、提供した指示を基に新しいエージェント
 
 Microsoft 365 Copilot Chat の画面左上にある **New chat** ボタンを選択して新しいチャットを開始します。左側の **All agents** を選択し、**Gardener** エージェントにカーソルを合わせて名前横の **...** をクリックします。表示されたコンテキスト メニューで **Edit** を選択し、エージェントを構成します。
 
-![既存エージェントを編集する Copilot Studio Lite のユーザー エクスペリエンス。'Edit' コマンドが表示されている。](../../../assets/images/make/agent-builder-01/update-agent-01.png)
+![既存エージェントを編集する Agent Builder のユーザー エクスペリエンス。'Edit' コマンドが表示されている。](../../../assets/images/make/agent-builder-01/update-agent-01.png)
 
 エージェントのすべての設定を含む新しいページが表示されます。
 
-![既存エージェントを編集中の Copilot Studio Lite。画面右上に 'Update' ボタンがある。](../../../assets/images/make/agent-builder-01/update-agent-02.png)
+![既存エージェントを編集中の Agent Builder。画面右上に 'Update' ボタンがある。](../../../assets/images/make/agent-builder-01/update-agent-02.png)
 
 ### 手順 1: カスタム アイコンを設定する
 
@@ -237,11 +237,11 @@ Generate the image of a dozen of red roses
 
 ---8<--- "ja/mab-congratulations.md"
 
-エージェントの作成、お疲れさまでした 🎉! これで **Copilot Studio Lite** コースは終了です。Gardener エージェントの作成はいかがでしたか? ぜひご感想をお聞かせください 💜
+エージェントの作成、お疲れさまでした 🎉! これで **Agent Builder** コースは終了です。Gardener エージェントの作成はいかがでしたか? ぜひご感想をお聞かせください 💜
 
 ## リソース
 - [宣言型エージェント](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-declarative-copilot){target=_blank}
-- [Copilot Studio Lite でエージェントを構築する](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build){target=_blank}
-- [Copilot Studio Lite エージェントの公開と管理](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish){target=_blank}
+- [Agent Builder でエージェントを構築する](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-build){target=_blank}
+- [Agent Builder エージェントの公開と管理](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/copilot-studio-agent-builder-publish){target=_blank}
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/agent-builder/01-first-agent--ja" />

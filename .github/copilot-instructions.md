@@ -6,7 +6,7 @@ Use this mapping to know the current vs. former names—so you can correctly int
 | New name                                | Former name            | Note                                                        |
 |-----------------------------------------|------------------------|------------------------------------------------------------------------|
 | Microsoft 365 Agents Toolkit            | Teams Toolkit          | Product name.                           |
-| Agent Builder                           | Copilot Studio Lite          | Product name.                           |
+| Agent Builder                           | Agent Builder          | Product name.                           |
 | App Manifest                            | Teams app manifest     | Describes app capabilities.        |
 | Microsoft 365 Agents Playground         | Test Tool              | Test Environment.          |
 | `m365agents.yml`                        | `teamsapp.yml`         | Microsoft 365 Agents Toolkit Project configuration files            |
