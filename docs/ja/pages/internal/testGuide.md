@@ -21,7 +21,7 @@ search:
 
     この新しいコースでは、受講者は次の内容を学習します:
 
-     - Copilot Studio Lite
+     - Agent Builder
      - Microsoft Copilot Studio
      - SharePoint エージェント
 
@@ -29,13 +29,13 @@ search:
 
       1. [こちら](https://microsoft.github.io/copilot-camp/pages/make/) から各ブランチの最初の紹介を読んでください。
 
-!!! note "Lab MAB1 - Copilot Studio Lite"
+!!! note "Lab MAB1 - Agent Builder"
     オーナー: Paolo Pialorsi
 
     このラボでは、受講者は次を行います:
 
      - Microsoft 365 Copilot 用の Declarative エージェントとは何かを学習
-     - Copilot Studio Lite を使用して Declarative エージェントを作成
+     - Agent Builder を使用して Declarative エージェントを作成
      - 特定の指示を用いてゲームを作成するようエージェントをカスタマイズ
      - SharePoint Online に保存されたドキュメントを情報源としてエージェントを構成
      - 画像生成を有効化

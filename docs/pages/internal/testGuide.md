@@ -17,7 +17,7 @@ The following labs are in need of testing. Please send questions and issues to t
 
     In this new path, the student finds content about:
 
-     - Copilot Studio Lite
+     - Agent Builder
      - Microsoft Copilot Studio
      - SharePoint agents
 
@@ -25,13 +25,13 @@ The following labs are in need of testing. Please send questions and issues to t
 
       1. Just read the initial introductions for each branch, starting from [here](https://microsoft.github.io/copilot-camp/pages/make/).
 
-!!! note "Lab MAB1 - Copilot Studio Lite"
+!!! note "Lab MAB1 - Agent Builder"
     Owner: Paolo Pialorsi
 
     In this lab, the student:
 
      - learns what is a declarative agent for Microsoft 365 Copilot
-     - makes a declarative agent using Copilot Studio Lite
+     - makes a declarative agent using Agent Builder
      - customises the agent to create a game using specific instructions
      - configures the agent to rely on a set of documents stored in SharePoint Online
      - enables the agent to generate images
