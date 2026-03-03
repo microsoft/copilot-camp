@@ -2605,7 +2605,18 @@
 
 <h1 id="lab-10-connect-declarative-agent-to-oauth-protected-mcp-server">Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server</h1>
 <p>In this lab, you'll run an <strong>OAuth 2.0 protected</strong> Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. While Lab 08 demonstrates an anonymous MCP server, this lab adds <strong>Microsoft Entra ID authentication</strong> for secure, enterprise-grade access to claims data.</p>
-<div class="floatwide">
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/Y6RpIH8uvuI" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+            <div class="note-box">
+            📘 <strong>Note:</strong>  MCP Server + Declarative Agents using Agents Toolkit is still in Preview
+        </div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+
+  <div class="floatwide">
   <div class="cc-lab-toc e-path">
       <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
       <div>
@@ -2684,6 +2695,9 @@
   })();
   </script>
   </div>
+
+    </div>
+</div>
 
 <h2 id="scenario">Scenario</h2>
 <p>Building on the MCP server Lab 08, <strong>Zava Insurance</strong> now needs to secure their claims operations system for production use. While the anonymous MCP server was excellent for development and testing, the security team requires OAuth 2.0 authentication before deploying to production. The development team must now integrate <strong>Microsoft Entra ID</strong> authentication to ensure only authorized users can access sensitive claims data. This authenticated MCP server will validate JWT tokens, implement scope-based permissions, and comply with <strong>RFC 9728</strong> for protected resource metadata discovery, enabling secure integration with <strong>Microsoft 365 Copilot</strong> Declarative Agents.</p>
