@@ -2,29 +2,33 @@
 
 # Building Agents for Microsoft 365
 
-Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, HR support, and more.
-
-![Agents for Microsoft 365 are conversational AI-powered assistants designed to help users automate tasks, answer questions, and streamline workflows across Microsoft 365 apps and services. Agents can be used in various scenarios, such as customer support, IT helpdesk, HR support, and more.](./assets/images/m365-agent-general.png)
-
-An agent for Microsoft 365 is typically made up of these components—foundational model,  an orchestrator, which is running that taps into that knowledge, skills, and autonomous processes that it has those capabilities to do, and it may or may not have a user interface. ​
-
-You can either extend Microsoft 365 Copilot by using the same infrastructure, orchestrator, foundation model, and security controls as Microsoft 365 Copilot, which ensures a consistent and familiar user experience.
-
-Or you can pick your own foundation model, orchestrator, and responsible AI controls.
-
-## 🧪 Where should I start to build agents?
-
-There are three major pathways with several labs. If you want a no-code/low-code approach, choose the **Maker** path (["Agent Academy"](https://aka.ms/agentacademy), "MAB", "MSA", or "MCS" labs). If you want to extend Microsoft 365 Copilot, choose the **Extend** path ("E" lab). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the **Build** path ("BMA" and "BAF" labs).
-
-![If you want a no-code/low-code approach, choose the Maker labs ("Agent Academy", "MAB", "MSA", or "MCS"). If you want to extend Microsoft 365 Copilot, choose the Extend lab ("E"). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the Build labs ("BMA" and "BAF")](./assets/images/CopilotCamp-Flow-Chart.png)
-
----8<--- "main-links.md"
-
-
 <div class="video">
   <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
   <div>Overview of Copilot Dev Camp</div>
 </div>
+
+Agents for Microsoft 365 are conversational AI-powered assistants that automate tasks, answer questions, and streamline workflows across Microsoft 365. Common use cases include customer support, IT helpdesk, and HR assistance.
+
+![Architecture diagram of an Agent for Microsoft 365 showing the user-experience layer with Microsoft 365 apps, an orchestrator managing knowledge (instructions and grounding), skills (actions, triggers, and workflow), and autonomy (planning, learning, escalation), all powered by foundation models, with the ability to connect to other agents.](./assets/images/m365-agent-general.png)
+
+An agent for Microsoft 365 typically consists of three core components: a foundation AI model that powers intelligent responses, an orchestrator that coordinates knowledge, skills, and autonomous processes, and optionally, a user interface like Microsoft 365 Copilot, Microsoft Teams, Microsoft SharePoint Online, etc. Agents can then be connected with other agents in a multi-agent architecture.
+
+![Diagram titled Empowering every developer to build agents, showing three paths: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Build for your own app leading to Copilot APIs.](./assets/images/m365-copilot-extensibility.png)
+
+When it comes to extending Microsoft 365 Copilot you have multiple options, depending on your actual needs:
+
+- **Declarative Agents**: you build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.
+- **Custom Engine Agents**: you build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.
+- **Copilot APIs**: you create custom applications that consume Microsoft 365 Copilot via Copilot APIs.
+
+## 🧪 Where should I start to build agents?
+
+There are plenty of options for you to start from. To create Declarative Agents, you can dig into technologies like Agent Builder, SharePoint Agents, Microsoft Copilot Studio, or pro-code Declarative Agents with the Microsoft 365 Agents Toolkit.
+To create Custom Engine Agents, you can explore technologies like Microsoft Copilot Studio, Microsoft Foundry, or pro-code Custom Engine Agents with the Microsoft 365 Agents Toolkit.
+
+In the following flowchart, you can find useful tips to learn where to start from.
+
+![If you want a no-code/low-code approach, choose the Maker labs ("Agent Academy", "MAB", "MSA", or "MCS"). If you want to extend Microsoft 365 Copilot, choose the Extend lab ("E"). If you want to build a completely custom agent using Microsoft Foundry or any AI of your choice, choose the Build labs ("BMA" and "BAF")](./assets/images/CopilotCamp-Flow-Chart.png)
 
 ## 🆕 What's New?
 
