@@ -34,11 +34,25 @@
                 cursor: not-allowed;
             }
 
+            .award-badge {
+                display: block;
+                width: 200px;
+                max-width: 200px;
+                height: auto;
+            }
+
             .award-congrats {
                 color: #1c8fd2;
                 font-size: larger;
                 font-weight: bold;
+            }
+
+            .award-congrats-title {
                 text-transform: uppercase;
+            }
+
+            .award-congrats-message {
+                text-transform: none;
             }
         `;
         const sheet = new CSSStyleSheet();
@@ -51,13 +65,15 @@
     class Award extends HTMLElement {
 
         #claimAwardUrl;     // URL to claim the badge
-        #pathName;          // Name of the path
+        #badgeId;           // ID of the badge
+        #badgeName;         // Name of the badge
+        #badgeUrl;          // URL of the badge image
         #label;             // Button text
 
-        #containerElement; // Div container
+        #containerElement;  // Div container
 
-        // #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
-        #labsAndStepsUrl = 'https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/docs/javascripts/labs-and-steps.json'; // Production
+        #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
+        // #labsAndStepsUrl = 'https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/docs/javascripts/labs-and-steps.json'; // Production
 
         // #functionsBaseUrl = 'http://localhost:7071/api/'; // Local testing
         #functionsBaseUrl = 'https://cc-awards.azurewebsites.net/api/'; // Production
@@ -70,7 +86,9 @@
             super();
 
             this.#label = this.getAttribute('label') || ' ⭐ Claim your badge! ⭐ ';
-            this.#pathName = this.getAttribute('path');
+            this.#badgeId = this.getAttribute('badgeId') || 'unknown-badge-id';
+            this.#badgeName = this.getAttribute('badgeName') || 'unknown-badge-name';
+            this.#badgeUrl = this.getAttribute('badgeUrl') || 'unknown-badge-url';
             this.#claimAwardUrl = this.getAttribute('claimAwardUrl') || 'https://aka.ms/copilotdevcamp/awards/claim?r3a6998c8554d4dbebe2eab89c0a2cf58=';
 
             ensureCss();
@@ -91,11 +109,24 @@
         #renderClaimAward() {
             this.#containerElement = document.createElement('div');
 
+            // Create the congratulations title
+            const congratsTitle = document.createElement('div');
+            congratsTitle.textContent = 'Congratulations!';
+            congratsTitle.className = 'award-congrats award-congrats-title';
+            this.#containerElement.appendChild(congratsTitle);
+
             // Create the congratulations message
-            const congratsMessage = document.createElement('p');
-            congratsMessage.textContent = `Congratulations! You have completed all the labs in the ${this.#pathName} path!`;
-            congratsMessage.className = 'award-congrats';
+            const congratsMessage = document.createElement('div');
+            congratsMessage.textContent = `You have completed all the labs required to claim the "${this.#badgeName}" badge!`;
+            congratsMessage.className = 'award-congrats award-congrats-message';
             this.#containerElement.appendChild(congratsMessage);
+
+            // Create the badge image
+            const badgeImage = document.createElement('img');
+            badgeImage.src = this.#badgeUrl;
+            badgeImage.alt = `${this.#badgeName} badge`;
+            badgeImage.className = 'award-badge';
+            this.#containerElement.appendChild(badgeImage);
 
             // Create the award button
             const awardButton = document.createElement('button');
@@ -115,7 +146,7 @@
 
             try {
                 // Track the award status on telemetry
-                const awardTrackingUrl = `${this.#badgeClaimedTrackingUrl}${this.#pathName}`;
+                const awardTrackingUrl = `${this.#badgeClaimedTrackingUrl}${this.#badgeName}`;
                 fetch(awardTrackingUrl, {
                     method: 'GET'
                 });
@@ -132,7 +163,7 @@
         }
 
         // Retrieves all the labs and labs steps from the configuration file
-        async #fetchLabsAndSteps(pathName) {
+        async #fetchLabsAndSteps(badgeId) {
             try {
                 // Try to retrieve the labs and steps data
                 const response = await fetch(this.#labsAndStepsUrl);
@@ -146,9 +177,9 @@
                 const stepsArray = [];
     
                 // Build the steps array
-                data.paths.forEach(path => {
-                    if (path.pathId !== pathName) return;
-                    path.labs.forEach(lab => {
+                data.badges.forEach(badge => {
+                    if (badge.badgeId !== badgeId) return;
+                    badge.labs.forEach(lab => {
                         lab.exercises.forEach(exercise => {
                             exercise.steps.forEach(step => {
                                 stepsArray.push(`step-${lab.labId}-${exercise.exerciseId}-${step.stepId}`);
@@ -164,18 +195,21 @@
             }
         }
 
-        // Checks if the user is eligible to claim the award for a specific path
-        async #checkAwardElegibility(pathName) {
+        // Checks if the user is eligible to claim the award for a specific badge 
+        // by verifying if all the required steps have been completed
+        async #checkAwardElegibility(badgeId) {
             // Check if the user is eligible to claim the award
-            const stepsArray = await this.#fetchLabsAndSteps(pathName);
+            const stepsArray = await this.#fetchLabsAndSteps(badgeId);
             if (!stepsArray) return false;
 
             // Check if all steps have been completed
             const steps = stepsArray.filter(step => localStorage.getItem(step) === 'true');
 
-            // console.log('Completed steps:', steps.length, 'Total steps:', stepsArray.length);
-            // console.log(stepsArray);
-            // console.log(steps);
+            if (this.#debugMode) {
+                console.log('Completed steps:', steps.length, 'Total steps:', stepsArray.length);
+                console.log(stepsArray);
+                console.log(steps);
+            }
 
             // Return true if all steps have been completed
             const isEligible = steps.length === stepsArray.length || this.#debugMode;
@@ -196,11 +230,11 @@
             return uniqueId;
         }
 
-        async #updateAwardStatus(pathName, isEligible) {
+        async #updateAwardStatus(badgeId, isEligible) {
             try {
                 // Update the award status for the current user
                 const uniqueId = this.#ensureAwardUniqueId();
-                const awardStatusUrl = `${this.#functionsBaseUrl}assignAward/${uniqueId}/${pathName}`;
+                const awardStatusUrl = `${this.#functionsBaseUrl}assignAward/${uniqueId}/${badgeId}`;
                 const awardStatusResponse = await fetch(awardStatusUrl, {
                     method: 'POST',
                     headers: {
@@ -219,11 +253,11 @@
         // Public method to check award eligibility
         async refreshAwardStatus() {
             // Check if the user is eligible to claim the award
-            const isEligible = await this.#checkAwardElegibility(this.#pathName);
+            const isEligible = await this.#checkAwardElegibility(this.#badgeId);
 
             try {
                 // Update the award status for the current user
-                await this.#updateAwardStatus(this.#pathName, isEligible);
+                await this.#updateAwardStatus(this.#badgeId, isEligible);
             } catch (error) {
                 console.error('Failed to update award status:', error);
             }

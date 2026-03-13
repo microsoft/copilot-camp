@@ -445,6 +445,6 @@ The RAG patterns you've learned can be applied to many other scenarios including
 <a href="../09-connected-agents">Start here</a> with Lab MCS9, to learn how to create connected agents in Copilot Studio.
 <cc-next /> 
 
-<!-- <cc-award path="Make" /> -->
+<!-- <cc-award badgeId="Make" badgeName="Make" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/08-rag" />

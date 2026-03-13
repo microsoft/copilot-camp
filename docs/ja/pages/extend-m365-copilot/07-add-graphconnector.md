@@ -174,6 +174,6 @@ Trey Genie の没入型体験で、次のプロンプトを使用してテスト
 
 このラボ「Add Copilot Connector」を完了しました。お疲れさまでした!
 
-<!-- <cc-award path="Extend" /> -->
+<!-- <cc-award badgeId="Extend" badgeName="Extend" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/07-add-graphconnector--ja" />

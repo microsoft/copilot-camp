@@ -632,6 +632,6 @@ This is the end of the **Build your own agent** path! Did you enjoy building Car
 
 <cc-next label="Home" url="/" />
 
-<!-- <cc-award path="Build" /> -->
+<!-- <cc-award badgeId="Build" badgeName="Build" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/05-actions" />

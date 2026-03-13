@@ -1,7 +1,7 @@
 {
-    "paths": [
+    "badges": [
         {
-            "pathId": "Make",
+            "badgeId": "Make",
             "title": "Maker Path - Make your agent",
             "labs": [
                 {
@@ -353,7 +353,7 @@
             ]
         },
         {
-            "pathId": "Extend",
+            "badgeId": "Extend",
             "title": "Extend - Build a declarative agent",
             "labs": [
                 {
@@ -1090,7 +1090,7 @@
             ]
         },
         {
-            "pathId": "Build",
+            "badgeId": "Build",
             "title": "Build - Build a custom engine agent",
             "labs": [
                 {
@@ -1416,6 +1416,132 @@
                                 {
                                     "stepId": "4",
                                     "title": "Test your app and the new sendLists action"                                    
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "badgeId": "Test",
+            "title": "Test Badge",
+            "labs": [
+                {
+                    "labId": "mcs10",
+                    "title": "MCS10 - Consuming an MCP server with OAuth 2.0",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Setting up the Secured MCP Server",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Understanding the Secured MCP Server and prerequisites"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Downloading and reviewing the Secured MCP Server"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Understanding OAuth 2.0 Authorization Code Flow"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Configuring Microsoft Entra ID Applications",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Registering the HR MCP Server Application (Backend)"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Configuring the HR MCP Server Application"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Registering the Copilot Studio Client Application"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Configuring the Copilot Studio Client Application"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Configuring and Running the MCP Server"
+                                },
+                                {
+                                    "stepId": "6",
+                                    "title": "Configuring the Dev Tunnel"
+                                },
+                                {
+                                    "stepId": "7",
+                                    "title": "Updating the Application ID URI and Configuration"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Creating an Agent in Copilot Studio",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Creating the HR Agent"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Configuring Agent Settings"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Configuring Conversation Starters"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Registering the MCP Tool with OAuth 2.0",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Adding the MCP Server Tool"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Configuring OAuth 2.0 Authentication"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Configuring the Redirect URI in Entra ID"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Configuring the Power Apps Connector (Optional)"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Complete MCP tool configuration"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "5",
+                            "title": "Testing the Agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Publishing the Agent"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Testing Authentication Flow"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Testing MCP Tools"
                                 }
                             ]
                         }

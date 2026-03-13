@@ -425,6 +425,6 @@ Interview Coordinator エージェントは、高度なエージェント オー
 <a href="../10-mcp-oauth">こちら</a> からラボ MCS10 を開始し、Copilot Studio で OAuth で保護された MCP サーバーを利用する方法を学びましょう。  
 <cc-next /> 
 
-<!-- <cc-award path="Make" /> -->
+<!-- <cc-award badgeId="Make" badgeName="Make" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-connected-agents--ja" />
