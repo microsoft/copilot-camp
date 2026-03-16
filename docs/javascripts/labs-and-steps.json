@@ -3,6 +3,10 @@
         {
             "badgeId": "Make",
             "title": "Maker Path - Make your agent",
+            "enabled": false,
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": "2099-12-31T23:59:59Z",
+            "badgeImageUrl": "",
             "labs": [
                 {
                     "labId": "mab1",
@@ -355,6 +359,10 @@
         {
             "badgeId": "Extend",
             "title": "Extend - Build a declarative agent",
+            "enabled": false,
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": "2099-12-31T23:59:59Z",
+            "badgeImageUrl": "",
             "labs": [
                 {
                     "labId": "e0",
@@ -1092,6 +1100,10 @@
         {
             "badgeId": "Build",
             "title": "Build - Build a custom engine agent",
+            "enabled": false,
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": "2099-12-31T23:59:59Z",
+            "badgeImageUrl": "",
             "labs": [
                 {
                     "labId": "bta0",
@@ -1426,6 +1438,10 @@
         {
             "badgeId": "Test",
             "title": "Test Badge",
+            "enabled": true,
+            "startDate": "2025-01-01T00:00:00Z",
+            "endDate": "2099-12-31T23:59:59Z",
+            "badgeImageUrl": "../../../../assets/images/awards/2026/Declarative-Pioneer.png",
             "labs": [
                 {
                     "labId": "mcs10",

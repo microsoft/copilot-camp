@@ -88,7 +88,7 @@
             this.#label = this.getAttribute('label') || ' ⭐ Claim your badge! ⭐ ';
             this.#badgeId = this.getAttribute('badgeId') || 'unknown-badge-id';
             this.#badgeName = this.getAttribute('badgeName') || 'unknown-badge-name';
-            this.#badgeUrl = this.getAttribute('badgeUrl') || 'unknown-badge-url';
+            this.#badgeUrl = this.getAttribute('badgeUrl') || ''; // Will fall back to badgeImageUrl from config
             this.#claimAwardUrl = this.getAttribute('claimAwardUrl') || 'https://aka.ms/copilotdevcamp/awards/claim?r3a6998c8554d4dbebe2eab89c0a2cf58=';
 
             ensureCss();
@@ -163,6 +163,7 @@
         }
 
         // Retrieves all the labs and labs steps from the configuration file
+        // Returns an object with steps array and badge configuration, or null on failure
         async #fetchLabsAndSteps(badgeId) {
             try {
                 // Try to retrieve the labs and steps data
@@ -175,10 +176,17 @@
                 // Parse the JSON response
                 const data = await response.json();
                 const stepsArray = [];
+                let badgeConfig = null;
     
-                // Build the steps array
+                // Build the steps array and retrieve badge configuration
                 data.badges.forEach(badge => {
                     if (badge.badgeId !== badgeId) return;
+                    badgeConfig = {
+                        enabled: badge.enabled !== undefined ? badge.enabled : true,
+                        startDate: badge.startDate ? new Date(badge.startDate) : null,
+                        endDate: badge.endDate ? new Date(badge.endDate) : null,
+                        badgeImageUrl: badge.badgeImageUrl || ''
+                    };
                     badge.labs.forEach(lab => {
                         lab.exercises.forEach(exercise => {
                             exercise.steps.forEach(step => {
@@ -188,32 +196,62 @@
                     });
                 });
     
-                return stepsArray;
+                return { steps: stepsArray, badgeConfig };
 
             } catch (error) {
                 console.error('Failed to fetch labs and steps:', error);
+                return null;
             }
+        }
+
+        // Checks if the badge campaign is currently active (enabled and within date range)
+        #isCampaignActive(badgeConfig) {
+            if (!badgeConfig) return false;
+
+            // In debug mode, always consider the campaign active
+            if (this.#debugMode) return true;
+
+            // Check if the badge is enabled
+            if (!badgeConfig.enabled) return false;
+
+            // Check if the current date/time is within the campaign range
+            const now = new Date();
+            if (badgeConfig.startDate && now < badgeConfig.startDate) return false;
+            if (badgeConfig.endDate && now > badgeConfig.endDate) return false;
+
+            return true;
         }
 
         // Checks if the user is eligible to claim the award for a specific badge 
         // by verifying if all the required steps have been completed
+        // and the badge campaign is active
         async #checkAwardElegibility(badgeId) {
-            // Check if the user is eligible to claim the award
-            const stepsArray = await this.#fetchLabsAndSteps(badgeId);
-            if (!stepsArray) return false;
+            // Fetch labs, steps, and badge configuration
+            const result = await this.#fetchLabsAndSteps(badgeId);
+            if (!result || !result.steps) return { isEligible: false, badgeConfig: null };
 
-            // Check if all steps have been completed
-            const steps = stepsArray.filter(step => localStorage.getItem(step) === 'true');
+            const { steps: stepsArray, badgeConfig } = result;
 
-            if (this.#debugMode) {
-                console.log('Completed steps:', steps.length, 'Total steps:', stepsArray.length);
-                console.log(stepsArray);
-                console.log(steps);
+            // Check if the badge campaign is active
+            if (!this.#isCampaignActive(badgeConfig)) {
+                if (this.#debugMode) {
+                    console.log('Badge campaign is not active for badge:', badgeId);
+                }
+                return { isEligible: false, badgeConfig };
             }
 
-            // Return true if all steps have been completed
-            const isEligible = steps.length === stepsArray.length || this.#debugMode;
-            return isEligible;
+            // Check if all steps have been completed
+            const completedSteps = stepsArray.filter(step => localStorage.getItem(step) === 'true');
+
+            if (this.#debugMode) {
+                console.log('Completed steps:', completedSteps.length, 'Total steps:', stepsArray.length);
+                console.log(stepsArray);
+                console.log(completedSteps);
+            }
+
+            // Return true if all steps have been completed (or debug mode)
+            const isEligible = completedSteps.length === stepsArray.length || this.#debugMode;
+            return { isEligible, badgeConfig };
         }
 
         // Generate a unique ID (GUID) and store it in localStorage if it does not exist
@@ -253,7 +291,12 @@
         // Public method to check award eligibility
         async refreshAwardStatus() {
             // Check if the user is eligible to claim the award
-            const isEligible = await this.#checkAwardElegibility(this.#badgeId);
+            const { isEligible, badgeConfig } = await this.#checkAwardElegibility(this.#badgeId);
+
+            // Use badgeImageUrl from config as fallback when badgeUrl attribute is not provided
+            if (!this.#badgeUrl && badgeConfig && badgeConfig.badgeImageUrl) {
+                this.#badgeUrl = badgeConfig.badgeImageUrl;
+            }
 
             try {
                 // Update the award status for the current user
