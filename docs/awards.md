@@ -26,7 +26,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 
     | Badge | Challenge | Requirements | Active Dates |
     |:-----:|-----------|--------------|:------------:|
-    | <a href="../assets/images/awards/2026/Knowledge-Ambassador.png" target="_blank"><img src="../assets/images/awards/2026/Knowledge-Ambassador.png" alt="Knowledge Ambassador" width="120"></a> | **Knowledge Ambassador** | Share with the community a sample of Microsoft 365 Copilot extensibility | Always |
+    | <a href="../assets/images/awards/2026/Agent-Contributor.png" target="_blank"><img src="../assets/images/awards/2026/Agent-Contributor.png" alt="Agent Contributor" width="120"></a> | **Agent Contributor** | Share with the community a sample of Microsoft 365 Copilot or Work IQ extensibility | Always |
 
 ## Timeline
 
