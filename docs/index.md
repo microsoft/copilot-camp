@@ -1,5 +1,7 @@
 **Copilot Developer Camp** is a self-paced learning resource, designed to help you build agents for Microsoft 365 Copilot. It provides practical guidance and real-world examples to support your development journey.
 
+---8<--- "starrepo.md"
+
 # Building Agents for Microsoft 365
 
 <div class="video">
@@ -33,7 +35,7 @@ In the following flowchart, you can find useful tips to learn where to start fro
 
 [![Flowchart to help you start your learning journey. Starting with Agent 365 (Lab AG) which applies to all solutions. The main decision asks What kind of AI solution are you working on? Building on the Microsoft 365 Copilot stack leads to Declarative Agents: end users choose between Agent Builder (Lab MAB) for Microsoft 365 content or SharePoint Agent (Lab MSA) for SharePoint Online content only, while developers go to Declarative Agent (Lab E). Building for your own app leads to Work IQ (Lab WIQ). Building on your own AI stack leads to Custom Engine Agents: power users go to Copilot Studio via Agent Academy and Copilot Studio labs (Lab MCS), while developers build Custom Engine Agents with Microsoft Foundry, Agent Framework, and Microsoft 365 Agents SDK (Labs BMA and BAF).](./assets/images/CopilotCamp-Flow-Chart.png)](./assets/images/CopilotCamp-Flow-Chart.png){target="_blank"}
 
-## 🆕 What's New?
+<!-- ## 🆕 What's New?
 
 !!! example "Updated in Jan 2026"
 
@@ -49,9 +51,7 @@ In the following flowchart, you can find useful tips to learn where to start fro
 
     - **Build with Microsoft 365 Agents SDK**:
     Leverage the full capabilities of the Microsoft 365 Agents SDK to create production-ready Copilot agents that integrate with real business data.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/)
-
-   
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/) -->
 
 ## 🧑‍💻 More
 
@@ -85,5 +85,3 @@ Resources:
 - Contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with questions or concerns
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/index" />
-
----8<--- "starrepo.md"
