@@ -19,7 +19,7 @@ When it comes to extending Microsoft 365 Copilot you have multiple options, depe
 
 - **Declarative Agents**: you build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.
 - **Custom Engine Agents**: you build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.
-- **Work IQ**: you create custom applications that consume Microsoft 365 and Microsoft 365 Copilot via Work IQ APIs.
+- **Work IQ**: you create custom applications that consume Microsoft 365 and Microsoft 365 Copilot via Work IQ, the AI-driven intelligence layer of Microsoft 365.
 
 ## 🧪 Where should I start to build agents?
 
