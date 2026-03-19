@@ -1781,8 +1781,8 @@
             "badgeId": "CustomEngineRanger",
             "title": "Custom Engine Ranger",
             "enabled": true,
-            "startDate": "2026-05-01T00:00:00Z",
-            "endDate": "2026-05-31T23:59:59Z",
+            "startDate": "2026-04-01T00:00:00Z",
+            "endDate": "2026-04-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/Custom-Engine-Ranger.png",
             "labs": [
                 {
@@ -2483,8 +2483,8 @@
             "badgeId": "MCPIntegrator",
             "title": "MCP Integrator",
             "enabled": true,
-            "startDate": "2026-06-01T00:00:00Z",
-            "endDate": "2026-06-30T23:59:59Z",
+            "startDate": "2026-05-01T00:00:00Z",
+            "endDate": "2026-05-31T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/MCP-Integrator.png",
             "labs": [
                 {
@@ -3019,8 +3019,8 @@
             "badgeId": "ConnectionChampion",
             "title": "Connection Champion",
             "enabled": true,
-            "startDate": "2026-07-01T00:00:00Z",
-            "endDate": "2026-07-31T23:59:59Z",
+            "startDate": "2026-06-01T00:00:00Z",
+            "endDate": "2026-06-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/Connection-Champion.png",
             "labs": [
                 {

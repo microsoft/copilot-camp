@@ -72,8 +72,8 @@
 
         #containerElement;  // Div container
 
-        #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
-        // #labsAndStepsUrl = 'https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/docs/javascripts/labs-and-steps.json'; // Production
+        // #labsAndStepsUrl = 'http://127.0.0.1:8000/copilot-camp/javascripts/labs-and-steps.json'; // Local testing
+        #labsAndStepsUrl = 'https://raw.githubusercontent.com/microsoft/copilot-camp/refs/heads/main/docs/javascripts/labs-and-steps.json'; // Production
 
         // #functionsBaseUrl = 'http://localhost:7071/api/'; // Local testing
         #functionsBaseUrl = 'https://cc-awards.azurewebsites.net/api/'; // Production
@@ -132,7 +132,7 @@
             const awardButton = document.createElement('button');
             awardButton.textContent = this.#label;
             awardButton.className = 'award-button';
-            awardButton.onclick = this.#clickHandler;
+            awardButton.onclick = () => this.#clickHandler();
             this.#containerElement.appendChild(awardButton);
             
             // Hide the container by default
