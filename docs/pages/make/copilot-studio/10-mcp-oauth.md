@@ -739,6 +739,6 @@ In this lab, you learned how to:
 By implementing OAuth 2.0 authentication, you have ensured that your HR candidate management system is protected with industry-standard security practices. This approach is essential for production environments where data security and user authentication are critical requirements.
 
 <!-- <cc-next />  -->
-<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" debugMode="true" />
+<!-- <cc-award badgeId="TestBadge" badgeName="Test Badge" debugMode="true" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/10-mcp-oauth" />
