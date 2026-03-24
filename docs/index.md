@@ -4,10 +4,10 @@
 
 # Building Agents for Microsoft 365
 
-<div class="video">
+<!-- <div class="video">
   <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
   <div>Overview of Copilot Dev Camp</div>
-</div>
+</div> -->
 
 Agents for Microsoft 365 are conversational AI-powered assistants that automate tasks, answer questions, and streamline workflows across Microsoft 365. Common use cases include customer support, IT helpdesk, and HR assistance.
 
