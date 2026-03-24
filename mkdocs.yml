@@ -84,7 +84,7 @@ plugins:
                 - Lab BAF5 - Add Communication Capabilities: 'pages/custom-engine/agent-framework/05-add-communication.md'
                 - Lab BAF6 - Add Microsoft 365 Work IQ API Integration: 'pages/custom-engine/agent-framework/06-add-copilot-api.md'
                 - Lab BAF7 - Add MCP Tools Integration: 'pages/custom-engine/agent-framework/07-add-mcp-tools.md'
-            - Copilot Studio agents:
+            - No-code/low-code agents:
               - Welcome: 'pages/make/index.md'
               - Lab MAB - Agent Builder: 'pages/make/agent-builder/index.md'
               - Lab MAB1 - Agent Builder: 'pages/make/agent-builder/01-first-agent.md'
