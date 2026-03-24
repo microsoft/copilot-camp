@@ -1326,4 +1326,6 @@ In the next lab, you'll add authentication and email capabilities to secure your
 
 <cc-next url="../04-add-policy-search" />
 
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/03-add-vision-analysis" />

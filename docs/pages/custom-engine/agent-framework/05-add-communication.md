@@ -666,4 +666,6 @@ Your Zava Insurance Agent is now a complete claims processing solution with:
 
 <cc-next url="../06-add-copilot-api" />
 
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/05-add-communication" />

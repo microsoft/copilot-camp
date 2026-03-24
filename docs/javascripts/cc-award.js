@@ -162,8 +162,28 @@
             }
         }
 
+        // Helper method to extract steps from labs array
+        // By default, excludes optional labs (for eligibility checking)
+        // Set includeOptional=true to include all labs (for display purposes)
+        #extractStepsFromLabs(labs, includeOptional = false) {
+            const stepsArray = [];
+            labs.forEach(lab => {
+                // Skip optional labs unless explicitly included
+                if (lab.optional && !includeOptional) {
+                    return;
+                }
+                lab.exercises.forEach(exercise => {
+                    exercise.steps.forEach(step => {
+                        stepsArray.push(`step-${lab.labId}-${exercise.exerciseId}-${step.stepId}`);
+                    });
+                });
+            });
+            return stepsArray;
+        }
+
         // Retrieves all the labs and labs steps from the configuration file
-        // Returns an object with steps array and badge configuration, or null on failure
+        // Returns an object with groups (array of step arrays) and badge configuration, or null on failure
+        // Supports both old format (flat labs array) and new format (groups of labs)
         async #fetchLabsAndSteps(badgeId) {
             try {
                 // Try to retrieve the labs and steps data
@@ -175,10 +195,10 @@
 
                 // Parse the JSON response
                 const data = await response.json();
-                const stepsArray = [];
+                const groups = [];
                 let badgeConfig = null;
     
-                // Build the steps array and retrieve badge configuration
+                // Build the groups array and retrieve badge configuration
                 data.badges.forEach(badge => {
                     if (badge.badgeId !== badgeId) return;
                     badgeConfig = {
@@ -187,16 +207,36 @@
                         endDate: badge.endDate ? new Date(badge.endDate) : null,
                         badgeImageUrl: badge.badgeImageUrl || ''
                     };
-                    badge.labs.forEach(lab => {
-                        lab.exercises.forEach(exercise => {
-                            exercise.steps.forEach(step => {
-                                stepsArray.push(`step-${lab.labId}-${exercise.exerciseId}-${step.stepId}`);
+                    
+                    // Check if badge uses new groups structure or old flat labs structure
+                    if (badge.groups && Array.isArray(badge.groups)) {
+                        // New structure: groups of labs (OR logic between groups)
+                        badge.groups.forEach(group => {
+                            const requiredSteps = this.#extractStepsFromLabs(group.labs, false);
+                            const optionalSteps = this.#extractStepsFromLabs(group.labs, true)
+                                .filter(step => !requiredSteps.includes(step));
+                            groups.push({
+                                groupId: group.groupId,
+                                groupName: group.groupName,
+                                steps: requiredSteps,
+                                optionalSteps: optionalSteps
                             });
                         });
-                    });
+                    } else if (badge.labs && Array.isArray(badge.labs)) {
+                        // Old structure: flat labs array (all labs required)
+                        const requiredSteps = this.#extractStepsFromLabs(badge.labs, false);
+                        const optionalSteps = this.#extractStepsFromLabs(badge.labs, true)
+                            .filter(step => !requiredSteps.includes(step));
+                        groups.push({
+                            groupId: 'default',
+                            groupName: 'Default',
+                            steps: requiredSteps,
+                            optionalSteps: optionalSteps
+                        });
+                    }
                 });
     
-                return { steps: stepsArray, badgeConfig };
+                return { groups, badgeConfig };
 
             } catch (error) {
                 console.error('Failed to fetch labs and steps:', error);
@@ -223,14 +263,14 @@
         }
 
         // Checks if the user is eligible to claim the award for a specific badge 
-        // by verifying if all the required steps have been completed
+        // by verifying if all the required steps have been completed in ANY group
         // and the badge campaign is active
         async #checkAwardElegibility(badgeId) {
             // Fetch labs, steps, and badge configuration
             const result = await this.#fetchLabsAndSteps(badgeId);
-            if (!result || !result.steps) return { isEligible: false, badgeConfig: null };
+            if (!result || !result.groups || result.groups.length === 0) return { isEligible: false, badgeConfig: null };
 
-            const { steps: stepsArray, badgeConfig } = result;
+            const { groups, badgeConfig } = result;
 
             // Check if the badge campaign is active
             if (!this.#isCampaignActive(badgeConfig)) {
@@ -240,17 +280,44 @@
                 return { isEligible: false, badgeConfig };
             }
 
-            // Check if all steps have been completed
-            const completedSteps = stepsArray.filter(step => localStorage.getItem(step) === 'true');
+            // Check if ANY group has ALL its steps completed (OR logic between groups)
+            let isEligible = false;
+            for (const group of groups) {
+                const completedSteps = group.steps.filter(step => localStorage.getItem(step) === 'true');
+                const groupComplete = completedSteps.length === group.steps.length;
 
-            if (this.#debugMode) {
-                console.log('Completed steps:', completedSteps.length, 'Total steps:', stepsArray.length);
-                console.log(stepsArray);
-                console.log(completedSteps);
+                if (this.#debugMode) {
+                    console.log(`Group "${group.groupName}" (${group.groupId}): ${completedSteps.length}/${group.steps.length} required steps completed`);
+                    console.log('Required steps:', group.steps);
+                    console.log('Completed required steps:', completedSteps);
+                    const missingSteps = group.steps.filter(step => localStorage.getItem(step) !== 'true');
+                    console.log('Missing required steps:', missingSteps);
+                    if (group.optionalSteps && group.optionalSteps.length > 0) {
+                        const completedOptional = group.optionalSteps.filter(step => localStorage.getItem(step) === 'true');
+                        console.log(`Optional steps: ${completedOptional.length}/${group.optionalSteps.length} completed`);
+                        console.log('Optional steps:', group.optionalSteps);
+                    }
+                }
+
+                if (groupComplete) {
+                    isEligible = true;
+                    if (this.#debugMode) {
+                        console.log(`Group "${group.groupName}" is complete - badge eligible!`);
+                    }
+                    if (!this.#debugMode) {
+                        break; // One complete group is enough (but continue loop in debug mode to show all groups)
+                    }
+                }
             }
 
-            // Return true if all steps have been completed (or debug mode)
-            const isEligible = completedSteps.length === stepsArray.length || this.#debugMode;
+            // In debug mode, always eligible but show summary
+            if (this.#debugMode) {
+                console.log('--- Debug Mode Summary ---');
+                console.log(`Badge "${badgeId}" eligibility (before debug override): ${isEligible}`);
+                console.log('Setting eligibility to true for debug mode');
+                isEligible = true;
+            }
+
             return { isEligible, badgeConfig };
         }
 

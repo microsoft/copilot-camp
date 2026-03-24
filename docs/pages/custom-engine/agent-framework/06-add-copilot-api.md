@@ -815,4 +815,6 @@ Your Zava Insurance Agent now includes:
 
 <cc-next url="../07-add-mcp-tools" />
 
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/06-add-copilot-api" />

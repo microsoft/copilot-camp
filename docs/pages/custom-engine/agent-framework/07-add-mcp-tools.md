@@ -579,3 +579,8 @@ The agent should return all Homeowners adjusters regardless of country.
     ✅ Use claim context to provide relevant adjuster suggestions
     
     This pattern can be extended to integrate with any MCP-compatible service, enabling your agent to leverage a rich ecosystem of tools and capabilities.
+
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/07-add-mcp-tools" />

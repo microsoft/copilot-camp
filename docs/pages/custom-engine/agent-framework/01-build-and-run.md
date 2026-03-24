@@ -410,4 +410,6 @@ In the next lab, you'll add more powerful capabilities by integrating document s
 
 <cc-next url="../02-add-claim-search" />
 
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/01-build-and-run" />

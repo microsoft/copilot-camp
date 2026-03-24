@@ -18,11 +18,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Describe your agent"                                    
+                                    "title": "Describe your agent"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test the agent"                                    
+                                    "title": "Test the agent"
                                 }
                             ]
                         },
@@ -32,11 +32,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Provide a custom icon"                                    
+                                    "title": "Provide a custom icon"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Define the guess plant/flower game rules"                                    
+                                    "title": "Define the guess plant/flower game rules"
                                 }
                             ]
                         },
@@ -374,7 +374,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Enable Teams custom application uploads"                                    
+                                    "title": "Enable Teams custom application uploads"
                                 }
                             ]
                         },
@@ -384,21 +384,21 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install Visual Studio Code"                                    
+                                    "title": "Install Visual Studio Code"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Install NodeJS"                                    
+                                    "title": "Install NodeJS"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Install Agents Toolkit"                                    
+                                    "title": "Install Agents Toolkit"
                                 }
                             ]
                         }
                     ]
                 },
-                 {
+                {
                     "labId": "e1",
                     "title": "Lab E1 - Build your first Declarative agent with TypeSpec definition using Microsoft 365 Agents Toolkit",
                     "exercises": [
@@ -408,23 +408,23 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Scaffold your base agent project using Microsoft 365 Agents Toolkit"                                    
+                                    "title": "Scaffold your base agent project using Microsoft 365 Agents Toolkit"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Sign into the Microsoft 365 Agents Toolkit "                                    
+                                    "title": "Sign into the Microsoft 365 Agents Toolkit "
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Define your agent"                                    
+                                    "title": "Define your agent"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "(Optional) Understand the decorators"                                    
+                                    "title": "(Optional) Understand the decorators"
                                 },
- {
+                                {
                                     "stepId": "5",
-                                    "title": "Test your agent"                                    
+                                    "title": "Test your agent"
                                 }
                             ]
                         },
@@ -434,19 +434,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Modify agent to add more operations"                                    
+                                    "title": "Modify agent to add more operations"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add adaptive card to function reference"                                    
+                                    "title": "Add adaptive card to function reference"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Add code interpreter capabilities"                                    
+                                    "title": "Add code interpreter capabilities"
                                 },
-   {
+                                {
                                     "stepId": "4",
-                                    "title": "Provision and Test the Agent"                                    
+                                    "title": "Provision and Test the Agent"
                                 }
                             ]
                         },
@@ -456,7 +456,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Agent debugging in the chat"                                    
+                                    "title": "Agent debugging in the chat"
                                 }
                             ]
                         }
@@ -472,23 +472,23 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install additional prerequisites"                                    
+                                    "title": "Install additional prerequisites"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Download the starting application"                                    
+                                    "title": "Download the starting application"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Set up the local environment files"                                    
+                                    "title": "Set up the local environment files"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Install the dependencies"                                    
+                                    "title": "Install the dependencies"
                                 },
                                 {
                                     "stepId": "5",
-                                    "title": "Run the application"                                    
+                                    "title": "Run the application"
                                 }
                             ]
                         },
@@ -498,15 +498,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "GET the /me resource"                                    
+                                    "title": "GET the /me resource"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Try the other methods and resources"                                    
+                                    "title": "Try the other methods and resources"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Examine the database (optional)"                                    
+                                    "title": "Examine the database (optional)"
                                 }
                             ]
                         }
@@ -522,11 +522,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create a SharePoint site"                                    
+                                    "title": "Create a SharePoint site"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Upload the sample documents"                                    
+                                    "title": "Upload the sample documents"
                                 }
                             ]
                         },
@@ -536,23 +536,23 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add the declarative agent JSON to your project"                                    
+                                    "title": "Add the declarative agent JSON to your project"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add the URL of your SharePoint site to the declarative agent"                                    
+                                    "title": "Add the URL of your SharePoint site to the declarative agent"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Examine the API Plugin files"                                    
+                                    "title": "Examine the API Plugin files"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Add the declarative agent to your app manifest"                                    
+                                    "title": "Add the declarative agent to your app manifest"
                                 },
                                 {
                                     "stepId": "5",
-                                    "title": "Remove the dummy feature from the app manifest"                                    
+                                    "title": "Remove the dummy feature from the app manifest"
                                 }
                             ]
                         },
@@ -562,13 +562,12 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Run the new project"                                    
+                                    "title": "Run the new project"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test the declarative agent"                                    
+                                    "title": "Test the declarative agent"
                                 }
-                              
                             ]
                         }
                     ]
@@ -583,19 +582,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add Azure function code"                                    
+                                    "title": "Add Azure function code"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Review the Azure function code (optional)"                                    
+                                    "title": "Review the Azure function code (optional)"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Add HTTP test requests"                                    
+                                    "title": "Add HTTP test requests"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Test the new resource"                                    
+                                    "title": "Test the new resource"
                                 }
                             ]
                         },
@@ -605,19 +604,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update the Open API Specification file"                                    
+                                    "title": "Update the Open API Specification file"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Review the updates (optional)"                                    
+                                    "title": "Review the updates (optional)"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Add projects to the plugin definition file"                                    
+                                    "title": "Add projects to the plugin definition file"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Review the changes to the plugin definition file (optional)"                                    
+                                    "title": "Review the changes to the plugin definition file (optional)"
                                 }
                             ]
                         },
@@ -627,11 +626,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Restart the application"                                    
+                                    "title": "Restart the application"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Prompt the Trey Genie"                                    
+                                    "title": "Prompt the Trey Genie"
                                 }
                             ]
                         }
@@ -647,11 +646,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Define Your Adaptive Card in JSON"                                    
+                                    "title": "Define Your Adaptive Card in JSON"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test Your Adaptive Card"                                    
+                                    "title": "Test Your Adaptive Card"
                                 }
                             ]
                         },
@@ -661,23 +660,23 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add an adaptive card for GET /api/consultants requests"                                    
+                                    "title": "Add an adaptive card for GET /api/consultants requests"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add an adaptive card for GET /api/me requests"                                    
+                                    "title": "Add an adaptive card for GET /api/me requests"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Add an adaptive card for GET /api/projects requests"                                    
+                                    "title": "Add an adaptive card for GET /api/projects requests"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Add an adaptive card for POST /api/billHours requests"                                    
+                                    "title": "Add an adaptive card for POST /api/billHours requests"
                                 },
                                 {
                                     "stepId": "5",
-                                    "title": "Add an adaptive card for POST /api/assignConsultant requests"                                    
+                                    "title": "Add an adaptive card for POST /api/assignConsultant requests"
                                 }
                             ]
                         },
@@ -687,11 +686,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install the plugin"                                    
+                                    "title": "Install the plugin"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Display an adaptive card"                                    
+                                    "title": "Display an adaptive card"
                                 }
                             ]
                         }
@@ -707,27 +706,27 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add an Entra ID app manifest"                                    
+                                    "title": "Add an Entra ID app manifest"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update the file version number in teamsapp.local.yml"                                    
+                                    "title": "Update the file version number in teamsapp.local.yml"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Provision an Entra ID application"                                    
+                                    "title": "Provision an Entra ID application"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Update the Entra ID application"                                    
+                                    "title": "Update the Entra ID application"
                                 },
                                 {
                                     "stepId": "5",
-                                    "title": "Change the output path"                                    
+                                    "title": "Change the output path"
                                 },
                                 {
                                     "stepId": "6",
-                                    "title": "Make the Entra ID values available to your application code"                                    
+                                    "title": "Make the Entra ID values available to your application code"
                                 }
                             ]
                         },
@@ -737,11 +736,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Provision an Entra ID application"                                    
+                                    "title": "Provision an Entra ID application"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Register the app in the Teams Developer Portal Vault"                                    
+                                    "title": "Register the app in the Teams Developer Portal Vault"
                                 }
                             ]
                         },
@@ -751,11 +750,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update the Open API Specification file"                                    
+                                    "title": "Update the Open API Specification file"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update the Plugin file"                                    
+                                    "title": "Update the Plugin file"
                                 }
                             ]
                         },
@@ -765,11 +764,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install the JWT validation library"                                    
+                                    "title": "Install the JWT validation library"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update the identity service"                                    
+                                    "title": "Update the identity service"
                                 }
                             ]
                         },
@@ -779,19 +778,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Bump the application version number in the app manifest"                                    
+                                    "title": "Bump the application version number in the app manifest"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "(Re)start the application"                                    
+                                    "title": "(Re)start the application"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Run the declarative agent"                                    
+                                    "title": "Run the declarative agent"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Add yourself to a project"                                    
+                                    "title": "Add yourself to a project"
                                 }
                             ]
                         }
@@ -807,19 +806,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install the developer tunnel CLI"                                    
+                                    "title": "Install the developer tunnel CLI"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create and host the tunnel"                                    
+                                    "title": "Create and host the tunnel"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Disable the dynamically created tunnel in your project"                                    
+                                    "title": "Disable the dynamically created tunnel in your project"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Manually override the server URL"                                    
+                                    "title": "Manually override the server URL"
                                 }
                             ]
                         },
@@ -829,23 +828,23 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add a new Entra ID app registration"                                    
+                                    "title": "Add a new Entra ID app registration"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Copy application info to a safe place"                                    
+                                    "title": "Copy application info to a safe place"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Create client secret"                                    
+                                    "title": "Create client secret"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Expose an API Scope"                                    
+                                    "title": "Expose an API Scope"
                                 },
                                 {
                                     "stepId": "5",
-                                    "title": "Save the API Scope"                                    
+                                    "title": "Save the API Scope"
                                 }
                             ]
                         },
@@ -855,15 +854,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Register the plugin"                                    
+                                    "title": "Register the plugin"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create a client secret"                                    
+                                    "title": "Create a client secret"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Grant permission"                                    
+                                    "title": "Grant permission"
                                 }
                             ]
                         },
@@ -873,7 +872,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add the Plugin app's ID to the API service app"                                    
+                                    "title": "Add the Plugin app's ID to the API service app"
                                 }
                             ]
                         },
@@ -883,11 +882,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create a new OAuth client registration"                                    
+                                    "title": "Create a new OAuth client registration"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Save your OAuth registration ID"                                    
+                                    "title": "Save your OAuth registration ID"
                                 }
                             ]
                         },
@@ -897,7 +896,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update the Plugin file"                                    
+                                    "title": "Update the Plugin file"
                                 }
                             ]
                         },
@@ -907,15 +906,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install the JWT validation library"                                    
+                                    "title": "Install the JWT validation library"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add environment variables for your API"                                    
+                                    "title": "Add environment variables for your API"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Update the identity service"                                    
+                                    "title": "Update the identity service"
                                 }
                             ]
                         },
@@ -925,7 +924,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "(Re)start the application"                                    
+                                    "title": "(Re)start the application"
                                 }
                             ]
                         }
@@ -941,19 +940,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install the developer tunnel CLI"                                    
+                                    "title": "Install the developer tunnel CLI"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create and host the tunnel"                                    
+                                    "title": "Create and host the tunnel"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Disable the dynamically created tunnel in your project"                                    
+                                    "title": "Disable the dynamically created tunnel in your project"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Manually override the server URL"                                    
+                                    "title": "Manually override the server URL"
                                 }
                             ]
                         },
@@ -963,11 +962,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add a new Entra ID app registration"                                    
+                                    "title": "Add a new Entra ID app registration"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Copy application info to a safe place"                                    
+                                    "title": "Copy application info to a safe place"
                                 }
                             ]
                         },
@@ -977,7 +976,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Register an SSO client in Teams developer portal"                                    
+                                    "title": "Register an SSO client in Teams developer portal"
                                 }
                             ]
                         },
@@ -987,7 +986,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update the Plugin file"                                    
+                                    "title": "Update the Plugin file"
                                 }
                             ]
                         },
@@ -997,19 +996,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update Application ID URI"                                    
+                                    "title": "Update Application ID URI"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add API Scope"                                    
+                                    "title": "Add API Scope"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Add authorized client apps"                                    
+                                    "title": "Add authorized client apps"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Redirect URIs for Authentication"                                    
+                                    "title": "Redirect URIs for Authentication"
                                 }
                             ]
                         },
@@ -1019,15 +1018,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install the JWT validation library"                                    
+                                    "title": "Install the JWT validation library"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add environment variables for your API"                                    
+                                    "title": "Add environment variables for your API"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Update the identity service"                                    
+                                    "title": "Update the identity service"
                                 }
                             ]
                         },
@@ -1037,7 +1036,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "(Re)start the application"                                    
+                                    "title": "(Re)start the application"
                                 }
                             ]
                         }
@@ -1053,15 +1052,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Download sample project"                                    
+                                    "title": "Download sample project"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create external connection"                                    
+                                    "title": "Create external connection"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Test the connector data in Microsoft365 app"                                    
+                                    "title": "Test the connector data in Microsoft365 app"
                                 }
                             ]
                         },
@@ -1071,11 +1070,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Get the connection id of the Microsoft Copilot Connector"                                    
+                                    "title": "Get the connection id of the Microsoft Copilot Connector"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update declarative agent manifest"                                    
+                                    "title": "Update declarative agent manifest"
                                 }
                             ]
                         },
@@ -1085,11 +1084,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Start the application"                                    
+                                    "title": "Start the application"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test knowledge in Copilot"                                    
+                                    "title": "Test knowledge in Copilot"
                                 }
                             ]
                         }
@@ -1115,7 +1114,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Enable Teams custom application uploads"                                    
+                                    "title": "Enable Teams custom application uploads"
                                 }
                             ]
                         },
@@ -1125,15 +1124,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Install Visual Studio Code"                                    
+                                    "title": "Install Visual Studio Code"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Install NodeJS"                                    
+                                    "title": "Install NodeJS"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Install Agents Toolkit"                                    
+                                    "title": "Install Agents Toolkit"
                                 }
                             ]
                         },
@@ -1143,7 +1142,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create an Azure free account"                                    
+                                    "title": "Create an Azure free account"
                                 }
                             ]
                         }
@@ -1159,11 +1158,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create Azure OpenAI service resource"                                    
+                                    "title": "Create Azure OpenAI service resource"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create a deployment model"                                    
+                                    "title": "Create a deployment model"
                                 }
                             ]
                         },
@@ -1173,11 +1172,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Use Teams Toolkit to create a new custom engine agent"                                    
+                                    "title": "Use Teams Toolkit to create a new custom engine agent"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Customize prompt and test the app"                                    
+                                    "title": "Customize prompt and test the app"
                                 }
                             ]
                         }
@@ -1193,15 +1192,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create Azure AI Search service resource"                                    
+                                    "title": "Create Azure AI Search service resource"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create a storage account service resource"                                    
+                                    "title": "Create a storage account service resource"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Create a text-embedding-ada-002 model"                                    
+                                    "title": "Create a text-embedding-ada-002 model"
                                 }
                             ]
                         },
@@ -1211,15 +1210,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Upload your documents to Azure AI Search"                                    
+                                    "title": "Upload your documents to Azure AI Search"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test your data on Microsoft Foundry"                                    
+                                    "title": "Test your data on Microsoft Foundry"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Sneak peek to your index on Azure AI Search"                                    
+                                    "title": "Sneak peek to your index on Azure AI Search"
                                 }
                             ]
                         },
@@ -1229,15 +1228,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Configure environment variables"                                    
+                                    "title": "Configure environment variables"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Configure Azure AI Search as a data source"                                    
+                                    "title": "Configure Azure AI Search as a data source"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Debug your app and chat with your data"                                    
+                                    "title": "Debug your app and chat with your data"
                                 }
                             ]
                         }
@@ -1253,11 +1252,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Integrate Feedback Loop in your app"                                    
+                                    "title": "Integrate Feedback Loop in your app"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test the Feedback Loop feature"                                    
+                                    "title": "Test the Feedback Loop feature"
                                 }
                             ]
                         },
@@ -1267,15 +1266,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create an Adaptive Card for citations"                                    
+                                    "title": "Create an Adaptive Card for citations"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Use PredictedSayCommand to customize the citation experience"                                    
+                                    "title": "Use PredictedSayCommand to customize the citation experience"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Test the customized citation experience"                                    
+                                    "title": "Test the customized citation experience"
                                 }
                             ]
                         },
@@ -1285,11 +1284,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Use PredictedSayCommand to enable the Generated by AI label"                                    
+                                    "title": "Use PredictedSayCommand to enable the Generated by AI label"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test the Generated by AI label"                                    
+                                    "title": "Test the Generated by AI label"
                                 }
                             ]
                         },
@@ -1299,11 +1298,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Use PredictedSayCommand to enable the Sensitivity label"                                    
+                                    "title": "Use PredictedSayCommand to enable the Sensitivity label"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test the Sensitivity label"                                    
+                                    "title": "Test the Sensitivity label"
                                 }
                             ]
                         }
@@ -1319,11 +1318,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Add an Entra ID App manifest file to define the Entra ID Application"                                    
+                                    "title": "Add an Entra ID App manifest file to define the Entra ID Application"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update Teams Toolkit configuration file to create the Entra ID App"                                    
+                                    "title": "Update Teams Toolkit configuration file to create the Entra ID App"
                                 }
                             ]
                         },
@@ -1333,7 +1332,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update your Teams app manifest for SSO"                                    
+                                    "title": "Update your Teams app manifest for SSO"
                                 }
                             ]
                         },
@@ -1343,11 +1342,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Provide HTML pages for the consent dialog"                                    
+                                    "title": "Provide HTML pages for the consent dialog"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update code to handle SSO"                                    
+                                    "title": "Update code to handle SSO"
                                 }
                             ]
                         },
@@ -1357,11 +1356,11 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "App installation in Teams"                                    
+                                    "title": "App installation in Teams"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Giving consent"                                    
+                                    "title": "Giving consent"
                                 }
                             ]
                         }
@@ -1377,7 +1376,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create a \"monologue\" prompt"                                    
+                                    "title": "Create a \"monologue\" prompt"
                                 }
                             ]
                         },
@@ -1387,7 +1386,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create a function for defaultPrompt in the planner"                                    
+                                    "title": "Create a function for defaultPrompt in the planner"
                                 }
                             ]
                         },
@@ -1397,15 +1396,15 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update ConversationState and define functions for each action"                                    
+                                    "title": "Update ConversationState and define functions for each action"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Register action handlers in the app"                                    
+                                    "title": "Register action handlers in the app"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Test your app with the new actions"                                    
+                                    "title": "Test your app with the new actions"
                                 }
                             ]
                         },
@@ -1415,19 +1414,19 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Define a new action in your prompt for sending emails"                                    
+                                    "title": "Define a new action in your prompt for sending emails"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Register sendLists action handler"                                    
+                                    "title": "Register sendLists action handler"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Update your Entra ID app registration"                                    
+                                    "title": "Update your Entra ID app registration"
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Test your app and the new sendLists action"                                    
+                                    "title": "Test your app and the new sendLists action"
                                 }
                             ]
                         }
@@ -1590,14 +1589,6 @@
                                 {
                                     "stepId": "2",
                                     "title": "Understand how to embed files"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Create Detailed Agent Instructions"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Configure Connected Agent Capabilities"
                                 }
                             ]
                         },
@@ -1648,6 +1639,28 @@
                                 {
                                     "stepId": "2",
                                     "title": "Update Agent Identity and Description"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Create Detailed Agent Instructions"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Configure Connected Agent Capabilities"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "5",
+                            "title": "Test Connected Agent Orchestration",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Provision the Connected Agent"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Test Multi-Agent Workflows"
                                 }
                             ]
                         }
@@ -1773,7 +1786,8 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "optional": true
                 }
             ]
         },
@@ -2203,7 +2217,8 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "optional": true
                 },
                 {
                     "labId": "baf5",
@@ -2283,7 +2298,8 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "optional": true
                 },
                 {
                     "labId": "baf6",
@@ -2379,7 +2395,8 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "optional": true
                 },
                 {
                     "labId": "baf7",
@@ -2475,7 +2492,8 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "optional": true
                 }
             ]
         },
@@ -2486,528 +2504,546 @@
             "startDate": "2026-05-01T00:00:00Z",
             "endDate": "2026-05-31T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/MCP-Integrator.png",
-            "labs": [
+            "groups": [
                 {
-                    "labId": "mcs6",
-                    "title": "MCS6 - Consuming an MCP server",
-                    "exercises": [
+                    "groupId": "copilot-studio-mcp",
+                    "groupName": "Copilot Studio MCP Path",
+                    "labs": [
                         {
-                            "exerciseId": "1",
-                            "title": "Setting up the MCP Server",
-                            "steps": [
+                            "labId": "mcs6",
+                            "title": "MCS6 - Consuming an MCP server",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Understanding the MCP Server and prerequisites"
+                                    "exerciseId": "1",
+                                    "title": "Setting up the MCP Server",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Understanding the MCP Server and prerequisites"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Downloading and running the MCP Server"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Configure the dev tunnel"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Testing the MCP server"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Downloading and running the MCP Server"
+                                    "exerciseId": "2",
+                                    "title": "Creating a New Agent in Copilot Studio",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Creating the new agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configuring the agent's conversation starters"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Configure the dev tunnel"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Testing the MCP server"
+                                    "exerciseId": "3",
+                                    "title": "Integrating MCP Server with Copilot Studio",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Adding tools exposed by the MCP server"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Test the new MCP server integration"
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
-                            "exerciseId": "2",
-                            "title": "Creating a New Agent in Copilot Studio",
-                            "steps": [
+                            "labId": "mcs10",
+                            "title": "MCS10 - Consuming an MCP server with OAuth 2.0",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Creating the new agent"
+                                    "exerciseId": "1",
+                                    "title": "Setting up the Secured MCP Server",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Understanding the Secured MCP Server and prerequisites"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Downloading and reviewing the Secured MCP Server"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Understanding OAuth 2.0 Authorization Code Flow"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Configuring the agent's conversation starters"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Integrating MCP Server with Copilot Studio",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Adding tools exposed by the MCP server"
+                                    "exerciseId": "2",
+                                    "title": "Configuring Microsoft Entra ID Applications",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Registering the HR MCP Server Application (Backend)"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configuring the HR MCP Server Application"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Registering the Copilot Studio Client Application"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Configuring the Copilot Studio Client Application"
+                                        },
+                                        {
+                                            "stepId": "5",
+                                            "title": "Configuring and Running the MCP Server"
+                                        },
+                                        {
+                                            "stepId": "6",
+                                            "title": "Configuring the Dev Tunnel"
+                                        },
+                                        {
+                                            "stepId": "7",
+                                            "title": "Updating the Application ID URI and Configuration"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Test the new MCP server integration"
+                                    "exerciseId": "3",
+                                    "title": "Creating an Agent in Copilot Studio",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Creating the HR Agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configuring Agent Settings"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Configuring Conversation Starters"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "4",
+                                    "title": "Registering the MCP Tool with OAuth 2.0",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Adding the MCP Server Tool"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configuring OAuth 2.0 Authentication"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Configuring the Redirect URI in Entra ID"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Configuring the Power Apps Connector (Optional)"
+                                        },
+                                        {
+                                            "stepId": "5",
+                                            "title": "Complete MCP tool configuration"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "title": "Testing the Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Publishing the Agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Testing Authentication Flow"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Testing MCP Tools"
+                                        }
+                                    ]
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    "labId": "mcs10",
-                    "title": "MCS10 - Consuming an MCP server with OAuth 2.0",
-                    "exercises": [
+                    "groupId": "declarative-agent-mcp",
+                    "groupName": "Declarative Agent MCP Path",
+                    "labs": [
                         {
-                            "exerciseId": "1",
-                            "title": "Setting up the Secured MCP Server",
-                            "steps": [
+                            "labId": "e8",
+                            "title": "E8 - Connect Declarative Agent to MCP Server",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Understanding the Secured MCP Server and prerequisites"
+                                    "exerciseId": "1",
+                                    "title": "Set Up Your Development Environment",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Clone the Repository"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Install Dependencies"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Examine the Project Structure"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Downloading and reviewing the Secured MCP Server"
+                                    "exerciseId": "2",
+                                    "title": "Start Zava's Local Claims Database",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Start Azure Storage Emulator"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Load Sample Claims Data"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Verify Data Loading"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Understanding OAuth 2.0 Authorization Code Flow"
+                                    "exerciseId": "3",
+                                    "title": "Launch the MCP Server",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Start the MCP Server"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Test Server Health"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Explore Available Endpoints"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "4",
+                                    "title": "Test AI Agent Interactions",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Launch MCP Inspector"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Explore Available Tools"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Test the Get Claims Tool"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Set Up Public Access with Dev Tunnel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "5",
+                                    "title": "Create a New Declarative Agent Project",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create New Agent using Microsoft 365 Agents Toolkit"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Understand the Action manifest update from previous step"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "6",
+                                    "title": "Configure the Agent for Zava's Claims Operations",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Update Agent Identity and Description"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Create Detailed Agent Instructions"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Update the Teams App Manifest"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "7",
+                                    "title": "Test the Agent Integration",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Ensure MCP Server is Running"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Provision the Agent"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Test in Microsoft 365 Copilot"
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
-                            "exerciseId": "2",
-                            "title": "Configuring Microsoft Entra ID Applications",
-                            "steps": [
+                            "labId": "e10",
+                            "title": "E10 - Connect Declarative Agent to OAuth-Protected MCP Server",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Registering the HR MCP Server Application (Backend)"
+                                    "exerciseId": "1",
+                                    "title": "Set Up Your Development Environment",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Clone the Repository"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Install Dependencies"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Examine the Project Structure"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Configuring the HR MCP Server Application"
+                                    "exerciseId": "2",
+                                    "title": "Create Microsoft Entra ID App Registration",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create App Registration"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configure Platform Redirect URIs"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Create Client Secret"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Expose an API"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Registering the Copilot Studio Client Application"
+                                    "exerciseId": "3",
+                                    "title": "Configure Environment and Start Local Database",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Set Up Public Access with Dev Tunnel"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configure Environment Variables"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Start Azure Storage Emulator"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Load Sample Claims Data"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "4",
-                                    "title": "Configuring the Copilot Studio Client Application"
+                                    "exerciseId": "4",
+                                    "title": "Launch the OAuth-Protected MCP Server",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Build and Start the MCP Server"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Verify OAuth is Enabled"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Test OAuth Discovery Endpoint"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Verify Authentication is Required"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "5",
-                                    "title": "Configuring and Running the MCP Server"
+                                    "exerciseId": "5",
+                                    "title": "Create a New Declarative Agent Project",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create New Agent using Microsoft 365 Agents Toolkit"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configure MCP Server Authentication"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Add Tools and Provision the Agent"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "6",
-                                    "title": "Configuring the Dev Tunnel"
-                                },
-                                {
-                                    "stepId": "7",
-                                    "title": "Updating the Application ID URI and Configuration"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Creating an Agent in Copilot Studio",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Creating the HR Agent"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configuring Agent Settings"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Configuring Conversation Starters"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Registering the MCP Tool with OAuth 2.0",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Adding the MCP Server Tool"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configuring OAuth 2.0 Authentication"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Configuring the Redirect URI in Entra ID"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Configuring the Power Apps Connector (Optional)"
-                                },
-                                {
-                                    "stepId": "5",
-                                    "title": "Complete MCP tool configuration"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Testing the Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Publishing the Agent"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Testing Authentication Flow"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Testing MCP Tools"
+                                    "exerciseId": "6",
+                                    "title": "Test the Authenticated Agent Integration",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Ensure MCP Server is Running"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Test in Microsoft 365 Copilot"
+                                        }
+                                    ]
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    "labId": "e8",
-                    "title": "E8 - Connect Declarative Agent to MCP Server",
-                    "exercises": [
+                    "groupId": "custom-engine-mcp",
+                    "groupName": "Custom Engine Agent MCP Path",
+                    "labs": [
                         {
-                            "exerciseId": "1",
-                            "title": "Set Up Your Development Environment",
-                            "steps": [
+                            "labId": "baf7",
+                            "title": "BAF7 - Add MCP Tools Integration",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Clone the Repository"
+                                    "exerciseId": "1",
+                                    "title": "Setting up the MCP Server",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Understanding the MCP Server and Prerequisites"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Downloading and Reviewing the MCP Server"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Configuring the Environment"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Running the MCP Server with Dev Tunnel"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Install Dependencies"
+                                    "exerciseId": "2",
+                                    "title": "Configure MCP Client in the Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Add MCP Client Configuration"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Register MCP Client in Dependency Injection"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Examine the Project Structure"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Start Zava's Local Claims Database",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Start Azure Storage Emulator"
+                                    "exerciseId": "3",
+                                    "title": "Create the ClaimsAdjustersPlugin",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create ClaimsAdjustersPlugin"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Load Sample Claims Data"
+                                    "exerciseId": "4",
+                                    "title": "Register ClaimsAdjustersPlugin in Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Update Agent Constructor"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Instantiate ClaimsAdjustersPlugin"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Register ClaimsAdjusters Tools"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Update Agent Instructions"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Verify Data Loading"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Launch the MCP Server",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Start the MCP Server"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Server Health"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Explore Available Endpoints"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Test AI Agent Interactions",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Launch MCP Inspector"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Explore Available Tools"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test the Get Claims Tool"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Set Up Public Access with Dev Tunnel"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Create a New Declarative Agent Project",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create New Agent using Microsoft 365 Agents Toolkit"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Understand the Action manifest update from previous step"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "6",
-                            "title": "Configure the Agent for Zava's Claims Operations",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update Agent Identity and Description"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Create Detailed Agent Instructions"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Update the Teams App Manifest"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "7",
-                            "title": "Test the Agent Integration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Ensure MCP Server is Running"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Provision the Agent"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test in Microsoft 365 Copilot"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "labId": "e10",
-                    "title": "E10 - Connect Declarative Agent to OAuth-Protected MCP Server",
-                    "exercises": [
-                        {
-                            "exerciseId": "1",
-                            "title": "Set Up Your Development Environment",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Clone the Repository"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Install Dependencies"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Examine the Project Structure"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Create Microsoft Entra ID App Registration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create App Registration"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configure Platform Redirect URIs"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Create Client Secret"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Expose an API"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Configure Environment and Start Local Database",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Set Up Public Access with Dev Tunnel"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configure Environment Variables"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Start Azure Storage Emulator"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Load Sample Claims Data"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Launch the OAuth-Protected MCP Server",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Build and Start the MCP Server"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Verify OAuth is Enabled"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test OAuth Discovery Endpoint"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Verify Authentication is Required"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Create a New Declarative Agent Project",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create New Agent using Microsoft 365 Agents Toolkit"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configure MCP Server Authentication"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Add Tools and Provision the Agent"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "6",
-                            "title": "Test the Authenticated Agent Integration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Ensure MCP Server is Running"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test in Microsoft 365 Copilot"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "labId": "baf7",
-                    "title": "BAF7 - Add MCP Tools Integration",
-                    "exercises": [
-                        {
-                            "exerciseId": "1",
-                            "title": "Setting up the MCP Server",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Understanding the MCP Server and Prerequisites"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Downloading and Reviewing the MCP Server"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Configuring the Environment"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Running the MCP Server with Dev Tunnel"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Configure MCP Client in the Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Add MCP Client Configuration"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Register MCP Client in Dependency Injection"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Create the ClaimsAdjustersPlugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create ClaimsAdjustersPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Register ClaimsAdjustersPlugin in Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update Agent Constructor"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Instantiate ClaimsAdjustersPlugin"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Register ClaimsAdjusters Tools"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Update Agent Instructions"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Test MCP Tools Integration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run and Verify"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Listing Claims Adjusters"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test Assigning an Adjuster"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Test with Filters"
+                                    "exerciseId": "5",
+                                    "title": "Test MCP Tools Integration",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Run and Verify"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Test Listing Claims Adjusters"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Test Assigning an Adjuster"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Test with Filters"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -3022,160 +3058,186 @@
             "startDate": "2026-06-01T00:00:00Z",
             "endDate": "2026-06-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/Connection-Champion.png",
-            "labs": [
+            "groups": [
                 {
-                    "labId": "mcs9",
-                    "title": "MCS9 - Connected Agents (Preview)",
-                    "exercises": [
+                    "groupId": "copilot-studio-connected",
+                    "groupName": "Copilot Studio Connected Agents Path",
+                    "labs": [
                         {
-                            "exerciseId": "1",
-                            "title": "Understanding Agent-to-Agent Architecture",
-                            "steps": [
+                            "labId": "mcs9",
+                            "title": "MCS9 - Connected Agents (Preview)",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Reviewing Agent Communication Patterns"
+                                    "exerciseId": "1",
+                                    "title": "Understanding Agent-to-Agent Architecture",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Reviewing Agent Communication Patterns"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Designing the Interview Process Workflow"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Ensuring Prerequisites"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Designing the Interview Process Workflow"
+                                    "exerciseId": "2",
+                                    "title": "Creating the Main Interview Coordinator Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Creating the Interview Coordinator Agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configure agent settings"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Connecting to the HR Candidate Management Agent"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Ensuring Prerequisites"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Creating the Main Interview Coordinator Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Creating the Interview Coordinator Agent"
+                                    "exerciseId": "3",
+                                    "title": "Creating the Interview Scheduler Child Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Creating the Interview Scheduler Child Agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Configuring Meetings Management Integration"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Finalizing Child Agent Configuration"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Configure agent settings"
+                                    "exerciseId": "4",
+                                    "title": "Implementing Connected Agents Workflows",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Configuring Agent References in Instructions"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Connecting to the HR Candidate Management Agent"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Creating the Interview Scheduler Child Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Creating the Interview Scheduler Child Agent"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configuring Meetings Management Integration"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Finalizing Child Agent Configuration"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Implementing Connected Agents Workflows",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Configuring Agent References in Instructions"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Testing the agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Testing Agent-to-Agent Communication"
+                                    "exerciseId": "5",
+                                    "title": "Testing the agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Testing Agent-to-Agent Communication"
+                                        }
+                                    ]
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    "labId": "e9",
-                    "title": "E9 - Connected Agents - Zava's Multi-Agent Claims Orchestration",
-                    "exercises": [
+                    "groupId": "declarative-agent-connected",
+                    "groupName": "Declarative Agent Connected Path",
+                    "labs": [
                         {
-                            "exerciseId": "1",
-                            "title": "Create a New Declarative Agent for Embedded knowledge",
-                            "steps": [
+                            "labId": "e9",
+                            "title": "E9 - Connected Agents - Zava's Multi-Agent Claims Orchestration",
+                            "exercises": [
                                 {
-                                    "stepId": "1",
-                                    "title": "Create New Agent using Microsoft 365 Agents Toolkit"
+                                    "exerciseId": "1",
+                                    "title": "Create a New Declarative Agent for Embedded knowledge",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create New Agent using Microsoft 365 Agents Toolkit"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Understand how to embed files"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Understand how to embed files"
+                                    "exerciseId": "2",
+                                    "title": "Configure the Agent for Zava's contractor procurement knowledge",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Download files to your machine"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Update Agent Identity and Description"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Create Detailed Agent Instructions"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Update the Teams App Manifest"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "3",
-                                    "title": "Create Detailed Agent Instructions"
+                                    "exerciseId": "3",
+                                    "title": "Test the Agent Integration",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Provision the Agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Test in Microsoft 365 Copilot"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "4",
-                                    "title": "Configure Connected Agent Capabilities"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Configure the Agent for Zava's contractor procurement knowledge",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Download files to your machine"
+                                    "exerciseId": "4",
+                                    "title": "Build the Orchestrator Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create Connected Agent Project"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Update Agent Identity and Description"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Create Detailed Agent Instructions"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Configure Connected Agent Capabilities"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "stepId": "2",
-                                    "title": "Update Agent Identity and Description"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Create Detailed Agent Instructions"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Update the Teams App Manifest"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Test the Agent Integration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Provision the Agent"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test in Microsoft 365 Copilot"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Build the Orchestrator Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create Connected Agent Project"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Update Agent Identity and Description"
+                                    "exerciseId": "5",
+                                    "title": "Test Connected Agent Orchestration",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Provision the Connected Agent"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Test Multi-Agent Workflows"
+                                        }
+                                    ]
                                 }
                             ]
                         }

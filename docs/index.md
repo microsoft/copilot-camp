@@ -15,13 +15,15 @@ Agents for Microsoft 365 are conversational AI-powered assistants that automate 
 
 An agent for Microsoft 365 typically consists of three core components: a foundation AI model that powers intelligent responses, an orchestrator that coordinates knowledge, skills, and autonomous processes, and optionally, a user interface like Microsoft 365 Copilot, Microsoft Teams, Microsoft SharePoint Online, etc. Agents can then be connected with other agents in a multi-agent architecture.
 
-![Diagram titled Empowering every developer to build agents, showing three paths: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Build for your own app leading to Copilot APIs.](./assets/images/m365-copilot-extensibility.png)
+![Diagram titled Empowering every developer to build agents, showing three paths: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Build for your own app leading to Copilot APIs. Moreover, Microsoft Agent 365 is available across all of the options to observe, govern, and secure every agent across your organization.](./assets/images/m365-copilot-extensibility.png)
 
 When it comes to extending Microsoft 365 Copilot you have multiple options, depending on your actual needs:
 
 - **Declarative Agents**: you build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.
 - **Custom Engine Agents**: you build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.
 - **Work IQ**: you create custom applications that consume Microsoft 365 and Microsoft 365 Copilot via Work IQ, the AI-driven intelligence layer of Microsoft 365.
+
+No matter what technology you use to create agents or to extend Microsoft 365 Copilot, you can always rely on **Microsoft Agent 365** to observe, govern, and secure every agent across your organization.
 
 ## 🧪 Where should I start to build agents?
 
