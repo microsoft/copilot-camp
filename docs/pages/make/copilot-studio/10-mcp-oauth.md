@@ -723,7 +723,7 @@ Get candidate with email bob.brown@example.com
 !!! tip
     To learn more about consuming first party MCP tools in Microsoft Copilot Studio, you can refer to [Agent Academy - Operative - Mission 10: Integrate with MCP Servers](https://microsoft.github.io/agent-academy/operative/10-mcp/){target=_blank}.
     
-<cc-end-step lab="mcs10" exercise="5" step="4" />
+<cc-end-step lab="mcs10" exercise="5" step="3" />
 
 ---8<--- "mcs-congratulations.md"
 
@@ -739,5 +739,7 @@ In this lab, you learned how to:
 By implementing OAuth 2.0 authentication, you have ensured that your HR candidate management system is protected with industry-standard security practices. This approach is essential for production environments where data security and user authentication are critical requirements.
 
 <!-- <cc-next />  -->
+
+<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/10-mcp-oauth" />

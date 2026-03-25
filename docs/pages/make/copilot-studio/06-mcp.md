@@ -368,4 +368,6 @@ You have completed Lab MCS6 - Consuming an MCP server!
 <a href="../07-autonomous">Start here</a> with Lab MCS7, to learn how to create autonomous agents in Copilot Studio.
 <cc-next /> 
 
+<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/06-mcp" />

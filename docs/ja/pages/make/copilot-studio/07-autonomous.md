@@ -317,6 +317,6 @@ Autonomous エージェントのトリガーについて興味深い点は、Sha
 <a href="../08-rag">こちらから</a> ラボ MCS8 に進み、Copilot Studio で Microsoft Azure AI Search を使用した RAG について学びましょう。
 <cc-next /> 
 
-<!-- <cc-award path="Make" /> -->
+<!-- <cc-award badgeId="Make" badgeName="Make" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/07-autonomous--ja" />

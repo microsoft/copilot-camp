@@ -363,6 +363,7 @@ The MCP Inspector now opens a new browser session with a publicly accessible end
 You've successfully tested how AI agents interact with Zava's claims system through the MCP protocol and you now have a public HTTPS endpoint for your MCP server that can be accessed by external AI agents and services.
 
 <cc-end-step lab="e8" exercise="4" step="4" />
+
 ---
 
 ## Exercise 5: Create a New Declarative Agent Project
@@ -692,6 +693,9 @@ Analyze debugger information in the Agent debug info panel at the end of each ag
 
 Congratulations! You've successfully created and deployed Zava Insurance's Declarative Agent that seamlessly integrates with their MCP server. Proceed "Next" to add another Declarative agent to help prepare you for multi-agent orchestration. 
 <cc-next />
+
+<cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
+<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/08-mcp-server" />
 

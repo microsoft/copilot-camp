@@ -170,6 +170,6 @@ In the immersive experience of Trey Genie, use below prompts and test them
 
 You have completed lab Add Copilot Connector, Well done!
 
-<!-- <cc-award path="Extend" /> -->
+<!-- <cc-award badgeId="Extend" badgeName="Extend" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/07-add-graphconnector" />
