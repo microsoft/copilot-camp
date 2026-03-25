@@ -322,6 +322,6 @@ You have completed Lab MCS7 - Creating Autonomous Agents!
 <a href="../08-rag">Start here</a> with Lab MCS8, to learn how to use RAG via Microsoft Azure AI Search in Copilot Studio.
 <cc-next /> 
 
-<!-- <cc-award path="Make" /> -->
+<!-- <cc-award badgeId="Make" badgeName="Make" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/07-autonomous" />

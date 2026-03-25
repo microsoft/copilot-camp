@@ -428,6 +428,6 @@ The connected agents patterns you've learned can be applied to many other busine
 <a href="../10-mcp-oauth">Start here</a> with Lab MCS10, to learn how to consume an MCP server secured with OAuth in Copilot Studio.
 <cc-next /> 
 
-<!-- <cc-award path="Make" /> -->
+<cc-award badgeId="ConnectionChampion" badgeName="Connection Champion" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-connected-agents" />

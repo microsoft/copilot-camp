@@ -757,4 +757,6 @@ Your Zava Insurance Agent can now search both claims and policies using Azure AI
 
 <cc-next url="../05-add-communication" />
 
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/04-add-policy-search" />

@@ -473,7 +473,7 @@ You are the Zava Claims Assistant, an intelligent agent designed to help Zava in
     4. Provide fastest available options with clear timelines
 ```
 
-<cc-end-step lab="e9" exercise="1" step="3" />
+<cc-end-step lab="e9" exercise="4" step="3" />
 
 ### Step 4: Configure Connected Agent Capabilities
 
@@ -536,7 +536,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 
 7. **Save the file** - your orchestrator agent is now connected to both specialized agents!
 
-<cc-end-step lab="e9" exercise="1" step="4" />
+<cc-end-step lab="e9" exercise="4" step="4" />
 
 ## Exercise 5: Test Connected Agent Orchestration
 
@@ -546,7 +546,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 2. Click **"Provision"** in the Lifecycle section  
 3. Wait for provisioning to complete
 
-<cc-end-step lab="e9" exercise="2" step="1" />
+<cc-end-step lab="e9" exercise="5" step="1" />
 
 ### Step 2: Test Multi-Agent Workflows
 
@@ -561,11 +561,14 @@ Find me all open roof damage claims along with contractor pricing insights.
 ```
 Test the conversation starters of this agent as well to understand how multi-agent co-ordination works.
 
-<cc-end-step lab="e9" exercise="2" step="2" />
+<cc-end-step lab="e9" exercise="5" step="2" />
 
 ## Congratulations! 🎉
 
 You've successfully built Zava Insurance's Connected Agent orchestration system! This achievement represents the culmination of a sophisticated multi-agent architecture that represents the future of enterprise AI systems - specialized, coordinated, and infinitely extensible! 🚀
 
+
+<cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
+<cc-award badgeId="ConnectionChampion" badgeName="Connection Champion" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend/09-connected-agent" />

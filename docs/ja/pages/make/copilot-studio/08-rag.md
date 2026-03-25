@@ -442,6 +442,6 @@ HR Knowledge エージェントは、会話型 AI とエンタープライズ検
 <a href="../09-connected-agents">こちら</a>からラボ MCS9 に進み、Copilot Studio でコネクテッド エージェントの作成方法を学びましょう。
 <cc-next /> 
 
-<!-- <cc-award path="Make" /> -->
+<!-- <cc-award badgeId="Make" badgeName="Make" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/08-rag--ja" />

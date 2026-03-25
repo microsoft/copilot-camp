@@ -105,6 +105,6 @@ Copilot Chat のエージェント一覧から **ContosoHRAgentlocal** を選択
 
 <cc-next label="Home" url="/" />
 
-<cc-award path="Build" />
+<!-- <cc-award badgeId="Build" badgeName="Build" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/04-bring-agent-to-copilot--ja" />

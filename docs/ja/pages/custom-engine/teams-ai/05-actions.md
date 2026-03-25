@@ -637,6 +637,6 @@ BTA5 - 複雑なタスクを処理するためのアクション追加 を完了
 
 <cc-next label="Home" url="/" />
 
-<!-- <cc-award path="Build" /> -->
+<!-- <cc-award badgeId="Build" badgeName="Build" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/teams-ai/05-actions--ja" />

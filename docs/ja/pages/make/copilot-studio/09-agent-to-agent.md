@@ -417,6 +417,6 @@ Retrieve information about Alice Johnson and schedule an interview with her for 
 
 本ラボで学んだエージェント間パターンは、モジュール化された特化エージェントが連携し、エンドツーエンドのソリューションを実現する他の多くのビジネス シナリオにも適用できます。
 
-<!-- <cc-award path="Make" /> -->
+<!-- <cc-award badgeId="Make" badgeName="Make" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/copilot-studio/09-agent-to-agent--ja" />

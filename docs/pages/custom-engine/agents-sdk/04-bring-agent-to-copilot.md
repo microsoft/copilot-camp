@@ -101,6 +101,6 @@ In this lab, you learned how to:
 
 <cc-next label="Home" url="/" />
 
-<cc-award path="Build" />
+<!-- <cc-award badgeId="Build" badgeName="Build" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/04-bring-agent-to-copilot" />

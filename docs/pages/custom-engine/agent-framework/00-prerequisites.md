@@ -272,4 +272,6 @@ You are now ready to proceed to Lab BAF1 - Build and Run Your First Agent. Selec
 
 <cc-next url="../01-build-and-run" />
 
+<cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/00-prerequisites" />
