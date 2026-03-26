@@ -13,7 +13,7 @@ We are excited to announce a thrilling initiative that will challenge you to sho
 ## How to participate?
 
 - **Register**: Sign up for the Microsoft 365 & Power Platform Community Recognition Program through [this form](https://aka.ms/community/recognition-register){target=_blank}. If you already claimed badges through the Microsoft 365 & Power Platform Community Recognition Program, you don't need to sign up again.
-- **Complete any of the Copilot Developer Camp challenges**: There are multiple challenges available, but only one challenge is active at a time. Complete the required labs for the currently active challenge to claim a badge! Here are the current challenges:
+- **Complete any of the Copilot Developer Camp challenges**: There are multiple challenges available, but only some some of them are active at a time. Complete the required labs for the currently active challenges to claim a badge! Here are the current challenges:
 
     | Badge | Challenge | Requirements | Active Dates |
     |:-----:|-----------|--------------|:------------:|
