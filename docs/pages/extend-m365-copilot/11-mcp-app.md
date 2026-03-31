@@ -80,7 +80,7 @@ This means you can **build once and deploy across multiple AI hosts**, reaching 
 Before starting this lab, ensure you have:
 
 - **Node.js 22+** installed on your machine
-- **VS Code** with **Microsoft 365 Agents Toolkit extension** v6.4.2 or higher
+- **VS Code** with **Microsoft 365 Agents Toolkit extension** pre-release version (6.7.2026032008 when this lab was written)
 - **Microsoft 365 developer account** 
 - Basic knowledge of **TypeScript**, **React**, and **JSON**
 - GitHub account for using VS Code tunneling
