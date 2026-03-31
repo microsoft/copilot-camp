@@ -1,0 +1,3663 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+          <link rel="alternate" href="../../../ja/pages/extend-m365-copilot/11-mcp-app/" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lab 11: Build an MCP App with Interactive Widgets - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-11-build-an-mcp-app-with-interactive-widgets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 11: Build an MCP App with Interactive Widgets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ja/pages/extend-m365-copilot/11-mcp-app/" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Declarative Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  Custom Engine Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../make/" class="md-tabs__link">
+          
+  
+  
+  No-code/low-code agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../work-iq/" class="md-tabs__link">
+          
+  
+  
+  Work IQ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../agent-365/" class="md-tabs__link">
+          
+  
+  
+  Agent 365
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../beyond-agents/" class="md-tabs__link">
+          
+  
+  
+  Beyond Agents - AI concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../awards/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Awards
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Declarative Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E0 - Prerequisites and Environment Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Agent Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Declarative Agent Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1 - Build a Declarative Agent using TypeSpec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1a - Build a game agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build and Integrate API from scratch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build and Integrate API from scratch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E2 - Build a Backend API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E3 - Add Declarative Agent and API Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E4 - Enhance API and Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E5 - Add Adaptive Cards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E6a - Add Entra ID Authentication (Toolkit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E7 - Add Copilot Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E8 - Connect Declarative agent to MCP Server (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-connected-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E9 - Connected Agents using VS Code (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-mcp-auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Engine Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Custom Engine Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start with Microsoft Foundry
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start with Microsoft Foundry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA0 - Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA1 - Prepare your agent in Microsoft Foundry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA2 - Build your first agent using M365 Agents SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA3 - Configure agent properties and test on Teams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BMA4 - Bring your agent to Copilot Chat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start with Agent Framework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start with Agent Framework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF0 - Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF1 - Build and Run Your First Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF2 - Add Document Search with Azure AI Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/03-add-vision-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF3 - Add Vision Analysis with Mistral AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/04-add-policy-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF4 - Add Policy Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/05-add-communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF5 - Add Communication Capabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/06-add-copilot-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF6 - Add Microsoft 365 Work IQ API Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/07-add-mcp-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF7 - Add MCP Tools Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    No-code/low-code agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    No-code/low-code agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MAB - Agent Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MAB1 - Agent Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS - Microsoft Copilot Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS0 - Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS1 - First agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS2 - Defining Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS3 - Defining Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS4 - Extending Microsoft 365 Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS5 - Consuming a custom connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS6 - Consuming an MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS7 - Creating Autonomous Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS8 - Integrating Azure AI Search for RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/09-connected-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS9 - Connected Agents (Preview)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/10-mcp-oauth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS10 - Consuming an MCP server with OAuth 2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA - SharePoint agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA1 - Build your first SharePoint agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA2 - Sharing SharePoint agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Work IQ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Work IQ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../work-iq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 365
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent 365
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-365/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beyond Agents - AI concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Beyond Agents - AI concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 - Simple agent instructions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../awards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Awards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-11-build-an-mcp-app-with-interactive-widgets">Lab 11: Build an MCP App with Interactive Widgets</h1>
+<p>In this lab, you'll run a Model Context Protocol (MCP) app that powers an <strong>Access Request &amp; Approval Workflow</strong> with interactive widgets rendered directly in the AI agent's response. You'll explore the existing tools, add a new <strong>Status Timeline</strong> widget, and integrate the MCP server into a Declarative Agent using Microsoft 365 Agents Toolkit.</p>
+<h2 id="scenario">Scenario</h2>
+<p><strong>Contoso Corp</strong> manages access requests across multiple systems like GitHub, SAP, Production Database, and more. Today, employees email their managers, who forward requests to IT, leading to delays and lost context. The IT team wants a streamlined, AI-powered approval workflow where employees can submit access requests, managers can approve or reject them, and everyone can track the status, all through natural language conversations with an AI agent.</p>
+<p>The development team has built an <strong>MCP app</strong> with interactive widgets that render rich UI directly inside the agent's response:</p>
+<ul>
+<li><strong>Request Form Widget</strong> — lets employees fill out and submit access requests</li>
+<li><strong>Approval Panel Widget</strong> — lets managers review, approve, or reject pending requests</li>
+</ul>
+<p>In this lab, you'll run the base app, explore its tools with MCP Inspector, <strong>add a Status Timeline widget</strong> so anyone can track the progress of a request, and then connect the MCP server to a Declarative Agent in Microsoft 365 Copilot.</p>
+<hr />
+<h2 id="lab-objectives">🎯 Lab Objectives</h2>
+<p>By completing this lab, you will:</p>
+<ul>
+<li>Understand how MCP apps serve interactive widgets alongside tool results</li>
+<li>Run and test an existing MCP app with request and approval widgets</li>
+<li>Use MCP Inspector to explore tools</li>
+<li>Add a new <strong>Status Timeline</strong> widget and its corresponding server tool</li>
+<li>Integrate the MCP server into a Declarative Agent using Microsoft 365 Agents Toolkit</li>
+<li>Test the full workflow in Microsoft 365 Copilot</li>
+</ul>
+<hr />
+<h2 id="what-are-mcp-apps-with-interactive-widgets">� What Are MCP Apps with Interactive Widgets?</h2>
+<p>Standard MCP tools return plain text or JSON, useful for data retrieval, but limited when users need to fill out forms, review dashboards, or interact with visual components. <strong>MCP apps</strong> extend the Model Context Protocol to deliver <strong>interactive UI widgets</strong> directly inside the AI agent's response, turning a chat conversation into a full application experience.</p>
+<h3 id="why-interactive-widgets">Why Interactive Widgets?</h3>
+<p>Traditional AI agent responses are text-based. When an agent retrieves data, it can summarize it in a message but users often need to <strong>do</strong> something with that data: submit a form, approve a request, explore a chart, or drill into details. Interactive widgets solve this by rendering rich, functional UI components alongside the agent's response:</p>
+<ul>
+<li><strong>Forms and inputs</strong> — employees can fill out structured data without leaving the conversation</li>
+<li><strong>Dashboards and visualizations</strong> — display KPIs, timelines, and status indicators with color-coded visual cues</li>
+<li><strong>Action panels</strong> — managers can approve, reject, or take action directly from the widget</li>
+<li><strong>Fullscreen mode</strong> — widgets can expand to fullscreen for complex interactions</li>
+</ul>
+<h3 id="how-it-works">How It Works</h3>
+<p>An MCP app pairs each tool with a <strong>UI resource</strong> — a self-contained HTML file (built with React, Fluent UI, or any web framework) that renders the tool's structured data as an interactive widget. When the AI host calls a tool:</p>
+<ol>
+<li>The <strong>tool handler</strong> runs on the server and returns <code>structuredContent</code> (the data)</li>
+<li>The <strong>UI resource</strong> (HTML widget) is loaded by the host and receives the data via the <a href="https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html">MCP Apps SDK</a></li>
+<li>The widget renders the data as interactive UI and can <strong>call back to the server</strong> using <code>app.callServerTool()</code> for actions like submitting forms or recording decisions</li>
+</ol>
+<h3 id="cross-platform-support">Cross-Platform Support</h3>
+<p>One of the key benefits of building MCP apps is <strong>portability across AI platforms</strong>. The same MCP server with interactive widgets works as a connector in:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>SDK</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ChatGPT</strong></td>
+<td><a href="https://developers.openai.com/apps-sdk">OpenAI Apps SDK</a></td>
+<td>Supported</td>
+</tr>
+<tr>
+<td><strong>Claude</strong></td>
+<td>MCP Apps SDK</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td><strong>Microsoft 365 Copilot</strong></td>
+<td>MCP Apps SDK (via Declarative Agents)</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<p>Microsoft 365 Copilot supports UI widgets created using both the <strong>MCP Apps</strong> standard and the <strong>OpenAI Apps SDK</strong>, meaning widgets you build for ChatGPT can also run in Copilot and vice versa. The platform provides a <a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets#supported-capabilities">component bridge</a> that maps capabilities between the two SDKs.</p>
+<p>This means you can <strong>build once and deploy across multiple AI hosts</strong>, reaching users wherever they work.</p>
+<hr />
+<h2 id="prerequisites">�📚 Prerequisites</h2>
+<p>Before starting this lab, ensure you have:</p>
+<ul>
+<li><strong>Node.js 22+</strong> installed on your machine</li>
+<li><strong>VS Code</strong> with <strong>Microsoft 365 Agents Toolkit extension</strong> pre-release version (6.7.2026032008 when this lab was written)</li>
+<li><strong>Microsoft 365 developer account</strong> </li>
+<li>Basic knowledge of <strong>TypeScript</strong>, <strong>React</strong>, and <strong>JSON</strong></li>
+<li>GitHub account for using VS Code tunneling</li>
+</ul>
+<hr />
+<h2 id="exercise-1-set-up-and-run-the-base-mcp-app">Exercise 1: Set Up and Run the Base MCP App</h2>
+<p>In this exercise, you'll clone the project, install dependencies, seed sample data, and start the MCP server.</p>
+<h3 id="step-1-clone-the-repository">Step 1: Clone the Repository</h3>
+<p>Download the MCP app source code directly:</p>
+<p><a class="md-button" href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp" target="_blank">Download approval-mcpapp</a></p>
+<p>Once downloaded, extract the zip file, then open the extracted <code>approval-mcpapp</code> folder in VS Code:</p>
+<ol>
+<li>Open <strong>VS Code</strong></li>
+<li>Go to <strong>File → Open Folder</strong> and select the extracted <code>approval-mcpapp</code> folder</li>
+<li>Open a new <strong>Terminal</strong> in VS Code (<strong>Terminal → New Terminal</strong>)</li>
+</ol>
+<p>All terminal commands in this lab should be run inside this VS Code terminal.</p>
+<p><cc-end-step lab="e11" exercise="1" step="1" /></p>
+<h3 id="step-2-install-dependencies">Step 2: Install Dependencies</h3>
+<p>Install all required packages:</p>
+<pre><code class="language-bash">npm install
+</code></pre>
+<p>This installs key dependencies:</p>
+<ul>
+<li><code>@modelcontextprotocol/sdk</code> — MCP protocol implementation</li>
+<li><code>@modelcontextprotocol/ext-apps</code> — MCP Apps SDK for interactive widgets</li>
+<li><code>@fluentui/react-components</code> — Fluent UI React component library</li>
+<li><code>@azure/data-tables</code> — Azure Table Storage client (used with Azurite emulator)</li>
+<li><code>express</code> — HTTP server framework</li>
+<li><code>zod</code> — Runtime type validation</li>
+<li><code>vite</code> / <code>vite-plugin-singlefile</code> — Builds each widget into a single self-contained HTML file</li>
+</ul>
+<p><cc-end-step lab="e11" exercise="1" step="2" /></p>
+<h3 id="step-3-start-azure-storage-emulator">Step 3: Start Azure Storage Emulator</h3>
+<p>The app uses Azurite (a local Azure Table Storage emulator) to store access request data. In <strong>Terminal 1</strong>, start the emulator:</p>
+<pre><code class="language-bash">npm run start:azurite
+</code></pre>
+<p>You should see:</p>
+<pre><code>Azurite Table service is starting at http://127.0.0.1:10002
+</code></pre>
+<p><strong>Keep this terminal running</strong> as it's your local database.</p>
+<p><cc-end-step lab="e11" exercise="1" step="3" /></p>
+<h3 id="step-4-seed-sample-data">Step 4: Seed Sample Data</h3>
+<p>In <strong>Terminal 2</strong>, load the sample access requests:</p>
+<pre><code class="language-bash">npm run seed
+</code></pre>
+<p>You should see:</p>
+<pre><code>  ✓ upserted request REQ-001 (Alice Johnson)
+  ✓ upserted request REQ-002 (Bob Smith)
+  ✓ upserted request REQ-003 (Diana Prince)
+  ✓ upserted counter requestId = 4
+
+✓ Seed complete.
+</code></pre>
+<p>The sample data includes three access requests at different stages:</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Employee</th>
+<th>System</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REQ-001</td>
+<td>Alice Johnson</td>
+<td>GitHub</td>
+<td>Manager Review</td>
+</tr>
+<tr>
+<td>REQ-002</td>
+<td>Bob Smith</td>
+<td>SAP</td>
+<td>IT Review</td>
+</tr>
+<tr>
+<td>REQ-003</td>
+<td>Diana Prince</td>
+<td>Production Database</td>
+<td>Granted</td>
+</tr>
+</tbody>
+</table>
+<p><cc-end-step lab="e11" exercise="1" step="4" /></p>
+<h3 id="step-5-build-and-start-the-mcp-server">Step 5: Build and Start the MCP Server</h3>
+<p>Still in <strong>Terminal 2</strong>, build the UI widgets and start the server:</p>
+<pre><code class="language-bash">npm start
+</code></pre>
+<p>You should see output indicating that the UI entry points were built and the server is running:</p>
+<pre><code>Found 2 UI entry point(s): approval-panel.html, request-form.html
+
+Building ui/approval-panel.html...
+Building ui/request-form.html...
+
+✓ Built 2 UI entry point(s) successfully.
+
+🚀 Access Request &amp; Approval MCP Server listening on http://localhost:3001/mcp
+</code></pre>
+<p>Your MCP app is now running with two interactive widget tools.</p>
+<p><cc-end-step lab="e11" exercise="1" step="5" /></p>
+<h3 id="step-6-examine-the-project-structure">Step 6: Examine the Project Structure</h3>
+<p>Key files and directories:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server.ts</code></td>
+<td>Registers all MCP tools and their UI widget resources</td>
+</tr>
+<tr>
+<td><code>main.ts</code></td>
+<td>Express server entry point, handles HTTP transport</td>
+</tr>
+<tr>
+<td><code>mock-data/requests.ts</code></td>
+<td>Data access layer for Azurite table storage</td>
+</tr>
+<tr>
+<td><code>src/request-form/App.tsx</code></td>
+<td>React widget — access request form</td>
+</tr>
+<tr>
+<td><code>src/approval-panel/App.tsx</code></td>
+<td>React widget — manager approval panel</td>
+</tr>
+<tr>
+<td><code>ui/</code></td>
+<td>HTML entry points for each widget</td>
+</tr>
+<tr>
+<td><code>fixtures/</code></td>
+<td>Sample JSON data for seeding</td>
+</tr>
+<tr>
+<td><code>build-ui.mjs</code></td>
+<td>Builds each widget into a single self-contained HTML file</td>
+</tr>
+</tbody>
+</table>
+<p>Take a moment to review <code>server.ts</code>. Notice how each widget tool is registered using <code>registerToolWithUI()</code>, which pairs:</p>
+<ol>
+<li>A <strong>tool</strong> (callable by the AI agent) that returns structured data</li>
+<li>A <strong>UI resource</strong> (an HTML file) that renders the data as an interactive widget</li>
+</ol>
+<pre><code class="language-typescript">registerToolWithUI(
+  server,
+  &quot;request-access&quot;,       // tool name
+  &quot;Request Access&quot;,       // title
+  &quot;Shows an access request form...&quot;,  // description
+  &quot;request-form.html&quot;,   // UI resource file
+  { /* input schema */ },
+  (args) =&gt; { /* handler returning structured data */ },
+);
+</code></pre>
+<p><cc-end-step lab="e11" exercise="1" step="6" /></p>
+<hr />
+<h2 id="exercise-2-explore-existing-tools-with-mcp-inspector">Exercise 2: Explore Existing Tools with MCP Inspector</h2>
+<p>In this exercise, you'll use the MCP Inspector to understand the tools currently available in the MCP app.</p>
+<h3 id="step-1-launch-mcp-inspector">Step 1: Launch MCP Inspector</h3>
+<p>In <strong>Terminal 3</strong> (keeping Azurite and the MCP server running), install and launch MCP Inspector:</p>
+<pre><code class="language-bash">npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp
+</code></pre>
+<p>This opens a web interface where you can test MCP tools as if you were an AI agent.</p>
+<p><cc-end-step lab="e11" exercise="2" step="1" /></p>
+<h3 id="step-2-review-available-tools">Step 2: Review Available Tools</h3>
+<p>In the MCP Inspector interface, navigate to the <strong>Tools</strong> section. You'll see the following tools:</p>
+<p><strong>Widget Tools</strong> (render interactive UI):</p>
+<ul>
+<li><code>request-access</code> — Shows the access request form widget</li>
+<li><code>approve-access</code> — Shows the approval panel widget for managers</li>
+</ul>
+<p><strong>Backend Tools</strong> (called by widgets via <code>app.callServerTool()</code>):</p>
+<ul>
+<li><code>submit-request</code> — Creates a new access request (called from the request form)</li>
+<li><code>submit-decision</code> — Records approve/reject decisions (called from the approval panel)</li>
+<li><code>get-request</code> — Fetches a single request by ID (used by widgets to refresh data)</li>
+</ul>
+<p><cc-end-step lab="e11" exercise="2" step="2" /></p>
+<h3 id="step-3-test-the-request-access-tool">Step 3: Test the Request Access Tool</h3>
+<ol>
+<li>Click on the <code>request-access</code> tool</li>
+<li>Optionally fill in <code>employeeName</code> with <code>"Test User"</code> and <code>employeeEmail</code> with <code>"test@contoso.com"</code></li>
+<li>Click <strong>"Run Tool"</strong></li>
+<li>Observe the response, it returns structured data with available systems and roles that the widget uses to populate its dropdowns</li>
+</ol>
+<p><cc-end-step lab="e11" exercise="2" step="3" /></p>
+<h3 id="step-4-test-the-approve-access-tool">Step 4: Test the Approve Access Tool</h3>
+<ol>
+<li>Click on the <code>approve-access</code> tool</li>
+<li>Enter <code>requestId</code>: <code>"REQ-001"</code></li>
+<li>Click <strong>"Run Tool"</strong></li>
+<li>Observe the response, it returns Alice Johnson's request details including her full timeline</li>
+</ol>
+<p>You can also run <code>approve-access</code> without a <code>requestId</code> to see all pending requests.</p>
+<p>Notice that while the Inspector shows the raw JSON responses, when these tools are called through an MCP-compatible host (like Microsoft 365 Copilot), the corresponding widget HTML is rendered as an interactive UI component.</p>
+<p><cc-end-step lab="e11" exercise="2" step="4" /></p>
+<hr />
+<h2 id="exercise-3-add-the-status-timeline-widget">Exercise 3: Add the Status Timeline Widget</h2>
+<p>Now you'll add a new tool,  <code>access-status</code> that shows a visual timeline of an access request's progress through the approval stages: Requested → Manager Review → IT Review → Granted/Rejected.</p>
+<h3 id="step-1-create-the-status-timeline-widget-component">Step 1: Create the Status Timeline Widget Component</h3>
+<p>Create a new directory and file for the Status Timeline widget:</p>
+<pre><code class="language-bash">mkdir -p src/status-timeline
+</code></pre>
+<p>Create the file <code>src/status-timeline/App.tsx</code> with the following content:</p>
+<pre><code class="language-tsx">// src/status-timeline/App.tsx — Status Timeline Widget
+import { App } from &quot;@modelcontextprotocol/ext-apps&quot;;
+import {
+  FluentProvider,
+  webLightTheme,
+  webDarkTheme,
+  Card,
+  CardHeader,
+  Text,
+  Badge,
+  Button,
+  Spinner,
+  Divider,
+  makeStyles,
+  tokens,
+} from &quot;@fluentui/react-components&quot;;
+import {
+  CheckmarkCircle20Filled,
+  Circle20Regular,
+  Clock20Regular,
+  DismissCircle20Filled,
+  ArrowRight20Regular,
+  Timeline20Regular,
+  FullScreenMaximize24Regular,
+  FullScreenMinimize24Regular,
+} from &quot;@fluentui/react-icons&quot;;
+import { createRoot } from &quot;react-dom/client&quot;;
+import { useState, useEffect, useCallback } from &quot;react&quot;;
+
+// ─── Types ───────────────────────────────────────────────────────────
+interface TimelineEntry {
+  stage: string;
+  status: &quot;completed&quot; | &quot;current&quot; | &quot;pending&quot; | &quot;rejected&quot;;
+  actor?: string;
+  comment?: string;
+  timestamp: string;
+}
+
+interface AccessRequest {
+  id: string;
+  employeeName: string;
+  employeeEmail: string;
+  system: string;
+  role: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  timeline: TimelineEntry[];
+}
+
+interface StatusData {
+  requests: AccessRequest[];
+  error?: string;
+}
+
+// ─── Styles ──────────────────────────────────────────────────────────
+const useStyles = makeStyles({
+  root: {
+    padding: tokens.spacingVerticalL,
+    backgroundColor: tokens.colorNeutralBackground1,
+    minHeight: &quot;100%&quot;,
+    overflowY: &quot;auto&quot;,
+  },
+  header: {
+    display: &quot;flex&quot;,
+    alignItems: &quot;center&quot;,
+    gap: tokens.spacingHorizontalS,
+    marginBottom: tokens.spacingVerticalL,
+  },
+  card: {
+    marginBottom: tokens.spacingVerticalM,
+    padding: tokens.spacingVerticalM,
+  },
+  requestSummary: {
+    display: &quot;flex&quot;,
+    flexWrap: &quot;wrap&quot;,
+    gap: tokens.spacingHorizontalS,
+    alignItems: &quot;center&quot;,
+    marginBottom: tokens.spacingVerticalS,
+  },
+  timeline: {
+    position: &quot;relative&quot;,
+    paddingLeft: &quot;28px&quot;,
+    marginTop: tokens.spacingVerticalM,
+  },
+  timelineTrack: {
+    position: &quot;absolute&quot;,
+    left: &quot;9px&quot;,
+    top: &quot;0&quot;,
+    bottom: &quot;0&quot;,
+    width: &quot;2px&quot;,
+    backgroundColor: tokens.colorNeutralStroke2,
+  },
+  timelineItem: {
+    position: &quot;relative&quot;,
+    paddingBottom: tokens.spacingVerticalM,
+    &quot;&amp;:last-child&quot;: {
+      paddingBottom: &quot;0&quot;,
+    },
+  },
+  timelineIcon: {
+    position: &quot;absolute&quot;,
+    left: &quot;-28px&quot;,
+    top: &quot;0&quot;,
+    width: &quot;20px&quot;,
+    height: &quot;20px&quot;,
+    display: &quot;flex&quot;,
+    alignItems: &quot;center&quot;,
+    justifyContent: &quot;center&quot;,
+    backgroundColor: tokens.colorNeutralBackground1,
+    zIndex: 1,
+  },
+  timelineContent: {
+    paddingLeft: tokens.spacingHorizontalS,
+  },
+  timelineRow: {
+    display: &quot;flex&quot;,
+    alignItems: &quot;center&quot;,
+    gap: tokens.spacingHorizontalXS,
+  },
+  actorComment: {
+    marginTop: tokens.spacingVerticalXXS,
+    color: tokens.colorNeutralForeground3,
+  },
+  empty: {
+    display: &quot;flex&quot;,
+    flexDirection: &quot;column&quot;,
+    alignItems: &quot;center&quot;,
+    gap: tokens.spacingVerticalM,
+    padding: tokens.spacingVerticalXXL,
+    color: tokens.colorNeutralForeground3,
+  },
+  loading: {
+    display: &quot;flex&quot;,
+    justifyContent: &quot;center&quot;,
+    alignItems: &quot;center&quot;,
+    height: &quot;200px&quot;,
+  },
+});
+
+// ─── Timeline Step Icon ──────────────────────────────────────────────
+function StepIcon({ status }: { status: TimelineEntry[&quot;status&quot;] }) {
+  switch (status) {
+    case &quot;completed&quot;:
+      return (
+        &lt;CheckmarkCircle20Filled
+          style={{ color: tokens.colorPaletteGreenForeground1 }}
+        /&gt;
+      );
+    case &quot;current&quot;:
+      return (
+        &lt;Clock20Regular
+          style={{ color: tokens.colorPaletteBlueForeground2 }}
+        /&gt;
+      );
+    case &quot;rejected&quot;:
+      return (
+        &lt;DismissCircle20Filled
+          style={{ color: tokens.colorPaletteRedForeground1 }}
+        /&gt;
+      );
+    case &quot;pending&quot;:
+    default:
+      return (
+        &lt;Circle20Regular style={{ color: tokens.colorNeutralStroke2 }} /&gt;
+      );
+  }
+}
+
+// ─── Single Request Timeline Card ────────────────────────────────────
+function RequestTimelineCard({ request }: { request: AccessRequest }) {
+  const styles = useStyles();
+
+  const overallStatusColor = (status: string) =&gt; {
+    switch (status) {
+      case &quot;Granted&quot;:
+        return &quot;success&quot; as const;
+      case &quot;Rejected&quot;:
+        return &quot;danger&quot; as const;
+      case &quot;Manager Review&quot;:
+      case &quot;IT Review&quot;:
+        return &quot;warning&quot; as const;
+      default:
+        return &quot;brand&quot; as const;
+    }
+  };
+
+  const stepBadgeColor = (status: TimelineEntry[&quot;status&quot;]) =&gt; {
+    switch (status) {
+      case &quot;completed&quot;:
+        return &quot;success&quot; as const;
+      case &quot;current&quot;:
+        return &quot;informative&quot; as const;
+      case &quot;rejected&quot;:
+        return &quot;danger&quot; as const;
+      default:
+        return &quot;subtle&quot; as const;
+    }
+  };
+
+  return (
+    &lt;Card className={styles.card}&gt;
+      &lt;CardHeader
+        header={
+          &lt;Text weight=&quot;bold&quot; size={400}&gt;
+            {request.id}
+          &lt;/Text&gt;
+        }
+        description={
+          &lt;div className={styles.requestSummary}&gt;
+            &lt;Text size={200}&gt;{request.employeeName}&lt;/Text&gt;
+            &lt;ArrowRight20Regular style={{ fontSize: &quot;12px&quot; }} /&gt;
+            &lt;Text size={200} weight=&quot;semibold&quot;&gt;
+              {request.system}
+            &lt;/Text&gt;
+            &lt;Badge appearance=&quot;outline&quot; size=&quot;small&quot;&gt;
+              {request.role}
+            &lt;/Badge&gt;
+            &lt;Badge
+              appearance=&quot;filled&quot;
+              color={overallStatusColor(request.status)}
+            &gt;
+              {request.status}
+            &lt;/Badge&gt;
+          &lt;/div&gt;
+        }
+      /&gt;
+
+      &lt;Divider style={{ margin: `${tokens.spacingVerticalXS} 0` }} /&gt;
+
+      &lt;div className={styles.timeline}&gt;
+        &lt;div className={styles.timelineTrack} /&gt;
+        {request.timeline.map((entry, idx) =&gt; (
+          &lt;div key={idx} className={styles.timelineItem}&gt;
+            &lt;div className={styles.timelineIcon}&gt;
+              &lt;StepIcon status={entry.status} /&gt;
+            &lt;/div&gt;
+            &lt;div className={styles.timelineContent}&gt;
+              &lt;div className={styles.timelineRow}&gt;
+                &lt;Text weight=&quot;semibold&quot; size={300}&gt;
+                  {entry.stage}
+                &lt;/Text&gt;
+                &lt;Badge
+                  appearance=&quot;tint&quot;
+                  size=&quot;small&quot;
+                  color={stepBadgeColor(entry.status)}
+                &gt;
+                  {entry.status}
+                &lt;/Badge&gt;
+              &lt;/div&gt;
+              {entry.actor &amp;&amp; (
+                &lt;Text className={styles.actorComment} size={200}&gt;
+                  {entry.actor}
+                  {entry.comment ? ` — ${entry.comment}` : &quot;&quot;}
+                &lt;/Text&gt;
+              )}
+              {entry.timestamp &amp;&amp; (
+                &lt;Text
+                  size={100}
+                  style={{ color: tokens.colorNeutralForeground4 }}
+                &gt;
+                  {new Date(entry.timestamp).toLocaleString()}
+                &lt;/Text&gt;
+              )}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/Card&gt;
+  );
+}
+
+// ─── Main Widget ─────────────────────────────────────────────────────
+function StatusTimelineWidget() {
+  const styles = useStyles();
+  const [appInstance] = useState(
+    () =&gt; new App({ name: &quot;Access Status Timeline&quot;, version: &quot;1.0.0&quot; }),
+  );
+  const [data, setData] = useState&lt;StatusData | null&gt;(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Track browser fullscreen changes (fallback path)
+  useEffect(() =&gt; {
+    const handler = () =&gt; setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener(&quot;fullscreenchange&quot;, handler);
+    return () =&gt; document.removeEventListener(&quot;fullscreenchange&quot;, handler);
+  }, []);
+
+  const toggleFullscreen = useCallback(async () =&gt; {
+    try {
+      if (appInstance) {
+        await appInstance.requestDisplayMode({
+          mode: isFullscreen ? &quot;inline&quot; : &quot;fullscreen&quot;,
+        });
+        setIsFullscreen(!isFullscreen);
+        return;
+      }
+    } catch {
+      /* not available */
+    }
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+        return;
+      } else {
+        await document.exitFullscreen();
+        return;
+      }
+    } catch {
+      /* blocked by sandbox or not supported */
+    }
+    setIsFullscreen((prev) =&gt; !prev);
+  }, [appInstance, isFullscreen]);
+
+  useEffect(() =&gt; {
+    appInstance.ontoolresult = (result) =&gt; {
+      if (result.structuredContent) {
+        setData(result.structuredContent as unknown as StatusData);
+      }
+    };
+    appInstance.connect();
+  }, [appInstance]);
+
+  if (!data) {
+    return (
+      &lt;div className={styles.loading}&gt;
+        &lt;Spinner label=&quot;Loading status...&quot; /&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  if (data.error === &quot;not_found&quot;) {
+    return (
+      &lt;div className={styles.empty}&gt;
+        &lt;Text size={400}&gt;Request not found&lt;/Text&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  if (!data.requests || data.requests.length === 0) {
+    return (
+      &lt;div className={styles.empty}&gt;
+        &lt;Timeline20Regular style={{ fontSize: &quot;32px&quot; }} /&gt;
+        &lt;Text size={400} weight=&quot;semibold&quot;&gt;
+          No requests found
+        &lt;/Text&gt;
+      &lt;/div&gt;
+    );
+  }
+
+  return (
+    &lt;div
+      className={styles.root}
+      style={
+        isFullscreen
+          ? {
+              position: &quot;fixed&quot;,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 9999,
+              overflowY: &quot;auto&quot;,
+            }
+          : undefined
+      }
+    &gt;
+      &lt;div className={styles.header}&gt;
+        &lt;Timeline20Regular /&gt;
+        &lt;Text size={500} weight=&quot;bold&quot;&gt;
+          Access Request Status
+        &lt;/Text&gt;
+        &lt;Badge appearance=&quot;filled&quot; color=&quot;brand&quot;&gt;
+          {data.requests.length} request(s)
+        &lt;/Badge&gt;
+        &lt;Button
+          appearance=&quot;subtle&quot;
+          icon={
+            isFullscreen ? (
+              &lt;FullScreenMinimize24Regular /&gt;
+            ) : (
+              &lt;FullScreenMaximize24Regular /&gt;
+            )
+          }
+          onClick={toggleFullscreen}
+          title={isFullscreen ? &quot;Exit fullscreen&quot; : &quot;Fullscreen&quot;}
+          style={{ marginLeft: &quot;auto&quot; }}
+        /&gt;
+      &lt;/div&gt;
+
+      {data.requests.map((req) =&gt; (
+        &lt;RequestTimelineCard key={req.id} request={req} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+// ─── Theme Detection &amp; Render ────────────────────────────────────────
+function Root() {
+  const [isDark, setIsDark] = useState(
+    window.matchMedia?.(&quot;(prefers-color-scheme: dark)&quot;).matches ?? false,
+  );
+
+  useEffect(() =&gt; {
+    const mq = window.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+    const handler = (e: MediaQueryListEvent) =&gt; setIsDark(e.matches);
+    mq.addEventListener(&quot;change&quot;, handler);
+    return () =&gt; mq.removeEventListener(&quot;change&quot;, handler);
+  }, []);
+
+  return (
+    &lt;FluentProvider theme={isDark ? webDarkTheme : webLightTheme}&gt;
+      &lt;StatusTimelineWidget /&gt;
+    &lt;/FluentProvider&gt;
+  );
+}
+
+createRoot(document.getElementById(&quot;root&quot;)!).render(&lt;Root /&gt;);
+</code></pre>
+<p><cc-end-step lab="e11" exercise="3" step="1" /></p>
+<h3 id="step-2-create-the-html-entry-point">Step 2: Create the HTML Entry Point</h3>
+<p>Create the HTML entry point for the widget. Create a new file <code>ui/status-timeline.html</code>:</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Status Timeline&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;../global.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;../src/status-timeline/App.tsx&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><cc-end-step lab="e11" exercise="3" step="2" /></p>
+<h3 id="step-3-register-the-access-status-tool-in-the-server">Step 3: Register the access-status Tool in the Server</h3>
+<p>Open <code>server.ts</code> and add the new <code>access-status</code> tool registration. Find the comment <code>// ─── Backend Tool: Submit Request</code> and add the following <strong>above</strong> it:</p>
+<pre><code class="language-typescript">  // ─── Tool 3: Status Timeline ─────────────────────────────────────
+  registerToolWithUI(
+    server,
+    &quot;access-status&quot;,
+    &quot;Access Request Status&quot;,
+    &quot;Shows the status timeline for an access request, tracking progress through Requested → Manager Review → IT Review → Granted/Rejected stages. Pass a request ID, or leave blank to see all requests.&quot;,
+    &quot;status-timeline.html&quot;,
+    {
+      requestId: z.string().optional().describe(&quot;Request ID — accepts any format: REQ-001, 001, or 1&quot;),
+    },
+    async (args): Promise&lt;CallToolResult&gt; =&gt; {
+      if (args.requestId) {
+        const request = await getRequest(args.requestId);
+        if (!request) {
+          return {
+            content: [{ type: &quot;text&quot;, text: `Request ${args.requestId} not found.` }],
+            structuredContent: { error: &quot;not_found&quot;, requestId: args.requestId } as unknown as Record&lt;string, unknown&gt;,
+          };
+        }
+        return {
+          content: [{ type: &quot;text&quot;, text: `Status for ${request.id}: ${request.status}` }],
+          structuredContent: { requests: [request] } as unknown as Record&lt;string, unknown&gt;,
+        };
+      }
+
+      const all = await getAllRequests();
+      return {
+        content: [{ type: &quot;text&quot;, text: `Showing status for ${all.length} request(s).` }],
+        structuredContent: { requests: all } as unknown as Record&lt;string, unknown&gt;,
+      };
+    },
+  );
+</code></pre>
+<p>You also need to add <code>getAllRequests</code> to the imports at the top of <code>server.ts</code>. Find the import line:</p>
+<pre><code class="language-typescript">import {
+  getRequest,
+  getPendingApprovals,
+  createRequest,
+  recordDecision,
+} from &quot;./mock-data/requests.js&quot;;
+</code></pre>
+<p>And update it to include <code>getAllRequests</code>:</p>
+<pre><code class="language-typescript">import {
+  getAllRequests,
+  getRequest,
+  getPendingApprovals,
+  createRequest,
+  recordDecision,
+} from &quot;./mock-data/requests.js&quot;;
+</code></pre>
+<p><cc-end-step lab="e11" exercise="3" step="3" /></p>
+<h3 id="step-4-rebuild-and-restart-the-server">Step 4: Rebuild and Restart the Server</h3>
+<p>Stop the running MCP server (press <code>Ctrl+C</code> in Terminal 2), then rebuild and restart:</p>
+<pre><code class="language-bash">npm start
+</code></pre>
+<p>You should now see <strong>3 UI entry points</strong> being built:</p>
+<pre><code>Found 3 UI entry point(s): approval-panel.html, request-form.html, status-timeline.html
+
+Building ui/approval-panel.html...
+Building ui/request-form.html...
+Building ui/status-timeline.html...
+
+✓ Built 3 UI entry point(s) successfully.
+
+🚀 Access Request &amp; Approval MCP Server listening on http://localhost:3001/mcp
+</code></pre>
+<p><cc-end-step lab="e11" exercise="3" step="4" /></p>
+<h3 id="step-5-test-the-status-timeline-in-mcp-inspector">Step 5: Test the Status Timeline in MCP Inspector</h3>
+<p>Go back to <strong>Terminal 3</strong> and restart the MCP Inspector (press <code>Ctrl+C</code> first if it's still running):</p>
+<pre><code class="language-bash">npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp
+</code></pre>
+<p>In the Inspector:</p>
+<ol>
+<li>Navigate to the <strong>Tools</strong> section — you should now see <code>access-status</code> listed</li>
+<li>Click on <code>access-status</code></li>
+<li><strong>Test with a specific request</strong>: Enter <code>requestId</code>: <code>"REQ-003"</code> and click <strong>Run Tool</strong></li>
+<li>Observe the response — it shows Diana Prince's fully granted request with timeline data</li>
+<li><strong>Test without a request ID</strong>: Clear the field and click <strong>Run Tool</strong> again</li>
+<li>Observe the response — it returns all 3 requests with their timelines</li>
+</ol>
+<p>The <code>access-status</code> tool should now activate and display the <strong>Status Timeline</strong> widget. You should see a card with:</p>
+<ul>
+<li>The request ID, employee name, target system, and role</li>
+<li>A vertical timeline showing each stage (Requested → Manager Review → IT Review → Granted)</li>
+<li>Color-coded icons: green checkmarks for completed stages, blue clock for the current stage, grey circles for pending stages</li>
+</ul>
+<p><cc-end-step lab="e11" exercise="3" step="5" /></p>
+<hr />
+<h2 id="exercise-4-integrate-with-a-declarative-agent">Exercise 4: Integrate with a Declarative Agent</h2>
+<p>Now you'll connect this MCP server to a Declarative Agent in Microsoft 365 Copilot using the Microsoft 365 Agents Toolkit, following the same pattern as <a href="../08-mcp-server/">Lab 08</a>.</p>
+<h3 id="step-1-set-up-public-access-with-dev-tunnel">Step 1: Set Up Public Access with Dev Tunnel</h3>
+<p>To enable Microsoft 365 Copilot to reach your local MCP server, you'll create a public HTTPS endpoint using VS Code Dev Tunnels.</p>
+<ol>
+<li>In VS Code's terminal panel, locate the <strong>Ports</strong> tab</li>
+<li>Click the <strong>Forward a Port</strong> button and enter port number <code>3001</code></li>
+<li>Right-click on the forwarded port address and configure:</li>
+<li><strong>Port Visibility</strong>: Select <strong>Public</strong></li>
+<li><strong>Set Port Label</strong>: Enter <code>approval-mcpapp</code> (optional but recommended)</li>
+<li>Copy the tunnel URL, it will look similar to:
+    <code>https://abc123def456.use.devtunnels.ms</code></li>
+</ol>
+<p>Save this URL as you'll need it in the next step. We'll refer to this as <code>&lt;tunnel-url&gt;</code>.</p>
+<p><cc-end-step lab="e11" exercise="4" step="1" /></p>
+<h3 id="step-2-create-a-new-declarative-agent-project">Step 2: Create a New Declarative Agent Project</h3>
+<ol>
+<li>Open a <strong>new VS Code window</strong></li>
+<li>Click the <strong>Microsoft 365 Agents Toolkit</strong> icon in the Activity Bar</li>
+<li>Sign in with your Microsoft 365 developer account if prompted</li>
+<li>Click <strong>"Create a New Agent/App"</strong></li>
+<li>Select <strong>"Declarative Agent"</strong></li>
+<li>Choose <strong>"Add an Action"</strong></li>
+<li>Select <strong>Start with an MCP server (preview)</strong></li>
+<li>Enter the publicly accessible MCP Server URL: <code>&lt;tunnel-url&gt;/mcp</code></li>
+<li>Choose a folder to scaffold the project</li>
+<li>Set the <strong>Application Name</strong> to <code>Access Request Assistant</code></li>
+</ol>
+<p>You will be directed to the newly created project which has the file <code>.vscode/mcp.json</code> open.</p>
+<ul>
+<li>Select <strong>Start</strong> to fetch tools from your server</li>
+<li>Once started, you will see the number of tools available</li>
+<li>Select <strong>ATK: Fetch action from MCP</strong> to choose which tools to add</li>
+</ul>
+<p><cc-end-step lab="e11" exercise="4" step="2" /></p>
+<h3 id="step-3-select-tools-for-the-agent">Step 3: Select Tools for the Agent</h3>
+<p>When prompted, select the <strong>ai-plugin.json</strong> action manifest, then choose these tools:</p>
+<ul>
+<li><code>request-access</code></li>
+<li><code>approve-access</code></li>
+<li><code>access-status</code></li>
+<li><code>submit-request</code></li>
+<li><code>submit-decision</code></li>
+<li><code>get-request</code></li>
+</ul>
+<p>This populates the action manifest <code>appPackage/ai-plugin.json</code> with the selected tools and the MCP server URL.</p>
+<p><cc-end-step lab="e11" exercise="4" step="3" /></p>
+<h3 id="step-4-configure-the-agent-identity">Step 4: Configure the Agent Identity</h3>
+<p>Replace the content of <code>appPackage/declarativeAgent.json</code> with:</p>
+<pre><code class="language-json">{
+    &quot;version&quot;: &quot;v1.6&quot;,
+    &quot;name&quot;: &quot;Access Request Assistant&quot;,
+    &quot;description&quot;: &quot;An intelligent access request and approval assistant that helps employees request system access, managers review and approve requests, and everyone track request status through interactive widgets.&quot;,
+    &quot;instructions&quot;: &quot;$[file('instruction.txt')]&quot;,
+    &quot;conversation_starters&quot;: [
+        {
+            &quot;title&quot;: &quot;Request Access&quot;,
+            &quot;text&quot;: &quot;I need to request access to a system&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Review Pending Approvals&quot;,
+            &quot;text&quot;: &quot;Show me all pending access requests for approval&quot;
+        },
+        {
+            &quot;title&quot;: &quot;Check Request Status&quot;,
+            &quot;text&quot;: &quot;What is the status of request REQ-001?&quot;
+        },
+        {
+            &quot;title&quot;: &quot;View All Requests&quot;,
+            &quot;text&quot;: &quot;Show me the status of all access requests&quot;
+        }
+    ],
+    &quot;actions&quot;: [
+        {
+            &quot;id&quot;: &quot;action_1&quot;,
+            &quot;file&quot;: &quot;ai-plugin.json&quot;
+        }
+    ]
+}
+</code></pre>
+<p><cc-end-step lab="e11" exercise="4" step="4" /></p>
+<h3 id="step-5-create-agent-instructions">Step 5: Create Agent Instructions</h3>
+<p>Update <code>appPackage/instruction.txt</code> with:</p>
+<pre><code class="language-plaintext"># Access Request Assistant
+
+## Role
+You are an intelligent access request and approval assistant. You help employees request access to systems, help managers review and approve or reject requests, and help anyone track the status of their requests.
+
+## Core Functions
+
+### For Employees
+- Help them submit access requests using the request-access tool
+- Track the status of their existing requests using the access-status tool
+
+### For Managers
+- Show pending approvals using the approve-access tool
+- Help them review, approve, or reject requests
+
+### For Everyone
+- Look up any request by ID using the access-status tool
+- Show all requests and their current stage in the approval timeline
+
+## Response Guidelines
+- Use the appropriate widget tool to show interactive UI when possible
+- When a user asks about status, use the access-status tool to show the visual timeline
+- When a user wants to submit a request, use the request-access tool to show the form
+- When a user wants to review approvals, use the approve-access tool to show the approval panel
+- Be concise and helpful in your responses
+</code></pre>
+<p><cc-end-step lab="e11" exercise="4" step="5" /></p>
+<h3 id="step-6-provision-and-test-the-agent">Step 6: Provision and Test the Agent</h3>
+<ol>
+<li>Ensure your MCP server is still running in the other VS Code window</li>
+<li>In the Agents Toolkit panel, click <strong>"Provision"</strong> in the Lifecycle section</li>
+<li>Wait for provisioning to complete</li>
+<li>Open Microsoft 365 Copilot at <a href="https://m365.cloud.microsoft/chat/">https://m365.cloud.microsoft/chat/</a></li>
+<li>Find the <strong>Access Request Assistant</strong> agent under <strong>Agents</strong> on the left-hand side</li>
+<li>Select it and try these queries:</li>
+</ol>
+<pre><code>What is the status of request REQ-001?
+</code></pre>
+<p><img alt="What is the status of request REQ-001?" src="../../../assets/images/extend-m365-copilot-11/prompt1.png" /></p>
+<pre><code>Show me all pending access requests
+</code></pre>
+<p><img alt="Show me all pending access requests" src="../../../assets/images/extend-m365-copilot-11/prompt2.png" /></p>
+<pre><code>I need to request access to GitHub with Write permissions
+</code></pre>
+<p><img alt="I need to request access to GitHub with Write permissions" src="../../../assets/images/extend-m365-copilot-11/prompt3.png" /></p>
+<p>The agent should respond with interactive widgets, the Status Timeline for status queries, the Approval Panel for reviewing requests, and the Request Form for new access requests.</p>
+<p><cc-end-step lab="e11" exercise="4" step="6" /></p>
+<h3 id="step-7-debug-the-agent">Step 7: Debug the Agent</h3>
+<ol>
+<li>In the chat with the Access Request Assistant, send the message <code>-developer on</code></li>
+<li>This enables debugging for the conversation</li>
+<li>Continue testing with queries and analyze the <strong>Agent debug info</strong> panel at the end of each response</li>
+</ol>
+<p>This panel shows which tools were called, the parameters passed, and the responses received from your MCP server.</p>
+<p><cc-end-step lab="e11" exercise="4" step="7" /></p>
+<hr />
+<p>Congratulations! You've successfully built an MCP app with interactive widgets, added a new Status Timeline visualization, and integrated it with Microsoft 365 Copilot through a Declarative Agent.</p>
+<h2 id="learn-more">Learn More</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets">Add interactive UI widgets to declarative agents</a> — official documentation on widget support in Microsoft 365 Copilot</li>
+<li><a href="https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html">MCP Apps Overview</a> — the MCP Apps standard specification</li>
+<li><a href="https://github.com/microsoft/mcp-interactiveUI-samples">MCP based interactive UI samples</a> — sample gallery with multiple MCP app examples including the <a href="https://github.com/microsoft/mcp-interactiveUI-samples/tree/main/mcp-apps/trey-research/node/src/mcpserver">Trey Research HR Consultant</a> sample featuring dashboards, profile cards, and bulk editing widgets</li>
+<li><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets-guidelines">UX design guidelines for widgets</a> — best practices for designing widget experiences</li>
+</ul>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/11-mcp-app" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
