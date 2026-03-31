@@ -3,14 +3,6 @@
 In this lab, you'll run a Model Context Protocol (MCP) app that powers an **Access Request & Approval Workflow** with interactive widgets rendered directly in the AI agent's response. You'll explore the existing tools, add a new **Status Timeline** widget, and integrate the MCP server into a Declarative Agent using Microsoft 365 Agents Toolkit.
 
 
-<div class="lab-intro-video">
-    <div style="flex: 1; min-width: 0;">
-  ---8<--- "e-labs-prelude.md"
-    </div>
-</div>
-
-
-
 ## Scenario
 
 **Contoso Corp** manages access requests across multiple systems like GitHub, SAP, Production Database, and more. Today, employees email their managers, who forward requests to IT, leading to delays and lost context. The IT team wants a streamlined, AI-powered approval workflow where employees can submit access requests, managers can approve or reject them, and everyone can track the status, all through natural language conversations with an AI agent.
@@ -93,12 +85,18 @@ In this exercise, you'll clone the project, install dependencies, seed sample da
 
 ### Step 1: Clone the Repository
 
-Open your terminal and run:
+Download the MCP app source code directly:
 
-```bash
-git clone https://github.com/microsoft/copilot-camp.git
-cd copilot-camp/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp
-```
+[Download approval-mcpapp](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp){target=_blank .md-button}
+
+Once downloaded, extract the zip file, then open the extracted `approval-mcpapp` folder in VS Code:
+
+1. Open **VS Code**
+2. Go to **File → Open Folder** and select the extracted `approval-mcpapp` folder
+3. Open a new **Terminal** in VS Code (**Terminal → New Terminal**)
+
+All terminal commands in this lab should be run inside this VS Code terminal.
+
 <cc-end-step lab="e11" exercise="1" step="1" />
 
 ### Step 2: Install Dependencies
@@ -191,12 +189,6 @@ Your MCP app is now running with two interactive widget tools.
 <cc-end-step lab="e11" exercise="1" step="5" />
 
 ### Step 6: Examine the Project Structure
-
-Open the project in a new VS Code window:
-
-```bash
-code .
-```
 
 Key files and directories:
 
@@ -1006,13 +998,18 @@ You are an intelligent access request and approval assistant. You help employees
 What is the status of request REQ-001?
 ```
 
+![What is the status of request REQ-001?](../../assets/images/extend-m365-copilot-11/prompt1.png)
+
 ```
 Show me all pending access requests
 ```
 
+![Show me all pending access requests](../../assets/images/extend-m365-copilot-11/prompt2.png)
+
 ```
 I need to request access to GitHub with Write permissions
 ```
+![I need to request access to GitHub with Write permissions](../../assets/images/extend-m365-copilot-11/prompt3.png)
 
 The agent should respond with interactive widgets, the Status Timeline for status queries, the Approval Panel for reviewing requests, and the Request Form for new access requests.
 
