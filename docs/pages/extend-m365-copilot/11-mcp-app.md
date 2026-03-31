@@ -87,7 +87,7 @@ In this exercise, you'll clone the project, install dependencies, seed sample da
 
 Download the MCP app source code directly:
 
-[Download approval-mcpapp](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp){target=_blank .md-button}
+[Download approval-mcpapp](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp){target=_blank}
 
 Once downloaded, extract the zip file, then open the extracted `approval-mcpapp` folder in VS Code:
 
