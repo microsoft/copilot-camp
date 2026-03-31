@@ -13,7 +13,7 @@ In this lab, you'll run a Model Context Protocol (MCP) app that powers an **Acce
 
 ## Scenario
 
-**Contoso Corp** manages access requests across multiple systems — GitHub, SAP, Production Database, and more. Today, employees email their managers, who forward requests to IT, leading to delays and lost context. The IT team wants a streamlined, AI-powered approval workflow where employees can submit access requests, managers can approve or reject them, and everyone can track the status — all through natural language conversations with an AI agent.
+**Contoso Corp** manages access requests across multiple systems like GitHub, SAP, Production Database, and more. Today, employees email their managers, who forward requests to IT, leading to delays and lost context. The IT team wants a streamlined, AI-powered approval workflow where employees can submit access requests, managers can approve or reject them, and everyone can track the status, all through natural language conversations with an AI agent.
 
 The development team has built an **MCP app** with interactive widgets that render rich UI directly inside the agent's response:
 
@@ -39,11 +39,11 @@ By completing this lab, you will:
 
 ## � What Are MCP Apps with Interactive Widgets?
 
-Standard MCP tools return plain text or JSON — useful for data retrieval, but limited when users need to fill out forms, review dashboards, or interact with visual components. **MCP apps** extend the Model Context Protocol to deliver **interactive UI widgets** directly inside the AI agent's response, turning a chat conversation into a full application experience.
+Standard MCP tools return plain text or JSON, useful for data retrieval, but limited when users need to fill out forms, review dashboards, or interact with visual components. **MCP apps** extend the Model Context Protocol to deliver **interactive UI widgets** directly inside the AI agent's response, turning a chat conversation into a full application experience.
 
 ### Why Interactive Widgets?
 
-Traditional AI agent responses are text-based. When an agent retrieves data, it can summarize it in a message — but users often need to **do** something with that data: submit a form, approve a request, explore a chart, or drill into details. Interactive widgets solve this by rendering rich, functional UI components alongside the agent's response:
+Traditional AI agent responses are text-based. When an agent retrieves data, it can summarize it in a message but users often need to **do** something with that data: submit a form, approve a request, explore a chart, or drill into details. Interactive widgets solve this by rendering rich, functional UI components alongside the agent's response:
 
 - **Forms and inputs** — employees can fill out structured data without leaving the conversation
 - **Dashboards and visualizations** — display KPIs, timelines, and status indicators with color-coded visual cues
@@ -56,7 +56,7 @@ An MCP app pairs each tool with a **UI resource** — a self-contained HTML file
 
 1. The **tool handler** runs on the server and returns `structuredContent` (the data)
 2. The **UI resource** (HTML widget) is loaded by the host and receives the data via the [MCP Apps SDK](https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html)
-3. The widget renders the data as interactive UI — and can **call back to the server** using `app.callServerTool()` for actions like submitting forms or recording decisions
+3. The widget renders the data as interactive UI and can **call back to the server** using `app.callServerTool()` for actions like submitting forms or recording decisions
 
 ### Cross-Platform Support
 
@@ -68,7 +68,7 @@ One of the key benefits of building MCP apps is **portability across AI platform
 | **Claude** | MCP Apps SDK | Supported |
 | **Microsoft 365 Copilot** | MCP Apps SDK (via Declarative Agents) | Supported |
 
-Microsoft 365 Copilot supports UI widgets created using both the **MCP Apps** standard and the **OpenAI Apps SDK**, meaning widgets you build for ChatGPT can also run in Copilot — and vice versa. The platform provides a [component bridge](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets#supported-capabilities) that maps capabilities between the two SDKs.
+Microsoft 365 Copilot supports UI widgets created using both the **MCP Apps** standard and the **OpenAI Apps SDK**, meaning widgets you build for ChatGPT can also run in Copilot and vice versa. The platform provides a [component bridge](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets#supported-capabilities) that maps capabilities between the two SDKs.
 
 This means you can **build once and deploy across multiple AI hosts**, reaching users wherever they work.
 
@@ -134,7 +134,7 @@ You should see:
 Azurite Table service is starting at http://127.0.0.1:10002
 ```
 
-**Keep this terminal running** — it's your local database.
+**Keep this terminal running** as it's your local database.
 
 <cc-end-step lab="e11" exercise="1" step="3" />
 
@@ -270,7 +270,7 @@ In the MCP Inspector interface, navigate to the **Tools** section. You'll see th
 1. Click on the `request-access` tool
 2. Optionally fill in `employeeName` with `"Test User"` and `employeeEmail` with `"test@contoso.com"`
 3. Click **"Run Tool"**
-4. Observe the response — it returns structured data with available systems and roles that the widget uses to populate its dropdowns
+4. Observe the response, it returns structured data with available systems and roles that the widget uses to populate its dropdowns
 
 <cc-end-step lab="e11" exercise="2" step="3" />
 
@@ -279,7 +279,7 @@ In the MCP Inspector interface, navigate to the **Tools** section. You'll see th
 1. Click on the `approve-access` tool
 2. Enter `requestId`: `"REQ-001"`
 3. Click **"Run Tool"**
-4. Observe the response — it returns Alice Johnson's request details including her full timeline
+4. Observe the response, it returns Alice Johnson's request details including her full timeline
 
 You can also run `approve-access` without a `requestId` to see all pending requests.
 
@@ -291,7 +291,7 @@ Notice that while the Inspector shows the raw JSON responses, when these tools a
 
 ## Exercise 3: Add the Status Timeline Widget
 
-Now you'll add a new tool — `access-status` — that shows a visual timeline of an access request's progress through the approval stages: Requested → Manager Review → IT Review → Granted/Rejected.
+Now you'll add a new tool,  `access-status` that shows a visual timeline of an access request's progress through the approval stages: Requested → Manager Review → IT Review → Granted/Rejected.
 
 ### Step 1: Create the Status Timeline Widget Component
 
@@ -875,12 +875,12 @@ To enable Microsoft 365 Copilot to reach your local MCP server, you'll create a 
 3. Right-click on the forwarded port address and configure:
    - **Port Visibility**: Select **Public**
    - **Set Port Label**: Enter `approval-mcpapp` (optional but recommended)
-4. Copy the tunnel URL — it will look similar to:
+4. Copy the tunnel URL, it will look similar to:
     ```
     https://abc123def456.use.devtunnels.ms
     ```
 
-Save this URL — you'll need it in the next step. We'll refer to this as `<tunnel-url>`.
+Save this URL as you'll need it in the next step. We'll refer to this as `<tunnel-url>`.
 
 <cc-end-step lab="e11" exercise="4" step="1" />
 
@@ -1014,7 +1014,7 @@ Show me all pending access requests
 I need to request access to GitHub with Write permissions
 ```
 
-The agent should respond with interactive widgets — the Status Timeline for status queries, the Approval Panel for reviewing requests, and the Request Form for new access requests.
+The agent should respond with interactive widgets, the Status Timeline for status queries, the Approval Panel for reviewing requests, and the Request Form for new access requests.
 
 <cc-end-step lab="e11" exercise="4" step="6" />
 
