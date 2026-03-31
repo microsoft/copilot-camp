@@ -37,7 +37,51 @@ By completing this lab, you will:
 
 ---
 
-## 📚 Prerequisites
+## � What Are MCP Apps with Interactive Widgets?
+
+Standard MCP tools return plain text or JSON — useful for data retrieval, but limited when users need to fill out forms, review dashboards, or interact with visual components. **MCP apps** extend the Model Context Protocol to deliver **interactive UI widgets** directly inside the AI agent's response, turning a chat conversation into a full application experience.
+
+### Why Interactive Widgets?
+
+Traditional AI agent responses are text-based. When an agent retrieves data, it can summarize it in a message — but users often need to **do** something with that data: submit a form, approve a request, explore a chart, or drill into details. Interactive widgets solve this by rendering rich, functional UI components alongside the agent's response:
+
+- **Forms and inputs** — employees can fill out structured data without leaving the conversation
+- **Dashboards and visualizations** — display KPIs, timelines, and status indicators with color-coded visual cues
+- **Action panels** — managers can approve, reject, or take action directly from the widget
+- **Fullscreen mode** — widgets can expand to fullscreen for complex interactions
+
+### How It Works
+
+An MCP app pairs each tool with a **UI resource** — a self-contained HTML file (built with React, Fluent UI, or any web framework) that renders the tool's structured data as an interactive widget. When the AI host calls a tool:
+
+1. The **tool handler** runs on the server and returns `structuredContent` (the data)
+2. The **UI resource** (HTML widget) is loaded by the host and receives the data via the [MCP Apps SDK](https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html)
+3. The widget renders the data as interactive UI — and can **call back to the server** using `app.callServerTool()` for actions like submitting forms or recording decisions
+
+### Cross-Platform Support
+
+One of the key benefits of building MCP apps is **portability across AI platforms**. The same MCP server with interactive widgets works as a connector in:
+
+| Platform | SDK | Status |
+|----------|-----|--------|
+| **ChatGPT** | [OpenAI Apps SDK](https://developers.openai.com/apps-sdk) | Supported |
+| **Claude** | MCP Apps SDK | Supported |
+| **Microsoft 365 Copilot** | MCP Apps SDK (via Declarative Agents) | Supported |
+
+Microsoft 365 Copilot supports UI widgets created using both the **MCP Apps** standard and the **OpenAI Apps SDK**, meaning widgets you build for ChatGPT can also run in Copilot — and vice versa. The platform provides a [component bridge](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets#supported-capabilities) that maps capabilities between the two SDKs.
+
+This means you can **build once and deploy across multiple AI hosts**, reaching users wherever they work.
+
+### Learn More
+
+- [Add interactive UI widgets to declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets) — official documentation on widget support in Microsoft 365 Copilot
+- [MCP Apps Overview](https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html) — the MCP Apps standard specification
+- [MCP based interactive UI samples](https://github.com/microsoft/mcp-interactiveUI-samples) — sample gallery with multiple MCP app examples including the [Trey Research HR Consultant](https://github.com/microsoft/mcp-interactiveUI-samples/tree/main/mcp-apps/trey-research/node/src/mcpserver) sample featuring dashboards, profile cards, and bulk editing widgets
+- [UX design guidelines for widgets](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets-guidelines) — best practices for designing widget experiences
+
+---
+
+## �📚 Prerequisites
 
 Before starting this lab, ensure you have:
 
