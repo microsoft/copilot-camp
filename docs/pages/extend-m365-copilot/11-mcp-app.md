@@ -72,12 +72,6 @@ Microsoft 365 Copilot supports UI widgets created using both the **MCP Apps** st
 
 This means you can **build once and deploy across multiple AI hosts**, reaching users wherever they work.
 
-### Learn More
-
-- [Add interactive UI widgets to declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets) — official documentation on widget support in Microsoft 365 Copilot
-- [MCP Apps Overview](https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html) — the MCP Apps standard specification
-- [MCP based interactive UI samples](https://github.com/microsoft/mcp-interactiveUI-samples) — sample gallery with multiple MCP app examples including the [Trey Research HR Consultant](https://github.com/microsoft/mcp-interactiveUI-samples/tree/main/mcp-apps/trey-research/node/src/mcpserver) sample featuring dashboards, profile cards, and bulk editing widgets
-- [UX design guidelines for widgets](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets-guidelines) — best practices for designing widget experiences
 
 ---
 
@@ -1038,6 +1032,12 @@ This panel shows which tools were called, the parameters passed, and the respons
 
 Congratulations! You've successfully built an MCP app with interactive widgets, added a new Status Timeline visualization, and integrated it with Microsoft 365 Copilot through a Declarative Agent.
 
-<cc-next />
+## Learn More
+
+- [Add interactive UI widgets to declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets) — official documentation on widget support in Microsoft 365 Copilot
+- [MCP Apps Overview](https://modelcontextprotocol.github.io/ext-apps/api/documents/Overview.html) — the MCP Apps standard specification
+- [MCP based interactive UI samples](https://github.com/microsoft/mcp-interactiveUI-samples) — sample gallery with multiple MCP app examples including the [Trey Research HR Consultant](https://github.com/microsoft/mcp-interactiveUI-samples/tree/main/mcp-apps/trey-research/node/src/mcpserver) sample featuring dashboards, profile cards, and bulk editing widgets
+- [UX design guidelines for widgets](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-ui-widgets-guidelines) — best practices for designing widget experiences
+
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/11-mcp-app" />
