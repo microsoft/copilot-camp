@@ -1,0 +1,53 @@
+[
+  {
+    "id": "REQ-001",
+    "employeeName": "Alice Johnson",
+    "employeeEmail": "alice@contoso.com",
+    "system": "GitHub",
+    "role": "Write",
+    "justification": "Need write access to the frontend repo to contribute to sprint tasks.",
+    "status": "Manager Review",
+    "createdAt": "2026-03-28T09:00:00Z",
+    "updatedAt": "2026-03-28T09:00:00Z",
+    "timeline": [
+      { "stage": "Requested", "status": "completed", "actor": "Alice Johnson", "comment": "Submitted access request", "timestamp": "2026-03-28T09:00:00Z" },
+      { "stage": "Manager Review", "status": "current", "timestamp": "2026-03-28T09:00:00Z" },
+      { "stage": "IT Review", "status": "pending", "timestamp": "" },
+      { "stage": "Granted", "status": "pending", "timestamp": "" }
+    ]
+  },
+  {
+    "id": "REQ-002",
+    "employeeName": "Bob Smith",
+    "employeeEmail": "bob@contoso.com",
+    "system": "SAP",
+    "role": "Finance Viewer",
+    "justification": "Required for quarterly financial reporting duties.",
+    "status": "IT Review",
+    "createdAt": "2026-03-27T14:30:00Z",
+    "updatedAt": "2026-03-28T08:15:00Z",
+    "timeline": [
+      { "stage": "Requested", "status": "completed", "actor": "Bob Smith", "comment": "Submitted access request", "timestamp": "2026-03-27T14:30:00Z" },
+      { "stage": "Manager Review", "status": "completed", "actor": "Carol Davis", "comment": "Approved — Bob needs this for Q1 close.", "timestamp": "2026-03-28T08:15:00Z" },
+      { "stage": "IT Review", "status": "current", "timestamp": "2026-03-28T08:15:00Z" },
+      { "stage": "Granted", "status": "pending", "timestamp": "" }
+    ]
+  },
+  {
+    "id": "REQ-003",
+    "employeeName": "Diana Prince",
+    "employeeEmail": "diana@contoso.com",
+    "system": "Production Database",
+    "role": "Read-Only",
+    "justification": "Investigating a production incident in the orders table.",
+    "status": "Granted",
+    "createdAt": "2026-03-25T11:00:00Z",
+    "updatedAt": "2026-03-26T16:00:00Z",
+    "timeline": [
+      { "stage": "Requested", "status": "completed", "actor": "Diana Prince", "comment": "Submitted access request", "timestamp": "2026-03-25T11:00:00Z" },
+      { "stage": "Manager Review", "status": "completed", "actor": "Eve Wilson", "comment": "Approved for incident investigation.", "timestamp": "2026-03-25T15:00:00Z" },
+      { "stage": "IT Review", "status": "completed", "actor": "Frank IT", "comment": "Read-only access provisioned. Expires in 7 days.", "timestamp": "2026-03-26T10:00:00Z" },
+      { "stage": "Granted", "status": "completed", "actor": "System", "comment": "Access granted to prod DB (read-only).", "timestamp": "2026-03-26T16:00:00Z" }
+    ]
+  }
+]
