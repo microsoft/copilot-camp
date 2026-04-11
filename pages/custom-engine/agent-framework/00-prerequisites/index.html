@@ -2844,26 +2844,25 @@ brew install azure-functions-core-tools@4
 <h3 id="step-2-create-microsoft-foundry-project-and-deploy-models">Step 2: Create Microsoft Foundry Project and Deploy Models</h3>
 <p>For this lab path, you'll need a Microsoft Foundry project with a couple of models deployed.</p>
 <p>1️⃣ Navigate to <a href="https://ai.azure.com" target="_blank">Microsoft Foundry</a> and sign in with your Azure account.
-2️⃣ Select <strong>+ Create new</strong>, then <strong>Microsoft Foundry resource</strong> and then <strong>Next</strong>.</p>
-<p>3️⃣ Leave the project name as recommended and select <strong>Create</strong>. This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.</p>
+2️⃣ Select to use the <strong>New Foundry</strong> to switch to the new user experience.
+3️⃣ Select to <strong>Create a new project</strong>, when prompted. Leave the project name as recommended and select <strong>Create</strong>. This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.</p>
 <div class="admonition tip">
 <p class="admonition-title">Region Selection</p>
-<p>Choose <strong>France Central</strong> region as it supports all the models you'll need throughout the labs.</p>
+<p>Choose <strong>France Central</strong> or <strong>Sweden Central</strong> region as it supports all the models you'll need throughout the labs.</p>
 </div>
-<p>4️⃣ Once your project is created, navigate to <strong>Deployments</strong> in the left sidebar.</p>
-<p>5️⃣ Click <strong>+ Deploy model</strong> and select <strong>Deploy base model</strong>.</p>
-<p>6️⃣ Search for <strong>gpt-4.1</strong> and select the <strong>gpt-4.1</strong> model, then select <strong>Confirm</strong> and <strong>Deploy</strong>.</p>
+<p>4️⃣ Once your project is created, select <strong>Start Building</strong> and then <strong>Find models</strong>. Alternatively, you can also choose <strong>Build</strong>, then <strong>Models</strong>, and lastly <strong>Deploy base model</strong>.</p>
+<p>5️⃣ Either way, search for <strong>gpt-4.1</strong> and select the <strong>gpt-4.1</strong> model, then select <strong>Confirm</strong> and <strong>Deploy</strong>.</p>
 <div class="admonition important">
 <p class="admonition-title">Model Selection</p>
 <p>Please use <strong>gpt-4.1</strong> for a smooth experience . The labs use knowledge base answer synthesis which is optimized for gpt-4.1. Using other models may lead to unexpected behavior.</p>
 </div>
-<p>7️⃣ Now search for model <strong>text-embedding-ada-002</strong> and select the <strong>text-embedding-ada-002</strong> model, then select <strong>Confirm</strong> and <strong>Deploy</strong>.</p>
+<p>6️⃣ Now search for model <strong>text-embedding-ada-002</strong> and select the <strong>text-embedding-ada-002</strong> model, then select <strong>Confirm</strong> and <strong>Deploy</strong>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Save Your Credentials</p>
 <p>You'll need the following information from your Microsoft Foundry project:</p>
 <ul>
-<li><strong>Endpoint URL</strong>: Found in project settings → Properties (e.g., <code>https://your-resource.cognitiveservices.azure.com/</code>)</li>
-<li><strong>API Key</strong>: Found under "Keys and Endpoint" section</li>
+<li><strong>Endpoint URL</strong>: Found in project home page of the project under "Project endpoint". Keep only the URL without any path (e.g., <code>https://your-resource.services.ai.azure.com/</code>)</li>
+<li><strong>API Key</strong>: Found in project home page as "API Key"</li>
 <li><strong>Model Deployment Name</strong>: The name you gave to your gpt-4.1 deployment</li>
 </ul>
 <p>Save these values in a secure location - you'll need them in the next lab!</p>
@@ -2875,33 +2874,26 @@ brew install azure-functions-core-tools@4
 <p><cc-end-step lab="baf0" exercise="3" step="2" /></p>
 <h3 id="step-3-configure-content-safety-filter">Step 3: Configure Content Safety Filter</h3>
 <p>The insurance domain uses terms like "injury", "collision", "damage" that may trigger default content filters. You need to create a custom content filter with lower thresholds.</p>
-<p>1️⃣ In Microsoft Foundry, navigate to your project.</p>
-<p>2️⃣ In the left sidebar, select <strong>Guardrails + Controls</strong> → <strong>Content filters</strong>.</p>
-<p>3️⃣ Click <strong>+ Create content filter</strong>.</p>
-<p>4️⃣ Name your filter <strong>InsuranceLowFilter</strong>.</p>
-<p>5️⃣ Configure the following settings for <strong>Input filters</strong> (what users send):</p>
-<ul>
-<li><strong>Violence</strong>: Set threshold to <strong>Low</strong></li>
-<li><strong>Hate</strong>: Set threshold to <strong>Low</strong></li>
-<li><strong>Sexual</strong>: Set threshold to <strong>Low</strong></li>
-<li><strong>Self-harm</strong>: Set threshold to <strong>Low</strong></li>
-<li>Prompt shields for jailbreak attacks: Off</li>
-<li>Prompt shields for indirect attacks: Off</li>
-</ul>
-<p>6️⃣ Select <strong>Next</strong> and configure the same settings for <strong>Output filters</strong> (what AI generates):</p>
-<ul>
-<li><strong>Violence</strong>: Set threshold to <strong>Low</strong></li>
-<li><strong>Hate</strong>: Set threshold to <strong>Low</strong></li>
-<li><strong>Sexual</strong>: Set threshold to <strong>Low</strong></li>
-<li><strong>Self-harm</strong>: Set threshold to <strong>Low</strong></li>
-<li>Protected material for text: Off</li>
-<li>Protected material for code: Off</li>
-<li>Groundedness (Preview): Off</li>
-</ul>
+<p>1️⃣ In Microsoft Foundry, navigate to your project and select <strong>Build</strong></p>
+<p>2️⃣ In the left sidebar, select <strong>Guardrails</strong></p>
+<p>3️⃣ Click <strong>Create</strong> in the upper right corner</p>
+<p>4️⃣ In the <strong>Add controls</strong> section select under <strong>Risk</strong> one by one the items in the <strong>Content safety</strong> group. The items should be:</p>
+<pre><code>- **Violence**
+- **Hate**
+- **Sexual**
+- **Self-harm**
+</code></pre>
+<p>and for each of them set the <strong>Severity level</strong> to <strong>Lowest blocking</strong> both for <strong>User input</strong> and <strong>Output</strong>. When adding controls, confirm to override any already existing setting, if requested for.</p>
+<p>5️⃣ Next, in the <strong>Add controls</strong> section select under <strong>Risk</strong> one by one the items in the <strong>Protected materials</strong> group. The items should be:</p>
+<pre><code>- **Protected material for code**
+- **Protected material for text**
+</code></pre>
+<p>and for each of the items set the <strong>Action</strong> to <strong>Annotate</strong> for <strong>Tool call</strong> and <strong>Output</strong>. When adding controls, confirm to override any already existing setting, if requested for.</p>
+<p>6️⃣ Then, in the <strong>Add controls</strong> section select under <strong>Risk</strong> the item <strong>Jailbreak</strong> and set the <strong>Action</strong> to <strong>Annotate</strong> for <strong>User input</strong>. When adding controls, confirm to override any already existing setting, if requested for.</p>
 <p>7️⃣ Select <strong>Next</strong>.</p>
-<p>8️⃣ In Apply filter to deployments, select your <strong>gpt-4.1</strong> deployment.</p>
-<p>9️⃣ Select <strong>Replace</strong> to apply the new filter to the deployment.</p>
-<p>🔟 Finally, select <strong>Create filter</strong>.</p>
+<p>8️⃣ In <strong>Select agents and models</strong> panel, select your <strong>gpt-4.1</strong> deployment.</p>
+<p>9️⃣ Select <strong>Next</strong> to review the guardrail controls.</p>
+<p>9️⃣ Select <strong>Submit</strong> to apply the new rules.</p>
 <div class="admonition warning">
 <p class="admonition-title">Why This Is Needed</p>
 <p>Insurance claims contain legitimate terms like "injury", "accident", "collision", "bodily harm" that describe real incidents. Default content filters may block these terms. Setting thresholds to <strong>Low</strong> only blocks extreme content while allowing normal insurance terminology.</p>

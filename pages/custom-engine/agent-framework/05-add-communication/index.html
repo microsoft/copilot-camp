@@ -2758,6 +2758,10 @@
 
 <h1 id="lab-baf5-add-communication-capabilities">Lab BAF5 - Add Communication Capabilities</h1>
 <p>In this lab, you'll enhance the Zava Insurance Agent with professional communication capabilities. You'll add the ability to send detailed claim reports via email using Microsoft Graph and generate comprehensive investigation reports that include vision analysis findings and fraud assessment data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF4-complete&amp;filename=BAF4-complete" target="_blank">from here</a>.</p>
+</div>
 <details class="info" open="open">
 <summary>Understanding Communication Plugin</summary>
 <p>The <strong>CommunicationPlugin</strong> enables your agent to:</p>
@@ -3209,8 +3213,8 @@ Be concise and professional in your responses.
                     &quot;4. \&quot;Analyze fraud risk for this claim\&quot;\n&quot; +
                     &quot;5. \&quot;Show damage photo for this claim\&quot;\n&quot; +
                     &quot;6. \&quot;Analyze this damage photo\&quot;\n&quot; +
-                    &quot;7. \&quot;What's the claims filing procedure?\&quot;\n&quot; +
-                    &quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
+                    &quot;7. \&quot;Approve the analysis\&quot; or \&quot;Reject the analysis\&quot;\n\n&quot; +
+                    &quot;8. \&quot;What's the claims filing procedure?\&quot;\n&quot; +
                     &quot;9. \&quot;Generate investigation report for claim CLM-2025-001007\&quot;\n&quot; +
                     &quot;10. \&quot;Send the report by email\&quot;\n\n&quot; +
                     &quot;Ready to complete a full claims investigation? What would you like to start with?&quot;;
@@ -3274,8 +3278,8 @@ Be concise and professional in your responses.
 <li>Select the <strong>Microsoft Graph</strong> service provider again and click <strong>Test Connection</strong></li>
 <li><strong>Grant all consent</strong> when prompted</li>
 <li>Go back to the configuration and <strong>restore</strong> the original <strong>Token Exchange URL</strong> and <strong>Scopes</strong> values</li>
-<li><strong>Save</strong> the changes again</li>
-<li>Return to your agent, <strong>refresh the page</strong>, and test again</li>
+<li><strong>Save</strong> the changes again and wait couple of minutes to let the changes get applied</li>
+<li>Restart your agent in Visual Studio Code, <strong>refresh the page</strong>, and test again</li>
 </ol>
 </div>
 <p><cc-end-step lab="baf5" exercise="5" step="2" /></p>
@@ -3312,8 +3316,8 @@ The email includes comprehensive claim information, documentation status, timeli
 4. Analyze fraud risk for this claim
 5. Show damage photo for this claim
 6. Analyze this damage photo
-7. What's the claims filing procedure?
-8. Check compliance for this claim
+7. Approve the analysis OR Reject the analysis
+8. What's the claims filing procedure?
 9. Generate investigation report for claim CLM-2025-001007
 10. Send the report by email
 </code></pre>

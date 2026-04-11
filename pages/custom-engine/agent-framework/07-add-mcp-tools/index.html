@@ -2769,6 +2769,10 @@
 
 <h1 id="lab-baf7-add-mcp-tools-integration">Lab BAF7 - Add MCP Tools Integration</h1>
 <p>In this lab, you'll extend your Zava Insurance Agent with Model Context Protocol (MCP) tools. You'll create an MCP server using Azure Functions that provides claims adjuster management capabilities, then consume those tools from a custom plugin in your Custom Engine Agent.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF6-complete&amp;filename=BAF6-complete" target="_blank">from here</a>.</p>
+</div>
 <details class="info" open="open">
 <summary>Understanding MCP Integration</summary>
 <p>The <strong>Model Context Protocol (MCP)</strong> enables your agent to:</p>
@@ -2900,6 +2904,13 @@ SECRET_AZURE_STORAGE_KEY=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVEr
 <li>Launch the Azure Functions runtime</li>
 <li>Install, run, and open the MCP Inspector in your browser for testing and debugging MCP tools</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Permission denied error on MacOS</p>
+<p>If you receive the following error message while creating the devtunnel in the <strong>Ensure DevTunnel</strong> task, you need to grant execution rights to the scripts needed by the Visual Studio Code tasks executing the following commands in the terminal window integrated in Visual Studio Code:</p>
+<p><code>cd infra/scripts</code></p>
+<p>and then:</p>
+<p><code>chmod +x devtunnel.sh</code></p>
+</div>
 <p>3️⃣ Once the server is running, select the terminal window with name <code>Ensure DevTunnel</code> note the dev tunnel URL displayed in the terminal just beside the <strong>Connect via browser</strong>: https://devtunnel-host.devtunnels.ms
  (e.g., <code>https://devtunnel-host.devtunnels.ms</code>). Your MCP server endpoint URL will be:</p>
 <pre><code class="language-text">https://devtunnel-host.devtunnels.ms/runtime/webhooks/mcp
@@ -3109,7 +3120,7 @@ namespace ZavaInsurance.Plugins
 <p><cc-end-step lab="baf7" exercise="4" step="1" /></p>
 <h3 id="step-2-instantiate-claimsadjustersplugin">Step 2: Instantiate ClaimsAdjustersPlugin</h3>
 <p>1️⃣ Find the <code>GetClientAgent</code> method (where other plugins are instantiated).</p>
-<p>2️⃣ Add the ClaimsAdjustersPlugin instantiation after other plugins:</p>
+<p>2️⃣ Add the <code>ClaimsAdjustersPlugin</code> instantiation after other plugins:</p>
 <pre><code class="language-csharp">// Create ClaimsAdjustersPlugin with MCP client
 ClaimsAdjustersPlugin claimsAdjustersPlugin = new(context, _mcpClient, _configuration);
 </code></pre>

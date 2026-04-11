@@ -2996,6 +2996,10 @@ cd copilot-camp/src/agent-framework/begin
 <p><img alt="Conversation starters in Microsoft 365 Copilot" src="../../../../assets/images/agent-framework/BAF1-test1.png" /></p>
 <p>2️⃣ Select "What can you do?" to see the welcome message:</p>
 <p><img alt="Conversation starters in Microsoft 365 Copilot" src="../../../../assets/images/agent-framework/BAF1-test2.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Issue processing user's prompt</p>
+<p>In case the agent will answer with something like {{StartConversationPlugin.StartConversation}} you can simply slightly update the agent instructions in <code>src/Agent/ZavaInsuranceAgent.cs</code> file, stop all the running processes, and run the agent again with F5. If the issue persist, you can proceed with the lab. In the upcoming exercises the issue will be addressed.</p>
+</div>
 <p>3️⃣ Try asking: <strong>"What's today's date?"</strong></p>
 <p>The agent should call the <code>DateTimeFunctionTool</code> and return the current date and time.</p>
 <p>4️⃣ Try asking: <strong>"What can you do?"</strong> or <strong>"Start over"</strong></p>

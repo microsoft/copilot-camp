@@ -2769,6 +2769,10 @@
 
 <h1 id="lab-baf6-add-microsoft-365-work-iq-api-integration">Lab BAF6 - Add Microsoft 365 Work IQ API Integration</h1>
 <p>In this lab, you'll enhance the Zava Insurance Agent with Microsoft 365 Work IQ API. You'll add the ability to analyze claim compliance using policy documents from SharePoint via the <strong>Copilot Retrieval API</strong> and leverage the power of Microsoft 365 Copilot's enterprise search grounding.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF5-complete&amp;filename=BAF5-complete" target="_blank">from here</a>.</p>
+</div>
 <details class="info" open="open">
 <summary>Understanding Microsoft 365 Work IQ API</summary>
 <p>The <strong>Microsoft 365 Work IQ API</strong> enable your agent to:</p>
@@ -2830,7 +2834,7 @@
 <li><code>Zava Claims Insurance Policies.docx</code></li>
 </ul>
 <p>3️⃣ In SharePoint, go to your new site → Click <strong>Documents</strong> in the left menu.</p>
-<p>4️⃣ Click <strong>Upload</strong> → <strong>Files</strong> and upload all 4 documents from the sample-documents folder.</p>
+<p>4️⃣ Click <strong>+ Create or upload</strong> on the right side of the page → <strong>Files upload</strong> and upload all 4 documents from the sample-documents folder.</p>
 <p>5️⃣ <strong>Wait 10-15 minutes</strong> for SharePoint to index the documents. The Copilot Retrieval API needs time to process and make documents searchable.</p>
 <div class="admonition tip">
 <p class="admonition-title">Verify Indexing</p>
@@ -2959,8 +2963,6 @@ LANGUAGE_MODEL_NAME=gpt-4.1
 <h2 id="exercise-3-create-the-claimspoliciesplugin">Exercise 3: Create the ClaimsPoliciesPlugin</h2>
 <p>Now let's create the ClaimsPoliciesPlugin that uses the Copilot Retrieval API to analyze claim compliance against SharePoint policy documents.</p>
 <h3 id="step-1-understand-the-copilot-retrieval-api">Step 1: Understand the Copilot Retrieval API</h3>
-<details class="note">
-<summary>How the Copilot Retrieval API Works</summary>
 <p>The <strong>Microsoft 365 Copilot Retrieval API</strong> allows you to:</p>
 <ul>
 <li><strong>Query SharePoint content</strong>: Send natural language queries to retrieve relevant text chunks from SharePoint documents</li>
@@ -2970,12 +2972,12 @@ LANGUAGE_MODEL_NAME=gpt-4.1
 </ul>
 <p><strong>API Endpoint</strong>: <code>POST https://graph.microsoft.com/v1.0/copilot/retrieval</code></p>
 <p><strong>Request Payload</strong>:</p>
-<p><code>json
-{
-    "queryString": "Your natural language query",
-    "dataSource": "SharePoint",
-    "resourceMetadata": ["title", "author"]
-}</code></p>
+<pre><code class="language-json">{
+    &quot;queryString&quot;: &quot;Your natural language query&quot;,
+    &quot;dataSource&quot;: &quot;SharePoint&quot;,
+    &quot;resourceMetadata&quot;: [&quot;title&quot;, &quot;author&quot;]
+}
+</code></pre>
 <p><strong>Best Practices</strong>:</p>
 <ul>
 <li>Provide as much context in the query as possible</li>
@@ -2983,7 +2985,6 @@ LANGUAGE_MODEL_NAME=gpt-4.1
 <li>Avoid generic queries that might apply to a wide variety of content</li>
 <li>Send all extracts returned to your LLM for answer generation</li>
 </ul>
-</details>
 <p><cc-end-step lab="baf6" exercise="3" step="1" /></p>
 <h3 id="step-2-create-the-claimspoliciesplugin">Step 2: Create the ClaimsPoliciesPlugin</h3>
 <details class="note">
@@ -3366,7 +3367,7 @@ Be concise and professional in your responses.
 <p>3️⃣ Add the compliance check prompt to the workflow list. After the "Analyze this damage photo" step, add:</p>
 <pre><code class="language-csharp">&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
 </code></pre>
-<p>4️⃣ Update the numbering for the remaining steps (Generate investigation report becomes 9, Update claim status becomes 10).</p>
+<p>4️⃣ Update the numbering for the remaining steps (Generate investigation report becomes 9, Send the report by email becomes 10, Update claim status becomes 11).</p>
 <p>Your updated workflow section should look like:</p>
 <pre><code class="language-csharp">&quot;🎯 Try this complete investigation workflow:\n&quot; +
 &quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot; +
@@ -3378,7 +3379,8 @@ Be concise and professional in your responses.
 &quot;7. \&quot;What's the claims filing procedure?\&quot;\n&quot; +
 &quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
 &quot;9. \&quot;Generate investigation report for claim CLM-2025-001007\&quot;\n&quot; +
-&quot;10. \&quot;Update claim status to 'Approved for Payment'\&quot;\n\n&quot; +
+&quot;10. \&quot;Send the report by email\&quot;\n\n&quot; +
+&quot;11. \&quot;Update claim status to 'Approved for Payment'\&quot;\n\n&quot; +
 </code></pre>
 <p><cc-end-step lab="baf6" exercise="4" step="4" /></p>
 <h2 id="exercise-5-test-copilot-api-integration">Exercise 5: Test Copilot API Integration</h2>
