@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceBaseName": {
+      "value": "bot${{RESOURCE_SUFFIX}}"
+    },
+    "botDisplayName": {
+      "value": "${{APP_DISPLAY_NAME}} ${{APP_NAME_SUFFIX}}"
+    },
+    "botEntraAppClientId": {
+      "value": "${{BOT_ID}}"
+    },
+    "botEntraAppTenantId": {
+      "value": "${{BOT_TENANT_ID}}"
+    },
+    "botAppDomain": {
+      "value": "${{BOT_DOMAIN}}"
+    },
+    "entraAppClientId": {
+      "value": "${{BOT_ID}}"
+    },
+    "entraAppClientSecret": {
+      "value": "${{SECRET_BOT_PASSWORD}}"
+    },
+    "entraAppTenantId": {
+      "value": "${{BOT_TENANT_ID}}"
+    }
+  }
+}

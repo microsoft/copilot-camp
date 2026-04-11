@@ -2,6 +2,9 @@
 
 In this lab, you'll extend your Zava Insurance Agent with Model Context Protocol (MCP) tools. You'll create an MCP server using Azure Functions that provides claims adjuster management capabilities, then consume those tools from a custom plugin in your Custom Engine Agent.
 
+!!! note
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF6-complete&filename=BAF6-complete){target=_blank}.
+
 ???+ info "Understanding MCP Integration"
     The **Model Context Protocol (MCP)** enables your agent to:
     
@@ -165,6 +168,20 @@ The pre-configured VS Code tasks will automatically:
 - Create and start the dev tunnel
 - Launch the Azure Functions runtime
 - Install, run, and open the MCP Inspector in your browser for testing and debugging MCP tools
+
+!!! warning "Permission denied error on MacOS"
+    If you receive the following error message while creating the devtunnel in the **Ensure DevTunnel** task, you need to grant execution rights to the scripts needed by the Visual Studio Code tasks executing the following commands in the terminal window integrated in Visual Studio Code:
+    
+    ```
+    cd infra/scripts
+    ```
+
+    and then:
+
+    ```
+    chmod +x devtunnel.sh
+    ```
+    
 
 3️⃣ Once the server is running, select the terminal window with name `Ensure DevTunnel` note the dev tunnel URL displayed in the terminal just beside the **Connect via browser**: https://devtunnel-host.devtunnels.ms
  (e.g., `https://devtunnel-host.devtunnels.ms`). Your MCP server endpoint URL will be:
@@ -419,7 +436,7 @@ public ZavaInsuranceAgent(AgentApplicationOptions options, IChatClient chatClien
 
 1️⃣ Find the `GetClientAgent` method (where other plugins are instantiated).
 
-2️⃣ Add the ClaimsAdjustersPlugin instantiation after other plugins:
+2️⃣ Add the `ClaimsAdjustersPlugin` instantiation after other plugins:
 
 ```csharp
 // Create ClaimsAdjustersPlugin with MCP client
