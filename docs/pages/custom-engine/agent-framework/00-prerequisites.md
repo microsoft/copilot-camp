@@ -185,29 +185,26 @@ Follow the steps to activate an Azure free account:
 For this lab path, you'll need a Microsoft Foundry project with a couple of models deployed.
 
 1️⃣ Navigate to [Microsoft Foundry](https://ai.azure.com){target=_blank} and sign in with your Azure account.
-2️⃣ Select **+ Create new**, then **Microsoft Foundry resource** and then **Next**.
-
-3️⃣ Leave the project name as recommended and select **Create**. This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.
+2️⃣ Select to use the **New Foundry** to switch to the new user experience.
+3️⃣ Select to **Create a new project**, when prompted. Leave the project name as recommended and select **Create**. This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.
 
 !!! tip "Region Selection"
-    Choose **France Central** region as it supports all the models you'll need throughout the labs.
+    Choose **France Central** or **Sweden Central** region as it supports all the models you'll need throughout the labs.
 
-4️⃣ Once your project is created, navigate to **Deployments** in the left sidebar.
+4️⃣ Once your project is created, select **Start Building** and then **Find models**. Alternatively, you can also choose **Build**, then **Models**, and lastly **Deploy base model**.
 
-5️⃣ Click **+ Deploy model** and select **Deploy base model**.
-
-6️⃣ Search for **gpt-4.1** and select the **gpt-4.1** model, then select **Confirm** and **Deploy**.
+5️⃣ Either way, search for **gpt-4.1** and select the **gpt-4.1** model, then select **Confirm** and **Deploy**.
 
 !!! important "Model Selection"
     Please use **gpt-4.1** for a smooth experience . The labs use knowledge base answer synthesis which is optimized for gpt-4.1. Using other models may lead to unexpected behavior.
 
-7️⃣ Now search for model **text-embedding-ada-002** and select the **text-embedding-ada-002** model, then select **Confirm** and **Deploy**.
+6️⃣ Now search for model **text-embedding-ada-002** and select the **text-embedding-ada-002** model, then select **Confirm** and **Deploy**.
 
 !!! tip "Save Your Credentials"
     You'll need the following information from your Microsoft Foundry project:
 
-    - **Endpoint URL**: Found in project settings → Properties (e.g., `https://your-resource.cognitiveservices.azure.com/`)
-    - **API Key**: Found under "Keys and Endpoint" section
+    - **Endpoint URL**: Found in project home page of the project under "Project endpoint". Keep only the URL without any path (e.g., `https://your-resource.services.ai.azure.com/`)
+    - **API Key**: Found in project home page as "API Key"
     - **Model Deployment Name**: The name you gave to your gpt-4.1 deployment
     
     Save these values in a secure location - you'll need them in the next lab!
@@ -221,40 +218,37 @@ For this lab path, you'll need a Microsoft Foundry project with a couple of mode
 
 The insurance domain uses terms like "injury", "collision", "damage" that may trigger default content filters. You need to create a custom content filter with lower thresholds.
 
-1️⃣ In Microsoft Foundry, navigate to your project.
+1️⃣ In Microsoft Foundry, navigate to your project and select **Build**
 
-2️⃣ In the left sidebar, select **Guardrails + Controls** → **Content filters**.
+2️⃣ In the left sidebar, select **Guardrails**
 
-3️⃣ Click **+ Create content filter**.
+3️⃣ Click **Create** in the upper right corner
 
-4️⃣ Name your filter **InsuranceLowFilter**.
+4️⃣ In the **Add controls** section select under **Risk** one by one the items in the **Content safety** group. The items should be:
 
-5️⃣ Configure the following settings for **Input filters** (what users send):
+    - **Violence**
+    - **Hate**
+    - **Sexual**
+    - **Self-harm**
 
-- **Violence**: Set threshold to **Low**
-- **Hate**: Set threshold to **Low**
-- **Sexual**: Set threshold to **Low**
-- **Self-harm**: Set threshold to **Low**
-- Prompt shields for jailbreak attacks: Off
-- Prompt shields for indirect attacks: Off
+and for each of them set the **Severity level** to **Lowest blocking** both for **User input** and **Output**. When adding controls, confirm to override any already existing setting, if requested for.
 
-6️⃣ Select **Next** and configure the same settings for **Output filters** (what AI generates):
+5️⃣ Next, in the **Add controls** section select under **Risk** one by one the items in the **Protected materials** group. The items should be:
 
-- **Violence**: Set threshold to **Low**
-- **Hate**: Set threshold to **Low**
-- **Sexual**: Set threshold to **Low**
-- **Self-harm**: Set threshold to **Low**
-- Protected material for text: Off
-- Protected material for code: Off
-- Groundedness (Preview): Off
+    - **Protected material for code**
+    - **Protected material for text**
+
+and for each of the items set the **Action** to **Annotate** for **Tool call** and **Output**. When adding controls, confirm to override any already existing setting, if requested for.
+
+6️⃣ Then, in the **Add controls** section select under **Risk** the item **Jailbreak** and set the **Action** to **Annotate** for **User input**. When adding controls, confirm to override any already existing setting, if requested for.
 
 7️⃣ Select **Next**.
 
-8️⃣ In Apply filter to deployments, select your **gpt-4.1** deployment.
+8️⃣ In **Select agents and models** panel, select your **gpt-4.1** deployment.
 
-9️⃣ Select **Replace** to apply the new filter to the deployment.
+9️⃣ Select **Next** to review the guardrail controls.
 
-🔟 Finally, select **Create filter**.
+9️⃣ Select **Submit** to apply the new rules.
 
 !!! warning "Why This Is Needed"
     Insurance claims contain legitimate terms like "injury", "accident", "collision", "bodily harm" that describe real incidents. Default content filters may block these terms. Setting thresholds to **Low** only blocks extreme content while allowing normal insurance terminology.

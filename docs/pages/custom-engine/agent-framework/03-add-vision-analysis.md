@@ -2,6 +2,9 @@
 
 In this lab, you'll add AI vision capabilities to analyze damage photos from insurance claims using the Mistral medium-2505 model. Your agent will be able to automatically assess vehicle damage, estimate repair costs, and identify safety concerns from photos.
 
+!!! note
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF2-complete&filename=BAF2-complete){target=_blank}.
+
 ???+ info "What You'll Learn"
     - How to integrate Mistral AI vision model for multimodal analysis
     - Processing image data from Azure Blob Storage
@@ -26,7 +29,7 @@ Before adding vision analysis, you need to deploy the Mistral vision model.
 
 2️⃣ Go to your project or create a new one.
 
-3️⃣ Navigate to **Models + endpoints** → **Deploy model** → **Deploy base model**.
+3️⃣ Navigate to **Models** → **Deploy a base model**.
 
 4️⃣ Search for **mistral-medium-2505** and deploy it:
 

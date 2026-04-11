@@ -28,6 +28,20 @@
       "detail": "Start the application"
     },
     {
+        "label": "Init Data (if needed)",
+        "type": "shell",
+        "linux": {
+            "command": "if [ -f .vscode/.init-data.done ]; then echo 'init-data already executed. Skipping.'; else npm run init-data && touch .vscode/.init-data.done; fi"
+        },
+        "osx": {
+            "command": "if [ -f .vscode/.init-data.done ]; then echo 'init-data already executed. Skipping.'; else npm run init-data && touch .vscode/.init-data.done; fi"
+        },
+        "windows": {
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Test-Path '.vscode/.init-data.done') { Write-Host 'init-data already executed. Skipping.' } else { npm run init-data; if ($LASTEXITCODE -eq 0) { New-Item -ItemType File -Path '.vscode/.init-data.done' -Force | Out-Null } else { exit $LASTEXITCODE } }\""
+        },
+        "problemMatcher": []
+    },
+    {
       "type": "typescript",
       "tsconfig": "tsconfig.json",
       "problemMatcher": ["$tsc"],
@@ -137,7 +151,8 @@
         "dependsOrder": "sequence",
         "dependsOn": [
             "npm: install",
-            "Start Background Services"
+            "Start Background Services",
+            "Init Data (if needed)"
         ],
         "problemMatcher": []
     }
