@@ -2,6 +2,9 @@
 
 In this lab, you'll enhance the Zava Insurance Agent with professional communication capabilities. You'll add the ability to send detailed claim reports via email using Microsoft Graph and generate comprehensive investigation reports that include vision analysis findings and fraud assessment data.
 
+!!! note
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF4-complete&filename=BAF4-complete){target=_blank}.
+
 ???+ info "Understanding Communication Plugin"
     The **CommunicationPlugin** enables your agent to:
     
@@ -496,8 +499,8 @@ var welcomeMessage = "👋 Welcome to Zava Insurance Claims Assistant!\n\n" +
                     "4. \"Analyze fraud risk for this claim\"\n" +
                     "5. \"Show damage photo for this claim\"\n" +
                     "6. \"Analyze this damage photo\"\n" +
-                    "7. \"What's the claims filing procedure?\"\n" +
-                    "8. \"Check compliance for this claim\"\n" +
+                    "7. \"Approve the analysis\" or \"Reject the analysis\"\n\n" +
+                    "8. \"What's the claims filing procedure?\"\n" +
                     "9. \"Generate investigation report for claim CLM-2025-001007\"\n" +
                     "10. \"Send the report by email\"\n\n" +
                     "Ready to complete a full claims investigation? What would you like to start with?";
@@ -580,8 +583,8 @@ The agent should:
     8. Select the **Microsoft Graph** service provider again and click **Test Connection**
     9. **Grant all consent** when prompted
     10. Go back to the configuration and **restore** the original **Token Exchange URL** and **Scopes** values
-    11. **Save** the changes again
-    12. Return to your agent, **refresh the page**, and test again
+    11. **Save** the changes again and wait couple of minutes to let the changes get applied
+    12. Restart your agent in Visual Studio Code, **refresh the page**, and test again
 
 <cc-end-step lab="baf5" exercise="5" step="2" />
 
@@ -633,8 +636,8 @@ Test the complete 10-step workflow from the welcome message:
 4. Analyze fraud risk for this claim
 5. Show damage photo for this claim
 6. Analyze this damage photo
-7. What's the claims filing procedure?
-8. Check compliance for this claim
+7. Approve the analysis OR Reject the analysis
+8. What's the claims filing procedure?
 9. Generate investigation report for claim CLM-2025-001007
 10. Send the report by email
 ```

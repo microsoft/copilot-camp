@@ -351,6 +351,9 @@ Now let's interact with your agent!
 
 ![Conversation starters in Microsoft 365 Copilot](../../../assets/images/agent-framework/BAF1-test2.png)
 
+!!! warning "Issue processing user's prompt"
+    In case the agent will answer with something like {{StartConversationPlugin.StartConversation}} you can simply slightly update the agent instructions in `src/Agent/ZavaInsuranceAgent.cs` file, stop all the running processes, and run the agent again with F5. If the issue persist, you can proceed with the lab. In the upcoming exercises the issue will be addressed.
+
 3️⃣ Try asking: **"What's today's date?"**
 
 The agent should call the `DateTimeFunctionTool` and return the current date and time.

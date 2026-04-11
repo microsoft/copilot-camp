@@ -2,6 +2,9 @@
 
 In this lab, you'll enhance the Zava Insurance Agent with Microsoft 365 Work IQ API. You'll add the ability to analyze claim compliance using policy documents from SharePoint via the **Copilot Retrieval API** and leverage the power of Microsoft 365 Copilot's enterprise search grounding.
 
+!!! note
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF5-complete&filename=BAF5-complete){target=_blank}.
+
 ???+ info "Understanding Microsoft 365 Work IQ API"
     The **Microsoft 365 Work IQ API** enable your agent to:
     
@@ -76,7 +79,7 @@ Now let's upload the sample policy documents from your project.
 
 3️⃣ In SharePoint, go to your new site → Click **Documents** in the left menu.
 
-4️⃣ Click **Upload** → **Files** and upload all 4 documents from the sample-documents folder.
+4️⃣ Click **+ Create or upload** on the right side of the page → **Files upload** and upload all 4 documents from the sample-documents folder.
 
 5️⃣ **Wait 10-15 minutes** for SharePoint to index the documents. The Copilot Retrieval API needs time to process and make documents searchable.
 
@@ -227,32 +230,31 @@ Now let's create the ClaimsPoliciesPlugin that uses the Copilot Retrieval API to
 
 ### Step 1: Understand the Copilot Retrieval API
 
-??? note "How the Copilot Retrieval API Works"
-    The **Microsoft 365 Copilot Retrieval API** allows you to:
-    
-    - **Query SharePoint content**: Send natural language queries to retrieve relevant text chunks from SharePoint documents
-    - **Respect permissions**: Results are filtered based on the user's access permissions
-    - **Get structured responses**: Receive text extracts with metadata like titles and authors
-    - **Use KQL filters**: Optionally filter by URLs, date ranges, file types, and more
-    
-    **API Endpoint**: `POST https://graph.microsoft.com/v1.0/copilot/retrieval`
-    
-    **Request Payload**:
+The **Microsoft 365 Copilot Retrieval API** allows you to:
 
-    ```json
-    {
-        "queryString": "Your natural language query",
-        "dataSource": "SharePoint",
-        "resourceMetadata": ["title", "author"]
-    }
-    ```
-    
-    **Best Practices**:
+- **Query SharePoint content**: Send natural language queries to retrieve relevant text chunks from SharePoint documents
+- **Respect permissions**: Results are filtered based on the user's access permissions
+- **Get structured responses**: Receive text extracts with metadata like titles and authors
+- **Use KQL filters**: Optionally filter by URLs, date ranges, file types, and more
 
-    - Provide as much context in the query as possible
-    - Your `queryString` should be a single sentence
-    - Avoid generic queries that might apply to a wide variety of content
-    - Send all extracts returned to your LLM for answer generation
+**API Endpoint**: `POST https://graph.microsoft.com/v1.0/copilot/retrieval`
+
+**Request Payload**:
+
+```json
+{
+    "queryString": "Your natural language query",
+    "dataSource": "SharePoint",
+    "resourceMetadata": ["title", "author"]
+}
+```
+
+**Best Practices**:
+
+- Provide as much context in the query as possible
+- Your `queryString` should be a single sentence
+- Avoid generic queries that might apply to a wide variety of content
+- Send all extracts returned to your LLM for answer generation
 
 <cc-end-step lab="baf6" exercise="3" step="1" />
 
@@ -670,7 +672,7 @@ Update the StartConversationPlugin to include the compliance analysis in the sug
 "8. \"Check compliance for this claim\"\n" +
 ```
 
-4️⃣ Update the numbering for the remaining steps (Generate investigation report becomes 9, Update claim status becomes 10).
+4️⃣ Update the numbering for the remaining steps (Generate investigation report becomes 9, Send the report by email becomes 10, Update claim status becomes 11).
 
 Your updated workflow section should look like:
 
@@ -685,7 +687,8 @@ Your updated workflow section should look like:
 "7. \"What's the claims filing procedure?\"\n" +
 "8. \"Check compliance for this claim\"\n" +
 "9. \"Generate investigation report for claim CLM-2025-001007\"\n" +
-"10. \"Update claim status to 'Approved for Payment'\"\n\n" +
+"10. \"Send the report by email\"\n\n" +
+"11. \"Update claim status to 'Approved for Payment'\"\n\n" +
 ```
 
 <cc-end-step lab="baf6" exercise="4" step="4" />
