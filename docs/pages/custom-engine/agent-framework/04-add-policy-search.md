@@ -3,7 +3,7 @@
 In this lab, you'll extend your Zava Insurance Agent with policy search capabilities. You'll add the ability to search insurance policies in Azure AI Search using the Knowledgebases.
 
 !!! note
-    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF3-complete&filename=BAF3-complete){target=_blank}.
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF3-complete&filename=BAF3-complete){target=_blank}. However, remember to complete the pre-requisites described in lab ["Lab BAF0 - Prerequisites"](../00-prerequisites) and in lab ["Lab BAF3 - Add Vision Analysis"](../03-add-vision-analysis/#exercise-1-update-prerequisites).
 
 ???+ info "Understanding Policy Search"
     This lab adds policy search capabilities using Azure AI Search:

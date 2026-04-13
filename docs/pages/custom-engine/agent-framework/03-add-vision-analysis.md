@@ -1,4 +1,4 @@
-# Lab BAF3 - Add Vision Analysis with Mistral AI
+# Lab BAF3 - Add Vision Analysis
 
 In this lab, you'll add AI vision capabilities to analyze damage photos from insurance claims using the Mistral medium-2505 model. Your agent will be able to automatically assess vehicle damage, estimate repair costs, and identify safety concerns from photos.
 

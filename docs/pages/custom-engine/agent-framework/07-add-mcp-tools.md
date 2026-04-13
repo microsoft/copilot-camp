@@ -3,7 +3,7 @@
 In this lab, you'll extend your Zava Insurance Agent with Model Context Protocol (MCP) tools. You'll create an MCP server using Azure Functions that provides claims adjuster management capabilities, then consume those tools from a custom plugin in your Custom Engine Agent.
 
 !!! note
-    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF6-complete&filename=BAF6-complete){target=_blank}.
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF6-complete&filename=BAF6-complete){target=_blank}. However, remember to complete the pre-requisites described in lab ["Lab BAF0 - Prerequisites"](../00-prerequisites), in lab ["Lab BAF3 - Add Vision Analysis"](../03-add-vision-analysis/#exercise-1-update-prerequisites), and in lab ["Lab BAF6 - Add Microsoft 365 Work IQ API Integration"](../06-add-copilot-api/#exercise-1-set-up-sharepoint-site-with-policy-documents).
 
 ???+ info "Understanding MCP Integration"
     The **Model Context Protocol (MCP)** enables your agent to:
