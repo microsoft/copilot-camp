@@ -571,4 +571,6 @@ You've successfully built Zava Insurance's Connected Agent orchestration system!
 <cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
 <cc-award badgeId="ConnectionChampion" badgeName="Connection Champion" />
 
+<cc-next />
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend/09-connected-agent" />

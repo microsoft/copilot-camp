@@ -508,10 +508,10 @@ You've successfully created and deployed Zava Insurance's **OAuth-protected** De
 | Discovery | None | RFC 9728 protected resource metadata |
 | Enterprise Ready | Development only | Production-ready security |
 
-<cc-next />
-
 <cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
 <cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/10-mcp-auth" />
 

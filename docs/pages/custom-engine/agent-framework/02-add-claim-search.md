@@ -3,7 +3,7 @@
 In this lab, you'll enhance your Zava Insurance Agent by adding document search capabilities using Azure AI Search. You'll create a ClaimsPlugin that uses AI-powered retrieval to search through insurance claims, retrieve claim details, and identify claims with missing documentation.
 
 !!! note
-    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF1-complete&filename=BAF1-complete){target=_blank}.
+    If you want to start directly from this lab without completing the previous ones, you can download the agent’s complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF1-complete&filename=BAF1-complete){target=_blank}. However, remember to complete the pre-requisites described in lab ["Lab BAF0 - Prerequisites"](../00-prerequisites).
 
 ???+ info "Understanding Azure AI Search Concepts"
     **Azure AI Search** is a cloud search service that provides infrastructure, APIs, and tools for building rich search experiences over your content.

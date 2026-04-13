@@ -1,12 +1,12 @@
-# Lab MSA1 - Build your first SharePoint agent
+# Lab MSA1 - Build your first Custom SharePoint agent
 
 ---8<--- "msa-labs-prelude.md"
 
-In this lab, you'll create a SharePoint agent to work with documents stored in SharePoint Online. The agent that you are going to create helps employees of an hypothetical company to get information, policies, and rules from the HR department. The knowledge base of the agent will be a set of documents stored in a SharePoint Online document library.
+In this lab, you'll create a Custom SharePoint agent to work with documents stored in SharePoint Online. The agent that you are going to create helps employees of an hypothetical company to get information, policies, and rules from the HR department. The knowledge base of the agent will be a set of documents stored in a SharePoint Online document library.
 
 ## Exercise 1: Upload sample documents
 
-In this step you will upload sample documents which will be used by your SharePoint agent to respond to user prompts. These include some fictitious Word, PowerPoint, and PDF files.
+In this step you will upload sample documents which will be used by your Custom SharePoint agent to respond to user prompts. These include some fictitious Word, PowerPoint, and PDF files.
 
 ### Step 1: Create a SharePoint site
 
@@ -52,9 +52,9 @@ Navigate to your working folder, where you extracted the resumes files and selec
 
 <cc-end-step lab="msa1" exercise="1" step="2" />
 
-## Exercise 2 : Creating your first SharePoint agent
+## Exercise 2 : Creating your first Custom SharePoint agent
 
-In this exercise you are going to create the initial version of the SharePoint agent for managing HR documents.
+In this exercise you are going to create the initial version of the Custom SharePoint agent for managing HR documents.
 
 ### Step 1: Creating the agent
 
@@ -62,19 +62,19 @@ Select the **AI actions** command 1️⃣, then select the **Create an agent** 2
 
 ![The SharePoint Online interface of a document library and the "Create an agent" command highlighted in the command bar.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-01.png)
 
-!!! important "Creating SharePoint agents from files or folders"
+!!! important "Creating Custom SharePoint agents from files or folders"
     If you do not select any file in the library and you select the **Create an agent** command, the agent will target the whole content of the current document library. If you explicitly select files or sub-folders in the library and then you select the **Create an agent** command, the agent will target only the selected content. Keep into account that you cannot select more than 20 items for a specific agent. In case you will select more than 20 items, you will see an error message like *"Sources limit exceeded. The maximum number of sources you can add is 20. Remove XX sources to save this copilot."* and you will not be able to create the agent.
 
 A dialog window will show up allowing you to review a recap of the selected content and to go straight to the agent, for testing purposes, or to edit the just created agent.
 
-![The SharePoint Online interface when creating a SharePoint agent on topo of a document library. There is a recap of the selected content and a couple of buttons to "Open agent" or to "Edit" the agent.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02.png)
+![The SharePoint Online interface when creating a Custom SharePoint agent on topo of a document library. There is a recap of the selected content and a couple of buttons to "Open agent" or to "Edit" the agent.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02.png)
 
-!!! note "Permissions to create a SharePoint agent"
-    In order to being able to create a SharePoint agent, you need contribute permissions on the target library or site. In fact, under the cover of the agent a new **.agent** file will be created and users need to have proper permissions to do so.
+!!! note "Permissions to create a Custom SharePoint agent"
+    In order to being able to create a Custom SharePoint agent, you need contribute permissions on the target library or site. In fact, under the cover of the agent a new **.agent** file will be created and users need to have proper permissions to do so.
 
 Select the **Create** command to create the agent and start using it.
 
-![The dialog confirming that a new SharePoint agent was created. There is a command to "Chat with agent" and another one to "Share agent".](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02b.png)
+![The dialog confirming that a new Custom SharePoint agent was created. There is a command to "Chat with agent" and another one to "Share agent".](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02b.png)
 
 A new dialog window shows up and allows you to **Chat with agent**, which opens a new browser tab in Microsoft 365 Copilot Chat and allows you to interact with the new agent. Feel free to interact with the agent providing prompts about the content of the documents in the knowledge base. For example, you can use the following prompt:
 
@@ -82,7 +82,7 @@ A new dialog window shows up and allows you to **Chat with agent**, which opens 
 What are the hiring procedures of our company?
 ```
 
-When you are done playing with the new agent in the Microsoft 365 Copilot Chat, close the current browser tab and go back to the SharePoint Online document library that you used to create the SharePoint agent.
+When you are done playing with the new agent in the Microsoft 365 Copilot Chat, close the current browser tab and go back to the SharePoint Online document library that you used to create the Custom SharePoint agent.
 
 <cc-end-step lab="msa1" exercise="2" step="1" />
 
@@ -90,7 +90,7 @@ When you are done playing with the new agent in the Microsoft 365 Copilot Chat, 
 
 You can see there is a new file with **.agent** extension that was created in the current document library. Select the **...** menu of the file and then select **Preview** to interact with the agent from within the SharePoint Online user experience. A full screen dialog will show up and you will able to write prompts to interact with the agent.
 
-![The SharePoint Online interface showing the new SharePoint agent. There are suggested starter prompts at the top of the page and a textarea to write a prompt in the lower part of the screen.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-03.png)
+![The SharePoint Online interface showing the new Custom SharePoint agent. There are suggested starter prompts at the top of the page and a textarea to write a prompt in the lower part of the screen.](../../../assets/images/make/sharepoint-agents-01/create-sp-agent-03.png)
 
 Try writing the following prompts and see the results:
 
@@ -106,9 +106,9 @@ How can I improve my career?
 
 The proposed answers will summarize the content of the documents selected as the knowledge base for the agent. Notice that the engine processing the prompts is Microsoft 365 Copilot and there is a clear disclaimer about the AI-generated content 1️⃣. At the bottom of the response there are references to documents 2️⃣ used to produce the response. The agent also suggests follow up prompts 3️⃣ to dig into the topic.
 
-![The SharePoint Online interface showing the new SharePoint agent. There is a prompt and the answer provided by the agent. The answer includes a disclaimer about the content generated by AI, a reference to an actual document in the library, and a list of suggested prompts.](../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-01.png)
+![The SharePoint Online interface showing the new Custom SharePoint agent. There is a prompt and the answer provided by the agent. The answer includes a disclaimer about the content generated by AI, a reference to an actual document in the library, and a list of suggested prompts.](../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-01.png)
 
-The **.agent** file represents the new SharePoint agent definition. You can rename the file using the standard file rename feature of SharePoint Online and the name of the agent, as well as the title in the agent's dialog, will change accordingly. For example, let's rename it to **HR agent**. Selecting the agent file in the document library will always open a new tab and give the user experience of the agent in the Microsoft 365 Copilot Chat.
+The **.agent** file represents the new Custom SharePoint agent definition. You can rename the file using the standard file rename feature of SharePoint Online and the name of the agent, as well as the title in the agent's dialog, will change accordingly. For example, let's rename it to **HR agent**. Selecting the agent file in the document library will always open a new tab and give the user experience of the agent in the Microsoft 365 Copilot Chat.
 
 <cc-end-step lab="msa1" exercise="2" step="2" />
 
@@ -138,7 +138,7 @@ This is an agent supporting users to find information, policies, and rules based
 
 ![The dialog window to edit the agent settings when it comes to update the agent name, icon, and purpose.](../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-02.png)
 
-Now select the **Sources** tab in the dialog window to configure the knowledge base of the agent. At the time of this writing, the only data sources that you can configure are SharePoint Online sites, document libraries, or documents. In the future it will be possible to rely on Microsoft Copilot Studio to configure additional knowledge sources. At the moment, SharePoint Online is the only supported data source for a SharePoint agent.
+Now select the **Sources** tab in the dialog window to configure the knowledge base of the agent. At the time of this writing, the only data sources that you can configure are SharePoint Online sites, document libraries, or documents. In the future it will be possible to rely on Microsoft Copilot Studio to configure additional knowledge sources. At the moment, SharePoint Online is the only supported data source for a Custom SharePoint agent.
 
 ![The dialog window to manage the data sources for the agent. There are fields to configure additional sites, libraries, or documents.](../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-03.png)
 
@@ -185,7 +185,7 @@ In case of any error or issue, inform the user with the following prompt:
 I'm sorry, something wrong happened. Please, try again soon.
 ```
 
-The above instructions are just for the sake of providing an example, they are not fully complete and do not aim to be a perfect and bullet proof template. Notice that the instructions rely on MD document structure to highlight the various sections of the instructions text. When you are done with the changes, select the **Save and close** command to update the SharePoint agent definition.
+The above instructions are just for the sake of providing an example, they are not fully complete and do not aim to be a perfect and bullet proof template. Notice that the instructions rely on MD document structure to highlight the various sections of the instructions text. When you are done with the changes, select the **Save and close** command to update the Custom SharePoint agent definition.
 
 Remember that you can write instructions long up to 8000 characters, and you are kindly invited to use as much details as you can. [Here](../../../beyond-agents/beginner-agent){target=_blank} you can find the **Declarative Agent Instruction Lab - Improve your agent instructions (Beginner friendly)** lab, which provides you detailed information about how to write professional prompt instructions for your agents. You can also refer to the article [Write effective instructions for declarative agents](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-instructions){target=_blank} to learn detailed information about how to write effective prompts.
 
@@ -253,7 +253,7 @@ You activate the agent, select the **...** 1️⃣ beside the name of the agent 
 
 <cc-end-step lab="msa1" exercise="4" step="1" />
 
-<a href="../02-sharing-agents">Start here</a> with Lab MSA2, to share your SharePoint agent on Microsoft Teams.
+<a href="../02-sharing-agents">Start here</a> with Lab MSA2, to share your Custom SharePoint agent on Microsoft Teams.
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agents/01-first-agent" />
