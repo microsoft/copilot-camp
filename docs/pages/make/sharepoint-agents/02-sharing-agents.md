@@ -1,32 +1,32 @@
-# Lab MSA2 - Sharing SharePoint agents
+# Lab MSA2 - Sharing Custom SharePoint agents
 
 ---8<--- "msa-labs-prelude.md"
 
-In this lab, you'll see how to share your SharePoint agents with others either using a direct link or within Microsoft Teams chats.
+In this lab, you'll see how to share your Custom SharePoint agents with others either using a direct link or within Microsoft Teams chats.
 
-## Exercise 1: Sharing a SharePoint agent
+## Exercise 1: Sharing a Custom SharePoint agent
 
-Since every SharePoint agent is a file, you can easily share it with other people.
+Since every Custom SharePoint agent is a file, you can easily share it with other people.
 
-### Step 1: Sharing a SharePoint agent with people
+### Step 1: Sharing a Custom SharePoint agent with people
 
-When you have a SharePoint agent, whether it is local to a document library or approved and promoted at site level, you can select the **...** 1️⃣ beside the agent name and then select the option to **Share** 2️⃣ the agent.
+When you have a Custom SharePoint agent, whether it is local to a document library or approved and promoted at site level, you can select the **...** 1️⃣ beside the agent name and then select the option to **Share** 2️⃣ the agent.
 
-![The context menu of a SharePoint agent with the option to "Share" the agent highlighted.](../../../assets/images/make/sharepoint-agents-02/share-spagent-01.png)
+![The context menu of a Custom SharePoint agent with the option to "Share" the agent highlighted.](../../../assets/images/make/sharepoint-agents-02/share-spagent-01.png)
 
 The modern file sharing User Experience of SharePoint Online will show up and you will be able to share the .agent file with others in your organization. As like as it happens with any other SharePoint Online file, you can choose the target people (user, groups, or emails) to share the agent with and you can either get a link to the file or send a sharing notification email. If you choose to copy a link, you can then paste it wherever you like.
 
 ![The sharing UX of SharePoint Online when sharing an agent with others. There are the field to search for targets of sharing. There is a field to write a text message to use in the body of the sharing notification email. And there are couple of buttons to "Copy link" or "Send" the shared resource.](../../../assets/images/make/sharepoint-agents-02/share-spagent-02.png)
 
-The sharing link will bring target users straight to the agent dialog, so that they will able to interact with the agent directly within the immersive and full scren SharePoint agent experience.
+The sharing link will bring target users straight to the agent dialog, so that they will able to interact with the agent directly within the immersive and full scren Custom SharePoint agent experience.
 
 <cc-end-step lab="msa2" exercise="1" step="1" />
 
-### Step 2: Sharing a SharePoint agent via Microsoft Teams
+### Step 2: Sharing a Custom SharePoint agent via Microsoft Teams
 
 An interesting option that you have is to share the agent via Microsoft Teams. In order to do that, you simply need to select the **...** 1️⃣ beside the agent name and then select the option to **Copy link for Teams** 2️⃣.
 
-![The context menu of a SharePoint agent with the option to "Copy link for Teams" for the agent highlighted.](../../../assets/images/make/sharepoint-agents-02/share-spagent-03.png)
+![The context menu of a Custom SharePoint agent with the option to "Copy link for Teams" for the agent highlighted.](../../../assets/images/make/sharepoint-agents-02/share-spagent-03.png)
 
 This will generate a sharing link for the agent file and copy it into the clipboard, as you can see from the confirmation message that you get back. In the confirmation message, you can also notice that the generated link is ready to be pasted in any group chat in Microsoft Teams.
 
@@ -35,7 +35,7 @@ This will generate a sharing link for the agent file and copy it into the clipbo
 In the dialog you can also select the **Settings** link to configure who can access the sharing link and to setup an optional expiration date for the link. Under the cover, a regular sharing link of SharePoint Online will be created.
 Let's paste the link into a group chat in order to see what happens.
 
-![The Microsoft Teams chat when pasting the link to the SharePoint agent. There is a link unfurling extension that renders the link with a nice looking card, providing information about the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-05.png)
+![The Microsoft Teams chat when pasting the link to the Custom SharePoint agent. There is a link unfurling extension that renders the link with a nice looking card, providing information about the agent.](../../../assets/images/make/sharepoint-agents-02/share-spagent-05.png)
 
 When you paste the link into a group chat, you will see a nice looking adaptive card providing information about the agent. This happens due to a custom link unfurling extension for Teams that handles the .agent files. Send the chat message with the link. The adaptive card will slightly change its rendering and will provide you a command to **Add to this chat** the agent and another command to **View details** about the agent.
 
@@ -57,7 +57,7 @@ How can I improve my career?
 
 ![The Microsoft Teams chat when at mentioning @HR Agent in a new chat message.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-01.png)
 
-The SharePoint agent will process the prompt and provide an answer. However, for security reasons the answer will not go straight to the chat. You will need to evaluate its content and the documents referenced by the agent to produce the response. Select the **View response** command to evaluate the answer. 
+The Custom SharePoint agent will process the prompt and provide an answer. However, for security reasons the answer will not go straight to the chat. You will need to evaluate its content and the documents referenced by the agent to produce the response. Select the **View response** command to evaluate the answer. 
 
 ![The Microsoft Teams chat when the agent replies back to a prompt. There is a command to "View response", which allows you to evaluate the AI-generated response before sending it to others.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-02.png)
 
@@ -69,12 +69,12 @@ Select the **Send** command to confirm that the response and its attachments are
 
 ![The message sent by the agent when the content provided is not approved.](../../../assets/images/make/sharepoint-agents-02/shared-spagent-in-teams-04.png)
 
-You can now enjoy the integration between Microsoft Teams and the SharePoint agent.
+You can now enjoy the integration between Microsoft Teams and the Custom SharePoint agent.
 
 <cc-end-step lab="msa2" exercise="1" step="3" />
 
 ---8<--- "msa-congratulations.md"
 
-You have completed Lab MSA2 - Sharing SharePoint agents!
+You have completed Lab MSA2 - Sharing Custom SharePoint agents!
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/make/sharepoint-agents/02-sharing-agents" />
