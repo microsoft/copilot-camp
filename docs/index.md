@@ -1,13 +1,23 @@
-**Copilot Developer Camp** is a self-paced learning resource, designed to help you build agents for Microsoft 365 Copilot. It provides practical guidance and real-world examples to support your development journey.
+**Copilot Developer Camp** is a self-paced learning resource, designed to help you extend Microsoft 365 Copilot. It provides practical guidance and real-world examples to support your development journey.
 
 ---8<--- "starrepo.md"
-
-# Building Agents for Microsoft 365
 
 <!-- <div class="video">
   <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
   <div>Overview of Copilot Dev Camp</div>
 </div> -->
+
+# Extend Microsoft 365 Copilot
+
+Do you want to learn more about extending Microsoft 365 Copilot? Here are the available options:
+
+<div><span><a href="/copilot-camp/pages/extend-m365-copilot/" class="cta-button-fixed-width">🧩 Declarative Agents</a></span><span class="cta-button-description">Build on the Microsoft 365 Copilot Stack<span></div>
+
+<div><span><a href="/copilot-camp/pages/custom-engine/" class="cta-button-fixed-width">⚙️ Custom Engine Agents</a></span><span class="cta-button-description">Build on your own AI stack<span></div>
+
+<div><span><a href="/copilot-camp/pages/work-iq/" class="cta-button-fixed-width">🧠 Work IQ</a></span><span class="cta-button-description">The intelligent layer that personalizes Copilot to you and your organization<span></div>
+
+<div><span><a href="/copilot-camp/pages/agent-365/" class="cta-button-fixed-width">🛡️ Agent 365</a></span><span class="cta-button-description">The control plane for agents<span></div>
 
 Agents for Microsoft 365 are conversational AI-powered assistants that automate tasks, answer questions, and streamline workflows across Microsoft 365. Common use cases include customer support, IT helpdesk, and HR assistance.
 

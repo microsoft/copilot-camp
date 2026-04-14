@@ -624,6 +624,28 @@ dicussion */
     text-decoration: none !important;
   }
 
+  .cta-button-fixed-width {
+    display: inline-block;
+    border: solid 1px transparent;
+    border-color:  var(--md-gradient-color--start) var(--md-gradient-color--end) var(--md-gradient-color--end) var(--md-gradient-color--start);
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin: 15px auto;
+    text-align: center;
+    color: inherit;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    width: 200pt;
+  }
+
+  .cta-button-fixed-width:hover {
+    text-decoration: none !important;
+  }
+
+  .cta-button-description{
+    margin-left: 10pt;
+  }
+
 /* Lab branches */
 
 .lab-branches {
