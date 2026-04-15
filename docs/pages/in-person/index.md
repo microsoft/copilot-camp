@@ -44,7 +44,7 @@ Participants will explore how to design and develop intelligent agents, extend C
 ## 🔗 Registration
 
 Secure your spot today:
-👉 https://aka.ms/M365CopilotDevCampRegistration
+👉 [https://aka.ms/M365CopilotDevCampRegistration](https://aka.ms/M365CopilotDevCampRegistration)
 
 ## 🔥 Key Takeaway
 
