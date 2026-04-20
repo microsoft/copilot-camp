@@ -261,7 +261,7 @@ In the MCP Inspector interface, select the **Connect** command and you'll see th
 
 ### Step 3: Test the Request Access Tool
 
-1. Select the **Tools** section and click on the `request-access` tool
+1. Select the **Tools** section and click on the `Request Access` tool
 2. Optionally fill in `employeeName` with `Test User` and `employeeEmail` with `test@contoso.com`
 3. Click **"Run Tool"**
 4. Observe the response, it returns structured data with available systems and roles that the widget uses to populate its dropdowns
@@ -277,7 +277,7 @@ In the MCP Inspector interface, select the **Connect** command and you'll see th
 
 ### Step 4: Test the Approve Access Tool
 
-1. Select the **Tools** section and click on the `approve-access` tool
+1. Select the **Tools** section and click on the `Approve Access Request` tool
 2. Enter `requestId`: `REQ-001`
 3. Click **"Run Tool"**
 4. Observe the response, it returns Alice Johnson's request details.
