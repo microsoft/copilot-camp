@@ -2421,7 +2421,7 @@
 <p>In this exercise, you'll clone the project, install dependencies, seed sample data, and start the MCP server.</p>
 <h3 id="step-1-clone-the-repository">Step 1: Clone the Repository</h3>
 <p>Download the MCP app source code directly:</p>
-<p><a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp" target="_blank">Download approval-mcpapp</a></p>
+<p><a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp&amp;filename=approval-mcpapp" target="_blank">Download approval-mcpapp</a></p>
 <p>Once downloaded, extract the zip file, then open the extracted <code>approval-mcpapp</code> folder in VS Code:</p>
 <ol>
 <li>Open <strong>VS Code</strong></li>
@@ -2583,37 +2583,50 @@ Building ui/request-form.html...
 </code></pre>
 <p>This opens a web interface where you can test MCP tools as if you were an AI agent.</p>
 <p><cc-end-step lab="e11" exercise="2" step="1" /></p>
-<h3 id="step-2-review-available-tools">Step 2: Review Available Tools</h3>
-<p>In the MCP Inspector interface, navigate to the <strong>Tools</strong> section. You'll see the following tools:</p>
-<p><strong>Widget Tools</strong> (render interactive UI):</p>
+<h3 id="step-2-review-available-apps-and-tools">Step 2: Review Available Apps and Tools</h3>
+<p>In the MCP Inspector interface, select the <strong>Connect</strong> command and you'll see the following:</p>
+<p><strong>Tools</strong> (called by widgets via <code>app.callServerTool()</code>):</p>
+<ul>
+<li><code>Request Access</code> — Shows the access request form widget</li>
+<li><code>Approve Access Request</code> — Shows the approval panel widget for managers</li>
+<li><code>Submit Access Request</code> — Creates a new access request (called from the request form)</li>
+<li><code>Submit Approval Decision</code> — Records approve/reject decisions (called from the approval panel)</li>
+</ul>
+<p><strong>Apps</strong> (render interactive UI):</p>
 <ul>
 <li><code>request-access</code> — Shows the access request form widget</li>
 <li><code>approve-access</code> — Shows the approval panel widget for managers</li>
 </ul>
-<p><strong>Backend Tools</strong> (called by widgets via <code>app.callServerTool()</code>):</p>
-<ul>
-<li><code>submit-request</code> — Creates a new access request (called from the request form)</li>
-<li><code>submit-decision</code> — Records approve/reject decisions (called from the approval panel)</li>
-<li><code>get-request</code> — Fetches a single request by ID (used by widgets to refresh data)</li>
-</ul>
 <p><cc-end-step lab="e11" exercise="2" step="2" /></p>
 <h3 id="step-3-test-the-request-access-tool">Step 3: Test the Request Access Tool</h3>
 <ol>
-<li>Click on the <code>request-access</code> tool</li>
-<li>Optionally fill in <code>employeeName</code> with <code>"Test User"</code> and <code>employeeEmail</code> with <code>"test@contoso.com"</code></li>
+<li>Select the <strong>Tools</strong> section and click on the <code>request-access</code> tool</li>
+<li>Optionally fill in <code>employeeName</code> with <code>Test User</code> and <code>employeeEmail</code> with <code>test@contoso.com</code></li>
 <li>Click <strong>"Run Tool"</strong></li>
 <li>Observe the response, it returns structured data with available systems and roles that the widget uses to populate its dropdowns</li>
+<li>Now select the <strong>Apps</strong> section and click on the <code>request-access</code> app</li>
+<li>Optionally fill in <code>employeeName</code> with <code>Test User</code> and <code>employeeEmail</code> with <code>test@contoso.com</code></li>
+<li>Click on <strong>Open App</strong></li>
+<li>Observe the UI of the widget rendering the request access form with the data of the user and the data retrieved from the <code>request-access</code> tool response you inspected before</li>
+<li>Fill in the form and select <strong>Submit Request</strong></li>
+<li>A confirmation screen will appear showing that the request was submitted successfully</li>
 </ol>
 <p><cc-end-step lab="e11" exercise="2" step="3" /></p>
 <h3 id="step-4-test-the-approve-access-tool">Step 4: Test the Approve Access Tool</h3>
 <ol>
-<li>Click on the <code>approve-access</code> tool</li>
-<li>Enter <code>requestId</code>: <code>"REQ-001"</code></li>
+<li>Select the <strong>Tools</strong> section and click on the <code>approve-access</code> tool</li>
+<li>Enter <code>requestId</code>: <code>REQ-001</code></li>
 <li>Click <strong>"Run Tool"</strong></li>
-<li>Observe the response, it returns Alice Johnson's request details including her full timeline</li>
+<li>Observe the response, it returns Alice Johnson's request details.</li>
+<li>Now select the <strong>Apps</strong> section and click on the <code>approve-access</code> app</li>
+<li>Enter <code>requestId</code>: <code>REQ-001</code></li>
+<li>Click on <strong>Open App</strong></li>
+<li>Observe the UI of the widget rendering the request access and allowing you to approve or reject the request</li>
+<li>Select the <strong>Approve</strong> command</li>
+<li>You will be able to see the form updated with success message</li>
 </ol>
 <p>You can also run <code>approve-access</code> without a <code>requestId</code> to see all pending requests.</p>
-<p>Notice that while the Inspector shows the raw JSON responses, when these tools are called through an MCP-compatible host (like Microsoft 365 Copilot), the corresponding widget HTML is rendered as an interactive UI component.</p>
+<p>While the MCP Inspector shows the raw JSON responses in the <strong>Tools</strong> panel and renders the widgets HTML in the <strong>Apps</strong> panel, when these tools are called through an MCP-compatible host (like Microsoft 365 Copilot), the corresponding widget HTML is rendered as an interactive UI component.</p>
 <p><cc-end-step lab="e11" exercise="2" step="4" /></p>
 <hr />
 <h2 id="exercise-3-add-the-status-timeline-widget">Exercise 3: Add the Status Timeline Widget</h2>
@@ -3130,19 +3143,29 @@ Building ui/status-timeline.html...
 </code></pre>
 <p><cc-end-step lab="e11" exercise="3" step="4" /></p>
 <h3 id="step-5-test-the-status-timeline-in-mcp-inspector">Step 5: Test the Status Timeline in MCP Inspector</h3>
-<p>Go back to <strong>Terminal 3</strong> and restart the MCP Inspector (press <code>Ctrl+C</code> first if it's still running):</p>
-<pre><code class="language-bash">npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp
-</code></pre>
-<p>In the Inspector:</p>
+<p>In the MCP Inspector:</p>
 <ol>
-<li>Navigate to the <strong>Tools</strong> section — you should now see <code>access-status</code> listed</li>
-<li>Click on <code>access-status</code></li>
-<li><strong>Test with a specific request</strong>: Enter <code>requestId</code>: <code>"REQ-003"</code> and click <strong>Run Tool</strong></li>
-<li>Observe the response — it shows Diana Prince's fully granted request with timeline data</li>
-<li><strong>Test without a request ID</strong>: Clear the field and click <strong>Run Tool</strong> again</li>
-<li>Observe the response — it returns all 3 requests with their timelines</li>
+<li>Navigate to the <strong>Tools</strong> section </li>
+<li>Select <strong>Clear</strong> and then <strong>List Tools</strong> to refresh the list of tools</li>
+<li>You should now see <code>Access Request Status</code> listed</li>
+<li>Click on <code>Access Request Status</code></li>
+<li><strong>Test with a specific request</strong>: Enter <code>requestId</code>: <code>REQ-003</code> and click <strong>Run Tool</strong></li>
+<li>Observe the response as it shows Diana Prince's fully granted request with timeline data</li>
+<li><strong>Test without a request ID</strong>: Clear the field and click <strong>Run Tool</strong> </li>
+<li>Observe the response and it will return all 3 requests with their timelines</li>
 </ol>
-<p>The <code>access-status</code> tool should now activate and display the <strong>Status Timeline</strong> widget. You should see a card with:</p>
+<p>Now test the UI widget of the new tool:</p>
+<ol>
+<li>Navigate to the <strong>Apps</strong> section </li>
+<li>Select <strong>Refresh Apps</strong> to refresh the list of apps</li>
+<li>You should now see <code>access-status</code> listed</li>
+<li>Click on <code>access-status</code></li>
+<li><strong>Test with a specific request</strong>: Enter <code>requestId</code>: <code>REQ-003</code> and click <strong>Open App</strong></li>
+<li>Observe the response — it shows Diana Prince's fully granted request with timeline data in a rich UI widget</li>
+<li><strong>Test without a request ID</strong>: select <strong>Back to Input</strong> and clear the <code>requestId</code> field, then click <strong>Open App</strong> </li>
+<li>Observe the response — it will return all 3 requests with their timelines in rich UI widget</li>
+</ol>
+<p>In the UI widget you should be able to see the following content:</p>
 <ul>
 <li>The request ID, employee name, target system, and role</li>
 <li>A vertical timeline showing each stage (Requested → Manager Review → IT Review → Granted)</li>
