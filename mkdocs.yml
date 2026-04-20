@@ -65,6 +65,7 @@ plugins:
                   - Lab E8 - Connect Declarative agent to MCP Server (Preview): 'pages/extend-m365-copilot/08-mcp-server.md'
                   - Lab E9 - Connected Agents using VS Code (Preview): 'pages/extend-m365-copilot/09-connected-agent.md'
                   - Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server (Preview): 'pages/extend-m365-copilot/10-mcp-auth.md'
+                  - Lab E11 - Build an MCP App with Interactive Widgets: 'pages/extend-m365-copilot/11-mcp-app.md'
             - Custom Engine Agents:
               - Welcome : 'pages/custom-engine/index.md'
               - Start with Microsoft Foundry:
