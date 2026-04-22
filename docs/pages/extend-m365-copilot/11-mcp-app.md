@@ -72,7 +72,7 @@ This means you can **build once and deploy across multiple AI hosts**, reaching 
 Before starting this lab, ensure you have:
 
 - **Node.js 22+** installed on your machine
-- **VS Code** with **Microsoft 365 Agents Toolkit extension** pre-release version (6.7.2026032008 when this lab was written)
+- **VS Code** with **Microsoft 365 Agents Toolkit extension** (Version 6.8.0 was used when writing this lab)
 - **Microsoft 365 developer account** 
 - Basic knowledge of **TypeScript**, **React**, and **JSON**
 - GitHub account for using VS Code tunneling
@@ -906,7 +906,7 @@ Save this URL as you'll need it in the next step. We'll refer to this as `<tunne
 4. Click **"Create a New Agent/App"**
 5. Select **"Declarative Agent"**
 6. Choose **"Add an Action"**
-7. Select **Start with an MCP server (preview)**
+7. Select **Start with an MCP server**
 8. Enter the publicly accessible MCP Server URL: `<tunnel-url>/mcp`
 9. Choose a folder to scaffold the project
 10. Set the **Application Name** to `Access Request Assistant`
