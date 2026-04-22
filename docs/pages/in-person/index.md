@@ -67,10 +67,10 @@ Materials used in this day are based on the online version of the Microsoft 365 
 | 10:50 AM – 11:30 AM | 40 mins | Session & Demo | Unleashing the Power of Custom Agents with Copilot Studio | In the Maker Path, learn to create custom agents to automate tasks, enhance productivity, and deliver a seamless Microsoft 365 experience. | Knut & Martin | Maker Path 🟦 | Yes |
 | 11:30 AM – 12:10 PM | 40 mins | Session & Demo | From Protocol to Productivity: MCP and WorkIQ in Copilot Studio | Focusing on the MCP protocol and the integration of WorkIQ as a virtual assistant within Copilot Studio. | Marco | Maker Path 🟦 | |
 | 12:10 PM – 12:40 PM | 30 mins | Session & Demo | Extend Microsoft 365 Copilot with Declarative Agents | In the Extend Path, build a secure, fully skilled declarative assistant for HR, starting from fundamentals to advanced capabilities, with Microsoft 365 authentication to access organizational data. | Kamal | Extend Path 🟧 | Yes |
-| 12:40 PM – 13:20 PM | 40 mins | Session & Demo | Build Custom Engine Agents | In the Build Path, dive into creating custom engine agents for Microsoft 365 Copilot and Teams. | Matteo | Build Path 🟪 | |
-| 13:20 – 14:00 PM | | – | Lunch/Networking | – | | – | |
-| 14:00 PM – 15:30 PM | 1.5 hours | Hack | Hack Ideas into Agents: A Copilot Ideathon | Participants work in groups/pairs to identify challenges, brainstorm solutions, and rapidly prototype agents using Copilot Studio. | Proctors | Ideathon 🟫 | Yes |
-| 15:30 PM – 16:30 PM | 1 hour | Demo | Demo/Presentation | Teams showcase their prototypes, highlighting creativity, innovation, and the power of Copilot. | Sponsors and Speakers | Ideathon 🟫 | Yes |
+| 12:40 PM – 1:20 PM | 40 mins | Session & Demo | Build Custom Engine Agents | In the Build Path, dive into creating custom engine agents for Microsoft 365 Copilot and Teams. | Matteo | Build Path 🟪 | |
+| 1:20 PM – 2:00 PM | | – | Lunch/Networking | – | | – | |
+| 2:00 PM – 3:30 PM | 1.5 hours | Hack | Hack Ideas into Agents: A Copilot Ideathon | Participants work in groups/pairs to identify challenges, brainstorm solutions, and rapidly prototype agents using Copilot Studio. | Proctors | Ideathon 🟫 | Yes |
+| 3:30 PM – 4:30 PM | 1 hour | Demo | Demo/Presentation | Teams showcase their prototypes, highlighting creativity, innovation, and the power of Copilot. | Sponsors and Speakers | Ideathon 🟫 | Yes |
 | 5:00 PM | – | – | Closing Remarks | Winner Announcement, Feedback & Photo/Video Session | – | – | |
 
 ---
