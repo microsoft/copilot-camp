@@ -7,10 +7,7 @@ In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava 
     <div style="flex: 1; min-width: 0;">
         <iframe  src="//www.youtube.com/embed/vbkcntieMmI" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
-          <div>Get a quick overview of the lab in this video.</div>
-            <div class="note-box">
-            📘 <strong>Note:</strong>   MCP Server + Declarative Agents using Agents Toolkit is still in Preview
-        </div>
+          <div>Get a quick overview of the lab in this video.</div>          
     </div>
     <div style="flex: 1; min-width: 0;">
   ---8<--- "e-labs-prelude.md"
@@ -381,7 +378,7 @@ In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new De
 1. In the Agents Toolkit panel, click **"Create a New Agent/App"**
 2. Select **"Declarative Agent"** from the template options
 3. Next choose **"Add an Action"** to add to your agent
-4. Next select **Start with an MCP server (preview)**
+4. Next select **Start with an MCP server**
 5. Enter the publicly accessible MCP Server URl from previous exercise
 6. Choose the Default folder to scaffold the agent (or choose a preferred location in your machine)
 7. When prompted for project details:

@@ -8,9 +8,6 @@ In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) 
         <iframe  src="//www.youtube.com/embed/Y6RpIH8uvuI" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
-            <div class="note-box">
-            📘 <strong>Note:</strong>  MCP Server + Declarative Agents using Agents Toolkit is still in Preview
-        </div>
     </div>
     <div style="flex: 1; min-width: 0;">
   ---8<--- "e-labs-prelude.md"
@@ -399,7 +396,7 @@ In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new De
 4. In the Agents Toolkit panel, click **Create a New Agent/App**
 5. Select **Declarative Agent** from the template options
 6. Choose **Add an Action** to add to your agent
-7. Select **Start with an MCP server (preview)**
+7. Select **Start with an MCP server**
 8. Enter the publicly accessible MCP Server URL from Exercise 3 (your tunnel URL + `/mcp/messages`)
 9. Choose the default folder to scaffold the agent (or choose a preferred location)
 10. When prompted for project details, enter:
