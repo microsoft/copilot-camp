@@ -12,7 +12,7 @@
     "copy-yaml": "copyfiles -u 1 src/openapi.yaml dist/src"
   },
   "dependencies": {
-    "@azure/functions": "^4.0.0",
+    "@azure/functions": "^4.11.0",
     "jwt-validate": "^0.5.0"
   },
   "devDependencies": {
