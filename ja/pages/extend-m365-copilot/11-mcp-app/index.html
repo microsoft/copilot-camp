@@ -2339,6 +2339,100 @@
 
 <h1 id="lab-11-build-an-mcp-app-with-interactive-widgets">Lab 11: Build an MCP App with Interactive Widgets</h1>
 <p>In this lab, you'll run a Model Context Protocol (MCP) app that powers an <strong>Access Request &amp; Approval Workflow</strong> with interactive widgets rendered directly in the AI agent's response. You'll explore the existing tools, add a new <strong>Status Timeline</strong> widget, and integrate the MCP server into a Declarative Agent using Microsoft 365 Agents Toolkit.</p>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/BDa2Iv9NrZk" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+
+  <div class="floatwide">
+  <div class="cc-lab-toc e-path">
+      <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
+      <div>
+          <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and
+              orchestration</p>
+          <ul id="lab-toc">
+              <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
+              <li><strong>🔧 Set up</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Setup</a></li>
+                  </ul>
+              </li>
+              <li><strong>🧰 Declarative agent fundamentals</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent"> Lab E1 - Build a  Declarative Agent using TypeSpec</a>
+                      </li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator"> Lab E1a - Geo locator game</a></li>
+                  </ul>
+              </li>
+              <li><strong>🛠️ Build and integrate API from scratch</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build an API</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent"> Lab E3 - Add Declarative Agent + API</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin"> Lab E4 - Enhance API + Plugin</a></li>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
+                       <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk"> Lab E6a - Add Authentication</a></li>
+                  </ul>
+              </li>       
+              <li><strong>🔌 Integration</strong>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab E7 - Add Copilot Connector</a></li>
+                  </ul>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server"> Lab E8 - Connect Declarative agent to MCP Server</a></li>
+                  </ul>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent"> Lab E9 - Connected Agents</a></li>
+                  </ul>
+                   <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth"> Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
+                  </ul>
+                  <ul>
+                      <li><a href="/copilot-camp/pages/extend-m365-copilot/11-mcp-app"> Lab E11 - Build an MCP App with Interactive Widgets</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <script>
+  (() => {
+
+  // This script decorates the table of contents with a "you are here" indicator.
+  const toc = document.getElementsByClassName('cc-lab-toc');
+  for (const div of toc) {
+      const lis = div.querySelectorAll('li');
+      for (const li of lis) {
+          const anchor = li.querySelector('a');
+          if (anchor) {            // Get the last segment of the current URL path
+              const currentPath = window.location.pathname.slice(0, -1).split('/').pop();
+
+              // Get the last segment of the link path
+              const linkPath = anchor.getAttribute('href').split('/').pop().replace('.md', '');
+
+              // Compare the last segments
+              if (currentPath === linkPath) {
+                  const existingSpan = document.querySelector('span.you-are-here');
+                  if (existingSpan) {
+                      existingSpan.remove();
+                  }
+                  const span = document.createElement("span");
+                  span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+                  span.className = "you-are-here";
+                  li.appendChild(span);
+              }
+          }
+      }
+  }
+  })();
+  </script>
+  </div>
+
+    </div>
+</div>
+
 <h2 id="scenario">Scenario</h2>
 <p><strong>Contoso Corp</strong> manages access requests across multiple systems like GitHub, SAP, Production Database, and more. Today, employees email their managers, who forward requests to IT, leading to delays and lost context. The IT team wants a streamlined, AI-powered approval workflow where employees can submit access requests, managers can approve or reject them, and everyone can track the status, all through natural language conversations with an AI agent.</p>
 <p>The development team has built an <strong>MCP app</strong> with interactive widgets that render rich UI directly inside the agent's response:</p>
