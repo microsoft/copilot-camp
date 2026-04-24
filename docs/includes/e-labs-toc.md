@@ -39,6 +39,9 @@
                  <ul>
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth"> Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
                 </ul>
+                <ul>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/11-mcp-app"> Lab E11 - Build an MCP App with Interactive Widgets</a></li>
+                </ul>
             </li>
         </ul>
     </div>

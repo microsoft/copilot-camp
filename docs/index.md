@@ -47,23 +47,15 @@ In the following flowchart, you can find useful tips to learn where to start fro
 
 [![Flowchart to help you start your learning journey. Starting with Agent 365 (Lab AG) which applies to all solutions. The main decision asks What kind of AI solution are you working on? Building on the Microsoft 365 Copilot stack leads to Declarative Agents: end users choose between Agent Builder (Lab MAB) for Microsoft 365 content or Custom SharePoint Agent (Lab MSA) for SharePoint Online content only, while developers go to Declarative Agent (Lab E). Building for your own app leads to Work IQ (Lab WIQ). Building on your own AI stack leads to Custom Engine Agents: power users go to Copilot Studio via Agent Academy and Copilot Studio labs (Lab MCS), while developers build Custom Engine Agents with Microsoft Foundry, Agent Framework, and Microsoft 365 Agents SDK (Labs BMA and BAF).](./assets/images/CopilotCamp-Flow-Chart.png)](./assets/images/CopilotCamp-Flow-Chart.png){target="_blank"}
 
-<!-- ## 🆕 What's New?
+## 🆕 What's New?
 
-!!! example "Updated in Jan 2026"
+!!! example "Updated in April 2026"
 
-    We’re excited to introduce **three new hands-on labs** designed to help you build powerful Copilot experiences. 
+    We’re excited to introduce **a brand new hands-on lab** designed to help you build powerful Copilot experiences. 
 
-    - **Connect Declarative agent to MCP Server**:
-    Run a complete Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with Declarative Agent in Microsoft 365 Copilot.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/)
-
-     - **Connected Agents using Copilot Studio**:
-    Understand how to create agents in Microsoft Copilot Studio that can communicate with other agents.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/make/copilot-studio/09-connected-agents/)
-
-    - **Build with Microsoft 365 Agents SDK**:
-    Leverage the full capabilities of the Microsoft 365 Agents SDK to create production-ready Copilot agents that integrate with real business data.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/) -->
+    - **Build an MCP App with Interactive Widgets**:
+    Build an MCP app that powers an Access Request & Approval Workflow with interactive widgets rendered directly in the AI agent’s response, and integrate it with a Declarative Agent in Microsoft 365 Copilot.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/)
 
 ## 🧑‍💻 More
 

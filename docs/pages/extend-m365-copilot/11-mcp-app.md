@@ -3,6 +3,17 @@
 In this lab, you'll run a Model Context Protocol (MCP) app that powers an **Access Request & Approval Workflow** with interactive widgets rendered directly in the AI agent's response. You'll explore the existing tools, add a new **Status Timeline** widget, and integrate the MCP server into a Declarative Agent using Microsoft 365 Agents Toolkit.
 
 
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe  src="//www.youtube.com/embed/BDa2Iv9NrZk" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
+        </iframe>
+          <div>Get a quick overview of the lab in this video.</div>
+    </div>
+    <div style="flex: 1; min-width: 0;">
+  ---8<--- "e-labs-prelude.md"
+    </div>
+</div>
+
 ## Scenario
 
 **Contoso Corp** manages access requests across multiple systems like GitHub, SAP, Production Database, and more. Today, employees email their managers, who forward requests to IT, leading to delays and lost context. The IT team wants a streamlined, AI-powered approval workflow where employees can submit access requests, managers can approve or reject them, and everyone can track the status, all through natural language conversations with an AI agent.
@@ -72,7 +83,7 @@ This means you can **build once and deploy across multiple AI hosts**, reaching 
 Before starting this lab, ensure you have:
 
 - **Node.js 22+** installed on your machine
-- **VS Code** with **Microsoft 365 Agents Toolkit extension** pre-release version (6.7.2026032008 when this lab was written)
+- **VS Code** with **Microsoft 365 Agents Toolkit extension** (Version 6.8.0 was used when writing this lab)
 - **Microsoft 365 developer account** 
 - Basic knowledge of **TypeScript**, **React**, and **JSON**
 - GitHub account for using VS Code tunneling
@@ -87,7 +98,7 @@ In this exercise, you'll clone the project, install dependencies, seed sample da
 
 Download the MCP app source code directly:
 
-[Download approval-mcpapp](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp){target=_blank}
+[Download approval-mcpapp](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab11-mcp-app-start/approval-mcpapp&filename=approval-mcpapp){target=_blank}
 
 Once downloaded, extract the zip file, then open the extracted `approval-mcpapp` folder in VS Code:
 
@@ -240,42 +251,57 @@ This opens a web interface where you can test MCP tools as if you were an AI age
 
 <cc-end-step lab="e11" exercise="2" step="1" />
 
-### Step 2: Review Available Tools
+### Step 2: Review Available Apps and Tools
 
-In the MCP Inspector interface, navigate to the **Tools** section. You'll see the following tools:
+In the MCP Inspector interface, select the **Connect** command and you'll see the following:
 
-**Widget Tools** (render interactive UI):
+**Tools** (called by widgets via `app.callServerTool()`):
+
+- `Request Access` — Shows the access request form widget
+- `Approve Access Request` — Shows the approval panel widget for managers
+- `Submit Access Request` — Creates a new access request (called from the request form)
+- `Submit Approval Decision` — Records approve/reject decisions (called from the approval panel)
+
+**Apps** (render interactive UI):
 
 - `request-access` — Shows the access request form widget
 - `approve-access` — Shows the approval panel widget for managers
 
-**Backend Tools** (called by widgets via `app.callServerTool()`):
-
-- `submit-request` — Creates a new access request (called from the request form)
-- `submit-decision` — Records approve/reject decisions (called from the approval panel)
-- `get-request` — Fetches a single request by ID (used by widgets to refresh data)
 
 <cc-end-step lab="e11" exercise="2" step="2" />
 
 ### Step 3: Test the Request Access Tool
 
-1. Click on the `request-access` tool
-2. Optionally fill in `employeeName` with `"Test User"` and `employeeEmail` with `"test@contoso.com"`
+1. Select the **Tools** section and click on the `Request Access` tool
+2. Optionally fill in `employeeName` with `Test User` and `employeeEmail` with `test@contoso.com`
 3. Click **"Run Tool"**
 4. Observe the response, it returns structured data with available systems and roles that the widget uses to populate its dropdowns
+5. Now select the **Apps** section and click on the `request-access` app
+6. Optionally fill in `employeeName` with `Test User` and `employeeEmail` with `test@contoso.com`
+7. Click on **Open App**
+8. Observe the UI of the widget rendering the request access form with the data of the user and the data retrieved from the `request-access` tool response you inspected before
+9. Fill in the form and select **Submit Request**
+10. A confirmation screen will appear showing that the request was submitted successfully
+
 
 <cc-end-step lab="e11" exercise="2" step="3" />
 
 ### Step 4: Test the Approve Access Tool
 
-1. Click on the `approve-access` tool
-2. Enter `requestId`: `"REQ-001"`
+1. Select the **Tools** section and click on the `Approve Access Request` tool
+2. Enter `requestId`: `REQ-001`
 3. Click **"Run Tool"**
-4. Observe the response, it returns Alice Johnson's request details including her full timeline
+4. Observe the response, it returns Alice Johnson's request details.
+5. Now select the **Apps** section and click on the `approve-access` app
+6. Enter `requestId`: `REQ-001`
+7. Click on **Open App**
+8. Observe the UI of the widget rendering the request access and allowing you to approve or reject the request
+9. Select the **Approve** command
+10. You will be able to see the form updated with success message
 
 You can also run `approve-access` without a `requestId` to see all pending requests.
 
-Notice that while the Inspector shows the raw JSON responses, when these tools are called through an MCP-compatible host (like Microsoft 365 Copilot), the corresponding widget HTML is rendered as an interactive UI component.
+While the MCP Inspector shows the raw JSON responses in the **Tools** panel and renders the widgets HTML in the **Apps** panel, when these tools are called through an MCP-compatible host (like Microsoft 365 Copilot), the corresponding widget HTML is rendered as an interactive UI component.
 
 <cc-end-step lab="e11" exercise="2" step="4" />
 
@@ -829,22 +855,29 @@ Building ui/status-timeline.html...
 
 ### Step 5: Test the Status Timeline in MCP Inspector
 
-Go back to **Terminal 3** and restart the MCP Inspector (press `Ctrl+C` first if it's still running):
+In the MCP Inspector:
 
-```bash
-npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp
-```
+1. Navigate to the **Tools** section 
+2. Select **Clear** and then **List Tools** to refresh the list of tools
+3. You should now see `Access Request Status` listed
+4. Click on `Access Request Status`
+5. **Test with a specific request**: Enter `requestId`: `REQ-003` and click **Run Tool**
+6. Observe the response as it shows Diana Prince's fully granted request with timeline data
+7. **Test without a request ID**: Clear the field and click **Run Tool** 
+8. Observe the response and it will return all 3 requests with their timelines
 
-In the Inspector:
+Now test the UI widget of the new tool:
 
-1. Navigate to the **Tools** section — you should now see `access-status` listed
-2. Click on `access-status`
-3. **Test with a specific request**: Enter `requestId`: `"REQ-003"` and click **Run Tool**
-4. Observe the response — it shows Diana Prince's fully granted request with timeline data
-5. **Test without a request ID**: Clear the field and click **Run Tool** again
-6. Observe the response — it returns all 3 requests with their timelines
+1. Navigate to the **Apps** section 
+2. Select **Refresh Apps** to refresh the list of apps
+3. You should now see `access-status` listed
+4. Click on `access-status`
+5. **Test with a specific request**: Enter `requestId`: `REQ-003` and click **Open App**
+6. Observe the response — it shows Diana Prince's fully granted request with timeline data in a rich UI widget
+7. **Test without a request ID**: select **Back to Input** and clear the `requestId` field, then click **Open App** 
+8. Observe the response — it will return all 3 requests with their timelines in rich UI widget
 
-The `access-status` tool should now activate and display the **Status Timeline** widget. You should see a card with:
+In the UI widget you should be able to see the following content:
 
 - The request ID, employee name, target system, and role
 - A vertical timeline showing each stage (Requested → Manager Review → IT Review → Granted)
@@ -884,7 +917,7 @@ Save this URL as you'll need it in the next step. We'll refer to this as `<tunne
 4. Click **"Create a New Agent/App"**
 5. Select **"Declarative Agent"**
 6. Choose **"Add an Action"**
-7. Select **Start with an MCP server (preview)**
+7. Select **Start with an MCP server**
 8. Enter the publicly accessible MCP Server URL: `<tunnel-url>/mcp`
 9. Choose a folder to scaffold the project
 10. Set the **Application Name** to `Access Request Assistant`
@@ -1038,3 +1071,8 @@ Congratulations! You've successfully built an MCP app with interactive widgets, 
 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/11-mcp-app" />
+
+<cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
+<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
+
+<!-- <cc-next /> -->

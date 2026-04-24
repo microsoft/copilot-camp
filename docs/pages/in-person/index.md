@@ -52,4 +52,27 @@ In the era of AI, developers are no longer just building applications—they are
 
 Materials used in this day are based on the online version of the Microsoft 365 Copilot Dev Camp. You can get more details on that from https://aka.ms/copilotdevcamp.
 
+---
+
+## 🇮🇹 Rome Agenda – April 24, 2026
+
+📍 **Location:** Viale Avignone, 10, 00144 Rome, Latium, Italy
+
+[🔗 Register for Rome](https://aka.ms/M365CopilotDevCampRegistration){ .md-button .md-button--primary }
+
+| Time | Duration | Type | Session | Abstract | Speaker | Path | Laptop Required |
+|---|---|---|---|---|---|---|---|
+| 10:00 – 10:30 | 30 mins | Keynote | Keynote | Keynote | Dona Sarkar | Keynote 🟩 | No |
+| 10:30 – 10:50 | 20 mins | Break | Break | Break | – | – | |
+| 10:50 – 11:30 | 40 mins | Session & Demo | Unleashing the Power of Custom Agents with Copilot Studio | In the Maker Path, learn to create custom agents to automate tasks, enhance productivity, and deliver a seamless Microsoft 365 experience. | Knut & Martin | Maker Path 🟦 | Yes |
+| 11:30 – 12:10 | 40 mins | Session & Demo | From Protocol to Productivity: MCP and WorkIQ in Copilot Studio | Focusing on the MCP protocol and the integration of WorkIQ as a virtual assistant within Copilot Studio. | Marco | Maker Path 🟦 | |
+| 12:10 – 12:40 | 30 mins | Session & Demo | Extend Microsoft 365 Copilot with Declarative Agents | In the Extend Path, build a secure, fully skilled declarative assistant for HR, starting from fundamentals to advanced capabilities, with Microsoft 365 authentication to access organizational data. | Kamal | Extend Path 🟧 | Yes |
+| 12:40 – 13:20 | 40 mins | Session & Demo | Build Custom Engine Agents | In the Build Path, dive into creating custom engine agents for Microsoft 365 Copilot and Teams. | Matteo | Build Path 🟪 | |
+| 13:20 – 14:00 | | – | Lunch/Networking | – | | – | |
+| 14:00 – 15:30 | 1.5 hours | Hack | Hack Ideas into Agents: A Copilot Ideathon | Participants work in groups/pairs to identify challenges, brainstorm solutions, and rapidly prototype agents using Copilot Studio. | Proctors | Ideathon 🟫 | Yes |
+| 15:30 – 16:30 | 1 hour | Demo | Demo/Presentation | Teams showcase their prototypes, highlighting creativity, innovation, and the power of Copilot. | Sponsors and Speakers | Ideathon 🟫 | Yes |
+| 17:00 | – | – | Closing Remarks | Winner Announcement, Feedback & Photo/Video Session | – | – | |
+
+---
+
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/in-person" />
