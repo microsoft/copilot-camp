@@ -1439,7 +1439,7 @@
             "title": "Declarative Pioneer",
             "enabled": true,
             "startDate": "2026-04-01T00:00:00Z",
-            "endDate": "2026-04-30T23:59:59Z",
+            "endDate": "2026-06-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/Declarative-Pioneer.png",
             "labs": [
                 {
@@ -1788,6 +1788,117 @@
                         }
                     ],
                     "optional": true
+                },
+                {
+                    "labId": "e11",
+                    "title": "E11 - Build an MCP App with Interactive Widgets",
+                    "exercises": [
+                        {
+                            "exerciseId": "1",
+                            "title": "Set Up and Run the Base MCP App",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Clone the Repository"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Install Dependencies"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Start Azure Storage Emulator"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Seed Sample Data"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Build and Start the MCP Server"
+                                },
+                                {
+                                    "stepId": "6",
+                                    "title": "Examine the Project Structure"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "2",
+                            "title": "Explore Existing Tools with MCP Inspector",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Launch MCP Inspector"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Review Available Apps and Tools"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Test the Request Access Tool"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Test the Approve Access Tool"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "3",
+                            "title": "Add the Status Timeline Widget",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Create the Status Timeline Widget Component"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create the HTML Entry Point"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Register the access-status Tool in the Server"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Rebuild and Restart the Server"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Test the Status Timeline in MCP Inspector"
+                                }
+                            ]
+                        },
+                        {
+                            "exerciseId": "4",
+                            "title": "Integrate with a Declarative Agent",
+                            "steps": [
+                                {
+                                    "stepId": "1",
+                                    "title": "Set Up Public Access with Dev Tunnel"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create a New Declarative Agent Project"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Select Tools for the Agent"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Configure the Agent Identity"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Create Agent Instructions"
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": true
                 }
             ]
         },
@@ -1796,7 +1907,7 @@
             "title": "Custom Engine Ranger",
             "enabled": true,
             "startDate": "2026-04-01T00:00:00Z",
-            "endDate": "2026-04-30T23:59:59Z",
+            "endDate": "2026-06-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/Custom-Engine-Ranger.png",
             "labs": [
                 {
@@ -2501,8 +2612,8 @@
             "badgeId": "MCPIntegrator",
             "title": "MCP Integrator",
             "enabled": true,
-            "startDate": "2026-05-01T00:00:00Z",
-            "endDate": "2026-05-31T23:59:59Z",
+            "startDate": "2026-04-01T00:00:00Z",
+            "endDate": "2026-06-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/MCP-Integrator.png",
             "groups": [
                 {
@@ -2944,6 +3055,116 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "labId": "e11",
+                            "title": "E11 - Build an MCP App with Interactive Widgets",
+                            "exercises": [
+                                {
+                                    "exerciseId": "1",
+                                    "title": "Set Up and Run the Base MCP App",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Clone the Repository"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Install Dependencies"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Start Azure Storage Emulator"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Seed Sample Data"
+                                        },
+                                        {
+                                            "stepId": "5",
+                                            "title": "Build and Start the MCP Server"
+                                        },
+                                        {
+                                            "stepId": "6",
+                                            "title": "Examine the Project Structure"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "2",
+                                    "title": "Explore Existing Tools with MCP Inspector",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Launch MCP Inspector"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Review Available Apps and Tools"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Test the Request Access Tool"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Test the Approve Access Tool"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "3",
+                                    "title": "Add the Status Timeline Widget",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Create the Status Timeline Widget Component"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Create the HTML Entry Point"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Register the access-status Tool in the Server"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Rebuild and Restart the Server"
+                                        },
+                                        {
+                                            "stepId": "5",
+                                            "title": "Test the Status Timeline in MCP Inspector"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "exerciseId": "4",
+                                    "title": "Integrate with a Declarative Agent",
+                                    "steps": [
+                                        {
+                                            "stepId": "1",
+                                            "title": "Set Up Public Access with Dev Tunnel"
+                                        },
+                                        {
+                                            "stepId": "2",
+                                            "title": "Create a New Declarative Agent Project"
+                                        },
+                                        {
+                                            "stepId": "3",
+                                            "title": "Select Tools for the Agent"
+                                        },
+                                        {
+                                            "stepId": "4",
+                                            "title": "Configure the Agent Identity"
+                                        },
+                                        {
+                                            "stepId": "5",
+                                            "title": "Create Agent Instructions"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -3055,7 +3276,7 @@
             "badgeId": "ConnectionChampion",
             "title": "Connection Champion",
             "enabled": true,
-            "startDate": "2026-06-01T00:00:00Z",
+            "startDate": "2026-04-01T00:00:00Z",
             "endDate": "2026-06-30T23:59:59Z",
             "badgeImageUrl": "/copilot-camp/assets/images/awards/2026/Connection-Champion.png",
             "groups": [
