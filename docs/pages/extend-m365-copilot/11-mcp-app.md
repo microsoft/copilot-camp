@@ -1072,3 +1072,7 @@ Congratulations! You've successfully built an MCP app with interactive widgets, 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/11-mcp-app" />
 
+<cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
+<cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
+
+<!-- <cc-next /> -->
