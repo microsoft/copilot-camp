@@ -853,7 +853,9 @@ Building ui/status-timeline.html...
 
 <cc-end-step lab="e11" exercise="3" step="4" />
 
-### Step 5: Test the Status Timeline in MCP Inspector
+### Step 5: Test the Status Timeline Tool and Widget
+
+You will first test the raw tool response in the **Tools** section, then verify the interactive widget renders correctly in the **Apps** section.
 
 In the MCP Inspector:
 
@@ -866,7 +868,7 @@ In the MCP Inspector:
 7. **Test without a request ID**: Clear the field and click **Run Tool** 
 8. Observe the response and it will return all 3 requests with their timelines
 
-Now test the UI widget of the new tool:
+Now test the interactive UI widget in the **Apps** section:
 
 1. Navigate to the **Apps** section 
 2. Select **Refresh Apps** to refresh the list of apps
