@@ -17,14 +17,16 @@ Participants will explore how to design and develop intelligent agents, extend C
 * Apply modern AI development patterns and tools
 * Develop real-world, business-focused solutions
 
-## 📅 Event Schedule (April 2026)
+## 📅 Event Schedule
 
-* April 21 – Munich (Microsoft Munich Office) | 10:00-17:00
+<!-- * April 21 – Munich (Microsoft Munich Office) | 10:00-17:00
 * April 22 – Paris (Microsoft Paris Office) | 10:00-17:00
 * April 23 – Amsterdam (Microsoft Schipol Office) | 09:00-16:00
 * April 24 – Rome (Microsoft Rome Office) | 10:00-17:00
 * April 27 – Brussels (Microsoft Brussels Office) | 10:00-17:00
-* April 29 – Milan (Microsoft Milan Office) | 10:00-17:00
+* April 29 – Milan (Microsoft Milan Office) | 10:00-17:00 -->
+
+There are currently no events scheduled. Please come back to this page in the coming weeks for further updates.
 
 ## 👥 Who Should Attend
 
@@ -52,13 +54,15 @@ In the era of AI, developers are no longer just building applications—they are
 
 Materials used in this day are based on the online version of the Microsoft 365 Copilot Dev Camp. You can get more details on that from https://aka.ms/copilotdevcamp.
 
+<!-- 
+
 ---
 
 ## 🇮🇹 Milan Agenda – April 29, 2026
 
 📍 **Location:** Microsoft Milan Office, Viale Pasubio 21, 20154 Milano
-
-<!-- [🔗 Register for Milan](https://aka.ms/M365CopilotDevCampRegistration){ .md-button .md-button--primary } -->
+ 
+[🔗 Register for Milan](https://aka.ms/M365CopilotDevCampRegistration){ .md-button .md-button--primary }
 
 | Time slot | Title | Speaker |
 |---|---|---|
@@ -71,7 +75,9 @@ Materials used in this day are based on the online version of the Microsoft 365 
 | 14:00 – 16:00 | Hack Ideas into Agents: A Copilot Ideathon | |
 | 16:00 – 16:15 | Coffee break | |
 | 16:15 – 16:45 | Ideathon demos/presentations | |
-| 16:45 – 17:00 | Closing remarks | |
+| 16:45 – 17:00 | Closing remarks | | 
+
+-->
 
 ---
 
