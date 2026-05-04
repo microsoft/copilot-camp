@@ -1,5 +1,5 @@
 
-# Copilot Developer Camp – Europe (April 2026)
+# Copilot Developer Camp - In-person events
 
 ![Copilot Developer Camp - in-person promo](../../assets/images/in-person/copilot-camp-promo-generic.png)
 
