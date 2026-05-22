@@ -13,6 +13,9 @@ In this lab, you are going to understand how to create agents in Microsoft Copil
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! note
     This lab builds on the previous labs, specifically [Lab MCS6 - Consuming an MCP server](../06-mcp){target=_blank}. You should have a working HR MCP server and the "HR Agent with MCP" agent configured from previous labs.
 

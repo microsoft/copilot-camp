@@ -1,6 +1,9 @@
 
 # Lab MCS - Understanding Microsoft Copilot Studio
 
+!!! warning
+    These labs are no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 With Microsoft Copilot Studio you have the maximum potential for making custom agents. You can use it to create agents that you can host in multiple different channels like Microsoft Teams, custom web sites, Skype, Slack, etc. You can also host your agents in Microsoft 365 Copilot chat.
 
 Copilot Studio agents use the same infrastructure, orchestrator, foundation model, and security controls as Microsoft 365 Copilot, which ensures a consistent and familiar user experience.

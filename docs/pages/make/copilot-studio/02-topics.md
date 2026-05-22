@@ -13,6 +13,9 @@ In this lab, you'll learn how to create custom Topics in Microsoft Copilot Studi
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! note
     This lab builds on the previous one, [Lab MCS1](../01-first-agent){target=_blank}. You should be able to continue working on the same agent, improving its functionalities with new capabilities.
 
