@@ -14,6 +14,9 @@ Copilot Studio is part of the Microsoft Power Platform offering and requires ded
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! note "Set up your development environment for Microsoft 365 Copilot and Microsoft Copilot Studio"
     This lab currently assumes you already have a developer tenant to setup. You can reference off to the
     [page here](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} that explains the current way you can get a tenant. It also assumes that you have a user account that is a Power Platform administrator, in order to being able to create a new Power Platform environment.

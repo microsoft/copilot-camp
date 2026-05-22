@@ -13,6 +13,9 @@ In this lab, you'll learn how to create Tools in Microsoft Copilot Studio. Tools
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! note
     This lab builds on the previous one, [Lab MCS2](../02-topics){target=_blank}. You should be able to continue working on the same agent, improving its functionalities with new capabilities.
 

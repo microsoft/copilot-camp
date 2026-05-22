@@ -13,6 +13,9 @@ In this lab, you are going to understand how to create an autonomous agent using
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! note
     This lab builds on the previous one, [Lab MCS6](../06-mcp){target=_blank}. You should be able to continue consuming the same MCP server that you configured in the previous lab.
 

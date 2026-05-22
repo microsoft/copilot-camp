@@ -13,6 +13,9 @@ In this lab, you are going to understand how to enhance your Microsoft Copilot S
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! important
     You should have experience with Microsoft Copilot Studio agent creation and basic Azure resource management.
 
