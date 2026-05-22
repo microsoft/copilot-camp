@@ -18,6 +18,8 @@ In this lab, you are going to understand how to extend an agent made with Micros
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
 
 In Microsoft 365 Copilot, within Copilot Studio you will be able to rely on these functionalities and enhance the potential of the custom agent that you created in the previous [Lab MCS4](../04-extending-m365-copilot){target=_blank}.
 

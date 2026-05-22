@@ -13,6 +13,9 @@ In this lab, you are going to consume an MCP (Model Context Protocol) server wit
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 !!! note
     This lab builds on the concepts from [Lab MCS6 - Consuming an MCP server](../06-mcp){target=_blank}. While you don't need to complete Lab MCS6 first, familiarity with MCP concepts and Copilot Studio agent creation will be helpful.
 

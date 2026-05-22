@@ -21,6 +21,9 @@ In this lab you will learn:
     </div>
 </div>
 
+!!! warning
+    This lab is no longer updated and will retire on 30 June 2026—explore [Agents Academy](https://aka.ms/AgentAcademy) for the latest content.
+
 ## Exercise 1 : Creating an agent for Microsoft 365 Copilot Chat
 
 In this excercise you are going to create a declarative agent with Microsoft Copilot Studio and hosting it in Microsoft 365 Copilot Chat.
