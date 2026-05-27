@@ -25,7 +25,7 @@ Microsoft 365 Agents SDK は、メッセージ ルーティング、アクティ
 * [**Lab BAF3**](./03-add-vision-analysis): Add Vision Analysis - Mistral ビジョンモデルを使用して AI ベースの損傷写真分析を有効化する  
 * [**Lab BAF4**](./04-add-policy-search): Add Policy Search - ポリシー検証と SharePoint ドキュメント検索を実装する  
 * [**Lab BAF5**](./05-add-communication): Add Communication Capabilities - Microsoft Graph を介してプロフェッショナルなメールを送信し、調査レポートを生成する  
-* [**Lab BAF6**](06-add-copilot-api): Add Work IQ API - Copilot Retrieval API を利用して SharePoint Online に保存されたコンテンツから RAG を追加する  
+* [**Lab BAF6**](06-add-copilot-api): Add Copilot Retrieval API Integration を利用して SharePoint Online に保存されたコンテンツから RAG を追加する  
 * [**Lab BAF7**](./07-add-mcp-tools): Add MCP Tools - 外部 MCP サーバーが提供する MCP ツールでエージェントを拡張する  
 
 各ラボは前のラボを基盤としており、**Services → Plugins → Integration → Testing** のパターンに従います。

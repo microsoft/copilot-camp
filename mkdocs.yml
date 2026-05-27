@@ -83,7 +83,7 @@ plugins:
                 - Lab BAF3 - Add Vision Analysis with Mistral AI: 'pages/custom-engine/agent-framework/03-add-vision-analysis.md'
                 - Lab BAF4 - Add Policy Search: 'pages/custom-engine/agent-framework/04-add-policy-search.md'
                 - Lab BAF5 - Add Communication Capabilities: 'pages/custom-engine/agent-framework/05-add-communication.md'
-                - Lab BAF6 - Add Microsoft 365 Work IQ API Integration: 'pages/custom-engine/agent-framework/06-add-copilot-api.md'
+                - Lab BAF6 - Add Copilot Retrieval API Integration: 'pages/custom-engine/agent-framework/06-add-copilot-api.md'
                 - Lab BAF7 - Add MCP Tools Integration: 'pages/custom-engine/agent-framework/07-add-mcp-tools.md'
             - No-code/low-code agents:
               - Welcome: 'pages/make/index.md'

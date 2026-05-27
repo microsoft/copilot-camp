@@ -1,6 +1,6 @@
 # Integrate with Microsoft 365 Copilot
 
-In this series of labs and articles, you can learn how to connect agents, how to integrate external tools and data sources, and how to consume Work IQ API. Overall, you can understand how to create Microsoft 365 Copilot agents using modern integration patterns.
+In this series of labs and articles, you can learn how to connect agents, how to integrate external tools and data sources, and how to consume Copilot API. Overall, you can understand how to create Microsoft 365 Copilot agents using modern integration patterns.
 
 ## Understanding Connected Agents
 
@@ -56,9 +56,9 @@ Regardless of the transport protocol, the communication relies on JSON-RPC 2.0 m
 
 You can learn more about MCP by exploring the [Model Context Protocol (MCP) for beginners](https://github.com/microsoft/mcp-for-beginners) training class.
 
-## Understanding Work IQ API
+## Understanding Copilot API
 
-Work IQ API provide programmatic access to Copilot's powerful AI capabilities, enabling developers to build custom experiences, automate workflows, and integrate Copilot into their applications. Unlike declarative approaches, the Work IQ API give you fine-grained control over conversations, context, and user interactions.
+Copilot API provide programmatic access to Copilot's powerful AI capabilities, enabling developers to build custom experiences, automate workflows, and integrate Copilot into their applications. Unlike declarative approaches, the Copilot API give you fine-grained control over conversations, context, and user interactions.
 
 The API available are:
 
@@ -89,7 +89,7 @@ Below are various labs to integrate your agents for Microsoft 365 Copilot with e
     - [Lab E09 - Connected Agents - Zava's Multi-Agent Claims Orchestration](../extend-m365-copilot/09-connected-agent)
     - [Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server](../extend-m365-copilot/10-mcp-auth)
 - Custom Engine Agents
-    - [Lab BAF06 - Add Microsoft 365 Work IQ API Integration](../custom-engine/agent-framework/06-add-copilot-api)
+    - [Lab BAF06 - Add Copilot Retrieval API Integration](../custom-engine/agent-framework/06-add-copilot-api)
     - [Lab BAF07 - Add MCP Tools Integration](../custom-engine/agent-framework/07-add-mcp-tools)
 
 

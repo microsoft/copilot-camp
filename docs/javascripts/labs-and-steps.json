@@ -2414,7 +2414,7 @@
                 },
                 {
                     "labId": "baf6",
-                    "title": "BAF6 - Add Microsoft 365 Work IQ API Integration",
+                    "title": "BAF6 - Add Copilot Retrieval API Integration",
                     "exercises": [
                         {
                             "exerciseId": "1",
