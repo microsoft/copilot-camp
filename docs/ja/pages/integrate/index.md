@@ -4,7 +4,7 @@ search:
 ---
 # Microsoft 365 Copilot との統合
 
-この一連のラボおよび記事では、エージェントを接続する方法、外部ツールやデータ ソースを統合する方法、Work IQ API を利用する方法を学習できます。これらを通じて、最新の統合パターンを使用して Microsoft 365 Copilot エージェントを作成する方法を理解できます。
+この一連のラボおよび記事では、エージェントを接続する方法、外部ツールやデータ ソースを統合する方法、Copilot API を利用する方法を学習できます。これらを通じて、最新の統合パターンを使用して Microsoft 365 Copilot エージェントを作成する方法を理解できます。
 
 ## 接続型エージェントの概要
 
@@ -60,9 +60,9 @@ MCP は、AI アシスタントが外部データ ソースやツールに安全
 
 MCP については、[Model Context Protocol (MCP) for beginners](https://github.com/microsoft/mcp-for-beginners) トレーニング クラスで学習できます。
 
-## Work IQ API の概要
+## Copilot API の概要
 
-Work IQ API は Copilot の強力な AI 機能へプログラムからアクセスできる手段を提供し、開発者がカスタム エクスペリエンスの構築、ワークフローの自動化、アプリケーションへの Copilot 統合を実現します。宣言的アプローチとは異なり、Work IQ API を使用すると、会話、コンテキスト、ユーザー インタラクションをきめ細かく制御できます。
+Copilot API は Copilot の強力な AI 機能へプログラムからアクセスできる手段を提供し、開発者がカスタム エクスペリエンスの構築、ワークフローの自動化、アプリケーションへの Copilot 統合を実現します。宣言的アプローチとは異なり、Copilot API を使用すると、会話、コンテキスト、ユーザー インタラクションをきめ細かく制御できます。
 
 利用可能な API は次のとおりです。
 
@@ -93,7 +93,7 @@ Copilot API については、[Microsoft 365 Copilot APIs overview](https://lear
     - [Lab E09 - Connected Agents - Zava のマルチ エージェント請求オーケストレーション](../extend-m365-copilot/09-connected-agent)  
     - [Lab E10 - 宣言型エージェントを OAuth 保護された MCP Server に接続する](../extend-m365-copilot/10-mcp-auth)  
 - Custom Engine Agents  
-    - [Lab BAF06 - Microsoft 365 Work IQ API 統合を追加する](../custom-engine/agent-framework/06-add-copilot-api)  
+    - [Lab BAF06 - Add Copilot Retrieval API 統合を追加する](../custom-engine/agent-framework/06-add-copilot-api)  
     - [Lab BAF07 - MCP Tools 統合を追加する](../custom-engine/agent-framework/07-add-mcp-tools)  
 
 
