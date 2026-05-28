@@ -53,7 +53,7 @@ Work IQ is deeply integrated into Copilot across all surfaces:
 - **Copilot Chat** - Work toggle activates Work IQ intelligence
 - **Microsoft 365 apps** - Full Work IQ capabilities in Word, Excel, PowerPoint, and Teams
 - **Dynamics 365 and Power Apps** - Work IQ enriched with Dataverse data
-- **Work IQ API** - RESTful interface for developers to build agents grounded in live work context with enterprise-grade identity and security
+- **Copilot API** - RESTful interface for developers to build agents grounded in live work context with enterprise-grade identity and security
 
 ## Coming soon...
 

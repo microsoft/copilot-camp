@@ -2,12 +2,12 @@
 search:
   exclude: true
 ---
-# ラボ BAF6 - Microsoft 365 Work IQ API 統合の追加
+# ラボ BAF6 - Add Copilot Retrieval API Integration 統合の追加
 
-このラボでは、Zava Insurance Agent に Microsoft 365 Work IQ API を追加します。 **Copilot Retrieval API** を使用して SharePoint のポリシー ドキュメントを取得し、Microsoft 365 Copilot のエンタープライズ検索によるグラウンディングを活用して、保険請求のコンプライアンス分析を行えるようにします。
+このラボでは、Zava Insurance Agent に Microsoft 365 Copilot API を追加します。 **Copilot Retrieval API** を使用して SharePoint のポリシー ドキュメントを取得し、Microsoft 365 Copilot のエンタープライズ検索によるグラウンディングを活用して、保険請求のコンプライアンス分析を行えるようにします。
 
-???+ info "Microsoft 365 Work IQ API を理解する"
-    **Microsoft 365 Work IQ API** を使用すると、エージェントは次のことが可能になります。
+???+ info "Microsoft 365 Copilot API を理解する"
+    **Microsoft 365 Copilot API** を使用すると、エージェントは次のことが可能になります。
     
     - **Copilot Retrieval API**: SharePoint、OneDrive、Copilot コネクタから、アクセス許可とコンプライアンス設定を尊重しながら関連テキスト チャンクを取得
     - **Secure Data Access**: 信頼境界内で Microsoft 365 データにアクセスし、データを外部に流出させない
@@ -20,7 +20,7 @@ search:
 
 ## 概要
 
-ラボ BAF5 では、メール送信とレポート生成のコミュニケーション機能を追加しました。今回は Microsoft 365 Work IQ API を使用して SharePoint からポリシー ドキュメントを取得し、AI によるコンプライアンス分析を行う機能を強化します。
+ラボ BAF5 では、メール送信とレポート生成のコミュニケーション機能を追加しました。今回は Microsoft 365 Copilot API を使用して SharePoint からポリシー ドキュメントを取得し、AI によるコンプライアンス分析を行う機能を強化します。
 
 ** Copilot Retrieval API ** は、データを別途インデックス化・チャンク化・セキュリティ確保することなく、Retrieval Augmented Generation (RAG) を実現する効率的なソリューションを提供します。この API はユーザーのコンテキストと意図を理解し、クエリを変換して最も関連性の高い結果を返します。
 
@@ -785,7 +785,7 @@ Check if claim CLM-2025-001001 follows our policies
 
 ---8<--- "ja/b-congratulations.md"
 
-👏 ラボ BAF6 - Microsoft 365 Work IQ API 統合を完了しました！
+👏 ラボ BAF6 - Microsoft 365 Copilot API 統合を完了しました！
 
 習得した内容:
 
@@ -804,8 +804,8 @@ Check if claim CLM-2025-001001 follows our policies
 - **Compliance**: SharePoint のポリシー コンプライアンス分析用  Copilot Retrieval API
 - **Communication**: メール レポートと調査サマリー
 
-???+ info "Microsoft 365 Work IQ API について"
-    Microsoft 365 Work IQ API は、Copilot エクスペリエンスを支えるコンポーネントへのアクセスを提供します。
+???+ info "Microsoft 365 Copilot API について"
+    Microsoft 365 Copilot API は、Copilot エクスペリエンスを支えるコンポーネントへのアクセスを提供します。
     
     - **Retrieval API**: データを外部に出さずに Microsoft 365 データで AI をグラウンディング
     - **Chat API** (プレビュー): エンタープライズ検索を組み込んだマルチターン会話を実現
