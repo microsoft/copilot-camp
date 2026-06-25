@@ -501,6 +501,25 @@ h3[id*="step-"] {
     background-image: url('../assets/images/path-icons/icon-mcs10.png');
 }
 
+/** CWRK Path */
+
+.cwrk-path div,
+.cwrk-path div p  {
+    border-color: #74B85B;
+}
+
+.cwrk-path ul li:nth-child(1) {
+	background-image: url("../assets/images/path-icons/icon-cwrk0.png");
+}
+
+.cwrk-path ul li:nth-child(2) {
+    background-image: url('../assets/images/path-icons/icon-cwrk1.png');
+}
+
+.cwrk-path ul li:nth-child(3) {
+    background-image: url('../assets/images/path-icons/icon-cwrk2.png');
+}
+
 /*** Style mkdocs features ***
 
 /* Sidebar 

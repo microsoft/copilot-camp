@@ -15,7 +15,9 @@ Do you want to learn more about extending Microsoft 365 Copilot? Here are the av
 
 <div><span><a href="/copilot-camp/pages/custom-engine/" class="cta-button-fixed-width">⚙️ Custom Engine Agents</a></span><span class="cta-button-description">Build on your own AI stack<span></div>
 
-<div><span><a href="/copilot-camp/pages/work-iq/" class="cta-button-fixed-width">🧠 Work IQ</a></span><span class="cta-button-description">The intelligent layer that personalizes Copilot to you and your organization<span></div>
+<div><span><a href="/copilot-camp/pages/copilot-cowork/" class="cta-button-fixed-width">🤖 Copilot Cowork</a></span><span class="cta-button-description">Move from intent to action while keeping the user in control<span></div>
+
+<div><span><a href="/copilot-camp/pages/work-iq/" class="cta-button-fixed-width">🧠 Work IQ</a></span><span class="cta-button-description">Unlock the organizations' intelligence to every agent<span></div>
 
 <div><span><a href="/copilot-camp/pages/agent-365/" class="cta-button-fixed-width">🛡️ Agent 365</a></span><span class="cta-button-description">The control plane for agents<span></div>
 

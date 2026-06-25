@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.5.0",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "developer": {
+    "name": "Paolo Pialorsi",
+    "websiteUrl": "https://github.com/PaoloPia",
+    "privacyUrl": "https://github.com/PaoloPia",
+    "termsOfUseUrl": "https://github.com/PaoloPia"
+  },
+  "name": {
+    "short": "Copilot Dev Camp",
+    "full": "Copilot Dev Camp for Cowork - Copilot Dev Camp and Microsoft Foundry Content Creation & Research"
+  },
+  "description": {
+    "short": "Copilot Dev Camp and Microsoft Foundry presentations and documentation",
+    "full": "Comprehensive Cowork plugin for Copilot Dev Camp with skills to research Microsoft Foundry documentation, create professional PowerPoint presentations on Dev Camp topics, and author Word documents with technical guides and one-pagers. Powered by the Microsoft Learn MCP Server."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#000000",
+  "agentSkills": [
+    { "folder": "./skills/foundry-research" },
+    { "folder": "./skills/dev-camp-deck" },
+    { "folder": "./skills/dev-camp-document" }
+  ],
+  "agentConnectors": [
+    {
+      "id": "microsoft-learn-mcp",
+      "displayName": "Microsoft Learn MCP Server",
+      "description": "Access to Microsoft's official documentation for research and content generation. Provides search and fetch capabilities for Microsoft Learn articles and code samples.",
+      "toolSource": {
+        "remoteMcpServer": {
+          "mcpServerUrl": "https://learn.microsoft.com/api/mcp",
+          "authorization": {
+            "type": "None"
+          }
+        }
+      }
+    }
+  ]
+}
