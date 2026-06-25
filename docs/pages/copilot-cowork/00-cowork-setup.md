@@ -188,7 +188,7 @@ Beyond these Microsoft plugins, there is already a broad catalog of third-party 
 
 You have completed Lab CWRK0 - Copilot Cowork setup and extensibility!
 
-<a href="../copilot-cowork/01-cowork-skills">Start here</a> with Lab CWRK1, to build your first Skill for Copilot Cowork.
+<a href="../01-cowork-skills">Start here</a> with Lab CWRK1, to build your first Skill for Copilot Cowork.
 <cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-cowork/00-cowork-setup" />

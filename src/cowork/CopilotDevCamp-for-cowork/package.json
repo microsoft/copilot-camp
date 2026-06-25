@@ -1,0 +1,27 @@
+{
+  "name": "copilot-dev-camp-cowork-plugin",
+  "version": "1.0.0",
+  "description": "Copilot Dev Camp plugin for Cowork - Research Microsoft Foundry, create presentations and documentation",
+  "main": "manifest.json",
+  "scripts": {
+    "package": "PowerShell -Command \"Compress-Archive -Path manifest.json, color.png, outline.png, skills -DestinationPath copilot-dev-camp.zip -Force; Write-Host 'Plugin packaged: copilot-dev-camp.zip'\"",
+    "package:unix": "zip -r copilot-dev-camp.zip manifest.json color.png outline.png skills/",
+    "validate": "node validate-plugin.js"
+  },
+  "keywords": [
+    "cowork",
+    "copilot",
+    "plugin",
+    "microsoft-foundry",
+    "dev-camp",
+    "research",
+    "content-creation"
+  ],
+  "author": "Copilot Dev Camp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/CopilotDevCamp.git"
+  },
+  "devDependencies": {}
+}
