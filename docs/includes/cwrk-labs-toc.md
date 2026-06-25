@@ -3,9 +3,9 @@
   <div>
     <p>Do these labs if you want to extend Copilot Cowork</p>
     <ul>
-      <li><a href="/copilot-camp/pages/make/copilot-cowork/00-cowork-setup/">CWRK0 - Setup and extensibility</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-cowork/01-cowork-skills/">CWRK1 - Build your first Skill</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-cowork/02-cowork-plugins/">CWRK2 - Build your first Plugin</a></li>
+      <li><a href="/copilot-camp/pages/copilot-cowork/00-cowork-setup/">CWRK0 - Setup and extensibility</a></li>
+      <li><a href="/copilot-camp/pages/copilot-cowork/01-cowork-skills/">CWRK1 - Build your first Skill</a></li>
+      <li><a href="/copilot-camp/pages/copilot-cowork/02-cowork-plugins/">CWRK2 - Build your first Plugin</a></li>
     </ul>
   </div>
 </div>

@@ -58,7 +58,7 @@ Review [Get started with Copilot Cowork](https://learn.microsoft.com/en-us/micro
 - Users have an active Microsoft 365 Copilot license
 - Cowork is available in your tenant
 - Usage-based billing is enabled for Cowork
-- Anthropic as a subprocessor is enabled for your tenant, or you are in a Frontier tenant so that you can use GPT 5.5
+- Anthropic as a subprocessor is enabled for your tenant, or you are in a Frontier tenant so that you can choose to use GPT 5.5, instead
 - Supported client/browser access is available (web, desktop app, mobile)
 
 !!! note "Anthropic subprocessor requirement"
@@ -94,7 +94,7 @@ If users can't access Cowork, recheck licensing, billing configuration, and tena
 
 <cc-end-step lab="cwrk0" exercise="2" step="3" />
 
-## Exercise 3: Start using and validating Copilot Cowork
+## Exercise 3: Start using Copilot Cowork
 
 In this exercise you will start using Cowork in the product experience, observe the execution model in action, and validate approval controls for sensitive actions.
 
@@ -133,7 +133,7 @@ Once the work is complete, you will see a recap of all the tasks and steps execu
 
 ![Screenshot of Microsoft Copilot in “Cowork” mode showing a completed task summary. The main panel lists a drafted weekly status update email grouped by activities (community calls, PnP sync, Work IQ, Copilot crew, workshops, agents, and team sync). A PDF version of the update is attached. On the right, a “Workspace” panel displays completed steps (gather meetings, draft email, save PDF to OneDrive) and the generated output file. A navigation sidebar with tasks is visible on the left](../../assets/images/copilot-cowork-00/cowork-prompt-execution-02.png)
 
-As you can see Cowork was able to execute multiple tasks, it created a draft of an email, it generated a PDF and stored it in your OneDrive for Business. All of that was executed asynchronously and you could have done something else in the meantime.
+As you can see Cowork was able to execute multiple tasks, it created a draft of an email, it generated a PDF, and stored it in your OneDrive for Business. All of that was executed asynchronously and you could have done something else in the meantime.
 
 <cc-end-step lab="cwrk0" exercise="3" step="2" />
 
@@ -153,8 +153,7 @@ Verify that Cowork requests explicit approval before sensitive actions are execu
 
 ## Exercise 4: Explore Cowork extensibility options
 
-In this series of labs about Cowork we focus on its extensibility model only, from a pro-code perspective.
-As such, in this exercise you will compare the main extensibility options available and activate an already existing plugin.
+In this series of labs about Cowork we focus on its extensibility model only. As such, in this exercise you will compare the main extensibility options available and activate an already existing plugin.
 
 ### Step 1: Open the Customize experience
 

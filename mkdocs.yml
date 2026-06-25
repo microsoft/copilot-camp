@@ -104,6 +104,10 @@ plugins:
               - Lab MSA - Custom SharePoint agents: 'pages/make/sharepoint-agents/index.md'
               - Lab MSA1 - Build your first Custom SharePoint agent: 'pages/make/sharepoint-agents/01-first-agent.md'
               - Lab MSA2 - Sharing Custom SharePoint agents: 'pages/make/sharepoint-agents/02-sharing-agents.md'
+            - Copilot Cowork:
+              - Setup and extensibility: 'pages/copilot-cowork/00-cowork-setup.md'
+              - Build your first skill: 'pages/copilot-cowork/01-cowork-skills.md'
+              - Build your first plugin: 'pages/copilot-cowork/02-cowork-plugins.md'
             - Work IQ:
               - Introduction : 'pages/work-iq/index.md'
             - Agent 365:
