@@ -1,0 +1,2850 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/ja/pages/copilot-cowork/02-cowork-plugins/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="../../../../pages/copilot-cowork/02-cowork-plugins/" hreflang="en">
+        
+          <link rel="alternate" href="./" hreflang="ja">
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lab CWRK02 - Copilot Cowork Build your first plugin - Copilot Developer Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/labStyles.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-cwrk02-copilot-cowork-build-your-first-plugin" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../../" title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Copilot Developer Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab CWRK02 - Copilot Cowork Build your first plugin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="言語切り替え">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../pages/copilot-cowork/02-cowork-plugins/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="ja" class="md-select__link">
+              Japanese (日本語)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ようこそ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../make/" class="md-tabs__link">
+          
+  
+  
+  Maker 向けエージェントの作成
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
+          
+  
+  
+  宣言型エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../custom-engine/" class="md-tabs__link">
+          
+  
+  
+  カスタム エンジン エージェントの構築
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../beyond-agents/" class="md-tabs__link">
+          
+  
+  
+  AI の概念と手法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  動画など
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../" title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+      
+  <img src="../../../../assets/images/tent-small.png" alt="logo">
+
+    </a>
+    Copilot Developer Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/copilot-camp" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/copilot-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ようこそ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maker 向けエージェントの作成
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Maker 向けエージェントの作成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft 365 Copilot 向けエージェントの作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MAB - Agent Builder によるエージェント作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/agent-builder/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MAB1 - 最初のエージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS - Microsoft Copilot Studio の理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS0 - セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MCS1 - 最初のエージェント
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/02-topics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS2 - トピックの定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/03-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS3 - ツールの定義
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/04-extending-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS4 - Microsoft 365 Copilot の拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/05-connectors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS5 - Power Platform カスタム コネクター
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/06-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS6 - MCP サーバーの利用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/07-autonomous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS7 - Autonomous エージェントの作成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/08-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS8 - Azure AI Search を使用した RAG 連携
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/copilot-studio/09-connected-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MCS9 - Connected Agents (プレビュー)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA - SharePoint エージェントの理解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/01-first-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MSA1 - 最初の SharePoint エージェントを構築する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../make/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab MSA2 - SharePoint エージェントの共有
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    宣言型エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    宣言型エージェントの構築
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft 365 Copilot の拡張
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    セットアップ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    セットアップ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E0 - セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    宣言型エージェントの基礎
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    宣言型エージェントの基礎
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E1 - Microsoft 365 Agents Toolkit で TypeSpec 定義を使って Declarative エージェントを初めて作成する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E1 - Geo Locator ゲーム エージェントのインストラクション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API をゼロから構築して統合
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API をゼロから構築して統合
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/02-build-the-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E2 - API の構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/03-add-declarative-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E3 - 宣言型エージェントと API プラグインの追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/04-enhance-api-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E4 - API とプラグインの強化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/05-add-adaptive-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E5 - Adaptive Card の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/06a-add-authentication-ttk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E6a - OAuth で Entra ID 認証を追加 (Agents Toolkit)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インテグレーション
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    インテグレーション
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/07-add-graphconnector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ E7 - 統合: Microsoft Copilot Connector を使用して Trey Genie に Knowledge 機能を追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/08-mcp-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ 08 : 宣言型エージェントを MCP サーバーに接続する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extend-m365-copilot/09-connected-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ 09: Connected Agents - Zava のマルチエージェント請求オーケストレーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カスタム エンジン エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    カスタム エンジン エージェントの構築
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カスタム エンジン エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft Foundry で構築する
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Microsoft Foundry で構築する
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに - M365 Agents SDK と Semantic Kernel で独自エージェントを構築する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA0 - 前提条件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA1 - Microsoft Foundry でエージェントを準備する
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA2 - M365 Agents SDK を使用した初めてのエージェント構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BMA3 - Microsoft Foundry エージェントと M365 Agents SDK の統合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ MBA4 - エージェントを Copilot Chat に追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Framework で構築する
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent Framework で構築する
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microsoft 365 Agents SDK と Agent Framework を使用した Zava Insurance エージェントの構築
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF1 - はじめてのエージェントの構築と実行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF2 - Azure AI Search を使用したドキュメント検索の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/03-add-vision-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF3 - Mistral AI を使用したビジョン分析の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/04-add-policy-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF4 - Policy 検索の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/05-add-communication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF5 - コミュニケーション機能の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/06-add-copilot-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF6 - Add Copilot Retrieval API Integration 統合の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-engine/agent-framework/07-add-mcp-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ラボ BAF7 - MCP ツール統合の追加
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI の概念と手法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI の概念と手法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beyond-agents/beginner-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エージェント指示ラボ - エージェント指示の改善（初心者向け）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動画など
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-cwrk02-copilot-cowork-build-your-first-plugin">Lab CWRK02 - Copilot Cowork Build your first plugin</h1>
+<div class="floatwide">
+<div class="cc-lab-toc cwrk-path">
+  <img src="/copilot-camp/assets/images/path-icons/CWRK-path-heading.png"></img>
+  <div>
+    <p>Do these labs if you want to extend Copilot Cowork</p>
+    <ul>
+      <li><a href="/copilot-camp/pages/copilot-cowork/00-cowork-setup/">CWRK0 - Setup and extensibility</a></li>
+      <li><a href="/copilot-camp/pages/copilot-cowork/01-cowork-skills/">CWRK1 - Build your first Skill</a></li>
+      <li><a href="/copilot-camp/pages/copilot-cowork/02-cowork-plugins/">CWRK2 - Build your first Plugin</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(() => {
+
+// This script decorates the table of contents with a "you are here" indicator.
+const toc = document.getElementsByClassName('cc-lab-toc');
+for (const div of toc) {
+    const lis = div.querySelectorAll('li');
+    for (const li of lis) {
+        const anchor = li.querySelector('a');
+        if (location.href.includes(anchor.href)) {
+            const span = document.createElement("span");
+            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
+            li.appendChild(span);
+        }
+    }    
+}
+})();
+</script>
+
+
+
+  <div class="cc-msa-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
+</div>
+
+<p>In this lab, you'll learn how Copilot Cowork plugins extend Cowork with packaged skills and connectors, and how to build and deploy your own plugins.</p>
+<p>At a high level, a Cowork plugin is a Microsoft 365 app package (<code>.zip</code>) that can include:</p>
+<ul>
+<li>A mandatory manifest (<code>manifest.json</code>) that describes how Cowork should load and use the assets of the plugin</li>
+<li>Zero or more custom skills (<code>SKILL.md</code> files)</li>
+<li>Optional connectors to remote MCP servers</li>
+</ul>
+<p>By the end of this lab, you will:</p>
+<ul>
+<li>Understand what Cowork plugins are and where they fit in the Cowork experience</li>
+<li>Explore available Microsoft and partner plugins and how users/admins manage them</li>
+<li>Build a custom plugin package with multiple skills and an MCP connector</li>
+<li>Automate packaging with <code>package.json</code> scripts</li>
+<li>Deploy the plugin from Microsoft 365 Admin Center</li>
+</ul>
+<h2 id="exercise-1-understand-the-plugin-model-in-copilot-cowork">Exercise 1: Understand the plugin model in Copilot Cowork</h2>
+<p>In this exercise you will build a practical mental model of plugins, and how they combine reusable skills with optional connectors.</p>
+<h3 id="step-1-review-what-a-cowork-plugin-contains">Step 1: Review what a Cowork plugin contains</h3>
+<p>A Cowork plugin is distributed as a Microsoft 365 app package and can include:</p>
+<ul>
+<li><strong>Skills</strong>: instruction-driven workflows that tell Cowork how to execute domain tasks</li>
+<li><strong>Connectors</strong>: remote MCP endpoints that expose tools and data</li>
+</ul>
+<p>This gives you a flexible packaging model:</p>
+<ul>
+<li>Skills-only plugin (workflow guidance without external systems)</li>
+<li>Connector-only plugin (external tools used by built-in skills)</li>
+<li>Combined plugin (custom skills orchestrating external tools)</li>
+</ul>
+<p>This plugin model is aligned with the Microsoft 365 app ecosystem and follows the same enterprise governance patterns used for Teams apps and agents.</p>
+<p><cc-end-step lab="cwrk02" exercise="1" step="1" /></p>
+<h3 id="step-2-compare-plugin-categories-and-understand-management-boundaries">Step 2: Compare plugin categories and understand management boundaries</h3>
+<p>In Copilot Cowork, the plugin catalog can include:</p>
+<ul>
+<li><strong>Microsoft plugins</strong> (for example Dynamics 365 and Fabric IQ scenarios)</li>
+<li><strong>Partner plugins</strong> from third-party publishers</li>
+<li><strong>Custom plugins</strong> built by your organization</li>
+</ul>
+<p>Use this model when choosing your strategy:</p>
+<ul>
+<li>Start with Microsoft or partner plugins when they already cover your use case</li>
+<li>Build a custom plugin when you need company-specific process logic, vocabulary, or integrations</li>
+</ul>
+<p>Keep this distinction in mind:</p>
+<ul>
+<li><strong>Users</strong> can browse/acquire allowed plugins, enable/disable them per session, and remove self-acquired plugins</li>
+<li><strong>Admins</strong> control availability, deployment scope, and governance from Microsoft 365 Admin Center</li>
+</ul>
+<p>If a plugin requires connector authentication, each user still completes their own one-time sign-in/consent flow.</p>
+<p><cc-end-step lab="cwrk02" exercise="1" step="2" /></p>
+<h2 id="exercise-2-inspect-plugin-structure-and-design-decisions">Exercise 2: Inspect plugin structure and design decisions</h2>
+<p>In this exercise you will analyze the architecture of a real plugin, available at the <a href="https://github.com/PaoloPia/CopilotDevCamp-for-cowork" target="_blank">following url</a>, and understand why packaging multiple skills with connectors is valuable.</p>
+<h3 id="step-1-review-a-production-style-plugin-layout">Step 1: Review a production-style plugin layout</h3>
+<p>Use this folder model as your baseline for any plugin:</p>
+<pre><code class="language-text">plugin-root-folder/
+├── manifest.json
+├── color.png
+├── outline.png
+└── skills/
+        ├── skill-01/
+        │   └── references/
+        │       └── reference-file-01.md
+        │       └── reference-file-02.md
+        │   └── scripts/
+        │       └── script-file-01.py
+        │   └── SKILL.md
+        ├── skill-02/
+        │   └── SKILL.md
+        ...
+        ├── skill-NN/
+                └── SKILL.md
+</code></pre>
+<p>The plugin you are going to create in this lab allows to process the content of the Copilot Dev Camp labs and to create PowerPoint presentations or Word documents based on a specific lab. Moreover, the plugin relies on the Microsft Learn MCP server (https://learn.microsoft.com/api/mcp) to provide technical details about Microsoft Foundry.</p>
+<p>The plugin is made of the following skills:</p>
+<ul>
+<li><strong>foundry-research</strong>: Researches and compiles comprehensive information about Microsoft Foundry, including documentation, architecture, models, and deployment options. Used when user asks to "research Microsoft Foundry", "learn about Foundry", "Foundry documentation", "Foundry architecture", "Foundry models", "how to deploy with Foundry", "Foundry features", or "Foundry capabilities".</li>
+<li><strong>dev-camp-deck</strong>: Creates a professional PowerPoint presentation about a Copilot Dev Camp lab or topic. Researches Microsoft Learn documentation, organizes content into a slide structure, and generates a polished deck with speaker notes. Used when user asks to "create a presentation on", "make a deck about", "build a slideshow for", "present on Dev Camp topic", or "generate slides about" any Copilot Dev Camp lab or Microsoft technology topic.</li>
+<li><strong>dev-camp-document</strong>: Authors a professional Word document about a Copilot Dev Camp lab or Microsoft technology topic. Researches Microsoft Learn documentation, organizes content into a document structure, and generates a polished one-pager or detailed guide with formatting and citations. Used when user asks to "write a document about", "create a guide for", "author a one-pager on", "write a technical brief on", or "create documentation for" any Copilot Dev Camp lab or Microsoft technology topic.</li>
+</ul>
+<p>The plugin folders structure is the following:</p>
+<pre><code class="language-text">CopilotDevCamp-for-cowork/
+├── manifest.json
+├── color.png
+├── outline.png
+├── package.json
+└── skills/
+        ├── foundry-research/
+        │   └── SKILL.md
+        ├── dev-camp-deck/
+        │   └── SKILL.md
+        └── dev-camp-document/
+            └── SKILL.md
+</code></pre>
+<p>This structure keeps the plugin composable and maintainable: each skill has a focused purpose, while the manifest and scripts provide shared packaging and deployment metadata.</p>
+<p><cc-end-step lab="cwrk02" exercise="2" step="1" /></p>
+<h3 id="step-2-understand-the-value-of-multiple-skills-and-connectors">Step 2: Understand the value of multiple skills and connectors</h3>
+<p>Bundling multiple related skills in one plugin gives you:</p>
+<ul>
+<li><strong>Modularity</strong>: separate workflows for research, slide creation, and document authoring</li>
+<li><strong>Reusability</strong>: one plugin package can serve many user intents in the same domain</li>
+<li><strong>Consistency</strong>: shared naming, metadata, and publishing lifecycle</li>
+<li><strong>Scalability</strong>: skills can be enriched over time with <code>references/</code> and <code>scripts/</code> companion files</li>
+</ul>
+<p>For larger skills, keep the main <code>SKILL.md</code> focused on activation and workflow, and move deep knowledge to companion files (for example <code>references/*.md</code> and <code>scripts/*</code>) to keep prompts efficient and maintainable.</p>
+<p>Connectors let skills call tools from remote MCP servers at runtime. This is how your plugin moves from static instructions to live, data-aware execution.</p>
+<p>Common authorization types for include:</p>
+<ul>
+<li><code>None</code>: anonymous/public endpoint access</li>
+<li><code>OAuthPluginVault</code>: OAuth 2.0 with secure credential storage reference</li>
+<li><code>ApiKeyPluginVault</code>: API key flow with secure reference storage</li>
+</ul>
+<p>Choose the model based on security and data sensitivity. For production, authenticated connectors are the common pattern.</p>
+<p><cc-end-step lab="cwrk02" exercise="2" step="2" /></p>
+<h2 id="exercise-3-build-the-custom-plugin-package">Exercise 3: Build the custom plugin package</h2>
+<p>In this exercise you will create a plugin similar to the Copilot Dev Camp sample, with 3 skills and 1 connector. Create a new folder on your file system, name it <code>CopilotDevCamp-for-cowork</code>. Open the folder with Visual Studio Code, or any other code editor of your choice.</p>
+<h3 id="step-1-create-the-manifest-with-skills-and-connector">Step 1: Create the manifest with skills and connector</h3>
+<p>Create a <code>manifest.json</code> file in your plugin root. Use a schema compatible with Cowork plugin packaging and include <code>agentSkills</code> and <code>agentConnectors</code> sections, like illustrated in the following excerpt.</p>
+<p>Use the following model:</p>
+<pre><code class="language-json">{
+    &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json&quot;,
+    &quot;manifestVersion&quot;: &quot;devPreview&quot;,
+    &quot;version&quot;: &quot;1.5.0&quot;,
+    &quot;id&quot;: &quot;a1b2c3d4-e5f6-7890-abcd-ef1234567890&quot;,
+    &quot;developer&quot;: {
+        &quot;name&quot;: &quot;Paolo Pialorsi&quot;,
+        &quot;websiteUrl&quot;: &quot;https://github.com/PaoloPia&quot;,
+        &quot;privacyUrl&quot;: &quot;https://github.com/PaoloPia&quot;,
+        &quot;termsOfUseUrl&quot;: &quot;https://github.com/PaoloPia&quot;
+    },
+    &quot;name&quot;: {
+        &quot;short&quot;: &quot;Copilot Dev Camp&quot;,
+        &quot;full&quot;: &quot;Copilot Dev Camp for Cowork - Copilot Dev Camp and Microsoft Foundry Content Creation &amp; Research&quot;
+    },
+    &quot;description&quot;: {
+        &quot;short&quot;: &quot;Copilot Dev Camp and Microsoft Foundry presentations and documentation&quot;,
+        &quot;full&quot;: &quot;Comprehensive Cowork plugin for Copilot Dev Camp with skills to research Microsoft Foundry documentation, create professional PowerPoint presentations on Dev Camp topics, and author Word documents with technical guides and one-pagers. Powered by the Microsoft Learn MCP Server.&quot;
+    },
+    &quot;icons&quot;: {
+        &quot;color&quot;: &quot;color.png&quot;,
+        &quot;outline&quot;: &quot;outline.png&quot;
+    },
+    &quot;accentColor&quot;: &quot;#000000&quot;,
+    &quot;agentSkills&quot;: [
+        { &quot;folder&quot;: &quot;./skills/foundry-research&quot; },
+        { &quot;folder&quot;: &quot;./skills/dev-camp-deck&quot; },
+        { &quot;folder&quot;: &quot;./skills/dev-camp-document&quot; }
+    ],
+    &quot;agentConnectors&quot;: [
+        {
+            &quot;id&quot;: &quot;microsoft-learn-mcp&quot;,
+            &quot;displayName&quot;: &quot;Microsoft Learn MCP Server&quot;,
+            &quot;description&quot;: &quot;Access to Microsoft's official documentation for research and content generation. Provides search and fetch capabilities for Microsoft Learn articles and code samples.&quot;,
+            &quot;toolSource&quot;: {
+                &quot;remoteMcpServer&quot;: {
+                    &quot;mcpServerUrl&quot;: &quot;https://learn.microsoft.com/api/mcp&quot;,
+                    &quot;authorization&quot;: {
+                        &quot;type&quot;: &quot;None&quot;
+                    }
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+<p>The <code>agentSkills</code> section defines the skills associated to your custom plugin.
+The <code>agentConnectors</code> section defines the MCP servers, including their authorization model, consumed by the custom plugin.</p>
+<p>Important validation checks:</p>
+<ul>
+<li>Each <code>agentSkills[].folder</code> must exist in the package</li>
+<li>Each skill folder must contain <code>SKILL.md</code></li>
+<li>Skill frontmatter <code>name</code> must be kebab-case and match its folder name</li>
+<li>Connector <code>id</code> values must be unique</li>
+</ul>
+<p>You also need to provide the <code>color.png</code> and <code>outline.png</code> icons for the application package. You can download them from the following URLs:</p>
+<ul>
+<li><a href="https://github.com/microsoft/copilot-camp/tree/main/src/cowork/CopilotDevCamp-for-cowork/color.png" target="_blank">color.png</a></li>
+<li><a href="https://github.com/microsoft/copilot-camp/tree/main/src/cowork/CopilotDevCamp-for-cowork/outline.png" target="_blank">outline.png</a></li>
+</ul>
+<p>Feel free to replace the content of the <code>developer</code> section of the manifest with your own data.</p>
+<p><cc-end-step lab="cwrk02" exercise="3" step="1" /></p>
+<h3 id="step-2-create-the-3-skill-folders-and-skillmd-files">Step 2: Create the 3 skill folders and <code>SKILL.md</code> files</h3>
+<p>Create these skill folders under <code>skills/</code>:</p>
+<ul>
+<li><code>foundry-research</code></li>
+<li><code>dev-camp-deck</code></li>
+<li><code>dev-camp-document</code></li>
+</ul>
+<p>In each <code>SKILL.md</code>:</p>
+<ul>
+<li>Add valid YAML frontmatter with <code>name</code> and <code>description</code></li>
+<li>Keep the description explicit with trigger phrases (<code>Use when user asks to ...</code>)</li>
+<li>Define a clear workflow and output format</li>
+<li>Reference tools explicitly when a connector is required</li>
+</ul>
+<p>You can copy the content of the three skills from the following URLs:</p>
+<ul>
+<li><a href="https://github.com/microsoft/copilot-camp/tree/main/src/cowork/CopilotDevCamp-for-cowork/skills/foundry-research/SKILL.md" target="_blank">foundry-research</a></li>
+<li><a href="https://github.com/microsoft/copilot-camp/tree/main/src/cowork/CopilotDevCamp-for-cowork/skills/dev-camp-deck/SKILL.md" target="_blank">dev-camp-deck</a></li>
+<li><a href="https://github.com/microsoft/copilot-camp/tree/main/src/cowork/CopilotDevCamp-for-cowork/skills/dev-camp-document/SKILL.md" target="_blank">dev-camp-document</a></li>
+</ul>
+<p>This design gives Cowork stronger activation accuracy and more consistent outcomes.</p>
+<p><cc-end-step lab="cwrk02" exercise="3" step="2" /></p>
+<h3 id="step-3-add-optional-companion-references-and-scripts">Step 3: Add optional companion references and scripts</h3>
+<p>For complex skills, keep <code>SKILL.md</code> concise and add supporting files such as:</p>
+<ul>
+<li><code>references/*.md</code> for domain details and standards</li>
+<li><code>scripts/*</code> for repeatable utilities</li>
+</ul>
+<p>Then reference those files in the skill body so Cowork can load them when needed.</p>
+<p>This pattern improves maintainability and makes it easier to evolve the plugin without rewriting every skill.</p>
+<p><cc-end-step lab="cwrk02" exercise="3" step="3" /></p>
+<h2 id="exercise-4-automate-packaging-and-validate-the-plugin">Exercise 4: Automate packaging and validate the plugin</h2>
+<p>In this exercise you will add packaging automation and produce your plugin <code>.zip</code>.</p>
+<h3 id="step-1-add-packaging-scripts-in-packagejson">Step 1: Add packaging scripts in <code>package.json</code></h3>
+<p>Add a <code>package.json</code> file in the plugin root folder and define scripts like the following:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;copilot-dev-camp-cowork-plugin&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;description&quot;: &quot;Copilot Dev Camp plugin for Cowork - Research Microsoft Foundry, create presentations and documentation&quot;,
+    &quot;main&quot;: &quot;manifest.json&quot;,
+    &quot;scripts&quot;: {
+        &quot;package&quot;: &quot;PowerShell -Command \&quot;Compress-Archive -Path manifest.json, color.png, outline.png, skills -DestinationPath copilot-dev-camp.zip -Force; Write-Host 'Plugin packaged: copilot-dev-camp.zip'\&quot;&quot;,
+        &quot;package:unix&quot;: &quot;zip -r copilot-dev-camp.zip manifest.json color.png outline.png skills/&quot;
+    },
+    &quot;license&quot;: &quot;MIT&quot;
+}
+</code></pre>
+<p>This gives you consistent, repeatable packaging across environments.</p>
+<p><cc-end-step lab="cwrk02" exercise="4" step="1" /></p>
+<h3 id="step-2-package-your-plugin">Step 2: Package your plugin</h3>
+<p>Run the packaging command from your plugin root. If you are on a Windows machine use:</p>
+<pre><code class="language-powershell">npm run package
+</code></pre>
+<p>If you are on a MacOS/Unix machine:</p>
+<pre><code class="language-bash">npm run package:unix
+</code></pre>
+<p>Expected result: a <code>.zip</code> package containing <code>manifest.json</code>, icons, and the full <code>skills/</code> folder at the root level.</p>
+<p>If needed, inspect the ZIP content before upload to avoid structure-related validation failures.</p>
+<p><cc-end-step lab="cwrk02" exercise="4" step="2" /></p>
+<h3 id="step-3-validate-common-packaging-issues">Step 3: Validate common packaging issues</h3>
+<p>Before deployment, verify:</p>
+<ul>
+<li><code>SKILL.md</code> exists in each referenced folder</li>
+<li>YAML frontmatter is valid</li>
+<li><code>name</code> values match skill folder names</li>
+<li>Connector URL is HTTPS and auth config is coherent</li>
+<li>Icon file names and dimensions are correct (<code>color.png</code>, <code>outline.png</code>)</li>
+</ul>
+<p>Fix issues now to avoid failed uploads in admin workflows.</p>
+<p><cc-end-step lab="cwrk02" exercise="4" step="3" /></p>
+<h2 id="exercise-5-vibe-code-the-whole-plugin-with-github-copilot-optional">Exercise 5: Vibe-code the whole plugin with GitHub Copilot (optional)</h2>
+<p>In this exercise you will use GitHub Copilot to scaffold and complete the plugin with a single high-quality prompt. This is an alternative option, instead of going through Exercise 3 and Exercise 4.</p>
+<h3 id="step-1-use-a-full-vibe-coding-prompt-in-github-copilot">Step 1: Use a full vibe-coding prompt in GitHub Copilot</h3>
+<p>If you prefer a fast, prompt-driven flow, you can ask GitHub Copilot (Agent mode in Visual Studio Code) to scaffold the full plugin structure, generate the skills, prepare packaging scripts, and draft deployment documentation.</p>
+<p>Use the following prompt as-is with GitHub Copilot:</p>
+<pre><code class="language-text"># Vibe Coding Prompt for GitHub Copilot
+
+Use this prompt as-is in GitHub Copilot Chat (Agent mode) to scaffold and complete the plugin.
+
+## Prompt
+
+You are GitHub Copilot acting as a senior Microsoft 365 + Copilot Cowork plugin engineer.
+
+Goal: Build a **new Copilot Cowork plugin** in this repository, following the same project structure and engineering style as:
+- https://github.com/PaoloPia/CopilotDevCamp-for-cowork
+
+and grounded in official guidance from:
+- https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-plugin-development
+
+### Mandatory requirements
+
+1. Implement plugin capabilities
+- Add a skill with name `foundry-research` with support for **Microsoft Foundry** content (both documentation and samples) using this MCP server:
+    - https://learn.microsoft.com/api/mcp
+- Add a skill with name `dev-camp-deck` to create a **PowerPoint presentation** about one Copilot Dev Camp lab/topic.
+- Add a skill with name `dev-camp-document` to author a **Word document** about one Copilot Dev Camp lab/topic.
+- Use Copilot Dev Camp content as source context:
+    - https://microsoft.github.io/copilot-camp/
+- Register the MCP server https://learn.microsoft.com/api/mcp in the manifest, with anonymous access
+
+2. Keep repository conventions
+- Reuse the same folder organization patterns, naming style, and manifest conventions used by this repo.
+- Do not break existing files unless replacement is necessary.
+- Prefer additive changes and keep the plugin maintainable.
+
+3. Update docs and ignores
+- Update `README.md` with:
+    - Plugin overview and feature list
+    - Skills documentation and examples
+    - Packaging process
+    - Deployment process for Cowork
+    - Any prerequisites and environment variables
+- Update `.gitignore` as needed for generated artifacts and packaging outputs.
+
+4. Packaging automation
+- Create or update `package.json` scripts so packaging can be run with a single command.
+- The packaging process must generate a `.zip` file suitable for upload in Cowork.
+- Include scripts for clean/build/package where appropriate.
+
+5. Icons generation
+- Generate plugin icons required by the plugin structure:
+    - `color.png`
+    - `outline.png`
+- Visual requirements:
+    - Subject: a **book inside/with a camp tent** motif
+    - Tent color: **purple**
+    - Book color: **white**
+    - Background: **black**
+- Ensure dimensions and style are compliant with Cowork plugin requirements.
+
+### Implementation instructions
+
+- First inspect current workspace files to align with existing conventions.
+- If the repo already contains reusable scripts/utilities (for example icon generation), reuse them.
+- Create or update the plugin manifest and any skill metadata files needed for Cowork.
+- For the Foundry feature:
+    - Implement a skill/integration that can retrieve or reference both docs and samples via the MCP endpoint.
+    - Add clear prompt instructions and usage examples.
+- For the PowerPoint and Word skills:
+    - Create dedicated skill folders/files with clear instructions, expected inputs, and generated outputs.
+    - Ensure prompts are practical for Copilot users and tied to Copilot Dev Camp topics.
+
+### README packaging + deployment documentation (must include)
+
+Add a concise section with:
+- Prerequisites
+- Install dependencies
+- Build/package commands
+- Output zip path
+- How to upload/install in Copilot Cowork
+- How to validate skills after deployment
+
+### Quality bar
+
+- Keep changes production-quality and self-consistent.
+- Validate JSON/manifest files.
+- Ensure all referenced files exist.
+- Ensure scripts run on Windows PowerShell and common cross-platform shells when feasible.
+
+### Deliverables checklist (must complete all)
+
+- Updated manifest and skill definitions
+- Foundry MCP support (docs + samples)
+- PowerPoint skill
+- Word skill
+- Updated `README.md`
+- Updated `.gitignore`
+- Working `package.json` packaging scripts
+- Generated `color.png` and `outline.png`
+- A final short summary listing all changed files and exact package command(s)
+
+### Execution mode
+
+Proceed autonomously: inspect, implement, run packaging command, verify outputs, then summarize.
+If a required file is missing, create it following this repo's conventions.
+If assumptions are required, choose sensible defaults and document them in README.
+</code></pre>
+<p>After generation, review <code>manifest.json</code>, validate each <code>SKILL.md</code> frontmatter, and run packaging to produce the final plugin ZIP before upload.</p>
+<p><cc-end-step lab="cwrk02" exercise="5" step="1" /></p>
+<h2 id="exercise-6-deploy-and-test-from-microsoft-365-admin-center">Exercise 6: Deploy and test from Microsoft 365 Admin Center</h2>
+<p>In this exercise you will upload your plugin package and validate end-to-end behavior in Cowork.</p>
+<h3 id="step-1-upload-the-plugin-in-microsoft-365-admin-center">Step 1: Upload the plugin in Microsoft 365 Admin Center</h3>
+<p>Use the following path:</p>
+<ol>
+<li>Open <strong>Microsoft 365 Admin Center</strong></li>
+<li>Go to <strong>Agents</strong></li>
+<li>Select <strong>All Agents</strong></li>
+<li>Select <strong>Upload Agent</strong></li>
+<li>Upload your plugin <code>.zip</code> package</li>
+</ol>
+<p>After upload, confirm the package metadata and availability scope to match your target audience.</p>
+<p>As an admin, decide how to roll out the plugin:</p>
+<ul>
+<li>Available to all users</li>
+<li>Available to specific users/groups</li>
+<li>Blocked (if not approved)</li>
+</ul>
+<p>Remember that users can enable/disable active plugins per session, while admin deployment controls tenant availability and lifecycle.</p>
+<p><cc-end-step lab="cwrk02" exercise="6" step="1" /></p>
+<h3 id="step-2-enable-and-verify-plugin-behavior-in-cowork">Step 2: Enable and verify plugin behavior in Cowork</h3>
+<p>Open Copilot Cowork and verify that:</p>
+<ul>
+<li>The plugin appears in the plugin inventory</li>
+<li>The plugin can be installed and enabled from the plugin detail page</li>
+<li>The three skills can activate based on relevant prompts</li>
+<li>The connector is discoverable and, when applicable, prompts for authentication, if any (in this sample the MCP server is publicly available with anonymous access)</li>
+</ul>
+<p>Run scenario-based tests such as:</p>
+<pre><code class="language-text">Research Microsoft Foundry deployment options
+</code></pre>
+<p>or:</p>
+<pre><code class="language-text">Create a presentation about Copilot Dev Camp lab: https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/
+</code></pre>
+<p>or:</p>
+<pre><code class="language-text">Write a one-pager about Copilot Dev Camp lab: https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/
+</code></pre>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Testing in Copilot Cowork the custom skills associated with the illustrated plugin will consume Copilot Credits.</p>
+</div>
+<p><cc-end-step lab="cwrk02" exercise="6" step="2" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab CWRK02 - Copilot Cowork Build your first plugin!</p>
+<p>You have also completed the Copilot Cowork pathway in Copilot Dev Camp.</p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-cowork/02-cowork-plugins" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../javascripts/cc-award.js"></script>
+      
+        <script src="../../../../javascripts/cc-next.js"></script>
+      
+        <script src="../../../../javascripts/cc-lab-step.js"></script>
+      
+        <script src="../../../../javascripts/cc-card.js"></script>
+      
+    
+  </body>
+</html>
