@@ -43,6 +43,8 @@
     // This web component goes at the end of a step in a lab to track completion
     class Next extends HTMLElement {
 
+        static ACTIVE_SEQ_KEY = 'cc-active-bundle-seq';
+
         #url;        // Next lab URL if not calculated from navigation
         #label;      // Button text
 
@@ -52,7 +54,7 @@
             super();
 
             this.#label = this.getAttribute('label') || 'Next';
-            this.#url = this.getAttribute('url') || this.#getNextUrlByNavigation();
+            this.#url = this.getAttribute('url') || this.#getNextUrl();
 
             //ensureCss();
 
@@ -76,7 +78,40 @@
             }
         }
 
-    #getNextUrlByNavigation() {
+    #normalizePath(path) {
+            if (!path) {
+                return '';
+            }
+            return path.endsWith('/') ? path.slice(0, -1) : path;
+        }
+
+        #getNextUrlByBundleSequence() {
+            try {
+                const raw = localStorage.getItem(Next.ACTIVE_SEQ_KEY);
+                if (!raw) {
+                    return null;
+                }
+
+                const seq = JSON.parse(raw);
+                if (!seq || !Array.isArray(seq.paths) || seq.paths.length === 0) {
+                    return null;
+                }
+
+                const currentPath = this.#normalizePath(window.location.pathname);
+                const normalizedPaths = seq.paths.map(p => this.#normalizePath(p));
+                const currentIndex = normalizedPaths.findIndex(p => p === currentPath);
+
+                if (currentIndex !== -1 && currentIndex < normalizedPaths.length - 1) {
+                    return normalizedPaths[currentIndex + 1] + '/';
+                }
+            } catch {
+                return null;
+            }
+
+            return null;
+        }
+
+        #getNextUrlByNavigation() {
             // Recursive function to find all links in a navigation item
             const getAllLinks = (element) => {
                 const links = [];
@@ -106,6 +141,15 @@
             }
             
             return null;
+        }
+
+        #getNextUrl() {
+            const fromBundle = this.#getNextUrlByBundleSequence();
+            if (fromBundle) {
+                return fromBundle;
+            }
+
+            return this.#getNextUrlByNavigation();
         }
 
         // Run when the element is added to the DOM
