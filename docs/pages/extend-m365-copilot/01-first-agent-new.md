@@ -359,6 +359,11 @@ The end goal in both tabs is the same: a **Zava Onboarding Assistant** with a cl
 
     Save or update the agent, then ask: "Is there a canteen at HQ?"
 
+    <div data-widget="callout"
+      data-type="tip"
+      data-title="Optional: next in Agent Builder"
+      data-body="After you validate this update, extend the agent with knowledge directly in Agent Builder: <a href='https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-knowledge' target='_blank'>Add knowledge in Agent Builder</a>."></div>
+
     ### Step 2 - Understand where this path stops
 
     Agent Builder is excellent for quickly shaping an agent's persona, instructions, starters, and some knowledge or capability settings. The later bundle labs move to the code-first path because external tools, manifests, source control, local services, and richer extensibility require files and code that Agent Builder does not expose directly.
@@ -397,6 +402,11 @@ The end goal in both tabs is the same: a **Zava Onboarding Assistant** with a cl
     ```
 
     The agent should now answer using the new canteen fact you added to `instruction.txt`.
+
+    <div data-widget="callout"
+      data-type="tip"
+      data-title="Optional: next in Agents Toolkit"
+      data-body="After you validate this update, extend your declarative agent using knowledge sources in files and manifest settings: <a href='https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/knowledge-sources' target='_blank'>Knowledge sources for declarative agents</a>."></div>
 
 
 
