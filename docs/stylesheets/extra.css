@@ -340,3 +340,84 @@ html .md-footer-meta.md-typeset a:hover {
     font-size: 0.8em;
     font-weight: bold;
 }
+
+/* ── choice widget (tab/path selector) ── */
+.ccw-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.ccw-choice-card {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(56, 138, 221, 0.04) 0%, transparent 100%);
+  transition: all 0.2s ease;
+}
+
+.ccw-choice-card:hover {
+  border-color: #378ADD;
+  box-shadow: 0 4px 12px rgba(56, 138, 221, 0.1);
+}
+
+.ccw-choice-card.builder {
+  border-left: 4px solid #378ADD;
+}
+
+.ccw-choice-card.toolkit {
+  border-left: 4px solid #1D9E75;
+}
+
+.ccw-choice-label {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--md-default-fg-color);
+}
+
+.ccw-choice-label::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.ccw-choice-card.builder .ccw-choice-label {
+  color: #378ADD;
+}
+
+.ccw-choice-card.toolkit .ccw-choice-label {
+  color: #1D9E75;
+}
+
+.ccw-choice-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--md-default-fg-color--light, #5F5E5A);
+}
+
+.ccw-choice-desc strong {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+
+.ccw-choice-sep {
+  text-align: center;
+  color: #b0b0b0;
+  font-weight: 300;
+  margin: 12px 0 8px;
+}
+
+@media (max-width: 600px) {
+  .ccw-choice {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
