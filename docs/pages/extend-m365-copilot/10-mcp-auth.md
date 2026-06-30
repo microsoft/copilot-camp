@@ -46,11 +46,6 @@ In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) 
   data-title="Before you begin this lab"
   data-body="If Lab E8 is still running, stop all related terminal processes first (for example Azurite, MCP server, and Inspector). Then close the previous MCP server project window. This lab uses a different OAuth-protected MCP server, so start with a clean terminal/session state to avoid port and configuration conflicts."></div>
 
-<div data-widget="checklist"
-  data-title="Hands-on flow"
-  data-items="Exercise 1~Clone and set up the authenticated MCP server project|Exercise 2~Create Entra app registration and OAuth scope|Exercise 3~Configure .env, Dev Tunnel, and local claims data|Exercise 4~Run OAuth-protected MCP server and validate security behavior|Exercise 5~Create and provision authenticated Declarative Agent|Exercise 6~Test end-to-end authenticated agent flow in Copilot"></div>
-
-
 ## Exercise 1: Set Up Your Development Environment
 
 In this exercise, you'll clone Zava's authenticated MCP server codebase and set up your local development environment.

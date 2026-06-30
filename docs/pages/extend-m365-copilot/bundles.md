@@ -7,7 +7,7 @@ title: Declarative Agent Developer Bundles
      data-badge-color="blue"
      data-title="Declarative Agent Developer Bundles"
      data-subtitle="Complete the mandatory on-ramp first, then choose a focused bundle path based on your goals."
-     data-path="0::Prerequisites (E0)|1::First Declarative Agent (E1)|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors|*F::DA + CLI Tools"></div>
+     data-path="0::Prerequisites (E0)|1::First Declarative Agent (E1)|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
 
 <div data-widget="sectionlabel" data-text="Mandatory on-ramp"></div>
 

@@ -42,11 +42,6 @@ In this lab, you'll run a complete Model Context Protocol (MCP) server for Zava 
 
 ---
 
-<div data-widget="checklist"
-    data-title="Hands-on flow"
-    data-items="Exercise 1~Clone and set up the MCP server project|Exercise 2~Start Azurite and load sample claims data|Exercise 3~Run and validate MCP server endpoints|Exercise 4~Test tools with MCP Inspector and configure Dev Tunnel|Exercise 5~Create a Declarative Agent connected to MCP|Exercise 6~Configure identity, instructions, and manifest|Exercise 7~Provision, test, and debug the integrated agent"></div>
-
-
 ## Exercise 1: Set Up Your Development Environment
 
 In this exercise, you'll clone Zava's MCP server codebase and set up your local development environment.
