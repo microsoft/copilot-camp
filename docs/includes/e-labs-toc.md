@@ -5,42 +5,46 @@
             orchestration</p>
         <ul id="lab-toc">
             <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
-            <li><strong>🔧 Set up</strong>
+            <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/bundles">🧩 Bundle overview</a></strong></li>
+            <li><strong>🚦 Mandatory on-ramp</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Setup</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Prerequisites</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-new">Lab E1 - Your First Declarative Agent</a></li>
                 </ul>
             </li>
-            <li><strong>🧰 Declarative agent fundamentals</strong>
+            <li><strong>🔌 Bundle A - MCP Foundations</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent"> Lab E1 - Build a  Declarative Agent using TypeSpec</a>
-                    </li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator"> Lab E1a - Geo locator game</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-a">Start Bundle A</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server">Lab E8 - Connect Declarative agent to MCP Server</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth">Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
                 </ul>
             </li>
-            <li><strong>🛠️ Build and integrate API from scratch</strong>
+            <li><strong>🕸️ Bundle B - Multi-Agent Workflows in Copilot</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build an API</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent"> Lab E3 - Add Declarative Agent + API</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin"> Lab E4 - Enhance API + Plugin</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-b">Start Bundle B</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent">Lab E9 - Connected Agents</a></li>
+                </ul>
+            </li>
+            <li><strong>🖼️ Bundle C - MCP App</strong>
+                <ul>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-c">Start Bundle C</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/11-mcp-app">Lab E11 - Build an MCP App with Interactive Widgets</a></li>
+                </ul>
+            </li>
+            <li><strong>🧭 Bundle D - API-Based Declarative Agent</strong>
+                <ul>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-d">Start Bundle D</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build a Backend API</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent">Lab E3 - Add Declarative Agent and API Plugin</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin">Lab E4 - Enhance API and Plugin</a></li>
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
-                     <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk"> Lab E6a - Add Authentication</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk">Lab E6a - Add Entra ID Authentication</a></li>
                 </ul>
-            </li>       
-            <li><strong>🔌 Integration</strong>
+            </li>
+            <li><strong>🔗 Bundle E - DA with Connectors</strong>
                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab E7 - Add Copilot Connector</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server"> Lab E8 - Connect Declarative agent to MCP Server</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent"> Lab E9 - Connected Agents</a></li>
-                </ul>
-                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth"> Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/11-mcp-app"> Lab E11 - Build an MCP App with Interactive Widgets</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-e">Start Bundle E</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector">Lab E7 - Add Copilot Connector</a></li>
                 </ul>
             </li>
         </ul>
