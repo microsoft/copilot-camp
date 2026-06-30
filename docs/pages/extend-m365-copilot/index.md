@@ -1,24 +1,58 @@
-# Extend Microsoft 365 Copilot
+---
+title: Extend Microsoft 365 Copilot
+---
 
-**Declarative agents** are a type of agents for Microsoft 365. You can build one by extending Microsoft 365 Copilot. You define custom knowledge and custom actions to create agents tailored to a specific scenario.
+<div data-widget="landinghero"
+     data-badge="🤖 Developer path"
+     data-badge-color="blue"
+     data-title="Extend Microsoft 365 Copilot"
+     data-subtitle="Build customized assistants with Declarative Agents. From fundamentals to production-grade security and rich interactive UI — all in one coherent narrative."
+     data-path="0::Prerequisites (E0)|1::Fundamentals (E-Intro)|2::Build &amp; Integrate|3::Authentication|4::Integration"></div>
 
-Declarative agents use the same infrastructure, orchestrator, foundation model, and security controls as Microsoft 365 Copilot, which ensures a consistent and familiar user experience.
+<div data-widget="dacompare"
+     data-title="What is a Declarative Agent?"
+     data-left-label="Microsoft 365 Copilot (base)"
+     data-left-body="General-purpose AI across your M365 data. No domain focus, no custom tools, no branded identity."
+     data-right-label="Declarative Agent"
+     data-right-body="A focused Copilot persona with custom instructions, domain knowledge, conversation starters, and tool integrations — deployed as an app inside M365 for your organization."
+     data-note="Think of it like this: Copilot is a Swiss Army knife. A Declarative Agent is a scalpel — same AI foundation, purpose-built for one job. The three artefacts that define it are &lt;code&gt;manifest.json&lt;/code&gt; (Teams app identity), &lt;code&gt;declarativeAgent.json&lt;/code&gt; (persona + instructions), and optionally &lt;code&gt;ai-plugin.json&lt;/code&gt; (tools/actions)."></div>
 
-![Declarative agent architecture diagram. At the very basis there is the foundational model of Microsoft 365 Copilot, as well as the same orchestrator. The agent provides also custom knowledge and grounding data, and custom skills as actions, triggers, and workflows.. The user experience is available in Microsoft 365 Copilot.](../../assets/images/m365-declarative-agent.png)
+## What you're going to build
 
-## What you're going to do
+In the Extend Path of Copilot Developer Camp, you first complete a mandatory on-ramp, then choose a bundle based on your implementation style and scenario.
 
-During Extend Path of the Copilot Developer Camp, you will construct a customized assistant tailored for a Human Resources department. The process will begin with understanding the fundamentals on creating a declarative agent, the creation of a basic declarative agent, and progress towards developing fully skilled assistant.
-This advanced assistant will be equipped with security features, including authentication mechanism linked to the Microsoft 365 tenant to get organizational data.
+Your journey is:
 
-| Section                            | Purpose                                                 |
-| ---------------------------------- | ------------------------------------------------------- |
-| **Setup**                          | Gets you ready with prerequisites.                    |
-| **Declarative Agent Fundamentals** | Focuses on declarative agent concepts, start with a base template and explore more. |
-| **Build and Integrate API**        | Covers API creation and connecting API to agents. Upgrade the user interface with Adaptive cards.         |
-| **Authentication**                 | Contains all auth-related labs as sub-items.            |
-| **Integration**                    | Expands capability with Copilot connectors, etc.                |
+- **Mandatory on-ramp: E0 + E1** — Set up your environment and build your first Declarative Agent
+- **Then choose your bundle:**
+     - **Bundle A — MCP Foundations** — Build, connect, and secure an MCP server with OAuth 2.0 and Entra ID
+     - **Bundle B — Multi-Agent Workflows** — Compose connected agents and orchestrate multi-agent workflows inside Copilot
+     - **Bundle C — MCP App** — Extend an MCP server with React + Fluent UI interactive widgets
+     - **Bundle D — API-Based Declarative Agent** — Build a Declarative Agent that retrieves data from a custom API (not MCP)
+     - **Bundle E — Declarative Agents with Copilot Connectors** — Ground your agent using connectors for domain relevance
+     <!-- - **Bundle F — DA + CLI Tools** — Build, validate, and evaluate using CLI-first workflows (coming soon) -->
 
-## [Start here](./00-prerequisites) with Lab E0, where you'll set up development your environment
+
+
+<div data-widget="sectionlabel" data-text="Learning path sections"></div>
+
+| Section                            | Labs | Focus                                                 |
+| ---------------------------------- | ---- | ------------------------------------------------------- |
+| **Mandatory On-ramp**              | E0 + E1  | Complete prerequisites and build your first Declarative Agent before any bundle |
+| **Bundle A — MCP Foundations**     | E8 + E10 | Build, connect, and secure an MCP server with OAuth 2.0 and Entra ID |
+| **Bundle B — Multi-Agent Workflows**  | E8 + E9 | Compose connected agents and orchestrate multi-agent workflows inside Copilot |
+| **Bundle C — MCP App**     | E11 | Extend an MCP server with React + Fluent UI interactive widgets |
+| **Bundle D — API-Based Declarative Agent**  | E2 + E3 + E4 + E5 + E6a | Build a Declarative Agent that retrieves data from a custom API (not MCP) |
+| **Bundle E — Declarative Agents with Copilot Connectors**  | E2 + E3 + E4 + E7 | Ground your agent using connectors for domain relevance |
+<!-- | **Bundle F — DA + CLI Tools**      | E12 + E13 (coming soon) | Build, validate, and evaluate using CLI-first workflows | -->
+
+---
+
+## Start here with prerequisites
+
+<div data-widget="onramp"
+     data-title="Get your environment ready"
+     data-sub="One focused lab prepares your machine and builds your mental model. Time: ~45 min."
+     data-steps="Prerequisites &amp; Concepts::preq::Lab E0 — Prerequisites &amp; Concepts::Install every tool, verify every version, and understand MCP, Dev Tunnels, Azurite, and Declarative Agents before building anything.::Go to Lab E0::00-prerequisites"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />

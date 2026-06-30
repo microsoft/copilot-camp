@@ -1,6 +1,24 @@
 
 # Lab E3 - Add a declarative agent and API plugin
 
+<div data-widget="hero"
+  data-badge="Bundle C/D Core · Lab E3"
+  data-badge-color="teal"
+  data-icon="🧭"
+  data-title="Add Declarative Agent and API Plugin"
+  data-subtitle="Connect the API from E2 to a Declarative Agent and add focused SharePoint knowledge for grounded responses."
+  data-time="45-60 min"
+  data-requires="Lab E2"
+  data-toolkit="Declarative Agent + API plugin"></div>
+
+<div data-widget="checklist"
+  data-items="Declarative agent added to project~Configured persona, starters, and instructions|API plugin wired to agent actions~Connected trey-plugin.json and operation mappings|Focused knowledge configured~SharePoint content added as agent capability"></div>
+
+## Key concepts before you build
+
+<div data-widget="concepts"
+  data-cards="Capability composition::purple::Actions plus knowledge::Declarative agents can blend API actions with focused content sources for better answer quality and task support.||Plugin contract::green::Operation metadata guides tool use::The plugin manifest and OpenAPI definitions tell Copilot what actions exist and how to call them.||Grounding scope::amber::Constrain to trusted sources::By targeting a specific SharePoint site, the agent retrieves focused documents instead of broad tenant-wide content."></div>
+
 In this lab you will add a declarative agent which is grounded in the API plugin you created in the previous lab, as well as in specific SharePoint files
 
 <div class="lab-intro-video">
@@ -9,7 +27,7 @@ In this lab you will add a declarative agent which is grounded in the API plugin
         </iframe>
           <div>Get a quick overview of the lab in this video.</div>
               <div class="note-box">
-            📘 <strong>Note:</strong> This lab builds on the previous one, Lab E2. You should be able to continue working in the same folder for labs E2-E6, but solution folders have been provided for your reference.
+            📘 <strong>Note:</strong> This lab builds on the previous one, Lab E2. You should be able to continue working in the same folder for labs E2-E6a, but solution folders have been provided for your reference.
     The finished solution for this lab is in the <a src="https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END" target="_blank">/src/extend-m365-copilot/path-e-lab03-build-declarative-agent/trey-research-lab03-END</a> folder.
         </div>
         </div>
@@ -342,7 +360,6 @@ If you go back to your VS Code project under "Terminal", you will also see how t
 ---8<--- "e-congratulations.md"
 
 You've completed adding a declarative agent to your API plugin. You are now ready to enhance your API and the plugin for your agent. 
-
-<cc-next />
+<div data-widget="labnav"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />

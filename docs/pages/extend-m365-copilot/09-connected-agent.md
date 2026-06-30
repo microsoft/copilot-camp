@@ -1,6 +1,24 @@
 # Lab 09: Connected Agents - Zava's Multi-Agent Claims Orchestration
 
-In this lab, you'll build a multi-agent orchestration system for Zava Insurance. First, you'll create a **Zava Procurement** agent with embedded contractor pricing knowledge for instant pricing intelligence. Then, you'll create a **Zava Care** orchestrator agent that connects both **Zava Procurement** and **Zava Claims Assistant** (from Lab 08), enabling claims adjusters to access embedded pricing data and real-time claims information from the MCP server through a single, unified conversational interface.
+<div data-widget="hero"
+    data-badge="Bundle B · Lab E9"
+    data-badge-color="coral"
+    data-icon="🕸️"
+    data-title="Build Connected Agent Orchestration"
+    data-subtitle="Create specialized agents and orchestrate them together so users get unified answers across pricing knowledge and live claims systems."
+    data-time="120+ min"
+    data-requires="Lab E8 (project running)"
+    data-toolkit="Connected agents + embedded knowledge"></div>
+
+<div data-widget="checklist"
+    data-items="Specialized procurement agent created~EmbeddedKnowledge configured with pricing content|Orchestrator agent connected to multiple agents~Zava Care routes across procurement and claims capabilities|Hybrid responses validated~Combined embedded knowledge and MCP-backed live data in one conversation"></div>
+
+## Key concepts before you build
+
+<div data-widget="concepts"
+    data-cards="Connected agent model::coral::Specialists coordinated by an orchestrator::Each agent handles a focused domain while an orchestrator unifies user interaction.||Embedded knowledge::teal::Fast local content grounding::Embedded files provide low-latency retrieval for stable content like pricing and policy references.||Hybrid architecture::blue::Live tools plus static knowledge::Combining MCP tools and embedded sources balances freshness, coverage, and response quality."></div>
+
+In this lab, you'll build a multi-agent orchestration system for Zava Insurance. First, you'll create a **Zava Procurement** agent with embedded contractor pricing knowledge for instant pricing intelligence. Then, you'll create a **Zava Care** orchestrator agent that connects both **Zava Procurement** and **Zava Claims Assistant** (from Lab E8), enabling claims adjusters to access embedded pricing data and real-time claims information from the MCP server through a single, unified conversational interface.
 
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
@@ -35,28 +53,43 @@ For complex business scenarios like insurance claims processing, Connected Agent
 - **Consistent user experience** despite backend complexity
 - **Maintainable architecture** with clear separation of concerns
 
-## 🎯 Lab Objectives
 
-By completing this lab, you will:
+## Scenario
 
-1. **Create a Declarative Agent with embedded knowledge** using contractor pricing documents
-2. **Build a connected orchestrator agent** that coordinates multiple specialized agents
-3. **Test multi-agent orchestration** by combining real-time MCP data with embedded knowledge
-4. **Understand hybrid AI architectures** that leverage both live data sources and static knowledge bases
+![image of scenario flow](../../assets/images/extend-m365-copilot-09/flow.png)
 
 ---
 
-## 📚 Prerequisites
+## Exercise 1: Verify Your Lab E8 Environment
 
-Before starting this lab, ensure you have:
+Before building the connected agents, confirm that your Lab E8 MCP server is still running and the **Zava Claims** agent is responding. This lab depends on it.
 
-- **Completed Lab 8**: Zava's Declarative Agent with MCP server integration working properly
-- **Microsoft 365 Agents Toolkit** Pre-release version (For Embedded Knowledge)
-- **Active Microsoft 365 Copilot license** for testing 
+### Step 1: Start the MCP server and dev tunnel
+
+1. Open the **ZavaClaims** project from Lab E8 in VS Code
+2. Confirm **Azurite** is running (check the status bar or re-run the task if needed)
+3. In the terminal, start the MCP server if it isn't already running:
+   ```bash
+   npm run start:mcp-http
+   ```
+4. Confirm your **dev tunnel** is active and the public URL is reachable. If it has expired, restart it from the **Microsoft 365 Agents Toolkit** panel → **Lifecycle** → **Start tunnel**
+
+<cc-end-step lab="e9" exercise="1" step="1" />
+
+### Step 2: Confirm the agent is working
+
+1. Open a browser and go to [https://m365.cloud.microsoft/chat/](https://m365.cloud.microsoft/chat/){target=_blank}
+2. Under **Agents**, find your **Zava Claims** agent from Lab E8
+3. Send a quick test message: *"Show me all open claims"*
+4. Confirm the agent responds with live claims data from the MCP server
+
+If the agent is not responding or returns errors, revisit [Lab E8](./08-mcp-server.md) to restore the environment before continuing.
+
+<cc-end-step lab="e9" exercise="1" step="2" />
 
 ---
 
-## Exercise 1: Create a New Declarative Agent for Embedded knowledge
+## Exercise 2: Create a New Declarative Agent for Embedded knowledge
 
 
 In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that will use files stored locally in the project
@@ -70,44 +103,47 @@ In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new De
 5. Select **"Declarative Agent"** from the template options
 6. Select **"No Action"** from the options
 7. Select **Default folder**
-8. Enter the application name - `Zava Procurement`
-
-This will create the new agent and open up the project in a new VS Code window.
-
-  <cc-end-step lab="e9" exercise="1" step="1" />
-
-### Step 2: Understand how to embed files 
-
-Navigate to the `appPackage` folder and explore its contents. You'll recognize familiar files from your previous declarative agent work: the `manifest.json` file (which defines your agent's capabilities) and the `declarativeAgent.json` file (which configures your agent's behavior).
-
-The key addition you'll notice is the `EmbeddedKnowledge` folder. This is where you'll store Zava's contractor pricing data files that will be embedded directly into your agent, enabling instant access to pricing intelligence without requiring live database queries.
-
-!!! note
-    Sample PDF files without sensitivity labels are provided for testing purposes. If you choose to test with your own files—especially Office documents—ensure they comply with the sensitivity labels configured in your tenant.
-
-  <cc-end-step lab="e9" exercise="1" step="2" />
-
-## Exercise 2: Configure the Agent for Zava's contractor procurement knowledge
-
-### Step 1: Download files to your machine
-Go to [this url](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&filename=EmbeddedKnowledge){target=_blank} and extract all files into the `appPackage/EmbeddedKnowledge` folder inside your newly created declarative agent project.
+8. Enter the application name - `Zava Procurement`. This will create the new agent and open up the project in a new VS Code window.
 
 
   <cc-end-step lab="e9" exercise="2" step="1" />
 
-### Step 2: Update Agent Identity and Description
+### Step 2: Download files to your machine
 
-Replace the content of `appPackage/declarativeAgent.json` with below configuration:
+Go to [this url](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&filename=EmbeddedKnowledge){target=_blank} and extract all files.
 
+<cc-end-step lab="e9" exercise="2" step="2" />
+
+### Step 3: Understand how to add Embedded Knowledge Capability
+
+1. Within this new project, go to the **Microsoft 365 Agents Toolkit** icon 1️⃣ in the Activity Bar (left sidebar) again
+2. Go to **Development** 2️⃣ section and select **Add Capability**, 3️⃣ choose **Embedded Knowledge** 4️⃣.
+
+
+![image of adding capability](../../assets/images/extend-m365-copilot-09/flow-embed.png)
+
+3. Choose the **manifest.json** file as selected by default.
+4. Select the downloaded EmbeddedKnowledge folder (extracted) and select all files to load. 
+5. Continue loading and once done, you will have a new folder under **appPackage** called **EmbeddedKnowledge** with files as shown in the image below:
+
+![image of file structure](../../assets/images/extend-m365-copilot-09/file-structure.png)
+
+<cc-end-step lab="e9" exercise="2" step="3" />
+
+## Exercise 3: Configure the Agent for Zava's contractor procurement knowledge
+
+### Step 1: Update Agent Identity and Description
+
+Replace the content of `appPackage/declarativeAgent.json` with below configuration to add conversation starters:
 
 ```json
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json",
-    "version": "v1.6",
-    "name": "Zava Procurement",
-    "description": "An agent that helps insurance adjusters streamline the search of the right procurement information by leveraging embedded knowledge from Zava approved partners' network of trusted contractors and service providers.",
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json",
+    "version": "v1.7",
+    "name": "Zava Procurement${{APP_NAME_SUFFIX}}",
+    "description": "Declarative agent created with Microsoft 365 Agents Toolkit",
     "instructions": "$[file('instruction.txt')]",
-    "conversation_starters": [
+     "conversation_starters": [
         {
             "title": "Water damage restoration pricing",
             "text": "What are the rates for emergency water extraction and drying services?"
@@ -154,9 +190,10 @@ Replace the content of `appPackage/declarativeAgent.json` with below configurati
     ]
 }
 ```
-  <cc-end-step lab="e9" exercise="2" step="2" />
 
-### Step 3: Create Detailed Agent Instructions
+<cc-end-step lab="e9" exercise="3" step="1" />
+
+### Step 2: Create Detailed Agent Instructions
 
 ```txt
 # Role and Purpose
@@ -211,28 +248,15 @@ When answering queries:
 !!! warning "Responsible AI Content Guidelines"
     If you encounter errors indicating that your "Declarative Copilot content violates Responsible AI guidelines", try simplifying the instructions. Remove complex role-playing scenarios, reduce detailed procedural steps, or use more neutral language. Start with basic task descriptions and gradually add complexity until you identify what triggers the violation.
 
-  <cc-end-step lab="e9" exercise="2" step="3" />
+<cc-end-step lab="e9" exercise="3" step="2" />
 
-### Step 4: Update the Teams App Manifest
+### Step 3: Update the Teams App Manifest
 
-Open `appPackage/manifest.json` and update it with Zava's branding:
+Open `appPackage/manifest.json` and update **name** and **description** with Zava's branding:
 
 ```json
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.23",
-    "version": "1.0.0",
-    "id": "${{TEAMS_APP_ID}}",
-    "developer": {
-        "name": "Microsoft 365 Cloud Advocates",
-        "websiteUrl": "https://www.example.com",
-        "privacyUrl": "https://www.example.com/privacy",
-        "termsOfUseUrl": "https://www.example.com/termofuse"
-    },
-    "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
-    },
+....
     "name": {
         "short": "Zava Procurement${{APP_NAME_SUFFIX}}",
         "full": "Full name for Zava Procurement"
@@ -241,27 +265,13 @@ Open `appPackage/manifest.json` and update it with Zava's branding:
         "short": "Get procurement data from embedded knowledge with Zava Procurement",
         "full": "Zava Procurement helps you access procurement data seamlessly within Microsoft 365 apps by leveraging embedded knowledge."
     },
-    "accentColor": "#FFFFFF",
-    "composeExtensions": [],
-    "permissions": [
-        "identity",
-        "messageTeamMembers"
-    ],
-    "copilotAgents": {
-        "declarativeAgents": [            
-            {
-                "id": "declarativeAgent",
-                "file": "declarativeAgent.json"
-            }
-        ]
-    },
-    "validDomains": []
+   ....
 }
 ```
 
-<cc-end-step lab="e9" exercise="2" step="4" />
+<cc-end-step lab="e9" exercise="3" step="3" />
 
-## Exercise 3: Test the Agent Integration
+## Exercise 4: Test the Agent Integration
 
 Test your Declarative Agent to ensure it can successfully retrieve contractor pricing data from it's native embedded knowledge.
 
@@ -274,7 +284,7 @@ In VS Code with your project open:
 2. Click **"Provision"** in the Lifecycle section
 4. Wait for provisioning to complete - this creates and uploads the agent package
 
-<cc-end-step lab="e9" exercise="3" step="1" />
+<cc-end-step lab="e9" exercise="4" step="1" />
 
 ### Step 2: Test in Microsoft 365 Copilot
 
@@ -286,12 +296,12 @@ In VS Code with your project open:
    - "Which contractors offer 24/7 emergency response and what are their rates?"
 
 
-  <cc-end-step lab="e9" exercise="3" step="2" />
+  <cc-end-step lab="e9" exercise="4" step="2" />
 
   ---
 
 
-## Exercise 4: Build the Orchestrator Agent 
+## Exercise 5: Build the Orchestrator Agent 
 
 In this exercise, you'll create a Connected Agent that orchestrates your existing Zava agents into a unified claims processing experience.
 
@@ -307,7 +317,7 @@ In this exercise, you'll create a Connected Agent that orchestrates your existin
 
 This creates a new Declarative Agent project, which you will then use to connect your existing two agents.
 
-<cc-end-step lab="e9" exercise="4" step="1" />
+<cc-end-step lab="e9" exercise="5" step="1" />
 
 ### Step 2: Update Agent Identity and Description
 
@@ -315,165 +325,71 @@ Replace the content of `appPackage/declarativeAgent.json` with Zava's configurat
 
 ```json
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json",
-    "version": "v1.6",
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json",
+    "version": "v1.7",
     "name": "ZavaCare",
-    "description": "An intelligent agent that helps you manage and process insurance claims efficiently. Get instant answers about claim status, policy details, and streamline your claims workflow.",
+    "description": "Declarative agent created with Microsoft 365 Agents Toolkit",
     "instructions": "$[file('instruction.txt')]",
     "conversation_starters": [
         {
-            "title": "End-to-End Claims Processing",
-            "text": "For all moderate-severity roof or water damage claims , group them by city and propose contractor assignments using our approved network. For each claim, estimate the repair cost using current pricing for inspection, repair, and materials, and highlight where contractor selection changes the total cost by more than 15%."
-        },
-        {
-            "title": "Contractor Recommendations for Emergency Roof Damage",
+            "title": "Open roof damage claims ",
             "text": "Find all open roof damage claims that require emergency work, then recommend the top three approved contractors with 24/7 response coverage and include their latest pricing for tarping and temporary roof repairs. Prioritize by claim severity and estimated loss"
-        },
-        {
-            "title": "Emergency Response Coordination",
-            "text": "Find urgent claims needing immediate attention and match with emergency contractor pricing"
         }
     ]
 }
 
 ```
-<cc-end-step lab="e9" exercise="4" step="2" />
+
+<cc-end-step lab="e9" exercise="5" step="2" />
 
 ### Step 3: Create Detailed Agent Instructions
 
 Update `appPackage/instruction.txt` with comprehensive instructions for the agent:
 
 ```plaintext
-You are the Zava Claims Assistant, an intelligent agent designed to help Zava insurance employees manage claims efficiently by coordinating with specialized worker agents and providing comprehensive claims management support.
+You are ZavaCare, an orchestrator agent for Zava Insurance. You coordinate two specialist agents to answer questions about claims and contractor costs. Never fabricate data — always delegate to the right agent.
 
-    ## CORE CAPABILITIES
+## Your specialist agents
 
-    You have access to two specialized connected agents:
-    1. **Zava Claims** - Handles claims, inspections, contractors, and purchase orders
-    2. **Zava Procurement** - Provides up-to-date contractor pricing information
+**Zava Claims** — use for anything about live claims data:
+- Finding, filtering, and summarising claims by status, damage type, city, or date
+- Retrieving inspections linked to a claim
+- Listing approved contractors and their availability
+- Checking purchase order status
 
-    ## PRIMARY RESPONSIBILITIES
+**Zava Procurement** — use for contractor pricing from three approved vendors:
+- **Pacific Water Restoration** — water extraction, drying, mold remediation, flood restoration
+- **Thompson Roofing Solutions** — roofing repairs, emergency tarping, shingle replacement, storm damage
+- **Wilson General Contractors** — structural repairs, foundation work, general construction and renovation
 
-    ### Claims Management
-    - Retrieve and display claim information and status
-    - Provide comprehensive claim details including policy information, damage assessments, and timelines
-    - Answer questions about claim history and current status
-    - create, delete, update claims
+## Routing rules
 
-    ### Inspection Operations
-    - Retrieve existing inspection records and details
-    - Create new inspection requests for claims
-    - Update or delete inspections
-    - Provide inspection status updates and findings
-    - Coordinate inspection scheduling and documentation requirements
+| User asks about | Delegate to |
+|---|---|
+| Claim status, inspections, contractor lists | Zava Claims |
+| Pricing, rate sheets, cost estimates | Zava Procurement |
+| "Recommend a contractor with pricing" or similar | Both — get the contractor list from Zava Claims, rates from Zava Procurement |
 
-    ### Contractor Management
-    - Access approved contractor lists for specific types of repairs
-    - Retrieve contractor qualifications, certifications, and service areas
-    - Provide contractor availability and emergency response capabilities
-    - Get up-to-date pricing information for contractor services via the Zava Procurement agent
+## Example
 
-    ### Purchase Order Processing
-    - Retrieve purchase order information and status
-    - Access PO details including contractor assignments, costs, and timelines
-    - Track PO approvals and completion status
+**User:** "We have emergency storm claims from late June in Seattle and Tacoma — list the open urgent roof and wind damage claims ranked by estimated loss, then estimate response costs using Thompson Roofing's emergency rates."
 
-    ## WORKFLOW GUIDELINES
+**Your approach:**
+1. Ask **Zava Claims** for all open or under-investigation roof and wind damage claims filed after June 25, 2026, filtered to Seattle, Tacoma, and surrounding WA cities.
+2. Sort results by `estimatedLoss` descending and flag any with "URGENT" in the notes.
+3. Ask **Zava Procurement** for Thompson Roofing Solutions' emergency tarping and temporary repair rates.
+4. For each top claim, multiply the relevant rate by a rough scope estimate and present as a cost band.
+5. Return a table: Claim # · Policyholder · City · Damage type · Estimated loss · URGENT flag · Estimated response cost.
 
-    ### When Users Ask About Claims
-    1. Use the Zava Claims agent to retrieve claim information
-    2. Provide clear, organized summaries of claim status, coverage, and next steps
-    3. If pricing questions arise, consult the Zava Procurement agent for current rates
+## Response format
 
-    ### When Users Ask About Inspections
-    1. **For retrieving inspections**: Use the Zava Claims agent to get inspection records
-    2. **For creating inspections**: Use the Zava Claims agent to submit new inspection requests
-    3. Always confirm inspection details with the user before creating new requests
-    4. Provide clear documentation requirements and scheduling information
-
-    ### When Users Ask About Contractors
-    1. Use the Zava Claims agent to get approved contractor lists
-    2. Filter contractors based on user requirements (service type, location, availability)
-    3. **For pricing information**: ALWAYS use the Zava Procurement agent to get current rates
-    4. Present contractor options with relevant details: certifications, response times, and pricing
-
-    ### When Users Ask About Purchase Orders
-    1. Use the Zava Claims agent to retrieve PO information
-    2. Provide comprehensive PO details including contractor, costs, timeline, and status
-    3. Clarify any approval requirements or pending actions
-
-    ### When Users Ask About Pricing
-    1. **ALWAYS** use the Zava Procurement agent for up-to-date contractor pricing
-    2. Specify the service type clearly when requesting pricing information
-    3. Present pricing in context with contractor qualifications and availability
-    4. Compare pricing options when multiple contractors are available
-
-    ## RESPONSE GUIDELINES
-
-    **ALWAYS:**
-    - Coordinate with the appropriate worker agent(s) to fulfill user requests
-    - Provide clear, concise, and well-organized information
-    - Cite sources when presenting data (e.g., claim numbers, contractor names, dates)
-    - Confirm understanding before creating new records (inspections, etc.)
-    - Present pricing information from the Zava Procurement agent when discussing costs
-    - Offer relevant next steps or follow-up actions
-
-    **NEVER:**
-    - Make up or guess information about claims, inspections, or contractors
-    - Provide outdated pricing - always check with the Zava Procurement agent
-    - Create inspections without confirming details with the user
-    - Override standard claims procedures or approval workflows
-    - Share confidential information beyond what's necessary for the request
-
-    ## COMMUNICATION STYLE
-
-    - Be professional, empathetic, and efficient
-    - Use clear insurance terminology but explain technical terms when needed
-    - Organize complex information into easy-to-read sections
-    - Acknowledge user urgency for emergency situations
-    - Provide proactive suggestions based on the context of the request
-
-    ## EXAMPLE INTERACTIONS
-
-    **Example 1: Emergency Contractor Pricing**
-    User: "Which contractors offer 24/7 emergency response and what are their rates?"
-    Response: "Let me get you the current information on emergency response contractors and their pricing."
-    [Consult Zava Claims for contractor list, then Zava Procurement for pricing]
-    "Based on current data:
-    - ABC Restoration: 24/7 emergency response, $X/hour emergency rate
-    - XYZ Emergency Services: 24/7 on-call, $Y/hour emergency rate
-    All pricing verified as of [date] through our procurement system."
-
-    **Example 2: Searching for Claims and Creating New Ones**
-    User: "Is there a claim for policy number POL-12345?"
-    Response: "Let me search for any claims associated with policy POL-12345."
-    [Consult Zava Claims to search for claims by policy number]
-    
-    *If claim exists:*
-    "Yes, I found claim #CLM-67890 for policy POL-12345:
-    - Status: In Progress
-    - Type: Water Damage
-    - Filed: [date]
-    - Current Phase: Inspection Scheduled
-    Would you like more details about this claim?"
-    
-    *If no claim exists:*
-    "I couldn't find any existing claims for policy POL-12345. Would you like to create a new claim? I can help you with that. Please provide:
-    - Type of damage/incident
-    - Date of incident
-    - Brief description of the damage
-    - Estimated damage amount (if known)"
-
-    ## PRIORITY HANDLING
-
-    When users mention emergency situations or urgent claims:
-    1. Acknowledge the urgency immediately
-    2. Prioritize gathering critical information first
-    3. Identify contractors with emergency response capabilities
-    4. Provide fastest available options with clear timelines
+- Lead with a direct summary or table
+- Cite the source for each data point (e.g. "per Zava Claims", "per Zava Procurement / Thompson Roofing")
+- For multi-step requests, state your plan in one sentence before executing
+- Flag missing data rather than guessing
 ```
 
-<cc-end-step lab="e9" exercise="4" step="3" />
+<cc-end-step lab="e9" exercise="5" step="3" />
 
 ### Step 4: Configure Connected Agent Capabilities
 
@@ -481,7 +397,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 
 #### 4.1: Get the Zava Claims Agent ID
 
-1. **Open your ZavaClaims project** (created in Lab 08) in VS Code
+1. **Open your ZavaClaims project** (created in Lab E8) in VS Code
 2. Navigate to the `env/.env.dev` file
 3. Find the `M365_TITLE_ID` value (looks like: `12345678-abcd-1234-abcd-123456789abc`)
 4. **Copy this entire GUID** and paste it somewhere safe - label it as **Claims Agent ID**
@@ -536,9 +452,9 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 
 7. **Save the file** - your orchestrator agent is now connected to both specialized agents!
 
-<cc-end-step lab="e9" exercise="4" step="4" />
+<cc-end-step lab="e9" exercise="5" step="4" />
 
-## Exercise 5: Test Connected Agent Orchestration
+## Exercise 6: Test Connected Agent Orchestration
 
 ### Step 1: Provision the Connected Agent
 
@@ -546,7 +462,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 2. Click **"Provision"** in the Lifecycle section  
 3. Wait for provisioning to complete
 
-<cc-end-step lab="e9" exercise="5" step="1" />
+<cc-end-step lab="e9" exercise="6" step="1" />
 
 ### Step 2: Test Multi-Agent Workflows
 
@@ -560,17 +476,19 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 Find me all open roof damage claims along with contractor pricing insights.
 ```
 Test the conversation starters of this agent as well to understand how multi-agent co-ordination works.
+Notice how Zava Care orchestrated calls to both the Zava Claims agent 1️⃣ for live claims data and the Zava Procurement agent 2️⃣ for contractor pricing — demonstrating seamless multi-agent collaboration. 
 
-<cc-end-step lab="e9" exercise="5" step="2" />
+![image of orchestration](../../assets/images/extend-m365-copilot-09/demo.png)
+<cc-end-step lab="e9" exercise="6" step="2" />
 
 ## Congratulations! 🎉
 
-You've successfully built Zava Insurance's Connected Agent orchestration system! This achievement represents the culmination of a sophisticated multi-agent architecture that represents the future of enterprise AI systems - specialized, coordinated, and infinitely extensible! 🚀
+You've successfully built Zava Insurance's Connected Agent orchestration system!
 
 
 <cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
 <cc-award badgeId="ConnectionChampion" badgeName="Connection Champion" />
 
-<cc-next />
+<div data-widget="labnav"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend/09-connected-agent" />

@@ -1,6 +1,24 @@
 
 # Lab E2 - Build an API
 
+<div data-widget="hero"
+  data-badge="Bundle C/D Core · Lab E2"
+  data-badge-color="blue"
+  data-icon="🛠️"
+  data-title="Build a Backend API"
+  data-subtitle="Set up the Trey Research Azure Functions API and run it locally as the foundation for API-based Declarative Agent labs."
+  data-time="45-60 min"
+  data-requires="E0 + E1 "
+  data-toolkit="Node.js 22 + Agents Toolkit"></div>
+
+<div data-widget="checklist"
+  data-items="API project running locally~Azure Functions host starts successfully|Sample data available via Azurite~Local table storage emulator is wired and seeded|REST endpoints verified~Validated /me and consultant/project queries through HTTP tests"></div>
+
+## Key concepts before you build
+
+<div data-widget="concepts"
+  data-cards="API-first agent pattern::blue::Backend before agent wiring::In Bundles C and D, the API is implemented first so actions can later be mapped cleanly into plugin operations.||Local cloud emulation::coral::Azurite for fast iteration::Azurite simulates Azure Table Storage locally so you can test data-backed workflows without cloud deployment.||Function app surface::teal::Operations exposed as REST::The HTTP routes you validate in this lab become the operations the Declarative Agent will call in following labs."></div>
+
 In this lab you will set up an API based on Azure Functions and install it as an API plugin for Microsoft 365 Copilot.
 <div class="lab-intro-video">
     <div style="flex: 1; min-width: 0;">
@@ -15,7 +33,7 @@ In this lab you will set up an API based on Azure Functions and install it as an
 
 ## Introduction
 
-In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the `/api/consultants` path) and about the current user (using the `/api/me` path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6](./06a-add-authentication-ttk.md) you will add authentication and the ability to access the logged in user.
+In this lab you will set up a REST API for Trey Research, a hypothetical consulting company. It provides API's for accessing information about consultants (using the `/api/consultants` path) and about the current user (using the `/api/me` path). For now the API doesn't support authentication, so the current user will always be "Avery Howard"; in [Lab E6a](./06a-add-authentication-ttk.md) you will add authentication and the ability to access the logged in user.
 
 The code consists of Azure Functions written in TypeScript, backed by a database in Azure Table storage. When you run the app locally, table storage will be provided by the Azurite storage emulator.
 
@@ -36,12 +54,16 @@ This lab calls for a couple of additional prerequisites; please install them now
 
 ### Step 2: Download the starting application
 
-Begin by downloading the source code zip file for the base project using [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api){target=_blank}
+Begin by downloading the source code for the base project.
+
+[⬇ Download path-e-lab02-build-api.zip](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research&filename=path-e-lab02-build-api){target=_blank}
+
+!!! tip "Download not working?"
+    The download service uses the GitHub API which has a rate limit of 60 requests/hour per IP. If the button above fails, download directly via GitHub: go to the [trey-research folder on GitHub](https://github.com/microsoft/copilot-camp/tree/main/src/extend-m365-copilot/path-e-lab02-build-api/trey-research){target=_blank}, click **Code → Download ZIP**, then extract only the `trey-research` subfolder.
 
 Unzip and copy `path-e-lab02-build-api` folder to a location on your computer where you want to do your work. These instructions will refer to this as the "working folder" going forward.
 
-!!! note
-    The next several labs build on this one, and you should be able to continue working in the same folder for labs E2-E6. At the completion of this lab you will not have changed any of the files visible in Github, so the folder **/src/extend-m365-copilot/path-e-lab02-build-api/trey-research** is the same at the beginning and end of the lab.
+
 
 <cc-end-step lab="e2" exercise="1" step="2" />
 
@@ -142,6 +164,6 @@ Within the Azure Storage Explorer, open the "Emulator & Attached" selection and 
 
 You've successfully built the lab sample API! You can now proceed to make it into a plugin, and expose it via a Declarative agent.
 
-<cc-next />
+<div data-widget="labnav"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/02-build-the-api" />
