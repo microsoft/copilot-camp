@@ -7,14 +7,13 @@ title: Declarative Agent Developer Bundles
      data-badge-color="blue"
      data-title="Declarative Agent Developer Bundles"
      data-subtitle="Complete the mandatory on-ramp first, then choose a focused bundle path based on your goals."
-     data-path="0::Prerequisites (E0)|1::First Declarative Agent (E1)|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
+     data-path="0::Foundation Jump|1::Bundle Prerequisites|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
 
 <div data-widget="sectionlabel" data-text="Mandatory on-ramp"></div>
 
 <div data-widget="onramp"
-     data-title="Complete these two labs first (required)"
-     data-sub="This on-ramp is mandatory for all bundles. Total time: ~75–90 min."
-     data-steps="Prerequisites::prereq::Lab E0 — Prerequisites &amp; Concepts::Install and verify tools, configure tenant settings, and build the core mental model for Declarative Agents and MCP.::Go to Lab E0::../00-prerequisites/|Foundation Path::lab::Lab E1 — Choose Foundation Path::Pick one dedicated foundation lab: E1A (Agent Builder) or E1B (Agents Toolkit), then complete it end-to-end.::Choose E1 Path::../01-first-agent-new/"></div>
+     data-title="Complete this on-ramp first (required)"    
+     data-steps="Foundation::lab::Foundation: Declarative Agents::No-code learners: start in E1A, then continue to E1B. Pro-code learners: jump directly to E1B.::Start Foundation Flow::../01-first-agent-new/|Bundle Prerequisites::prereq::Prerequisites for Procode bundles::Verify tenant setup, tools, and bundle-specific requirements before starting bundle labs.::Complete Prerequisites::../00-prerequisites/"></div>
 
 <div data-widget="sectionlabel" data-text="Learning bundles"></div>
 
@@ -139,4 +138,4 @@ title: Declarative Agent Developer Bundles
      data-start-url="../bundle-f/"></div> -->
 
 <div data-widget="footernote"
-     data-text="Mandatory order: complete On-ramp (E0 + E1A or E1B) first, then pick any bundle."></div>
+     data-text="Mandatory order: no-code path E1A -> E1B -> Prerequisites for Procode bundles, or pro-code path E1B -> Prerequisites for Procode bundles, then pick any bundle."></div>

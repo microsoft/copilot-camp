@@ -157,12 +157,12 @@ Expected result:
 
 ## Complete
 
-You can now continue to **Lab E0 — Prerequisites for Pro-code bundles** before selecting a bundle.
+You can now continue to **Prerequisites for Pro-code bundles** before selecting a bundle.
 
 <div data-widget="labnav"
   data-prev="../01-first-agent-new/"
   data-prev-label="Back to E1 Path Choice"
   data-next="../00-prerequisites/"
-  data-next-label="Continue to Lab E0 - Prerequisites for Pro-code bundles"></div>
+  data-next-label="Continue to Prerequisites for Pro-code bundles"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-toolkit" />

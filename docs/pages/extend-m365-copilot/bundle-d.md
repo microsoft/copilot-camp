@@ -17,7 +17,7 @@ title: "Bundle D — API-Based Declarative Agent: From API to Agent"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers who want the fundamentals first"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Choose this bundle if you want to understand the standard API plugin path before exploring MCP or connector-based grounding."></div>
+     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Choose this bundle if you want to understand the standard API plugin path before exploring MCP or connector-based grounding."></div>
 
 <div data-widget="checklist"
      data-items="A custom backend API wired into a Declarative Agent~You will build the service and connect it progressively|Enhanced responses with Adaptive Cards~You will shape richer outputs after the core API flow works|Authentication added through the toolkit flow~You will end with a more complete production-style API agent"></div>

@@ -15,8 +15,8 @@ title: Extend Microsoft 365 Copilot
 > Declarative agents make it answer only what matters to you.
 > This course takes you from first idea to production deployment — no matter your starting point.
 
-- **✓ No-code soft launch: E1A -> E1B -> Lab E0 -> choose a bundle**
-- **✓ Pro-code jump: start at E1B -> Lab E0 -> choose a bundle**
+- **✓ No-code soft launch: E1A -> E1B -> Prerequisites -> choose a bundle**
+- **✓ Pro-code jump: start at E1B -> Prerequisites -> choose a bundle**
 - **✓ Then choose your bundle: A, B, C, D, or E based on scenario**
 
 
@@ -177,7 +177,7 @@ Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible 
 <div data-widget="onramp"
      data-title="Choose your starting point"
      data-sub="No-code path: E1A -> E1B -> E0 -> bundles. Pro-code path: E1B -> E0 -> bundles."
-     data-steps="Foundation Jump::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Lab E0 — Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Lab E0::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
+     data-steps="Foundation Jump::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Prerequisites::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
 
 ### Bundle Pages
 

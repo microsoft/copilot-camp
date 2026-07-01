@@ -32,7 +32,7 @@ To keep each workflow clean and avoid mixed step confusion, foundation is split 
 - **Lab E1A — Declarative Agent Foundation with Agent Builder** (no-code path)
 - **Lab E1B — Declarative Agent Foundation with Agents Toolkit** (code-first path)
 
-Recommended progression: complete **E1A first, then E1B** to push your limits and build confidence before bundles. After E1B, complete **Lab E0 — Prerequisites for Pro-code bundles**.
+Recommended progression: complete **E1A first, then E1B** to push your limits and build confidence before bundles. After E1B, complete **Prerequisites for Pro-code bundles**.
 
 <div data-widget="checklist"
   data-items="Start where you are::Choose the path that matches your current comfort level|Build confidence first::E1A helps you learn the Copilot Chat workflow quickly|Move into pro-code readiness::E1B prepares you for the majority of bundle labs"></div>
@@ -76,7 +76,7 @@ Best for learners ready for source files, provisioning, and code-first workflows
 ## Next step after E1A or E1B
 
 Best path for most learners: **E1A -> E1B -> E0 -> bundles**.
-If you are already pro-code, you can go directly to **E1B**, then continue to **Lab E0 — Prerequisites for Pro-code bundles**.
+If you are already pro-code, you can go directly to **E1B**, then continue to **Prerequisites for Pro-code bundles**.
 
 <div data-widget="callout"
   data-type="tip"
@@ -87,6 +87,6 @@ If you are already pro-code, you can go directly to **E1B**, then continue to **
   data-prev="../"
   data-prev-label="Back to Welcome"
   data-next="../00-prerequisites/"
-  data-next-label="Continue to Lab E0"></div>
+  data-next-label="Continue to Prerequisites"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-new" />

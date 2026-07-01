@@ -59,7 +59,7 @@ plugins:
                 - Lab E1 - Choose Foundation Path: 'pages/extend-m365-copilot/01-first-agent-new.md'
                 - Lab E1A - Declarative Agent Foundation with Agent Builder: 'pages/extend-m365-copilot/01-first-agent-builder.md'
                 - Lab E1B - Declarative Agent Foundation with Agents Toolkit: 'pages/extend-m365-copilot/01-first-agent-toolkit.md'
-                - Lab E0 - Prerequisites for Pro-code bundles: 'pages/extend-m365-copilot/00-prerequisites.md'
+                - Prerequisites for Pro-code bundles: 'pages/extend-m365-copilot/00-prerequisites.md'
               - Bundle A - MCP Foundations:
                     - Start Bundle A: 'pages/extend-m365-copilot/bundle-a.md'
               - Bundle B - Multi-Agent Workflows in Copilot:

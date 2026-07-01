@@ -17,7 +17,7 @@ title: "Bundle A — MCP Foundations: Build, Connect & Secure"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers new to MCP"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B), then use this bundle if you want the cleanest end-to-end introduction to MCP + Declarative Agents."></div>
+     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B), then use this bundle if you want the cleanest end-to-end introduction to MCP + Declarative Agents."></div>
 
 <div data-widget="checklist"
      data-items="A live MCP server connected to a Declarative Agent~You will run the base Zava integration first|OAuth 2.0 protection on the MCP surface~You will add Entra ID app registration and JWT validation|A strong foundation for the advanced MCP tracks~Bundle B builds naturally on this sequence"></div>

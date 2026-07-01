@@ -17,7 +17,7 @@ title: "Bundle F — DA + CLI Tools: Build, Validate, Evaluate"
 <div data-widget="callout"
      data-type="info"
      data-title="Placeholder bundle"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). This bundle is a scaffold for upcoming CLI-focused labs."></div>
+     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). This bundle is a scaffold for upcoming CLI-focused labs."></div>
 
 <div data-widget="checklist"
      data-items="CLI-first developer workflow~Run tools and checks primarily from terminal commands|Inspection loop with WIQD-style tooling~Validate DA behavior and tool wiring quickly|Evaluation loop with Evals tooling~Measure response quality and iterate on prompts/tools"></div>

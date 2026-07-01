@@ -17,7 +17,7 @@ title: "Bundle B — Multi-Agent Workflows in Copilot"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers extending the MCP experience"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Then use this bundle if you want routing across connected agents and a richer MCP app surface, not just a basic tool call flow."></div>
+     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Then use this bundle if you want routing across connected agents and a richer MCP app surface, not just a basic tool call flow."></div>
 
 <div data-widget="checklist"
      data-items="Connected-agent orchestration over MCP foundations~You will establish the base MCP flow before composing agents|A scalable MCP path with full orchestration~This bundle covers the deepest MCP orchestration pattern in the track"></div>

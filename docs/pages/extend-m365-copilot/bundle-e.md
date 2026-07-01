@@ -17,7 +17,7 @@ title: "Bundle E — Declarative Agents with Copilot Connectors"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers focused on grounded responses"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Choose this bundle if you want the agent to answer from indexed data sources instead of relying only on API actions."></div>
+     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Choose this bundle if you want the agent to answer from indexed data sources instead of relying only on API actions."></div>
 
 <div data-widget="checklist"
      data-items="A solid API-backed Declarative Agent core~You will reuse the same fundamentals as Bundle C through E4|Connector-based grounding on top of that core~You will ingest and index data before testing grounded answers|A path tuned for enterprise knowledge scenarios~This is the bundle for search and grounding rather than MCP"></div>

@@ -1,5 +1,5 @@
 ---
-title: Lab E0 — Prerequisites for Pro-code bundles
+title: Prerequisites for Pro-code bundles
 ---
 
 <div data-widget="hero"
