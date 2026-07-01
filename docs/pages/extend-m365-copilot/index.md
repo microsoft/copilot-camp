@@ -50,7 +50,7 @@ The non-developer discovers that natural language *is* the interface, and that a
 
 ---
 
-### Mandatory On-ramp — Foundation on building a declarative agents + Prerequisites for Pro-code bundles
+### Mandatory On-ramp — Fundamentals + Prerequisites for Pro-code bundles
 
 **Start here, no exceptions.**
 
@@ -177,7 +177,7 @@ Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible 
 <div data-widget="onramp"
      data-title="Choose your starting point"
      data-sub="No-code path: E1A -> E1B -> Prerequisites for Pro-code bundles -> bundles. Pro-code path: E1B -> Prerequisites for Pro-code bundles -> bundles."
-     data-steps="Foundation on building a declarative agent::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Prerequisites::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
+     data-steps="Fundamentals::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Prerequisites::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
 
 ### Bundle Pages
 
