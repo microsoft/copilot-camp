@@ -1,11 +1,11 @@
 ---
-title: Lab E0 — Prerequisites & Concepts
+title: Lab E0 — Prerequisites for Pro-code bundles
 ---
 
 <div data-widget="hero"
      data-badge-color="amber"
      data-icon="🔧"
-     data-title="Prerequisites & Concepts"
+     data-title="Prerequisites for Pro-code bundles"
      data-subtitle="Install every tool, understand the core concepts, and see exactly what each bundle will build — before writing a single line of code."
      data-time="45–60 min"
      data-requires="M365 admin account required"
@@ -26,10 +26,12 @@ Few concepts appear across every bundle. Read this once — it will save hours o
 
 Pick the bundle that matches your scenario. Each diagram shows exactly what you will wire together and what extra prerequisites you need.
 
+Complete this lab after E1A or E1B and before you start any bundle.
+
 <div data-widget="checklist"
      data-title="Common prerequisites (all bundles)"
      data-variant="soft"
-     data-items="Global Admin access in your M365 tenant~Required to configure tenant-wide app and policy settings|Complete Lab E0 + one foundation path (E1A or E1B)~Required for every bundle|VS Code with Microsoft 365 Agents Toolkit~Sign in with your M365 developer account|Node.js 22 LTS and Git installed~Baseline tooling for all bundle workflows"></div>
+     data-items="Global Admin access in your M365 tenant~Required to configure tenant-wide app and policy settings|Complete one foundation path (E1A or E1B)~Required before this bundle-readiness lab|VS Code with Microsoft 365 Agents Toolkit~Sign in with your M365 developer account|Node.js 22 LTS and Git installed~Baseline tooling for all bundle workflows"></div>
 
 <div data-widget="checklist"
      data-title="Common prerequisites for MCP bundles (A, B, and C)"
@@ -200,8 +202,10 @@ If you reached this point, port forwarding is working correctly, and you can sto
 
 
 <div data-widget="labnav"
-     data-next="../01-first-agent-new/"
-     data-next-label="Lab E1 - Choose Foundation Path"></div>
+     data-prev="../01-first-agent-new/"
+     data-prev-label="Back to E1 Path Choice"
+     data-next="../bundles/"
+     data-next-label="Choose Your Bundle"></div>
 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/00-prerequisites" />

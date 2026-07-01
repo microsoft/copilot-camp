@@ -7,13 +7,13 @@
    data-title="Declarative Agent Foundation with Agent Builder"
   data-subtitle="Build your first declarative agent in Agent Builder with grounding, capability checks, and governance basics."
   data-time="30-45 min"
-  data-requires="Lab E0"
+   data-requires="Microsoft 365 Copilot Chat access"
   data-toolkit="Microsoft 365 Copilot Chat"></div>
 
 ## Prerequisites
 
-- **Lab E0**: [Prerequisites & Concepts](../00-prerequisites)
 - Access to **Microsoft 365 Copilot Chat**
+- Permission to create and edit agents in your tenant
 
 ---
 
@@ -152,12 +152,12 @@ The staff canteen at Seattle HQ is on floor 2. It is open Mon-Fri 7:30am-3pm.
 
 ## Complete
 
-You can now continue to bundle selection.
+You can now continue to **Lab E1B — Declarative Agent Foundation with Agents Toolkit** for the pro-code jump.
 
 <div data-widget="labnav"
   data-prev="../01-first-agent-new/"
   data-prev-label="Back to E1 Path Choice"
-  data-next="../bundles/"
-  data-next-label="Choose Your Bundle"></div>
+   data-next="../01-first-agent-toolkit/"
+   data-next-label="Continue to Lab E1B - Declarative Agent Foundation with Agents Toolkit"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-builder" />

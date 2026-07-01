@@ -7,18 +7,32 @@
   data-title="Declarative Agent Foundation with Agents Toolkit"
   data-subtitle="Build your first declarative agent in VS Code with source files, provisioning, grounding, and capability checks."
   data-time="45-60 min"
-  data-requires="Lab E0"
+  data-requires="VS Code + Agents Toolkit"
   data-toolkit="Microsoft 365 Agents Toolkit | Microsoft 365 Copilot Chat"></div>
 
 ## Prerequisites
 
-- **Lab E0**: [Prerequisites & Concepts](../00-prerequisites)
 - VS Code with **Microsoft 365 Agents Toolkit**
-- Microsoft 365 developer account
+- Microsoft 365 developer account with Copilot access
+- Global Admin access in your M365 tenant, required to configure tenant-wide app and policy settings
 
 ---
 
-## Exercise 1: Scaffold the project
+## Exercise 1: Enable custom app uploads in Teams
+
+1. Go to [admin.microsoft.com](https://admin.microsoft.com/) and sign in with your M365 admin account.
+2. In the left nav: **Show all** -> **Teams** -> **Teams apps** -> **Setup policies**.
+3. Select **Global (Org-wide default)**.
+4. Toggle **Upload custom apps** to **On** and click **Save**.
+
+<div data-widget="callout"
+  data-type="warn"
+  data-title="Propagation delay"
+  data-body="This setting can take up to 24 hours in some tenants. If Provision fails with an upload error later, wait an hour and retry."></div>
+
+---
+
+## Exercise 2: Scaffold the project
 
 1. Open VS Code and select **Microsoft 365 Agents Toolkit**.
 2. Select **Create a New Agent/App**.
@@ -38,7 +52,7 @@ m365agents.yml
 
 ---
 
-## Exercise 2: Configure core files
+## Exercise 3: Configure core files
 
 1. Update `appPackage/declarativeAgent.json` with:
    - Name/description
@@ -55,7 +69,7 @@ Use these minimum values:
 
 ---
 
-## Exercise 3: Add grounding via Embedded Knowledge capability
+## Exercise 4: Add grounding via Embedded Knowledge capability
 
 1. Download [Zava New Hire Logistics.docx](../../assets/docs/extend-m365-copilot-09/Zava%20New%20Hire%20Logistics.docx).
 2. In **Microsoft 365 Agents Toolkit** -> **Development** -> **Add Capability**.
@@ -81,7 +95,7 @@ Expected result:
 
 ---
 
-## Exercise 4: Enable Code Interpreter in code and validate charts
+## Exercise 5: Enable Code Interpreter in code and validate charts
 
 Microsoft Learn guidance for Agents Toolkit is to enable Code Interpreter in the declarative agent manifest code (not via **Add Capability**).
 
@@ -114,7 +128,7 @@ Expected result:
 
 ---
 
-## Exercise 5: Validate and prepare pilot rollout
+## Exercise 6: Validate and prepare pilot rollout
 
 1. Run a test matrix:
    - Grounding check
@@ -126,7 +140,7 @@ Expected result:
 
 ---
 
-## Exercise 6: Iterate with one controlled source change
+## Exercise 7: Iterate with one controlled source change
 
 1. Add this line to `appPackage/instruction.txt` under onboarding logistics:
 
@@ -143,12 +157,12 @@ Expected result:
 
 ## Complete
 
-You can now continue to bundle selection.
+You can now continue to **Lab E0 — Prerequisites for Pro-code bundles** before selecting a bundle.
 
 <div data-widget="labnav"
   data-prev="../01-first-agent-new/"
   data-prev-label="Back to E1 Path Choice"
-  data-next="../bundles/"
-  data-next-label="Choose Your Bundle"></div>
+  data-next="../00-prerequisites/"
+  data-next-label="Continue to Lab E0 - Prerequisites for Pro-code bundles"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-toolkit" />

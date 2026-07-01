@@ -15,7 +15,8 @@ title: Extend Microsoft 365 Copilot
 > Declarative agents make it answer only what matters to you.
 > This course takes you from first idea to production deployment — no matter your starting point.
 
-- **✓ Mandatory on-ramp: E0 + one foundation path (E1A or E1B)**
+- **✓ No-code soft launch: E1A -> E1B -> Lab E0 -> choose a bundle**
+- **✓ Pro-code jump: start at E1B -> Lab E0 -> choose a bundle**
 - **✓ Then choose your bundle: A, B, C, D, or E based on scenario**
 
 
@@ -49,14 +50,15 @@ The non-developer discovers that natural language *is* the interface, and that a
 
 ---
 
-### Mandatory On-ramp — E0 + E1A/E1B (Everyone)
+### Mandatory On-ramp — Foundation Jumps + E0
 
 **Start here, no exceptions.**
 
-Before any bundle, everyone completes core setup and one dedicated foundation path:
+Before any bundle, follow one of these jump patterns, then complete the E0 bundle-readiness gate:
 
+- **No-code learners:** E1A (Agent Builder) -> E1B (Agents Toolkit)
+- **Pro-code learners:** E1B directly
 - **E0 — Prerequisites and concepts:** tools, versions, and mental model (MCP, Dev Tunnels, Azurite, declarative agents)
-- **E1A — Declarative Agent Foundation with Agent Builder** or **E1B — Declarative Agent Foundation with Agents Toolkit**
 
 This gives every learner a shared baseline before specializing.
 
@@ -132,7 +134,7 @@ Ground your declarative agent using connectors so responses are anchored in orga
 <div data-widget="callout"
      data-type="tip"
      data-title="Optional fast path for no-code learners"
-     data-body="If you're a non-developer, complete E0 + E1A first and ship useful agents with Agent Builder. Then move into a bundle when you're ready."></div>
+     data-body="Start with E1A to build confidence in Agent Builder, then jump to E1B for gradual pro-code exposure, then complete E0 before choosing a bundle."></div>
 
 ---
 
@@ -157,7 +159,7 @@ The declarative model sits at the most accessible point on the entire agent-buil
 
 Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible way to build one is a declarative agent — and this course shows you how, from sentence-forming to API-wiring.
 
-**Mandatory first step:** E0 + E1A/E1B on-ramp
+**Mandatory first step:** E1 jumps (E1A -> E1B or direct E1B) + E0 on-ramp
 **Then specialize with bundles:**
 
 - **Bundle A:** MCP Foundations
@@ -174,8 +176,8 @@ Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible 
 
 <div data-widget="onramp"
      data-title="Choose your starting point"
-     data-sub="Complete the mandatory on-ramp first (E0 + E1A or E1B), then continue into bundles based on your scenario."
-     data-steps="Prerequisites::preq::Lab E0 — Prerequisites &amp; Concepts::Install every tool, verify every version, and understand MCP, Dev Tunnels, Azurite, and Declarative Agents before building anything.::Start Lab E0::00-prerequisites|Foundation Path::lab::Lab E1 — Choose Foundation Path::Choose your dedicated foundation lab: E1A (Agent Builder) or E1B (Agents Toolkit).::Choose E1 Path::01-first-agent-new|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
+     data-sub="No-code path: E1A -> E1B -> E0 -> bundles. Pro-code path: E1B -> E0 -> bundles."
+     data-steps="Foundation Jump::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Lab E0 — Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Lab E0::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
 
 ### Bundle Pages
 

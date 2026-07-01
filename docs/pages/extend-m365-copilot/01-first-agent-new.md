@@ -7,7 +7,7 @@
   data-title="Choose Your Foundation Path"
   data-subtitle="Copilot Developer Camp is mostly pro-dev and code-first, so this lab gives everyone a practical onramp before the deeper coding labs."
   data-time="5 min"
-  data-requires="Lab E0"></div>
+  data-requires="No prior lab required"></div>
 
 <div data-widget="sectionlabel" data-text="E1 On-ramp Decision"></div>
 
@@ -32,7 +32,7 @@ To keep each workflow clean and avoid mixed step confusion, foundation is split 
 - **Lab E1A — Declarative Agent Foundation with Agent Builder** (no-code path)
 - **Lab E1B — Declarative Agent Foundation with Agents Toolkit** (code-first path)
 
-Choose one path and complete it end-to-end before moving to a bundle.
+Choose one path and complete it end-to-end. After that, complete **Lab E0 — Prerequisites for Pro-code bundles** before moving to a bundle.
 
 <div data-widget="checklist"
   data-items="Start where you are::Choose the path that matches your current comfort level|Build confidence first::E1A helps you learn the Copilot Chat workflow quickly|Move into pro-code readiness::E1B prepares you for the majority of bundle labs"></div>
@@ -75,7 +75,7 @@ Best for learners ready for source files, provisioning, and code-first workflows
 
 ## Next step after E1A or E1B
 
-After you complete one foundation path, continue to bundle selection.
+After you complete one foundation path, continue to **Lab E0 — Prerequisites for Pro-code bundles**.
 Most bundles are code-forward, so if you completed E1A first, you can use E1B later as your bridge into the pro-dev workflow.
 
 <div data-widget="callout"
@@ -84,9 +84,9 @@ Most bundles are code-forward, so if you completed E1A first, you can use E1B la
   data-body="If you are new to development, complete E1A first, then take E1B before advanced bundles. If you are already comfortable with source files and provisioning, go directly to E1B."></div>
 
 <div data-widget="labnav"
-  data-prev="../00-prerequisites/"
-  data-prev-label="Back to Lab E0"
-  data-next="../bundles/"
-  data-next-label="Choose Your Bundle"></div>
+  data-prev="../"
+  data-prev-label="Back to Welcome"
+  data-next="../00-prerequisites/"
+  data-next-label="Continue to Lab E0"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-new" />
