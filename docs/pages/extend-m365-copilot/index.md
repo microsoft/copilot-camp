@@ -8,65 +8,180 @@ title: Extend Microsoft 365 Copilot
      data-title="Extend Microsoft 365 Copilot"
      data-subtitle="Build customized assistants with Declarative Agents. From fundamentals to production-grade security and rich interactive UI — all in one coherent narrative."
      data-path="0::Prerequisites (E0)|1::Fundamentals (E-Intro)|2::Build &amp; Integrate|3::Authentication|4::Integration"></div>
+# Build Declarative Agents in Microsoft 365 Copilot
+### From your first agent in a browser to production-grade deployment in VS Code
 
-<div data-widget="dacompare"
-     data-title="What is a Declarative Agent?"
-     data-left-label="Microsoft 365 Copilot (base)"
-     data-left-body="General-purpose AI across your M365 data. No domain focus, no custom tools, no branded identity."
-     data-right-label="Declarative Agent"
-     data-right-body="A focused Copilot persona with custom instructions, domain knowledge, conversation starters, and tool integrations — deployed as an app inside M365 for your organization."
-     data-note="Copilot is a full toolbox — it can handle many different jobs. A Declarative Agent is a specialised tool, like a torque wrench, designed to do one precise job really well.<br><br>What makes that specialised tool work are three key parts:<br><br>&bull; <strong>manifest.json</strong> → this is the label on the tool — its identity and how it shows up in Copilot chat<br>&bull; <strong>declarativeAgent.json</strong> → this is how the tool is calibrated — its behaviour, capabilities, purpose, and instructions<br>&bull; <strong>ai-plugin.json (optional)</strong> → these are the attachments or extensions — what extra capabilities or actions the tool can perform<br><br>Same toolbox, same foundation — but now purpose-built for a specific job."></div>
+> **Microsoft 365 Copilot is powerful — but it answers everything.**
+> Declarative agents make it answer only what matters to you.
+> This course takes you from first idea to production deployment — no matter your starting point.
 
-![image of DA architecture](../../assets/images/m365-declarative-agent.png)
-
-### What can you extend in a Declarative Agent?
-
-| Capability area | What you can extend with | Example outcome |
-| --- | --- | --- |
-| Role and behavior | Agent name, description, instructions, tone, boundaries | "HR Policy Assistant" that stays in-policy and concise |
-| Knowledge grounding | Microsoft 365 knowledge sources (for example SharePoint, OneDrive, connectors) | Answers cite your org's docs instead of generic web knowledge |
-| Actions and tools | API plugins, connector actions, MCP/API-backed operations | "Create a ticket", "Check order status", "Submit approval" from chat |
-| Conversation design | Conversation starters and guided prompts | Faster onboarding with "Try asking..." scenarios |
-| Identity and packaging | Teams app manifest and app distribution model | Branded, discoverable agent available to the right users |
-| Security and governance | Entra ID auth, permissions, admin controls, compliance boundaries | Least-privilege access with enterprise governance |
-| Rich responses and UX | Adaptive Cards and interactive app experiences | Users can review, confirm, and act without leaving Copilot |
-
-## What you're going to build
-
-In this section of Copilot Developer Camp, you first complete a mandatory on-ramp, then choose a bundle based on your implementation style and scenario.
-
-Your journey is:
-
-- **Mandatory on-ramp: E0 + E1** — Set up your environment and build your first Declarative Agent
-- **Then choose your bundle:**
-     - **Bundle A — MCP Foundations** — Build, connect, and secure an MCP server with OAuth 2.0 and Entra ID
-     - **Bundle B — Multi-Agent Workflows** — Compose connected agents and orchestrate multi-agent workflows inside Copilot
-     - **Bundle C — MCP App** — Extend an MCP server with React + Fluent UI interactive widgets
-     - **Bundle D — API-Based Declarative Agent** — Build a Declarative Agent that retrieves data from a custom API (not MCP)
-     - **Bundle E — Declarative Agents with Copilot Connectors** — Ground your agent using connectors for domain relevance
-     <!-- - **Bundle F — DA + CLI Tools** — Build, validate, and evaluate using CLI-first workflows (coming soon) -->
-
-
-
-<div data-widget="sectionlabel" data-text="Learning path sections"></div>
-
-| Section                            | Labs | Focus                                                 |
-| ---------------------------------- | ---- | ------------------------------------------------------- |
-| **Mandatory On-ramp**              | E0 + E1  | Complete prerequisites and build your first Declarative Agent before any bundle |
-| **Bundle A — MCP Foundations**     | E8 + E10 | Build, connect, and secure an MCP server with OAuth 2.0 and Entra ID |
-| **Bundle B — Multi-Agent Workflows**  | E8 + E9 | Compose connected agents and orchestrate multi-agent workflows inside Copilot |
-| **Bundle C — MCP App**     | E11 | Extend an MCP server with React + Fluent UI interactive widgets |
-| **Bundle D — API-Based Declarative Agent**  | E2 + E3 + E4 + E5 + E6a | Build a Declarative Agent that retrieves data from a custom API (not MCP) |
-| **Bundle E — Declarative Agents with Copilot Connectors**  | E2 + E3 + E4 + E7 | Ground your agent using connectors for domain relevance |
-<!-- | **Bundle F — DA + CLI Tools**      | E12 + E13 (coming soon) | Build, validate, and evaluate using CLI-first workflows | -->
+**✓ Mandatory on-ramp: E0 + E1 for everyone**
+**✓ Then choose your bundle: A, B, C, D, or E based on scenario**
+**✓ The agents do the coding — even if you don't**
 
 ---
 
-## Start here with prerequisites
+## The Problem
+
+**Copilot is smart. But it doesn't know *your* business.**
+
+Out of the box, Microsoft 365 Copilot knows everything — and nothing specific. It can't stay focused on your HR policies, your project data, your customer files. It answers the whole world when you need it to answer your corner of it.
+
+Declarative agents fix that. You declare what it knows, how it behaves, and what it can do — and Copilot's own orchestrator does the rest. No custom LLM. No orchestration code. Just a focused, purposeful agent that lives inside Teams, Word, and Copilot Chat.
+
+> *"I kept asking Copilot about our onboarding process and it kept giving me generic HR advice. I didn't know I could just… scope it."*
+> — **Corporate Power User**, searching *"can I build my own Microsoft Copilot"*
+
+> *"I wanted an agent that only knows our project files — our policies, our templates. But every time I started Googling I ended up in a Copilot Studio rabbit hole. I just wanted something simple."*
+> — **Non-technical Team Lead**, searching *"how to build a copilot agent no code step by step"*
+
+> *"I use LangChain. Is Microsoft's declarative model powerful enough, or do I need a custom engine agent for my scenario?"*
+> — **Pro-Code Developer**, searching *"declarative vs custom engine agent when to use"*
+---
+
+## Who This Is For
+
+### One course. One on-ramp. Multiple bundles.
+
+Whether you've never opened a code editor **or** you live in VS Code, this course meets you where you are.
+
+The non-developer discovers that natural language *is* the interface — and that agents can write code on their behalf when they need to go further. The developer discovers just how fast and capable the declarative model is before deciding whether they need a custom engine agent at all.
+
+---
+
+### Mandatory On-ramp — E0 + E1 (Everyone)
+
+**Start here, no exceptions.**
+
+Before any bundle, everyone completes the same core setup and first-build path:
+
+- **E0 — Prerequisites and concepts:** tools, versions, and mental model (MCP, Dev Tunnels, Azurite, declarative agents)
+- **E1 — First declarative agent:** create, test, and deploy your first working agent
+
+This gives every learner a shared baseline before specializing.
+
+---
+
+### Bundle A — MCP Foundations
+
+**"I want to build and secure an MCP server the right way."**
+
+Build, connect, and secure an MCP server with OAuth 2.0 and Entra ID. Focus on authentication, authorization, and production-safe integration patterns.
+
+**You will build:**
+- An MCP server connected to your declarative agent
+- OAuth 2.0 and Entra ID-secured tool access
+- A least-privilege security model for enterprise rollout
+
+---
+
+### Bundle B — Multi-Agent Workflows
+
+**"I want multiple agents working together in one workflow."**
+
+Compose connected agents and orchestrate multi-agent workflows inside Copilot for complex, multi-step scenarios.
+
+**You will build:**
+- A coordinated multi-agent flow
+- Role-based agent responsibilities and handoffs
+- End-to-end workflow testing across agents
+
+---
+
+### Bundle C — MCP App
+
+**"I want richer, interactive experiences on top of MCP."**
+
+Extend an MCP server with React + Fluent UI interactive widgets so users can review, confirm, and act with richer UX.
+
+**You will build:**
+- Interactive UI widgets backed by MCP tools
+- Fluent UI components for actionable responses
+- A polished app-style user experience inside Copilot flows
+
+---
+
+### Bundle D — API-Based Declarative Agent
+
+**"I need my agent to call a custom API, not MCP."**
+
+Build a declarative agent that retrieves and acts on external data through API plugins, including authentication and resilient integration behavior.
+
+**You will build:**
+- An API plugin from OpenAPI definition to working action
+- Secure API authentication (OAuth/API key as needed)
+- A declarative agent that performs real external operations
+
+---
+
+### Bundle E — Declarative Agents with Copilot Connectors
+
+**"I want stronger domain grounding from enterprise data sources."**
+
+Ground your declarative agent using connectors so responses are anchored in organizational data and business context.
+
+**You will build:**
+- Connector-grounded responses for higher relevance
+- Domain-specific retrieval behavior
+- A governed grounding strategy for production usage
+
+---
+
+### Optional fast path for no-code learners
+
+If you're a non-developer, you can still complete E0 + E1 and ship useful agents with Agent Builder first, then move into a bundle when you're ready.
+
+**Common tooling path:** Agent Builder or Microsoft 365 Agents Toolkit (VS Code), then API Plugins / MCP / Connectors based on your chosen bundle.
+
+---
+
+## What Is a Declarative Agent?
+
+> You *declare* what it knows, how it should behave, and what it can do.
+> Copilot's orchestration, reasoning, and retrieval infrastructure handles everything else.
+
+| Component | What it is |
+|---|---|
+| **Instructions** | Define persona, tone, scope, guardrails. Written in plain English — no code. |
+| **Knowledge** | SharePoint, OneDrive, uploaded files, web content, Graph connectors — up to 512 MB per file. |
+| **Actions** | API plugins, MCP tools, code interpreter, image generation — real-time, real-world capabilities. |
+
+The declarative model sits at the most accessible point on the entire agent-building spectrum — but it's not limited. It supports image generation, code interpreter, API plugins, and MCP tools. You're building on Copilot's own secure, hosted infrastructure, which means prompts and responses are never used to train foundation models.
+
+---
+
+## Ready to Build
+
+> **Your first production agent is closer than you think.**
+
+Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible way to build one is a declarative agent — and this course shows you how, from sentence-forming to API-wiring.
+
+**Mandatory first step:** E0 + E1 on-ramp
+**Then specialize with bundles:**
+
+- **Bundle A:** MCP Foundations
+- **Bundle B:** Multi-Agent Workflows
+- **Bundle C:** MCP App (React + Fluent UI widgets)
+- **Bundle D:** API-Based Declarative Agent
+- **Bundle E:** Declarative Agents with Copilot Connectors
+
+---
+
+
+
+## Start Here: On-ramp Or Bundles
 
 <div data-widget="onramp"
-     data-title="Get your environment ready"
-     data-sub="One focused lab prepares your machine and builds your mental model. Time: ~45 min."
-     data-steps="Prerequisites &amp; Concepts::preq::Lab E0 — Prerequisites &amp; Concepts::Install every tool, verify every version, and understand MCP, Dev Tunnels, Azurite, and Declarative Agents before building anything.::Go to Lab E0::00-prerequisites"></div>
+     data-title="Choose your starting point"
+     data-sub="Complete the mandatory on-ramp first (E0 + E1), then continue into bundles based on your scenario."
+     data-steps="Prerequisites::preq::Lab E0 — Prerequisites &amp; Concepts::Install every tool, verify every version, and understand MCP, Dev Tunnels, Azurite, and Declarative Agents before building anything.::Start Lab E0::00-prerequisites|Starter Lab::lab::Lab E1 — First Declarative Agent::Build, test, and deploy your first Declarative Agent end-to-end before choosing a specialization path.::Start Lab E1::01-first-agent-new|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
+
+### Bundle Pages
+
+- [Bundle A — MCP Foundations](bundle-a)
+- [Bundle B — Multi-Agent Workflows](bundle-b)
+- [Bundle C — MCP App](bundle-c)
+- [Bundle D — API-Based Declarative Agent](bundle-d)
+- [Bundle E — Declarative Agents with Copilot Connectors](bundle-e)
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />
