@@ -9,7 +9,9 @@
             <li><strong>🚦 Mandatory on-ramp</strong>
                 <ul>
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Prerequisites</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-new">Lab E1 - Your First Declarative Agent</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-new">Lab E1 - Choose Foundation Path</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-builder">Lab E1A - Declarative Agent Foundation with Agent Builder</a></li>
+                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-toolkit">Lab E1B - Declarative Agent Foundation with Agents Toolkit</a></li>
                 </ul>
             </li>
             <li><strong>🔌 Bundle A - MCP Foundations</strong>

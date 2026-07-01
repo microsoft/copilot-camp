@@ -8,7 +8,7 @@
   data-title="Build a Backend API"
   data-subtitle="Set up the Trey Research Azure Functions API and run it locally as the foundation for API-based Declarative Agent labs."
   data-time="45-60 min"
-  data-requires="E0 + E1 "
+  data-requires="E0 + E1A/E1B"
   data-toolkit="Node.js 22 + Agents Toolkit"></div>
 
 <div data-widget="checklist"

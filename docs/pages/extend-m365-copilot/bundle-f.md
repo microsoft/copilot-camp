@@ -9,7 +9,7 @@ title: "Bundle F — DA + CLI Tools: Build, Validate, Evaluate"
      data-title="Use CLI-first workflows for rapid DA iteration"
      data-subtitle="This placeholder bundle focuses on command-line tooling for Declarative Agent inspection and evaluation, including WIQD-style and Evals workflows."
      data-time="~3 hrs (placeholder)"
-     data-requires="E0 + E1 "
+     data-requires="E0 + E1A/E1B"
      data-extra="Labs E12 + E13 (placeholder)"></div>
 
 <div data-widget="sectionlabel" data-text="Bundle F · DA + CLI Tools"></div>
@@ -17,7 +17,7 @@ title: "Bundle F — DA + CLI Tools: Build, Validate, Evaluate"
 <div data-widget="callout"
      data-type="info"
      data-title="Placeholder bundle"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1  — Your First Declarative Agent&lt;/a&gt; first. This bundle is a scaffold for upcoming CLI-focused labs."></div>
+     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Lab E0 — Prerequisites&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). This bundle is a scaffold for upcoming CLI-focused labs."></div>
 
 <div data-widget="checklist"
      data-items="CLI-first developer workflow~Run tools and checks primarily from terminal commands|Inspection loop with WIQD-style tooling~Validate DA behavior and tool wiring quickly|Evaluation loop with Evals tooling~Measure response quality and iterate on prompts/tools"></div>

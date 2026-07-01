@@ -7,7 +7,7 @@
   data-title="Build an MCP App with Interactive Widgets"
   data-subtitle="Pair MCP tools with rich UI resources so users can submit requests, approve actions, and track status directly in Copilot."
   data-time="90-120 min"
-  data-requires="E0 + E1 "
+  data-requires="Foundation built by E0 + E1A/E1B"
   data-toolkit="MCP Apps SDK + React"></div>
 
 <div data-widget="checklist"

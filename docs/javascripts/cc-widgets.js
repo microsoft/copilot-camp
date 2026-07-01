@@ -876,7 +876,9 @@
               <li><strong>🚦 Mandatory on-ramp</strong>
                 <ul>
                   <li><a href="${esc(withBundleQuery(`${extendBase}00-prerequisites`, key))}">Lab E0 - Prerequisites</a>${youAreHere("00-prerequisites/")}</li>
-                  <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-new`, key))}">Lab E1 - Your First Declarative Agent</a>${youAreHere("01-first-agent-new/")}</li>
+                  <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-new`, key))}">Lab E1 - Choose Foundation Path</a>${youAreHere("01-first-agent-new/")}</li>
+                  <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-builder`, key))}">Lab E1A - Declarative Agent Foundation with Agent Builder</a>${youAreHere("01-first-agent-builder/")}</li>
+                  <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-toolkit`, key))}">Lab E1B - Declarative Agent Foundation with Agents Toolkit</a>${youAreHere("01-first-agent-toolkit/")}</li>
                 </ul>
               </li>
               <li><strong>${esc(bundle.name)}</strong>

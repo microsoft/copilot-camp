@@ -9,7 +9,7 @@ title: Lab E12 — DA CLI with WIQD Tooling (Placeholder)
      data-title="DA CLI with WIQD Tooling"
      data-subtitle="Placeholder lab: use CLI tooling to inspect Declarative Agent wiring, tool contracts, and runtime behavior."
      data-time="45-60 min (placeholder)"
-     data-requires="E0 + E1 "
+     data-requires="E0 + E1A/E1B"
      data-toolkit="CLI tooling"></div>
 
 <div data-widget="callout"

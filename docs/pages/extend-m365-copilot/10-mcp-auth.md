@@ -7,7 +7,7 @@
   data-title="Secure MCP with OAuth and Entra ID"
   data-subtitle="Upgrade the MCP integration from anonymous development mode to authenticated, enterprise-ready access control."
   data-time="90-120 min"
-  data-requires="Lab E8 recommended"
+  data-requires="Foundation on Lab E8 recommended"
   data-toolkit="Azure (free tier) OAuth 2.0 + Entra ID"></div>
 
 <div data-widget="checklist"

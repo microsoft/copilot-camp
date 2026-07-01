@@ -215,7 +215,7 @@ Open a terminal and run these checks. Every one should pass before you proceed.
 
 <div data-widget="labnav"
      data-next="../01-first-agent-new/"
-     data-next-label="Lab E1 - Your First Declarative Agent"></div>
+     data-next-label="Lab E1 - Choose Foundation Path"></div>
 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/00-prerequisites" />
