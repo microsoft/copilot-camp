@@ -32,7 +32,7 @@ To keep each workflow clean and avoid mixed step confusion, foundation is split 
 - **Lab E1A — Declarative Agent Foundation with Agent Builder** (no-code path)
 - **Lab E1B — Declarative Agent Foundation with Agents Toolkit** (code-first path)
 
-Choose one path and complete it end-to-end. After that, complete **Lab E0 — Prerequisites for Pro-code bundles** before moving to a bundle.
+Recommended progression: complete **E1A first, then E1B** to push your limits and build confidence before bundles. After E1B, complete **Lab E0 — Prerequisites for Pro-code bundles**.
 
 <div data-widget="checklist"
   data-items="Start where you are::Choose the path that matches your current comfort level|Build confidence first::E1A helps you learn the Copilot Chat workflow quickly|Move into pro-code readiness::E1B prepares you for the majority of bundle labs"></div>
@@ -75,13 +75,13 @@ Best for learners ready for source files, provisioning, and code-first workflows
 
 ## Next step after E1A or E1B
 
-After you complete one foundation path, continue to **Lab E0 — Prerequisites for Pro-code bundles**.
-Most bundles are code-forward, so if you completed E1A first, you can use E1B later as your bridge into the pro-dev workflow.
+Best path for most learners: **E1A -> E1B -> E0 -> bundles**.
+If you are already pro-code, you can go directly to **E1B**, then continue to **Lab E0 — Prerequisites for Pro-code bundles**.
 
 <div data-widget="callout"
   data-type="tip"
   data-title="Suggested progression"
-  data-body="If you are new to development, complete E1A first, then take E1B before advanced bundles. If you are already comfortable with source files and provisioning, go directly to E1B."></div>
+  data-body="To push your limits gradually, take E1A first, then jump to E1B. If you are already comfortable with source files and provisioning, start at E1B, then continue to E0."></div>
 
 <div data-widget="labnav"
   data-prev="../"
