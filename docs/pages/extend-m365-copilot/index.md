@@ -15,7 +15,9 @@ title: Extend Microsoft 365 Copilot
      data-left-body="General-purpose AI across your M365 data. No domain focus, no custom tools, no branded identity."
      data-right-label="Declarative Agent"
      data-right-body="A focused Copilot persona with custom instructions, domain knowledge, conversation starters, and tool integrations — deployed as an app inside M365 for your organization."
-     data-note="Think of it like this: Copilot is a Swiss Army knife. A Declarative Agent is a scalpel — same AI foundation, purpose-built for one job. The three artefacts that define it are &lt;code&gt;manifest.json&lt;/code&gt; (Teams app identity), &lt;code&gt;declarativeAgent.json&lt;/code&gt; (persona + instructions), and optionally &lt;code&gt;ai-plugin.json&lt;/code&gt; (tools/actions)."></div>
+     data-note="Copilot is a full toolbox — it can handle many different jobs. A Declarative Agent is a specialised tool, like a torque wrench, designed to do one precise job really well.<br><br>What makes that specialised tool work are three key parts:<br><br>&bull; <strong>manifest.json</strong> → this is the label on the tool — its identity and how it shows up in Copilot chat<br>&bull; <strong>declarativeAgent.json</strong> → this is how the tool is calibrated — its behaviour, capabilities, purpose, and instructions<br>&bull; <strong>ai-plugin.json (optional)</strong> → these are the attachments or extensions — what extra capabilities or actions the tool can perform<br><br>Same toolbox, same foundation — but now purpose-built for a specific job."></div>
+
+![image of DA architecture](../../assets/images/m365-declarative-agent.png)
 
 ### What can you extend in a Declarative Agent?
 
