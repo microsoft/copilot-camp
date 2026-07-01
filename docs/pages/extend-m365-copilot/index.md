@@ -7,7 +7,7 @@ title: Extend Microsoft 365 Copilot
      data-badge-color="blue"
      data-title="Extend Microsoft 365 Copilot"
      data-subtitle="Build customized assistants with Declarative Agents. From fundamentals to production-grade security and rich interactive UI — all in one coherent narrative."
-     data-path="0::Prerequisites (E0)|1::Fundamentals (E-Intro)|2::Build &amp; Integrate|3::Authentication|4::Integration"></div>
+     data-path="0::Fundamentals|1::Prerequisites|2::Build &amp; Integrate|3::Authentication|4::Integration"></div>
 # Build Declarative Agents in Microsoft 365 Copilot
 ### From your first agent in a browser to production-grade deployment in VS Code
 
@@ -50,15 +50,15 @@ The non-developer discovers that natural language *is* the interface, and that a
 
 ---
 
-### Mandatory On-ramp — Foundation Jumps + E0
+### Mandatory On-ramp — Foundation on building a declarative agents + Prerequisites for Pro-code bundles
 
 **Start here, no exceptions.**
 
-Before any bundle, follow one of these jump patterns, then complete the E0 bundle-readiness gate:
+Before any bundle, follow one of these jump patterns, then complete the Prerequisites for Pro-code bundles -  bundle-readiness gate:
 
 - **No-code learners:** E1A (Agent Builder) -> E1B (Agents Toolkit)
 - **Pro-code learners:** E1B directly
-- **E0 — Prerequisites and concepts:** tools, versions, and mental model (MCP, Dev Tunnels, Azurite, declarative agents)
+- **Prerequisites for Pro-code bundles:** tools, versions, and mental model (MCP, Dev Tunnels, Azurite, declarative agents)
 
 This gives every learner a shared baseline before specializing.
 
@@ -134,7 +134,7 @@ Ground your declarative agent using connectors so responses are anchored in orga
 <div data-widget="callout"
      data-type="tip"
      data-title="Optional fast path for no-code learners"
-     data-body="Start with E1A to build confidence in Agent Builder, then jump to E1B for gradual pro-code exposure, then complete E0 before choosing a bundle."></div>
+     data-body="Start with E1A to build confidence in Agent Builder, then jump to E1B for gradual pro-code exposure, then complete Prerequisites for Pro-code bundles,  before choosing a bundle."></div>
 
 ---
 
@@ -159,7 +159,7 @@ The declarative model sits at the most accessible point on the entire agent-buil
 
 Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible way to build one is a declarative agent — and this course shows you how, from sentence-forming to API-wiring.
 
-**Mandatory first step:** E1 jumps (E1A -> E1B or direct E1B) + E0 on-ramp
+**Mandatory first step:** E1 jumps (E1A -> E1B or direct E1B) + Prerequisites for Pro-code bundles on-ramp
 **Then specialize with bundles:**
 
 - **Bundle A:** MCP Foundations
@@ -176,8 +176,8 @@ Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible 
 
 <div data-widget="onramp"
      data-title="Choose your starting point"
-     data-sub="No-code path: E1A -> E1B -> E0 -> bundles. Pro-code path: E1B -> E0 -> bundles."
-     data-steps="Foundation Jump::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Prerequisites::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
+     data-sub="No-code path: E1A -> E1B -> Prerequisites for Pro-code bundles -> bundles. Pro-code path: E1B -> Prerequisites for Pro-code bundles -> bundles."
+     data-steps="Foundation on building a declarative agent::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Prerequisites::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
 
 ### Bundle Pages
 

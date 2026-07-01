@@ -7,13 +7,7 @@ title: Declarative Agent Developer Bundles
      data-badge-color="blue"
      data-title="Declarative Agent Developer Bundles"
      data-subtitle="Complete the mandatory on-ramp first, then choose a focused bundle path based on your goals."
-     data-path="0::Foundation Jump|1::Bundle Prerequisites|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
-
-<div data-widget="sectionlabel" data-text="Mandatory on-ramp"></div>
-
-<div data-widget="onramp"
-     data-title="Complete this on-ramp first (required)"    
-     data-steps="Foundation::lab::Foundation: Declarative Agents::No-code learners: start in E1A, then continue to E1B. Pro-code learners: jump directly to E1B.::Start Foundation Flow::../01-first-agent-new/|Bundle Prerequisites::prereq::Prerequisites for Procode bundles::Verify tenant setup, tools, and bundle-specific requirements before starting bundle labs.::Complete Prerequisites::../00-prerequisites/"></div>
+     data-path="0::Foundation on building a declarative agent|1::Bundle Prerequisites|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
 
 <div data-widget="sectionlabel" data-text="Learning bundles"></div>
 
@@ -138,4 +132,4 @@ title: Declarative Agent Developer Bundles
      data-start-url="../bundle-f/"></div> -->
 
 <div data-widget="footernote"
-     data-text="Mandatory order: no-code path E1A -> E1B -> Prerequisites for Procode bundles, or pro-code path E1B -> Prerequisites for Procode bundles, then pick any bundle."></div>
+     data-text="Recommended order: no-code learners take E1A -> E1B -> Prerequisites for Procode bundles, while pro-code learners take E1B -> Prerequisites for Procode bundles, then choose any bundle."></div>
