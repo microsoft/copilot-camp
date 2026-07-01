@@ -3,7 +3,6 @@ title: Lab E0 — Prerequisites & Concepts
 ---
 
 <div data-widget="hero"
-     data-badge="Prerequisites · Lab E0"
      data-badge-color="amber"
      data-icon="🔧"
      data-title="Prerequisites & Concepts"
@@ -12,22 +11,14 @@ title: Lab E0 — Prerequisites & Concepts
      data-requires="M365 admin account required"
      data-toolkit="Windows / Mac / Linux"></div>
 
-<div data-widget="checklist"
-     data-items="M365 tenant with Copilot licence~Custom app uploads enabled in Teams admin|Node.js 22 LTS~Verified with node -v|VS Code + Agents Toolkit v6.4.2+~Extension signed in to M365|Git installed~For cloning the Copilot Camp repo|GitHub account~Required for Dev Tunnels (Bundles A &amp; B)|Azure subscription~Free tier OK · needed for Lab E10 (Bundle A) only"></div>
-
----
 
 ## Key concepts before you build
 
-Four ideas appear across every bundle. Read this once — it will save hours of confusion later.
+Few concepts appear across every bundle. Read this once — it will save hours of confusion later.
 
 <div data-widget="concepts"
-     data-cards="Microsoft 365 Copilot::blue::The AI host::The LLM and orchestration layer built by Microsoft. It decides when to call your agent, routes the conversation, and renders responses. You don't build this — you extend it.||Declarative Agent::purple::Your custom Copilot persona::Three JSON/text files that give Copilot a specialist identity: a name, custom instructions, and a list of tools it can call. Copilot provides the AI; you provide the purpose and the data.||MCP — Model Context Protocol::teal::The tool connector::An open standard for wiring AI agents to external data and actions. Your MCP server exposes named, typed functions. The agent calls them by name — you never write routing logic.||API Plugin::green::The tool manifest::A generated &lt;code&gt;ai-plugin.json&lt;/code&gt; file that tells your agent which tools exist, what their parameters are, and where to call them. Bundles A &amp; B use MCP tools; Bundles C &amp; D use REST API tools — both are wired through this file."></div>
+     data-cards="Microsoft 365 Copilot::blue::The AI host::The LLM and orchestration layer built by Microsoft. It decides when to call your agent, routes the conversation, and renders responses. You don't build this — you extend it.||Declarative Agent::purple::Your custom Copilot persona::Three JSON/text files that give Copilot a specialist identity: a name, custom instructions, and a list of tools it can call. Copilot provides the AI; you provide the purpose and the data.||MCP — Model Context Protocol::teal::The tool connector::An open standard for wiring AI agents to external data and actions. Your MCP server exposes named, typed functions. The agent calls them by name — you never write routing logic.||API Plugin::green::The tool manifest::A generated &lt;code&gt;ai-plugin.json&lt;/code&gt; file that tells your agent which tools exist, what their parameters are, and where to call them. Bundles A &amp; B use MCP tools; Bundles C &amp; D use REST API tools — both are wired through this file.||Azurite::amber::Local Azure Storage emulator::Azurite simulates Azure Storage locally so you can run and test storage-dependent labs without provisioning cloud storage first.||Dev Tunnel::coral::Public URL to localhost::Dev Tunnel gives your local server a secure public HTTPS endpoint so cloud-hosted Copilot can reach tools running on your machine."></div>
 
-<div data-widget="callout"
-     data-type="concept"
-     data-title="One-line summary"
-     data-body="&lt;strong&gt;Microsoft 365 Copilot&lt;/strong&gt; runs the AI. Your &lt;strong&gt;Declarative Agent&lt;/strong&gt; gives it a persona. &lt;strong&gt;MCP or an API plugin&lt;/strong&gt; gives it tools to call. Everything else in the labs is implementation detail."></div>
 
 ---
 
@@ -35,17 +26,27 @@ Four ideas appear across every bundle. Read this once — it will save hours of 
 
 Pick the bundle that matches your scenario. Each diagram shows exactly what you will wire together and what extra prerequisites you need.
 
+<div data-widget="checklist"
+     data-title="Common prerequisites (all bundles)"
+     data-variant="soft"
+     data-items="Global Admin access in your M365 tenant~Required to configure tenant-wide app and policy settings|Complete Lab E0 + one foundation path (E1A or E1B)~Required for every bundle|VS Code with Microsoft 365 Agents Toolkit~Sign in with your M365 developer account|Node.js 22 LTS and Git installed~Baseline tooling for all bundle workflows"></div>
+
+<div data-widget="checklist"
+     data-title="Common prerequisites for MCP bundles (A, B, and C)"
+     data-variant="soft"
+     data-items="GitHub account~Needed for Dev Tunnels sign-in|Azurite installed globally~Local Azure Table Storage emulator|MCP Inspector installed globally~Inspect and debug MCP tool wiring"></div>
+
 ### Bundle A — MCP Foundations
 
 Stand up a real MCP server locally, wire a Declarative Agent to it via a Dev Tunnel, then secure it with OAuth.
 
 <div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Receives user query → calls your agent|Declarative Agent::agent::declarativeAgent.json + instruction.txt||label::reads ai-plugin.json → calls MCP tools over HTTPS via Dev Tunnel||row::Dev Tunnel::tunnel::Public HTTPS ↔ localhost:3001|MCP Server (Node.js)::mcp::15 claims tools · runs on your machine|Azurite::data::Local Azure Table Storage · port 10002"></div>
+     data-rows="row::Microsoft 365 Copilot::copilot::Receives user query → calls your agent|Declarative Agent::agent::declarativeAgent.json + instruction.txt||label::reads ai-plugin.json → calls MCP tools over HTTPS via Dev Tunnel||row::Dev Tunnel::tunnel::Public HTTPS ↔ localhost:3001|MCP Server (Node.js)::mcp::15 claims tools · runs on your machine|Azurite::data::Local Azure Table Storage ·"></div>
 
 <div data-widget="checklist"
      data-title="Extra prerequisites for Bundle A"
      data-variant="soft"
-     data-items="GitHub account~Needed for Dev Tunnels|Azurite installed globally~Local Azure Table Storage emulator|MCP Inspector installed globally~Inspect and debug MCP tool wiring|Azure subscription~Free tier OK · needed for Lab E10 Entra ID registration"></div>
+     data-items="Azure account (free tier OK) – required only for the Entra ID app registration step in Lab E10. No paid Azure subscription is needed."></div>
 
 ### Bundle B — MCP Advanced
 
@@ -54,12 +55,17 @@ Build on Bundle A's MCP server to add connected agents and embedded knowledge fo
 <div data-widget="arch"
      data-rows="row::Microsoft 365 Copilot::copilot::Orchestrates the conversation|Declarative Agent::agent::Orchestrator · routes to connected agents||label::Connected agents coordinate via MCP; MCP apps/tools can return rich widget-based responses||row::Dev Tunnel::tunnel::Public HTTPS ↔ localhost:3001|MCP Server (Node.js)::mcp::Claims tools from Bundle A|Connected Agent::agent::Handles delegated sub-tasks|MCP App + Tools::teal::Rich widget-based tool experiences"></div>
 
-<div data-widget="checklist"
-     data-title="Extra prerequisites for Bundle B"
-     data-variant="soft"
-     data-items="GitHub account~Needed for Dev Tunnels|Agents Toolkit pre-release~Required for Embedded Knowledge in Lab E9|Azurite installed globally~Local storage dependency for the MCP path|MCP Inspector installed globally~Inspect and debug MCP tool wiring|Complete Lab E8 first~Bundle B builds on Bundle A's MCP setup"></div>
 
-### Bundle C — API-Based Declarative Agent
+### Bundle C — MCP App
+
+Build an MCP-powered app surface with interactive widgets so tool results render as rich UI in Copilot conversations.
+
+<div data-widget="arch"
+     data-rows="row::Microsoft 365 Copilot::copilot::Renders interactive MCP app responses|Declarative Agent::agent::Routes tool calls and responses||label::MCP app tools return structured output mapped to React + Fluent UI widgets||row::MCP App Server (Node.js)::mcp::Tool handlers + widget mappings|React + Fluent UI Widgets::teal::Interactive UI in Copilot conversation"></div>
+
+
+
+### Bundle D — API-Based Declarative Agent
 
 Build a REST API backed by Azure Functions, then wire a Declarative Agent to it as an API plugin.
 
@@ -67,33 +73,17 @@ Build a REST API backed by Azure Functions, then wire a Declarative Agent to it 
      data-rows="row::Microsoft 365 Copilot::copilot::Calls your API plugin|Declarative Agent::agent::declarativeAgent.json + ai-plugin.json||label::API plugin calls Azure Functions endpoints over REST||row::Azure Functions (TypeScript)::mcp::HTTP endpoints · runs locally on port 7071|Azurite::data::Local Table Storage · consultant &amp; project data"></div>
 
 <div data-widget="checklist"
-     data-title="Extra prerequisites for Bundle C"
+     data-title="Extra prerequisites for Bundle D"
      data-variant="soft"
-     data-items="Azure Functions Core Tools v4~Run and debug Functions locally|REST Client VS Code extension~Test local API endpoints quickly|No Dev Tunnel needed~Everything runs locally|No Azure subscription needed~For this bundle path, Azurite local is sufficient"></div>
+     data-items="Azure Functions Core Tools v4~Run and debug Functions locally|REST Client VS Code extension~Test local API endpoints quickly"></div>
 
-### Bundle D — DA with Connectors
+### Bundle E — DA with Connectors
 
 Build a Declarative Agent that queries your own external data indexed into Microsoft Graph via a Copilot Connector.
 
 <div data-widget="arch"
      data-rows="row::Microsoft 365 Copilot::copilot::Queries via Copilot Connector|Declarative Agent::agent::declarativeAgent.json + connector config||label::connector pushes external data into Microsoft Graph||row::Copilot Connector (Node.js)::tunnel::Indexes your data · runs locally|Microsoft Graph::data::Stores and serves connector items to Copilot"></div>
 
-<div data-widget="checklist"
-     data-title="Extra prerequisites for Bundle D"
-     data-variant="soft"
-     data-items="No Dev Tunnel needed~Connector flow does not require local tunnel exposure|No Azure subscription needed~Path stays in local tooling + Microsoft 365 services|Complete Labs E2-E4 first~Bundle D shares the Bundle C API setup before diverging to Lab E7"></div>
-
-### Bundle E — DA with CLI Tools (Placeholder)
-
-Use command-line tooling to inspect, test, and evaluate your Declarative Agent workflows with fast iteration loops.
-
-<div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Invokes your Declarative Agent|Declarative Agent::agent::instructions + tool manifest||label::CLI loop runs inspection and eval tooling for rapid iteration||row::WIQD-style CLI tools::mcp::Inspect and validate DA + tools behavior|Evals CLI tools::data::Run prompt/test evaluations|Iteration loop::tunnel::Refine prompts, tools, and configs"></div>
-
-<div data-widget="checklist"
-     data-title="Extra prerequisites for Bundle E"
-     data-variant="soft"
-     data-items="Comfort with terminal workflows~Most actions in this bundle are CLI-first|WIQD-style tooling access~Use organization-approved CLI tooling for inspection/debug|Evals tooling access~Run local eval commands on prompt/test sets|Placeholder status~Labs E12 and E13 are starter placeholders for upcoming content"></div>
 
 ---
 
@@ -181,17 +171,16 @@ Open a terminal and run these checks. Every one should pass before you proceed.
 
 ---
 
-## Exercise 4: Create your first Dev Tunnel
+## Exercise 4: Verify port forwarding with your first Dev Tunnel
 
-<div data-widget="callout"
-     data-type="info"
-     data-title="Bundles A and B only"
-     data-body="Dev Tunnels are only needed when your MCP server runs locally but Copilot is a cloud service. &lt;strong&gt;If you are doing Bundles C or D, you can skip this exercise.&lt;/strong&gt;"></div>
+Use this exercise to confirm your machine can expose a local port through a public Dev Tunnel URL.
 
-<div data-widget="callout"
-     data-type="concept"
-     data-title="The analogy"
-     data-body="Imagine you've built a vending machine in your garage. Customers (Copilot) can't come to your garage, so a Dev Tunnel gives your garage a public street address — customers knock on that address and the knock arrives at your machine."></div>
+Success criteria:
+
+- Port `3001` is forwarded in VS Code.
+- Visibility is set to **Public**.
+- You can copy a valid `https://...use.devtunnels.ms` URL.
+
 
 <div data-widget="step" data-n="1" data-title="Forward port 3001"></div>
 
@@ -206,11 +195,8 @@ Open a terminal and run these checks. Every one should pass before you proceed.
 2. Sign in with your GitHub account if prompted
 3. Copy the forwarded address — it looks like `https://abc123def456.use.devtunnels.ms`
 
+If you reached this point, port forwarding is working correctly, and you can stop tunneling for now.
 
-<div data-widget="callout"
-     data-type="warn"
-     data-title="Tunnels expire on VS Code restart"
-     data-body="You will need to recreate the tunnel and update the URL in your config files each new session. In Bundle A, this URL goes into &lt;code&gt;package.json&lt;/code&gt;'s inspector script and into your declarative agent's MCP server config."></div>
 
 
 <div data-widget="labnav"

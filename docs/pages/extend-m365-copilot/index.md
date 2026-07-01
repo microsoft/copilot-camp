@@ -15,9 +15,9 @@ title: Extend Microsoft 365 Copilot
 > Declarative agents make it answer only what matters to you.
 > This course takes you from first idea to production deployment — no matter your starting point.
 
-**✓ Mandatory on-ramp: E0 + one foundation path (E1A or E1B)**
-**✓ Then choose your bundle: A, B, C, D, or E based on scenario**
-**✓ The agents do the coding — even if you don't**
+- **✓ Mandatory on-ramp: E0 + one foundation path (E1A or E1B)**
+- **✓ Then choose your bundle: A, B, C, D, or E based on scenario**
+
 
 ---
 
@@ -27,12 +27,12 @@ title: Extend Microsoft 365 Copilot
 
 Out of the box, Microsoft 365 Copilot knows everything — and nothing specific. It can't stay focused on your HR policies, your project data, your customer files. It answers the whole world when you need it to answer your corner of it.
 
-Declarative agents fix that. You declare what it knows, how it behaves, and what it can do — and Copilot's own orchestrator does the rest. No custom LLM. No orchestration code. Just a focused, purposeful agent that lives inside Teams, Word, and Copilot Chat.
+Declarative agents fix that. You declare what it knows, how it behaves, and what it can do — and Copilot's own orchestrator does the rest. No custom LLM. No orchestration code. Just a focused, purposeful agent that lives inside Copilot Chat.
 
 > *"I kept asking Copilot about our onboarding process and it kept giving me generic HR advice. I didn't know I could just… scope it."*
 > — **Corporate Power User**, searching *"can I build my own Microsoft Copilot"*
 
-> *"I wanted an agent that only knows our project files — our policies, our templates. But every time I started Googling I ended up in a Copilot Studio rabbit hole. I just wanted something simple."*
+> *"I wanted an agent that only knows our project files — our policies, our templates. But every time I started Googling I ended up in a rabbit hole. I just wanted something simple."*
 > — **Non-technical Team Lead**, searching *"how to build a copilot agent no code step by step"*
 
 > *"I use LangChain. Is Microsoft's declarative model powerful enough, or do I need a custom engine agent for my scenario?"*
@@ -45,7 +45,7 @@ Declarative agents fix that. You declare what it knows, how it behaves, and what
 
 Whether you've never opened a code editor **or** you live in VS Code, this course meets you where you are.
 
-The non-developer discovers that natural language *is* the interface — and that agents can write code on their behalf when they need to go further. The developer discovers just how fast and capable the declarative model is before deciding whether they need a custom engine agent at all.
+The non-developer discovers that natural language *is* the interface, and that agents can generate code on their behalf when they need to go further. The developer can quickly validate how fast and capable the declarative model is in a setup where Microsoft 365 Copilot access and licensing are already in place.
 
 ---
 
@@ -92,12 +92,14 @@ Compose connected agents and orchestrate multi-agent workflows inside Copilot fo
 
 **"I want richer, interactive experiences on top of MCP."**
 
-Extend an MCP server with React + Fluent UI interactive widgets so users can review, confirm, and act with richer UX.
+Extend an MCP server with React + Fluent UI interactive widgets so users can review, confirm, and act with richer UX. This is a build-once, work-anywhere pattern: MCP apps and tools can also be used across other compatible clients, including Claude and ChatGPT.
 
 **You will build:**
+
 - Interactive UI widgets backed by MCP tools
 - Fluent UI components for actionable responses
 - A polished app-style user experience inside Copilot flows
+- A portable MCP-based agent surface you can reuse across compatible hosts
 
 ---
 
@@ -127,11 +129,10 @@ Ground your declarative agent using connectors so responses are anchored in orga
 
 ---
 
-### Optional fast path for no-code learners
-
-If you're a non-developer, complete E0 + E1A and ship useful agents with Agent Builder first, then move into a bundle when you're ready.
-
-**Common tooling path:** Agent Builder or Microsoft 365 Agents Toolkit (VS Code), then API Plugins / MCP / Connectors based on your chosen bundle.
+<div data-widget="callout"
+     data-type="tip"
+     data-title="Optional fast path for no-code learners"
+     data-body="If you're a non-developer, complete E0 + E1A first and ship useful agents with Agent Builder. Then move into a bundle when you're ready."></div>
 
 ---
 
