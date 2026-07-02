@@ -40,6 +40,21 @@ Declarative agents fix that. You declare what it knows, how it behaves, and what
 > — **Pro-Code Developer**, searching *"declarative vs custom engine agent when to use"*
 ---
 
+## What Is a Declarative Agent?
+
+> You *declare* what it knows, how it should behave, and what it can do.
+> Copilot's orchestration, reasoning, and retrieval infrastructure handles everything else.
+
+| Component | What it is |
+|---|---|
+| **Instructions** | Define persona, tone, scope, guardrails. Written in plain English — no code. |
+| **Knowledge** | SharePoint, OneDrive, uploaded files, web content, Graph connectors — up to 512 MB per file. |
+| **Actions** | API plugins, MCP tools, code interpreter, image generation — real-time, real-world capabilities. |
+
+The declarative model sits at the most accessible point on the entire agent-building spectrum — but it's not limited. It supports image generation, code interpreter, API plugins, and MCP tools. You're building on Copilot's own secure, hosted infrastructure, which means prompts and responses are never used to train foundation models.
+
+---
+
 ## Who This Is For
 
 ### One course. One on-ramp. Multiple bundles.
@@ -138,41 +153,8 @@ Ground your declarative agent using connectors so responses are anchored in orga
 
 ---
 
-## What Is a Declarative Agent?
-
-> You *declare* what it knows, how it should behave, and what it can do.
-> Copilot's orchestration, reasoning, and retrieval infrastructure handles everything else.
-
-| Component | What it is |
-|---|---|
-| **Instructions** | Define persona, tone, scope, guardrails. Written in plain English — no code. |
-| **Knowledge** | SharePoint, OneDrive, uploaded files, web content, Graph connectors — up to 512 MB per file. |
-| **Actions** | API plugins, MCP tools, code interpreter, image generation — real-time, real-world capabilities. |
-
-The declarative model sits at the most accessible point on the entire agent-building spectrum — but it's not limited. It supports image generation, code interpreter, API plugins, and MCP tools. You're building on Copilot's own secure, hosted infrastructure, which means prompts and responses are never used to train foundation models.
-
----
-
-## Ready to Build
-
-> **Your first production agent is closer than you think.**
-
-Agents are the new apps. In Microsoft 365, the fastest, safest, most accessible way to build one is a declarative agent — and this course shows you how, from sentence-forming to API-wiring.
-
-**Mandatory first step:** E1 jumps (E1A -> E1B or direct E1B) + Prerequisites for Pro-code bundles on-ramp
-**Then specialize with bundles:**
-
-- **Bundle A:** MCP Foundations
-- **Bundle B:** Multi-Agent Workflows
-- **Bundle C:** MCP App (React + Fluent UI widgets)
-- **Bundle D:** API-Based Declarative Agent
-- **Bundle E:** Declarative Agents with Copilot Connectors
-
----
-
-
-
 ## Start Here: On-ramp Or Bundles
+Your first production agent is closer than you think.
 
 <div data-widget="onramp"
      data-title="Choose your starting point"

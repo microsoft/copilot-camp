@@ -38,13 +38,13 @@ Focus on office locations, helpdesk support, annual leave, benefits, and mandato
 
 1. Open your agent in **Edit** mode.
 2. Set identity:
-   - Name: **Zava Onboarding Assistant**
-   - Description: `Helps new Zava Insurance employees find answers to common HR and IT onboarding questions`.
+      - Name: **Zava Onboarding Assistant**
+      - Description: `Helps new Zava Insurance employees find answers to common HR and IT onboarding questions`.
 3. Update instructions with clear:
-   - Persona
-   - Scope boundaries
-   - Guardrails (no fabrication)
-   - Tone (warm and concise)
+      - Persona
+      - Scope boundaries
+      - Guardrails (no fabrication)
+      - Tone (warm and concise)
 
 Use this starter instruction block:
 
@@ -67,12 +67,15 @@ You are a friendly HR and IT onboarding assistant for new employees at Zava Insu
 - Warm, concise, practical.
 ```
 
+Then select **Create/Update** as per your UI.
 ---
+
+> Achieve Edit mode by selecting **Agents** from left navigation. Then choose your agent from the list, select ... menu option and then select **Edit**.
 
 ## Exercise 3: Add grounding and verify retrieval
 
 1. Download [Zava New Hire Logistics.docx](../../assets/docs/extend-m365-copilot-09/Zava%20New%20Hire%20Logistics.docx).
-2. In Agent Builder, go to **Knowledge** and upload `Zava New Hire Logistics.docx`.
+2. Open your agent in **Edit** mode, go to **Knowledge** and upload `Zava New Hire Logistics.docx`.
 3. Save or update the agent.
 4. Validate with prompts:
    - "Where is the badge pickup desk and what time does it open?"
