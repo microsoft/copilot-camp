@@ -2404,7 +2404,7 @@
 <li>Choose <strong>Declarative Agent</strong> -&gt; <strong>No Action</strong>.</li>
 <li>Name it <strong>Zava Onboarding Agent</strong>.</li>
 </ol>
-<p>You should have:</p>
+<p>You should have a new VS code project window with a similar file structure as below:</p>
 <div class="highlight"><pre><span></span><code>appPackage/
   declarativeAgent.json
   instruction.txt
@@ -2415,19 +2415,46 @@ m365agents.yml
 <hr />
 <h2 id="exercise-3-configure-core-files">Exercise 3: Configure core files</h2>
 <ol>
-<li>Update <code>appPackage/declarativeAgent.json</code> with:</li>
-<li>Name/description</li>
-<li><code>instructions</code> pointing to <code>instruction.txt</code></li>
-<li>Conversation starters</li>
-<li>Update <code>appPackage/instruction.txt</code> with persona, scope, guardrails, and tone.</li>
-<li>Update <code>appPackage/manifest.json</code> short/full name and descriptions.</li>
+<li>Open <code>appPackage/declarativeAgent.json</code> and copy/paste this branding baseline (then keep/add your instructions and conversation starters):</li>
 </ol>
-<p>Use these minimum values:</p>
-<ul>
-<li><code>declarativeAgent.json</code>: name, description, instructions file reference, and conversation starters</li>
-<li><code>instruction.txt</code>: role, scope, guardrails, and tone</li>
-<li><code>manifest.json</code>: branded app name and short/full descriptions</li>
-</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Onboarding Agent&quot;</span><span class="p">,</span>
+<span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Helps new Zava Insurance employees find answers to common HR and IT onboarding questions&quot;</span><span class="p">,</span>
+</code></pre></div>
+<ol>
+<li>Open <code>appPackage/manifest.json</code> and copy/paste this branding block:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Onboarding Agent&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Insurance Onboarding Agent&quot;</span>
+<span class="p">},</span>
+<span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HR and IT onboarding help for new Zava employees&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A friendly onboarding agent that helps new Zava Insurance employees with office access, helpdesk support, annual leave, benefits, and mandatory onboarding tasks.&quot;</span>
+<span class="p">},</span>
+</code></pre></div>
+<ol>
+<li>Open <code>appPackage/instruction.txt</code> and copy this block exactly as-is:</li>
+</ol>
+<div class="highlight"><pre><span></span><code># Zava Onboarding Assistant
+
+## Role
+You are a friendly HR and IT onboarding assistant for new employees at Zava Insurance.
+
+## Scope
+- Office locations and access
+- IT helpdesk process and hours
+- Leave, benefits, and onboarding tasks
+
+## Guardrails
+- Do not invent policy details.
+- If information is missing, say what is unknown and provide a safe next contact.
+
+## Tone
+- Warm, concise, practical.
+</code></pre></div>
+<ol>
+<li>Save all files.</li>
+</ol>
 <hr />
 <h2 id="exercise-4-add-grounding-via-embedded-knowledge-capability">Exercise 4: Add grounding via Embedded Knowledge capability</h2>
 <ol>
@@ -2439,13 +2466,16 @@ m365agents.yml
 <li>Confirm <code>appPackage/EmbeddedKnowledge</code> is created.</li>
 </ol>
 <p><img alt="image of adding capability" src="../../../../assets/images/extend-m365-copilot-09/flow-embed.png" /></p>
-<h3 id="validate-grounded-retrieval">Validate grounded retrieval</h3>
+<hr />
+<h2 id="exercise-5-test-your-agent">Exercise 5: Test your agent</h2>
 <ol>
 <li>Provision from <strong>Lifecycle -&gt; Provision</strong>.</li>
-<li>Open your agent in Copilot Chat.</li>
-<li>Ask:</li>
+<li>Open your agent <strong>Zava Onboarding Agent</strong> in Copilot Chat.</li>
+<li>Ask:<ul>
 <li>"Where is the badge pickup desk and what time does it open?"</li>
 <li>"If a new hire is locked out, what fallback should they use?"</li>
+</ul>
+</li>
 </ol>
 <p>Expected result:</p>
 <ul>
@@ -2453,23 +2483,23 @@ m365agents.yml
 <li>Response includes <strong>+1-800-ZAVA-ITS</strong> and <strong>Badge Assist</strong> fallback.</li>
 </ul>
 <hr />
-<h2 id="exercise-5-enable-code-interpreter-in-code-and-validate-charts">Exercise 5: Enable Code Interpreter in code and validate charts</h2>
-<p>Microsoft Learn guidance for Agents Toolkit is to enable Code Interpreter in the declarative agent manifest code (not via <strong>Add Capability</strong>).</p>
+<h2 id="exercise-6-enable-code-interpreter-in-code-and-validate-charts">Exercise 6: Enable Code Interpreter in code and validate charts</h2>
 <ol>
 <li>Open <code>appPackage/declarativeAgent.json</code>.</li>
-<li>Ensure manifest schema is <strong>1.2+</strong>.</li>
-<li>Add the following <code>capabilities</code> entry after <code>instructions</code> field (or merge into your existing capabilities array):</li>
+<li>In the existing <code>capabilities</code> array, add <code>CodeInterpreter</code> as a new item after the <code>EmbeddedKnowledge</code> entry. Make sure the previous item ends with a comma.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CodeInterpreter&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CodeInterpreter&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 <ol>
 <li>Save the file.</li>
+<li>Open <code>appPackage/manifest.json</code> file. Increase version from <code>"version": "1.0.0",</code> to <code>"version": "1.0.1",</code></li>
 <li>Provision from <strong>Lifecycle -&gt; Provision</strong>.</li>
 </ol>
+<blockquote>
+<p>For your agent changes to take effect, increment the manifest version before provisioning.</p>
+</blockquote>
 <p>Run these prompts in Copilot Chat for your provisioned agent:</p>
 <ul>
 <li>"Given 20 annual leave days and 260 working days per year, calculate leave percentage and show the result in a 2-row table."</li>
@@ -2483,28 +2513,20 @@ m365agents.yml
 <li>Agent returns a readable chart and short summary.</li>
 </ul>
 <hr />
-<h2 id="exercise-6-validate-and-prepare-pilot-rollout">Exercise 6: Validate and prepare pilot rollout</h2>
+<h2 id="exercise-7-debug-your-agent-with-developer-mode">Exercise 7: Debug your agent with developer mode</h2>
 <ol>
-<li>Run a test matrix:</li>
-<li>Grounding check</li>
-<li>Policy check</li>
-<li>Boundary check</li>
-<li>Capability check</li>
-<li>Confirm no fabrication and clear scope behavior.</li>
-<li>Document pilot audience, owner, and weekly review cadence.</li>
+<li>Open your provisioned agent in Microsoft 365 Copilot Chat.</li>
+<li>Send this message to the agent:</li>
 </ol>
-<hr />
-<h2 id="exercise-7-iterate-with-one-controlled-source-change">Exercise 7: Iterate with one controlled source change</h2>
-<ol>
-<li>Add this line to <code>appPackage/instruction.txt</code> under onboarding logistics:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>- The staff canteen (Seattle HQ, floor 2) is open Mon-Fri 7:30am-3pm.
+<div class="highlight"><pre><span></span><code>-developer on
 </code></pre></div>
 <ol>
-<li>Bump app version in <code>appPackage/manifest.json</code> (for example <code>1.0.1</code>).</li>
-<li>Re-provision from <strong>Lifecycle -&gt; Provision</strong>.</li>
-<li>Ask: "Is there a canteen at HQ?"</li>
-<li>Confirm the new fact appears and prior grounding/capability behaviors still pass.</li>
+<li>Run a few prompts from Exercises 5 and 6 again.</li>
+<li>Review the debug information shown after each response:</li>
+<li>Which tools/capabilities were used</li>
+<li>What grounding context was applied</li>
+<li>Whether output matched your expected behavior</li>
+<li>Capture at least one improvement you want to make before wider rollout.</li>
 </ol>
 <hr />
 <h2 id="complete">Complete</h2>
