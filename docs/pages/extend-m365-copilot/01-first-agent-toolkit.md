@@ -101,7 +101,7 @@ Microsoft Learn guidance for Agents Toolkit is to enable Code Interpreter in the
 
 1. Open `appPackage/declarativeAgent.json`.
 2. Ensure manifest schema is **1.2+**.
-3. Add the following `capabilities` entry (or merge into your existing capabilities array):
+3. Add the following `capabilities` entry after `instructions` field (or merge into your existing capabilities array):
 
 ```json
 "capabilities": [
