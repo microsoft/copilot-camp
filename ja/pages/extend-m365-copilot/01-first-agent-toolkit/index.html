@@ -2355,17 +2355,46 @@
 <li>Global Admin access in your M365 tenant, required to configure tenant-wide app and policy settings</li>
 </ul>
 <hr />
-<h2 id="exercise-1-enable-custom-app-uploads-in-teams">Exercise 1: Enable custom app uploads in Teams</h2>
+<h2 id="exercise-1-common-prerequsites-for-pro-code">Exercise 1: Common prerequsites for pro-code</h2>
+<h3 id="step-1-configure-your-m365-tenant">Step 1: Configure your M365 tenant</h3>
+<p>By default, Teams doesn't allow uploading custom apps — an admin toggle must be flipped first.</p>
+<div data-widget="step" data-n="1" data-title="Enable custom app uploads in Teams"></div>
+
 <ol>
-<li>Go to <a href="https://admin.microsoft.com/">admin.microsoft.com</a> and sign in with your M365 admin account.</li>
-<li>In the left nav: <strong>Show all</strong> -&gt; <strong>Teams</strong> -&gt; <strong>Teams apps</strong> -&gt; <strong>Setup policies</strong>.</li>
-<li>Select <strong>Global (Org-wide default)</strong>.</li>
-<li>Toggle <strong>Upload custom apps</strong> to <strong>On</strong> and click <strong>Save</strong>.</li>
+<li>Go to <a href="https://admin.microsoft.com">admin.microsoft.com</a> and sign in with your M365 admin account</li>
+<li>In the left nav: <strong>Show all</strong> → <strong>Teams</strong> → <strong>Teams apps</strong> → <strong>Setup policies</strong></li>
+<li>Select <strong>Global (Org-wide default)</strong></li>
+<li>Toggle <strong>Upload custom apps</strong> to <strong>On</strong> and click <strong>Save</strong></li>
 </ol>
 <div data-widget="callout"
-  data-type="warn"
-  data-title="Propagation delay"
-  data-body="This setting can take up to 24 hours in some tenants. If Provision fails with an upload error later, wait an hour and retry."></div>
+     data-type="warn"
+     data-title="Propagation delay"
+     data-body="This setting can take up to 24 hours in some tenants. If Provision fails with an upload error later, wait an hour and retry."></div>
+
+<div data-widget="step" data-n="2" data-title="Verify your Copilot licence"></div>
+
+<p>Go to <a href="https://m365.cloud.microsoft/chat/">m365.cloud.microsoft/chat/</a>. If you see the Copilot Chat interface, you have a valid licence. If you see a licence error, contact your tenant admin — you need a Microsoft 365 Copilot licence assigned to your account.</p>
+<hr />
+<h3 id="step-2-install-developer-tools">Step 2: Install developer tools</h3>
+<div data-widget="step" data-n="1" data-title="Install Node.js v22"></div>
+
+<p>Version 22 is required — older versions fail silently on certain SDK dependencies.</p>
+<p>If you have a different version installed, use <a href="https://github.com/nvm-sh/nvm">nvm</a> (Mac/Linux) or <a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a> to manage versions side by side.</p>
+<div data-widget="step" data-n="2" data-title="Install Microsoft 365 Agents Toolkit"></div>
+
+<ol>
+<li>Open VS Code → Extensions (<code>Ctrl+Shift+X</code>)</li>
+<li>Search <strong>Microsoft 365 Agents Toolkit</strong> and click <strong>Install</strong></li>
+<li>Click the hexagonal icon in the Activity Bar and sign in with your M365 developer account</li>
+</ol>
+<hr />
+<h3 id="step-3-verify-your-installation">Step 3 : Verify your installation</h3>
+<p>Open a terminal and run these checks. Every one should pass before you proceed.</p>
+<div data-widget="verify" data-label="Node.js version" data-cmd="node -v\n# Expected: v22.x.x"></div>
+
+<div data-widget="verify" data-label="npm version" data-cmd="npm -v\n# Expected: 10.x.x or higher"></div>
+
+<div data-widget="verify" data-label="Git installed" data-cmd="git --version\n# Expected: git version 2.x.x"></div>
 
 <hr />
 <h2 id="exercise-2-scaffold-the-project">Exercise 2: Scaffold the project</h2>

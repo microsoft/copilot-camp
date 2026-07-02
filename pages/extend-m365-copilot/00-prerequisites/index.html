@@ -814,10 +814,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-1-configure-your-m365-tenant" class="md-nav__link">
+  <a href="#exercise-1-verify-extra-prerequisites-installed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 1: Configure your M365 tenant
+        Exercise 1: Verify extra prerequisites installed
       
     </span>
   </a>
@@ -825,32 +825,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-2-install-developer-tools" class="md-nav__link">
+  <a href="#exercise-2-verify-port-forwarding-with-your-first-dev-tunnel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 2: Install developer tools
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-3-verify-your-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 3: Verify your installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-4-verify-port-forwarding-with-your-first-dev-tunnel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 4: Verify port forwarding with your first Dev Tunnel
+        Exercise 2: Verify port forwarding with your first Dev Tunnel
       
     </span>
   </a>
@@ -3023,7 +3001,7 @@
 <p>Pick the bundle that matches your scenario. Each diagram shows exactly what you will wire together and what extra prerequisites you need.</p>
 <p>Complete this lab after E1A or E1B and before you start any bundle.</p>
 <div data-widget="checklist"
-     data-title="Common prerequisites (all bundles)"
+     data-title="Common prerequisites (Installed from E1B foundation lab)"
      data-variant="soft"
      data-items="Global Admin access in your M365 tenant~Required to configure tenant-wide app and policy settings|Complete one foundation path (E1A or E1B)~Required before this bundle-readiness lab|VS Code with Microsoft 365 Agents Toolkit~Sign in with your M365 developer account|Node.js 22 LTS and Git installed~Baseline tooling for all bundle workflows"></div>
 
@@ -3068,26 +3046,7 @@
      data-rows="row::Microsoft 365 Copilot::copilot::Queries via Copilot Connector|Declarative Agent::agent::declarativeAgent.json + connector config||label::connector pushes external data into Microsoft Graph||row::Copilot Connector (Node.js)::tunnel::Indexes your data · runs locally|Microsoft Graph::data::Stores and serves connector items to Copilot"></div>
 
 <hr />
-<h2 id="exercise-1-configure-your-m365-tenant">Exercise 1: Configure your M365 tenant</h2>
-<p>By default, Teams doesn't allow uploading custom apps — an admin toggle must be flipped first.</p>
-<div data-widget="step" data-n="1" data-title="Enable custom app uploads in Teams"></div>
-
-<ol>
-<li>Go to <a href="https://admin.microsoft.com">admin.microsoft.com</a> and sign in with your M365 admin account</li>
-<li>In the left nav: <strong>Show all</strong> → <strong>Teams</strong> → <strong>Teams apps</strong> → <strong>Setup policies</strong></li>
-<li>Select <strong>Global (Org-wide default)</strong></li>
-<li>Toggle <strong>Upload custom apps</strong> to <strong>On</strong> and click <strong>Save</strong></li>
-</ol>
-<div data-widget="callout"
-     data-type="warn"
-     data-title="Propagation delay"
-     data-body="This setting can take up to 24 hours in some tenants. If Provision fails with an upload error later, wait an hour and retry."></div>
-
-<div data-widget="step" data-n="2" data-title="Verify your Copilot licence"></div>
-
-<p>Go to <a href="https://m365.cloud.microsoft/chat/">m365.cloud.microsoft/chat/</a>. If you see the Copilot Chat interface, you have a valid licence. If you see a licence error, contact your tenant admin — you need a Microsoft 365 Copilot licence assigned to your account.</p>
-<hr />
-<h2 id="exercise-2-install-developer-tools">Exercise 2: Install developer tools</h2>
+<h2 id="exercise-1-verify-extra-prerequisites-installed">Exercise 1: Verify extra prerequisites installed</h2>
 <table>
 <thead>
 <tr>
@@ -3098,30 +3057,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><strong>VS Code</strong></td>
-<td>1.90+</td>
-<td>All bundles</td>
-<td><a href="https://code.visualstudio.com/download">code.visualstudio.com</a></td>
-</tr>
-<tr>
-<td><strong>Node.js</strong></td>
-<td>v22 LTS</td>
-<td>All bundles</td>
-<td><a href="https://nodejs.org">nodejs.org</a></td>
-</tr>
-<tr>
-<td><strong>Agents Toolkit</strong></td>
-<td>v6.4.2+</td>
-<td>All bundles</td>
-<td>VS Code Extensions panel</td>
-</tr>
-<tr>
-<td><strong>Git</strong></td>
-<td>Any recent</td>
-<td>Bundles A &amp; B</td>
-<td><a href="https://git-scm.com/downloads">git-scm.com</a></td>
-</tr>
 <tr>
 <td><strong>GitHub account</strong></td>
 <td>Free</td>
@@ -3135,6 +3070,12 @@
 <td><a href="https://learn.microsoft.com/azure/azure-functions/functions-run-local">learn.microsoft.com</a></td>
 </tr>
 <tr>
+<td><strong>REST Client (VS Code extension)</strong></td>
+<td>Latest</td>
+<td>Bundle D</td>
+<td>VS Code Extensions panel</td>
+</tr>
+<tr>
 <td><strong>Azure subscription</strong></td>
 <td>Free tier OK</td>
 <td>Bundle A — Lab E10 only</td>
@@ -3142,31 +3083,7 @@
 </tr>
 </tbody>
 </table>
-<div data-widget="step" data-n="1" data-title="Install Node.js v22"></div>
-
-<p>Version 22 is required — older versions fail silently on certain SDK dependencies.</p>
-<p>If you have a different version installed, use <a href="https://github.com/nvm-sh/nvm">nvm</a> (Mac/Linux) or <a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a> to manage versions side by side.</p>
-<div data-widget="step" data-n="2" data-title="Install Microsoft 365 Agents Toolkit"></div>
-
-<ol>
-<li>Open VS Code → Extensions (<code>Ctrl+Shift+X</code>)</li>
-<li>Search <strong>Microsoft 365 Agents Toolkit</strong> and click <strong>Install</strong></li>
-<li>Click the hexagonal icon in the Activity Bar and sign in with your M365 developer account</li>
-</ol>
-<div data-widget="callout"
-     data-type="info"
-     data-title="Bundle B requires the pre-release version"
-     data-body="Lab E9 uses Embedded Knowledge which is only in the pre-release build. In the Extensions panel, find Agents Toolkit → click the dropdown arrow next to Install → &lt;strong&gt;Install Pre-Release Version&lt;/strong&gt; You can switch back to stable at any time."></div>
-
-<hr />
-<h2 id="exercise-3-verify-your-installation">Exercise 3: Verify your installation</h2>
 <p>Open a terminal and run these checks. Every one should pass before you proceed.</p>
-<div data-widget="verify" data-label="Node.js version" data-cmd="node -v\n# Expected: v22.x.x"></div>
-
-<div data-widget="verify" data-label="npm version" data-cmd="npm -v\n# Expected: 10.x.x or higher"></div>
-
-<div data-widget="verify" data-label="Git installed" data-cmd="git --version\n# Expected: git version 2.x.x"></div>
-
 <div data-widget="verify"
      data-label="Azurite — Bundles A, B, and C"
      data-cmd="npm install -g azurite\nazurite --version\n# Expected: 3.x.x"></div>
@@ -3181,7 +3098,7 @@
      data-body="Global npm installs on Windows sometimes need elevated permissions. Right-click the terminal icon and select &quot;Run as Administrator&quot; if you see EACCES or permission errors."></div>
 
 <hr />
-<h2 id="exercise-4-verify-port-forwarding-with-your-first-dev-tunnel">Exercise 4: Verify port forwarding with your first Dev Tunnel</h2>
+<h2 id="exercise-2-verify-port-forwarding-with-your-first-dev-tunnel">Exercise 2: Verify port forwarding with your first Dev Tunnel</h2>
 <p>Use this exercise to confirm your machine can expose a local port through a public Dev Tunnel URL.</p>
 <p>Success criteria:</p>
 <ul>
