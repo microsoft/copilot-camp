@@ -86,7 +86,7 @@ Open a terminal and run these checks. Every one should pass before you proceed.
 3. Choose **Declarative Agent** -> **No Action**.
 4. Name it **Zava Onboarding Agent**.
 
-You should have:
+You should have a new VS code project window with a similar file structure as below:
 
 ```text
 appPackage/
@@ -101,18 +101,49 @@ m365agents.yml
 
 ## Exercise 3: Configure core files
 
-1. Update `appPackage/declarativeAgent.json` with:
-   - Name/description
-   - `instructions` pointing to `instruction.txt`
-   - Conversation starters
-2. Update `appPackage/instruction.txt` with persona, scope, guardrails, and tone.
-3. Update `appPackage/manifest.json` short/full name and descriptions.
+1. Open `appPackage/declarativeAgent.json` and copy/paste this branding baseline (then keep/add your instructions and conversation starters):
 
-Use these minimum values:
+  ```json
+  "name": "Zava Onboarding Agent",
+  "description": "Helps new Zava Insurance employees find answers to common HR and IT onboarding questions",
+  ```
 
-- `declarativeAgent.json`: name, description, instructions file reference, and conversation starters
-- `instruction.txt`: role, scope, guardrails, and tone
-- `manifest.json`: branded app name and short/full descriptions
+2. Open `appPackage/manifest.json` and copy/paste this branding block:
+
+  ```json
+  "name": {
+    "short": "Zava Onboarding Agent",
+    "full": "Zava Insurance Onboarding Agent"
+  },
+  "description": {
+    "short": "HR and IT onboarding help for new Zava employees",
+    "full": "A friendly onboarding agent that helps new Zava Insurance employees with office access, helpdesk support, annual leave, benefits, and mandatory onboarding tasks."
+  },
+  ```
+
+3. Open `appPackage/instruction.txt` and copy this block exactly as-is:
+
+  ```text
+  # Zava Onboarding Assistant
+
+  ## Role
+  You are a friendly HR and IT onboarding assistant for new employees at Zava Insurance.
+
+  ## Scope
+  - Office locations and access
+  - IT helpdesk process and hours
+  - Leave, benefits, and onboarding tasks
+
+  ## Guardrails
+  - Do not invent policy details.
+  - If information is missing, say what is unknown and provide a safe next contact.
+
+  ## Tone
+  - Warm, concise, practical.
+  ```
+
+4. Save all files.
+
 
 ---
 
@@ -127,13 +158,15 @@ Use these minimum values:
 
 ![image of adding capability](../../assets/images/extend-m365-copilot-09/flow-embed.png)
 
-### Validate grounded retrieval
+---
+
+## Exercise 5: Test your agent
 
 1. Provision from **Lifecycle -> Provision**.
-2. Open your agent in Copilot Chat.
+2. Open your agent **Zava Onboarding Agent** in Copilot Chat.
 3. Ask:
-  - "Where is the badge pickup desk and what time does it open?"
-  - "If a new hire is locked out, what fallback should they use?"
+    - "Where is the badge pickup desk and what time does it open?"
+    - "If a new hire is locked out, what fallback should they use?"
 
 Expected result:
 
@@ -142,24 +175,22 @@ Expected result:
 
 ---
 
-## Exercise 5: Enable Code Interpreter in code and validate charts
-
-Microsoft Learn guidance for Agents Toolkit is to enable Code Interpreter in the declarative agent manifest code (not via **Add Capability**).
+## Exercise 6: Enable Code Interpreter in code and validate charts
 
 1. Open `appPackage/declarativeAgent.json`.
-2. Ensure manifest schema is **1.2+**.
-3. Add the following `capabilities` entry after `instructions` field (or merge into your existing capabilities array):
+2. In the existing `capabilities` array, add `CodeInterpreter` as a new item after the `EmbeddedKnowledge` entry. Make sure the previous item ends with a comma.
 
-```json
-"capabilities": [
-  {
-    "name": "CodeInterpreter"
-  }
-]
-```
-
-4. Save the file.
+   ```json
+   {
+     "name": "CodeInterpreter"
+   }
+   ```
+   
+3. Save the file.
+4. Open `appPackage/manifest.json` file. Increase version from `"version": "1.0.0",` to `"version": "1.0.1",`
 5. Provision from **Lifecycle -> Provision**.
+
+> For your agent changes to take effect, increment the manifest version before provisioning.
 
 Run these prompts in Copilot Chat for your provisioned agent:
 
@@ -173,32 +204,24 @@ Expected result:
 - Agent returns checklist table with requested schema.
 - Agent returns a readable chart and short summary.
 
----
-
-## Exercise 6: Validate and prepare pilot rollout
-
-1. Run a test matrix:
-   - Grounding check
-   - Policy check
-   - Boundary check
-   - Capability check
-2. Confirm no fabrication and clear scope behavior.
-3. Document pilot audience, owner, and weekly review cadence.
 
 ---
 
-## Exercise 7: Iterate with one controlled source change
+## Exercise 7: Debug your agent with developer mode
 
-1. Add this line to `appPackage/instruction.txt` under onboarding logistics:
+1. Open your provisioned agent in Microsoft 365 Copilot Chat.
+2. Send this message to the agent:
 
 ```text
-- The staff canteen (Seattle HQ, floor 2) is open Mon-Fri 7:30am-3pm.
+-developer on
 ```
 
-2. Bump app version in `appPackage/manifest.json` (for example `1.0.1`).
-3. Re-provision from **Lifecycle -> Provision**.
-4. Ask: "Is there a canteen at HQ?"
-5. Confirm the new fact appears and prior grounding/capability behaviors still pass.
+3. Run a few prompts from Exercises 5 and 6 again.
+4. Review the debug information shown after each response:
+   - Which tools/capabilities were used
+   - What grounding context was applied
+   - Whether output matched your expected behavior
+5. Capture at least one improvement you want to make before wider rollout.
 
 ---
 
