@@ -2534,9 +2534,9 @@
 <p>このラボでは、事前構築済みの Insurance MCP サーバーを使用します。サーバー ファイルを <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/insurance-mcp&amp;filename=insurance-mcp" target="_blank">こちらからダウンロード</a> してください。</p>
 <p>1️⃣ ZIP を展開し、ローカル フォルダーに保存します。</p>
 <p>2️⃣ 展開したフォルダーを Visual Studio Code で開きます:</p>
-<pre><code class="language-bash">cd insurance-mcp
-code .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>insurance-mcp
+code<span class="w"> </span>.
+</code></pre></div>
 <p>3️⃣ Visual Studio Code でプロジェクト構造を確認します。主な構成要素は次のとおりです:</p>
 <ul>
 <li><code>src/functions</code>: MCP ツール実装を含む Azure Functions  </li>
@@ -2553,33 +2553,33 @@ code .
 <h3 id="step-3">Step 3: 環境の構成</h3>
 <p>MCP サーバーを実行する前に、Azure Table Storage 接続を構成する必要があります。</p>
 <p>1️⃣ <code>env</code> フォルダーで <code>.env.local.sample</code> をコピーし、 <code>.env.local</code> という新しいファイルを作成します:</p>
-<p><strong>Windows PowerShell:</strong></p>
-<pre><code class="language-powershell">Copy-Item env/.env.local.sample env/.env.local
-</code></pre>
-<p><strong>macOS/Linux:</strong></p>
-<pre><code class="language-bash">cp env/.env.local.sample env/.env.local
-</code></pre>
+<p><strong>Windows PowerShell:</strong>
+<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span><span class="p">.</span><span class="n">sample</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span>
+</code></pre></div></p>
+<p><strong>macOS/Linux:</strong>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>env/.env.local.sample<span class="w"> </span>env/.env.local
+</code></pre></div></p>
 <p>2️⃣ <code>env/.env.local</code> ファイルを編集し、Azure Table Storage の詳細を入力します:</p>
-<pre><code class="language-bash"># Azure Table Storage Configuration
-AZURE_STORAGE_ACCOUNT=your_storage_account_name
-AZURE_TABLE_ENDPOINT=https://your_storage_account_name.table.core.windows.net
-TABLE_NAME=ClaimAdjusters
-ALLOW_INSECURE_CONNECTION=false
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure Table Storage Configuration</span>
+<span class="nv">AZURE_STORAGE_ACCOUNT</span><span class="o">=</span>your_storage_account_name
+<span class="nv">AZURE_TABLE_ENDPOINT</span><span class="o">=</span>https://your_storage_account_name.table.core.windows.net
+<span class="nv">TABLE_NAME</span><span class="o">=</span>ClaimAdjusters
+<span class="nv">ALLOW_INSECURE_CONNECTION</span><span class="o">=</span><span class="nb">false</span>
 
-# DevTunnel Configuration
-TUNNEL_ID=
-</code></pre>
+<span class="c1"># DevTunnel Configuration</span>
+<span class="nv">TUNNEL_ID</span><span class="o">=</span>
+</code></pre></div>
 <p>3️⃣ <code>.env.local.user.sample</code> をコピーし、 <code>.env.local.user</code> という新しいファイルを作成します:</p>
-<p><strong>Windows PowerShell:</strong></p>
-<pre><code class="language-powershell">Copy-Item env/.env.local.user.sample env/.env.local.user
-</code></pre>
-<p><strong>macOS/Linux:</strong></p>
-<pre><code class="language-bash">cp env/.env.local.user.sample env/.env.local.user
-</code></pre>
+<p><strong>Windows PowerShell:</strong>
+<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">sample</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span><span class="p">.</span><span class="n">user</span>
+</code></pre></div></p>
+<p><strong>macOS/Linux:</strong>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>env/.env.local.user.sample<span class="w"> </span>env/.env.local.user
+</code></pre></div></p>
 <p>4️⃣ <code>env/.env.local.user</code> ファイルを編集し、Azure Storage アカウント キーを入力します:</p>
-<pre><code class="language-bash"># Azure Table Storage Configuration
-SECRET_AZURE_STORAGE_KEY=your_storage_account_key
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure Table Storage Configuration</span>
+<span class="nv">SECRET_AZURE_STORAGE_KEY</span><span class="o">=</span>your_storage_account_key
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">機密情報の保護</p>
 <p><code>.env.local.user</code> ファイルには機密資格情報が含まれており、ソース管理にコミットしてはいけません。 <code>.gitignore</code> に既に含まれているため、誤ってコミットされるのを防ぎます。</p>
@@ -2587,11 +2587,11 @@ SECRET_AZURE_STORAGE_KEY=your_storage_account_key
 <p><cc-end-step lab="baf7" exercise="1" step="3" /></p>
 <h3 id="step-4">Step 4: 依存関係のインストールとデータの初期化</h3>
 <p>1️⃣ プロジェクトの依存関係をインストールします:</p>
-<pre><code class="language-bash">npm install
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install
+</code></pre></div>
 <p>2️⃣ Azure Table Storage にクレーム アジャスター データを初期化します:</p>
-<pre><code class="language-bash">npm run init-data
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>init-data
+</code></pre></div>
 <p>このスクリプトは Azure Storage アカウントに <code>ClaimAdjusters</code> テーブルを作成し、サンプル クレーム アジャスター レコードを投入します。</p>
 <p><cc-end-step lab="baf7" exercise="1" step="4" /></p>
 <h3 id="step-5-dev-tunnel-mcp">Step 5: Dev Tunnel で MCP サーバーを実行</h3>
@@ -2607,8 +2607,8 @@ SECRET_AZURE_STORAGE_KEY=your_storage_account_key
 <li>MCP Inspector のインストール、起動、およびブラウザーでの開放 (ツールのテストとデバッグ用)  </li>
 </ul>
 <p>3️⃣ サーバーが起動したら、ターミナルに表示される dev tunnel URL (<code>https://your_devtunnel_id.devtunnels.ms</code> など) を確認します。MCP サーバーのエンドポイント URL は次のようになります:</p>
-<pre><code class="language-text">https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
-</code></pre>
+<div class="highlight"><pre><span></span><code>https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">サーバーは起動したままにしておく</p>
 <p>このラボ全体を通じて MCP サーバーと dev tunnel を起動したままにしてください。VS Code でデバッグ セッションを実行中はトンネルが有効です。再起動が必要な場合は <strong>F5</strong> を再度押すだけで構いません。</p>
@@ -2619,9 +2619,9 @@ SECRET_AZURE_STORAGE_KEY=your_storage_account_key
 <h3 id="step-1-mcp_1">Step 1: MCP クライアント設定を追加</h3>
 <p>1️⃣ エージェント プロジェクトの <code>.env.local</code> ファイルを開きます。</p>
 <p>2️⃣ Exercise 1 で取得した dev tunnel URL を使用して MCP サーバー設定を追加します:</p>
-<pre><code class="language-bash"># MCP Server Configuration
-MCP_SERVER_URL=https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># MCP Server Configuration</span>
+<span class="nv">MCP_SERVER_URL</span><span class="o">=</span>https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>your_devtunnel_id</code> を Exercise 1 で MCP サーバーを起動した際にターミナルに表示された実際のトンネル ID に置き換えてください。</p>
@@ -2629,27 +2629,27 @@ MCP_SERVER_URL=https://your_devtunnel_id.devtunnels.ms/runtime/webhooks/mcp
 <p><cc-end-step lab="baf7" exercise="2" step="1" /></p>
 <h3 id="step-2-mcp_1">Step 2: 依存性注入に MCP クライアントを登録</h3>
 <p>1️⃣ エージェント プロジェクトのルートで新しいターミナルを開き、次のスクリプトを実行して ModelContextProtocol NuGet パッケージをインストールします:</p>
-<pre><code class="language-bash">dotnet add package ModelContextProtocol --version 0.4.1-preview.1
-</code></pre>
+<div class="highlight"><pre><span></span><code>dotnet<span class="w"> </span>add<span class="w"> </span>package<span class="w"> </span>ModelContextProtocol<span class="w"> </span>--version<span class="w"> </span><span class="m">0</span>.4.1-preview.1
+</code></pre></div>
 <p>2️⃣ エージェント プロジェクトの <code>src/Program.cs</code> を開きます。</p>
 <p>3️⃣ ファイルの先頭に必要な using ステートメントを追加します:</p>
-<pre><code class="language-csharp">using ModelContextProtocol.Client;
-using ModelContextProtocol.Protocol;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">ModelContextProtocol.Client</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">ModelContextProtocol.Protocol</span><span class="p">;</span>
+</code></pre></div>
 <p>4️⃣ 他のサービス (VisionService、LanguageModelService など) を登録している場所を見つけ、MCP クライアントの登録を追加します:</p>
-<pre><code class="language-csharp">// Register MCP Client for claims adjusters
-builder.Services.AddSingleton&lt;McpClient&gt;(sp =&gt;
-{
-    var configuration = sp.GetRequiredService&lt;IConfiguration&gt;();
-    var mcpServerUrl = configuration[&quot;MCP_SERVER_URL&quot;] 
-        ?? throw new InvalidOperationException(&quot;MCP_SERVER_URL is not configured&quot;);
+<div class="highlight"><pre><span></span><code><span class="c1">// Register MCP Client for claims adjusters</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="o">&lt;</span><span class="n">McpClient</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sp</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sp</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">IConfiguration</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">mcpServerUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;MCP_SERVER_URL&quot;</span><span class="p">]</span><span class="w"> </span>
+<span class="w">        </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;MCP_SERVER_URL is not configured&quot;</span><span class="p">);</span>
 
-    var clientTransport = new HttpClientTransport(new HttpClientTransportOptions {
-        Endpoint = new Uri(mcpServerUrl)});
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">clientTransport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HttpClientTransport</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HttpClientTransportOptions</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Uri</span><span class="p">(</span><span class="n">mcpServerUrl</span><span class="p">)});</span>
 
-    return McpClient.CreateAsync(clientTransport).GetAwaiter().GetResult();
-});
-</code></pre>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">McpClient</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">clientTransport</span><span class="p">).</span><span class="n">GetAwaiter</span><span class="p">().</span><span class="n">GetResult</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
 <p><cc-end-step lab="baf7" exercise="2" step="2" /></p>
 <h2 id="exercise-3-claimsadjustersplugin">Exercise 3: ClaimsAdjustersPlugin の作成</h2>
 <p>次に、MCP ツールを使用してクレーム アジャスターを管理するプラグインを作成します。</p>
@@ -2671,197 +2671,197 @@ builder.Services.AddSingleton&lt;McpClient&gt;(sp =&gt;
 </ul>
 </details>
 <p>1️⃣ <code>src/Plugins/ClaimsAdjustersPlugin.cs</code> という新しいファイルを作成し、次の実装を追加します:</p>
-<pre><code class="language-csharp">using Microsoft.Agents.Builder;
-using Microsoft.Agents.Core.Models;
-using System.ComponentModel;
-using System.Text.Json;
-using InsuranceAgent;
-using Microsoft.Agents.Builder.State;
-using ModelContextProtocol.Client;
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Builder</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Core.Models</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.ComponentModel</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Text.Json</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">InsuranceAgent</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Builder.State</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">ModelContextProtocol.Client</span><span class="p">;</span>
 
-namespace ZavaInsurance.Plugins
-{
-    /// &lt;summary&gt;
-    /// Claims Adjusters Plugin for Zava Insurance
-    /// Provides tools for managing and retrieving claims adjuster information via MCP.
-    /// &lt;/summary&gt;
-    public class ClaimsAdjustersPlugin
-    {
-        private readonly ITurnContext _turnContext;
-        private readonly McpClient _mcpClient;
-        private readonly IConfiguration _configuration;
+<span class="k">namespace</span><span class="w"> </span><span class="nn">ZavaInsurance.Plugins</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">    </span><span class="c1">/// Claims Adjusters Plugin for Zava Insurance</span>
+<span class="w">    </span><span class="c1">/// Provides tools for managing and retrieving claims adjuster information via MCP.</span>
+<span class="w">    </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ClaimsAdjustersPlugin</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITurnContext</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">McpClient</span><span class="w"> </span><span class="n">_mcpClient</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">_configuration</span><span class="p">;</span>
 
-        public ClaimsAdjustersPlugin(ITurnContext turnContext,
-            McpClient mcpClient, 
-            IConfiguration configuration)
-        {
-            _turnContext = turnContext ?? throw new ArgumentNullException(nameof(turnContext));
-            _mcpClient = mcpClient ?? throw new ArgumentNullException(nameof(mcpClient));
-            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        }
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">ClaimsAdjustersPlugin</span><span class="p">(</span><span class="n">ITurnContext</span><span class="w"> </span><span class="n">turnContext</span><span class="p">,</span>
+<span class="w">            </span><span class="n">McpClient</span><span class="w"> </span><span class="n">mcpClient</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_turnContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turnContext</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">turnContext</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_mcpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mcpClient</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">mcpClient</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">configuration</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Retrieves claims adjusters based on claim type and country.
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;claimType&quot;&gt;The claim type to filter claims adjusters (Auto or Homeowners)&lt;/param&gt;
-        /// &lt;param name=&quot;country&quot;&gt;The country to filter claims adjusters&lt;/param&gt;
-        /// &lt;returns&gt;A list of claims adjusters matching the criteria&lt;/returns&gt;
-        [Description(&quot;Retrieves claims adjusters based on area and country&quot;)]
-        public async Task&lt;string&gt; ListClaimsAdjustersAsync(string claimType, string country)
-        {
-            await NotifyUserAsync($&quot;Retrieving claims adjusters for area {claimType} and country {country}...&quot;);
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Retrieves claims adjusters based on claim type and country.</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;claimType&quot;&gt;The claim type to filter claims adjusters (Auto or Homeowners)&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;country&quot;&gt;The country to filter claims adjusters&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;returns&gt;A list of claims adjusters matching the criteria&lt;/returns&gt;</span>
+<span class="w">        </span><span class="na">[Description(&quot;Retrieves claims adjusters based on area and country&quot;)]</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ListClaimsAdjustersAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">claimType</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">country</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Retrieving claims adjusters for area {claimType} and country {country}...&quot;</span><span class="p">);</span>
 
-            // Validate claim type - only &quot;Auto&quot; and &quot;Homeowners&quot; are supported
-            if (claimType != &quot;Auto&quot; &amp;&amp; claimType != &quot;Homeowners&quot;)
-            {
-                claimType = null;
-            }
+<span class="w">            </span><span class="c1">// Validate claim type - only &quot;Auto&quot; and &quot;Homeowners&quot; are supported</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">claimType</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;Auto&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">claimType</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;Homeowners&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">claimType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
-            // Validate country
-            if (country == &quot;All&quot;)
-            {
-                country = null;
-            }
+<span class="w">            </span><span class="c1">// Validate country</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;All&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
-            var result = await _mcpClient.CallToolAsync(&quot;get_claims_adjusters&quot;, 
-                new Dictionary&lt;string, object?&gt; {                 
-                    [&quot;area&quot;] = claimType, 
-                    [&quot;country&quot;] = country
-                }
-            );
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_mcpClient</span><span class="p">.</span><span class="n">CallToolAsync</span><span class="p">(</span><span class="s">&quot;get_claims_adjusters&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">object?</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span>
+<span class="w">                    </span><span class="na">[&quot;area&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">claimType</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                    </span><span class="na">[&quot;country&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">country</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
 
-            if (!result.IsError.HasValue || result.IsError.HasValue &amp;&amp; !result.IsError.Value)
-            {
-                var adjusters = result.Content;
-                return JsonSerializer.Serialize(adjusters, new JsonSerializerOptions { WriteIndented = true });
-            }
-            else
-            {
-                return $&quot;Error retrieving claims adjusters!&quot;;
-            }
-        }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">.</span><span class="n">IsError</span><span class="p">.</span><span class="n">HasValue</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">IsError</span><span class="p">.</span><span class="n">HasValue</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">result</span><span class="p">.</span><span class="n">IsError</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">adjusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">Content</span><span class="p">;</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">adjusters</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonSerializerOptions</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">WriteIndented</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">});</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Error retrieving claims adjusters!&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Assigns a claims adjuster to a specific claim.
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;claimId&quot;&gt;The ID of the claim&lt;/param&gt;
-        /// &lt;param name=&quot;adjusterId&quot;&gt;The ID of the claims adjuster&lt;/param&gt;
-        /// &lt;returns&gt;Confirmation message of assignment&lt;/returns&gt;
-        [Description(&quot;Assigns a claims adjuster to a specific claim&quot;)]
-        public async Task&lt;string&gt; AssignClaimAdjusterAsync(string claimId, string adjusterId)
-        {
-            await NotifyUserAsync($&quot;Assigning claims adjuster {adjusterId} to claim {claimId}...&quot;);
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Assigns a claims adjuster to a specific claim.</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;claimId&quot;&gt;The ID of the claim&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;adjusterId&quot;&gt;The ID of the claims adjuster&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;returns&gt;Confirmation message of assignment&lt;/returns&gt;</span>
+<span class="w">        </span><span class="na">[Description(&quot;Assigns a claims adjuster to a specific claim&quot;)]</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AssignClaimAdjusterAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">claimId</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">adjusterId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Assigning claims adjuster {adjusterId} to claim {claimId}...&quot;</span><span class="p">);</span>
 
-            var result = await _mcpClient.CallToolAsync(&quot;assign_claim_adjuster&quot;, 
-                new Dictionary&lt;string, object?&gt; {                 
-                    [&quot;claimId&quot;] = claimId, 
-                    [&quot;adjusterId&quot;] = adjusterId
-                }
-            );
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_mcpClient</span><span class="p">.</span><span class="n">CallToolAsync</span><span class="p">(</span><span class="s">&quot;assign_claim_adjuster&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">object?</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">                 </span>
+<span class="w">                    </span><span class="na">[&quot;claimId&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">claimId</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                    </span><span class="na">[&quot;adjusterId&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adjusterId</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">);</span>
 
-            if (!result.IsError.HasValue || result.IsError.HasValue &amp;&amp; !result.IsError.Value)
-            {
-                var adjusters = result.Content;
-                return JsonSerializer.Serialize(adjusters, new JsonSerializerOptions { WriteIndented = true });
-            }
-            else
-            {
-                return $&quot;Error assigning claims adjuster!&quot;;
-            }
-        }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">.</span><span class="n">IsError</span><span class="p">.</span><span class="n">HasValue</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">IsError</span><span class="p">.</span><span class="n">HasValue</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">result</span><span class="p">.</span><span class="n">IsError</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">adjusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">Content</span><span class="p">;</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">adjusters</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonSerializerOptions</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">WriteIndented</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">});</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;Error assigning claims adjuster!&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 
-        private async Task NotifyUserAsync(string message)
-        {
-            if (!_turnContext.Activity.ChannelId.Channel!.Contains(Channels.Webchat))
-            {
-                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message);
-            }
-            else
-            {
-                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message).ConfigureAwait(false);
-            }
-        }
-    }
-}
-</code></pre>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">_turnContext</span><span class="p">.</span><span class="n">Activity</span><span class="p">.</span><span class="n">ChannelId</span><span class="p">.</span><span class="n">Channel</span><span class="o">!</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">Channels</span><span class="p">.</span><span class="n">Webchat</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="n">message</span><span class="p">).</span><span class="n">ConfigureAwait</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf7" exercise="3" step="1" /></p>
 <h2 id="exercise-4-claimsadjustersplugin">Exercise 4: エージェントに ClaimsAdjustersPlugin を登録</h2>
 <p>次に、ZavaInsuranceAgent に ClaimsAdjustersPlugin を組み込みます。</p>
 <h3 id="step-1">Step 1: エージェント コンストラクターの更新</h3>
 <p>1️⃣ <code>src/Agent/ZavaInsuranceAgent.cs</code> を開きます。</p>
 <p>2️⃣ ファイルの先頭に必要な using ステートメントを追加します:</p>
-<pre><code class="language-csharp">using ModelContextProtocol.Client;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">ModelContextProtocol.Client</span><span class="p">;</span>
+</code></pre></div>
 <p>3️⃣ クラス フィールド セクションを見つけ、MCP クライアントのフィールドを追加します:</p>
-<pre><code class="language-csharp">private readonly McpClient _mcpClient = null;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">McpClient</span><span class="w"> </span><span class="n">_mcpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+</code></pre></div>
 <p>4️⃣ コンストラクターを更新し、MCP クライアントを受け取り保存します:</p>
-<pre><code class="language-csharp">public ZavaInsuranceAgent(AgentApplicationOptions options, IChatClient chatClient, IConfiguration configuration, IServiceProvider serviceProvider, IHttpClientFactory httpClientFactory, McpClient mcpClient) : base(options)
-{
-    _chatClient = chatClient;
-    _configuration = configuration;
-    _serviceProvider = serviceProvider;
-    _httpClient = httpClientFactory.CreateClient() ?? throw new ArgumentNullException(nameof(httpClientFactory));
-    _mcpClient = mcpClient;
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="nf">ZavaInsuranceAgent</span><span class="p">(</span><span class="n">AgentApplicationOptions</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">IChatClient</span><span class="w"> </span><span class="n">chatClient</span><span class="p">,</span><span class="w"> </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span><span class="n">IServiceProvider</span><span class="w"> </span><span class="n">serviceProvider</span><span class="p">,</span><span class="w"> </span><span class="n">IHttpClientFactory</span><span class="w"> </span><span class="n">httpClientFactory</span><span class="p">,</span><span class="w"> </span><span class="n">McpClient</span><span class="w"> </span><span class="n">mcpClient</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_chatClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chatClient</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_serviceProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serviceProvider</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_httpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">httpClientFactory</span><span class="p">.</span><span class="n">CreateClient</span><span class="p">()</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">httpClientFactory</span><span class="p">));</span>
+<span class="w">    </span><span class="n">_mcpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mcpClient</span><span class="p">;</span>
 
-    // Greet when members are added to the conversation
-    OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync);
+<span class="w">    </span><span class="c1">// Greet when members are added to the conversation</span>
+<span class="w">    </span><span class="n">OnConversationUpdate</span><span class="p">(</span><span class="n">ConversationUpdateEvents</span><span class="p">.</span><span class="n">MembersAdded</span><span class="p">,</span><span class="w"> </span><span class="n">WelcomeMessageAsync</span><span class="p">);</span>
 
-    // Listen for ANY message to be received
-    OnActivity(ActivityTypes.Message, OnMessageAsync, autoSignInHandlers: [UserAuthorization.DefaultHandlerName]);
-}
-</code></pre>
+<span class="w">    </span><span class="c1">// Listen for ANY message to be received</span>
+<span class="w">    </span><span class="n">OnActivity</span><span class="p">(</span><span class="n">ActivityTypes</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span><span class="w"> </span><span class="n">OnMessageAsync</span><span class="p">,</span><span class="w"> </span><span class="n">autoSignInHandlers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">UserAuthorization</span><span class="p">.</span><span class="n">DefaultHandlerName</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf7" exercise="4" step="1" /></p>
 <h3 id="step-2-claimsadjustersplugin">Step 2: ClaimsAdjustersPlugin のインスタンス化</h3>
 <p>1️⃣ <code>GetClientAgent</code> メソッド (他のプラグインをインスタンス化している場所) を見つけます。</p>
 <p>2️⃣ 既存のプラグインの後に ClaimsAdjustersPlugin のインスタンス化を追加します:</p>
-<pre><code class="language-csharp">// Create ClaimsAdjustersPlugin with MCP client
-ClaimsAdjustersPlugin claimsAdjustersPlugin = new(context, _mcpClient, _configuration);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create ClaimsAdjustersPlugin with MCP client</span>
+<span class="n">ClaimsAdjustersPlugin</span><span class="w"> </span><span class="n">claimsAdjustersPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">_mcpClient</span><span class="p">,</span><span class="w"> </span><span class="n">_configuration</span><span class="p">);</span>
+</code></pre></div>
 <p><cc-end-step lab="baf7" exercise="4" step="2" /></p>
 <h3 id="step-3-claimsadjusters">Step 3: ClaimsAdjusters ツールの登録</h3>
 <p>同じ <code>GetClientAgent</code> メソッドで、 <code>toolOptions.Tools</code> にツールを追加している箇所を見つけ、クレーム アジャスター ツールを追加します:</p>
-<pre><code class="language-csharp">// Register Claims Adjusters MCP tools
-toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.ListClaimsAdjustersAsync));
-toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaimAdjusterAsync));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Register Claims Adjusters MCP tools</span>
+<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">claimsAdjustersPlugin</span><span class="p">.</span><span class="n">ListClaimsAdjustersAsync</span><span class="p">));</span>
+<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">claimsAdjustersPlugin</span><span class="p">.</span><span class="n">AssignClaimAdjusterAsync</span><span class="p">));</span>
+</code></pre></div>
 <p><cc-end-step lab="baf7" exercise="4" step="3" /></p>
 <h3 id="step-4_1">Step 4: エージェント インストラクションの更新</h3>
 <p>エージェント インストラクションを更新して、クレーム アジャスター機能を含めます。</p>
 <p>1️⃣ <code>ZavaInsuranceAgent.cs</code> の <code>AgentInstructions</code> フィールドを見つけます。</p>
 <p>2️⃣ クレーム アジャスター ツールに関する説明を追加します:</p>
-<pre><code class="language-csharp">private readonly string AgentInstructions = &quot;&quot;&quot;
-        You are a professional insurance claims assistant for Zava Insurance.
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">AgentInstructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="n">You</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="n">insurance</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">assistant</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Zava</span><span class="w"> </span><span class="n">Insurance</span><span class="p">.</span>
 
-        Whenever the user starts a new conversation or provides a prompt to start a new conversation like &quot;start over&quot;, &quot;restart&quot;, 
-        &quot;new conversation&quot;, &quot;what can you do?&quot;, &quot;how can you help me?&quot;, etc. use {{StartConversationPlugin.StartConversation}} and 
-        provide to the user exactly the message you get back from the plugin.
+<span class="w">        </span><span class="n">Whenever</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">starts</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">conversation</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">provides</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">conversation</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="s">&quot;start over&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;restart&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="s">&quot;new conversation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;what can you do?&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;how can you help me?&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="p">.</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">StartConversationPlugin</span><span class="p">.</span><span class="n">StartConversation</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span>
+<span class="w">        </span><span class="n">provide</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">exactly</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">plugin</span><span class="p">.</span>
 
-        **Available Tools:**
-        Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
-        For claims search, use {{ClaimsPlugin.SearchClaims}} and {{ClaimsPlugin.GetClaimDetails}}.
-        For damage photo viewing, use {{VisionPlugin.ShowDamagePhoto}}.
-        For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} and require approval via {{VisionPlugin.ApproveAnalysis}}.
-        For policy search, use {{PolicyPlugin.SearchPolicies}} and {{PolicyPlugin.GetPolicyDetails}}.
-        For sending investigation reports and claim details via email, use {{CommunicationPlugin.GenerateInvestigationReport}} and {{CommunicationPlugin.SendClaimDetailsByEmail}}.
-        For claims compliance analysis, use {{ClaimsPoliciesPlugin.AnalyzeClaimCompliance}}.
+<span class="w">        </span><span class="o">**</span><span class="n">Available</span><span class="w"> </span><span class="n">Tools</span><span class="p">:</span><span class="o">**</span>
+<span class="w">        </span><span class="n">Use</span><span class="w"> </span><span class="p">{{</span><span class="n">DateTimeFunctionTool</span><span class="p">.</span><span class="n">getDate</span><span class="p">}}</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">time</span><span class="p">.</span>
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">SearchClaims</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">GetClaimDetails</span><span class="p">}}.</span>
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">damage</span><span class="w"> </span><span class="n">photo</span><span class="w"> </span><span class="n">viewing</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">ShowDamagePhoto</span><span class="p">}}.</span>
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">vision</span><span class="w"> </span><span class="n">damage</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">AnalyzeAndShowDamagePhoto</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">approval</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">ApproveAnalysis</span><span class="p">}}.</span>
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">PolicyPlugin</span><span class="p">.</span><span class="n">SearchPolicies</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">PolicyPlugin</span><span class="p">.</span><span class="n">GetPolicyDetails</span><span class="p">}}.</span>
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">sending</span><span class="w"> </span><span class="n">investigation</span><span class="w"> </span><span class="n">reports</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">CommunicationPlugin</span><span class="p">.</span><span class="n">GenerateInvestigationReport</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">CommunicationPlugin</span><span class="p">.</span><span class="n">SendClaimDetailsByEmail</span><span class="p">}}.</span>
+<span class="w">        </span><span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">compliance</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPoliciesPlugin</span><span class="p">.</span><span class="n">AnalyzeClaimCompliance</span><span class="p">}}.</span>
 
-        To list claim adjusters use {{ClaimsAdjustersPlugin.ListClaimsAdjusters}}. When listing claim adjusters:
-        - Always try to use the country of the current claim, if any. Otherwise, if no country is specified by the user, set country value to 'All'.
-        - Always try to use the claim type of the current claim, if any.
-        - Always retrieve id, firstName, lastName, email, country, phone, and area for each claim adjuster.
-        - Only &quot;Auto&quot; and &quot;Homeowners&quot; are valid claim types. If the user provides any other claim type, set area value to null.
+<span class="w">        </span><span class="n">To</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">adjusters</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsAdjustersPlugin</span><span class="p">.</span><span class="n">ListClaimsAdjusters</span><span class="p">}}.</span><span class="w"> </span><span class="n">When</span><span class="w"> </span><span class="n">listing</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">adjusters</span><span class="p">:</span>
+<span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">Always</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">claim</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">.</span><span class="w"> </span><span class="n">Otherwise</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">country</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="err">&#39;</span><span class="n">All</span><span class="err">&#39;</span><span class="p">.</span>
+<span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">Always</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">claim</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">.</span>
+<span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">Always</span><span class="w"> </span><span class="n">retrieve</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">adjuster</span><span class="p">.</span>
+<span class="w">        </span><span class="o">-</span><span class="w"> </span><span class="n">Only</span><span class="w"> </span><span class="s">&quot;Auto&quot;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="s">&quot;Homeowners&quot;</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">types</span><span class="p">.</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">provides</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">null</span><span class="p">.</span>
 
-        To assign a claim adjuster to a claim use {{ClaimsAdjustersPlugin.AssignClaimAdjuster}}.
+<span class="w">        </span><span class="n">To</span><span class="w"> </span><span class="n">assign</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">adjuster</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsAdjustersPlugin</span><span class="p">.</span><span class="n">AssignClaimAdjuster</span><span class="p">}}.</span>
 
-        **IMPORTANT**: When user asks to &quot;check policy for this claim&quot;, first use GetClaimDetails to get the claim's policy number, then use GetPolicyDetails with that policy number.
+<span class="w">        </span><span class="o">**</span><span class="n">IMPORTANT</span><span class="o">**</span><span class="p">:</span><span class="w"> </span><span class="n">When</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">asks</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;check policy for this claim&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">GetClaimDetails</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">claim</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">GetPolicyDetails</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">number</span><span class="p">.</span>
 
-        **IMPORTANT**: If in the response there are references to citations like [1], [2], etc., make sure to include those citations in the response so that M365 Copilot can render them properly.
+<span class="w">        </span><span class="o">**</span><span class="n">IMPORTANT</span><span class="o">**</span><span class="p">:</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">references</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">etc</span><span class="p">.,</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="n">those</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">M365</span><span class="w"> </span><span class="n">Copilot</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">render</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">properly</span><span class="p">.</span>
 
-        Stick to the scenario above and use only the information from the tools when answering questions.
-        Be concise and professional in your responses.
-        &quot;&quot;&quot;;
-</code></pre>
+<span class="w">        </span><span class="n">Stick</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">scenario</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tools</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">answering</span><span class="w"> </span><span class="n">questions</span><span class="p">.</span>
+<span class="w">        </span><span class="n">Be</span><span class="w"> </span><span class="n">concise</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">responses</span><span class="p">.</span>
+<span class="w">        </span><span class="s">&quot;&quot;&quot;;</span>
+</code></pre></div>
 <details class="note">
 <summary>これらのインストラクションが重要な理由</summary>
 <p>インストラクションは、LLM がクレーム アジャスター ツールを効果的に使用できるように導きます:</p>
@@ -2887,11 +2887,11 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaim
 <p><cc-end-step lab="baf7" exercise="5" step="1" /></p>
 <h3 id="step-2">Step 2: クレーム アジャスターの一覧取得をテスト</h3>
 <p>1️⃣ まず Microsoft 365 Copilot で、クレームのコンテキストを確立するためにクレームを取得します:</p>
-<pre><code class="language-text">Get details for claim CLM-2025-001007
-</code></pre>
+<div class="highlight"><pre><span></span><code>Get details for claim CLM-2025-001007
+</code></pre></div>
 <p>2️⃣ 次にアジャスターを尋ねます:</p>
-<pre><code class="language-text">List available claims adjusters for this claim
-</code></pre>
+<div class="highlight"><pre><span></span><code>List available claims adjusters for this claim
+</code></pre></div>
 <p>エージェントは次を行うはずです:</p>
 <ul>
 <li>クレームのタイプ (Auto) とクレーム詳細に含まれる国を使用  </li>
@@ -2901,8 +2901,8 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaim
 <p><cc-end-step lab="baf7" exercise="5" step="2" /></p>
 <h3 id="step-3_1">Step 3: アジャスターの割り当てをテスト</h3>
 <p>1️⃣ アジャスター一覧を取得した後、次のようにして割り当てます:</p>
-<pre><code class="language-text">Assign adjuster ADJ-EE-0001 to this claim
-</code></pre>
+<div class="highlight"><pre><span></span><code>Assign adjuster ADJ-EE-0001 to this claim
+</code></pre></div>
 <p>エージェントは次を行うはずです:</p>
 <ul>
 <li><code>assign_claim_adjuster</code> MCP ツールを呼び出す  </li>
@@ -2912,12 +2912,12 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaim
 <p><cc-end-step lab="baf7" exercise="5" step="3" /></p>
 <h3 id="step-4_2">Step 4: フィルター付きでテスト</h3>
 <p>1️⃣ 直接フィルターを指定してテストします:</p>
-<pre><code class="language-text">Show me all Auto adjusters in the United States
-</code></pre>
+<div class="highlight"><pre><span></span><code>Show me all Auto adjusters in the United States
+</code></pre></div>
 <p>エージェントは専門分野と国でアジャスターをフィルターするはずです。</p>
 <p>2️⃣ "All" の国指定でテストします:</p>
-<pre><code class="language-text">List all Homeowners adjusters
-</code></pre>
+<div class="highlight"><pre><span></span><code>List all Homeowners adjusters
+</code></pre></div>
 <p>エージェントは国に関係なく Homeowners アジャスターをすべて返すはずです。</p>
 <p><cc-end-step lab="baf7" exercise="5" step="4" /></p>
 <div class="admonition success">
@@ -2949,6 +2949,8 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaim
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2981,7 +2983,7 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaim
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2993,6 +2995,8 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsAdjustersPlugin.AssignClaim
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

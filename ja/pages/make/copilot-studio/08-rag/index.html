@@ -2740,18 +2740,18 @@
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
-<pre><code class="language-text">HR Knowledge Agent
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR Knowledge Agent
+</code></pre></div>
 <ul>
 <li><strong>Description</strong>: </li>
 </ul>
-<pre><code class="language-text">An intelligent HR assistant that searches through candidate documents using advanced 
+<div class="highlight"><pre><span></span><code>An intelligent HR assistant that searches through candidate documents using advanced 
 vector search capabilities to provide contextual, document-backed responses
-</code></pre>
+</code></pre></div>
 <ul>
 <li><strong>Instructions</strong>: </li>
 </ul>
-<pre><code class="language-text">You are an intelligent HR Knowledge Assistant specializing in candidate search. 
+<div class="highlight"><pre><span></span><code>You are an intelligent HR Knowledge Assistant specializing in candidate search. 
 You have access to a comprehensive database of candidate resumes through advanced 
 vector search capabilities.
 
@@ -2761,7 +2761,7 @@ When users ask questions, you should:
 2. Provide detailed, accurate information based on the indexed documents
 3. Always include proper citations and references to source documents
 4. Explain your reasoning when matching candidates to requirements
-5. Suggest alternative candidates when exact matches aren't available
+5. Suggest alternative candidates when exact matches aren&#39;t available
 6. Help users understand the skills and qualifications of different candidates
 
 You excel at:
@@ -2772,7 +2772,7 @@ You excel at:
 - Semantic search that goes beyond keyword matching
 
 Always provide helpful, accurate information while respecting privacy and being professional.
-</code></pre>
+</code></pre></div>
 <p><img alt="The Microsoft Copilot Studio user experience when creating the &quot;HR Knowledge Agent&quot;. There are name, description, and instructions accordingly to the above suggeted settings." src="../assets/images/make/copilot-studio-08/mcs-agent-01.png" /></p>
 <p><strong>Publish</strong> を選択してエージェントを公開します。</p>
 <p>公開後、エージェントの <strong>Overview</strong> タブで <code>GPT-4.1</code> モデルが選択されていることを確認します。</p>
@@ -2815,12 +2815,12 @@ Always provide helpful, accurate information while respecting privacy and being 
 <h3 id="step-1_1">Step 1: 基本的な知識検索のテスト</h3>
 <p>まずは基本的な検索機能をテストし、エージェントがインデックス化された知識を適切に利用できるか確認します。</p>
 <p>テスト パネルで次のクエリを試してみてください。</p>
-<pre><code class="language-text">Hello! Can you help me find candidates with software engineering experience?
-</code></pre>
-<pre><code class="language-text">I'm looking for candidates who speak multiple languages. Can you help?
-</code></pre>
-<pre><code class="language-text">Show me candidates with machine learning or AI experience.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Hello! Can you help me find candidates with software engineering experience?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>I&#39;m looking for candidates who speak multiple languages. Can you help?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show me candidates with machine learning or AI experience.
+</code></pre></div>
 <p><img alt="The test panel showing a conversation with the HR Knowledge Agent where the user asks about software engineering candidates and receives detailed responses with proper citations from the indexed documents." src="../assets/images/make/copilot-studio-08/mcs-agent-03.png" /></p>
 <p>エージェントが以下を行う様子を確認します。</p>
 <ul>
@@ -2833,17 +2833,17 @@ Always provide helpful, accurate information while respecting privacy and being 
 <h3 id="step-2">Step 2: 複雑なクエリ シナリオのテスト</h3>
 <p>RAG と Vector 検索の強力さを示す高度なシナリオをテストします。</p>
 <p>次のような複合条件クエリを試してください。</p>
-<pre><code class="language-text">Find candidates suitable for a senior role that requires 5+ years of Python 
+<div class="highlight"><pre><span></span><code>Find candidates suitable for a senior role that requires 5+ years of Python 
 experience and fluency in Spanish
-</code></pre>
-<pre><code class="language-text">I need someone with both frontend and backend development skills. 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>I need someone with both frontend and backend development skills. 
 Who would be good for a full-stack position?
-</code></pre>
-<pre><code class="language-text">Can you recommend candidates for a data science position that requires 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Can you recommend candidates for a data science position that requires 
 experience with machine learning frameworks?
-</code></pre>
-<pre><code class="language-text">Who has project management experience combined with technical skills?
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Who has project management experience combined with technical skills?
+</code></pre></div>
 <p><img alt="The test panel showing complex multi-criteria queries with the agent providing detailed candidate recommendations, explanations of market insights, and suggestions for the best candidate to select." src="../assets/images/make/copilot-studio-08/mcs-agent-04.png" /></p>
 <p>エージェントが以下をどのように実行するか観察します。</p>
 <ul>
@@ -2890,6 +2890,8 @@ experience with machine learning frameworks?
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2922,7 +2924,7 @@ experience with machine learning frameworks?
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2934,6 +2936,8 @@ experience with machine learning frameworks?
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

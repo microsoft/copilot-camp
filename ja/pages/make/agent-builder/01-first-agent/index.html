@@ -2525,18 +2525,18 @@ for (const div of toc) {
 <p>宣言型エージェントを Agent Builder で作成するには、<a href="https://www.microsoft365.com/copilot" target="_blank">Microsoft 365 Copilot チャットのホーム ページ</a> を開き、左側のパネルで利用可能なエージェントの一覧から <strong>New agent</strong> を選択します。以下の図を参照してください。</p>
 <p><img alt="Microsoft 365 Copilot Chat。'New agent' コマンドが強調表示されている。" src="../../../../../assets/images/make/agent-builder-01/create-agent-01.png" /></p>
 <p>Agent Builder が起動し、カスタム エージェントの定義を開始できます。テンプレートを選択して始めることも、自然言語でエージェントを <em>説明</em> することも可能です。<strong>Configure</strong> オプションを選択してエージェントを手動で構成することもできますが、ここでは後ほど説明します。まず次の初期説明を入力してください。</p>
-<pre><code class="language-txt">You are an expert gardener and you help users to maintain and improve their home garden 
+<div class="highlight"><pre><span></span><code>You are an expert gardener and you help users to maintain and improve their home garden 
 providing detailed instructions and advice about the best practices for home gardening.
-</code></pre>
+</code></pre></div>
 <p><img alt="Agent Builder のユーザー エクスペリエンス。左下にエージェント ビルダーに指示を入力するテキスト ボックス、右側にエージェントのプレビュー。" src="../../../../../assets/images/make/agent-builder-01/create-agent-02.png" /></p>
 <p>指示を入力すると、エージェント ビルダーから新しいエージェントの名前を尋ねられます。名前には <strong>Gardener</strong> と入力してください。エージェント ビルダーとやり取りしている間、ダイアログの右側にエージェントのプレビューが表示され、会話を始めるための提案プロンプトも確認できます。エージェント ビルダーから指示の詳細化を求められた場合は、次の文章を入力してください。</p>
-<pre><code class="language-txt">Suggest ways to keep plants and flowers shining and gorgeous
-</code></pre>
+<div class="highlight"><pre><span></span><code>Suggest ways to keep plants and flowers shining and gorgeous
+</code></pre></div>
 <p><img alt="Agent Builder のユーザー エクスペリエンス。左下にエージェント ビルダーとの対話、右側にエージェントのプレビュー。" src="../../../../../assets/images/make/agent-builder-01/create-agent-03.png" /></p>
 <p>エージェント ビルダーがエージェント作成に必要な情報をすべて取得するまで対話を続けます。強調すべき点を尋ねられた場合は、次の文章を入力してください。</p>
-<pre><code class="language-txt">Highlight the importance of nature and plants/flowers to be present in every house!
+<div class="highlight"><pre><span></span><code>Highlight the importance of nature and plants/flowers to be present in every house!
 Use a professional, yet friendly, tone.
-</code></pre>
+</code></pre></div>
 <p>最後に「これ以上の調整は不要」と伝え、画面右上の <strong>Create</strong> ボタンを選択します。</p>
 <p><img alt="Agent Builder のユーザー エクスペリエンス。'Create' ボタンが強調表示されている。" src="../../../../../assets/images/make/agent-builder-01/create-agent-04.png" /></p>
 <p>Agent Builder が、提供した指示を基に新しいエージェントを作成します。</p>
@@ -2574,7 +2574,7 @@ Use a professional, yet friendly, tone.
 <p><cc-end-step lab="mab1" exercise="2" step="1" /></p>
 <h3 id="2_2">手順 2: 植物／花当てゲームのルールを定義する</h3>
 <p>引き続きエージェントの設定を編集し、<strong>Instructions</strong> フィールドの内容を次の値に更新します。</p>
-<pre><code class="language-txt">You are an expert gardener and you help users to maintain and improve their home garden
+<div class="highlight"><pre><span></span><code>You are an expert gardener and you help users to maintain and improve their home garden
 providing detailed instructions and advice about the best practices for home gardening.
 Here are your working rules:
 
@@ -2591,7 +2591,7 @@ schedules, fertilization, pruning, and pest control.
 Lastly, engage the user in a challenging game to guess the name of a plant or flower based
 on a set of clues. Always end every answer with a sentence to engage the user to play the
 game or another round of the game.
-</code></pre>
+</code></pre></div>
 <p><img alt="ラボ手順に従い設定を更新したダイアログ。'Update' ボタンが強調表示されている。" src="../../../../../assets/images/make/agent-builder-01/update-agent-04.png" /></p>
 <p>画面右上の <strong>Update</strong> ボタンを選択します。更新には少し時間がかかります。完了したら <strong>Go to agent</strong> を選択して最終結果を確認してください。プロンプトを入力すると、エージェントがゲームに誘導することに注目してください。</p>
 <p><img alt="新しいアイコンとユーザーをゲームに誘導する最終文が強調表示された更新後のエージェント。" src="../../../../../assets/images/make/agent-builder-01/update-agent-05.png" /></p>
@@ -2625,8 +2625,8 @@ game or another round of the game.
 <p>再度 <strong>Gardener</strong> エージェントを編集し、構成パネルを下にスクロールして <strong>Capabilities</strong> セクションを見つけます。<strong>Create images</strong> オプションを有効にしてエージェントを更新します。</p>
 <p><img alt="エージェント設定ダイアログの 'Capabilities' セクション。'Create images' オプションが選択され強調表示されている。" src="../../../../../assets/images/make/agent-builder-01/update-agent-08.png" /></p>
 <p>更新後、<strong>Go to agent</strong> を選択し、次のプロンプトを入力します。</p>
-<pre><code class="language-txt">Generate the image of a dozen of red roses
-</code></pre>
+<div class="highlight"><pre><span></span><code>Generate the image of a dozen of red roses
+</code></pre></div>
 <p>以下の画像は、生成された画像の例です。</p>
 <p><img alt="赤いバラ 12 本の画像を生成した 'Gardener' エージェントの回答。" src="../../../../../assets/images/make/agent-builder-01/update-agent-09.png" /></p>
 <p><cc-end-step lab="mab1" exercise="4" step="1" /></p>
@@ -2670,6 +2670,8 @@ game or another round of the game.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2702,7 +2704,7 @@ game or another round of the game.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2714,6 +2716,8 @@ game or another round of the game.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

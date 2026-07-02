@@ -2558,85 +2558,85 @@
 <p>この演習では、Azure OpenAI のテキスト埋め込みデプロイ名と Azure AI Search のキーおよびエンドポイントを取得しておく必要があります。</p>
 <h3 id="1">手順 1: 環境変数を設定する</h3>
 <p>Career Genie プロジェクトの <code>env/.env.local.user</code> を開き、次の環境変数を貼り付けます。</p>
-<pre><code class="language-json">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='&lt;Your-Text-Embedding-Model-Name&gt;'
-SECRET_AZURE_SEARCH_KEY='&lt;Your-Azure-AI-Search-Key&gt;'
-AZURE_SEARCH_ENDPOINT='&lt;Your-Azure-AI-Search-Endpoint&gt;'
-INDEX_NAME='&lt;Your-index-name&gt;'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="err">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME=&#39;&lt;Your</span><span class="mi">-</span><span class="err">Tex</span><span class="kc">t</span><span class="mf">-E</span><span class="err">mbeddi</span><span class="kc">n</span><span class="err">g</span><span class="mi">-</span><span class="err">Model</span><span class="mi">-</span><span class="err">Name&gt;&#39;</span>
+<span class="err">SECRET_AZURE_SEARCH_KEY=&#39;&lt;Your</span><span class="mi">-</span><span class="err">Azure</span><span class="mi">-</span><span class="err">AI</span><span class="mi">-</span><span class="err">Search</span><span class="mi">-</span><span class="err">Key&gt;&#39;</span>
+<span class="err">AZURE_SEARCH_ENDPOINT=&#39;&lt;Your</span><span class="mi">-</span><span class="err">Azure</span><span class="mi">-</span><span class="err">AI</span><span class="mi">-</span><span class="err">Search</span><span class="mf">-E</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="err">&gt;&#39;</span>
+<span class="err">INDEX_NAME=&#39;&lt;Your</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">na</span><span class="err">me&gt;&#39;</span>
+</code></pre></div>
 <p><code>teamsapp.local.yml</code> を開き、ファイル末尾の <code>uses: file/createOrUpdateEnvironmentFile</code> の下に次のスニペットを追加します。</p>
-<pre><code class="language-yml">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}}
+<div class="highlight"><pre><span></span><code>AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}}
 AZURE_SEARCH_KEY: ${{SECRET_AZURE_SEARCH_KEY}}
 AZURE_SEARCH_ENDPOINT: ${{AZURE_SEARCH_ENDPOINT}}
 INDEX_NAME: ${{INDEX_NAME}}
-</code></pre>
+</code></pre></div>
 <p><code>src/config.ts</code> を開き、<code>config</code> 内に次のスニペットを追加します。</p>
-<pre><code class="language-typescript">azureOpenAIEmbeddingDeploymentName: process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME,
-azureSearchKey: process.env.AZURE_SEARCH_KEY,
-azureSearchEndpoint: process.env.AZURE_SEARCH_ENDPOINT,
-indexName: process.env.INDEX_NAME,
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">azureOpenAIEmbeddingDeploymentName</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME</span><span class="p">,</span>
+<span class="nx">azureSearchKey</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.AZURE_SEARCH_KEY</span><span class="p">,</span>
+<span class="nx">azureSearchEndpoint</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.AZURE_SEARCH_ENDPOINT</span><span class="p">,</span>
+<span class="nx">indexName</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.INDEX_NAME</span><span class="p">,</span>
+</code></pre></div>
 <p><cc-end-step lab="bta2" exercise="3" step="1" /></p>
 <h3 id="2-azure-ai-search">手順 2: Azure AI Search をデータソースとして設定する</h3>
 <p>プロジェクトの <code>src/prompts/chat/config.json</code> を開き、<code>completion</code> ブロック内に <code>data_sources</code> を追加します。</p>
-<pre><code class="language-json">&quot;data_sources&quot;: [
-    {
-        &quot;type&quot;: &quot;azure_search&quot;,
-        &quot;parameters&quot;: {
-            &quot;endpoint&quot;: &quot;$searchEndpoint&quot;,
-            &quot;index_name&quot;: &quot;$indexName&quot;,
-            &quot;authentication&quot;: {
-                &quot;type&quot;: &quot;api_key&quot;,
-                &quot;key&quot;: &quot;$searchApiKey&quot;
-            },
-            &quot;query_type&quot;:&quot;vector&quot;,
-            &quot;in_scope&quot;: true,
-            &quot;strictness&quot;: 3,
-            &quot;top_n_documents&quot;: 3,
-            &quot;embedding_dependency&quot;: {
-            &quot;type&quot;: &quot;deployment_name&quot;,
-            &quot;deployment_name&quot;: &quot;$azureOpenAIEmbeddingDeploymentName&quot;
-            }
-        }
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;data_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;azure_search&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$searchEndpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;index_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$indexName&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;api_key&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$searchApiKey&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;in_scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;strictness&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;top_n_documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;embedding_dependency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment_name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;deployment_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$azureOpenAIEmbeddingDeploymentName&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <p><code>src/prompts/chat/skprompt.txt</code> を開き、次のようにプロンプトを更新します。</p>
-<pre><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team for finding the right candidate for the jobs. 
+<div class="highlight"><pre><span></span><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team for finding the right candidate for the jobs. 
 You are friendly and professional.
 You always greet users with excitement and introduce yourself first.
 You like using emojis where appropriate.
 Always mention all citations in your content.
-</code></pre>
+</code></pre></div>
 <p>Visual Studio Code のターミナルを開き、プロジェクトのルートで次のスクリプトを実行します。</p>
-<pre><code class="language-powershell">npm install fs
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">install</span> <span class="n">fs</span>
+</code></pre></div>
 <p><code>src/app/app.ts</code> を開き、<code>OpenAIModel</code> に次のパラメーターを追加します。</p>
-<pre><code class="language-typescript">azureApiVersion: '2024-02-15-preview'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">azureApiVersion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2024-02-15-preview&#39;</span>
+</code></pre></div>
 <p><code>src/app/app.ts</code> の先頭に次の import を追加します。</p>
-<pre><code class="language-typescript">import fs from 'fs';
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fs&#39;</span><span class="p">;</span>
+</code></pre></div>
 <p>さらに、<code>src/app/app.ts</code> の <code>ActionPlanner</code> 内の <code>defaultPrompt</code> を次のコードスニペットに置き換えます。</p>
-<pre><code class="language-typescript">defaultPrompt: async () =&gt; {
-    const template = await prompts.getPrompt('chat');
-    const skprompt = fs.readFileSync(path.join(__dirname, '..', 'prompts', 'chat', 'skprompt.txt'));
+<div class="highlight"><pre><span></span><code><span class="nx">defaultPrompt</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prompts</span><span class="p">.</span><span class="nx">getPrompt</span><span class="p">(</span><span class="s1">&#39;chat&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">skprompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;prompts&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;chat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;skprompt.txt&#39;</span><span class="p">));</span>
 
-    const dataSources = (template.config.completion as any)['data_sources'];
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dataSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">completion</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">)[</span><span class="s1">&#39;data_sources&#39;</span><span class="p">];</span>
 
-    dataSources.forEach((dataSource: any) =&gt; {
-      if (dataSource.type === 'azure_search') {
-        dataSource.parameters.authentication.key = config.azureSearchKey;
-        dataSource.parameters.endpoint = config.azureSearchEndpoint;
-        dataSource.parameters.indexName = config.indexName;
-        dataSource.parameters.embedding_dependency.deployment_name =
-          config.azureOpenAIEmbeddingDeploymentName;
-        dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
-      }
-    });
+<span class="w">    </span><span class="nx">dataSources</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">dataSource</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">dataSource</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;azure_search&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">authentication</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureSearchKey</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureSearchEndpoint</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">indexName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">indexName</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">embedding_dependency</span><span class="p">.</span><span class="nx">deployment_name</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureOpenAIEmbeddingDeploymentName</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">role_information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">skprompt</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
 
-    return template;
-}
-</code></pre>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">template</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="bta2" exercise="3" step="2" /></p>
 <h3 id="3">手順 3: アプリをデバッグしてデータとチャットする</h3>
 <div class="admonition pied-piper">
@@ -2682,6 +2682,8 @@ Always mention all citations in your content.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2714,7 +2716,7 @@ Always mention all citations in your content.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2726,6 +2728,8 @@ Always mention all citations in your content.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

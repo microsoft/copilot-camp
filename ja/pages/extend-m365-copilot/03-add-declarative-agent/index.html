@@ -2563,72 +2563,72 @@
 <h2 id="2_1">演習 2: 宣言型エージェントの作成</h2>
 <h3 id="1-json">手順 1: 宣言型エージェント JSON をプロジェクトに追加</h3>
 <p><strong>appPackage</strong> フォルダー内に <strong>trey-declarative-agent.json</strong> という新しいファイルを作成します。次の JSON をコピーして保存してください。</p>
-<pre><code class="language-json">{
-    &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;,
-    &quot;version&quot;: &quot;v1.6&quot;,
-    &quot;name&quot;: &quot;Trey Genie Local&quot;,
-    &quot;description&quot;: &quot;You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. &quot;,
-    &quot;instructions&quot;: &quot;You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, 'Always be Billing!'. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice.&quot;,
-    &quot;conversation_starters&quot;: [
-        {
-            &quot;title&quot;: &quot;Find consultants&quot;,
-            &quot;text&quot;: &quot;Find consultants with TypeScript skills&quot;
-        },
-        {
-            &quot;title&quot;: &quot;My Projects&quot;,
-            &quot;text&quot;: &quot;What projects am I assigned to?&quot;
-        },
-        {
-            &quot;title&quot;: &quot;My Hours&quot;,
-            &quot;text&quot;: &quot;How many hours have I delivered on projects this month?&quot;
-        }
-    ],
-    &quot;capabilities&quot;: [
-        {
-            &quot;name&quot;: &quot;OneDriveAndSharePoint&quot;,
-            &quot;items_by_url&quot;: [
-                {
-                    &quot;url&quot;: &quot;${{SHAREPOINT_DOCS_URL}}&quot;
-                }
-            ]
-        }
-    ],
-    &quot;actions&quot;: [
-        {
-            &quot;id&quot;: &quot;treyresearch&quot;,
-            &quot;file&quot;: &quot;trey-plugin.json&quot;
-        }
-    ]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.6&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trey Genie Local&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. &quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, &#39;Always be Billing!&#39;. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find consultants&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find consultants with TypeScript skills&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Projects&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What projects am I assigned to?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Hours&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;How many hours have I delivered on projects this month?&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneDriveAndSharePoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items_by_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{SHAREPOINT_DOCS_URL}}&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treyresearch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-plugin.json&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>このファイルにはエージェントの name 、description 、instructions が含まれています。instructions では Copilot に「Always remind users of the Trey motto, 'Always be Billing!'」と指示しています。次の演習で Copilot にプロンプトを送ると、このモットーが表示されるはずです。</p>
 <p><cc-end-step lab="e3" exercise="2" step="1" /></p>
 <h3 id="2-sharepoint-url">手順 2: SharePoint サイトの URL を宣言型エージェントに追加</h3>
 <p>「capabilities」セクションには SharePoint ファイルコンテナーがあります。Microsoft 365 Copilot は SharePoint または OneDrive 内の任意のドキュメントを参照できますが、この宣言型エージェントは Exercise 1 で作成した Trey Research Legal Documents サイト内のファイルのみを参照します。 </p>
-<pre><code class="language-json">&quot;capabilities&quot;: [
-    {
-        &quot;name&quot;: &quot;OneDriveAndSharePoint&quot;,
-        &quot;items_by_url&quot;: [
-            {
-                    &quot;url&quot;: &quot;${{SHAREPOINT_DOCS_URL}}&quot;
-            }
-        ]
-    }
-],
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneDriveAndSharePoint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;items_by_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{SHAREPOINT_DOCS_URL}}&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+</code></pre></div>
 <p>SharePoint URL は環境変数 <code>SHAREPOINT_DOCS_URL</code> として定義しているため、<strong>env</strong> フォルダー内の <strong>.env.local</strong> ファイルに追加する必要があります。ファイルの末尾に次の行を追加し、自身の SharePoint URL に置き換えてください。</p>
-<pre><code class="language-text">SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocuments
-</code></pre>
+<div class="highlight"><pre><span></span><code>SHAREPOINT_DOCS_URL=https://mytenant.sharepoint.com/sites/TreyResearchLegaldocuments
+</code></pre></div>
 <p><cc-end-step lab="e3" exercise="2" step="2" /></p>
 <h3 id="3-api">手順 3: API プラグインファイルの確認</h3>
 <p><strong>trey-declarative-agent.json</strong> 内の「actions」セクションでは、宣言型エージェントが Trey Research API にアクセスするよう指示しています。</p>
-<pre><code class="language-json">&quot;actions&quot;: [
-    {
-        &quot;id&quot;: &quot;treyresearch&quot;,
-        &quot;file&quot;: &quot;trey-plugin.json&quot;
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treyresearch&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-plugin.json&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <p>ここでは <strong>trey-plugin.json</strong> と、もう 1 つのファイルが Copilot に API を説明する方法を確認します。</p>
 <p>これら 2 つのファイルは API を Copilot に説明するために使用されます。ラボ 2 でダウンロードしたプロジェクトに既に含まれているため、今確認できます。</p>
 <ul>
@@ -2637,64 +2637,64 @@
 </ul>
 <p>この演習ではまず内容を確認します。今後のラボでさらに機能を追加しながら詳しく見ていきます。</p>
 <p><strong>appPackage/apiSpecificationFile/trey-definition.json</strong> にはアプリケーションの全体説明があります。サーバー URL には <code>"${{OPENAPI_SERVER_URL}}</code> が含まれており、Agents Toolkit が <a href="https://learn.microsoft.com/azure/developer/dev-tunnels/" target="_blank">developer tunnel</a> を作成してローカル API を公開し、トークンを公開 URL に置換します。その後、すべてのリソースパス、HTTP verb、パラメーターが詳細に記述されており、Copilot が API の使い方を理解するために重要です。</p>
-<pre><code class="language-json">{
-  &quot;openapi&quot;: &quot;3.0.1&quot;,
-  &quot;info&quot;: {
-      &quot;version&quot;: &quot;1.0.0&quot;,
-      &quot;title&quot;: &quot;Trey Research API&quot;,
-      &quot;description&quot;: &quot;API to streamline consultant assignment and project management.&quot;
-  },
-  ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;openapi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trey Research API&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;API to streamline consultant assignment and project management.&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="err">...</span>
+</code></pre></div>
 <p><strong>appPackage/trey-plugin.json</strong> には Copilot 固有の詳細があります。API 呼び出しを <em>functions</em> に分割し、Copilot が特定のユースケースで呼び出せるようにします。たとえば、<code>/consultants</code> へのすべての GET 要求は <code>getConsultants</code> 関数にまとめられています。</p>
-<pre><code class="language-json">  &quot;functions&quot;: [
-    {
-      &quot;name&quot;: &quot;getConsultants&quot;,
-      &quot;description&quot;: &quot;Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned&quot;,
-      ...
-    },
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getConsultants&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="err">...</span>
+<span class="w">    </span><span class="p">},</span>
+</code></pre></div>
 <p>さらに下にスクロールするとランタイム設定があります。</p>
-<pre><code class="language-json">&quot;runtimes&quot;: [
-  {
-    &quot;type&quot;: &quot;OpenApi&quot;,
-    ...
-  }
-],
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;runtimes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenApi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">],</span>
+</code></pre></div>
 <p>ここには <strong>trey-definition.json</strong> へのパスと、利用可能な関数の列挙が含まれています。</p>
 <p><cc-end-step lab="e3" exercise="2" step="3" /></p>
 <h3 id="4">手順 4: エージェントをアプリのマニフェストに追加</h3>
 <p><strong>appPackage</strong> ディレクトリ内の <strong>manifest.json</strong> を開きます。<code>staticTabs</code> オブジェクトの直前に、次のように <code>copilotAgents</code> オブジェクトとその中の <code>declarativeAgents</code> オブジェクトを追加し、先ほど作成した宣言型エージェント JSON ファイルを参照させます。</p>
-<pre><code class="language-json">  &quot;copilotAgents&quot;: {
-    &quot;declarativeAgents&quot;: [
-      {
-        &quot;id&quot;: &quot;treygenie&quot;,
-        &quot;file&quot;: &quot;trey-declarative-agent.json&quot;
-      }
-    ]
-  }, 
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treygenie&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-declarative-agent.json&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span>
+</code></pre></div>
 <p>忘れずに保存してください。 </p>
 <p><cc-end-step lab="e3" exercise="2" step="4" /></p>
 <h3 id="5">手順 5: マニフェストからダミーフィーチャーを削除</h3>
 <p>ラボ E2 の初期ソリューションには宣言型エージェントがなかったため、マニフェストに機能がないとインストールできませんでした。そのため、Copilot Developer Camp のホームページを表示する静的タブという「ダミー」フィーチャーを追加していました。Teams、Outlook、Microsoft 365 アプリ (<a href="https://office.com" target="_blank">https://office.com</a>) のタブでサイトを閲覧できるようにするためです。</p>
 <p>ここでは不要になったため、<strong>manifest.json</strong> から次の行を削除してください。</p>
-<pre><code class="language-json">&quot;staticTabs&quot;: [
-  {
-    &quot;entityId&quot;: &quot;index&quot;,
-    &quot;name&quot;: &quot;Copilot Camp&quot;,
-    &quot;contentUrl&quot;: &quot;https://microsoft.github.io/copilot-camp/&quot;,
-    &quot;websiteUrl&quot;: &quot;https://microsoft.github.io/copilot-camp/&quot;,
-    &quot;scopes&quot;: [
-      &quot;personal&quot;
-    ]
-  }
-],
-&quot;validDomains&quot;: [
-  &quot;microsoft.github.io&quot;
-],
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;staticTabs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;entityId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;index&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Copilot Camp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://microsoft.github.io/copilot-camp/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;websiteUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://microsoft.github.io/copilot-camp/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;personal&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">],</span>
+<span class="nt">&quot;validDomains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;microsoft.github.io&quot;</span>
+<span class="p">],</span>
+</code></pre></div>
 <p><cc-end-step lab="e3" exercise="2" step="5" /></p>
 <h2 id="3">演習 3: 宣言型エージェントの実行とテスト</h2>
 <h3 id="1_1">手順 1: 新しいプロジェクトの実行</h3>
@@ -2748,6 +2748,8 @@ tenant と site 名を capability に合わせて入力してください。Wood
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2780,7 +2782,7 @@ tenant と site 名を capability に合わせて入力してください。Wood
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2792,6 +2794,8 @@ tenant と site 名を capability に合わせて入力してください。Wood
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

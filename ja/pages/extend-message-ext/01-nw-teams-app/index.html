@@ -2360,222 +2360,222 @@
 <h3 id="step-1-">Step 1 - マニフェストの確認</h3>
 <p>Microsoft 365 アプリケーションのコアはアプリケーション マニフェストです。ここに Microsoft 365 がアプリケーションへアクセスするための情報を記載します。</p>
 <p>前のラボで使用した <strong>Northwind</strong> 作業ディレクトリ内の <strong>appPackage</strong> フォルダーにある <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json">manifest.json</a> を開きます。この JSON ファイルはアイコン ファイルと共に zip にまとめられ、アプリ パッケージになります。"icons" プロパティにはそれらアイコンへのパスが含まれます。</p>
-<pre><code class="language-json">&quot;icons&quot;: {
-    &quot;color&quot;: &quot;Northwind-Logo3-192-${{TEAMSFX_ENV}}.png&quot;,
-    &quot;outline&quot;: &quot;Northwind-Logo3-32.png&quot;
-},
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind-Logo3-192-${{TEAMSFX_ENV}}.png&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;outline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind-Logo3-32.png&quot;</span>
+<span class="p">},</span>
+</code></pre></div>
 <p>アイコン名にあるトークン <code>${{TEAMSFX_ENV}}</code> に注目してください。Agents Toolkit はこれを環境名 (例: "local" や "dev") に置き換えます。そのため、環境ごとにアイコンの色が変わります。</p>
 <p>次に "name" と "description" を見てください。description がかなり長いことに気付くでしょう。これはユーザーと Copilot の双方がアプリの機能と利用シーンを理解するために重要です。</p>
-<pre><code class="language-json">    &quot;name&quot;: {
-        &quot;short&quot;: &quot;Northwind Inventory&quot;,
-        &quot;full&quot;: &quot;Northwind Inventory App&quot;
-    },
-    &quot;description&quot;: {
-        &quot;short&quot;: &quot;App allows you to find and update product inventory information&quot;,
-        &quot;full&quot;: &quot;Northwind Inventory is the ultimate tool for managing your product inventory. With its intuitive interface and powerful features, you'll be able to easily find your products by name, category, inventory status, and supplier city. You can also update inventory information with the app. \n\n **Why Choose Northwind Inventory:** \n\n Northwind Inventory is the perfect solution for businesses of all sizes that need to keep track of their inventory. Whether you're a small business owner or a large corporation, Northwind Inventory can help you stay on top of your inventory management needs. \n\n **Features and Benefits:** \n\n - Easy Product Search through Microsoft Copilot. Simply start by saying, 'Find northwind dairy products that are low on stock' \r - Real-Time Inventory Updates: Keep track of inventory levels in real-time and update them as needed \r  - User-Friendly Interface: Northwind Inventory's intuitive interface makes it easy to navigate and use \n\n **Availability:** \n\n To use Northwind Inventory, you'll need an active Microsoft 365 account . Ensure that your administrator enables the app for your Microsoft 365 account.&quot;
-    },
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind Inventory&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind Inventory App&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App allows you to find and update product inventory information&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind Inventory is the ultimate tool for managing your product inventory. With its intuitive interface and powerful features, you&#39;ll be able to easily find your products by name, category, inventory status, and supplier city. You can also update inventory information with the app. \n\n **Why Choose Northwind Inventory:** \n\n Northwind Inventory is the perfect solution for businesses of all sizes that need to keep track of their inventory. Whether you&#39;re a small business owner or a large corporation, Northwind Inventory can help you stay on top of your inventory management needs. \n\n **Features and Benefits:** \n\n - Easy Product Search through Microsoft Copilot. Simply start by saying, &#39;Find northwind dairy products that are low on stock&#39; \r - Real-Time Inventory Updates: Keep track of inventory levels in real-time and update them as needed \r  - User-Friendly Interface: Northwind Inventory&#39;s intuitive interface makes it easy to navigate and use \n\n **Availability:** \n\n To use Northwind Inventory, you&#39;ll need an active Microsoft 365 account . Ensure that your administrator enables the app for your Microsoft 365 account.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+</code></pre></div>
 <p>少し下にスクロールすると "composeExtensions" があります。compose extension はメッセージ拡張機能の旧称で、ここに拡張機能が定義されています。</p>
 <p>この中には Bot があり、その ID は Agents Toolkit が挿入します。</p>
-<pre><code class="language-json">    &quot;composeExtensions&quot;: [
-        {
-            &quot;botId&quot;: &quot;${{BOT_ID}}&quot;,
-            &quot;commands&quot;: [
-                {
-                    ...
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;composeExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;botId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{BOT_ID}}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="err">...</span>
+</code></pre></div>
 <p>メッセージ拡張機能は Azure Bot Framework を使って通信し、Microsoft 365 とアプリケーション間の高速かつ安全なチャネルを提供します。プロジェクトを最初に実行した際、Agents Toolkit が Bot を登録し、ここに Bot ID を設定しました。</p>
 <p>このメッセージ拡張機能には <code>commands</code> 配列で定義された 2 つのコマンドがあります。1 つ取り上げて構造を見てみましょう。</p>
-<pre><code class="language-json">{
-    &quot;id&quot;: &quot;discountSearch&quot;,
-    &quot;context&quot;: [
-        &quot;compose&quot;,
-        &quot;commandBox&quot;
-    ],
-    &quot;description&quot;: &quot;Search for discounted products by category&quot;,
-    &quot;title&quot;: &quot;Discounts&quot;,
-    &quot;type&quot;: &quot;query&quot;,
-    &quot;parameters&quot;: [
-        {
-            &quot;name&quot;: &quot;categoryName&quot;,
-            &quot;title&quot;: &quot;Category name&quot;,
-            &quot;description&quot;: &quot;Enter the category to find discounted products&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        }
-    ]
-},
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discountSearch&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;compose&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;commandBox&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search for discounted products by category&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Discounts&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the category to find discounted products&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">},</span>
+</code></pre></div>
 <p>これは Northwind のカテゴリ内で割引商品を検索するコマンドです。このコマンドは "categoryName" という 1 つのパラメーターを受け取ります。</p>
 <p>では最初のコマンド "inventorySearch" に戻りましょう。こちらは 5 つのパラメーターを持ち、より高度な検索が可能です。</p>
-<pre><code class="language-json">{
-    &quot;id&quot;: &quot;inventorySearch&quot;,
-    &quot;context&quot;: [
-        &quot;compose&quot;,
-        &quot;commandBox&quot;
-    ],
-    &quot;description&quot;: &quot;Search products by name, category, inventory status, supplier location, stock level&quot;,
-    &quot;title&quot;: &quot;Product inventory&quot;,
-    &quot;type&quot;: &quot;query&quot;,
-    &quot;parameters&quot;: [
-        {
-            &quot;name&quot;: &quot;productName&quot;,
-            &quot;title&quot;: &quot;Product name&quot;,
-            &quot;description&quot;: &quot;Enter a product name here&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        },
-        {
-            &quot;name&quot;: &quot;categoryName&quot;,
-            &quot;title&quot;: &quot;Category name&quot;,
-            &quot;description&quot;: &quot;Enter the category of the product&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        },
-        {
-            &quot;name&quot;: &quot;inventoryStatus&quot;,
-            &quot;title&quot;: &quot;Inventory status&quot;,
-            &quot;description&quot;: &quot;Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        },
-        {
-            &quot;name&quot;: &quot;supplierCity&quot;,
-            &quot;title&quot;: &quot;Supplier city&quot;,
-            &quot;description&quot;: &quot;Enter the supplier city of product&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        },
-        {
-            &quot;name&quot;: &quot;stockQuery&quot;,
-            &quot;title&quot;: &quot;Stock level&quot;,
-            &quot;description&quot;: &quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        }
-    ]
-},
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventorySearch&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;compose&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;commandBox&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search products by name, category, inventory status, supplier location, stock level&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product inventory&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;productName&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a product name here&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the category of the product&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventoryStatus&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inventory status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter what status of the product inventory. Possible values are &#39;in stock&#39;, &#39;low stock&#39;, &#39;on order&#39;, or &#39;out of stock&#39;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;supplierCity&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Supplier city&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the supplier city of product&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stockQuery&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stock level&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">},</span>
+</code></pre></div>
 <h3 id="step-2-bot">Step 2 - 「Bot」コードの確認</h3>
 <p>ルート フォルダーの <strong>src</strong> にある <strong>searchApp.ts</strong> を開きます。このアプリケーションには Bot コードが含まれ、<a href="https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0">Bot Builder SDK</a> を使用して Azure Bot Framework と通信します。</p>
 <p>Bot は SDK クラス <strong>TeamsActivityHandler</strong> を継承しています。</p>
-<pre><code class="language-typescript">export class SearchApp extends TeamsActivityHandler {
-  constructor() {
-    super();
-  }
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">SearchApp</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">TeamsActivityHandler</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
 
-  ...
-</code></pre>
+<span class="w">  </span><span class="p">...</span>
+</code></pre></div>
 <p><strong>TeamsActivityHandler</strong> のメソッドをオーバーライドすることで、Microsoft 365 から送られてくるメッセージ (activity) を処理できます。</p>
 <p>最初に紹介するのは Messaging Extension Query アクティビティです (「messaging extension」はメッセージ拡張機能の旧称)。ユーザーがメッセージ拡張機能に入力したときや Copilot が呼び出したときに実行されます。</p>
-<pre><code class="language-typescript">  // Handle search message extension
-  public async handleTeamsMessagingExtensionQuery(
-    context: TurnContext,
-    query: MessagingExtensionQuery
-  ): Promise&lt;MessagingExtensionResponse&gt; {
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="c1">// Handle search message extension</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">TurnContext</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">MessagingExtensionQuery</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MessagingExtensionResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
-    switch (query.commandId) {
-      case productSearchCommand.COMMAND_ID: {
-        return productSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-      case discountedSearchCommand.COMMAND_ID: {
-        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-    }
-  }
-</code></pre>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">commandId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="p">.</span><span class="nx">COMMAND_ID</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="p">.</span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">query</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="p">.</span><span class="nx">COMMAND_ID</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="p">.</span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">query</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
 <p>ここでは commandId に基づきクエリをディスパッチしているだけです。commandId は前述のマニフェストで使用したものと同じです。</p>
 <p>もう一つ必要なのはアダプティブ カード アクションの処理です。ユーザーがアダプティブ カードの「Update stock」や「Reorder」をクリックしたときなどに発生します。アダプティブ カード アクション専用のメソッドはないため、<code>onInvokeActivity()</code> をオーバーライドし、activity 名で分岐します。該当しない場合は基底実装を呼び出し、メッセージ拡張クエリであれば <code>handleTeamsMessagingExtensionQuery()</code> が実行されます。</p>
-<pre><code class="language-typescript">import {
-  TeamsActivityHandler,
-  TurnContext,
-  MessagingExtensionQuery,
-  MessagingExtensionResponse,
-  InvokeResponse
-} from &quot;botbuilder&quot;;
-import productSearchCommand from &quot;./messageExtensions/productSearchCommand&quot;;
-import discountedSearchCommand from &quot;./messageExtensions/discountSearchCommand&quot;;
-import revenueSearchCommand from &quot;./messageExtensions/revenueSearchCommand&quot;;
-import actionHandler from &quot;./adaptiveCards/cardHandler&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">TeamsActivityHandler</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">TurnContext</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">MessagingExtensionQuery</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">MessagingExtensionResponse</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">InvokeResponse</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;botbuilder&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/productSearchCommand&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/discountSearchCommand&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">revenueSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/revenueSearchCommand&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">actionHandler</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./adaptiveCards/cardHandler&quot;</span><span class="p">;</span>
 
-export class SearchApp extends TeamsActivityHandler {
-  constructor() {
-    super();
-  }
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">SearchApp</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">TeamsActivityHandler</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
 
-  // Handle search message extension
-  public async handleTeamsMessagingExtensionQuery(
-    context: TurnContext,
-    query: MessagingExtensionQuery
-  ): Promise&lt;MessagingExtensionResponse&gt; {
+<span class="w">  </span><span class="c1">// Handle search message extension</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">TurnContext</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="kt">MessagingExtensionQuery</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MessagingExtensionResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
-    switch (query.commandId) {
-      case productSearchCommand.COMMAND_ID: {
-        return productSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-      case discountedSearchCommand.COMMAND_ID: {
-        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-    }
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">commandId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="p">.</span><span class="nx">COMMAND_ID</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="p">.</span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">query</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="p">.</span><span class="nx">COMMAND_ID</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="p">.</span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">query</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-  }
+<span class="w">  </span><span class="p">}</span>
 
-  // Handle adaptive card actions
-  public async onInvokeActivity(context: TurnContext): Promise&lt;InvokeResponse&gt; {
-    let runEvents = true;
-    // console.log (`🎬 Invoke activity received: ${context.activity.name}`);
-    try {
-      if(context.activity.name==='adaptiveCard/action'){
-        switch (context.activity.value.action.verb) {
-          case 'ok': {
-            return actionHandler.handleTeamsCardActionUpdateStock(context);
-          }
-          case 'restock': {
-            return actionHandler.handleTeamsCardActionRestock(context);
-          }
-          case 'cancel': {
-            return actionHandler.handleTeamsCardActionCancelRestock(context);
-          }
-          default:
-            runEvents = false;
-            return super.onInvokeActivity(context);
-        }
-      } else {
-          runEvents = false;
-          return super.onInvokeActivity(context);
-      }
-    } ...
-</code></pre>
+<span class="w">  </span><span class="c1">// Handle adaptive card actions</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">onInvokeActivity</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">TurnContext</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">InvokeResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">runEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// console.log (`🎬 Invoke activity received: ${context.activity.name}`);</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">name</span><span class="o">===</span><span class="s1">&#39;adaptiveCard/action&#39;</span><span class="p">){</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">action</span><span class="p">.</span><span class="nx">verb</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;ok&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">actionHandler</span><span class="p">.</span><span class="nx">handleTeamsCardActionUpdateStock</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;restock&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">actionHandler</span><span class="p">.</span><span class="nx">handleTeamsCardActionRestock</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;cancel&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">actionHandler</span><span class="p">.</span><span class="nx">handleTeamsCardActionCancelRestock</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="nx">default</span><span class="o">:</span>
+<span class="w">            </span><span class="kt">runEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">super</span><span class="p">.</span><span class="nx">onInvokeActivity</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">runEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="k">super</span><span class="p">.</span><span class="nx">onInvokeActivity</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
 <h3 id="step-3-">Step 3 - メッセージ拡張コマンドのコード確認</h3>
 <p>コードをモジュール化して読みやすく再利用しやすくするため、各メッセージ拡張コマンドは個別の TypeScript モジュールに分けられています。例として <strong>src/messageExtensions/discountSearchCommand.ts</strong> を見てみましょう。</p>
 <p>まず、モジュールは <code>COMMAND_ID</code> 定数をエクスポートしており、これは app マニフェストの commandId と一致し、<strong>searchApp.ts</strong> の switch 文で利用されます。</p>
 <p>続いて <code>handleTeamsMessagingExtensionQuery()</code> 関数が実装され、カテゴリ別の割引商品検索を処理します。</p>
-<pre><code class="language-JavaScript">async function handleTeamsMessagingExtensionQuery(
-    context: TurnContext,
-    query: MessagingExtensionQuery
-): Promise&lt;MessagingExtensionResponse&gt; {
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="nx">TurnContext</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="nx">MessagingExtensionQuery</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MessagingExtensionResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
-    // Seek the parameter by name, don't assume it's in element 0 of the array
-    let categoryName = cleanupParam(query.parameters.find((element) =&gt; element.name === &quot;categoryName&quot;)?.value);
-    console.log(`💰 Discount query #${++queryCount}: Discounted products with categoryName=${categoryName}`);
+<span class="w">    </span><span class="c1">// Seek the parameter by name, don&#39;t assume it&#39;s in element 0 of the array</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">categoryName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cleanupParam</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`💰 Discount query #</span><span class="si">${</span><span class="o">++</span><span class="nx">queryCount</span><span class="si">}</span><span class="sb">: Discounted products with categoryName=</span><span class="si">${</span><span class="nx">categoryName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 
-    const products = await getDiscountedProductsByCategory(categoryName);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getDiscountedProductsByCategory</span><span class="p">(</span><span class="nx">categoryName</span><span class="p">);</span>
 
-    console.log(`Found ${products.length} products in the Northwind database`)
-    const attachments = [];
-    products.forEach((product) =&gt; {
-        const preview = CardFactory.heroCard(product.ProductName,
-            `Avg discount ${product.AverageDiscount}%&lt;br /&gt;Supplied by ${product.SupplierName} of ${product.SupplierCity}`,
-            [product.ImageUrl]);
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Found </span><span class="si">${</span><span class="nx">products</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> products in the Northwind database`</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">attachments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="nx">products</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CardFactory</span><span class="p">.</span><span class="nx">heroCard</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">ProductName</span><span class="p">,</span>
+<span class="w">            </span><span class="sb">`Avg discount </span><span class="si">${</span><span class="nx">product</span><span class="p">.</span><span class="nx">AverageDiscount</span><span class="si">}</span><span class="sb">%&lt;br /&gt;Supplied by </span><span class="si">${</span><span class="nx">product</span><span class="p">.</span><span class="nx">SupplierName</span><span class="si">}</span><span class="sb"> of </span><span class="si">${</span><span class="nx">product</span><span class="p">.</span><span class="nx">SupplierCity</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">            </span><span class="p">[</span><span class="nx">product</span><span class="p">.</span><span class="nx">ImageUrl</span><span class="p">]);</span>
 
-        const resultCard = cardHandler.getEditCard(product);
-        const attachment = { ...resultCard, preview };
-        attachments.push(attachment);
-    });
-    return {
-        composeExtension: {
-            type: &quot;result&quot;,
-            attachmentLayout: &quot;list&quot;,
-            attachments: attachments,
-        },
-    };
-}
-</code></pre>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultCard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cardHandler</span><span class="p">.</span><span class="nx">getEditCard</span><span class="p">(</span><span class="nx">product</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">attachment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">resultCard</span><span class="p">,</span><span class="w"> </span><span class="nx">preview</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">attachments</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">attachment</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">composeExtension</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;result&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">attachmentLayout</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">attachments</span><span class="o">:</span><span class="w"> </span><span class="nx">attachments</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>query.parameters</code> 配列のインデックスがマニフェスト内でのパラメーターの順序と一致しない場合があります。そのためコードではインデックスをハードコーディングせず、パラメーター名で値を取得しています。パラメーターを整形した後、Northwind データ アクセス レイヤーの <code>getDiscountedProductsByCategory()</code> を呼び出します。</p>
 <p>その後、取得した各商品について 2 種類のカードを作成します。</p>
 <ul>
@@ -2598,56 +2598,56 @@ export class SearchApp extends TeamsActivityHandler {
 <p>カードがレンダリングされた状態で表示されるはずです。デザイナーが一部フォーマットを表示できないため、小さなエラーが出る場合があります。</p>
 <p>ページ上部で Theme や Emulated Device を変更し、ダーク テーマやモバイル デバイスでの表示を確認してみてください。このツールはサンプル アプリのアダプティブ カード作成に使用しました。</p>
 <p>次に Visual Studio Code に戻り、<strong>cardHandler.ts</strong> を開きます。<code>getEditCard()</code> 関数は各メッセージ拡張コマンドから呼び出され、結果カードを取得します。コードはアダプティブ カードの JSON (テンプレート) を読み込み、製品データとバインドします。最終的に <code>CardFactory</code> でレンダリング用オブジェクトへ変換します。</p>
-<pre><code class="language-typescript">function getEditCard(product: ProductEx): any {
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getEditCard</span><span class="p">(</span><span class="nx">product</span><span class="o">:</span><span class="w"> </span><span class="kt">ProductEx</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="p">{</span>
 
-    var template = new ACData.Template(editCard);
-    var card = template.expand({
-        $root: {
-            productName: product.ProductName,
-            unitsInStock: product.UnitsInStock,
-            productId: product.ProductID,
-            categoryId: product.CategoryID,
-            imageUrl: product.ImageUrl,
-            supplierName: product.SupplierName,
-            supplierCity: product.SupplierCity,
-            categoryName: product.CategoryName,
-            inventoryStatus: product.InventoryStatus,
-            unitPrice: product.UnitPrice,
-            quantityPerUnit: product.QuantityPerUnit,
-            unitsOnOrder: product.UnitsOnOrder,
-            reorderLevel: product.ReorderLevel,
-            unitSales: product.UnitSales,
-            inventoryValue: product.InventoryValue,
-            revenue: product.Revenue,
-            averageDiscount: product.AverageDiscount
-        }
-    });
-    return CardFactory.adaptiveCard(card);
-}
-</code></pre>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ACData</span><span class="p">.</span><span class="nx">Template</span><span class="p">(</span><span class="nx">editCard</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">expand</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">$root</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">productName</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ProductName</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">unitsInStock</span><span class="o">:</span><span class="w"> </span><span class="kt">product.UnitsInStock</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">productId</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ProductID</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">categoryId</span><span class="o">:</span><span class="w"> </span><span class="kt">product.CategoryID</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">imageUrl</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ImageUrl</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">supplierName</span><span class="o">:</span><span class="w"> </span><span class="kt">product.SupplierName</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">supplierCity</span><span class="o">:</span><span class="w"> </span><span class="kt">product.SupplierCity</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">categoryName</span><span class="o">:</span><span class="w"> </span><span class="kt">product.CategoryName</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">inventoryStatus</span><span class="o">:</span><span class="w"> </span><span class="kt">product.InventoryStatus</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">unitPrice</span><span class="o">:</span><span class="w"> </span><span class="kt">product.UnitPrice</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">quantityPerUnit</span><span class="o">:</span><span class="w"> </span><span class="kt">product.QuantityPerUnit</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">unitsOnOrder</span><span class="o">:</span><span class="w"> </span><span class="kt">product.UnitsOnOrder</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">reorderLevel</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ReorderLevel</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">unitSales</span><span class="o">:</span><span class="w"> </span><span class="kt">product.UnitSales</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">inventoryValue</span><span class="o">:</span><span class="w"> </span><span class="kt">product.InventoryValue</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">revenue</span><span class="o">:</span><span class="w"> </span><span class="kt">product.Revenue</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">averageDiscount</span><span class="o">:</span><span class="w"> </span><span class="kt">product.AverageDiscount</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">CardFactory</span><span class="p">.</span><span class="nx">adaptiveCard</span><span class="p">(</span><span class="nx">card</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>さらに下へスクロールすると、カード上の各アクション ボタンのハンドラーが見つかります。カードはアクション ボタンがクリックされると <code>data.txtStock</code> (数量入力ボックス) と <code>data.productId</code> (更新対象製品を示す) を送信します。</p>
-<pre><code class="language-typescript">async function handleTeamsCardActionUpdateStock(context: TurnContext) {
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleTeamsCardActionUpdateStock</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">TurnContext</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-    const request = context.activity.value;
-    const data = request.action.data;
-    console.log(`🎬 Handling update stock action, quantity=${data.txtStock}`);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">action</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`🎬 Handling update stock action, quantity=</span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">txtStock</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 
-    if (data.txtStock &amp;&amp; data.productId) {
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">txtStock</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">productId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-        const product = await getProductEx(data.productId);
-        product.UnitsInStock = Number(data.txtStock);
-        await updateProduct(product);
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getProductEx</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">productId</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">product</span><span class="p">.</span><span class="nx">UnitsInStock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">txtStock</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">updateProduct</span><span class="p">(</span><span class="nx">product</span><span class="p">);</span>
 
-        var template = new ACData.Template(successCard);
-        var card = template.expand({
-            $root: {
-                productName: product.ProductName,
-                unitsInStock: product.UnitsInStock,
-                productId: product.ProductID,
-                categoryId: product.CategoryID,
-                imageUrl: product.ImageUrl,
-                ...
-</code></pre>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ACData</span><span class="p">.</span><span class="nx">Template</span><span class="p">(</span><span class="nx">successCard</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">expand</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">$root</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">productName</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ProductName</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">unitsInStock</span><span class="o">:</span><span class="w"> </span><span class="kt">product.UnitsInStock</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">productId</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ProductID</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">categoryId</span><span class="o">:</span><span class="w"> </span><span class="kt">product.CategoryID</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">imageUrl</span><span class="o">:</span><span class="w"> </span><span class="kt">product.ImageUrl</span><span class="p">,</span>
+<span class="w">                </span><span class="p">...</span>
+</code></pre></div>
 <p>このように、受け取った値でデータベースを更新し、新しいカードを送信して結果を表示します。</p>
 <h2 id="exercise-2-">Exercise 2 - メッセージ拡張機能としてサンプルを実行</h2>
 <h3 id="step-1-_1">Step 1 - プロジェクトの初期セットアップ</h3>
@@ -2658,8 +2658,8 @@ export class SearchApp extends TeamsActivityHandler {
 <p>手順が不明な場合は、Visual Studio Code で <strong>env</strong> フォルダーを展開し <strong>.env.local.user.sample</strong> を右クリックして「Copy」を選択します。その後 <strong>env</strong> フォルダー内で右クリックし「Paste」を選択します。新しいファイル <strong>.env.local.user copy.sample</strong> が作成されるので右クリックして「Rename」を選択し <strong>.env.local.user</strong> に変更します。</p>
 <p><img alt="Copy .env.local.user.sample to .env.local.user" src="../../../../assets/images/extend-message-ext-01/02-01-Setup-Project-01.png" /></p>
 <p>作成した <strong>.env.local.user</strong> には次の行が含まれます。</p>
-<pre><code class="language-text">SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
-</code></pre>
+<div class="highlight"><pre><span></span><code>SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
+</code></pre></div>
 <p>(本来は秘密にする値ですが、デバッグ用なので問題ありません。Azure にデプロイする場合は実際の接続文字列を設定してください)</p>
 <h3 id="step-2-">Step 2 - アプリケーションをローカル実行</h3>
 <p>F5 キーを押すかスタート ボタン 1️⃣ をクリックしてデバッグを開始します。デバッグ プロファイルの選択が表示されたら Debug in Teams (Edge) 2️⃣ を選択するか、別のプロファイルを選択します。</p>
@@ -2692,73 +2692,73 @@ Northwind データベースに存在する商品「Chai」と入力し、項目
 <p>少し下にスクロールして <code>composeExtensions:</code> を確認してください。
 ここに Northwind Inventory メッセージ拡張機能が定義されています。</p>
 <p>参照しやすいように抜粋を示します。</p>
-<pre><code class="language-json">&quot;composeExtensions&quot;: [
-    {
-        &quot;botId&quot;: &quot;${{BOT_ID}}&quot;,
-        &quot;commands&quot;: [
-            {
-                &quot;id&quot;: &quot;inventorySearch&quot;,
-                ...
-                &quot;description&quot;: &quot;Search products by name, category, inventory status, supplier location, stock level&quot;,
-                &quot;title&quot;: &quot;Product inventory&quot;,
-                &quot;type&quot;: &quot;query&quot;,
-                &quot;parameters&quot;: [ ... ]
-            },
-            {
-                &quot;id&quot;: &quot;discountSearch&quot;,
-                ...
-                &quot;description&quot;: &quot;Search for discounted products by category&quot;,
-                &quot;title&quot;: &quot;Discounts&quot;,
-                &quot;type&quot;: &quot;query&quot;,
-                &quot;parameters&quot;: [ ...]
-            }
-        ]
-    }
-],
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;composeExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;botId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{BOT_ID}}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventorySearch&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="err">...</span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search products by name, category, inventory status, supplier location, stock level&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product inventory&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discountSearch&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="err">...</span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search for discounted products by category&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Discounts&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+</code></pre></div>
 <p>まず Bot ID があることに注目してください。Microsoft Teams は Azure Bot チャネルを使って安全かつリアルタイムにアプリとメッセージを交換します。Agents Toolkit が Bot を登録し、この ID を設定します。</p>
 <p>続いてコマンドのコレクションがあります。これは Teams の検索ダイアログに表示されるタブに対応します。本アプリではコマンドは主に Copilot 向けですが、通常のユーザーも利用できます。</p>
 <p>最初のコマンドは製品名検索で既に実行しました。次のコマンドも試してみましょう。</p>
 <p>「Discounts」タブに "Beverages"、"Dairy"、"Produce" のいずれかを入力すると、該当カテゴリで割引されている商品が表示されます。Copilot はこれを使用して割引商品に関する質問に回答します。</p>
 <p><img alt="Searching for beverages under the discount tab" src="../../../../assets/images/extend-message-ext-01/02-03-Test-Multi-02.png" /></p>
 <p>次に最初のコマンドをもう一度確認してください。5 つのパラメーターがあります。</p>
-<pre><code class="language-json">&quot;parameters&quot;: [
-    {
-        &quot;name&quot;: &quot;productName&quot;,
-        &quot;title&quot;: &quot;Product name&quot;,
-        &quot;description&quot;: &quot;Enter a product name here&quot;,
-        &quot;inputType&quot;: &quot;text&quot;
-    },
-    {
-        &quot;name&quot;: &quot;categoryName&quot;,
-        &quot;title&quot;: &quot;Category name&quot;,
-        &quot;description&quot;: &quot;Enter the category of the product&quot;,
-        &quot;inputType&quot;: &quot;text&quot;
-    },
-    {
-        &quot;name&quot;: &quot;inventoryStatus&quot;,
-        &quot;title&quot;: &quot;Inventory status&quot;,
-        &quot;description&quot;: &quot;Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'&quot;,
-        &quot;inputType&quot;: &quot;text&quot;
-    },
-    {
-        &quot;name&quot;: &quot;supplierCity&quot;,
-        &quot;title&quot;: &quot;Supplier city&quot;,
-        &quot;description&quot;: &quot;Enter the supplier city of product&quot;,
-        &quot;inputType&quot;: &quot;text&quot;
-    },
-    {
-        &quot;name&quot;: &quot;stockQuery&quot;,
-        &quot;title&quot;: &quot;Stock level&quot;,
-        &quot;description&quot;: &quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;,
-        &quot;inputType&quot;: &quot;text&quot;
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;productName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a product name here&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category name&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the category of the product&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventoryStatus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inventory status&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter what status of the product inventory. Possible values are &#39;in stock&#39;, &#39;low stock&#39;, &#39;on order&#39;, or &#39;out of stock&#39;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;supplierCity&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Supplier city&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the supplier city of product&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stockQuery&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stock level&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <p>残念ながら Teams は最初のパラメーターしか表示できませんが、Copilot は 5 つすべてを利用できます。これにより Northwind 在庫データの高度なクエリが可能になります。</p>
 <p>Teams UI の制限を回避するため、"Northwind Inventory" タブでは最大 5 つのパラメーターをカンマ区切りで入力できます。形式は次のとおりです。</p>
-<pre><code class="language-text">name,category,inventoryStatus,supplierCity,supplierName
-</code></pre>
+<div class="highlight"><pre><span></span><code>name,category,inventoryStatus,supplierCity,supplierName
+</code></pre></div>
 <p><img alt="Entering multiple comma separated fields into the Northwind Inventory tab" src="../../../../assets/images/extend-message-ext-01/02-03-Test-Multi-04.png" /></p>
 <p>上記 JSON の description を参考にしてクエリを入力してください。以下を試し、Visual Studio Code のデバッグ コンソールでクエリが実行される様子を確認しましょう。</p>
 <ul>
@@ -2802,6 +2802,8 @@ Northwind データベースに存在する商品「Chai」と入力し、項目
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2834,7 +2836,7 @@ Northwind データベースに存在する商品「Chai」と入力し、項目
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2846,6 +2848,8 @@ Northwind データベースに存在する商品「Chai」と入力し、項目
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

@@ -2661,14 +2661,14 @@
 <p>この演習では、Zava の MCP サーバーのコードベースをクローンし、ローカル開発環境を構築します。</p>
 <h3 id="step-1">Step 1: リポジトリをクローンする</h3>
 <p>ターミナルを開き、次を実行します:</p>
-<pre><code class="language-bash">git clone https://github.com/microsoft/copilot-camp.git
-cd src/extend-m365-copilot/path-e-lab08-mcp-server/zava-mcp-server
-</code></pre>
-<p><cc-end-step lab="e8" exercise="1" step="1" /></p>
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/microsoft/copilot-camp.git
+<span class="nb">cd</span><span class="w"> </span>src/extend-m365-copilot/path-e-lab08-mcp-server/zava-mcp-server
+</code></pre></div>
+<cc-end-step lab="e8" exercise="1" step="1" /></p>
 <h3 id="step-2">Step 2: 依存関係をインストールする</h3>
 <p>必要なパッケージをすべてインストールします:</p>
-<pre><code class="language-bash">npm install
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install
+</code></pre></div>
 <p>主な依存関係:</p>
 <ul>
 <li><code>@modelcontextprotocol/sdk</code> - MCP プロトコル実装  </li>
@@ -2679,8 +2679,8 @@ cd src/extend-m365-copilot/path-e-lab08-mcp-server/zava-mcp-server
 <p><cc-end-step lab="e8" exercise="1" step="2" /></p>
 <h3 id="step-3">Step 3: プロジェクト構成を確認する</h3>
 <p>コードベースの構成を確認し、VS Code でプロジェクトを開きます:</p>
-<pre><code>code .
-</code></pre>
+<div class="highlight"><pre><span></span><code>code .
+</code></pre></div>
 <p>主なディレクトリ:</p>
 <ul>
 <li><code>src/</code> - TypeScript ソースコード  </li>
@@ -2693,19 +2693,19 @@ cd src/extend-m365-copilot/path-e-lab08-mcp-server/zava-mcp-server
 <p>Zava は請求データベースとして Azure Table Storage を使用しています。この演習では、ローカル エミュレーターを起動し、サンプルデータを読み込みます。</p>
 <h3 id="step-1-azure-storage">Step 1: Azure Storage エミュレーターを起動する</h3>
 <p><strong>ターミナル 1</strong> で Azurite エミュレーターを起動します:</p>
-<pre><code class="language-bash">npm run start:azurite
-</code></pre>
-<p>表示例:</p>
-<pre><code>Azurite Blob service is starting at http://127.0.0.1:10000
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>start:azurite
+</code></pre></div>
+<p>表示例:
+<div class="highlight"><pre><span></span><code>Azurite Blob service is starting at http://127.0.0.1:10000
 Azurite Queue service is starting at http://127.0.0.1:10001
 Azurite Table service is starting at http://127.0.0.1:10002
-</code></pre>
+</code></pre></div></p>
 <p><strong>このターミナルは開いたままにしておきます</strong>。これがローカル データベース サーバーです。
 <cc-end-step lab="e8" exercise="2" step="1" /></p>
 <h3 id="step-2_1">Step 2: サンプルの請求データを読み込む</h3>
 <p><strong>ターミナル 2</strong> で Zava のサンプルデータを初期化します:</p>
-<pre><code class="language-bash">npm run init-data
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>init-data
+</code></pre></div>
 <p>これにより、以下のようなリアルなデータが読み込まれます:</p>
 <ul>
 <li><strong>Claims</strong>: 嵐被害、水害、火災被害のケース  </li>
@@ -2715,22 +2715,22 @@ Azurite Table service is starting at http://127.0.0.1:10002
 </ul>
 <p><cc-end-step lab="e8" exercise="2" step="2" /></p>
 <h2 id="step-3_1">Step 3: データロードを確認する</h2>
-<p>コンソール出力を確認します。次のように表示されるはずです:</p>
-<pre><code>🚀 Starting data initialization...
+<p>コンソール出力を確認します。次のように表示されるはずです:
+<div class="highlight"><pre><span></span><code>🚀 Starting data initialization...
 📋 Initializing table: claims
-✅ Table 'claims' created or already exists
+✅ Table &#39;claims&#39; created or already exists
 📄 Loaded 2 items from claims.json
 ✅ Upserted entity: CN202504990
 ✅ Upserted entity: CN202504991
 ✅ Completed initialization for table: claims
 📋 Initializing table: inspections
-✅ Table 'inspections' created or already exists
+✅ Table &#39;inspections&#39; created or already exists
 📄 Loaded 2 items from inspections.json
 ✅ Upserted entity: insp-001
 ✅ Upserted entity: insp-002
 ✅ Completed initialization for table: inspections
 📋 Initializing table: inspectors
-✅ Table 'inspectors' created or already exists
+✅ Table &#39;inspectors&#39; created or already exists
 📄 Loaded 4 items from inspectors.json
 ✅ Upserted entity: inspector-001
 ✅ Upserted entity: inspector-002
@@ -2738,21 +2738,21 @@ Azurite Table service is starting at http://127.0.0.1:10002
 ✅ Upserted entity: inspector-004
 ✅ Completed initialization for table: inspectors
 📋 Initializing table: contractors
-✅ Table 'contractors' created or already exists
+✅ Table &#39;contractors&#39; created or already exists
 📄 Loaded 3 items from contractors.json
 ✅ Upserted entity: contractor-001
 ✅ Upserted entity: contractor-002
 ✅ Upserted entity: contractor-003
 ✅ Completed initialization for table: contractors
 📋 Initializing table: purchaseOrders
-✅ Table 'purchaseOrders' created or already exists
+✅ Table &#39;purchaseOrders&#39; created or already exists
 📄 Loaded 2 items from purchaseOrders.json
 ✅ Upserted entity: po-001
 ✅ Upserted entity: po-002
 ✅ Completed initialization for table: purchaseOrders
 🎉 Data initialization completed successfully!
 ✨ All tables initialized successfully
-</code></pre>
+</code></pre></div></p>
 <p>これで本番環境を模したサンプルデータ入りのローカル請求データベースが稼働しました。
 <cc-end-step lab="e8" exercise="2" step="3" /></p>
 <hr />
@@ -2760,20 +2760,20 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <p>次に、保険金システムと AI エージェントが対話できるようにする Zava の MCP サーバーを起動します。</p>
 <h3 id="step-1-mcp">Step 1: MCP サーバーを起動する</h3>
 <p><strong>ターミナル 1</strong> で Azurite を起動したまま、<strong>ターミナル 2</strong> で以下を実行します:</p>
-<pre><code class="language-bash">npm run start:mcp-http
-</code></pre>
-<p>次のようなメッセージが表示されます（一部抜粋）:</p>
-<pre><code>🚀 Zava Claims MCP HTTP Server started on 127.0.0.1:3001 
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
+</code></pre></div>
+<p>次のようなメッセージが表示されます（一部抜粋）:
+<div class="highlight"><pre><span></span><code>🚀 Zava Claims MCP HTTP Server started on 127.0.0.1:3001 
 ...
-</code></pre>
-<p><cc-end-step lab="e8" exercise="3" step="1" /></p>
+</code></pre></div>
+<cc-end-step lab="e8" exercise="3" step="1" /></p>
 <h3 id="step-2_2">Step 2: サーバーのヘルスチェック</h3>
-<p>ブラウザーで次の URL にアクセスします:</p>
-<pre><code>http://127.0.0.1:3001/health
-</code></pre>
+<p>ブラウザーで次の URL にアクセスします:
+<div class="highlight"><pre><span></span><code>http://127.0.0.1:3001/health
+</code></pre></div></p>
 <p>ブラウザーにサーバーの正常性を示す JSON 応答が表示されるはずです。</p>
-<pre><code class="language-json">{&quot;status&quot;:&quot;healthy&quot;,&quot;timestamp&quot;:&quot;2025-11-11T01:46:11.618Z&quot;,&quot;service&quot;:&quot;zava-claims-mcp-server&quot;,&quot;authentication&quot;:&quot;No authentication&quot;}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;healthy&quot;</span><span class="p">,</span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2025-11-11T01:46:11.618Z&quot;</span><span class="p">,</span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;zava-claims-mcp-server&quot;</span><span class="p">,</span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="s2">&quot;No authentication&quot;</span><span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="e8" exercise="3" step="2" /></p>
 <h3 id="step-3_2">Step 3: 利用可能なエンドポイントを確認する</h3>
 <p>以下の URL を開き、API を確認します:</p>
@@ -2789,8 +2789,8 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <p>MCP Inspector ツールを使用して、AI エージェントが Zava の請求システムとどのように対話するか体験します。</p>
 <h3 id="step-1-mcp-inspector">Step 1: MCP Inspector を起動する</h3>
 <p><strong>ターミナル 3</strong> でインタラクティブな MCP テスト ツールを起動します:</p>
-<pre><code class="language-bash">npm run inspector
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>inspector
+</code></pre></div>
 <p>これにより、AI エージェントとして MCP ツールをテストできる Web インターフェイスが開きます。</p>
 <p><cc-end-step lab="e8" exercise="4" step="1" /></p>
 <h3 id="step-2_3">Step 2: 利用可能なツールを確認する</h3>
@@ -2821,17 +2821,17 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <li><strong>"Run Tool"</strong> をクリック（パラメーター不要）  </li>
 <li>Zava の現在の請求が含まれる JSON 応答を確認  </li>
 </ol>
-<p>次のような請求が表示されます:</p>
-<pre><code class="language-json">{
-  &quot;id&quot;: &quot;1&quot;,
-  &quot;claimNumber&quot;: &quot;CN202504990&quot;, 
-  &quot;policyHolderName&quot;: &quot;John Smith&quot;,
-  &quot;property&quot;: &quot;123 Main St, Seattle, WA 98101&quot;,
-  &quot;status&quot;: &quot;Open - Claim is under investigation&quot;,
-  &quot;damageTypes&quot;: [&quot;Roof damage - moderate severity&quot;, &quot;Storm damage&quot;],
-  &quot;estimatedLoss&quot;: 15000
-}
-</code></pre>
+<p>次のような請求が表示されます:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;claimNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CN202504990&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;policyHolderName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;property&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Main St, Seattle, WA 98101&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Open - Claim is under investigation&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;damageTypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Roof damage - moderate severity&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Storm damage&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;estimatedLoss&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <p><img alt="mcp inspector が zava mcp server と対話している画像" src="../../../../assets/images/extend-m365-copilot-08/mcp-inspector.png" /></p>
 <p><cc-end-step lab="e8" exercise="4" step="3" /></p>
 <h3 id="step-4-dev-tunnel">Step 4: Dev Tunnel でパブリック アクセスを設定する</h3>
@@ -2864,22 +2864,18 @@ https://abc123def456.use.devtunnels.ms
 <li><code>zava-mcp-server</code> ディレクトリの <strong>package.json</strong> を開く  </li>
 <li>inspector スクリプトを次のように変更します:</li>
 </ol>
-<pre><code class="language-json">&quot;inspector&quot;: &quot;npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp/messages&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;inspector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:3001/mcp/messages&quot;</span>
+</code></pre></div>
 <p>→</p>
-<pre><code class="language-json">&quot;inspector&quot;: &quot;npx @modelcontextprotocol/inspector --transport http --server-url &lt;tunnel-url&gt;/mcp/messages&quot;
-</code></pre>
-<ul>
-<li><code>&lt;tunnel-url&gt;</code> を実際のトンネル URL に置き換えます。  </li>
-<li>
-<p><code>&lt;tunnel-url&gt;/mcp/messages</code> はエージェント統合用の公開 HTTPS MCP サーバー エンドポイントとして控えておきます。  </p>
-</li>
-<li>
-<p>Inspector が実行中の場合は Ctrl+C で停止し、再度起動します:</p>
-</li>
-</ul>
-<pre><code>npm run inspector
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><span class="nt">&quot;inspector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npx @modelcontextprotocol/inspector --transport http --server-url &lt;tunnel-url&gt;/mcp/messages&quot;</span>
+</code></pre></div>
+- <code>&lt;tunnel-url&gt;</code> を実際のトンネル URL に置き換えます。<br />
+- <code>&lt;tunnel-url&gt;/mcp/messages</code> はエージェント統合用の公開 HTTPS MCP サーバー エンドポイントとして控えておきます。  </p>
+<ol>
+<li>Inspector が実行中の場合は Ctrl+C で停止し、再度起動します:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>npm run inspector
+</code></pre></div>
 <p>MCP Inspector が公開エンドポイントで新しいブラウザー セッションを開きます。ツールとプロンプトをテストしてデータ返却を確認してください。 </p>
 <p>これで、AI エージェントが MCP プロトコルを通じて Zava の請求システムとやり取りする方法を確認し、外部 AI エージェントやサービスがアクセスできる公開 HTTPS エンドポイントを取得できました。</p>
 <h2 id="_4"><cc-end-step lab="e8" exercise="4" step="4" /></h2>
@@ -2939,21 +2935,21 @@ https://abc123def456.use.devtunnels.ms
 <p><cc-end-step lab="e8" exercise="5" step="1" /></p>
 <h3 id="step-2_4">Step 2: アクション マニフェストの更新内容を確認する</h3>
 <p><code>appPackage/ai-plugin.json</code> を開き、選択したツールと MCP サーバー URL が自動入力されていることを確認します:</p>
-<pre><code class="language-json">{
-     &quot;$schema&quot;: &quot;https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json&quot;,
-    &quot;schema_version&quot;: &quot;v2.4&quot;,
-    &quot;name_for_human&quot;: &quot;Zava Claims Assistant&quot;,
-    &quot;description_for_human&quot;: &quot;Zava Claims Assistant${{APP_NAME_SUFFIX}}&quot;,
-    &quot;contact_email&quot;: &quot;publisher-email@example.com&quot;,
-    &quot;namespace&quot;: &quot;zavaclaimsassistant&quot;,
-    &quot;functions&quot;: [
-        {
-            &quot;name&quot;: &quot;create_claim&quot;,
-            &quot;description&quot;: &quot;Create a new insurance claim&quot;,
-            &quot;parameters&quot;: {
-                ...
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name_for_human&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims Assistant&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description_for_human&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims Assistant${{APP_NAME_SUFFIX}}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;contact_email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;publisher-email@example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zavaclaimsassistant&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;create_claim&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a new insurance claim&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>これで 10 個のツールを備えた MCP サーバー接続済みの基本的な宣言型エージェントができました。</p>
 <div class="admonition note">
 <p class="admonition-title">Agents Toolkit (プレリリース) の既知の問題</p>
@@ -2963,10 +2959,10 @@ https://abc123def456.use.devtunnels.ms
 <li><strong>appPackage/mcp-tools.json</strong> の内容をコピー  </li>
 <li><strong>appPackage/ai-plugin.json</strong> を開く  </li>
 <li><strong>mcp_tool_description</strong> プロパティを探します:
-  <code>json
-  "mcp_tool_description": {
-      "file": "mcp-tools.json"
-  }</code></li>
+  <div class="highlight"><pre><span></span><code><span class="nt">&quot;mcp_tool_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mcp-tools.json&quot;</span>
+<span class="p">}</span>
+</code></pre></div></li>
 <li><strong>mcp_tool_description</strong> の値を、先ほどコピーした内容に置き換えます</li>
 </ul>
 </div>
@@ -2976,45 +2972,45 @@ https://abc123def456.use.devtunnels.ms
 <p>基本エージェントを Zava のインテリジェント請求アシスタントに変換するため、アイデンティティ、指示、機能、会話スターターを構成します。</p>
 <h3 id="step-1_1">Step 1: エージェントのアイデンティティと説明を更新する</h3>
 <p><code>appPackage/declarativeAgent.json</code> の内容を Zava 用設定に置き換えます:</p>
-<pre><code class="language-json">{
-    &quot;version&quot;: &quot;v1.6&quot;,
-    &quot;name&quot;: &quot;Zava Claims&quot;,
-    &quot;description&quot;: &quot;An intelligent insurance claims management assistant that leverages MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing&quot;,
-    &quot;instructions&quot;: &quot;$[file('instruction.txt')]&quot;,
-    &quot;conversation_starters&quot;: [
-        {
-            &quot;title&quot;: &quot;Find Inspections by Claim Number&quot;,
-            &quot;text&quot;: &quot;Find all inspections for claim number CN202504991&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Create Inspection &amp; Find Contractors&quot;,
-            &quot;text&quot;: &quot;Create an urgent inspection for claim CN202504990 and recommend water damage contractors&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Analyze Claims Trends&quot;,
-            &quot;text&quot;: &quot;Show me all high-priority claims and their inspection status&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Find Emergency Contractors&quot;,
-            &quot;text&quot;: &quot;Find preferred contractors specializing in storm damage for immediate deployment&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Claims Operation Summary&quot;,
-            &quot;text&quot;: &quot;Generate a summary of all pending inspections and contractor assignments&quot;
-        }
-    ],
-  &quot;actions&quot;: [
-        {
-            &quot;id&quot;: &quot;action_1&quot;,
-            &quot;file&quot;: &quot;ai-plugin.json&quot;
-        }
-    ]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.6&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An intelligent insurance claims management assistant that leverages MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$[file(&#39;instruction.txt&#39;)]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find Inspections by Claim Number&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find all inspections for claim number CN202504991&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create Inspection &amp; Find Contractors&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create an urgent inspection for claim CN202504990 and recommend water damage contractors&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Analyze Claims Trends&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Show me all high-priority claims and their inspection status&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find Emergency Contractors&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find preferred contractors specializing in storm damage for immediate deployment&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Claims Operation Summary&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Generate a summary of all pending inspections and contractor assignments&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;action_1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ai-plugin.json&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="e8" exercise="6" step="1" /></p>
 <h3 id="step-2_5">Step 2: 詳細なエージェント指示を作成する</h3>
 <p><code>appPackage/instruction.txt</code> を次の包括的な指示で更新します:</p>
-<pre><code class="language-plaintext"># Zava Claims Operations Assistant
+<div class="highlight"><pre><span></span><code># Zava Claims Operations Assistant
 
 ## Role
 You are an intelligent insurance claims management assistant with access to the Zava Claims Operations MCP Server. Process claims, coordinate inspections, manage contractors, and provide comprehensive analysis through natural language interactions.
@@ -3034,7 +3030,7 @@ You are an intelligent insurance claims management assistant with access to the 
 - Create new inspection tasks with appropriate priority levels
 - Modify existing inspection details and assignments
 - Access inspector availability and specialties
-- Automatically determine priorities: safety hazards = 'urgent', water damage = 'high', routine = 'medium'
+- Automatically determine priorities: safety hazards = &#39;urgent&#39;, water damage = &#39;high&#39;, routine = &#39;medium&#39;
 
 ### Contractor Services
 - Find contractors by specialty, location, and preferred status
@@ -3046,7 +3042,7 @@ You are an intelligent insurance claims management assistant with access to the 
 
 ### For Inspections:
 1. Assess urgency based on damage type and safety requirements
-2. Select appropriate task type: 'initial', 'reinspection', 'emergency', 'final'  
+2. Select appropriate task type: &#39;initial&#39;, &#39;reinspection&#39;, &#39;emergency&#39;, &#39;final&#39;  
 3. Generate detailed instructions with specific focus areas
 4. Consider inspector specialties and contractor availability for scheduling
 
@@ -3076,7 +3072,7 @@ You are an intelligent insurance claims management assistant with access to the 
 - Use industry terminology appropriately
 - Provide clear explanations for complex procedures
 - Always prioritize customer service and regulatory compliance
-</code></pre>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Responsible AI コンテンツ ガイドライン</p>
 <p>「Declarative Copilot content violates Responsible AI guidelines」というエラーが出る場合は、指示を簡略化してください。ロールプレイの詳細、詳細な手順、感情的な表現を減らし、基本的なタスク説明から徐々に複雑さを追加して、どの部分が違反を引き起こすかを特定します。</p>
@@ -3084,46 +3080,46 @@ You are an intelligent insurance claims management assistant with access to the 
 <p><cc-end-step lab="e8" exercise="6" step="2" /></p>
 <h3 id="step-3-teams">Step 3: Teams アプリ マニフェストを更新する</h3>
 <p><code>appPackage/manifest.json</code> を開き、Zava のブランディングに更新します:</p>
-<pre><code class="language-json">{
-    &quot;$schema&quot;: &quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json&quot;,
-    &quot;manifestVersion&quot;: &quot;1.23&quot;,
-    &quot;version&quot;: &quot;1.0.0&quot;,
-    &quot;id&quot;: &quot;${{TEAMS_APP_ID}}&quot;,
-    &quot;developer&quot;: {
-        &quot;name&quot;: &quot;Microsoft 365 Cloud Advocates&quot;,
-        &quot;websiteUrl&quot;: &quot;https://www.zavainsurance.com&quot;,
-        &quot;privacyUrl&quot;: &quot;https://www.zavainsurance.com/privacy&quot;,
-        &quot;termsOfUseUrl&quot;: &quot;https://www.zavainsurance.com/terms&quot;
-    },
-    &quot;icons&quot;: {
-        &quot;color&quot;: &quot;color.png&quot;,
-        &quot;outline&quot;: &quot;outline.png&quot;
-    },
-    &quot;name&quot;: {
-        &quot;short&quot;: &quot;Zava Claims&quot;,
-        &quot;full&quot;: &quot;Zava Insurance Claims Assistant&quot;
-    },
-    &quot;description&quot;: {
-        &quot;short&quot;: &quot;An intelligent insurance claims management assistant&quot;,
-        &quot;full&quot;: &quot;An AI-powered claims management assistant that leverages MCP server capabilities to streamline inspection workflows, coordinate contractors, and provide comprehensive operational insights for efficient claims processing.&quot;
-    },
-    &quot;accentColor&quot;: &quot;#0078D4&quot;,
-    &quot;composeExtensions&quot;: [],
-    &quot;copilotAgents&quot;: {
-        &quot;declarativeAgents&quot;: [            
-            {
-                &quot;id&quot;: &quot;declarativeAgent&quot;,
-                &quot;file&quot;: &quot;declarativeAgent.json&quot;
-            }
-        ]
-    },
-    &quot;permissions&quot;: [
-        &quot;identity&quot;,
-        &quot;messageTeamMembers&quot;
-    ],
-    &quot;validDomains&quot;: []
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.23&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{TEAMS_APP_ID}}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;developer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft 365 Cloud Advocates&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;websiteUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.zavainsurance.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;privacyUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.zavainsurance.com/privacy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;termsOfUseUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.zavainsurance.com/terms&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color.png&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;outline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;outline.png&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Insurance Claims Assistant&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An intelligent insurance claims management assistant&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An AI-powered claims management assistant that leverages MCP server capabilities to streamline inspection workflows, coordinate contractors, and provide comprehensive operational insights for efficient claims processing.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;accentColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#0078D4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;composeExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">            </span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent.json&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;messageTeamMembers&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;validDomains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>これでエージェントは Zava の請求アシスタントとしての明確なアイデンティティと詳細指示を持ちました。
 <cc-end-step lab="e8" exercise="6" step="3" /></p>
 <hr />
@@ -3156,16 +3152,16 @@ You are an intelligent insurance claims management assistant with access to the 
 <p><cc-end-step lab="e8" exercise="7" step="3" /></p>
 <h3 id="step-4">Step 4: 自然言語クエリをテストする</h3>
 <p>以下の自然言語クエリを試して、エージェントの機能を確認してください:</p>
-<pre><code>What claims do we have for storm damage?
-</code></pre>
-<pre><code>Create a new urgent inspection for claim CN202504990 to assess water damage in the basement
-</code></pre>
-<pre><code>Find contractors who specialize in roofing and are marked as preferred
-</code></pre>
-<pre><code>Show me the details for claim number CN202504991
-</code></pre>
-<pre><code>Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday
-</code></pre>
+<div class="highlight"><pre><span></span><code>What claims do we have for storm damage?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a new urgent inspection for claim CN202504990 to assess water damage in the basement
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Find contractors who specialize in roofing and are marked as preferred
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show me the details for claim number CN202504991
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a new claim for Alice Johnson at 456 Oak Street with fire damage from yesterday
+</code></pre></div>
 <p>エージェントは自然言語クエリに応答し、MCP サーバーのデータと連携して回答するはずです。</p>
 <p><cc-end-step lab="e8" exercise="7" step="4" /></p>
 <h3 id="step-5">Step 5: エージェントをデバッグする</h3>
@@ -3205,6 +3201,8 @@ You are an intelligent insurance claims management assistant with access to the 
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -3237,7 +3235,7 @@ You are an intelligent insurance claims management assistant with access to the 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -3249,6 +3247,8 @@ You are an intelligent insurance claims management assistant with access to the 
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

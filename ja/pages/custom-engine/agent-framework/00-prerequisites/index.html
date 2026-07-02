@@ -2376,8 +2376,8 @@
 <p>Microsoft 365 Agents SDK と Agent Framework のビルドおよび実行には .NET 9 SDK が必要です。</p>
 <p>1️⃣ <a href="https://dotnet.microsoft.com/download/dotnet/9.0" target="_blank">https://dotnet.microsoft.com/download/dotnet/9.0</a> から .NET 9 SDK をダウンロードしてインストールします。  </p>
 <p>2️⃣ ターミナルを開き、次のコマンドでインストールを確認します:  </p>
-<pre><code class="language-bash">dotnet --version
-</code></pre>
+<div class="highlight"><pre><span></span><code>dotnet<span class="w"> </span>--version
+</code></pre></div>
 <p>9.0.x 以上のバージョンが表示されれば成功です。  </p>
 <p><cc-end-step lab="baf0" exercise="2" step="2" /></p>
 <h3 id="step-3-c-dev-kit">Step 3: C# Dev Kit 拡張機能をインストール</h3>
@@ -2392,23 +2392,23 @@
 <p>Azure CLI は Azure リソースのプロビジョニングと管理に必要です。</p>
 <p>1️⃣ <a href="https://learn.microsoft.com/cli/azure/install-azure-cli" target="_blank">https://learn.microsoft.com/cli/azure/install-azure-cli</a> から Azure CLI をダウンロードしてインストールします。  </p>
 <p>2️⃣ ターミナルを開き、次のコマンドでインストールを確認します:  </p>
-<pre><code class="language-bash">az --version
-</code></pre>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>--version
+</code></pre></div>
 <p>3️⃣ 続いて Azure にサインインします:  </p>
-<pre><code class="language-bash">az login
-</code></pre>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login
+</code></pre></div>
 <p><cc-end-step lab="baf0" exercise="2" step="5" /></p>
 <h3 id="step-6-devtunnel">Step 6: DevTunnel をインストール</h3>
 <p>DevTunnel はローカル開発とデバッグのため、インターネットからローカル マシンへのセキュアなトンネルを作成します。</p>
 <p><strong>Windows:</strong></p>
-<pre><code class="language-bash">winget install Microsoft.DevTunnel
-</code></pre>
+<div class="highlight"><pre><span></span><code>winget<span class="w"> </span>install<span class="w"> </span>Microsoft.DevTunnel
+</code></pre></div>
 <p><strong>macOS/Linux:</strong></p>
-<pre><code class="language-bash">curl -sL https://aka.ms/DevTunnelCliInstall | bash
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sL<span class="w"> </span>https://aka.ms/DevTunnelCliInstall<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</code></pre></div>
 <p>インストール確認:</p>
-<pre><code class="language-bash">devtunnel --version
-</code></pre>
+<div class="highlight"><pre><span></span><code>devtunnel<span class="w"> </span>--version
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">DevTunnel の代替</p>
 <p>Visual Studio 2022 には DevTunnel が同梱されています。すでに Visual Studio 2022 をお使いの場合、追加インストールは不要です。</p>
@@ -2418,15 +2418,15 @@
 <p>ローカルで Azure Functions を実行するには Azure Functions Core Tools が必要です。</p>
 <p>1️⃣ Azure Functions Core Tools をインストールします:</p>
 <p><strong>Windows:</strong></p>
-<pre><code class="language-bash">winget install Microsoft.Azure.FunctionsCoreTools
-</code></pre>
+<div class="highlight"><pre><span></span><code>winget<span class="w"> </span>install<span class="w"> </span>Microsoft.Azure.FunctionsCoreTools
+</code></pre></div>
 <p><strong>macOS:</strong></p>
-<pre><code class="language-bash">brew tap azure/functions
-brew install azure-functions-core-tools@4
-</code></pre>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>tap<span class="w"> </span>azure/functions
+brew<span class="w"> </span>install<span class="w"> </span>azure-functions-core-tools@4
+</code></pre></div>
 <p>2️⃣ 次のコマンドでインストールを確認します:</p>
-<pre><code class="language-bash">func --version
-</code></pre>
+<div class="highlight"><pre><span></span><code>func<span class="w"> </span>--version
+</code></pre></div>
 <p>4.x 以上のバージョンが表示されれば成功です。  </p>
 <p><cc-end-step lab="baf0" exercise="2" step="7" /></p>
 <h2 id="exercise-3-azure">Exercise 3: Azure 環境のセットアップ</h2>
@@ -2534,6 +2534,8 @@ brew install azure-functions-core-tools@4
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2566,7 +2568,7 @@ brew install azure-functions-core-tools@4
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2578,6 +2580,8 @@ brew install azure-functions-core-tools@4
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

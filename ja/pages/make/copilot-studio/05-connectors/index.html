@@ -2560,18 +2560,18 @@ Visual Studio Code で <code>http/ht-service.http</code> を開き、<code>http:
 </div>
 <p><img alt="The page to edit the manifest of the Entra application. There is the editor with highlighted the property requestedAccessTokenVersion and value of &quot;2&quot;." src="../../../../../assets/images/make/copilot-studio-05/custom-connector-07.png" /></p>
 <p>次に Visual Studio Code に戻り、<code>local.settings.json</code> を先ほど登録したアプリケーションの設定に合わせて構成します。<code>&lt;Client-ID&gt;</code> と <code>&lt;Tenant-ID&gt;</code> を実際の値に置き換え、<code>UseOAuth</code> プロパティを <code>true</code> に設定します。</p>
-<pre><code class="language-JSON">{
-  &quot;IsEncrypted&quot;: false,
-  &quot;Values&quot;: {
-    &quot;AzureWebJobsStorage&quot;: &quot;UseDevelopmentStorage=true&quot;,
-    &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;node&quot;,
-    &quot;AAD_APP_CLIENT_ID&quot;: &quot;&lt;Client-ID&gt;&quot;,
-    &quot;AAD_APP_TENANT_ID&quot;: &quot;&lt;Tenant-ID&gt;&quot;,
-    &quot;AAD_APP_OAUTH_AUTHORITY&quot;: &quot;https://login.microsoftonline.com/&lt;Tenant-ID&gt;&quot;,
-    &quot;UseOAuth&quot;: &quot;true&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;IsEncrypted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;AzureWebJobsStorage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UseDevelopmentStorage=true&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;FUNCTIONS_WORKER_RUNTIME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;AAD_APP_CLIENT_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Client-ID&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;AAD_APP_TENANT_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Tenant-ID&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;AAD_APP_OAUTH_AUTHORITY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&lt;Tenant-ID&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;UseOAuth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>REST API プロジェクトを再起動すると、API が保護され、Authorization ヘッダー内の OAuth 2.0 トークンを要求するようになります。トークンがない場合、または無効な場合、API は HTTP ステータス 401 (Unauthorized) を返します。</p>
 <p><cc-end-step lab="mcs5" exercise="1" step="2" /></p>
 <h3 id="3-dev-tunnel">ステップ 3: Dev Tunnel の構成</h3>
@@ -2580,15 +2580,15 @@ Visual Studio Code で <code>http/ht-service.http</code> を開き、<code>http:
 <li><a href="https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started" target="_blank">こちらの手順</a> に沿って dev tunnel をインストールします。</li>
 <li>次のコマンドを実行して dev tunnel にログインします。</li>
 </ul>
-<pre><code class="language-console">devtunnel user login
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel user login</span>
+</code></pre></div>
 <ul>
 <li>次のコマンドを実行して dev tunnel をホストします。</li>
 </ul>
-<pre><code class="language-console">devtunnel create hr-service -a --host-header unchanged
-devtunnel port create hr-service -p 7071
-devtunnel host hr-service
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel create hr-service -a --host-header unchanged</span>
+<span class="go">devtunnel port create hr-service -p 7071</span>
+<span class="go">devtunnel host hr-service</span>
+</code></pre></div>
 <p>コマンドラインに接続情報が表示されます。</p>
 <p><img alt="The dev tunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../../../assets/images/extend-m365-copilot-06/devtunnel-output.png" /></p>
 <p>「Connect via browser」の URL をコピーして保存してください。</p>
@@ -2659,8 +2659,8 @@ devtunnel host hr-service
 <p><strong>Add action</strong> をクリックして追加します。追加後、ラボ MCS4 - エクササイズ 2 - ステップ 1 で作成した旧アクションを無効化します。無効化するには、アクション横の三点リーダー (...) をクリックし、<strong>Status</strong> を <code>Off</code> に切り替えます。</p>
 <p><img alt="The status menu item do enable/disable an action in an agent for Microsoft 365 Copilot Chat." src="../../../../../assets/images/make/copilot-studio-05/custom-connector-20.png" /></p>
 <p>エージェントを発行し、更新が完了したら Microsoft 365 Copilot Chat で次のプロンプトを入力して新しいアクションをテストします。</p>
-<pre><code class="language-text">Lists all the HR candidates from an external system
-</code></pre>
+<div class="highlight"><pre><span></span><code>Lists all the HR candidates from an external system
+</code></pre></div>
 <p>Microsoft 365 Copilot Chat から外部 REST API の利用許可を求められます。複数回テストする場合は <strong>Allow once</strong>、常に許可する場合は <strong>Always allow</strong> を選択してください。</p>
 <p><img alt="Microsoft 365 Copilot Chat prompting the user to consent consumption of the HR Service external REST API. There are commands to **Always allow**, **Allow once**, or **Cancel**." src="../../../../../assets/images/make/copilot-studio-05/custom-connector-21.png" /></p>
 <p>続いて Microsoft 365 Copilot Chat が外部 REST API へ安全にアクセスするためサインインを求めます。</p>
@@ -2696,6 +2696,8 @@ devtunnel host hr-service
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2728,7 +2730,7 @@ devtunnel host hr-service
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2740,6 +2742,8 @@ devtunnel host hr-service
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

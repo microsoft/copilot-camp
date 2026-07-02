@@ -2662,62 +2662,62 @@
 <p><cc-end-step lab="e9" exercise="2" step="1" /></p>
 <h3 id="2-id">手順 2: エージェントの ID と説明を更新</h3>
 <p><code>appPackage/declarativeAgent.json</code> の内容を以下の構成に置き換えます。</p>
-<pre><code class="language-json">{
-    &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;,
-    &quot;version&quot;: &quot;v1.6&quot;,
-    &quot;name&quot;: &quot;Zava Procurement&quot;,
-    &quot;description&quot;: &quot;An agent that helps insurance adjusters streamline the search of the right procurement information by leveraging embedded knowledge from Zava approved partners' network of trusted contractors and service providers.&quot;,
-    &quot;instructions&quot;: &quot;$[file('instruction.txt')]&quot;,
-    &quot;conversation_starters&quot;: [
-        {
-            &quot;title&quot;: &quot;Water damage restoration pricing&quot;,
-            &quot;text&quot;: &quot;What are the rates for emergency water extraction and drying services?&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Roof repair cost estimate&quot;,
-            &quot;text&quot;: &quot;I need pricing for a 2,000 sq ft asphalt shingle roof replacement&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Find cheapest option&quot;,
-            &quot;text&quot;: &quot;What's the most cost-effective contractor for basic drywall repair?&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Structural repair costs&quot;,
-            &quot;text&quot;: &quot;What are the rates for foundation repair and structural work?&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Claims inspection guidelines&quot;,
-            &quot;text&quot;: &quot;What are the standard procedures for documenting water damage claims?&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Emergency services availability&quot;,
-            &quot;text&quot;: &quot;Which contractors offer 24/7 emergency response and what are their rates?&quot;
-        }
-    ],
-    &quot;capabilities&quot;: [
-        {
-            &quot;name&quot;: &quot;EmbeddedKnowledge&quot;,
-            &quot;files&quot;: [
-                {
-                    &quot;file&quot;: &quot;EmbeddedKnowledge/Claims_Inspection_Guidelines.pdf&quot;
-                },
-                {
-                    &quot;file&quot;: &quot;EmbeddedKnowledge/Pacific Water Restoration-Pricing.pdf&quot;
-                },
-                {
-                    &quot;file&quot;: &quot;EmbeddedKnowledge/Thompson Roofing Solutions-Pricing.pdf&quot;
-                },
-                {
-                    &quot;file&quot;: &quot;EmbeddedKnowledge/Wilson General Contractors-Pricing.pdf&quot;
-                }
-            ]
-        }
-    ]
-}
-</code></pre>
-<p><cc-end-step lab="e9" exercise="2" step="2" /></p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.6&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Procurement&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An agent that helps insurance adjusters streamline the search of the right procurement information by leveraging embedded knowledge from Zava approved partners&#39; network of trusted contractors and service providers.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$[file(&#39;instruction.txt&#39;)]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Water damage restoration pricing&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What are the rates for emergency water extraction and drying services?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roof repair cost estimate&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I need pricing for a 2,000 sq ft asphalt shingle roof replacement&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find cheapest option&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What&#39;s the most cost-effective contractor for basic drywall repair?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Structural repair costs&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What are the rates for foundation repair and structural work?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Claims inspection guidelines&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What are the standard procedures for documenting water damage claims?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emergency services availability&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Which contractors offer 24/7 emergency response and what are their rates?&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EmbeddedKnowledge&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EmbeddedKnowledge/Claims_Inspection_Guidelines.pdf&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EmbeddedKnowledge/Pacific Water Restoration-Pricing.pdf&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EmbeddedKnowledge/Thompson Roofing Solutions-Pricing.pdf&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EmbeddedKnowledge/Wilson General Contractors-Pricing.pdf&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<cc-end-step lab="e9" exercise="2" step="2" /></p>
 <h3 id="3">手順 3: 詳細なエージェント インストラクションの作成</h3>
-<pre><code class="language-txt"># Role and Purpose
+<div class="highlight"><pre><span></span><code># Role and Purpose
 You are a procurement assistant for Zava, an insurance services company. Your primary purpose is to help insurance adjusters find appropriate and cost-effective contractors for property repair and restoration work.
 
 # Core Capabilities
@@ -2728,7 +2728,7 @@ You are a procurement assistant for Zava, an insurance services company. Your pr
 - Knowledge of industry-standard repair methodologies
 
 # Available Resources
-You have access to internal pricing documents from Zava's network of pre-approved contractors:
+You have access to internal pricing documents from Zava&#39;s network of pre-approved contractors:
 - Pacific Water Restoration - Water and restoration services
 - Thompson Roofing Solutions - Roofing repairs and replacements
 - Wilson General Contractors - General construction and repair services
@@ -2764,7 +2764,7 @@ When answering queries:
 3. Provide specific pricing information with clear references
 4. Offer comparative analysis when multiple options exist
 5. Include any relevant guidelines or considerations from inspection standards
-</code></pre>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Responsible AI Content Guidelines</p>
 <p>「Declarative Copilot content violates Responsible AI guidelines」というエラーが表示された場合は、インストラクションを簡素化してみてください。複雑なロールプレイ シナリオや詳細な手順を減らし、中立的な表現を使用してください。まず基本的なタスク説明から始め、徐々に複雑さを追加すると、どの部分が違反を引き起こしているか特定しやすくなります。</p>
@@ -2772,46 +2772,46 @@ When answering queries:
 <p><cc-end-step lab="e9" exercise="2" step="3" /></p>
 <h3 id="4-teams">手順 4: Teams アプリ マニフェストの更新</h3>
 <p><code>appPackage/manifest.json</code> を開き、Zava のブランディングに更新します。</p>
-<pre><code class="language-json">{
-    &quot;$schema&quot;: &quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json&quot;,
-    &quot;manifestVersion&quot;: &quot;1.23&quot;,
-    &quot;version&quot;: &quot;1.0.0&quot;,
-    &quot;id&quot;: &quot;${{TEAMS_APP_ID}}&quot;,
-    &quot;developer&quot;: {
-        &quot;name&quot;: &quot;Microsoft 365 Cloud Advocates&quot;,
-        &quot;websiteUrl&quot;: &quot;https://www.example.com&quot;,
-        &quot;privacyUrl&quot;: &quot;https://www.example.com/privacy&quot;,
-        &quot;termsOfUseUrl&quot;: &quot;https://www.example.com/termofuse&quot;
-    },
-    &quot;icons&quot;: {
-        &quot;color&quot;: &quot;color.png&quot;,
-        &quot;outline&quot;: &quot;outline.png&quot;
-    },
-    &quot;name&quot;: {
-        &quot;short&quot;: &quot;Zava Procurement${{APP_NAME_SUFFIX}}&quot;,
-        &quot;full&quot;: &quot;Full name for Zava Procurement&quot;
-    },
-    &quot;description&quot;: {
-        &quot;short&quot;: &quot;Get procurement data from embedded knowledge with Zava Procurement&quot;,
-        &quot;full&quot;: &quot;Zava Procurement helps you access procurement data seamlessly within Microsoft 365 apps by leveraging embedded knowledge.&quot;
-    },
-    &quot;accentColor&quot;: &quot;#FFFFFF&quot;,
-    &quot;composeExtensions&quot;: [],
-    &quot;permissions&quot;: [
-        &quot;identity&quot;,
-        &quot;messageTeamMembers&quot;
-    ],
-    &quot;copilotAgents&quot;: {
-        &quot;declarativeAgents&quot;: [            
-            {
-                &quot;id&quot;: &quot;declarativeAgent&quot;,
-                &quot;file&quot;: &quot;declarativeAgent.json&quot;
-            }
-        ]
-    },
-    &quot;validDomains&quot;: []
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.23&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{TEAMS_APP_ID}}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;developer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft 365 Cloud Advocates&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;websiteUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;privacyUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.example.com/privacy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;termsOfUseUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.example.com/termofuse&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color.png&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;outline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;outline.png&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Procurement${{APP_NAME_SUFFIX}}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Full name for Zava Procurement&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Get procurement data from embedded knowledge with Zava Procurement&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Procurement helps you access procurement data seamlessly within Microsoft 365 apps by leveraging embedded knowledge.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;accentColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;composeExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;identity&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;messageTeamMembers&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">            </span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent.json&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;validDomains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="e9" exercise="2" step="4" /></p>
 <h2 id="exercise-3">Exercise 3: エージェント統合のテスト</h2>
 <p>Declarative Agent がネイティブな埋め込みナレッジから契約業者の価格データを正常に取得できることをテストします。</p>
@@ -2849,33 +2849,32 @@ When answering queries:
 <p><cc-end-step lab="e9" exercise="4" step="1" /></p>
 <h3 id="2-id_1">手順 2: エージェントの ID と説明を更新</h3>
 <p><code>appPackage/declarativeAgent.json</code> の内容を Zava 用の構成に置き換えます。</p>
-<pre><code class="language-json">{
-    &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;,
-    &quot;version&quot;: &quot;v1.6&quot;,
-    &quot;name&quot;: &quot;ZavaCare&quot;,
-    &quot;description&quot;: &quot;An intelligent agent that helps you manage and process insurance claims efficiently. Get instant answers about claim status, policy details, and streamline your claims workflow.&quot;,
-    &quot;instructions&quot;: &quot;$[file('instruction.txt')]&quot;,
-    &quot;conversation_starters&quot;: [
-        {
-            &quot;title&quot;: &quot;End-to-End Claims Processing&quot;,
-            &quot;text&quot;: &quot;For all moderate-severity roof or water damage claims , group them by city and propose contractor assignments using our approved network. For each claim, estimate the repair cost using current pricing for inspection, repair, and materials, and highlight where contractor selection changes the total cost by more than 15%.&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Contractor Recommendations for Emergency Roof Damage&quot;,
-            &quot;text&quot;: &quot;Find all open roof damage claims that require emergency work, then recommend the top three approved contractors with 24/7 response coverage and include their latest pricing for tarping and temporary roof repairs. Prioritize by claim severity and estimated loss&quot;
-        },
-        {
-            &quot;title&quot;: &quot;Emergency Response Coordination&quot;,
-            &quot;text&quot;: &quot;Find urgent claims needing immediate attention and match with emergency contractor pricing&quot;
-        }
-    ]
-}
-
-</code></pre>
-<p><cc-end-step lab="e9" exercise="4" step="2" /></p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.6&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZavaCare&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An intelligent agent that helps you manage and process insurance claims efficiently. Get instant answers about claim status, policy details, and streamline your claims workflow.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$[file(&#39;instruction.txt&#39;)]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;End-to-End Claims Processing&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;For all moderate-severity roof or water damage claims , group them by city and propose contractor assignments using our approved network. For each claim, estimate the repair cost using current pricing for inspection, repair, and materials, and highlight where contractor selection changes the total cost by more than 15%.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contractor Recommendations for Emergency Roof Damage&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find all open roof damage claims that require emergency work, then recommend the top three approved contractors with 24/7 response coverage and include their latest pricing for tarping and temporary roof repairs. Prioritize by claim severity and estimated loss&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emergency Response Coordination&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find urgent claims needing immediate attention and match with emergency contractor pricing&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<cc-end-step lab="e9" exercise="4" step="2" /></p>
 <h3 id="3_1">手順 3: 詳細なエージェント インストラクションの作成</h3>
 <p><code>appPackage/instruction.txt</code> を更新し、エージェント用の包括的なインストラクションを追加します。</p>
-<pre><code class="language-plaintext">You are the Zava Claims Assistant, an intelligent agent designed to help Zava insurance employees manage claims efficiently by coordinating with specialized worker agents and providing comprehensive claims management support.
+<div class="highlight"><pre><span></span><code>You are the Zava Claims Assistant, an intelligent agent designed to help Zava insurance employees manage claims efficiently by coordinating with specialized worker agents and providing comprehensive claims management support.
 
     ## CORE CAPABILITIES
 
@@ -2954,7 +2953,7 @@ When answering queries:
     - Provide outdated pricing - always check with the Zava Procurement agent
     - Create inspections without confirming details with the user
     - Override standard claims procedures or approval workflows
-    - Share confidential information beyond what's necessary for the request
+    - Share confidential information beyond what&#39;s necessary for the request
 
     ## COMMUNICATION STYLE
 
@@ -2989,7 +2988,7 @@ When answering queries:
     Would you like more details about this claim?&quot;
 
     *If no claim exists:*
-    &quot;I couldn't find any existing claims for policy POL-12345. Would you like to create a new claim? I can help you with that. Please provide:
+    &quot;I couldn&#39;t find any existing claims for policy POL-12345. Would you like to create a new claim? I can help you with that. Please provide:
     - Type of damage/incident
     - Date of incident
     - Brief description of the damage
@@ -3002,7 +3001,7 @@ When answering queries:
     2. Prioritize gathering critical information first
     3. Identify contractors with emergency response capabilities
     4. Provide fastest available options with clear timelines
-</code></pre>
+</code></pre></div>
 <p><cc-end-step lab="e9" exercise="1" step="3" /></p>
 <h3 id="4-connected-agent">手順 4: Connected Agent の機能を構成</h3>
 <p>オーケストレーター エージェントを 2 つの専門エージェントに接続するには、それぞれの Microsoft 365 Title ID をリンクする必要があります。</p>
@@ -3028,35 +3027,35 @@ When answering queries:
 <li><code>conversation_starters</code> の閉じ角かっこ <code>]</code> の後に <strong>カンマを追加</strong>  </li>
 <li>直後に次のコードを <strong>貼り付け</strong>  </li>
 </ol>
-<pre><code class="language-json">&quot;worker_agents&quot;: [
-    {
-      &quot;id&quot;: &quot;PASTE_CLAIMS_AGENT_ID_HERE&quot;
-    },
-    {
-      &quot;id&quot;: &quot;PASTE_PROCUREMENT_AGENT_ID_HERE&quot;
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;worker_agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASTE_CLAIMS_AGENT_ID_HERE&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASTE_PROCUREMENT_AGENT_ID_HERE&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <ol>
 <li><strong>プレースホルダーを置き換え</strong>  </li>
 <li><code>PASTE_CLAIMS_AGENT_ID_HERE</code> を <strong>Claims Agent ID</strong> に置換  </li>
 <li><code>PASTE_PROCUREMENT_AGENT_ID_HERE</code> を <strong>Procurement Agent ID</strong> に置換  </li>
 </ol>
-<p><strong>最終構成例:</strong>  </p>
-<pre><code class="language-json">{
-  &quot;conversation_starters&quot;: [
-    { &quot;title&quot;: &quot;...&quot;, &quot;text&quot;: &quot;...&quot; }
-  ],
-  &quot;worker_agents&quot;: [
-    {
-      &quot;id&quot;: &quot;a1b2c3d4-e5f6-7890-abcd-ef1234567890&quot;
-    },
-    {
-      &quot;id&quot;: &quot;9876fedc-ba09-8765-4321-abcdef123456&quot;
-    }
-  ]
-}
-</code></pre>
+<p><strong>最終構成例:</strong><br />
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;worker_agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4-e5f6-7890-abcd-ef1234567890&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9876fedc-ba09-8765-4321-abcdef123456&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <ol>
 <li><strong>ファイルを保存</strong> - これでオーケストレーター エージェントが 2 つの専門エージェントと接続されました！</li>
 </ol>
@@ -3074,9 +3073,9 @@ When answering queries:
 <li>ブラウザーを開き、URL https://m365.cloud.microsoft/chat/ にアクセス  </li>
 <li>左側の Agents で <strong>Zava Care</strong> エージェントを選択し、以下のオーケストレーション ワークフローをテストします。  </li>
 </ol>
-<p><strong>複雑なワークフロー: 緊急対応の調整</strong>  </p>
-<pre><code>Find me all open roof damage claims along with contractor pricing insights.
-</code></pre>
+<p><strong>複雑なワークフロー: 緊急対応の調整</strong><br />
+<div class="highlight"><pre><span></span><code>Find me all open roof damage claims along with contractor pricing insights.
+</code></pre></div></p>
 <p>このエージェントの会話スターターも試し、マルチエージェント協調の動作を確認してください。</p>
 <p><cc-end-step lab="e9" exercise="2" step="2" /></p>
 <h2 id="_4">おめでとうございます！🎉</h2>
@@ -3102,6 +3101,8 @@ When answering queries:
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -3134,7 +3135,7 @@ When answering queries:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -3146,6 +3147,8 @@ When answering queries:
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

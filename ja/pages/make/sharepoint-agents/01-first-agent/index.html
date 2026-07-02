@@ -2520,19 +2520,19 @@ for (const div of toc) {
 <p><strong>Create</strong> コマンドを選択してエージェントを作成し、使用を開始します。</p>
 <p><img alt="新しい SharePoint エージェントが作成されたことを示すダイアログ。&quot;Chat with agent&quot; と &quot;Share agent&quot; のコマンドがある。" src="../../../../../assets/images/make/sharepoint-agents-01/create-sp-agent-02b.png" /></p>
 <p>新しいダイアログが表示され、<strong>Chat with agent</strong> を選択すると Microsoft 365 Copilot Chat が新しいブラウザー タブで開き、エージェントと対話できます。ナレッジ ベースのドキュメントに関するプロンプトを入力して試してみてください。たとえば、次のプロンプトを使用できます。</p>
-<pre><code class="language-txt">What are the hiring procedures of our company?
-</code></pre>
+<div class="highlight"><pre><span></span><code>What are the hiring procedures of our company?
+</code></pre></div>
 <p>Microsoft 365 Copilot Chat でエージェントとのやり取りが終わったら、ブラウザー タブを閉じて、SharePoint Online ドキュメント ライブラリに戻ります。</p>
 <p><cc-end-step lab="msa1" exercise="2" step="1" /></p>
 <h3 id="step-2_1">Step 2: エージェントのテスト</h3>
 <p>新しい <strong>.agent</strong> 拡張子のファイルがドキュメント ライブラリに作成されていることが確認できます。そのファイルの <strong>...</strong> メニューを開き、<strong>Preview</strong> を選択して SharePoint Online の UI 内でエージェントと対話します。全画面のダイアログが表示され、プロンプトを入力してエージェントと対話できます。</p>
 <p><img alt="新しい SharePoint エージェントを表示している UI。上部にスターター プロンプト、下部にプロンプト入力欄がある。" src="../../../../../assets/images/make/sharepoint-agents-01/create-sp-agent-03.png" /></p>
 <p>次のプロンプトを入力して結果を確認してください。</p>
-<pre><code class="language-txt">What is the process to hire new employees?
-</code></pre>
+<div class="highlight"><pre><span></span><code>What is the process to hire new employees?
+</code></pre></div>
 <p>または</p>
-<pre><code class="language-txt">How can I improve my career?
-</code></pre>
+<div class="highlight"><pre><span></span><code>How can I improve my career?
+</code></pre></div>
 <p>提案された回答は、エージェントのナレッジ ベースとして選択したドキュメントの内容を要約します。プロンプトを処理するエンジンは Microsoft 365 Copilot であり、AI 生成コンテンツに関する明確な <strong>注意事項</strong> 1️⃣ が表示されます。回答の末尾には、回答を生成する際に使用されたドキュメント 2️⃣ への参照が示されます。さらに、エージェントはトピックを深掘りするためのフォローアップ プロンプト 3️⃣ も提案します。</p>
 <p><img alt="新しい SharePoint エージェントが回答を提示している UI。AI による生成コンテンツの注意事項、ドキュメント参照、提案プロンプトが表示されている。" src="../../../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-01.png" /></p>
 <p><strong>.agent</strong> ファイルは新しい SharePoint エージェントの定義を表します。SharePoint Online の標準的なファイル名変更機能を使用してファイル名を変更すると、エージェントの名前およびダイアログのタイトルも同様に変更されます。たとえば、<strong>HR agent</strong> に名前を変更してみましょう。ドキュメント ライブラリでエージェント ファイルを選択すると、常に新しいタブが開き、Microsoft 365 Copilot Chat のエージェント体験が提供されます。</p>
@@ -2550,8 +2550,8 @@ for (const div of toc) {
 </ul>
 <p>ダイアログにはエージェントのプレビューが Live 更新され、変更を即時に確認しながらテストできます。</p>
 <p>編集ダイアログの最初のタブ <strong>Overview</strong> で、エージェントのアイコンを <a href="https://github.com/microsoft/copilot-camp/blob/main/src/make/sharepoint-agents/HR-SP-Agent.png">この画像ファイル</a> に更新します。さらに <strong>Purpose</strong> を次のテキストに更新します。</p>
-<pre><code class="language-text">This is an agent supporting users to find information, policies, and rules based on the HR department knowledge base
-</code></pre>
+<div class="highlight"><pre><span></span><code>This is an agent supporting users to find information, policies, and rules based on the HR department knowledge base
+</code></pre></div>
 <p><img alt="エージェントの名前、アイコン、目的を更新する編集ダイアログ。" src="../../../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-02.png" /></p>
 <p>続いてダイアログの <strong>Sources</strong> タブを選択し、エージェントのナレッジ ベースを構成します。執筆時点では、構成できるデータ ソースは SharePoint Online のサイト、ドキュメント ライブラリ、またはドキュメントのみです。将来的には Microsoft Copilot Studio を使用して追加のナレッジ ソースを構成できるようになる予定です。現時点では SharePoint Online が SharePoint エージェントでサポートされている唯一のデータ ソースです。</p>
 <p><img alt="エージェントのデータ ソースを管理するダイアログ。サイト、ライブラリ、ドキュメントを設定するフィールドが表示されている。" src="../../../../../assets/images/make/sharepoint-agents-01/edit-sp-agent-03.png" /></p>
@@ -2563,39 +2563,39 @@ for (const div of toc) {
 また、最大 3 つの <strong>Starter prompts</strong> 2️⃣ を設定でき、ユーザーがエージェントとの会話を開始したときに提示されます。</p>
 <p>最も重要なのは <strong>Agent instruction</strong> 3️⃣ フィールドで、ここでエージェントのトーン、挙動、制限、ルールなどを詳細に調整できます。実質的に、エージェントの <strong>システムプロンプト</strong> を設定する場所です。ここを詳細に記述するほど、エージェントから得られる結果は向上します。<br />
 デフォルトの指示は非常に一般的で汎用的です。既定値は次のとおりです。</p>
-<pre><code class="language-text">Provide accurate information about the content in the selected files and reply in a formal tone.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Provide accurate information about the content in the selected files and reply in a formal tone.
+</code></pre></div>
 <p>高品質なエージェントを作成するには、目的に応じて具体的な指示を提供する必要があります。たとえば、HR agent の場合、以下のような指示の例を参照してください。</p>
-<pre><code class="language-text"># System Role
+<div class="highlight"><pre><span></span><code># System Role
 You are the HR agent. Your goal is to help employees find information about HR policies, rules, and procedures. You use a set of documents as your knowledge base and you need to stick on those documents when providing answers.
 
 # Main Instructions
 
 ## Introduction Prompt
 Use the following prompt to welcome the users and introduce your role:
-Welcome to HR agent! I'm here to help you work with HR policies, rules, and procedures. Feel free to ask any question about all of what is HR related in our company.
+Welcome to HR agent! I&#39;m here to help you work with HR policies, rules, and procedures. Feel free to ask any question about all of what is HR related in our company.
 
 ## Responding to the user
 Always use a professional but friendly tone. Always list multiple items in tables. Use emojis to make the communication more effective and clear. Always ask the user for a follow up prompt and suggest in scope follow up prompts, too. 
 
 # General rules
 Never write personal or sensitive data while generating the answers.
-Do not allow the user to ask you questions about other employees' personal and sensitive data.
+Do not allow the user to ask you questions about other employees&#39; personal and sensitive data.
 
 # Error Handling
 In case of any error or issue, inform the user with the following prompt:
-I'm sorry, something wrong happened. Please, try again soon.
-</code></pre>
+I&#39;m sorry, something wrong happened. Please, try again soon.
+</code></pre></div>
 <p>上記の指示はあくまでも例示であり、完全かつ万能なテンプレートを意図したものではありません。指示文は MD のドキュメント構造を活用して各セクションを強調しています。変更が終わったら <strong>Save and close</strong> を選択して SharePoint エージェント定義を更新します。</p>
 <p>エージェントの指示は最大 8,000 文字まで記述できます。できる限り詳細に書くことをおすすめします。プロフェッショナルなプロンプト作成方法については、<a href="../../../beyond-agents/beginner-agent" target="_blank">こちら</a> の <strong>Declarative Agent Instruction Lab - Improve your agent instructions ( Beginner friendly )</strong> ラボや、<a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-instructions" target="_blank">Write effective instructions for declarative agents</a> を参照してください。</p>
 <p><cc-end-step lab="msa1" exercise="3" step="2" /></p>
 <h3 id="step-3">Step 3: エージェントのテスト</h3>
 <p>エージェントのアイコン、目的、指示を更新したら、再度エージェントを選択して対話します。</p>
 <p>例として、次のプロンプトを入力します。</p>
-<pre><code class="language-text">Hello!
-</code></pre>
-<pre><code class="language-text">How can I improve my career? Provide me a list of suggested actions.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Hello!
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>How can I improve my career? Provide me a list of suggested actions.
+</code></pre></div>
 <p><img alt="改善された指示に基づくエージェントの新しい挙動。絵文字やテーブルなどを用いたより正確な回答。" src="../../../../../assets/images/make/sharepoint-agents-01/sp-agent-in-action-02.png" /></p>
 <p>「Hello!」メッセージに対して包括的なウェルカム メッセージで応答し、絵文字やテーブルを用いたより正確な回答が得られることが確認できます。</p>
 <p><cc-end-step lab="msa1" exercise="3" step="3" /></p>
@@ -2642,6 +2642,8 @@ I'm sorry, something wrong happened. Please, try again soon.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2674,7 +2676,7 @@ I'm sorry, something wrong happened. Please, try again soon.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2686,6 +2688,8 @@ I'm sorry, something wrong happened. Please, try again soon.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

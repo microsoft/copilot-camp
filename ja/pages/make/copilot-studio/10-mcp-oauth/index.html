@@ -2473,8 +2473,8 @@
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
-<pre><code class="language-text">HR MCP Server
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR MCP Server
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Supported account types</strong>: <strong>Accounts in this organizational directory only</strong> を選択</p>
@@ -2506,8 +2506,8 @@
 <p><strong>Scope name</strong>: </p>
 </li>
 </ol>
-<pre><code class="language-text">HR.Manage
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR.Manage
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Who can consent?</strong>: <strong>Admins and users</strong></p>
@@ -2516,23 +2516,23 @@
 <p><strong>Admin consent display name</strong>: </p>
 </li>
 </ul>
-<pre><code class="language-text">Manage HR Data
-</code></pre>
+<div class="highlight"><pre><span></span><code>Manage HR Data
+</code></pre></div>
 <ul>
 <li><strong>Admin consent description</strong>: </li>
 </ul>
-<pre><code class="language-text">Allows managing HR data as an Admin
-</code></pre>
+<div class="highlight"><pre><span></span><code>Allows managing HR data as an Admin
+</code></pre></div>
 <ul>
 <li><strong>User consent display name</strong>: </li>
 </ul>
-<pre><code class="language-text">Manage HR Data
-</code></pre>
+<div class="highlight"><pre><span></span><code>Manage HR Data
+</code></pre></div>
 <ul>
 <li><strong>User consent description</strong>: </li>
 </ul>
-<pre><code class="language-text">Allows managing HR data as a user
-</code></pre>
+<div class="highlight"><pre><span></span><code>Allows managing HR data as a user
+</code></pre></div>
 <ul>
 <li>
 <p><strong>State</strong>: <strong>Enabled</strong></p>
@@ -2555,8 +2555,8 @@
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
-<pre><code class="language-text">HR MCP Consumer
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR MCP Consumer
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Supported account types</strong>: <strong>Accounts in this organizational directory only</strong></p>
@@ -2580,8 +2580,8 @@
 <p><strong>Description</strong>: </p>
 </li>
 </ol>
-<pre><code class="language-text">ClientSecret
-</code></pre>
+<div class="highlight"><pre><span></span><code>ClientSecret
+</code></pre></div>
 <ul>
 <li>
 <p><strong>Expires</strong>: 適切な期間 (例: 12 か月)</p>
@@ -2640,16 +2640,16 @@
 <h3 id="5-mcp">手順 5: MCP サーバーの構成と起動</h3>
 <p>Entra ID の設定を MCP サーバーに反映します。</p>
 <p><code>appsettings.json.sample</code> を <code>appsettings.json</code> としてコピーし、<code>AzureAd</code> セクションを更新します。</p>
-<pre><code class="language-json">{
-  &quot;AzureAd&quot;: {
-    &quot;Instance&quot;: &quot;https://login.microsoftonline.com/&quot;,
-    &quot;TenantId&quot;: &quot;[YOUR_TENANT_ID]&quot;,
-    &quot;ClientId&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
-    &quot;Audience&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
-    &quot;Scopes&quot;: &quot;[YOUR_APPLICATION_ID_URI]/HR.Manage&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;AzureAd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Instance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;TenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_TENANT_ID]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ClientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_APPLICATION_ID_URI]/HR.Manage&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>プレースホルダーを置き換えます。</p>
 <ul>
 <li><code>[YOUR_TENANT_ID]</code>: HR MCP Server アプリ登録の Directory (tenant) ID  </li>
@@ -2657,24 +2657,24 @@
 <li><code>[YOUR_APPLICATION_ID_URI]</code>: HR MCP Server アプリの Application ID URI (例: <code>api://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>)</li>
 </ul>
 <p>ファイルを保存し、MCP サーバーを実行します。</p>
-<pre><code class="language-console">dotnet run
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">dotnet run</span>
+</code></pre></div>
 <p>サーバーが起動しリクエスト待機状態になります。以降、有効なアクセストークンのないリクエストは 401 Unauthorized になります。</p>
 <p><cc-end-step lab="mcs10" exercise="2" step="5" /></p>
 <h3 id="6-dev-tunnel">手順 6: Dev tunnel の構成</h3>
 <p>dev tunnel を使用して MCP サーバーを公開 URL で公開します。未インストールの場合は <a href="https://learn.microsoft.com/ja-jp/azure/developer/dev-tunnels/get-started" target="_blank">こちらの手順</a> を参照してください。</p>
 <p>dev tunnel へログイン:</p>
-<pre><code class="language-console">devtunnel user login
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel user login</span>
+</code></pre></div>
 <p>dev tunnel をホスト:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>以下の <code>hr-mcp-secured</code> は一意なトンネル名に変更してください。例: 名前が Alex の場合 <code>hr-mcp-secured-alex</code> など。</p>
 </div>
-<pre><code class="language-console">devtunnel create hr-mcp-secured -a --host-header unchanged
-devtunnel port create hr-mcp-secured -p 47002
-devtunnel host hr-mcp-secured
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel create hr-mcp-secured -a --host-header unchanged</span>
+<span class="go">devtunnel port create hr-mcp-secured -p 47002</span>
+<span class="go">devtunnel host hr-mcp-secured</span>
+</code></pre></div>
 <p>「Connect via browser」の URL をコピーして保存します。Copilot Studio の MCP ツール設定および <strong>HR MCP Consumer</strong> アプリの更新で使用します。</p>
 <p><img alt="The dev tunnel running showing the connection URLs." src="../../../../../assets/images/make/copilot-studio-10/devtunnel-hosting-01.png" /></p>
 <div class="admonition tip">
@@ -2700,36 +2700,36 @@ devtunnel host hr-mcp-secured
 </div>
 <h4 id="appsettingsjson">appsettings.json の更新</h4>
 <p><code>appsettings.json</code> の <code>Scopes</code> プロパティを dev tunnel URL に合わせて更新します。</p>
-<pre><code class="language-json">{
-  &quot;AzureAd&quot;: {
-    &quot;Instance&quot;: &quot;https://login.microsoftonline.com/&quot;,
-    &quot;TenantId&quot;: &quot;[YOUR_TENANT_ID]&quot;,
-    &quot;ClientId&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
-    &quot;Audience&quot;: &quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;,
-    &quot;Scopes&quot;: &quot;[YOUR_DEVTUNNEL_URL]/HR.Manage&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;AzureAd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Instance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;TenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_TENANT_ID]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ClientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_DEVTUNNEL_URL]/HR.Manage&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>[YOUR_DEVTUNNEL_URL]</code> を先ほど設定した dev tunnel URL (例: <code>https://hr-mcp-secured.devtunnels.ms</code>) に置き換えます。</p>
 <p>最終的な構成例:</p>
-<pre><code class="language-json">{
-  &quot;AzureAd&quot;: {
-    &quot;Instance&quot;: &quot;https://login.microsoftonline.com/&quot;,
-    &quot;TenantId&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
-    &quot;ClientId&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
-    &quot;Audience&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
-    &quot;Scopes&quot;: &quot;https://hr-mcp-secured.devtunnels.ms/HR.Manage&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;AzureAd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Instance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;TenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ClientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://hr-mcp-secured.devtunnels.ms/HR.Manage&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h4 id="mcp">MCP サーバーの再起動</h4>
 <p><code>appsettings.json</code> を保存後、サーバーを再起動します。</p>
 <ol>
 <li>実行中のサーバーを <code>Ctrl+C</code> で停止  </li>
 <li>再度起動:</li>
 </ol>
-<pre><code class="language-console">dotnet run
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">dotnet run</span>
+</code></pre></div>
 <p>これでサーバーは、Entra ID で設定した dev tunnel URL を使用してトークンを検証します。</p>
 <p><cc-end-step lab="mcs10" exercise="2" step="7" /></p>
 <h2 id="3-copilot-studio_1">演習 3 : Copilot Studio でのエージェント作成</h2>
@@ -2741,17 +2741,17 @@ devtunnel host hr-mcp-secured
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
-<pre><code class="language-text">HR Candidate Management (Secured)
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR Candidate Management (Secured)
+</code></pre></div>
 <ul>
 <li><strong>Description</strong>: </li>
 </ul>
-<pre><code class="language-text">An AI assistant that helps manage HR candidates using a secured MCP server 
+<div class="highlight"><pre><span></span><code>An AI assistant that helps manage HR candidates using a secured MCP server 
 with OAuth 2.0 authentication for enterprise-grade security
-</code></pre>
+</code></pre></div>
 <p><strong>Save</strong> をクリックして保存します。<br />
 次に <strong>Instructions</strong> セクションの <strong>Edit</strong> を選択し、以下を設定します。</p>
-<pre><code class="language-text">You are a helpful HR assistant that specializes in secure candidate management. You can help users 
+<div class="highlight"><pre><span></span><code>You are a helpful HR assistant that specializes in secure candidate management. You can help users 
 search for candidates, check their availability, get detailed candidate information, and add new 
 candidates to the system. 
 
@@ -2760,7 +2760,7 @@ with enterprise policies.
 
 Always provide clear and helpful information about candidates, including their skills, experience, 
 contact details, and availability status.
-</code></pre>
+</code></pre></div>
 <p><strong>Save</strong> をクリックして保存します。</p>
 <p><strong>Agent's Model</strong> を <strong>GPT-5 Chat</strong> に変更します。</p>
 <p><img alt="The agent Overview page with name, description, model, and instructions configured for the secured HR agent." src="../../../../../assets/images/make/copilot-studio-10/create-agent-01.png" /></p>
@@ -2798,13 +2798,13 @@ contact details, and availability status.
 <ul>
 <li><strong>Server name</strong>: </li>
 </ul>
-<pre><code class="language-text">HR MCP Server Secured
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR MCP Server Secured
+</code></pre></div>
 <ul>
 <li><strong>Server description</strong>: </li>
 </ul>
-<pre><code class="language-text">Securely manages HR candidates with OAuth 2.0 authentication for enterprise compliance
-</code></pre>
+<div class="highlight"><pre><span></span><code>Securely manages HR candidates with OAuth 2.0 authentication for enterprise compliance
+</code></pre></div>
 <ul>
 <li><strong>URL</strong>: 先ほど保存した dev tunnel URL (「Connect via browser」の URL)</li>
 </ul>
@@ -2817,23 +2817,23 @@ contact details, and availability status.
 <li><strong>Client secret</strong>: 保存しておいたクライアント シークレット  </li>
 <li><strong>Authorization URL template</strong>: </li>
 </ul>
-<pre><code class="language-text">https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/authorize
-</code></pre>
+<div class="highlight"><pre><span></span><code>https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/authorize
+</code></pre></div>
 <ul>
 <li><strong>Token URL template</strong>: </li>
 </ul>
-<pre><code class="language-text">https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/token
-</code></pre>
+<div class="highlight"><pre><span></span><code>https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/token
+</code></pre></div>
 <ul>
 <li><strong>Refresh URL template</strong>: </li>
 </ul>
-<pre><code class="language-text">https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/token
-</code></pre>
+<div class="highlight"><pre><span></span><code>https://login.microsoftonline.com/[YOUR_TENANT_ID]/oauth2/v2.0/token
+</code></pre></div>
 <ul>
 <li><strong>Scopes</strong>: スペース区切りで入力</li>
 </ul>
-<pre><code class="language-text">openid profile email
-</code></pre>
+<div class="highlight"><pre><span></span><code>openid profile email
+</code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>ここで入力するスコープは一時的なものです。後でセキュア HR MCP サーバーに必要な実際のスコープに置き換えます。</p>
@@ -2924,8 +2924,8 @@ contact details, and availability status.
 <p><cc-end-step lab="mcs10" exercise="5" step="1" /></p>
 <h3 id="2_1">手順 2: 認証フローのテスト</h3>
 <p>Copilot Studio のテスト パネルを開き、次のプロンプトを入力します。</p>
-<pre><code class="language-text">List all candidates
-</code></pre>
+<div class="highlight"><pre><span></span><code>List all candidates
+</code></pre></div>
 <p>初回のセキュア MCP サーバー利用時には、エージェントがユーザーの資格情報を使用して外部サービスへアクセスする <strong>Allow</strong> の確認が表示されます。<strong>Allow</strong> をクリックしてください。</p>
 <p><img alt="The message asking to &quot;Allow&quot; using user's credentials to access the external service." src="../../../../../assets/images/make/copilot-studio-10/allow-secure-connection-01.png" /></p>
 <p>接続されていない、またはトークンが期限切れの場合は <strong>Open connection manager</strong> が表示されます。その際は以下を実施します。</p>
@@ -2940,8 +2940,8 @@ contact details, and availability status.
 <p><cc-end-step lab="mcs10" exercise="5" step="2" /></p>
 <h3 id="3-mcp">手順 3: MCP ツールのテスト</h3>
 <p>認証後、プロンプトが処理されます。処理されない場合は再度入力してください。</p>
-<pre><code class="language-text">List all candidates
-</code></pre>
+<div class="highlight"><pre><span></span><code>List all candidates
+</code></pre></div>
 <p>エージェントはセキュア MCP サーバーへ正常にアクセスし、候補者リストを返すはずです。</p>
 <p><img alt="The test panel showing successful retrieval of candidates after authentication." src="../../../../../assets/images/make/copilot-studio-10/test-success-01.png" /></p>
 <div class="admonition tip">
@@ -2949,12 +2949,12 @@ contact details, and availability status.
 <p>初回認証後、アクセストークンは一定期間キャッシュされます。トークンが期限切れまたは失効しない限り、毎回認証を求められることはありません。</p>
 </div>
 <p>他のツールもテストしてみましょう。</p>
-<p><strong>候補者を検索:</strong></p>
-<pre><code class="language-text">Search for candidates with Training skills
-</code></pre>
-<p><strong>特定の候補者を取得:</strong></p>
-<pre><code class="language-text">Get candidate with email bob.brown@example.com
-</code></pre>
+<p><strong>候補者を検索:</strong>
+<div class="highlight"><pre><span></span><code>Search for candidates with Training skills
+</code></pre></div></p>
+<p><strong>特定の候補者を取得:</strong>
+<div class="highlight"><pre><span></span><code>Get candidate with email bob.brown@example.com
+</code></pre></div></p>
 <div class="admonition info">
 <p class="admonition-title">MCP サーバーのアクティビティ監視</p>
 <p>Copilot Studio から MCP サーバーを呼び出すと、.NET アプリケーションである MCP サーバーがターミナルにログを出力します。各ツール メソッドの呼び出しや、リクエストヘッダーに含まれる <code>Authorization: Bearer</code> JWT アクセストークンを確認できます。認証が正しく機能しているかのデバッグに役立ちます。</p>
@@ -2994,6 +2994,8 @@ contact details, and availability status.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -3026,7 +3028,7 @@ contact details, and availability status.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -3038,6 +3040,8 @@ contact details, and availability status.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

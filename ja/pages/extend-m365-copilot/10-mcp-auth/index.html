@@ -2448,20 +2448,20 @@
 <p>この演習では、Zava の認証付き MCP サーバーのコードベースをクローンし、ローカル開発環境をセットアップします。</p>
 <h3 id="step-1">Step 1: リポジトリをクローンする</h3>
 <p>ターミナルを開き、次のコマンドを実行します。</p>
-<pre><code class="language-bash">git clone https://github.com/microsoft/copilot-camp.git
-cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
-</code></pre>
-<p><cc-end-step lab="e10" exercise="1" step="1" /></p>
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/microsoft/copilot-camp.git
+<span class="nb">cd</span><span class="w"> </span>copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
+</code></pre></div>
+<cc-end-step lab="e10" exercise="1" step="1" /></p>
 <h3 id="step-2">Step 2: 依存関係をインストールする</h3>
 <p>必要なパッケージをインストールします。</p>
-<pre><code class="language-bash">npm install
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install
+</code></pre></div>
 <p>主要な依存関係がインストールされます。</p>
 <p><cc-end-step lab="e10" exercise="1" step="2" /></p>
 <h3 id="step-3">Step 3: プロジェクト構成を確認する</h3>
 <p>VS Code でプロジェクトを開きます。</p>
-<pre><code class="language-bash">code .
-</code></pre>
+<div class="highlight"><pre><span></span><code>code<span class="w"> </span>.
+</code></pre></div>
 <p>主なディレクトリ:</p>
 <ul>
 <li><code>src/</code> - TypeScript ソース コード  </li>
@@ -2521,15 +2521,15 @@ cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
 </li>
 <li><code>"web"</code> セクション内の <code>"redirectUriSettings"</code>（またはマニフェストのバージョンによっては <code>"redirectUris"</code>）を探す  </li>
 <li>リダイレクト URI 配列に <code>http://127.0.0.1:33418</code> を追加します。セクションは次のようになります。<br />
-<code>json
-     "web": {
-         "redirectUris": [
-             "https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect",
-             "https://vscode.dev/redirect",
-             "http://127.0.0.1:33418"
-         ],
-         ...
-     }</code></li>
+     <div class="highlight"><pre><span></span><code><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;redirectUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;https://vscode.dev/redirect&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;http://127.0.0.1:33418&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div></li>
 <li>
 <p>ページ上部の <strong>Save</strong> をクリック  </p>
 </li>
@@ -2598,28 +2598,28 @@ cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-serve
 <p class="admonition-title">重要: ファイルの配置場所に注意</p>
 <p><code>.env</code> ファイルはプロジェクトのルート ディレクトリに配置する必要があります。<code>src</code> フォルダー内などに配置すると、環境変数が正しく読み込まれません。</p>
 </div>
-<pre><code class="language-bash"># OAuth Configuration (Required for authentication)
-OAUTH_CLIENT_ID=&lt;your-application-client-id&gt;
-OAUTH_CLIENT_SECRET=&lt;your-client-secret-value&gt;
-OAUTH_AUTHORITY=https://login.microsoftonline.com/common
-OAUTH_REDIRECT_URI=http://localhost:6274/oauth/callback/debug
-OAUTH_SCOPES=api://&lt;your-application-client-id&gt;/access_as_user
+<div class="highlight"><pre><span></span><code><span class="c1"># OAuth Configuration (Required for authentication)</span>
+<span class="nv">OAUTH_CLIENT_ID</span><span class="o">=</span>&lt;your-application-client-id&gt;
+<span class="nv">OAUTH_CLIENT_SECRET</span><span class="o">=</span>&lt;your-client-secret-value&gt;
+<span class="nv">OAUTH_AUTHORITY</span><span class="o">=</span>https://login.microsoftonline.com/common
+<span class="nv">OAUTH_REDIRECT_URI</span><span class="o">=</span>http://localhost:6274/oauth/callback/debug
+<span class="nv">OAUTH_SCOPES</span><span class="o">=</span>api://&lt;your-application-client-id&gt;/access_as_user
 
-# Resource Identifier (for MCP Inspector and RFC 9728 metadata)
-RESOURCE_IDENTIFIER=&lt;your-tunnel-url&gt;
+<span class="c1"># Resource Identifier (for MCP Inspector and RFC 9728 metadata)</span>
+<span class="nv">RESOURCE_IDENTIFIER</span><span class="o">=</span>&lt;your-tunnel-url&gt;
 
-# CORS Configuration
-ADDITIONAL_ALLOWED_ORIGINS=&lt;your-tunnel-url&gt;,http://localhost:6274
-SERVER_BASE_URL=&lt;your-tunnel-url&gt;
+<span class="c1"># CORS Configuration</span>
+<span class="nv">ADDITIONAL_ALLOWED_ORIGINS</span><span class="o">=</span>&lt;your-tunnel-url&gt;,http://localhost:6274
+<span class="nv">SERVER_BASE_URL</span><span class="o">=</span>&lt;your-tunnel-url&gt;
 
-# Server Configuration
-PORT=3001
-HOST=127.0.0.1
-NODE_ENV=development
+<span class="c1"># Server Configuration</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="m">3001</span>
+<span class="nv">HOST</span><span class="o">=</span><span class="m">127</span>.0.0.1
+<span class="nv">NODE_ENV</span><span class="o">=</span>development
 
-# Storage Configuration
-AZURE_STORAGE_CONNECTION_STRING=&quot;DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;&quot;
-</code></pre>
+<span class="c1"># Storage Configuration</span>
+<span class="nv">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s2">&quot;DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;&quot;</span>
+</code></pre></div>
 <p>プレースホルダーを置き換えてください：</p>
 <ul>
 <li><code>&lt;your-application-client-id&gt;</code> - Entra ID アプリ登録の Application (client) ID  </li>
@@ -2629,19 +2629,19 @@ AZURE_STORAGE_CONNECTION_STRING=&quot;DefaultEndpointsProtocol=http;AccountName=
 <p><cc-end-step lab="e10" exercise="3" step="2" /></p>
 <h3 id="step-3-azure-storage">Step 3: Azure Storage エミュレーターを起動する</h3>
 <p><strong>Terminal 1</strong> で Azurite エミュレーターを起動します。</p>
-<pre><code class="language-bash">npm run start:azurite
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>start:azurite
+</code></pre></div>
 <p>出力例:</p>
-<pre><code>Azurite Blob service is starting at http://127.0.0.1:10000
+<div class="highlight"><pre><span></span><code>Azurite Blob service is starting at http://127.0.0.1:10000
 Azurite Queue service is starting at http://127.0.0.1:10001
 Azurite Table service is starting at http://127.0.0.1:10002
-</code></pre>
+</code></pre></div>
 <p><strong>このターミナルは開いたまま</strong> にしておいてください。ローカル データベース サーバーです。</p>
 <p><cc-end-step lab="e10" exercise="3" step="3" /></p>
 <h3 id="step-4">Step 4: サンプル保険金データをロードする</h3>
 <p><strong>Terminal 2</strong> で Zava のサンプル データを初期化します。</p>
-<pre><code class="language-bash">npm run init-data
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>init-data
+</code></pre></div>
 <p>これにより、以下のような実際的なデータが読み込まれます。</p>
 <ul>
 <li><strong>Claims</strong> - 風害、水害、火災被害の案件  </li>
@@ -2656,36 +2656,36 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <p>次に、OAuth トークンを検証してからアクセスを許可する Zava の認証付き MCP サーバーを起動します。</p>
 <h3 id="step-1-mcp">Step 1: MCP サーバーをビルドして起動する</h3>
 <p><strong>Terminal 2</strong> で（Terminal 1 で Azurite を実行したまま）以下を実行します。</p>
-<pre><code class="language-bash">npm run build
-npm run start:mcp-http
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
+npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
+</code></pre></div>
 <p>OAuth が有効になっていることを示すメッセージが表示されます。</p>
-<pre><code>🚀 Zava Claims MCP HTTP Server started on 127.0.0.1:3001
+<div class="highlight"><pre><span></span><code>🚀 Zava Claims MCP HTTP Server started on 127.0.0.1:3001
 Security: OAuth 2.0 authentication enabled
 ...
 🔍 Protected Resource Metadata Endpoints (RFC 9728):
     GET  /.well-known/oauth-authorization-server - Standard OAuth metadata
 ...
-</code></pre>
+</code></pre></div>
 <p><cc-end-step lab="e10" exercise="4" step="1" /></p>
 <h3 id="step-2-oauth">Step 2: OAuth が有効か確認する</h3>
 <p>ブラウザーで次の URL を開きます。</p>
-<pre><code>http://127.0.0.1:3001/health
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://127.0.0.1:3001/health
+</code></pre></div>
 <p>OAuth が有効であることを示す JSON 応答が表示されます。</p>
-<pre><code class="language-json">{
-  &quot;status&quot;: &quot;healthy&quot;,
-  &quot;timestamp&quot;: &quot;2025-01-21T10:00:00.000Z&quot;,
-  &quot;service&quot;: &quot;zava-claims-mcp-server&quot;,
-  &quot;authentication&quot;: &quot;OAuth enabled&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;healthy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-21T10:00:00.000Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zava-claims-mcp-server&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuth enabled&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>"authentication": "OAuth enabled"</code> が表示されていれば、サーバーが認証モードで稼働していることを示します。</p>
 <p><cc-end-step lab="e10" exercise="4" step="2" /></p>
 <h3 id="step-3-oauth">Step 3: OAuth ディスカバリー エンドポイントをテストする</h3>
 <p>OAuth ディスカバリー エンドポイントを開きます。</p>
-<pre><code>http://127.0.0.1:3001/.well-known/oauth-authorization-server
-</code></pre>
+<div class="highlight"><pre><span></span><code>http://127.0.0.1:3001/.well-known/oauth-authorization-server
+</code></pre></div>
 <p>以下の OAuth メタデータが表示されます。</p>
 <ul>
 <li><code>issuer</code> - サーバーのベース URL  </li>
@@ -2697,18 +2697,18 @@ Security: OAuth 2.0 authentication enabled
 <p><cc-end-step lab="e10" exercise="4" step="3" /></p>
 <h3 id="step-4_1">Step 4: 認証必須を確認する</h3>
 <p>認証なしで MCP ツールにアクセスしてみます。</p>
-<pre><code class="language-bash">curl -X POST &quot;http://127.0.0.1:3001/mcp/tools/call&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;name&quot;:&quot;get_claims&quot;,&quot;arguments&quot;:{}}'
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:3001/mcp/tools/call&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;get_claims&quot;,&quot;arguments&quot;:{}}&#39;</span>
+</code></pre></div>
 <p><code>WWW-Authenticate</code> ヘッダーと共に 401 Unauthorized 応答が返されます。</p>
-<pre><code class="language-json">{
-  &quot;error&quot;: &quot;Missing Authorization header&quot;,
-  &quot;description&quot;: &quot;Please include Bearer token in Authorization header&quot;,
-  &quot;auth_url&quot;: &quot;https://your-tunnel-url/oauth/authorize&quot;,
-  &quot;resource_metadata_url&quot;: &quot;https://your-tunnel-url/.well-known/oauth-authorization-server&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Missing Authorization header&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Please include Bearer token in Authorization header&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;auth_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-tunnel-url/oauth/authorize&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resource_metadata_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-tunnel-url/.well-known/oauth-authorization-server&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>認証が正しく機能していることを確認できました。</p>
 <p><cc-end-step lab="e10" exercise="4" step="4" /></p>
 <hr />
@@ -2881,6 +2881,8 @@ Security: OAuth 2.0 authentication enabled
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2913,7 +2915,7 @@ Security: OAuth 2.0 authentication enabled
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2925,6 +2927,8 @@ Security: OAuth 2.0 authentication enabled
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

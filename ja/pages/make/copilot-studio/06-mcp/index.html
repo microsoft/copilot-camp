@@ -2541,8 +2541,8 @@
 <li><code>Progam.cs</code>: MCP サーバーを初期化するメイン エントリポイント  </li>
 </ul>
 <p>Visual Studio Code から新しいターミナルを開くか、通常のターミナルで MCP サーバープロジェクトのルートフォルダーへ移動し、次のコマンドで依存関係のインストール、ビルド、および実行を行います。</p>
-<pre><code class="language-console">dotnet run
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">dotnet run</span>
+</code></pre></div>
 <p>MCP サーバーが起動していることを確認します。ブラウザーで <a href="http://localhost:47002/" target="_blank">http://localhost:47002/</a> にアクセスすると、JSON 形式のエラーメッセージが表示されます。これは MCP サーバーに到達できていることを意味します。</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -2555,8 +2555,8 @@
 <li><a href="https://learn.microsoft.com/en-us/azure/developer/dev-tunnels/get-started" target="_blank">手順</a> に従って dev tunnel をインストール  </li>
 <li>次のコマンドで dev tunnel にサインイン  </li>
 </ol>
-<pre><code class="language-console">devtunnel user login
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel user login</span>
+</code></pre></div>
 <ol>
 <li>次のコマンドで dev tunnel をホスト  </li>
 </ol>
@@ -2564,10 +2564,10 @@
 <p class="admonition-title">Important</p>
 <p>下記の <code>hr-mcp</code> 名は一意にする必要があります。例えば Rose さんなら <code>hr-mcp-rose</code> のように変更してください。<code>Request not permitted. Unauthorized tunnel creation access ...</code> といったエラーが出た場合は既に使用されている名前ですので、別名を指定してください。</p>
 </div>
-<pre><code class="language-console">devtunnel create hr-mcp -a --host-header unchanged
-devtunnel port create hr-mcp -p 47002
-devtunnel host hr-mcp
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel create hr-mcp -a --host-header unchanged</span>
+<span class="go">devtunnel port create hr-mcp -p 47002</span>
+<span class="go">devtunnel host hr-mcp</span>
+</code></pre></div>
 <p>実行後、接続情報が表示されます。</p>
 <p><img alt="コンソールで dev tunnel を実行している。ホストポート、ブラウザーでの接続 URL、ネットワークアクティビティ確認用 URL が表示される。" src="../../../../../assets/images/make/copilot-studio-06/mcp-server-02.png" /></p>
 <p>「Connect via browser」の URL をコピーして保存します。ブラウザーでその URL にアクセスすると、次のような確認ページが表示される場合があります。</p>
@@ -2576,8 +2576,8 @@ devtunnel host hr-mcp
 <p><cc-end-step lab="mcs6" exercise="1" step="3" /></p>
 <h3 id="step-4-mcp">Step 4: MCP サーバーのテスト</h3>
 <p>ローカル環境で MCP サーバーをテストします。シンプルに <a href="https://github.com/modelcontextprotocol/inspector" target="_blank">MCP Inspector</a> を利用しましょう。ターミナルで次のコマンドを実行します。</p>
-<pre><code class="language-console">npx @modelcontextprotocol/inspector
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">npx @modelcontextprotocol/inspector</span>
+</code></pre></div>
 <p>Node.js が MCP Inspector をダウンロード・実行し、ターミナルには次のような出力が表示されます。</p>
 <p><img alt="ターミナルで MCP Inspector を起動した際の出力。プロキシ ポートと MCP Inspector の URL が示される。" src="../../../../../assets/images/make/copilot-studio-06/mcp-inspector-01.png" /></p>
 <p>ブラウザーが自動起動し、以下の画面が表示されます。</p>
@@ -2605,23 +2605,23 @@ devtunnel host hr-mcp
 <ul>
 <li><strong>Name</strong>:</li>
 </ul>
-<pre><code class="language-text">HR Candidate Management
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR Candidate Management
+</code></pre></div>
 <ul>
 <li><strong>Description</strong>:</li>
 </ul>
-<pre><code class="language-text">An AI assistant that helps manage HR candidates using MCP server integration 
+<div class="highlight"><pre><span></span><code>An AI assistant that helps manage HR candidates using MCP server integration 
 for comprehensive candidate management
-</code></pre>
+</code></pre></div>
 <ul>
 <li><strong>Instructions</strong>:</li>
 </ul>
-<pre><code class="language-text">You are a helpful HR assistant that specializes in candidate management. You can help users search 
+<div class="highlight"><pre><span></span><code>You are a helpful HR assistant that specializes in candidate management. You can help users search 
 for candidates, check their availability, get detailed candidate information, and add new 
 candidates to the system. 
 Always provide clear and helpful information about candidates, including their skills, experience, 
 contact details, and availability status.
-</code></pre>
+</code></pre></div>
 <ul>
 <li><strong>Agent's Model</strong>: GTP-5 Chat を選択</li>
 </ul>
@@ -2667,8 +2667,8 @@ contact details, and availability status.
 <p><cc-end-step lab="mcs6" exercise="3" step="1" /></p>
 <h3 id="step-2-mcp_1">Step 2: MCP サーバー統合のテスト</h3>
 <p>右上の <strong>Publish</strong> をクリックしてエージェントを公開します。公開後、組み込みの Test パネルで次のプロンプトを試します。</p>
-<pre><code class="language-text">List all candidates
-</code></pre>
+<div class="highlight"><pre><span></span><code>List all candidates
+</code></pre></div>
 <p>エージェントは MCP サーバーの <code>list_candidates</code> ツールを使用し、HR システムに登録された全候補者を返すはずです。<br />
 ただし、候補者リストを取得するにはコネクタへ接続する必要があります。Copilot Studio が <strong>Open connection manager</strong> を求めてきたら MCP サーバーに接続し、<strong>Retry</strong> してください。</p>
 <p><img alt="エージェントとの初回ダイアログ。接続マネージャーを開き MCP サーバーへ接続した後で再試行するよう促される。" src="../../../../../assets/images/make/copilot-studio-06/mcp-test-01.png" /></p>
@@ -2689,30 +2689,30 @@ contact details, and availability status.
 </div>
 <p><img alt="Microsoft 365 Copilot へのエージェント追加インターフェース。&quot;Add&quot; ボタンがある。" src="../../../../../assets/images/make/copilot-studio-06/agent-publish-m365-chat-03.png" /></p>
 <p>Microsoft 365 Copilot でエージェントを試してみましょう。UI には先ほど設定した Suggested prompts が表示されます。たとえば次のプロンプトを入力します。</p>
-<pre><code class="language-text">Search for candidate Alice
-</code></pre>
+<div class="highlight"><pre><span></span><code>Search for candidate Alice
+</code></pre></div>
 <p><img alt="Microsoft 365 Copilot チャット画面。「HR Candidate Management」の提案プロンプトと &quot;Search for candidate Alice&quot; の入力例。" src="../../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-01.png" /></p>
 <p>エージェントは MCP サーバーの <code>search_candidates</code> ツールを使用し、検索条件に一致する候補者を 1 名返すはずです。ただし Microsoft 365 Copilot でもコネクタへの再接続が必要なため、Copilot Studio の接続マネージャーで MCP サーバーに接続してください。</p>
 <p><img alt="Microsoft 365 Copilot チャットが MCP サーバー接続のため &quot;Open the connection manager&quot; を指示。" src="../../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-02.png" /></p>
 <p>接続後、再度プロンプトを実行すると期待どおりの結果が得られます。</p>
 <p><img alt="検索条件に一致した候補者 Alice Johnson の情報が表示。" src="../../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-03.png" /></p>
 <p>次に、より高度な <code>add_candidate</code> ツールを試して新しい候補者を追加します。以下のプロンプトを使用します。</p>
-<pre><code class="language-text">Add a new candidate: John Smith, Software Engineer, skills: React, Node.js, 
+<div class="highlight"><pre><span></span><code>Add a new candidate: John Smith, Software Engineer, skills: React, Node.js, 
 email: john.smith@email.com, speaks English and Spanish
-</code></pre>
+</code></pre></div>
 <p>エージェントは意図を理解し、<code>add_candidate</code> ツールに必要な引数を抽出してツールを実行し、新しい候補者を追加します。MCP サーバーからは追加完了の確認が返ります。</p>
 <p><img alt="MCP サーバー経由で新しい候補者が追加されたことをエージェントが確認。" src="../../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-04.png" /></p>
 <p>再度候補者リストを取得すると、<code>John Smith</code> が追加されていることを確認できます。</p>
 <p><img alt="更新後の候補者リスト。最後に John Smith が追加されている。" src="../../../../../assets/images/make/copilot-studio-06/mcp-test-copilot-05.png" /></p>
 <p>他にも次のようなプロンプトで遊んでみましょう。</p>
-<pre><code class="language-text">Update the candidate with email bob.brown@example.com to speak also French
-</code></pre>
+<div class="highlight"><pre><span></span><code>Update the candidate with email bob.brown@example.com to speak also French
+</code></pre></div>
 <p>または</p>
-<pre><code class="language-text">Add skill &quot;Project Management&quot; to candidate bob.brown@example.com
-</code></pre>
+<div class="highlight"><pre><span></span><code>Add skill &quot;Project Management&quot; to candidate bob.brown@example.com
+</code></pre></div>
 <p>あるいは</p>
-<pre><code class="language-text">Remove candidate bob.brown@example.com
-</code></pre>
+<div class="highlight"><pre><span></span><code>Remove candidate bob.brown@example.com
+</code></pre></div>
 <p>エージェントは適切なツールを自動で呼び出し、プロンプトに応じて動作します。</p>
 <p>これで完了です！エージェントは完全に機能し、HR MCP サーバーが提供するすべてのツールを利用できるようになりました。</p>
 <p><cc-end-step lab="mcs6" exercise="3" step="2" /></p>
@@ -2741,6 +2741,8 @@ email: john.smith@email.com, speaks English and Spanish
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2773,7 +2775,7 @@ email: john.smith@email.com, speaks English and Spanish
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2785,6 +2787,8 @@ email: john.smith@email.com, speaks English and Spanish
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

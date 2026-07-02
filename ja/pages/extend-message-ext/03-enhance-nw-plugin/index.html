@@ -2359,25 +2359,25 @@
 <h3 id="1-ui">手順 1 - メッセージ拡張 / プラグイン UI の拡張</h3>
 <p>前回のラボで作成した <strong>Northwind</strong> 作業ディレクトリ内の <strong>appPackage</strong> フォルダーにある <strong>manifest.json</strong> を開きます。
 commands 配列の中で <code>discountSearch</code> を探します。<code>discountSearch</code> コマンドの閉じカッコの後ろにカンマ , を追加します。その後 <code>companySearch</code> コマンドのスニペットをコピーして commands 配列に追加します。</p>
-<pre><code class="language-json">{
-    &quot;id&quot;: &quot;companySearch&quot;,
-    &quot;context&quot;: [
-        &quot;compose&quot;,
-        &quot;commandBox&quot;
-    ],
-    &quot;description&quot;: &quot;Given a company name, search for products ordered by that company&quot;,
-    &quot;title&quot;: &quot;Customer&quot;,
-    &quot;type&quot;: &quot;query&quot;,
-    &quot;parameters&quot;: [
-        {
-            &quot;name&quot;: &quot;companyName&quot;,
-            &quot;title&quot;: &quot;Company name&quot;,
-            &quot;description&quot;: &quot;The company name to find products ordered by that company&quot;,
-            &quot;inputType&quot;: &quot;text&quot;
-        }
-    ]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;companySearch&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;compose&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;commandBox&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Given a company name, search for products ordered by that company&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Customer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;companyName&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Company name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The company name to find products ordered by that company&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">COMMAND_ID</p>
 <p>"id" は UI とコードを結び付けるキーです。この値は discount/product/SearchCommand.ts ファイルで <code>COMMAND_ID</code> として定義されています。各ファイルには固有の <code>COMMAND_ID</code> があり、"id" の値と対応しています。</p>
@@ -2413,113 +2413,111 @@ commands 配列の中で <code>discountSearch</code> を探します。<code>dis
 <p>動作概要:<br />
 Customer テーブルで Customer Name から Customer Id を取得します。次に Orders テーブルで Customer Id を使って関連する Order Id を取得します。各 Order Id について、OrderDetail テーブルで関連製品を取得します。最後に、指定した会社名が注文した製品の一覧を返します。</p>
 <p><strong>.\src\northwindDB\products.ts</strong> を開きます。</p>
-<p>1 行目の <code>import</code> 文を更新して <code>OrderDetail</code>, <code>Order</code>, <code>Customer</code> を含めます。次のようになります。</p>
-<pre><code class="language-javascript">import {
-    TABLE_NAME, Product, ProductEx, Supplier, Category, OrderDetail,
-    Order, Customer
-} from './model';
-</code></pre>
-<p><code>import { getInventoryStatus } from '../adaptiveCards/utils';</code> の直後に、下記スニペットのとおり <code>searchProductsByCustomer()</code> 関数を追加します。</p>
-<pre><code class="language-javascript">export async function searchProductsByCustomer(companyName: string): Promise&lt;ProductEx[]&gt; {
+<p>1 行目の <code>import</code> 文を更新して <code>OrderDetail</code>, <code>Order</code>, <code>Customer</code> を含めます。次のようになります。
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">TABLE_NAME</span><span class="p">,</span><span class="w"> </span><span class="nx">Product</span><span class="p">,</span><span class="w"> </span><span class="nx">ProductEx</span><span class="p">,</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">,</span><span class="w"> </span><span class="nx">Category</span><span class="p">,</span><span class="w"> </span><span class="nx">OrderDetail</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Order</span><span class="p">,</span><span class="w"> </span><span class="nx">Customer</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./model&#39;</span><span class="p">;</span>
+</code></pre></div>
+<code>import { getInventoryStatus } from '../adaptiveCards/utils';</code> の直後に、下記スニペットのとおり <code>searchProductsByCustomer()</code> 関数を追加します。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">searchProductsByCustomer</span><span class="p">(</span><span class="nx">companyName</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ProductEx</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
-    let result = await getAllProductsEx();
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getAllProductsEx</span><span class="p">();</span>
 
-    let customers = await loadReferenceData&lt;Customer&gt;(TABLE_NAME.CUSTOMER);
-    let customerId=&quot;&quot;;
-    for (const c in customers) {
-        if (customers[c].CompanyName.toLowerCase().includes(companyName.toLowerCase())) {
-            customerId = customers[c].CustomerID;
-            break;
-        }
-    }
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">loadReferenceData</span><span class="o">&lt;</span><span class="nx">Customer</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TABLE_NAME</span><span class="p">.</span><span class="nx">CUSTOMER</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customerId</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">customers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customers</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">CompanyName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">companyName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">customerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">customers</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">CustomerID</span><span class="p">;</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    if (customerId === &quot;&quot;) 
-        return [];
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customerId</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
 
-    let orders = await loadReferenceData&lt;Order&gt;(TABLE_NAME.ORDER);
-    let orderdetails = await loadReferenceData&lt;OrderDetail&gt;(TABLE_NAME.ORDER_DETAIL);
-    // build an array orders by customer id
-    let customerOrders = [];
-    for (const o in orders) {
-        if (customerId === orders[o].CustomerID) {
-            customerOrders.push(orders[o]);
-        }
-    }
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">loadReferenceData</span><span class="o">&lt;</span><span class="nx">Order</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TABLE_NAME</span><span class="p">.</span><span class="nx">ORDER</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">orderdetails</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">loadReferenceData</span><span class="o">&lt;</span><span class="nx">OrderDetail</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TABLE_NAME</span><span class="p">.</span><span class="nx">ORDER_DETAIL</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// build an array orders by customer id</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customerOrders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">o</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">orders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customerId</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">orders</span><span class="p">[</span><span class="nx">o</span><span class="p">].</span><span class="nx">CustomerID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">customerOrders</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">orders</span><span class="p">[</span><span class="nx">o</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    let customerOrdersDetails = [];
-    // build an array order details customerOrders array
-    for (const od in orderdetails) {
-        for (const co in customerOrders) {
-            if (customerOrders[co].OrderID === orderdetails[od].OrderID) {
-                customerOrdersDetails.push(orderdetails[od]);
-            }
-        }
-    }
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customerOrdersDetails</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="c1">// build an array order details customerOrders array</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">od</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">orderdetails</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">co</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">customerOrders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customerOrders</span><span class="p">[</span><span class="nx">co</span><span class="p">].</span><span class="nx">OrderID</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">orderdetails</span><span class="p">[</span><span class="nx">od</span><span class="p">].</span><span class="nx">OrderID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">customerOrdersDetails</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">orderdetails</span><span class="p">[</span><span class="nx">od</span><span class="p">]);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    // Filter products by the ProductID in the customerOrdersDetails array
-    result = result.filter(product =&gt; 
-        customerOrdersDetails.some(order =&gt; order.ProductID === product.ProductID)
-    );
+<span class="w">    </span><span class="c1">// Filter products by the ProductID in the customerOrdersDetails array</span>
+<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">product</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">customerOrdersDetails</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">order</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">order</span><span class="p">.</span><span class="nx">ProductID</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">product</span><span class="p">.</span><span class="nx">ProductID</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
 
-    return result;
-}
-</code></pre>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="3-">手順 3 - 新しいコマンド用のハンドラー作成</h3>
 <p>VS Code で <strong>src/messageExtensions</strong> フォルダーにある <strong>productSearchCommand.ts</strong> を複製し、コピーしたファイルの名前を <strong>customerSearchCommand.ts</strong> に変更します。</p>
-<p><code>COMMAND_ID</code> 定数の値を次のように変更します。</p>
-<pre><code class="language-javascript">const COMMAND_ID = &quot;companySearch&quot;;
-</code></pre>
-<p>以下の import 文を:</p>
-<pre><code class="language-JavaScript">import { searchProducts } from &quot;../northwindDB/products&quot;;`
-</code></pre>
-<p>から</p>
-<pre><code class="language-JavaScript">import { searchProductsByCustomer } from &quot;../northwindDB/products&quot;;
-</code></pre>
-<p>へ置き換えます。</p>
+<p><code>COMMAND_ID</code> 定数の値を次のように変更します。
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">COMMAND_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;companySearch&quot;</span><span class="p">;</span>
+</code></pre></div>
+以下の import 文を:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">searchProducts</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../northwindDB/products&quot;</span><span class="p">;</span><span class="sb">`</span>
+</code></pre></div>
+から</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">searchProductsByCustomer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../northwindDB/products&quot;</span><span class="p">;</span>
+</code></pre></div>
+へ置き換えます。</p>
 <p><strong>handleTeamsMessagingExtensionQuery</strong> の既存の波かっこ内のコードを下記スニペットに置き換えます。</p>
-<pre><code class="language-javascript">
-    let companyName;
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">companyName</span><span class="p">;</span>
 
-    // Validate the incoming query, making sure it's the 'companySearch' command
-    // The value of the 'companyName' parameter is the company name to search for
-    if (query.parameters.length === 1 &amp;&amp; query.parameters[0]?.name === &quot;companyName&quot;) {
-        [companyName] = (query.parameters[0]?.value.split(','));
-    } else { 
-        companyName = cleanupParam(query.parameters.find((element) =&gt; element.name === &quot;companyName&quot;)?.value);
-    }
-    console.log(`🍽️ Query #${++queryCount}:\ncompanyName=${companyName}`);    
+<span class="w">    </span><span class="c1">// Validate the incoming query, making sure it&#39;s the &#39;companySearch&#39; command</span>
+<span class="w">    </span><span class="c1">// The value of the &#39;companyName&#39; parameter is the company name to search for</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;companyName&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">[</span><span class="nx">companyName</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">companyName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cleanupParam</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;companyName&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`🍽️ Query #</span><span class="si">${</span><span class="o">++</span><span class="nx">queryCount</span><span class="si">}</span><span class="sb">:\ncompanyName=</span><span class="si">${</span><span class="nx">companyName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w">    </span>
 
-    const products = await searchProductsByCustomer(companyName);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">searchProductsByCustomer</span><span class="p">(</span><span class="nx">companyName</span><span class="p">);</span>
 
-    console.log(`Found ${products.length} products in the Northwind database`)
-    const attachments = [];
-    products.forEach((product) =&gt; {
-        const preview = CardFactory.heroCard(product.ProductName,
-            `Customer: ${companyName}`, [product.ImageUrl]);
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Found </span><span class="si">${</span><span class="nx">products</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> products in the Northwind database`</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">attachments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="nx">products</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CardFactory</span><span class="p">.</span><span class="nx">heroCard</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">ProductName</span><span class="p">,</span>
+<span class="w">            </span><span class="sb">`Customer: </span><span class="si">${</span><span class="nx">companyName</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">product</span><span class="p">.</span><span class="nx">ImageUrl</span><span class="p">]);</span>
 
-        const resultCard = cardHandler.getEditCard(product);
-        const attachment = { ...resultCard, preview };
-        attachments.push(attachment);
-    });
-    return {
-        composeExtension: {
-            type: &quot;result&quot;,
-            attachmentLayout: &quot;list&quot;,
-            attachments: attachments,
-        },
-    };
-
-</code></pre>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultCard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cardHandler</span><span class="p">.</span><span class="nx">getEditCard</span><span class="p">(</span><span class="nx">product</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">attachment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">resultCard</span><span class="p">,</span><span class="w"> </span><span class="nx">preview</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">attachments</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">attachment</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">composeExtension</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;result&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">attachmentLayout</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">attachments</span><span class="o">:</span><span class="w"> </span><span class="nx">attachments</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">};</span>
+</code></pre></div>
 <h3 id="4-">手順 4 - コマンドルーティングの更新</h3>
 <p>この手順では、<code>companySearch</code> コマンドを前手順で実装したハンドラーにルーティングします。</p>
 <p><strong>src</strong> フォルダーにある <strong>searchApp.ts</strong> を開き、次の import 文を追加します。 </p>
-<pre><code class="language-javascript">import customerSearchCommand from &quot;./messageExtensions/customerSearchCommand&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">customerSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/customerSearchCommand&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p><code>handleTeamsMessagingExtensionQuery</code> ハンドラー関数の switch 文に、以下の case 文を追加します。</p>
-<pre><code class="language-javascript">      case customerSearchCommand.COMMAND_ID: {
-        return customerSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
-      }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">customerSearchCommand</span><span class="p">.</span><span class="nx">COMMAND_ID</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">customerSearchCommand</span><span class="p">.</span><span class="nx">handleTeamsMessagingExtensionQuery</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">query</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Note</p>
 <p>メッセージ拡張 / プラグインを UI で操作するときは、このコマンドが明示的に呼び出されます。しかし、Microsoft 365 Copilot から呼び出される場合は、Copilot オーケストレーターによってトリガーされます。</p>
@@ -2586,6 +2584,8 @@ Teams が開くと、アプリを開くかどうかのダイアログが表示�
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2618,7 +2618,7 @@ Teams が開くと、アプリを開くかどうかのダイアログが表示�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2630,6 +2630,8 @@ Teams が開くと、アプリを開くかどうかのダイアログが表示�
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

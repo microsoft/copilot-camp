@@ -2455,15 +2455,15 @@
 <li><strong>サンプル候補者データ</strong>: 前のラボで HR システムに 2～3 名以上の候補者が登録済み</li>
 </ul>
 <p>HR MCP サーバーがまだ稼働していることを確認し、停止している場合は MCP サーバー プロジェクトのルート フォルダーで次のコマンドを実行します。</p>
-<pre><code class="language-console">dotnet run
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">dotnet run</span>
+</code></pre></div>
 <p>また、dev tunnel がアクティブであることを確認します。</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>以下に示す <code>hr-mcp</code> という名前は、<a href="../06-mcp" target="_blank">Lab MCS6 - Consuming an MCP server</a> で使用した一意の名前に置き換えてください。</p>
 </div>
-<pre><code class="language-console">devtunnel host hr-mcp
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="go">devtunnel host hr-mcp</span>
+</code></pre></div>
 <p>さらに、HR MCP サーバーを直接テストして候補者データが存在することを確認してください。Interview Scheduler は既存の候補者を前提に動作します。</p>
 <p><cc-end-step lab="mcs9" exercise="1" step="3" /></p>
 <h2 id="exercise-2-interview-coordinator">Exercise 2: メイン Interview Coordinator エージェントの作成</h2>
@@ -2475,18 +2475,18 @@
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
-<pre><code class="language-text">Interview Coordinator
-</code></pre>
+<div class="highlight"><pre><span></span><code>Interview Coordinator
+</code></pre></div>
 <ul>
 <li><strong>Description</strong>: </li>
 </ul>
-<pre><code class="language-text">Main agent that coordinates interview scheduling by working with HR candidate 
+<div class="highlight"><pre><span></span><code>Main agent that coordinates interview scheduling by working with HR candidate 
 management and interview scheduling child agents to create comprehensive interview workflows
-</code></pre>
+</code></pre></div>
 <ul>
 <li><strong>Instructions</strong>: </li>
 </ul>
-<pre><code class="language-text">You are the Interview Coordinator, responsible for managing end-to-end interview 
+<div class="highlight"><pre><span></span><code>You are the Interview Coordinator, responsible for managing end-to-end interview 
 scheduling processes. Your role includes:
 
 1. Understanding user requests for interview scheduling
@@ -2503,7 +2503,7 @@ When a user requests to schedule an interview:
 Always ensure proper validation of candidate data and provide clear communication 
 throughout the process. Handle errors gracefully and provide informative feedback 
 when coordination between agents fails.
-</code></pre>
+</code></pre></div>
 <p><strong>Create</strong> を選択してコーディネーター エージェントを作成します。</p>
 <p><cc-end-step lab="mcs9" exercise="2" step="1" /></p>
 <h3 id="step-2-ai">Step 2: 生成 AI オーケストレーションの有効化</h3>
@@ -2537,10 +2537,10 @@ when coordination between agents fails.
 <ul>
 <li><strong>Description</strong>: このコンテキストに合わせて説明を更新します。</li>
 </ul>
-<pre><code class="language-text">HR system integration for retrieving and managing candidate information during 
+<div class="highlight"><pre><span></span><code>HR system integration for retrieving and managing candidate information during 
 interview scheduling processes. Provides candidate lookup, data validation, and 
 comprehensive candidate details.
-</code></pre>
+</code></pre></div>
 <p>説明はメイン エージェントが接続エージェントを呼び出すタイミングを判断するために使用されます。具体的かつ明確に記述してください。</p>
 <ul>
 <li><strong>Pass conversation history</strong>: エージェント ハンドオフ時にコンテキストを維持するため有効のままにします</li>
@@ -2559,8 +2559,8 @@ comprehensive candidate details.
 <ul>
 <li><strong>Name</strong>: </li>
 </ul>
-<pre><code class="language-text">Interview Scheduler
-</code></pre>
+<div class="highlight"><pre><span></span><code>Interview Scheduler
+</code></pre></div>
 <ul>
 <li>
 <p><strong>When will this be used?</strong>: <strong>The agent chooses</strong> を選択し、メイン エージェントからの調整要求に応答できるようにします</p>
@@ -2569,13 +2569,13 @@ comprehensive candidate details.
 <p><strong>Description</strong>:</p>
 </li>
 </ul>
-<pre><code class="language-text">Helps scheduling an interview with a candidate. Requires information like the email
+<div class="highlight"><pre><span></span><code>Helps scheduling an interview with a candidate. Requires information like the email
 of the candidate and the date and time of the meeting.
-</code></pre>
+</code></pre></div>
 <ul>
 <li><strong>Instructions</strong>:</li>
 </ul>
-<pre><code class="language-text">You are the Interview Scheduler, a specialized agent focused on creating and managing 
+<div class="highlight"><pre><span></span><code>You are the Interview Scheduler, a specialized agent focused on creating and managing 
 interview meetings. When invoked by the Interview Coordinator, you:
 
 1. Process candidate information received from the main agent
@@ -2593,7 +2593,7 @@ For each interview scheduling request:
 
 Always confirm successful meeting creation with meeting details including date, time, 
 attendees, and meeting link if applicable.
-</code></pre>
+</code></pre></div>
 <p><img alt="Interview Scheduler 子エージェントの作成ページ。メッセージ ベース トリガー設定が表示。" src="../../../../../assets/images/make/copilot-studio-09/child-agent-02.png" /></p>
 <p>画面右上の <strong>Save</strong> コマンドを選択して子エージェントを保存します。子エージェント作成完了の緑色の確認メッセージが表示されます。</p>
 <p><cc-end-step lab="mcs9" exercise="3" step="1" /></p>
@@ -2609,8 +2609,8 @@ attendees, and meeting link if applicable.
 </ol>
 <p><img alt="「Create event (V4)」ツールを検索するダイアログ。検索フィルター「Calendar」が適用。" src="../../../../../assets/images/make/copilot-studio-09/child-agent-03.png" /></p>
 <p>新しいツールの設定パネルが表示されます。<strong>Name</strong> を次の値に更新します。</p>
-<pre><code class="language-text">Creates a calendar event
-</code></pre>
+<div class="highlight"><pre><span></span><code>Creates a calendar event
+</code></pre></div>
 <p>続いて <strong>Inputs</strong> セクションの <strong>Add input</strong> コマンドを選択し、次の入力を追加します。</p>
 <ul>
 <li><strong>Required attendees</strong></li>
@@ -2651,7 +2651,7 @@ attendees, and meeting link if applicable.
 <li><strong>HR Candidate Management</strong> 接続エージェントも参照  </li>
 </ol>
 <p>更新後の Instructions は次のようになります。</p>
-<pre><code class="language-text">You are the Interview Coordinator, responsible for managing end-to-end interview 
+<div class="highlight"><pre><span></span><code>You are the Interview Coordinator, responsible for managing end-to-end interview 
 scheduling processes. Your role includes:
 
 1. Understanding user requests for interview scheduling
@@ -2668,7 +2668,7 @@ When a user requests to schedule an interview:
 Always ensure proper validation of candidate data and provide clear communication 
 throughout the process. Handle errors gracefully and provide informative feedback 
 when coordination between agents fails.
-</code></pre>
+</code></pre></div>
 <p><img alt="Instructions フィールドで、スラッシュ表記を使って接続エージェントと子エージェントを参照している様子。" src="../../../../../assets/images/make/copilot-studio-09/coordinator-agent-03.png" /></p>
 <p><strong>Save</strong> を選択してエージェント参照を含む Instructions を更新します。</p>
 <p><cc-end-step lab="mcs9" exercise="4" step="1" /></p>
@@ -2679,8 +2679,8 @@ when coordination between agents fails.
 <ol>
 <li><strong>Interview Coordinator をテスト</strong>: テスト パネルで次のように入力します。</li>
 </ol>
-<pre><code class="language-text">Retrieve information about Alice Johnson and schedule an interview with her for next Monday 10am.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Retrieve information about Alice Johnson and schedule an interview with her for next Monday 10am.
+</code></pre></div>
 <ol>
 <li><strong>エージェント調整を観察</strong>: テスト パネルで以下が行われる様子を確認します。  </li>
 <li>要求の処理  </li>
@@ -2726,6 +2726,8 @@ when coordination between agents fails.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2758,7 +2760,7 @@ when coordination between agents fails.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2770,6 +2772,8 @@ when coordination between agents fails.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

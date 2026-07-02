@@ -2427,24 +2427,24 @@
 <p>この演習では、前のラボで作成したソース コードをそのまま使用できます。</p>
 <h3 id="1_1">手順 1: アプリにフィードバック ループを統合</h3>
 <p>プロジェクトの <code>src/app/app.ts</code> を開き、アプリケーション インスタンスを見つけて <strong>ai</strong> プロパティの括弧内に <code>enable_feedback_loop: true</code> を追加します。更新後のアプリケーション インスタンスは次のとおりです。</p>
-<pre><code class="language-javascript">const app = new Application({
-  storage,
-  ai: {
-    planner,
-    //feedback loop is enabled
-    enable_feedback_loop: true
-  },
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Application</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ai</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">planner</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">//feedback loop is enabled</span>
+<span class="w">    </span><span class="nx">enable_feedback_loop</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>フィードバック応答を処理するため、<code>src/app/app.ts</code> に次のコード スニペットを追加します。</p>
-<pre><code class="language-javascript">app.feedbackLoop(async (_context, _state, feedbackLoopData) =&gt; {
-  if (feedbackLoopData.actionValue.reaction === 'like') {
-      console.log('👍' + ' ' + feedbackLoopData.actionValue.feedback!);
-  } else {
-      console.log('👎' + ' ' + feedbackLoopData.actionValue.feedback!);
-  }
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">feedbackLoop</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">_context</span><span class="p">,</span><span class="w"> </span><span class="nx">_state</span><span class="p">,</span><span class="w"> </span><span class="nx">feedbackLoopData</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">feedbackLoopData</span><span class="p">.</span><span class="nx">actionValue</span><span class="p">.</span><span class="nx">reaction</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;like&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;👍&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">feedbackLoopData</span><span class="p">.</span><span class="nx">actionValue</span><span class="p">.</span><span class="nx">feedback</span><span class="o">!</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;👎&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">feedbackLoopData</span><span class="p">.</span><span class="nx">actionValue</span><span class="p">.</span><span class="nx">feedback</span><span class="o">!</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <p><cc-end-step lab="bta3" exercise="1" step="1" /></p>
 <h3 id="2">手順 2: フィードバック ループ機能をテスト</h3>
 <p>Career Genie をフィードバック ループ機能付きでテストしてみましょう。Visual Studio Code の <strong>Run and Debug</strong> タブから <strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら <strong>Add</strong> を選択してチャットを開始します。</p>
@@ -2469,62 +2469,62 @@
 <p>この演習では引用のエクスペリエンスをさらにパーソナライズし、Adaptive Card を使用して引用の表示方法をカスタマイズします。</p>
 <h3 id="1-adaptive-card">手順 1: 引用用の Adaptive Card を作成</h3>
 <p><code>src/app/</code> フォルダーへ移動し <strong>card.ts</strong> という新しいファイルを作成します。<code>card.ts</code> に次のコード スニペットを追加します。</p>
-<pre><code class="language-javascript">import { AdaptiveCard, Message, Utilities } from '@microsoft/teams-ai';
-/**
- * Create an adaptive card from a prompt response.
- * @param {Message&lt;string&gt;} response The prompt response to create the card from.
- * @returns {AdaptiveCard} The response card.
- */
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AdaptiveCard</span><span class="p">,</span><span class="w"> </span><span class="nx">Message</span><span class="p">,</span><span class="w"> </span><span class="nx">Utilities</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@microsoft/teams-ai&#39;</span><span class="p">;</span>
+<span class="cm">/**</span>
+<span class="cm"> * Create an adaptive card from a prompt response.</span>
+<span class="cm"> * @param {Message&lt;string&gt;} response The prompt response to create the card from.</span>
+<span class="cm"> * @returns {AdaptiveCard} The response card.</span>
+<span class="cm"> */</span>
 
-//Adaptive card to display the response and citations
-export function createResponseCard(response: Message&lt;string&gt;): AdaptiveCard {
-    const citationCards = response.context?.citations.map((citation, i) =&gt; ({
-            type: 'Action.ShowCard',
-            title: `${i+1}`,
-            card: {
-                type: 'AdaptiveCard',
-                body: [
-                    {
-                        type: 'TextBlock',
-                        text: citation.title,
-                        fontType: 'Default',
-                        weight: 'Bolder'
-                    },
-                    {
-                        type: 'TextBlock',
-                        text: citation.content,
-                        wrap: true
-                    }
-                ]
-            }
-        }));
+<span class="c1">//Adaptive card to display the response and citations</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createResponseCard</span><span class="p">(</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="nx">Message</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">AdaptiveCard</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">citationCards</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">context</span><span class="o">?</span><span class="p">.</span><span class="nx">citations</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">citation</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Action.ShowCard&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">i</span><span class="o">+</span><span class="mf">1</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">card</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;AdaptiveCard&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TextBlock&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">citation</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">fontType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bolder&#39;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TextBlock&#39;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">citation</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span>
+<span class="w">                        </span><span class="nx">wrap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}));</span>
 
-    const text = Utilities.formatCitationsResponse(response.content!);
-    return {
-        type: 'AdaptiveCard',
-        body: [
-            {
-                type: 'TextBlock',
-                text: text,
-                wrap: true
-            },
-            {
-                type: 'TextBlock',
-                text: 'Citations',
-                wrap: true,
-                fontType: 'Default',
-                weight: 'Bolder'
-            },
-            {
-                type: 'ActionSet',
-                actions: citationCards
-            }
-        ],
-        $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
-        version: '1.5'
-    };
-}
-</code></pre>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Utilities</span><span class="p">.</span><span class="nx">formatCitationsResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">content</span><span class="o">!</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;AdaptiveCard&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TextBlock&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">wrap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TextBlock&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Citations&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">wrap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">fontType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bolder&#39;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ActionSet&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="nx">citationCards</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nx">$schema</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://adaptivecards.io/schemas/adaptive-card.json&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">version</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1.5&#39;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>この Adaptive Card は引用を <code>Action.ShowCard</code> ボタンとしてリスト表示し、クリックすると詳細が表示されます。また、応答のメイン コンテンツと引用ボタンを同時に表示します。ユーザー が引用の詳細を確認したい場合はボタンをクリックして全文を閲覧できます。</p>
 <p><cc-end-step lab="bta3" exercise="2" step="1" /></p>
 <h3 id="2-predictedsaycommand">手順 2: PredictedSayCommand を使用して引用エクスペリエンスをカスタマイズ</h3>
@@ -2533,43 +2533,43 @@ export function createResponseCard(response: Message&lt;string&gt;): AdaptiveCar
 <p><strong>PredictedSayCommand</strong> は AI システムが実行する応答ディレクティブです。PredictedSayCommand をカスタマイズすることで、引用やフィードバック ループなど Powered by AI 機能をカスタム エンジン エージェントのアクティビティにきめ細かく統合できます。これによりアプリケーションのニーズに合わせて AI 応答を正確に調整できます。</p>
 </details>
 <p><code>src/app/app.ts</code> を開き、Adaptive Card をインポートするためにコード冒頭へ次のスニペットを追加します。</p>
-<pre><code class="language-javascript">import { createResponseCard } from './card';
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createResponseCard</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./card&#39;</span><span class="p">;</span>
+</code></pre></div>
 <p><code>"botbuilder"</code> のインポートに <code>CardFactory</code> を追加します。更新後は次のようになります。</p>
-<pre><code class="language-javascript">import { CardFactory, MemoryStorage, MessageFactory, TurnContext } from &quot;botbuilder&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CardFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">MemoryStorage</span><span class="p">,</span><span class="w"> </span><span class="nx">MessageFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">TurnContext</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;botbuilder&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>"@microsoft/teams-ai" のインポートに <code>AI</code> と <code>PredictedSayCommand</code> を追加します。更新後は次のようになります。</p>
-<pre><code class="language-javascript">import { Application, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand} from &quot;@microsoft/teams-ai&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Application</span><span class="p">,</span><span class="w"> </span><span class="nx">ActionPlanner</span><span class="p">,</span><span class="w"> </span><span class="nx">OpenAIModel</span><span class="p">,</span><span class="w"> </span><span class="nx">PromptManager</span><span class="p">,</span><span class="w"> </span><span class="nx">AI</span><span class="p">,</span><span class="w"> </span><span class="nx">PredictedSayCommand</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@microsoft/teams-ai&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>引用をカスタマイズするため、<code>src/app/app.ts</code> に次の PredictedSayCommand アクションを追加します。</p>
-<pre><code class="language-javascript">app.ai.action&lt;PredictedSayCommand&gt;(AI.SayCommandActionName, async (context, state, data, action) =&gt; {
-  let activity;
-  if (data.response.context &amp;&amp; data.response.context.citations.length &gt; 0 ) {
-      const attachment = CardFactory.adaptiveCard(createResponseCard(data.response));
-      activity = MessageFactory.attachment(attachment);
-  }
-  else {
-      activity = MessageFactory.text(data.response.content);
-  }
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">action</span><span class="o">&lt;</span><span class="nx">PredictedSayCommand</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">AI</span><span class="p">.</span><span class="nx">SayCommandActionName</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">activity</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">context</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">citations</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">attachment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CardFactory</span><span class="p">.</span><span class="nx">adaptiveCard</span><span class="p">(</span><span class="nx">createResponseCard</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">response</span><span class="p">));</span>
+<span class="w">      </span><span class="nx">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MessageFactory</span><span class="p">.</span><span class="nx">attachment</span><span class="p">(</span><span class="nx">attachment</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">activity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MessageFactory</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-  activity.entities = [
-    {
-        type: &quot;https://schema.org/Message&quot;,
-        &quot;@type&quot;: &quot;Message&quot;,
-        &quot;@context&quot;: &quot;https://schema.org&quot;,
-        &quot;@id&quot;: &quot;&quot;
-    }
-  ];
-  activity.channelData = {
-    feedbackLoopEnabled: true
-  };
+<span class="w">  </span><span class="nx">activity</span><span class="p">.</span><span class="nx">entities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">];</span>
+<span class="w">  </span><span class="nx">activity</span><span class="p">.</span><span class="nx">channelData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">feedbackLoopEnabled</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">};</span>
 
-  await context.sendActivity(activity);
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">sendActivity</span><span class="p">(</span><span class="nx">activity</span><span class="p">);</span>
 
-  return &quot;success&quot;;
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">;</span>
 
-});
-</code></pre>
+<span class="p">});</span>
+</code></pre></div>
 <p><cc-end-step lab="bta3" exercise="2" step="2" /></p>
 <h3 id="3">手順 3: カスタマイズした引用エクスペリエンスをテスト</h3>
 <p>Career Genie をカスタマイズした引用エクスペリエンスでテストします。Visual Studio Code の <strong>Run and Debug</strong> タブから <strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら <strong>Add</strong> を選択してチャットを開始します。</p>
@@ -2585,22 +2585,22 @@ export function createResponseCard(response: Message&lt;string&gt;): AdaptiveCar
 <p>この演習では <code>PredictedSayCommand</code> を引き続き使用してユーザー エクスペリエンスをカスタマイズします。AI と人間の応答を区別できるよう、AI システムが生成したメッセージに「AI generated」ラベルを表示します。</p>
 <h3 id="1-predictedsaycommand-generated-by-ai">手順 1: PredictedSayCommand を使用して Generated by AI ラベルを有効化</h3>
 <p><code>src/app/app.ts</code> を開き、<code>PredictedSayCommand</code> アクションを探します。<code>activity.entities</code> 内に次のコード スニペットを追加してください。</p>
-<pre><code class="language-javascript">// Generated by AI label
-additionalType: [&quot;AIGeneratedContent&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Generated by AI label</span>
+<span class="nx">additionalType</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AIGeneratedContent&quot;</span><span class="p">]</span>
+</code></pre></div>
 <p>更新後の <code>activity.entities</code> は次のようになります。</p>
-<pre><code class="language-javascript">activity.entities = [
-    {
-        type: &quot;https://schema.org/Message&quot;,
-        &quot;@type&quot;: &quot;Message&quot;,
-        &quot;@context&quot;: &quot;https://schema.org&quot;,
-        &quot;@id&quot;: &quot;&quot;,
-        // Generated by AI label
-        additionalType: [&quot;AIGeneratedContent&quot;],
-    },
+<div class="highlight"><pre><span></span><code><span class="nx">activity</span><span class="p">.</span><span class="nx">entities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Generated by AI label</span>
+<span class="w">        </span><span class="nx">additionalType</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AIGeneratedContent&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="p">},</span>
 
-];
-</code></pre>
+<span class="p">];</span>
+</code></pre></div>
 <p><cc-end-step lab="bta3" exercise="3" step="1" /></p>
 <h3 id="2-generated-by-ai">手順 2: Generated by AI ラベルをテスト</h3>
 <p>Generated by AI ラベル付きで Career Genie をテストします。Visual Studio Code の <strong>Run and Debug</strong> タブから <strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら <strong>Add</strong> を選択してチャットを開始します。</p>
@@ -2615,32 +2615,32 @@ additionalType: [&quot;AIGeneratedContent&quot;]
 <p>最後の演習では <code>PredictedSayCommand</code> を利用して Sensitivity ラベルを有効化します。Career Genie は人事関連の専門家であり、機密情報を扱うことが多いシナリオです。こうした場合、AI が生成したメッセージに Sensitivity ラベルが表示され、組織外へ共有できるかどうかを示します。</p>
 <h3 id="1-predictedsaycommand-sensitivity">手順 1: PredictedSayCommand を使用して Sensitivity ラベルを有効化</h3>
 <p><code>src/app/app.ts</code> を開き、<code>PredictedSayCommand</code> アクションを探します。<code>activity.entities</code> 内に次のコード スニペットを追加してください。</p>
-<pre><code class="language-javascript">// Sensitivity label
-usageInfo: {
-    &quot;@type&quot;: &quot;CreativeWork&quot;,
-    name: &quot;Confidential&quot;,
-    description: &quot;Sensitive information, do not share outside of your organization.&quot;,
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Sensitivity label</span>
+<span class="nx">usageInfo</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;@type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CreativeWork&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Confidential&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Sensitive information, do not share outside of your organization.&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>更新後の <code>activity.entities</code> は次のようになります。</p>
-<pre><code class="language-javascript">activity.entities = [
-    {
-        type: &quot;https://schema.org/Message&quot;,
-        &quot;@type&quot;: &quot;Message&quot;,
-        &quot;@context&quot;: &quot;https://schema.org&quot;,
-        &quot;@id&quot;: &quot;&quot;,
-        // Generated by AI label
-        additionalType: [&quot;AIGeneratedContent&quot;],
-        // Sensitivity label
-        usageInfo: {
-          &quot;@type&quot;: &quot;CreativeWork&quot;,
-          name: &quot;Confidential&quot;,
-          description: &quot;Sensitive information, do not share outside of your organization.&quot;,
-        }
-    },
+<div class="highlight"><pre><span></span><code><span class="nx">activity</span><span class="p">.</span><span class="nx">entities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org/Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Message&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@context&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// Generated by AI label</span>
+<span class="w">        </span><span class="nx">additionalType</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AIGeneratedContent&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="c1">// Sensitivity label</span>
+<span class="w">        </span><span class="nx">usageInfo</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="s2">&quot;@type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CreativeWork&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Confidential&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Sensitive information, do not share outside of your organization.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
 
-  ];
-</code></pre>
+<span class="w">  </span><span class="p">];</span>
+</code></pre></div>
 <p><cc-end-step lab="bta3" exercise="4" step="1" /></p>
 <h3 id="2-sensitivity">手順 2: Sensitivity ラベルをテスト</h3>
 <p>Sensitivity ラベル付きで Career Genie をテストします。Visual Studio Code の <strong>Run and Debug</strong> タブから <strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してデバッグを開始します。ブラウザーで Microsoft Teams が開き、アプリの詳細が表示されたら <strong>Add</strong> を選択してチャットを開始します。</p>
@@ -2677,6 +2677,8 @@ usageInfo: {
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2709,7 +2711,7 @@ usageInfo: {
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2721,6 +2723,8 @@ usageInfo: {
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

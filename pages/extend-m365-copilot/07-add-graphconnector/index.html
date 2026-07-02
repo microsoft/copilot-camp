@@ -11,10 +11,6 @@
         <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector/">
       
       
-        <link rel="prev" href="../06a-add-authentication-ttk/">
-      
-      
-        <link rel="next" href="../08-mcp-server/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Lab E7 - Add Copilot Connector - Copilot Developer Camp</title>
+        <title>Lab E7 - Integration: Add Knowledge capability to Trey Genie using a Microsoft Copilot Connector - Copilot Developer Camp</title>
       
     
     
@@ -117,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab E7 - Add Copilot Connector
+              Lab E7 - Integration: Add Knowledge capability to Trey Genie using a Microsoft Copilot Connector
             
           </span>
         </div>
@@ -239,12 +235,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../" class="md-tabs__link">
           
   
@@ -479,31 +473,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -521,7 +510,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -566,70 +555,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Setup
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Setup
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../00-prerequisites/" class="md-nav__link">
+      <a href="../bundles/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E0 - Prerequisites and Environment Setup
+    Bundle Overview
   
 
     
@@ -643,14 +577,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -664,27 +590,24 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Declarative Agent Fundamentals
+    Mandatory On-ramp
   
 
     
@@ -700,7 +623,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Declarative Agent Fundamentals
+    Mandatory On-ramp
   
 
           </label>
@@ -713,14 +636,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../01-typespec-declarative-agent/" class="md-nav__link">
+      <a href="../01-first-agent-new/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E1 - Build a Declarative Agent using TypeSpec
+    Lab E1 - Choose Foundation Path
   
 
     
@@ -741,14 +664,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../01a-geolocator/" class="md-nav__link">
+      <a href="../01-first-agent-builder/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E1a - Build a game agent
+    Lab E1A - Declarative Agent Foundation with Agent Builder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-first-agent-toolkit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E1B - Declarative Agent Foundation with Agents Toolkit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites for Pro-code bundles
   
 
     
@@ -783,27 +762,24 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Build and Integrate API from scratch
+    Bundle A - MCP Foundations
   
 
     
@@ -819,7 +795,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Build and Integrate API from scratch
+    Bundle A - MCP Foundations
   
 
           </label>
@@ -832,126 +808,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../02-build-the-api/" class="md-nav__link">
+      <a href="../bundle-a/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E2 - Build a Backend API
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-add-declarative-agent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E3 - Add Declarative Agent and API Plugin
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-enhance-api-plugin/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E4 - Enhance API and Plugin
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-add-adaptive-card/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E5 - Add Adaptive Cards
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06a-add-authentication-ttk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E6a - Add Entra ID Authentication (Toolkit)
+    Start Bundle A
   
 
     
@@ -977,38 +841,33 @@
                 
   
   
-    
   
   
-  
     
     
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Integration
+    Bundle B - Multi-Agent Workflows in Copilot
   
 
     
@@ -1019,12 +878,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Integration
+    Bundle B - Multi-Agent Workflows in Copilot
   
 
           </label>
@@ -1034,26 +893,69 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../bundle-b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
   
+    Start Bundle B
+  
+
+    
+  </span>
   
   
-    <li class="md-nav__item md-nav__item--active">
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
       
       
         
       
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
           
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
     
   
-    Lab E7 - Add Copilot Connector
+    Bundle C - MCP App
   
 
     
@@ -1061,82 +963,19 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
   
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E7 - Add Copilot Connector
-  
-
-    
-  </span>
-  
+    Bundle C - MCP App
   
 
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-1-deploy-copilot-connector" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 1 : Deploy Copilot Connector
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-2-add-copilot-connector-to-declarative-agent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 2 : Add Copilot Connector to Declarative Agent
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exercise-3-test-the-agent-in-copilot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exercise 3: Test the agent in Copilot
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1145,14 +984,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../08-mcp-server/" class="md-nav__link">
+      <a href="../bundle-c/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E8 - Connect Declarative agent to MCP Server
+    Start Bundle C
   
 
     
@@ -1166,6 +1005,66 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bundle D - API-Based Declarative Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bundle D - API-Based Declarative Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -1173,14 +1072,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-connected-agent/" class="md-nav__link">
+      <a href="../bundle-d/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E9 - Connected Agents using VS Code (Preview)
+    Start Bundle D
   
 
     
@@ -1194,29 +1093,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-mcp-auth/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server
-  
-
-    
-  </span>
-  
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1228,15 +1107,67 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bundle E - Declarative Agents with Copilot Connectors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bundle E - Declarative Agents with Copilot Connectors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../11-mcp-app/" class="md-nav__link">
+      <a href="../bundle-e/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Lab E11 - Build an MCP App with Interactive Widgets
+    Start Bundle E
   
 
     
@@ -2932,87 +2863,25 @@
 
 
 <h1 id="lab-e7-integration-add-knowledge-capability-to-trey-genie-using-a-microsoft-copilot-connector">Lab E7 - Integration: Add Knowledge capability to Trey Genie using a Microsoft Copilot Connector</h1>
+<div data-widget="hero"
+    data-badge="Bundle E · Lab E7"
+    data-badge-color="purple"
+    data-icon="🔗"
+    data-title="Add Copilot Connector Grounding"
+    data-subtitle="Load external data into Microsoft Graph and connect it as focused knowledge for your Declarative Agent."
+    data-time="45-75 min"
+    data-requires="Labs E2-E4 + tenant admin"
+    data-toolkit="Graph connectors + Agents Toolkit"></div>
+
+<div data-widget="checklist"
+    data-items="External connection deployed~Connector schema and content ingestion completed|Connector data discoverable in Microsoft 365~Validated indexed results through search|Declarative agent grounded with connector~Agent capability updated with connection ID"></div>
+
+<h2 id="key-concepts-before-you-build">Key concepts before you build</h2>
+<div data-widget="concepts"
+    data-cards="Connector ingestion pipeline::purple::External content into Graph::Copilot connectors normalize and index external content so it can participate in Microsoft 365 retrieval experiences.||Grounding through capabilities::teal::Targeted knowledge source::Adding Graph connector capability lets your agent answer using indexed connector content as focused context.||Admin consent model::amber::App-only permissions required::Connector setup needs tenant-level consent because ingestion runs with service-level permissions."></div>
+
 <div class="floatwide">
-<div class="cc-lab-toc e-path">
-    <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
-    <div>
-        <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and
-            orchestration</p>
-        <ul id="lab-toc">
-            <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
-            <li><strong>🔧 Set up</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Lab E0 - Setup</a></li>
-                </ul>
-            </li>
-            <li><strong>🧰 Declarative agent fundamentals</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-typespec-declarative-agent"> Lab E1 - Build a  Declarative Agent using TypeSpec</a>
-                    </li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01a-geolocator"> Lab E1a - Geo locator game</a></li>
-                </ul>
-            </li>
-            <li><strong>🛠️ Build and integrate API from scratch</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build an API</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent"> Lab E3 - Add Declarative Agent + API</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin"> Lab E4 - Enhance API + Plugin</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
-                     <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk"> Lab E6a - Add Authentication</a></li>
-                </ul>
-            </li>       
-            <li><strong>🔌 Integration</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector"> Lab E7 - Add Copilot Connector</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server"> Lab E8 - Connect Declarative agent to MCP Server</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent"> Lab E9 - Connected Agents</a></li>
-                </ul>
-                 <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth"> Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/11-mcp-app"> Lab E11 - Build an MCP App with Interactive Widgets</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<script>
-(() => {
-
-// This script decorates the table of contents with a "you are here" indicator.
-const toc = document.getElementsByClassName('cc-lab-toc');
-for (const div of toc) {
-    const lis = div.querySelectorAll('li');
-    for (const li of lis) {
-        const anchor = li.querySelector('a');
-        if (anchor) {            // Get the last segment of the current URL path
-            const currentPath = window.location.pathname.slice(0, -1).split('/').pop();
-
-            // Get the last segment of the link path
-            const linkPath = anchor.getAttribute('href').split('/').pop().replace('.md', '');
-
-            // Compare the last segments
-            if (currentPath === linkPath) {
-                const existingSpan = document.querySelector('span.you-are-here');
-                if (existingSpan) {
-                    existingSpan.remove();
-                }
-                const span = document.createElement("span");
-                span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
-                span.className = "you-are-here";
-                li.appendChild(span);
-            }
-        }
-    }
-}
-})();
-</script>
+    <div data-widget="bundleprelude"></div>
 </div>
 
 <p>In this lab you will learn how to add your own data into the Microsoft Graph to be then organically utilised by the declarative agent as it's own knowledge.  In the process you will learn all how to deploy a Microsoft Copilot Connector and use the connector in Trey Genie declarative agent. </p>
@@ -3057,17 +2926,14 @@ The aim is to deploy these external files into Microsoft 365 data to be availabl
 <li>Create a file <strong>.env.local</strong> in the <strong>env</strong> folder of the root folder <strong>trey-feedback-connector</strong></li>
 <li>Paste below contents in the newly created file</li>
 </ul>
-<pre><code class="language-txt">APP_NAME=TreyFeedbackConnectorApp
+<p><div class="highlight"><pre><span></span><code>APP_NAME=TreyFeedbackConnectorApp
 CONNECTOR_ID=tfcfeedback
 CONNECTOR_NAME=Trey Feedback Connector
 CONNECTOR_DESCRIPTION=The Trey Feedback Connector seamlessly integrate feedback data from various clients about consultants in Trey Research.
 CONNECTOR_BASE_URL=https://localhost:3000/
-
-</code></pre>
-<ul>
-<li>Select <strong>F5</strong>, which will then kick off the creation of the Entra ID app registration needed for your connector API to authenicate and load data into Microsoft Graph </li>
-<li>In the <code>Terminal</code> window, for the <code>func:host start</code> Task, you will notice below link provided. Using this link you can grant the app-only permission for the Entra ID app</li>
-</ul>
+</code></pre></div>
+- Select <strong>F5</strong>, which will then kick off the creation of the Entra ID app registration needed for your connector API to authenicate and load data into Microsoft Graph 
+- In the <code>Terminal</code> window, for the <code>func:host start</code> Task, you will notice below link provided. Using this link you can grant the app-only permission for the Entra ID app</p>
 <p><img alt="The UI of Visual Studio Code while running the connector function, with a prompt to use a link to grant permissions to the app used to load data." src="../../../assets/images/extend-m365-copilot-GC/entra-link.png" /></p>
 <ul>
 <li>Copy the link and open in a browser where you are logged in as the tenant admin for the Microsoft 365 tenant. </li>
@@ -3078,11 +2944,12 @@ CONNECTOR_BASE_URL=https://localhost:3000/
 <li>Once granted, the connector creates an external connection, provisions the schema and ingests the sample contents in the <strong>content</strong> folder to your Microsoft 365 tenant. This takes a while, so keep the project running. </li>
 <li>Once all files in the <strong>content</strong> folder are loaded, the debugger can be stopped. </li>
 <li>You can also close this connector project folder.</li>
+<li>To verify the connection status, go to <a href="https://admin.cloud.microsoft/#/copilot/connectors" target="_blank">https://admin.cloud.microsoft/#/copilot/connectors</a> to check the connection. Its state should be <strong>"Ready"</strong>.</li>
 </ul>
 <p><cc-end-step lab="e7" exercise="1" step="2" /></p>
 <h3 id="step-3-test-the-connector-data-in-microsoft365-app">Step 3: Test the connector data in Microsoft365 app</h3>
 <p>Now that your data is loaded into Microsoft 365 tenant, let's test if a regular search is picking up the contents in Microsoft365.com.</p>
-<p>Go to <a href="https://www.microsoft365.com/" target="_blank">https://www.microsoft365.com/</a> and in the search box above, type <code>thanks Avery</code>.</p>
+<p>Go to <a href="https://m365.cloud.microsoft/search" target="_blank">https://m365.cloud.microsoft/search</a> and in the search box above, type <code>thanks Avery</code>.</p>
 <p>You will see the results as below from the external connection which are basically the clients' feedback for consultant Avery Howard.</p>
 <p><img alt="The search result page of Microsoft 365 highlighting 2 result items based on the search query 'thanks Avery' provided by the user." src="../../../assets/images/extend-m365-copilot-GC/search-m365.png" /></p>
 <p>Now that your data is part of Microsoft 365 data or Microsoft Graph, let's go ahead and add this connector data as focused knowledge for our declarative agent for Trey Research called <strong>Trey Genie</strong>.</p>
@@ -3109,16 +2976,16 @@ But the most straightforward way to get the Copilot Connector id is to use Graph
 <li>Go to <strong>appPackage\trey-declarative-agent.json</strong></li>
 <li>Add a new item into the <code>capabilities</code> array as below and save</li>
 </ul>
-<pre><code class="language-JSON"> {
-            &quot;name&quot;: &quot;GraphConnectors&quot;,
-            &quot;connections&quot;: [
-                {
-                    &quot;connection_id&quot;: &quot;tfcfeedbacklocal&quot;
-                }
-            ]
-}
-</code></pre>
-<p>Now the capability is added, it's time to test.</p>
+<p><div class="highlight"><pre><span></span><code><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GraphConnectors&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;connection_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tfcfeedbacklocal&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+Now the capability is added, it's time to test.</p>
 <p><cc-end-step lab="e7" exercise="2" step="2" /></p>
 <h2 id="exercise-3-test-the-agent-in-copilot">Exercise 3: Test the agent in Copilot</h2>
 <p>Before you test the application, update the manifest version of your app package in the <code>appPackage\manifest.json</code> file, follow these steps:</p>
@@ -3128,13 +2995,13 @@ But the most straightforward way to get the Copilot Connector id is to use Graph
 </li>
 <li>
 <p>Locate the <code>version</code> field in the JSON file. It should look something like this:<br />
-<code>json
-   "version": "1.0.0"</code></p>
+   <div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+</code></pre></div></p>
 </li>
 <li>
 <p>Increment the version number to a small increment. For example, change it to:<br />
-<code>json
-   "version": "1.0.1"</code></p>
+   <div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.1&quot;</span>
+</code></pre></div></p>
 </li>
 <li>
 <p>Save the file after making the change.</p>
@@ -3155,7 +3022,8 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
 <p><img alt="The Trey Genie agent in action in Microsoft 365 Copilot, processing requests that relate on the content available through the custom connector." src="../../../assets/images/extend-m365-copilot-GC/GC-Trey-Feedback.gif" /></p>
 <p><cc-end-step lab="e7" exercise="3" step="2" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
-<p>You have completed lab Add Copilot Connector, Well done!</p>
+<div data-widget="labnav"></div>
+
 <!-- <cc-award badgeId="Extend" badgeName="Extend" badgeUrl="#" /> -->
 
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/07-add-graphconnector" /></p>
@@ -3176,6 +3044,8 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -3208,7 +3078,7 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -3220,6 +3090,8 @@ You will be brought into Microsoft Teams. Once you're back in Copilot, open the 
         <script src="../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

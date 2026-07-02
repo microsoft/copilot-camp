@@ -2341,25 +2341,25 @@
 <p>This page demonstrates how to use the <code>cc-card</code> web component.</p>
 <h2 id="individual-cards">Individual Cards</h2>
 <h3 id="basic-card">Basic Card</h3>
-<pre><code class="language-html">&lt;cc-card 
-    title=&quot;Getting Started&quot; 
-    description=&quot;Learn the basics of AI prompting and get started with your first copilot instructions.&quot;
-    href=&quot;/pages/copilot-instructions/getting-started&quot;&gt;
-&lt;/cc-card&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">cc-card</span> 
+    <span class="na">title</span><span class="o">=</span><span class="s">&quot;Getting Started&quot;</span> 
+    <span class="na">description</span><span class="o">=</span><span class="s">&quot;Learn the basics of AI prompting and get started with your first copilot instructions.&quot;</span>
+    <span class="na">href</span><span class="o">=</span><span class="s">&quot;/pages/copilot-instructions/getting-started&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><cc-card 
     title="Getting Started" 
     description="Learn the basics of AI prompting and get started with your first copilot instructions."
     href="/pages/copilot-instructions/getting-started">
 </cc-card></p>
 <h3 id="card-with-image">Card with Image</h3>
-<pre><code class="language-html">&lt;cc-card 
-    title=&quot;Advanced Techniques&quot; 
-    description=&quot;Master advanced prompting techniques and learn to create sophisticated AI agents.&quot;
-    href=&quot;/pages/copilot-instructions/advanced&quot;
-    image=&quot;/assets/images/advanced-techniques.png&quot;&gt;
-&lt;/cc-card&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">cc-card</span> 
+    <span class="na">title</span><span class="o">=</span><span class="s">&quot;Advanced Techniques&quot;</span> 
+    <span class="na">description</span><span class="o">=</span><span class="s">&quot;Master advanced prompting techniques and learn to create sophisticated AI agents.&quot;</span>
+    <span class="na">href</span><span class="o">=</span><span class="s">&quot;/pages/copilot-instructions/advanced&quot;</span>
+    <span class="na">image</span><span class="o">=</span><span class="s">&quot;/assets/images/advanced-techniques.png&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><cc-card 
     title="Advanced Techniques" 
     description="Master advanced prompting techniques and learn to create sophisticated AI agents."
@@ -2367,13 +2367,13 @@
     image="/assets/images/advanced-techniques.png">
 </cc-card></p>
 <h3 id="card-with-external-link">Card with External Link</h3>
-<pre><code class="language-html">&lt;cc-card 
-    title=&quot;GitHub Repository&quot; 
-    description=&quot;Explore the source code and contribute to the Copilot Camp project.&quot;
-    href=&quot;https://github.com/microsoft/copilot-camp&quot;
-    target=&quot;_blank&quot;&gt;
-&lt;/cc-card&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">cc-card</span> 
+    <span class="na">title</span><span class="o">=</span><span class="s">&quot;GitHub Repository&quot;</span> 
+    <span class="na">description</span><span class="o">=</span><span class="s">&quot;Explore the source code and contribute to the Copilot Camp project.&quot;</span>
+    <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://github.com/microsoft/copilot-camp&quot;</span>
+    <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><cc-card 
     title="GitHub Repository" 
     description="Explore the source code and contribute to the Copilot Camp project."
@@ -2382,24 +2382,24 @@
 </cc-card></p>
 <h2 id="card-grid">Card Grid</h2>
 <p>Use the <code>cc-card-grid</code> component to create a responsive grid of cards:</p>
-<pre><code class="language-html">&lt;cc-card-grid columns=&quot;3&quot; gap=&quot;1.5rem&quot;&gt;
-    &lt;cc-card 
-        title=&quot;Fundamentals&quot; 
-        description=&quot;Start with the basics of AI prompting.&quot;
-        href=&quot;/fundamentals&quot;&gt;
-    &lt;/cc-card&gt;
-    &lt;cc-card 
-        title=&quot;Best Practices&quot; 
-        description=&quot;Learn industry best practices for AI development.&quot;
-        href=&quot;/best-practices&quot;&gt;
-    &lt;/cc-card&gt;
-    &lt;cc-card 
-        title=&quot;Advanced Topics&quot; 
-        description=&quot;Dive deep into advanced AI concepts.&quot;
-        href=&quot;/advanced&quot;&gt;
-    &lt;/cc-card&gt;
-&lt;/cc-card-grid&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">cc-card-grid</span> <span class="na">columns</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="na">gap</span><span class="o">=</span><span class="s">&quot;1.5rem&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> 
+        <span class="na">title</span><span class="o">=</span><span class="s">&quot;Fundamentals&quot;</span> 
+        <span class="na">description</span><span class="o">=</span><span class="s">&quot;Start with the basics of AI prompting.&quot;</span>
+        <span class="na">href</span><span class="o">=</span><span class="s">&quot;/fundamentals&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> 
+        <span class="na">title</span><span class="o">=</span><span class="s">&quot;Best Practices&quot;</span> 
+        <span class="na">description</span><span class="o">=</span><span class="s">&quot;Learn industry best practices for AI development.&quot;</span>
+        <span class="na">href</span><span class="o">=</span><span class="s">&quot;/best-practices&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> 
+        <span class="na">title</span><span class="o">=</span><span class="s">&quot;Advanced Topics&quot;</span> 
+        <span class="na">description</span><span class="o">=</span><span class="s">&quot;Dive deep into advanced AI concepts.&quot;</span>
+        <span class="na">href</span><span class="o">=</span><span class="s">&quot;/advanced&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">cc-card-grid</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><cc-card-grid columns="3" gap="1.5rem">
     <cc-card 
         title="Fundamentals" 
@@ -2419,14 +2419,14 @@
 </cc-card-grid></p>
 <h2 id="auto-fit-grid">Auto-fit Grid</h2>
 <p>The grid automatically adjusts to fit the available space:</p>
-<pre><code class="language-html">&lt;cc-card-grid gap=&quot;1rem&quot;&gt;
-    &lt;cc-card title=&quot;Card 1&quot; description=&quot;This is the first card&quot; href=&quot;#1&quot;&gt;&lt;/cc-card&gt;
-    &lt;cc-card title=&quot;Card 2&quot; description=&quot;This is the second card&quot; href=&quot;#2&quot;&gt;&lt;/cc-card&gt;
-    &lt;cc-card title=&quot;Card 3&quot; description=&quot;This is the third card&quot; href=&quot;#3&quot;&gt;&lt;/cc-card&gt;
-    &lt;cc-card title=&quot;Card 4&quot; description=&quot;This is the fourth card&quot; href=&quot;#4&quot;&gt;&lt;/cc-card&gt;
-    &lt;cc-card title=&quot;Card 5&quot; description=&quot;This is the fifth card&quot; href=&quot;#5&quot;&gt;&lt;/cc-card&gt;
-&lt;/cc-card-grid&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">cc-card-grid</span> <span class="na">gap</span><span class="o">=</span><span class="s">&quot;1rem&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Card 1&quot;</span> <span class="na">description</span><span class="o">=</span><span class="s">&quot;This is the first card&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Card 2&quot;</span> <span class="na">description</span><span class="o">=</span><span class="s">&quot;This is the second card&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Card 3&quot;</span> <span class="na">description</span><span class="o">=</span><span class="s">&quot;This is the third card&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#3&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Card 4&quot;</span> <span class="na">description</span><span class="o">=</span><span class="s">&quot;This is the fourth card&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#4&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">cc-card</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Card 5&quot;</span> <span class="na">description</span><span class="o">=</span><span class="s">&quot;This is the fifth card&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#5&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">cc-card</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">cc-card-grid</span><span class="p">&gt;</span>
+</code></pre></div>
 <p><cc-card-grid gap="1rem">
     <cc-card title="Card 1" description="This is the first card" href="#1"></cc-card>
     <cc-card title="Card 2" description="This is the second card" href="#2"></cc-card>
@@ -2511,17 +2511,17 @@
 </table>
 <h2 id="javascript-api">JavaScript API</h2>
 <p>You can also update cards dynamically:</p>
-<pre><code class="language-javascript">// Get a card element
-const card = document.querySelector('cc-card');
+<div class="highlight"><pre><span></span><code><span class="c1">// Get a card element</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;cc-card&#39;</span><span class="p">);</span>
 
-// Update its properties
-card.updateCard({
-    title: 'New Title',
-    description: 'New description',
-    href: '/new-url',
-    image: '/new-image.png'
-});
-</code></pre>
+<span class="c1">// Update its properties</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">updateCard</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;New Title&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;New description&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">href</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/new-url&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/new-image.png&#39;</span>
+<span class="p">});</span>
+</code></pre></div>
 <h2 id="features">Features</h2>
 <ul>
 <li><strong>Responsive</strong>: Cards automatically adjust to different screen sizes</li>
@@ -2549,6 +2549,8 @@ card.updateCard({
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2581,7 +2583,7 @@ card.updateCard({
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2593,6 +2595,8 @@ card.updateCard({
         <script src="../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

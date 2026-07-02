@@ -2462,17 +2462,17 @@
 <p>まず Copilot Camp リポジトリをクローンし、Agent Framework のスタータープロジェクトに移動します。</p>
 <p>1️⃣ ターミナルまたはコマンド プロンプトを開きます。</p>
 <p>2️⃣ リポジトリをクローンします:</p>
-<pre><code class="language-bash">git clone https://github.com/microsoft/copilot-camp.git
-cd copilot-camp/src/agent-framework/begin
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/microsoft/copilot-camp.git
+<span class="nb">cd</span><span class="w"> </span>copilot-camp/src/agent-framework/begin
+</code></pre></div>
 <p>3️⃣ Visual Studio Code でプロジェクトを開きます:</p>
-<pre><code class="language-bash">code .
-</code></pre>
+<div class="highlight"><pre><span></span><code>code<span class="w"> </span>.
+</code></pre></div>
 <p><cc-end-step lab="baf1" exercise="1" step="1" /></p>
 <h3 id="2">手順 2: プロジェクト構成の確認</h3>
 <p>エージェント プロジェクトの構成を理解しましょう。</p>
 <p>1️⃣ Visual Studio Code で Explorer ビューのフォルダーを展開します。以下のような構成が表示されるはずです:</p>
-<pre><code>begin/
+<div class="highlight"><pre><span></span><code>begin/
 ├── src/
 │   ├── Agent/
 │   │   └── ZavaInsuranceAgent.cs       # Main agent implementation
@@ -2481,11 +2481,11 @@ cd copilot-camp/src/agent-framework/begin
 │   │   └── DateTimeFunctionTool.cs     # Date/time utility
 ├── appPackage/                         # Teams app manifest and icons
 ├── env/                                # Environment configuration files (API keys, endpoints)
-├── infra/                              # All required scripts, data and templates for the agent's infrastructure
+├── infra/                              # All required scripts, data and templates for the agent&#39;s infrastructure
 ├── Program.cs                          # Application entry point - configures services and starts web app
 ├── InsuranceAgent.csproj               # Project file
 └── m365agents.local.yml                # M365 Agents provisioning config
-</code></pre>
+</code></pre></div>
 <p><cc-end-step lab="baf1" exercise="1" step="2" /></p>
 <h3 id="3">手順 3: エージェント実装の理解</h3>
 <p>メインのエージェント ファイルを確認し、動作を把握します。</p>
@@ -2514,16 +2514,16 @@ cd copilot-camp/src/agent-framework/begin
 <p>プラグインがどのように機能するか見てみましょう。</p>
 <p>1️⃣ <code>src/Plugins/StartConversationPlugin.cs</code> を開きます。</p>
 <p>2️⃣ プラグインの構造を確認します:</p>
-<pre><code class="language-csharp">public class StartConversationPlugin
-{
-    [Description(&quot;Starts a new conversation suggesting a conversation flow.&quot;)]
-    public async Task&lt;string&gt; StartConversation()
-    {
-        var welcomeMessage = &quot;👋 Welcome to Zava Insurance Claims Assistant!...&quot;;
-        return welcomeMessage;
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">StartConversationPlugin</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[Description(&quot;Starts a new conversation suggesting a conversation flow.&quot;)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">StartConversation</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;👋 Welcome to Zava Insurance Claims Assistant!...&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>注目ポイント:</p>
 <ul>
 <li><code>[Description]</code> 属性は AI に <strong>いつこのツールを使用するか</strong> を伝えます</li>
@@ -2542,31 +2542,31 @@ cd copilot-camp/src/agent-framework/begin
 <p>アプリ マニフェストを確認し、Microsoft 365 Copilot でエージェントがどのように表示されるか見てみましょう。</p>
 <p>1️⃣ <code>appPackage/manifest.json</code> を開きます。</p>
 <p>2️⃣ <code>name</code> セクションでエージェントの表示名を確認します。</p>
-<pre><code class="language-json">&quot;name&quot;: {
-    &quot;short&quot;: &quot;Zava Insurance Agent&quot;,
-    &quot;full&quot;: &quot;Zava Insurance Claims Assistant&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Insurance Agent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Insurance Claims Assistant&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>3️⃣ <code>conversationStarters</code> 配列までスクロールします。これは、ユーザーがエージェントと最初に対話するときに表示される推奨プロンプトです。</p>
-<pre><code class="language-json">&quot;conversationStarters&quot;: [
-    {
-        &quot;title&quot;: &quot;Instructions&quot;,
-        &quot;description&quot;: &quot;What can you do?&quot;
-    },
-    {
-        &quot;title&quot;: &quot;Today's Date&quot;,
-        &quot;description&quot;: &quot;What's today's date?&quot;
-    },
-    {
-        &quot;title&quot;: &quot;About Insurance&quot;,
-        &quot;description&quot;: &quot;Tell me about insurance claims&quot;
-    },
-    {
-        &quot;title&quot;: &quot;Claims Process&quot;,
-        &quot;description&quot;: &quot;Explain how claims processing works&quot;
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;conversationStarters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Instructions&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What can you do?&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Today&#39;s Date&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What&#39;s today&#39;s date?&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;About Insurance&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tell me about insurance claims&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Claims Process&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Explain how claims processing works&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <p>これらの会話スターターは、ユーザーがエージェントとどのように対話すればよいかをガイドします。エージェントの機能に合わせてカスタマイズできます。</p>
 <p>4️⃣ <code>copilotAgents.declarativeAgent</code> セクションでは、カスタム エンジン エージェントとしての機能が定義されています。</p>
 <p><cc-end-step lab="baf1" exercise="1" step="5" /></p>
@@ -2605,26 +2605,26 @@ cd copilot-camp/src/agent-framework/begin
 <li><code>.env.local.user.sample</code></li>
 </ul>
 <p>3️⃣ <code>.env.local.sample</code> を <code>.env.local</code> にコピーします。</p>
-<p><strong>Windows PowerShell:</strong></p>
-<pre><code class="language-powershell">Copy-Item env/.env.local.sample env/.env.local
-</code></pre>
-<p><strong>macOS/Linux:</strong></p>
-<pre><code class="language-bash">cp env/.env.local.sample env/.env.local
-</code></pre>
+<p><strong>Windows PowerShell:</strong>
+<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span><span class="p">.</span><span class="n">sample</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span>
+</code></pre></div></p>
+<p><strong>macOS/Linux:</strong>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>env/.env.local.sample<span class="w"> </span>env/.env.local
+</code></pre></div></p>
 <p>4️⃣ <code>.env.local.user.sample</code> を <code>.env.local.user</code> にコピーします。</p>
-<p><strong>Windows PowerShell:</strong></p>
-<pre><code class="language-powershell">Copy-Item env/.env.local.user.sample env/.env.local.user
-</code></pre>
-<p><strong>macOS/Linux:</strong></p>
-<pre><code class="language-bash">cp env/.env.local.user.sample env/.env.local.user
-</code></pre>
+<p><strong>Windows PowerShell:</strong>
+<div class="highlight"><pre><span></span><code><span class="nb">Copy-Item</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">sample</span> <span class="n">env</span><span class="p">/.</span><span class="n">env</span><span class="p">.</span><span class="n">local</span><span class="p">.</span><span class="n">user</span>
+</code></pre></div></p>
+<p><strong>macOS/Linux:</strong>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>env/.env.local.user.sample<span class="w"> </span>env/.env.local.user
+</code></pre></div></p>
 <p><cc-end-step lab="baf1" exercise="2" step="1" /></p>
 <h3 id="2-azure-ai">手順 2: Azure AI 資格情報の追加</h3>
 <p>次に、Microsoft Foundry のデプロイメントを使用するようエージェントを構成します。</p>
 <p>1️⃣ <code>env/.env.local</code> を Visual Studio Code で開きます。</p>
 <p>2️⃣ <code>MODELS_ENDPOINT</code> 変数を見つけ、Lab BAF0 で取得した Azure AI エンドポイントに更新します。</p>
-<pre><code class="language-bash">MODELS_ENDPOINT=https://your-resource.services.ai.azure.com/
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">MODELS_ENDPOINT</span><span class="o">=</span>https://your-resource.services.ai.azure.com/
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">エンドポイントの確認方法</p>
 <p>エンドポイントがわからない場合は、以下の手順で確認できます。</p>
@@ -2637,8 +2637,8 @@ cd copilot-camp/src/agent-framework/begin
 </div>
 <p>3️⃣ <code>env/.env.local.user</code> を Visual Studio Code で開きます。</p>
 <p>4️⃣ <code>SECRET_MODELS_API_KEY</code> 変数を見つけ、API キーを入力します。</p>
-<pre><code class="language-bash">SECRET_MODELS_API_KEY=your-api-key-here
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">SECRET_MODELS_API_KEY</span><span class="o">=</span>your-api-key-here
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">API キーの取り扱いに注意</p>
 <p><code>.env.local.user</code> ファイルには機密情報が含まれており、既に <code>.gitignore</code> に追加されています。このファイルをソース管理にコミットしないでください。</p>
@@ -2683,11 +2683,11 @@ cd copilot-camp/src/agent-framework/begin
 </ul>
 </div>
 <p>4️⃣ Visual Studio Code の <strong>Terminal</strong> 出力を確認します。次のようなログが表示されるはずです。</p>
-<pre><code>🌍 Environment: local
+<div class="highlight"><pre><span></span><code>🌍 Environment: local
 🏢 Starting Zava Insurance Agent...
 🤖 Main agent using model: gpt-4.1
 ✅ Agent initialized successfully!
-</code></pre>
+</code></pre></div>
 <p>5️⃣ Microsoft 365 Copilot がブラウザーで開きます。</p>
 <p>6️⃣ Zava Insurance Agent の <strong>インストール ダイアログ</strong> が表示されます。 <strong>Add</strong> をクリックします。</p>
 <p>7️⃣ インストール後、 <strong>Open in Copilot</strong> または <strong>Chat</strong> をクリックします。</p>
@@ -2753,6 +2753,8 @@ cd copilot-camp/src/agent-framework/begin
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2785,7 +2787,7 @@ cd copilot-camp/src/agent-framework/begin
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2797,6 +2799,8 @@ cd copilot-camp/src/agent-framework/begin
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

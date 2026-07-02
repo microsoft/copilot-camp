@@ -2490,15 +2490,15 @@
 <p>Microsoft Copilot Studio の新しいセクションが開きます。そこで <strong>+ Add</strong> コマンドを選択し、Microsoft 365 Copilot Chat 用の新しい エージェント を作成します。</p>
 <p><img alt="The interface of Microsoft Copilot Studio editing Microsoft 365 Copilot agents. The **+ Add** button is highlighted. There is also a list of pre-defined tools." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-02.png" /></p>
 <p>Copilot Studio から、エージェント の目的を自然言語で説明するよう求められます。<a href="../01-first-agent" target="_blank">Lab MCS1</a> と同様に、以下のようなプロンプトを使って自然言語で要件を定義できます。</p>
-<pre><code class="language-txt">You are an agent helping employees to find information about HR policies and procedures,
+<div class="highlight"><pre><span></span><code>You are an agent helping employees to find information about HR policies and procedures,
 about how to improve their career, and about how to define learning pathways.
-</code></pre>
+</code></pre></div>
 <p>Copilot Studio から名前を尋ねられたら、カスタム エージェント に「Agentic HR」と入力してください。その後、Copilot Studio に具体的なタスクや目標を指示するため、次の指示を与えます。</p>
-<pre><code class="language-txt">Emphasize everything that helps team building, inclusion, and the growth mindset
-</code></pre>
+<div class="highlight"><pre><span></span><code>Emphasize everything that helps team building, inclusion, and the growth mindset
+</code></pre></div>
 <p>さらに、次の入力を使用してエージェントのトーンを「プロフェッショナル」に設定します。</p>
-<pre><code class="language-txt">It should have a professional tone
-</code></pre>
+<div class="highlight"><pre><span></span><code>It should have a professional tone
+</code></pre></div>
 <p><img alt="The interface of Microsoft Copilot Studio when defining the agent using natural language." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-03.png" /></p>
 <p>エージェント の説明が完了したら <strong>Create</strong> コマンドを選択して実際に作成します。あるいは <strong>Skip to configure</strong> コマンドを選択して従来の設定画面に進むこともできます。</p>
 <p>エージェント が作成されると、設定ページが表示されます。ここでは次の項目を定義できます。</p>
@@ -2566,8 +2566,8 @@ about how to improve their career, and about how to define learning pathways.
 <p>エージェント を追加すると、Microsoft 365 Copilot Chat の右側にある エージェント 一覧に表示されます。</p>
 <p><img alt="The &quot;Agentic HR&quot; agent in Microsoft 365 Copilot Chat." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-11.png" /></p>
 <p>エージェント を選択して対話を開始します。たとえば、次のプロンプトを入力できます。</p>
-<pre><code class="language-txt">How can we hire new people in our company?
-</code></pre>
+<div class="highlight"><pre><span></span><code>How can we hire new people in our company?
+</code></pre></div>
 <p>エージェント はナレッジ ベースのドキュメントを基に採用手続きに関する詳細を提供します。たとえば、主な情報源は SharePoint Online にアップロードした <code>Hiring Procedures.docx</code> になります。</p>
 <p><img alt="The &quot;Agentic HR&quot; agent in action in Microsoft 365 Copilot Chat, answering a prompt about the hiring procedures and providing a reference to a Word document stored in the SharePoint Online knowledge base of the agent." src="../../../../../assets/images/make/copilot-studio-04/create-agent-m365-copilot-chat-12.png" /></p>
 <p><cc-end-step lab="mcs4" exercise="1" step="4" /></p>
@@ -2613,13 +2613,13 @@ about how to improve their career, and about how to define learning pathways.
 <ul>
 <li>Name:</li>
 </ul>
-<pre><code class="language-txt">List HR candidates
-</code></pre>
+<div class="highlight"><pre><span></span><code>List HR candidates
+</code></pre></div>
 <ul>
 <li>Description:</li>
 </ul>
-<pre><code class="language-txt">List candidates for an HR role
-</code></pre>
+<div class="highlight"><pre><span></span><code>List candidates for an HR role
+</code></pre></div>
 <p>次に <strong>Inputs</strong> セクションで入力パラメーターを設定します。既定では必須入力がすべて <code>Dynamically fill with AI</code> に設定されています。</p>
 <p><img alt="The section to configure the input arguments of the tool. There is a list of arguments with specific settings for each of them." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-02.png" /></p>
 <p>各入力パラメーターに明示的な値を設定します。<strong>Location</strong> の <strong>Fill using</strong> を <code>Custom value</code> に変更し、ドロップダウンから Excel ファイルを保存したサイト コレクションを選択します。</p>
@@ -2631,8 +2631,8 @@ about how to improve their career, and about how to define learning pathways.
 <h3 id="2_2">手順 2: 新しいツールのテスト</h3>
 <p>これでエージェント を更新してテストする準備ができました。再度 <strong>Publish</strong> ボタンを選択し、公開を更新します。完了したらエージェント アプリへの直接リンクを開きます。演習 1 - 手順 4 で表示された <strong>Add</strong> の代わりに <strong>Update now</strong> が表示されるので選択してください。処理が終わったら Microsoft 365 Copilot Chat を更新し、エージェント と対話を開始します。</p>
 <p>作成したツールは、以下のようなプロンプトで簡単に呼び出せます。</p>
-<pre><code class="language-txt">Show me the list of candidates for HR with role &quot;HR Director&quot; or &quot;HR Manager&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>Show me the list of candidates for HR with role &quot;HR Director&quot; or &quot;HR Manager&quot;
+</code></pre></div>
 <p>Microsoft 365 Copilot Chat は外部 API (Excel Online) の使用許可を求めてくるので、<strong>Always allow</strong> または <strong>Allow once</strong> を選択します。テスト目的では <strong>Allow once</strong> を選択すると、再度許可プロセスを確認できます。</p>
 <p><img alt="Microsoft 365 Copilot Chat asking consent to consume the external API for Excel Online. There are three command buttons to **Always allow**, **Allow once**, and **Cancel**." src="../../../../../assets/images/make/copilot-studio-04/action-agent-m365-copilot-chat-03.png" /></p>
 <p>Power Platform コネクタでは有効な接続が必要なため、エージェント から <strong>Sign in to Agentic HR</strong> を求められる場合があります。
@@ -2664,6 +2664,8 @@ about how to improve their career, and about how to define learning pathways.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2696,7 +2698,7 @@ about how to improve their career, and about how to define learning pathways.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2708,6 +2710,8 @@ about how to improve their career, and about how to define learning pathways.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

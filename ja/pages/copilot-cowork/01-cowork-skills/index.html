@@ -2466,22 +2466,22 @@ Notice that Cowork is now using a native skill with name <strong>Skill managemen
 <p><img alt="UI showing Copilot skill creation workflow with a &quot;Skill purpose&quot; dialog listing options (draft document, summarise content, format data, workflow automation) and a sidebar highlighting &quot;Skills &amp; Plugins&quot; with &quot;Skill Management.&quot;" src="../../../../assets/images/copilot-cowork-01/cowork-custom-skill-02.png" /></p>
 <p>Select the option <strong>Skip</strong> to provide free text inscrutions for your custom skill.</p>
 <p>For example, you can use the following text:</p>
-<pre><code class="language-text">Generate a set of flash cards in PowerPoint to test my knowledge about a specific lab of the Copilot Dev Camp.
+<div class="highlight"><pre><span></span><code>Generate a set of flash cards in PowerPoint to test my knowledge about a specific lab of the Copilot Dev Camp.
 
 Trigger this skill whenver the prompt includes &quot;Create flash cards for a Copilot Dev Camp lab&quot; or something similar, but still referring to &quot;flash cards&quot; and &quot;Copilot Dev Camp&quot;.
 
 The result should be a PowerPoint deck with no more than 10 flash cards based on the actual content of the lab referenced, as a URL, by the user. If there is no URL of the lab, ask the user to provide it.
 
 Name the skill &quot;copilot-flash-cards&quot;.
-</code></pre>
+</code></pre></div>
 <p>Cowork will start processing your request, will check the skill name, the capacity of your Cowork profile, it will generate the skill, store it in your OneDrive for Business, validate it and produce a quality report. </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can have up to 50 custom skills configured in your profile, so when you create a new skill Cowork checks if you are at limit with your capacity.</p>
 </div>
 <p>You can test your skill directly from Cowork and you can iterate the process to fine tune the skill. For example, you can provide the following prompt and check the result.  </p>
-<pre><code class="language-text">Test it with the following URL: https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/
-</code></pre>
+<div class="highlight"><pre><span></span><code>Test it with the following URL: https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/
+</code></pre></div>
 <p><cc-end-step lab="cwrk01" exercise="3" step="1" /></p>
 <h3 id="step-2-save-and-verify-where-the-skill-is-stored">Step 2: Save and verify where the skill is stored</h3>
 <p>Once you are happy with your skill, simply close the current session. Cowork stored the skill in your OneDrive for Business in a folder with the following name:</p>
@@ -2489,8 +2489,8 @@ Name the skill &quot;copilot-flash-cards&quot;.
 <p>You can browse your OneDrive for Business and check the content of the new skill folder.</p>
 <p><img alt="The folder on OneDrive for Business under /Documents/Cowork/skills/&lt;name-of-the-skill&gt; with the SKILL.md definition file and the skill quality report JSON file." src="../../../../assets/images/copilot-cowork-01/cowork-custom-skill-03.png" /></p>
 <p>Start a new Cowork task and test a prompt that should trigger your new skill. For example, you can use the following prompt:</p>
-<pre><code class="language-text">Generate flash cards for the Copilot Dev Camp lab available at the following URL: https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/
-</code></pre>
+<div class="highlight"><pre><span></span><code>Generate flash cards for the Copilot Dev Camp lab available at the following URL: https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/08-mcp-server/
+</code></pre></div>
 <p>In the right side panel, open <strong>Skills</strong> and verify your custom skill appears among the active skills used during execution.</p>
 <p>If the skill does not activate, refine the description to be more specific about when Cowork should use it, then test again in a new conversation.</p>
 <p><cc-end-step lab="cwrk01" exercise="3" step="2" /></p>
@@ -2500,106 +2500,106 @@ Name the skill &quot;copilot-flash-cards&quot;.
 <p>Create a new folder on your file system, for example name it <code>weekly-status-mail</code> and open it with Visual Studio Code. Add an empty <code>SKILL.md</code> file to the folder using the VS Code file explorer.</p>
 <p>Open the file in VS Code and add YAML frontmatter with <code>name</code> and <code>description</code>.</p>
 <p>Use this baseline template:</p>
-<pre><code class="language-yaml">---
-name: weekly-status-mail
-description: |
-  Drafts a concise weekly status-update email to the user's team, covering open
-  tasks, upcoming meetings, and action items, with light emoji formatting in the
-  body. Use when the user asks to &quot;draft my weekly status email&quot;, &quot;write my weekly
-  team update&quot;, &quot;send my team the weekly status&quot;, &quot;create my Monday status mail&quot;,
-  &quot;weekly status update for the team&quot;, or &quot;recap this week for the team&quot;.
-  Do NOT use for leadership or executive updates and cross-functional stakeholder
-  communications — use stakeholder-comms instead. Do NOT use for one-off
-  announcements or non-status emails — use the Outlook tools directly.
-cowork:
-  category: communication
-  icon: Mail
----
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weekly-status-mail</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">Drafts a concise weekly status-update email to the user&#39;s team, covering open</span>
+<span class="w">  </span><span class="no">tasks, upcoming meetings, and action items, with light emoji formatting in the</span>
+<span class="w">  </span><span class="no">body. Use when the user asks to &quot;draft my weekly status email&quot;, &quot;write my weekly</span>
+<span class="w">  </span><span class="no">team update&quot;, &quot;send my team the weekly status&quot;, &quot;create my Monday status mail&quot;,</span>
+<span class="w">  </span><span class="no">&quot;weekly status update for the team&quot;, or &quot;recap this week for the team&quot;.</span>
+<span class="w">  </span><span class="no">Do NOT use for leadership or executive updates and cross-functional stakeholder</span>
+<span class="w">  </span><span class="no">communications — use stakeholder-comms instead. Do NOT use for one-off</span>
+<span class="w">  </span><span class="no">announcements or non-status emails — use the Outlook tools directly.</span>
+<span class="nt">cowork</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">communication</span>
+<span class="w">  </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mail</span>
+<span class="nn">---</span>
 
-## Overview
+<span class="c1">## Overview</span>
 
-Produces a short, scannable weekly status email addressed to the user's team. It
-gathers the user's open tasks, upcoming meetings, and outstanding action items
-from Microsoft 365, then composes a friendly email with emoji section headers and
-saves it as a **draft for review** — it never sends automatically.
+<span class="l l-Scalar l-Scalar-Plain">Produces a short, scannable weekly status email addressed to the user&#39;s team. It</span>
+<span class="l l-Scalar l-Scalar-Plain">gathers the user&#39;s open tasks, upcoming meetings, and outstanding action items</span>
+<span class="l l-Scalar l-Scalar-Plain">from Microsoft 365, then composes a friendly email with emoji section headers and</span>
+<span class="l l-Scalar l-Scalar-Plain">saves it as a **draft for review** — it never sends automatically.</span>
 
-## When to Use
+<span class="l l-Scalar l-Scalar-Plain">## When to Use</span>
 
-- The user wants their recurring weekly status note to their team.
-- The user asks to &quot;recap this week&quot; or &quot;write my Monday update&quot; for the team.
-- The user wants open tasks, upcoming meetings, and action items rolled into one email.
+<span class="l l-Scalar l-Scalar-Plain">- The user wants their recurring weekly status note to their team.</span>
+<span class="l l-Scalar l-Scalar-Plain">- The user asks to &quot;recap this week&quot; or &quot;write my Monday update&quot; for the team.</span>
+<span class="l l-Scalar l-Scalar-Plain">- The user wants open tasks, upcoming meetings, and action items rolled into one email.</span>
 
-## When NOT to Use
+<span class="l l-Scalar l-Scalar-Plain">## When NOT to Use</span>
 
-- Updates aimed at leadership, executives, or cross-functional stakeholders — use **stakeholder-comms** instead.
-- One-off announcements, replies, or any non-status email — use the Outlook tools directly.
-- A status *document* or spreadsheet rather than an email — use **docx** or **xlsx**.
+<span class="l l-Scalar l-Scalar-Plain">- Updates aimed at leadership, executives, or cross-functional stakeholders — use **stakeholder-comms** instead.</span>
+<span class="l l-Scalar l-Scalar-Plain">- One-off announcements, replies, or any non-status email — use the Outlook tools directly.</span>
+<span class="l l-Scalar l-Scalar-Plain">- A status *document* or spreadsheet rather than an email — use **docx** or **xlsx**.</span>
 
-## Quick Start
+<span class="l l-Scalar l-Scalar-Plain">## Quick Start</span>
 
-````
-User: &quot;Draft my weekly status email for the team&quot;
-1. Resolve the week window (today → next 7 days) and the team recipients.
-2. Gather: open tasks, upcoming meetings, action items from M365.
-3. Compose the email body with emoji section headers (concise bullets).
-4. Save as a draft with CreateDraftMessage and show it for review.
-````
+<span class="l l-Scalar l-Scalar-Plain">````</span>
+<span class="l l-Scalar l-Scalar-Plain">User</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Draft</span><span class="nv"> </span><span class="s">my</span><span class="nv"> </span><span class="s">weekly</span><span class="nv"> </span><span class="s">status</span><span class="nv"> </span><span class="s">email</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">team&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">1. Resolve the week window (today → next 7 days) and the team recipients.</span>
+<span class="nt">2. Gather</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open tasks, upcoming meetings, action items from M365.</span>
+<span class="l l-Scalar l-Scalar-Plain">3. Compose the email body with emoji section headers (concise bullets).</span>
+<span class="l l-Scalar l-Scalar-Plain">4. Save as a draft with CreateDraftMessage and show it for review.</span>
+<span class="err">````</span>
 
-## Core Instructions
+<span class="c1">## Core Instructions</span>
 
-### Step 1: Resolve recipients and time window
-- Determine the week window: today through the next 7 days, in the user's local time zone.
-- Resolve &quot;the team&quot; with people tools — `GetDirectReportsDetails` for the user's reports, or a team distribution list the user names. Never guess email addresses.
-- If the team cannot be resolved, draft anyway with an empty To line and a clear `[Add team recipients]` note, and flag it for the user.
+<span class="c1">### Step 1: Resolve recipients and time window</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Determine the week window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">today through the next 7 days, in the user&#39;s local time zone.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resolve &quot;the team&quot; with people tools — `GetDirectReportsDetails` for the user&#39;s reports, or a team distribution list the user names. Never guess email addresses.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">If the team cannot be resolved, draft anyway with an empty To line and a clear `[Add team recipients]` note, and flag it for the user.</span>
 
-### Step 2: Gather open tasks
-- Use `SearchM365` (sources: email, teams) for open/pending work, and `ListMessages` with `flagged_only=true` for follow-up flags.
-- Include only items found in tool results. If none are found, write &quot;Nothing outstanding to report.&quot;
+<span class="c1">### Step 2: Gather open tasks</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Use `SearchM365` (sources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email, teams) for open/pending work, and `ListMessages` with `flagged_only=true` for follow-up flags.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Include only items found in tool results. If none are found, write &quot;Nothing outstanding to report.&quot;</span>
 
-### Step 3: Gather upcoming meetings
-- Call `ListCalendarView` for the next 7 days; list notable meetings with day and time.
-- Respect privacy: render `private`/`confidential` events as &quot;Busy&quot; or a time block — do not echo their subject lines.
+<span class="c1">### Step 3: Gather upcoming meetings</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Call `ListCalendarView` for the next 7 days; list notable meetings with day and time.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Respect privacy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">render `private`/`confidential` events as &quot;Busy&quot; or a time block — do not echo their subject lines.</span>
 
-### Step 4: Gather action items
-- Pull action items from recent meeting recaps and recent email/Teams threads (`SearchM365`, recent `GetMeetingTranscript` when a relevant meeting exists).
-- Attribute each item to an owner only when the source states it. Do not invent owners or due dates.
+<span class="c1">### Step 4: Gather action items</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pull action items from recent meeting recaps and recent email/Teams threads (`SearchM365`, recent `GetMeetingTranscript` when a relevant meeting exists).</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Attribute each item to an owner only when the source states it. Do not invent owners or due dates.</span>
 
-### Step 5: Compose and draft
-- Build the body using the Output format below, with emoji section headers.
-- Save the draft with `CreateDraftMessage` (To = resolved team, Subject = &quot;Weekly Status — week of {date}&quot;).
-- Present the draft to the user for review; do not send.
+<span class="c1">### Step 5: Compose and draft</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the body using the Output format below, with emoji section headers.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save the draft with `CreateDraftMessage` (To = resolved team, Subject = &quot;Weekly Status — week of {date}&quot;).</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Present the draft to the user for review; do not send.</span>
 
-## Output
+<span class="c1">## Output</span>
 
-- **Format:** Email draft. Subject: `Weekly Status — week of {Mon DD}`.
-- **Tone:** Warm, professional, concise. **Length:** roughly 120-200 words — scannable bullets, not paragraphs.
-- **Body structure** (emoji headers, each section 2-5 bullets; omit a section's bullets and write &quot;Nothing to report&quot; when empty):
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">**Format:** Email draft. Subject</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">Weekly Status — week of {Mon DD}`.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Tone</span><span class="l l-Scalar l-Scalar-Plain">:** Warm, professional, concise. **Length:** roughly 120-200 words — scannable bullets, not paragraphs.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Body</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">structure** (emoji headers, each section 2-5 bullets; omit a section&#39;s bullets and write &quot;Nothing to report&quot; when empty)</span><span class="p p-Indicator">:</span>
 
-````
-👋 Hi team — here's where things stand this week.
+<span class="err">````</span>
+<span class="l l-Scalar l-Scalar-Plain">👋 Hi team — here&#39;s where things stand this week.</span>
 
-📋 Open Tasks
-- {task} — {short status}
+<span class="l l-Scalar l-Scalar-Plain">📋 Open Tasks</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">task</span><span class="p p-Indicator">}</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">— {short status}</span>
 
-📅 Upcoming Meetings
-- {Day, time} — {meeting}
+<span class="l l-Scalar l-Scalar-Plain">📅 Upcoming Meetings</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">Day</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">time</span><span class="p p-Indicator">}</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">— {meeting}</span>
 
-✅ Action Items
-- {action} — {owner, if known}
+<span class="l l-Scalar l-Scalar-Plain">✅ Action Items</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">action</span><span class="p p-Indicator">}</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">— {owner, if known}</span>
 
-Thanks!
-{User first name}
-````
+<span class="l l-Scalar l-Scalar-Plain">Thanks!</span>
+<span class="p p-Indicator">{</span><span class="nv">User first name</span><span class="p p-Indicator">}</span>
+<span class="err">````</span>
 
-## Guardrails
+<span class="c1">## Guardrails</span>
 
-- **Draft only — never auto-send.** Always use `CreateDraftMessage` and present the draft for the user to review and send themselves.
-- **Ground every item in retrieved data.** If a search returns nothing for a section, say &quot;Nothing to report&quot; — never fabricate tasks, meetings, owners, or dates.
-- **Resolve recipients via people tools**; never construct or guess email addresses. Confirm the team list with the user before they send.
-- **Respect calendar privacy** — show private/confidential events as a time block, not their subject.
-- **Keep it concise.** If a section has many items, surface the top few and note the rest exist rather than dumping everything.
-- Use a light touch with emojis — section headers and the greeting, not every bullet.
-</code></pre>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Draft</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">only — never auto-send.** Always use `CreateDraftMessage` and present the draft for the user to review and send themselves.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Ground</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">every item in retrieved data.** If a search returns nothing for a section, say &quot;Nothing to report&quot; — never fabricate tasks, meetings, owners, or dates.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Resolve</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">recipients via people tools**; never construct or guess email addresses. Confirm the team list with the user before they send.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Respect</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calendar privacy** — show private/confidential events as a time block, not their subject.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="nv">*Keep</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">it concise.** If a section has many items, surface the top few and note the rest exist rather than dumping everything.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use a light touch with emojis — section headers and the greeting, not every bullet.</span>
+</code></pre></div>
 <p>You can download the whole source code of the skill from <a href="https://github.com/microsoft/copilot-camp/blob/main/src/cowork/weekly-status-mail/SKILL.md" target="_blank">this file path</a>.</p>
 <p>Important checks:</p>
 <ul>
@@ -2621,8 +2621,8 @@ Thanks!
 <p><cc-end-step lab="cwrk01" exercise="4" step="2" /></p>
 <h3 id="step-3-test-end-to-end-usage">Step 3: Test end-to-end usage</h3>
 <p>Start a new conversation and run prompts that should activate your uploaded skills. For example, you can use the following prompt:</p>
-<pre><code class="language-text">Draft my weekly status email
-</code></pre>
+<div class="highlight"><pre><span></span><code>Draft my weekly status email
+</code></pre></div>
 <p>Verify activation from the side panel and confirm outputs follow the expected workflow and format.</p>
 <p><img alt="The UI of Cowork processing a task that triggers the new weekly-status-mail skill. In the side panel there is the activated skill." src="../../../../assets/images/copilot-cowork-01/cowork-custom-skill-04.png" /></p>
 <p><cc-end-step lab="cwrk01" exercise="4" step="3" /></p>
@@ -2648,6 +2648,8 @@ Thanks!
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2680,7 +2682,7 @@ Thanks!
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2692,6 +2694,8 @@ Thanks!
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

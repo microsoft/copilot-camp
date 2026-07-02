@@ -2665,15 +2665,15 @@
 <li><code>instructions</code> : <strong>instructions.txt</strong> へのパス。ここに指示を外部ファイルとして参照できます。もちろん文字列として直接記載しても構いませんが、本ラボでは <strong>instruction.txt</strong> を使います。</li>
 </ul>
 <p>さらに <strong>appPackage/manifest.json</strong> には、パッケージ名、開発者名、アプリが利用するエージェント参照など重要なメタデータが含まれます。以下は manifest.json の抜粋です:</p>
-<pre><code class="language-JSON">&quot;copilotAgents&quot;: {
-        &quot;declarativeAgents&quot;: [            
-            {
-                &quot;id&quot;: &quot;declarativeAgent&quot;,
-                &quot;file&quot;: &quot;declarativeAgent.json&quot;
-            }
-        ]
-    },
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">            </span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent.json&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+</code></pre></div>
 <p>必要に応じてロゴ ファイル <code>color.png</code> と <code>outline.png</code> をブランドに合わせて変更できます。本ラボではエージェントを目立たせるため <strong>color.png</strong> を変更します。 </p>
 <p><cc-end-step lab="e1a" exercise="1" step="4" /></p>
 <h2 id="2">演習 2: インストラクションとアイコンを更新する</h2>
@@ -2692,7 +2692,7 @@
 </pre>
 
 <p>続いて <strong>appPackage/instruction.txt</strong> を開き、下記インストラクションで内容を上書きしてください。</p>
-<pre><code class="language-txt">System Role: You are the game host for a geo-location guessing game. Your goal is to provide the player with clues about a specific city and guide them through the game until they guess the correct answer. You will progressively offer more detailed clues if the player guesses incorrectly. You will also reference PDF files in special rounds to create a clever and immersive game experience.
+<div class="highlight"><pre><span></span><code>System Role: You are the game host for a geo-location guessing game. Your goal is to provide the player with clues about a specific city and guide them through the game until they guess the correct answer. You will progressively offer more detailed clues if the player guesses incorrectly. You will also reference PDF files in special rounds to create a clever and immersive game experience.
 
 Game play Instructions:
 Game Introduction Prompt
@@ -2712,10 +2712,10 @@ That’s correct! You’ve guessed the city in [number of clues] clues and earne
 If the guess is wrong, say:
 Nice try! [followed by more clues]
 PDF-Based Scenario
-For special rounds, use a PDF file to provide clues from a historical document, traveler's diary, or ancient map:
+For special rounds, use a PDF file to provide clues from a historical document, traveler&#39;s diary, or ancient map:
 This round is different! I’ve got a secret document to help us. I’ll read clues from this [historical map/traveler’s diary] and guide you to guess the city. Here’s the first clue:
 Reference the specific PDF to extract details: Do not provide the citations and also link to the document since its a secret document for generating the questions.
-Traveler's Diary PDF,Historical Map PDF. Do not provide the citations and also link to the document since its a secret document for generating the questions.
+Traveler&#39;s Diary PDF,Historical Map PDF. Do not provide the citations and also link to the document since its a secret document for generating the questions.
 Use emojis where necessary to have friendly tone. 
 Scorekeeping System
 Track how many clues the player uses and calculate points:
@@ -2727,8 +2727,7 @@ Track how many clues the player uses and calculate points:
 End of Game Prompt
 After the player guesses the city or exhausts all clues, prompt:
 Would you like to play another round, try a special challenge?
-
-</code></pre>
+</code></pre></div>
 <p>次の手順では、ユーザーがエージェントと対話しやすくするため会話スターターを追加します。  </p>
 <div class="admonition tip">
 <p class="admonition-title">独自ファイルを <strong>appPackage</strong> に含める</p>
@@ -2747,22 +2746,22 @@ Would you like to play another round, try a special challenge?
 <li><strong>ユーザー維持</strong>: 良いスターターは興味を惹きつけ、再利用を促します。  </li>
 </ul>
 <p><code>declarativeAgent.json</code> を開き、<code>instructions</code> ノードの後ろにカンマ <code>,</code> を追加し、下記コードを貼り付けます。</p>
-<pre><code class="language-JSON"> &quot;conversation_starters&quot;: [
-      { 
-            &quot;title&quot;: &quot;Getting Started&quot;,
-            &quot;text&quot;:&quot;I am ready to play the Geo Location Game! Give me a city to guess, and start with the first clue.&quot;          
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Getting Started&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;I am ready to play the Geo Location Game! Give me a city to guess, and start with the first clue.&quot;</span><span class="w">          </span>
 
-         },
-        {
-            &quot;title&quot;: &quot;Ready for a Challenge&quot;,
-            &quot;text&quot;: &quot;Let us try something different. Can we play a round using the travelers diary?&quot;
-        },
-        { 
-            &quot;title&quot;: &quot;Feeling More Adventurous&quot;,
-            &quot;text&quot;: &quot;I am in the mood for a challenge! Can we play the game using the historical map? I want to see if I can figure out the city from those ancient clues.&quot;
-        }
-    ]
-</code></pre>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ready for a Challenge&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Let us try something different. Can we play a round using the travelers diary?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feeling More Adventurous&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I am in the mood for a challenge! Can we play the game using the historical map? I want to see if I can figure out the city from those ancient clues.&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+</code></pre></div>
 <p>これでエージェントへの変更は完了です。テストに進みましょう。</p>
 <p><cc-end-step lab="e1a" exercise="2" step="2" /></p>
 <h3 id="3">手順 3: アプリをテストする</h3>
@@ -2792,19 +2791,19 @@ Would you like to play another round, try a special challenge?
 <h3 id="2_2">手順 2: 宣言型エージェント マニフェストを更新する</h3>
 <p><strong>.env.dev</strong> を開き、<code>SP_SITE_URL</code> という変数を追加し、先ほどコピーした SharePoint サイト URL を値として設定します。</p>
 <p>次に <strong>appPackage/declarativeAgent.json</strong> を開き、<code>conversation_starters</code> 配列の後ろにカンマ <code>,</code> を追加し、SharePoint サイトを参照するための以下の配列オブジェクトを貼り付けます。</p>
-<pre><code class="language-JSON"> &quot;capabilities&quot;: [
-        {
+<p><div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
 
-            &quot;name&quot;: &quot;OneDriveAndSharePoint&quot;,
-            &quot;items_by_url&quot;: [
-            {
-                &quot;url&quot;: &quot;${{SP_SITE_URL}}&quot;
-            }
-        ]
-        }
-    ]
-</code></pre>
-<p>これでエージェントは指定 SharePoint サイトのドキュメントを読み取り、ゲームをさらに盛り上げられるようになりました。<br />
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneDriveAndSharePoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;items_by_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{SP_SITE_URL}}&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+</code></pre></div>
+これでエージェントは指定 SharePoint サイトのドキュメントを読み取り、ゲームをさらに盛り上げられるようになりました。<br />
 URL は制限なく追加できます 💪🏼</p>
 <p><cc-end-step lab="e1a" exercise="3" step="2" /></p>
 <h3 id="3_2">手順 3: アプリ マニフェストをアップグレードする</h3>
@@ -2871,6 +2870,8 @@ URL は制限なく追加できます 💪🏼</p>
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2903,7 +2904,7 @@ URL は制限なく追加できます 💪🏼</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2915,6 +2916,8 @@ URL は制限なく追加できます 💪🏼</p>
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

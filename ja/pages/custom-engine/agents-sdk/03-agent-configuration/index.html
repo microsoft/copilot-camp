@@ -2435,8 +2435,8 @@
 <p><cc-end-step lab="bma3" exercise="1" step="1" /></p>
 <h3 id="2-programcs-semantic-kernel">手順 2: Program.cs に Semantic Kernel を追加</h3>
 <p><strong>Program.cs</strong> を開き、<code>var app = builder.Build();</code> の直前に次のコード スニペットを追加します。</p>
-<pre><code>builder.Services.AddKernel();
-</code></pre>
+<div class="highlight"><pre><span></span><code>builder.Services.AddKernel();
+</code></pre></div>
 <p>これにより、生成 AI モデルと連携するためのコア コンポーネントである Semantic Kernel が登録されます。</p>
 <p><cc-end-step lab="bma3" exercise="1" step="2" /></p>
 <h3 id="3">手順 3: ドキュメント引用とメッセージ追跡用のカスタム クラスを追加</h3>
@@ -2444,7 +2444,7 @@
 <blockquote>
 <p>このクラスは、応答でアップロードされたファイルの内容を引用する際に使用するドキュメント参照の構造を定義します。</p>
 </blockquote>
-<pre><code>using Microsoft.Agents.Core.Models;
+<div class="highlight"><pre><span></span><code>using Microsoft.Agents.Core.Models;
 
 namespace ContosoHRAgent
 {
@@ -2456,12 +2456,12 @@ namespace ContosoHRAgent
         public Citation Citation { get; set; } = citation;
     }
 }
-</code></pre>
+</code></pre></div>
 <p>再度 <strong>ContosoHRAgent</strong> プロジェクトを右クリックし、<strong>Add &gt; Class</strong> を選択してクラス名を <code>ConversationStateExtensions.cs</code> とします。既存のコードを次の内容に置き換えます。</p>
 <blockquote>
 <p>このクラスは、進行中の会話でユーザー メッセージ数を管理・追跡するヘルパー メソッドを追加し、状態の保存と更新方法を示します。</p>
 </blockquote>
-<pre><code>using Microsoft.Agents.Builder.State;
+<div class="highlight"><pre><span></span><code>using Microsoft.Agents.Builder.State;
 
 namespace ContosoHRAgent
 {
@@ -2483,18 +2483,18 @@ namespace ContosoHRAgent
      public static void ThreadId(this ConversationState state, string value) =&gt; state.SetValue(&quot;threadId&quot;, value);
  }
 }
-</code></pre>
+</code></pre></div>
 <p><cc-end-step lab="bma3" exercise="1" step="3" /></p>
 <h2 id="2-microsoft-foundry-m365-agents-sdk">エクササイズ 2: Microsoft Foundry エージェントを M365 Agents SDK と統合</h2>
 <p>M365 Agents SDK を使ってエージェントを構築し、生成 AI 機能で構成しました。次は、このローカル エージェントを先に作成した Microsoft Foundry エージェントへ接続します。これにより、Foundry プロジェクトに保存されたエンタープライズ データと指示を用いて応答できるようになり、すべてが一体化します。</p>
 <h3 id="1-echobotcs-microsoft-foundry">手順 1: EchoBot.cs を構成して Microsoft Foundry エージェントへ接続</h3>
 <p>この手順では、EchoBot.cs 内で Foundry でホストされているモデルを取得・呼び出すクライアントを追加し、Microsoft Foundry エージェントへ接続します。</p>
 <p><strong>ContosoHRAgent</strong> プロジェクトで <strong>Bot/EchoBot.cs</strong> を開き、<code>EchoBot</code> パブリック クラス内に次の行を追加します。</p>
-<pre><code>private readonly PersistentAgentsClient _projectClient;
+<div class="highlight"><pre><span></span><code>private readonly PersistentAgentsClient _projectClient;
 private readonly string _agentId;
-</code></pre>
+</code></pre></div>
 <p>既存の EchoBot コンストラクターを次の内容に置き換えます。</p>
-<pre><code>public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : base(options)
+<div class="highlight"><pre><span></span><code>public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : base(options)
 {
 
     OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync);
@@ -2518,9 +2518,9 @@ private readonly string _agentId;
     }
 
 }
-</code></pre>
+</code></pre></div>
 <p><code>OnMessageAsync</code> メソッドを次の内容に置き換えます。</p>
-<pre><code>protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)
+<div class="highlight"><pre><span></span><code>protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)
 {
     // send the initial message to the user
     await turnContext.StreamingResponse.QueueInformativeUpdateAsync(&quot;Working on it...&quot;, cancellationToken);
@@ -2570,8 +2570,7 @@ private readonly string _agentId;
         await turnContext.StreamingResponse.EndStreamAsync(cancellationToken);
     }
 }
-
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p><strong>⚠️ 注意:</strong> 以下のコードを貼り付けると、プレビュー機能のため警告 (SKEXP0110) が表示される場合があります。現時点では安全に無視できます。<strong>AzureAIAgent</strong> を右クリックし、<strong>Quick Actions and Refactorings &gt; Suppress or configure issues &gt; Configure SKEXP0110 Severity &gt; Silent</strong> を選択して警告を抑制してください。  </p>
 <p><img alt="The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications." src="https://github.com/user-attachments/assets/ac33b725-ede5-4b70-8186-72d393f1e169" /></p>
@@ -2583,12 +2582,12 @@ private readonly string _agentId;
 <p><cc-end-step lab="bma3" exercise="2" step="1" /></p>
 <h3 id="2-azure-ai-agent-service">手順 2: Azure AI Agent Service キーを構成</h3>
 <p>Foundry 接続情報を <code>appsettings.json</code> に追加します。これらの値は、M365 エージェントを正しい Foundry プロジェクトとエージェントに接続します。<strong>ContosoHRAgent</strong> プロジェクトで <strong>appsettings.json</strong> を開き、設定リストの末尾に次の行を追加します。</p>
-<pre><code>,
+<div class="highlight"><pre><span></span><code>,
   &quot;AIServices&quot;: {
    &quot;AgentID&quot;: &quot;&lt;AzureAIFoundryAgentId&gt;&quot;,
    &quot;ProjectEndpoint&quot;: &quot;&lt;ProjectEndpoint&gt;&quot;
   }
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>これらの値は Microsoft Foundry の <strong>Overview</strong> と <strong>Agents Playground</strong> セクションで確認できます。</p>
 </blockquote>
@@ -2596,7 +2595,7 @@ private readonly string _agentId;
 <p><img alt="The Agents Playground of Microsoft Foundry with the Agent id field highlighted." src="https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8" /></p>
 <p><code>&lt;ProjectEndpoint&gt;</code> を AI Foundry の <strong>Overview</strong> ページ、Endpoints and keys の <strong>ProjectEndpoint</strong> で置き換えます。</p>
 <p>最終的な <strong>appsettings.json</strong> は次のようになります。</p>
-<pre><code>{
+<div class="highlight"><pre><span></span><code>{
   &quot;AgentApplicationOptions&quot;: {
     &quot;StartTypingTimer&quot;: false,
     &quot;RemoveRecipientMention&quot;: false,
@@ -2641,12 +2640,12 @@ private readonly string _agentId;
    &quot;ProjectEndpoint&quot;: &quot;&lt;ProjectEndpoint&gt;&quot;
   }
 }
-</code></pre>
+</code></pre></div>
 <p><cc-end-step lab="bma3" exercise="2" step="2" /></p>
 <h3 id="3-teams">手順 3: Teams でエージェントをテスト</h3>
 <p><strong>Tools &gt; Command Line &gt; Developer Command Prompt</strong> を開き、次を実行します。</p>
-<pre><code>az login
-</code></pre>
+<div class="highlight"><pre><span></span><code>az login
+</code></pre></div>
 <p>ブラウザー ウィンドウが開き、Microsoft アカウントでサインインして <code>az login</code> を完了する必要があります。</p>
 <p><strong>Start</strong> を展開し、<strong>Dev Tunnels &gt; Create a Tunnel</strong> を選択します:</p>
 <ul>
@@ -2697,6 +2696,8 @@ private readonly string _agentId;
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2729,7 +2730,7 @@ private readonly string _agentId;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2741,6 +2742,8 @@ private readonly string _agentId;
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

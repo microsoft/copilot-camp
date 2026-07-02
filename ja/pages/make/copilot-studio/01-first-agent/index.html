@@ -2522,12 +2522,12 @@
 </ul>
 <p><img alt="新しいエージェントのホームページ。Name、Icon、Description、Model などを定義するオプションが表示されている。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-03a.png" /></p>
 <p><strong>Details</strong> セクション右上の <strong>Edit</strong> コマンドを選択し、エージェントの名前を「HR Agent」に設定します。その後、<strong>Description</strong> フィールドに以下を入力します。</p>
-<pre><code class="language-txt">You help employees to find information about HR related policies
-</code></pre>
+<div class="highlight"><pre><span></span><code>You help employees to find information about HR related policies
+</code></pre></div>
 <p><img alt="新しく作成したエージェントの &quot;Name&quot; と &quot;Description&quot; を編集するセクション。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-04a.png" /></p>
 <p>変更が完了したら、<strong>Details</strong> セクション右上の <strong>Save</strong> コマンドを選択します。<br />
 モデルは <strong>GPT-4.1 (Default)</strong> のままにし、<strong>Instructions</strong> セクション右上の <strong>Edit</strong> コマンドを選択します。次の内容を入力してください。</p>
-<pre><code class="language-txt">- Provide employees with clear, accurate information about HR policies and procedures.
+<div class="highlight"><pre><span></span><code>- Provide employees with clear, accurate information about HR policies and procedures.
 - Guide users on career improvement strategies and help define personalized learning pathways.
 - Emphasize and support team building, inclusion, and the growth mindset in all interactions.
 - Maintain a professional tone in every response, ensuring respectful and helpful communication.
@@ -2535,26 +2535,26 @@
 - Do not answer questions unrelated to HR, career development, or learning pathways.
 - Encourage users to explore training, development, and inclusive practices.
 - Respond promptly and clearly to all user queries.
-</code></pre>
+</code></pre></div>
 <p><strong>Instructions</strong> セクション右上の <strong>Save</strong> を選択します。</p>
 <p><img alt="新しく作成したエージェントの &quot;Instructions&quot; を編集するセクション。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-05a.png" /></p>
 <p><strong>Knowledge</strong> セクションまでスクロールし、<strong>+ Add knowledge</strong> コマンドを選択して、エージェントの最初のデータソースを追加します。</p>
 <p><img alt="エージェントにナレッジを追加するダイアログで &quot;Public website&quot; オプションが強調表示されている。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-06a.png" /></p>
 <p><strong>Public website</strong> を選択し、表示されるダイアログに以下の URL を入力します。</p>
-<pre><code class="language-txt">https://careers.microsoft.com/
-</code></pre>
+<div class="highlight"><pre><span></span><code>https://careers.microsoft.com/
+</code></pre></div>
 <p><img alt="エージェントにナレッジを追加するダイアログで &quot;Add&quot; コマンドが強調表示されている。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-07a.png" /></p>
 <p><strong>Add</strong> を選択して URL をナレッジベースに追加し、サイトの名前と説明を入力します。例としては次のようになります。</p>
 <ul>
 <li>Name: </li>
 </ul>
-<pre><code class="language-txt">Microsoft Careers site
-</code></pre>
+<div class="highlight"><pre><span></span><code>Microsoft Careers site
+</code></pre></div>
 <ul>
 <li>Description: </li>
 </ul>
-<pre><code class="language-txt">A public website for careers with information about benefits, culture, diversity and inclusion, and hiring tips.
-</code></pre>
+<div class="highlight"><pre><span></span><code>A public website for careers with information about benefits, culture, diversity and inclusion, and hiring tips.
+</code></pre></div>
 <p><img alt="エージェントにナレッジを追加するダイアログで &quot;Add to agent&quot; コマンドが強調表示されている。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-08a.png" /></p>
 <div class="admonition pied-piper">
 <p class="admonition-title">重要</p>
@@ -2571,8 +2571,8 @@
 <p><cc-end-step lab="mcs1" exercise="1" step="2" /></p>
 <h3 id="step-3">Step 3: エージェントのテスト</h3>
 <p>エージェントをテストするには、右側のパネルでプロンプトを入力します。例えば、次のプロンプトを入力してみましょう。</p>
-<pre><code class="language-txt">What is our mission?
-</code></pre>
+<div class="highlight"><pre><span></span><code>What is our mission?
+</code></pre></div>
 <p>以下のスクリーンショットは、エージェントがデータソース Web サイトの内容に基づいて回答している様子です。画面中央には、エージェントが設定したナレッジベースを参照していることも確認できます。</p>
 <p><img alt="**Test** パネルでのユーザーとエージェントの対話例。「What is our mission?」という質問に対し、データソースのページへの参照を含めて回答している。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-test-08.png" /></p>
 <p>エージェントがデータソースのページへの参照を提示している点にも注目してください。</p>
@@ -2601,13 +2601,13 @@
 <ul>
 <li>Name: </li>
 </ul>
-<pre><code class="language-txt">HR Documents
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR Documents
+</code></pre></div>
 <ul>
 <li>Description: </li>
 </ul>
-<pre><code class="language-txt">Provides documents about policies, procedures, and rules related to the HR department.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Provides documents about policies, procedures, and rules related to the HR department.
+</code></pre></div>
 <p><img alt="SharePoint データソースを追加するダイアログ。適切な名前と説明が入力されている。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-04.png" /></p>
 <p>画面下部の <strong>Add to agent</strong> ボタンを選択し、Copilot Studio が新しいナレッジベースを処理するまで待ちます。</p>
 <p>ナレッジベースが更新されると、<strong>Overview</strong> タブに公共 Web サイトと SharePoint Online サイトの両方が表示されます。</p>
@@ -2619,13 +2619,13 @@
 <p><cc-end-step lab="mcs1" exercise="2" step="1" /></p>
 <h3 id="step-2_1">Step 2: 更新されたエージェントのテスト</h3>
 <p>右側のパネルでエージェントを再度テストできます。例えば、次のプロンプトを入力してみましょう。</p>
-<pre><code class="language-txt">How can we hire new people in our company?
-</code></pre>
+<div class="highlight"><pre><span></span><code>How can we hire new people in our company?
+</code></pre></div>
 <p>エージェントは採用手続きに関する情報を返し、SharePoint Online のナレッジベース内のドキュメントおよび参照したパブリック Web サイトへのリンクを提示します。</p>
 <p><img alt="テスト パネルでの会話と、SharePoint Online ナレッジベースのドキュメントへの参照が表示されている。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-06.png" /></p>
 <p>さらに、以下のプロンプトも試してみてください。</p>
-<pre><code class="language-txt">How can I cook spaghetti alla carbonara?
-</code></pre>
+<div class="highlight"><pre><span></span><code>How can I cook spaghetti alla carbonara?
+</code></pre></div>
 <p>スパゲッティ・アッラ・カルボナーラは常に良い選択 🍝 ですが、エージェントは回答しません。デフォルトでは、エージェントは設定した Instructions とナレッジソースに従います。HR に特化したエージェントであり、HR 関連のコンテンツに集中しています。</p>
 <p><img alt="エージェントが定義されていないトピックを拒否する様子。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-spo-knowledge-07.png" /></p>
 <p><cc-end-step lab="mcs1" exercise="2" step="2" /></p>
@@ -2667,8 +2667,8 @@
 <p>最初に、Microsoft Teams クライアントにエージェントを表す新しいアプリが表示されます。<strong>Add</strong> ボタンを選択してクライアントに追加し、続くダイアログで <strong>Open</strong> を選択します。</p>
 <p><img alt="Microsoft Teams でエージェントをアプリとして表示するダイアログ。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-test-teams-02.png" /></p>
 <p>しばらくすると、Microsoft Teams クライアントでボットとのチャットが表示されます。これはあなたのエージェントです。次のように、以前使用したプロンプトを入力してみましょう。</p>
-<pre><code class="language-txt">How can we hire new people in our company?
-</code></pre>
+<div class="highlight"><pre><span></span><code>How can we hire new people in our company?
+</code></pre></div>
 <p>回答を待つと、エージェントが HR のコンテキストで回答し、ナレッジベース内のドキュメントへの参照を提示します。</p>
 <p><img alt="Microsoft Teams でエージェントを使用している様子。" src="../../../../../assets/images/make/copilot-studio-01/make-agent-test-teams-03.png" /></p>
 <p>回答の冒頭に「AI generated」である旨の注意書きが表示され、ユーザーが AI プラットフォームを利用していることを認識できるようになっています。</p>
@@ -2698,6 +2698,8 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2730,7 +2732,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2742,6 +2744,8 @@
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

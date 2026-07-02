@@ -2421,32 +2421,32 @@
 <p>この演習では、アクションを処理するための新しいプロンプトを "prompts" フォルダーに作成します。</p>
 <h3 id="step-1-monologue">Step 1: "monologue" プロンプトを作成する</h3>
 <p>プロジェクトの <code>src/prompts/</code> に移動し、<strong>monologue</strong> という名前の新しいフォルダーを追加します。<code>src/prompts/monologue/</code> フォルダーに <strong>config.json</strong> というファイルを作成し、次のコード スニペットを貼り付けます:</p>
-<pre><code class="language-json">{
-  &quot;schema&quot;: 1.1,
-  &quot;description&quot;: &quot;A bot that can chat with users&quot;,
-  &quot;type&quot;: &quot;completion&quot;,
-  &quot;completion&quot;: {
-    &quot;completion_type&quot;: &quot;chat&quot;,
-    &quot;include_history&quot;: true,
-    &quot;include_input&quot;: true,
-    &quot;max_input_tokens&quot;: 2800,
-    &quot;max_tokens&quot;: 1000,
-    &quot;temperature&quot;: 0.9,
-    &quot;top_p&quot;: 0.0,
-    &quot;presence_penalty&quot;: 0.6,
-    &quot;frequency_penalty&quot;: 0.0
-  },
-  &quot;augmentation&quot;: {
-      &quot;augmentation_type&quot;: &quot;monologue&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A bot that can chat with users&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;completion&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;completion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;completion_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chat&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;include_history&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;include_input&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_input_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2800</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;presence_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frequency_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;augmentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;augmentation_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;monologue&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title"><code>config.json</code> の <code>augmentation</code> について簡単に紹介</p>
 <p>Augmentation を使用すると、特定の指示をプロンプトに自動的に追加できるため、プロンプト エンジニアリングを簡素化できます。Augmentation で、AI にマルチステップ タスク (sequence) を処理させるか、手順を一つ一つ考えさせるか (monologue) を設定できます。</p>
 </div>
 <p><code>src/prompts/monologue/</code> フォルダーに <strong>skprompt.txt</strong> というファイルを作成し、次のテキストを貼り付けます:</p>
-<pre><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team who can manage lists of Candidates. 
+<div class="highlight"><pre><span></span><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team who can manage lists of Candidates. 
 You are friendly and professional. You like using emojis where appropriate.
 Always share the lists in bullet points.
 
@@ -2460,238 +2460,237 @@ rules:
 
 Current lists:
 {{$conversation.lists}}
-</code></pre>
+</code></pre></div>
 <p>同じフォルダーに <strong>actions.json</strong> というファイルを作成し、次のコード スニペットを貼り付けます:</p>
-<pre><code class="language-json">[
-    {
-        &quot;name&quot;: &quot;createList&quot;,
-        &quot;description&quot;: &quot;Creates a new list with an optional set of initial Candidates&quot;,
-        &quot;parameters&quot;: {
-            &quot;type&quot;: &quot;object&quot;,
-            &quot;properties&quot;: {
-                &quot;list&quot;: {
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;description&quot;: &quot;The name of the list to create&quot;
-                },
-                &quot;Candidates&quot;: {
-                    &quot;type&quot;: &quot;array&quot;,
-                    &quot;description&quot;: &quot;The Candidates to add to the list&quot;,
-                    &quot;Candidates&quot;: {
-                        &quot;type&quot;: &quot;string&quot;
-                    }
-                }
-            },
-            &quot;required&quot;: [
-                &quot;list&quot;
-            ]
-        }
-    },
-    {
-        &quot;name&quot;: &quot;deleteList&quot;,
-        &quot;description&quot;: &quot;Deletes a list&quot;,
-        &quot;parameters&quot;: {
-            &quot;type&quot;: &quot;object&quot;,
-            &quot;properties&quot;: {
-                &quot;list&quot;: {
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;description&quot;: &quot;The name of the list to delete&quot;
-                }
-            },
-            &quot;required&quot;: [
-                &quot;list&quot;
-            ]
-        }
-    },
-    {
-        &quot;name&quot;: &quot;addCandidates&quot;,
-        &quot;description&quot;: &quot;Adds one or more Candidates to a list&quot;,
-        &quot;parameters&quot;: {
-            &quot;type&quot;: &quot;object&quot;,
-            &quot;properties&quot;: {
-                &quot;list&quot;: {
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;description&quot;: &quot;The name of the list to add the item to&quot;
-                },
-                &quot;Candidates&quot;: {
-                    &quot;type&quot;: &quot;array&quot;,
-                    &quot;description&quot;: &quot;The Candidates to add to the list&quot;,
-                    &quot;Candidates&quot;: {
-                        &quot;type&quot;: &quot;string&quot;
-                    }
-                }
-            },
-            &quot;required&quot;: [
-                &quot;list&quot;,
-                &quot;Candidates&quot;
-            ]
-        }
-    },
-    {
-        &quot;name&quot;: &quot;removeCandidates&quot;,
-        &quot;description&quot;: &quot;Removes one or more Candidates from a list&quot;,
-        &quot;parameters&quot;: {
-            &quot;type&quot;: &quot;object&quot;,
-            &quot;properties&quot;: {
-                &quot;list&quot;: {
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;description&quot;: &quot;The name of the list to remove the item from&quot;
-                },
-                &quot;Candidates&quot;: {
-                    &quot;type&quot;: &quot;array&quot;,
-                    &quot;description&quot;: &quot;The Candidates to remove from the list&quot;,
-                    &quot;Candidates&quot;: {
-                        &quot;type&quot;: &quot;string&quot;
-                    }
-                }
-            },
-            &quot;required&quot;: [
-                &quot;list&quot;,
-                &quot;Candidates&quot;
-            ]
-        }
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;createList&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Creates a new list with an optional set of initial Candidates&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the list to create&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Candidates to add to the list&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;list&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deleteList&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deletes a list&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the list to delete&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;list&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;addCandidates&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adds one or more Candidates to a list&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the list to add the item to&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Candidates to add to the list&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Candidates&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;removeCandidates&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Removes one or more Candidates from a list&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the list to remove the item from&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Candidates to remove from the list&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Candidates&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="1" step="1" /></p>
 <h2 id="exercise-2">Exercise 2: プランナーでプロンプトを選択するロジックの実装</h2>
 <p>この演習では、ユーザー プロンプトをチェックし、「chat」プロンプトと「monologue」プロンプトを切り替える関数を作成します。</p>
 <h3 id="step-1-defaultprompt">Step 1: プランナーで <code>defaultPrompt</code> 用の関数を作成する</h3>
 <p>プロジェクトの <code>src/app/app.ts</code> ファイルを開き、次の関数を追加します:</p>
-<pre><code class="language-javascript">async function choosePrompt(context){
-  if (context.activity.text.includes('list')){
-    const template = await prompts.getPrompt('monologue');
-    return template;
-  }
-  else {
-    const template = await prompts.getPrompt('chat');
-    const skprompt = fs.readFileSync(path.join(__dirname, '..', 'prompts', 'chat', 'skprompt.txt'));
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">choosePrompt</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">)){</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prompts</span><span class="p">.</span><span class="nx">getPrompt</span><span class="p">(</span><span class="s1">&#39;monologue&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">template</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prompts</span><span class="p">.</span><span class="nx">getPrompt</span><span class="p">(</span><span class="s1">&#39;chat&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">skprompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;prompts&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;chat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;skprompt.txt&#39;</span><span class="p">));</span>
 
-    const dataSources = (template.config.completion as any)['data_sources'];
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dataSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">completion</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">)[</span><span class="s1">&#39;data_sources&#39;</span><span class="p">];</span>
 
-    dataSources.forEach((dataSource: any) =&gt; {
-      if (dataSource.type === 'azure_search') {
-        dataSource.parameters.authentication.key = config.azureSearchKey;
-        dataSource.parameters.endpoint = config.azureSearchEndpoint;
-        dataSource.parameters.indexName = config.indexName;
-        dataSource.parameters.embedding_dependency.deployment_name =
-          config.azureOpenAIEmbeddingDeploymentName;
-        dataSource.parameters.role_information = `${skprompt.toString('utf-8')}`;
-      }
-    });
+<span class="w">    </span><span class="nx">dataSources</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">dataSource</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;azure_search&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">authentication</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureSearchKey</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureSearchEndpoint</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">indexName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">indexName</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">embedding_dependency</span><span class="p">.</span><span class="nx">deployment_name</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureOpenAIEmbeddingDeploymentName</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">role_information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">skprompt</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
 
-    return template;
-  }
-}
-</code></pre>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">template</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title"><code>choosePrompt</code> 関数を確認</p>
 <p><code>choosePrompt</code> 関数はユーザー プロンプトに "list" が含まれているかを確認します。含まれていれば <strong>monologue</strong> プロンプトを返し、含まれていなければ既定の <strong>chat</strong> プロンプトを返します。</p>
 </div>
 <p><code>src/app/app.ts</code> ファイルで <code>planner</code> を探し、<strong>defaultPrompt</strong> に割り当てられているコードを削除します。その後、<code>choosePrompt</code> 関数を <strong>defaultPrompt</strong> として定義します。プランナーの最終形は次のようになります:</p>
-<pre><code class="language-javascript">const planner = new ActionPlanner({
-  model,
-  prompts,
-  defaultPrompt: choosePrompt,
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">planner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ActionPlanner</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">model</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">prompts</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">defaultPrompt</span><span class="o">:</span><span class="w"> </span><span class="nx">choosePrompt</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="2" step="1" /></p>
 <h2 id="exercise-3">Exercise 3: アプリにアクションを実装する</h2>
 <p>この演習では、アクション用の関数を作成し、アプリにアクション ハンドラーを登録します。</p>
 <h3 id="step-1-conversationstate">Step 1: <code>ConversationState</code> を更新し、各アクションの関数を定義する</h3>
 <p><code>src/app/app.ts</code> で <code>@microsoft/teams-ai</code> のインポートを <strong>DefaultConversationState</strong> に更新します。最終形は次のようになります:</p>
-<pre><code class="language-javascript">import { AuthError, ActionPlanner, OpenAIModel, PromptManager, AI, PredictedSayCommand, Application, TurnState, DefaultConversationState } from &quot;@microsoft/teams-ai&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AuthError</span><span class="p">,</span><span class="w"> </span><span class="nx">ActionPlanner</span><span class="p">,</span><span class="w"> </span><span class="nx">OpenAIModel</span><span class="p">,</span><span class="w"> </span><span class="nx">PromptManager</span><span class="p">,</span><span class="w"> </span><span class="nx">AI</span><span class="p">,</span><span class="w"> </span><span class="nx">PredictedSayCommand</span><span class="p">,</span><span class="w"> </span><span class="nx">Application</span><span class="p">,</span><span class="w"> </span><span class="nx">TurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">DefaultConversationState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@microsoft/teams-ai&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p><code>src/app/app.ts</code> 内で <strong>ConversationState</strong> と <strong>ApplicationTurnState</strong> を探し、次のコードに置き換えます:</p>
-<pre><code class="language-javascript">// Strongly type the applications turn state
-interface ConversationState extends DefaultConversationState {
-  lists: Record&lt;string, string[]&gt;;
-}
-export type ApplicationTurnState = TurnState&lt;ConversationState&gt;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Strongly type the applications turn state</span>
+<span class="kr">interface</span><span class="w"> </span><span class="nx">ConversationState</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">DefaultConversationState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">lists</span><span class="o">:</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">export</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TurnState</span><span class="o">&lt;</span><span class="nx">ConversationState</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
 <p><code>src/app/</code> フォルダーに <strong>actions.ts</strong> というファイルを新規作成し、アクション用の関数を定義する次のソース コードを追加します:</p>
-<pre><code class="language-javascript">import { ApplicationTurnState } from './app';
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./app&#39;</span><span class="p">;</span>
 
-function getCandidates(state: ApplicationTurnState, list: string): string[] {
-    ensureListExists(state, list);
-    return state.conversation.lists[list];
-}
+<span class="kd">function</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ensureListExists</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">list</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">[</span><span class="nx">list</span><span class="p">];</span>
+<span class="p">}</span>
 
-function setCandidates(state: ApplicationTurnState, list: string, Candidates: string[]): void {
-    ensureListExists(state, list);
-    state.conversation.lists[list] = Candidates ?? [];
-}
+<span class="kd">function</span><span class="w"> </span><span class="nx">setCandidates</span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">Candidates</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ensureListExists</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">list</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">[</span><span class="nx">list</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Candidates</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">[];</span>
+<span class="p">}</span>
 
-function ensureListExists(state: ApplicationTurnState, listName: string): void {
-    if (typeof state.conversation.lists != 'object') {
-        state.conversation.lists = {};
-    }
+<span class="kd">function</span><span class="w"> </span><span class="nx">ensureListExists</span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">listName</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;object&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
 
-    if (!Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)) {
-        state.conversation.lists[listName] = [];
-    }
-}
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">,</span><span class="w"> </span><span class="nx">listName</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">[</span><span class="nx">listName</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-function deleteList(state: ApplicationTurnState, listName: string): void {
-    if (
-        typeof state.conversation.lists == 'object' &amp;&amp;
-        Object.prototype.hasOwnProperty.call(state.conversation.lists, listName)
-    ) {
-        delete state.conversation.lists[listName];
-    }
-}
+<span class="kd">function</span><span class="w"> </span><span class="nx">deleteList</span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">listName</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;object&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">,</span><span class="w"> </span><span class="nx">listName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="ow">delete</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">[</span><span class="nx">listName</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-export { getCandidates, setCandidates, ensureListExists, deleteList };
-</code></pre>
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">setCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">ensureListExists</span><span class="p">,</span><span class="w"> </span><span class="nx">deleteList</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="3" step="1" /></p>
 <h3 id="step-2">Step 2: アクション ハンドラーをアプリに登録する</h3>
 <p><code>src/app/app.ts</code> に移動し、ファイル冒頭に次のアクションのインポートを追加します:</p>
-<pre><code class="language-javascript">import { ensureListExists, getCandidates, setCandidates, deleteList } from &quot;./actions&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ensureListExists</span><span class="p">,</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">setCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">deleteList</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./actions&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>続いて、<code>src/app/app.ts</code> に次のコード スニペットを追加し、AI システムにアクション ハンドラーを登録します:</p>
-<pre><code class="language-javascript">// Register action handlers
-interface ListOnly {
-  list: string;
-}
+<div class="highlight"><pre><span></span><code><span class="c1">// Register action handlers</span>
+<span class="kr">interface</span><span class="w"> </span><span class="nx">ListOnly</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
 
-interface ListAndCandidates extends ListOnly {
-  Candidates?: string[];
-}
+<span class="kr">interface</span><span class="w"> </span><span class="nx">ListAndCandidates</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">ListOnly</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">Candidates</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">[];</span>
+<span class="p">}</span>
 
-app.ai.action('createList', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
-  ensureListExists(state, parameters.list);
-  if (Array.isArray(parameters.Candidates) &amp;&amp; parameters.Candidates.length &gt; 0) {
-      await app.ai.doAction(context, state, 'addCandidates', parameters);
-      return `List created and Candidates added. Summarize your action.`;
-  } else {
-      return `List created. Summarize your action.`;
-  }
-});
+<span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="s1">&#39;createList&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="nx">TurnContext</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="o">:</span><span class="w"> </span><span class="nx">ListAndCandidates</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">ensureListExists</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">Candidates</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">Candidates</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">doAction</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;addCandidates&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sb">`List created and Candidates added. Summarize your action.`</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sb">`List created. Summarize your action.`</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
 
-app.ai.action('deleteList', async (context: TurnContext, state: ApplicationTurnState, parameters: ListOnly) =&gt; {
-  deleteList(state, parameters.list);
-  return `list deleted. Summarize your action.`;
-});
+<span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="s1">&#39;deleteList&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="nx">TurnContext</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="o">:</span><span class="w"> </span><span class="nx">ListOnly</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">deleteList</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`list deleted. Summarize your action.`</span><span class="p">;</span>
+<span class="p">});</span>
 
-app.ai.action('addCandidates', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
-  const Candidates = getCandidates(state, parameters.list);
-  Candidates.push(...(parameters.Candidates ?? []));
-  setCandidates(state, parameters.list, Candidates);
-  return `Candidates added. Summarize your action.`;
-});
+<span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="s1">&#39;addCandidates&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="nx">TurnContext</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="o">:</span><span class="w"> </span><span class="nx">ListAndCandidates</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">Candidates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">Candidates</span><span class="p">.</span><span class="nx">push</span><span class="p">(...(</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">Candidates</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">[]));</span>
+<span class="w">  </span><span class="nx">setCandidates</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">Candidates</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Candidates added. Summarize your action.`</span><span class="p">;</span>
+<span class="p">});</span>
 
-app.ai.action('removeCandidates', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
-  const Candidates = getCandidates(state, parameters.list);
-  (parameters.Candidates ?? []).forEach((candidate: string) =&gt; {
-      const index = Candidates.indexOf(candidate);
-      if (index &gt;= 0) {
-          Candidates.splice(index, 1);
-      }
-  });
-  setCandidates(state, parameters.list, Candidates);
-  return `Candidates removed. Summarize your action.`;
-});
-
-</code></pre>
+<span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="s1">&#39;removeCandidates&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="nx">TurnContext</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="o">:</span><span class="w"> </span><span class="nx">ListAndCandidates</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">Candidates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">list</span><span class="p">);</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">Candidates</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">candidate</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Candidates</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">candidate</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">Candidates</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">setCandidates</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="p">.</span><span class="nx">list</span><span class="p">,</span><span class="w"> </span><span class="nx">Candidates</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Candidates removed. Summarize your action.`</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="3" step="2" /></p>
 <h3 id="step-3">Step 3: 新しいアクションでアプリをテストする</h3>
 <p>Visual Studio Code の <strong>Run and Debug</strong> タブで <strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してアプリのデバッグを開始します。ブラウザーで Microsoft Teams が起動します。アプリの詳細が表示されたら <strong>Add</strong> を選択し、チャットを開始してください。</p>
@@ -2719,150 +2718,149 @@ app.ai.action('removeCandidates', async (context: TurnContext, state: Applicatio
 <p>この演習では、Microsoft Graph を利用して候補者リストを HR に送信する新しいアクションを実装します。</p>
 <h3 id="step-1">Step 1: メール送信用の新しいアクションをプロンプトに定義する</h3>
 <p><code>src/prompts/monologue/actions.json</code> に次のアクションを追加します:</p>
-<pre><code class="language-json">,
-{
-    &quot;name&quot;: &quot;sendLists&quot;,
-    &quot;description&quot;: &quot;Send list of Candidates to Human Resources, aka HR for scheduling interviews&quot;,
-    &quot;parameters&quot;: {
-        &quot;type&quot;: &quot;object&quot;,
-        &quot;properties&quot;: {
-            &quot;list&quot;: {
-                &quot;type&quot;: &quot;string&quot;,
-                &quot;description&quot;: &quot;The name of the list to send Human Resources, aka HR for scheduling interviews&quot;
-            },
-            &quot;Candidates&quot;: {
-                &quot;type&quot;: &quot;array&quot;,
-                &quot;description&quot;: &quot;The Candidates in the list to send Human Resources, aka HR for scheduling interviews&quot;,
-                &quot;Candidates&quot;: {
-                    &quot;type&quot;: &quot;string&quot;
-                }
-            }
-        },
-        &quot;required&quot;: [
-            &quot;list&quot;,
-            &quot;Candidates&quot;
-        ]
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">,</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sendLists&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Send list of Candidates to Human Resources, aka HR for scheduling interviews&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the list to send Human Resources, aka HR for scheduling interviews&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Candidates in the list to send Human Resources, aka HR for scheduling interviews&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;Candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;Candidates&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="4" step="1" /></p>
 <h3 id="step-2-sendlists">Step 2: 新しい <code>sendLists</code> アクションの関数を作成する</h3>
 <p>プロジェクトの <code>src/app/app.ts</code> に移動し、<code>getUserDisplayName</code> を見つけて関数の先頭に <strong>export</strong> を追加します。最終形は次のようになります:</p>
-<pre><code class="language-javascript">export async function getUserDisplayName {
-...
-...
-...
-}
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getUserDisplayName</span><span class="w"> </span><span class="p">{</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>src/app/app.ts</code> 内で <code>app</code> を探し、スコープに <strong>'Mail.Send'</strong> を追加します。最終形は次のとおりです:</p>
-<pre><code class="language-javascript">const app = new Application({
-  storage,
-  authentication: {settings: {
-    graph: {
-      scopes: ['User.Read', 'Mail.Send'],
-        ...
-        ...
-    }
-  }}});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Application</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">authentication</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">settings</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">graph</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">scopes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;User.Read&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mail.Send&#39;</span><span class="p">],</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}}});</span>
+</code></pre></div>
 <p><code>env/.env.local.user</code> を開き、次の HR メールを環境変数として追加します:</p>
-<pre><code>HR_EMAIL=&lt;YOUR-EMAIL-ADDRESS&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR_EMAIL=&lt;YOUR-EMAIL-ADDRESS&gt;
+</code></pre></div>
 <div class="admonition pied-piper">
 <p class="admonition-title"><code>HR_EMAIL</code> 設定について</p>
 <p>このラボをテストするため、<code>HR_EMAIL</code> にはご自身のアカウントのメール アドレスを入力してください。本来は HR チームのメール アドレスを使用して面接予定を送信しますが、このラボはプロトタイピング目的のみで、本番環境での使用は想定していません。</p>
 </div>
 <p><code>teamsapp.local.yml</code> に移動し、<code>file/createOrUpdateEnvironmentFile</code> の <strong>envs</strong> リストの下に次の行を追加します:</p>
-<pre><code>HR_EMAIL: ${{HR_EMAIL}}
-</code></pre>
+<div class="highlight"><pre><span></span><code>HR_EMAIL: ${{HR_EMAIL}}
+</code></pre></div>
 <p><code>src/config.ts</code> に次の行を追加します:</p>
-<pre><code class="language-javascript">HR_EMAIL: process.env.HR_EMAIL
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">HR_EMAIL</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">HR_EMAIL</span>
+</code></pre></div>
 <p><code>src/app/actions.ts</code> に移動し、ファイル冒頭のインポートを次のように更新します:</p>
-<pre><code class="language-javascript">import { getUserDisplayName, ApplicationTurnState } from './app';
-import { Client } from &quot;@microsoft/microsoft-graph-client&quot;;
-import config from '../config';
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getUserDisplayName</span><span class="p">,</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./app&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Client</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@microsoft/microsoft-graph-client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../config&#39;</span><span class="p">;</span>
+</code></pre></div>
 <p>続いて、<code>actions.ts</code> に次の関数を追加します:</p>
-<pre><code class="language-javascript">async function sendLists(state: ApplicationTurnState, token): Promise&lt;string&gt; {
-    const email = await createEmailContent(state.conversation.lists, token);
-    try {
-        const client = Client.init({
-            authProvider: (done) =&gt; {
-                done(null, token);
-            }
-        });
-        const sendEmail = await client.api('/me/sendMail').post(JSON.stringify(email));
-        if (sendEmail.ok) {
-            return email.message.body.content;
-        }
-        else {
-            console.log(`Error ${sendEmail.status} calling Graph in sendToHR: ${sendEmail.statusText}`);
-            return 'Error sending email';
-        }
-    } catch (error) {
-        console.error('Error in sendLists:', error);
-        throw error;
-    }
-}
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sendLists</span><span class="p">(</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">createEmailContent</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nx">lists</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Client</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">authProvider</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">done</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">sendEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">api</span><span class="p">(</span><span class="s1">&#39;/me/sendMail&#39;</span><span class="p">).</span><span class="nx">post</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">email</span><span class="p">));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sendEmail</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">email</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Error </span><span class="si">${</span><span class="nx">sendEmail</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb"> calling Graph in sendToHR: </span><span class="si">${</span><span class="nx">sendEmail</span><span class="p">.</span><span class="nx">statusText</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;Error sending email&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error in sendLists:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-async function createEmailContent(lists, token) {
-    let emailContent = '';
-    for (const listName in lists) {
-        if (lists.hasOwnProperty(listName)) {
-        emailContent += `${listName}:\n`;
-        lists[listName].forEach(candidate =&gt; {
-            emailContent += `  • ${candidate}\n`;
-        });
-        emailContent += '\n'; // Add an extra line between different lists
-        }
-    }
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createEmailContent</span><span class="p">(</span><span class="nx">lists</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">emailContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">listName</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">lists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lists</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">listName</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">emailContent</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">listName</span><span class="si">}</span><span class="sb">:\n`</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">lists</span><span class="p">[</span><span class="nx">listName</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">candidate</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">emailContent</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`  • </span><span class="si">${</span><span class="nx">candidate</span><span class="si">}</span><span class="sb">\n`</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="nx">emailContent</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Add an extra line between different lists</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    const profileName = await getUserDisplayName(token);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">profileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getUserDisplayName</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
 
-    const email ={
-        &quot;message&quot;: {
-        &quot;subject&quot;: &quot;Request to Schedule Interviews with Shortlisted Candidates&quot;,
-        &quot;body&quot;: {
-            &quot;contentType&quot;: &quot;Text&quot;,
-            &quot;content&quot;: `Hello HR Team, \nI hope this email finds you well. \n\nCould you please assist in scheduling 1:1 interviews with the following shortlisted candidates? \n\n${emailContent} Please arrange suitable times and send out the calendar invites accordingly. \n\n Best Regards, \n ${profileName}`
-        },
-        &quot;toRecipients&quot;: [
-            {
-            &quot;emailAddress&quot;: {
-                &quot;address&quot;: `${config.HR_EMAIL}`
-            }
-            }
-        ]
-        },
-        &quot;saveToSentCandidates&quot;: &quot;true&quot;
-    };
-    return await email;
-}
-</code></pre>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;subject&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Request to Schedule Interviews with Shortlisted Candidates&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;body&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;contentType&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;content&quot;</span><span class="o">:</span><span class="w"> </span><span class="sb">`Hello HR Team, \nI hope this email finds you well. \n\nCould you please assist in scheduling 1:1 interviews with the following shortlisted candidates? \n\n</span><span class="si">${</span><span class="nx">emailContent</span><span class="si">}</span><span class="sb"> Please arrange suitable times and send out the calendar invites accordingly. \n\n Best Regards, \n </span><span class="si">${</span><span class="nx">profileName</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;toRecipients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;emailAddress&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">&quot;address&quot;</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">HR_EMAIL</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;saveToSentCandidates&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">email</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>最後に <code>src/app/actions.ts</code> でエクスポートに <strong>sendLists</strong> を追加します。最終形は次のとおりです:</p>
-<pre><code class="language-javascript">export { getCandidates, setCandidates, ensureListExists, deleteList, sendLists };
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">setCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">ensureListExists</span><span class="p">,</span><span class="w"> </span><span class="nx">deleteList</span><span class="p">,</span><span class="w"> </span><span class="nx">sendLists</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="4" step="2" /></p>
 <h3 id="step-3-sendlists">Step 3: <code>sendLists</code> アクション ハンドラーを登録する</h3>
 <p><code>src/app/app.ts</code> に移動し、<code>./actions</code> のインポートを <strong>sendLists</strong> 関数付きに更新します。最終形は次のようになります:</p>
-<pre><code class="language-javascript">import { ensureListExists, getCandidates, setCandidates, deleteList, sendLists } from &quot;./actions&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ensureListExists</span><span class="p">,</span><span class="w"> </span><span class="nx">getCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">setCandidates</span><span class="p">,</span><span class="w"> </span><span class="nx">deleteList</span><span class="p">,</span><span class="w"> </span><span class="nx">sendLists</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./actions&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>続いて、AI システムに <code>sendLists</code> アクションを登録するため、次のコード スニペットを追加します:</p>
-<pre><code class="language-javascript">app.ai.action('sendLists', async (context: TurnContext, state: ApplicationTurnState, parameters: ListAndCandidates) =&gt; {
-  await sendLists(state, state.temp.authTokens['graph']);
-  return `Email sent to HR. Summarize your action.`;
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">ai</span><span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="s1">&#39;sendLists&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="nx">TurnContext</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">ApplicationTurnState</span><span class="p">,</span><span class="w"> </span><span class="nx">parameters</span><span class="o">:</span><span class="w"> </span><span class="nx">ListAndCandidates</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">sendLists</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">temp</span><span class="p">.</span><span class="nx">authTokens</span><span class="p">[</span><span class="s1">&#39;graph&#39;</span><span class="p">]);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`Email sent to HR. Summarize your action.`</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="4" step="3" /></p>
 <h3 id="step-4-entra-id">Step 4: Entra ID アプリ登録を更新する</h3>
 <p>新しいスコープ <code>Mail.Send</code> 用に Entra ID アプリのスクリプトを更新します。<strong>aad.manifest.json</strong> ファイルを開き、<code>requiredResourceAccess</code> ノード内の <code>"resourceAppId": "Microsoft Graph",</code> を探します。<code>resourceAccess</code> 配列にカンマを追加した上で次のスコープを追加します。</p>
-<pre><code class="language-JSON"> {
-    &quot;id&quot;: &quot;Mail.Send&quot;,
-    &quot;type&quot;: &quot;Scope&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mail.Send&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Scope&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="bta5" exercise="4" step="4" /></p>
 <h3 id="step-5-sendlists">Step 5: アプリと新しい <code>sendLists</code> アクションをテストする</h3>
 <p>Visual Studio Code の <strong>Run and Debug</strong> タブで <strong>Debug in Teams (Edge)</strong> または <strong>Debug in Teams (Chrome)</strong> を選択してアプリのデバッグを開始します。ブラウザーで Microsoft Teams が起動し、アプリの詳細が表示されたら <strong>Add</strong> を選択してチャットを開始します。</p>
@@ -2934,6 +2932,8 @@ async function createEmailContent(lists, token) {
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2966,7 +2966,7 @@ async function createEmailContent(lists, token) {
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2978,6 +2978,8 @@ async function createEmailContent(lists, token) {
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

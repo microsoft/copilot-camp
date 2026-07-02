@@ -2341,22 +2341,22 @@
 <p>2024 年 10 月 27 日以前に「Extend」パスのラボを開始していた場合、開発者プレビュー スキーマを使用している可能性があります。サポート対象となる新しいスキーマ v1.19 が利用可能になったため、すべてのプレビュー アプリケーションを更新する必要があります。新しいスキーマでは、新しい Copilot エージェントの命名規則も反映されています。</p>
 <p>プロジェクトを更新するには、 <strong>appPackage/manifest.json</strong> ファイルを開きます。</p>
 <p>まず、先頭 2 行を次の内容に置き換えます。</p>
-<pre><code class="language-json">  &quot;$schema&quot;: &quot;https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json&quot;,
-  &quot;manifestVersion&quot;: &quot;1.19&quot;,
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.19&quot;</span><span class="p">,</span>
+</code></pre></div>
 <p><strong>manifest.json</strong> ファイルに次のような <code>packageName</code> プロパティがある場合は、不要かつサポート対象外のため削除してください。</p>
-<pre><code class="language-json">  &quot;packageName&quot;: &quot;com.microsoft.teams.extension&quot;,
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;packageName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.microsoft.teams.extension&quot;</span><span class="p">,</span>
+</code></pre></div>
 <p>次に、<code>copilotExtensions</code> プロパティを次の内容に置き換えます。</p>
-<pre><code class="language-json">  &quot;copilotAgents&quot;: {
-    &quot;declarativeAgents&quot;: [
-      {
-        &quot;id&quot;: &quot;treygenie&quot;,
-        &quot;file&quot;: &quot;trey-declarative-agent.json&quot;
-      }
-    ]   
-  }, 
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treygenie&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-declarative-agent.json&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span><span class="w">   </span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span>
+</code></pre></div>
 <p>最後に、ラボの手順に合わせて <strong>trey-declarative-copilot.json</strong> を <strong>trey-declarative-agent.json</strong> にリネームします。</p>
 
 
@@ -2378,6 +2378,8 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2410,7 +2412,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2422,6 +2424,8 @@
         <script src="../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

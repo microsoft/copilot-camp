@@ -2476,294 +2476,294 @@
 </details>
 <p>1️⃣ <code>src/Services/KnowledgeBaseService.cs</code> を開きます。</p>
 <p>2️⃣ <code>private const string ClaimsKnowledgeSource = "claims-knowledge-source";</code> を探し、その直後に Policy 用の定数とインデックスを追加します:</p>
-<pre><code class="language-csharp">// Knowledge source names
-private const string PoliciesKnowledgeSource = &quot;policies-knowledge-source&quot;;
+<div class="highlight"><pre><span></span><code><span class="c1">// Knowledge source names</span>
+<span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">PoliciesKnowledgeSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;policies-knowledge-source&quot;</span><span class="p">;</span>
 
-// Index names
-private const string PoliciesIndex = &quot;policies-index&quot;;
-</code></pre>
+<span class="c1">// Index names</span>
+<span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">PoliciesIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;policies-index&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>3️⃣ <code>EnsureClaimsIndexAsync</code> メソッドを見つけ、その直後に <code>EnsurePoliciesIndexAsync</code> メソッドを追加します:</p>
-<pre><code class="language-csharp">public async Task EnsurePoliciesIndexAsync()
-{
-    try
-    {
-        await _indexClient.GetIndexAsync(PoliciesIndex);
-        Console.WriteLine($&quot;✅ Policies index '{PoliciesIndex}' already exists&quot;);
-    }
-    catch (RequestFailedException ex) when (ex.Status == 404)
-    {
-        Console.WriteLine($&quot;📝 Creating policies index '{PoliciesIndex}'...&quot;);
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">EnsurePoliciesIndexAsync</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_indexClient</span><span class="p">.</span><span class="n">GetIndexAsync</span><span class="p">(</span><span class="n">PoliciesIndex</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;✅ Policies index &#39;{PoliciesIndex}&#39; already exists&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">RequestFailedException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">404</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;📝 Creating policies index &#39;{PoliciesIndex}&#39;...&quot;</span><span class="p">);</span>
 
-        var index = new SearchIndex(PoliciesIndex)
-        {
-            Fields =
-            {
-                new SimpleField(&quot;id&quot;, SearchFieldDataType.String) { IsKey = true, IsFilterable = true },
-                new SearchableField(&quot;policyNumber&quot;) { IsFilterable = true, IsSortable = true },
-                new SearchableField(&quot;policyholderName&quot;) { IsFilterable = true },
-                new SearchableField(&quot;policyType&quot;) { IsFilterable = true, IsFacetable = true },
-                new SearchableField(&quot;status&quot;) { IsFilterable = true, IsFacetable = true },
-                new SimpleField(&quot;effectiveDate&quot;, SearchFieldDataType.DateTimeOffset) { IsFilterable = true, IsSortable = true },
-                new SimpleField(&quot;expirationDate&quot;, SearchFieldDataType.DateTimeOffset) { IsFilterable = true, IsSortable = true },
-                new SimpleField(&quot;coverageLimit&quot;, SearchFieldDataType.Double) { IsFilterable = true, IsSortable = true },
-                new SimpleField(&quot;deductible&quot;, SearchFieldDataType.Double) { IsFilterable = true, IsSortable = true },
-                new SimpleField(&quot;annualPremium&quot;, SearchFieldDataType.Double) { IsFilterable = true, IsSortable = true },
-                new SearchableField(&quot;vehicleMake&quot;) { IsFilterable = true },
-                new SearchableField(&quot;vehicleModel&quot;) { IsFilterable = true },
-                new SimpleField(&quot;vehicleYear&quot;, SearchFieldDataType.Int32) { IsFilterable = true },
-                new SearchableField(&quot;vehicleVin&quot;) { IsFilterable = true },
-                new SearchableField(&quot;propertyAddress&quot;) { IsFilterable = true },
-                new SearchableField(&quot;propertyType&quot;) { IsFilterable = true },
-                new SearchableField(&quot;notes&quot;),
-                new SearchableField(&quot;searchableContent&quot;),
-                new SearchField(&quot;contentVector&quot;, SearchFieldDataType.Collection(SearchFieldDataType.Single))
-                {
-                    IsSearchable = true,
-                    VectorSearchDimensions = 1536,
-                    VectorSearchProfileName = &quot;vector-profile&quot;
-                }
-            },
-            VectorSearch = CreateVectorSearchConfig(),
-            SemanticSearch = CreateSemanticConfig(&quot;Policies semantic search&quot;, &quot;policyNumber&quot;, &quot;policyholderName&quot;, &quot;notes&quot;)
-        };
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchIndex</span><span class="p">(</span><span class="n">PoliciesIndex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Fields</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;policyNumber&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsSortable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;policyholderName&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;policyType&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsFacetable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsFacetable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;effectiveDate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">DateTimeOffset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsSortable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;expirationDate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">DateTimeOffset</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsSortable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;coverageLimit&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">Double</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsSortable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;deductible&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">Double</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsSortable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;annualPremium&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">Double</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">IsSortable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;vehicleMake&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;vehicleModel&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SimpleField</span><span class="p">(</span><span class="s">&quot;vehicleYear&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">Int32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;vehicleVin&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;propertyAddress&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;propertyType&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">IsFilterable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;notes&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchableField</span><span class="p">(</span><span class="s">&quot;searchableContent&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchField</span><span class="p">(</span><span class="s">&quot;contentVector&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">Collection</span><span class="p">(</span><span class="n">SearchFieldDataType</span><span class="p">.</span><span class="n">Single</span><span class="p">))</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">IsSearchable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">VectorSearchDimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">VectorSearchProfileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;vector-profile&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="n">VectorSearch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateVectorSearchConfig</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">SemanticSearch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateSemanticConfig</span><span class="p">(</span><span class="s">&quot;Policies semantic search&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;policyNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;policyholderName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;notes&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">};</span>
 
-        await _indexClient.CreateIndexAsync(index);
-        Console.WriteLine($&quot;✅ Policies index created successfully&quot;);
-    }
-}
-</code></pre>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">_indexClient</span><span class="p">.</span><span class="n">CreateIndexAsync</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;✅ Policies index created successfully&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="1" step="1" /></p>
 <h3 id="step-2-knowledge-source-policies">Step 2: Knowledge Source を Policies 含めて更新</h3>
 <p><code>CreateKnowledgeSourcesAsync</code> メソッドを更新し、Claims と Policies の Knowledge Source を両方作成します。</p>
 <p>1️⃣ <code>CreateKnowledgeSourcesAsync</code> メソッドを見つけ、以下の内容に全体を置き換えます。これには Claims と Policies の両方が含まれます:</p>
-<pre><code class="language-csharp">public async Task CreateKnowledgeSourcesAsync()
-{
-    // Create claims knowledge source
-    var claimsKnowledgeSource = new SearchIndexKnowledgeSource(
-        name: ClaimsKnowledgeSource,
-        searchIndexParameters: new SearchIndexKnowledgeSourceParameters(searchIndexName: ClaimsIndex)
-        {
-            SourceDataFields = 
-            {
-                new SearchIndexFieldReference(name: &quot;id&quot;),
-                new SearchIndexFieldReference(name: &quot;claimNumber&quot;),
-                new SearchIndexFieldReference(name: &quot;policyholderName&quot;),
-                new SearchIndexFieldReference(name: &quot;policyNumber&quot;),
-                new SearchIndexFieldReference(name: &quot;status&quot;),
-                new SearchIndexFieldReference(name: &quot;claimType&quot;),
-                new SearchIndexFieldReference(name: &quot;region&quot;),
-                new SearchIndexFieldReference(name: &quot;assignedAdjuster&quot;),
-                new SearchIndexFieldReference(name: &quot;dateFiled&quot;),
-                new SearchIndexFieldReference(name: &quot;dateResolved&quot;),
-                new SearchIndexFieldReference(name: &quot;description&quot;),
-                new SearchIndexFieldReference(name: &quot;location&quot;),
-                new SearchIndexFieldReference(name: &quot;severity&quot;),
-                new SearchIndexFieldReference(name: &quot;claimAmount&quot;),
-                new SearchIndexFieldReference(name: &quot;fraudScore&quot;),
-                new SearchIndexFieldReference(name: &quot;fraudIndicators&quot;),
-                new SearchIndexFieldReference(name: &quot;adjusterNotes&quot;)
-            }
-        }
-    );
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">CreateKnowledgeSourcesAsync</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create claims knowledge source</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">claimsKnowledgeSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchIndexKnowledgeSource</span><span class="p">(</span>
+<span class="w">        </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">ClaimsKnowledgeSource</span><span class="p">,</span>
+<span class="w">        </span><span class="n">searchIndexParameters</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchIndexKnowledgeSourceParameters</span><span class="p">(</span><span class="n">searchIndexName</span><span class="p">:</span><span class="w"> </span><span class="n">ClaimsIndex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">SourceDataFields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;claimNumber&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;policyholderName&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;policyNumber&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;status&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;claimType&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;region&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assignedAdjuster&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dateFiled&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dateResolved&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;description&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;location&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;severity&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;claimAmount&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fraudScore&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fraudIndicators&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;adjusterNotes&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
 
-    await _indexClient.CreateOrUpdateKnowledgeSourceAsync(claimsKnowledgeSource);
-    Console.WriteLine($&quot;✅ Knowledge source '{ClaimsKnowledgeSource}' created&quot;);
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="n">_indexClient</span><span class="p">.</span><span class="n">CreateOrUpdateKnowledgeSourceAsync</span><span class="p">(</span><span class="n">claimsKnowledgeSource</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;✅ Knowledge source &#39;{ClaimsKnowledgeSource}&#39; created&quot;</span><span class="p">);</span>
 
-    // Create policies knowledge source
-    var policiesKnowledgeSource = new SearchIndexKnowledgeSource(
-        name: PoliciesKnowledgeSource,
-        searchIndexParameters: new SearchIndexKnowledgeSourceParameters(searchIndexName: PoliciesIndex)
-        {
-            SourceDataFields = 
-            {
-                new SearchIndexFieldReference(name: &quot;id&quot;),
-                new SearchIndexFieldReference(name: &quot;policyNumber&quot;),
-                new SearchIndexFieldReference(name: &quot;policyholderName&quot;),
-                new SearchIndexFieldReference(name: &quot;policyType&quot;),
-                new SearchIndexFieldReference(name: &quot;status&quot;),
-                new SearchIndexFieldReference(name: &quot;effectiveDate&quot;),
-                new SearchIndexFieldReference(name: &quot;expirationDate&quot;),
-                new SearchIndexFieldReference(name: &quot;coverageLimit&quot;),
-                new SearchIndexFieldReference(name: &quot;deductible&quot;),
-                new SearchIndexFieldReference(name: &quot;annualPremium&quot;)
-            }
-        }
-    );
+<span class="w">    </span><span class="c1">// Create policies knowledge source</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">policiesKnowledgeSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchIndexKnowledgeSource</span><span class="p">(</span>
+<span class="w">        </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">PoliciesKnowledgeSource</span><span class="p">,</span>
+<span class="w">        </span><span class="n">searchIndexParameters</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchIndexKnowledgeSourceParameters</span><span class="p">(</span><span class="n">searchIndexName</span><span class="p">:</span><span class="w"> </span><span class="n">PoliciesIndex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">SourceDataFields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;policyNumber&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;policyholderName&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;policyType&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;status&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;effectiveDate&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;expirationDate&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;coverageLimit&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;deductible&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="nf">SearchIndexFieldReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;annualPremium&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
 
-    await _indexClient.CreateOrUpdateKnowledgeSourceAsync(policiesKnowledgeSource);
-    Console.WriteLine($&quot;✅ Knowledge source '{PoliciesKnowledgeSource}' created&quot;);
-}
-</code></pre>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="n">_indexClient</span><span class="p">.</span><span class="n">CreateOrUpdateKnowledgeSourceAsync</span><span class="p">(</span><span class="n">policiesKnowledgeSource</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;✅ Knowledge source &#39;{PoliciesKnowledgeSource}&#39; created&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="1" step="2" /></p>
 <h3 id="step-3-knowledge-base-policies">Step 3: Knowledge Base に Policies を追加</h3>
 <p>Knowledge Base 定義を更新し、Policies Knowledge Source を組み込みます。</p>
 <p>1️⃣ <code>new KnowledgeSourceReference(name: ClaimsKnowledgeSource)</code> を探し、末尾にカンマを付けて次の行を追加し、Claims と Policies の両方を含めます:</p>
-<pre><code class="language-csharp"> new KnowledgeSourceReference(name: PoliciesKnowledgeSource)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">KnowledgeSourceReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">PoliciesKnowledgeSource</span><span class="p">)</span>
+</code></pre></div>
 <p>最終的な Knowledge Base 作成コードは次のようになります:</p>
-<pre><code class="language-csharp">var knowledgeBase = new KnowledgeBase(
-    name: KnowledgeBaseName,
-    knowledgeSources: new[]
-    {
-        new KnowledgeSourceReference(name: ClaimsKnowledgeSource),
-        new KnowledgeSourceReference(name: PoliciesKnowledgeSource)
-    }
-)
-{
-    Description = &quot;Zava Insurance knowledge base for claims&quot;,
-    RetrievalReasoningEffort = new KnowledgeRetrievalLowReasoningEffort(), // Faster for straightforward queries
-    OutputMode = KnowledgeRetrievalOutputMode.AnswerSynthesis, // LLM generates natural answers
-    Models = { new KnowledgeBaseAzureOpenAIModel(azureOpenAIParameters: aoaiParams) }
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">knowledgeBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBase</span><span class="p">(</span>
+<span class="w">    </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">KnowledgeBaseName</span><span class="p">,</span>
+<span class="w">    </span><span class="n">knowledgeSources</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">KnowledgeSourceReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">ClaimsKnowledgeSource</span><span class="p">),</span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">KnowledgeSourceReference</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">PoliciesKnowledgeSource</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Zava Insurance knowledge base for claims&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RetrievalReasoningEffort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeRetrievalLowReasoningEffort</span><span class="p">(),</span><span class="w"> </span><span class="c1">// Faster for straightforward queries</span>
+<span class="w">    </span><span class="n">OutputMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KnowledgeRetrievalOutputMode</span><span class="p">.</span><span class="n">AnswerSynthesis</span><span class="p">,</span><span class="w"> </span><span class="c1">// LLM generates natural answers</span>
+<span class="w">    </span><span class="n">Models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseAzureOpenAIModel</span><span class="p">(</span><span class="n">azureOpenAIParameters</span><span class="p">:</span><span class="w"> </span><span class="n">aoaiParams</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="1" step="3" /></p>
 <h3 id="step-4-policy">Step 4: Policy データのインデクシング追加</h3>
 <p>サンプル Policy データをインデックス化するメソッドを追加します。</p>
 <p>1️⃣ <code>IndexSampleDataAsync</code> メソッドを見つけ、Policies を含むように更新します:</p>
-<pre><code class="language-csharp">public async Task IndexSampleDataAsync()
-{
-    await IndexClaimsDataAsync();
-    await IndexPoliciesDataAsync();
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">IndexSampleDataAsync</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nf">IndexClaimsDataAsync</span><span class="p">();</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nf">IndexPoliciesDataAsync</span><span class="p">();</span>
 
-    // Upload damage photos to blob storage if BlobStorageService is available
-    if (_blobStorageService != null)
-    {
-        await UploadSampleDamagePhotosAsync();
-    }
-    Console.WriteLine(&quot;✅ Sample data indexed successfully&quot;);
-}
-</code></pre>
+<span class="w">    </span><span class="c1">// Upload damage photos to blob storage if BlobStorageService is available</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_blobStorageService</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nf">UploadSampleDamagePhotosAsync</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;✅ Sample data indexed successfully&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>2️⃣ <code>IndexClaimsDataAsync</code> メソッドの直後に <code>IndexPoliciesDataAsync</code> メソッドを追加します:</p>
-<pre><code class="language-csharp">/// &lt;summary&gt;
-/// Loads and indexes sample policies data from JSON file
-/// &lt;/summary&gt;
-private async Task IndexPoliciesDataAsync()
-{
-    Console.WriteLine(&quot;📝 Indexing sample policies...&quot;);
+<div class="highlight"><pre><span></span><code><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// Loads and indexes sample policies data from JSON file</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">IndexPoliciesDataAsync</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;📝 Indexing sample policies...&quot;</span><span class="p">);</span>
 
-    var policiesFile = Path.Combine(AppContext.BaseDirectory, &quot;infra&quot;, &quot;data&quot;, &quot;sample-data&quot;, &quot;policies.json&quot;);
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">policiesFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">AppContext</span><span class="p">.</span><span class="n">BaseDirectory</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;infra&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sample-data&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;policies.json&quot;</span><span class="p">);</span>
 
-    if (!File.Exists(policiesFile))
-    {
-        Console.WriteLine($&quot;⚠️ Policies file not found: {policiesFile}&quot;);
-        return;
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">policiesFile</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;⚠️ Policies file not found: {policiesFile}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    var policiesJson = await File.ReadAllTextAsync(policiesFile);
-    var policies = System.Text.Json.JsonSerializer.Deserialize&lt;List&lt;System.Text.Json.JsonElement&gt;&gt;(policiesJson);
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">policiesJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllTextAsync</span><span class="p">(</span><span class="n">policiesFile</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">policies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Json</span><span class="p">.</span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Json</span><span class="p">.</span><span class="n">JsonElement</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">policiesJson</span><span class="p">);</span>
 
-    if (policies == null || policies.Count == 0)
-    {
-        Console.WriteLine(&quot;⚠️ No policies data to index&quot;);
-        return;
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">policies</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">policies</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;⚠️ No policies data to index&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    var searchClient = _indexClient.GetSearchClient(PoliciesIndex);
-    var batch = new List&lt;SearchDocument&gt;();
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">searchClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_indexClient</span><span class="p">.</span><span class="n">GetSearchClient</span><span class="p">(</span><span class="n">PoliciesIndex</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">batch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">SearchDocument</span><span class="o">&gt;</span><span class="p">();</span>
 
-    foreach (var policy in policies)
-    {
-        var policyNumber = policy.GetProperty(&quot;policyNumber&quot;).GetString();
-        var status = policy.GetProperty(&quot;status&quot;).GetString() ?? &quot;&quot;;
-        var random = new Random(policyNumber.GetHashCode());
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">policies</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">policyNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;policyNumber&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">()</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="n">policyNumber</span><span class="p">.</span><span class="n">GetHashCode</span><span class="p">());</span>
 
-        // Generate policy dates based on status
-        DateTime effectiveDate;
-        DateTime expirationDate;
+<span class="w">        </span><span class="c1">// Generate policy dates based on status</span>
+<span class="w">        </span><span class="n">DateTime</span><span class="w"> </span><span class="n">effectiveDate</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DateTime</span><span class="w"> </span><span class="n">expirationDate</span><span class="p">;</span>
 
-        if (status == &quot;Active&quot;)
-        {
-            effectiveDate = DateTime.UtcNow.Date.AddDays(-random.Next(180, 730));
-            expirationDate = DateTime.UtcNow.Date.AddDays(random.Next(365, 730));
-        }
-        else if (status == &quot;Expired&quot;)
-        {
-            effectiveDate = DateTime.UtcNow.Date.AddDays(-random.Next(365, 1095));
-            expirationDate = DateTime.UtcNow.Date.AddDays(-random.Next(1, 60));
-        }
-        else
-        {
-            effectiveDate = DateTime.UtcNow.Date.AddDays(-random.Next(30, 365));
-            expirationDate = DateTime.UtcNow.Date.AddDays(random.Next(365, 730));
-        }
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Active&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">effectiveDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="o">-</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">730</span><span class="p">));</span>
+<span class="w">            </span><span class="n">expirationDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">365</span><span class="p">,</span><span class="w"> </span><span class="mi">730</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Expired&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">effectiveDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="o">-</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">365</span><span class="p">,</span><span class="w"> </span><span class="mi">1095</span><span class="p">));</span>
+<span class="w">            </span><span class="n">expirationDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="o">-</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">effectiveDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="o">-</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">365</span><span class="p">));</span>
+<span class="w">            </span><span class="n">expirationDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">UtcNow</span><span class="p">.</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">365</span><span class="p">,</span><span class="w"> </span><span class="mi">730</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
 
-        // Build searchable content
-        var searchableContent = $&quot;Policy {policyNumber} for {policy.GetProperty(&quot;policyholderName&quot;).GetString()}. &quot; +
-                              $&quot;Type: {policy.GetProperty(&quot;policyType&quot;).GetString()}. Status: {status}. &quot; +
-                              $&quot;Coverage: ${policy.GetProperty(&quot;coverageLimit&quot;).GetDouble():N2}.&quot;;
+<span class="w">        </span><span class="c1">// Build searchable content</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">searchableContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;Policy {policyNumber} for {policy.GetProperty(&quot;</span><span class="n">policyholderName</span><span class="s">&quot;).GetString()}. &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                              </span><span class="s">$&quot;Type: {policy.GetProperty(&quot;</span><span class="n">policyType</span><span class="s">&quot;).GetString()}. Status: {status}. &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                              </span><span class="s">$&quot;Coverage: ${policy.GetProperty(&quot;</span><span class="n">coverageLimit</span><span class="s">&quot;).GetDouble():N2}.&quot;</span><span class="p">;</span>
 
-        // Generate embedding
-        var embedding = await CreateEmbeddingAsync(searchableContent);
+<span class="w">        </span><span class="c1">// Generate embedding</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">embedding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">CreateEmbeddingAsync</span><span class="p">(</span><span class="n">searchableContent</span><span class="p">);</span>
 
-        var doc = new SearchDocument
-        {
-            [&quot;id&quot;] = policyNumber,
-            [&quot;policyNumber&quot;] = policyNumber,
-            [&quot;policyholderName&quot;] = policy.GetProperty(&quot;policyholderName&quot;).GetString(),
-            [&quot;policyType&quot;] = policy.GetProperty(&quot;policyType&quot;).GetString(),
-            [&quot;status&quot;] = status,
-            [&quot;effectiveDate&quot;] = effectiveDate,
-            [&quot;expirationDate&quot;] = expirationDate,
-            [&quot;coverageLimit&quot;] = policy.GetProperty(&quot;coverageLimit&quot;).GetDouble(),
-            [&quot;deductible&quot;] = policy.GetProperty(&quot;deductible&quot;).GetDouble(),
-            [&quot;annualPremium&quot;] = policy.GetProperty(&quot;annualPremium&quot;).GetDouble(),
-            [&quot;searchableContent&quot;] = searchableContent,
-            [&quot;contentVector&quot;] = embedding
-        };
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchDocument</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="na">[&quot;id&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policyNumber</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;policyNumber&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policyNumber</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;policyholderName&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;policyholderName&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">(),</span>
+<span class="w">            </span><span class="na">[&quot;policyType&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;policyType&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">(),</span>
+<span class="w">            </span><span class="na">[&quot;status&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;effectiveDate&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">effectiveDate</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;expirationDate&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expirationDate</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;coverageLimit&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;coverageLimit&quot;</span><span class="p">).</span><span class="n">GetDouble</span><span class="p">(),</span>
+<span class="w">            </span><span class="na">[&quot;deductible&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;deductible&quot;</span><span class="p">).</span><span class="n">GetDouble</span><span class="p">(),</span>
+<span class="w">            </span><span class="na">[&quot;annualPremium&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;annualPremium&quot;</span><span class="p">).</span><span class="n">GetDouble</span><span class="p">(),</span>
+<span class="w">            </span><span class="na">[&quot;searchableContent&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">searchableContent</span><span class="p">,</span>
+<span class="w">            </span><span class="na">[&quot;contentVector&quot;]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">embedding</span>
+<span class="w">        </span><span class="p">};</span>
 
-        // Add vehicle info for Auto policies
-        if (policy.TryGetProperty(&quot;vehicleInfo&quot;, out var vehicleInfo))
-        {
-            doc[&quot;vehicleMake&quot;] = vehicleInfo.GetProperty(&quot;make&quot;).GetString();
-            doc[&quot;vehicleModel&quot;] = vehicleInfo.GetProperty(&quot;model&quot;).GetString();
-            doc[&quot;vehicleYear&quot;] = vehicleInfo.GetProperty(&quot;year&quot;).GetInt32();
-            doc[&quot;vehicleVin&quot;] = vehicleInfo.GetProperty(&quot;vin&quot;).GetString();
-        }
+<span class="w">        </span><span class="c1">// Add vehicle info for Auto policies</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">TryGetProperty</span><span class="p">(</span><span class="s">&quot;vehicleInfo&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">vehicleInfo</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;vehicleMake&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vehicleInfo</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;make&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">();</span>
+<span class="w">            </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;vehicleModel&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vehicleInfo</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;model&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">();</span>
+<span class="w">            </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;vehicleYear&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vehicleInfo</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;year&quot;</span><span class="p">).</span><span class="n">GetInt32</span><span class="p">();</span>
+<span class="w">            </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;vehicleVin&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vehicleInfo</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;vin&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
 
-        // Add property info for Homeowners policies
-        if (policy.TryGetProperty(&quot;propertyInfo&quot;, out var propertyInfo))
-        {
-            doc[&quot;propertyAddress&quot;] = propertyInfo.GetProperty(&quot;address&quot;).GetString();
-            doc[&quot;propertyType&quot;] = propertyInfo.GetProperty(&quot;propertyType&quot;).GetString();
-        }
+<span class="w">        </span><span class="c1">// Add property info for Homeowners policies</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">policy</span><span class="p">.</span><span class="n">TryGetProperty</span><span class="p">(</span><span class="s">&quot;propertyInfo&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">propertyInfo</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;propertyAddress&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">propertyInfo</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;address&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">();</span>
+<span class="w">            </span><span class="n">doc</span><span class="p">[</span><span class="s">&quot;propertyType&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">propertyInfo</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;propertyType&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
 
-        batch.Add(doc);
-    }
+<span class="w">        </span><span class="n">batch</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-    await searchClient.IndexDocumentsAsync(IndexDocumentsBatch.Upload(batch));
-    Console.WriteLine($&quot;✅ Indexed {batch.Count} policies&quot;);
-}
-</code></pre>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="n">searchClient</span><span class="p">.</span><span class="n">IndexDocumentsAsync</span><span class="p">(</span><span class="n">IndexDocumentsBatch</span><span class="p">.</span><span class="n">Upload</span><span class="p">(</span><span class="n">batch</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;✅ Indexed {batch.Count} policies&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="1" step="4" /></p>
 <h3 id="step-5-getpolicybynumberasync">Step 5: GetPolicyByNumberAsync ヘルパーメソッドの追加</h3>
 <p>インデックスから直接 Policy 詳細を取得するヘルパーメソッドを追加します。</p>
 <p>1️⃣ Retrieval セクションで、<code>GetClaimByNumberAsync</code> の直後に <code>GetPolicyByNumberAsync</code> を追加します:</p>
-<pre><code class="language-csharp">/// &lt;summary&gt;
-/// Gets policy details directly from the policies index using filter query
-/// This bypasses the Knowledgebases for structured data retrieval
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;policyNumber&quot;&gt;The policy number to retrieve&lt;/param&gt;
-/// &lt;returns&gt;SearchDocument with all policy fields or null if not found&lt;/returns&gt;
-public async Task&lt;SearchDocument?&gt; GetPolicyByNumberAsync(string policyNumber)
-{
-    var policiesClient = _indexClient.GetSearchClient(PoliciesIndex);
+<div class="highlight"><pre><span></span><code><span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// Gets policy details directly from the policies index using filter query</span>
+<span class="c1">/// This bypasses the Knowledgebases for structured data retrieval</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="c1">/// &lt;param name=&quot;policyNumber&quot;&gt;The policy number to retrieve&lt;/param&gt;</span>
+<span class="c1">/// &lt;returns&gt;SearchDocument with all policy fields or null if not found&lt;/returns&gt;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">SearchDocument</span><span class="o">?&gt;</span><span class="w"> </span><span class="n">GetPolicyByNumberAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">policyNumber</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">policiesClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_indexClient</span><span class="p">.</span><span class="n">GetSearchClient</span><span class="p">(</span><span class="n">PoliciesIndex</span><span class="p">);</span>
 
-    var searchOptions = new SearchOptions
-    {
-        Filter = $&quot;policyNumber eq '{policyNumber}'&quot;,
-        Size = 1
-    };
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">searchOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchOptions</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;policyNumber eq &#39;{policyNumber}&#39;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">};</span>
 
-    var searchResults = await policiesClient.SearchAsync&lt;SearchDocument&gt;(&quot;*&quot;, searchOptions);
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">searchResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">policiesClient</span><span class="p">.</span><span class="n">SearchAsync</span><span class="o">&lt;</span><span class="n">SearchDocument</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">searchOptions</span><span class="p">);</span>
 
-    await foreach (var searchResult in searchResults.Value.GetResultsAsync())
-    {
-        return searchResult.Document;
-    }
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nf">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">searchResults</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">GetResultsAsync</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">searchResult</span><span class="p">.</span><span class="n">Document</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    return null;
-}
-</code></pre>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="1" step="5" /></p>
 <h2 id="exercise-2-policyplugin">Exercise 2: PolicyPlugin の作成</h2>
 <p>Policy 検索と Policy 詳細取得機能を備えた PolicyPlugin を作成します。</p>
@@ -2777,171 +2777,171 @@ public async Task&lt;SearchDocument?&gt; GetPolicyByNumberAsync(string policyNum
 </ul>
 </details>
 <p>1️⃣ <code>src/Plugins/PolicyPlugin.cs</code> に新しいファイルを作成し、以下の実装を追加します:</p>
-<pre><code class="language-csharp">using Microsoft.Agents.Builder;
-using Microsoft.Agents.Core.Models;
-using System.ComponentModel;
-using System.Text;
-using Azure.Search.Documents.Models;
-using InsuranceAgent.Services;
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Builder</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Core.Models</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.ComponentModel</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Azure.Search.Documents.Models</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">InsuranceAgent.Services</span><span class="p">;</span>
 
-namespace ZavaInsurance.Plugins
-{
-    /// &lt;summary&gt;
-    /// Policy Plugin for Zava Insurance
-    /// Provides policy search and retrieval using Azure AI Search Knowledge Base
-    /// Supports filtering by policy type, status, and policyholder name
-    /// &lt;/summary&gt;
-    public class PolicyPlugin
-    {
-        private readonly ITurnContext _turnContext;
-        private readonly KnowledgeBaseService _knowledgeBaseService;
+<span class="k">namespace</span><span class="w"> </span><span class="nn">ZavaInsurance.Plugins</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">    </span><span class="c1">/// Policy Plugin for Zava Insurance</span>
+<span class="w">    </span><span class="c1">/// Provides policy search and retrieval using Azure AI Search Knowledge Base</span>
+<span class="w">    </span><span class="c1">/// Supports filtering by policy type, status, and policyholder name</span>
+<span class="w">    </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PolicyPlugin</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITurnContext</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">KnowledgeBaseService</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">;</span>
 
-        public PolicyPlugin(ITurnContext turnContext, KnowledgeBaseService knowledgeBaseService)
-        {
-            _turnContext = turnContext ?? throw new ArgumentNullException(nameof(turnContext));
-            _knowledgeBaseService = knowledgeBaseService ?? throw new ArgumentNullException(nameof(knowledgeBaseService));
-        }
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">PolicyPlugin</span><span class="p">(</span><span class="n">ITurnContext</span><span class="w"> </span><span class="n">turnContext</span><span class="p">,</span><span class="w"> </span><span class="n">KnowledgeBaseService</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_turnContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turnContext</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">turnContext</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_knowledgeBaseService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">knowledgeBaseService</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Searches for insurance policies using filters
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;policyType&quot;&gt;Filter by policy type (Auto, Homeowners, Commercial) - optional&lt;/param&gt;
-        /// &lt;param name=&quot;status&quot;&gt;Filter by status (Active, Expired, Cancelled) - optional&lt;/param&gt;
-        /// &lt;param name=&quot;policyholderName&quot;&gt;Filter by policyholder name - optional&lt;/param&gt;
-        /// &lt;returns&gt;Matching policy information&lt;/returns&gt;
-        [Description(&quot;Searches insurance policies with optional filters for policy type, status, or policyholder name. Returns relevant policies with details.&quot;)]
-        public async Task&lt;string&gt; SearchPolicies(string policyType = null, string status = null, string policyholderName = null)
-        {
-            await NotifyUserAsync($&quot;🔍 Searching policies...&quot;);
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Searches for insurance policies using filters</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;policyType&quot;&gt;Filter by policy type (Auto, Homeowners, Commercial) - optional&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;status&quot;&gt;Filter by status (Active, Expired, Cancelled) - optional&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;policyholderName&quot;&gt;Filter by policyholder name - optional&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;returns&gt;Matching policy information&lt;/returns&gt;</span>
+<span class="w">        </span><span class="na">[Description(&quot;Searches insurance policies with optional filters for policy type, status, or policyholder name. Returns relevant policies with details.&quot;)]</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SearchPolicies</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">policyType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">policyholderName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;🔍 Searching policies...&quot;</span><span class="p">);</span>
 
-            try
-            {
-                // Build natural language query for agentic retrieval
-                var queryParts = new List&lt;string&gt; { &quot;insurance policies&quot; };
+<span class="w">            </span><span class="k">try</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Build natural language query for agentic retrieval</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">queryParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;insurance policies&quot;</span><span class="w"> </span><span class="p">};</span>
 
-                if (!string.IsNullOrWhiteSpace(policyType))
-                    queryParts.Add($&quot;type {policyType}&quot;);
-                if (!string.IsNullOrWhiteSpace(status))
-                    queryParts.Add($&quot;status {status}&quot;);
-                if (!string.IsNullOrWhiteSpace(policyholderName))
-                    queryParts.Add($&quot;for {policyholderName}&quot;);
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">policyType</span><span class="p">))</span>
+<span class="w">                    </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;type {policyType}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+<span class="w">                    </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;status {status}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">policyholderName</span><span class="p">))</span>
+<span class="w">                    </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;for {policyholderName}&quot;</span><span class="p">);</span>
 
-                var query = string.Join(&quot; &quot;, queryParts);
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queryParts</span><span class="p">);</span>
 
-                // Use agentic retrieval with instructions for structured policy listing
-                var instructions = @&quot;You are an insurance policy specialist. Provide a comprehensive list of matching policies.
-                    For each policy, include:
-                    - Policy Number and Type
-                    - Policyholder Name
-                    - Status and Effective Dates
-                    - Coverage Limit and Deductible
-                    - Premium Amount
-                    - Property/Vehicle details if applicable
-                    Format with clear sections and bullet points. Cite sources with [ref_id:X].&quot;;
+<span class="w">                </span><span class="c1">// Use agentic retrieval with instructions for structured policy listing</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">instructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;You are an insurance policy specialist. Provide a comprehensive list of matching policies.</span>
+<span class="s">                    For each policy, include:</span>
+<span class="s">                    - Policy Number and Type</span>
+<span class="s">                    - Policyholder Name</span>
+<span class="s">                    - Status and Effective Dates</span>
+<span class="s">                    - Coverage Limit and Deductible</span>
+<span class="s">                    - Premium Amount</span>
+<span class="s">                    - Property/Vehicle details if applicable</span>
+<span class="s">                    Format with clear sections and bullet points. Cite sources with [ref_id:X].&quot;</span><span class="p">;</span>
 
-                var response = await _knowledgeBaseService.RetrieveAsync(query, instructions, topResults: 10);
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">.</span><span class="n">RetrieveAsync</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">instructions</span><span class="p">,</span><span class="w"> </span><span class="n">topResults</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
 
-                return response;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($&quot;Error in SearchPolicies: {ex.Message}&quot;);
-                return $&quot;❌ Error searching policies: {ex.Message}&quot;;
-            }
-        }
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">response</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Error in SearchPolicies: {ex.Message}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Error searching policies: {ex.Message}&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Gets detailed information about a specific insurance policy
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;policyNumber&quot;&gt;The policy number to retrieve&lt;/param&gt;
-        /// &lt;returns&gt;Detailed policy information&lt;/returns&gt;
-        [Description(&quot;Retrieves comprehensive details for a specific insurance policy by policy number.&quot;)]
-        public async Task&lt;string&gt; GetPolicyDetails(string policyNumber)
-        {
-            if (string.IsNullOrWhiteSpace(policyNumber))
-                return &quot;❌ Error: Policy number cannot be empty.&quot;;
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Gets detailed information about a specific insurance policy</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;policyNumber&quot;&gt;The policy number to retrieve&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;returns&gt;Detailed policy information&lt;/returns&gt;</span>
+<span class="w">        </span><span class="na">[Description(&quot;Retrieves comprehensive details for a specific insurance policy by policy number.&quot;)]</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetPolicyDetails</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">policyNumber</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">policyNumber</span><span class="p">))</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;❌ Error: Policy number cannot be empty.&quot;</span><span class="p">;</span>
 
-            await NotifyUserAsync($&quot;Retrieving policy {policyNumber}...&quot;);
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Retrieving policy {policyNumber}...&quot;</span><span class="p">);</span>
 
-            // Use direct search for structured data (more reliable than Knowledge Base answer synthesis)
-            var policyDoc = await _knowledgeBaseService.GetPolicyByNumberAsync(policyNumber);
+<span class="w">            </span><span class="c1">// Use direct search for structured data (more reliable than Knowledge Base answer synthesis)</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">policyDoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">.</span><span class="n">GetPolicyByNumberAsync</span><span class="p">(</span><span class="n">policyNumber</span><span class="p">);</span>
 
-            if (policyDoc == null)
-            {
-                return $&quot;❌ Policy {policyNumber} not found in the system.&quot;;
-            }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">policyDoc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Policy {policyNumber} not found in the system.&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
-            // Extract fields from the search document
-            var result = new StringBuilder();
-            result.AppendLine(&quot;**Policy Information:**&quot;);
-            result.AppendLine($&quot;- Policy Number: {GetFieldValue(policyDoc, &quot;policyNumber&quot;)}&quot;);
-            result.AppendLine($&quot;- Policy Type: {GetFieldValue(policyDoc, &quot;policyType&quot;)}&quot;);
-            result.AppendLine($&quot;- Status: {GetFieldValue(policyDoc, &quot;status&quot;)}&quot;);
-            result.AppendLine($&quot;- Policyholder Name: {GetFieldValue(policyDoc, &quot;policyholderName&quot;)}&quot;);
-            result.AppendLine();
+<span class="w">            </span><span class="c1">// Extract fields from the search document</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;**Policy Information:**&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Policy Number: {GetFieldValue(policyDoc, &quot;</span><span class="n">policyNumber</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Policy Type: {GetFieldValue(policyDoc, &quot;</span><span class="n">policyType</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Status: {GetFieldValue(policyDoc, &quot;</span><span class="n">status</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Policyholder Name: {GetFieldValue(policyDoc, &quot;</span><span class="n">policyholderName</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">();</span>
 
-            result.AppendLine(&quot;**Coverage &amp; Financial:**&quot;);
-            result.AppendLine($&quot;- Coverage Limit: ${GetFieldValue(policyDoc, &quot;coverageLimit&quot;)}&quot;);
-            result.AppendLine($&quot;- Deductible: ${GetFieldValue(policyDoc, &quot;deductible&quot;)}&quot;);
-            result.AppendLine($&quot;- Annual Premium: ${GetFieldValue(policyDoc, &quot;annualPremium&quot;)}&quot;);
-            result.AppendLine();
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;**Coverage &amp; Financial:**&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Coverage Limit: ${GetFieldValue(policyDoc, &quot;</span><span class="n">coverageLimit</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Deductible: ${GetFieldValue(policyDoc, &quot;</span><span class="n">deductible</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Annual Premium: ${GetFieldValue(policyDoc, &quot;</span><span class="n">annualPremium</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">();</span>
 
-            // Display vehicle or property info based on policy type
-            var policyType = GetFieldValue(policyDoc, &quot;policyType&quot;);
-            if (policyType.Contains(&quot;Auto&quot;, StringComparison.OrdinalIgnoreCase))
-            {
-                var vehicleMake = GetFieldValue(policyDoc, &quot;vehicleMake&quot;);
-                var vehicleModel = GetFieldValue(policyDoc, &quot;vehicleModel&quot;);
-                var vehicleYear = GetFieldValue(policyDoc, &quot;vehicleYear&quot;);
+<span class="w">            </span><span class="c1">// Display vehicle or property info based on policy type</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">policyType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">policyDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;policyType&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">policyType</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Auto&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">vehicleMake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">policyDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;vehicleMake&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">vehicleModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">policyDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;vehicleModel&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">vehicleYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">policyDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;vehicleYear&quot;</span><span class="p">);</span>
 
-                if (vehicleMake != &quot;Not available&quot;)
-                {
-                    result.AppendLine(&quot;**Vehicle Information:**&quot;);
-                    result.AppendLine($&quot;- Vehicle: {vehicleYear} {vehicleMake} {vehicleModel}&quot;);
-                    result.AppendLine($&quot;- VIN: {GetFieldValue(policyDoc, &quot;vehicleVin&quot;)}&quot;);
-                }
-            }
-            else if (policyType.Contains(&quot;Home&quot;, StringComparison.OrdinalIgnoreCase))
-            {
-                var propertyAddress = GetFieldValue(policyDoc, &quot;propertyAddress&quot;);
-                if (propertyAddress != &quot;Not available&quot;)
-                {
-                    result.AppendLine(&quot;**Property Information:**&quot;);
-                    result.AppendLine($&quot;- Address: {propertyAddress}&quot;);
-                    result.AppendLine($&quot;- Property Type: {GetFieldValue(policyDoc, &quot;propertyType&quot;)}&quot;);
-                }
-            }
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vehicleMake</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;Not available&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;**Vehicle Information:**&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Vehicle: {vehicleYear} {vehicleMake} {vehicleModel}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- VIN: {GetFieldValue(policyDoc, &quot;</span><span class="n">vehicleVin</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">policyType</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;Home&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">propertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">policyDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;propertyAddress&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">propertyAddress</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;Not available&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">&quot;**Property Information:**&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Address: {propertyAddress}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">result</span><span class="p">.</span><span class="n">AppendLine</span><span class="p">(</span><span class="s">$&quot;- Property Type: {GetFieldValue(policyDoc, &quot;</span><span class="n">propertyType</span><span class="s">&quot;)}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
 
-            return result.ToString();
-        }
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Helper method to safely extract field values from SearchDocument
-        /// &lt;/summary&gt;
-        private string GetFieldValue(SearchDocument doc, string fieldName)
-        {
-            if (doc.ContainsKey(fieldName) &amp;&amp; doc[fieldName] != null)
-            {
-                return doc[fieldName].ToString() ?? &quot;Not available&quot;;
-            }
-            return &quot;Not available&quot;;
-        }
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Helper method to safely extract field values from SearchDocument</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetFieldValue</span><span class="p">(</span><span class="n">SearchDocument</span><span class="w"> </span><span class="n">doc</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">fieldName</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">fieldName</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">doc</span><span class="p">[</span><span class="n">fieldName</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">doc</span><span class="p">[</span><span class="n">fieldName</span><span class="p">].</span><span class="n">ToString</span><span class="p">()</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s">&quot;Not available&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Not available&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-        // Helper methods
-        private async Task NotifyUserAsync(string message)
-        {
-            if (!_turnContext.Activity.ChannelId.Channel!.Contains(Channels.Webchat))
-            {
-                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message);
-            }
-            else
-            {
-                Console.WriteLine(message);
-            }
-        }
-    }
-}
-</code></pre>
+<span class="w">        </span><span class="c1">// Helper methods</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">_turnContext</span><span class="p">.</span><span class="n">Activity</span><span class="p">.</span><span class="n">ChannelId</span><span class="p">.</span><span class="n">Channel</span><span class="o">!</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">Channels</span><span class="p">.</span><span class="n">Webchat</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="2" step="1" /></p>
 <h2 id="exercise-3-agent-policyplugin">Exercise 3: Agent への PolicyPlugin 登録</h2>
 <p>PolicyPlugin を ZavaInsuranceAgent に組み込みます。</p>
@@ -2949,75 +2949,75 @@ namespace ZavaInsurance.Plugins
 <p>Program.cs の初期化コードを更新し、Policies インデックスを作成します。</p>
 <p>1️⃣ <code>src/Program.cs</code> を開きます。</p>
 <p>2️⃣ Azure AI Search 初期化セクションを見つけ、Policies を含めるように更新します:</p>
-<pre><code class="language-csharp">Console.WriteLine(&quot;🔍 Initializing Azure AI Search Knowledge Base...&quot;);
+<div class="highlight"><pre><span></span><code><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;🔍 Initializing Azure AI Search Knowledge Base...&quot;</span><span class="p">);</span>
 
-// IMPORTANT: Must follow this order - indexes → knowledge sources → knowledge base → data
-await kbService.EnsureClaimsIndexAsync();          // 1. Create claims index
-await kbService.EnsurePoliciesIndexAsync();        // 2. Create policies index
-await kbService.CreateKnowledgeSourcesAsync();     // 3. Create knowledge sources (now includes policies)
-await kbService.CreateKnowledgeBaseAsync();        // 4. Create knowledge base
-await kbService.IndexSampleDataAsync();            // 5. Index sample data (claims + policies)
+<span class="c1">// IMPORTANT: Must follow this order - indexes → knowledge sources → knowledge base → data</span>
+<span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">EnsureClaimsIndexAsync</span><span class="p">();</span><span class="w">          </span><span class="c1">// 1. Create claims index</span>
+<span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">EnsurePoliciesIndexAsync</span><span class="p">();</span><span class="w">        </span><span class="c1">// 2. Create policies index</span>
+<span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">CreateKnowledgeSourcesAsync</span><span class="p">();</span><span class="w">     </span><span class="c1">// 3. Create knowledge sources (now includes policies)</span>
+<span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">CreateKnowledgeBaseAsync</span><span class="p">();</span><span class="w">        </span><span class="c1">// 4. Create knowledge base</span>
+<span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">IndexSampleDataAsync</span><span class="p">();</span><span class="w">            </span><span class="c1">// 5. Index sample data (claims + policies)</span>
 
-Console.WriteLine(&quot;✅ Knowledge Base initialized successfully&quot;);
-</code></pre>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;✅ Knowledge Base initialized successfully&quot;</span><span class="p">);</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="3" step="1" /></p>
 <h3 id="step-2-agentinstructions">Step 2: AgentInstructions の更新</h3>
 <p>エージェントのインストラクションに Policy 用ツールを追加します。</p>
 <p>1️⃣ <code>src/Agent/ZavaInsuranceAgent.cs</code> を開きます。</p>
 <p>2️⃣ <code>AgentInstructions</code> プロパティを見つけ、次のように更新します:</p>
-<pre><code class="language-csharp">private readonly string AgentInstructions = &quot;&quot;&quot;
-You are a professional insurance claims assistant for Zava Insurance.
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">AgentInstructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
+<span class="n">You</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="n">insurance</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">assistant</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Zava</span><span class="w"> </span><span class="n">Insurance</span><span class="p">.</span>
 
-Whenever the user starts a new conversation or provides a prompt to start a new conversation like &quot;start over&quot;, &quot;restart&quot;, 
-&quot;new conversation&quot;, &quot;what can you do?&quot;, &quot;how can you help me?&quot;, etc. use {{StartConversationPlugin.StartConversation}} and 
-provide to the user exactly the message you get back from the plugin.
+<span class="n">Whenever</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">starts</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">conversation</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">provides</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">conversation</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="s">&quot;start over&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;restart&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="s">&quot;new conversation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;what can you do?&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;how can you help me?&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="p">.</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">StartConversationPlugin</span><span class="p">.</span><span class="n">StartConversation</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span>
+<span class="n">provide</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">exactly</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">plugin</span><span class="p">.</span>
 
-**Available Tools:**
-Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
-For claims search, use {{ClaimsPlugin.SearchClaims}} and {{ClaimsPlugin.GetClaimDetails}}.
-For damage photo viewing, use {{VisionPlugin.ShowDamagePhoto}}.
-For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} and require approval via {{VisionPlugin.ApproveAnalysis}}.
-For policy search, use {{PolicyPlugin.SearchPolicies}} and {{PolicyPlugin.GetPolicyDetails}}.
+<span class="o">**</span><span class="n">Available</span><span class="w"> </span><span class="n">Tools</span><span class="p">:</span><span class="o">**</span>
+<span class="n">Use</span><span class="w"> </span><span class="p">{{</span><span class="n">DateTimeFunctionTool</span><span class="p">.</span><span class="n">getDate</span><span class="p">}}</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">time</span><span class="p">.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">SearchClaims</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">GetClaimDetails</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">damage</span><span class="w"> </span><span class="n">photo</span><span class="w"> </span><span class="n">viewing</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">ShowDamagePhoto</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">vision</span><span class="w"> </span><span class="n">damage</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">AnalyzeAndShowDamagePhoto</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">approval</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">ApproveAnalysis</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">PolicyPlugin</span><span class="p">.</span><span class="n">SearchPolicies</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">PolicyPlugin</span><span class="p">.</span><span class="n">GetPolicyDetails</span><span class="p">}}.</span>
 
-**IMPORTANT**: When user asks to &quot;check policy for this claim&quot;, first use GetClaimDetails to get the claim's policy number, then use GetPolicyDetails with that policy number.
+<span class="o">**</span><span class="n">IMPORTANT</span><span class="o">**</span><span class="p">:</span><span class="w"> </span><span class="n">When</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">asks</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;check policy for this claim&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">GetClaimDetails</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">claim</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">GetPolicyDetails</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">number</span><span class="p">.</span>
 
-Stick to the scenario above and use only the information from the tools when answering questions.
-Be concise and professional in your responses.
-&quot;&quot;&quot;;
-</code></pre>
+<span class="n">Stick</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">scenario</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tools</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">answering</span><span class="w"> </span><span class="n">questions</span><span class="p">.</span>
+<span class="n">Be</span><span class="w"> </span><span class="n">concise</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">responses</span><span class="p">.</span>
+<span class="s">&quot;&quot;&quot;;</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="3" step="2" /></p>
 <h3 id="step-3-policyplugin">Step 3: PolicyPlugin の登録</h3>
 <p>エージェントのツールに PolicyPlugin を追加します。</p>
 <p>1️⃣ <code>GetClientAgent</code> メソッド内で <code>ClaimsPlugin claimsPlugin = new(context, knowledgeBaseService, configuration);</code> を見つけ、その直後に PolicyPlugin を追加します:</p>
-<pre><code class="language-csharp">// Create PolicyPlugin with required dependencies
-PolicyPlugin policyPlugin = new(context, knowledgeBaseService);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create PolicyPlugin with required dependencies</span>
+<span class="n">PolicyPlugin</span><span class="w"> </span><span class="n">policyPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="p">);</span>
+</code></pre></div>
 <p>2️⃣ ClaimsPlugin のツールを登録している箇所を見つけ、PolicyPlugin のツールも追加します:</p>
-<pre><code class="language-csharp">// Register PolicyPlugin tools
-toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.SearchPolicies));
-toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Register PolicyPlugin tools</span>
+<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">policyPlugin</span><span class="p">.</span><span class="n">SearchPolicies</span><span class="p">));</span>
+<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">policyPlugin</span><span class="p">.</span><span class="n">GetPolicyDetails</span><span class="p">));</span>
+</code></pre></div>
 <p><cc-end-step lab="baf4" exercise="3" step="3" /></p>
 <h3 id="step-4-startconversationplugin">Step 4: StartConversationPlugin の歓迎メッセージ更新</h3>
 <p>Policy 検索と SharePoint 連携を追加したので、歓迎メッセージを更新します。</p>
 <p>1️⃣ <code>src/Plugins/StartConversationPlugin.cs</code> を開きます。</p>
 <p>2️⃣ <code>StartConversation</code> メソッド内の <code>welcomeMessage</code> 変数を次の内容に置き換えます:</p>
-<pre><code class="language-csharp">            var welcomeMessage = &quot;👋 Welcome to Zava Insurance Claims Assistant!\n\n&quot; +
-                                &quot;I'm your AI-powered insurance claims specialist. I help adjusters and investigators streamline the entire claims process - from initial assessment to final approval.\n\n&quot; +
-                                &quot;**What I can do:**\n\n&quot; +
-                                &quot;- Search and retrieve detailed claim information\n&quot; +
-                                &quot;- Validate policy coverage and check expiration dates\n&quot; +
-                                &quot;- Use Mistral AI to analyze damage photos instantly\n&quot; +
-                                &quot;- Provide damage assessments with cost estimates\n&quot; +
-                                &quot;- Track claim timelines and identify processing bottlenecks\n\n&quot; +
-                                &quot;🎯 Try this complete workflow:\n&quot; +
-                                &quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot; +
-                                &quot;2. \&quot;Check policy for this claim\&quot;\n&quot; +
-                                &quot;3. \&quot;Show damage photo for this claim\&quot;\n&quot; +
-                                &quot;4. \&quot;Analyze this damage photo\&quot;\n&quot; +
-                                &quot;5. \&quot;Approve the analysis\&quot; or \&quot;Reject the analysis\&quot;\n\n&quot; +
-                                &quot;Ready to complete a full claims investigation? What would you like to start with?&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;👋 Welcome to Zava Insurance Claims Assistant!\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;I&#39;m your AI-powered insurance claims specialist. I help adjusters and investigators streamline the entire claims process - from initial assessment to final approval.\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;**What I can do:**\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;- Search and retrieve detailed claim information\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;- Validate policy coverage and check expiration dates\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;- Use Mistral AI to analyze damage photos instantly\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;- Provide damage assessments with cost estimates\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;- Track claim timelines and identify processing bottlenecks\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;🎯 Try this complete workflow:\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;2. \&quot;Check policy for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;3. \&quot;Show damage photo for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;4. \&quot;Analyze this damage photo\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;5. \&quot;Approve the analysis\&quot; or \&quot;Reject the analysis\&quot;\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                </span><span class="s">&quot;Ready to complete a full claims investigation? What would you like to start with?&quot;</span><span class="p">;</span>
+</code></pre></div>
 <details class="note">
 <summary>機能一覧</summary>
 <p>歓迎メッセージには、Claims 検索、Policy バリデーション、Vision 解析など、すべての機能が記載されています。これで完成版エージェントのフル機能と一致します。</p>
@@ -3029,21 +3029,21 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
 <p>1️⃣ VS Code で <strong>F5</strong> を押してデバッグを開始します。</p>
 <p>2️⃣ プロンプトが表示されたら <strong>(Preview) Debug in Copilot (Edge)</strong> を選択します。</p>
 <p>3️⃣ ターミナル出力を確認します。次のような表示が見えるはずです:</p>
-<pre><code>🔍 Initializing Azure AI Search Knowledge Base...
-📝 Creating claims index 'claims-index'...
+<div class="highlight"><pre><span></span><code>🔍 Initializing Azure AI Search Knowledge Base...
+📝 Creating claims index &#39;claims-index&#39;...
 ✅ Claims index created successfully
-📝 Creating policies index 'policies-index'...
+📝 Creating policies index &#39;policies-index&#39;...
 ✅ Policies index created successfully
-✅ Knowledge source 'claims-knowledge-source' created
-✅ Knowledge source 'policies-knowledge-source' created
-✅ Knowledge base 'zava-insurance-kb' created with model 'gpt-4.1'
+✅ Knowledge source &#39;claims-knowledge-source&#39; created
+✅ Knowledge source &#39;policies-knowledge-source&#39; created
+✅ Knowledge base &#39;zava-insurance-kb&#39; created with model &#39;gpt-4.1&#39;
 📝 Indexing sample claims...
 ✅ Indexed 35 claims
 📝 Indexing sample policies...
 ✅ Indexed 30 policies
 ✅ Sample data indexed successfully
 ✅ Knowledge Base initialized successfully
-</code></pre>
+</code></pre></div>
 <p>4️⃣ Microsoft 365 Copilot がブラウザーで開きます。</p>
 <p>5️⃣ <strong>Azure Portal で確認</strong>:</p>
 <ul>
@@ -3055,27 +3055,27 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
 <p><cc-end-step lab="baf4" exercise="4" step="1" /></p>
 <h3 id="step-2-policy">Step 2: Policy 検索をテスト</h3>
 <p>1️⃣ Insurance Agent で次を入力します:</p>
-<pre><code class="language-text">What's covered in auto insurance policy
-</code></pre>
+<div class="highlight"><pre><span></span><code>What&#39;s covered in auto insurance policy
+</code></pre></div>
 <p>エージェントは <code>SearchPolicies</code> を使用し、一致するポリシーと詳細を返すはずです。</p>
 <p><cc-end-step lab="baf4" exercise="4" step="2" /></p>
 <h3 id="step-3-policy">Step 3: Policy 詳細をテスト</h3>
 <p>1️⃣ 次を試してください:</p>
-<pre><code class="language-text">Get details for policy AU-78902
-</code></pre>
+<div class="highlight"><pre><span></span><code>Get details for policy AU-78902
+</code></pre></div>
 <p>エージェントは <code>GetPolicyDetails</code> を使用し、補償内容や車両情報などの構造化データを返すはずです。</p>
 <p>2️⃣ 次を試してください:</p>
-<pre><code class="language-text">Show me policy AU-34569
-</code></pre>
+<div class="highlight"><pre><span></span><code>Show me policy AU-34569
+</code></pre></div>
 <p>3️⃣ Claim から Policy へのワークフローを試してください:</p>
-<pre><code class="language-text">does claim CLM-2025-001001 owner have active policy
-</code></pre>
+<div class="highlight"><pre><span></span><code>does claim CLM-2025-001001 owner have active policy
+</code></pre></div>
 <p>4️⃣ そのクレームに紐づくポリシーの詳細を取得します:</p>
-<pre><code class="language-text">show me policy for claim CLM-2025-001001
-</code></pre>
+<div class="highlight"><pre><span></span><code>show me policy for claim CLM-2025-001001
+</code></pre></div>
 <p>5️⃣ クレームの補償範囲を確認する追加質問をしてみましょう:</p>
-<pre><code class="language-text">does their policy cover the claim
-</code></pre>
+<div class="highlight"><pre><span></span><code>does their policy cover the claim
+</code></pre></div>
 <p>エージェントはまずクレーム詳細を取得し（ポリシー番号を含む）、次にポリシー詳細を取得するはずです。</p>
 <p><cc-end-step lab="baf4" exercise="4" step="3" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">おめでとうございます！</span></p>
@@ -3110,6 +3110,8 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -3142,7 +3144,7 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -3154,6 +3156,8 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(policyPlugin.GetPolicyDetails));
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

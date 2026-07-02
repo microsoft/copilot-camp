@@ -2436,12 +2436,12 @@
 <p>完成サンプルでは永続的な developer トンネルを使用しています。永続的な developer トンネルを利用しない場合は調整が必要です。演習 1 を参照してください。 </p>
 </div>
 <p>このラボでは API を登録する際に、後続の手順で使用するため Entra ID ポータルおよび Teams Developer Portal からいくつかの値を保存する必要があります。保存する値は次のとおりです。</p>
-<pre><code class="language-text">API Base URL: 
-API's Entra ID application ID: 
-API's Tenant ID: 
+<div class="highlight"><pre><span></span><code>API Base URL: 
+API&#39;s Entra ID application ID: 
+API&#39;s Tenant ID: 
 SSO Client registration: 
 API ID URI: 
-</code></pre>
+</code></pre></div>
 <h2 id="1-developer">演習 1: 永続的な developer トンネルを設定する (任意)</h2>
 <p>既定では Agents Toolkit はプロジェクトを開始するたびに新しい developer トンネル (つまりローカルで実行中の API にアクセスするための新しい URL) を作成します。通常は Agents Toolkit が必要な場所を自動的に更新するため問題ありませんが、このラボでは手動設定を行うため、デバッガーを開始するたびに Entra ID と Teams Developer Portal の URL を手動で更新する必要があります。そのため、URL が変わらない永続的な developer トンネルを設定すると便利です。</p>
 <details class="note">
@@ -2479,36 +2479,36 @@ API ID URI:
 <p><code>devtunnel</code> コマンドが動作するよう、コマンド ラインを再起動する必要がある場合があります。</p>
 </div>
 <p>インストールが完了したらログインします。Microsoft 365 アカウントでログインできます。</p>
-<pre><code class="language-sh">devtunnel user login
-</code></pre>
+<div class="highlight"><pre><span></span><code>devtunnel<span class="w"> </span>user<span class="w"> </span>login
+</code></pre></div>
 <p>このラボの演習を行っている間は、<code>devtunnel</code> コマンドを実行したままにしておいてください。再起動が必要になった場合は <code>devtunnel user login</code> を再実行します。</p>
 <p><cc-end-step lab="e6c" exercise="1" step="1" /></p>
 <h3 id="2">手順 2: トンネルの作成とホスト</h3>
 <p>続いて、Azure Functions のローカル ポート (7071) に対する永続的なトンネルを設定します。以下のコマンドで "mytunnel" 部分を任意の名前に置き換えてください。</p>
-<pre><code class="language-sh">devtunnel create mytunnel -a --host-header unchanged
-devtunnel port create mytunnel -p 7071
-devtunnel host mytunnel
-</code></pre>
+<div class="highlight"><pre><span></span><code>devtunnel<span class="w"> </span>create<span class="w"> </span>mytunnel<span class="w"> </span>-a<span class="w"> </span>--host-header<span class="w"> </span>unchanged
+devtunnel<span class="w"> </span>port<span class="w"> </span>create<span class="w"> </span>mytunnel<span class="w"> </span>-p<span class="w"> </span><span class="m">7071</span>
+devtunnel<span class="w"> </span>host<span class="w"> </span>mytunnel
+</code></pre></div>
 <p>コマンド ラインには接続情報が表示されます。</p>
 <p><img alt="The devtunnel running in a console window showing the hosting port, the connect via browser URL, and the URL to inspect network activity." src="../../../../assets/images/extend-m365-copilot-06/devtunnel-output.png" /></p>
 <p>「Connect via browser」URL をコピーして、「API Base URL」として保存します。</p>
 <p><cc-end-step lab="e6c" exercise="1" step="2" /></p>
 <h3 id="3">手順 3: プロジェクトで動的トンネルを無効化</h3>
 <p>ローカルでプロジェクトが実行中の場合は停止します。<a href="https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json" target="_blank">.vscode\tasks.json</a> を編集し、"Start Teams App Locally" タスクを探します。"Start local tunnel" 依存関係をコメントアウトし、代わりに "Start Azurite emulator" 依存関係を追加します。結果は次のようになります。</p>
-<pre><code class="language-json">{
-    &quot;label&quot;: &quot;Start Teams App Locally&quot;,
-    &quot;dependsOn&quot;: [
-        &quot;Validate prerequisites&quot;,
-        //&quot;Start local tunnel&quot;,
-        &quot;Start Azurite emulator&quot;,
-        &quot;Create resources&quot;,
-        &quot;Build project&quot;,
-        &quot;Start application&quot;
-    ],
-    &quot;dependsOrder&quot;: &quot;sequence&quot;
-},
-</code></pre>
-<p><cc-end-step lab="e6c" exercise="1" step="3" /></p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start Teams App Locally&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;Validate prerequisites&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">//&quot;Start local tunnel&quot;,</span>
+<span class="w">        </span><span class="s2">&quot;Start Azurite emulator&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Create resources&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Build project&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;Start application&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;dependsOrder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sequence&quot;</span>
+<span class="p">},</span>
+</code></pre></div>
+<cc-end-step lab="e6c" exercise="1" step="3" /></p>
 <h3 id="4-url">手順 4: サーバー URL を手動で上書き</h3>
 <p><strong>env/.env.local</strong> を開き、<code>OPENAPI_SERVER_URL</code> の値を永続的トンネルの URL に変更します。これは後続の構成で必要となる <code>API base URL</code> です。</p>
 <p><cc-end-step lab="e6c" exercise="1" step="4" /></p>
@@ -2574,11 +2574,11 @@ devtunnel host mytunnel
 <h3 id="1">手順 1: プラグイン ファイルの更新</h3>
 <p>Visual Studio Code で作業フォルダーを開き、 <strong>appPackage</strong> フォルダー内の <strong>trey-plugin.json</strong> を開きます。このファイルには Open API Specification (OAS) に含まれない、Copilot が必要とする情報が格納されています。</p>
 <p><code>Runtimes</code> の下に <code>auth</code> プロパティがあり <code>type</code> が <code>"None"</code> になっています。これを以下のように変更し、Copilot に <strong>Microsoft Entra SSO registration ID</strong> を使って認証するよう指示します。</p>
-<pre><code class="language-json">&quot;auth&quot;: {
-  &quot;type&quot;: &quot;OAuthPluginVault&quot;,
-  &quot;reference_id&quot;: &quot;&lt;Microsoft Entra SSO registration ID&gt;&quot;
-},
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuthPluginVault&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;reference_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Microsoft Entra SSO registration ID&gt;&quot;</span>
+<span class="p">},</span>
+</code></pre></div>
 <p><cc-end-step lab="e6c" exercise="4" step="1" /></p>
 <h2 id="5-api-microsoft-entra">演習 5: API の Microsoft Entra アプリ登録を更新する</h2>
 <h3 id="1-application-id-uri">手順 1: Application ID URI の更新</h3>
@@ -2640,8 +2640,8 @@ devtunnel host mytunnel
 <h2 id="6">演習 6: アプリケーション コードを更新する</h2>
 <h3 id="1-jwt">手順 1: JWT 検証ライブラリをインストール</h3>
 <p>作業ディレクトリで以下を実行します。</p>
-<pre><code class="language-sh">npm i jwt-validate
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>i<span class="w"> </span>jwt-validate
+</code></pre></div>
 <p>これにより Entra ID 認証トークンを検証するライブラリがインストールされます。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2652,9 +2652,9 @@ devtunnel host mytunnel
 <p><cc-end-step lab="e6c" exercise="6" step="1" /></p>
 <h3 id="2-api">手順 2: API 用の環境変数を追加</h3>
 <p>作業ディレクトリの <strong>env</strong> フォルダーにある <strong>.env.local</strong> を開き、テナント ID と Application ID URI の行を追加します。</p>
-<pre><code class="language-text">APP_ID_URI=&lt;Application ID URI&gt;
+<div class="highlight"><pre><span></span><code>APP_ID_URI=&lt;Application ID URI&gt;
 API_TENANT_ID=&lt;Directory (tenant) ID&gt;
-</code></pre>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Application ID URI を手動で生成する場合</p>
 <p>Application ID URI が表示されない場合は、一時的に以下の手順で作成できます。<br />
@@ -2663,75 +2663,75 @@ API_TENANT_ID=&lt;Directory (tenant) ID&gt;
 <img alt="Generating Application ID URI manually" src="../../../../assets/images/extend-m365-copilot-06c/oauth-A13.png" /></p>
 </div>
 <p>これらの値を Agents Toolkit で実行中のコード内で使用できるよう、作業フォルダーのルートにある <strong>teamsapp.local.yml</strong> ファイルも更新します。"Generate runtime environment variables" というコメントを探し、STORAGE_ACCOUNT_CONNECTION_STRING の下に新しい値を追加します。</p>
-<pre><code class="language-yaml">        APP_ID_URI: ${{APP_ID_URI}}
-        API_TENANT_ID: ${{API_TENANT_ID}}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="nt">APP_ID_URI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{APP_ID_URI}}</span>
+<span class="w">        </span><span class="nt">API_TENANT_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{API_TENANT_ID}}</span>
+</code></pre></div>
 <p>完成した yaml は次のようになります。</p>
-<pre><code class="language-yaml">  - uses: file/createOrUpdateEnvironmentFile
-    with:
-      target: ./.localConfigs
-      envs:
-        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},
-        APP_ID_URI: ${{APP_ID_URI}}
-        API_TENANT_ID: ${{API_TENANT_ID}}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file/createOrUpdateEnvironmentFile</span>
+<span class="w">    </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.localConfigs</span>
+<span class="w">      </span><span class="nt">envs</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">STORAGE_ACCOUNT_CONNECTION_STRING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}},</span>
+<span class="w">        </span><span class="nt">APP_ID_URI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{APP_ID_URI}}</span>
+<span class="w">        </span><span class="nt">API_TENANT_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{API_TENANT_ID}}</span>
+</code></pre></div>
 <p><cc-end-step lab="e6c" exercise="6" step="2" /></p>
 <h3 id="3-identity-service">手順 3: identity service を更新</h3>
 <p>現時点で SSO は動作し有効なアクセストークンを提供しますが、トークンが有効かどうかをコード側で検証しなければ安全とは言えません。この手順ではトークンを検証し、ユーザー 名や ID などの情報を抽出するコードを追加します。</p>
 <p><strong>src/services</strong> フォルダーの <strong>IdentityService.ts</strong> を開きます。<br />
 ファイル冒頭の <code>import</code> 群に次を追加します。</p>
-<pre><code class="language-typescript">import { TokenValidator, ValidateTokenOptions, getEntraJwksUri } from 'jwt-validate';
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">,</span><span class="w"> </span><span class="nx">ValidateTokenOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">getEntraJwksUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jwt-validate&#39;</span><span class="p">;</span>
+</code></pre></div>
 <p>次に <code>class Identity</code> 宣言の直下に以下を追加します。</p>
-<pre><code class="language-typescript">    private validator: TokenValidator;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">validator</span><span class="o">:</span><span class="w"> </span><span class="kt">TokenValidator</span><span class="p">;</span>
+</code></pre></div>
 <p>そして次のコメントを探します。</p>
-<pre><code class="language-typescript">// ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// ** INSERT REQUEST VALIDATION HERE (see Lab E6) **</span>
+</code></pre></div>
 <p>このコメントを次のコードで置き換えます。</p>
-<pre><code class="language-typescript">// Try to validate the token and get user's basic information
-try {
-    const { APP_ID_URI, API_TENANT_ID } = process.env;
-    const token = req.headers.get(&quot;Authorization&quot;)?.split(&quot; &quot;)[1];
-    if (!token) {
-        throw new HttpError(401, &quot;Authorization token not found&quot;);
-    }
+<div class="highlight"><pre><span></span><code><span class="c1">// Try to validate the token and get user&#39;s basic information</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_ID_URI</span><span class="p">,</span><span class="w"> </span><span class="nx">API_TENANT_ID</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Authorization token not found&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-    // create a new token validator for the Microsoft Entra common tenant
-    if (!this.validator) {
-        // We need a new validator object which we will continue to use on subsequent
-        // requests so it can cache the Entra ID signing keys
-        // For multitenant, use:
-        // const entraJwksUri = await getEntraJwksUri();
-        const entraJwksUri = await getEntraJwksUri(API_TENANT_ID);
-        this.validator = new TokenValidator({
-            jwksUri: entraJwksUri
-        });
-        console.log (&quot;Token validator created&quot;);
-    }
+<span class="w">    </span><span class="c1">// create a new token validator for the Microsoft Entra common tenant</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">validator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// We need a new validator object which we will continue to use on subsequent</span>
+<span class="w">        </span><span class="c1">// requests so it can cache the Entra ID signing keys</span>
+<span class="w">        </span><span class="c1">// For multitenant, use:</span>
+<span class="w">        </span><span class="c1">// const entraJwksUri = await getEntraJwksUri();</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">entraJwksUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getEntraJwksUri</span><span class="p">(</span><span class="nx">API_TENANT_ID</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">validator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">jwksUri</span><span class="o">:</span><span class="w"> </span><span class="kt">entraJwksUri</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;Token validator created&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
 
-    const options: ValidateTokenOptions = {
-                audience: APP_ID_URI, 
-                issuer: `https://sts.windows.net/${API_TENANT_ID}/`,              
-                scp: [&quot;access_as_user&quot;],
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="kt">ValidateTokenOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">audience</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_ID_URI</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://sts.windows.net/</span><span class="si">${</span><span class="nx">API_TENANT_ID</span><span class="si">}</span><span class="sb">/`</span><span class="p">,</span><span class="w">              </span>
+<span class="w">                </span><span class="nx">scp</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
 
-            };
+<span class="w">            </span><span class="p">};</span>
 
-    // validate the token
-    const validToken = await this.validator.validateToken(token, options);
+<span class="w">    </span><span class="c1">// validate the token</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">validToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">validator</span><span class="p">.</span><span class="nx">validateToken</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
 
-    userId = validToken.oid;
-    userName = validToken.name;
-    userEmail = validToken.upn;
-    console.log(`Request ${this.requestNumber++}: Token is valid for user ${userName} (${userId})`);
-}
-catch (ex) {
-    // Token is missing or invalid - return a 401 error
-    console.error(ex);
-    throw new HttpError(401, &quot;Unauthorized&quot;);
-}
-</code></pre>
+<span class="w">    </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validToken</span><span class="p">.</span><span class="nx">oid</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validToken</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">userEmail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validToken</span><span class="p">.</span><span class="nx">upn</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Request </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">requestNumber</span><span class="o">++</span><span class="si">}</span><span class="sb">: Token is valid for user </span><span class="si">${</span><span class="nx">userName</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Token is missing or invalid - return a 401 error</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">コードを読み解く</p>
 <p>追加したコードではまず <code>Authorization</code> ヘッダーからトークンを取得します。このヘッダーは "Bearer" + 空白 + トークン の形式なので、JavaScript の <code>split(" ")</code> を使用してトークンだけを抽出します。  </p>
@@ -2761,13 +2761,13 @@ catch (ex) {
 <li>プロジェクトの <code>appPackage</code> フォルダーにある <code>manifest.json</code> を開きます。  </li>
 <li><code>version</code> フィールドを探します。例:  </li>
 </ol>
-<pre><code class="language-json">&quot;version&quot;: &quot;1.0.0&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+</code></pre></div>
 <ol>
 <li>バージョン番号を小さくインクリメントします。例:  </li>
 </ol>
-<pre><code class="language-json">&quot;version&quot;: &quot;1.0.1&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.1&quot;</span>
+</code></pre></div>
 <ol>
 <li>変更後、ファイルを保存します。</li>
 </ol>
@@ -2806,6 +2806,8 @@ catch (ex) {
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2838,7 +2840,7 @@ catch (ex) {
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2850,6 +2852,8 @@ catch (ex) {
         <script src="../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

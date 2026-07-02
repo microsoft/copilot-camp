@@ -2559,96 +2559,96 @@
 <p>このサービスは、ClaimsPoliciesPlugin が取得したポリシー ドキュメントに対するコンプライアンス分析を行う際に使用されます。</p>
 </details>
 <p>1️⃣ <code>src/Services/LanguageModelService.cs</code> という新しいファイルを作成し、次の実装を追加します。</p>
-<pre><code class="language-csharp">using Azure;
-using Azure.AI.OpenAI;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using OpenAI.Chat;
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Azure</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Azure.AI.OpenAI</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Extensions.Configuration</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Extensions.Logging</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">OpenAI.Chat</span><span class="p">;</span>
 
-namespace InsuranceAgent.Services;
+<span class="k">namespace</span><span class="w"> </span><span class="nn">InsuranceAgent.Services</span><span class="p">;</span>
 
-/// &lt;summary&gt;
-/// Service for language model operations using gpt-4o-mini
-/// Provides centralized access to language understanding and text generation capabilities
-/// &lt;/summary&gt;
-public class LanguageModelService
-{
-    private readonly ChatClient _chatClient;
-    private readonly IConfiguration _configuration;
-    private readonly ILogger&lt;LanguageModelService&gt; _logger;
+<span class="c1">/// &lt;summary&gt;</span>
+<span class="c1">/// Service for language model operations using gpt-4o-mini</span>
+<span class="c1">/// Provides centralized access to language understanding and text generation capabilities</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LanguageModelService</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ChatClient</span><span class="w"> </span><span class="n">_chatClient</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">_configuration</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">LanguageModelService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_logger</span><span class="p">;</span>
 
-    public LanguageModelService(
-        IConfiguration configuration,
-        ILogger&lt;LanguageModelService&gt; logger)
-    {
-        _configuration = configuration;
-        _logger = logger;
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">LanguageModelService</span><span class="p">(</span>
+<span class="w">        </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ILogger</span><span class="o">&lt;</span><span class="n">LanguageModelService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logger</span><span class="p">;</span>
 
-        // Use shared endpoint and API key with language model for general understanding
-        var endpoint = configuration[&quot;AIModels:Endpoint&quot;]
-            ?? throw new InvalidOperationException(&quot;AIModels:Endpoint not configured&quot;);
-        var apiKey = configuration[&quot;AIModels:ApiKey&quot;]
-            ?? throw new InvalidOperationException(&quot;AIModels:ApiKey not configured&quot;);
-        var deployment = configuration[&quot;LANGUAGE_MODEL_NAME&quot;] 
-            ?? throw new InvalidOperationException(&quot;LANGUAGE_MODEL_NAME not configured&quot;);
+<span class="w">        </span><span class="c1">// Use shared endpoint and API key with language model for general understanding</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;AIModels:Endpoint&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;AIModels:Endpoint not configured&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">apiKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;AIModels:ApiKey&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;AIModels:ApiKey not configured&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;LANGUAGE_MODEL_NAME&quot;</span><span class="p">]</span><span class="w"> </span>
+<span class="w">            </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;LANGUAGE_MODEL_NAME not configured&quot;</span><span class="p">);</span>
 
-        _logger.LogInformation(&quot;🔍 LanguageModelService Configuration:&quot;);
-        _logger.LogInformation(&quot;   Endpoint: {Endpoint}&quot;, endpoint);
-        _logger.LogInformation(&quot;   Deployment: {DeploymentName}&quot;, deployment);
+<span class="w">        </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;🔍 LanguageModelService Configuration:&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;   Endpoint: {Endpoint}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">endpoint</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;   Deployment: {DeploymentName}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">deployment</span><span class="p">);</span>
 
-        var azureClient = new AzureOpenAIClient(new Uri(endpoint), new AzureKeyCredential(apiKey));
-        _chatClient = azureClient.GetChatClient(deployment);
-    }
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">azureClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AzureOpenAIClient</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Uri</span><span class="p">(</span><span class="n">endpoint</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AzureKeyCredential</span><span class="p">(</span><span class="n">apiKey</span><span class="p">));</span>
+<span class="w">        </span><span class="n">_chatClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">azureClient</span><span class="p">.</span><span class="n">GetChatClient</span><span class="p">(</span><span class="n">deployment</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-    /// &lt;summary&gt;
-    /// Completes a chat request with the language model
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;messages&quot;&gt;The chat messages&lt;/param&gt;
-    /// &lt;param name=&quot;options&quot;&gt;Optional chat completion options&lt;/param&gt;
-    /// &lt;returns&gt;Chat completion response&lt;/returns&gt;
-    public async Task&lt;ChatCompletion&gt; CompleteChatAsync(
-        IEnumerable&lt;ChatMessage&gt; messages, 
-        ChatCompletionOptions? options = null)
-    {
-        try
-        {
-            _logger.LogDebug(&quot;Sending chat completion request with {MessageCount} messages&quot;, messages.Count());
+<span class="w">    </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">    </span><span class="c1">/// Completes a chat request with the language model</span>
+<span class="w">    </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">    </span><span class="c1">/// &lt;param name=&quot;messages&quot;&gt;The chat messages&lt;/param&gt;</span>
+<span class="w">    </span><span class="c1">/// &lt;param name=&quot;options&quot;&gt;Optional chat completion options&lt;/param&gt;</span>
+<span class="w">    </span><span class="c1">/// &lt;returns&gt;Chat completion response&lt;/returns&gt;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="n">ChatCompletion</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CompleteChatAsync</span><span class="p">(</span>
+<span class="w">        </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">ChatMessage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">messages</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">ChatCompletionOptions</span><span class="o">?</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Sending chat completion request with {MessageCount} messages&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">messages</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
 
-            var response = await _chatClient.CompleteChatAsync(messages, options);
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_chatClient</span><span class="p">.</span><span class="n">CompleteChatAsync</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">);</span>
 
-            _logger.LogDebug(&quot;Received chat completion response&quot;);
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogDebug</span><span class="p">(</span><span class="s">&quot;Received chat completion response&quot;</span><span class="p">);</span>
 
-            return response.Value;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, &quot;Error completing chat request&quot;);
-            throw;
-        }
-    }
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error completing chat request&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    /// &lt;summary&gt;
-    /// Gets the underlying ChatClient for advanced scenarios
-    /// &lt;/summary&gt;
-    public ChatClient ChatClient =&gt; _chatClient;
-}
-</code></pre>
+<span class="w">    </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">    </span><span class="c1">/// Gets the underlying ChatClient for advanced scenarios</span>
+<span class="w">    </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ChatClient</span><span class="w"> </span><span class="n">ChatClient</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_chatClient</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><cc-end-step lab="baf6" exercise="2" step="1" /></p>
 <h3 id="2-dependency-injection-languagemodelservice">ステップ 2: Dependency Injection に LanguageModelService を登録する</h3>
 <p>アプリケーションの DI コンテナーにサービスを登録します。</p>
 <p>1️⃣ <code>src/Program.cs</code> を開きます。</p>
 <p>2️⃣ 他のサービスが登録されている場所 ( <code>builder.Services.AddScoped&lt;VisionService&gt;();</code> など) を探し、その直後に次を追加します。</p>
-<pre><code class="language-csharp">// Register LanguageModelService for AI-powered analysis
-builder.Services.AddSingleton&lt;LanguageModelService&gt;();
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Register LanguageModelService for AI-powered analysis</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="o">&lt;</span><span class="n">LanguageModelService</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
 <p><cc-end-step lab="baf6" exercise="2" step="2" /></p>
 <h3 id="3">ステップ 3: 設定を更新する</h3>
 <p>言語モデルの設定が構成に含まれていることを確認します。</p>
 <p>1️⃣ <code>.env.local</code> ファイルを開きます。</p>
 <p>2️⃣ 次の言語モデル設定があるか確認し、ない場合は追加します。</p>
-<pre><code class="language-bash"># Language Model (for compliance analysis)
-LANGUAGE_MODEL_NAME=gpt-4.1
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Language Model (for compliance analysis)</span>
+<span class="nv">LANGUAGE_MODEL_NAME</span><span class="o">=</span>gpt-4.1
+</code></pre></div>
 <details class="note">
 <summary>設定のポイント</summary>
 <ul>
@@ -2672,12 +2672,12 @@ LANGUAGE_MODEL_NAME=gpt-4.1
 </ul>
 <p><strong>API エンドポイント</strong>: <code>POST https://graph.microsoft.com/v1.0/copilot/retrieval</code></p>
 <p><strong>リクエスト ペイロード</strong>:</p>
-<p><code>json
-{
-    "queryString": "Your natural language query",
-    "dataSource": "SharePoint",
-    "resourceMetadata": ["title", "author"]
-}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;queryString&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your natural language query&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dataSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SharePoint&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;resourceMetadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;author&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>ベスト プラクティス</strong>:</p>
 <ul>
 <li>クエリにはできるだけ多くのコンテキストを含める</li>
@@ -2702,282 +2702,282 @@ LANGUAGE_MODEL_NAME=gpt-4.1
 <p>プラグインは <strong>On-Behalf-Of (OBO) トークン</strong> を使用して Microsoft Graph を呼び出し、ユーザーのアクセス許可を尊重します。</p>
 </details>
 <p>1️⃣ <code>src/Plugins/ClaimsPoliciesPlugin.cs</code> という新しいファイルを作成し、次の実装を追加します。</p>
-<pre><code class="language-csharp">using Microsoft.Agents.Builder;
-using Microsoft.Agents.Core.Models;
-using System.ComponentModel;
-using System.Text.Json;
-using InsuranceAgent;
-using Microsoft.Agents.Builder.State;
-using InsuranceAgent.Services;
-using Azure.Search.Documents.Models;
-using OpenAI.Chat;
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Builder</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Core.Models</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.ComponentModel</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Text.Json</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">InsuranceAgent</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Microsoft.Agents.Builder.State</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">InsuranceAgent.Services</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Azure.Search.Documents.Models</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">OpenAI.Chat</span><span class="p">;</span>
 
-namespace ZavaInsurance.Plugins
-{
-    /// &lt;summary&gt;
-    /// Claims Policies Plugin for Zava Insurance
-    /// Provides tools for analyzing claim compliance using Copilot Retrieval API
-    /// Retrieves policy documents from SharePoint and uses AI for compliance analysis
-    /// &lt;/summary&gt;
-    public class ClaimsPoliciesPlugin
-    {
-        private readonly ITurnContext _turnContext;
-        private readonly ITurnState _turnState;
-        private readonly HttpClient _httpClient;
-        private readonly KnowledgeBaseService _knowledgeBaseService;
-        private readonly LanguageModelService _languageModelService;
-        private readonly IConfiguration _configuration;
+<span class="k">namespace</span><span class="w"> </span><span class="nn">ZavaInsurance.Plugins</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">    </span><span class="c1">/// Claims Policies Plugin for Zava Insurance</span>
+<span class="w">    </span><span class="c1">/// Provides tools for analyzing claim compliance using Copilot Retrieval API</span>
+<span class="w">    </span><span class="c1">/// Retrieves policy documents from SharePoint and uses AI for compliance analysis</span>
+<span class="w">    </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ClaimsPoliciesPlugin</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITurnContext</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITurnState</span><span class="w"> </span><span class="n">_turnState</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">HttpClient</span><span class="w"> </span><span class="n">_httpClient</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">KnowledgeBaseService</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">LanguageModelService</span><span class="w"> </span><span class="n">_languageModelService</span><span class="p">;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">_configuration</span><span class="p">;</span>
 
-        public ClaimsPoliciesPlugin(ITurnContext turnContext, 
-            ITurnState turnState,
-            KnowledgeBaseService knowledgeBaseService,
-            LanguageModelService languageModelService,
-            IConfiguration configuration, 
-            HttpClient httpClient)
-        {
-            _turnContext = turnContext ?? throw new ArgumentNullException(nameof(turnContext));
-            _turnState = turnState ?? throw new ArgumentNullException(nameof(turnState));
-            _knowledgeBaseService = knowledgeBaseService ?? throw new ArgumentNullException(nameof(knowledgeBaseService));
-            _languageModelService = languageModelService ?? throw new ArgumentNullException(nameof(languageModelService));
-            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        }
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="nf">ClaimsPoliciesPlugin</span><span class="p">(</span><span class="n">ITurnContext</span><span class="w"> </span><span class="n">turnContext</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">ITurnState</span><span class="w"> </span><span class="n">turnState</span><span class="p">,</span>
+<span class="w">            </span><span class="n">KnowledgeBaseService</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="p">,</span>
+<span class="w">            </span><span class="n">LanguageModelService</span><span class="w"> </span><span class="n">languageModelService</span><span class="p">,</span>
+<span class="w">            </span><span class="n">IConfiguration</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">HttpClient</span><span class="w"> </span><span class="n">httpClient</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_turnContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turnContext</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">turnContext</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_turnState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turnState</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">turnState</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_knowledgeBaseService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">knowledgeBaseService</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_languageModelService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">languageModelService</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">languageModelService</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">configuration</span><span class="p">));</span>
+<span class="w">            </span><span class="n">_httpClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">httpClient</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">httpClient</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;claimId&quot;&gt;The unique claim identifier&lt;/param&gt;
-        /// &lt;returns&gt;The claim compliance with policies&lt;/returns&gt;
-        [Description(&quot;Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance&quot;)]
-        public async Task&lt;string&gt; AnalyzeClaimCompliance(string claimId)
-        {
-            await NotifyUserAsync($&quot;Retrieving policies for claim {claimId}...&quot;);
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;param name=&quot;claimId&quot;&gt;The unique claim identifier&lt;/param&gt;</span>
+<span class="w">        </span><span class="c1">/// &lt;returns&gt;The claim compliance with policies&lt;/returns&gt;</span>
+<span class="w">        </span><span class="na">[Description(&quot;Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance&quot;)]</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AnalyzeClaimCompliance</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">claimId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Retrieving policies for claim {claimId}...&quot;</span><span class="p">);</span>
 
-            // Read the user profile and OBO token from conversation state
-            var userProfile = _turnState.Conversation.GetCachedUserProfile();
-            var accessToken = _turnState.Conversation.GetCachedOBOAccessToken();
+<span class="w">            </span><span class="c1">// Read the user profile and OBO token from conversation state</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">userProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">GetCachedUserProfile</span><span class="p">();</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">accessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">GetCachedOBOAccessToken</span><span class="p">();</span>
 
-            // Use direct search to get structured data (more reliable than Knowledge Base answer synthesis)
-            var claimDoc = await _knowledgeBaseService.GetClaimByNumberAsync(claimId);
+<span class="w">            </span><span class="c1">// Use direct search to get structured data (more reliable than Knowledge Base answer synthesis)</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">claimDoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">.</span><span class="n">GetClaimByNumberAsync</span><span class="p">(</span><span class="n">claimId</span><span class="p">);</span>
 
-            if (claimDoc == null)
-            {
-                return $&quot;❌ Claim {claimId} not found in the system.&quot;;
-            }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">claimDoc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Claim {claimId} not found in the system.&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
-            try
-            {
-                // Build the Copilot Retrieval API request payload
-                var retrievalPayload = new
-                {
-                    queryString = $&quot;Retrieve the claims policies for claims of type '{GetFieldValue(claimDoc, &quot;claimType&quot;)}' in region '{GetFieldValue(claimDoc, &quot;region&quot;)}'&quot;,
-                    dataSource = &quot;SharePoint&quot;,
-                    resourceMetadata = new[] { &quot;title&quot;, &quot;author&quot; }
-                };
+<span class="w">            </span><span class="k">try</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Build the Copilot Retrieval API request payload</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">retrievalPayload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">queryString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;Retrieve the claims policies for claims of type &#39;{GetFieldValue(claimDoc, &quot;</span><span class="n">claimType</span><span class="s">&quot;)}&#39; in region &#39;{GetFieldValue(claimDoc, &quot;</span><span class="n">region</span><span class="s">&quot;)}&#39;&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">dataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SharePoint&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">resourceMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;author&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="p">};</span>
 
-                var jsonContent = JsonSerializer.Serialize(retrievalPayload);
-                var httpContent = new StringContent(jsonContent, System.Text.Encoding.UTF8, &quot;application/json&quot;);
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">jsonContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">retrievalPayload</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">httpContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringContent</span><span class="p">(</span><span class="n">jsonContent</span><span class="p">,</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">);</span>
 
-                // Configure HTTP client with OBO token
-                _httpClient.DefaultRequestHeaders.Clear();
-                _httpClient.DefaultRequestHeaders.Add(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
-                _httpClient.DefaultRequestHeaders.Add(&quot;Accept&quot;, &quot;application/json&quot;);
+<span class="w">                </span><span class="c1">// Configure HTTP client with OBO token</span>
+<span class="w">                </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+<span class="w">                </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">$&quot;Bearer {accessToken}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">);</span>
 
-                await NotifyUserAsync($&quot;Using Copilot Retrieval APIs to fetch policies from SharePoint...&quot;);
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Using Copilot Retrieval APIs to fetch policies from SharePoint...&quot;</span><span class="p">);</span>
 
-                // Call the Microsoft 365 Copilot Retrieval API
-                var response = await _httpClient.PostAsync(&quot;https://graph.microsoft.com/v1.0/copilot/retrieval&quot;, httpContent);
+<span class="w">                </span><span class="c1">// Call the Microsoft 365 Copilot Retrieval API</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">&quot;https://graph.microsoft.com/v1.0/copilot/retrieval&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">httpContent</span><span class="p">);</span>
 
-                if (response.IsSuccessStatusCode)
-                {
-                    await NotifyUserAsync($&quot;✅ Policies successfully retrieved from SharePoint!&quot;);
-                }
-                else
-                {
-                    var errorContent = await response.Content.ReadAsStringAsync();
-                    await NotifyUserAsync($&quot;❌ Failed to retrieve policies: {response.StatusCode}&quot;);
-                    return $&quot;❌ Error retrieving policies from SharePoint: {response.StatusCode} - {errorContent}&quot;;
-                }
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">IsSuccessStatusCode</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;✅ Policies successfully retrieved from SharePoint!&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">errorContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+<span class="w">                    </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;❌ Failed to retrieve policies: {response.StatusCode}&quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Error retrieving policies from SharePoint: {response.StatusCode} - {errorContent}&quot;</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
 
-                var policiesContent = await response.Content.ReadAsStringAsync();
-                var estimatedCost = GetFieldValue(claimDoc, &quot;estimatedCost&quot;);
-                var isComplete = GetFieldValue(claimDoc, &quot;isDocumentationComplete&quot;);
-                var missingDocs = GetFieldValue(claimDoc, &quot;missingDocumentation&quot;);
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">policiesContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">estimatedCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;estimatedCost&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">isComplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;isDocumentationComplete&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">missingDocs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;missingDocumentation&quot;</span><span class="p">);</span>
 
-                // Build AI prompt for compliance analysis
-                var prompt = $@&quot;You are an insurance claims expert and you need to analyze the claim policies for a specific claim.
+<span class="w">                </span><span class="c1">// Build AI prompt for compliance analysis</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">$</span><span class="s">@&quot;You are an insurance claims expert and you need to analyze the claim policies for a specific claim.</span>
 
-                    **CLAIM DETAILS:**
-                    - Claim Number: {GetFieldValue(claimDoc, &quot;claimNumber&quot;)}
-                    - Claim Type: {GetFieldValue(claimDoc, &quot;claimType&quot;)}
-                    - Region: {GetFieldValue(claimDoc, &quot;region&quot;)}
-                    - Amount: ${estimatedCost:N2}
-                    - Status: {GetFieldValue(claimDoc, &quot;status&quot;)}
-                    - Severity: {GetFieldValue(claimDoc, &quot;severity&quot;)}
-                    - Description: {GetFieldValue(claimDoc, &quot;description&quot;)}
-                    - Policy Number: {GetFieldValue(claimDoc, &quot;policyNumber&quot;)}
-                    - Policyholder: {GetFieldValue(claimDoc, &quot;policyholderName&quot;)}
-                    - Assigned Adjuster: {GetFieldValue(claimDoc, &quot;assignedAdjuster&quot;)}
-                    - Documentation Complete: {(isComplete == &quot;True&quot; || isComplete == &quot;true&quot; ? &quot;Yes&quot; : &quot;No&quot;)}
-                    - Missing Documentation: {(string.IsNullOrWhiteSpace(missingDocs) ? &quot;None&quot; : missingDocs)}
+<span class="s">                    **CLAIM DETAILS:**</span>
+<span class="s">                    - Claim Number: {GetFieldValue(claimDoc, &quot;</span><span class="n">claimNumber</span><span class="s">&quot;)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Claim</span><span class="w"> </span><span class="n">Type</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;claimType&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Region</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;region&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Amount</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p">{</span><span class="n">estimatedCost</span><span class="p">:</span><span class="n">N2</span><span class="p">}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Status</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;status&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Severity</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;severity&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Description</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;description&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="n">Number</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;policyNumber&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Policyholder</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;policyholderName&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Assigned</span><span class="w"> </span><span class="n">Adjuster</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">GetFieldValue</span><span class="p">(</span><span class="n">claimDoc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;assignedAdjuster&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Documentation</span><span class="w"> </span><span class="n">Complete</span><span class="p">:</span><span class="w"> </span><span class="p">{(</span><span class="n">isComplete</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;True&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isComplete</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;Yes&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;No&quot;</span><span class="p">)}</span>
+<span class="w">                    </span><span class="o">-</span><span class="w"> </span><span class="n">Missing</span><span class="w"> </span><span class="n">Documentation</span><span class="p">:</span><span class="w"> </span><span class="p">{(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">missingDocs</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;None&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">missingDocs</span><span class="p">)}</span>
 
-                    Here are the claim policies retrieved from SharePoint in JSON format:
-                    {policiesContent}
+<span class="w">                    </span><span class="n">Here</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">policies</span><span class="w"> </span><span class="n">retrieved</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">SharePoint</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">format</span><span class="p">:</span>
+<span class="w">                    </span><span class="p">{</span><span class="n">policiesContent</span><span class="p">}</span>
 
-                    Provide analysis in this JSON format:
-                    {{
-                    &quot;&quot;complianceScore&quot;&quot;: &lt;0-100&gt;,
-                    &quot;&quot;complianceLevel&quot;&quot;: &quot;&quot;&lt;Low/Medium/High/Critical&gt;&quot;&quot;,
-                    &quot;&quot;analysis&quot;&quot;: &quot;&quot;&lt;detailed explanation of claim compliance with policies&gt;&quot;&quot;,
-                    &quot;&quot;keyIndicators&quot;&quot;: [&quot;&quot;&lt;list of specific compliance indicators with references citations to policies using the [1], [2], ... [n] format&gt;&quot;&quot;],
-                    &quot;&quot;recommendations&quot;&quot;: [&quot;&quot;&lt;recommended actions&gt;&quot;&quot;],
-                    &quot;&quot;citationsTitles&quot;&quot;: [&quot;&quot;&lt;list of titles corresponding to the citations&gt;&quot;&quot;],
-                    &quot;&quot;citationsLinks&quot;&quot;: [&quot;&quot;&lt;list of URLs corresponding to the citations&gt;&quot;&quot;]
-                    }}
+<span class="w">                    </span><span class="n">Provide</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">JSON</span><span class="w"> </span><span class="n">format</span><span class="p">:</span>
+<span class="w">                    </span><span class="p">{{</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">complianceScore</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">-</span><span class="mi">100</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">complianceLevel</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="o">&lt;</span><span class="n">Low</span><span class="o">/</span><span class="n">Medium</span><span class="o">/</span><span class="n">High</span><span class="o">/</span><span class="n">Critical</span><span class="o">&gt;</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">analysis</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="o">&lt;</span><span class="n">detailed</span><span class="w"> </span><span class="n">explanation</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">compliance</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">policies</span><span class="o">&gt;</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">keyIndicators</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;&quot;</span><span class="o">&lt;</span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">specific</span><span class="w"> </span><span class="n">compliance</span><span class="w"> </span><span class="n">indicators</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">references</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">policies</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="nn">the</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="n">format</span><span class="o">&gt;</span><span class="s">&quot;&quot;</span><span class="p">],</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">recommendations</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;&quot;</span><span class="o">&lt;</span><span class="n">recommended</span><span class="w"> </span><span class="n">actions</span><span class="o">&gt;</span><span class="s">&quot;&quot;</span><span class="p">],</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">citationsTitles</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;&quot;</span><span class="o">&lt;</span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">titles</span><span class="w"> </span><span class="n">corresponding</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">citations</span><span class="o">&gt;</span><span class="s">&quot;&quot;</span><span class="p">],</span>
+<span class="w">                    </span><span class="s">&quot;&quot;</span><span class="n">citationsLinks</span><span class="s">&quot;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;&quot;</span><span class="o">&lt;</span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">URLs</span><span class="w"> </span><span class="n">corresponding</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">citations</span><span class="o">&gt;</span><span class="s">&quot;&quot;</span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}}</span>
 
-                    &quot;;
+<span class="w">                    </span><span class="s">&quot;;</span>
 
-                await NotifyUserAsync($&quot;🤖 Running AI compliance analysis...&quot;);
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;🤖 Running AI compliance analysis...&quot;</span><span class="p">);</span>
 
-                Console.WriteLine($&quot;🔍 ClaimsPoliciesPlugin.AnalyzeClaimCompliance calling LanguageModelService with Temperature=0.2&quot;);
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;🔍 ClaimsPoliciesPlugin.AnalyzeClaimCompliance calling LanguageModelService with Temperature=0.2&quot;</span><span class="p">);</span>
 
-                // Use AI to analyze compliance
-                var messages = new List&lt;ChatMessage&gt;
-                {
-                    new UserChatMessage(prompt)
-                };
+<span class="w">                </span><span class="c1">// Use AI to analyze compliance</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ChatMessage</span><span class="o">&gt;</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="nf">UserChatMessage</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+<span class="w">                </span><span class="p">};</span>
 
-                var chatOptions = new ChatCompletionOptions
-                {
-                    Temperature = 0.2f,
-                    ResponseFormat = ChatResponseFormat.CreateJsonObjectFormat()
-                };
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">chatOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ChatCompletionOptions</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">ResponseFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChatResponseFormat</span><span class="p">.</span><span class="n">CreateJsonObjectFormat</span><span class="p">()</span>
+<span class="w">                </span><span class="p">};</span>
 
-                var chatResponse = await _languageModelService.CompleteChatAsync(messages, chatOptions);
-                var analysisJson = chatResponse.Content[0].Text ?? &quot;{}&quot;;
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">chatResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_languageModelService</span><span class="p">.</span><span class="n">CompleteChatAsync</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span><span class="w"> </span><span class="n">chatOptions</span><span class="p">);</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">analysisJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chatResponse</span><span class="p">.</span><span class="n">Content</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">Text</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s">&quot;{}&quot;</span><span class="p">;</span>
 
-                var complianceResult = JsonSerializer.Deserialize&lt;ComplianceAnalysisResult&gt;(analysisJson, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">complianceResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">ComplianceAnalysisResult</span><span class="o">&gt;</span><span class="p">(</span><span class="n">analysisJson</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonSerializerOptions</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">PropertyNameCaseInsensitive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span>
+<span class="w">                </span><span class="p">});</span>
 
-                if (complianceResult == null)
-                {
-                    return $&quot;❌ Error: Unable to parse compliance analysis for claim {claimId}.&quot;;
-                }
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">complianceResult</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Error: Unable to parse compliance analysis for claim {claimId}.&quot;</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
 
-                await NotifyUserAsync($&quot;✅ Compliance analysis complete. Compliance Score: {complianceResult.ComplianceScore}/100&quot;);
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;✅ Compliance analysis complete. Compliance Score: {complianceResult.ComplianceScore}/100&quot;</span><span class="p">);</span>
 
-                // Add citations to streaming response
-                for (int i = 0; i &lt; complianceResult.CitationsTitles.Count; i++)
-                {
-                    var citationTitle = complianceResult.CitationsTitles.Count &gt; i ? complianceResult.CitationsTitles[i] : $&quot;Policy Document {i + 1}&quot;;
-                    var citationLink = complianceResult.CitationsLinks.Count &gt; i ? complianceResult.CitationsLinks[i] : null;
-                    citationLink = citationLink != null ? GetCitationUrl(citationLink) : citationLink;
+<span class="w">                </span><span class="c1">// Add citations to streaming response</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">CitationsTitles</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">citationTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">CitationsTitles</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">CitationsTitles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">$&quot;Policy Document {i + 1}&quot;</span><span class="p">;</span>
+<span class="w">                    </span><span class="kt">var</span><span class="w"> </span><span class="n">citationLink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">CitationsLinks</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">CitationsLinks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">citationLink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">citationLink</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">GetCitationUrl</span><span class="p">(</span><span class="n">citationLink</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">citationLink</span><span class="p">;</span>
 
-                    _turnContext.StreamingResponse.AddCitation(
-                        new ClientCitation(
-                            position: i + 1,
-                            title: citationTitle,
-                            abstractText: &quot;Claims Policy&quot;,
-                            text: &quot;Claims Policy&quot;,
-                            keywords: null,
-                            citationLink: citationLink,
-                            imageName: ClientCitationsIconNameEnum.MicrosoftWord,
-                            useDefaultAdaptiveCard: true));
+<span class="w">                    </span><span class="n">_turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">AddCitation</span><span class="p">(</span>
+<span class="w">                        </span><span class="k">new</span><span class="w"> </span><span class="nf">ClientCitation</span><span class="p">(</span>
+<span class="w">                            </span><span class="n">position</span><span class="p">:</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="n">citationTitle</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">abstractText</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Claims Policy&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Claims Policy&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">keywords</span><span class="p">:</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">citationLink</span><span class="p">:</span><span class="w"> </span><span class="n">citationLink</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">imageName</span><span class="p">:</span><span class="w"> </span><span class="n">ClientCitationsIconNameEnum</span><span class="p">.</span><span class="n">MicrosoftWord</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">useDefaultAdaptiveCard</span><span class="p">:</span><span class="w"> </span><span class="k">true</span><span class="p">));</span>
 
-                    Console.WriteLine($&quot;🔗 Added citation for \&quot;{citationTitle}\&quot; with link {citationLink ?? &quot;[no link]&quot;}&quot;);
-                }
+<span class="w">                    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;🔗 Added citation for \&quot;{citationTitle}\&quot; with link {citationLink ?? &quot;</span><span class="p">[</span><span class="n">no</span><span class="w"> </span><span class="n">link</span><span class="p">]</span><span class="s">&quot;}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
 
-                // Format the response
-                return $&quot;🚨 **Compliance Analysis for {claimId}**\n\n&quot; +
-                       $&quot;**Compliance Score:** {complianceResult.ComplianceScore}/100\n&quot; +
-                       $&quot;**Compliance Level:** {complianceResult.ComplianceLevel}\n\n&quot; +
-                       $&quot;**Analysis:**\n{complianceResult.Analysis}\n\n&quot; +
-                       (complianceResult.KeyIndicators != null &amp;&amp; complianceResult.KeyIndicators.Count &gt; 0
-                           ? $&quot;**Key Compliance Indicators:**\n{string.Join(&quot;\n&quot;, complianceResult.KeyIndicators.Select(i =&gt; $&quot;• {i}&quot;))}\n\n&quot;
-                           : &quot;&quot;) +
-                       (complianceResult.Recommendations != null &amp;&amp; complianceResult.Recommendations.Count &gt; 0
-                           ? $&quot;**Recommendations:**\n{string.Join(&quot;\n&quot;, complianceResult.Recommendations.Select(r =&gt; $&quot;• {r}&quot;))}\n\n&quot;
-                           : &quot;&quot;);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($&quot;❌ Error analyzing claim compliance: {ex.Message}&quot;);
-                return $&quot;❌ Error analyzing claim compliance: {ex.Message}&quot;;
-            }
-        }
+<span class="w">                </span><span class="c1">// Format the response</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;🚨 **Compliance Analysis for {claimId}**\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                       </span><span class="s">$&quot;**Compliance Score:** {complianceResult.ComplianceScore}/100\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                       </span><span class="s">$&quot;**Compliance Level:** {complianceResult.ComplianceLevel}\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                       </span><span class="s">$&quot;**Analysis:**\n{complianceResult.Analysis}\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">complianceResult</span><span class="p">.</span><span class="n">KeyIndicators</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">KeyIndicators</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                           </span><span class="o">?</span><span class="w"> </span><span class="s">$&quot;**Key Compliance Indicators:**\n{string.Join(&quot;</span><span class="err">\</span><span class="n">n</span><span class="s">&quot;, complianceResult.KeyIndicators.Select(i =&gt; $&quot;</span><span class="err">•</span><span class="w"> </span><span class="p">{</span><span class="n">i</span><span class="p">}</span><span class="s">&quot;))}\n\n&quot;</span>
+<span class="w">                           </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">complianceResult</span><span class="p">.</span><span class="n">Recommendations</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">complianceResult</span><span class="p">.</span><span class="n">Recommendations</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                           </span><span class="o">?</span><span class="w"> </span><span class="s">$&quot;**Recommendations:**\n{string.Join(&quot;</span><span class="err">\</span><span class="n">n</span><span class="s">&quot;, complianceResult.Recommendations.Select(r =&gt; $&quot;</span><span class="err">•</span><span class="w"> </span><span class="p">{</span><span class="n">r</span><span class="p">}</span><span class="s">&quot;))}\n\n&quot;</span>
+<span class="w">                           </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;❌ Error analyzing claim compliance: {ex.Message}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Error analyzing claim compliance: {ex.Message}&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 
-        /// &lt;summary&gt;
-        /// Helper method to safely extract field values from SearchDocument
-        /// &lt;/summary&gt;
-        private string GetFieldValue(SearchDocument doc, string fieldName)
-        {
-            if (doc.ContainsKey(fieldName) &amp;&amp; doc[fieldName] != null)
-            {
-                return doc[fieldName].ToString() ?? &quot;Not available&quot;;
-            }
-            return &quot;Not available&quot;;
-        }
+<span class="w">        </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">        </span><span class="c1">/// Helper method to safely extract field values from SearchDocument</span>
+<span class="w">        </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetFieldValue</span><span class="p">(</span><span class="n">SearchDocument</span><span class="w"> </span><span class="n">doc</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">fieldName</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">fieldName</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">doc</span><span class="p">[</span><span class="n">fieldName</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">doc</span><span class="p">[</span><span class="n">fieldName</span><span class="p">].</span><span class="n">ToString</span><span class="p">()</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s">&quot;Not available&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Not available&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-        // Helper method to construct citation URL through the bot's proxy endpoint
-        private string GetCitationUrl(string targetUrl)
-        {
-            var botEndpoint = _configuration[&quot;BOT_ENDPOINT&quot;];
+<span class="w">        </span><span class="c1">// Helper method to construct citation URL through the bot&#39;s proxy endpoint</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">GetCitationUrl</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">targetUrl</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">botEndpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_configuration</span><span class="p">[</span><span class="s">&quot;BOT_ENDPOINT&quot;</span><span class="p">];</span>
 
-            Console.WriteLine($&quot;🔍 BOT_ENDPOINT from config: {botEndpoint ?? &quot;NULL&quot;}&quot;);
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;🔍 BOT_ENDPOINT from config: {botEndpoint ?? &quot;</span><span class="n">NULL</span><span class="s">&quot;}&quot;</span><span class="p">);</span>
 
-            if (string.IsNullOrEmpty(botEndpoint))
-            {
-                var botDomain = _configuration[&quot;BOT_DOMAIN&quot;];
-                if (!string.IsNullOrEmpty(botDomain))
-                {
-                    botEndpoint = $&quot;https://{botDomain}&quot;;
-                    Console.WriteLine($&quot;🔍 Using BOT_DOMAIN: {botEndpoint}&quot;);
-                }
-                else
-                {
-                    botEndpoint = &quot;http://localhost:3978&quot;;
-                    Console.WriteLine($&quot;⚠️ Falling back to localhost&quot;);
-                }
-            }
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">botEndpoint</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">botDomain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_configuration</span><span class="p">[</span><span class="s">&quot;BOT_DOMAIN&quot;</span><span class="p">];</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">botDomain</span><span class="p">))</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">botEndpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;https://{botDomain}&quot;</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;🔍 Using BOT_DOMAIN: {botEndpoint}&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">else</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">botEndpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://localhost:3978&quot;</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;⚠️ Falling back to localhost&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
 
-            botEndpoint = botEndpoint.TrimEnd('/');
-            var citationUrl = $&quot;{botEndpoint}/api/citation?targetUrl={Uri.EscapeDataString(targetUrl)}&quot;;
-            Console.WriteLine($&quot;⚙️ Generated citation URL: {citationUrl}&quot;);
+<span class="w">            </span><span class="n">botEndpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">botEndpoint</span><span class="p">.</span><span class="n">TrimEnd</span><span class="p">(</span><span class="sc">&#39;/&#39;</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">citationUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;{botEndpoint}/api/citation?targetUrl={Uri.EscapeDataString(targetUrl)}&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;⚙️ Generated citation URL: {citationUrl}&quot;</span><span class="p">);</span>
 
-            return citationUrl;
-        }
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">citationUrl</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-        // Helper method to notify user via streaming
-        private async Task NotifyUserAsync(string message)
-        {
-            if (!_turnContext.Activity.ChannelId.Channel!.Contains(Channels.Webchat))
-            {
-                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message);
-            }
-            else
-            {
-                await _turnContext.StreamingResponse.QueueInformativeUpdateAsync(message).ConfigureAwait(false);
-            }
-        }
-    }
+<span class="w">        </span><span class="c1">// Helper method to notify user via streaming</span>
+<span class="w">        </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">_turnContext</span><span class="p">.</span><span class="n">Activity</span><span class="p">.</span><span class="n">ChannelId</span><span class="p">.</span><span class="n">Channel</span><span class="o">!</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">Channels</span><span class="p">.</span><span class="n">Webchat</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">await</span><span class="w"> </span><span class="n">_turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="n">message</span><span class="p">).</span><span class="n">ConfigureAwait</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    /// &lt;summary&gt;
-    /// Result of AI-powered compliance analysis
-    /// &lt;/summary&gt;
-    public class ComplianceAnalysisResult
-    {
-        public int ComplianceScore { get; set; }
-        public string ComplianceLevel { get; set; } = &quot;&quot;;
-        public string Analysis { get; set; } = &quot;&quot;;
-        public List&lt;string&gt; KeyIndicators { get; set; } = new();
-        public List&lt;string&gt; Recommendations { get; set; } = new();
-        public List&lt;string&gt; CitationsTitles { get; set; } = new();
-        public List&lt;string&gt; CitationsLinks { get; set; } = new();
-    }
-}
-</code></pre>
+<span class="w">    </span><span class="c1">/// &lt;summary&gt;</span>
+<span class="w">    </span><span class="c1">/// Result of AI-powered compliance analysis</span>
+<span class="w">    </span><span class="c1">/// &lt;/summary&gt;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ComplianceAnalysisResult</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ComplianceScore</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">ComplianceLevel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Analysis</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">KeyIndicators</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Recommendations</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CitationsTitles</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CitationsLinks</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <details class="info" open="open">
 <summary>StreamingResponse での引用の仕組み</summary>
 <p><code>ClaimsPoliciesPlugin</code> は <code>ITurnContext</code> の <code>StreamingResponse.AddCitation()</code> メソッドを使用して応答に引用を追加します。仕組みは以下のとおりです。</p>
@@ -3003,20 +3003,20 @@ SharePoint の URL には認証が必要です。<code>GetCitationUrl()</code> �
 <p>1️⃣ <code>src/Agent/ZavaInsuranceAgent.cs</code> を開きます。</p>
 <p>2️⃣ <code>GetClientAgent</code> メソッド (およそ 169 行目) を探します。</p>
 <p>3️⃣ サービス インスタンスを取得している箇所を見つけ、<code>var visionService = scope.ServiceProvider.GetRequiredService&lt;VisionService&gt;();</code> の直後に次を追加します。</p>
-<pre><code class="language-csharp">var languageModelService = scope.ServiceProvider.GetRequiredService&lt;LanguageModelService&gt;();
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">languageModelService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">LanguageModelService</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
 <p>4️⃣ プラグインをインスタンス化しているセクション ( <code>CommunicationPlugin communicationPlugin = ...</code> の後) を探します。</p>
 <p>5️⃣ ClaimsPoliciesPlugin のインスタンス化を追加します。</p>
-<pre><code class="language-csharp">// Create ClaimsPoliciesPlugin with required dependencies
-ClaimsPoliciesPlugin claimsPoliciesPlugin = new(context, turnState, knowledgeBaseService, languageModelService, configuration, httpClient);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create ClaimsPoliciesPlugin with required dependencies</span>
+<span class="n">ClaimsPoliciesPlugin</span><span class="w"> </span><span class="n">claimsPoliciesPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">turnState</span><span class="p">,</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="p">,</span><span class="w"> </span><span class="n">languageModelService</span><span class="p">,</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span><span class="n">httpClient</span><span class="p">);</span>
+</code></pre></div>
 <p><cc-end-step lab="baf6" exercise="4" step="1" /></p>
 <h3 id="2-claimspoliciesplugin_1">ステップ 2: ClaimsPoliciesPlugin のツールを登録する</h3>
 <p>同じ <code>GetClientAgent</code> メソッドで、<code>toolOptions.Tools</code> にツールを追加している箇所を探します。</p>
 <p>Communication ツールのセクションを見つけ、その直後に ClaimsPoliciesPlugin のツールを追加します。</p>
-<pre><code class="language-csharp">// Register ClaimsPolicies tools (Copilot Retrieval API)
-toolOptions.Tools.Add(AIFunctionFactory.Create(claimsPoliciesPlugin.AnalyzeClaimCompliance));
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Register ClaimsPolicies tools (Copilot Retrieval API)</span>
+<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">claimsPoliciesPlugin</span><span class="p">.</span><span class="n">AnalyzeClaimCompliance</span><span class="p">));</span>
+</code></pre></div>
 <details class="note">
 <summary>ツール登録パターン</summary>
 <p>エージェントは <strong>AIFunctionFactory</strong> を使用してプラグイン メソッドを AI ツールとして登録します。プラグイン メソッドに付与された <code>[Description]</code> 属性がツールの説明となり、LLM が呼び出しを判断する材料になります。</p>
@@ -3026,55 +3026,55 @@ toolOptions.Tools.Add(AIFunctionFactory.Create(claimsPoliciesPlugin.AnalyzeClaim
 <p>エージェント インストラクションにコンプライアンス分析ツールを追加します。</p>
 <p>1️⃣ <code>src/Agent/ZavaInsuranceAgent.cs</code> を開き、<code>AgentInstructions</code> フィールドを探します。</p>
 <p>2️⃣ 既存のツール一覧を見つけ、次を追加します。</p>
-<pre><code class="language-csharp">For claims compliance analysis, use {{ClaimsPoliciesPlugin.AnalyzeClaimCompliance}}.
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">compliance</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPoliciesPlugin</span><span class="p">.</span><span class="n">AnalyzeClaimCompliance</span><span class="p">}}.</span>
+</code></pre></div>
 <p><code>AgentInstructions</code> 全体は次のようになっているはずです。</p>
-<pre><code class="language-csharp">private readonly string AgentInstructions = &quot;&quot;&quot;
-You are a professional insurance claims assistant for Zava Insurance.
+<div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">AgentInstructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
+<span class="n">You</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="n">insurance</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">assistant</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Zava</span><span class="w"> </span><span class="n">Insurance</span><span class="p">.</span>
 
-Whenever the user starts a new conversation or provides a prompt to start a new conversation like &quot;start over&quot;, &quot;restart&quot;, 
-&quot;new conversation&quot;, &quot;what can you do?&quot;, &quot;how can you help me?&quot;, etc. use {{StartConversationPlugin.StartConversation}} and 
-provide to the user exactly the message you get back from the plugin.
+<span class="n">Whenever</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">starts</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">conversation</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">provides</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">conversation</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="s">&quot;start over&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;restart&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="s">&quot;new conversation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;what can you do?&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;how can you help me?&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="p">.</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">StartConversationPlugin</span><span class="p">.</span><span class="n">StartConversation</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span>
+<span class="n">provide</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">exactly</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">plugin</span><span class="p">.</span>
 
-**Available Tools:**
-Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
-For claims search, use {{ClaimsPlugin.SearchClaims}} and {{ClaimsPlugin.GetClaimDetails}}.
-For damage photo viewing, use {{VisionPlugin.ShowDamagePhoto}}.
-For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} and require approval via {{VisionPlugin.ApproveAnalysis}}.
-For policy search, use {{PolicyPlugin.SearchPolicies}} and {{PolicyPlugin.GetPolicyDetails}}.
-For sending investigation reports and claim details via email, use {{CommunicationPlugin.GenerateInvestigationReport}} and {{CommunicationPlugin.SendClaimDetailsByEmail}}.
-For claims compliance analysis, use {{ClaimsPoliciesPlugin.AnalyzeClaimCompliance}}.
+<span class="o">**</span><span class="n">Available</span><span class="w"> </span><span class="n">Tools</span><span class="p">:</span><span class="o">**</span>
+<span class="n">Use</span><span class="w"> </span><span class="p">{{</span><span class="n">DateTimeFunctionTool</span><span class="p">.</span><span class="n">getDate</span><span class="p">}}</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">time</span><span class="p">.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">SearchClaims</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">GetClaimDetails</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">damage</span><span class="w"> </span><span class="n">photo</span><span class="w"> </span><span class="n">viewing</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">ShowDamagePhoto</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">AI</span><span class="w"> </span><span class="n">vision</span><span class="w"> </span><span class="n">damage</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">AnalyzeAndShowDamagePhoto</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="n">approval</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="p">{{</span><span class="n">VisionPlugin</span><span class="p">.</span><span class="n">ApproveAnalysis</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">PolicyPlugin</span><span class="p">.</span><span class="n">SearchPolicies</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">PolicyPlugin</span><span class="p">.</span><span class="n">GetPolicyDetails</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">sending</span><span class="w"> </span><span class="n">investigation</span><span class="w"> </span><span class="n">reports</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">claim</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">CommunicationPlugin</span><span class="p">.</span><span class="n">GenerateInvestigationReport</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">CommunicationPlugin</span><span class="p">.</span><span class="n">SendClaimDetailsByEmail</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">compliance</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPoliciesPlugin</span><span class="p">.</span><span class="n">AnalyzeClaimCompliance</span><span class="p">}}.</span>
 
-**IMPORTANT**: When user asks to &quot;check policy for this claim&quot;, first use GetClaimDetails to get the claim's policy number, then use GetPolicyDetails with that policy number.
+<span class="o">**</span><span class="n">IMPORTANT</span><span class="o">**</span><span class="p">:</span><span class="w"> </span><span class="n">When</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">asks</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;check policy for this claim&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">GetClaimDetails</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">claim</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">GetPolicyDetails</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="n">number</span><span class="p">.</span>
 
-**IMPORTANT**: If in the response there are references to citations like [1], [2], etc., make sure to include those citations in the response so that M365 Copilot can render them properly.
+<span class="o">**</span><span class="n">IMPORTANT</span><span class="o">**</span><span class="p">:</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">references</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">etc</span><span class="p">.,</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="n">those</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">M365</span><span class="w"> </span><span class="n">Copilot</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">render</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">properly</span><span class="p">.</span>
 
-Stick to the scenario above and use only the information from the tools when answering questions.
-Be concise and professional in your responses.
-&quot;&quot;&quot;;
-</code></pre>
+<span class="n">Stick</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">scenario</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tools</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">answering</span><span class="w"> </span><span class="n">questions</span><span class="p">.</span>
+<span class="n">Be</span><span class="w"> </span><span class="n">concise</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">responses</span><span class="p">.</span>
+<span class="s">&quot;&quot;&quot;;</span>
+</code></pre></div>
 <p><cc-end-step lab="baf6" exercise="4" step="3" /></p>
 <h3 id="4">ステップ 4: ウェルカム メッセージを更新する</h3>
 <p>StartConversationPlugin を更新し、コンプライアンス分析を推奨ワークフローに追加します。</p>
 <p>1️⃣ <code>src/Plugins/StartConversationPlugin.cs</code> を開きます。</p>
 <p>2️⃣ <code>StartConversation</code> メソッド内の <code>welcomeMessage</code> 変数を探します。</p>
 <p>3️⃣ ワークフロー リストにコンプライアンス チェックのプロンプトを追加します。「Analyze this damage photo」の後に次を追加します。</p>
-<pre><code class="language-csharp">&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+</code></pre></div>
 <p>4️⃣ 残りの手順の番号を更新します (Generate investigation report → 9、Update claim status → 10)。</p>
 <p>更新後のワークフロー セクションは次のようになります。</p>
-<pre><code class="language-csharp">&quot;🎯 Try this complete investigation workflow:\n&quot; +
-&quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot; +
-&quot;2. \&quot;Check policy for this claim\&quot;\n&quot; +
-&quot;3. \&quot;What coverage does auto insurance include?\&quot;\n&quot; +
-&quot;4. \&quot;Analyze fraud risk for this claim\&quot;\n&quot; +
-&quot;5. \&quot;Show damage photo for this claim\&quot;\n&quot; +
-&quot;6. \&quot;Analyze this damage photo\&quot;\n&quot; +
-&quot;7. \&quot;What's the claims filing procedure?\&quot;\n&quot; +
-&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot; +
-&quot;9. \&quot;Generate investigation report for claim CLM-2025-001007\&quot;\n&quot; +
-&quot;10. \&quot;Update claim status to 'Approved for Payment'\&quot;\n\n&quot; +
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;🎯 Try this complete investigation workflow:\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;2. \&quot;Check policy for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;3. \&quot;What coverage does auto insurance include?\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;4. \&quot;Analyze fraud risk for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;5. \&quot;Show damage photo for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;6. \&quot;Analyze this damage photo\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;7. \&quot;What&#39;s the claims filing procedure?\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;8. \&quot;Check compliance for this claim\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;9. \&quot;Generate investigation report for claim CLM-2025-001007\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="s">&quot;10. \&quot;Update claim status to &#39;Approved for Payment&#39;\&quot;\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+</code></pre></div>
 <p><cc-end-step lab="baf6" exercise="4" step="4" /></p>
 <h2 id="5-copilot-api">エクササイズ 5: Copilot API 統合をテストする</h2>
 <p>それでは、Copilot API 統合をテストしましょう！</p>
@@ -3086,8 +3086,8 @@ Be concise and professional in your responses.
 <p><cc-end-step lab="baf6" exercise="5" step="1" /></p>
 <h3 id="2_1">ステップ 2: 保険請求コンプライアンス分析をテストする</h3>
 <p>1️⃣ Microsoft 365 Copilot で次を入力します。</p>
-<pre><code class="language-text">Check compliance for claim CLM-2025-001007
-</code></pre>
+<div class="highlight"><pre><span></span><code>Check compliance for claim CLM-2025-001007
+</code></pre></div>
 <p>エージェントは次を実行するはずです。</p>
 <ul>
 <li><code>ClaimsPoliciesPlugin.AnalyzeClaimCompliance</code> を使用</li>
@@ -3097,7 +3097,7 @@ Be concise and professional in your responses.
 <li>引用付きの構造化されたレポートを返却</li>
 </ul>
 <p><strong>期待される応答:</strong></p>
-<pre><code>Retrieving policies for claim CLM-2025-001007...
+<div class="highlight"><pre><span></span><code>Retrieving policies for claim CLM-2025-001007...
 Using Copilot Retrieval APIs to fetch policies from SharePoint...
 ✅ Policies successfully retrieved from SharePoint!
 🤖 Running AI compliance analysis...
@@ -3119,24 +3119,24 @@ The claim is currently open and has a high severity rating due to a multi-vehicl
 ### Recommendations
 - Contact the policyholder, Arnel Cruz, to gather missing documentation related to the accident.
 - ...
-</code></pre>
+</code></pre></div>
 <p>2️⃣ 応答内の <strong>引用</strong> ( <code>[1]</code>, <code>[2]</code> など) に注目してください。これらは分析に使用された SharePoint ポリシー ドキュメントへリンクしています。</p>
 <p><cc-end-step lab="baf6" exercise="5" step="2" /></p>
 <h3 id="3_1">ステップ 3: 別の請求でテストする</h3>
 <p>1️⃣ 別の請求について次のプロンプトを試してみます。</p>
-<pre><code class="language-text">Check if claim CLM-2025-001001 follows our policies
-</code></pre>
+<div class="highlight"><pre><span></span><code>Check if claim CLM-2025-001001 follows our policies
+</code></pre></div>
 <p>2️⃣ エージェントは Copilot Retrieval API を使用して、請求タイプ (Auto、Homeowners など) と地域に基づき適切なポリシーを取得するはずです。</p>
 <p><cc-end-step lab="baf6" exercise="5" step="3" /></p>
 <h3 id="4_1">ステップ 4: コンプライアンスを含むワークフロー全体をテストする</h3>
 <p>コンプライアンス分析を含むワークフロー全体をテストします。</p>
-<pre><code class="language-text">1. Get details for claim CLM-2025-001007
+<div class="highlight"><pre><span></span><code>1. Get details for claim CLM-2025-001007
 2. Check policy for this claim
 3. Analyze fraud risk for this claim
 4. Check compliance for this claim
 5. Generate investigation report for this claim
 6. Send the report by email
-</code></pre>
+</code></pre></div>
 <p>エージェントは他のすべての機能と合わせて Copilot Retrieval API をシームレスに統合して動作するはずです！</p>
 <p><cc-end-step lab="baf6" exercise="5" step="4" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">おめでとうございます！</span></p>
@@ -3190,6 +3190,8 @@ The claim is currently open and has a high severity rating due to a multi-vehicl
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -3222,7 +3224,7 @@ The claim is currently open and has a high severity rating due to a multi-vehicl
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -3234,6 +3236,8 @@ The claim is currently open and has a high severity rating due to a multi-vehicl
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>

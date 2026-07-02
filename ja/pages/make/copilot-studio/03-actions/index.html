@@ -2548,8 +2548,8 @@
 <h3 id="2">ステップ 2: 新しいツールのテスト</h3>
 <p>更新したエージェントを発行し、統合テスト パネルまたは Microsoft Teams で試してみましょう。</p>
 <p><a href="../02-topics" target="_blank">ラボ MCS2</a> でジェネレーティブ オーケストレーションを有効にしたため、次のようなプロンプトを入力するだけでツールを簡単に呼び出せます。</p>
-<pre><code class="language-txt">Show me the list of candidates for an HR role
-</code></pre>
+<div class="highlight"><pre><span></span><code>Show me the list of candidates for an HR role
+</code></pre></div>
 <p>Copilot Studio でジェネレーティブ オーケストレーションを使用し、テスト パネル内でプロンプトを実行すると、既定でアクティビティ マップが表示され、オーケストレーターの動作を確認できます。以下のスクリーンショットは先ほどのプロンプトのアクティビティ マップです。オーケストレーターはユーザーの意図を把握し、ステップ 1 で作成したツールを実行します。手動で設定した入力引数も確認できます。</p>
 <p>Power Platform コネクタは有効な接続を必要とするため、エージェントは外部データ ソースを使用する前に <strong>Connect</strong> を求めます。</p>
 <p><img alt="The agent serving the suggested prompt. There is the Activity map in the main body of the page, with all the manually defined input arguments. There is also, in the test panel a prompt to connect to the external connector." src="../../../../../assets/images/make/copilot-studio-03/create-action-excel-connector-09.png" /></p>
@@ -2582,9 +2582,9 @@
 <li>Description: HR 向け Excel スプレッドシートに新しい候補者を追加します  </li>
 </ul>
 <p><strong>Save</strong> を選択するとツールが準備完了です。次のプロンプトでツールを呼び出してみましょう。</p>
-<pre><code class="language-txt">Insert a new candidate into the Excel spreadsheet of HR. The candidate firstname is John, 
+<div class="highlight"><pre><span></span><code>Insert a new candidate into the Excel spreadsheet of HR. The candidate firstname is John, 
 the lastname is White, the role is &quot;HR Administrator&quot;, and the expertise is &quot;Compliance&quot;.
-</code></pre>
+</code></pre></div>
 <p>前ステップ同様、初回は Excel Online への接続が必要です。<strong>Connect</strong> を選択し、接続後 <strong>Retry</strong> を選択してツールを実行します。</p>
 <p><img alt="The Activity map while invoking the new tool. The agent is prompting the user to connect and then retry invoking the tool." src="../../../../../assets/images/make/copilot-studio-03/create-action-flow-connector-06.png" /></p>
 <p>ツール実行後、Power Automate フローで設定したレスポンス メッセージが表示され、Excel スプレッドシートのテーブルに新しい候補者が追加されます。</p>
@@ -2594,51 +2594,51 @@ the lastname is White, the role is &quot;HR Administrator&quot;, and the experti
 <h3 id="1">ステップ 1: トピックからツールを呼び出す</h3>
 <p>まず空のトピックを作成し、名前を <code>Add a new candidate to Excel</code> にします。<a href="../02-topics#exercise-4--using-adaptive-cards" target="_blank">ラボ MCS2 のエクササイズ 4</a> と同じ手順に従ってください。</p>
 <p>トリガーの説明例:</p>
-<pre><code class="language-txt">This topic helps users to insert new candidates in the Excel spreadsheet of HR.
+<div class="highlight"><pre><span></span><code>This topic helps users to insert new candidates in the Excel spreadsheet of HR.
 Triggering sentences can be: add a new a new row to the persistence storage.
-</code></pre>
+</code></pre></div>
 <p>簡潔にするため詳細はここでは扱いません。必要に応じてラボ MCS2 を参照してください。</p>
 <p>以下は、<strong>Ask with adaptive card</strong> アクションで候補者情報を収集するためのアダプティブ カードの JSON です。</p>
-<pre><code class="language-json">{
-    &quot;type&quot;: &quot;AdaptiveCard&quot;,
-    &quot;body&quot;: [
-        {
-            &quot;type&quot;: &quot;TextBlock&quot;,
-            &quot;size&quot;: &quot;Medium&quot;,
-            &quot;weight&quot;: &quot;Bolder&quot;,
-            &quot;text&quot;: &quot;New HR Candidate Information&quot;
-        },
-        {
-            &quot;type&quot;: &quot;Input.Text&quot;,
-            &quot;id&quot;: &quot;firstname&quot;,
-            &quot;placeholder&quot;: &quot;First Name&quot;
-        },
-        {
-            &quot;type&quot;: &quot;Input.Text&quot;,
-            &quot;id&quot;: &quot;lastname&quot;,
-            &quot;placeholder&quot;: &quot;Last Name&quot;
-        },
-        {
-            &quot;type&quot;: &quot;Input.Text&quot;,
-            &quot;id&quot;: &quot;current_role&quot;,
-            &quot;placeholder&quot;: &quot;Current Role&quot;
-        },
-        {
-            &quot;type&quot;: &quot;Input.Text&quot;,
-            &quot;id&quot;: &quot;expertise&quot;,
-            &quot;placeholder&quot;: &quot;Expertise&quot;
-        }
-    ],
-    &quot;actions&quot;: [
-        {
-            &quot;type&quot;: &quot;Action.Submit&quot;,
-            &quot;title&quot;: &quot;Submit&quot;
-        }
-    ],
-    &quot;$schema&quot;: &quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;,
-    &quot;version&quot;: &quot;1.5&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bolder&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New HR Candidate Information&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firstname&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lastname&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Last Name&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_role&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Current Role&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expertise&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Expertise&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action.Submit&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Submit&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.5&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>その後、<strong>Add an tool</strong> グループから新しいツールを追加し、<strong>Tool</strong> タブで <a href="#step-3-consuming-a-power-automate-flow">エクササイズ 1 - ステップ 3</a> で作成したツールを選択します。</p>
 <p><img alt="The topic designer while adding a new tool from the current agent. There is the list of all the tools defined in the agent, available under the group **Add a tool**." src="../../../../../assets/images/make/copilot-studio-03/use-action-in-topic-01.png" /></p>
 <p>次に、ツールの入力引数をアダプティブ カードで取得した変数にマッピングします。</p>
@@ -2654,8 +2654,8 @@ Triggering sentences can be: add a new a new row to the persistence storage.
 <p><img alt="The tool and all of its input arguments configured to match the corresponding topic variables with values collected by the user through an adaptive card." src="../../../../../assets/images/make/copilot-studio-03/use-action-in-topic-02b.png" /></p>
 <p><strong>End current topic</strong> アクションを追加し、保存します。</p>
 <p>ラボ MCS2 で作成した他のトピックを無効にし、次のプロンプトで新しいトピックを呼び出して Excel スプレッドシートに新しい候補者行を追加します。</p>
-<pre><code class="language-txt">Add a new a new row to the persistence storage
-</code></pre>
+<div class="highlight"><pre><span></span><code>Add a new a new row to the persistence storage
+</code></pre></div>
 <p>アダプティブ カードに情報を入力して送信すると、トピック経由でツールが実行され、Excel スプレッドシートに新しい候補者が追加されます。</p>
 <p><img alt="The interaction with the topic to create a new candidate row in the Excel spreadsheet and the update table in Excel." src="../../../../../assets/images/make/copilot-studio-03/use-action-in-topic-02.png" /></p>
 <p><cc-end-step lab="mcs3" exercise="2" step="1" /></p>
@@ -2684,6 +2684,8 @@ Triggering sentences can be: add a new a new row to the persistence storage.
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2716,7 +2718,7 @@ Triggering sentences can be: add a new a new row to the persistence storage.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
       <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
@@ -2728,6 +2730,8 @@ Triggering sentences can be: add a new a new row to the persistence storage.
         <script src="../../../../../javascripts/cc-lab-step.js"></script>
       
         <script src="../../../../../javascripts/cc-card.js"></script>
+      
+        <script src="../../../../../javascripts/cc-widgets.js"></script>
       
     
   </body>
