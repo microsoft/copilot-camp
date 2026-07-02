@@ -18,17 +18,64 @@
 
 ---
 
-## Exercise 1: Enable custom app uploads in Teams
+## Exercise 1: Common prerequsites for pro-code 
 
-1. Go to [admin.microsoft.com](https://admin.microsoft.com/) and sign in with your M365 admin account.
-2. In the left nav: **Show all** -> **Teams** -> **Teams apps** -> **Setup policies**.
-3. Select **Global (Org-wide default)**.
-4. Toggle **Upload custom apps** to **On** and click **Save**.
+
+### Step 1: Configure your M365 tenant
+
+By default, Teams doesn't allow uploading custom apps — an admin toggle must be flipped first.
+
+<div data-widget="step" data-n="1" data-title="Enable custom app uploads in Teams"></div>
+
+1. Go to [admin.microsoft.com](https://admin.microsoft.com) and sign in with your M365 admin account
+2. In the left nav: **Show all** → **Teams** → **Teams apps** → **Setup policies**
+3. Select **Global (Org-wide default)**
+4. Toggle **Upload custom apps** to **On** and click **Save**
+
+
 
 <div data-widget="callout"
-  data-type="warn"
-  data-title="Propagation delay"
-  data-body="This setting can take up to 24 hours in some tenants. If Provision fails with an upload error later, wait an hour and retry."></div>
+     data-type="warn"
+     data-title="Propagation delay"
+     data-body="This setting can take up to 24 hours in some tenants. If Provision fails with an upload error later, wait an hour and retry."></div>
+
+<div data-widget="step" data-n="2" data-title="Verify your Copilot licence"></div>
+
+Go to [m365.cloud.microsoft/chat/](https://m365.cloud.microsoft/chat/). If you see the Copilot Chat interface, you have a valid licence. If you see a licence error, contact your tenant admin — you need a Microsoft 365 Copilot licence assigned to your account.
+
+
+
+---
+
+### Step 2: Install developer tools
+
+<div data-widget="step" data-n="1" data-title="Install Node.js v22"></div>
+
+Version 22 is required — older versions fail silently on certain SDK dependencies.
+
+If you have a different version installed, use [nvm](https://github.com/nvm-sh/nvm) (Mac/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows) to manage versions side by side.
+
+
+
+<div data-widget="step" data-n="2" data-title="Install Microsoft 365 Agents Toolkit"></div>
+
+1. Open VS Code → Extensions (`Ctrl+Shift+X`)
+2. Search **Microsoft 365 Agents Toolkit** and click **Install**
+3. Click the hexagonal icon in the Activity Bar and sign in with your M365 developer account
+
+
+---
+
+### Step 3 : Verify your installation
+
+Open a terminal and run these checks. Every one should pass before you proceed.
+
+<div data-widget="verify" data-label="Node.js version" data-cmd="node -v\n# Expected: v22.x.x"></div>
+
+<div data-widget="verify" data-label="npm version" data-cmd="npm -v\n# Expected: 10.x.x or higher"></div>
+
+<div data-widget="verify" data-label="Git installed" data-cmd="git --version\n# Expected: git version 2.x.x"></div>
+
 
 ---
 
