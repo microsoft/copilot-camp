@@ -50,3 +50,25 @@ If you get stuck or have any questions about building AI apps, join:
 If you have product feedback or errors while building visit:
 
 [![Azure AI Foundry Developer Forum](https://img.shields.io/badge/GitHub-Azure_AI_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+
+## Check typos in a Markdown page
+
+To check typos in a single `.md` file (similar to quick local validation while editing pages):
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/check_md_typos.py docs/pages/extend-m365-copilot/index.md
+```
+
+Optional flags:
+
+- `--fix` to apply auto-corrections where possible.
+- `--ignore-words-file scripts/typo-ignore-words.txt` to load ignored terms from a text file (one word per line).
+- `--ignore-words-list "word1,word2"` to add extra ignored words ad-hoc.
+- `--known-typos-only` to use only `codespell` built-in typo dictionary.
+
+Example with custom ignore file:
+
+```bash
+python scripts/check_md_typos.py docs/pages/extend-m365-copilot/index.md --ignore-words-file scripts/typo-ignore-words.txt
+```
