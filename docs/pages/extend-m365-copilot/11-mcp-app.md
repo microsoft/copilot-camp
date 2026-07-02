@@ -1043,7 +1043,7 @@ This panel shows which tools were called, the parameters passed, and the respons
 
 ---
 
-Congratulations! You've successfully built an MCP app with interactive widgets, added a new Status Timeline visualization, and integrated it with Microsoft 365 Copilot through a Declarative Agent.
+---8<--- "e-congratulations.md"
 
 <div data-widget="labnav"></div>
 

@@ -36,6 +36,8 @@ Placeholder: run eval commands, collect scores, and surface failing or weak case
 
 Placeholder: adjust prompts/tools/configuration, then rerun evaluations to confirm improvements.
 
+---8<--- "e-congratulations.md"
+
 <div data-widget="labnav"
      data-prev="../12-da-cli-wiqd/"
      data-prev-label="Lab E12 - DA CLI with WIQD Tooling"></div>

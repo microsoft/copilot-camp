@@ -96,7 +96,7 @@ To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://ad
 2. Paste the JSON content into the "Card Payload Editor" section on the lower part of the designer.
 3. You will see a live preview of your Adaptive Card on the upper part of the designer.
 
-Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
+Your Adaptive Card preview should now render correctly in the designer.
 
 <cc-end-step lab="e5" exercise="1" step="2" />
 
@@ -224,8 +224,6 @@ You can now test other prompts as well to see the improved responses from Micros
 <cc-end-step lab="e5" exercise="3" step="2" />
 
 ---8<--- "e-congratulations.md"
-
-You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.
 
 <cc-next url="../06a-add-authentication-ttk" label="Next" />
 

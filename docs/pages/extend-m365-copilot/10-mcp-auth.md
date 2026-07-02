@@ -521,9 +521,7 @@ Before testing, verify your MCP server from previous exercises is still running:
 
 ---
 
-## 🎉 Congratulations!
-
-You've successfully created and deployed Zava Insurance's **OAuth-protected** Declarative Agent that securely integrates with their authenticated MCP server.
+---8<--- "e-congratulations.md"
 
 
 ### Key Differences from Lab 08

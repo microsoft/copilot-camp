@@ -429,8 +429,6 @@ Your agent will ask permission to allow this action even for the GET request. Se
 
 ---8<--- "e-congratulations.md"
 
-You've now completed enhancing your API plugin. But as you can see, the citation cards are very basic. So let's proceed to the next lab to add rich card citations and responses using adaptive cards. 
-
 <div data-widget="labnav"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/04-enhance-api-plugin" />

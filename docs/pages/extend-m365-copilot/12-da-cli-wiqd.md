@@ -36,6 +36,8 @@ Placeholder: execute WIQD-style inspection commands, review warnings/errors, and
 
 Placeholder: save inspection outputs and define concrete changes to validate in the Evals lab.
 
+---8<--- "e-congratulations.md"
+
 <div data-widget="labnav"
      data-prev="../bundle-e/"
      data-prev-label="Back to Bundle E"

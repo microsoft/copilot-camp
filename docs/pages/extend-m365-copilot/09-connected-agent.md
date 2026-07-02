@@ -481,9 +481,7 @@ Notice how Zava Care orchestrated calls to both the Zava Claims agent 1️⃣ fo
 ![image of orchestration](../../assets/images/extend-m365-copilot-09/demo.png)
 <cc-end-step lab="e9" exercise="6" step="2" />
 
-## Congratulations! 🎉
-
-You've successfully built Zava Insurance's Connected Agent orchestration system!
+---8<--- "e-congratulations.md"
 
 
 <cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />

@@ -83,6 +83,8 @@ If you are already pro-code, you can go directly to **E1B**, then continue to **
   data-title="Suggested progression"
   data-body="To push your limits gradually, take E1A first, then jump to E1B. If you are already comfortable with source files and provisioning, start at E1B, then continue to E0."></div>
 
+---8<--- "e-congratulations.md"
+
 <div data-widget="labnav"
   data-prev="../"
   data-prev-label="Back to Welcome"

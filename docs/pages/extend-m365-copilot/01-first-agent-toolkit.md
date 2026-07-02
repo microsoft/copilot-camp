@@ -159,6 +159,8 @@ Expected result:
 
 You can now continue to **Prerequisites for Pro-code bundles** before selecting a bundle.
 
+---8<--- "e-congratulations.md"
+
 <div data-widget="labnav"
   data-prev="../01-first-agent-new/"
   data-prev-label="Back to E1 Path Choice"

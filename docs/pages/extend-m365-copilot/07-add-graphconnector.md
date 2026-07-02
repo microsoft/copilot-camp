@@ -189,8 +189,6 @@ In the immersive experience of Trey Genie, use below prompts and test them
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab Add Copilot Connector, Well done!
-
 <div data-widget="labnav"></div>
 
 <!-- <cc-award badgeId="Extend" badgeName="Extend" badgeUrl="#" /> -->

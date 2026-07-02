@@ -67,10 +67,11 @@ You are a friendly HR and IT onboarding assistant for new employees at Zava Insu
 - Warm, concise, practical.
 ```
 
-Then select **Create/Update** as per your UI.
+- Then select **Create/Update** as per your UI.
+
 ---
 
-> Achieve Edit mode by selecting **Agents** from left navigation. Then choose your agent from the list, select ... menu option and then select **Edit**.
+> To enter **Edit** mode, select **Agents** in the left navigation, choose your agent from the list, open the **...** menu, and then select **Edit**.
 
 ## Exercise 3: Add grounding and verify retrieval
 
@@ -109,7 +110,10 @@ Expected result:
 
 ---
 
-## Exercise 5: Governance and rollout basics
+<div data-widget="callout"
+      data-type="info"
+      data-title="Governance and rollout basics"
+      data-body="Before wider rollout, capture the governance essentials below."></div>
 
 Before wider rollout, document:
 
@@ -121,7 +125,7 @@ Before wider rollout, document:
 
 ---
 
-## Exercise 6: Run a focused test matrix
+## Exercise 5: Run a focused test matrix
 
 Run these prompts and mark pass/fail:
 
@@ -139,7 +143,7 @@ Pass criteria:
 
 ---
 
-## Exercise 7: Iterate with one controlled change
+## Exercise 6: Iterate with one controlled change
 
 1. Reopen your agent instructions and add:
 
@@ -156,6 +160,8 @@ The staff canteen at Seattle HQ is on floor 2. It is open Mon-Fri 7:30am-3pm.
 ## Complete
 
 You can now continue to **Lab E1B — Declarative Agent Foundation with Agents Toolkit** for the pro-code jump.
+
+---8<--- "e-congratulations.md"
 
 <div data-widget="labnav"
   data-prev="../01-first-agent-new/"

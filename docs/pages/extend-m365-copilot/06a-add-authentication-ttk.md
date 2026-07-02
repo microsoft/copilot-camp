@@ -515,8 +515,6 @@ Now check out your default skills and confirm the project assignment by asking:
 <cc-end-step lab="e6a" exercise="4" step="4" />
 
 ---8<--- "e-congratulations.md"
-
-You have completed lab Ea6, Add Entra ID authentication with Agents Toolkit!
 <div data-widget="labnav"></div>
 
 

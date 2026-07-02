@@ -358,8 +358,6 @@ If you go back to your VS Code project under "Terminal", you will also see how t
 
 
 ---8<--- "e-congratulations.md"
-
-You've completed adding a declarative agent to your API plugin. You are now ready to enhance your API and the plugin for your agent. 
 <div data-widget="labnav"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/03-add-declarative-copilot" />
