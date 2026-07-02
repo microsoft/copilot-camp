@@ -1,5 +1,23 @@
 # Lab 10: Connect Declarative Agent to OAuth-Protected MCP Server
 
+<div data-widget="hero"
+  data-badge="Bundle A · Lab E10"
+  data-badge-color="purple"
+  data-icon="🛡️"
+  data-title="Secure MCP with OAuth and Entra ID"
+  data-subtitle="Upgrade the MCP integration from anonymous development mode to authenticated, enterprise-ready access control."
+  data-time="90-120 min"
+  data-requires="Foundation on Lab E8 recommended"
+  data-toolkit="Azure (free tier) OAuth 2.0 + Entra ID"></div>
+
+<div data-widget="checklist"
+  data-items="Entra app registration configured~Client ID, scope, and redirect settings established|OAuth-enabled MCP server running~JWT validation and protected metadata endpoints active|Authenticated Declarative Agent validated~Copilot prompts succeed with authorized token flow"></div>
+
+## Key concepts before you build
+
+<div data-widget="concepts"
+  data-cards="Protected MCP resources::purple::Authentication required for tool execution::Unlike E8, protected endpoints require valid tokens before tool handlers run.||JWT validation::teal::Trust and claims verification::The server validates issuer, audience, and claims to ensure only authorized access reaches claims data.||Production hardening path::amber::From demo to enterprise controls::E10 demonstrates the minimum identity/security upgrades needed before broader deployment."></div>
+
 In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) server for Zava Insurance's claims system and integrate it with a Declarative Agent in Microsoft 365 Copilot. While Lab 08 demonstrates an anonymous MCP server, this lab adds **Microsoft Entra ID authentication** for secure, enterprise-grade access to claims data.
 
 
@@ -18,40 +36,24 @@ In this lab, you'll run an **OAuth 2.0 protected** Model Context Protocol (MCP) 
 
 ## Scenario
 
-Building on the MCP server Lab 08, **Zava Insurance** now needs to secure their claims operations system for production use. While the anonymous MCP server was excellent for development and testing, the security team requires OAuth 2.0 authentication before deploying to production. The development team must now integrate **Microsoft Entra ID** authentication to ensure only authorized users can access sensitive claims data. This authenticated MCP server will validate JWT tokens, implement scope-based permissions, and comply with **RFC 9728** for protected resource metadata discovery, enabling secure integration with **Microsoft 365 Copilot** Declarative Agents.
+<div data-widget="arch"
+  data-rows="row::Claims Adjuster::tunnel::Asks Copilot for claims help|Microsoft 365 Copilot::copilot::Routes requests to Declarative Agent||label::Declarative Agent requests MCP tools with OAuth token||row::Declarative Agent::agent::Uses ai-plugin.json + secure tool metadata|Microsoft Entra ID::purple::Issues access tokens for authorized users||label::OAuth-protected MCP validates JWT + scope before tool execution||row::MCP Server (Node.js)::mcp::Protected tools + RFC 9728 metadata|Claims Data::data::Sensitive records only returned to authorized requests"></div>
 
 ---
 
-## 🎯 Lab Objectives
-
-By completing this lab, you will:
-
-- Set up Microsoft Entra ID app registration for OAuth 2.0 authentication
-- Configure environment variables for secure MCP server operation
-- Build and run Zava's OAuth-protected MCP server
-- Understand how JWT token validation works with Microsoft Entra ID
-- Create a Declarative Agent that authenticates with the protected MCP server
-- Test the agent with authenticated natural language queries
-
----
-
-## 📚 Prerequisites
-
-Before starting this lab, ensure you have:
-
-- **Node.js 22+** installed on your machine
-- **VS Code** with **Microsoft 365 Agents Toolkit extension** v6.4.2 or higher
-- **Microsoft 365 developer account** with Copilot license
-- **Azure subscription** with access to Microsoft Entra ID (for app registration)
-- Basic knowledge of TypeScript/JavaScript, REST APIs, JSON, and OAuth 2.0
-- GitHub account for VS Code Dev Tunnels
-- Completion of **Lab 08** (recommended but not required)
-
----
+<div data-widget="callout"
+  data-type="warn"
+  data-title="Before you begin this lab"
+  data-body="If Lab E8 is still running, stop all related terminal processes first (for example Azurite, MCP server, and Inspector). Then close the previous MCP server project window. This lab uses a different OAuth-protected MCP server, so start with a clean terminal/session state to avoid port and configuration conflicts."></div>
 
 ## Exercise 1: Set Up Your Development Environment
 
 In this exercise, you'll clone Zava's authenticated MCP server codebase and set up your local development environment.
+
+<div data-widget="callout"
+  data-type="info"
+  data-title="Exercise outcome"
+  data-body="By the end of this exercise, your authenticated MCP server project is cloned, dependencies are installed, and the auth module structure is ready to use."></div>
 
 ### Step 1: Clone the Repository
 
@@ -61,6 +63,7 @@ Open your terminal and run:
 git clone https://github.com/microsoft/copilot-camp.git
 cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 ```
+
 <cc-end-step lab="e10" exercise="1" step="1" />
 
 ### Step 2: Install Dependencies
@@ -101,6 +104,11 @@ Your codebase is now ready with sample data and authentication support.
 
 Before running the authenticated MCP server, you need to register an application in Microsoft Entra ID to handle OAuth 2.0 authentication.
 
+<div data-widget="callout"
+  data-type="concept"
+  data-title="Exercise outcome"
+  data-body="By the end of this exercise, your Entra app registration has redirect URIs, client secret, and an API scope ready for OAuth token flows."></div>
+
 ### Step 1: Create App Registration
 
 1. Go to [Azure Portal](https://portal.azure.com) → **Microsoft Entra ID** → **App registrations**
@@ -137,7 +145,7 @@ After registration, configure redirect URIs for different platforms. **Redirect 
         The Azure Portal UI only supports adding redirect URIs that use HTTPS or `localhost`. Since MCP Inspector uses `http://127.0.0.1:33418` (not `localhost`), you must add this URI manually through the app manifest.
 
    - Go to **Manifest** in the left navigation
-   - Find the `"web"` section and locate `"redirectUriSettings"` (or `"redirectUris"` in some manifest versions)
+   - Find the `"web"` section and `"redirectUris"` 
    - Add `http://127.0.0.1:33418` to the redirect URIs array. The section should look similar to:
      ```json
      "web": {
@@ -195,20 +203,36 @@ Your Microsoft Entra ID app registration is now complete!
 
 In this exercise, you'll configure the OAuth environment variables and start the local database.
 
+<div data-widget="callout"
+  data-type="info"
+  data-title="Exercise outcome"
+  data-body="By the end of this exercise, your tunnel URL and .env configuration are in place, and local claims data is running in Azurite."></div>
+
 ### Step 1: Set Up Public Access with Dev Tunnel
 
-You need a public HTTPS URL for your MCP server before configuring environment variables.
+Copilot and OAuth clients need a public HTTPS address to reach your local MCP server. Create that endpoint first using VS Code Dev Tunnel.
 
-1. In VS Code's terminal panel, select the **Ports** tab
-2. Click **Forward a Port** and enter port `3001`
+<div data-widget="callout"
+  data-type="concept"
+  data-title="Why this step comes first"
+  data-body="You will use this tunnel URL in your &lt;code&gt;.env&lt;/code&gt; settings (for resource identifier, CORS, and server base URL). Without it, OAuth and MCP metadata wiring will fail."></div>
 
-    !!! note "GitHub authentication may be required"
-        If this is your first time using Dev Tunnels in VS Code, you may be prompted to sign in with your GitHub account. Complete the authentication to continue.
+#### 1: Forward port 3001
 
-3. Right-click the forwarded port address and select **Port Visibility** → **Public**
-4. Copy the tunnel URL (e.g., `https://abc123def456.use.devtunnels.ms`)
+1. In VS Code's terminal panel, select the **Ports** tab.
+2. Click **Forward a Port** and enter port `3001`.
 
-**Save this URL** - you'll need it for the environment configuration.
+#### 2: Make it public
+
+1. Right-click the forwarded port address and select **Port Visibility** → **Public**.
+2. Copy the tunnel URL (for example: `https://abc123def456.use.devtunnels.ms`).
+
+<div data-widget="callout"
+  data-type="warn"
+  data-title="GitHub sign-in may be required"
+  data-body="If this is your first time using Dev Tunnels in VS Code, sign in with your GitHub account when prompted before continuing."></div>
+
+Save this URL. You'll use it in the next step for environment configuration.
 
 <cc-end-step lab="e10" exercise="3" step="1" />
 
@@ -294,6 +318,11 @@ You should see confirmation messages for all tables being initialized.
 ## Exercise 4: Launch the OAuth-Protected MCP Server
 
 Now you'll start Zava's authenticated MCP server that validates OAuth tokens before allowing access.
+
+<div data-widget="callout"
+  data-type="tip"
+  data-title="Exercise outcome"
+  data-body="By the end of this exercise, the MCP server is running with OAuth enabled, metadata discovery works, and unauthenticated tool calls are correctly rejected."></div>
 
 ### Step 1: Build and Start the MCP Server
 
@@ -388,6 +417,11 @@ This confirms that authentication is working correctly.
 
 In this exercise, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that connects to Zava's authenticated claims system.
 
+<div data-widget="callout"
+  data-type="info"
+  data-title="Exercise outcome"
+  data-body="By the end of this exercise, you have a provisioned Declarative Agent wired to the OAuth-protected MCP server with registered authentication settings."></div>
+
 ### Step 1: Create New Agent using Microsoft 365 Agents Toolkit
 
 1. Open a new window in **VS Code**
@@ -451,6 +485,11 @@ You now have a Declarative Agent connected to your OAuth-protected MCP Server.
 
 Test your Declarative Agent to ensure it can successfully authenticate and communicate with the OAuth-protected MCP server.
 
+<div data-widget="callout"
+  data-type="tip"
+  data-title="Exercise outcome"
+  data-body="By the end of this exercise, you verify sign-in, token-based tool calls, and successful authenticated responses in Copilot."></div>
+
 ### Step 1: Ensure MCP Server is Running
 
 Before testing, verify your MCP server from previous exercises is still running:
@@ -482,22 +521,12 @@ Before testing, verify your MCP server from previous exercises is still running:
 
 ---
 
-## 🎉 Congratulations!
+---8<--- "e-congratulations.md"
 
-You've successfully created and deployed Zava Insurance's **OAuth-protected** Declarative Agent that securely integrates with their authenticated MCP server.
-
-### What You Accomplished
-
-- ✅ Created a Microsoft Entra ID app registration for OAuth 2.0
-- ✅ Configured environment variables for secure authentication
-- ✅ Ran an OAuth-protected MCP server with JWT token validation
-- ✅ Tested RFC 9728-compliant OAuth discovery endpoints
-- ✅ Created a Declarative Agent with authenticated MCP integration
-- ✅ Tested secure natural language queries with claims data
 
 ### Key Differences from Lab 08
 
-| Aspect | Lab 08 (Anonymous) | Lab 10 (Authenticated) |
+| Aspect | Lab E08 (Anonymous) | Lab 10 (Authenticated) |
 |--------|-------------------|----------------------|
 | Authentication | None - all endpoints public | OAuth 2.0 with Microsoft Entra ID |
 | Token Validation | None | JWT validation against JWKS |
@@ -508,14 +537,6 @@ You've successfully created and deployed Zava Insurance's **OAuth-protected** De
 <cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
 <cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" />
 
-<cc-next />
+<div data-widget="labnav"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extent/10-mcp-auth" />
-
-### 🔗 Additional Resources
-- **Build declarative agents for Microsoft 365 Copilot with MCP**:[https://devblogs.microsoft.com/microsoft365dev/build-declarative-agents-for-microsoft-365-copilot-with-mcp/](https://devblogs.microsoft.com/microsoft365dev/build-declarative-agents-for-microsoft-365-copilot-with-mcp/)
-
-- **MCP Protocol Documentation**: [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/)
-- **Microsoft Entra ID Documentation**: [https://docs.microsoft.com/en-us/azure/active-directory/](https://docs.microsoft.com/en-us/azure/active-directory/)
-- **RFC 9728 - OAuth 2.0 Protected Resource Metadata**: [https://datatracker.ietf.org/doc/html/rfc9728](https://datatracker.ietf.org/doc/html/rfc9728)
-- **Azure Table Storage**: [Azure Documentation](https://docs.microsoft.com/en-us/azure/storage/tables/)

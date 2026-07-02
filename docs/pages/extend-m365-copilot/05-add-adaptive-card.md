@@ -1,5 +1,23 @@
 # Lab E5 - Add adaptive cards
 
+<div data-widget="hero"
+  data-badge="Bundle C · Lab E5"
+  data-badge-color="coral"
+  data-icon="🧩"
+  data-title="Add Adaptive Cards"
+  data-subtitle="Upgrade text responses into rich card-based experiences so users can read and act on structured results more effectively."
+  data-time="30-45 min"
+  data-requires="Lab E4"
+  data-toolkit="Adaptive Cards Designer"></div>
+
+<div data-widget="checklist"
+  data-items="Adaptive card templates created~Built and tested JSON cards for key operations|Plugin response semantics enhanced~Mapped operations to card templates in plugin manifest|Richer Copilot responses validated~Confirmed cards render with bound API response data"></div>
+
+## Key concepts before you build
+
+<div data-widget="concepts"
+  data-cards="Structured response UX::coral::From plain text to cards::Adaptive cards improve readability and actionability by presenting key fields in a designed visual layout.||Template binding::green::Data drives presentation::Card templates bind to operation outputs, so schema consistency matters for predictable rendering.||Response semantics::blue::Tell Copilot how to render::The plugin's response metadata controls when and how static templates are applied in conversation."></div>
+
 In this lab you will further enhance the response from Microsoft 365 Copilot from text to rich cards using Adaptive Cards. 
 
 In this lab you will learn:
@@ -78,7 +96,7 @@ To test your Adaptive Card, you can use the [Adaptive Cards Designer](https://ad
 2. Paste the JSON content into the "Card Payload Editor" section on the lower part of the designer.
 3. You will see a live preview of your Adaptive Card on the upper part of the designer.
 
-Congrats! You are now fully skilled to develop Adaptive cards for your plugin!
+Your Adaptive Card preview should now render correctly in the designer.
 
 <cc-end-step lab="e5" exercise="1" step="2" />
 
@@ -206,8 +224,6 @@ You can now test other prompts as well to see the improved responses from Micros
 <cc-end-step lab="e5" exercise="3" step="2" />
 
 ---8<--- "e-congratulations.md"
-
-You've completed adding adaptive card responses to your first API plugin. You are now ready to proceed to the next lab to add authentication to your API.
 
 <cc-next url="../06a-add-authentication-ttk" label="Next" />
 

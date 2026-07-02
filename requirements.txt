@@ -8,3 +8,7 @@ mkdocs-static-i18n[material]
 # Core dependencies for scripts/translate-docs.py
 python-dotenv
 openai
+
+# Typos checker for Markdown pages
+codespell
+pyspellchecker

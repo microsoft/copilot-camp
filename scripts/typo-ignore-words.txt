@@ -1,0 +1,7 @@
+# Project terms to ignore during typo checks (one per line)
+workflow
+workflows
+onboarding
+rollout
+multi
+googling

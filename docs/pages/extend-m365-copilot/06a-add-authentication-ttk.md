@@ -1,5 +1,23 @@
 # Lab E6a - Add Entra ID authentication with OAuth (Agents Toolkit)
 
+<div data-widget="hero"
+  data-badge="Bundle C · Lab E6a"
+  data-badge-color="purple"
+  data-icon="🔐"
+  data-title="Add Entra ID Authentication"
+  data-subtitle="Protect the API plugin with OAuth 2.0 and use Agents Toolkit to automate registration and local configuration updates."
+  data-time="45-60 min"
+  data-requires="Lab E5"
+  data-toolkit="Entra ID + Agents Toolkit"></div>
+
+<div data-widget="checklist"
+  data-items="Entra app registration automated~Provision flow creates and updates app resources|OAuth metadata configured in app package~Plugin authentication contract wired for Copilot|Authenticated API flow validated~Agent can call protected endpoints using token-based access"></div>
+
+## Key concepts before you build
+
+<div data-widget="concepts"
+  data-cards="OAuth 2.0 flow::purple::Identity-aware action access::Authentication ensures API actions execute with trusted identity context instead of anonymous access.||Toolkit-driven provisioning::teal::Config as deployment intent::YAML and manifest files define how Entra and app package resources are created and linked.||Token-bound authorization::green::Scopes enforce least privilege::Access scopes and token validation help limit API usage to approved capabilities and users."></div>
+
 In this lab you will add authentication to your API plugin using OAuth 2.0 with Entra ID as the identity provider. You will learn how to set up Agents Toolkit to automate the Entra ID and Teams Developer Portal registrations.
 
 <div class="lab-intro-video">
@@ -497,11 +515,7 @@ Now check out your default skills and confirm the project assignment by asking:
 <cc-end-step lab="e6a" exercise="4" step="4" />
 
 ---8<--- "e-congratulations.md"
+<div data-widget="labnav"></div>
 
-You have completed lab Ea6, Add Entra ID authentication with Agents Toolkit!
-
-Want to try something cool? How about adding a Copilot Connector to your solution?
-
-<cc-next url="../07-add-graphconnector" />
 
 <img src="https://pnptelemetry.azurewebsites.net/copilot-camp/extend-m365-copilot/06a-add-authentication" />

@@ -19,11 +19,15 @@ theme:
     - navigation.sections
     - toc.integrate  
     - content.code.copy
+    - content.tabs.link
 markdown_extensions:
   - admonition
   - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.snippets:
       base_path: docs/includes
+  - pymdownx.tabbed:
+      alternate_style: true
   - attr_list
   - toc:
       toc_depth: 2
@@ -32,6 +36,7 @@ extra_javascript:
   - javascripts/cc-next.js
   - javascripts/cc-lab-step.js
   - javascripts/cc-card.js
+  - javascripts/cc-widgets.js
 extra_css:
   - stylesheets/labStyles.css
   - stylesheets/extra.css
@@ -48,24 +53,23 @@ plugins:
           nav:
             - Home: 'index.md'
             - Declarative Agents:
-              - Welcome: 'pages/extend-m365-copilot/index.md'              
-              - Setup:
-                  - Lab E0 - Prerequisites and Environment Setup: 'pages/extend-m365-copilot/00-prerequisites.md'
-              - Declarative Agent Fundamentals :
-                  - Lab E1 - Build a Declarative Agent using TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
-                  - Lab E1a - Build a game agent: 'pages/extend-m365-copilot/01a-geolocator.md'
-              - Build and Integrate API from scratch:
-                  - Lab E2 - Build a Backend API: 'pages/extend-m365-copilot/02-build-the-api.md'
-                  - Lab E3 - Add Declarative Agent and API Plugin: 'pages/extend-m365-copilot/03-add-declarative-agent.md'
-                  - Lab E4 - Enhance API and Plugin: 'pages/extend-m365-copilot/04-enhance-api-plugin.md'
-                  - Lab E5 - Add Adaptive Cards: 'pages/extend-m365-copilot/05-add-adaptive-card.md'   
-                  - Lab E6a - Add Entra ID Authentication (Toolkit): 'pages/extend-m365-copilot/06a-add-authentication-ttk.md'                      
-              - Integration:
-                  - Lab E7 - Add Copilot Connector: 'pages/extend-m365-copilot/07-add-graphconnector.md'
-                  - Lab E8 - Connect Declarative agent to MCP Server: 'pages/extend-m365-copilot/08-mcp-server.md'
-                  - Lab E9 - Connected Agents using VS Code (Preview): 'pages/extend-m365-copilot/09-connected-agent.md'
-                  - Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server: 'pages/extend-m365-copilot/10-mcp-auth.md'
-                  - Lab E11 - Build an MCP App with Interactive Widgets: 'pages/extend-m365-copilot/11-mcp-app.md'
+              - Welcome: 'pages/extend-m365-copilot/index.md'
+              - Bundle Overview: 'pages/extend-m365-copilot/bundles.md'
+              - Mandatory On-ramp:
+                - Lab E1 - Choose Foundation Path: 'pages/extend-m365-copilot/01-first-agent-new.md'
+                - Lab E1A - Declarative Agent Foundation with Agent Builder: 'pages/extend-m365-copilot/01-first-agent-builder.md'
+                - Lab E1B - Declarative Agent Foundation with Agents Toolkit: 'pages/extend-m365-copilot/01-first-agent-toolkit.md'
+                - Prerequisites for Pro-code bundles: 'pages/extend-m365-copilot/00-prerequisites.md'
+              - Bundle A - MCP Foundations:
+                    - Start Bundle A: 'pages/extend-m365-copilot/bundle-a.md'
+              - Bundle B - Multi-Agent Workflows in Copilot:
+                    - Start Bundle B: 'pages/extend-m365-copilot/bundle-b.md'
+              - Bundle C - MCP App:
+                    - Start Bundle C: 'pages/extend-m365-copilot/bundle-c.md'
+              - Bundle D - API-Based Declarative Agent:
+                    - Start Bundle D: 'pages/extend-m365-copilot/bundle-d.md'
+              - Bundle E - Declarative Agents with Copilot Connectors:
+                    - Start Bundle E: 'pages/extend-m365-copilot/bundle-e.md'
             - Custom Engine Agents:
               - Welcome : 'pages/custom-engine/index.md'
               - Start with Microsoft Foundry:
