@@ -14,7 +14,7 @@
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Prerequisites for Pro-code bundles</a></li>
                 </ul>
             </li>
-            <li><strong>🔌 Bundle A - MCP Foundations</strong>
+            <li><strong>🔌 Bundle A - MCP Foundation</strong>
                 <ul>
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-a">Start Bundle A</a></li>
                     <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server">Lab E8 - Connect Declarative agent to MCP Server</a></li>

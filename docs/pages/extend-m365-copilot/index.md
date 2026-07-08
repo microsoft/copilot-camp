@@ -79,7 +79,7 @@ This gives every learner a shared baseline before specializing.
 
 ---
 
-### Bundle A — MCP Foundations
+### Bundle A — MCP Foundation
 
 **"I want to build and secure an MCP server the right way."**
 
@@ -163,7 +163,7 @@ Your first production agent is closer than you think.
 
 ### Bundle Pages
 
-- [Bundle A — MCP Foundations](bundle-a)
+- [Bundle A — MCP Foundation](bundle-a)
 - [Bundle B — Multi-Agent Workflows](bundle-b)
 - [Bundle C — MCP App](bundle-c)
 - [Bundle D — API-Based Declarative Agent](bundle-d)

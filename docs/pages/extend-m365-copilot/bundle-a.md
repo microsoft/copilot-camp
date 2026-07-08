@@ -1,9 +1,9 @@
 ---
-title: "Bundle A — MCP Foundations: Build, Connect & Secure"
+title: "Bundle A — MCP Foundation: Build, Connect & Secure"
 ---
 
 <div data-widget="hero"
-     data-badge="Bundle A · MCP Foundations"
+     data-badge="Bundle A · MCP Foundation"
      data-badge-color="teal"
      data-icon="🔌"
      data-title="Build a working MCP integration, then secure it"
@@ -12,7 +12,7 @@ title: "Bundle A — MCP Foundations: Build, Connect & Secure"
       data-requires="Foundation built by E0 + E1A/E1B"
      data-extra="Labs E8 + E10"></div>
 
-<div data-widget="sectionlabel" data-text="Bundle A · MCP Foundations"></div>
+<div data-widget="sectionlabel" data-text="Bundle A · MCP Foundation"></div>
 
 <div data-widget="callout"
      data-type="info"

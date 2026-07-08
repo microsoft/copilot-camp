@@ -7,7 +7,7 @@ title: Declarative Agent Developer Bundles
      data-badge-color="blue"
      data-title="Declarative Agent Developer Bundles"
      data-subtitle="Complete the mandatory on-ramp first, then choose a focused bundle path based on your goals."
-     data-path="0::Fundamentals|1::Bundle Prerequisites|*A::MCP Foundations|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
+     data-path="0::Fundamentals|1::Bundle Prerequisites|*A::MCP Foundation|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
 
 <div data-widget="sectionlabel" data-text="Learning bundles"></div>
 
@@ -16,7 +16,7 @@ title: Declarative Agent Developer Bundles
      data-label="Bundle A"
      data-bundle-key="a"
      data-label-color="teal"
-     data-title="MCP Foundations: Build, Connect &amp; Secure"
+     data-title="MCP Foundation: Build, Connect &amp; Secure"
      data-tagline="Build and connect an MCP server, then harden it with OAuth 2.0 and Entra ID."
      data-time="~4 hrs"
      data-lab1-badge="Lab E8"
