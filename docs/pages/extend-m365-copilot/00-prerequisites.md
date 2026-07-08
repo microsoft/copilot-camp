@@ -38,7 +38,7 @@ Complete this lab after E1A or E1B and before you start any bundle.
      data-variant="soft"
      data-items="GitHub account~Needed for Dev Tunnels sign-in|Azurite installed globally~Local Azure Table Storage emulator|MCP Inspector installed globally~Inspect and debug MCP tool wiring"></div>
 
-### Bundle A — MCP Foundations
+### Bundle A — MCP Foundation
 
 Stand up a real MCP server locally, wire a Declarative Agent to it via a Dev Tunnel, then secure it with OAuth.
 
