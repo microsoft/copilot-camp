@@ -442,7 +442,7 @@ Transform the basic agent into Zava's intelligent claims assistant by configurin
     data-title="Exercise outcome"
     data-body="By the end of this exercise, your agent has a finalized persona, conversation starters, and manifest metadata for Zava claims operations."></div>
 
-### Step 1: Update Agent Identity and Description
+### Step 1: Update Agent Configuration and Description
 
 Replace the content of `appPackage/declarativeAgent.json` with Zava's configuration:
 
