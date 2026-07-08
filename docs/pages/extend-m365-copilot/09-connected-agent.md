@@ -132,7 +132,7 @@ Go to [this url](https://download-directory.github.io/?url=https://github.com/mi
 
 ## Exercise 3: Configure the Agent for Zava's contractor procurement knowledge
 
-### Step 1: Update Agent Identity and Description
+### Step 1: Update Agent Configuration and Description
 
 Replace the content of `appPackage/declarativeAgent.json` with below configuration to add conversation starters:
 
@@ -319,7 +319,7 @@ This creates a new Declarative Agent project, which you will then use to connect
 
 <cc-end-step lab="e9" exercise="5" step="1" />
 
-### Step 2: Update Agent Identity and Description
+### Step 2: Update Agent Configuration and Description
 
 Replace the content of `appPackage/declarativeAgent.json` with Zava's configuration:
 

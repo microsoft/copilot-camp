@@ -928,7 +928,7 @@ This populates the action manifest `appPackage/ai-plugin.json` with the selected
 
 <cc-end-step lab="e11" exercise="4" step="3" />
 
-### Step 4: Configure the Agent Identity
+### Step 4: Set up the Agent configuration
 
 Replace the content of `appPackage/declarativeAgent.json` with:
 
