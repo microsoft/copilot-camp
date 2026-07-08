@@ -9,7 +9,7 @@ title: "Bundle E — Declarative Agents with Copilot Connectors"
      data-title="Start with API fundamentals, then ground the agent"
      data-subtitle="This bundle reuses the API-based Declarative Agent core and then extends it with connector-based grounding so responses can draw from indexed enterprise content."
      data-time="~5 hrs"
-     data-requires="Foundation built by E0 + E1A/E1B"
+     data-requires="Foundation built by  E1B"
      data-extra="Labs E2 + E3 + E4 + E7"></div>
 
 <div data-widget="sectionlabel" data-text="Bundle E · Declarative Agents with Copilot Connectors"></div>
@@ -17,7 +17,7 @@ title: "Bundle E — Declarative Agents with Copilot Connectors"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers focused on grounded responses"
-     data-body="Complete &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt; and &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish either E1A or E1B). Choose this bundle if you want the agent to answer from indexed data sources instead of relying only on API actions."></div>
+     data-body="Complete &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish E1B), then the &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt;. Choose this bundle if you want the agent to answer from indexed data sources instead of relying only on API actions."></div>
 
 <div data-widget="checklist"
      data-items="A solid API-backed Declarative Agent core~You will reuse the same fundamentals as Bundle C through E4|Connector-based grounding on top of that core~You will ingest and index data before testing grounded answers|A path tuned for enterprise knowledge scenarios~This is the bundle for search and grounding rather than MCP"></div>
@@ -29,7 +29,7 @@ title: "Bundle E — Declarative Agents with Copilot Connectors"
 This bundle shares the API core with Bundle C, then adds grounding through connectors.
 
 <div data-widget="concepts"
-     data-cards="Prerequisites::amber::E0 + E1A/E1B completed::You should complete the on-ramp before beginning the API + connector grounding sequence.||Shared API core::blue::E2-E4 mirror Bundle D::You first establish a working API-backed declarative agent, including plugin action design and validation.||Grounding strategy::purple::Connector-backed response quality::Lab E7 introduces indexed enterprise content so answers are grounded in curated data instead of only API action outputs.||Enterprise retrieval mindset::teal::Search + context + trust::Connector-based grounding is best when responses must reference knowledge sources users can inspect and validate."></div>
+     data-cards="Prerequisites::amber:: E1B completed::You should complete the on-ramp before beginning the API + connector grounding sequence.||Shared API core::blue::E2-E4 mirror Bundle D::You first establish a working API-backed declarative agent, including plugin action design and validation.||Grounding strategy::purple::Connector-backed response quality::Lab E7 introduces indexed enterprise content so answers are grounded in curated data instead of only API action outputs.||Enterprise retrieval mindset::teal::Search + context + trust::Connector-based grounding is best when responses must reference knowledge sources users can inspect and validate."></div>
 
 <div data-widget="bundleseq"
      data-bundle-key="e"
