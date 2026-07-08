@@ -88,7 +88,7 @@
  *        data-icon="🔌"
  *        data-label="Bundle A"
  *        data-label-color="teal"
- *        data-title="MCP Foundations: Build it, then secure it"
+ *        data-title="MCP Foundation: Build it, then secure it"
  *        data-tagline="Stand up a real MCP server…"
  *        data-time="~4 hrs"
  *        data-lab1-badge="Lab E8"
@@ -612,7 +612,7 @@
 
   const BUNDLES = {
     a: {
-      name: "Bundle A — MCP Foundations",
+      name: "Bundle A — MCP Foundation",
       color: "teal",
       labs: [
         { url: "08-mcp-server/", label: "Lab E8 - Connect Declarative Agent to MCP Server" },
@@ -969,7 +969,7 @@
 
   /* landing hero — bigger h1 + path breadcrumb strip
      data-path = pipe-separated steps; prefix with * to mark active
-     e.g. "0::Prerequisites (E0)|1::First Agent (E-Intro)|*A::Bundle A — MCP Foundations|*B::Bundle B — MCP at Scale"
+     e.g. "0::Prerequisites (E0)|1::First Agent (E-Intro)|*A::Bundle A — MCP Foundation|*B::Bundle B — MCP at Scale"
   */
   function renderLandingHero(el) {
     const d = el.dataset;
