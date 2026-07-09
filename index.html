@@ -16,10 +16,6 @@
       
       
         
-          <link rel="alternate" href="/copilot-camp/" hreflang="en">
-        
-          <link rel="alternate" href="/copilot-camp/ja/" hreflang="ja">
-        
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -125,32 +121,6 @@
       
     
     
-    
-      <div class="md-header__option">
-  <div class="md-select">
-    
-    <button class="md-header__button md-icon" aria-label="Select language">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
-    </button>
-    <div class="md-select__inner">
-      <ul class="md-select__list">
-        
-          <li class="md-select__item">
-            <a href="/copilot-camp/" hreflang="en" class="md-select__link">
-              English
-            </a>
-          </li>
-        
-          <li class="md-select__item">
-            <a href="/copilot-camp/ja/" hreflang="ja" class="md-select__link">
-              Japanese (日本語)
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</div>
     
     
       
@@ -511,6 +481,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#your-learning-options-to-extend-microsoft-365-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your learning options to extend Microsoft 365 Copilot
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#where-should-i-start-to-build-agents" class="md-nav__link">
@@ -2979,15 +2960,26 @@
 
 
 
+<h1 id="extend-microsoft-365-copilot">Extend Microsoft 365 Copilot</h1>
 <p><strong>Copilot Developer Camp</strong> is a self-paced learning resource, designed to help you extend Microsoft 365 Copilot. It provides practical guidance and real-world examples to support your development journey.</p>
-<p><a href="https://github.com/microsoft/copilot-camp" target="_blank"  class="star-button">⭐️ Star our repo</a></p>
 <!-- <div class="video">
   <iframe src="//www.youtube.com/embed/uLYdP4ST7k0" frameborder="0" allowfullscreen></iframe>
   <div>Overview of Copilot Dev Camp</div>
 </div> -->
 
-<h1 id="extend-microsoft-365-copilot">Extend Microsoft 365 Copilot</h1>
-<p>Do you want to learn more about extending Microsoft 365 Copilot? Here are the available options:</p>
+<p>In this dev camp, you have multiple options to extend Microsoft 365 Copilot, depending on your needs:</p>
+<p>Building an agent:</p>
+<ul>
+<li><strong>Declarative Agents</strong>: you build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.</li>
+<li><strong>Custom Engine Agents</strong>: you build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.</li>
+</ul>
+<p>Adding work intelligence layer:</p>
+<ul>
+<li><strong>Work IQ</strong>: provides the workplace intelligence (email, meetings, files, people context, search, memory, reasoning signals) to either of those agent types.</li>
+</ul>
+<p>No matter what technology you use to create agents or to extend Microsoft 365 Copilot, you can always rely on <strong>Microsoft Agent 365</strong> to observe, govern, and secure every agent across your organization.</p>
+<p><img alt="Diagram titled Empowering every developer to build agents, showing three paths: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Build for your own app leading to Copilot APIs. Moreover, Microsoft Agent 365 is available across all of the options to observe, govern, and secure every agent across your organization." src="assets/images/m365-copilot-extensibility.png" /></p>
+<h2 id="your-learning-options-to-extend-microsoft-365-copilot">Your learning options to extend Microsoft 365 Copilot</h2>
 <div><span><a href="/copilot-camp/pages/extend-m365-copilot/" class="cta-button-fixed-width">🧩 Declarative Agents</a></span><span class="cta-button-description">Build on the Microsoft 365 Copilot Stack<span></div>
 
 <div><span><a href="/copilot-camp/pages/custom-engine/" class="cta-button-fixed-width">⚙️ Custom Engine Agents</a></span><span class="cta-button-description">Build on your own AI stack<span></div>
@@ -2998,17 +2990,10 @@
 
 <div><span><a href="/copilot-camp/pages/agent-365/" class="cta-button-fixed-width">🛡️ Agent 365</a></span><span class="cta-button-description">The control plane for agents<span></div>
 
-<p>Agents for Microsoft 365 are conversational AI-powered assistants that automate tasks, answer questions, and streamline workflows across Microsoft 365. Common use cases include customer support, IT helpdesk, and HR assistance.</p>
-<p><img alt="Architecture diagram of an Agent for Microsoft 365 showing the user-experience layer with Microsoft 365 apps, an orchestrator managing knowledge (instructions and grounding), skills (actions, triggers, and workflow), and autonomy (planning, learning, escalation), all powered by foundation models, with the ability to connect to other agents." src="assets/images/m365-agent-general.png" /></p>
-<p>An agent for Microsoft 365 typically consists of three core components: a foundation AI model that powers intelligent responses, an orchestrator that coordinates knowledge, skills, and autonomous processes, and optionally, a user interface like Microsoft 365 Copilot, Microsoft Teams, Microsoft SharePoint Online, etc. Agents can then be connected with other agents in a multi-agent architecture.</p>
-<p><img alt="Diagram titled Empowering every developer to build agents, showing three paths: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Build for your own app leading to Copilot APIs. Moreover, Microsoft Agent 365 is available across all of the options to observe, govern, and secure every agent across your organization." src="assets/images/m365-copilot-extensibility.png" /></p>
-<p>When it comes to extending Microsoft 365 Copilot you have multiple options, depending on your actual needs:</p>
-<ul>
-<li><strong>Declarative Agents</strong>: you build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.</li>
-<li><strong>Custom Engine Agents</strong>: you build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.</li>
-<li><strong>Work IQ</strong>: you create custom applications that consume Microsoft 365 and Microsoft 365 Copilot via Work IQ, the AI-driven intelligence layer of Microsoft 365.</li>
-</ul>
-<p>No matter what technology you use to create agents or to extend Microsoft 365 Copilot, you can always rely on <strong>Microsoft Agent 365</strong> to observe, govern, and secure every agent across your organization.</p>
+<!--
+![Architecture diagram of an Agent for Microsoft 365 showing the user-experience layer with Microsoft 365 apps, an orchestrator managing knowledge (instructions and grounding), skills (actions, triggers, and workflow), and autonomy (planning, learning, escalation), all powered by foundation models, with the ability to connect to other agents.](./assets/images/m365-agent-general.png)
+-->
+
 <h2 id="where-should-i-start-to-build-agents">🧪 Where should I start to build agents?</h2>
 <p>There are plenty of options for you to start from. To create Declarative Agents, you can dig into technologies like Agent Builder, Custom SharePoint Agents, or pro-code Declarative Agents with the Microsoft 365 Agents Toolkit.
 To create Custom Engine Agents, you can explore technologies like Microsoft Copilot Studio, Microsoft Foundry, or pro-code Custom Engine Agents with the Microsoft 365 Agents Toolkit.
