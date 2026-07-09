@@ -116,7 +116,7 @@ Take a moment to explore the generated project. The most relevant elements are:
     - `manifest.json`: the **Microsoft 365 app manifest**. It describes the app metadata (id, name, version, developer information, icons) and, through its `copilotAgents.declarativeAgents` section, points to the `declarativeAgent.json` file. This is the entry point that Microsoft 365 uses to register and surface the declarative agent that sits behind the scenes of your SharePoint Copilot App.
     - `declarativeAgent.json`: the **declarative agent manifest**. It defines the agent itself, including its display name, description, the instructions it follows, the conversation starters, and the capabilities and actions it exposes. Here it references the `instruction.txt` file for the system prompt and the `ai-plugin.json` file for the actions (tools) the agent can invoke.
     - `instruction.txt`: the **system prompt** (also known as the instructions) for the declarative agent. It steers the tone, behavior, and boundaries of the agent, telling the orchestrator how to respond and when to call the available tools. Keeping the instructions in a dedicated file makes them easier to iterate on.
-    - `ai-plugin.json`: the **API plugin manifest** that declares the functions (tools) the agent can call, together with their parameters and descriptions. For a SharePoint Copilot App, this is where the UX component's tool, such as `HelloWorldTool`, is described so the orchestrator knows how and when to invoke it.
+    - `ai-plugin.json`: the **API plugin manifest** that declares the functions (tools) the agent can call, together with their parameters and descriptions. You don't need to edit this file.
     - `color.png` and `outline.png`: the **app icons** referenced by `manifest.json`. `color.png` is the full-color icon shown in the agent store and the app bar, while `outline.png` is the monochrome outline icon used in places like the Teams rail.
 - `src/copilotComponents/helloWorld/`: the component source. Because you chose the **React** template, the generator already scaffolds a working, React-based component for you.
     - `HelloWorldCopilotComponent.tsx`: the component class, which extends `BaseCopilotComponent`. Note that it is already a `.tsx` file, since it mounts a React tree.
@@ -413,11 +413,10 @@ npm install -g @microsoft/m365agentstoolkit-cli
 atk validate --package-file ./teams/helloworld-agent.zip
 ```
 
-Fix any reported errors before continuing. A clean run reports `0 errors`.
+Fix any reported errors before continuing.
 
 !!! info "False positive during validation"
-    During the preview phase of the Copilot Apps in SharePoint Framework 1.24 you might see an error like: `Error: InvalidDeclarativeCopilotDocument: Invalid Declarative Agent Document: declarativeAgent.json. Problems discovered: url in RemoteMCPServerRuntimeSpec is not a valid absolute URL. at (ai-plugin.json: #/runtimes/0/spec/url)`.
-    If that is the case, never mind that's a false positive and you can simply ignore it.
+    In case you see an error like `Error: InvalidDeclarativeCopilotDocument: Invalid Declarative Agent Document: declarativeAgent.json. Problems discovered: url in RemoteMCPServerRuntimeSpec is not a valid absolute URL. at (ai-plugin.json: #/runtimes/0/spec/url)`, that's a false positive and you can simply ignore it.
 
 <cc-end-step lab="sca1" exercise="6" step="1" />
 
