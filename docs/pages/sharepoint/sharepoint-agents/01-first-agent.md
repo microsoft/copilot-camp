@@ -1,6 +1,6 @@
 # Lab MSA1 - Build your first Custom SharePoint agent
 
----8<--- "msa-labs-prelude.md"
+<!-- ---8<--- "msa-labs-prelude.md" -->
 
 In this lab, you'll create a Custom SharePoint agent to work with documents stored in SharePoint Online. The agent that you are going to create helps employees of an hypothetical company to get information, policies, and rules from the HR department. The knowledge base of the agent will be a set of documents stored in a SharePoint Online document library.
 

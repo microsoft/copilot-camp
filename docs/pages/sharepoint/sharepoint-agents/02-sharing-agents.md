@@ -1,6 +1,6 @@
 # Lab MSA2 - Sharing Custom SharePoint agents
 
----8<--- "msa-labs-prelude.md"
+<!-- ---8<--- "msa-labs-prelude.md" -->
 
 In this lab, you'll see how to share your Custom SharePoint agents with others either using a direct link or within Microsoft Teams chats.
 
