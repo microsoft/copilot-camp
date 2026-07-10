@@ -7,20 +7,24 @@
   <div>Overview of Copilot Dev Camp</div>
 </div> -->
 
-In this dev camp, you have multiple options to extend Microsoft 365 Copilot, depending on your needs:
+In this dev camp, you have multiple options to extend Microsoft 365 Copilot, depending on your needs.
 
 Building an agent:
 
-- **Declarative Agents**: you build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.
-- **Custom Engine Agents**: you build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.
+- **Declarative Agents**: You build your agents on the Microsoft 365 Copilot stack. You rely on the foundational model, orchestrator, and user experience of Copilot.
+- **Custom Engine Agents**: You build your agents on any AI stack of your choice. You choose the foundational model, the orchestrator, and the user experience.
 
-Adding work intelligence layer:
+Extending Copilot Cowork:
 
-- **Work IQ**: can provide access to the organizations' intelligence (email, meetings, files, people context, search, memory, reasoning signals) to every agent.
+- **Skills and plugins for Copilot Cowork**: You build skills and plugins to extend the capabilities of Copilot Cowork.
+
+Adding work intelligence layer (Optional):
+
+- **Work IQ**: Optionally, you build agents with Work IQ, which can provide access to the organizations' intelligence (email, meetings, files, people context, search, memory, reasoning signals) to every agent.
 
 No matter what technology you use to create agents or to extend Microsoft 365 Copilot, you can always rely on **Microsoft Agent 365** to observe, govern, and secure every agent across your organization.
 
-![Diagram titled Empowering every developer to build agents, showing three paths: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Build for your own app leading to Copilot APIs. Moreover, Microsoft Agent 365 is available across all of the options to observe, govern, and secure every agent across your organization.](./assets/images/m365-copilot-extensibility.png)
+![Diagram that shows M365 extensibility options: Build on the Microsoft 365 Copilot Stack leading to Declarative Agents, Build on your own AI stack leading to Custom Engine Agents, and Extend Cowork. Additionally, Work IQ for organizational intelligence, and Microsoft Agent 365 as a control plane for agents.](./assets/images/m365-copilot-extensibility.png)
 
 ## Your learning options to extend Microsoft 365 Copilot
 
