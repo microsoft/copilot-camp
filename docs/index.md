@@ -18,7 +18,7 @@ Extending Copilot Cowork:
 
 - **Skills and plugins for Copilot Cowork**: You build skills and plugins to extend the capabilities of Copilot Cowork.
 
-Adding work intelligence layer (Optional):
+Adding work intelligence layer:
 
 - **Work IQ**: Optionally, you build agents with Work IQ, which can provide access to the organizations' intelligence (email, meetings, files, people context, search, memory, reasoning signals) to every agent.
 
