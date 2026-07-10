@@ -437,7 +437,7 @@ Then:
 
 You can verify the agent appears in the admin centers:
 
-- **Teams admin center → Manage apps**, filtered by the agent name (for example **HelloWorld Agent**).
+- **Teams admin center → Teams Apps → Manage apps**, filtered by the agent name (for example **HelloWorld Agent**).
 - **Microsoft 365 admin center → Agents → All agents**.
 
 !!! warning "If Add to Teams fails"
@@ -447,7 +447,7 @@ You can verify the agent appears in the admin centers:
 
 ### Step 3: Using the app in Microsoft 365 Copilot
 
-Open the [Microsoft 365 Admin Center on the agents page](https://admin.cloud.microsoft/?#/agents/all?search=hello) and search for any agent with **hello** in their name. You should be able to see the new `HelloWorld` agent that you just deployed. Select the agent, a side panel with detailed information about the agent shows up. You can check the name, version, publisher, etc. Select the **Data & Tools** tab, scroll down and double check that you see the tool with name `HelloWorldTool`.
+Open the [Microsoft 365 Admin Center on the agents page](https://admin.cloud.microsoft/?#/agents/all?search=hello) and search for any agent with **hello** in their name. You should be able to see the new `HelloWorld Agent` that you just deployed. Select the agent, a side panel with detailed information about the agent shows up. You can check the name, version, publisher, etc. Select the **Data & Tools** tab, scroll down and double check that you see the tool with name `HelloWorld Agent`.
 
 Now install the agent with the following procedure:
 1. Select the command with name **Install** in the upper right corner of the agent's panel. 
