@@ -16,7 +16,7 @@ Building an agent:
 
 Adding work intelligence layer:
 
-- **Work IQ**: provides the workplace intelligence (email, meetings, files, people context, search, memory, reasoning signals) to either of those agent types.
+- **Work IQ**: can provide access to the organizations' intelligence (email, meetings, files, people context, search, memory, reasoning signals) to every agent.
 
 No matter what technology you use to create agents or to extend Microsoft 365 Copilot, you can always rely on **Microsoft Agent 365** to observe, govern, and secure every agent across your organization.
 
@@ -55,13 +55,37 @@ In the following flowchart, you can find useful tips to learn where to start fro
 
 ## 🆕 What's New?
 
-!!! example "Updated in April 2026"
+!!! example "Updated in July 2026"
+
+    We’re excited to announce **a brand new set of hands-on labs** about extending Microsoft 365 Copilot with the new SharePoint Copilot Apps. 
+
+    - **Build your first SharePoint Copilot App**:
+    Scaffold an SPFx v1.24 Copilot Component with React, customize it, add custom tool parameters, test it locally in the Copilot Workbench, then package and deploy it so it renders as an interactive UX component inside Microsoft 365 Copilot.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/sharepoint/sharepoint-copilot-apps/01-first-copilot-app/)
+
+!!! example "Updated in June 2026"
+
+    We’re happy to introduce **a brand new set of hands-on labs** designed to help you understand how to extend Copilot Cowork. 
+
+    - **Copilot Cowork setup and extensibility**:
+    Learn what Copilot Cowork is, how to prepare your tenant for Cowork, and which extensibility options are available to tailor Cowork to your organization's needs.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/00-cowork-setup/)
+
+    - **Build your first skill**:
+    Build custom Agent Skills that teach Cowork when and how to run a specific domain workflow, then manage and publish your own skills.    
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/01-cowork-skills/)
+
+    - **Build your first plugin**:
+    Package skills and connectors into a Cowork plugin as a Microsoft 365 app, then build and deploy your own plugin to extend Cowork.
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/02-cowork-plugins/)
+
+<!-- !!! example "Updated in April 2026"
 
     We’re excited to introduce **a brand new hands-on lab** designed to help you build powerful Copilot experiences. 
 
     - **Build an MCP App with Interactive Widgets**:
     Build an MCP app that powers an Access Request & Approval Workflow with interactive widgets rendered directly in the AI agent’s response, and integrate it with a Declarative Agent in Microsoft 365 Copilot.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/)
+    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/) -->
 
 ## 🧑‍💻 More
 
@@ -73,9 +97,9 @@ We are excited to announce a thrilling initiative that will challenge you to sho
  -->
 
 
-## 🎁 Copilot Camp in a Box 
+<!-- ## 🎁 Copilot Camp in a Box 
 
-Got the labs working? Ready to share your knowledge? Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box resources](https://microsoft.github.io/copilot-camp/pages/in-a-box/)! We've got you covered with presentation materials that even include embedded demos.
+Got the labs working? Ready to share your knowledge? Why not run your own Copilot Camp workshop using our [Copilot Camp in a Box resources](https://microsoft.github.io/copilot-camp/pages/in-a-box/)! We've got you covered with presentation materials that even include embedded demos. -->
 
 
 
