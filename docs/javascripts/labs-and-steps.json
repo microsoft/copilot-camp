@@ -1542,7 +1542,7 @@
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update Agent Identity and Description"
+                                    "title": "Update Agent Configuration and Description"
                                 },
                                 {
                                     "stepId": "2",
@@ -1602,7 +1602,7 @@
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update Agent Identity and Description"
+                                    "title": "Update Agent Configuration and Description"
                                 },
                                 {
                                     "stepId": "3",
@@ -1638,7 +1638,7 @@
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Update Agent Identity and Description"
+                                    "title": "Update Agent Configuration and Description"
                                 },
                                 {
                                     "stepId": "3",
@@ -1889,7 +1889,7 @@
                                 },
                                 {
                                     "stepId": "4",
-                                    "title": "Configure the Agent Identity"
+                                    "title": "Set Up Agent Configuration"
                                 },
                                 {
                                     "stepId": "5",
@@ -2902,7 +2902,7 @@
                                     "steps": [
                                         {
                                             "stepId": "1",
-                                            "title": "Update Agent Identity and Description"
+                                            "title": "Update Agent Configuration and Description"
                                         },
                                         {
                                             "stepId": "2",
@@ -3156,7 +3156,7 @@
                                         },
                                         {
                                             "stepId": "4",
-                                            "title": "Configure the Agent Identity"
+                                            "title": "Set Up Agent Configuration"
                                         },
                                         {
                                             "stepId": "5",
@@ -3398,7 +3398,7 @@
                                         },
                                         {
                                             "stepId": "2",
-                                            "title": "Update Agent Identity and Description"
+                                            "title": "Update Agent Configuration and Description"
                                         },
                                         {
                                             "stepId": "3",
@@ -3434,7 +3434,7 @@
                                         },
                                         {
                                             "stepId": "2",
-                                            "title": "Update Agent Identity and Description"
+                                            "title": "Update Agent Configuration and Description"
                                         },
                                         {
                                             "stepId": "3",
