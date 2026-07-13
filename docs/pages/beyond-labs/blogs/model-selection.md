@@ -1,6 +1,6 @@
 # 🎯 Your Model Selection Adventure
 
-<cc-blog-meta author="Rabia Williams" date="Oct 14, 2025" iimage="../../../../assets/authors/rabia-williams.jpeg"></cc-blog-meta>
+<cc-blog-meta author="Rabia Williams" date="Oct 14, 2025" image="../../../../assets/authors/rabia-williams.jpeg"></cc-blog-meta>
 
 **What you will do:**
 
