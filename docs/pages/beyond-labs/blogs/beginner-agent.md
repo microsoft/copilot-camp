@@ -1,7 +1,7 @@
 
 # Agent Instruction Lab - Improve your agent instructions (Beginner friendly)
 
-<cc-blog-meta author="Rabia Williams" date="Oct 14, 2025" image="../images/rabia-linkedin.png"></cc-blog-meta>
+<cc-blog-meta author="Rabia Williams" date="Oct 14, 2025" image="../../../../assets/authors/rabia-williams.jpeg"></cc-blog-meta>
 
 <div>
 
