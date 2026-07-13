@@ -35,6 +35,7 @@ Credit for the original Work IQ prompt: [**Anthony Shaw**](https://github.com/to
 Reference prompt:
 
 - [M365 WorkIQ Persona Sketch (GitHub)](https://github.com/pnp/copilot-prompts/tree/main/samples/prompts/m365-workiq-persona-sketch)
+- [Enable Work IQ in Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/enable-work-iq?tabs=entra-admin)
 
 What made this spread was not just clever prompting. It gave people a practical way to apply context quickly:
 
