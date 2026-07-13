@@ -76,11 +76,9 @@ If you are building with Copilot, Work IQ, or enterprise agents, treat context a
 
 If the Work IQ prompt is the standout example, it shows the power of grounding prompts in trusted enterprise context. The next step is to make that idea your own by grounding it in your real profile and network data.
 
-Many folks who did not have a WorkIQ reached out to me on LinkedIn, and I have genuinely tried to reply to everyone because they wanted to feel included too.
-
-Your work is not limited to M365, and context lives wherever your professional footprint exists. To make this easier, I want to show you how to use your own LinkedIn data to create a sketch.
-
-Think of this as the LinkedIn counterpart to Work IQ. Work IQ can provide rich context from your enterprise data inside your workplace, while LinkedIn export data can anchor your networking and professional activity outside work.
+Some people did not have a Work IQ enabled in their tenant, and they still wanted a way to join in. That is why I’m showing a LinkedIn version too.
+This is not just about M365. You can use the context you already have in your own professional footprint and turn it into something visual.
+Think of it as the same idea as Work IQ, just pulled from LinkedIn export data instead of enterprise data at work.
 
 LinkedIn gives you a built-in export that can be used as a context dataset for analytics and visualization prompts.
 
