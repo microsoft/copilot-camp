@@ -116,7 +116,7 @@ And measure it honestly. The reach numbers earlier are *attention*, not outcome 
 You can't really feel why context matters by reading about it — so here's a 15-minute way to build a context-grounded artifact from data you already own.
 
 
-If the Work IQ prompt is the standout example, it shows the power of grounding prompts in trusted enterprise context. The next step is to make that idea your own by grounding it in your real profile and network data.
+If the Work IQ prompt is the standout example, it shows the power of grounding prompts in trusted enterprise context. The next step is to make that idea your own by grounding it in your real profile and network data outside of your work environment.
 
 
 Some people did not have a Work IQ enabled in their tenant, and they still wanted a way to join in. That is why I'm showing a LinkedIn version too.
@@ -198,4 +198,4 @@ What you can show is a clean, shareable snapshot of:
 That makes the result more than a demo. It becomes a conversation starter, a personal context map, and a template others can reuse.
 
 
-A year ago the question was which model to pick. Now it's which context you can stand behind — and that is the shift worth building for.
+**Ground your work in context you can trust, and the outcomes follow.**
