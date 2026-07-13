@@ -127,6 +127,59 @@ button.md-header__button:hover {
   top: 4px;
 }
 
+/* Blog metadata widget */
+
+.cc-blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 24px;
+  padding: 10px 12px;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  background: var(--md-default-bg-color--light, #f9f8f5);
+  width: fit-content;
+}
+
+.cc-blog-meta-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 0.5px solid rgba(0, 0, 0, 0.16);
+}
+
+.cc-blog-meta-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.cc-blog-meta-top {
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light, #606060);
+}
+
+.cc-blog-meta-bottom {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.cc-blog-meta-author {
+  font-weight: 600;
+  color: var(--md-default-fg-color, #333333);
+}
+
+.cc-blog-meta-dot,
+.cc-blog-meta-date {
+  color: var(--md-default-fg-color--light, #606060);
+  font-size: 0.82rem;
+}
+
 /* Button */
 button {
   padding: 6px 12px;

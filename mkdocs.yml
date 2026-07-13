@@ -120,9 +120,9 @@ plugins:
               - Introduction : 'pages/work-iq/index.md'
             - Agent 365:
               - Introduction : 'pages/agent-365/index.md'
-            - Beyond Agents - AI concepts:
-              - Introduction : 'pages/beyond-agents/index.md'
-              - Level 1 - Simple agent instructions: 'pages/beyond-agents/beginner-agent.md'
+            - Beyond Labs - AI concepts:
+              - Blogs : 'pages/beyond-labs/index.md'
+              - Context and Viral Prompt Impact: 'pages/beyond-labs/blogs/context-and-viral-prompt-impact.md'
             - Awards: 'awards.md'
             # - Resources: 'resources.md'
 
