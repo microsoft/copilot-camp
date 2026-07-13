@@ -1,5 +1,7 @@
 # 🎯 Your Model Selection Adventure
 
+<cc-blog-meta author="Rabia Williams" date="Oct 14, 2025" image="../images/rabia-linkedin.png"></cc-blog-meta>
+
 **What you will do:**
 
 - **Identify the Problem**: Understand why model selection matters for your agents

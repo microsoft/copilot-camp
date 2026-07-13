@@ -1,5 +1,7 @@
 # Why Context Became the Real Differentiator in Agentic Work
 
+<cc-blog-meta author="Rabia Williams" date="July 13, 2026" image="../../../../assets/authors/rabia-williams.jpeg"></cc-blog-meta>
+
 In 2026, AI conversations shifted from "which model is best" to "which context can you trust."
 
 That shift matters. Models keep improving, but outcomes still depend on grounded context: reliable sources, role intent, clear boundaries, and citations.
