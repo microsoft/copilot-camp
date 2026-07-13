@@ -210,3 +210,6 @@ The GitHub Models Playground gives you a risk-free stage to audition different m
 
 The more you experiment, the sharper your instincts become. Soon, you'll look at a task and immediately know which model will shine.
 
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/model-selection" />
+

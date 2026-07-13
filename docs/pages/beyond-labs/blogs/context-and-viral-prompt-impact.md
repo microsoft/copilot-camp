@@ -199,3 +199,4 @@ That makes the result more than a demo. It becomes a conversation starter, a per
 
 
 **Ground your work in context you can trust, and the outcomes follow.**
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/context-and-viral-prompt-impact" />
