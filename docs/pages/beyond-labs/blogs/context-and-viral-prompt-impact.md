@@ -74,7 +74,7 @@ If you are building with Copilot, Work IQ, or enterprise agents, treat context a
 
 ## Build your own context pack for LinkedIn
 
-If the Work IQ prompt is the highlight, the next step is to make your own version truly yours by grounding it in your real profile and network data.
+If the Work IQ prompt is the standout example, it shows the power of grounding prompts in trusted enterprise context. The next step is to make that idea your own by grounding it in your real profile and network data.
 
 Many folks who did not have a WorkIQ reached out to me on LinkedIn, and I have genuinely tried to reply to everyone because they wanted to feel included too.
 
