@@ -32,6 +32,10 @@ Credit for the original Work IQ prompt: [**Anthony Shaw**](https://github.com/to
 
 ![anthony's workiq sketches](./images/anthony-sketch.jpeg)
 
+> **Shared privacy note for the prompts mentioned here**
+>
+> Both prompt patterns can surface references to people you work with, projects, customers, teams, or other organizational details. If you plan to share the output publicly, review it first and remove anything that could expose private, confidential, or security-sensitive information. Always follow your organization's privacy and information protection guidelines when publishing generated content.
+
 Reference prompt:
 
 - [M365 WorkIQ Persona Sketch (GitHub)](https://github.com/pnp/copilot-prompts/tree/main/samples/prompts/m365-workiq-persona-sketch)
@@ -116,18 +120,17 @@ Make the graphic rich in information - include labeled icons, small text callout
 ```
 ![rabia's linkedin sketch](./images/rabia-linkedin.png)
 
+### The takeaway
 
-### Disclaimer before sharing
+The real value is not the image itself. It is the visible proof that your prompt is grounded in real context.
 
-This prompt is designed to help you better understand and visualize your work. Depending on your data, generated outputs may include references to people you work with, projects, customers, teams, or other organizational details.
+What you can show is a clean, shareable snapshot of:
 
-If you choose to share the output publicly, we strongly recommend reviewing it first and removing any information that could expose private, confidential, or security-sensitive details. Always follow your organization's privacy and information protection guidelines when publishing generated content.
+- Your role, values, and priorities.
+- The themes and signals that shape your work.
+- The network and activity patterns behind your professional identity.
+- A repeatable prompt workflow other people can adapt to their own data.
 
-### Why this works
+That makes the result more than a demo. It becomes a conversation starter, a personal context map, and a template others can reuse.
 
-This pattern keeps the image generation grounded in your own exported context while preserving privacy for others in your network.
-
-It is also a repeatable pattern: export your data, structure the context, run the prompt, review for safety, and share. You can rerun the same flow as your profile, activity, and network evolve.
-
-
-**The broader lesson is simple: better context creates better outcomes.**
+**Better context creates a better story, a better artifact, and a better outcome.**
