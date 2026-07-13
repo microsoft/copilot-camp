@@ -34,7 +34,7 @@ Credit for the original Work IQ prompt: [**Anthony Shaw**](https://github.com/to
 
 > **Shared privacy note for the prompts mentioned here**
 >
-> Both prompt patterns can surface references to people you work with, projects, customers, teams, or other organizational details. If you plan to share the output publicly, review it first and remove anything that could expose private, confidential, or security-sensitive information. Always follow your organization's privacy and information protection guidelines when publishing generated content.
+> The prompt patterns this blog explores can surface references to people you work with, projects, customers, teams, or other organizational details. If you plan to share the output publicly, review it first and remove anything that could expose private, confidential, or security-sensitive information. Always follow your organization's privacy and information protection guidelines when publishing generated content.
 
 Reference prompt:
 
