@@ -519,6 +519,9 @@ h3[id*="step-"] {
 .cwrk-path ul li:nth-child(3) {
     background-image: url('../assets/images/path-icons/icon-cwrk2.png');
 }
+.cwrk-path ul li:nth-child(4) {
+    background-image: url('../assets/images/path-icons/icon-cwrk3.png');
+}
 
 /*** Style mkdocs features ***
 

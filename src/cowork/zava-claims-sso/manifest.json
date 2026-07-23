@@ -1,0 +1,44 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.0.8",
+    "id": "ad2af6f9-c55a-49b6-ac44-451d71a00d22",
+    "developer": {
+        "name": "Rabia Williams",
+        "websiteUrl": "https://github.com/rabwill",
+        "privacyUrl": "https://github.com/rabwill",
+        "termsOfUseUrl": "https://github.com/rabwill"
+    },
+    "name": {
+        "short": "Zava Claims for Cowork",
+        "full": "Zava Claims MCP Plugin for Copilot Cowork - get claims and export to Excel"
+    },
+    "description": {
+        "short": "Get insurance claims from Zava and export them to Excel.",
+        "full": "Cowork plugin that connects to the Zava Claims MCP server with per-user OAuth so Cowork can retrieve insurance claims and generate Excel spreadsheets on your behalf."
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "accentColor": "#000000",
+    "agentSkills": [
+        { "folder": "./skills/zava-claims-export" }
+    ],
+    "agentConnectors": [
+        {
+            "id": "zava-claims-mcpplugin",
+            "displayName": "Zava Claims OAuth MCP",
+            "description": "Authenticated access to Zava insurance claims operations via the Zava MCP server.",
+            "toolSource": {
+                "remoteMcpServer": {
+                    "mcpServerUrl": "https://7dc8l25d-3001.aue.devtunnels.ms/mcp/messages",
+                    "authorization": {
+                        "type": "OAuthPluginVault",
+                        "referenceId": "OAuthPluginVaultReferenceIDPastedHere"
+                    }
+                }
+            }
+        }
+    ]
+}
