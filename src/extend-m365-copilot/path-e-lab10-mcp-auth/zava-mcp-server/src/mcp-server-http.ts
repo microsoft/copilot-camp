@@ -1270,6 +1270,74 @@ if (oauthMiddleware) {
   }
 }
 
+// Detailed request/response logging middleware (placed after auth so req.user is populated)
+app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+  const startTime = Date.now();
+
+  // Capture response completion to log duration + status
+  const originalEnd = res.end;
+  res.end = function (this: express.Response, ...args: any[]) {
+    const duration = Date.now() - startTime;
+    const authReq = req as AuthenticatedRequest;
+    logger.mcpResponse({
+      method: req.method,
+      url: req.originalUrl,
+      statusCode: res.statusCode,
+      durationMs: duration,
+      user: authReq.user?.preferred_username || authReq.user?.sub,
+    });
+    return (originalEnd as Function).apply(this, args);
+  } as typeof res.end;
+
+  // Extract MCP-specific details from JSON-RPC body (for POST /mcp/messages)
+  let mcpMethod: string | undefined;
+  let mcpToolName: string | undefined;
+  let mcpPromptName: string | undefined;
+
+  if (req.body && req.originalUrl.includes('/mcp/messages')) {
+    mcpMethod = req.body.method;
+    if (mcpMethod === 'tools/call') {
+      mcpToolName = req.body.params?.name;
+    } else if (mcpMethod === 'prompts/get') {
+      mcpPromptName = req.body.params?.name;
+    }
+  }
+
+  // For direct tool call endpoint
+  if (req.originalUrl.includes('/mcp/tools/call') || req.originalUrl.includes('/mcp/stream/tools/call')) {
+    mcpToolName = req.body?.name;
+  }
+
+  const authReq = req as AuthenticatedRequest;
+  const rawClaims = authReq.user?.raw as Record<string, unknown> | undefined;
+
+  logger.mcpRequest({
+    method: req.method,
+    url: req.originalUrl,
+    ip: req.ip || req.socket.remoteAddress,
+    userAgent: req.get('User-Agent'),
+    origin: req.get('Origin') || req.get('Referer'),
+    contentType: req.get('Content-Type'),
+    contentLength: req.get('Content-Length'),
+    requestId: req.get('X-Request-ID') || req.get('x-ms-request-id'),
+    authenticated: !!authReq.mcpAuthenticated,
+    user: authReq.user ? {
+      sub: authReq.user.sub,
+      preferred_username: authReq.user.preferred_username,
+      name: authReq.user.name,
+      scp: authReq.user.scp,
+      iss: authReq.user.iss,
+      aud: authReq.user.aud,
+      tid: rawClaims?.tid as string | undefined,
+    } : undefined,
+    mcpMethod,
+    mcpToolName,
+    mcpPromptName,
+  });
+
+  next();
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
