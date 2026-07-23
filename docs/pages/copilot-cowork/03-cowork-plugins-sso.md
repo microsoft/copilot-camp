@@ -11,6 +11,25 @@ The pattern here is the same one you'd use for any Entra-secured API: register a
     - Access to [Teams Developer Portal](https://dev.teams.microsoft.com/){target=_blank}
     - Access to Copilot Cowork
 
+
+## Why this lab matters
+
+Most organizations have sensitive data locked behind authenticated APIs — claims records, financial transactions, patient data. Getting that data into a usable format typically means manual exports, copy-paste workflows, and formatting spreadsheets by hand. Every time.
+
+In this lab, you'll solve three problems at once:
+
+- **Secure access without friction** — Users authenticate once via Microsoft Entra SSO. No client secrets, no API keys in config files, no extra sign-in prompts. The token flows silently from that point on, and access is governed by your existing Entra ID policies.
+
+- **Skills that transform data consistently** — Instead of relying on users to remember formatting rules or calculation logic, you encode that knowledge in a Cowork skill. The skill takes raw claims data and produces a structured Excel report with the right calculations every time — no human error, no variation.
+
+- **Repeatable value across teams** — Here's the real payoff: once you build this skill, any department can use it. Finance needs the same claims data in their format? Legal needs a compliance view? Create a new skill or reuse the existing one — the secure MCP connection and the plugin infrastructure stay the same. One investment, many consumers.
+
+Zava Insurance has claims data served by an authenticated MCP server. You'll connect Cowork to that server with SSO, then use a skill to transform raw data into a formatted Excel report:
+
+| Before skill | After skill |
+|:---:|:---:|
+| ![Raw exported data](../../assets/images/copilot-cowork-03/before-skill.png) | ![Formatted report](../../assets/images/copilot-cowork-03/after-skill.png) |
+
 ## Exercise 1: Project setup
 
 In this exercise you'll get the authenticated MCP server running and grab the plugin source code that you'll wire up with SSO.
@@ -310,9 +329,13 @@ Type this prompt in Cowork:
 
 > Create a claims report in Excel
 
-The first time you run this, Cowork will show a **Sign in required** card. Click **Authenticate**, sign in with your Microsoft 365 account, and you're in. Cowork won't ask again after that — SSO means the token refreshes silently from then on.
+Cowork will display a **tool approval dialog** — this is a one-time consent step that authorizes Cowork to call the MCP server's tools on your behalf. Click **Approve** to continue.
 
-After authentication, Cowork calls the Zava MCP server with a valid token, retrieves the claims data, and your skill generates the formatted Excel report.
+![Tool approval dialog in Cowork](../../assets/images/copilot-cowork-03/approval.png)
+
+Once approved, the flow completes end-to-end: Cowork authenticates via SSO, calls the Zava MCP server with a valid token, retrieves the claims data, and your skill transforms it into a formatted Excel report. No manual data export, no reformatting — just the finished output.
+
+
 
 !!! tip "If sign-in fails"
     Check three things: (1) your Dev Tunnel is still running and public, (2) the `OAUTH_ACCEPTED_AUDIENCES` in `.env.dev` includes both URIs, and (3) the redirect URI `https://teams.microsoft.com/api/platform/v1.0/oAuthConsentRedirect` is configured in your  Entra app's Authentication section.
