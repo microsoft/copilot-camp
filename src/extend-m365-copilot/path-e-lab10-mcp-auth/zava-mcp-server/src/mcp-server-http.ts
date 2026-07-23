@@ -35,6 +35,8 @@ import {
   createOAuthRoutes, 
   OAuthConfig,
   createProtectedResourceMetadataRoutes,
+  createAuthorizationServerMetadataRoute,
+  createScopeEnforcementMiddleware,
   ProtectedResourceMetadata
 } from './auth/oauth';
 
@@ -494,11 +496,13 @@ const PROMPTS = [
 // Add interface for authenticated request
 interface AuthenticatedRequest extends express.Request {
   user?: {
-    oid: string;
-    tid: string;
+    sub: string;
+    iss: string;
+    aud: string | string[];
     preferred_username: string;
     name?: string;
     scp?: string[];
+    raw: Record<string, unknown>;
   };
   mcpAuthenticated?: boolean;
 }
@@ -525,58 +529,11 @@ function getWWWAuthenticateHeader(error?: string, errorDescription?: string): st
   return header;
 }
 
-// Function to check if a tool requires authentication
-//add remove protected tools here
-function requiresAuthentication(toolName: string): boolean {
-  const protectedTools = [
-    'get_claims',
-    'get_claim',
-    'create_claim',
-    'update_claim',
-    'delete_claim',
-    'get_inspections',
-    'get_inspection',
-    'create_inspection',
-    'update_inspection',
-    'delete_inspection',
-    'get_contractors',
-    'create_purchase_order',
-    'get_purchase_order',
-    'get_inspectors',
-    'get_inspector'
-  ];
-  
-  return protectedTools.includes(toolName);
-}
-
-// Function to check user permissions for specific tools
-function hasRequiredPermissions(user: any, toolName: string): boolean {
-  // Define role-based access control
-  const toolPermissions: { [key: string]: string[] } = {
-    'get_claims': ['access_as_user'],
-    'get_claim': ['access_as_user']
-  };
-
-  const requiredPermissions = toolPermissions[toolName] || [];
-  
-  // If no specific permissions required, allow access
-  if (requiredPermissions.length === 0) {
-    return true;
-  }
-
-  // Check if user has any of the required roles/permissions
-  const userRoles = user?.scp || [];
-  logger.info('Checking user ', JSON.stringify(user));
-  return requiredPermissions.some(permission => userRoles.includes(permission));
-}
-
-// Tool execution function (anonymous access)
+// Tool execution function
 async function executeTool(name: string, args: any, req?: express.Request) {
-  // Start comprehensive logging for MCP tool call
   const metrics = logger.mcpToolStart(name, args);
   
   try {
-    // No authentication checks - all tools are public
 
     switch (name) {
       case 'get_claims': {
@@ -1113,16 +1070,25 @@ ${reportType === 'preliminary' ?
 }
 
 
-// Authentication is disabled - this is an anonymous MCP server
-
-
-// OAuth Configuration
+// OAuth / Resource-Server Configuration
+// Reads accepted issuers and audiences from env vars (comma-separated lists).
 const oauthConfig: OAuthConfig = {
-  clientId: process.env.OAUTH_CLIENT_ID || '',
-  clientSecret: process.env.OAUTH_CLIENT_SECRET || '',
-  authority: process.env.OAUTH_AUTHORITY || '',
-  redirectUri: process.env.OAUTH_REDIRECT_URI || '',
-  scopes: [process.env.OAUTH_SCOPES || '']
+  acceptedIssuers: (process.env.OAUTH_ACCEPTED_ISSUERS || '').split(',').map(s => s.trim()).filter(Boolean),
+  acceptedAudiences: (process.env.OAUTH_ACCEPTED_AUDIENCES || '').split(',').map(s => s.trim()).filter(Boolean),
+  requiredScopes: (process.env.OAUTH_REQUIRED_SCOPES || '').split(',').map(s => s.trim()).filter(Boolean),
+  jwksUris: (process.env.OAUTH_JWKS_URIS || '').split(',').map(s => s.trim()).filter(Boolean).length
+    ? (process.env.OAUTH_JWKS_URIS || '').split(',').map(s => s.trim()).filter(Boolean)
+    : undefined,
+  allowedAlgorithms: (process.env.OAUTH_ALLOWED_ALGORITHMS || '').split(',').map(s => s.trim()).filter(Boolean).length
+    ? (process.env.OAUTH_ALLOWED_ALGORITHMS || '').split(',').map(s => s.trim()).filter(Boolean)
+    : undefined,
+  clockToleranceSec: process.env.OAUTH_CLOCK_TOLERANCE_SEC ? parseInt(process.env.OAUTH_CLOCK_TOLERANCE_SEC, 10) : undefined,
+  validateIssuer: process.env.OAUTH_VALIDATE_ISSUER !== 'false',
+  acceptedTenantIds: (process.env.OAUTH_ACCEPTED_TENANT_IDS || '').split(',').map(s => s.trim()).filter(Boolean).length
+    ? (process.env.OAUTH_ACCEPTED_TENANT_IDS || '').split(',').map(s => s.trim()).filter(Boolean)
+    : undefined,
+  authorizationEndpoint: process.env.OAUTH_AUTHORIZATION_ENDPOINT || undefined,
+  tokenEndpoint: process.env.OAUTH_TOKEN_ENDPOINT || undefined,
 };
 
 // Initialize OAuth manager
@@ -1130,12 +1096,18 @@ let oauthManager: OAuthManager | null = null;
 let oauthMiddleware: any = null;
 let oauthRoutes: any = null;
 
-// Helper function to check if a string is non-empty
-const isNonEmptyString = (value: string): boolean => 
-  typeof value === 'string' && value.trim().length > 0;
+// Only initialize OAuth if at least one issuer and one audience are configured
+const isOAuthEnabled = oauthConfig.acceptedIssuers.length > 0 && oauthConfig.acceptedAudiences.length > 0;
 
-// Only initialize OAuth if configuration is provided
-const isOAuthEnabled = isNonEmptyString(oauthConfig.clientId) && isNonEmptyString(oauthConfig.clientSecret);
+// SECURITY: Refuse to start without authentication in production
+if (!isOAuthEnabled && process.env.NODE_ENV === 'production') {
+  logger.error(
+    'FATAL: OAuth is not configured but NODE_ENV=production. ' +
+    'Set OAUTH_ACCEPTED_ISSUERS and OAUTH_ACCEPTED_AUDIENCES to enable authentication, ' +
+    'or use NODE_ENV=development for unauthenticated local testing.'
+  );
+  process.exit(1);
+}
 
 let protectedResourceMetadataRoutes: any = null;
 
@@ -1156,7 +1128,7 @@ if (isOAuthEnabled) {
     const additionalMetadata: Partial<ProtectedResourceMetadata> = {
       // Add any additional metadata specific to your MCP server
       resource_documentation: `${resourceIdentifier}/docs`,
-      // Note: scopes_supported will come from oauthConfig.scopes, don't override here
+      // Note: scopes_supported will come from oauthConfig.requiredScopes
       bearer_methods_supported: ['header']
       // resource_name is set in generateProtectedResourceMetadata function
     };
@@ -1270,18 +1242,32 @@ app.use(express.json());
 
 // Protected Resource Metadata endpoints (RFC 9728) - MUST be registered BEFORE OAuth middleware
 if (protectedResourceMetadataRoutes) {
-
-  
-  // MCP messages specific metadata endpoint - this MUST come before OAuth middleware
-  app.get('/.well-known/oauth-authorization-server', protectedResourceMetadataRoutes.wellKnownMetadata);
+  // RFC 9728 protected resource metadata
   app.get('/mcp/messages/.well-known/oauth-protected-resource', protectedResourceMetadataRoutes.wellKnownMetadata);
+}
 
+// RFC 8414 Authorization Server Metadata – tells MCP clients where to authorize/exchange tokens
+if (isOAuthEnabled && oauthConfig.authorizationEndpoint && oauthConfig.tokenEndpoint) {
+  const resourceIdentifier = process.env.SERVER_BASE_URL || `http://localhost:${port}`;
+  const authServerMetadataHandler = createAuthorizationServerMetadataRoute(resourceIdentifier, oauthConfig);
+  app.get('/.well-known/oauth-authorization-server', authServerMetadataHandler);
+} else if (protectedResourceMetadataRoutes) {
+  // Fallback: serve protected resource metadata at this path too
+  app.get('/.well-known/oauth-authorization-server', protectedResourceMetadataRoutes.wellKnownMetadata);
 }
 
 // Apply OAuth middleware to MCP endpoints only (not to API endpoints)
 // Note: Metadata endpoints are registered ABOVE to avoid being intercepted
 if (oauthMiddleware) {
   app.use('/mcp', oauthMiddleware);
+
+  // Enforce required scopes on all MCP endpoints after authentication
+  if (oauthConfig.requiredScopes && oauthConfig.requiredScopes.length > 0) {
+    const resourceIdentifier = process.env.SERVER_BASE_URL || `http://localhost:${port}`;
+    const resourceMetadataUrl = `${resourceIdentifier}/mcp/messages/.well-known/oauth-authorization-server`;
+    app.use('/mcp', createScopeEnforcementMiddleware(oauthConfig.requiredScopes, resourceMetadataUrl));
+    logger.info(`Scope enforcement enabled — required scopes: ${oauthConfig.requiredScopes.join(', ')}`);
+  }
 }
 
 // Health check endpoint
@@ -1577,24 +1563,8 @@ app.post('/mcp/stream/tools/call', async (req, res) => {
       });
     }
 
-    // Check authentication BEFORE starting SSE stream
-    // This ensures proper 401 responses with WWW-Authenticate headers
-    if (requiresAuthentication(name) && isOAuthEnabled) {
-      const authReq = req as AuthenticatedRequest;
-      if (!authReq.mcpAuthenticated || !authReq.user) {
-        const wwwAuthHeader = getWWWAuthenticateHeader('invalid_token', 'Authentication required: This tool requires a valid OAuth token');
-        
-        return res.status(401)
-          .set('WWW-Authenticate', wwwAuthHeader)
-          .json({
-            success: false,
-            error: 'Authentication required: This tool requires a valid OAuth token',
-            timestamp: new Date().toISOString()
-          });
-      }
-    }
-
-    // Set SSE headers AFTER authentication check passes
+    // Auth is enforced by the OAuth + scope middleware on /mcp routes.
+    // Set SSE headers
     res.writeHead(200, {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
@@ -1683,7 +1653,7 @@ app.post('/mcp/stream/tools/call', async (req, res) => {
 async function main() {
   try {
     app.listen(port, host, () => {
-      logger.info(`🚀 Contoso Claims MCP HTTP Server started on ${host}:${port}`);
+      logger.info(`🚀 Zava Claims MCP HTTP Server started on ${host}:${port}`);
       logger.info(`Security: ${isOAuthEnabled ? 'OAuth 2.0 authentication enabled' : 'Development mode - no authentication'}`);
       logger.info(`CORS: ${allowedOrigins.length} allowed origins configured`);
       
@@ -1699,11 +1669,8 @@ async function main() {
       logger.info(`    GET  /health - Health check (no auth required)`);
       
       if (isOAuthEnabled) {
-        logger.info(`\n🔐 OAuth 2.0 Flow Endpoints:`);
-        logger.info(`    GET  /oauth/authorize - Start OAuth authorization flow`);
-        logger.info(`    GET  /oauth/callback - OAuth callback handler`);
+        logger.info(`\n🔐 OAuth 2.0 Endpoints:`);
         logger.info(`    GET  /oauth/userinfo - Get authenticated user info (requires auth)`);
-        logger.info(`         ↳ Flow: authorize → Microsoft login → callback → get token`);
       }
       
       logger.info(`\n🛠️ MCP Tool Endpoints (${isOAuthEnabled ? 'requires OAuth Bearer token' : 'no auth'}):`);
@@ -1714,49 +1681,26 @@ async function main() {
       logger.info(`    POST /mcp/stream/tools/call - Execute tool with streaming response`);
       
       if (isOAuthEnabled) {
-        logger.info(`\n📋 Complete OAuth 2.0 Flow (RFC 9728 + MCP Integration):`);
-        logger.info(`    1. 🔍 Client discovers auth requirements:`);
-        logger.info(`       GET /.well-known/oauth-protected-resource`);
-        logger.info(`       ↳ Returns: authorization servers, scopes, resource metadata`);
-        
-        logger.info(`    2. 🚫 Client attempts unauthenticated tool access:`);
-        logger.info(`       POST /mcp/tools/call (no Authorization header)`);
-        logger.info(`       ↳ Returns: 401 + WWW-Authenticate with resource_metadata URL`);
-        
-        logger.info(`    3. 🌐 Client starts OAuth authorization:`);
-        logger.info(`       GET /oauth/authorize`);
-        logger.info(`       ↳ Redirects to: ${oauthConfig.authority}/oauth2/v2.0/authorize`);
-        
-        logger.info(`    4. 🔑 User completes Microsoft login & consent`);
-        logger.info(`       ↳ Microsoft redirects to: /oauth/callback?code=...`);
-        
-        logger.info(`    5. 🎫 Server exchanges code for access token:`);
-        logger.info(`       ↳ Returns: access_token, user info, expires_in`);
-        
-        logger.info(`    6. ✅ Client makes authenticated requests:`);
-        logger.info(`       POST /mcp/tools/call`);
-        logger.info(`       Authorization: Bearer <access_token>`);
-        logger.info(`       ↳ JWT validated → user context → tool execution`);
-        
-        logger.info(`\n🛡️ Security Features:`);
+        logger.info(`\n�️ Security Features:`);
         logger.info(`    • RFC 9728 Protected Resource Metadata discovery`);
-        logger.info(`    • JWT signature validation against Microsoft keys`);
-        logger.info(`    • Granular tool-level authentication (${TOOLS.filter(t => requiresAuthentication(t.name)).length}/${TOOLS.length} tools protected)`);
-        logger.info(`    • RBAC with scope-based permissions: ${oauthConfig.scopes.join(', ')}`);
+        logger.info(`    • JWT signature validation via JWKS`);
+        logger.info(`    • All /mcp endpoints protected by OAuth middleware`);
+        logger.info(`    • Scope-based permissions: ${oauthConfig.requiredScopes?.join(', ') || '(none)'}`);
         logger.info(`    • WWW-Authenticate header with metadata URL on 401`);
         logger.info(`    • CORS origin validation (${allowedOrigins.length} allowed origins)`);
         
-        logger.info(`\n⚙️ OAuth Configuration:`);
-        logger.info(`    Resource Identifier: ${process.env.RESOURCE_IDENTIFIER || oauthConfig.redirectUri?.replace('/oauth/callback', '') || 'https://x8m4kwmz-3001.aue.devtunnels.ms'}`);
-        logger.info(`    Client ID: ${oauthConfig.clientId}`);
-        logger.info(`    Authority: ${oauthConfig.authority}`);
-        logger.info(`    Redirect URI: ${oauthConfig.redirectUri}`);
-        logger.info(`    Required Scopes: ${oauthConfig.scopes.join(', ')}`);
-        logger.info(`    Protected Tools: ${TOOLS.filter(t => requiresAuthentication(t.name)).map(t => t.name).join(', ')}`);
+        logger.info(`\n⚙️ Resource-Server Configuration:`);
+        logger.info(`    Resource Identifier: ${process.env.RESOURCE_IDENTIFIER || `http://localhost:${port}`}`);
+        logger.info(`    Accepted Issuers: ${oauthConfig.acceptedIssuers.join(', ')}`);
+        logger.info(`    Accepted Audiences: ${oauthConfig.acceptedAudiences.join(', ')}`);
+        if (oauthConfig.jwksUris?.length) {
+          logger.info(`    JWKS URIs (explicit): ${oauthConfig.jwksUris.join(', ')}`);
+        } else {
+          logger.info(`    JWKS URIs: auto-discovered from issuers`);
+        }
         
-        logger.info(`\n🔗 Key Endpoints for OAuth Flow:`);
+        logger.info(`\n🔗 Key Endpoints:`);
         logger.info(`    Discovery: http://${host}:${port}/.well-known/oauth-protected-resource`);
-        logger.info(`    Start Flow: http://${host}:${port}/oauth/authorize`);
         logger.info(`    Tool Access: http://${host}:${port}/mcp/tools/call (requires Bearer token)`);
         logger.info(`    User Info: http://${host}:${port}/oauth/userinfo (requires Bearer token)`);
       } else {
@@ -1764,11 +1708,10 @@ async function main() {
         logger.info(`    All MCP tools are publicly accessible without authentication.`);
         logger.info(`    To enable OAuth 2.0 authentication, set these environment variables:`);
         logger.info(`    `);
-        logger.info(`    OAUTH_CLIENT_ID="your-entra-app-client-id"`);
-        logger.info(`    OAUTH_CLIENT_SECRET="your-entra-app-client-secret"`);
-        logger.info(`    OAUTH_AUTHORITY="https://login.microsoftonline.com/common"`);
-        logger.info(`    OAUTH_REDIRECT_URI="https://your-domain/oauth/callback"`);
-        logger.info(`    OAUTH_SCOPES="api://your-client-id/access_as_user"`);
+        logger.info(`    OAUTH_ACCEPTED_ISSUERS="https://issuer1,https://issuer2"`);
+        logger.info(`    OAUTH_ACCEPTED_AUDIENCES="api://my-app,https://my-app"`);
+        logger.info(`    OAUTH_REQUIRED_SCOPES="access_as_user"  (optional)`);
+        logger.info(`    OAUTH_JWKS_URIS="https://..."            (optional, auto-discovered)`);
         logger.info(`    RESOURCE_IDENTIFIER="https://your-domain"`);
         
         logger.info(`\n🔗 Available Endpoints (No Auth Required):`);
