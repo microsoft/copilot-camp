@@ -1,0 +1,11 @@
+{
+    "name": "zava-claims-cowork-plugin",
+    "version": "1.0.0",
+    "description": "Authenticated Zava Claims MCP plugin for Copilot Cowork - export claims to Excel",
+    "main": "manifest.json",
+    "scripts": {
+        "package": "PowerShell -Command \"Compress-Archive -Path manifest.json, color.png, outline.png, skills -DestinationPath zava-claims-cowork-plugin.zip -Force; Write-Host 'Plugin packaged: zava-claims-cowork-plugin.zip'\"",
+        "package:unix": "zip -r zava-claims-cowork-plugin.zip manifest.json color.png outline.png skills/"
+    },
+    "license": "MIT"
+}
