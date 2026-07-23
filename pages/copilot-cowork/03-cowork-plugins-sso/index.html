@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/internal/labFormat/">
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Guide to formatting lab content - Copilot Developer Camp</title>
+        <title>Lab CWRK03 - Add Entra SSO Authentication to a Cowork Plugin - Copilot Developer Camp</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#guide-to-formatting-lab-content" class="md-skip">
+        <a href="#lab-cwrk03-add-entra-sso-authentication-to-a-cowork-plugin" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guide to formatting lab content
+              Lab CWRK03 - Add Entra SSO Authentication to a Cowork Plugin
             
           </span>
         </div>
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../copilot-cowork/00-cowork-setup/" class="md-tabs__link">
+        <a href="../00-cowork-setup/" class="md-tabs__link">
           
   
   
@@ -2079,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../copilot-cowork/00-cowork-setup/" class="md-nav__link">
+      <a href="../00-cowork-setup/" class="md-nav__link">
         
   
   
@@ -2107,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../copilot-cowork/01-cowork-skills/" class="md-nav__link">
+      <a href="../01-cowork-skills/" class="md-nav__link">
         
   
   
@@ -2135,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../copilot-cowork/02-cowork-plugins/" class="md-nav__link">
+      <a href="../02-cowork-plugins/" class="md-nav__link">
         
   
   
@@ -2496,240 +2496,8 @@
 
 
 
-<h1 id="guide-to-formatting-lab-content">Guide to formatting lab content</h1>
-<h2 id="formatting-text-elements">Formatting text elements</h2>
-<p>These text elements are embedded into the lab instructions, so the formatting is always in-line</p>
-<table>
-<thead>
-<tr>
-<th>Element</th>
-<th>Treatment</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Function names</td>
-<td>monospaced with parenthesis</td>
-<td>Then, call <code>myFunction()</code> to do something ...</td>
-</tr>
-<tr>
-<td>Language keywords</td>
-<td>monospaced</td>
-<td>... insert at the top of the <code>try</code> block ...</td>
-</tr>
-<tr>
-<td>Symbols in code (variable, object names etc.)</td>
-<td>monospaced</td>
-<td>... the <code>foo</code> object contains something random ...</td>
-</tr>
-<tr>
-<td>File and folder names</td>
-<td>bold</td>
-<td>Copy the contents of <strong>foo.js</strong> into the <strong>bar</strong> folder</td>
-</tr>
-<tr>
-<td>Text on screen</td>
-<td>enclose in double quotes</td>
-<td>Now click on the "foo" button</td>
-</tr>
-</tbody>
-</table>
-<h2 id="includes">Includes</h2>
-<p>Content that will be used on multiple pages should be placed in include files in the /docs/includes folder.</p>
-<p>Here is the syntax:</p>
-<blockquote>--8<-- "all-labs-toc.md"</blockquote>
-
-<p>Here is an example::</p>
-<div class="cc-lab-toc-container">
-<div class="cc-lab-toc e-path">
-    <img src="/copilot-camp/assets/images/path-icons/E-path-heading.png"></img>
-    <div>
-        <p>Do these labs if you want to build a Declarative agent where Microsoft 365 provides the AI model and
-            orchestration</p>
-        <ul id="lab-toc">
-            <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/index">🏁 Welcome</a></strong></li>
-            <li><strong><a href="/copilot-camp/pages/extend-m365-copilot/bundles">🧩 Bundle overview</a></strong></li>
-            <li><strong>🚦 Mandatory on-ramp</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-new">Lab E1 - Choose Foundation Path</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-builder">Lab E1A - Declarative Agent Foundation with Agent Builder</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/01-first-agent-toolkit">Lab E1B - Declarative Agent Foundation with Agents Toolkit</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/00-prerequisites">Prerequisites for Pro-code bundles</a></li>
-                </ul>
-            </li>
-            <li><strong>🔌 Bundle A - MCP Foundation</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-a">Start Bundle A</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/08-mcp-server">Lab E8 - Connect Declarative agent to MCP Server</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/10-mcp-auth">Lab E10 - Connect Declarative Agent to OAuth-Protected MCP Server</a></li>
-                </ul>
-            </li>
-            <li><strong>🕸️ Bundle B - Multi-Agent Workflows in Copilot</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-b">Start Bundle B</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/09-connected-agent">Lab E9 - Connected Agents</a></li>
-                </ul>
-            </li>
-            <li><strong>🖼️ Bundle C - MCP App</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-c">Start Bundle C</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/11-mcp-app">Lab E11 - Build an MCP App with Interactive Widgets</a></li>
-                </ul>
-            </li>
-            <li><strong>🧭 Bundle D - API-Based Declarative Agent</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-d">Start Bundle D</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/02-build-the-api">Lab E2 - Build a Backend API</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/03-add-declarative-agent">Lab E3 - Add Declarative Agent and API Plugin</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/04-enhance-api-plugin">Lab E4 - Enhance API and Plugin</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/05-add-adaptive-card">Lab E5 - Add Adaptive Cards</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/06a-add-authentication-ttk">Lab E6a - Add Entra ID Authentication</a></li>
-                </ul>
-            </li>
-            <li><strong>🔗 Bundle E - DA with Connectors</strong>
-                <ul>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/bundle-e">Start Bundle E</a></li>
-                    <li><a href="/copilot-camp/pages/extend-m365-copilot/07-add-graphconnector">Lab E7 - Add Copilot Connector</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<script>
-(() => {
-
-// This script decorates the table of contents with a "you are here" indicator.
-const toc = document.getElementsByClassName('cc-lab-toc');
-for (const div of toc) {
-    const lis = div.querySelectorAll('li');
-    for (const li of lis) {
-        const anchor = li.querySelector('a');
-        if (anchor) {            // Get the last segment of the current URL path
-            const currentPath = window.location.pathname.slice(0, -1).split('/').pop();
-
-            // Get the last segment of the link path
-            const linkPath = anchor.getAttribute('href').split('/').pop().replace('.md', '');
-
-            // Compare the last segments
-            if (currentPath === linkPath) {
-                const existingSpan = document.querySelector('span.you-are-here');
-                if (existingSpan) {
-                    existingSpan.remove();
-                }
-                const span = document.createElement("span");
-                span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
-                span.className = "you-are-here";
-                li.appendChild(span);
-            }
-        }
-    }
-}
-})();
-</script>
-<div class="cc-lab-toc b-path">
-  <img src="/copilot-camp/assets/images/path-icons/B-path-heading.png"></img>
-  <div>
-    <p>Do these labs if you want to build a Custom engine agent with custom AI model and orchestration using Azure OpenAI and Teams AI library</p>
-    <ul>
-      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/00-prerequisites/">BTA0 - Setup</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/01-custom-engine-agent/">BTA1 - First custom engine agent</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/02-rag/">BTA2 - Index your data in Azure AI Search</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/03-powered-by-ai/">BTA3 - Enhance the user experience</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/04-authentication/">BTA4 - Add single sign on authentication</a></li>
-      <li><a href="/copilot-camp/pages/custom-engine/teams-ai/05-actions/">BTA5 - Add actions to handle complex tasks</a></li>
-    </ul>
-  </div>
-</div>
-
-<script>
-(() => {
-// This script decorates the table of contents with a "you are here" indicator.
-const toc = document.getElementsByClassName('cc-lab-toc');
-for (const div of toc) {
-    const lis = div.querySelectorAll('li');
-    for (const li of lis) {
-        const anchor = li.querySelector('a');
-        if (location.href.includes(anchor.href)) {
-            const span = document.createElement("span");
-            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
-            li.appendChild(span);
-        }
-    }    
-}
-})();
-</script>
-<div class="cc-lab-toc mab-path">
-  <img src="/copilot-camp/assets/images/path-icons/MAB-path-heading.png"></img>
-  <div>
-    <p>Do these labs if you want to build a Declarative agent with Agent Builder</p>
-    <ul>
-      <li><a href="/copilot-camp/pages/make/agent-builder/01-first-agent/">MAB1 - Build your first agent</a></li>
-    </ul>
-  </div>
-</div>
-
-<script>
-(() => {
-
-// This script decorates the table of contents with a "you are here" indicator.
-const toc = document.getElementsByClassName('cc-lab-toc');
-for (const div of toc) {
-    const lis = div.querySelectorAll('li');
-    for (const li of lis) {
-        const anchor = li.querySelector('a');
-        if (location.href.includes(anchor.href)) {
-            const span = document.createElement("span");
-            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
-            li.appendChild(span);
-        }
-    }    
-}
-})();
-</script>
-
-
-<div class="cc-lab-toc mcs-path">
-  <img src="/copilot-camp/assets/images/path-icons/MCS-path-heading.png"></img>
-  <div>
-    <p>Do these labs if you want to build agents with Microsoft Copilot Studio</p>
-    <ul>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/00-prerequisites/">MCS0 - Setup</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/01-first-agent/">MCS1 - First agent</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/02-topics/">MCS2 - Defining Topics</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/03-actions/">MCS3 - Defining Tools</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/04-extending-m365-copilot/">MCS4 - Extending Microsoft 365 Copilot</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/05-connectors/">MCS5 - Consuming a custom connector</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/06-mcp/">MCS6 - Consuming an MCP server</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/07-autonomous/">MCS7 - Creating Autonomous Agents</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/08-rag/">MCS8 - Integrating Azure AI Search for RAG</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/09-connected-agents/">MCS9 - Connected Agents (Preview)</a></li>
-      <li><a href="/copilot-camp/pages/make/copilot-studio/10-mcp-oauth/">MCS10 - Consuming MCP with OAuth 2.0</a></li>
-    </ul>
-  </div>
-</div>
-
-<script>
-(() => {
-
-// This script decorates the table of contents with a "you are here" indicator.
-const toc = document.getElementsByClassName('cc-lab-toc');
-for (const div of toc) {
-    const lis = div.querySelectorAll('li');
-    for (const li of lis) {
-        const anchor = li.querySelector('a');
-        if (location.href.includes(anchor.href)) {
-            const span = document.createElement("span");
-            span.innerHTML = "YOU&nbsp;ARE&nbsp;HERE";
-            li.appendChild(span);
-        }
-    }    
-}
-})();
-</script>
-
-
+<h1 id="lab-cwrk03-add-entra-sso-authentication-to-a-cowork-plugin">Lab CWRK03 - Add Entra SSO Authentication to a Cowork Plugin</h1>
+<div class="floatwide">
 <div class="cc-lab-toc cwrk-path">
   <img src="/copilot-camp/assets/images/path-icons/CWRK-path-heading.png"></img>
   <div>
@@ -2763,70 +2531,330 @@ for (const div of toc) {
 </script>
 
 
-<!-- ---8<--- "msa-labs-toc.md" -->
+
+  <div class="cc-msa-lab-steps">
+    <h4>Table of Contents</h4>
+    <cc-table-of-contents />
+  </div>
 </div>
 
-<h2 id="lab-steps">Lab steps</h2>
-<p>Copilot Developer Camp labs use custom web controls to help students track their progress. You will want to include a <code>&lt;cc-end-step /&gt;</code> element at the end of each lab step. See <a href="../../test">this test page</a> for details.</p>
-<h2 id="hyperlinks">Hyperlinks</h2>
-<p>Links within the labs can be relative and should open within the current window <a href="./">like this</a>.</p>
-<p>Links that go outside the labs, including links to source code in the same repo, should open a new window <a href="https://github.com/microsoft/app-camp/blob/main/src/create-core-app/aad/A01-begin-app/client/index.html" target="_blank">like this</a></p>
-<h2 id="admonitions">Admonitions</h2>
-<p>The <a href="https://squidfunk.github.io/mkdocs-material/reference/admonitions/">documentation for admonitions is here</a>.
-Here's how to use them in Copilot Developer Camp:</p>
-<div class="admonition example">
-<p class="admonition-title">Challenge</p>
-<p>Here's something to try on your own</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Use this format to emphasize or clarify the instructions</p>
-</div>
+<p>In this lab, you'll take the Zava Claims MCP server from <a href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/10-mcp-auth/?bundle=a" target="_blank">Lab E10</a> and wire it up to a Cowork plugin with Microsoft Entra SSO authentication. By the end, Cowork will authenticate users with their existing Microsoft 365 credentials — no extra sign-in prompts, no secrets sitting in plain text.</p>
+<p>The pattern here is the same one you'd use for any Entra-secured API: register an app, create an SSO auth config, update the app registration with the new URI, and point your plugin at it. The Zava claims scenario is just the concrete example.</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Use this format to show tips and best practices</p>
+<p class="admonition-title">Prerequisites</p>
+<ul>
+<li>Access to <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> with permissions to manage app registrations</li>
+<li>Access to <a href="https://dev.teams.microsoft.com/" target="_blank">Teams Developer Portal</a></li>
+<li>Access to Copilot Cowork</li>
+</ul>
 </div>
+<h2 id="why-this-lab-matters">Why this lab matters</h2>
+<p>Most organizations have sensitive data locked behind authenticated APIs — claims records, financial transactions, patient data. Getting that data into a usable format typically means manual exports, copy-paste workflows, and formatting spreadsheets by hand. Every time.</p>
+<p>In this lab, you'll solve three problems at once:</p>
+<ul>
+<li>
+<p><strong>Secure access without friction</strong> — Users authenticate once via Microsoft Entra SSO. No client secrets, no API keys in config files, no extra sign-in prompts. The token flows silently from that point on, and access is governed by your existing Entra ID policies.</p>
+</li>
+<li>
+<p><strong>Skills that transform data consistently</strong> — Instead of relying on users to remember formatting rules or calculation logic, you encode that knowledge in a Cowork skill. The skill takes raw claims data and produces a structured Excel report with the right calculations every time — no human error, no variation.</p>
+</li>
+<li>
+<p><strong>Repeatable value across teams</strong> — Here's the real payoff: once you build this skill, any department can use it. Finance needs the same claims data in their format? Legal needs a compliance view? Create a new skill or reuse the existing one — the secure MCP connection and the plugin infrastructure stay the same. One investment, many consumers.</p>
+</li>
+</ul>
+<p>Zava Insurance has claims data served by an authenticated MCP server. You'll connect Cowork to that server with SSO, then use a skill to transform raw data into a formatted Excel report:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Before skill</th>
+<th style="text-align: center;">After skill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Raw exported data" src="../../../assets/images/copilot-cowork-03/before-skill.png" /></td>
+<td style="text-align: center;"><img alt="Formatted report" src="../../../assets/images/copilot-cowork-03/after-skill.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="exercise-1-project-setup">Exercise 1: Project setup</h2>
+<p>In this exercise you'll get the authenticated MCP server running and grab the plugin source code that you'll wire up with SSO.</p>
+<h3 id="step-1-get-the-mcp-server-code">Step 1: Get the MCP server code</h3>
+<p>If you already have the Zava MCP server from Lab E10, navigate to that directory. Otherwise, clone the repo and navigate to the server:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/microsoft/copilot-camp.git
+<span class="nb">cd</span><span class="w"> </span>copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
+npm<span class="w"> </span>install
+</code></pre></div>
+<p><cc-end-step lab="cwrk03" exercise="1" step="1" /></p>
+<h3 id="step-2-run-the-server-and-dev-tunnel">Step 2: Run the server and Dev Tunnel</h3>
+<p>You need the MCP server accessible over a public URL so Cowork can reach it.</p>
+<ol>
+<li>
+<p>Start Azurite (local storage emulator) in one terminal:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>start:azurite
+</code></pre></div>
+</li>
+<li>
+<p>Load sample data (if you haven't already):</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>init-data
+</code></pre></div>
+</li>
+<li>
+<p>In VS Code's terminal panel, select the <strong>Ports</strong> tab, forward port <code>3001</code>, then right-click the address and set <strong>Port Visibility → Public</strong>. Copy the tunnel URL — you'll need it shortly.</p>
+</li>
+<li>
+<p>Build and start the MCP server:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
+npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
+</code></pre></div>
+</li>
+</ol>
+<p>Verify it's running by visiting <code>http://127.0.0.1:3001/health</code> — you should see <code>"authentication": "OAuth enabled"</code> in the response.</p>
+<div class="admonition note">
+<p class="admonition-title">Save your tunnel URL</p>
+<p>You'll use this URL multiple times in the following exercises. Keep it handy — for example: <code>https://abc123def456.use.devtunnels.ms</code></p>
+</div>
+<p><cc-end-step lab="cwrk03" exercise="1" step="2" /></p>
+<h3 id="step-3-get-the-plugin-source">Step 3: Get the plugin source</h3>
+<p>The plugin code is already in this repo at <code>src/cowork/zava-claims-sso</code>. Open that folder:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>copilot-camp/src/cowork/zava-claims-sso
+</code></pre></div>
+<p>Take a look at the structure:</p>
+<div class="highlight"><pre><span></span><code>zava-claims-sso/
+├── manifest.json
+├── color.png
+├── outline.png
+├── package.json
+└── skills/
+    └── zava-claims-export/
+        └── SKILL.md
+</code></pre></div>
+<p>This is a standard Cowork plugin — a manifest, icons, and a skill that knows how to turn raw claims data into a formatted Excel report.</p>
+<p><cc-end-step lab="cwrk03" exercise="1" step="3" /></p>
+<h3 id="step-4-update-the-mcp-server-url-in-the-plugin">Step 4: Update the MCP server URL in the plugin</h3>
+<p>Open <code>manifest.json</code> and find the <code>agentConnectors</code> section. Replace the <code>mcpServerUrl</code> value with your Dev Tunnel URL + <code>/mcp/messages</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;mcpServerUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms/mcp/messages&quot;</span>
+</code></pre></div>
+<p>Don't touch the <code>authorization</code> section yet — that's coming in Exercise 3.</p>
+<p><cc-end-step lab="cwrk03" exercise="1" step="4" /></p>
+<h2 id="exercise-2-create-the-entra-sso-app-registration">Exercise 2: Create the Entra SSO app registration</h2>
+<p>This is the identity plumbing. You're telling Microsoft Entra "here's my API, here's who's allowed to call it, and here's the scope they need." If you already have the Entra app registration from Lab E10, you can reuse it — just make sure the redirect URI and scope are configured as described below.</p>
+<h3 id="step-1-register-the-app-in-entra-id">Step 1: Register the app in Entra ID</h3>
+<ol>
+<li>Go to <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> → <strong>Microsoft Entra ID</strong> → <strong>App registrations</strong></li>
+<li>Click <strong>New registration</strong></li>
+<li>Configure:<ul>
+<li><strong>Name</strong>: <code>Zava Claims MCP Server</code> (or reuse your existing one from Lab E10)</li>
+<li><strong>Supported account types</strong>: Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)</li>
+<li><strong>Redirect URI</strong>: Platform = <strong>Web</strong>, URI = <code>https://teams.microsoft.com/api/platform/v1.0/oAuthConsentRedirect</code></li>
+</ul>
+</li>
+<li>Click <strong>Register</strong></li>
+<li>Copy the <strong>Application (client) ID</strong> — you need this in the next steps</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Why multitenant?</p>
+<p>Multitenant lets users from any Microsoft 365 organization authenticate. For internal-only scenarios, you can restrict to your tenant later.</p>
+</div>
+<p><cc-end-step lab="cwrk03" exercise="2" step="1" /></p>
+<h3 id="step-2-expose-an-api-and-add-a-scope">Step 2: Expose an API and add a scope</h3>
+<ol>
+<li>In your app registration, go to <strong>Expose an API</strong></li>
+<li>Click <strong>Add</strong> next to Application ID URI — accept the default <code>api://&lt;YOUR_CLIENT_ID&gt;</code> format</li>
+<li>Click <strong>Add a scope</strong>:<ul>
+<li><strong>Scope name</strong>: <code>access_as_user</code></li>
+<li><strong>Who can consent</strong>: Admins and users</li>
+<li><strong>Admin consent display name</strong>: <code>Access Zava Claims</code></li>
+<li><strong>Admin consent description</strong>: <code>Allows the app to access Zava Claims data on behalf of the signed-in user</code></li>
+<li><strong>User consent display name</strong>: <code>Access Zava Claims</code></li>
+<li><strong>User consent description</strong>: <code>Allows this app to access your Zava Claims data on your behalf</code></li>
+<li><strong>State</strong>: Enabled</li>
+</ul>
+</li>
+<li>Click <strong>Add scope</strong></li>
+<li>
+<p>Now click <strong>Add a client application</strong> and add: <code>ab3be6b7-f5df-413d-ac2d-abf1e3fd9c0b</code></p>
+<p>Check the box for your <code>access_as_user</code> scope and click <strong>Add application</strong>.</p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">What's that client ID?</p>
+<p><code>ab3be6b7-f5df-413d-ac2d-abf1e3fd9c0b</code> is the Microsoft Enterprise token store. This is the service that Cowork uses to obtain tokens on behalf of the user. It's always this value — hardcoded by Microsoft.</p>
+</div>
+<p><cc-end-step lab="cwrk03" exercise="2" step="2" /></p>
+<h3 id="step-3-create-the-sso-registration-in-teams-developer-portal">Step 3: Create the SSO registration in Teams Developer Portal</h3>
+<p>Now you need somewhere for those credentials to live that isn't hardcoded in your plugin files. That's what the Teams Developer Portal's Entra SSO registration does — it stores the configuration securely and hands your plugin a reference ID.</p>
+<ol>
+<li>Open <a href="https://dev.teams.microsoft.com/" target="_blank">Teams Developer Portal</a> → <strong>Tools</strong> → <strong>Microsoft Entra SSO client ID registration</strong></li>
+<li>Click <strong>Register client ID</strong> (or <strong>New client registration</strong> if you have existing ones)</li>
+<li>Fill in:<ul>
+<li><strong>Registration name</strong>: <code>zava-cowork-sso</code></li>
+<li><strong>Base URL</strong>: <code>https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms/mcp/messages</code> (your tunnel URL + path)</li>
+<li><strong>Restrict usage by organization</strong>: Any Microsoft 365 organization</li>
+<li><strong>Restrict usage by Teams app</strong>: Any Teams app (for testing and store validation only)</li>
+<li><strong>Client (application) ID</strong>: Paste the client ID from your Entra app registration</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong></li>
+<li>The portal generates an <strong>Application ID URI</strong> — copy this value</li>
+</ol>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Use this format to warn the student about a common pitfall in completing the labs</p>
+<p class="admonition-title">Don't skip copying the Application ID URI</p>
+<p>You need this in the next step to update your Entra app registration. It's different from the one you set up in Step 2.</p>
 </div>
-<div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>Use this format to warn the student about security issues or stability issues that may arise in a production application</p>
+<p><cc-end-step lab="cwrk03" exercise="2" step="3" /></p>
+<h3 id="step-4-update-the-entra-app-with-the-new-application-id-uri">Step 4: Update the Entra app with the new Application ID URI</h3>
+<p>The Teams Developer Portal just generated a new Application ID URI for SSO. You need to add it to your Entra app registration.</p>
+<ol>
+<li>Go back to <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> → your app registration</li>
+<li>Go to <strong>Manifest</strong> in the left navigation</li>
+<li>
+<p>Find the <code>identifierUris</code> array and add the new Application ID URI from Step 3:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;identifierUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;api://&lt;YOUR_CLIENT_ID&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Click <strong>Save</strong></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Why the manifest editor?</p>
+<p>The Entra admin center UI only shows one Application ID URI at a time. Adding multiple URIs requires the manifest editor. Your existing URI and scopes still work fine — this doesn't break anything.</p>
 </div>
-<details class="info" open="open">
-<summary>Video briefing</summary>
-<p><div class="video">
-  <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
-  <div>Caption</div>
-</div></p>
-</details>
-<details class="info" open="open">
-<summary>Video briefing</summary>
-<p><div class="video">
-  <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
-  <div>Caption</div>
-</div></p>
-</details>
-<details class="info" open="open">
-<summary>More information</summary>
-<p><div class="tinyVideo">
-  <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
-  <div>Caption 1</div>
+<p>Now go back to <strong>Expose an API</strong>. Notice the scope has been updated to reflect the new URI. Copy the full scope value (it'll look something like <code>api://&lt;URI&gt;/access_as_user</code>) — you need it in the next step.</p>
+<p><cc-end-step lab="cwrk03" exercise="2" step="4" /></p>
+<h3 id="step-5-complete-the-sso-registration-with-the-scope">Step 5: Complete the SSO registration with the scope</h3>
+<ol>
+<li>Go back to <a href="https://dev.teams.microsoft.com/" target="_blank">Teams Developer Portal</a> → <strong>Tools</strong> → <strong>Microsoft Entra SSO client ID registration</strong></li>
+<li>Open your <code>zava-cowork-sso</code> registration</li>
+<li>Paste the full scope value from the previous step into the <strong>Scope</strong> field</li>
+<li>Click <strong>Save</strong></li>
+<li>Copy the <strong>Microsoft Entra SSO registration ID</strong> — this is your <code>OAuthPluginVault</code> reference ID</li>
+</ol>
+<p>This reference ID is what goes into your plugin manifest. No secrets in your code, just a pointer to where the real credentials live.</p>
+<p><cc-end-step lab="cwrk03" exercise="2" step="5" /></p>
+<h2 id="exercise-3-update-the-plugin-with-authentication">Exercise 3: Update the plugin with authentication</h2>
+<p>Three moves from anonymous to authenticated. You have the reference ID — now plug it in.</p>
+<h3 id="step-1-update-manifestjson-with-the-reference-id">Step 1: Update manifest.json with the reference ID</h3>
+<p>Open <code>manifest.json</code> in the <code>zava-claims-sso</code> folder. Find the <code>authorization</code> section in <code>agentConnectors</code> and replace the placeholder:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuthPluginVault&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;referenceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;YOUR_SSO_REGISTRATION_ID&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Paste your real Microsoft Entra SSO registration ID where you see the placeholder. That's it — the <code>type</code> is already <code>OAuthPluginVault</code>, you're just filling in the reference.</p>
+<p><cc-end-step lab="cwrk03" exercise="3" step="1" /></p>
+<h3 id="step-2-package-the-plugin">Step 2: Package the plugin</h3>
+<p>Zip all files in the plugin folder (not the folder itself — the contents):</p>
+<p>On macOS/Linux:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>package:unix
+</code></pre></div>
+<p>On Windows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">run</span> <span class="n">package</span>
+</code></pre></div>
+<p>This produces <code>zava-claims-cowork-plugin.zip</code> with <code>manifest.json</code>, icons, and the <code>skills/</code> folder at the root level.</p>
+<div class="admonition tip">
+<p class="admonition-title">Validate before uploading</p>
+<p>Quick sanity check: unzip the file and confirm <code>manifest.json</code> is at the root (not inside a subfolder). A nested folder structure will cause upload failures.</p>
 </div>
-<div class="tinyVideo">
-  <iframe src="//www.youtube.com/embed/EQuB8l4sccg" frameborder="0" allowfullscreen></iframe>
-  <div>Caption 2</div>
+<p><cc-end-step lab="cwrk03" exercise="3" step="2" /></p>
+<h2 id="exercise-4-test-the-authenticated-plugin-in-cowork">Exercise 4: Test the authenticated plugin in Cowork</h2>
+<p>Time to see it work. You need the MCP server configured to accept the SSO tokens, then upload your plugin and test.</p>
+<h3 id="step-1-update-the-mcp-server-environment-for-sso">Step 1: Update the MCP server environment for SSO</h3>
+<p>Go to your Zava MCP server directory and update the <code>env/.env.dev</code> file with the SSO-specific values:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># OAuth 2.0 Resource Server</span>
+<span class="na">OAUTH_ACCEPTED_ISSUERS</span><span class="o">=</span><span class="s">https://login.microsoftonline.com/common/v2.0</span>
+<span class="na">OAUTH_ACCEPTED_AUDIENCES</span><span class="o">=</span><span class="s">api://&lt;YOUR_CLIENT_ID&gt;,&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;</span>
+<span class="na">OAUTH_REQUIRED_SCOPES</span><span class="o">=</span><span class="s">&lt;FULL_SCOPE_VALUE&gt;</span>
+<span class="na">OAUTH_VALIDATE_ISSUER</span><span class="o">=</span><span class="s">false</span>
+<span class="na">OAUTH_ACCEPTED_TENANT_IDS</span><span class="o">=</span><span class="s">&lt;YOUR_TENANT_ID&gt;</span>
+<span class="na">OAUTH_JWKS_URIS</span><span class="o">=</span><span class="s">https://login.microsoftonline.com/common/discovery/v2.0/keys</span>
+
+<span class="c1"># Authorization endpoints for MCP client discovery</span>
+<span class="na">OAUTH_AUTHORIZATION_ENDPOINT</span><span class="o">=</span><span class="s">https://login.microsoftonline.com/common/oauth2/v2.0/authorize</span>
+<span class="na">OAUTH_TOKEN_ENDPOINT</span><span class="o">=</span><span class="s">https://login.microsoftonline.com/common/oauth2/v2.0/token</span>
+
+<span class="c1"># Server</span>
+<span class="na">RESOURCE_IDENTIFIER</span><span class="o">=</span><span class="s">https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms</span>
+<span class="na">SERVER_BASE_URL</span><span class="o">=</span><span class="s">https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms</span>
+<span class="na">PORT</span><span class="o">=</span><span class="s">3001</span>
+<span class="na">HOST</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="na">NODE_ENV</span><span class="o">=</span><span class="s">development</span>
+
+<span class="c1"># CORS (comma-separated origins)</span>
+<span class="na">ADDITIONAL_ALLOWED_ORIGINS</span><span class="o">=</span><span class="s">http://localhost:6274,https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms</span>
+
+<span class="c1"># Azure Table Storage (Azurite for local dev)</span>
+<span class="na">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s">&quot;UseDevelopmentStorage=true&quot;</span>
+</code></pre></div>
+<p>Replace the placeholders:</p>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;YOUR_CLIENT_ID&gt;</code></td>
+<td>Application (client) ID from your Entra app registration</td>
+</tr>
+<tr>
+<td><code>&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;</code></td>
+<td>The Application ID URI generated in Exercise 2, Step 3</td>
+</tr>
+<tr>
+<td><code>&lt;FULL_SCOPE_VALUE&gt;</code></td>
+<td>The complete scope from Exercise 2, Step 4 (e.g., <code>api://&lt;URI&gt;/access_as_user</code>)</td>
+</tr>
+<tr>
+<td><code>&lt;YOUR_TENANT_ID&gt;</code></td>
+<td>Your Microsoft 365 tenant ID</td>
+</tr>
+<tr>
+<td><code>&lt;YOUR_DEVTUNNEL&gt;</code></td>
+<td>Your Dev Tunnel URL (no trailing slash)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Two audiences matter</p>
+<p>The <code>OAUTH_ACCEPTED_AUDIENCES</code> field needs both your original Application ID URI (<code>api://&lt;client-id&gt;</code>) and the new one from the Teams Developer Portal. The token can arrive with either audience depending on how the flow resolves.</p>
 </div>
-<div class="tinyVideo">
-  <img src="/copilot-camp/assets/images/video-coming-soon.png"></img>
-  <div>Caption 3</div>
-</div></p>
-</details>
-<details class="info">
-<summary>TL;DR</summary>
-<p>Use this format to provide ancillary details that may be of interest but are not essential</p>
-</details>
+<p>Restart the MCP server after updating:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
+npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
+</code></pre></div>
+<p><cc-end-step lab="cwrk03" exercise="4" step="1" /></p>
+<h3 id="step-2-upload-the-plugin-to-cowork">Step 2: Upload the plugin to Cowork</h3>
+<ol>
+<li>Open <a href="https://cowork.microsoft.com/" target="_blank">Copilot Cowork</a></li>
+<li>Click the <strong>+</strong> icon</li>
+<li>Scroll down to <strong>Customize</strong> (manage skills and plugins)</li>
+<li>On the Customize page, upload your <code>zava-claims-cowork-plugin.zip</code> file</li>
+</ol>
+<p>That's it — no additional connect step. Once uploaded, Cowork picks it up immediately.</p>
+<p><cc-end-step lab="cwrk03" exercise="4" step="2" /></p>
+<h3 id="step-3-test-with-an-authenticated-prompt">Step 3: Test with an authenticated prompt</h3>
+<p>Type this prompt in Cowork:</p>
+<blockquote>
+<p>Create a claims report in Excel</p>
+</blockquote>
+<p>Cowork will display a <strong>tool approval dialog</strong> — this is a one-time consent step that authorizes Cowork to call the MCP server's tools on your behalf. Click <strong>Approve</strong> to continue.</p>
+<p><img alt="Tool approval dialog in Cowork" src="../../../assets/images/copilot-cowork-03/approval.png" /></p>
+<p>Once approved, the flow completes end-to-end: Cowork authenticates via SSO, calls the Zava MCP server with a valid token, retrieves the claims data, and your skill transforms it into a formatted Excel report. No manual data export, no reformatting — just the finished output.</p>
+<div class="admonition tip">
+<p class="admonition-title">If sign-in fails</p>
+<p>Check three things: (1) your Dev Tunnel is still running and public, (2) the <code>OAUTH_ACCEPTED_AUDIENCES</code> in <code>.env.dev</code> includes both URIs, and (3) the redirect URI <code>https://teams.microsoft.com/api/platform/v1.0/oAuthConsentRedirect</code> is configured in your  Entra app's Authentication section.</p>
+</div>
+<p><cc-end-step lab="cwrk03" exercise="4" step="3" /></p>
+<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
+<p>You have completed Lab CWRK03 - Copilot Cowork </p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-cowork/03-cowork-plugins-sso" /></p>
 
 
 

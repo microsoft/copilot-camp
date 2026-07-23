@@ -403,6 +403,12 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/copilot-cowork/02-cowork-plugins/"/>
     </url>
     <url>
+        <loc>https://microsoft.github.io/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/</loc>
+        <lastmod>2026-07-23</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/"/>
+    </url>
+    <url>
         <loc>https://microsoft.github.io/copilot-camp/pages/copilot-instructions/</loc>
         <lastmod>2026-07-23</lastmod>
         <changefreq>daily</changefreq>
