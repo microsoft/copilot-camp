@@ -2589,7 +2589,7 @@
 <li><strong>Supported account types</strong>: <code>Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)</code></li>
 <li><strong>Redirect URI</strong>: Leave blank for now (we'll configure this in the next step)</li>
 <li>Click <strong>Register</strong></li>
-<li><strong>Copy the Application (client) ID</strong> - you'll need this later</li>
+<li><strong>Copy the Application (client) ID</strong> and <strong>Directory (tenant) ID</strong> - you'll need this later</li>
 </ol>
 <p><cc-end-step lab="e10" exercise="2" step="1" /></p>
 <h3 id="step-2-configure-platform-redirect-uris">Step 2: Configure Platform Redirect URIs</h3>
@@ -2710,38 +2710,43 @@
 <p>Save this URL. You'll use it in the next step for environment configuration.</p>
 <p><cc-end-step lab="e10" exercise="3" step="1" /></p>
 <h3 id="step-2-configure-environment-variables">Step 2: Configure Environment Variables</h3>
-<p>Create a new <code>.env</code> file in the <strong>root</strong> of the <code>zava-mcp-server</code> directory (at the same level as <code>package.json</code>, not inside the <code>src</code> folder):</p>
+<p>Create a new folder <code>env</code> and inside it create a <code>.env.dev</code> file in the <strong>root</strong> of the <code>zava-mcp-server</code> directory (at the same level as <code>package.json</code>, not inside the <code>src</code> folder):</p>
 <div class="admonition warning">
 <p class="admonition-title">Important: File location matters</p>
-<p>The <code>.env</code> file must be created in the project root directory. If you create it inside the <code>src</code> folder or elsewhere, the environment variables will not be loaded correctly.</p>
+<p>The <code>.env.dev</code> file must be created in the project root directory. If you create it inside the <code>src</code> folder or elsewhere, the environment variables will not be loaded correctly.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="c1"># OAuth Configuration (Required for authentication)</span>
-<span class="nv">OAUTH_CLIENT_ID</span><span class="o">=</span>&lt;your-application-client-id&gt;
-<span class="nv">OAUTH_CLIENT_SECRET</span><span class="o">=</span>&lt;your-client-secret-value&gt;
-<span class="nv">OAUTH_AUTHORITY</span><span class="o">=</span>https://login.microsoftonline.com/common
-<span class="nv">OAUTH_REDIRECT_URI</span><span class="o">=</span>http://localhost:6274/oauth/callback/debug
-<span class="nv">OAUTH_SCOPES</span><span class="o">=</span>api://&lt;your-application-client-id&gt;/access_as_user
+<div class="highlight"><pre><span></span><code><span class="c1"># OAuth 2.0 Resource Server</span>
+<span class="c1"># Single-tenant: use your tenant ID in the issuer URL and set OAUTH_VALIDATE_ISSUER=true</span>
+<span class="c1"># Multitenant: use /common in the issuer URL, set OAUTH_VALIDATE_ISSUER=false, and provide OAUTH_ACCEPTED_TENANT_IDS</span>
+<span class="nv">OAUTH_ACCEPTED_ISSUERS</span><span class="o">=</span>https://login.microsoftonline.com/&lt;YOUR_TENANT_ID_OR_common&gt;/v2.0
+<span class="nv">OAUTH_ACCEPTED_AUDIENCES</span><span class="o">=</span>api://&lt;YOUR_CLIENT_ID&gt;
+<span class="nv">OAUTH_REQUIRED_SCOPES</span><span class="o">=</span>api://&lt;YOUR_CLIENT_ID&gt;/access_as_user
+<span class="nv">OAUTH_VALIDATE_ISSUER</span><span class="o">=</span><span class="nb">false</span>
+<span class="nv">OAUTH_ACCEPTED_TENANT_IDS</span><span class="o">=</span>&lt;YOUR_TENANT_ID&gt;
+<span class="nv">OAUTH_JWKS_URIS</span><span class="o">=</span>https://login.microsoftonline.com/&lt;YOUR_TENANT_ID_OR_common&gt;/discovery/v2.0/keys
 
-<span class="c1"># Resource Identifier (for MCP Inspector and RFC 9728 metadata)</span>
-<span class="nv">RESOURCE_IDENTIFIER</span><span class="o">=</span>&lt;your-tunnel-url&gt;
+<span class="c1"># Authorization endpoints for MCP client discovery</span>
+<span class="nv">OAUTH_AUTHORIZATION_ENDPOINT</span><span class="o">=</span>https://login.microsoftonline.com/&lt;YOUR_TENANT_ID_OR_common&gt;/oauth2/v2.0/authorize
+<span class="nv">OAUTH_TOKEN_ENDPOINT</span><span class="o">=</span>https://login.microsoftonline.com/&lt;YOUR_TENANT_ID_OR_common&gt;/oauth2/v2.0/token
 
-<span class="c1"># CORS Configuration</span>
-<span class="nv">ADDITIONAL_ALLOWED_ORIGINS</span><span class="o">=</span>&lt;your-tunnel-url&gt;,http://localhost:6274
-<span class="nv">SERVER_BASE_URL</span><span class="o">=</span>&lt;your-tunnel-url&gt;
-
-<span class="c1"># Server Configuration</span>
+<span class="c1"># Server</span>
+<span class="nv">RESOURCE_IDENTIFIER</span><span class="o">=</span>https://&lt;YOUR_DEVTUNNEL_OR_DOMAIN&gt;
+<span class="nv">SERVER_BASE_URL</span><span class="o">=</span>https://&lt;YOUR_DEVTUNNEL_OR_DOMAIN&gt;
 <span class="nv">PORT</span><span class="o">=</span><span class="m">3001</span>
 <span class="nv">HOST</span><span class="o">=</span><span class="m">127</span>.0.0.1
 <span class="nv">NODE_ENV</span><span class="o">=</span>development
 
-<span class="c1"># Storage Configuration</span>
-<span class="nv">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s2">&quot;DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;&quot;</span>
+<span class="c1"># CORS (comma-separated origins)</span>
+<span class="nv">ADDITIONAL_ALLOWED_ORIGINS</span><span class="o">=</span>http://localhost:6274,https://&lt;YOUR_DEVTUNNEL_OR_DOMAIN&gt;
+
+<span class="c1"># Azure Table Storage (Azurite for local dev)</span>
+<span class="nv">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s2">&quot;UseDevelopmentStorage=true&quot;</span>
 </code></pre></div>
 <p>Replace the placeholders:</p>
 <ul>
-<li><code>&lt;your-application-client-id&gt;</code> - Application (client) ID from Entra ID app registration</li>
-<li><code>&lt;your-client-secret-value&gt;</code> - Client secret value you copied</li>
-<li><code>&lt;your-tunnel-url&gt;</code> - Dev tunnel URL from Step 1 (e.g., <code>https://abc123def456.use.devtunnels.ms</code>)</li>
+<li><code>&lt;YOUR_CLIENT_ID&gt;</code> - Application (client) ID from Entra ID app registration</li>
+<li><code>&lt;YOUR_DEVTUNNEL_OR_DOMAIN&gt;</code> - Dev tunnel URL from Step 1 (e.g., <code>https://abc123def456.use.devtunnels.ms</code>)</li>
+<li><code>&lt;YOUR_TENANT_ID&gt;</code> - Directory (tenant) ID from Entra ID app registration</li>
 </ul>
 <p><cc-end-step lab="e10" exercise="3" step="2" /></p>
 <h3 id="step-3-start-azure-storage-emulator">Step 3: Start Azure Storage Emulator</h3>
@@ -2851,6 +2856,7 @@ Security: OAuth 2.0 authentication enabled
 <li>Choose <strong>Add an Action</strong> to add to your agent</li>
 <li>Select <strong>Start with an MCP server</strong></li>
 <li>Enter the publicly accessible MCP Server URL from Exercise 3 (your tunnel URL + <code>/mcp/messages</code>)</li>
+<li>The Agents Toolkit wizard prompts for OAuth credentials. Enter the client ID, client secret and fullscope (api://YOUR_CLIENT_ID/access_as_user) from your Entra ID app registration. </li>
 <li>Choose the default folder to scaffold the agent (or choose a preferred location)</li>
 <li>When prompted for project details, enter:<ul>
 <li><strong>Application Name</strong>: <code>Zava Claims Assistant (Auth)</code></li>
@@ -2859,7 +2865,7 @@ Security: OAuth 2.0 authentication enabled
 </ol>
 <p><cc-end-step lab="e10" exercise="5" step="1" /></p>
 <h3 id="step-2-configure-mcp-server-authentication">Step 2: Configure MCP Server Authentication</h3>
-<p>You'll be directed to the newly created project with the <code>.vscode/mcp.json</code> file open. This is the MCP server configuration file.</p>
+<p>You'll be directed to the newly created project. Open <code>.vscode/mcp.json</code> file. This is the MCP server configuration file.</p>
 <ol>
 <li>Select the <strong>Start</strong> button to fetch tools from your server</li>
 <li>A dialog appears indicating that your MCP Server requires authentication and doesn't support Dynamic Client Registration. You'll need to register manually</li>
@@ -2869,6 +2875,9 @@ Security: OAuth 2.0 authentication enabled
 <li>A browser opens to the Microsoft Entra ID authorization endpoint (<code>https://login.microsoftonline.com/...</code>). Sign in with your Microsoft 365 account. After successful authentication, you'll be redirected to <code>http://127.0.0.1:33418</code> where you'll see the sign-in success screen. Close the browser and return to your project</li>
 </ol>
 <p><img alt="VS Code signed in with MCP server" src="../../../assets/images/extend-m365-copilot-10/vscode-mcp.png" /></p>
+<blockquote>
+<p>If you need to restart authentication with your client ID and client secret, open the VS Code Command Palette (<code>F1</code>), run <strong>Authentication: Remove Dynamic Authentication Providers</strong>, and remove the existing dynamic providers.</p>
+</blockquote>
 <p><cc-end-step lab="e10" exercise="5" step="2" /></p>
 <h3 id="step-3-add-tools-and-provision-the-agent">Step 3: Add Tools and Provision the Agent</h3>
 <ol>
@@ -2885,11 +2894,24 @@ Security: OAuth 2.0 authentication enabled
 </li>
 <li>Select the <code>get_claims</code> tool for testing</li>
 <li>When prompted to configure the agent in Teams Developer Portal, follow the directions</li>
-<li>Select Authentication Type: <strong>OAuth (with static registration)</strong>. The toolkit creates your plugin manifest</li>
+<li>Select Authentication Type: <strong>OAuth (with static registration)</strong>. </li>
 <li>Select <strong>Provision</strong> to provision the agent to your tenant</li>
-<li>The wizard prompts for the client ID and secret again. Enter them as before. This is for OAuth registration with the Developer Portal - the toolkit doesn't store these credentials</li>
-<li>Add scope: <code>api://&lt;your-client-id&gt;/access_as_user</code></li>
-<li>Select <strong>Confirm</strong> to start provisioning</li>
+</ol>
+<p>You may see this known error during provisioning:</p>
+<blockquote>
+<p>The <code>oauth/register</code> action cannot be completed because these parameters are missing or invalid in <code>m365agents.yml</code>: <code>authorizationUrl</code>, <code>tokenUrl</code>, <code>apiSpecPath</code>.</p>
+</blockquote>
+<p>Until this is fixed in the toolkit, apply this workaround:</p>
+<ol>
+<li>Open <code>m365agents.yml</code> in your project root.</li>
+<li>Find the section that contains <code>uses: oauth/register</code>.</li>
+<li>Add the following keys directly after the <code>scope</code> entry:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">authorizationUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://login.microsoftonline.com/common/oauth2/v2.0/authorize</span>
+<span class="nt">tokenUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://login.microsoftonline.com/common/oauth2/v2.0/token</span>
+</code></pre></div>
+<ol>
+<li>Select <strong>Provision</strong> again to start provisioning</li>
 </ol>
 <p>Once provisioned, notice how the Developer Portal token is automatically created for the agent and appears in the <code>.env.dev</code> file as a variable like <code>MCP_DA_AUTH_ID_XXXX</code>.</p>
 <div class="admonition note">
@@ -2932,43 +2954,6 @@ Security: OAuth 2.0 authentication enabled
 <p><cc-end-step lab="e10" exercise="6" step="2" /></p>
 <hr />
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
-<h3 id="key-differences-from-lab-08">Key Differences from Lab 08</h3>
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>Lab E08 (Anonymous)</th>
-<th>Lab 10 (Authenticated)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Authentication</td>
-<td>None - all endpoints public</td>
-<td>OAuth 2.0 with Microsoft Entra ID</td>
-</tr>
-<tr>
-<td>Token Validation</td>
-<td>None</td>
-<td>JWT validation against JWKS</td>
-</tr>
-<tr>
-<td>Security Headers</td>
-<td>None</td>
-<td>WWW-Authenticate with metadata URLs</td>
-</tr>
-<tr>
-<td>Discovery</td>
-<td>None</td>
-<td>RFC 9728 protected resource metadata</td>
-</tr>
-<tr>
-<td>Enterprise Ready</td>
-<td>Development only</td>
-<td>Production-ready security</td>
-</tr>
-</tbody>
-</table>
 <p><cc-award badgeId="DeclarativePioneer" badgeName="Declarative Pioneer" />
 <cc-award badgeId="MCPIntegrator" badgeName="MCP Integrator" /></p>
 <div data-widget="labnav"></div>
