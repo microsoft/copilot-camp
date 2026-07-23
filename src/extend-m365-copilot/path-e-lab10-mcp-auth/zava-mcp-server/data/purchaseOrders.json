@@ -2,877 +2,858 @@
   {
     "id": "po-001",
     "poNumber": "PO-2025-001",
-    "claimId": "1",
-    "claimNumber": "CN202504990",
-    "contractorId": "contractor-003",
-    "workDescription": "Fire damage - severe severity repair and restoration services",
+    "claimId": "3",
+    "claimNumber": "CN202504992",
+    "contractorId": "contractor-014",
+    "workDescription": "Fire damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-011",
         "description": "Water damage restoration",
-        "quantity": 18,
-        "unitPrice": 167,
-        "totalPrice": 3006,
-        "category": "labor"
+        "quantity": 2,
+        "unitPrice": 58,
+        "totalPrice": 116,
+        "category": "materials"
       },
       {
         "id": "li-012",
-        "description": "Labor and installation services",
-        "quantity": 10,
-        "unitPrice": 441,
-        "totalPrice": 4410,
-        "category": "labor"
-      },
-      {
-        "id": "li-013",
-        "description": "Labor and installation services",
-        "quantity": 9,
-        "unitPrice": 360,
-        "totalPrice": 3240,
-        "category": "labor"
-      },
-      {
-        "id": "li-014",
-        "description": "Emergency repair services",
-        "quantity": 17,
-        "unitPrice": 194,
-        "totalPrice": 3298,
+        "description": "Roofing materials and supplies",
+        "quantity": 20,
+        "unitPrice": 141,
+        "totalPrice": 2820,
         "category": "equipment"
       }
     ],
-    "subtotal": 13954,
-    "tax": 1255.86,
-    "total": 15209.86,
+    "subtotal": 2936,
+    "tax": 264.24,
+    "total": 3200.24,
     "status": "pending",
-    "createdDate": "2025-08-09T03:21:49.883Z",
-    "notes": [
-      "Work to begin immediately upon approval"
-    ]
+    "createdDate": "2026-05-22T18:33:19.909Z",
+    "notes": []
   },
   {
     "id": "po-002",
     "poNumber": "PO-2025-002",
     "claimId": "5",
     "claimNumber": "CN202504994",
-    "contractorId": "contractor-012",
-    "workDescription": "Water damage - moderate severity repair and restoration services",
+    "contractorId": "contractor-011",
+    "workDescription": "Water damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-021",
-        "description": "Labor and installation services",
-        "quantity": 6,
-        "unitPrice": 204,
-        "totalPrice": 1224,
-        "category": "labor"
-      },
-      {
-        "id": "li-022",
-        "description": "Debris removal and cleanup",
-        "quantity": 3,
-        "unitPrice": 397,
-        "totalPrice": 1191,
+        "description": "Roofing materials and supplies",
+        "quantity": 12,
+        "unitPrice": 139,
+        "totalPrice": 1668,
         "category": "equipment"
       },
       {
-        "id": "li-023",
-        "description": "Emergency repair services",
-        "quantity": 12,
-        "unitPrice": 54,
-        "totalPrice": 648,
+        "id": "li-022",
+        "description": "Labor and installation services",
+        "quantity": 16,
+        "unitPrice": 53,
+        "totalPrice": 848,
         "category": "labor"
       },
       {
+        "id": "li-023",
+        "description": "Debris removal and cleanup",
+        "quantity": 17,
+        "unitPrice": 371,
+        "totalPrice": 6307,
+        "category": "equipment"
+      },
+      {
         "id": "li-024",
-        "description": "Equipment rental and operation",
-        "quantity": 11,
-        "unitPrice": 298,
-        "totalPrice": 3278,
-        "category": "materials"
+        "description": "Emergency repair services",
+        "quantity": 1,
+        "unitPrice": 217,
+        "totalPrice": 217,
+        "category": "labor"
+      },
+      {
+        "id": "li-025",
+        "description": "Water damage restoration",
+        "quantity": 10,
+        "unitPrice": 476,
+        "totalPrice": 4760,
+        "category": "labor"
       }
     ],
-    "subtotal": 6341,
-    "tax": 570.69,
-    "total": 6911.69,
-    "status": "pending",
-    "createdDate": "2025-09-01T23:40:04.181Z",
+    "subtotal": 13800,
+    "tax": 1242,
+    "total": 15042,
+    "status": "completed",
+    "createdDate": "2026-02-05T15:20:54.955Z",
     "notes": [
-      "Pending approval from adjuster"
-    ]
+      "Approved for repair work",
+      "Contractor notified"
+    ],
+    "approvedDate": "2026-02-05T17:20:54.955Z",
+    "approvedBy": "adj-001"
   },
   {
     "id": "po-003",
     "poNumber": "PO-2025-003",
-    "claimId": "6",
-    "claimNumber": "CN202504995",
-    "contractorId": "contractor-026",
-    "workDescription": "Water damage - severe severity repair and restoration services",
+    "claimId": "8",
+    "claimNumber": "CN202504997",
+    "contractorId": "contractor-020",
+    "workDescription": "Water damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-031",
-        "description": "Labor and installation services",
-        "quantity": 13,
-        "unitPrice": 455,
-        "totalPrice": 5915,
-        "category": "materials"
+        "description": "Equipment rental and operation",
+        "quantity": 7,
+        "unitPrice": 428,
+        "totalPrice": 2996,
+        "category": "labor"
       },
       {
         "id": "li-032",
-        "description": "Emergency repair services",
-        "quantity": 19,
-        "unitPrice": 316,
-        "totalPrice": 6004,
-        "category": "equipment"
+        "description": "Roofing materials and supplies",
+        "quantity": 5,
+        "unitPrice": 97,
+        "totalPrice": 485,
+        "category": "labor"
       },
       {
         "id": "li-033",
-        "description": "Water damage restoration",
-        "quantity": 3,
-        "unitPrice": 432,
-        "totalPrice": 1296,
-        "category": "equipment"
-      },
-      {
-        "id": "li-034",
-        "description": "Debris removal and cleanup",
-        "quantity": 15,
-        "unitPrice": 346,
-        "totalPrice": 5190,
+        "description": "Structural repairs and reinforcement",
+        "quantity": 18,
+        "unitPrice": 498,
+        "totalPrice": 8964,
         "category": "materials"
       },
       {
-        "id": "li-035",
-        "description": "Roofing materials and supplies",
+        "id": "li-034",
+        "description": "Labor and installation services",
         "quantity": 9,
-        "unitPrice": 242,
-        "totalPrice": 2178,
+        "unitPrice": 416,
+        "totalPrice": 3744,
         "category": "equipment"
       }
     ],
-    "subtotal": 20583,
-    "tax": 1852.47,
-    "total": 22435.47,
-    "status": "in-progress",
-    "createdDate": "2025-08-25T14:24:43.175Z",
-    "notes": [],
-    "approvedDate": "2025-08-27T14:24:43.175Z",
-    "approvedBy": "adj-002"
+    "subtotal": 16189,
+    "tax": 1457.01,
+    "total": 17646.01,
+    "status": "pending",
+    "createdDate": "2026-03-25T09:22:35.009Z",
+    "notes": [
+      "Contractor notified"
+    ]
   },
   {
     "id": "po-004",
     "poNumber": "PO-2025-004",
-    "claimId": "8",
-    "claimNumber": "CN202504997",
-    "contractorId": "contractor-014",
-    "workDescription": "Hail damage - severe severity repair and restoration services",
+    "claimId": "11",
+    "claimNumber": "CN202505000",
+    "contractorId": "contractor-003",
+    "workDescription": "Structural damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-041",
-        "description": "Temporary protective measures",
-        "quantity": 1,
-        "unitPrice": 416,
-        "totalPrice": 416,
-        "category": "labor"
+        "description": "Equipment rental and operation",
+        "quantity": 17,
+        "unitPrice": 313,
+        "totalPrice": 5321,
+        "category": "equipment"
       },
       {
         "id": "li-042",
         "description": "Water damage restoration",
-        "quantity": 4,
-        "unitPrice": 238,
-        "totalPrice": 952,
+        "quantity": 11,
+        "unitPrice": 406,
+        "totalPrice": 4466,
         "category": "labor"
       },
       {
         "id": "li-043",
-        "description": "Labor and installation services",
-        "quantity": 14,
-        "unitPrice": 150,
-        "totalPrice": 2100,
-        "category": "materials"
-      },
-      {
-        "id": "li-044",
-        "description": "Water damage restoration",
-        "quantity": 17,
-        "unitPrice": 430,
-        "totalPrice": 7310,
-        "category": "materials"
+        "description": "Roofing materials and supplies",
+        "quantity": 2,
+        "unitPrice": 91,
+        "totalPrice": 182,
+        "category": "equipment"
       }
     ],
-    "subtotal": 10778,
-    "tax": 970.02,
-    "total": 11748.02,
-    "status": "approved",
-    "createdDate": "2025-09-27T22:22:24.528Z",
+    "subtotal": 9969,
+    "tax": 897.21,
+    "total": 10866.21,
+    "status": "in-progress",
+    "createdDate": "2026-03-30T10:14:46.315Z",
     "notes": [
       "Approved for repair work",
       "Contractor notified"
     ],
-    "approvedDate": "2025-09-28T15:22:24.528Z",
-    "approvedBy": "adj-004"
+    "approvedDate": "2026-03-31T02:14:46.315Z",
+    "approvedBy": "adj-001"
   },
   {
     "id": "po-005",
     "poNumber": "PO-2025-005",
-    "claimId": "10",
-    "claimNumber": "CN202504999",
-    "contractorId": "contractor-022",
-    "workDescription": "Structural damage - severe severity repair and restoration services",
+    "claimId": "12",
+    "claimNumber": "CN202505001",
+    "contractorId": "contractor-014",
+    "workDescription": "Wind damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-051",
         "description": "Water damage restoration",
-        "quantity": 3,
-        "unitPrice": 275,
-        "totalPrice": 825,
+        "quantity": 5,
+        "unitPrice": 236,
+        "totalPrice": 1180,
         "category": "equipment"
       },
       {
         "id": "li-052",
-        "description": "Roofing materials and supplies",
-        "quantity": 11,
-        "unitPrice": 373,
-        "totalPrice": 4103,
-        "category": "materials"
+        "description": "Temporary protective measures",
+        "quantity": 8,
+        "unitPrice": 238,
+        "totalPrice": 1904,
+        "category": "labor"
       },
       {
         "id": "li-053",
-        "description": "Emergency repair services",
-        "quantity": 16,
-        "unitPrice": 93,
-        "totalPrice": 1488,
-        "category": "equipment"
+        "description": "Roofing materials and supplies",
+        "quantity": 9,
+        "unitPrice": 181,
+        "totalPrice": 1629,
+        "category": "labor"
+      },
+      {
+        "id": "li-054",
+        "description": "Water damage restoration",
+        "quantity": 9,
+        "unitPrice": 132,
+        "totalPrice": 1188,
+        "category": "materials"
       }
     ],
-    "subtotal": 6416,
-    "tax": 577.44,
-    "total": 6993.44,
-    "status": "pending",
-    "createdDate": "2025-09-08T21:37:01.908Z",
-    "notes": [
-      "Contractor notified"
-    ]
+    "subtotal": 5901,
+    "tax": 531.09,
+    "total": 6432.09,
+    "status": "in-progress",
+    "createdDate": "2026-05-18T11:34:02.430Z",
+    "notes": [],
+    "approvedDate": "2026-05-21T09:34:02.430Z",
+    "approvedBy": "adj-002"
   },
   {
     "id": "po-006",
     "poNumber": "PO-2025-006",
-    "claimId": "12",
-    "claimNumber": "CN202505001",
-    "contractorId": "contractor-016",
-    "workDescription": "Wind damage - minor severity repair and restoration services",
+    "claimId": "15",
+    "claimNumber": "CN202505004",
+    "contractorId": "contractor-003",
+    "workDescription": "Wind damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-061",
-        "description": "Emergency repair services",
-        "quantity": 20,
-        "unitPrice": 334,
-        "totalPrice": 6680,
-        "category": "materials"
+        "description": "Equipment rental and operation",
+        "quantity": 15,
+        "unitPrice": 297,
+        "totalPrice": 4455,
+        "category": "labor"
       },
       {
         "id": "li-062",
-        "description": "Temporary protective measures",
-        "quantity": 12,
-        "unitPrice": 236,
-        "totalPrice": 2832,
-        "category": "materials"
+        "description": "Labor and installation services",
+        "quantity": 19,
+        "unitPrice": 453,
+        "totalPrice": 8607,
+        "category": "labor"
       },
       {
         "id": "li-063",
-        "description": "Roofing materials and supplies",
-        "quantity": 6,
-        "unitPrice": 55,
-        "totalPrice": 330,
+        "description": "Equipment rental and operation",
+        "quantity": 11,
+        "unitPrice": 449,
+        "totalPrice": 4939,
         "category": "materials"
       },
       {
         "id": "li-064",
+        "description": "Temporary protective measures",
+        "quantity": 17,
+        "unitPrice": 145,
+        "totalPrice": 2465,
+        "category": "labor"
+      },
+      {
+        "id": "li-065",
         "description": "Labor and installation services",
-        "quantity": 18,
-        "unitPrice": 469,
-        "totalPrice": 8442,
+        "quantity": 11,
+        "unitPrice": 212,
+        "totalPrice": 2332,
         "category": "materials"
       }
     ],
-    "subtotal": 18284,
-    "tax": 1645.56,
-    "total": 19929.56,
-    "status": "completed",
-    "createdDate": "2025-08-12T01:30:51.531Z",
+    "subtotal": 22798,
+    "tax": 2051.82,
+    "total": 24849.82,
+    "status": "pending",
+    "createdDate": "2026-06-14T13:29:46.819Z",
     "notes": [
-      "Work to begin immediately upon approval"
-    ],
-    "approvedDate": "2025-08-13T11:30:51.531Z",
-    "approvedBy": "adj-003"
+      "Materials ordered"
+    ]
   },
   {
     "id": "po-007",
     "poNumber": "PO-2025-007",
-    "claimId": "13",
-    "claimNumber": "CN202505002",
-    "contractorId": "contractor-015",
-    "workDescription": "Flooding - severe severity repair and restoration services",
+    "claimId": "23",
+    "claimNumber": "CN202505012",
+    "contractorId": "contractor-011",
+    "workDescription": "Vandalism - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-071",
-        "description": "Equipment rental and operation",
-        "quantity": 19,
-        "unitPrice": 189,
-        "totalPrice": 3591,
-        "category": "equipment"
+        "description": "Temporary protective measures",
+        "quantity": 7,
+        "unitPrice": 78,
+        "totalPrice": 546,
+        "category": "materials"
       },
       {
         "id": "li-072",
-        "description": "Labor and installation services",
-        "quantity": 13,
-        "unitPrice": 235,
-        "totalPrice": 3055,
-        "category": "equipment"
-      },
-      {
-        "id": "li-073",
         "description": "Roofing materials and supplies",
-        "quantity": 16,
-        "unitPrice": 196,
-        "totalPrice": 3136,
-        "category": "labor"
+        "quantity": 6,
+        "unitPrice": 475,
+        "totalPrice": 2850,
+        "category": "equipment"
       }
     ],
-    "subtotal": 9782,
-    "tax": 880.38,
-    "total": 10662.38,
+    "subtotal": 3396,
+    "tax": 305.64,
+    "total": 3701.64,
     "status": "approved",
-    "createdDate": "2025-08-29T05:33:03.662Z",
+    "createdDate": "2026-06-15T14:47:37.849Z",
     "notes": [
-      "Approved for repair work",
-      "Work to begin immediately upon approval"
+      "Approved for repair work"
     ],
-    "approvedDate": "2025-08-29T12:33:03.662Z",
-    "approvedBy": "adj-004"
+    "approvedDate": "2026-06-18T10:47:37.849Z",
+    "approvedBy": "adj-008"
   },
   {
     "id": "po-008",
     "poNumber": "PO-2025-008",
-    "claimId": "14",
-    "claimNumber": "CN202505003",
-    "contractorId": "contractor-013",
-    "workDescription": "Roof damage - minor severity repair and restoration services",
+    "claimId": "28",
+    "claimNumber": "CN202505017",
+    "contractorId": "contractor-001",
+    "workDescription": "Wind damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-081",
         "description": "Temporary protective measures",
-        "quantity": 7,
-        "unitPrice": 158,
-        "totalPrice": 1106,
+        "quantity": 15,
+        "unitPrice": 182,
+        "totalPrice": 2730,
         "category": "equipment"
       },
       {
         "id": "li-082",
-        "description": "Labor and installation services",
-        "quantity": 4,
-        "unitPrice": 453,
-        "totalPrice": 1812,
-        "category": "materials"
+        "description": "Debris removal and cleanup",
+        "quantity": 11,
+        "unitPrice": 284,
+        "totalPrice": 3124,
+        "category": "labor"
       },
       {
         "id": "li-083",
         "description": "Structural repairs and reinforcement",
-        "quantity": 18,
-        "unitPrice": 285,
-        "totalPrice": 5130,
+        "quantity": 10,
+        "unitPrice": 438,
+        "totalPrice": 4380,
         "category": "labor"
-      },
-      {
-        "id": "li-084",
-        "description": "Debris removal and cleanup",
-        "quantity": 4,
-        "unitPrice": 202,
-        "totalPrice": 808,
-        "category": "labor"
-      },
-      {
-        "id": "li-085",
-        "description": "Roofing materials and supplies",
-        "quantity": 12,
-        "unitPrice": 255,
-        "totalPrice": 3060,
-        "category": "materials"
       }
     ],
-    "subtotal": 11916,
-    "tax": 1072.44,
-    "total": 12988.44,
-    "status": "pending",
-    "createdDate": "2025-08-30T13:16:46.673Z",
-    "notes": [
-      "Pending approval from adjuster"
-    ]
+    "subtotal": 10234,
+    "tax": 921.06,
+    "total": 11155.06,
+    "status": "completed",
+    "createdDate": "2026-02-17T01:28:01.536Z",
+    "notes": [],
+    "approvedDate": "2026-02-18T21:28:01.536Z",
+    "approvedBy": "adj-005"
   },
   {
     "id": "po-009",
     "poNumber": "PO-2025-009",
-    "claimId": "21",
-    "claimNumber": "CN202505010",
-    "contractorId": "contractor-006",
-    "workDescription": "Roof damage - severe severity repair and restoration services",
+    "claimId": "30",
+    "claimNumber": "CN202505019",
+    "contractorId": "contractor-025",
+    "workDescription": "Hail damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-091",
-        "description": "Equipment rental and operation",
-        "quantity": 14,
-        "unitPrice": 59,
-        "totalPrice": 826,
+        "description": "Labor and installation services",
+        "quantity": 19,
+        "unitPrice": 362,
+        "totalPrice": 6878,
         "category": "equipment"
       },
       {
         "id": "li-092",
-        "description": "Emergency repair services",
-        "quantity": 7,
-        "unitPrice": 196,
-        "totalPrice": 1372,
+        "description": "Equipment rental and operation",
+        "quantity": 3,
+        "unitPrice": 334,
+        "totalPrice": 1002,
         "category": "materials"
       },
       {
         "id": "li-093",
-        "description": "Labor and installation services",
-        "quantity": 10,
-        "unitPrice": 73,
-        "totalPrice": 730,
+        "description": "Water damage restoration",
+        "quantity": 12,
+        "unitPrice": 110,
+        "totalPrice": 1320,
         "category": "equipment"
-      },
-      {
-        "id": "li-094",
-        "description": "Debris removal and cleanup",
-        "quantity": 6,
-        "unitPrice": 486,
-        "totalPrice": 2916,
-        "category": "labor"
       }
     ],
-    "subtotal": 5844,
-    "tax": 525.96,
-    "total": 6369.96,
+    "subtotal": 9200,
+    "tax": 828,
+    "total": 10028,
     "status": "pending",
-    "createdDate": "2025-10-02T11:04:26.199Z",
+    "createdDate": "2026-06-16T00:38:36.336Z",
     "notes": [
-      "Pending approval from adjuster",
-      "Materials ordered"
+      "Pending approval from adjuster"
     ]
   },
   {
     "id": "po-010",
     "poNumber": "PO-2025-010",
-    "claimId": "22",
-    "claimNumber": "CN202505011",
-    "contractorId": "contractor-012",
-    "workDescription": "Fire damage - moderate severity repair and restoration services",
+    "claimId": "31",
+    "claimNumber": "CN202505020",
+    "contractorId": "contractor-004",
+    "workDescription": "Water damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-101",
-        "description": "Temporary protective measures",
-        "quantity": 3,
-        "unitPrice": 395,
-        "totalPrice": 1185,
+        "description": "Debris removal and cleanup",
+        "quantity": 11,
+        "unitPrice": 447,
+        "totalPrice": 4917,
         "category": "labor"
       },
       {
         "id": "li-102",
-        "description": "Labor and installation services",
-        "quantity": 17,
-        "unitPrice": 338,
-        "totalPrice": 5746,
+        "description": "Debris removal and cleanup",
+        "quantity": 4,
+        "unitPrice": 71,
+        "totalPrice": 284,
         "category": "labor"
+      },
+      {
+        "id": "li-103",
+        "description": "Temporary protective measures",
+        "quantity": 4,
+        "unitPrice": 283,
+        "totalPrice": 1132,
+        "category": "equipment"
+      },
+      {
+        "id": "li-104",
+        "description": "Debris removal and cleanup",
+        "quantity": 4,
+        "unitPrice": 219,
+        "totalPrice": 876,
+        "category": "materials"
+      },
+      {
+        "id": "li-105",
+        "description": "Temporary protective measures",
+        "quantity": 20,
+        "unitPrice": 410,
+        "totalPrice": 8200,
+        "category": "equipment"
       }
     ],
-    "subtotal": 6931,
-    "tax": 623.79,
-    "total": 7554.79,
+    "subtotal": 15409,
+    "tax": 1386.81,
+    "total": 16795.81,
     "status": "pending",
-    "createdDate": "2025-12-15T22:39:13.106Z",
+    "createdDate": "2026-06-26T14:32:19.252Z",
     "notes": [
-      "Work to begin immediately upon approval"
+      "Pending approval from adjuster"
     ]
   },
   {
     "id": "po-011",
     "poNumber": "PO-2025-011",
-    "claimId": "25",
-    "claimNumber": "CN202505014",
-    "contractorId": "contractor-011",
-    "workDescription": "Hail damage - minor severity repair and restoration services",
+    "claimId": "32",
+    "claimNumber": "CN202505021",
+    "contractorId": "contractor-003",
+    "workDescription": "Fire damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-111",
-        "description": "Equipment rental and operation",
-        "quantity": 12,
-        "unitPrice": 412,
-        "totalPrice": 4944,
+        "description": "Debris removal and cleanup",
+        "quantity": 3,
+        "unitPrice": 392,
+        "totalPrice": 1176,
         "category": "equipment"
       },
       {
         "id": "li-112",
-        "description": "Temporary protective measures",
-        "quantity": 6,
-        "unitPrice": 397,
-        "totalPrice": 2382,
-        "category": "labor"
-      },
-      {
-        "id": "li-113",
         "description": "Debris removal and cleanup",
-        "quantity": 6,
-        "unitPrice": 252,
-        "totalPrice": 1512,
-        "category": "equipment"
-      },
-      {
-        "id": "li-114",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 4,
-        "unitPrice": 259,
-        "totalPrice": 1036,
-        "category": "labor"
-      },
-      {
-        "id": "li-115",
-        "description": "Labor and installation services",
-        "quantity": 16,
-        "unitPrice": 101,
-        "totalPrice": 1616,
+        "quantity": 3,
+        "unitPrice": 374,
+        "totalPrice": 1122,
         "category": "materials"
       }
     ],
-    "subtotal": 11490,
-    "tax": 1034.1,
-    "total": 12524.1,
-    "status": "in-progress",
-    "createdDate": "2025-08-23T05:58:11.122Z",
+    "subtotal": 2298,
+    "tax": 206.82,
+    "total": 2504.82,
+    "status": "completed",
+    "createdDate": "2026-03-16T18:22:47.104Z",
     "notes": [
-      "Approved for repair work"
+      "Materials ordered"
     ],
-    "approvedDate": "2025-08-24T10:58:11.122Z",
-    "approvedBy": "adj-008"
+    "approvedDate": "2026-03-17T11:22:47.104Z",
+    "approvedBy": "adj-005"
   },
   {
     "id": "po-012",
     "poNumber": "PO-2025-012",
-    "claimId": "27",
-    "claimNumber": "CN202505016",
-    "contractorId": "contractor-024",
-    "workDescription": "Roof damage - severe severity repair and restoration services",
+    "claimId": "33",
+    "claimNumber": "CN202505022",
+    "contractorId": "contractor-008",
+    "workDescription": "Electrical damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-121",
         "description": "Equipment rental and operation",
         "quantity": 13,
-        "unitPrice": 156,
-        "totalPrice": 2028,
-        "category": "materials"
+        "unitPrice": 417,
+        "totalPrice": 5421,
+        "category": "equipment"
       },
       {
         "id": "li-122",
-        "description": "Emergency repair services",
-        "quantity": 8,
-        "unitPrice": 228,
-        "totalPrice": 1824,
-        "category": "labor"
-      },
-      {
-        "id": "li-123",
-        "description": "Equipment rental and operation",
-        "quantity": 14,
-        "unitPrice": 51,
-        "totalPrice": 714,
+        "description": "Labor and installation services",
+        "quantity": 7,
+        "unitPrice": 265,
+        "totalPrice": 1855,
         "category": "materials"
       },
       {
+        "id": "li-123",
+        "description": "Labor and installation services",
+        "quantity": 4,
+        "unitPrice": 126,
+        "totalPrice": 504,
+        "category": "labor"
+      },
+      {
         "id": "li-124",
-        "description": "Temporary protective measures",
-        "quantity": 19,
-        "unitPrice": 457,
-        "totalPrice": 8683,
+        "description": "Emergency repair services",
+        "quantity": 1,
+        "unitPrice": 415,
+        "totalPrice": 415,
         "category": "equipment"
       }
     ],
-    "subtotal": 13249,
-    "tax": 1192.41,
-    "total": 14441.41,
-    "status": "in-progress",
-    "createdDate": "2025-11-04T03:58:13.710Z",
-    "notes": [],
-    "approvedDate": "2025-11-05T20:58:13.710Z",
-    "approvedBy": "adj-001"
+    "subtotal": 8195,
+    "tax": 737.55,
+    "total": 8932.55,
+    "status": "pending",
+    "createdDate": "2026-04-26T05:24:13.738Z",
+    "notes": [
+      "Contractor notified"
+    ]
   },
   {
     "id": "po-013",
     "poNumber": "PO-2025-013",
     "claimId": "34",
     "claimNumber": "CN202505023",
-    "contractorId": "contractor-022",
-    "workDescription": "Mold damage - severe severity repair and restoration services",
+    "contractorId": "contractor-008",
+    "workDescription": "Roof damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-131",
-        "description": "Debris removal and cleanup",
-        "quantity": 11,
-        "unitPrice": 342,
-        "totalPrice": 3762,
+        "description": "Structural repairs and reinforcement",
+        "quantity": 18,
+        "unitPrice": 402,
+        "totalPrice": 7236,
         "category": "labor"
       },
       {
         "id": "li-132",
-        "description": "Debris removal and cleanup",
-        "quantity": 15,
-        "unitPrice": 445,
-        "totalPrice": 6675,
-        "category": "materials"
+        "description": "Roofing materials and supplies",
+        "quantity": 1,
+        "unitPrice": 82,
+        "totalPrice": 82,
+        "category": "equipment"
       }
     ],
-    "subtotal": 10437,
-    "tax": 939.33,
-    "total": 11376.33,
-    "status": "pending",
-    "createdDate": "2025-10-10T10:04:42.310Z",
+    "subtotal": 7318,
+    "tax": 658.62,
+    "total": 7976.62,
+    "status": "completed",
+    "createdDate": "2026-03-21T18:15:44.387Z",
     "notes": [
-      "Pending approval from adjuster",
+      "Approved for repair work",
       "Work to begin immediately upon approval"
-    ]
+    ],
+    "approvedDate": "2026-03-21T23:15:44.387Z",
+    "approvedBy": "adj-008"
   },
   {
     "id": "po-014",
     "poNumber": "PO-2025-014",
-    "claimId": "36",
-    "claimNumber": "CN202505025",
-    "contractorId": "contractor-012",
-    "workDescription": "Hail damage - minor severity repair and restoration services",
+    "claimId": "35",
+    "claimNumber": "CN202505024",
+    "contractorId": "contractor-020",
+    "workDescription": "Vandalism - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-141",
-        "description": "Labor and installation services",
-        "quantity": 13,
-        "unitPrice": 237,
-        "totalPrice": 3081,
-        "category": "labor"
+        "description": "Structural repairs and reinforcement",
+        "quantity": 3,
+        "unitPrice": 445,
+        "totalPrice": 1335,
+        "category": "materials"
       },
       {
         "id": "li-142",
-        "description": "Equipment rental and operation",
-        "quantity": 17,
-        "unitPrice": 185,
-        "totalPrice": 3145,
+        "description": "Roofing materials and supplies",
+        "quantity": 2,
+        "unitPrice": 167,
+        "totalPrice": 334,
         "category": "labor"
       },
       {
         "id": "li-143",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 2,
-        "unitPrice": 79,
-        "totalPrice": 158,
+        "description": "Equipment rental and operation",
+        "quantity": 13,
+        "unitPrice": 216,
+        "totalPrice": 2808,
         "category": "labor"
       },
       {
         "id": "li-144",
         "description": "Labor and installation services",
-        "quantity": 18,
-        "unitPrice": 64,
-        "totalPrice": 1152,
-        "category": "materials"
+        "quantity": 8,
+        "unitPrice": 473,
+        "totalPrice": 3784,
+        "category": "labor"
       },
       {
         "id": "li-145",
         "description": "Debris removal and cleanup",
-        "quantity": 19,
-        "unitPrice": 461,
-        "totalPrice": 8759,
-        "category": "materials"
+        "quantity": 12,
+        "unitPrice": 226,
+        "totalPrice": 2712,
+        "category": "equipment"
       }
     ],
-    "subtotal": 16295,
-    "tax": 1466.55,
-    "total": 17761.55,
+    "subtotal": 10973,
+    "tax": 987.57,
+    "total": 11960.57,
     "status": "pending",
-    "createdDate": "2025-10-02T22:15:18.352Z",
-    "notes": []
+    "createdDate": "2026-02-09T17:32:22.588Z",
+    "notes": [
+      "Materials ordered"
+    ]
   },
   {
     "id": "po-015",
     "poNumber": "PO-2025-015",
     "claimId": "37",
     "claimNumber": "CN202505026",
-    "contractorId": "contractor-003",
-    "workDescription": "Structural damage - minor severity repair and restoration services",
+    "contractorId": "contractor-012",
+    "workDescription": "Roof damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-151",
-        "description": "Equipment rental and operation",
-        "quantity": 5,
-        "unitPrice": 327,
-        "totalPrice": 1635,
+        "description": "Debris removal and cleanup",
+        "quantity": 20,
+        "unitPrice": 387,
+        "totalPrice": 7740,
         "category": "materials"
       },
       {
         "id": "li-152",
-        "description": "Temporary protective measures",
-        "quantity": 3,
-        "unitPrice": 62,
-        "totalPrice": 186,
+        "description": "Debris removal and cleanup",
+        "quantity": 1,
+        "unitPrice": 296,
+        "totalPrice": 296,
         "category": "labor"
       },
       {
         "id": "li-153",
-        "description": "Roofing materials and supplies",
-        "quantity": 1,
-        "unitPrice": 174,
-        "totalPrice": 174,
+        "description": "Debris removal and cleanup",
+        "quantity": 8,
+        "unitPrice": 341,
+        "totalPrice": 2728,
         "category": "equipment"
+      },
+      {
+        "id": "li-154",
+        "description": "Debris removal and cleanup",
+        "quantity": 19,
+        "unitPrice": 430,
+        "totalPrice": 8170,
+        "category": "labor"
+      },
+      {
+        "id": "li-155",
+        "description": "Water damage restoration",
+        "quantity": 1,
+        "unitPrice": 218,
+        "totalPrice": 218,
+        "category": "labor"
       }
     ],
-    "subtotal": 1995,
-    "tax": 179.55,
-    "total": 2174.55,
-    "status": "completed",
-    "createdDate": "2025-09-26T06:30:40.381Z",
+    "subtotal": 19152,
+    "tax": 1723.68,
+    "total": 20875.68,
+    "status": "pending",
+    "createdDate": "2026-04-18T01:10:09.021Z",
     "notes": [
-      "Approved for repair work",
-      "Work to begin immediately upon approval"
-    ],
-    "approvedDate": "2025-09-27T09:30:40.381Z",
-    "approvedBy": "adj-001"
+      "Pending approval from adjuster"
+    ]
   },
   {
     "id": "po-016",
     "poNumber": "PO-2025-016",
-    "claimId": "38",
-    "claimNumber": "CN202505027",
-    "contractorId": "contractor-018",
-    "workDescription": "Vandalism - minor severity repair and restoration services",
+    "claimId": "40",
+    "claimNumber": "CN202505029",
+    "contractorId": "contractor-011",
+    "workDescription": "Electrical damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-161",
-        "description": "Emergency repair services",
-        "quantity": 11,
-        "unitPrice": 424,
-        "totalPrice": 4664,
-        "category": "labor"
+        "description": "Debris removal and cleanup",
+        "quantity": 16,
+        "unitPrice": 251,
+        "totalPrice": 4016,
+        "category": "equipment"
       },
       {
         "id": "li-162",
-        "description": "Debris removal and cleanup",
-        "quantity": 3,
-        "unitPrice": 349,
-        "totalPrice": 1047,
+        "description": "Labor and installation services",
+        "quantity": 14,
+        "unitPrice": 450,
+        "totalPrice": 6300,
         "category": "equipment"
       },
       {
         "id": "li-163",
-        "description": "Roofing materials and supplies",
-        "quantity": 14,
-        "unitPrice": 468,
-        "totalPrice": 6552,
+        "description": "Emergency repair services",
+        "quantity": 9,
+        "unitPrice": 495,
+        "totalPrice": 4455,
         "category": "equipment"
+      },
+      {
+        "id": "li-164",
+        "description": "Emergency repair services",
+        "quantity": 5,
+        "unitPrice": 299,
+        "totalPrice": 1495,
+        "category": "labor"
       }
     ],
-    "subtotal": 12263,
-    "tax": 1103.67,
-    "total": 13366.67,
+    "subtotal": 16266,
+    "tax": 1463.94,
+    "total": 17729.94,
     "status": "pending",
-    "createdDate": "2025-12-03T18:48:59.674Z",
+    "createdDate": "2026-04-21T22:55:24.367Z",
     "notes": [
-      "Work to begin immediately upon approval"
+      "Pending approval from adjuster"
     ]
   },
   {
     "id": "po-017",
     "poNumber": "PO-2025-017",
-    "claimId": "39",
-    "claimNumber": "CN202505028",
-    "contractorId": "contractor-004",
-    "workDescription": "Vandalism - severe severity repair and restoration services",
+    "claimId": "46",
+    "claimNumber": "CN202505035",
+    "contractorId": "contractor-020",
+    "workDescription": "Mold damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-171",
-        "description": "Temporary protective measures",
-        "quantity": 13,
-        "unitPrice": 64,
-        "totalPrice": 832,
+        "description": "Water damage restoration",
+        "quantity": 4,
+        "unitPrice": 436,
+        "totalPrice": 1744,
         "category": "labor"
       },
       {
         "id": "li-172",
-        "description": "Emergency repair services",
-        "quantity": 5,
-        "unitPrice": 494,
-        "totalPrice": 2470,
-        "category": "equipment"
+        "description": "Structural repairs and reinforcement",
+        "quantity": 8,
+        "unitPrice": 78,
+        "totalPrice": 624,
+        "category": "labor"
       },
       {
         "id": "li-173",
-        "description": "Equipment rental and operation",
+        "description": "Temporary protective measures",
         "quantity": 16,
-        "unitPrice": 134,
-        "totalPrice": 2144,
+        "unitPrice": 243,
+        "totalPrice": 3888,
         "category": "equipment"
       },
       {
         "id": "li-174",
-        "description": "Water damage restoration",
-        "quantity": 14,
-        "unitPrice": 177,
-        "totalPrice": 2478,
-        "category": "materials"
+        "description": "Emergency repair services",
+        "quantity": 12,
+        "unitPrice": 297,
+        "totalPrice": 3564,
+        "category": "labor"
+      },
+      {
+        "id": "li-175",
+        "description": "Labor and installation services",
+        "quantity": 17,
+        "unitPrice": 76,
+        "totalPrice": 1292,
+        "category": "equipment"
       }
     ],
-    "subtotal": 7924,
-    "tax": 713.16,
-    "total": 8637.16,
-    "status": "approved",
-    "createdDate": "2025-12-16T03:11:16.040Z",
+    "subtotal": 11112,
+    "tax": 1000.08,
+    "total": 12112.08,
+    "status": "completed",
+    "createdDate": "2026-04-19T01:03:14.914Z",
     "notes": [
-      "Materials ordered"
+      "Work to begin immediately upon approval"
     ],
-    "approvedDate": "2025-12-16T18:11:16.040Z",
-    "approvedBy": "adj-010"
+    "approvedDate": "2026-04-21T14:03:14.914Z",
+    "approvedBy": "adj-002"
   },
   {
     "id": "po-018",
     "poNumber": "PO-2025-018",
     "claimId": "47",
     "claimNumber": "CN202505036",
-    "contractorId": "contractor-007",
-    "workDescription": "Electrical damage - moderate severity repair and restoration services",
+    "contractorId": "contractor-010",
+    "workDescription": "Mold damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-181",
-        "description": "Debris removal and cleanup",
-        "quantity": 18,
-        "unitPrice": 378,
-        "totalPrice": 6804,
-        "category": "materials"
+        "description": "Temporary protective measures",
+        "quantity": 19,
+        "unitPrice": 425,
+        "totalPrice": 8075,
+        "category": "labor"
       },
       {
         "id": "li-182",
-        "description": "Emergency repair services",
-        "quantity": 8,
-        "unitPrice": 394,
-        "totalPrice": 3152,
-        "category": "equipment"
-      },
-      {
-        "id": "li-183",
-        "description": "Labor and installation services",
-        "quantity": 12,
-        "unitPrice": 421,
-        "totalPrice": 5052,
+        "description": "Temporary protective measures",
+        "quantity": 2,
+        "unitPrice": 432,
+        "totalPrice": 864,
         "category": "labor"
       }
     ],
-    "subtotal": 15008,
-    "tax": 1350.72,
-    "total": 16358.72,
+    "subtotal": 8939,
+    "tax": 804.51,
+    "total": 9743.51,
     "status": "pending",
-    "createdDate": "2025-08-06T22:40:19.107Z",
+    "createdDate": "2026-06-15T23:28:22.619Z",
     "notes": [
-      "Pending approval from adjuster",
-      "Work to begin immediately upon approval"
+      "Contractor notified"
     ]
   },
   {
@@ -880,1403 +861,1140 @@
     "poNumber": "PO-2025-019",
     "claimId": "48",
     "claimNumber": "CN202505037",
-    "contractorId": "contractor-003",
+    "contractorId": "contractor-027",
     "workDescription": "Vandalism - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-191",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 14,
-        "unitPrice": 222,
-        "totalPrice": 3108,
-        "category": "materials"
+        "description": "Water damage restoration",
+        "quantity": 1,
+        "unitPrice": 178,
+        "totalPrice": 178,
+        "category": "equipment"
       },
       {
         "id": "li-192",
+        "description": "Water damage restoration",
+        "quantity": 14,
+        "unitPrice": 327,
+        "totalPrice": 4578,
+        "category": "materials"
+      },
+      {
+        "id": "li-193",
         "description": "Labor and installation services",
-        "quantity": 1,
-        "unitPrice": 250,
-        "totalPrice": 250,
-        "category": "labor"
+        "quantity": 15,
+        "unitPrice": 171,
+        "totalPrice": 2565,
+        "category": "materials"
       }
     ],
-    "subtotal": 3358,
-    "tax": 302.22,
-    "total": 3660.22,
-    "status": "in-progress",
-    "createdDate": "2025-11-27T12:09:46.112Z",
-    "notes": [
-      "Work to begin immediately upon approval"
-    ],
-    "approvedDate": "2025-11-28T06:09:46.112Z",
-    "approvedBy": "adj-003"
+    "subtotal": 7321,
+    "tax": 658.89,
+    "total": 7979.89,
+    "status": "approved",
+    "createdDate": "2026-04-21T20:37:10.859Z",
+    "notes": [],
+    "approvedDate": "2026-04-23T22:37:10.859Z",
+    "approvedBy": "adj-005"
   },
   {
     "id": "po-020",
     "poNumber": "PO-2025-020",
-    "claimId": "51",
-    "claimNumber": "CN202505040",
-    "contractorId": "contractor-014",
-    "workDescription": "Flooding - severe severity repair and restoration services",
+    "claimId": "54",
+    "claimNumber": "CN202505043",
+    "contractorId": "contractor-026",
+    "workDescription": "Vandalism - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-201",
-        "description": "Debris removal and cleanup",
-        "quantity": 14,
-        "unitPrice": 388,
-        "totalPrice": 5432,
-        "category": "labor"
+        "description": "Emergency repair services",
+        "quantity": 13,
+        "unitPrice": 103,
+        "totalPrice": 1339,
+        "category": "equipment"
       },
       {
         "id": "li-202",
-        "description": "Temporary protective measures",
-        "quantity": 8,
-        "unitPrice": 397,
-        "totalPrice": 3176,
+        "description": "Roofing materials and supplies",
+        "quantity": 3,
+        "unitPrice": 181,
+        "totalPrice": 543,
         "category": "materials"
       },
       {
         "id": "li-203",
-        "description": "Water damage restoration",
-        "quantity": 3,
-        "unitPrice": 342,
-        "totalPrice": 1026,
+        "description": "Emergency repair services",
+        "quantity": 7,
+        "unitPrice": 163,
+        "totalPrice": 1141,
         "category": "materials"
-      },
-      {
-        "id": "li-204",
-        "description": "Water damage restoration",
-        "quantity": 16,
-        "unitPrice": 403,
-        "totalPrice": 6448,
-        "category": "labor"
-      },
-      {
-        "id": "li-205",
-        "description": "Roofing materials and supplies",
-        "quantity": 8,
-        "unitPrice": 332,
-        "totalPrice": 2656,
-        "category": "labor"
       }
     ],
-    "subtotal": 18738,
-    "tax": 1686.42,
-    "total": 20424.42,
-    "status": "pending",
-    "createdDate": "2025-08-18T18:48:17.666Z",
-    "notes": [
-      "Pending approval from adjuster",
-      "Contractor notified"
-    ]
+    "subtotal": 3023,
+    "tax": 272.07,
+    "total": 3295.07,
+    "status": "in-progress",
+    "createdDate": "2026-05-02T03:05:32.404Z",
+    "notes": [],
+    "approvedDate": "2026-05-05T00:05:32.404Z",
+    "approvedBy": "adj-007"
   },
   {
     "id": "po-021",
     "poNumber": "PO-2025-021",
-    "claimId": "52",
-    "claimNumber": "CN202505041",
-    "contractorId": "contractor-017",
-    "workDescription": "Fire damage - moderate severity repair and restoration services",
+    "claimId": "56",
+    "claimNumber": "CN202505045",
+    "contractorId": "contractor-004",
+    "workDescription": "Hail damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-211",
-        "description": "Labor and installation services",
-        "quantity": 18,
-        "unitPrice": 358,
-        "totalPrice": 6444,
-        "category": "materials"
+        "description": "Emergency repair services",
+        "quantity": 9,
+        "unitPrice": 241,
+        "totalPrice": 2169,
+        "category": "equipment"
       },
       {
         "id": "li-212",
-        "description": "Water damage restoration",
-        "quantity": 12,
-        "unitPrice": 153,
-        "totalPrice": 1836,
-        "category": "materials"
+        "description": "Emergency repair services",
+        "quantity": 14,
+        "unitPrice": 362,
+        "totalPrice": 5068,
+        "category": "labor"
       },
       {
         "id": "li-213",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 12,
-        "unitPrice": 451,
-        "totalPrice": 5412,
-        "category": "materials"
-      },
-      {
-        "id": "li-214",
-        "description": "Temporary protective measures",
-        "quantity": 8,
-        "unitPrice": 115,
-        "totalPrice": 920,
-        "category": "materials"
-      },
-      {
-        "id": "li-215",
-        "description": "Water damage restoration",
-        "quantity": 2,
-        "unitPrice": 437,
-        "totalPrice": 874,
-        "category": "materials"
+        "description": "Roofing materials and supplies",
+        "quantity": 15,
+        "unitPrice": 101,
+        "totalPrice": 1515,
+        "category": "labor"
       }
     ],
-    "subtotal": 15486,
-    "tax": 1393.74,
-    "total": 16879.74,
-    "status": "in-progress",
-    "createdDate": "2025-08-04T13:18:25.611Z",
+    "subtotal": 8752,
+    "tax": 787.68,
+    "total": 9539.68,
+    "status": "pending",
+    "createdDate": "2026-02-08T23:51:03.793Z",
     "notes": [
-      "Approved for repair work",
+      "Pending approval from adjuster",
       "Contractor notified"
-    ],
-    "approvedDate": "2025-08-04T19:18:25.611Z",
-    "approvedBy": "adj-003"
+    ]
   },
   {
     "id": "po-022",
     "poNumber": "PO-2025-022",
-    "claimId": "55",
-    "claimNumber": "CN202505044",
-    "contractorId": "contractor-014",
-    "workDescription": "Roof damage - severe severity repair and restoration services",
+    "claimId": "57",
+    "claimNumber": "CN202505046",
+    "contractorId": "contractor-006",
+    "workDescription": "Electrical damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-221",
-        "description": "Debris removal and cleanup",
+        "description": "Structural repairs and reinforcement",
         "quantity": 1,
-        "unitPrice": 454,
-        "totalPrice": 454,
-        "category": "materials"
+        "unitPrice": 106,
+        "totalPrice": 106,
+        "category": "labor"
       },
       {
         "id": "li-222",
-        "description": "Emergency repair services",
-        "quantity": 12,
-        "unitPrice": 161,
-        "totalPrice": 1932,
-        "category": "equipment"
+        "description": "Temporary protective measures",
+        "quantity": 9,
+        "unitPrice": 310,
+        "totalPrice": 2790,
+        "category": "materials"
       },
       {
         "id": "li-223",
-        "description": "Equipment rental and operation",
-        "quantity": 5,
-        "unitPrice": 173,
-        "totalPrice": 865,
+        "description": "Labor and installation services",
+        "quantity": 7,
+        "unitPrice": 220,
+        "totalPrice": 1540,
         "category": "labor"
+      },
+      {
+        "id": "li-224",
+        "description": "Labor and installation services",
+        "quantity": 7,
+        "unitPrice": 244,
+        "totalPrice": 1708,
+        "category": "equipment"
+      },
+      {
+        "id": "li-225",
+        "description": "Water damage restoration",
+        "quantity": 9,
+        "unitPrice": 500,
+        "totalPrice": 4500,
+        "category": "materials"
       }
     ],
-    "subtotal": 3251,
-    "tax": 292.59,
-    "total": 3543.59,
-    "status": "completed",
-    "createdDate": "2025-12-24T11:26:09.103Z",
-    "notes": [],
-    "approvedDate": "2025-12-26T12:26:09.103Z",
-    "approvedBy": "adj-002"
+    "subtotal": 10644,
+    "tax": 957.96,
+    "total": 11601.96,
+    "status": "approved",
+    "createdDate": "2026-02-09T08:47:31.994Z",
+    "notes": [
+      "Approved for repair work",
+      "Materials ordered"
+    ],
+    "approvedDate": "2026-02-11T17:47:31.994Z",
+    "approvedBy": "adj-001"
   },
   {
     "id": "po-023",
     "poNumber": "PO-2025-023",
-    "claimId": "56",
-    "claimNumber": "CN202505045",
-    "contractorId": "contractor-029",
-    "workDescription": "Vandalism - moderate severity repair and restoration services",
+    "claimId": "58",
+    "claimNumber": "CN202505047",
+    "contractorId": "contractor-014",
+    "workDescription": "Roof damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-231",
-        "description": "Water damage restoration",
-        "quantity": 13,
-        "unitPrice": 260,
-        "totalPrice": 3380,
+        "description": "Labor and installation services",
+        "quantity": 14,
+        "unitPrice": 67,
+        "totalPrice": 938,
         "category": "equipment"
       },
       {
         "id": "li-232",
-        "description": "Temporary protective measures",
-        "quantity": 7,
-        "unitPrice": 467,
-        "totalPrice": 3269,
-        "category": "labor"
-      },
-      {
-        "id": "li-233",
-        "description": "Emergency repair services",
-        "quantity": 18,
-        "unitPrice": 64,
-        "totalPrice": 1152,
+        "description": "Equipment rental and operation",
+        "quantity": 3,
+        "unitPrice": 235,
+        "totalPrice": 705,
         "category": "materials"
-      },
-      {
-        "id": "li-234",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 9,
-        "unitPrice": 280,
-        "totalPrice": 2520,
-        "category": "equipment"
-      },
-      {
-        "id": "li-235",
-        "description": "Temporary protective measures",
-        "quantity": 17,
-        "unitPrice": 157,
-        "totalPrice": 2669,
-        "category": "equipment"
       }
     ],
-    "subtotal": 12990,
-    "tax": 1169.1,
-    "total": 14159.1,
+    "subtotal": 1643,
+    "tax": 147.87,
+    "total": 1790.87,
     "status": "completed",
-    "createdDate": "2025-08-21T08:30:15.682Z",
+    "createdDate": "2026-06-08T21:10:05.749Z",
     "notes": [
       "Approved for repair work",
-      "Contractor notified"
+      "Materials ordered"
     ],
-    "approvedDate": "2025-08-23T16:30:15.682Z",
-    "approvedBy": "adj-008"
+    "approvedDate": "2026-06-09T04:10:05.749Z",
+    "approvedBy": "adj-003"
   },
   {
     "id": "po-024",
     "poNumber": "PO-2025-024",
-    "claimId": "60",
-    "claimNumber": "CN202505049",
-    "contractorId": "contractor-011",
-    "workDescription": "Flooding - severe severity repair and restoration services",
+    "claimId": "59",
+    "claimNumber": "CN202505048",
+    "contractorId": "contractor-015",
+    "workDescription": "Flooding - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-241",
-        "description": "Emergency repair services",
-        "quantity": 20,
-        "unitPrice": 109,
-        "totalPrice": 2180,
-        "category": "materials"
+        "description": "Equipment rental and operation",
+        "quantity": 18,
+        "unitPrice": 445,
+        "totalPrice": 8010,
+        "category": "equipment"
       },
       {
         "id": "li-242",
-        "description": "Debris removal and cleanup",
-        "quantity": 13,
-        "unitPrice": 285,
-        "totalPrice": 3705,
+        "description": "Temporary protective measures",
+        "quantity": 14,
+        "unitPrice": 464,
+        "totalPrice": 6496,
+        "category": "equipment"
+      },
+      {
+        "id": "li-243",
+        "description": "Equipment rental and operation",
+        "quantity": 8,
+        "unitPrice": 161,
+        "totalPrice": 1288,
+        "category": "equipment"
+      },
+      {
+        "id": "li-244",
+        "description": "Temporary protective measures",
+        "quantity": 5,
+        "unitPrice": 300,
+        "totalPrice": 1500,
         "category": "materials"
       }
     ],
-    "subtotal": 5885,
-    "tax": 529.65,
-    "total": 6414.65,
-    "status": "approved",
-    "createdDate": "2025-11-30T19:07:51.020Z",
+    "subtotal": 17294,
+    "tax": 1556.46,
+    "total": 18850.46,
+    "status": "pending",
+    "createdDate": "2026-06-10T04:39:01.102Z",
     "notes": [
-      "Approved for repair work",
-      "Contractor notified"
-    ],
-    "approvedDate": "2025-12-03T16:07:51.020Z",
-    "approvedBy": "adj-010"
+      "Pending approval from adjuster"
+    ]
   },
   {
     "id": "po-025",
     "poNumber": "PO-2025-025",
-    "claimId": "63",
-    "claimNumber": "CN202505052",
-    "contractorId": "contractor-029",
-    "workDescription": "Electrical damage - moderate severity repair and restoration services",
+    "claimId": "60",
+    "claimNumber": "CN202505049",
+    "contractorId": "contractor-026",
+    "workDescription": "Mold damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-251",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 18,
-        "unitPrice": 309,
-        "totalPrice": 5562,
-        "category": "materials"
+        "description": "Roofing materials and supplies",
+        "quantity": 10,
+        "unitPrice": 117,
+        "totalPrice": 1170,
+        "category": "labor"
       },
       {
         "id": "li-252",
-        "description": "Roofing materials and supplies",
-        "quantity": 14,
-        "unitPrice": 375,
-        "totalPrice": 5250,
-        "category": "materials"
-      },
-      {
-        "id": "li-253",
-        "description": "Emergency repair services",
-        "quantity": 16,
-        "unitPrice": 385,
-        "totalPrice": 6160,
-        "category": "materials"
-      },
-      {
-        "id": "li-254",
         "description": "Labor and installation services",
-        "quantity": 15,
-        "unitPrice": 361,
-        "totalPrice": 5415,
-        "category": "labor"
+        "quantity": 5,
+        "unitPrice": 364,
+        "totalPrice": 1820,
+        "category": "equipment"
       }
     ],
-    "subtotal": 22387,
-    "tax": 2014.83,
-    "total": 24401.83,
-    "status": "approved",
-    "createdDate": "2025-09-12T17:18:10.396Z",
+    "subtotal": 2990,
+    "tax": 269.1,
+    "total": 3259.1,
+    "status": "pending",
+    "createdDate": "2026-03-27T18:19:09.300Z",
     "notes": [
-      "Approved for repair work",
+      "Pending approval from adjuster",
       "Contractor notified"
-    ],
-    "approvedDate": "2025-09-15T08:18:10.396Z",
-    "approvedBy": "adj-003"
+    ]
   },
   {
     "id": "po-026",
     "poNumber": "PO-2025-026",
-    "claimId": "66",
-    "claimNumber": "CN202505055",
-    "contractorId": "contractor-029",
-    "workDescription": "Mold damage - severe severity repair and restoration services",
+    "claimId": "61",
+    "claimNumber": "CN202505050",
+    "contractorId": "contractor-017",
+    "workDescription": "Vandalism - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-261",
         "description": "Roofing materials and supplies",
-        "quantity": 2,
-        "unitPrice": 269,
-        "totalPrice": 538,
-        "category": "materials"
+        "quantity": 19,
+        "unitPrice": 469,
+        "totalPrice": 8911,
+        "category": "labor"
       },
       {
         "id": "li-262",
-        "description": "Water damage restoration",
-        "quantity": 2,
-        "unitPrice": 420,
-        "totalPrice": 840,
-        "category": "materials"
-      },
-      {
-        "id": "li-263",
-        "description": "Water damage restoration",
-        "quantity": 2,
-        "unitPrice": 440,
-        "totalPrice": 880,
-        "category": "equipment"
-      },
-      {
-        "id": "li-264",
-        "description": "Temporary protective measures",
-        "quantity": 17,
-        "unitPrice": 349,
-        "totalPrice": 5933,
-        "category": "equipment"
-      },
-      {
-        "id": "li-265",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 13,
-        "unitPrice": 469,
-        "totalPrice": 6097,
-        "category": "equipment"
+        "description": "Roofing materials and supplies",
+        "quantity": 1,
+        "unitPrice": 198,
+        "totalPrice": 198,
+        "category": "labor"
       }
     ],
-    "subtotal": 14288,
-    "tax": 1285.92,
-    "total": 15573.92,
-    "status": "approved",
-    "createdDate": "2025-10-09T07:54:18.665Z",
+    "subtotal": 9109,
+    "tax": 819.81,
+    "total": 9928.81,
+    "status": "pending",
+    "createdDate": "2026-05-09T01:40:02.521Z",
     "notes": [
-      "Approved for repair work",
       "Contractor notified"
-    ],
-    "approvedDate": "2025-10-10T07:54:18.665Z",
-    "approvedBy": "adj-010"
+    ]
   },
   {
     "id": "po-027",
     "poNumber": "PO-2025-027",
-    "claimId": "71",
-    "claimNumber": "CN202505060",
-    "contractorId": "contractor-015",
-    "workDescription": "Vandalism - severe severity repair and restoration services",
+    "claimId": "64",
+    "claimNumber": "CN202505053",
+    "contractorId": "contractor-011",
+    "workDescription": "Wind damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-271",
-        "description": "Temporary protective measures",
-        "quantity": 2,
-        "unitPrice": 55,
-        "totalPrice": 110,
-        "category": "materials"
+        "description": "Emergency repair services",
+        "quantity": 1,
+        "unitPrice": 175,
+        "totalPrice": 175,
+        "category": "labor"
       },
       {
         "id": "li-272",
-        "description": "Debris removal and cleanup",
-        "quantity": 17,
-        "unitPrice": 402,
-        "totalPrice": 6834,
-        "category": "equipment"
+        "description": "Emergency repair services",
+        "quantity": 8,
+        "unitPrice": 192,
+        "totalPrice": 1536,
+        "category": "materials"
+      },
+      {
+        "id": "li-273",
+        "description": "Equipment rental and operation",
+        "quantity": 2,
+        "unitPrice": 401,
+        "totalPrice": 802,
+        "category": "materials"
       }
     ],
-    "subtotal": 6944,
-    "tax": 624.96,
-    "total": 7568.96,
-    "status": "pending",
-    "createdDate": "2025-10-26T21:17:20.197Z",
+    "subtotal": 2513,
+    "tax": 226.17,
+    "total": 2739.17,
+    "status": "approved",
+    "createdDate": "2026-05-02T10:39:12.281Z",
     "notes": [
-      "Pending approval from adjuster",
-      "Work to begin immediately upon approval"
-    ]
+      "Contractor notified"
+    ],
+    "approvedDate": "2026-05-03T11:39:12.281Z",
+    "approvedBy": "adj-001"
   },
   {
     "id": "po-028",
     "poNumber": "PO-2025-028",
-    "claimId": "75",
-    "claimNumber": "CN202505064",
-    "contractorId": "contractor-011",
-    "workDescription": "Vandalism - minor severity repair and restoration services",
+    "claimId": "80",
+    "claimNumber": "CN202505069",
+    "contractorId": "contractor-008",
+    "workDescription": "Electrical damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-281",
-        "description": "Labor and installation services",
-        "quantity": 17,
-        "unitPrice": 214,
-        "totalPrice": 3638,
+        "description": "Temporary protective measures",
+        "quantity": 16,
+        "unitPrice": 227,
+        "totalPrice": 3632,
         "category": "equipment"
       },
       {
         "id": "li-282",
-        "description": "Labor and installation services",
-        "quantity": 1,
-        "unitPrice": 159,
-        "totalPrice": 159,
-        "category": "materials"
-      },
-      {
-        "id": "li-283",
-        "description": "Debris removal and cleanup",
-        "quantity": 13,
-        "unitPrice": 476,
-        "totalPrice": 6188,
+        "description": "Equipment rental and operation",
+        "quantity": 9,
+        "unitPrice": 311,
+        "totalPrice": 2799,
         "category": "labor"
-      },
-      {
-        "id": "li-284",
-        "description": "Temporary protective measures",
-        "quantity": 16,
-        "unitPrice": 80,
-        "totalPrice": 1280,
-        "category": "materials"
       }
     ],
-    "subtotal": 11265,
-    "tax": 1013.85,
-    "total": 12278.85,
-    "status": "approved",
-    "createdDate": "2025-10-31T16:09:21.286Z",
+    "subtotal": 6431,
+    "tax": 578.79,
+    "total": 7009.79,
+    "status": "completed",
+    "createdDate": "2026-02-21T22:08:04.372Z",
     "notes": [
-      "Contractor notified"
+      "Approved for repair work"
     ],
-    "approvedDate": "2025-11-03T08:09:21.286Z",
-    "approvedBy": "adj-002"
+    "approvedDate": "2026-02-24T22:08:04.372Z",
+    "approvedBy": "adj-004"
   },
   {
     "id": "po-029",
     "poNumber": "PO-2025-029",
-    "claimId": "78",
-    "claimNumber": "CN202505067",
-    "contractorId": "contractor-018",
-    "workDescription": "Hail damage - minor severity repair and restoration services",
+    "claimId": "83",
+    "claimNumber": "CN202505072",
+    "contractorId": "contractor-025",
+    "workDescription": "Structural damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-291",
-        "description": "Water damage restoration",
-        "quantity": 18,
-        "unitPrice": 198,
-        "totalPrice": 3564,
-        "category": "materials"
+        "description": "Structural repairs and reinforcement",
+        "quantity": 5,
+        "unitPrice": 82,
+        "totalPrice": 410,
+        "category": "equipment"
       },
       {
         "id": "li-292",
-        "description": "Emergency repair services",
-        "quantity": 4,
-        "unitPrice": 144,
-        "totalPrice": 576,
+        "description": "Debris removal and cleanup",
+        "quantity": 20,
+        "unitPrice": 322,
+        "totalPrice": 6440,
         "category": "materials"
       }
     ],
-    "subtotal": 4140,
-    "tax": 372.6,
-    "total": 4512.6,
-    "status": "approved",
-    "createdDate": "2025-11-16T21:08:19.698Z",
+    "subtotal": 6850,
+    "tax": 616.5,
+    "total": 7466.5,
+    "status": "pending",
+    "createdDate": "2026-05-29T11:36:29.132Z",
     "notes": [
-      "Approved for repair work",
-      "Work to begin immediately upon approval"
-    ],
-    "approvedDate": "2025-11-17T15:08:19.698Z",
-    "approvedBy": "adj-010"
+      "Contractor notified"
+    ]
   },
   {
     "id": "po-030",
     "poNumber": "PO-2025-030",
-    "claimId": "81",
-    "claimNumber": "CN202505070",
+    "claimId": "85",
+    "claimNumber": "CN202505074",
     "contractorId": "contractor-023",
-    "workDescription": "Fire damage - severe severity repair and restoration services",
+    "workDescription": "Mold damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-301",
-        "description": "Temporary protective measures",
-        "quantity": 18,
+        "description": "Water damage restoration",
+        "quantity": 20,
         "unitPrice": 59,
-        "totalPrice": 1062,
-        "category": "materials"
+        "totalPrice": 1180,
+        "category": "labor"
       },
       {
         "id": "li-302",
-        "description": "Equipment rental and operation",
-        "quantity": 6,
-        "unitPrice": 151,
-        "totalPrice": 906,
+        "description": "Water damage restoration",
+        "quantity": 3,
+        "unitPrice": 286,
+        "totalPrice": 858,
         "category": "equipment"
       },
       {
         "id": "li-303",
         "description": "Water damage restoration",
-        "quantity": 3,
-        "unitPrice": 337,
-        "totalPrice": 1011,
-        "category": "equipment"
+        "quantity": 11,
+        "unitPrice": 435,
+        "totalPrice": 4785,
+        "category": "labor"
       },
       {
         "id": "li-304",
-        "description": "Roofing materials and supplies",
-        "quantity": 8,
-        "unitPrice": 323,
-        "totalPrice": 2584,
-        "category": "materials"
+        "description": "Temporary protective measures",
+        "quantity": 3,
+        "unitPrice": 220,
+        "totalPrice": 660,
+        "category": "equipment"
       }
     ],
-    "subtotal": 5563,
-    "tax": 500.67,
-    "total": 6063.67,
-    "status": "approved",
-    "createdDate": "2025-12-20T18:37:58.107Z",
-    "notes": [
-      "Work to begin immediately upon approval"
-    ],
-    "approvedDate": "2025-12-22T18:37:58.107Z",
-    "approvedBy": "adj-006"
+    "subtotal": 7483,
+    "tax": 673.47,
+    "total": 8156.47,
+    "status": "pending",
+    "createdDate": "2026-05-01T16:29:05.374Z",
+    "notes": []
   },
   {
     "id": "po-031",
     "poNumber": "PO-2025-031",
-    "claimId": "83",
-    "claimNumber": "CN202505072",
-    "contractorId": "contractor-027",
-    "workDescription": "Hail damage - moderate severity repair and restoration services",
+    "claimId": "86",
+    "claimNumber": "CN202505075",
+    "contractorId": "contractor-025",
+    "workDescription": "Structural damage - minor severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-311",
-        "description": "Emergency repair services",
-        "quantity": 15,
-        "unitPrice": 402,
-        "totalPrice": 6030,
-        "category": "materials"
+        "description": "Debris removal and cleanup",
+        "quantity": 12,
+        "unitPrice": 348,
+        "totalPrice": 4176,
+        "category": "labor"
       },
       {
         "id": "li-312",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 17,
-        "unitPrice": 256,
-        "totalPrice": 4352,
-        "category": "materials"
-      },
-      {
-        "id": "li-313",
-        "description": "Emergency repair services",
-        "quantity": 17,
-        "unitPrice": 417,
-        "totalPrice": 7089,
+        "description": "Water damage restoration",
+        "quantity": 19,
+        "unitPrice": 93,
+        "totalPrice": 1767,
         "category": "labor"
       }
     ],
-    "subtotal": 17471,
-    "tax": 1572.39,
-    "total": 19043.39,
+    "subtotal": 5943,
+    "tax": 534.87,
+    "total": 6477.87,
+    "status": "approved",
+    "createdDate": "2026-03-29T21:16:54.045Z",
+    "notes": [
+      "Contractor notified"
+    ],
+    "approvedDate": "2026-03-31T01:16:54.045Z",
+    "approvedBy": "adj-007"
+  },
+  {
+    "id": "po-032",
+    "poNumber": "PO-2025-032",
+    "claimId": "91",
+    "claimNumber": "CN202505080",
+    "contractorId": "contractor-017",
+    "workDescription": "Hail damage - severe severity repair and restoration services",
+    "lineItems": [
+      {
+        "id": "li-321",
+        "description": "Emergency repair services",
+        "quantity": 10,
+        "unitPrice": 401,
+        "totalPrice": 4010,
+        "category": "equipment"
+      },
+      {
+        "id": "li-322",
+        "description": "Emergency repair services",
+        "quantity": 10,
+        "unitPrice": 258,
+        "totalPrice": 2580,
+        "category": "equipment"
+      },
+      {
+        "id": "li-323",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 6,
+        "unitPrice": 258,
+        "totalPrice": 1548,
+        "category": "equipment"
+      },
+      {
+        "id": "li-324",
+        "description": "Debris removal and cleanup",
+        "quantity": 9,
+        "unitPrice": 359,
+        "totalPrice": 3231,
+        "category": "materials"
+      },
+      {
+        "id": "li-325",
+        "description": "Water damage restoration",
+        "quantity": 6,
+        "unitPrice": 284,
+        "totalPrice": 1704,
+        "category": "materials"
+      }
+    ],
+    "subtotal": 13073,
+    "tax": 1176.57,
+    "total": 14249.57,
     "status": "pending",
-    "createdDate": "2025-12-04T10:19:29.242Z",
+    "createdDate": "2026-05-04T21:22:20.726Z",
+    "notes": [
+      "Pending approval from adjuster",
+      "Work to begin immediately upon approval"
+    ]
+  },
+  {
+    "id": "po-033",
+    "poNumber": "PO-2025-033",
+    "claimId": "94",
+    "claimNumber": "CN202505083",
+    "contractorId": "contractor-010",
+    "workDescription": "Fire damage - moderate severity repair and restoration services",
+    "lineItems": [
+      {
+        "id": "li-331",
+        "description": "Equipment rental and operation",
+        "quantity": 16,
+        "unitPrice": 152,
+        "totalPrice": 2432,
+        "category": "materials"
+      },
+      {
+        "id": "li-332",
+        "description": "Labor and installation services",
+        "quantity": 19,
+        "unitPrice": 202,
+        "totalPrice": 3838,
+        "category": "labor"
+      }
+    ],
+    "subtotal": 6270,
+    "tax": 564.3,
+    "total": 6834.3,
+    "status": "in-progress",
+    "createdDate": "2026-05-05T20:17:57.920Z",
+    "notes": [
+      "Approved for repair work"
+    ],
+    "approvedDate": "2026-05-07T02:17:57.920Z",
+    "approvedBy": "adj-002"
+  },
+  {
+    "id": "po-034",
+    "poNumber": "PO-2025-034",
+    "claimId": "98",
+    "claimNumber": "CN202505087",
+    "contractorId": "contractor-006",
+    "workDescription": "Hail damage - severe severity repair and restoration services",
+    "lineItems": [
+      {
+        "id": "li-341",
+        "description": "Roofing materials and supplies",
+        "quantity": 20,
+        "unitPrice": 432,
+        "totalPrice": 8640,
+        "category": "materials"
+      },
+      {
+        "id": "li-342",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 11,
+        "unitPrice": 188,
+        "totalPrice": 2068,
+        "category": "labor"
+      },
+      {
+        "id": "li-343",
+        "description": "Debris removal and cleanup",
+        "quantity": 18,
+        "unitPrice": 439,
+        "totalPrice": 7902,
+        "category": "equipment"
+      }
+    ],
+    "subtotal": 18610,
+    "tax": 1674.9,
+    "total": 20284.9,
+    "status": "approved",
+    "createdDate": "2026-06-15T07:04:22.004Z",
+    "notes": [
+      "Approved for repair work"
+    ],
+    "approvedDate": "2026-06-16T23:04:22.004Z",
+    "approvedBy": "adj-008"
+  },
+  {
+    "id": "po-035",
+    "poNumber": "PO-2025-035",
+    "claimId": "102",
+    "claimNumber": "CN202505091",
+    "contractorId": "contractor-006",
+    "workDescription": "Wind damage - severe severity repair and restoration services",
+    "lineItems": [
+      {
+        "id": "li-351",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 1,
+        "unitPrice": 377,
+        "totalPrice": 377,
+        "category": "labor"
+      },
+      {
+        "id": "li-352",
+        "description": "Equipment rental and operation",
+        "quantity": 15,
+        "unitPrice": 394,
+        "totalPrice": 5910,
+        "category": "labor"
+      },
+      {
+        "id": "li-353",
+        "description": "Emergency repair services",
+        "quantity": 12,
+        "unitPrice": 283,
+        "totalPrice": 3396,
+        "category": "labor"
+      },
+      {
+        "id": "li-354",
+        "description": "Roofing materials and supplies",
+        "quantity": 14,
+        "unitPrice": 182,
+        "totalPrice": 2548,
+        "category": "labor"
+      }
+    ],
+    "subtotal": 12231,
+    "tax": 1100.79,
+    "total": 13331.79,
+    "status": "pending",
+    "createdDate": "2026-07-26T14:31:28.387Z",
     "notes": [
       "Pending approval from adjuster",
       "Materials ordered"
     ]
   },
   {
-    "id": "po-032",
-    "poNumber": "PO-2025-032",
-    "claimId": "85",
-    "claimNumber": "CN202505074",
-    "contractorId": "contractor-012",
+    "id": "po-036",
+    "poNumber": "PO-2025-036",
+    "claimId": "105",
+    "claimNumber": "CN202505094",
+    "contractorId": "contractor-019",
     "workDescription": "Hail damage - moderate severity repair and restoration services",
     "lineItems": [
       {
-        "id": "li-321",
+        "id": "li-361",
+        "description": "Debris removal and cleanup",
+        "quantity": 19,
+        "unitPrice": 426,
+        "totalPrice": 8094,
+        "category": "equipment"
+      },
+      {
+        "id": "li-362",
         "description": "Temporary protective measures",
-        "quantity": 9,
-        "unitPrice": 256,
-        "totalPrice": 2304,
-        "category": "materials"
-      },
-      {
-        "id": "li-322",
-        "description": "Labor and installation services",
-        "quantity": 1,
-        "unitPrice": 395,
-        "totalPrice": 395,
-        "category": "materials"
-      },
-      {
-        "id": "li-323",
-        "description": "Roofing materials and supplies",
-        "quantity": 7,
-        "unitPrice": 110,
-        "totalPrice": 770,
+        "quantity": 15,
+        "unitPrice": 312,
+        "totalPrice": 4680,
         "category": "equipment"
       }
     ],
-    "subtotal": 3469,
-    "tax": 312.21,
-    "total": 3781.21,
-    "status": "pending",
-    "createdDate": "2025-08-26T10:25:12.900Z",
+    "subtotal": 12774,
+    "tax": 1149.66,
+    "total": 13923.66,
+    "status": "in-progress",
+    "createdDate": "2026-07-25T03:31:28.387Z",
     "notes": [
-      "Pending approval from adjuster",
+      "Approved for repair work"
+    ],
+    "approvedDate": "2026-07-27T01:31:28.387Z",
+    "approvedBy": "adj-006"
+  },
+  {
+    "id": "po-037",
+    "poNumber": "PO-2025-037",
+    "claimId": "107",
+    "claimNumber": "CN202505096",
+    "contractorId": "contractor-014",
+    "workDescription": "Roof damage - severe severity repair and restoration services",
+    "lineItems": [
+      {
+        "id": "li-371",
+        "description": "Temporary protective measures",
+        "quantity": 11,
+        "unitPrice": 364,
+        "totalPrice": 4004,
+        "category": "labor"
+      },
+      {
+        "id": "li-372",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 11,
+        "unitPrice": 168,
+        "totalPrice": 1848,
+        "category": "labor"
+      },
+      {
+        "id": "li-373",
+        "description": "Labor and installation services",
+        "quantity": 18,
+        "unitPrice": 261,
+        "totalPrice": 4698,
+        "category": "materials"
+      },
+      {
+        "id": "li-374",
+        "description": "Water damage restoration",
+        "quantity": 4,
+        "unitPrice": 180,
+        "totalPrice": 720,
+        "category": "labor"
+      },
+      {
+        "id": "li-375",
+        "description": "Equipment rental and operation",
+        "quantity": 4,
+        "unitPrice": 396,
+        "totalPrice": 1584,
+        "category": "equipment"
+      }
+    ],
+    "subtotal": 12854,
+    "tax": 1156.86,
+    "total": 14010.86,
+    "status": "pending",
+    "createdDate": "2026-07-25T08:31:28.387Z",
+    "notes": [
       "Contractor notified"
     ]
   },
   {
-    "id": "po-033",
-    "poNumber": "PO-2025-033",
-    "claimId": "87",
-    "claimNumber": "CN202505076",
-    "contractorId": "contractor-003",
-    "workDescription": "Hail damage - minor severity repair and restoration services",
+    "id": "po-038",
+    "poNumber": "PO-2025-038",
+    "claimId": "109",
+    "claimNumber": "CN202505098",
+    "contractorId": "contractor-029",
+    "workDescription": "Roof damage - severe severity repair and restoration services",
     "lineItems": [
       {
-        "id": "li-331",
+        "id": "li-381",
+        "description": "Water damage restoration",
+        "quantity": 3,
+        "unitPrice": 217,
+        "totalPrice": 651,
+        "category": "materials"
+      },
+      {
+        "id": "li-382",
         "description": "Structural repairs and reinforcement",
-        "quantity": 17,
-        "unitPrice": 116,
-        "totalPrice": 1972,
+        "quantity": 11,
+        "unitPrice": 90,
+        "totalPrice": 990,
+        "category": "equipment"
+      },
+      {
+        "id": "li-383",
+        "description": "Roofing materials and supplies",
+        "quantity": 3,
+        "unitPrice": 482,
+        "totalPrice": 1446,
         "category": "labor"
       },
       {
-        "id": "li-332",
-        "description": "Temporary protective measures",
-        "quantity": 19,
-        "unitPrice": 201,
-        "totalPrice": 3819,
-        "category": "equipment"
+        "id": "li-384",
+        "description": "Debris removal and cleanup",
+        "quantity": 10,
+        "unitPrice": 431,
+        "totalPrice": 4310,
+        "category": "materials"
       }
     ],
-    "subtotal": 5791,
-    "tax": 521.19,
-    "total": 6312.19,
-    "status": "completed",
-    "createdDate": "2025-12-19T22:07:18.563Z",
-    "notes": [],
-    "approvedDate": "2025-12-20T04:07:18.563Z",
-    "approvedBy": "adj-008"
+    "subtotal": 7397,
+    "tax": 665.73,
+    "total": 8062.73,
+    "status": "pending",
+    "createdDate": "2026-07-30T02:31:28.387Z",
+    "notes": []
   },
   {
-    "id": "po-034",
-    "poNumber": "PO-2025-034",
-    "claimId": "88",
-    "claimNumber": "CN202505077",
-    "contractorId": "contractor-005",
-    "workDescription": "Electrical damage - moderate severity repair and restoration services",
+    "id": "po-039",
+    "poNumber": "PO-2025-039",
+    "claimId": "113",
+    "claimNumber": "CN202505102",
+    "contractorId": "contractor-007",
+    "workDescription": "Roof damage - severe severity repair and restoration services",
     "lineItems": [
       {
-        "id": "li-341",
-        "description": "Debris removal and cleanup",
-        "quantity": 8,
-        "unitPrice": 87,
-        "totalPrice": 696,
-        "category": "labor"
+        "id": "li-391",
+        "description": "Equipment rental and operation",
+        "quantity": 4,
+        "unitPrice": 229,
+        "totalPrice": 916,
+        "category": "equipment"
       },
       {
-        "id": "li-342",
+        "id": "li-392",
         "description": "Labor and installation services",
         "quantity": 9,
-        "unitPrice": 433,
-        "totalPrice": 3897,
-        "category": "equipment"
+        "unitPrice": 99,
+        "totalPrice": 891,
+        "category": "materials"
       },
       {
-        "id": "li-343",
+        "id": "li-393",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 6,
+        "unitPrice": 269,
+        "totalPrice": 1614,
+        "category": "materials"
+      },
+      {
+        "id": "li-394",
         "description": "Temporary protective measures",
-        "quantity": 5,
-        "unitPrice": 368,
-        "totalPrice": 1840,
-        "category": "equipment"
-      },
-      {
-        "id": "li-344",
-        "description": "Emergency repair services",
         "quantity": 5,
         "unitPrice": 167,
         "totalPrice": 835,
         "category": "materials"
       },
       {
-        "id": "li-345",
-        "description": "Roofing materials and supplies",
-        "quantity": 5,
-        "unitPrice": 121,
-        "totalPrice": 605,
-        "category": "labor"
-      }
-    ],
-    "subtotal": 7873,
-    "tax": 708.57,
-    "total": 8581.57,
-    "status": "pending",
-    "createdDate": "2025-10-24T08:42:49.399Z",
-    "notes": [
-      "Pending approval from adjuster"
-    ]
-  },
-  {
-    "id": "po-035",
-    "poNumber": "PO-2025-035",
-    "claimId": "90",
-    "claimNumber": "CN202505079",
-    "contractorId": "contractor-013",
-    "workDescription": "Water damage - minor severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-351",
-        "description": "Roofing materials and supplies",
-        "quantity": 3,
-        "unitPrice": 220,
-        "totalPrice": 660,
-        "category": "equipment"
-      },
-      {
-        "id": "li-352",
-        "description": "Temporary protective measures",
-        "quantity": 11,
-        "unitPrice": 331,
-        "totalPrice": 3641,
-        "category": "labor"
-      },
-      {
-        "id": "li-353",
-        "description": "Labor and installation services",
-        "quantity": 14,
-        "unitPrice": 391,
-        "totalPrice": 5474,
-        "category": "materials"
-      },
-      {
-        "id": "li-354",
-        "description": "Labor and installation services",
-        "quantity": 16,
-        "unitPrice": 492,
-        "totalPrice": 7872,
-        "category": "materials"
-      }
-    ],
-    "subtotal": 17647,
-    "tax": 1588.23,
-    "total": 19235.23,
-    "status": "pending",
-    "createdDate": "2025-10-14T12:29:08.976Z",
-    "notes": []
-  },
-  {
-    "id": "po-036",
-    "poNumber": "PO-2025-036",
-    "claimId": "93",
-    "claimNumber": "CN202505082",
-    "contractorId": "contractor-018",
-    "workDescription": "Flooding - severe severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-361",
+        "id": "li-395",
         "description": "Equipment rental and operation",
-        "quantity": 19,
-        "unitPrice": 73,
-        "totalPrice": 1387,
-        "category": "equipment"
-      },
-      {
-        "id": "li-362",
-        "description": "Labor and installation services",
-        "quantity": 18,
-        "unitPrice": 266,
-        "totalPrice": 4788,
-        "category": "equipment"
-      },
-      {
-        "id": "li-363",
-        "description": "Debris removal and cleanup",
-        "quantity": 4,
-        "unitPrice": 267,
-        "totalPrice": 1068,
-        "category": "equipment"
-      },
-      {
-        "id": "li-364",
-        "description": "Labor and installation services",
-        "quantity": 12,
-        "unitPrice": 214,
-        "totalPrice": 2568,
-        "category": "equipment"
-      },
-      {
-        "id": "li-365",
-        "description": "Equipment rental and operation",
-        "quantity": 4,
-        "unitPrice": 395,
-        "totalPrice": 1580,
-        "category": "labor"
+        "quantity": 1,
+        "unitPrice": 305,
+        "totalPrice": 305,
+        "category": "materials"
       }
     ],
-    "subtotal": 11391,
-    "tax": 1025.19,
-    "total": 12416.19,
-    "status": "completed",
-    "createdDate": "2025-08-02T08:04:41.537Z",
-    "notes": [
-      "Approved for repair work"
-    ],
-    "approvedDate": "2025-08-04T18:04:41.537Z",
-    "approvedBy": "adj-004"
-  },
-  {
-    "id": "po-037",
-    "poNumber": "PO-2025-037",
-    "claimId": "95",
-    "claimNumber": "CN202505084",
-    "contractorId": "contractor-024",
-    "workDescription": "Vandalism - minor severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-371",
-        "description": "Roofing materials and supplies",
-        "quantity": 7,
-        "unitPrice": 296,
-        "totalPrice": 2072,
-        "category": "materials"
-      },
-      {
-        "id": "li-372",
-        "description": "Temporary protective measures",
-        "quantity": 17,
-        "unitPrice": 139,
-        "totalPrice": 2363,
-        "category": "labor"
-      }
-    ],
-    "subtotal": 4435,
-    "tax": 399.15,
-    "total": 4834.15,
-    "status": "in-progress",
-    "createdDate": "2025-10-28T00:11:50.214Z",
-    "notes": [
-      "Approved for repair work"
-    ],
-    "approvedDate": "2025-10-29T13:11:50.214Z",
-    "approvedBy": "adj-006"
-  },
-  {
-    "id": "po-038",
-    "poNumber": "PO-2025-038",
-    "claimId": "101",
-    "claimNumber": "CN202505090",
-    "contractorId": "contractor-011",
-    "workDescription": "Wind damage - severe severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-381",
-        "description": "Debris removal and cleanup",
-        "quantity": 8,
-        "unitPrice": 426,
-        "totalPrice": 3408,
-        "category": "materials"
-      },
-      {
-        "id": "li-382",
-        "description": "Equipment rental and operation",
-        "quantity": 11,
-        "unitPrice": 190,
-        "totalPrice": 2090,
-        "category": "materials"
-      },
-      {
-        "id": "li-383",
-        "description": "Labor and installation services",
-        "quantity": 20,
-        "unitPrice": 446,
-        "totalPrice": 8920,
-        "category": "equipment"
-      }
-    ],
-    "subtotal": 14418,
-    "tax": 1297.62,
-    "total": 15715.62,
+    "subtotal": 4561,
+    "tax": 410.49,
+    "total": 4971.49,
     "status": "pending",
-    "createdDate": "2026-01-26T21:10:43.092Z",
+    "createdDate": "2026-07-24T12:31:28.387Z",
     "notes": [
-      "Pending approval from adjuster"
-    ]
-  },
-  {
-    "id": "po-039",
-    "poNumber": "PO-2025-039",
-    "claimId": "102",
-    "claimNumber": "CN202505091",
-    "contractorId": "contractor-002",
-    "workDescription": "Hail damage - severe severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-391",
-        "description": "Water damage restoration",
-        "quantity": 18,
-        "unitPrice": 182,
-        "totalPrice": 3276,
-        "category": "equipment"
-      },
-      {
-        "id": "li-392",
-        "description": "Debris removal and cleanup",
-        "quantity": 5,
-        "unitPrice": 463,
-        "totalPrice": 2315,
-        "category": "equipment"
-      },
-      {
-        "id": "li-393",
-        "description": "Temporary protective measures",
-        "quantity": 6,
-        "unitPrice": 246,
-        "totalPrice": 1476,
-        "category": "materials"
-      },
-      {
-        "id": "li-394",
-        "description": "Water damage restoration",
-        "quantity": 6,
-        "unitPrice": 220,
-        "totalPrice": 1320,
-        "category": "equipment"
-      }
-    ],
-    "subtotal": 8387,
-    "tax": 754.83,
-    "total": 9141.83,
-    "status": "pending",
-    "createdDate": "2026-01-29T19:10:43.092Z",
-    "notes": [
-      "Pending approval from adjuster",
-      "Contractor notified"
+      "Materials ordered"
     ]
   },
   {
     "id": "po-040",
     "poNumber": "PO-2025-040",
-    "claimId": "106",
-    "claimNumber": "CN202505095",
-    "contractorId": "contractor-012",
+    "claimId": "114",
+    "claimNumber": "CN202505103",
+    "contractorId": "contractor-005",
     "workDescription": "Wind damage - severe severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-401",
-        "description": "Water damage restoration",
-        "quantity": 6,
-        "unitPrice": 469,
-        "totalPrice": 2814,
-        "category": "equipment"
+        "description": "Emergency repair services",
+        "quantity": 5,
+        "unitPrice": 484,
+        "totalPrice": 2420,
+        "category": "materials"
       },
       {
         "id": "li-402",
-        "description": "Emergency repair services",
-        "quantity": 9,
-        "unitPrice": 145,
-        "totalPrice": 1305,
+        "description": "Roofing materials and supplies",
+        "quantity": 6,
+        "unitPrice": 201,
+        "totalPrice": 1206,
         "category": "labor"
-      },
-      {
-        "id": "li-403",
-        "description": "Emergency repair services",
-        "quantity": 16,
-        "unitPrice": 97,
-        "totalPrice": 1552,
-        "category": "equipment"
       }
     ],
-    "subtotal": 5671,
-    "tax": 510.39,
-    "total": 6181.39,
+    "subtotal": 3626,
+    "tax": 326.34,
+    "total": 3952.34,
     "status": "in-progress",
-    "createdDate": "2026-01-29T07:10:43.092Z",
+    "createdDate": "2026-07-30T13:31:28.387Z",
     "notes": [
-      "Approved for repair work"
+      "Materials ordered"
     ],
-    "approvedDate": "2026-01-31T02:10:43.092Z",
-    "approvedBy": "adj-010"
+    "approvedDate": "2026-08-01T21:31:28.387Z",
+    "approvedBy": "adj-006"
   },
   {
     "id": "po-041",
     "poNumber": "PO-2025-041",
-    "claimId": "107",
-    "claimNumber": "CN202505096",
-    "contractorId": "contractor-020",
-    "workDescription": "Roof damage - severe severity repair and restoration services",
+    "claimId": "117",
+    "claimNumber": "CN202505106",
+    "contractorId": "contractor-009",
+    "workDescription": "Wind damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-411",
-        "description": "Labor and installation services",
-        "quantity": 6,
-        "unitPrice": 134,
-        "totalPrice": 804,
-        "category": "labor"
-      },
-      {
-        "id": "li-412",
-        "description": "Emergency repair services",
-        "quantity": 7,
-        "unitPrice": 347,
-        "totalPrice": 2429,
-        "category": "equipment"
-      },
-      {
-        "id": "li-413",
         "description": "Equipment rental and operation",
-        "quantity": 8,
-        "unitPrice": 377,
-        "totalPrice": 3016,
+        "quantity": 3,
+        "unitPrice": 95,
+        "totalPrice": 285,
         "category": "materials"
       },
       {
-        "id": "li-414",
+        "id": "li-412",
         "description": "Water damage restoration",
-        "quantity": 1,
-        "unitPrice": 251,
-        "totalPrice": 251,
+        "quantity": 18,
+        "unitPrice": 104,
+        "totalPrice": 1872,
+        "category": "labor"
+      },
+      {
+        "id": "li-413",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 11,
+        "unitPrice": 142,
+        "totalPrice": 1562,
+        "category": "equipment"
+      },
+      {
+        "id": "li-414",
+        "description": "Labor and installation services",
+        "quantity": 9,
+        "unitPrice": 272,
+        "totalPrice": 2448,
         "category": "materials"
       },
       {
         "id": "li-415",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 18,
-        "unitPrice": 313,
-        "totalPrice": 5634,
-        "category": "labor"
+        "description": "Roofing materials and supplies",
+        "quantity": 3,
+        "unitPrice": 379,
+        "totalPrice": 1137,
+        "category": "materials"
       }
     ],
-    "subtotal": 12134,
-    "tax": 1092.06,
-    "total": 13226.06,
-    "status": "completed",
-    "createdDate": "2026-01-25T20:10:43.092Z",
+    "subtotal": 7304,
+    "tax": 657.36,
+    "total": 7961.36,
+    "status": "in-progress",
+    "createdDate": "2026-07-26T05:31:28.387Z",
     "notes": [
       "Approved for repair work"
     ],
-    "approvedDate": "2026-01-28T00:10:43.092Z",
-    "approvedBy": "adj-002"
+    "approvedDate": "2026-07-28T08:31:28.387Z",
+    "approvedBy": "adj-007"
   },
   {
     "id": "po-042",
     "poNumber": "PO-2025-042",
-    "claimId": "109",
-    "claimNumber": "CN202505098",
-    "contractorId": "contractor-002",
-    "workDescription": "Roof damage - moderate severity repair and restoration services",
+    "claimId": "119",
+    "claimNumber": "CN202505108",
+    "contractorId": "contractor-012",
+    "workDescription": "Wind damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-421",
-        "description": "Labor and installation services",
-        "quantity": 6,
-        "unitPrice": 275,
-        "totalPrice": 1650,
-        "category": "equipment"
-      },
-      {
-        "id": "li-422",
-        "description": "Emergency repair services",
-        "quantity": 8,
-        "unitPrice": 229,
-        "totalPrice": 1832,
+        "description": "Equipment rental and operation",
+        "quantity": 4,
+        "unitPrice": 113,
+        "totalPrice": 452,
         "category": "materials"
       },
       {
-        "id": "li-423",
-        "description": "Debris removal and cleanup",
-        "quantity": 6,
-        "unitPrice": 54,
-        "totalPrice": 324,
+        "id": "li-422",
+        "description": "Temporary protective measures",
+        "quantity": 16,
+        "unitPrice": 199,
+        "totalPrice": 3184,
         "category": "labor"
+      },
+      {
+        "id": "li-423",
+        "description": "Structural repairs and reinforcement",
+        "quantity": 18,
+        "unitPrice": 452,
+        "totalPrice": 8136,
+        "category": "materials"
+      },
+      {
+        "id": "li-424",
+        "description": "Water damage restoration",
+        "quantity": 9,
+        "unitPrice": 157,
+        "totalPrice": 1413,
+        "category": "equipment"
+      },
+      {
+        "id": "li-425",
+        "description": "Labor and installation services",
+        "quantity": 1,
+        "unitPrice": 315,
+        "totalPrice": 315,
+        "category": "equipment"
       }
     ],
-    "subtotal": 3806,
-    "tax": 342.54,
-    "total": 4148.54,
-    "status": "completed",
-    "createdDate": "2026-01-30T02:10:43.092Z",
+    "subtotal": 13500,
+    "tax": 1215,
+    "total": 14715,
+    "status": "approved",
+    "createdDate": "2026-07-25T18:31:28.387Z",
     "notes": [
-      "Approved for repair work"
+      "Work to begin immediately upon approval"
     ],
-    "approvedDate": "2026-02-01T01:10:43.092Z",
-    "approvedBy": "adj-009"
+    "approvedDate": "2026-07-28T08:31:28.387Z",
+    "approvedBy": "adj-005"
   },
   {
     "id": "po-043",
     "poNumber": "PO-2025-043",
-    "claimId": "110",
-    "claimNumber": "CN202505099",
-    "contractorId": "contractor-012",
-    "workDescription": "Roof damage - severe severity repair and restoration services",
+    "claimId": "122",
+    "claimNumber": "CN202505111",
+    "contractorId": "contractor-004",
+    "workDescription": "Roof damage - moderate severity repair and restoration services",
     "lineItems": [
       {
         "id": "li-431",
-        "description": "Debris removal and cleanup",
-        "quantity": 3,
-        "unitPrice": 439,
-        "totalPrice": 1317,
-        "category": "labor"
+        "description": "Temporary protective measures",
+        "quantity": 7,
+        "unitPrice": 287,
+        "totalPrice": 2009,
+        "category": "equipment"
       },
       {
         "id": "li-432",
         "description": "Equipment rental and operation",
         "quantity": 9,
-        "unitPrice": 440,
-        "totalPrice": 3960,
-        "category": "labor"
+        "unitPrice": 406,
+        "totalPrice": 3654,
+        "category": "equipment"
       },
       {
         "id": "li-433",
-        "description": "Roofing materials and supplies",
-        "quantity": 6,
-        "unitPrice": 178,
-        "totalPrice": 1068,
-        "category": "labor"
+        "description": "Emergency repair services",
+        "quantity": 11,
+        "unitPrice": 156,
+        "totalPrice": 1716,
+        "category": "equipment"
       },
       {
         "id": "li-434",
-        "description": "Equipment rental and operation",
-        "quantity": 3,
-        "unitPrice": 227,
-        "totalPrice": 681,
-        "category": "labor"
-      },
-      {
-        "id": "li-435",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 2,
-        "unitPrice": 488,
-        "totalPrice": 976,
-        "category": "equipment"
-      }
-    ],
-    "subtotal": 8002,
-    "tax": 720.18,
-    "total": 8722.18,
-    "status": "pending",
-    "createdDate": "2026-01-21T09:10:43.092Z",
-    "notes": [
-      "Pending approval from adjuster"
-    ]
-  },
-  {
-    "id": "po-044",
-    "poNumber": "PO-2025-044",
-    "claimId": "111",
-    "claimNumber": "CN202505100",
-    "contractorId": "contractor-019",
-    "workDescription": "Roof damage - moderate severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-441",
-        "description": "Debris removal and cleanup",
-        "quantity": 13,
-        "unitPrice": 280,
-        "totalPrice": 3640,
-        "category": "equipment"
-      },
-      {
-        "id": "li-442",
-        "description": "Temporary protective measures",
-        "quantity": 16,
-        "unitPrice": 98,
-        "totalPrice": 1568,
-        "category": "labor"
-      },
-      {
-        "id": "li-443",
         "description": "Roofing materials and supplies",
-        "quantity": 5,
-        "unitPrice": 360,
-        "totalPrice": 1800,
-        "category": "labor"
-      },
-      {
-        "id": "li-444",
-        "description": "Structural repairs and reinforcement",
-        "quantity": 16,
-        "unitPrice": 463,
-        "totalPrice": 7408,
-        "category": "equipment"
-      },
-      {
-        "id": "li-445",
-        "description": "Temporary protective measures",
-        "quantity": 17,
-        "unitPrice": 121,
-        "totalPrice": 2057,
-        "category": "materials"
-      }
-    ],
-    "subtotal": 16473,
-    "tax": 1482.57,
-    "total": 17955.57,
-    "status": "approved",
-    "createdDate": "2026-01-30T17:10:43.092Z",
-    "notes": [
-      "Approved for repair work"
-    ],
-    "approvedDate": "2026-01-31T11:10:43.092Z",
-    "approvedBy": "adj-004"
-  },
-  {
-    "id": "po-045",
-    "poNumber": "PO-2025-045",
-    "claimId": "114",
-    "claimNumber": "CN202505103",
-    "contractorId": "contractor-011",
-    "workDescription": "Roof damage - moderate severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-451",
-        "description": "Debris removal and cleanup",
-        "quantity": 17,
-        "unitPrice": 417,
-        "totalPrice": 7089,
-        "category": "equipment"
-      },
-      {
-        "id": "li-452",
-        "description": "Debris removal and cleanup",
         "quantity": 4,
-        "unitPrice": 481,
-        "totalPrice": 1924,
-        "category": "labor"
-      },
-      {
-        "id": "li-453",
-        "description": "Labor and installation services",
-        "quantity": 19,
-        "unitPrice": 132,
-        "totalPrice": 2508,
-        "category": "labor"
-      }
-    ],
-    "subtotal": 11521,
-    "tax": 1036.89,
-    "total": 12557.89,
-    "status": "approved",
-    "createdDate": "2026-01-26T12:10:43.092Z",
-    "notes": [
-      "Approved for repair work"
-    ],
-    "approvedDate": "2026-01-26T21:10:43.092Z",
-    "approvedBy": "adj-003"
-  },
-  {
-    "id": "po-046",
-    "poNumber": "PO-2025-046",
-    "claimId": "121",
-    "claimNumber": "CN202505110",
-    "contractorId": "contractor-021",
-    "workDescription": "Wind damage - severe severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-461",
-        "description": "Temporary protective measures",
-        "quantity": 18,
-        "unitPrice": 300,
-        "totalPrice": 5400,
-        "category": "equipment"
-      },
-      {
-        "id": "li-462",
-        "description": "Debris removal and cleanup",
-        "quantity": 14,
-        "unitPrice": 317,
-        "totalPrice": 4438,
-        "category": "labor"
-      },
-      {
-        "id": "li-463",
-        "description": "Debris removal and cleanup",
-        "quantity": 18,
-        "unitPrice": 468,
-        "totalPrice": 8424,
-        "category": "equipment"
-      },
-      {
-        "id": "li-464",
-        "description": "Roofing materials and supplies",
-        "quantity": 6,
-        "unitPrice": 256,
-        "totalPrice": 1536,
+        "unitPrice": 311,
+        "totalPrice": 1244,
         "category": "equipment"
       }
     ],
-    "subtotal": 19798,
-    "tax": 1781.82,
-    "total": 21579.82,
-    "status": "pending",
-    "createdDate": "2026-01-26T22:10:43.092Z",
+    "subtotal": 8623,
+    "tax": 776.07,
+    "total": 9399.07,
+    "status": "completed",
+    "createdDate": "2026-07-27T16:31:28.387Z",
     "notes": [
-      "Pending approval from adjuster"
-    ]
-  },
-  {
-    "id": "po-047",
-    "poNumber": "PO-2025-047",
-    "claimId": "124",
-    "claimNumber": "CN202505113",
-    "contractorId": "contractor-016",
-    "workDescription": "Wind damage - moderate severity repair and restoration services",
-    "lineItems": [
-      {
-        "id": "li-471",
-        "description": "Roofing materials and supplies",
-        "quantity": 19,
-        "unitPrice": 486,
-        "totalPrice": 9234,
-        "category": "materials"
-      },
-      {
-        "id": "li-472",
-        "description": "Equipment rental and operation",
-        "quantity": 7,
-        "unitPrice": 225,
-        "totalPrice": 1575,
-        "category": "labor"
-      },
-      {
-        "id": "li-473",
-        "description": "Temporary protective measures",
-        "quantity": 3,
-        "unitPrice": 202,
-        "totalPrice": 606,
-        "category": "materials"
-      }
+      "Approved for repair work",
+      "Work to begin immediately upon approval"
     ],
-    "subtotal": 11415,
-    "tax": 1027.35,
-    "total": 12442.35,
-    "status": "pending",
-    "createdDate": "2026-01-29T12:10:43.092Z",
-    "notes": [
-      "Pending approval from adjuster",
-      "Contractor notified"
-    ]
+    "approvedDate": "2026-07-28T20:31:28.387Z",
+    "approvedBy": "adj-010"
   }
 ]

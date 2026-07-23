@@ -1,76 +1,109 @@
-# Zava Claims MCP Server - Authentication Summary
+# Authentication – Zava Claims MCP Server
 
-This MCP server implements **OAuth 2.0 bearer token validation** for securing MCP tool access. The authentication model is designed for scenarios where a **consumer agent** (like Microsoft 365 Copilot) handles the OAuth authorization flow and passes access tokens to this server.
+This MCP server is a standard **OAuth 2.0 resource server**. It validates incoming JWT bearer tokens against any compliant identity provider and does not run its own authorization flow.
 
-## Authentication Architecture
+## Architecture
 
 | Component | Responsibility |
 |-----------|----------------|
-| **Consumer Agent** | Handles OAuth authorization code flow with Microsoft Entra ID |
-| **MCP Server** | Validates incoming bearer tokens and protects tool endpoints |
+| **Identity Provider** | Issues JWTs (Entra ID, Auth0, Keycloak, Okta, etc.) |
+| **Consumer Agent** | Obtains a token and sends it with each request |
+| **MCP Server (this)** | Validates the bearer token and serves tool results |
 
-## Key Components
+## How Token Validation Works
 
-### `OAuthManager` Class
-- **Token Validation**: Uses `jwt-validate` library to verify tokens against Microsoft Entra ID JWKS
-- **Multitenant Support**: Validates tokens from any Azure AD tenant
-- **Audience Validation**: Accepts both `client-id` and `api://client-id` formats
-- **Scope Validation**: Requires `access_as_user` scope
+1. On startup the server reads `OAUTH_ACCEPTED_ISSUERS` and `OAUTH_ACCEPTED_AUDIENCES`.
+2. For each issuer it fetches `<issuer>/.well-known/openid-configuration` to discover the `jwks_uri` (or uses explicitly configured `OAUTH_JWKS_URIS`).
+3. On every request to `/mcp/*`, the middleware:
+   - Extracts the `Authorization: Bearer <token>` header.
+   - Verifies the JWT **signature** against the JWKS keys.
+   - Checks **`exp`** (expiry) and **`nbf`** (not-before) with configurable clock tolerance.
+   - Validates **`iss`** against `OAUTH_ACCEPTED_ISSUERS`.
+   - Validates **`aud`** against `OAUTH_ACCEPTED_AUDIENCES`.
+4. If any check fails, a `401` is returned with a `WWW-Authenticate` header pointing to the RFC 9728 metadata URL.
 
-### Protected Endpoints
-- `/mcp/*` - All MCP tool endpoints require valid bearer tokens
-- `/oauth/userinfo` - Returns authenticated user info (for debugging)
+### Multi-Issuer Support
 
-### Public Endpoints
-- `/health` - Health check
-- `/.well-known/oauth-authorization-server` - RFC 9728 metadata discovery
-- `/mcp/messages/.well-known/oauth-protected-resource` - Resource metadata
+Multiple issuers can be listed (comma-separated). The server tries each JWKS key set in turn until one validates the token. This allows accepting tokens from different identity providers simultaneously.
 
-## RFC 9728 Compliance
+## RFC 9728 – Protected Resource Metadata
 
-The server implements **Protected Resource Metadata** (RFC 9728) to help clients discover OAuth configuration:
+The server exposes discovery endpoints so MCP clients can learn what authentication is required:
+
+```
+GET /.well-known/oauth-authorization-server
+GET /mcp/messages/.well-known/oauth-protected-resource
+```
+
+Response:
 
 ```json
 {
-  "issuer": "https://your-server-url",
-  "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
-  "token_endpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-  "scopes_supported": ["api://client-id/access_as_user"]
+  "resource": "https://your-server-url",
+  "authorization_servers": [
+    "https://login.microsoftonline.com/<tenant>/v2.0"
+  ],
+  "scopes_supported": ["access_as_user"],
+  "bearer_methods_supported": ["header"],
+  "resource_signing_alg_values_supported": ["RS256"]
 }
-```
-
-## Authentication Flow
-
-```
-┌─────────────────┐      ┌──────────────────┐      ┌─────────────────┐
-│  Consumer Agent │      │  Microsoft Entra │      │   MCP Server    │
-│  (M365 Copilot) │      │        ID        │      │  (This Server)  │
-└────────┬────────┘      └────────┬─────────┘      └────────┬────────┘
-         │                        │                         │
-         │  1. Authorization Code │                         │
-         │  ───────────────────►  │                         │
-         │                        │                         │
-         │  2. Access Token       │                         │
-         │  ◄───────────────────  │                         │
-         │                        │                         │
-         │  3. MCP Request + Bearer Token                   │
-         │  ────────────────────────────────────────────►   │
-         │                        │                         │
-         │                        │   4. Validate Token     │
-         │                        │   ◄─────────────────    │
-         │                        │                         │
-         │  5. MCP Response (tools, data)                   │
-         │  ◄────────────────────────────────────────────   │
 ```
 
 ## Configuration
 
-Required environment variables:
+```bash
+# Required – at least one issuer and one audience enables auth
+OAUTH_ACCEPTED_ISSUERS=https://login.microsoftonline.com/<tenant>/v2.0
+OAUTH_ACCEPTED_AUDIENCES=api://<client-id>,<client-id>
 
-| Variable | Description |
-|----------|-------------|
-| `OAUTH_CLIENT_ID` | Azure AD application client ID |
-| `OAUTH_CLIENT_SECRET` | Azure AD application client secret |
-| `OAUTH_AUTHORITY` | `https://login.microsoftonline.com/common` |
-| `OAUTH_SCOPES` | `api://<client-id>/access_as_user` |
-| `SERVER_BASE_URL` | Public URL of the MCP server |
+# Optional
+OAUTH_REQUIRED_SCOPES=access_as_user
+OAUTH_JWKS_URIS=              # auto-discovered if omitted
+OAUTH_ALLOWED_ALGORITHMS=RS256 # default
+OAUTH_CLOCK_TOLERANCE_SEC=60   # default
+```
+
+If both `OAUTH_ACCEPTED_ISSUERS` and `OAUTH_ACCEPTED_AUDIENCES` are empty or unset, the server starts in **anonymous/development mode** — all tools are public.
+
+## Flow Diagram
+
+```
+Consumer Agent              Identity Provider            MCP Server
+       │                          │                          │
+       │  1. Discover auth reqs   │                          │
+       │  ──────────────────────────────────────────────────►│
+       │  ◄── RFC 9728 metadata   │                          │
+       │                          │                          │
+       │  2. Auth code / token    │                          │
+       │  ───────────────────────►│                          │
+       │  ◄── access_token (JWT)  │                          │
+       │                          │                          │
+       │  3. Bearer <token>       │                          │
+       │  ──────────────────────────────────────────────────►│
+       │                          │   4. JWKS → verify JWT   │
+       │                          │   ◄──────────────────────│
+       │  5. Tool response        │                          │
+       │  ◄──────────────────────────────────────────────────│
+```
+
+## Key Implementation Details
+
+- **Library**: `jose` – standards-compliant JWKS fetching and JWT verification.
+- **JWKS caching**: Remote key sets are cached in memory and refreshed automatically by `jose`.
+- **Scope extraction**: Reads `scp` (space-delimited string or array) or `scope` (space-delimited string) from the JWT payload — covers Entra, Auth0, and most other providers.
+- **User identity**: Uses the standard `sub` claim; also extracts `preferred_username`, `upn`, or `email` for display.
+
+## Public Endpoints (No Auth)
+
+- `GET /health`
+- `GET /.well-known/oauth-authorization-server`
+- `GET /mcp/messages/.well-known/oauth-protected-resource`
+
+## Protected Endpoints (Bearer Token)
+
+- `GET /mcp/tools`
+- `POST /mcp/tools/call`
+- `POST /mcp/messages`
+- `GET /mcp/stream`
+- `POST /mcp/stream/tools/call`
+- `GET /oauth/userinfo`
