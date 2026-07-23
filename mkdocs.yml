@@ -116,7 +116,7 @@ plugins:
               - Setup and extensibility: 'pages/copilot-cowork/00-cowork-setup.md'
               - Build your first skill: 'pages/copilot-cowork/01-cowork-skills.md'
               - Build your first plugin: 'pages/copilot-cowork/02-cowork-plugins.md'
-              - Add Entra SSO Authentication to a Cowork Plugin: 'pages/copilot-cowork/03-cowork-plugins-sso.md'
+             # - Add Entra SSO Authentication to a Cowork Plugin: 'pages/copilot-cowork/03-cowork-plugins-sso.md'
             - Work IQ:
               - Introduction : 'pages/work-iq/index.md'
             - Agent 365:
