@@ -4,7 +4,7 @@
     "version": "1.0.8",
     "id": "ad2af6f9-c55a-49b6-ac44-451d71a00d22",
     "developer": {
-        "name": "Rabia Williams",
+        "name": "Microsoft Copilot Camp",
         "websiteUrl": "https://github.com/rabwill",
         "privacyUrl": "https://github.com/rabwill",
         "termsOfUseUrl": "https://github.com/rabwill"
@@ -32,10 +32,10 @@
             "description": "Authenticated access to Zava insurance claims operations via the Zava MCP server.",
             "toolSource": {
                 "remoteMcpServer": {
-                    "mcpServerUrl": "https://7dc8l25d-3001.aue.devtunnels.ms/mcp/messages",
+                    "mcpServerUrl": "https://<YOUR_DEVTUNNEL>.devtunnels.ms/mcp/messages",
                     "authorization": {
                         "type": "OAuthPluginVault",
-                        "referenceId": "OAuthPluginVaultReferenceIDPastedHere"
+                        "referenceId": "YOUR_SSO_REGISTRATION_ID"
                     }
                 }
             }
