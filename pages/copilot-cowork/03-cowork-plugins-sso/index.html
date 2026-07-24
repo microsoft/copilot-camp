@@ -2630,9 +2630,13 @@ You're configuring three things:</p>
 <span class="nb">cd</span><span class="w"> </span>copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 npm<span class="w"> </span>install
 </code></pre></div>
+<p>Open this folder in VS Code:</p>
+<div class="highlight"><pre><span></span><code>code<span class="w"> </span>.
+</code></pre></div>
+<p>This will be your <strong>MCP server window</strong> — keep it open for the rest of the lab.</p>
 <p><cc-end-step lab="cwrk03" exercise="1" step="1" /></p>
 <h3 id="step-2-run-the-server-and-dev-tunnel">Step 2: Run the server and Dev Tunnel</h3>
-<p>You need the MCP server accessible over a public URL so Cowork can reach it.</p>
+<p>In your MCP server VS Code window, you need the server accessible over a public URL so Cowork can reach it.</p>
 <ol>
 <li>
 <p>Start Azurite (local storage emulator) in one terminal:</p>
@@ -2661,8 +2665,9 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 </div>
 <p><cc-end-step lab="cwrk03" exercise="1" step="2" /></p>
 <h3 id="step-3-get-the-plugin-source">Step 3: Get the plugin source</h3>
-<p>The plugin code is already in this repo at <code>src/cowork/zava-claims-sso</code>. Open that folder:</p>
+<p>The plugin code is already in this repo at <code>src/cowork/zava-claims-sso</code>. Open it in a <strong>separate VS Code window</strong> (so you can keep the MCP server running in the first one):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>copilot-camp/src/cowork/zava-claims-sso
+code<span class="w"> </span>.
 </code></pre></div>
 <p>Take a look at the structure:</p>
 <div class="highlight"><pre><span></span><code>zava-claims-sso/
@@ -2854,7 +2859,7 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 <p><cc-end-step lab="cwrk03" exercise="4" step="1" /></p>
 <h3 id="step-2-upload-the-plugin-to-cowork">Step 2: Upload the plugin to Cowork</h3>
 <ol>
-<li>Open <a href="https://cowork.microsoft.com/" target="_blank">Copilot Cowork</a></li>
+<li>Open <a href="https://m365.cloud.microsoft/cowork/" target="_blank">Copilot Cowork</a></li>
 <li>Click the <strong>+</strong> icon</li>
 <li>Scroll down to <strong>Customize</strong> (manage skills and plugins)</li>
 <li>On the Customize page, upload your <code>zava-claims-cowork-plugin.zip</code> file</li>
