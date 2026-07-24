@@ -30,9 +30,40 @@ Zava Insurance has claims data served by an authenticated MCP server. You'll con
 |:---:|:---:|
 | ![Raw exported data](../../assets/images/copilot-cowork-03/before-skill.png) | ![Formatted report](../../assets/images/copilot-cowork-03/after-skill.png) |
 
+## How the pieces fit together
+
+Before diving into steps, understand what you're building:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Copilot as Microsoft 365 Copilot<br/>(or Cowork)
+    participant TokenStore as Enterprise Token Store<br/>(ab3be6b7-...)
+    participant Entra as Microsoft Entra ID
+    participant API as Your MCP Server / API
+
+    User->>Copilot: Invokes plugin
+    Copilot->>TokenStore: "Get me a token for this auth config ID"
+    TokenStore->>Entra: SSO token request (on behalf of user)
+    Entra-->>TokenStore: Access token (audience = your API)
+    TokenStore-->>Copilot: Access token
+    Copilot->>API: API call + Bearer token
+    API->>API: Validate token (audience, scope, issuer)
+    API-->>Copilot: Response data
+    Copilot-->>User: Formatted answer
+```
+You're configuring three things:
+
+| Component | What it does | Where you configure it |
+|-----------|-------------|----------------------|
+| **Entra app registration** | Defines your API's identity, scopes, and who can call it | Azure Portal / Entra admin center |
+| **Auth config (SSO registration)** | Tells the token store how to get tokens for your API | Teams Developer Portal|
+| **Your API's token validation** | Accepts and validates the tokens that arrive | Your server code's environment config |
+
 ## Exercise 1: Project setup
 
 In this exercise you'll get the authenticated MCP server running and grab the plugin source code that you'll wire up with SSO.
+
 
 ### Step 1: Get the MCP server code
 
