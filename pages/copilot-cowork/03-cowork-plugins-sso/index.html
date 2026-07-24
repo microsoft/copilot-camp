@@ -2577,6 +2577,51 @@ for (const div of toc) {
 </tr>
 </tbody>
 </table>
+<h2 id="how-the-pieces-fit-together">How the pieces fit together</h2>
+<p>Before diving into steps, understand what you're building:</p>
+<p><pre class="mermaid"><code>sequenceDiagram
+    participant User
+    participant Copilot as Microsoft 365 Copilot&lt;br/&gt;(or Cowork)
+    participant TokenStore as Enterprise Token Store&lt;br/&gt;(ab3be6b7-...)
+    participant Entra as Microsoft Entra ID
+    participant API as Your MCP Server / API
+
+    User-&gt;&gt;Copilot: Invokes plugin
+    Copilot-&gt;&gt;TokenStore: "Get me a token for this auth config ID"
+    TokenStore-&gt;&gt;Entra: SSO token request (on behalf of user)
+    Entra--&gt;&gt;TokenStore: Access token (audience = your API)
+    TokenStore--&gt;&gt;Copilot: Access token
+    Copilot-&gt;&gt;API: API call + Bearer token
+    API-&gt;&gt;API: Validate token (audience, scope, issuer)
+    API--&gt;&gt;Copilot: Response data
+    Copilot--&gt;&gt;User: Formatted answer</code></pre>
+You're configuring three things:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>What it does</th>
+<th>Where you configure it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entra app registration</strong></td>
+<td>Defines your API's identity, scopes, and who can call it</td>
+<td>Azure Portal / Entra admin center</td>
+</tr>
+<tr>
+<td><strong>Auth config (SSO registration)</strong></td>
+<td>Tells the token store how to get tokens for your API</td>
+<td>Teams Developer Portal</td>
+</tr>
+<tr>
+<td><strong>Your API's token validation</strong></td>
+<td>Accepts and validates the tokens that arrive</td>
+<td>Your server code's environment config</td>
+</tr>
+</tbody>
+</table>
 <h2 id="exercise-1-project-setup">Exercise 1: Project setup</h2>
 <p>In this exercise you'll get the authenticated MCP server running and grab the plugin source code that you'll wire up with SSO.</p>
 <h3 id="step-1-get-the-mcp-server-code">Step 1: Get the MCP server code</h3>
@@ -2657,10 +2702,34 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 <p>Multitenant lets users from any Microsoft 365 organization authenticate. For internal-only scenarios, you can restrict to your tenant later.</p>
 </div>
 <p><cc-end-step lab="cwrk03" exercise="2" step="1" /></p>
-<h3 id="step-2-expose-an-api-and-add-a-scope">Step 2: Expose an API and add a scope</h3>
+<h3 id="step-2-create-the-sso-registration-in-teams-developer-portal">Step 2: Create the SSO registration in Teams Developer Portal</h3>
+<p>Before exposing an API scope, you need the <strong>Application ID URI</strong> that the Teams Developer Portal generates. This URI becomes your API's identity — so you'll set it up in Entra <em>after</em> you get it here.</p>
 <ol>
-<li>In your app registration, go to <strong>Expose an API</strong></li>
-<li>Click <strong>Add</strong> next to Application ID URI — accept the default <code>api://&lt;YOUR_CLIENT_ID&gt;</code> format</li>
+<li>Open <a href="https://dev.teams.microsoft.com/" target="_blank">Teams Developer Portal</a> → <strong>Tools</strong> → <strong>Microsoft Entra SSO client ID registration</strong></li>
+<li>Click <strong>Register client ID</strong> (or <strong>New client registration</strong> if you have existing ones)</li>
+<li>Fill in:<ul>
+<li><strong>Registration name</strong>: <code>zava-cowork-sso</code></li>
+<li><strong>Base URL</strong>: <code>https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms/mcp/messages</code> (your tunnel URL + path)</li>
+<li><strong>Restrict usage by organization</strong>: Any Microsoft 365 organization</li>
+<li><strong>Restrict usage by Teams app</strong>: Any Teams app (for testing and store validation only)</li>
+<li><strong>Client (application) ID</strong>: Paste the client ID from your Entra app registration</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong></li>
+<li>The portal generates an <strong>Application ID URI</strong> — copy this value</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Don't skip copying the Application ID URI</p>
+<p>You need this in the next step to set up Expose an API in your Entra app registration. This is the URI that tokens will be issued against.</p>
+</div>
+<p><cc-end-step lab="cwrk03" exercise="2" step="2" /></p>
+<h3 id="step-3-expose-an-api-using-the-application-id-uri">Step 3: Expose an API using the Application ID URI</h3>
+<p>Now you'll configure the Entra app to use the Application ID URI from the Teams Developer Portal and expose a scope.</p>
+<ol>
+<li>Go back to <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> → your app registration</li>
+<li>Go to <strong>Expose an API</strong></li>
+<li>Click <strong>Add</strong> next to <strong>Application ID URI</strong>. Replace the default value with the <strong>Application ID URI you copied from the Teams Developer Portal</strong> in Step 2</li>
+<li>Click <strong>Save</strong></li>
 <li>Click <strong>Add a scope</strong>:<ul>
 <li><strong>Scope name</strong>: <code>access_as_user</code></li>
 <li><strong>Who can consent</strong>: Admins and users</li>
@@ -2681,61 +2750,18 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 <p class="admonition-title">What's that client ID?</p>
 <p><code>ab3be6b7-f5df-413d-ac2d-abf1e3fd9c0b</code> is the Microsoft Enterprise token store. This is the service that Cowork uses to obtain tokens on behalf of the user. It's always this value — hardcoded by Microsoft.</p>
 </div>
-<p><cc-end-step lab="cwrk03" exercise="2" step="2" /></p>
-<h3 id="step-3-create-the-sso-registration-in-teams-developer-portal">Step 3: Create the SSO registration in Teams Developer Portal</h3>
-<p>Now you need somewhere for those credentials to live that isn't hardcoded in your plugin files. That's what the Teams Developer Portal's Entra SSO registration does — it stores the configuration securely and hands your plugin a reference ID.</p>
-<ol>
-<li>Open <a href="https://dev.teams.microsoft.com/" target="_blank">Teams Developer Portal</a> → <strong>Tools</strong> → <strong>Microsoft Entra SSO client ID registration</strong></li>
-<li>Click <strong>Register client ID</strong> (or <strong>New client registration</strong> if you have existing ones)</li>
-<li>Fill in:<ul>
-<li><strong>Registration name</strong>: <code>zava-cowork-sso</code></li>
-<li><strong>Base URL</strong>: <code>https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms/mcp/messages</code> (your tunnel URL + path)</li>
-<li><strong>Restrict usage by organization</strong>: Any Microsoft 365 organization</li>
-<li><strong>Restrict usage by Teams app</strong>: Any Teams app (for testing and store validation only)</li>
-<li><strong>Client (application) ID</strong>: Paste the client ID from your Entra app registration</li>
-</ul>
-</li>
-<li>Click <strong>Save</strong></li>
-<li>The portal generates an <strong>Application ID URI</strong> — copy this value</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Don't skip copying the Application ID URI</p>
-<p>You need this in the next step to update your Entra app registration. It's different from the one you set up in Step 2.</p>
-</div>
+<p>Your full scope value will look like: <code>&lt;APPLICATION_ID_URI&gt;/access_as_user</code> — copy it for the next step.</p>
 <p><cc-end-step lab="cwrk03" exercise="2" step="3" /></p>
-<h3 id="step-4-update-the-entra-app-with-the-new-application-id-uri">Step 4: Update the Entra app with the new Application ID URI</h3>
-<p>The Teams Developer Portal just generated a new Application ID URI for SSO. You need to add it to your Entra app registration.</p>
-<ol>
-<li>Go back to <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> → your app registration</li>
-<li>Go to <strong>Manifest</strong> in the left navigation</li>
-<li>
-<p>Find the <code>identifierUris</code> array and add the new Application ID URI from Step 3:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;identifierUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;api://&lt;YOUR_CLIENT_ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;&quot;</span>
-<span class="p">]</span>
-</code></pre></div>
-</li>
-<li>
-<p>Click <strong>Save</strong></p>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Why the manifest editor?</p>
-<p>The Entra admin center UI only shows one Application ID URI at a time. Adding multiple URIs requires the manifest editor. Your existing URI and scopes still work fine — this doesn't break anything.</p>
-</div>
-<p>Now go back to <strong>Expose an API</strong>. Notice the scope has been updated to reflect the new URI. Copy the full scope value (it'll look something like <code>api://&lt;URI&gt;/access_as_user</code>) — you need it in the next step.</p>
-<p><cc-end-step lab="cwrk03" exercise="2" step="4" /></p>
-<h3 id="step-5-complete-the-sso-registration-with-the-scope">Step 5: Complete the SSO registration with the scope</h3>
+<h3 id="step-4-complete-the-sso-registration-with-the-scope">Step 4: Complete the SSO registration with the scope</h3>
 <ol>
 <li>Go back to <a href="https://dev.teams.microsoft.com/" target="_blank">Teams Developer Portal</a> → <strong>Tools</strong> → <strong>Microsoft Entra SSO client ID registration</strong></li>
 <li>Open your <code>zava-cowork-sso</code> registration</li>
-<li>Paste the full scope value from the previous step into the <strong>Scope</strong> field</li>
+<li>Paste the full scope value from the previous step into the <strong>Scope</strong> field (e.g., <code>&lt;APPLICATION_ID_URI&gt;/access_as_user</code>)</li>
 <li>Click <strong>Save</strong></li>
 <li>Copy the <strong>Microsoft Entra SSO registration ID</strong> — this is your <code>OAuthPluginVault</code> reference ID</li>
 </ol>
 <p>This reference ID is what goes into your plugin manifest. No secrets in your code, just a pointer to where the real credentials live.</p>
-<p><cc-end-step lab="cwrk03" exercise="2" step="5" /></p>
+<p><cc-end-step lab="cwrk03" exercise="2" step="4" /></p>
 <h2 id="exercise-3-update-the-plugin-with-authentication">Exercise 3: Update the plugin with authentication</h2>
 <p>Three moves from anonymous to authenticated. You have the reference ID — now plug it in.</p>
 <h3 id="step-1-update-manifestjson-with-the-reference-id">Step 1: Update manifest.json with the reference ID</h3>
@@ -2767,7 +2793,7 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 <p>Go to your Zava MCP server directory and update the <code>env/.env.dev</code> file with the SSO-specific values:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># OAuth 2.0 Resource Server</span>
 <span class="na">OAUTH_ACCEPTED_ISSUERS</span><span class="o">=</span><span class="s">https://login.microsoftonline.com/common/v2.0</span>
-<span class="na">OAUTH_ACCEPTED_AUDIENCES</span><span class="o">=</span><span class="s">api://&lt;YOUR_CLIENT_ID&gt;,&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;</span>
+<span class="na">OAUTH_ACCEPTED_AUDIENCES</span><span class="o">=</span><span class="s">&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;</span>
 <span class="na">OAUTH_REQUIRED_SCOPES</span><span class="o">=</span><span class="s">&lt;FULL_SCOPE_VALUE&gt;</span>
 <span class="na">OAUTH_VALIDATE_ISSUER</span><span class="o">=</span><span class="s">false</span>
 <span class="na">OAUTH_ACCEPTED_TENANT_IDS</span><span class="o">=</span><span class="s">&lt;YOUR_TENANT_ID&gt;</span>
@@ -2800,16 +2826,12 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 </thead>
 <tbody>
 <tr>
-<td><code>&lt;YOUR_CLIENT_ID&gt;</code></td>
-<td>Application (client) ID from your Entra app registration</td>
-</tr>
-<tr>
 <td><code>&lt;APPLICATION_ID_URI_FROM_TEAMS_PORTAL&gt;</code></td>
-<td>The Application ID URI generated in Exercise 2, Step 3</td>
+<td>The Application ID URI generated in Exercise 2, Step 2</td>
 </tr>
 <tr>
 <td><code>&lt;FULL_SCOPE_VALUE&gt;</code></td>
-<td>The complete scope from Exercise 2, Step 4 (e.g., <code>api://&lt;URI&gt;/access_as_user</code>)</td>
+<td>The complete scope from Exercise 2, Step 3 (e.g., <code>&lt;APPLICATION_ID_URI&gt;/access_as_user</code>)</td>
 </tr>
 <tr>
 <td><code>&lt;YOUR_TENANT_ID&gt;</code></td>
@@ -2821,9 +2843,9 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Two audiences matter</p>
-<p>The <code>OAUTH_ACCEPTED_AUDIENCES</code> field needs both your original Application ID URI (<code>api://&lt;client-id&gt;</code>) and the new one from the Teams Developer Portal. The token can arrive with either audience depending on how the flow resolves.</p>
+<div class="admonition note">
+<p class="admonition-title">Single audience</p>
+<p>Since you set the Application ID URI from the Teams Developer Portal directly on your Entra app (instead of using the default <code>api://&lt;client-id&gt;</code>), the token will always arrive with that single audience. No need to list multiple values.</p>
 </div>
 <p>Restart the MCP server after updating:</p>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
@@ -2849,7 +2871,7 @@ npm<span class="w"> </span>run<span class="w"> </span>start:mcp-http
 <p>Once approved, the flow completes end-to-end: Cowork authenticates via SSO, calls the Zava MCP server with a valid token, retrieves the claims data, and your skill transforms it into a formatted Excel report. No manual data export, no reformatting — just the finished output.</p>
 <div class="admonition tip">
 <p class="admonition-title">If sign-in fails</p>
-<p>Check three things: (1) your Dev Tunnel is still running and public, (2) the <code>OAUTH_ACCEPTED_AUDIENCES</code> in <code>.env.dev</code> includes both URIs, and (3) the redirect URI <code>https://teams.microsoft.com/api/platform/v1.0/oAuthConsentRedirect</code> is configured in your  Entra app's Authentication section.</p>
+<p>Check three things: (1) your Dev Tunnel is still running and public, (2) the <code>OAUTH_ACCEPTED_AUDIENCES</code> in <code>.env.dev</code> matches the Application ID URI from the Teams Developer Portal, and (3) the redirect URI <code>https://teams.microsoft.com/api/platform/v1.0/oAuthConsentRedirect</code> is configured in your Entra app's Authentication section.</p>
 </div>
 <p><cc-end-step lab="cwrk03" exercise="4" step="3" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
