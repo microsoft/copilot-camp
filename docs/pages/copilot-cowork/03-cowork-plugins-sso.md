@@ -75,11 +75,19 @@ cd copilot-camp/src/extend-m365-copilot/path-e-lab10-mcp-auth/zava-mcp-server
 npm install
 ```
 
+Open this folder in VS Code:
+
+```bash
+code .
+```
+
+This will be your **MCP server window** — keep it open for the rest of the lab.
+
 <cc-end-step lab="cwrk03" exercise="1" step="1" />
 
 ### Step 2: Run the server and Dev Tunnel
 
-You need the MCP server accessible over a public URL so Cowork can reach it.
+In your MCP server VS Code window, you need the server accessible over a public URL so Cowork can reach it.
 
 1. Start Azurite (local storage emulator) in one terminal:
 
@@ -111,10 +119,11 @@ Verify it's running by visiting `http://127.0.0.1:3001/health` — you should se
 
 ### Step 3: Get the plugin source
 
-The plugin code is already in this repo at `src/cowork/zava-claims-sso`. Open that folder:
+The plugin code is already in this repo at `src/cowork/zava-claims-sso`. Open it in a **separate VS Code window** (so you can keep the MCP server running in the first one):
 
 ```bash
 cd copilot-camp/src/cowork/zava-claims-sso
+code .
 ```
 
 Take a look at the structure:
@@ -326,7 +335,7 @@ npm run start:mcp-http
 
 ### Step 2: Upload the plugin to Cowork
 
-1. Open [Copilot Cowork](https://cowork.microsoft.com/){target=_blank}
+1. Open [Copilot Cowork](https://m365.cloud.microsoft/cowork/){target=_blank}
 2. Click the **+** icon
 3. Scroll down to **Customize** (manage skills and plugins)
 4. On the Customize page, upload your `zava-claims-cowork-plugin.zip` file

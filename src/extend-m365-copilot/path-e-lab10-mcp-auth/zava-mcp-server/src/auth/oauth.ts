@@ -232,9 +232,19 @@ export class OAuthManager {
         }
       }
 
-      logger.warn('Token validation failed across all JWKS key sets', {
-        error: lastError instanceof Error ? lastError.message : String(lastError),
-      });
+      // Decode (without verifying) to inspect the aud claim for debugging
+      try {
+        const decoded = jose.decodeJwt(token);
+        logger.warn('Token validation failed across all JWKS key sets', {
+          error: lastError instanceof Error ? lastError.message : String(lastError),
+          tokenAud: decoded.aud,
+          expectedAud: this.config.acceptedAudiences,
+        });
+      } catch {
+        logger.warn('Token validation failed across all JWKS key sets', {
+          error: lastError instanceof Error ? lastError.message : String(lastError),
+        });
+      }
       return null;
     } catch (error) {
       logger.error('Error validating token:', error);

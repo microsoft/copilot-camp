@@ -32,10 +32,10 @@
             "description": "Authenticated access to Zava insurance claims operations via the Zava MCP server.",
             "toolSource": {
                 "remoteMcpServer": {
-                    "mcpServerUrl": "https://7dc8l25d-3001.aue.devtunnels.ms/mcp/messages",
+                    "mcpServerUrl": "https://<YOUR_DEVTUNNEL>.devtunnels.ms/mcp/messages",
                     "authorization": {
                         "type": "OAuthPluginVault",
-                        "referenceId": "OAuthPluginVaultReferenceIDPastedHere"
+                        "referenceId": "YOUR_SSO_REGISTRATION_ID"
                     }
                 }
             }
