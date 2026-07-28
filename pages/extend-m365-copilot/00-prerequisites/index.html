@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-concepts-before-you-build" class="md-skip">
+        <a href="#what-you-need" class="md-skip">
           Skip to content
         </a>
       
@@ -762,21 +762,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-concepts-before-you-build" class="md-nav__link">
+  <a href="#what-you-need" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key concepts before you build
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-each-bundle-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How each bundle works
+        What you need
       
     </span>
   </a>
@@ -2618,67 +2607,49 @@
 
 <div data-widget="hero"
      data-badge-color="amber"
-     data-icon="🔧"
-     data-title="Prerequisites for Pro-code bundles"
-     data-subtitle="Install every tool, understand the core concepts, and see exactly what each bundle will build — before writing a single line of code."
-     data-time="45–60 min"
-     data-requires="M365 admin account required"
+     data-icon="🔧 One time configuration"
+     data-subtitle="Install the extra tools your chosen bundle needs and verify port forwarding works."
+     data-time="10–15 min"
      data-toolkit="Windows / Mac / Linux"></div>
 
-<h2 id="key-concepts-before-you-build">Key concepts before you build</h2>
-<p>Few concepts appear across every bundle. Read this once — it will save hours of confusion later.</p>
-<div data-widget="concepts"
-     data-cards="Microsoft 365 Copilot::blue::The AI host::The LLM and orchestration layer built by Microsoft. It decides when to call your agent, routes the conversation, and renders responses. You don't build this — you extend it.||Declarative Agent::purple::Your custom Copilot persona::Three JSON/text files that give Copilot a specialist identity: a name, custom instructions, and a list of tools it can call. Copilot provides the AI; you provide the purpose and the data.||MCP — Model Context Protocol::teal::The tool connector::An open standard for wiring AI agents to external data and actions. Your MCP server exposes named, typed functions. The agent calls them by name — you never write routing logic.||API Plugin::green::The tool manifest::A generated &lt;code&gt;ai-plugin.json&lt;/code&gt; file that tells your agent which tools exist, what their parameters are, and where to call them. Bundles A &amp; B use MCP tools; Bundles C &amp; D use REST API tools — both are wired through this file.||Azurite::amber::Local Azure Storage emulator::Azurite simulates Azure Storage locally so you can run and test storage-dependent labs without provisioning cloud storage first.||Dev Tunnel::coral::Public URL to localhost::Dev Tunnel gives your local server a secure public HTTPS endpoint so cloud-hosted Copilot can reach tools running on your machine."></div>
-
-<hr />
-<h2 id="how-each-bundle-works">How each bundle works</h2>
-<p>Pick the bundle that matches your scenario. Each diagram shows exactly what you will wire together and what extra prerequisites you need.</p>
+<h2 id="what-you-need">What you need</h2>
 <p>Complete this lab after E1A or E1B and before you start any bundle.</p>
 <div data-widget="checklist"
      data-title="Common prerequisites (Installed from E1B foundation lab)"
      data-variant="soft"
      data-items="Global Admin access in your M365 tenant~Required to configure tenant-wide app and policy settings|Complete one foundation path (E1A or E1B)~Required before this bundle-readiness lab|VS Code with Microsoft 365 Agents Toolkit~Sign in with your M365 developer account|Node.js 22 LTS and Git installed~Baseline tooling for all bundle workflows"></div>
 
-<div data-widget="checklist"
-     data-title="Common prerequisites for MCP bundles (A, B, and C)"
-     data-variant="soft"
-     data-items="GitHub account~Needed for Dev Tunnels sign-in|Azurite installed globally~Local Azure Table Storage emulator|MCP Inspector installed globally~Inspect and debug MCP tool wiring"></div>
-
-<h3 id="bundle-a-mcp-foundation">Bundle A — MCP Foundation</h3>
-<p>Stand up a real MCP server locally, wire a Declarative Agent to it via a Dev Tunnel, then secure it with OAuth.</p>
-<div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Receives user query → calls your agent|Declarative Agent::agent::declarativeAgent.json + instruction.txt||label::reads ai-plugin.json → calls MCP tools over HTTPS via Dev Tunnel||row::Dev Tunnel::tunnel::Public HTTPS ↔ localhost:3001|MCP Server (Node.js)::mcp::15 claims tools · runs on your machine|Azurite::data::Local Azure Table Storage ·"></div>
-
-<div data-widget="checklist"
-     data-title="Extra prerequisites for Bundle A"
-     data-variant="soft"
-     data-items="Azure account (free tier OK) – required only for the Entra ID app registration step in Lab E10. No paid Azure subscription is needed."></div>
-
-<h3 id="bundle-b-mcp-advanced">Bundle B — MCP Advanced</h3>
-<p>Build on Bundle A's MCP server to add connected agents and embedded knowledge for multi-agent orchestration.</p>
-<div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Orchestrates the conversation|Declarative Agent::agent::Orchestrator · routes to connected agents||label::Connected agents coordinate via MCP; MCP apps/tools can return rich widget-based responses||row::Dev Tunnel::tunnel::Public HTTPS ↔ localhost:3001|MCP Server (Node.js)::mcp::Claims tools from Bundle A|Connected Agent::agent::Handles delegated sub-tasks|MCP App + Tools::teal::Rich widget-based tool experiences"></div>
-
-<h3 id="bundle-c-mcp-app">Bundle C — MCP App</h3>
-<p>Build an MCP-powered app surface with interactive widgets so tool results render as rich UI in Copilot conversations.</p>
-<div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Renders interactive MCP app responses|Declarative Agent::agent::Routes tool calls and responses||label::MCP app tools return structured output mapped to React + Fluent UI widgets||row::MCP App Server (Node.js)::mcp::Tool handlers + widget mappings|React + Fluent UI Widgets::teal::Interactive UI in Copilot conversation"></div>
-
-<h3 id="bundle-d-api-based-declarative-agent">Bundle D — API-Based Declarative Agent</h3>
-<p>Build a REST API backed by Azure Functions, then wire a Declarative Agent to it as an API plugin.</p>
-<div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Calls your API plugin|Declarative Agent::agent::declarativeAgent.json + ai-plugin.json||label::API plugin calls Azure Functions endpoints over REST||row::Azure Functions (TypeScript)::mcp::HTTP endpoints · runs locally on port 7071|Azurite::data::Local Table Storage · consultant &amp; project data"></div>
-
-<div data-widget="checklist"
-     data-title="Extra prerequisites for Bundle D"
-     data-variant="soft"
-     data-items="Azure Functions Core Tools v4~Run and debug Functions locally|REST Client VS Code extension~Test local API endpoints quickly"></div>
-
-<h3 id="bundle-e-da-with-connectors">Bundle E — DA with Connectors</h3>
-<p>Build a Declarative Agent that queries your own external data indexed into Microsoft Graph via a Copilot Connector.</p>
-<div data-widget="arch"
-     data-rows="row::Microsoft 365 Copilot::copilot::Queries via Copilot Connector|Declarative Agent::agent::declarativeAgent.json + connector config||label::connector pushes external data into Microsoft Graph||row::Copilot Connector (Node.js)::tunnel::Indexes your data · runs locally|Microsoft Graph::data::Stores and serves connector items to Copilot"></div>
-
+<h3 id="extra-prerequisites-by-bundle">Extra prerequisites by bundle</h3>
+<table>
+<thead>
+<tr>
+<th>Bundle</th>
+<th>Extra tools needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — MCP Foundation</strong></td>
+<td>GitHub account, Azurite, MCP Inspector, Azure account (free tier OK — Entra ID app reg only)</td>
+</tr>
+<tr>
+<td><strong>B — MCP Advanced</strong></td>
+<td>GitHub account, Azurite, MCP Inspector</td>
+</tr>
+<tr>
+<td><strong>C — MCP App</strong></td>
+<td>GitHub account, Azurite, MCP Inspector, Azure Functions Core Tools v4</td>
+</tr>
+<tr>
+<td><strong>D — API Plugin</strong></td>
+<td>Azure Functions Core Tools v4, REST Client extension</td>
+</tr>
+<tr>
+<td><strong>E — Connectors</strong></td>
+<td><em>(no extras beyond common prerequisites)</em></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="exercise-1-verify-extra-prerequisites-installed">Exercise 1: Verify extra prerequisites installed</h2>
 <table>
