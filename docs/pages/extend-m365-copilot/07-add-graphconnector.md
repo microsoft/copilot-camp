@@ -4,7 +4,6 @@
     data-badge="Bundle E · Lab E7"
     data-badge-color="purple"
     data-icon="🔗"
-    data-title="Add Copilot Connector Grounding"
     data-subtitle="Load external data into Microsoft Graph and connect it as focused knowledge for your Declarative Agent."
     data-time="45-75 min"
     data-requires="Labs E2-E4 + tenant admin"

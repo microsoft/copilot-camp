@@ -4,11 +4,9 @@
   data-badge="On-ramp · Lab E1A"
   data-badge-color="blue"
   data-icon="🧰"
-   data-title="Declarative Agent Foundation with Agent Builder"
   data-subtitle="Build your first declarative agent in Agent Builder with grounding, capability checks, and governance basics."
   data-time="30-45 min"
-   data-requires="Microsoft 365 Copilot Chat access"
-  data-toolkit="Microsoft 365 Copilot Chat"></div>
+   data-requires="Microsoft 365 Copilot Chat access"></div>
 
 ## Prerequisites
 

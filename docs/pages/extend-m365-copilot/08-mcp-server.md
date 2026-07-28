@@ -4,7 +4,6 @@
     data-badge="Bundle A/B · Lab E8"
     data-badge-color="teal"
     data-icon="🔌"
-    data-title="Connect Declarative Agent to MCP Server"
     data-subtitle="Run Zava's MCP server locally, expose claims tools, and wire a Declarative Agent to invoke them in natural language."
     data-time="60-80 min"
     data-toolkit="MCP SDK + Agents Toolkit"></div>
