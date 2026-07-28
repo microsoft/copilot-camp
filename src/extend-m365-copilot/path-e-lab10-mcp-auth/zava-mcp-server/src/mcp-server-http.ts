@@ -1256,6 +1256,29 @@ if (isOAuthEnabled && oauthConfig.authorizationEndpoint && oauthConfig.tokenEndp
   app.get('/.well-known/oauth-authorization-server', protectedResourceMetadataRoutes.wellKnownMetadata);
 }
 
+// RFC 7591 Dynamic Client Registration endpoint
+// MCP clients (e.g. Teams) POST here to register themselves and receive a client_id.
+app.post('/register', (req: express.Request, res: express.Response) => {
+  const { client_name, redirect_uris, grant_types, response_types, token_endpoint_auth_method } = req.body;
+
+  // Return the pre-configured Entra ID client_id — no actual registration happens
+  // because Entra ID app registrations are managed out-of-band.
+  const clientId = process.env.OAUTH_CLIENT_ID || oauthConfig.acceptedAudiences[0];
+  const clientSecret = process.env.OAUTH_CLIENT_SECRET || '';
+
+  logger.info('DCR request received', { client_name, redirect_uris });
+
+  res.status(201).json({
+    client_id: clientId,
+    client_secret: clientSecret,
+    client_name: client_name || 'MCP Client',
+    redirect_uris: redirect_uris || [],
+    grant_types: grant_types || ['authorization_code'],
+    response_types: response_types || ['code'],
+    token_endpoint_auth_method: token_endpoint_auth_method || 'client_secret_post',
+  });
+});
+
 // Apply OAuth middleware to MCP endpoints only (not to API endpoints)
 // Note: Metadata endpoints are registered ABOVE to avoid being intercepted
 if (oauthMiddleware) {
