@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/">
       
       
+        <link rel="prev" href="../02-cowork-plugins/">
+      
+      
+        <link rel="next" href="../../work-iq/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Lab CWRK03 - Add Entra SSO Authentication to a Cowork Plugin - Copilot Developer Camp</title>
+        <title>Add Entra SSO Authentication to a Cowork Plugin - Copilot Developer Camp</title>
       
     
     
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab CWRK03 - Add Entra SSO Authentication to a Cowork Plugin
+              Add Entra SSO Authentication to a Cowork Plugin
             
           </span>
         </div>
@@ -265,10 +269,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../00-cowork-setup/" class="md-tabs__link">
           
   
@@ -2024,26 +2030,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -2061,7 +2072,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2151,6 +2162,147 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Entra SSO Authentication to a Cowork Plugin
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add Entra SSO Authentication to a Cowork Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-lab-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this lab matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-pieces-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the pieces fit together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-project-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Project setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-create-the-entra-sso-app-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Create the Entra SSO app registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-update-the-plugin-with-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: Update the plugin with authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-test-the-authenticated-plugin-in-cowork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4: Test the authenticated plugin in Cowork
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2506,7 +2658,7 @@
       <li><a href="/copilot-camp/pages/copilot-cowork/00-cowork-setup/">CWRK0 - Setup and extensibility</a></li>
       <li><a href="/copilot-camp/pages/copilot-cowork/01-cowork-skills/">CWRK1 - Build your first Skill</a></li>
       <li><a href="/copilot-camp/pages/copilot-cowork/02-cowork-plugins/">CWRK2 - Build your first Plugin</a></li>
-       <!-- <li><a href="/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/">CWRK3 - Add Entra SSO Authentication to a Cowork Plugin</a></li> -->
+       <li><a href="/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/">CWRK3 - Add Entra SSO Authentication to a Cowork Plugin</a></li>
        </ul>
   </div>
 </div>
