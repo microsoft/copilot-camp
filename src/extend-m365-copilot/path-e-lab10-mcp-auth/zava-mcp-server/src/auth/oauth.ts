@@ -354,6 +354,7 @@ export interface AuthorizationServerMetadata {
   issuer: string;
   authorization_endpoint: string;
   token_endpoint: string;
+  registration_endpoint?: string;
   scopes_supported?: string[];
   response_types_supported?: string[];
   code_challenge_methods_supported?: string[];
@@ -379,6 +380,7 @@ export function generateAuthorizationServerMetadata(
     issuer: resourceIdentifier,
     authorization_endpoint: config.authorizationEndpoint,
     token_endpoint: config.tokenEndpoint,
+    registration_endpoint: `${resourceIdentifier}/register`,
     scopes_supported: config.requiredScopes ?? [],
     response_types_supported: ['code'],
     code_challenge_methods_supported: ['S256'],
