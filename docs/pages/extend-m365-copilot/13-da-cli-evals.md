@@ -6,7 +6,6 @@ title: Lab E13 — DA CLI with Evals Tooling (Placeholder)
      data-badge="Bundle F · Lab E13"
      data-badge-color="amber"
      data-icon="📈"
-     data-title="DA CLI with Evals Tooling"
      data-subtitle="Placeholder lab: run CLI evaluations, interpret results, and iterate your Declarative Agent with evidence-based improvements."
      data-time="45-60 min (placeholder)"
      data-requires="Lab E12"
