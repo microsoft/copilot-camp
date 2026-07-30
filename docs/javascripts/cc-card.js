@@ -185,4 +185,77 @@
 
     //#endregion cc-card-grid web component
 
+    //#region cc-blog-meta web component
+
+    // Reusable blog metadata widget with author image, author name, and publish date
+    class BlogMeta extends HTMLElement {
+
+        author;
+        date;
+        image;
+        role;
+
+        constructor() {
+            super();
+
+            this.author = this.getAttribute('author') || 'Author';
+            this.date = this.getAttribute('date') || '';
+            this.image = this.getAttribute('image') || '';
+            this.role = this.getAttribute('role') || 'Published by';
+
+            this.#render();
+        }
+
+        #render() {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'cc-blog-meta';
+
+            const avatar = document.createElement('img');
+            avatar.className = 'cc-blog-meta-avatar';
+            avatar.src = this.image;
+            avatar.alt = `${this.author} photo`;
+            avatar.loading = 'lazy';
+
+            const content = document.createElement('div');
+            content.className = 'cc-blog-meta-content';
+
+            const top = document.createElement('div');
+            top.className = 'cc-blog-meta-top';
+            top.textContent = this.role;
+
+            const bottom = document.createElement('div');
+            bottom.className = 'cc-blog-meta-bottom';
+
+            const author = document.createElement('span');
+            author.className = 'cc-blog-meta-author';
+            author.textContent = this.author;
+
+            bottom.appendChild(author);
+
+            if (this.date) {
+                const dot = document.createElement('span');
+                dot.className = 'cc-blog-meta-dot';
+                dot.textContent = '•';
+
+                const date = document.createElement('time');
+                date.className = 'cc-blog-meta-date';
+                date.textContent = this.date;
+
+                bottom.appendChild(dot);
+                bottom.appendChild(date);
+            }
+
+            content.appendChild(top);
+            content.appendChild(bottom);
+            wrapper.appendChild(avatar);
+            wrapper.appendChild(content);
+
+            this.replaceChildren(wrapper);
+        }
+    }
+
+    customElements.define('cc-blog-meta', BlogMeta);
+
+    //#endregion cc-blog-meta web component
+
 })();

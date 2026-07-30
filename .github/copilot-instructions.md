@@ -24,3 +24,9 @@ Use this mapping to know the current vs. former names—so you can correctly int
 - When troubleshooting issues, invoke **troubleshoot** tool if available.
 - Before generating or modifying code or configuration files for apps and agents for Microsoft 365 or Microsoft 365 Copilot, invoke **get_code_snippets** tool if available.
 - Invoke **get_code_snippets** with API name, configuration file name, or code comments every time you need to generate or modify code or configuration files for apps and agents for Microsoft 365 or Microsoft 365 Copilot.
+
+## Copilot Dev Camp Lab Authoring
+- For requests to create a new Copilot Dev Camp lab markdown page, use the repository skill at `.github/skills/copilot-dev-camp-lab-author/SKILL.md`.
+- The lab must be created under a subfolder of `docs/pages`.
+- If the requester does not provide the target subfolder or lab number, ask for them before drafting.
+- Always ask for knowledge-base URLs and suitable badge IDs/names before finalizing the lab.

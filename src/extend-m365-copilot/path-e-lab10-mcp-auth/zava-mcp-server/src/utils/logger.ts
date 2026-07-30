@@ -196,5 +196,109 @@ export const logger = {
     console.log(`\n${colors.blue}${colors.bright}MCP SESSION STATS${colors.reset}`);
     console.log(`${colors.blue}Total calls processed: ${colors.bright}${callCounter}${colors.reset}`);
     console.log(`${colors.blue}Session uptime: ${colors.bright}${Math.floor(process.uptime())}s${colors.reset}\n`);
+  },
+
+  // Detailed incoming request logger
+  mcpRequest: (details: {
+    method: string;
+    url: string;
+    ip?: string;
+    userAgent?: string;
+    origin?: string;
+    authenticated: boolean;
+    user?: {
+      sub?: string;
+      preferred_username?: string;
+      name?: string;
+      scp?: string[];
+      iss?: string;
+      aud?: string | string[];
+      tid?: string;
+    };
+    contentType?: string;
+    contentLength?: string;
+    mcpMethod?: string;
+    mcpToolName?: string;
+    mcpPromptName?: string;
+    requestId?: string;
+  }): void => {
+    const box = createBox(55, 'regular');
+    const timestamp = new Date().toISOString();
+
+    console.log(`\n${colors.cyan}${box.top}${colors.reset}`);
+    console.log(`${colors.cyan}${box.line(`${colors.bright}INCOMING REQUEST${colors.reset}${colors.cyan}`)}${colors.reset}`);
+    console.log(`${colors.cyan}${box.bottom}${colors.reset}`);
+
+    // HTTP details
+    console.log(`${colors.blue}Timestamp:${colors.reset}      ${timestamp}`);
+    console.log(`${colors.blue}HTTP:${colors.reset}           ${colors.bright}${details.method} ${details.url}${colors.reset}`);
+    console.log(`${colors.blue}Client IP:${colors.reset}      ${details.ip || 'unknown'}`);
+    console.log(`${colors.blue}User-Agent:${colors.reset}     ${colors.dim}${(details.userAgent || 'unknown').substring(0, 80)}${colors.reset}`);
+    if (details.origin) {
+      console.log(`${colors.blue}Origin:${colors.reset}         ${details.origin}`);
+    }
+    if (details.contentType) {
+      console.log(`${colors.blue}Content-Type:${colors.reset}   ${details.contentType}`);
+    }
+    if (details.contentLength) {
+      console.log(`${colors.blue}Content-Len:${colors.reset}    ${details.contentLength} bytes`);
+    }
+    if (details.requestId) {
+      console.log(`${colors.blue}Request-ID:${colors.reset}     ${details.requestId}`);
+    }
+
+    // MCP protocol details
+    if (details.mcpMethod) {
+      console.log(`${colors.magenta}MCP Method:${colors.reset}     ${colors.yellow}${colors.bright}${details.mcpMethod}${colors.reset}`);
+    }
+    if (details.mcpToolName) {
+      console.log(`${colors.magenta}MCP Tool:${colors.reset}       ${colors.yellow}${colors.bright}${details.mcpToolName}${colors.reset}`);
+    }
+    if (details.mcpPromptName) {
+      console.log(`${colors.magenta}MCP Prompt:${colors.reset}     ${colors.yellow}${colors.bright}${details.mcpPromptName}${colors.reset}`);
+    }
+
+    // Auth details
+    if (details.authenticated && details.user) {
+      console.log(`${colors.green}Auth:${colors.reset}           ${colors.bgGreen}${colors.bright} AUTHENTICATED ${colors.reset}`);
+      console.log(`${colors.green}User:${colors.reset}           ${colors.bright}${details.user.preferred_username || details.user.sub || 'unknown'}${colors.reset}`);
+      if (details.user.name) {
+        console.log(`${colors.green}Display Name:${colors.reset}   ${details.user.name}`);
+      }
+      console.log(`${colors.green}Subject (sub):${colors.reset}  ${details.user.sub || 'n/a'}`);
+      if (details.user.iss) {
+        console.log(`${colors.green}Issuer:${colors.reset}         ${colors.dim}${details.user.iss}${colors.reset}`);
+      }
+      if (details.user.aud) {
+        const aud = Array.isArray(details.user.aud) ? details.user.aud.join(', ') : details.user.aud;
+        console.log(`${colors.green}Audience:${colors.reset}       ${colors.dim}${aud}${colors.reset}`);
+      }
+      if (details.user.tid) {
+        console.log(`${colors.green}Tenant ID:${colors.reset}      ${colors.dim}${details.user.tid}${colors.reset}`);
+      }
+      if (details.user.scp && details.user.scp.length > 0) {
+        console.log(`${colors.green}Scopes:${colors.reset}         ${details.user.scp.join(', ')}`);
+      }
+    } else {
+      console.log(`${colors.yellow}Auth:${colors.reset}           ${colors.bgYellow}${colors.bright} UNAUTHENTICATED ${colors.reset}`);
+    }
+
+    console.log('');
+  },
+
+  // Response logger
+  mcpResponse: (details: {
+    method: string;
+    url: string;
+    statusCode: number;
+    durationMs: number;
+    user?: string;
+  }): void => {
+    const statusColor = details.statusCode < 400 ? colors.green : details.statusCode < 500 ? colors.yellow : colors.red;
+    console.log(
+      `${statusColor}← ${details.method} ${details.url} ${colors.bright}${details.statusCode}${colors.reset} ` +
+      `${colors.dim}${details.durationMs}ms${colors.reset}` +
+      `${details.user ? ` ${colors.dim}[${details.user}]${colors.reset}` : ''}`
+    );
   }
 };

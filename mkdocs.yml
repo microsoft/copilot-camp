@@ -23,7 +23,11 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.snippets:
       base_path: docs/includes
   - pymdownx.tabbed:
@@ -116,13 +120,14 @@ plugins:
               - Setup and extensibility: 'pages/copilot-cowork/00-cowork-setup.md'
               - Build your first skill: 'pages/copilot-cowork/01-cowork-skills.md'
               - Build your first plugin: 'pages/copilot-cowork/02-cowork-plugins.md'
+              - Add Entra SSO Authentication to a Cowork Plugin: 'pages/copilot-cowork/03-cowork-plugins-sso.md'
             - Work IQ:
               - Introduction : 'pages/work-iq/index.md'
             - Agent 365:
               - Introduction : 'pages/agent-365/index.md'
-            - Beyond Agents - AI concepts:
-              - Introduction : 'pages/beyond-agents/index.md'
-              - Level 1 - Simple agent instructions: 'pages/beyond-agents/beginner-agent.md'
+            - Beyond Labs - AI concepts:
+              - Blogs : 'pages/beyond-labs/index.md'
+              - Context and Viral Prompt Impact: 'pages/beyond-labs/blogs/context-and-viral-prompt-impact.md'
             - Awards: 'awards.md'
             # - Resources: 'resources.md'
 

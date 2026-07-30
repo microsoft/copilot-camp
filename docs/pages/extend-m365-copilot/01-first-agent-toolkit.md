@@ -4,11 +4,9 @@
   data-badge="On-ramp · Lab E1B"
   data-badge-color="blue"
   data-icon="🛠️"
-  data-title="Declarative Agent Foundation with Agents Toolkit"
   data-subtitle="Build your first declarative agent in VS Code with source files, provisioning, grounding, and capability checks."
   data-time="45-60 min"
-  data-requires="VS Code + Agents Toolkit"
-  data-toolkit="Microsoft 365 Agents Toolkit | Microsoft 365 Copilot Chat"></div>
+  data-requires="VS Code + Microsoft 365 Agents Toolkit+ Microsoft 365 Copilot Chat"></div>
 
 ## Prerequisites
 

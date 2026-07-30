@@ -496,6 +496,8 @@ Write a one-pager about Copilot Dev Camp lab: https://microsoft.github.io/copilo
 
 You have completed Lab CWRK02 - Copilot Cowork Build your first plugin!
 
-You have also completed the Copilot Cowork pathway in Copilot Dev Camp.
+<a href="../03-cowork-plugins-sso">Continue with</a> Lab CWRK3, to add Entra SSO authentication to a Cowork Plugin
+
+<cc-next />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-cowork/02-cowork-plugins" />

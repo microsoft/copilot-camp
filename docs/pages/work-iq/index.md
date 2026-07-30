@@ -1,62 +1,47 @@
 # Work IQ
 
-Work IQ is the intelligence layer that personalizes Microsoft 365 Copilot to you and your organization. It is the "brain" behind Copilot that understands context, relationships, and work patterns, so Copilot and agents can be faster, more accurate, and more secure.
+Work IQ is the "brain" behind your organizational intelligence and understands context, relationships, and work patterns, so Copilot and agents can be faster, more accurate, and more secure. With Work IQ you can unlock your organization’s intelligence for every agent. In fact, Work IQ allows consuming your organization's intelligence from any agent and from any technology.
 
-Work IQ is comprised of three tightly integrated layers—data, context, and skills & tools.
+## Understanding Work IQ
 
-## Multi-Model Foundation
+![Architectural diagram of Work IQ](../../assets/images/work-iq/WorkIQ-Architecture.png)
 
-Microsoft 365 Copilot brings leading models from multiple providers directly into Copilot experiences:
+From an architectural perspective, Work IQ is made of:
 
-- **Model choice** - Copilot chat users can choose foundation models from OpenAI, Anthropic, and other providers
-- **Task optimization** - Copilot applies the right model for the task at hand
-- **Advanced reasoning** - Work IQ complements models' advanced reasoning and multi-step capabilities
+- **Chat** experience optimized for conversational intelligence.
+- **Context** to understand your preferences, your working style, and how you want responses to be delivered.
+- **Tools** to enable agents to provide more relevant answers and perform composable actions in ways that match your habits and expectations.
+- **Workspaces** optimized for long-running agent workflows and to support reliable tasks progression.
 
-## Data Layer
+Third party agents can consume Work IQ through different protocols, depending on their actual needs:
 
-The foundation of Work IQ is its secure access to and understanding of both structured and unstructured data:
-
-- **Microsoft 365 tenant data** - Permission-based content from SharePoint, OneDrive, Word, Excel, PowerPoint, Outlook emails, Teams meetings and chats
-- **Rich metadata and signals** - Patterns of action, activity, collaboration, and communication between users and groups
-- **Copilot Connectors** - Ingest business data from non-Microsoft systems using hundreds of pre-built connectors or custom connectors
-- **Dynamics 365 and Power Apps integration** - Reason across productivity data and business data from systems of record in Dataverse
-
-## Context Layer
-
-Work IQ expands implicit grounding with an evolving layer of insights that enhance speed and accuracy:
-
-- **Work understanding** - Skills, projects, collaboration frequency, critical workflows, and communication velocity
-- **Copilot memory** - Personalization through custom instructions and saved memories that enable increasingly personal responses
-- **Semantic index** - Meaning-based retrieval using semantic understanding rather than keyword matching
-- **Business understanding** - Ontologies and glossaries capturing procedural knowledge from existing business workflows
-
-## Skills & Tools
-
-Work IQ includes agentic skills that provide specialized instructions to Copilot and agents:
-
-- **Specialized skills** - Instructions optimized for specific tasks like scheduling meetings, retrieving external data, or accessing meeting transcripts
-- **Custom toolsets** - MCP server tools, agent flows, APIs, and plugins that execute against agentic skill intent
-- **Extensibility** - Build agents and add skills and tools that work with Work IQ orchestration services
+- **A2A**: for agent-to-agent patterns.
+- **MCP**: for agent-to-tool patterns.
+- **REST**: for human/device-to-agent patterns.
 
 ## Security, Privacy, and Compliance
 
 Work IQ is designed from the ground up to respect enterprise security requirements:
 
-- **Permission inheritance** - Respects existing user permissions, Security Group assignments, and sensitivity labels
-- **Data Loss Prevention** - Honors DLP policies across all Work IQ operations
-- **Regulatory compliance** - Compliant with GDPR, EU Data Boundary, and regional legal requirements
+- **Permission inheritance** - Respects existing user permissions, Security Group assignments, and sensitivity labels.
+- **Data Loss Prevention** - Honors DLP policies across all Work IQ operations.
+- **Regulatory compliance** - Compliant with GDPR, EU Data Boundary, and regional legal requirements.
 
-## Experiences and Extensibility
+## Benefits of Work IQ
 
-Work IQ is deeply integrated into Copilot across all surfaces:
+- **Intelligence**: Work IQ goes beyond basic search. It blends semantic understanding, personal and org memory, structured file context, and domain tuning so agents reason with fresher, richer signals about people, roles, and collaboration.
+- **Speed**: Work IQ is built for agent response times. It cuts network hops, lowers context access latency, and streamlines tool use into 10 MCP-driven primitives so agents can move from analysis to action faster.
+- **Efficiency**: Work IQ reduces token spend by doing more processing in its runtime. Instead of dumping raw records, it returns compact, structured outputs that are easier for agents to consume, with extra trimming of noisy identifiers.
+- **Scale**: Work IQ is engineered for continuous, high-volume agent workloads. It supports deeper, multi-step automation patterns and the throughput needed as large numbers of agents come online.
+- **Security**: Work IQ keeps operations inside the Microsoft 365 trust boundary with inherited permissions, auditability, and governance-ready controls for enterprise agent development.
 
-- **Copilot Chat** - Work toggle activates Work IQ intelligence
-- **Microsoft 365 apps** - Full Work IQ capabilities in Word, Excel, PowerPoint, and Teams
-- **Dynamics 365 and Power Apps** - Work IQ enriched with Dataverse data
-- **Copilot API** - RESTful interface for developers to build agents grounded in live work context with enterprise-grade identity and security
+## Work IQ Labs
 
-## Coming soon...
+This section includes hands-on labs that cover Work IQ across key development patterns: setting up Work IQ and using it with CLI and GitHub Copilot CLI, Work IQ A2A, Work IQ MCP, and Work IQ REST. Together, these labs help you explore how to design, connect, and operationalize Work IQ capabilities for different integration models and agent architectures.
 
-We're currently working on this content. Check back soon for hands-on labs and tutorials covering Work IQ implementation and best practices.
+Additional labs will be added over time as the platform evolves. Upcoming topics will include broader Microsoft IQ integration scenarios, spanning Work IQ, Foundry IQ, Fabric IQ, and Web IQ, along with deeper implementation guidance for advanced enterprise use cases.
+
+<!-- ## <a href="./01-work-iq-setup-and-cli">Start here</a> with Lab WIQ01, to setup Work IQ on your tenant and to start working with it using Work IQ CLI and GitHub Copilot CLI.
+ -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/work-iq/index" />
