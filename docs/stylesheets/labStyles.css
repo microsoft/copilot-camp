@@ -519,6 +519,9 @@ h3[id*="step-"] {
 .cwrk-path ul li:nth-child(3) {
     background-image: url('../assets/images/path-icons/icon-cwrk2.png');
 }
+.cwrk-path ul li:nth-child(4) {
+    background-image: url('../assets/images/path-icons/icon-cwrk3.png');
+}
 
 /*** Style mkdocs features ***
 
@@ -785,6 +788,24 @@ dicussion */
   gap: 20px; 
   align-items: stretch;
 }
+
+/* Prevent floated TOC cards from escaping the intro row and creating large whitespace. */
+.lab-intro-video .floatwide {
+    float: none;
+    width: 100%;
+}
+
+.lab-intro-video .cc-lab-toc {
+    max-width: 100%;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .lab-intro-video {
+        flex-direction: column;
+    }
+}
+
 .disclaimer-box {
     margin-top: 1rem;
     padding: 1rem;

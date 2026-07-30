@@ -520,8 +520,6 @@ Now check out your default skills and confirm the project assignment by asking, 
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab E6b, Add Entra ID authentication with Manual Setup!
-
 Want to try something cool? How about adding a Copilot Connector to your solution?
 
 <cc-next url="../07-add-graphconnector" />

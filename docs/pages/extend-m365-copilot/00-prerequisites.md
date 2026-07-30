@@ -1,98 +1,96 @@
-# Lab E0 - Setup
+---
+title: Prerequisites for Pro-code bundles
+---
 
-In this lab, you will set up the development environment to build, test, and deploy the Copilot agents, that will help you achieve tailor made AI assitance using Microsoft 365 Copilot. 
-
-!!! note "Set up your development environment for Microsoft 365 Copilot"
-    This lab currently assumes you already have a tenant to setup. You can reference off to the
-    [page here](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/prerequisites){target=_blank} that explains the current way you can get a tenant.
-
-In this lab you will learn:
-
-- How to configure your Microsoft 365 tenant's Teams upload policy for lab use
-- How to install and configure Microsoft 365 Agents Toolkit for Visual Studio Code
+<div data-widget="hero"
+     data-badge-color="amber"
+     data-icon="🔧 One time configuration"
+     data-subtitle="Install the extra tools your chosen bundle needs and verify port forwarding works."
+     data-time="10–15 min"
+     data-toolkit="Windows / Mac / Linux"></div>
 
 
-<div class="lab-intro-video">
-    <div style="flex: 1; min-width: 0;">
-        <iframe  src="//www.youtube.com/embed/VDhRFMH3Qbs" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">          
-        </iframe>
-          <div>Get a quick overview of the lab in this video.</div>
-            <div class="disclaimer-box">
-            ⚠️ <strong>Disclaimer:</strong> These samples and labs are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
-        </div>
-    </div>
-    <div style="flex: 1; min-width: 0;">
-  ---8<--- "e-labs-prelude.md"
-    </div>
-</div>
+## What you need
+
+Complete this lab after E1A or E1B and before you start any bundle.
+
+<div data-widget="checklist"
+     data-title="Common prerequisites (Installed from E1B foundation lab)"
+     data-variant="soft"
+     data-items="Global Admin access in your M365 tenant~Required to configure tenant-wide app and policy settings|Complete one foundation path (E1A or E1B)~Required before this bundle-readiness lab|VS Code with Microsoft 365 Agents Toolkit~Sign in with your M365 developer account|Node.js 22 LTS and Git installed~Baseline tooling for all bundle workflows"></div>
+
+### Extra prerequisites by bundle
+
+| Bundle | Extra tools needed |
+|---|---|
+| **A — MCP Foundation** | GitHub account, Azurite, MCP Inspector, Azure account (free tier OK — Entra ID app reg only) |
+| **B — MCP Advanced** | GitHub account, Azurite, MCP Inspector |
+| **C — MCP App** | GitHub account, Azurite, MCP Inspector, Azure Functions Core Tools v4 |
+| **D — API Plugin** | Azure Functions Core Tools v4, REST Client extension |
+| **E — Connectors** | _(no extras beyond common prerequisites)_ |
+
+---
+## Exercise 1: Verify extra prerequisites installed
+
+| Tool | Version needed | Used in | Download |
+|---|---|---|---|
+| **GitHub account** | Free | Bundles A & B — Dev Tunnels | [github.com/join](https://github.com/join) |
+| **Azure Functions Core Tools** | v4 | Bundles C & D | [learn.microsoft.com](https://learn.microsoft.com/azure/azure-functions/functions-run-local) |
+| **REST Client (VS Code extension)** | Latest | Bundle D | VS Code Extensions panel |
+| **Azure subscription** | Free tier OK | Bundle A — Lab E10 only | [azure.microsoft.com/free](https://azure.microsoft.com/free) |
 
 
-## Exercise 1 : Configure Teams upload policy
+Open a terminal and run these checks. Every one should pass before you proceed.
 
-### Step 1: Enable Teams custom application uploads
+<div data-widget="verify"
+     data-label="Azurite — Bundles A, B, and C"
+     data-cmd="npm install -g azurite\nazurite --version\n# Expected: 3.x.x"></div>
 
-By default, end users can't upload applications directly; instead a Teams Administrator needs to upload them into the enterprise app catalog. In this step you will ensure your tenant is set up for direct uploads by Agents Toolkit.
+<div data-widget="verify"
+     data-label="MCP Inspector — Bundles A and B"
+     data-cmd="npm install -g @modelcontextprotocol/inspector\n# No version command — install succeeding without errors is the check"></div>
 
-1️⃣ Navigate to [https://admin.microsoft.com/](https://admin.microsoft.com/){target=_blank}, which is the Microsoft 365 Admin Center.
-
-2️⃣ In the left pane of the admin center, select **Show all** to open up the entire navigation. When the pane opens, select **Teams** to open the Microsoft Teams admin center.
-
-3️⃣ In the left pane of the Microsoft Teams admin center, open the Teams apps accordion. Select **Setup policies**, you will see a list of App setup policies. Then, select the **Global (Org-wide default)** policy.
-
-4️⃣ Ensure the first switch, **Upload custom apps** is turned **On**.
-
-5️⃣ Be sure to scroll down and select the **Save** button to persist your change.
-
-> The change can take up to 24 hours to take effect, but usually it's much faster.
-
-<cc-end-step lab="e0" exercise="1" step="1" />
-
-## Exercise 2: Install Agents Toolkit and prerequisites
-
-You can complete these labs on a Windows, Mac, or Linux machine, but you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use throughout the workshop.
-
-### Step 1: Install Visual Studio Code
-
-It should be no surprise that **Agents Toolkit for Visual Studio Code** requires Visual Studio Code! You can download it here: [Visual Studio Code](https://code.visualstudio.com/download){target=_blank}.
-The version of VS Code used for authoring these labs : 1.106.3
-
-<cc-end-step lab="e0" exercise="2" step="1" />
-
-### Step 2: Install Node.js
-
-Node.js is a program that allows you to run JavaScript on your computer; it uses the open source "V8" engine, which is used in popular web browsers such as Microsoft Edge and Google Chrome. You will need Node.js to run the web server code used throughout this workshop.
-
-Browse to [https://nodejs.org/en/download/](https://nodejs.org/en/download/){target=_blank} and install version v22. This lab was last tested in Node Version v22.18.0.  If you already have another version of Node.js installed, you may want to set up the [Node Version Manager](https://github.com/nvm-sh/nvm){target=_blank} (or [this variation](https://github.com/coreybutler/nvm-windows){target=_blank} for Microsoft Windows), which allows you to easily switch Node.js versions on the same computer.
-
-<cc-end-step lab="e0" exercise="2" step="2" />
-
-### Step 3: Install Agents Toolkit
-
-These labs are based on **Microsoft 365 Agents Toolkit** version 6.4.1.
-
-!!! tip "What is Agents Toolkit?"
-    Microsoft 365 Agents Toolkit is an evolution of Microsoft Teams Toolkit, is designed to help you develop agents and apps for Microsoft 365 Copilot, Microsoft Teams, and Microsoft 365.
-
-Follow the steps as shown in the screen shot below.
-
-1️⃣ Open Visual Studio Code and click on the Extensions toolbar button
-
-2️⃣ Search for "Microsoft 365 Agents" and locate Agents Toolkit
-
-3️⃣ Click **Install**
-
-![agents toolkit](../../assets/images/extend-m365-copilot-00/agents-toolkit.png)
-
-!!! note "If you have Agents Toolkit installed but hidden"
-    If you previously installed Agents Toolkit, and then hid it on the Visual Studio sidebar, you might wonder why you can't see it. Right-click on the left sidebar and check off Agents Toolkit to bring it back into view.
-
-<cc-end-step lab="e0" exercise="2" step="3" />
+<div data-widget="callout"
+     data-type="tip"
+     data-title="Windows users: run terminal as Administrator"
+     data-body="Global npm installs on Windows sometimes need elevated permissions. Right-click the terminal icon and select &quot;Run as Administrator&quot; if you see EACCES or permission errors."></div>
 
 
----8<--- "e-congratulations.md"
+---
 
-Now you are all set to create your first extensibility feature for Microsoft 365 Copilot. Proceed to create a Declarative Agent in the next lab. 
+## Exercise 2: Verify port forwarding with your first Dev Tunnel
 
-<cc-next />
+Use this exercise to confirm your machine can expose a local port through a public Dev Tunnel URL.
+
+Success criteria:
+
+- Port `3001` is forwarded in VS Code.
+- Visibility is set to **Public**.
+- You can copy a valid `https://...use.devtunnels.ms` URL.
+
+
+<div data-widget="step" data-n="1" data-title="Forward port 3001"></div>
+
+1. In VS Code, open the **Ports** tab (in the terminal panel)
+2. Click **Forward a Port**, enter `3001`, and press Enter
+
+
+
+<div data-widget="step" data-n="2" data-title="Make it public"></div>
+
+1. Right-click the new port entry → **Port Visibility** → **Public**
+2. Sign in with your GitHub account if prompted
+3. Copy the forwarded address — it looks like `https://abc123def456.use.devtunnels.ms`
+
+If you reached this point, port forwarding is working correctly, and you can stop tunneling for now.
+
+
+
+<div data-widget="labnav"
+     data-prev="../01-first-agent-new/"
+     data-prev-label="Back to E1 Path Choice"
+     data-next="../bundles/"
+     data-next-label="Choose Your Bundle"></div>
+
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/00-prerequisites" />

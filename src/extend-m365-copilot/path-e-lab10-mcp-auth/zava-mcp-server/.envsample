@@ -1,0 +1,26 @@
+# OAuth 2.0 Resource Server
+# Single-tenant: use your tenant ID in the issuer URL and set OAUTH_VALIDATE_ISSUER=true
+# Multitenant: use /common in the issuer URL, set OAUTH_VALIDATE_ISSUER=false, and provide OAUTH_ACCEPTED_TENANT_IDS
+OAUTH_ACCEPTED_ISSUERS=https://login.microsoftonline.com/<YOUR_TENANT_ID_OR_common>/v2.0
+OAUTH_ACCEPTED_AUDIENCES=api://<YOUR_CLIENT_ID>
+OAUTH_REQUIRED_SCOPES=api://<YOUR_CLIENT_ID>/access_as_user
+OAUTH_VALIDATE_ISSUER=false
+OAUTH_ACCEPTED_TENANT_IDS=<YOUR_TENANT_ID>
+OAUTH_JWKS_URIS=https://login.microsoftonline.com/<YOUR_TENANT_ID_OR_common>/discovery/v2.0/keys
+
+# Authorization endpoints for MCP client discovery
+OAUTH_AUTHORIZATION_ENDPOINT=https://login.microsoftonline.com/<YOUR_TENANT_ID_OR_common>/oauth2/v2.0/authorize
+OAUTH_TOKEN_ENDPOINT=https://login.microsoftonline.com/<YOUR_TENANT_ID_OR_common>/oauth2/v2.0/token
+
+# Server
+RESOURCE_IDENTIFIER=https://<YOUR_DEVTUNNEL_OR_DOMAIN>
+SERVER_BASE_URL=https://<YOUR_DEVTUNNEL_OR_DOMAIN>
+PORT=3001
+HOST=127.0.0.1
+NODE_ENV=development
+
+# CORS (comma-separated origins)
+ADDITIONAL_ALLOWED_ORIGINS=http://localhost:6274,https://<YOUR_DEVTUNNEL_OR_DOMAIN>
+
+# Azure Table Storage (Azurite for local dev)
+AZURE_STORAGE_CONNECTION_STRING="UseDevelopmentStorage=true"

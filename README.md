@@ -4,14 +4,48 @@ This repo is for hosting a virtual workshop for developers who want to build age
 
 Please visit Copilot Developer Camp at [https://aka.ms/copilotdevcamp](https://aka.ms/copilotdevcamp)
 
-You can find the complete source code of each labs below:
+## Learning Paths
 
-| | Sample | Lab |
+Copilot Developer Camp offers multiple hands-on learning paths depending on your role and scenario:
+
+### 🧩 Extend Microsoft 365 Copilot (Declarative Agents)
+
+Build declarative agents that focus Copilot on your business data. From no-code to pro-code, you'll define instructions, knowledge sources, and actions — while Copilot handles orchestration and reasoning.
+
+**On-ramp (required):** Start with E1A (Agent Builder, no-code) or E1B (Agents Toolkit, pro-code), then complete Prerequisites before choosing a bundle.
+
+| Bundle | Focus | What you'll build |
 |---|---|---|
-| Trey Research Copilot Agent with API Plugin | typescript:<br />- [anonymous](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research)<br />- [with auth](https://github.com/OfficeDev/Copilot-for-M365-Samples/tree/main/samples/cext-trey-research-auth) | [labs E0, E2-E8](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
-| Declarative agent | [instructions based](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/cext-geolocator-game) | [labs E0-E1](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/) |
- | Custom engine agent with Teams AI library | [TypeScript](https://github.com/microsoft/copilot-camp/tree/main/src/custom-engine-copilot/Lab05-Actions/CareerGenie)  | [labs BTA0-BTA5](https://microsoft.github.io/copilot-camp/pages/custom-engine/) |
- | Custom engine agent with M365 Agents SDK | [C#](https://github.com/aycabas/copilot-camp/tree/main/src/agents-sdk)  | [labs BMA0-BM5](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/) |
+| **A — MCP Foundation** | Build & secure an MCP server | OAuth 2.0 + Entra ID secured MCP tools with least-privilege access |
+| **B — Multi-Agent Workflows** | Orchestrate multiple agents | Coordinated multi-agent flows with role-based handoffs |
+| **C — MCP App** | Rich interactive UI on MCP | React + Fluent UI widgets for actionable responses (portable across MCP hosts) |
+| **D — API-Based Agent** | Call custom APIs via plugins | API plugin from OpenAPI spec with auth and real external operations |
+| **E — Copilot Connectors** | Enterprise data grounding | Connector-grounded responses anchored in organizational data |
+
+- [**Start the labs →**](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/)
+
+### 🤖 Build Custom Engine Agents
+
+Full control over the foundation model, orchestrator, and security stack. Choose between two paths:
+
+| Path | Stack | Description |
+|---|---|---|
+| [M365 Agents SDK + Semantic Kernel](https://microsoft.github.io/copilot-camp/pages/custom-engine/agents-sdk/) | C# | Start in Microsoft Foundry, then build with the Agents SDK and Semantic Kernel for multi-step reasoning across Teams and Copilot Chat |
+| [Agent Framework](https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/) | C# | Build a production-ready insurance claims agent from scratch with document search, vision analysis, and auth |
+
+### 🤝 Copilot Cowork (Extensibility)
+
+Extend Copilot Cowork — an orchestrator that goes beyond chat to execute multi-step, cross-app workflows across Microsoft 365. Learn how to configure your tenant, build skills and plugins, and add SSO-secured extensibility.
+
+- [**Start the labs →**](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/)
+
+### 📄 SharePoint Agents & Copilot Apps
+
+Build agents grounded in SharePoint content or create SharePoint Copilot Apps that bring rich, interactive experiences to SharePoint Online.
+
+- [**Start the labs →**](https://microsoft.github.io/copilot-camp/pages/sharepoint/)
+
+
 
 We'd love it if you would test out the [Copilot Developer Camp](https://aka.ms/copilotdevcamp) labs, and very much appreciate your feedback! Please use the [issues list](https://github.com/microsoft/copilot-camp/issues) to share your comments and issues.
 
@@ -50,3 +84,25 @@ If you get stuck or have any questions about building AI apps, join:
 If you have product feedback or errors while building visit:
 
 [![Azure AI Foundry Developer Forum](https://img.shields.io/badge/GitHub-Azure_AI_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
+
+## Check typos in a Markdown page
+
+To check typos in a single `.md` file (similar to quick local validation while editing pages):
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/check_md_typos.py docs/pages/extend-m365-copilot/index.md
+```
+
+Optional flags:
+
+- `--fix` to apply auto-corrections where possible.
+- `--ignore-words-file scripts/typo-ignore-words.txt` to load ignored terms from a text file (one word per line).
+- `--ignore-words-list "word1,word2"` to add extra ignored words ad-hoc.
+- `--known-typos-only` to use only `codespell` built-in typo dictionary.
+
+Example with custom ignore file:
+
+```bash
+python scripts/check_md_typos.py docs/pages/extend-m365-copilot/index.md --ignore-words-file scripts/typo-ignore-words.txt
+```

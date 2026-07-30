@@ -442,8 +442,6 @@ From now on, the sign in will be smooth for the user when interacting with the a
 
 ---8<--- "e-congratulations.md"
 
-You have completed lab E6c, Add SSO!
-
 Want to try something cool? How about adding a Copilot Connector to your solution?
 
 <cc-next url="../07-add-graphconnector" />
