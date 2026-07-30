@@ -41,7 +41,7 @@ This section includes hands-on labs that cover Work IQ across key development pa
 
 Additional labs will be added over time as the platform evolves. Upcoming topics will include broader Microsoft IQ integration scenarios, spanning Work IQ, Foundry IQ, Fabric IQ, and Web IQ, along with deeper implementation guidance for advanced enterprise use cases.
 
-## <a href="./01-work-iq-setup-and-cli">Start here</a> with Lab WIQ01, to setup Work IQ on your tenant and to start working with it using Work IQ CLI and GitHub Copilot CLI.
-
+<!-- ## <a href="./01-work-iq-setup-and-cli">Start here</a> with Lab WIQ01, to setup Work IQ on your tenant and to start working with it using Work IQ CLI and GitHub Copilot CLI.
+ -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/work-iq/index" />
