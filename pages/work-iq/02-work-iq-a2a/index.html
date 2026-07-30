@@ -6,33 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Learn how to use the Agent-to-Agent (A2A) protocol to communicate with Work IQ and build multi-agent experiences. Discover agent discovery, authentication, message sending, and protocol inspection.">
       
       
-        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/work-iq/">
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/work-iq/02-work-iq-a2a/">
       
       
-        <link rel="prev" href="../copilot-cowork/03-cowork-plugins-sso/">
-      
-      
-        <link rel="next" href="../agent-365/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Introduction - Copilot Developer Camp</title>
+        <title>Work IQ A2A Protocol - Copilot Developer Camp</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,11 +49,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/labStyles.css">
+      <link rel="stylesheet" href="../../../stylesheets/labStyles.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#work-iq" class="md-skip">
+        <a href="#lab-wiq02-work-iq-a2a-protocol" class="md-skip">
           Skip to content
         </a>
       
@@ -94,9 +92,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
       
-  <img src="../../assets/images/tent-small.png" alt="logo">
+  <img src="../../../assets/images/tent-small.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Work IQ A2A Protocol
             
           </span>
         </div>
@@ -192,7 +190,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -213,7 +211,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../extend-m365-copilot/" class="md-tabs__link">
+        <a href="../../extend-m365-copilot/" class="md-tabs__link">
           
   
   
@@ -233,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../custom-engine/" class="md-tabs__link">
+        <a href="../../custom-engine/" class="md-tabs__link">
           
   
   
@@ -253,7 +251,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../sharepoint/" class="md-tabs__link">
+        <a href="../../sharepoint/" class="md-tabs__link">
           
   
   
@@ -273,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../copilot-cowork/00-cowork-setup/" class="md-tabs__link">
+        <a href="../../copilot-cowork/00-cowork-setup/" class="md-tabs__link">
           
   
   
@@ -289,13 +287,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -315,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../agent-365/" class="md-tabs__link">
+        <a href="../../agent-365/" class="md-tabs__link">
           
   
   
@@ -335,7 +331,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../beyond-labs/" class="md-tabs__link">
+        <a href="../../beyond-labs/" class="md-tabs__link">
           
   
   
@@ -353,7 +349,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../awards/" class="md-tabs__link">
+      <a href="../../../awards/" class="md-tabs__link">
         
   
   
@@ -396,9 +392,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
       
-  <img src="../../assets/images/tent-small.png" alt="logo">
+  <img src="../../../assets/images/tent-small.png" alt="logo">
 
     </a>
     Copilot Developer Camp
@@ -425,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -504,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/" class="md-nav__link">
         
   
   
@@ -532,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/bundles/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/bundles/" class="md-nav__link">
         
   
   
@@ -612,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/01-first-agent-new/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/01-first-agent-new/" class="md-nav__link">
         
   
   
@@ -640,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/01-first-agent-builder/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/01-first-agent-builder/" class="md-nav__link">
         
   
   
@@ -668,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/01-first-agent-toolkit/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/01-first-agent-toolkit/" class="md-nav__link">
         
   
   
@@ -696,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/00-prerequisites/" class="md-nav__link">
         
   
   
@@ -784,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/bundle-a/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/bundle-a/" class="md-nav__link">
         
   
   
@@ -872,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/bundle-b/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/bundle-b/" class="md-nav__link">
         
   
   
@@ -960,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/bundle-c/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/bundle-c/" class="md-nav__link">
         
   
   
@@ -1048,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/bundle-d/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/bundle-d/" class="md-nav__link">
         
   
   
@@ -1136,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../extend-m365-copilot/bundle-e/" class="md-nav__link">
+      <a href="../../extend-m365-copilot/bundle-e/" class="md-nav__link">
         
   
   
@@ -1231,7 +1227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/" class="md-nav__link">
+      <a href="../../custom-engine/" class="md-nav__link">
         
   
   
@@ -1311,7 +1307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agents-sdk/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
         
   
   
@@ -1339,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
         
   
   
@@ -1367,7 +1363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
         
   
   
@@ -1395,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
         
   
   
@@ -1423,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
         
   
   
@@ -1451,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
         
   
   
@@ -1539,7 +1535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/" class="md-nav__link">
         
   
   
@@ -1567,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/00-prerequisites/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/00-prerequisites/" class="md-nav__link">
         
   
   
@@ -1595,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
         
   
   
@@ -1623,7 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
         
   
   
@@ -1651,7 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/03-add-vision-analysis/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/03-add-vision-analysis/" class="md-nav__link">
         
   
   
@@ -1679,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/04-add-policy-search/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/04-add-policy-search/" class="md-nav__link">
         
   
   
@@ -1707,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/05-add-communication/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/05-add-communication/" class="md-nav__link">
         
   
   
@@ -1735,7 +1731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/06-add-copilot-api/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/06-add-copilot-api/" class="md-nav__link">
         
   
   
@@ -1763,7 +1759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom-engine/agent-framework/07-add-mcp-tools/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/07-add-mcp-tools/" class="md-nav__link">
         
   
   
@@ -1858,7 +1854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sharepoint/" class="md-nav__link">
+      <a href="../../sharepoint/" class="md-nav__link">
         
   
   
@@ -1886,7 +1882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sharepoint/sharepoint-copilot-apps/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-copilot-apps/" class="md-nav__link">
         
   
   
@@ -1914,7 +1910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sharepoint/sharepoint-copilot-apps/01-first-copilot-app/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-copilot-apps/01-first-copilot-app/" class="md-nav__link">
         
   
   
@@ -1942,7 +1938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sharepoint/sharepoint-agents/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-agents/" class="md-nav__link">
         
   
   
@@ -1970,7 +1966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sharepoint/sharepoint-agents/01-first-agent/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-agents/01-first-agent/" class="md-nav__link">
         
   
   
@@ -1998,7 +1994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sharepoint/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
         
   
   
@@ -2085,7 +2081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copilot-cowork/00-cowork-setup/" class="md-nav__link">
+      <a href="../../copilot-cowork/00-cowork-setup/" class="md-nav__link">
         
   
   
@@ -2113,7 +2109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copilot-cowork/01-cowork-skills/" class="md-nav__link">
+      <a href="../../copilot-cowork/01-cowork-skills/" class="md-nav__link">
         
   
   
@@ -2141,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copilot-cowork/02-cowork-plugins/" class="md-nav__link">
+      <a href="../../copilot-cowork/02-cowork-plugins/" class="md-nav__link">
         
   
   
@@ -2169,7 +2165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../copilot-cowork/03-cowork-plugins-sso/" class="md-nav__link">
+      <a href="../../copilot-cowork/03-cowork-plugins-sso/" class="md-nav__link">
         
   
   
@@ -2201,31 +2197,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -2243,7 +2234,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2258,37 +2249,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Introduction
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2304,70 +2268,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#understanding-work-iq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Understanding Work IQ
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-privacy-and-compliance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security, Privacy, and Compliance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benefits-of-work-iq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benefits of Work IQ
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#work-iq-labs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Work IQ Labs
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2439,7 +2339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent-365/" class="md-nav__link">
+      <a href="../../agent-365/" class="md-nav__link">
         
   
   
@@ -2526,7 +2426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../beyond-labs/" class="md-nav__link">
+      <a href="../../beyond-labs/" class="md-nav__link">
         
   
   
@@ -2554,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../beyond-labs/blogs/context-and-viral-prompt-impact/" class="md-nav__link">
+      <a href="../../beyond-labs/blogs/context-and-viral-prompt-impact/" class="md-nav__link">
         
   
   
@@ -2589,7 +2489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../awards/" class="md-nav__link">
+      <a href="../../../awards/" class="md-nav__link">
         
   
   
@@ -2626,51 +2526,293 @@
 
 
 
-<h1 id="work-iq">Work IQ</h1>
-<p>Work IQ is the "brain" behind your organizational intelligence and understands context, relationships, and work patterns, so Copilot and agents can be faster, more accurate, and more secure. With Work IQ you can unlock your organization’s intelligence for every agent. In fact, Work IQ allows consuming your organization's intelligence from any agent and from any technology.</p>
-<h2 id="understanding-work-iq">Understanding Work IQ</h2>
-<p><img alt="Architectural diagram of Work IQ" src="../../assets/images/work-iq/WorkIQ-Architecture.png" /></p>
-<p>From an architectural perspective, Work IQ is made of:</p>
+<h1 id="lab-wiq02-work-iq-a2a-protocol">Lab WIQ02 - Work IQ A2A Protocol</h1>
+<!--
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe src="//www.youtube.com/embed/<VIDEO_ID>" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">
+        </iframe>
+        <div>Get a quick overview of the lab in this video.</div>
+    </div>
+</div>
+-->
+
+<h2 id="scenario">Scenario</h2>
+<p>Your organization is building multi-agent systems where agents need to collaborate seamlessly. You've registered a Work IQ agent in Microsoft Entra ID (from <strong>WIQ01</strong>), and now you need to enable another agent to consume Work IQ's capabilities using the Agent-to-Agent (A2A) protocol.</p>
+<p>The A2A protocol is an open standard that allows AI agents to communicate and collaborate with Work IQ without complex integrations. You'll learn how to:</p>
 <ul>
-<li><strong>Chat</strong> experience optimized for conversational intelligence.</li>
-<li><strong>Context</strong> to understand your preferences, your working style, and how you want responses to be delivered.</li>
-<li><strong>Tools</strong> to enable agents to provide more relevant answers and perform composable actions in ways that match your habits and expectations.</li>
-<li><strong>Workspaces</strong> optimized for long-running agent workflows and to support reliable tasks progression.</li>
+<li>Discover Work IQ's capabilities through its agent card</li>
+<li>Authenticate securely using Entra ID tokens</li>
+<li>Send both simple and complex prompts over A2A</li>
+<li>Inspect the protocol traffic to understand how agents exchange information</li>
+<li>Consume Work IQ A2A from Copilot Studio</li>
 </ul>
-<p>Third party agents can consume Work IQ through different protocols, depending on their actual needs:</p>
+<h2 id="lab-objectives">Lab objectives</h2>
+<p>After completing this lab, you'll be able to:</p>
 <ul>
-<li><strong>A2A</strong>: for agent-to-agent patterns.</li>
-<li><strong>MCP</strong>: for agent-to-tool patterns.</li>
-<li><strong>REST</strong>: for human/device-to-agent patterns.</li>
+<li>Explain the A2A protocol and how it differs from traditional tool-based integration</li>
+<li>Use the a2a-consumer tool to connect to Work IQ and inspect agent cards</li>
+<li>Make basic queries to Work IQ (e.g., "Who am I?", "Who is my manager?")</li>
+<li>Craft complex, multi-step prompts </li>
+<li>Inspect A2A protocol traffic and understand message flow, streaming, and task lifecycle</li>
+<li>Build agents that can delegate tasks to Work IQ over A2A</li>
 </ul>
-<h2 id="security-privacy-and-compliance">Security, Privacy, and Compliance</h2>
-<p>Work IQ is designed from the ground up to respect enterprise security requirements:</p>
+<h2 id="exercise-1-understanding-the-a2a-protocol">Exercise 1: Understanding the A2A Protocol</h2>
+<h3 id="step-1-learn-the-a2a-fundamentals">Step 1: Learn the A2A fundamentals</h3>
+<p>The <strong>Agent-to-Agent (A2A) protocol</strong> is an open standard that enables AI agents to communicate and collaborate seamlessly. Unlike traditional tool-based integration (where agents are wrapped as stateless tools), A2A allows agents to interact as first-class citizens—they can negotiate, delegate tasks, and maintain context across multi-turn conversations.</p>
+<p><strong>Key differences from MCP:</strong></p>
 <ul>
-<li><strong>Permission inheritance</strong> - Respects existing user permissions, Security Group assignments, and sensitivity labels.</li>
-<li><strong>Data Loss Prevention</strong> - Honors DLP policies across all Work IQ operations.</li>
-<li><strong>Regulatory compliance</strong> - Compliant with GDPR, EU Data Boundary, and regional legal requirements.</li>
+<li><strong>MCP (Model Context Protocol):</strong> Connects an LLM to tools and data. Tools are stateless and perform specific functions.</li>
+<li><strong>A2A:</strong> Enables agent-to-agent collaboration. Agents remain autonomous, can maintain state, and exchange rich structured messages.</li>
 </ul>
-<h2 id="benefits-of-work-iq">Benefits of Work IQ</h2>
+<p><strong>Why A2A matters for Work IQ:</strong></p>
 <ul>
-<li><strong>Intelligence</strong>: Work IQ goes beyond basic search. It blends semantic understanding, personal and org memory, structured file context, and domain tuning so agents reason with fresher, richer signals about people, roles, and collaboration.</li>
-<li><strong>Speed</strong>: Work IQ is built for agent response times. It cuts network hops, lowers context access latency, and streamlines tool use into 10 MCP-driven primitives so agents can move from analysis to action faster.</li>
-<li><strong>Efficiency</strong>: Work IQ reduces token spend by doing more processing in its runtime. Instead of dumping raw records, it returns compact, structured outputs that are easier for agents to consume, with extra trimming of noisy identifiers.</li>
-<li><strong>Scale</strong>: Work IQ is engineered for continuous, high-volume agent workloads. It supports deeper, multi-step automation patterns and the throughput needed as large numbers of agents come online.</li>
-<li><strong>Security</strong>: Work IQ keeps operations inside the Microsoft 365 trust boundary with inherited permissions, auditability, and governance-ready controls for enterprise agent development.</li>
+<li>Work IQ is an agent that understands Microsoft 365 data (emails, meetings, files, Teams messages, people, etc.).</li>
+<li>Other agents can delegate work to Work IQ without wrapping it as a tool.</li>
+<li>Supports long-running operations, streaming, and complex multi-turn interactions.</li>
 </ul>
-<h2 id="work-iq-labs">Work IQ Labs</h2>
-<p>This section includes hands-on labs that cover Work IQ across key development patterns: setting up Work IQ and using it with CLI and GitHub Copilot CLI, Work IQ A2A, Work IQ MCP, and Work IQ REST. Together, these labs help you explore how to design, connect, and operationalize Work IQ capabilities for different integration models and agent architectures.</p>
-<p>Additional labs will be added over time as the platform evolves. Upcoming topics will include broader Microsoft IQ integration scenarios, spanning Work IQ, Foundry IQ, Fabric IQ, and Web IQ, along with deeper implementation guidance for advanced enterprise use cases.</p>
-<!-- ## <a href="./01-work-iq-setup-and-cli">Start here</a> with Lab WIQ01, to setup Work IQ on your tenant and to start working with it using Work IQ CLI and GitHub Copilot CLI.
- -->
+<p><cc-end-step lab="WIQ02" exercise="1" step="1" /></p>
+<h3 id="step-2-understand-the-a2a-request-lifecycle">Step 2: Understand the A2A request lifecycle</h3>
+<p>Every A2A interaction follows this lifecycle:</p>
+<ol>
+<li><strong>Agent Discovery:</strong> Client discovers the remote agent by fetching its agent card at <code>/.well-known/agent-card.json</code></li>
+<li><strong>Authentication:</strong> Client obtains an access token (via Entra ID) with permission to call the remote agent</li>
+<li><strong>SendMessage API:</strong> Client sends a JSON-RPC request with the user's message</li>
+<li><strong>SendMessageStream API:</strong> Client opens a streaming channel for real-time task updates and artifacts</li>
+</ol>
+<p><strong>Work IQ A2A endpoints:</strong></p>
+<ul>
+<li>Default agent: <code>https://workiq.svc.cloud.microsoft/a2a/.well-known/agent-card.json</code></li>
+<li>Specific agent: <code>https://workiq.svc.cloud.microsoft/a2a/{agent-id}/.well-known/agent-card.json</code></li>
+<li>Message endpoint: <code>POST https://workiq.svc.cloud.microsoft/a2a/</code></li>
+</ul>
+<p><strong>A2A version:</strong> Work IQ supports both A2A v1.0 and v0.3. Use the <code>A2A-Version: 1.0</code> header for v1.0 features like <code>SendMessage</code>.</p>
+<p><cc-end-step lab="WIQ02" exercise="1" step="2" /></p>
+<h3 id="step-3-understand-authentication-and-permissions">Step 3: Understand authentication and permissions</h3>
+<p>A2A communication with Work IQ requires:</p>
+<ul>
+<li><strong>Delegated authentication via Entra ID:</strong> Requests run in the context of the signed-in user (not app-only).</li>
+<li><strong>Access tokens:</strong> Pass the token in the <code>Authorization: Bearer {access-token}</code> header.</li>
+<li><strong>Permission trimming:</strong> Work IQ automatically respects the user's Microsoft 365 permissions and compliance policies.</li>
+<li><strong>On-behalf-of (OBO) flows:</strong> Supported for scenarios where your agent acts on behalf of another agent or service.</li>
+</ul>
+<p>For this lab, you'll use the <strong>a2a-consumer</strong> tool, which handles Entra ID authentication and token exchange internally.</p>
+<p><cc-end-step lab="WIQ02" exercise="1" step="3" /></p>
+<h2 id="exercise-2-connecting-to-work-iq-over-a2a">Exercise 2: Connecting to Work IQ over A2A</h2>
+<h3 id="step-1-set-up-the-a2a-consumer-tool">Step 1: Set up the a2a-consumer tool</h3>
+<p>The <strong>a2a-consumer</strong> is a testing and inspection tool that allows you to:</p>
+<ul>
+<li>Discover agents and inspect their agent cards</li>
+<li>Send messages synchronously and asynchronously</li>
+<li>Monitor streaming responses in real time</li>
+<li>Inspect JSON-RPC request/response traffic</li>
+</ul>
+<p>Clone or download the <a href="https://github.com/PaoloPia/a2a-consumer" target="_blank">a2a-consumer repository</a>:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/PaoloPia/a2a-consumer
+<span class="nb">cd</span><span class="w"> </span>a2a-consumer
+npm<span class="w"> </span>install
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<p>This will start a local web server for A2A testing.
+Once the application is running, open the URL (should be <a href="http://localhost:5173/" target="_blank">http://localhost:5173/</a>) in your browser.</p>
+<p><cc-end-step lab="WIQ02" exercise="2" step="1" /></p>
+<h3 id="step-2-configure-authentication">Step 2: Configure authentication</h3>
+<p>To communicate with Work IQ, you need an Entra ID app registration with:</p>
+<ul>
+<li><strong>Tenant ID</strong>, <strong>Application ID</strong>, and <strong>Client Secret</strong> from lab WIQ01</li>
+<li><strong>Redirect URI</strong>: <code>http://localhost:5173/oauth/callback</code> (or whatever is the URL of <strong>a2a-consumer</strong> on your environment)</li>
+<li><strong>Permission scopes:</strong> <code>api://workiq.svc.cloud.microsoft/WorkIQAgent.Ask</code> (the scope configured in WIQ01)</li>
+</ul>
+<p>In the a2a-consumer interface:</p>
+<ol>
+<li>Configure the <strong>Connection</strong> with the following URL: <code>https://workiq.svc.cloud.microsoft/a2a/.well-known/agent-card.json</code></li>
+<li>In the <strong>Authentication</strong> panel configure the following settings:<ul>
+<li><strong>OAuth Flow</strong></li>
+<li><strong>Client Secret</strong> (dev proxy)</li>
+<li><strong>Tenant Id</strong>: the <strong>Tenant Id</strong> value you saved from lab WIQ01</li>
+<li><strong>Client Id</strong>: the <strong>Application Id</strong> value you saved from lab WIQ01</li>
+<li><strong>Redirect URI</strong>: the URL <code>http://localhost:5173/oauth/callback</code> (needs to be configured as a web callback URL in the Entra ID application that you configured in lab WIQ01)</li>
+<li><strong>Client Secret</strong>: the <strong>Client Secret</strong> value you saved from lab WIQ01</li>
+</ul>
+</li>
+<li>Select the command <strong>Authorize &amp; Get Token</strong> and follow the authentication flow. Once the token will be acquired you will see a message like <code>Token acquired (expires ...)</code></li>
+</ol>
+<p>The tool just acquired an access token on your behalf and it will include it in all A2A requests.</p>
+<p><cc-end-step lab="WIQ02" exercise="2" step="2" /></p>
+<h3 id="step-3-fetch-the-work-iq-agent-card">Step 3: Fetch the Work IQ agent card</h3>
+<p>The <strong>agent card</strong> is a JSON document that describes Work IQ's capabilities, authentication requirements, and endpoints.</p>
+<p>In the a2a-consumer interface:</p>
+<ol>
+<li>Select the <strong>Connect</strong> button to connect to Work IQ via A2A. You should see the <strong>Status</strong> as <strong>Connected</strong></li>
+<li>Review the <strong>Agent Card</strong> panel in the <strong>Summary &amp; Validation</strong> section with:</li>
+<li>Name: <code>Microsoft Copilot</code></li>
+<li>Version: <code>1.0.0</code></li>
+<li>URL: <code>https://workiq.svc.cloud.microsoft/a2a</code></li>
+</ol>
+<p>You can select the <strong>Raw JSON</strong> command to inspect the raw JSON content of the agent's card.
+You can also select the <strong>Settings Table</strong> command to see a well formatted representation of the agent's card content.</p>
+<p><strong>Example agent card structure:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft Copilot&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An AI-powered assistant that helps users with business-related tasks such as managing emails, scheduling meetings, and organizing documents.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://workiq.svc.cloud.microsoft/a2a&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iconUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://copilot.microsoft.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;organization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.microsoft.com&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;protocolVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.3.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;streaming&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pushNotifications&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stateTransitionHistory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;defaultInputModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;text&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;defaultOutputModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;text&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;skills&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;supportsAuthenticatedExtendedCard&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;additionalInterfaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;preferredTransport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JSONRPC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;supportedInterfaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://workiq.svc.cloud.microsoft/a2a&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;protocolBinding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JSONRPC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;protocolVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><cc-end-step lab="WIQ02" exercise="2" step="3" /></p>
+<h3 id="step-4-inspect-the-agent-card-response">Step 4: Inspect the agent card response</h3>
+<p>Look at the key fields in the agent card, when showing the <strong>Raw JSON</strong> information:</p>
+<ul>
+<li><strong>supportedInterfaces:</strong> Tells you the endpoint URL and protocol binding (JSONRPC).</li>
+<li><strong>capabilities.streaming:</strong> <code>true</code> means Work IQ supports real-time streaming responses.</li>
+<li><strong>securitySchemes:</strong> Details the Entra ID authorization URL and token endpoint.</li>
+<li><strong>defaultInputModes / defaultOutputModes:</strong> Both are <code>["text"]</code>, so Work IQ communicates via text messages.</li>
+</ul>
+<p>This card tells consumer agents (like your test client) how to authenticate, where to send requests, and what capabilities to expect.</p>
+<p><cc-end-step lab="WIQ02" exercise="2" step="4" /></p>
+<h2 id="exercise-3-making-a-basic-prompt">Exercise 3: Making a Basic Prompt</h2>
+<h3 id="step-1-craft-a-simple-json-rpc-message">Step 1: Craft a simple JSON-RPC message</h3>
+<p>In the a2a-consumer interface, move to the <strong>A2A Messaging &amp; Operations</strong> panel and in the <strong>Chat</strong> section type the following prompt:</p>
+<div class="highlight"><pre><span></span><code>Who am I?
+</code></pre></div>
+<p>Keep the <strong>Stream</strong> option checked and select the <strong>Send</strong> command to send the prompt to Work IQ. After a while the Work IQ A2A server will reply back to you with the answer in the <strong>Chat</strong> area.</p>
+<p><cc-end-step lab="WIQ02" exercise="3" step="1" /></p>
+<h3 id="step-2-inspect-the-response">Step 2: Inspect the response</h3>
+<p>Scroll down the interface of the a2a-consumer application and expand the <strong>Responses</strong> panel. In the <strong>Streaming Events</strong> section, you should be able to see the messages returned by Work IQ over A2A and defined as <code>SendStreamingMessage</code>. You will be able to see all the chunks of the response that rendered in the <strong>Chat</strong> interface.</p>
+<p>Now expand the <strong>On-Wire Commmunication</strong> panel to see the actual requests sent on the wire from the a2a-consumer to the Work IQ A2A server. You can see there are at least 3 requests:</p>
+<ul>
+<li><strong>GetAgentCardDocument</strong>: it is the initial request to retrieve the agent's card</li>
+<li><strong>SendStreamingMessage</strong>: it is the request to submit the prompt to the A2A server</li>
+<li><strong>SubscribeToTask</strong>: the request to subscribe to the task updates</li>
+</ul>
+<p>Now select <strong>Hide Wire Inspector</strong> and <strong>Hide Responses</strong> to go back to the <strong>Chat</strong> area.</p>
+<p><cc-end-step lab="WIQ02" exercise="3" step="2" /></p>
+<h3 id="step-3-send-a-follow-up-question-with-context">Step 3: Send a follow-up question with context</h3>
+<p>Now ask about your manager using the same context. Simply provide the following prompt in the chat textarea.</p>
+<div class="highlight"><pre><span></span><code>Who is my manager?
+</code></pre></div>
+<p><strong>Important:</strong> You can inspect the second <code>SendStreamingMessage</code> and see that tge <code>contextId</code> value is the same from the previous response. This tells Work IQ to maintain conversation continuity.</p>
+<p>The response will reflect awareness of your previous message. Work IQ understood you in the context of "Who am I?" and can answer "Who is my manager?" with relevant details.</p>
+<p><strong>Multi-turn benefit:</strong> You can ask follow-up questions, clarifications, or related queries without resending your identity information. The <code>contextId</code> preserves state.</p>
+<p><cc-end-step lab="WIQ02" exercise="3" step="3" /></p>
+<h3 id="step-4-craft-a-complex-prompt">Step 4: Craft a complex prompt</h3>
+<p>A2A shines when you ask Work IQ to create structured output. Let's request a list with your upcoming meetings. </p>
+<div class="highlight"><pre><span></span><code>Create a list of all my upcoming meetings in the next 10 days. Include meeting title, attendees, time, and a brief description. For each meeting, suggest me topics that I should dig into, to be more effective. Format it professionally.
+</code></pre></div>
+<p>Work IQ can reason over your calendar, fetch meetings, and generate the structured output for you.</p>
+<p>In the response from Work IQ you should be able to see a link to the generated Work document, stored on your OneDrive for Business.</p>
+<p><cc-end-step lab="WIQ02" exercise="3" step="4" /></p>
+<h2 id="exercise-4-use-work-iq-over-a2a-from-a-copilot-studio-agent">Exercise 4: Use Work IQ over A2A from a Copilot Studio agent</h2>
+<h3 id="step-1-create-a-new-agent-in-microsoft-copilot-studio">Step 1: Create a new agent in Microsoft Copilot Studio</h3>
+<p>Open <a href="https://copilotstudio.microsoft.com" target="_blank">Copilot Studio</a>. Select a target environment and create a new agent using the Copilot Studio user interface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don't have a target environment, you can either use the default environment, or you can create a new one. The best option is to create a new one and you can find instructions about how to do so in the <a href="https://aka.ms/agentacademy" target="_blank">Agent Academy</a> site. Specifically, you can follow instructions in <a href="https://microsoft.github.io/agent-academy/recruit/00-course-setup/#trial-environment-setup-steps-14" target="_blank">Recruit - Course Setup</a> from Step 1 to Step 3 of the <strong>Trial Environment Setup</strong> section.</p>
+</div>
+<ol>
+<li>Select <strong>Agents</strong> and the <strong>+ Create blank agent</strong>.</li>
+<li>Provide a name like <code>WorkIQ Consumer Agent</code></li>
+<li>Provide instructions like <code>Process all the user's requests relying on the Work IQ Agent and then give to the user the received answer</code></li>
+<li>Save the agent basic settings</li>
+</ol>
+<p>You now have a Copilot Studio agent ready to orchestrate calls to external systems.</p>
+<p><cc-end-step lab="WIQ02" exercise="4" step="1" /></p>
+<h3 id="step-2-add-an-authenticated-connection-to-work-iq-over-a2a">Step 2: Add an authenticated connection to Work IQ over A2A</h3>
+<p>In the Copilot Studio UI connect the agent to Work IQ following these steps:</p>
+<ol>
+<li>Select the <strong>Agents</strong> tab</li>
+<li>Select <strong>+ Add an agent</strong> to add a new connected agent</li>
+<li>A popup dialog shows up, select <strong>Connect to an external agent</strong> and choose <strong>Agent2Agent</strong> option
+<img alt="Copilot Studio dialog showing &quot;Choose how you want to extend your agent&quot; with the &quot;Connect to an external agent&quot; dropdown expanded, highlighting the Agent2Agent option to connect using the A2A protocol." src="../../../assets/images/work-iq-02/work-iq-02-mcs-add-agent-01.png" /></li>
+<li>The <strong>Connect Agent2Agent</strong> dialog shows up and you need to configure:<ul>
+<li><strong>Agent endpoint URL</strong>: <code>https://workiq.svc.cloud.microsoft/a2a/.well-known/agent-card.json</code></li>
+<li><strong>Name</strong>: <code>Work IQ Agent</code></li>
+<li><strong>Description</strong>: <code>Provides access to the intelligent layer of your organization</code></li>
+<li><strong>Authentication</strong>: <code>OAuth 2.0</code><ul>
+<li><strong>Type</strong>: <code>Manual</code></li>
+<li><strong>Client ID</strong>: The Client ID of the application that you registered in Entra ID during lab WIQ01</li>
+<li><strong>Client Secret</strong>: The Client Secret of the application that you registered in Entra ID during lab WIQ01</li>
+<li><strong>Authorization URL</strong>: The Authorization URL of the application that you registered in Entra ID during lab WIQ01</li>
+<li><strong>Token URL template</strong>: The Token URL of the application that you registered in Entra ID during lab WIQ01</li>
+<li><strong>Refresh URL</strong>: The Token URL of the application that you registered in Entra ID during lab WIQ01</li>
+<li><strong>Scopes</strong>: <code>api://workiq.svc.cloud.microsoft/WorkIQAgent.Ask</code></li>
+<li><strong>Redirect URL</strong>: this will be provided to you by Copilot Studio when you save the agent connection
+<img alt="Copilot Studio Connect Agent2Agent dialog showing manual OAuth 2.0 settings for Work IQ, including endpoint URL, client ID, client secret, authorization URL, token URL, and scope." src="../../../assets/images/work-iq-02/work-iq-02-mcs-add-agent-02.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Select <strong>Create</strong> to create the agent connection</li>
+<li>Copilot Studio will create the connection and give you back the <strong>Redirect URL</strong> to use</li>
+<li>Copy the value of the <strong>Redirect URL</strong> and configure it in the Entra ID application as a web <strong>Redirect URI</strong> and wait few seconds for the application settings to save</li>
+<li>Go back to Copilot Studio, select <strong>Next</strong> and connected to Work IQ using the Copilot Studio authentication process</li>
+</ol>
+<p><img alt="Copilot Studio confirmation view after creating the Agent2Agent connection to Work IQ, showing the next step to authenticate and continue setup." src="../../../assets/images/work-iq-02/work-iq-02-mcs-add-agent-03.png" /></p>
+<p>Work IQ is now connected to Copilot Studio over A2A. </p>
+<p><cc-end-step lab="WIQ02" exercise="4" step="2" /></p>
+<h3 id="step-3-testing-the-agent-with-a-simple-prompt">Step 3: Testing the agent with a simple prompt</h3>
+<p>You can now test the agent connected to Work IQ. Open the <strong>Test your agent</strong> panel and write the following prompt:</p>
+<div class="highlight"><pre><span></span><code>Who am I? Who is my manager? What is my role in the organization?
+</code></pre></div>
+<p><img alt="Copilot Studio test panel showing the WorkIQ Consumer Agent responding to the prompt &quot;Who am I? Who is my manager? What is my role in the organization?&quot; with detailed answers retrieved via the A2A protocol." src="../../../assets/images/work-iq-02/work-iq-02-mcs-a2a-agent-01.png" /></p>
+<p>You will need to confirm that you want to invoke Work IQ over A2A, for security reasons. First time you will use Work IQ over A2A you will also need to connect your account in the test chat.</p>
+<p><cc-end-step lab="WIQ02" exercise="4" step="3" /></p>
+<h3 id="step-4-testing-the-agent-with-a-complex-prompt">Step 4: Testing the agent with a complex prompt</h3>
+<p>Now test the agent providing a more complex prompt, which requests Work IQ to create structured data and to provide a Word document (.DOCX) as the output. Use the following prompt:</p>
+<div class="highlight"><pre><span></span><code>Create a list of all my upcoming meetings in the next 10 days. Include meeting title, attendees, time, and a brief description. For each meeting, suggest me topics that I should dig into, to be more effective. Format it professionally. Create a Word document as the output.
+</code></pre></div>
+<p>You can see that the response includes a link to a Word document that was generated on the fly by Work IQ.</p>
+<p><cc-end-step lab="WIQ02" exercise="4" step="4" /></p>
+<h2 id="completion">Completion</h2>
+<p>Congratulations! You've successfully completed the <strong>Work IQ A2A Protocol</strong> lab. You've learned:</p>
+<p>✅ <strong>A2A fundamentals:</strong> How agents communicate over the A2A protocol and why it's better than wrapping agents as tools.</p>
+<p>✅ <strong>Agent discovery:</strong> How to fetch and inspect agent cards to understand capabilities and authentication.</p>
+<p>✅ <strong>Basic prompts:</strong> How to send simple queries (Who am I? Who is my manager?) and maintain multi-turn context.</p>
+<p>✅ <strong>Complex prompts:</strong> How to request artifact generation (Word documents) and use streaming for long-running tasks.</p>
+<p>✅ <strong>Protocol inspection:</strong> How to monitor raw A2A traffic, understand the request/response flow, and debug A2A interactions.</p>
+<p>✅ <strong>Multi-agent architecture:</strong> How to consume Work IQ via A2A with Microsoft Copilot Studio in a multi-agent architecture.</p>
+<h2 id="start-here-with-lab-wiq03-to-learn-how-to-expose-work-iq-as-a-model-context-protocol-mcp-server-and-integrate-it-into-your-ai-coding-assistants-and-developer-tools"><a href="../03-work-iq-mcp">Start here</a> with Lab WIQ03, to learn how to expose Work IQ as a Model Context Protocol (MCP) server and integrate it into your AI coding assistants and developer tools.</h2>
+<p><cc-next /></p>
+<p><cc-award badgeId="WorkIQ-Expert" badgeName="Work IQ Expert" />
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/work-iq/WIQ02" /></p>
 
-<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/work-iq/index" /></p>
 
 
 
 
 
 
+  
+  
 
 
 
@@ -2716,20 +2858,20 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../javascripts/cc-award.js"></script>
+        <script src="../../../javascripts/cc-award.js"></script>
       
-        <script src="../../javascripts/cc-next.js"></script>
+        <script src="../../../javascripts/cc-next.js"></script>
       
-        <script src="../../javascripts/cc-lab-step.js"></script>
+        <script src="../../../javascripts/cc-lab-step.js"></script>
       
-        <script src="../../javascripts/cc-card.js"></script>
+        <script src="../../../javascripts/cc-card.js"></script>
       
-        <script src="../../javascripts/cc-widgets.js"></script>
+        <script src="../../../javascripts/cc-widgets.js"></script>
       
     
   </body>
