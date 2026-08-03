@@ -123,6 +123,10 @@ plugins:
               - Add Entra SSO Authentication to a Cowork Plugin: 'pages/copilot-cowork/03-cowork-plugins-sso.md'
             - Work IQ:
               - Introduction : 'pages/work-iq/index.md'
+              - Lab WIQ01 - Work IQ Setup and consumption via CLI: 'pages/work-iq/01-work-iq-setup-and-cli.md'
+              - Lab WIQ02 - Work IQ A2A Protocol: 'pages/work-iq/02-work-iq-a2a.md'
+              - Lab WIQ03 - Work IQ MCP Protocol: 'pages/work-iq/03-work-iq-mcp.md'
+              - Lab WIQ04 - Work IQ REST Protocol: 'pages/work-iq/04-work-iq-rest.md'
             - Agent 365:
               - Introduction : 'pages/agent-365/index.md'
             - Beyond Labs - AI concepts:
