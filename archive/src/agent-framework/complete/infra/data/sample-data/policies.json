@@ -1,0 +1,728 @@
+[
+  {
+    "policyNumber": "AU-45821",
+    "policyholderName": "Ajlal Nueimat",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 100000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1200.00,
+    "vehicleInfo": {
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2022,
+      "vin": "1HGBH41JXMN109186"
+    },
+    "coverageDetails": {
+      "liability": 50000.00,
+      "collision": 50000.00,
+      "comprehensive": 50000.00
+    }
+  },
+  {
+    "policyNumber": "HO-78934",
+    "policyholderName": "Alexis Bourgeois",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 350000.00,
+    "deductible": 2500.00,
+    "annualPremium": 2800.00,
+    "propertyInfo": {
+      "address": "2847 Bayou Lane, New Orleans, LA 70112",
+      "propertyType": "Single Family",
+      "yearBuilt": 2015,
+      "squareFeet": 2400
+    },
+    "coverageDetails": {
+      "dwelling": 250000.00,
+      "personalProperty": 75000.00,
+      "liability": 300000.00,
+      "additionalLiving": 25000.00
+    }
+  },
+  {
+    "policyNumber": "AU-23671",
+    "policyholderName": "Anna Ostrowska",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 75000.00,
+    "deductible": 500.00,
+    "annualPremium": 1800.00,
+    "vehicleInfo": {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "vin": "4T1B11HK5MU123456"
+    },
+    "coverageDetails": {
+      "liability": 30000.00,
+      "collision": 25000.00,
+      "comprehensive": 20000.00
+    },
+    "notes": "Coverage upgraded from $50k to $75k on 2025-09-10 (18 days before claim filed)"
+  },
+  {
+    "policyNumber": "HO-56789",
+    "policyholderName": "Anthony Ivanov",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 280000.00,
+    "deductible": 1500.00,
+    "annualPremium": 2200.00,
+    "propertyInfo": {
+      "address": "1523 Cedar Street, Seattle, WA 98101",
+      "propertyType": "Single Family",
+      "yearBuilt": 2010,
+      "squareFeet": 2100
+    },
+    "coverageDetails": {
+      "dwelling": 200000.00,
+      "personalProperty": 50000.00,
+      "liability": 200000.00,
+      "additionalLiving": 30000.00
+    }
+  },
+  {
+    "policyNumber": "AU-89012",
+    "policyholderName": "Archie Boyle",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 50000.00,
+    "deductible": 500.00,
+    "annualPremium": 950.00,
+    "vehicleInfo": {
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2020,
+      "vin": "1FMCU0GD0LUA12345"
+    },
+    "coverageDetails": {
+      "liability": 25000.00,
+      "collision": 15000.00,
+      "comprehensive": 10000.00
+    }
+  },
+  {
+    "policyNumber": "HO-34512",
+    "policyholderName": "Ariane Meyer",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 320000.00,
+    "deductible": 2000.00,
+    "annualPremium": 2500.00,
+    "propertyInfo": {
+      "address": "892 Sunset Boulevard, Portland, OR 97201",
+      "propertyType": "Single Family",
+      "yearBuilt": 2012,
+      "squareFeet": 2200
+    },
+    "coverageDetails": {
+      "dwelling": 230000.00,
+      "personalProperty": 60000.00,
+      "liability": 250000.00,
+      "additionalLiving": 30000.00
+    }
+  },
+  {
+    "policyNumber": "AU-67823",
+    "policyholderName": "Arnel Cruz",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 100000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1400.00,
+    "vehicleInfo": {
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 2023,
+      "vin": "1N4BL4BV0PC123456"
+    },
+    "coverageDetails": {
+      "liability": 50000.00,
+      "collision": 30000.00,
+      "comprehensive": 20000.00
+    }
+  },
+  {
+    "policyNumber": "HO-91234",
+    "policyholderName": "Bao Guo",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 450000.00,
+    "deductible": 3000.00,
+    "annualPremium": 3800.00,
+    "propertyInfo": {
+      "address": "456 Riverside Drive, New York, NY 10023",
+      "propertyType": "Condo",
+      "yearBuilt": 2018,
+      "squareFeet": 1800
+    },
+    "coverageDetails": {
+      "dwelling": 300000.00,
+      "personalProperty": 100000.00,
+      "liability": 300000.00,
+      "additionalLiving": 50000.00
+    },
+    "notes": "NEW POLICY - Purchased 2025-09-15, claim filed 2025-10-01 (16 days later). Personal property coverage exceptionally high."
+  },
+  {
+    "policyNumber": "AU-45678",
+    "policyholderName": "Brita Tamm",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 60000.00,
+    "deductible": 750.00,
+    "annualPremium": 1050.00,
+    "vehicleInfo": {
+      "make": "Hyundai",
+      "model": "Elantra",
+      "year": 2021,
+      "vin": "5NPD84LF5MH123456"
+    },
+    "coverageDetails": {
+      "liability": 30000.00,
+      "collision": 20000.00,
+      "comprehensive": 10000.00
+    }
+  },
+  {
+    "policyNumber": "HO-78901",
+    "policyholderName": "Carme Fontbernat",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 400000.00,
+    "deductible": 2500.00,
+    "annualPremium": 3200.00,
+    "propertyInfo": {
+      "address": "3421 Oak Hills Road, Atlanta, GA 30301",
+      "propertyType": "Single Family",
+      "yearBuilt": 2008,
+      "squareFeet": 2800
+    },
+    "coverageDetails": {
+      "dwelling": 280000.00,
+      "personalProperty": 80000.00,
+      "liability": 300000.00,
+      "additionalLiving": 40000.00
+    }
+  },
+  {
+    "policyNumber": "AU-12345",
+    "policyholderName": "Dabir Al",
+    "policyType": "Auto",
+    "status": "Expired",
+    "coverageLimit": 45000.00,
+    "deductible": 750.00,
+    "annualPremium": 980.00,
+    "vehicleInfo": {
+      "make": "Chevrolet",
+      "model": "Malibu",
+      "year": 2019,
+      "vin": "1G1ZD5ST0KF123456"
+    },
+    "coverageDetails": {
+      "liability": 25000.00,
+      "collision": 15000.00,
+      "comprehensive": 5000.00
+    },
+    "notes": "EXPIRED POLICY - Claim filed after expiration date"
+  },
+  {
+    "policyNumber": "HO-23456",
+    "policyholderName": "Dai Nakamura",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 275000.00,
+    "deductible": 1500.00,
+    "annualPremium": 2100.00,
+    "propertyInfo": {
+      "address": "789 Pacific Avenue, San Diego, CA 92101",
+      "propertyType": "Condo",
+      "yearBuilt": 2016,
+      "squareFeet": 1600
+    },
+    "coverageDetails": {
+      "dwelling": 200000.00,
+      "personalProperty": 50000.00,
+      "liability": 200000.00,
+      "additionalLiving": 25000.00
+    }
+  },
+  {
+    "policyNumber": "AU-34567",
+    "policyholderName": "Enric Argilaguet",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 85000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1350.00,
+    "vehicleInfo": {
+      "make": "BMW",
+      "model": "3 Series",
+      "year": 2022,
+      "vin": "WBA5A5C50ND123456"
+    },
+    "coverageDetails": {
+      "liability": 40000.00,
+      "collision": 30000.00,
+      "comprehensive": 15000.00
+    }
+  },
+  {
+    "policyNumber": "HO-45678",
+    "policyholderName": "Fatma Yilmaz",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 320000.00,
+    "deductible": 2000.00,
+    "annualPremium": 2600.00,
+    "propertyInfo": {
+      "address": "2341 Winter Street, Buffalo, NY 14201",
+      "propertyType": "Single Family",
+      "yearBuilt": 2005,
+      "squareFeet": 2300
+    },
+    "coverageDetails": {
+      "dwelling": 240000.00,
+      "personalProperty": 60000.00,
+      "liability": 250000.00,
+      "additionalLiving": 20000.00
+    }
+  },
+  {
+    "policyNumber": "AU-56789",
+    "policyholderName": "Gökçe Aslan",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 65000.00,
+    "deductible": 500.00,
+    "annualPremium": 1150.00,
+    "vehicleInfo": {
+      "make": "Subaru",
+      "model": "Outback",
+      "year": 2023,
+      "vin": "4S4BTAFC5P3123456"
+    },
+    "coverageDetails": {
+      "liability": 35000.00,
+      "collision": 20000.00,
+      "comprehensive": 10000.00
+    }
+  },
+  {
+    "policyNumber": "HO-67890",
+    "policyholderName": "Hacer Çetin",
+    "policyType": "Homeowners",
+    "status": "Suspended",
+    "coverageLimit": 380000.00,
+    "deductible": 2500.00,
+    "annualPremium": 3100.00,
+    "propertyInfo": {
+      "address": "5678 Magnolia Lane, Houston, TX 77001",
+      "propertyType": "Single Family",
+      "yearBuilt": 2011,
+      "squareFeet": 2600
+    },
+    "coverageDetails": {
+      "dwelling": 280000.00,
+      "personalProperty": 70000.00,
+      "liability": 300000.00,
+      "additionalLiving": 30000.00
+    },
+    "notes": "SUSPENDED - Premium payments 60 days overdue, claim filed during suspension period"
+  },
+  {
+    "policyNumber": "AU-78901",
+    "policyholderName": "Hamed Bettar",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 95000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1650.00,
+    "vehicleInfo": {
+      "make": "Audi",
+      "model": "A4",
+      "year": 2023,
+      "vin": "WAUENAF40PA123456"
+    },
+    "coverageDetails": {
+      "liability": 50000.00,
+      "collision": 30000.00,
+      "comprehensive": 15000.00
+    }
+  },
+  {
+    "policyNumber": "HO-89012",
+    "policyholderName": "Hanno Simon",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 225000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1800.00,
+    "propertyInfo": {
+      "address": "1827 Forest Drive, Boulder, CO 80301",
+      "propertyType": "Single Family",
+      "yearBuilt": 2000,
+      "squareFeet": 1900
+    },
+    "coverageDetails": {
+      "dwelling": 180000.00,
+      "personalProperty": 45000.00,
+      "liability": 200000.00,
+      "additionalLiving": 20000.00
+    }
+  },
+  {
+    "policyNumber": "AU-90123",
+    "policyholderName": "Irena Jaworska",
+    "policyType": "Auto",
+    "status": "Expired",
+    "coverageLimit": 55000.00,
+    "deductible": 750.00,
+    "annualPremium": 1100.00,
+    "vehicleInfo": {
+      "make": "Volkswagen",
+      "model": "Jetta",
+      "year": 2020,
+      "vin": "3VWC57BU5LM123456"
+    },
+    "coverageDetails": {
+      "liability": 30000.00,
+      "collision": 20000.00,
+      "comprehensive": 5000.00
+    },
+    "notes": "EXPIRED POLICY - Recently expired, claim filed after expiration"
+  },
+  {
+    "policyNumber": "HO-01234",
+    "policyholderName": "Isaac Talbot",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 480000.00,
+    "deductible": 3000.00,
+    "annualPremium": 4200.00,
+    "propertyInfo": {
+      "address": "4523 Prairie View Road, Oklahoma City, OK 73101",
+      "propertyType": "Single Family",
+      "yearBuilt": 2018,
+      "squareFeet": 3200
+    },
+    "coverageDetails": {
+      "dwelling": 350000.00,
+      "personalProperty": 100000.00,
+      "liability": 350000.00,
+      "additionalLiving": 30000.00
+    }
+  },
+  {
+    "policyNumber": "AU-12346",
+    "policyholderName": "Marina Rodríguez",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 70000.00,
+    "deductible": 750.00,
+    "annualPremium": 1250.00,
+    "vehicleInfo": {
+      "make": "Mazda",
+      "model": "CX-5",
+      "year": 2022,
+      "vin": "JM3KFBDM0N0123456"
+    },
+    "coverageDetails": {
+      "liability": 35000.00,
+      "collision": 25000.00,
+      "comprehensive": 10000.00
+    }
+  },
+  {
+    "policyNumber": "HO-23457",
+    "policyholderName": "Marites Reyes",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 290000.00,
+    "deductible": 2000.00,
+    "annualPremium": 2400.00,
+    "propertyInfo": {
+      "address": "6789 Coastal Highway, San Francisco, CA 94102",
+      "propertyType": "Condo",
+      "yearBuilt": 2014,
+      "squareFeet": 1800
+    },
+    "coverageDetails": {
+      "dwelling": 220000.00,
+      "personalProperty": 55000.00,
+      "liability": 250000.00,
+      "additionalLiving": 15000.00
+    }
+  },
+  {
+    "policyNumber": "AU-34568",
+    "policyholderName": "Marta Guanyavents",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 40000.00,
+    "deductible": 500.00,
+    "annualPremium": 850.00,
+    "vehicleInfo": {
+      "make": "Kia",
+      "model": "Forte",
+      "year": 2021,
+      "vin": "3KPF24AD5ME123456"
+    },
+    "coverageDetails": {
+      "liability": 25000.00,
+      "collision": 10000.00,
+      "comprehensive": 5000.00
+    }
+  },
+  {
+    "policyNumber": "HO-45679",
+    "policyholderName": "Mia Zimmermann",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 350000.00,
+    "deductible": 2000.00,
+    "annualPremium": 2800.00,
+    "propertyInfo": {
+      "address": "9012 Maple Ridge, Milwaukee, WI 53201",
+      "propertyType": "Single Family",
+      "yearBuilt": 2009,
+      "squareFeet": 2400
+    },
+    "coverageDetails": {
+      "dwelling": 250000.00,
+      "personalProperty": 75000.00,
+      "liability": 300000.00,
+      "additionalLiving": 25000.00
+    }
+  },
+  {
+    "policyNumber": "AU-56790",
+    "policyholderName": "Ni Kang",
+    "policyType": "Auto",
+    "status": "Cancelled",
+    "coverageLimit": 60000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1200.00,
+    "vehicleInfo": {
+      "make": "Acura",
+      "model": "TLX",
+      "year": 2021,
+      "vin": "19UUB1F50MA123456"
+    },
+    "coverageDetails": {
+      "liability": 30000.00,
+      "collision": 20000.00,
+      "comprehensive": 10000.00
+    },
+    "notes": "CANCELLED - Policy cancelled for misrepresentation, claim filed after cancellation"
+  },
+  {
+    "policyNumber": "HO-67891",
+    "policyholderName": "Nihad Samaha",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 420000.00,
+    "deductible": 2500.00,
+    "annualPremium": 3500.00,
+    "propertyInfo": {
+      "address": "7234 Peachtree Street, Atlanta, GA 30303",
+      "propertyType": "Single Family",
+      "yearBuilt": 2013,
+      "squareFeet": 2700
+    },
+    "coverageDetails": {
+      "dwelling": 300000.00,
+      "personalProperty": 90000.00,
+      "liability": 350000.00,
+      "additionalLiving": 30000.00
+    }
+  },
+  {
+    "policyNumber": "AU-78902",
+    "policyholderName": "Pedro Armijo",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 80000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1400.00,
+    "vehicleInfo": {
+      "make": "Jeep",
+      "model": "Grand Cherokee",
+      "year": 2023,
+      "vin": "1C4RJFAG0PC123456"
+    },
+    "coverageDetails": {
+      "liability": 40000.00,
+      "collision": 25000.00,
+      "comprehensive": 15000.00
+    }
+  },
+  {
+    "policyNumber": "HO-89013",
+    "policyholderName": "Qi Shi",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 310000.00,
+    "deductible": 1800.00,
+    "annualPremium": 2300.00,
+    "propertyInfo": {
+      "address": "3456 Valley Road, Phoenix, AZ 85001",
+      "propertyType": "Single Family",
+      "yearBuilt": 2007,
+      "squareFeet": 2100
+    },
+    "coverageDetails": {
+      "dwelling": 220000.00,
+      "personalProperty": 65000.00,
+      "liability": 250000.00,
+      "additionalLiving": 25000.00
+    }
+  },
+  {
+    "policyNumber": "AU-90124",
+    "policyholderName": "Qing Cao",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 55000.00,
+    "deductible": 750.00,
+    "annualPremium": 950.00,
+    "vehicleInfo": {
+      "make": "Mitsubishi",
+      "model": "Outlander",
+      "year": 2022,
+      "vin": "JA4J3UA89NZ123456"
+    },
+    "coverageDetails": {
+      "liability": 30000.00,
+      "collision": 15000.00,
+      "comprehensive": 10000.00
+    }
+  },
+  {
+    "policyNumber": "HO-01235",
+    "policyholderName": "Renata Hall",
+    "policyType": "Homeowners",
+    "status": "Expired",
+    "coverageLimit": 280000.00,
+    "deductible": 2000.00,
+    "annualPremium": 2200.00,
+    "propertyInfo": {
+      "address": "8901 Mountain View Lane, Burlington, VT 05401",
+      "propertyType": "Single Family",
+      "yearBuilt": 2003,
+      "squareFeet": 2200
+    },
+    "coverageDetails": {
+      "dwelling": 200000.00,
+      "personalProperty": 60000.00,
+      "liability": 200000.00,
+      "additionalLiving": 20000.00
+    },
+    "notes": "EXPIRED POLICY - Claim filed 2 months after expiration"
+  },
+  {
+    "policyNumber": "AU-12347",
+    "policyholderName": "Saara Teinemaa",
+    "policyType": "Auto",
+    "status": "Active",
+    "coverageLimit": 75000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1350.00,
+    "vehicleInfo": {
+      "make": "Volvo",
+      "model": "XC60",
+      "year": 2023,
+      "vin": "YV4A22RK0P1123456"
+    },
+    "coverageDetails": {
+      "liability": 40000.00,
+      "collision": 25000.00,
+      "comprehensive": 10000.00
+    }
+  },
+  {
+    "policyNumber": "HO-23458",
+    "policyholderName": "Sara Folgueroles",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 260000.00,
+    "deductible": 1500.00,
+    "annualPremium": 2000.00,
+    "propertyInfo": {
+      "address": "5432 Redwood Avenue, Eugene, OR 97401",
+      "propertyType": "Single Family",
+      "yearBuilt": 2001,
+      "squareFeet": 2000
+    },
+    "coverageDetails": {
+      "dwelling": 190000.00,
+      "personalProperty": 50000.00,
+      "liability": 200000.00,
+      "additionalLiving": 20000.00
+    }
+  },
+  {
+    "policyNumber": "AU-34569",
+    "policyholderName": "Shiori Sakamoto",
+    "policyType": "Auto",
+    "status": "Suspended",
+    "coverageLimit": 90000.00,
+    "deductible": 1000.00,
+    "annualPremium": 1600.00,
+    "vehicleInfo": {
+      "make": "Lexus",
+      "model": "ES 350",
+      "year": 2023,
+      "vin": "58ABK1GG0PU123456"
+    },
+    "coverageDetails": {
+      "liability": 50000.00,
+      "collision": 25000.00,
+      "comprehensive": 15000.00
+    },
+    "notes": "SUSPENDED - Multiple traffic violations, claim filed during suspension"
+  },
+  {
+    "policyNumber": "HO-45680",
+    "policyholderName": "Yueying Ren",
+    "policyType": "Homeowners",
+    "status": "Active",
+    "coverageLimit": 195000.00,
+    "deductible": 1200.00,
+    "annualPremium": 1600.00,
+    "propertyInfo": {
+      "address": "2109 Riverside Drive, Austin, TX 78701",
+      "propertyType": "Condo",
+      "yearBuilt": 2017,
+      "squareFeet": 1400
+    },
+    "coverageDetails": {
+      "dwelling": 150000.00,
+      "personalProperty": 35000.00,
+      "liability": 150000.00,
+      "additionalLiving": 10000.00
+    }
+  },
+  {
+    "policyNumber": "AU-56791",
+    "policyholderName": "Yuu Shibata",
+    "policyType": "Auto",
+    "status": "Cancelled",
+    "coverageLimit": 85000.00,
+    "deductible": 1500.00,
+    "annualPremium": 1800.00,
+    "vehicleInfo": {
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": 2022,
+      "vin": "5YJ3E1EA6NF123456"
+    },
+    "coverageDetails": {
+      "liability": 45000.00,
+      "collision": 25000.00,
+      "comprehensive": 15000.00
+    },
+    "notes": "CANCELLED - Non-payment of premiums, claim filed after cancellation for non-payment"
+  }
+]

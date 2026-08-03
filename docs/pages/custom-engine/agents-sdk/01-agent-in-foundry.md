@@ -1,96 +1,157 @@
 # Lab BMA1 - Prepare your agent in Microsoft Foundry
 
-In this lab, you’ll begin your journey by preparing a custom engine agent using Microsoft Foundry, Microsoft’s platform for creating, configuring, and scaling AI agents. You'll explore the **Agents Playground**, define your agent's role, personalize its instructions, and connect it to relevant internal documents to support Retrieval-Augmented Generation (RAG).
+<div data-widget="hero"
+     data-badge="Path 1 · Lab BMA1"
+     data-badge-color="blue"
+     data-icon="🧠"
+     data-subtitle="Create a grounded agent in Microsoft Foundry: author its instructions, attach your HR documents as knowledge, and validate its answers in the playground."
+     data-time="30-40 min"
+     data-requires="Lab BMA0 completed"></div>
 
-This exercise sets the foundation for the rest of the Build Path using the **Microsoft 365 Agents SDK** and **Semantic Kernel**. You’ll simulate a real-world Human Resources agent for Contoso Electronics that can answer questions based on uploaded documents like the Employee Handbook, Role Library, and Benefit Plans.
+In this lab you'll create the foundation for the rest of this path: a **Foundry agent** that answers Contoso Electronics HR questions using only the documents you give it.
+
+You'll define the agent's role and guardrails, attach knowledge so it can ground its answers, and test it in the playground before any code is involved.
 
 ???+ info "What is Microsoft Foundry?"
-    Microsoft Foundry is a development platform that helps you build, manage, and test intelligent agents powered by large language models. It provides a centralized workspace where you can define agent instructions, configure tool usage, upload knowledge sources, and interactively test agent behavior. It supports integration with custom orchestrators like Semantic Kernel and downstream endpoints like Teams and Copilot Chat.
+    Microsoft Foundry is the platform where you build, ground, and version AI agents. You define instructions, attach knowledge sources, configure tools, and test behavior interactively — then invoke the published agent from your own application. Foundry agents are **versioned and addressed by name**, which is how you'll connect to this agent from .NET in Lab BMA3.
 
-## Exercise 1: Prepare your agent in Microsoft Foundry
+## Lab objectives
 
-In this exercise, you'll explore Microsoft Foundry, a platform that enables developers to build, deploy, and scale AI agents with ease. You'll learn how to configure an agent, and test its functionality using the Agents Playground. This hands-on experience will provide insight into the capabilities of Azure AI Agent Service and how it integrates with various AI models and tools.
+By the end of this lab you will be able to:
 
-### Step 1: Get started with Microsoft Foundry
+- Create a Microsoft Foundry project and deploy a model
+- Author instructions that define an agent's persona, scope, and guardrails
+- Ground an agent on your own documents so answers cite real content
+- Validate grounding and boundary behavior in the playground
 
-Microsoft Foundry is your launchpad for building AI agents. In this step, you’ll log in to Microsoft Foundry with the account that has Azure subscription enabled.
+---
 
-1. Open the browser and navigate to [https://ai.azure.com](https://ai.azure.com) and sign to your Azure account.
-1. From the Microsoft Foundry homepage, select **+ Create new**, **Microsoft Foundry resource** and then **Next**.
-1. Leave the project name as recommended and select **Create**.
-1. This will scaffold a new project for you in Microsoft Foundry, it usually takes 3-5 minutes.
-1. When your project is created, you'll be redirected to your project, extend the left side bar and select **Agents**. This will open the Agents Playground.
-1. In the Agent Playground, the first time you'll see the **Deploy a model** window. Search for **gpt-4o** and select **Confirm**, then select **Deploy** in the following window.
-1. Once you are in the **Agents Playground**, you'll recognize there is a pre-populated agent for you in the list. Select the agent and select **Try in playground**.
-    ![The Microsoft Foundry list of Agents with the custom agent and the "Try in playground" command highlighted.](https://github.com/user-attachments/assets/dd481101-c15d-4aed-af62-aeb7d3c8e5ed){width="1029"}
+## Exercise 1: Create a Foundry project and agent
 
-> If you don't see the agent side bar with **Try in playground** option when you click on the agent, extend the browser size on your screen until it shows up on the right side.
+### Step 1: Create your Microsoft Foundry project
+
+1. Navigate to [https://ai.azure.com](https://ai.azure.com){target=_blank} and sign in with the account that has your Azure subscription.
+1. Select **+ Create new**, choose **Microsoft Foundry resource**, then select **Next**.
+1. Leave the suggested project name and select **Create**. Provisioning usually takes 3-5 minutes.
+1. When the project opens, expand the left navigation and select **Agents**.
+1. If prompted to deploy a model, search for **gpt-4.1** (or the latest available GPT model), select **Confirm**, then **Deploy**.
+
+> Keep this browser tab open. You'll come back to it in Lab BMA3 to copy the project endpoint.
 
 <cc-end-step lab="bma1" exercise="1" step="1" />
 
-### Step 2: Customize your agent in Agent Playground
+### Step 2: Name your agent
 
-Now that you're inside the Agents Playground, you'll customize your agent's identity and behavior to match a real-world scenario: an internal HR Agent at Contoso.
+Foundry creates a starter agent in your project. You'll rename it and make the name meaningful, because **your .NET code will look the agent up by this exact name** in Lab BMA3.
 
-1. In your agent's **Setup** panel, **Name** your agent as Contoso HR Agent and update the **Instructions** as the following:
+1. In the **Agents** list, select the pre-populated agent, then select **Try in playground**.
+1. In the agent's **Setup** panel, set the **Name** to `Contoso HR Agent`.
 
-```
-You are Contoso HR Agent, an internal assistant for Contoso Electronics. Your role is to help employees find accurate, policy-aligned answers to questions related to:
-- Job role descriptions and responsibilities
-- Performance review process
-- Health and wellness benefits (PerksPlus, Northwind Standard, Northwind Plus)
-- Employee rights and workplace safety
-- Company values and conduct
+!!! warning "Write the agent name down exactly"
+    Agent Framework resolves a Foundry agent by **name**, so `Contoso HR Agent` must match character for character in your configuration later. Avoid trailing spaces.
 
-Always base your responses on the content provided in the official documents such as the Employee Handbook, Role Library, and Benefit Plans. If you are unsure or the information is not covered, suggest the employee contact HR.
-
-Respond in a professional but approachable tone. Keep answers factual and to the point.
-
-Example scenarios you should support:
-- What is the deductible for Northwind Standard?
-- Can I use PerksPlus for spa treatments?
-- What does the CTO at Contoso do?
-- What happens during a performance review?
-```
-
-2. Finally in the **Knowledge** section, Select **+ Add** and select **Files**, then **Select local files**. Download this zip file consisting of few files from the following **[link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agents-sdk/docs/)**, extract the files, browse for them and hit **Upload and save** to upload them. This will create a vector store for our agent.
-
-> When you upload documents, Foundry automatically converts them into vectors, a format that allows the agent to search and retrieve relevant information efficiently.
-
-![The UI of Microsoft Foundry when adding files as knowledge base, with the "Select local files".](https://github.com/user-attachments/assets/64bb7392-15f6-458c-9e74-d8ab100ca8fd)
-
-By customizing the instructions and uploading relevant documents, you're teaching the agent how to behave and what knowledge to rely on. This is a simplified form of Retrieval-Augmented Generation (RAG).
+> If the setup panel doesn't appear when you select the agent, widen your browser window until the right-hand panel is visible.
 
 <cc-end-step lab="bma1" exercise="1" step="2" />
 
-### Step 3: Test your agent in the playground
+---
 
-It's time to test your agent. You’ll simulate realistic employee questions to see how well the agent understands and responds based on the documents you uploaded.
+## Exercise 2: Ground the agent
 
-In the Agent Playground, interact with your agent by entering prompts and observe the agent's responses, adjust instructions or tools as needed to refine performance. You may use the examples listed below to test the agent’s response:
+### Step 1: Define instructions and guardrails
 
-- What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?
+Instructions are what turn a general model into a focused HR assistant. In the **Setup** panel, replace the **Instructions** with the following:
+
+```text
+You are Contoso HR Agent, an internal assistant for Contoso Electronics.
+
+## Scope
+Help employees with:
+- Job role descriptions and responsibilities
+- The performance review process
+- Health and wellness benefits (PerksPlus, Northwind Standard, Northwind Health Plus)
+- Employee rights and workplace safety
+- Company values and conduct
+
+## Guardrails
+- Base every answer on the official documents provided as knowledge.
+- Never invent policy details, figures, or eligibility rules.
+- If the answer is not covered by the documents, say so clearly and tell the employee to contact HR.
+
+## Tone
+Professional but approachable. Factual and to the point.
+```
+
+Select **Save** (or **Update**) to apply the instructions.
+
+<cc-end-step lab="bma1" exercise="2" step="1" />
+
+### Step 2: Attach HR documents as knowledge
+
+1. Download the HR document set from [this link](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agents-sdk/docs/){target=_blank} and extract the archive.
+1. In the **Knowledge** section, select **+ Add**, choose **Files**, then **Select local files**.
+1. Select all extracted documents and choose **Upload and save**.
+
+> Foundry chunks and embeds the documents into a vector store, then exposes them to the agent through the **File Search** tool. This is Retrieval-Augmented Generation (RAG) without writing any retrieval code — and it's what produces the citations you'll stream into Teams in Lab BMA3.
+
+<cc-end-step lab="bma1" exercise="2" step="2" />
+
+---
+
+## Exercise 3: Test and validate
+
+### Step 1: Verify grounded answers
+
+In the playground, ask questions that can only be answered from the uploaded documents:
+
+- What's the difference between Northwind Standard and Northwind Health Plus for emergency and mental health coverage?
 - Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?
 - If I hit my out-of-pocket max on Northwind Standard, do I still pay for prescriptions?
 - What exactly happens during a Contoso performance review, and how should I prepare?
-- Is a wellness spa weekend eligible under the PerksPlus reimbursement program?
 - What are the key differences between the roles of COO and CFO at Contoso?
-- How does the split copay work under Northwind Health Plus for office visits?
-- Can I combine yoga class reimbursements from PerksPlus with services covered under my health plan?
-- What values guide behavior and decision-making at Contoso Electronics?
-- I’m seeing a non-participating provider — what costs should I expect under my current plan?
 
-!!! tip "Save Agents id for the next exercises"
-    Save the **Agent id** that'll be required in the next exercises. You can find your Agent id in the agent’s details panel.
-    ![The Agents Playground of Microsoft Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
+**Expected result:**
 
-<cc-end-step lab="bma1" exercise="1" step="3" />
+- Answers reflect the content of the uploaded documents rather than generic HR advice.
+- Responses include citations pointing back to the source files.
+
+<cc-end-step lab="bma1" exercise="3" step="1" />
+
+### Step 2: Verify the guardrails hold
+
+Now test the boundary of the agent's knowledge:
+
+- What is Contoso's stock option vesting schedule?
+- How much parental leave do contractors in Germany get?
+
+**Expected result:**
+
+- The agent does **not** invent an answer.
+- It states that the information isn't covered and directs the employee to HR.
+
+If the agent fabricates an answer, revisit your instructions and strengthen the guardrails section, then retest.
+
+<cc-end-step lab="bma1" exercise="3" step="2" />
+
+### Step 3: Record the values you'll need next
+
+You'll need two values in Lab BMA3. Capture them now:
+
+| Value | Where to find it |
+|---|---|
+| **Agent name** | The **Name** field in the agent's **Setup** panel — `Contoso HR Agent` |
+| **Project endpoint** | The project **Overview** page, under **Endpoints and keys** |
+
+!!! tip "Agent name, not agent id"
+    Earlier versions of this lab used the agent **id**. Microsoft Agent Framework resolves versioned Foundry agents by **name**, so that's the value you need.
+
+<cc-end-step lab="bma1" exercise="3" step="3" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab BMA1 - Prepare your agent in Microsoft Foundry! If you want explore further.
+You have completed Lab BMA1 - Prepare your agent in Microsoft Foundry!
 
-You are now ready to proceed to Lab BMA2 - Build your first agent using M365 Agents SDK. Select Next.
+Your agent is grounded and behaving correctly in the playground. Next, you'll build the .NET host that will run it.
 
 <cc-next url="../02-agent-with-agents-sdk" />
 

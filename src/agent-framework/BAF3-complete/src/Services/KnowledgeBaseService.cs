@@ -28,31 +28,37 @@ public class KnowledgeBaseService
     private const string ClaimsIndex = "claims-index";
     private const string KnowledgeBaseName = "zava-insurance-kb";
 
-    private readonly BlobStorageService? _blobStorageService;
-
-    public KnowledgeBaseService(IConfiguration configuration, BlobStorageService? blobStorageService = null)
+    public KnowledgeBaseService(IConfiguration configuration)
     {
         _configuration = configuration;
 
+        // Load Azure AI Search configuration
         _searchEndpoint = configuration["AZURE_AI_SEARCH_ENDPOINT"]
             ?? throw new InvalidOperationException("AZURE_AI_SEARCH_ENDPOINT not configured");
         _searchApiKey = configuration["SECRET_AZURE_AI_SEARCH_API_KEY"]
             ?? throw new InvalidOperationException("SECRET_AZURE_AI_SEARCH_API_KEY not configured");
 
+        // Load Azure OpenAI configuration for embeddings and LLM
         _aiEndpoint = configuration["MODELS_ENDPOINT"]
             ?? throw new InvalidOperationException("MODELS_ENDPOINT not configured");
         _aiApiKey = configuration["AIModels:ApiKey"]
             ?? throw new InvalidOperationException("AIModels:ApiKey not configured");
-        _embeddingModel = configuration["EMBEDDING_MODEL_NAME"]
-            ?? "text-embedding-ada-002";
+        _embeddingModel = configuration["EMBEDDING_MODEL_NAME"] ?? "text-embedding-ada-002";
 
+        // Initialize Azure AI Search clients
         var credential = new AzureKeyCredential(_searchApiKey);
         _indexClient = new SearchIndexClient(new Uri(_searchEndpoint), credential);
-        _retrievalClient = new KnowledgeBaseRetrievalClient(new Uri(_searchEndpoint), KnowledgeBaseName, credential);
+        _retrievalClient = new KnowledgeBaseRetrievalClient(
+            new Uri(_searchEndpoint), 
+            KnowledgeBaseName, 
+            credential
+        );
 
-        _openAIClient = new AzureOpenAIClient(new Uri(_aiEndpoint), new AzureKeyCredential(_aiApiKey));
-
-        _blobStorageService = blobStorageService;
+        // Initialize Azure OpenAI client
+        _openAIClient = new AzureOpenAIClient(
+            new Uri(_aiEndpoint), 
+            new AzureKeyCredential(_aiApiKey)
+        );
     }
 
     /// <summary>
@@ -313,13 +319,6 @@ public class KnowledgeBaseService
     public async Task IndexSampleDataAsync()
     {
         await IndexClaimsDataAsync();
-
-        // Upload damage photos to blob storage if BlobStorageService is available
-        if (_blobStorageService != null)
-        {
-            await UploadSampleDamagePhotosAsync();
-        }
-
         Console.WriteLine("✅ Sample data indexed successfully");
     }
 
@@ -469,146 +468,4 @@ public class KnowledgeBaseService
     }
 
     #endregion
-
-    /// <summary>
-    /// Gets the damage photo URL for a specific claim
-    /// Checks both claims index and claim-documents index
-    /// </summary>
-    /// <param name="claimNumber">The claim number to retrieve the image for</param>
-    /// <returns>The image URL or null if not found</returns>
-    public async Task<string?> GetClaimImageUrlAsync(string claimNumber)
-    {
-        // Check claims index for imageUrl (still stored there for direct access)
-        var claimsClient = _indexClient.GetSearchClient(ClaimsIndex);
-
-        var searchOptions = new SearchOptions
-        {
-            Filter = $"claimNumber eq '{claimNumber}'",
-            Size = 1,
-            Select = { "imageUrl" }
-        };
-
-        var searchResults = await claimsClient.SearchAsync<SearchDocument>("*", searchOptions);
-
-        await foreach (var searchResult in searchResults.Value.GetResultsAsync())
-        {
-            var doc = searchResult.Document;
-            if (doc.ContainsKey("imageUrl") && doc["imageUrl"] != null)
-            {
-                return doc["imageUrl"].ToString();
-            }
-        }
-
-        return null;
-    }
-
-    /// <summary>
-    /// Uploads sample damage photos to blob storage and indexes them in Azure AI Search
-    /// Reads claims from claims.json, matches images from infra/img/sample-images by policyholder name,
-    /// uploads to blob storage, creates searchable documents, and updates claims with imageUrl
-    /// </summary>
-    private async Task UploadSampleDamagePhotosAsync()
-    {
-        if (_blobStorageService == null) return;
-
-        Console.WriteLine("📸 Uploading sample damage photos to blob storage and indexing...");
-
-        var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        var dataPath = Path.Combine(baseDirectory, "infra", "data", "sample-data");
-        var filePath = Path.Combine(dataPath, "claims.json");
-        var imagesPath = Path.Combine(baseDirectory, "infra", "img", "sample-images");
-
-        if (!File.Exists(filePath))
-        {
-            Console.WriteLine($"⚠️  Claims data file not found: {filePath}");
-            return;
-        }
-
-        if (!Directory.Exists(imagesPath))
-        {
-            Console.WriteLine($"⚠️  Sample images directory not found: {imagesPath}");
-            return;
-        }
-
-        var json = await File.ReadAllTextAsync(filePath);
-        var claimsData = System.Text.Json.JsonSerializer.Deserialize<List<System.Text.Json.JsonElement>>(json);
-
-        if (claimsData == null || !claimsData.Any())
-        {
-            Console.WriteLine("⚠️  No claims data to process");
-            return;
-        }
-
-        var uploadCount = 0;
-        var claimsClient = _indexClient.GetSearchClient(ClaimsIndex);
-        var claimsToUpdate = new List<SearchDocument>();
-
-        Console.WriteLine($"📋 Processing {claimsData.Count} total claims for damage photos...");
-        Console.WriteLine($"📸 Uploading to blob storage...");
-
-        foreach (var claimData in claimsData)
-        {
-            var claimNumber = claimData.GetProperty("claimNumber").GetString() ?? "";
-            var policyholderName = claimData.GetProperty("policyholderName").GetString() ?? "";
-
-            // Build the expected image filename based on policyholder name
-            // Format: firstname-lastname-description.jpg (e.g., "ajlal-nueimat-deer-collision.jpg")
-            var nameKey = policyholderName.ToLower().Replace(" ", "-");
-
-            // Find matching image file in sample-images directory
-            var imageFiles = Directory.GetFiles(imagesPath, $"{nameKey}*.jpg");
-
-            if (imageFiles.Length == 0)
-            {
-                Console.WriteLine($"⏭️  No image found for {claimNumber} ({policyholderName})");
-                continue;
-            }
-
-            var imageFile = imageFiles[0];
-            var fileName = Path.GetFileName(imageFile);
-
-            Console.WriteLine($"📸 Processing damage photo for claim {claimNumber}: {fileName}");
-
-            try
-            {
-                // Read image from local file
-                var imageBytes = await File.ReadAllBytesAsync(imageFile);
-
-                // Upload to blob storage - blob URL will be directly accessible for viewing and AI analysis
-                var blobUrl = await _blobStorageService.UploadDamagePhotoAsync(claimNumber, imageBytes, fileName);
-
-                // Update the claim record with the image URL for direct access
-                claimsToUpdate.Add(new SearchDocument
-                {
-                    ["id"] = claimNumber,
-                    ["imageUrl"] = blobUrl
-                });
-
-                uploadCount++;
-                Console.WriteLine($"✅ Uploaded photo for {claimNumber}: {blobUrl}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"⚠️  Failed to upload photo for {claimNumber}: {ex.Message}");
-            }
-        }
-
-        // Update claims with image URLs
-        if (claimsToUpdate.Any())
-        {
-            Console.WriteLine($"📝 Updating {claimsToUpdate.Count} claims with image URLs...");
-            var claimsBatch = IndexDocumentsBatch.MergeOrUpload(claimsToUpdate);
-            await claimsClient.IndexDocumentsAsync(claimsBatch);
-            Console.WriteLine($"✅ Updated {claimsToUpdate.Count} claims with image URLs");
-        }
-
-        if (uploadCount > 0)
-        {
-            Console.WriteLine($"📸 Total: Uploaded {uploadCount} damage photos to blob storage");
-        }
-        else
-        {
-            Console.WriteLine("⚠️  No damage photos found to upload");
-        }
-    }
 }

@@ -1,150 +1,202 @@
-# Lab BMA3 - Integrate Microsoft Foundry Agent with M365 Agents SDK
+# Lab BMA3 - Connect your Foundry agent with Microsoft Agent Framework
 
-In this lab, you’ll bring together the best of both worlds—combining the generative AI power of your Microsoft Foundry agent with the multi-channel flexibility of the Microsoft 365 Agents SDK. You’ll configure Semantic Kernel, set up agent properties, and securely connect to your Foundry-hosted agent to deliver rich, enterprise-aware answers directly in Microsoft Teams.
+<div data-widget="hero"
+     data-badge="Path 1 · Lab BMA3"
+     data-badge-color="purple"
+     data-icon="🔗"
+     data-subtitle="Wire your Microsoft Foundry agent into the Agents SDK host using Microsoft Agent Framework, and stream grounded, cited answers into Microsoft Teams."
+     data-time="40-50 min"
+     data-requires="Labs BMA1 and BMA2 completed"></div>
 
-## Exercise 1: Configure agent properties and test on Teams
+This is where the two halves come together. Your Foundry agent has the persona and the knowledge; your Agents SDK project has the host and the channel. **Microsoft Agent Framework** is the layer that connects them.
 
-Now that you’ve created a basic bot, it’s time to enhance it with generative AI capabilities and upgrade it to an AI agent. In this exercise, you’ll install key libraries such as Semantic Kernel and prepare your agent to reason and respond more intelligently, ready for Teams or Copilot Chat.
+!!! note
+    If you want to start directly from this lab without completing the previous ones, you can download the agent's complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agents-sdk/BMA2-complete&filename=BMA2-complete){target=_blank}. You still need the Microsoft Foundry agent you created in ["Lab BMA1"](../01-agent-in-foundry), and the prerequisites from ["Lab BMA0"](../00-prerequisites).
 
-### Step 1: Add Semantic Kernel Nuget Package
+## Lab objectives
 
-The package you'll add in this step will provide support for Azure AI integration. Right-click to **ContosoHRAgent** project and select **Manage Nuget Packages...**, select **Browse** tab and search for `Microsoft.SemanticKernel.Agents.AzureAI`. Make sure to check **Include prerelease** checkbox. Select the package and select **Install**.
+By the end of this lab you will be able to:
 
-![Semantic Kernel Nuget Package](https://github.com/user-attachments/assets/37a290f4-e825-4140-a294-b1a8d9e1f10a)
+- Add Microsoft Agent Framework to a Microsoft 365 Agents SDK project
+- Resolve a published Foundry agent as an `AIAgent` from .NET
+- Stream responses and citations back to the user in real time
+- Persist an `AgentSession` so the agent remembers the conversation
+- Run the agent in Microsoft Teams
+
+???+ info "Agent Framework replaces Semantic Kernel here"
+    Microsoft Agent Framework is the successor to Semantic Kernel for agent development. If you followed an earlier version of this lab, the mapping is:
+
+    | Semantic Kernel | Agent Framework |
+    |---|---|
+    | `AzureAIAgent` | `AIAgent` / `FoundryAgent` |
+    | `InvokeStreamingAsync` | `RunStreamingAsync` |
+    | `AgentResponseItem<StreamingChatMessageContent>` | `AgentResponseUpdate` |
+    | `AzureAIAgentThread` | `AgentSession` |
+    | `builder.Services.AddKernel()` | not required |
+
+    There is no `Kernel` to configure, and the preview `SKEXP0110` warning no longer applies.
+
+---
+
+## Exercise 1: Add Agent Framework to the project
+
+### Step 1: Install the NuGet packages
+
+Right-click the **ContosoHRAgent** project and select **Manage NuGet Packages...**, then open the **Browse** tab and check **Include prerelease**.
+
+Install these two packages:
+
+| Package | Purpose |
+|---|---|
+| `Microsoft.Agents.AI.Foundry` | Agent Framework integration for Microsoft Foundry agents |
+| `Azure.Identity` | Credentials used to authenticate to your Foundry project |
+
+Your `ContosoHRAgent.csproj` should now contain:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Azure.Identity" Version="1.21.0" />
+  <PackageReference Include="Microsoft.Agents.AI.Foundry" Version="1.16.0-preview.260730.1" />
+  <PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.*" />
+  <PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.*" />
+</ItemGroup>
+```
+
+> `Microsoft.Agents.AI.Foundry` is published as a prerelease package because it depends on preview Foundry project APIs. Leave **Include prerelease** checked or the package won't appear.
 
 <cc-end-step lab="bma3" exercise="1" step="1" />
 
-### Step 2: Add Semantic Kernel in Program.cs
+### Step 2: Clean up Program.cs
 
-Open **Program.cs** and add the following code snippet right before var app = builder.Build():
+Agent Framework doesn't need a `Kernel`. Open **Program.cs** and make sure the agent registration looks like this:
 
+```csharp
+// Add the bot (which is transient)
+builder.AddAgent<EchoBot>();
+
+var app = builder.Build();
 ```
+
+If you're upgrading an existing project, **delete** these lines — they are Semantic Kernel leftovers and a duplicate storage registration:
+
+```csharp
+builder.Services.AddSingleton<IStorage, MemoryStorage>();
+// Add the Semantic Kernel services 
 builder.Services.AddKernel();
 ```
 
-This registers the Semantic Kernel, a core component that allows your agent to interact with generative AI models.
-
 <cc-end-step lab="bma3" exercise="1" step="2" />
 
-### Step 3: Add custom classes for document citations and message tracking
+### Step 3: Track the conversation in state
 
-Right-click to **ContosoHRAgent** project and select **Add > Class** and define your class name as `FileReference.cs`. Replace the existing code with the following:
+Each Teams conversation maps to one Foundry conversation. Store its id in conversation state so the agent keeps its memory across turns.
 
-> This class defines the structure used when referencing specific documents in responses—useful when your agent cites content from uploaded files.
+Right-click the **ContosoHRAgent** project, select **Add > Class**, name it `ConversationStateExtensions.cs`, and replace the contents with:
 
-```
-using Microsoft.Agents.Core.Models;
-  
-namespace ContosoHRAgent
-{
-    public class FileReference(string fileId, string fileName, string quote, Citation citation)
-    {
-        public string FileId { get; set; } = fileId;
-        public string FileName { get; set; } = fileName;
-        public string Quote { get; set; } = quote;
-        public Citation Citation { get; set; } = citation;
-    }
-}
-```
-
-Right-click to **ContosoHRAgent** project and select **Add > Class** and define your class name as `ConversationStateExtensions.cs`. Replace existing the code with following:
-
-> This class adds helper methods to manage and track the number of user messages—demonstrating how state is stored and modified during an ongoing conversation.
-
-```
+```csharp
 using Microsoft.Agents.Builder.State;
-  
+
 namespace ContosoHRAgent
 {
- public static class ConversationStateExtensions
- {
-     public static int MessageCount(this ConversationState state) => state.GetValue<int>("countKey");
+    public static class ConversationStateExtensions
+    {
+        public static int MessageCount(this ConversationState state) => state.GetValue<int>("countKey");
 
-     public static void MessageCount(this ConversationState state, int value) => state.SetValue("countKey", value);
+        public static void MessageCount(this ConversationState state, int value) => state.SetValue("countKey", value);
 
-     public static int IncrementMessageCount(this ConversationState state)
-     {
-         int count = state.GetValue<int>("countKey");
-         state.SetValue("countKey", ++count);
-         return count;
-     }
+        public static int IncrementMessageCount(this ConversationState state)
+        {
+            int count = state.GetValue<int>("countKey");
+            state.SetValue("countKey", ++count);
+            return count;
+        }
 
-     public static string ThreadId(this ConversationState state) => state.GetValue<string>("threadId");
+        public static string ConversationId(this ConversationState state) => state.GetValue<string>("conversationIdKey");
 
-     public static void ThreadId(this ConversationState state, string value) => state.SetValue("threadId", value);
- }
+        public static void ConversationId(this ConversationState state, string value) => state.SetValue("conversationIdKey", value);
+    }
 }
 ```
 
 <cc-end-step lab="bma3" exercise="1" step="3" />
 
-## Exercise 2: Integrate Microsoft Foundry Agent with M365 Agents SDK
+---
 
-You’ve built an agent using the M365 Agents SDK and configured it with generative AI capabilities. Now, you’ll connect this local agent to the Microsoft Foundry agent you created earlier. This enables your agent to respond using enterprise data and instructions stored in the Foundry project, bringing everything full circle.
+## Exercise 2: Connect to your Foundry agent
 
-### Step 1: Configure EchoBot.cs to Connect with Microsoft Foundry Agent
+### Step 1: Create the project client
 
-In this step, you’ll connect to the Microsoft Foundry agent by adding a client to fetch and invoke your Foundry-hosted model inside the EchoBot.cs.
+Open **Bot/EchoBot.cs** and replace the `using` block at the top of the file with:
 
-In **ContosoHRAgent** project, open **Bot/EchoBot.cs** and add the following lines inside the EchoBot public class:
-
+```csharp
+using Azure.AI.Projects;
+using Azure.Identity;
+using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.Foundry;
+using Microsoft.Agents.Builder;
+using Microsoft.Agents.Builder.App;
+using Microsoft.Agents.Builder.State;
+using Microsoft.Agents.Core.Models;
+using Microsoft.Extensions.AI;
 ```
-private readonly PersistentAgentsClient _projectClient;
-private readonly string _agentId;
-```
 
-Replace the existing EchoBot constructor with the following: 
+Then replace the class fields and constructor with:
 
-```
+```csharp
+private readonly AIProjectClient _projectClient;
+private readonly string _agentName;
+
 public EchoBot(AgentApplicationOptions options, IConfiguration configuration) : base(options)
 {
-
     OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync);
 
-    // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS 
+    // Listen for ANY message to be received. MUST BE AFTER ANY OTHER MESSAGE HANDLERS
     OnActivity(ActivityTypes.Message, OnMessageAsync);
 
-    // Microsoft Foundry Project ConnectionString
+    // Microsoft Foundry project endpoint
     string projectEndpoint = configuration["AIServices:ProjectEndpoint"];
     if (string.IsNullOrEmpty(projectEndpoint))
     {
         throw new InvalidOperationException("ProjectEndpoint is not configured.");
     }
-    _projectClient = new PersistentAgentsClient(projectEndpoint, new AzureCliCredential());
+    _projectClient = new AIProjectClient(new Uri(projectEndpoint), new AzureCliCredential());
 
-    // Microsoft Foundry Agent Id
-    _agentId = configuration["AIServices:AgentID"];
-    if (string.IsNullOrEmpty(_agentId))
+    // Name of the agent you published in Microsoft Foundry
+    _agentName = configuration["AIServices:AgentName"];
+    if (string.IsNullOrEmpty(_agentName))
     {
-        throw new InvalidOperationException("AgentID is not configured.");
+        throw new InvalidOperationException("AgentName is not configured.");
     }
-
 }
 ```
 
-Replace **OnMessageAsync** method with the following:
+> `AzureCliCredential` uses the identity from your `az login` session — ideal for local development. In production you'd switch to a managed identity.
 
-```
+<cc-end-step lab="bma3" exercise="2" step="1" />
+
+### Step 2: Run the agent and stream the response
+
+Replace the entire `OnMessageAsync` method with:
+
+```csharp
 protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnState, CancellationToken cancellationToken)
 {
     // send the initial message to the user
     await turnContext.StreamingResponse.QueueInformativeUpdateAsync("Working on it...", cancellationToken);
 
-    // get the agent definition from the project
-    var agentDefinition = await _projectClient.Administration.GetAgentAsync(_agentId, cancellationToken);
+    // resolve the agent version published in Microsoft Foundry and wrap it as an AIAgent
+    var agentRecord = await _projectClient.AgentAdministrationClient.GetAgentAsync(_agentName, cancellationToken);
+    FoundryAgent agent = _projectClient.AsAIAgent(agentRecord);
 
-    // initialize a new agent instance from the agent definition
-    var agent = new AzureAIAgent(agentDefinition, _projectClient);
-
-    // retrieve the threadId from the conversation state
+    // retrieve the conversation id from the conversation state
     // this is set if the agent has been invoked before in the same conversation
-    var threadId = turnState.Conversation.ThreadId();
+    var conversationId = turnState.Conversation.ConversationId();
 
-    // if the threadId is not set, we create a new thread
-    // otherwise, we use the existing thread
-    var thread = string.IsNullOrEmpty(threadId)
-        ? new AzureAIAgentThread(_projectClient)
-        : new AzureAIAgentThread(_projectClient, threadId);
+    // if there is no conversation id yet, start a new Foundry conversation
+    // otherwise resume the existing one so the agent keeps its memory
+    AgentSession session = string.IsNullOrEmpty(conversationId)
+        ? await agent.CreateConversationSessionAsync(cancellationToken)
+        : await agent.CreateSessionAsync(conversationId, cancellationToken);
 
     try
     {
@@ -152,21 +204,36 @@ protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnSta
         int count = turnState.Conversation.IncrementMessageCount();
         turnContext.StreamingResponse.QueueTextChunk($"({count}) ");
 
-        // create the user message to send to the agent
-        var message = new ChatMessageContent(AuthorRole.User, turnContext.Activity.Text);
-
-        // invoke the agent and stream the responses to the user
-        await foreach (AgentResponseItem<StreamingChatMessageContent> agentResponse in agent.InvokeStreamingAsync(message, thread, cancellationToken: cancellationToken))
+        // run the agent and stream the responses to the user
+        await foreach (AgentResponseUpdate update in agent.RunStreamingAsync(
+            turnContext.Activity.Text, session, cancellationToken: cancellationToken))
         {
-            // if the threadId is not set, we set it from the agent response
-            // and store it in the conversation state for future use
-            if (string.IsNullOrEmpty(threadId))
+            if (!string.IsNullOrEmpty(update.Text))
             {
-                threadId = agentResponse.Thread.Id;
-                turnState.Conversation.ThreadId(threadId);
+                turnContext.StreamingResponse.QueueTextChunk(update.Text);
             }
 
-            turnContext.StreamingResponse.QueueTextChunk(agentResponse.Message.Content);
+            // surface any document citations returned by the File Search tool
+            foreach (AIContent content in update.Contents)
+            {
+                var citations = content.Annotations?.OfType<CitationAnnotation>()
+                    ?? Enumerable.Empty<CitationAnnotation>();
+
+                foreach (CitationAnnotation citation in citations)
+                {
+                    var label = citation.Title ?? citation.FileId;
+                    if (!string.IsNullOrEmpty(label))
+                    {
+                        turnContext.StreamingResponse.QueueTextChunk($" [{label}]");
+                    }
+                }
+            }
+        }
+
+        // persist the conversation id so the next turn resumes the same session
+        if (session is ChatClientAgentSession chatSession && !string.IsNullOrEmpty(chatSession.ConversationId))
+        {
+            turnState.Conversation.ConversationId(chatSession.ConversationId);
         }
     }
     finally
@@ -175,92 +242,46 @@ protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnSta
         await turnContext.StreamingResponse.EndStreamAsync(cancellationToken);
     }
 }
-
 ```
-
-> **⚠️ Note:** When pasting the following code excerpt, you might see a warning (SKEXP0110) because this feature is still in preview. You can safely suppress this warning for now by right-clicking on AzureAIAgent, selecting **Quick Actions and Refactorings > Suppress or configure issues > Configure SKEXP0110 Severity > Silent**.
-> 
-> ![The Warning provided by Visual Studio when pasting code about a preview feature. There is the SKEXP0110 warning highlighted and the commands to silent related notifications.](https://github.com/user-attachments/assets/ac33b725-ede5-4b70-8186-72d393f1e169)
-
 
 ???+ info "What happens in OnMessageAsync?"
-    The *OnMessageAsync* method is the heart of your agent’s response logic. By replacing the default echo behavior, you’ve enabled your agent to send the user’s message to your Microsoft Foundry agent, stream the response back to the user in real time, track and attach citations and file references for transparency and add sensitivity and AI-generated labels for security and traceability.
-
-<cc-end-step lab="bma3" exercise="2" step="1" />
-
-### Step 2: Configure Azure AI Agent Service Keys
-
-Add your Foundry connection details to appsettings.json, these values connect your M365 agent to the correct Foundry project and agent. In **ContosoHRAgent** project, open **appsettings.json** and add the following lines at the bottom of the appsettings list:
-
-```
-,
-  "AIServices": {
-   "AgentID": "<AzureAIFoundryAgentId>",
-   "ProjectEndpoint": "<ProjectEndpoint>"
-  }
-```
-
-> You can find these values in the **Overview** and **Agents Playground** sections of Microsoft Foundry.
-
-Replace the **<AzureAIFoundryAgentId>** with your **Agent id** which can be found in **Agents Playground**.
-
-![The Agents Playground of Microsoft Foundry with the Agent id field highlighted.](https://github.com/user-attachments/assets/13421287-d476-41c4-88df-bed1bff2f2f8)
-
-Replace **<ProjectEndpoint>** with your AI Foundry project endpoing which can be found in the **Overview** page of the AI Foundry, under Endpoints and keys.
-
-Final version of the **appsettings.json** will look like below:
-
-```
-{
-  "AgentApplicationOptions": {
-    "StartTypingTimer": false,
-    "RemoveRecipientMention": false,
-    "NormalizeMentions": false
-  },
-  
-  "TokenValidation": {
-    "Audiences": [
-      "{{ClientId}}" // this is the Client ID used for the Azure Bot
-    ]
-  },
-  
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning",
-      "Microsoft.Agents": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
-    }
-  },
-  "AllowedHosts": "*",
-  "Connections": {
-    "BotServiceConnection": {
-      "Settings": {
-        "AuthType": "UserManagedIdentity", // this is the AuthType for the connection, valid values can be found in Microsoft.Agents.Authentication.Msal.Model.AuthTypes.
-        "ClientId": "{{BOT_ID}}", // this is the Client ID used for the connection.
-        "TenantId": "{{BOT_TENANT_ID}}",
-        "Scopes": [
-          "https://api.botframework.com/.default"
-        ]
-      }
-    }
-  },
-  "ConnectionsMap": [
-    {
-      "ServiceUrl": "*",
-      "Connection": "BotServiceConnection"
-    }
-  ],
-  "AIServices": {
-   "AgentID": "<AzureAIFoundryAgentId>",
-   "ProjectEndpoint": "<ProjectEndpoint>"
-  }
-}
-```
+    - **`GetAgentAsync(_agentName)`** looks up the agent version you published in Foundry — the instructions and knowledge stay server-side.
+    - **`AsAIAgent(...)`** wraps that definition as an `AIAgent` you can run from .NET.
+    - **`CreateConversationSessionAsync` / `CreateSessionAsync`** start or resume a Foundry conversation, which is what gives the agent memory across turns.
+    - **`RunStreamingAsync`** yields `AgentResponseUpdate` objects as the model produces them, so text appears progressively instead of all at once.
+    - **`CitationAnnotation`** exposes the documents the File Search tool used, so users can see where an answer came from.
 
 <cc-end-step lab="bma3" exercise="2" step="2" />
 
-### Step 3: Test your agent on Teams
+### Step 3: Configure your Foundry connection
+
+Open **appsettings.json** and add an `AIServices` section at the end of the configuration object:
+
+```json
+,
+  "AIServices": {
+    "AgentName": "<YourFoundryAgentName>",
+    "ProjectEndpoint": "<YourProjectEndpoint>"
+  }
+```
+
+Fill in the two values you recorded at the end of Lab BMA1:
+
+| Setting | Value | Where to find it |
+|---|---|---|
+| `AgentName` | `Contoso HR Agent` | The **Name** field in the agent's **Setup** panel in Foundry |
+| `ProjectEndpoint` | `https://<your-resource>.services.ai.azure.com/api/projects/<your-project>` | The project **Overview** page, under **Endpoints and keys** |
+
+!!! warning "The agent name must match exactly"
+    Agent Framework resolves the agent by name. A typo or a trailing space produces a "resource not found" error at runtime.
+
+<cc-end-step lab="bma3" exercise="2" step="3" />
+
+---
+
+## Exercise 3: Run your agent in Microsoft Teams
+
+### Step 1: Sign in to Azure
 
 Open **Tools > Command Line > Developer Command Prompt** and run:
 
@@ -268,48 +289,56 @@ Open **Tools > Command Line > Developer Command Prompt** and run:
 az login
 ```
 
-A window will pop up on your browser and you'll need to sign into your Microsoft account to successfully complete az login.
+Complete the sign-in in the browser window that opens. This is the identity `AzureCliCredential` will use to reach your Foundry project.
+
+> Your account needs at least the **Foundry User** role on the Foundry project to invoke the agent.
+
+<cc-end-step lab="bma3" exercise="3" step="1" />
+
+### Step 2: Create a dev tunnel and select your account
 
 Expand **Start** and select **Dev Tunnels > Create a Tunnel**:
- 
-* Select **Sign in** and **Work or school account**. Login with the same credentials mentioned above.
-* Provide a name for your tunnel such as `DevTunnel`.
-* Keep the Tunnel Type **Temporary**.
-* Select Access as **Public** and then **Create**.
 
-![The UI of Visual Studio to create a Dev Tunnel for the agent. There is a "Create a Tunnel" command highlighted.](https://github.com/user-attachments/assets/146fb3d4-256d-48b3-95a1-9e285f6bbc08)
+- Select **Sign in** and **Work or school account**, using the same account as above.
+- Name the tunnel `DevTunnel`.
+- Keep the tunnel type **Temporary**.
+- Set access to **Public**, then select **Create**.
 
-Right click to **M365Agent** project, select **Microsoft 365 Agents Toolkit > Select Microsoft 365 Account**.
+Right-click the **M365Agent** project and select **Microsoft 365 Agents Toolkit > Select Microsoft 365 Account**, then choose the same account and select **Continue**.
 
-![The context menu of the the M365 Agents Toolkit when selecting the Microsoft 365 Account to use, highlighted in the screenshot.](https://github.com/user-attachments/assets/6981343d-8668-4b33-b36f-63b12739fc9d)
+Finally, change the startup item from **&lt;Multiple Startup Projects&gt;** to **Microsoft Teams (browser)**.
 
-Select the same account as before and select **Continue** to use it. If your account doesn't show up automatically, select **Sign in** and **Work or school account**.
-  
-Expand the startup item on top of Visual Studio, where there is by default **<Multiple Startup Projects>**, and Select **Microsoft Teams (browser)**.
+<cc-end-step lab="bma3" exercise="3" step="2" />
 
-![The UI of Visual Studio when configuring Microsoft Teams (browser) for testing the agent in debug mode.](https://github.com/user-attachments/assets/0f564f0a-0394-49de-a679-6be59761b4fb)
+### Step 3: Test the grounded agent
 
-You're now ready to run your integrated agent and test it live in Microsoft Teams. Make sure your dev tunnel is created and your account is authenticated.
+Select **Start** or press **F5**. Microsoft Teams launches and your agent appears — select **Add**, then **Open**.
 
-Once Dev Tunnel is created, hit **Start** or **F5** to start debugging. Microsoft Teams will launch automatically, and your agent app will pop up on the window. Select **Add** and **Open** to start chatting with your agent.  
+Ask the same questions you tested in the Foundry playground:
 
-You can ask one of the following questions to interact with the agent:
+- What's the difference between Northwind Standard and Northwind Health Plus for emergency and mental health coverage?
+- Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?
+- What values guide behavior and decision-making at Contoso Electronics?
 
-* What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?
-* Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?
-* What values guide behavior and decision-making at Contoso Electronics?
+**Expected result:**
 
-You should observe that you are getting similar responses with the agent you've created on Microsoft Foundry.
+- Answers match what you saw in the Foundry playground, because the instructions and knowledge live in Foundry.
+- Text streams in progressively rather than appearing all at once.
+- Each response is prefixed with the running message count.
+- Follow-up questions like *"and what about dental?"* work, proving the `AgentSession` is being resumed.
 
-![The Agent running in Microsoft Teams with evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/73ef491f-eaff-4743-bb2d-79a52a9ae301)
+!!! tip "Troubleshooting"
+    - **"AgentName is not configured"** — the `AIServices` section is missing from `appsettings.json`.
+    - **Resource not found** — the agent name doesn't match the name in Foundry exactly.
+    - **Unauthorized** — re-run `az login`, or check your role assignment on the Foundry project.
 
-<cc-end-step lab="bma3" exercise="2" step="3" />
+<cc-end-step lab="bma3" exercise="3" step="3" />
 
 ---8<--- "b-congratulations.md"
 
-You have completed Lab BMA3 - Integrate Microsoft Foundry Agent with M365 Agents SDK!
+You have completed Lab BMA3 - Connect your Foundry agent with Microsoft Agent Framework!
 
-You are now ready to proceed to Lab BMA4 - Bring your agent to Copilot Chat. Select Next.
+Your custom engine agent now runs in Microsoft Teams. In the final lab, you'll bring it into Microsoft 365 Copilot.
 
 <cc-next url="../04-bring-agent-to-copilot" />
 

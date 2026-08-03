@@ -32,20 +32,18 @@ namespace ZavaInsurance.Plugins
         public async Task<string> StartConversation()
         {
             var welcomeMessage = "👋 Welcome to Zava Insurance Claims Assistant!\n\n" +
-                "I'm your AI-powered insurance claims specialist. I help adjusters and investigators streamline the claims process.\n\n" +
-                "**What I can do:**\n\n" +
-                "- Search and retrieve detailed claim information\n" +
-                "- Use Mistral AI to analyze damage photos instantly\n" +
-                "- Provide damage assessments with cost estimates\n" +
-                "- Identify safety concerns from photos\n" +
-                "- Provide current date and time\n\n" +
-                "🎯 Try this workflow:\n" +
-                "1. \"Get details for claim CLM-2025-001007\"\n" +
-                "2. \"Show damage photo for this claim\"\n" +
-                "3. \"Analyze this damage photo\"\n" +
-                "4. \"Approve the analysis\" or \"Reject the analysis\"\n\n" +
-                "Ready to help with your claims investigation. What would you like to start with?";
-
+                                "I'm your AI-powered insurance claims specialist. I help adjusters and investigators streamline the claims process.\n\n" +
+                                "**What I can do:**\n\n" +
+                                "- Search and retrieve detailed claim information\n" +
+                                "- Analyze whether a claim complies with Zava's policy documents\n" +
+                                "- Provide current date and time\n" +
+                                "- Answer questions about claims\n\n" +
+                                "🎯 Try these commands:\n" +
+                                "1. \"Search for claims with high severity\"\n" +
+                                "2. \"Get details for claim CLM-2025-001007\"\n" +
+                                "3. \"Analyze compliance for claim CLM-2025-001007\"\n\n" +
+                                "Ready to help with your claims investigation. What would you like to start with?";
+                                
             return welcomeMessage;
         }
     }

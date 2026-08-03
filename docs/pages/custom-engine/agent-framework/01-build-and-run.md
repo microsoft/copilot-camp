@@ -1,46 +1,55 @@
 # Lab BAF1 - Build and Run Your First Agent
 
-In this lab, you'll build and run a custom engine agent using the **Microsoft 365 Agents SDK** with the **Agent Framework**. You'll explore the starter project, understand the core components, and see your agent come to life in Microsoft 365 Copilot.
+<div data-widget="hero"
+     data-badge="Path 2 · Lab BAF1"
+     data-badge-color="teal"
+     data-icon="🏗️"
+     data-subtitle="Clone the Zava Insurance starter solution, understand how an Agent Framework agent is wired together, and run it live in Microsoft 365 Copilot."
+     data-time="40-50 min"
+     data-requires="Lab BAF0 completed"></div>
 
-The Zava Insurance Agent is designed to help insurance adjusters streamline claims processing. In this initial lab, you'll start with a basic conversational agent that can greet users and provide information using AI-powered responses.
+In this lab you'll build and run a custom engine agent using the **Microsoft 365 Agents SDK** with **Microsoft Agent Framework**. You'll explore the starter project, understand the core components, and see your agent come to life in Microsoft 365 Copilot.
+
+The **Zava Insurance Agent** helps insurance adjusters streamline claims processing. In this first lab you'll start with a basic conversational agent that greets users and answers with AI-powered responses. In the labs that follow you'll ground it in real enterprise data.
 
 ???+ info "What are the Microsoft 365 Agents SDK and Agent Framework?"
-    **Microsoft 365 Agents SDK** provides the container and scaffolding to deploy agents across Microsoft 365 channels (Teams, Copilot, etc.), handling activities, events, and communication. It's AI-agnostic, allowing you to use any AI services you choose.
-    
-    **Agent Framework** is an open-source development kit for building AI agents with LLMs, tool calling, and multi-agent workflows. It's the successor to Semantic Kernel and AutoGen, providing the AI capabilities and agent logic.
-    
-    Together, they allow you to build intelligent agents with the Agent Framework and deploy them to Microsoft 365 using the Agents SDK.
+    **Microsoft 365 Agents SDK** provides the container and scaffolding to deploy agents across Microsoft 365 channels (Teams, Copilot, and more), handling activities, events, and communication. It's AI-agnostic, so you can use any AI services you choose.
 
-## Exercise 1: Clone and Explore the Project
+    **Microsoft Agent Framework** is an open-source development kit for building AI agents with LLMs, tool calling, and multi-agent workflows. It's the successor to Semantic Kernel and AutoGen, and provides the AI capabilities and agent logic.
 
-In this exercise, you'll clone the Copilot Camp repository and explore the starter project structure to understand how the agent is organized.
+    Together, they let you build intelligent agents with Agent Framework and deliver them to Microsoft 365 using the Agents SDK.
 
-### Step 1: Clone the Repository
+## Lab objectives
 
-Let's start by cloning the Copilot Camp repository and navigating to the Agent Framework starter project.
+By the end of this lab you will be able to:
 
-1️⃣ Open a terminal or command prompt.
+- Explain how an agent, its instructions, and its tools fit together in Agent Framework
+- Configure an agent project with your Microsoft Foundry model credentials
+- Run and debug a custom engine agent locally
+- Test the agent inside Microsoft 365 Copilot
+- Customize the agent's behavior and see the change live
 
-2️⃣ Clone the repository:
+---
+
+## Exercise 1: Clone and explore the project
+
+### Step 1: Clone the repository
+
+1. Open a terminal or command prompt.
+1. Clone the repository and move into the starter project:
 
 ```bash
 git clone https://github.com/microsoft/copilot-camp.git
 cd copilot-camp/src/agent-framework/begin
 ```
 
-3️⃣ Open the project in Visual Studio Code:
+1. Open the project in Visual Studio Code:
 
 ```bash
 code .
 ```
 
-<cc-end-step lab="baf1" exercise="1" step="1" />
-
-### Step 2: Explore the Project Structure
-
-Let's understand the organization of the agent project.
-
-1️⃣ In Visual Studio Code, expand the folders in the Explorer view. You should see this structure:
+You should see this structure:
 
 ```
 begin/
@@ -51,51 +60,26 @@ begin/
 │   │   ├── StartConversationPlugin.cs  # Welcome message plugin
 │   │   └── DateTimeFunctionTool.cs     # Date/time utility
 ├── appPackage/                         # Teams app manifest and icons
-├── env/                                # Environment configuration files (API keys, endpoints)
-├── infra/                              # All required scripts, data and templates for the agent's infrastructure
-├── Program.cs                          # Application entry point - configures services and starts web app
+├── env/                                # Environment configuration files
+├── infra/                              # Scripts, data and templates for the agent's infrastructure
+├── Program.cs                          # Application entry point
 ├── InsuranceAgent.csproj               # Project file
 └── m365agents.local.yml                # M365 Agents provisioning config
 ```
 
-<cc-end-step lab="baf1" exercise="1" step="2" />
+<cc-end-step lab="baf1" exercise="1" step="1" />
 
-### Step 3: Understand the Agent Implementation
+### Step 2: Understand the agent and its tools
 
-Let's examine the main agent file to understand how it works.
+Open `src/Agent/ZavaInsuranceAgent.cs` and locate these three things:
 
-1️⃣ Open `src/Agent/ZavaInsuranceAgent.cs` in Visual Studio Code.
+| What to find | Why it matters |
+|---|---|
+| The `AgentInstructions` property | The system prompt. It defines the agent's role and lists its tools using the `{{PluginName.FunctionName}}` syntax. |
+| The **constructor** | Registers `OnConversationUpdate(...)` for the welcome message and `OnActivity(ActivityTypes.Message, ...)` for every user message. |
+| The `GetClientAgent` method | Builds a `ChatOptions` with a `Tools` list and registers each plugin with `AIFunctionFactory.Create(...)`. This is how the AI learns what it can call. |
 
-2️⃣ Find the `AgentInstructions` property near the top of the class. Notice how these instructions act as the **system prompt** for the AI model:
-
-- It defines the agent's role: "You are a professional insurance claims assistant for Zava Insurance..."
-- It lists available tools using the `{{PluginName.FunctionName}}` syntax
-- It includes `{{StartConversationPlugin.StartConversation}}` and `{{DateTimeFunctionTool.getDate}}`
-
-These instructions tell the AI how to behave and what tools it can use.
-
-3️⃣ Scroll down and find the **constructor** method `ZavaInsuranceAgent(...)`. Notice it sets up event handlers:
-
-- `OnConversationUpdate(ConversationUpdateEvents.MembersAdded, WelcomeMessageAsync)` - sends a welcome message when a user joins
-- `OnActivity(ActivityTypes.Message, OnMessageAsync)` - handles incoming messages
-
-4️⃣ Find the `GetClientAgent` method. Look for where it creates `toolOptions` and registers plugins:
-
-- It creates a `ChatOptions` object with a `Tools` list
-- It adds `startConversationPlugin.StartConversation` using `AIFunctionFactory.Create`
-- It adds `DateTimeFunctionTool.getDate` the same way
-
-This is where we register **plugins** (tools) that the AI can call during conversations.
-
-<cc-end-step lab="baf1" exercise="1" step="3" />
-
-### Step 4: Explore the Plugins
-
-Now let's look at how plugins work.
-
-1️⃣ Open `src/Plugins/StartConversationPlugin.cs`.
-
-2️⃣ Notice the plugin structure:
+Now open `src/Plugins/StartConversationPlugin.cs`:
 
 ```csharp
 public class StartConversationPlugin
@@ -109,220 +93,91 @@ public class StartConversationPlugin
 }
 ```
 
-Key points:
+The `[Description]` attribute is the critical part — it tells the model **when** to use the tool. Open `src/Plugins/DateTimeFunctionTool.cs` and notice it follows the same pattern with a static `getDate()` method.
 
-- The `[Description]` attribute tells the AI **when to use this tool**
-- The method returns a formatted welcome message
-- It's a simple plugin with no parameters
+<cc-end-step lab="baf1" exercise="1" step="2" />
 
-3️⃣ Open `src/Plugins/DateTimeFunctionTool.cs`.
+### Step 3: Review the host and the manifest
 
-4️⃣ Notice how it provides current date/time:
+Open `Program.cs` and find these registrations:
 
-- It has a `[Description]` that says "Gets the current date and time"
-- The `getDate()` method is static and returns `DateTime.Now` as a formatted string
+- `AddSingleton<IStorage, MemoryStorage>()` — conversation state storage
+- `AddAgentApplicationOptions()` — agent configuration
+- `AddAgent<ZavaInsuranceAgent>()` — the agent itself
+- The `IChatClient` singleton — creates an `AzureOpenAIClient` from your endpoint, key, and deployment name, which is what powers the agent's reasoning
 
-This plugin demonstrates how the agent can access system information to answer user queries.
+Then open `appPackage/manifest.json` and review the `conversationStarters` array — these are the suggested prompts users see on first use — and the `copilotAgents` section that declares this app as a custom engine agent.
 
-<cc-end-step lab="baf1" exercise="1" step="4" />
+<cc-end-step lab="baf1" exercise="1" step="3" />
 
-### Step 5: View the App Manifest and Conversation Starters
+---
 
-Let's check the app manifest to see how your agent appears in Microsoft 365 Copilot.
+## Exercise 2: Configure the agent
 
-1️⃣ Open `appPackage/manifest.json`.
+### Step 1: Create your environment files
 
-2️⃣ Find the `name` section to see your agent's display name:
-
-```json
-"name": {
-    "short": "Zava Insurance Agent",
-    "full": "Zava Insurance Claims Assistant"
-}
-```
-
-3️⃣ Scroll down to the `conversationStarters` array. These are the suggested prompts users see when they first interact with your agent:
-
-```json
-"conversationStarters": [
-    {
-        "title": "Instructions",
-        "description": "What can you do?"
-    },
-    {
-        "title": "Today's Date",
-        "description": "What's today's date?"
-    },
-    {
-        "title": "About Insurance",
-        "description": "Tell me about insurance claims"
-    },
-    {
-        "title": "Claims Process",
-        "description": "Explain how claims processing works"
-    }
-]
-```
-
-These conversation starters help guide users on how to interact with your agent. You can customize these to match your agent's capabilities.
-
-4️⃣ Notice the `copilotAgents.declarativeAgent` section that defines your agent as a custom engine agent with specific capabilities.
-
-<cc-end-step lab="baf1" exercise="1" step="5" />
-
-### Step 6: Review the Application Entry Point
-
-Let's see how everything comes together in Program.cs.
-
-1️⃣ Open `Program.cs`.
-
-2️⃣ Key sections to understand:
-
-**Configuration Loading**: Find the section where `builder.Configuration` loads settings. Notice it loads from multiple sources:
-
-- `.env` files for environment-specific settings using `AddEnvFile`
-- User secrets for sensitive data (API keys) using `AddUserSecrets`
-- Environment variables using `AddEnvironmentVariables`
-
-**Service Registration**: Find where services are registered with `builder.Services`. Notice:
-
-- `AddSingleton<IStorage, MemoryStorage>()` - registers memory storage for conversation state
-- `AddAgentApplicationOptions()` - registers agent configuration
-- `AddAgent<ZavaInsuranceAgent>()` - registers the agent itself as a service
-
-**Chat Client Configuration**: Find where `IChatClient` is registered as a singleton. Observe how it:
-
-- Retrieves the endpoint, API key, and deployment name from configuration
-- Creates an `AzureOpenAIClient` with the endpoint and credentials
-- Returns a chat client for the specified deployment (gpt-4.1)
-
-This creates the connection to Azure OpenAI, which powers the agent's AI capabilities.
-
-<cc-end-step lab="baf1" exercise="1" step="6" />
-
-## Exercise 2: Configure the Agent
-
-Before running the agent, you need to configure it with your Azure AI credentials.
-
-### Step 1: Configure Environment Files
-
-The agent uses environment files to store configuration. Let's set them up.
-
-1️⃣ In Visual Studio Code, navigate to the `env/` folder.
-
-2️⃣ You should see two sample files:
-
-- `.env.local.sample`
-- `.env.local.user.sample`
-
-3️⃣ Copy `.env.local.sample` to `.env.local`:
+The agent reads configuration from environment files. Copy both samples:
 
 **Windows PowerShell:**
 ```powershell
 Copy-Item env/.env.local.sample env/.env.local
-```
-
-**macOS/Linux:**
-```bash
-cp env/.env.local.sample env/.env.local
-```
-
-4️⃣ Copy `.env.local.user.sample` to `.env.local.user`:
-
-**Windows PowerShell:**
-```powershell
 Copy-Item env/.env.local.user.sample env/.env.local.user
 ```
 
 **macOS/Linux:**
 ```bash
+cp env/.env.local.sample env/.env.local
 cp env/.env.local.user.sample env/.env.local.user
 ```
 
 <cc-end-step lab="baf1" exercise="2" step="1" />
 
-### Step 2: Add Your Azure AI Credentials
+### Step 2: Add your Microsoft Foundry credentials
 
-Now let's configure the agent to use your Microsoft Foundry deployment.
-
-1️⃣ Open `env/.env.local` in Visual Studio Code.
-
-2️⃣ Find the `MODELS_ENDPOINT` variable and update it with your Azure AI endpoint from Lab BAF0:
+1. Open `env/.env.local` and set `MODELS_ENDPOINT` to the endpoint from Lab BAF0:
 
 ```bash
 MODELS_ENDPOINT=https://your-resource.services.ai.azure.com/
 ```
 
-!!! tip "Finding Your Endpoint"
-    If you don't remember your endpoint:
-
-    1. Go to [Microsoft Foundry](https://ai.azure.com)
-    2. Select your project
-    3. Go to **Settings** → **Properties**
-    4. Copy the **Endpoint** URL
-
-3️⃣ Open `env/.env.local.user` in Visual Studio Code.
-
-4️⃣ Find the `SECRET_MODELS_API_KEY` variable and update it with your API key:
+1. Open `env/.env.local.user` and set your API key:
 
 ```bash
 SECRET_MODELS_API_KEY=your-api-key-here
 ```
 
-!!! warning "Keep Your API Key Secret"
-    The `.env.local.user` file contains sensitive information and is already included in `.gitignore`. Never commit this file to source control!
+!!! tip "Finding your endpoint"
+    Go to [Microsoft Foundry](https://ai.azure.com){target=_blank}, select your project, then **Settings → Properties**, and copy the **Endpoint** URL.
+
+!!! warning "Keep your API key secret"
+    `.env.local.user` contains sensitive information and is already listed in `.gitignore`. Never commit it.
 
 <cc-end-step lab="baf1" exercise="2" step="2" />
 
 ### Step 3: Sign in to Microsoft 365 and Azure
 
-The Microsoft 365 Agents Toolkit needs to authenticate with both Microsoft 365 and Azure.
+1. In Visual Studio Code, select the **Microsoft 365 Agents Toolkit** icon in the Activity Bar.
+1. In the **ACCOUNTS** section, select **Sign in to Microsoft 365** and complete the flow.
+1. Select **Sign in to Azure** and complete the flow.
 
-1️⃣ In Visual Studio Code, click on the **Microsoft 365 Agents Toolkit** icon in the Activity Bar (left side).
+**Expected result:** both accounts show as signed in in the ACCOUNTS section.
 
-2️⃣ In the toolkit panel, find the **ACCOUNTS** section.
-
-3️⃣ Click **Sign in to Microsoft 365** and complete the sign-in flow.
-
-4️⃣ Click **Sign in to Azure** and complete the sign-in flow.
-
-!!! note "First Time Sign-In"
-    The first time you sign in, you may need to grant permissions to the Microsoft 365 Agents Toolkit extension.
+!!! note "First time sign-in"
+    You may be asked to grant permissions to the Microsoft 365 Agents Toolkit extension.
 
 <cc-end-step lab="baf1" exercise="2" step="3" />
 
-## Exercise 3: Run and Test the Agent
+---
 
-Now it's time to run the agent and see it in action!
+## Exercise 3: Run, test, and customize
 
-### Step 1: Start the Agent
+### Step 1: Start the agent
 
-Let's run the agent using the F5 debug experience.
+1. Set the debug configuration to **(Preview) Debug in Copilot (Edge)**, then press **F5**.
+1. On first run, the Agents Toolkit provisions Azure resources — it will ask you to pick an **Azure subscription**, a **resource group**, and a **region** (choose one close to your Microsoft Foundry project). This takes 2-3 minutes and creates an **Azure Bot Service**, an **App Registration**, and a **Dev Tunnel**.
+1. Watch the **Terminal** output.
 
-1️⃣ In Visual Studio Code, select the default debug configuration to `(Preview) Debug in Copilot (Edge)`, then press **F5** or select **Run → Start Debugging** from the menu.
-
-2️⃣ When prompted to select a debug target, choose **(Preview) Debug in Copilot (Edge)**.
-
-!!! tip "Debug Target Options"
-    You may see multiple options like "Debug in Teams (Edge)", "Debug in Teams (Chrome)", etc. Make sure to select **(Preview) Debug in Copilot (Edge)** to test your agent in Microsoft 365 Copilot.
-
-3️⃣ The first time you run the agent, the Microsoft 365 Agents Toolkit will:
-
-- Prompt you to select an **Azure subscription**
-- Ask you to create a new **resource group** or select existing one
-- Select a **region** for your resources (choose one close to your Microsoft Foundry project)
-- Provision Azure resources (Azure Bot Service, App Registration)
-
-This provisioning process usually takes 2-3 minutes.
-
-!!! tip "Provisioning Azure Resources"
-    During first run, the toolkit creates:
-
-    - **Azure Bot Service** - Handles message routing
-    - **App Registration** - Manages authentication
-    - **Dev Tunnel** - Creates a secure tunnel to your local machine
-
-4️⃣ Watch the **Terminal** output in Visual Studio Code. You should see:
+**Expected result:** the terminal shows:
 
 ```
 🌍 Environment: local
@@ -331,70 +186,40 @@ This provisioning process usually takes 2-3 minutes.
 ✅ Agent initialized successfully!
 ```
 
-5️⃣ A browser window will open with Microsoft 365 Copilot.
-
-6️⃣ You'll see an **install dialog** for the Zava Insurance Agent. Click **Add**.
-
-7️⃣ After installation, click **Open in Copilot** or **Chat**.
+A browser opens with Microsoft 365 Copilot and an install dialog. Select **Add**, then **Open in Copilot**.
 
 <cc-end-step lab="baf1" exercise="3" step="1" />
 
-### Step 2: Test Basic Conversations
+### Step 2: Test the agent
 
-Now let's interact with your agent!
+Your agent appears with its conversation starters.
 
-1️⃣ In Microsoft 365 Copilot, you should see your agent with conversation starters in your chat window.
+Try each of these and observe which tool the agent chooses:
 
-![Conversation starters in Microsoft 365 Copilot](../../../assets/images/agent-framework/BAF1-test1.png)
+| Prompt | Expected behavior |
+|---|---|
+| *What can you do?* | Calls `StartConversationPlugin` and returns the welcome message |
+| *What's today's date?* | Calls `DateTimeFunctionTool` and returns the current date and time |
+| *Tell me about insurance claims* | Answers from the model's own knowledge — no tool call |
+| *What's the weather today?* | Politely declines as out of scope |
 
-2️⃣ Select "What can you do?" to see the welcome message:
+Check the **Debug Console** in Visual Studio Code to see the plugin calls and message processing in real time.
 
-![Conversation starters in Microsoft 365 Copilot](../../../assets/images/agent-framework/BAF1-test2.png)
-
-!!! warning "Issue processing user's prompt"
-    In case the agent will answer with something like {{StartConversationPlugin.StartConversation}} you can simply slightly update the agent instructions in `src/Agent/ZavaInsuranceAgent.cs` file, stop all the running processes, and run the agent again with F5. If the issue persist, you can proceed with the lab. In the upcoming exercises the issue will be addressed.
-
-3️⃣ Try asking: **"What's today's date?"**
-
-The agent should call the `DateTimeFunctionTool` and return the current date and time.
-
-4️⃣ Try asking: **"What can you do?"** or **"Start over"**
-
-The agent should call the `StartConversationPlugin` and show the welcome message again.
-
-5️⃣ Try a general question: **"Tell me about insurance claims"**
-
-The agent should use its AI knowledge to provide a helpful explanation about insurance claims.
-
-6️⃣ Try something outside its scope: **"What's the weather today?"**
-
-The agent should politely indicate that this is outside its scope as an insurance assistant.
+!!! warning "Issue processing the user's prompt"
+    If the agent replies with raw text such as `{{StartConversationPlugin.StartConversation}}`, slightly reword the agent instructions in `src/Agent/ZavaInsuranceAgent.cs`, stop all running processes, and press F5 again. If it persists you can safely continue — later exercises address it.
 
 <cc-end-step lab="baf1" exercise="3" step="2" />
 
-### Step 3: Check the Debug Output
+### Step 3: Customize the welcome message
 
-1️⃣ Return to Visual Studio Code and check the **Debug Console**.
+1. Stop the debugger with **Shift+F5**.
+1. Open `src/Plugins/StartConversationPlugin.cs` and find the `welcomeMessage` variable.
+1. Change the first line to `"👋 Welcome! I'm [Your Name]'s Agent!\n\n"`.
+1. Save, press **F5**, and type **"start over"** in Microsoft 365 Copilot.
 
-2️⃣ Notice logs showing plugin calls, AI responses, and message processing in real-time.
+**Expected result:** your customized greeting appears, confirming that changing a plugin changes what the agent says.
 
 <cc-end-step lab="baf1" exercise="3" step="3" />
-
-## Exercise 4: Customize Your Agent
-
-Let's make a simple modification to personalize the agent.
-
-### Step 1: Update the Welcome Message
-
-1️⃣ Stop the debugger (press Shift+F5).
-
-2️⃣ Open `src/Plugins/StartConversationPlugin.cs` and find the `welcomeMessage` variable.
-
-3️⃣ Add your name to the first line: `"👋 Welcome! I'm [Your Name]'s Agent!\n\n"`
-
-4️⃣ Save, press **F5** to restart, and type **"start over"** in Copilot to see your change.
-
-<cc-end-step lab="baf1" exercise="4" step="1" />
 
 ---8<--- "b-congratulations.md"
 
@@ -402,14 +227,13 @@ You have completed Lab BAF1 - Build and Run Your First Agent!
 
 You've learned how to:
 
-- ✅ Clone and explore an Agent Framework project
-- ✅ Configure the agent with Azure AI credentials
+- ✅ Explore an Agent Framework project and its plugin model
+- ✅ Configure the agent with Microsoft Foundry credentials
 - ✅ Run and debug the agent locally
 - ✅ Test the agent in Microsoft 365 Copilot
-- ✅ Understand the core components (Agent, Plugins, Instructions)
-- ✅ Make simple modifications to customize behavior
+- ✅ Customize the agent's behavior
 
-In the next lab, you'll add more powerful capabilities by integrating document search with Azure AI Search and gpt-4.1!
+Your agent can hold a conversation — but it doesn't know anything about Zava's actual claims yet. In the next lab you'll ground it with a **Foundry IQ** knowledge base.
 
 <cc-next url="../02-add-claim-search" />
 

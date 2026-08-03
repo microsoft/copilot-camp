@@ -41,6 +41,15 @@ This section includes hands-on labs that cover Work IQ across key development pa
 
 Additional labs will be added over time as the platform evolves. Upcoming topics will include broader Microsoft IQ integration scenarios, spanning Work IQ, Foundry IQ, Fabric IQ, and Web IQ, along with deeper implementation guidance for advanced enterprise use cases.
 
+## Go deeper with The Microsoft IQ Series
+
+Work IQ is one of the three intelligence services that make up **Microsoft IQ**, alongside **Foundry IQ** and **Fabric IQ**. To learn the whole picture, watch [**The Microsoft IQ Series**](https://aka.ms/iq-series){target=_blank} — expert-led episodes with Product Group and Advocacy, each paired with a hands-on cookbook or lab.
+
+- 📺 [Watch the episodes](https://aka.ms/iq-series/episodes){target=_blank} or the full [playlist](https://aka.ms/iq-series/playlist){target=_blank}
+- 🧪 Three Work IQ episodes cover data and tools at scale, the A2A protocol, and MCP tooling with Copilot CLI
+- 🏅 Complete all three Work IQ labs to request the [Work IQ community badge](https://aka.ms/iq-series){target=_blank}
+- 🔬 Go further with the [Microsoft IQ Deep Dive](https://aka.ms/iqdeepdive){target=_blank}, a three-day workshop spanning Foundry IQ, Work IQ, Fabric IQ, and Web IQ
+
 ## <a href="./01-work-iq-setup-and-cli">Start here</a> with Lab WIQ01, to setup Work IQ on your tenant and to start working with it using Work IQ CLI and GitHub Copilot CLI.
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/work-iq/index" />

@@ -131,28 +131,6 @@ namespace ZavaInsurance.Plugins
             var missingDocs = GetFieldValue(claimDoc, "missingDocumentation");
             result.AppendLine($"- Missing Documentation: {(string.IsNullOrWhiteSpace(missingDocs) ? "None" : missingDocs)}");
 
-            // Get damage photo URL if available
-            var imageUrl = await _knowledgeBaseService.GetClaimImageUrlAsync(claimId);
-
-            if (!string.IsNullOrEmpty(imageUrl))
-            {
-                // Get bot endpoint for devtunnel proxy
-                var botEndpoint = _configuration["BOT_ENDPOINT"];
-                if (string.IsNullOrEmpty(botEndpoint))
-                {
-                    var botDomain = _configuration["BOT_DOMAIN"];
-                    botEndpoint = !string.IsNullOrEmpty(botDomain) ? $"https://{botDomain}" : "http://localhost:3978";
-                }
-                botEndpoint = botEndpoint.TrimEnd('/');
-
-                // Proxy the blob storage URL through devtunnel
-                var proxyUrl = $"{botEndpoint}/api/image?url={Uri.EscapeDataString(imageUrl)}";
-
-                result.AppendLine();
-                result.AppendLine("**Damage Photo:**");
-                result.AppendLine($"![Damage Photo]({proxyUrl})");
-            }
-
             await NotifyUserAsync($"Retrieved details for claim {claimId}");
 
             return result.ToString();

@@ -1984,45 +1984,33 @@
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Clone and Explore the Project",
+                            "title": "Clone and explore the project",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Clone the Repository"
+                                    "title": "Clone the repository"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Explore the Project Structure"
+                                    "title": "Understand the agent and its tools"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Understand the Agent Implementation"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Explore the Plugins"
-                                },
-                                {
-                                    "stepId": "5",
-                                    "title": "View the App Manifest and Conversation Starters"
-                                },
-                                {
-                                    "stepId": "6",
-                                    "title": "Review the Application Entry Point"
+                                    "title": "Review the host and the manifest"
                                 }
                             ]
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Configure the Agent",
+                            "title": "Configure the agent",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Configure Environment Files"
+                                    "title": "Create your environment files"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add Your Azure AI Credentials"
+                                    "title": "Add your Microsoft Foundry credentials"
                                 },
                                 {
                                     "stepId": "3",
@@ -2032,29 +2020,19 @@
                         },
                         {
                             "exerciseId": "3",
-                            "title": "Run and Test the Agent",
+                            "title": "Run, test, and customize",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Start the Agent"
+                                    "title": "Start the agent"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Test Basic Conversations"
+                                    "title": "Test the agent"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Check the Debug Output"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Customize Your Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update the Welcome Message"
+                                    "title": "Customize the welcome message"
                                 }
                             ]
                         }
@@ -2062,79 +2040,67 @@
                 },
                 {
                     "labId": "baf2",
-                    "title": "BAF2 - Add Document Search with Azure AI Search",
+                    "title": "BAF2 - Ground your agent with Foundry IQ",
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Set Up Azure AI Search",
+                            "title": "Create the Foundry IQ knowledge base",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create Azure AI Search Service"
+                                    "title": "Create the Azure AI Search service"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add Sample Claims Data"
+                                    "title": "Review the sample claims data"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Configure Azure AI Search Credentials"
+                                    "title": "Configure the knowledge base credentials"
                                 }
                             ]
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Create the KnowledgeBaseService",
+                            "title": "Add retrieval to the agent",
                             "steps": [
                                 {
-                                    "stepId": "6",
-                                    "title": "Create Complete KnowledgeBaseService"
+                                    "stepId": "1",
+                                    "title": "Create the KnowledgeBaseService"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Create the ClaimsPlugin"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Register the service and initialize the knowledge base"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Give the agent the ClaimsPlugin tools"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Update the welcome message"
                                 }
                             ]
                         },
                         {
                             "exerciseId": "3",
-                            "title": "Create the ClaimsPlugin",
+                            "title": "Run and validate grounded answers",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create Complete ClaimsPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Register Services and Configure Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Register KnowledgeBaseService and Initialize Data"
+                                    "title": "Run the agent"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Configure Agent with ClaimsPlugin"
+                                    "title": "Test claim search"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Update StartConversationPlugin Welcome Message"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Test the Document Search",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run the Agent"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Claim Search"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test Claim Details"
+                                    "title": "Test claim details"
                                 }
                             ]
                         }
@@ -2142,469 +2108,67 @@
                 },
                 {
                     "labId": "baf3",
-                    "title": "BAF3 - Add Vision Analysis with Mistral AI",
+                    "title": "BAF3 - Ground your agent in Microsoft 365 content with Work IQ",
                     "exercises": [
                         {
                             "exerciseId": "1",
-                            "title": "Update Prerequisites",
+                            "title": "Set up the SharePoint policy library",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Deploy Mistral Vision Model in Microsoft Foundry"
+                                    "title": "Create the SharePoint site"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Create Azure Storage Account and Container"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Update Configuration"
+                                    "title": "Upload the policy documents"
                                 }
                             ]
                         },
                         {
                             "exerciseId": "2",
-                            "title": "Create Vision and Storage Services",
+                            "title": "Authenticate the user and add compliance analysis",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Create VisionService and BlobStorageService"
+                                    "title": "Configure OBO settings"
+                                },
+                                {
+                                    "stepId": "2",
+                                    "title": "Implement user authentication and OBO"
+                                },
+                                {
+                                    "stepId": "3",
+                                    "title": "Add the LanguageModelService"
+                                },
+                                {
+                                    "stepId": "4",
+                                    "title": "Create the ClaimsPoliciesPlugin"
+                                },
+                                {
+                                    "stepId": "5",
+                                    "title": "Register the plugin and update instructions"
                                 }
                             ]
                         },
                         {
                             "exerciseId": "3",
-                            "title": "Enhance KnowledgeBaseService with Vision Capabilities",
+                            "title": "Run and validate compliance analysis",
                             "steps": [
                                 {
                                     "stepId": "1",
-                                    "title": "Update KnowledgeBaseService Constructor"
+                                    "title": "Run and sign in"
                                 },
                                 {
                                     "stepId": "2",
-                                    "title": "Add Vision-Related Methods"
+                                    "title": "Test claim compliance analysis"
                                 },
                                 {
                                     "stepId": "3",
-                                    "title": "Update IndexSampleDataAsync Method"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Create the Vision Plugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create Complete VisionPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Update ClaimsPlugin to Display Damage Photos",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update ClaimsPlugin to Display Damage Photos"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "6",
-                            "title": "Register Services and Configure Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update Service Registration and KnowledgeBaseService Factory"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Update Agent with VisionPlugin"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Add Image Proxy Endpoint"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Update StartConversationPlugin Welcome Message"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "7",
-                            "title": "Test Vision Analysis",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run the Agent"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test AI Vision Analysis"
+                                    "title": "Test with another claim"
                                 }
                             ]
                         }
                     ]
-                },
-                {
-                    "labId": "baf4",
-                    "title": "BAF4 - Add Policy Search",
-                    "exercises": [
-                        {
-                            "exerciseId": "1",
-                            "title": "Add Policies Index and Knowledge Source",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Add Policy Constants and Index Creation"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Update Knowledge Sources to Include Policies"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Update Knowledge Base to Include Policies"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Add Policy Data Indexing"
-                                },
-                                {
-                                    "stepId": "5",
-                                    "title": "Add GetPolicyByNumberAsync Helper Method"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Create the PolicyPlugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create Complete PolicyPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Register PolicyPlugin in Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update Program.cs Initialization"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Update Agent Instructions"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Register PolicyPlugin"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Update StartConversationPlugin Welcome Message"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Test Policy Search",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run and Verify Initialization"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Policy Search"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test Policy Details"
-                                }
-                            ]
-                        }
-                    ],
-                    "optional": true
-                },
-                {
-                    "labId": "baf5",
-                    "title": "BAF5 - Add Communication Capabilities",
-                    "exercises": [
-                        {
-                            "exerciseId": "1",
-                            "title": "Create the CommunicationPlugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create Complete CommunicationPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Register CommunicationPlugin in Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Instantiate CommunicationPlugin"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Register Communication Tools"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Update Agent Instructions and security",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Add Communication Tools to Instructions"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Configure OBO settings"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Implement user's authentication and OBO"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Update StartConversationPlugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update Welcome Message"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Test Communication Features",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run and Verify"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Investigation Report Generation"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test Email Functionality"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Test Complete End-to-End Workflow"
-                                }
-                            ]
-                        }
-                    ],
-                    "optional": true
-                },
-                {
-                    "labId": "baf6",
-                    "title": "BAF6 - Add Copilot Retrieval API Integration",
-                    "exercises": [
-                        {
-                            "exerciseId": "1",
-                            "title": "Set Up SharePoint Site with Policy Documents",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create SharePoint Site"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Upload Policy Documents"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Create the LanguageModelService",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create LanguageModelService"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Register LanguageModelService in Dependency Injection"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Update Configuration"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Create the ClaimsPoliciesPlugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Understand the Copilot Retrieval API"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Create the ClaimsPoliciesPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Register ClaimsPoliciesPlugin in Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Instantiate ClaimsPoliciesPlugin"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Register ClaimsPoliciesPlugin Tools"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Update Agent Instructions"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Update Welcome Message"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Test Copilot API Integration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run and Verify"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Claim Compliance Analysis"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test with Different Claims"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Test Complete Workflow with Compliance"
-                                }
-                            ]
-                        }
-                    ],
-                    "optional": true
-                },
-                {
-                    "labId": "baf7",
-                    "title": "BAF7 - Add MCP Tools Integration",
-                    "exercises": [
-                        {
-                            "exerciseId": "1",
-                            "title": "Setting up the MCP Server",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Understanding the MCP Server and Prerequisites"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Downloading and Reviewing the MCP Server"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Configuring the Environment"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Running the MCP Server with Dev Tunnel"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "2",
-                            "title": "Configure MCP Client in the Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Add MCP Client Configuration"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Register MCP Client in Dependency Injection"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "3",
-                            "title": "Create the ClaimsAdjustersPlugin",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Create ClaimsAdjustersPlugin"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "4",
-                            "title": "Register ClaimsAdjustersPlugin in Agent",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Update Agent Constructor"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Instantiate ClaimsAdjustersPlugin"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Register ClaimsAdjusters Tools"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Update Agent Instructions"
-                                }
-                            ]
-                        },
-                        {
-                            "exerciseId": "5",
-                            "title": "Test MCP Tools Integration",
-                            "steps": [
-                                {
-                                    "stepId": "1",
-                                    "title": "Run and Verify"
-                                },
-                                {
-                                    "stepId": "2",
-                                    "title": "Test Listing Claims Adjusters"
-                                },
-                                {
-                                    "stepId": "3",
-                                    "title": "Test Assigning an Adjuster"
-                                },
-                                {
-                                    "stepId": "4",
-                                    "title": "Test with Filters"
-                                }
-                            ]
-                        }
-                    ],
-                    "optional": true
                 }
             ]
         },
@@ -3161,108 +2725,6 @@
                                         {
                                             "stepId": "5",
                                             "title": "Create Agent Instructions"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "groupId": "custom-engine-mcp",
-                    "groupName": "Custom Engine Agent MCP Path",
-                    "labs": [
-                        {
-                            "labId": "baf7",
-                            "title": "BAF7 - Add MCP Tools Integration",
-                            "exercises": [
-                                {
-                                    "exerciseId": "1",
-                                    "title": "Setting up the MCP Server",
-                                    "steps": [
-                                        {
-                                            "stepId": "1",
-                                            "title": "Understanding the MCP Server and Prerequisites"
-                                        },
-                                        {
-                                            "stepId": "2",
-                                            "title": "Downloading and Reviewing the MCP Server"
-                                        },
-                                        {
-                                            "stepId": "3",
-                                            "title": "Configuring the Environment"
-                                        },
-                                        {
-                                            "stepId": "4",
-                                            "title": "Running the MCP Server with Dev Tunnel"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "exerciseId": "2",
-                                    "title": "Configure MCP Client in the Agent",
-                                    "steps": [
-                                        {
-                                            "stepId": "1",
-                                            "title": "Add MCP Client Configuration"
-                                        },
-                                        {
-                                            "stepId": "2",
-                                            "title": "Register MCP Client in Dependency Injection"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "exerciseId": "3",
-                                    "title": "Create the ClaimsAdjustersPlugin",
-                                    "steps": [
-                                        {
-                                            "stepId": "1",
-                                            "title": "Create ClaimsAdjustersPlugin"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "exerciseId": "4",
-                                    "title": "Register ClaimsAdjustersPlugin in Agent",
-                                    "steps": [
-                                        {
-                                            "stepId": "1",
-                                            "title": "Update Agent Constructor"
-                                        },
-                                        {
-                                            "stepId": "2",
-                                            "title": "Instantiate ClaimsAdjustersPlugin"
-                                        },
-                                        {
-                                            "stepId": "3",
-                                            "title": "Register ClaimsAdjusters Tools"
-                                        },
-                                        {
-                                            "stepId": "4",
-                                            "title": "Update Agent Instructions"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "exerciseId": "5",
-                                    "title": "Test MCP Tools Integration",
-                                    "steps": [
-                                        {
-                                            "stepId": "1",
-                                            "title": "Run and Verify"
-                                        },
-                                        {
-                                            "stepId": "2",
-                                            "title": "Test Listing Claims Adjusters"
-                                        },
-                                        {
-                                            "stepId": "3",
-                                            "title": "Test Assigning an Adjuster"
-                                        },
-                                        {
-                                            "stepId": "4",
-                                            "title": "Test with Filters"
                                         }
                                     ]
                                 }

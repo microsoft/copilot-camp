@@ -32,15 +32,14 @@ namespace ZavaInsurance.Agent
         private readonly string AgentInstructions = """
         You are a professional insurance claims assistant for Zava Insurance.
 
-        Whenever the user starts a new conversation or provides a prompt to start a new conversation like "start over", "restart", 
-        "new conversation", "what can you do?", "how can you help me?", etc. use {{StartConversationPlugin.StartConversation}} and 
-        provide to the user exactly the message you get back from the plugin.
+        Whenever the user starts a new conversation or provides a prompt to start a new conversation like "start over", "restart", "new conversation", "what can you do?", "how can you help me?", etc. use {{StartConversationPlugin.StartConversation}} and provide to the user exactly the message you get back from the plugin.
 
         **Available Tools:**
         Use {{DateTimeFunctionTool.getDate}} to get the current date and time.
         For claims search, use {{ClaimsPlugin.SearchClaims}} and {{ClaimsPlugin.GetClaimDetails}}.
-        For damage photo viewing, use {{VisionPlugin.ShowDamagePhoto}}.
-        For AI vision damage analysis, use {{VisionPlugin.AnalyzeAndShowDamagePhoto}} and require approval via {{VisionPlugin.ApproveAnalysis}}.
+        For claims compliance analysis against company policies, use {{ClaimsPoliciesPlugin.AnalyzeClaimCompliance}}.
+
+        **IMPORTANT**: If in the response there are references to citations like [1], [2], etc., make sure to include those citations in the response so that Microsoft 365 Copilot can render them properly.
 
         Stick to the scenario above and use only the information from the tools when answering questions.
         Be concise and professional in your responses.
@@ -83,6 +82,31 @@ namespace ZavaInsurance.Agent
         {
             // Start a Streaming Process to let clients that support streaming know that we are processing the request. 
             await turnContext.StreamingResponse.QueueInformativeUpdateAsync("Processing your request...", cancellationToken).ConfigureAwait(false);
+
+            // Check if user profile is already cached, if not fetch and cache it
+            var userProfile = turnState.Conversation.GetCachedUserProfile();
+            if (userProfile == null)
+            {
+                try
+                {
+                    // Get the access token and store it in the conversation state
+                    var accessToken = await UserAuthorization.ExchangeTurnTokenAsync(turnContext, UserAuthorization.DefaultHandlerName, exchangeScopes: new[] { "https://graph.microsoft.com/.default" }, cancellationToken: cancellationToken);
+                    turnState.Conversation.SetCachedOBOAccessToken(accessToken);
+
+                    // Get the user profile and store it in the conversation state
+                    userProfile = await GetUserProfile(accessToken, cancellationToken);
+                    turnState.Conversation.SetCachedUserProfile(userProfile);
+
+                    // Show current user profile information to let clients that support streaming know that we are processing the request for the current user.
+                    await turnContext.StreamingResponse.QueueInformativeUpdateAsync($"⚒️ Working on your request {userProfile.DisplayName} ...", cancellationToken).ConfigureAwait(false);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    System.Diagnostics.Trace.WriteLine($"Exception occurred: {ex.Message}");
+                    // User is not signed in, proceed as anonymous and inform the user
+                    await turnContext.StreamingResponse.QueueInformativeUpdateAsync("⚠️ Please sign in if you want to use authenticated features.", cancellationToken).ConfigureAwait(false);
+                }
+            }
 
             try
             {
@@ -131,19 +155,16 @@ namespace ZavaInsurance.Agent
 
             var scope = _serviceProvider.CreateScope();
 
-            // Get KnowledgeBaseService and IConfiguration from DI
+            // Get KnowledgeBaseService, LanguageModelService and IConfiguration from DI
             var knowledgeBaseService = scope.ServiceProvider.GetRequiredService<KnowledgeBaseService>();
+            var languageModelService = scope.ServiceProvider.GetRequiredService<LanguageModelService>();
             var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
-
-            // Resolve vision and storage services
-            var visionService = scope.ServiceProvider.GetRequiredService<VisionService>();
-            var blobStorageService = scope.ServiceProvider.GetRequiredService<BlobStorageService>();
 
             // Create ClaimsPlugin with required dependencies
             ClaimsPlugin claimsPlugin = new(context, knowledgeBaseService, configuration);
 
-            // Create VisionPlugin with all dependencies
-            VisionPlugin visionPlugin = new(context, knowledgeBaseService, visionService, blobStorageService, configuration);
+            // Create ClaimsPoliciesPlugin with required dependencies
+            ClaimsPoliciesPlugin claimsPoliciesPlugin = new(context, turnState, knowledgeBaseService, languageModelService, configuration, _httpClient);
 
             // Setup the tools for the agent using Agent Framework
             var toolOptions = new ChatOptions
@@ -162,11 +183,8 @@ namespace ZavaInsurance.Agent
             toolOptions.Tools.Add(AIFunctionFactory.Create(claimsPlugin.SearchClaims));
             toolOptions.Tools.Add(AIFunctionFactory.Create(claimsPlugin.GetClaimDetails));
 
-            // Register Vision tools for AI damage photo analysis
-            toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.AnalyzeAndShowDamagePhoto));
-            toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.ShowDamagePhoto));
-            toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.ApproveAnalysis));
-            toolOptions.Tools.Add(AIFunctionFactory.Create(visionPlugin.RejectAnalysis));
+            // Register ClaimsPolicies tools (Microsoft 365 Copilot Retrieval API)
+            toolOptions.Tools.Add(AIFunctionFactory.Create(claimsPoliciesPlugin.AnalyzeClaimCompliance));
 
             // Create the chat Client passing in agent instructions and tools
             return new ChatClientAgent(_chatClient!,

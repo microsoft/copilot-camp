@@ -1,26 +1,49 @@
-# Lab MBA4 - Bring your agent to Copilot Chat
+# Lab BMA4 - Bring your agent to Microsoft 365 Copilot
 
-In this final lab, you’ll bring your custom engine agent into Copilot Chat by updating the agent's manifest. By enabling copilotAgents in the app manifest, you’ll make your AI-powered assistant available directly inside the Copilot experience.
+<div data-widget="hero"
+     data-badge="Path 1 · Lab BMA4"
+     data-badge-color="green"
+     data-icon="🚀"
+     data-subtitle="Declare your agent as a custom engine agent in the app manifest and test it inside Microsoft 365 Copilot."
+     data-time="15-20 min"
+     data-requires="Lab BMA3 completed"></div>
 
-## Exercise 1: Bring your agent to Copilot Chat
+Your agent already runs in Microsoft Teams. Bringing it into Microsoft 365 Copilot is a manifest change, not a code change — you declare the agent as a **custom engine agent** and Microsoft 365 Copilot surfaces it alongside every other agent the user has.
 
-### Step 1: Update the manifest
+!!! note
+    If you want to start directly from this lab without completing the previous ones, you can download the agent's complete source code (as it is at the end of the previous lab) [from here](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agents-sdk/BMA3-complete&filename=BMA3-complete){target=_blank}. Remember to add your own `AIServices` settings to `appsettings.json` as described in ["Lab BMA3"](../03-agent-configuration).
 
-!!!tip "Stop debugging"
-    Close the previous debugging session before proceeding with this exercise.
+## Lab objectives
 
-Go to **M365Agent/AppPackage/manifest.json**, update the manifest schema and version as following: 
+By the end of this lab you will be able to:
 
-``` 
+- Declare a custom engine agent in the app manifest
+- Add conversation starters that help users get going
+- Test your agent inside Microsoft 365 Copilot
+
+---
+
+## Exercise 1: Declare the agent for Microsoft 365 Copilot
+
+!!! tip "Stop debugging first"
+    Close the previous debugging session before starting this exercise.
+
+### Step 1: Update the manifest schema
+
+Open **M365Agent/appPackage/manifest.json** and update the schema and version:
+
+```json
 "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
 "manifestVersion": "1.22",
 ```
 
-Replace bots section with the following that will also add copilotAgents in the manifest:
+<cc-end-step lab="bma4" exercise="1" step="1" />
 
-> This block declares your agent as a custom engine agent for M365 Copilot. It tells Microsoft 365 to expose this agent in Copilot Chat and surface its command list in the conversation UI along with the conversation starters to help users get started quickly.
+### Step 2: Add conversation starters and the copilotAgents block
 
-```   
+Replace the `bots` section with the following, which adds a command list and the `copilotAgents` declaration:
+
+```json
 "bots": [ 
   { 
     "botId": "${{BOT_ID}}", 
@@ -37,7 +60,7 @@ Replace bots section with the following that will also add copilotAgents in the 
         "commands": [ 
           { 
             "title": "Emergency and Mental Health",
-            "description": "What’s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
+            "description": "What's the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
           }, 
           { 
             "title": "PerksPlus Details", 
@@ -62,45 +85,66 @@ Replace bots section with the following that will also add copilotAgents in the 
 }, 
 ```
 
-Hit **Start** or **F5** to start debugging. Microsoft Teams will launch automatically. When Microsoft Teams open in your browser, ignore the app pop-up and select **Apps > Manage your apps > Upload an app** and then select **Upload a custom app**. In the File Explorer go to your project folder `...\ContosoHRAgent\M365Agent\appPackage\build` select **appPackage.local.zip**.
+> The `copilotAgents.customEngineAgents` block is what tells Microsoft 365 to expose this agent inside Copilot Chat. The `commandLists` entries become the conversation starters users see before their first message.
 
-![The UI of Microsoft Teams when uploading an app, with the "Upload an app" command highlighted.](https://github.com/user-attachments/assets/5fad723f-b087-4481-8c8c-d5ad87c1bead)
+<cc-end-step lab="bma4" exercise="1" step="2" />
 
-Your app will pop-up on Teams again, select **Add**. This time there will be an option to **Open with Copilot**, select **Open with Copilot** to test your agent on Copilot.
+---
 
-![The UI of Microsoft Teams when the agents gets added, with the "Open with Copilot" command highlighted.](https://github.com/user-attachments/assets/97f9d9fd-bd90-48b5-983b-b1fea3f85721)
+## Exercise 2: Test your agent in Microsoft 365 Copilot
 
-Select your **ContosoHRAgentlocal** from the list of agents in Copilot Chat. You can select one of the conversation starters to chat with your agent.
+### Step 1: Upload the app package
 
-![The agent hosted inside Microsoft 365 Copilot, showing the conversation starters configured in the application manifest.](https://github.com/user-attachments/assets/a1d061c7-c58f-4a1e-9481-4d6a60d85e3b)
+Select **Start** or press **F5** to begin debugging. When Microsoft Teams opens in your browser, dismiss the app pop-up and instead select **Apps > Manage your apps > Upload an app**, then **Upload a custom app**.
 
-Observe that your agent responds back with a similar behavior on Copilot Chat.
+Select `...\ContosoHRAgent\M365Agent\appPackage\build\appPackage.local.zip`.
 
-![The agent hosted in Microsoft 365 Copilot providing the same feedback as the one provided in Microsoft Teams, including evidence of the counter to count the number of interactions with the user.](https://github.com/user-attachments/assets/caedced5-1247-44ed-b12f-78827f4e4784)
+<cc-end-step lab="bma4" exercise="2" step="1" />
 
+### Step 2: Open the agent in Microsoft 365 Copilot
+
+When the app pop-up appears, select **Add**. This time you'll also see **Open with Copilot** — select it.
+
+Choose **ContosoHRAgentlocal** from the agent list in Microsoft 365 Copilot Chat.
+
+<cc-end-step lab="bma4" exercise="2" step="2" />
+
+### Step 3: Verify the behavior matches
+
+Select one of the conversation starters, then ask a follow-up question.
+
+**Expected result:**
+
+- The conversation starters you defined in the manifest appear before the first message.
+- Answers are grounded in your HR documents, exactly as they were in Teams.
+- Responses stream in and include the running message count.
+
+<cc-end-step lab="bma4" exercise="2" step="3" />
 
 ---8<--- "b-congratulations.md"
 
-🎉 Congratulations! You've just built your first Custom Engine Agent using the Microsoft 365 Agents SDK and Microsoft Foundry!
+🎉 You've built a custom engine agent with the Microsoft 365 Agents SDK, Microsoft Foundry, and Microsoft Agent Framework!
 
-In this lab, you learned how to:
+Across this path you learned how to:
 
-* Configure an AI agent in Microsoft Foundry using the Agent Playground
-* Upload enterprise documents to ground your agent’s responses
-* Scaffold a bot using the M365 Agents SDK in Visual Studio
-* Add Semantic Kernel and connect to Azure AI Agent Service
-* Integrate your bot with the Microsoft Foundry agent for real-time, grounded reasoning
-* Deploy and test your agent in **Microsoft Teams** and **Copilot Chat**
+* Create and ground an agent in Microsoft Foundry with instructions and File Search
+* Scaffold a Microsoft 365 Agents SDK host and test it locally
+* Resolve a published Foundry agent as an `AIAgent` with Microsoft Agent Framework
+* Stream responses and citations, and persist an `AgentSession` for conversation memory
+* Deliver the same agent to **Microsoft Teams** and **Microsoft 365 Copilot**
+
+### Where to go next
+
+Want to build the agent's reasoning and grounding yourself instead of in the portal? Continue with [Path 2 — Start with Agent Framework](../../agent-framework/), where you'll ground an agent with Foundry IQ and the Copilot Retrieval API.
 
 ## Resources
 
-- [Copilot Developer Camp](https://aka.ms/copilotdevcamp)
-- [M365 Agents SDK docs](https://aka.ms/open-hack/m365agentssdk)
-- [Microsoft Foundry](https://ai.azure.com)
-- [Learn more about Copilot extensibility](https://aka.ms/extensibility-docs)
+- [Copilot Developer Camp](https://aka.ms/copilotdevcamp){target=_blank}
+- [Microsoft Agent Framework documentation](https://learn.microsoft.com/agent-framework/){target=_blank}
+- [Microsoft 365 Agents SDK documentation](https://aka.ms/open-hack/m365agentssdk){target=_blank}
+- [Microsoft Foundry](https://ai.azure.com){target=_blank}
+- [Learn more about Microsoft 365 Copilot extensibility](https://aka.ms/extensibility-docs){target=_blank}
 
 <cc-next label="Home" url="/" />
-
-<!-- <cc-award badgeId="Build" badgeName="Build" badgeUrl="#" /> -->
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agents-sdk/04-bring-agent-to-copilot" />
