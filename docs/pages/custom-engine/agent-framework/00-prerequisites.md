@@ -37,7 +37,38 @@ By default, end users can't upload applications directly; instead a Teams admini
 
 ## Exercise 2: Setup Development Environment
 
-You can complete these labs on a Windows, macOS, or Linux machine and you do need the ability to install the prerequisites. If you are not permitted to install applications on your computer, you'll need to find another machine (or virtual machine) to use.
+You can complete these labs on a Windows, macOS, or Linux machine. Choose one of the two routes below.
+
+=== "Dev container (recommended)"
+
+    The repository ships a dev container with .NET 9, the Azure CLI, DevTunnel, and the required Visual Studio Code extensions already installed. Use it and you can skip the manual installs entirely.
+
+    **Option A - GitHub Codespaces (nothing to install)**
+
+    1. Open [https://github.com/microsoft/copilot-camp](https://github.com/microsoft/copilot-camp){target=_blank}.
+    2. Select **Code** > **Codespaces** > **...** > **New with options...**.
+    3. For **Dev container configuration**, choose **Copilot Camp - Custom Engine Agents (C#)**, then select **Create codespace**.
+
+    **Option B - Locally with Docker**
+
+    1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/){target=_blank} and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers){target=_blank} for Visual Studio Code.
+    2. Clone the repository and open it in Visual Studio Code.
+    3. Run **Dev Containers: Reopen in Container** from the Command Palette and pick **Copilot Camp - Custom Engine Agents (C#)**.
+
+    When the container finishes building it prints the installed tool versions. Then sign in:
+
+    ```bash
+    az login --use-device-code
+    ```
+
+    !!! tip "Debugging from a dev container"
+        Your agent runs inside the container while your browser runs on your machine. Visual Studio Code forwards port 3978 automatically, so use the forwarded URL when a lab tells you to open the agent. In Codespaces the forwarded port must be set to **Public** for Microsoft 365 to reach it.
+
+    You can now skip to **Exercise 3**.
+
+=== "Install locally"
+
+    Follow **Steps 1 to 6** below to install each tool yourself. You need the ability to install applications on your machine; if you are not permitted to, use the dev container option instead.
 
 ### Step 1: Install Visual Studio Code
 
@@ -125,35 +156,6 @@ devtunnel --version
     DevTunnel is also included with Visual Studio 2022. If you have Visual Studio 2022 installed, you already have DevTunnel.
 
 <cc-end-step lab="baf0" exercise="2" step="6" />
-
-### Step 7: Install Azure Functions Core Tools
-
-Azure Functions Core Tools is required for running Azure Functions locally during development.
-
-1️⃣ Install Azure Functions Core Tools:
-
-**Windows:**
-
-```bash
-winget install Microsoft.Azure.FunctionsCoreTools
-```
-
-**macOS:**
-
-```bash
-brew tap azure/functions
-brew install azure-functions-core-tools@4
-```
-
-2️⃣ Verify the installation by running:
-
-```bash
-func --version
-```
-
-You should see version 4.x or higher.
-
-<cc-end-step lab="baf0" exercise="2" step="7" />
 
 ## Exercise 3: Setup Azure Environment
 
