@@ -1951,10 +1951,6 @@
                                 {
                                     "stepId": "6",
                                     "title": "Install DevTunnel"
-                                },
-                                {
-                                    "stepId": "7",
-                                    "title": "Install Azure Functions Core Tools"
                                 }
                             ]
                         },
