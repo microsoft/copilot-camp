@@ -1,42 +1,93 @@
 # Lab BMA2 - Build your first agent using M365 Agents SDK
 
-This lab introduces you to the Microsoft 365 Agents SDK and Microsoft 365 Agents Toolkit for building enterprise-grade, scalable, multi-channel agents. You'll learn how to create a new agent project with Visual Studio and test it within Test Tool. This experience will demonstrate how to integrate agent capabilities into Microsoft 365 apps and Copilot Chat effectively.
+<div data-widget="hero"
+     data-badge="Path 1 · Lab BMA2"
+     data-badge-color="teal"
+     data-icon="🛠️"
+     data-subtitle="Scaffold a Microsoft 365 Agents SDK project in Visual Studio and run it locally, so you understand the host before you plug in the AI."
+     data-time="15-20 min"
+     data-requires="Lab BMA1 completed"></div>
 
-## Exercise 1: Build your first agent using M365 Agents SDK
+In Lab BMA1 you built an agent that lives in Microsoft Foundry. Now you'll build the other half: the **host** that delivers it to users.
 
-### Step 1: Create an echo bot using Visual Studio
+The Microsoft 365 Agents SDK gives you a production-shaped host — activity routing, conversation state, streaming, and channel delivery to Microsoft Teams and Microsoft 365 Copilot. You'll start from the simplest possible agent so the plumbing is obvious, then add the AI in Lab BMA3.
 
-Now that you’ve seen how to build an agent using Microsoft Foundry, let’s switch gears and explore how to build your own agent locally using the Microsoft 365 Agents SDK. This SDK lets you build multi-channel, production-ready agents that can run in Microsoft Teams, Microsoft 365 Copilot, and other preferred channels.
+## Lab objectives
 
-1. Open Visual Studio 2022 and select **Create a new project**.
-1. Search and select **Microsoft 365 Agents** template.
-1. Provide a name for your agent as `ContosoHRAgent` and select **Create**.  
-1. From the list of templates, select **Echo Bot** and select **Create**.
-1. When the project template is scaffolded, go to Solution Explorer on the right-side panel and explore the agent template. Expand the **ContosoHRAgent** project.
-    - Open **Program.cs**, this code configures and runs the web server that hosts your agent. It sets up required services like authentication, routing, storage and registers the **EchoBot** and injects memory-based state handling.
-    - Open **Bot > EchoBot.cs** and observe that this sample sets up a basic AI agent using the **Microsoft.Agents.Builder**. It sends a welcome message when a user joins the chat and listens for any message and echoes it back with a running message count.
+By the end of this lab you will be able to:
 
-You've started with an **Echo Bot**, a simple bot that repeats back any message a user sends. It’s a useful way to verify your setup and understand how conversations are handled behind the scenes.
+- Scaffold a Microsoft 365 Agents SDK project in Visual Studio
+- Explain how activities, handlers, and conversation state fit together
+- Run and test an agent locally in the Microsoft 365 Agents Playground
+
+---
+
+## Exercise 1: Scaffold and explore the project
+
+### Step 1: Create the project
+
+1. Open **Visual Studio 2022** and select **Create a new project**.
+1. Search for and select the **Microsoft 365 Agents** template.
+1. Name the project `ContosoHRAgent` and select **Create**.
+1. From the list of templates, select **Echo Bot**, then select **Create**.
+
+> An **Echo Bot** simply repeats back whatever the user sends. That's deliberate — it lets you verify the host, the local runtime, and the debugging loop before any model is involved.
 
 <cc-end-step lab="bma2" exercise="1" step="1" />
 
-### Step 2: Test your agent in Test Tool
+### Step 2: Explore what was generated
 
-To test your echo agent, hit **Start** or **F5**. This will launch Test Tool automatically in localhost where you can interact with your agent. In case Visual Studio will ask you to confirm the creation of a self-issued SSL certificate to test the application locally, confirm and proceed.
+In **Solution Explorer**, expand the **ContosoHRAgent** project and open these two files:
 
-Wait until the agent's message "Hello and Welcome!", then type anything such as “Hi”, “Hello”. Observe that the agent echoes everything back.
+| File | What it does |
+|---|---|
+| **Program.cs** | Configures and runs the web host. Registers authentication, routing, storage, and the agent itself, and maps the `/api/messages` endpoint that every channel posts to. |
+| **Bot/EchoBot.cs** | The agent. It greets users when they join the conversation and handles every incoming message activity. |
 
-![The local Microsoft 365 Agents Playground when testing locally the Echo Bot. On the left side of the screen there is an emulated chat, while on the right side of the screen there is a panel with the history of the interaction between the user and the agent.](https://github.com/user-attachments/assets/4562052d-856b-44d5-b2dd-27623d9bed11)
+Look specifically at the constructor in `EchoBot.cs`:
 
-Stop the debugging session on Visual Studio before moving to the next exercise.
+- `OnConversationUpdate(ConversationUpdateEvents.MembersAdded, ...)` runs when someone joins the conversation.
+- `OnActivity(ActivityTypes.Message, ...)` runs for every user message.
+
+These two handlers are the extension points you'll replace in Lab BMA3.
 
 <cc-end-step lab="bma2" exercise="1" step="2" />
 
+---
+
+## Exercise 2: Run and test locally
+
+### Step 1: Start a debugging session
+
+Select **Start** or press **F5**. The **Microsoft 365 Agents Playground** launches on localhost automatically.
+
+> If Visual Studio asks you to trust a self-issued SSL certificate for local development, accept it and continue.
+
+<cc-end-step lab="bma2" exercise="2" step="1" />
+
+### Step 2: Verify the agent responds
+
+Wait for the agent's **"Hello and Welcome!"** greeting, then send a few messages such as `Hi` or `Hello`.
+
+**Expected result:**
+
+- The agent echoes your message back, prefixed with a running message count.
+- The right-hand panel shows the raw activity history for each turn.
+
+The message counter proves conversation state is working — the same mechanism you'll use in Lab BMA3 to remember which Foundry conversation belongs to which chat.
+
+Stop the debugging session before moving on.
+
+!!! tip "Reference solution"
+    A completed version of this lab is available at [`src/agents-sdk/BMA2-complete`](https://github.com/microsoft/copilot-camp/tree/main/src/agents-sdk/BMA2-complete){target=_blank} if you want to compare against your own project.
+
+<cc-end-step lab="bma2" exercise="2" step="2" />
+
 ---8<--- "b-congratulations.md"
 
-You have completed Lab BMA2 - Build your first agent using M365 Agents SDK! This simple agent forms the base for more powerful experiences. In the next step, you'll combine this with your Microsoft Foundry agent to enable richer, context-aware answers.
+You have completed Lab BMA2 - Build your first agent using M365 Agents SDK!
 
-You are now ready to proceed to Lab BMA3 - Integrate Microsoft Foundry Agent with M365 Agents SDK. Select Next.
+You now have a working host and a working Foundry agent. Next, you'll connect them with Microsoft Agent Framework.
 
 <cc-next url="../03-agent-configuration" />
 

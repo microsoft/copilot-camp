@@ -1,0 +1,12 @@
+# Environment-specific configuration files (contain secrets)
+appsettings.*.json
+
+# Build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+
+# Conversation transcripts
+msteams_COPILOT/

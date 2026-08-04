@@ -71,20 +71,11 @@ builder.Services.AddAgentAspNetAuthentication(builder.Configuration);
 // in a cluster of Agent instances.
 builder.Services.AddSingleton<IStorage, MemoryStorage>();
 
-// Register Blob Storage Service for damage photo uploads
-builder.Services.AddSingleton<BlobStorageService>();
+// Register Knowledge Base Service for Azure AI Search
+builder.Services.AddSingleton<KnowledgeBaseService>();
 
-// Register VisionService for Mistral AI vision analysis
-builder.Services.AddScoped<VisionService>();
-
-// Register Knowledge Base Service with BlobStorageService dependency
-builder.Services.AddSingleton<KnowledgeBaseService>(serviceProvider =>
-{
-    var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-    var blobStorageService = serviceProvider.GetRequiredService<BlobStorageService>();
-
-    return new KnowledgeBaseService(configuration, blobStorageService);
-});
+// Register LanguageModelService for AI-powered compliance analysis
+builder.Services.AddSingleton<LanguageModelService>();
 
 // Add AgentApplicationOptions from config.
 builder.AddAgentApplicationOptions();
@@ -165,21 +156,6 @@ app.MapGet("/api/citation", async (string targetUrl) =>
     catch (Exception ex)
     {
         return Results.Problem($"Error retrieving citation: {ex.Message}");
-    }
-});
-
-app.MapGet("/api/image", async (string url) =>
-{
-    try
-    {
-        using var httpClient = new HttpClient();
-        var imageBytes = await httpClient.GetByteArrayAsync(url);
-        var contentType = url.EndsWith(".png") ? "image/png" : "image/jpeg";
-        return Results.File(imageBytes, contentType);
-    }
-    catch (Exception ex)
-    {
-        return Results.Problem($"Error retrieving image: {ex.Message}");
     }
 });
 

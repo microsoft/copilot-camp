@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceBaseName": {
+      "value": "bot${{RESOURCE_SUFFIX}}"
+    },
+    "webAppSKU": {
+      "value": "B1"
+    },
+    "botDisplayName": {
+      "value": "${{APP_DISPLAY_NAME}}"
+    },
+    "entraAppClientId": {
+      "value": "${{BOT_ID}}"
+    },
+    "entraAppClientSecret": {
+      "value": "${{SECRET_BOT_PASSWORD}}"
+    },
+    "entraAppTenantId": {
+      "value": "${{BOT_TENANT_ID}}"
+    },
+    "modelsEndpoint": {
+      "value": "${{MODELS_ENDPOINT}}"
+    },
+    "languageModelName": {
+      "value": "${{LANGUAGE_MODEL_NAME}}"
+    },
+    "visionModelName": {
+      "value": "${{VISION_MODEL_NAME}}"
+    },
+    "embeddingModelName": {
+      "value": "${{EMBEDDING_MODEL_NAME}}"
+    },
+    "modelsApiKey": {
+      "value": "${{SECRET_MODELS_API_KEY}}"
+    }
+  }
+}

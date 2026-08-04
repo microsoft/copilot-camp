@@ -1,0 +1,160 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$tsc"],
+      "label": "npm: build",
+      "detail": "tsc"
+    },
+    {
+      "type": "npm",
+      "script": "watch",
+      "problemMatcher": ["$tsc-watch"],
+      "isBackground": true,
+      "label": "npm: watch",
+      "detail": "tsc --watch"
+    },
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": [],
+      "label": "npm: start",
+      "detail": "Start the application"
+    },
+    {
+        "label": "Init Data (if needed)",
+        "type": "shell",
+        "linux": {
+            "command": "if [ -f .vscode/.init-data.done ]; then echo 'init-data already executed. Skipping.'; else npm run init-data && touch .vscode/.init-data.done; fi"
+        },
+        "osx": {
+            "command": "if [ -f .vscode/.init-data.done ]; then echo 'init-data already executed. Skipping.'; else npm run init-data && touch .vscode/.init-data.done; fi"
+        },
+        "windows": {
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"if (Test-Path '.vscode/.init-data.done') { Write-Host 'init-data already executed. Skipping.' } else { npm run init-data; if ($LASTEXITCODE -eq 0) { New-Item -ItemType File -Path '.vscode/.init-data.done' -Force | Out-Null } else { exit $LASTEXITCODE } }\""
+        },
+        "problemMatcher": []
+    },
+    {
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "problemMatcher": ["$tsc"],
+      "group": "build",
+      "label": "tsc: build - tsconfig.json",
+      "detail": "Compile TypeScript using tsconfig.json"
+    },
+    {
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch"],
+      "group": "build",
+      "label": "tsc: watch - tsconfig.json",
+      "detail": "Watch and compile TypeScript using tsconfig.json"
+    },
+    {
+        "label": "Ensure DevTunnel",
+        "type": "shell",
+        "isBackground": true,
+        "windows": {
+            "command": ".\\infra\\scripts\\devtunnel.ps1"
+        },
+        "osx": {
+            "command": "./infra/scripts/devtunnel.sh"
+        },
+        "problemMatcher": {
+            "pattern": [
+            {
+                "regexp": "^.*$",
+                "file": 0,
+                "location": 1,
+                "message": 2
+            }
+            ],
+            "background": {
+            "activeOnStart": true,
+            "beginsPattern": "No TUNNEL_ID found. Creating tunnel...|Connecting to host tunnel relay",
+            "endsPattern": "Ready to accept connections for tunnel"
+            }
+        },
+        "options": {
+            "cwd": "${workspaceFolder}"
+        }
+    },
+    {
+        "label": "Start Azurite",
+        "type": "npm",
+        "script": "start:azurite",
+        "isBackground": true,
+        "problemMatcher": {
+            "pattern": [
+                {
+                    "regexp": "^.*$",
+                    "file": 0,
+                    "location": 1,
+                    "message": 2
+                }
+            ],
+            "background": {
+                "activeOnStart": true,
+                "beginsPattern": "Azurite",
+                "endsPattern": "Blob service is successfully listening|Queue service is successfully listening|Table service is successfully listening"
+            }
+        }
+    },
+    {
+        "label": "Start MCP Inspector",
+        "type": "npm",
+        "script": "inspector",
+        "isBackground": true,
+        "problemMatcher": {
+            "pattern": [
+                {
+                    "regexp": "^.*$",
+                    "file": 0,
+                    "location": 1,
+                    "message": 2
+                }
+            ],
+            "background": {
+                "activeOnStart": true,
+                "beginsPattern": ".",
+                "endsPattern": "MCP Inspector is up and running"
+            }
+        }
+    },
+    {
+        "label": "npm: install",
+        "type": "npm",
+        "script": "install",
+        "problemMatcher": [],
+        "detail": "Install npm dependencies"
+    },
+    {
+        "label": "Start Background Services",
+        "dependsOrder": "parallel",
+        "dependsOn": [
+            "Ensure DevTunnel",
+            "Start Azurite",
+            "Start MCP Inspector"
+        ],
+        "problemMatcher": []
+    },
+    {
+        "label": "Start Dev Environment",
+        "dependsOrder": "sequence",
+        "dependsOn": [
+            "npm: install",
+            "Start Background Services",
+            "Init Data (if needed)"
+        ],
+        "problemMatcher": []
+    }
+  ]
+}
