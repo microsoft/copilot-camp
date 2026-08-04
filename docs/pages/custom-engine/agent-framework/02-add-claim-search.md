@@ -331,7 +331,7 @@ Time to see Foundry IQ grounding in action.
 2. Select **(Preview) Debug in Copilot (Edge)** if prompted.
 3. Watch the terminal — you should see the knowledge base build itself:
 
-    ```
+    ```text
     🔍 Initializing Foundry IQ knowledge base...
     📝 Creating claims index 'claims-index'...
     ✅ Claims index 'claims-index' created successfully

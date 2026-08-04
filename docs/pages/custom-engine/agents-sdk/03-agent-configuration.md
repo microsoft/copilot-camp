@@ -81,7 +81,7 @@ If you're upgrading an existing project, **delete** these lines — they are Sem
 
 ```csharp
 builder.Services.AddSingleton<IStorage, MemoryStorage>();
-// Add the Semantic Kernel services 
+// Add the Semantic Kernel services
 builder.Services.AddKernel();
 ```
 
@@ -255,14 +255,29 @@ protected async Task OnMessageAsync(ITurnContext turnContext, ITurnState turnSta
 
 ### Step 3: Configure your Foundry connection
 
-Open **appsettings.json** and add an `AIServices` section at the end of the configuration object:
+Open **appsettings.json** and add an `AIServices` section. Add a comma after the closing brace of the last existing section, then append:
 
 ```json
-,
   "AIServices": {
     "AgentName": "<YourFoundryAgentName>",
     "ProjectEndpoint": "<YourProjectEndpoint>"
   }
+```
+
+So the end of the file looks like this:
+
+```json
+  "ConnectionsMap": [
+    {
+      "ServiceUrl": "*",
+      "Connection": "BotServiceConnection"
+    }
+  ],
+  "AIServices": {
+    "AgentName": "<YourFoundryAgentName>",
+    "ProjectEndpoint": "<YourProjectEndpoint>"
+  }
+}
 ```
 
 Fill in the two values you recorded at the end of Lab BMA1:
@@ -285,7 +300,7 @@ Fill in the two values you recorded at the end of Lab BMA1:
 
 Open **Tools > Command Line > Developer Command Prompt** and run:
 
-```
+```bash
 az login
 ```
 

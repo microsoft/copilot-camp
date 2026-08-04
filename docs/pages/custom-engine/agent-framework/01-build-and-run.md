@@ -38,20 +38,20 @@ By the end of this lab you will be able to:
 1. Open a terminal or command prompt.
 1. Clone the repository and move into the starter project:
 
-```bash
-git clone https://github.com/microsoft/copilot-camp.git
-cd copilot-camp/src/agent-framework/begin
-```
+    ```bash
+    git clone https://github.com/microsoft/copilot-camp.git
+    cd copilot-camp/src/agent-framework/begin
+    ```
 
 1. Open the project in Visual Studio Code:
 
-```bash
-code .
-```
+    ```bash
+    code .
+    ```
 
 You should see this structure:
 
-```
+```text
 begin/
 ├── src/
 │   ├── Agent/
@@ -136,15 +136,15 @@ cp env/.env.local.user.sample env/.env.local.user
 
 1. Open `env/.env.local` and set `MODELS_ENDPOINT` to the endpoint from Lab BAF0:
 
-```bash
-MODELS_ENDPOINT=https://your-resource.services.ai.azure.com/
-```
+    ```bash
+    MODELS_ENDPOINT=https://your-resource.services.ai.azure.com/
+    ```
 
 1. Open `env/.env.local.user` and set your API key:
 
-```bash
-SECRET_MODELS_API_KEY=your-api-key-here
-```
+    ```bash
+    SECRET_MODELS_API_KEY=your-api-key-here
+    ```
 
 !!! tip "Finding your endpoint"
     Go to [Microsoft Foundry](https://ai.azure.com){target=_blank}, select your project, then **Settings → Properties**, and copy the **Endpoint** URL.
@@ -179,7 +179,7 @@ SECRET_MODELS_API_KEY=your-api-key-here
 
 **Expected result:** the terminal shows:
 
-```
+```text
 🌍 Environment: local
 🏢 Starting Zava Insurance Agent...
 🤖 Main agent using model: gpt-4.1

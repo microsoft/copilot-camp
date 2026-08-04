@@ -44,45 +44,45 @@ Open **M365Agent/appPackage/manifest.json** and update the schema and version:
 Replace the `bots` section with the following, which adds a command list and the `copilotAgents` declaration:
 
 ```json
-"bots": [ 
-  { 
-    "botId": "${{BOT_ID}}", 
-    "scopes": [ 
-      "personal", 
-      "team", 
-      "groupChat" 
-    ], 
-    "supportsFiles": false, 
-    "isNotificationOnly": false, 
-    "commandLists": [ 
-      { 
-        "scopes": [ "personal", "team", "groupChat" ], 
-        "commands": [ 
-          { 
+"bots": [
+  {
+    "botId": "${{BOT_ID}}",
+    "scopes": [
+      "personal",
+      "team",
+      "groupChat"
+    ],
+    "supportsFiles": false,
+    "isNotificationOnly": false,
+    "commandLists": [
+      {
+        "scopes": [ "personal", "team", "groupChat" ],
+        "commands": [
+          {
             "title": "Emergency and Mental Health",
-            "description": "What's the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?" 
-          }, 
-          { 
-            "title": "PerksPlus Details", 
-            "description": "Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?" 
-          }, 
-          { 
-            "title": "Contoso Electronics Values", 
-            "description": "What values guide behavior and decision making at Contoso Electronics?" 
-          } 
-        ] 
-      } 
-    ] 
-  } 
-], 
-"copilotAgents": { 
-  "customEngineAgents": [ 
-    { 
-      "id": "${{BOT_ID}}", 
-      "type": "bot" 
-    } 
-  ] 
-}, 
+            "description": "What's the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?"
+          },
+          {
+            "title": "PerksPlus Details",
+            "description": "Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?"
+          },
+          {
+            "title": "Contoso Electronics Values",
+            "description": "What values guide behavior and decision making at Contoso Electronics?"
+          }
+        ]
+      }
+    ]
+  }
+],
+"copilotAgents": {
+  "customEngineAgents": [
+    {
+      "id": "${{BOT_ID}}",
+      "type": "bot"
+    }
+  ]
+},
 ```
 
 > The `copilotAgents.customEngineAgents` block is what tells Microsoft 365 to expose this agent inside Copilot Chat. The `commandLists` entries become the conversation starters users see before their first message.
