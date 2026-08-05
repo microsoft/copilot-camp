@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.22",
+  "version": "1.0.4",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "M365 Developer Advocates",
+    "websiteUrl": "https://aka.ms/copilotdevcamp",
+    "privacyUrl": "https://aka.ms/copilotdevcamp",
+    "termsOfUseUrl": "https://aka.ms/copilotdevcamp"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "${{APP_DISPLAY_NAME}} ${{APP_NAME_SUFFIX}}",
+    "full": "${{APP_DISPLAY_NAME}}: Agent for Insurance claims processing and management."
+  },
+  "description": {
+    "short": "${{APP_DISPLAY_NAME}}",
+    "full": "${{APP_DISPLAY_NAME}}: Agent for Insurance claims processing and management."
+  },
+  "accentColor": "#FFFFFF",
+  "bots": [
+    {
+      "botId": "${{BOT_ID}}",
+      "scopes": [ "copilot", "personal", "team", "groupChat" ],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": [ "copilot", "personal", "team", "groupChat" ],
+          "commands": [
+            {
+              "title": "Instructions",
+              "description": "What can you do?"
+            },
+            {
+              "title": "Today's Date",
+              "description": "What's today's date?"
+            },
+            {
+              "title": "About Insurance",
+              "description": "Tell me about insurance claims"
+            },
+            {
+              "title": "Claims Process",
+              "description": "Explain how claims processing works"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "copilotAgents": {
+    "customEngineAgents": [
+      {
+        "id": "${{BOT_ID}}",
+        "type": "bot"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "${{BOT_DOMAIN}}",
+    "token.botframework.com"
+  ],
+  "webApplicationInfo": {
+    "id": "${{BOT_ID}}",
+    "resource": "api://botid-${{BOT_ID}}"
+  }
+}

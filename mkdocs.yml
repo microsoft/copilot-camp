@@ -76,23 +76,19 @@ plugins:
                     - Start Bundle E: 'pages/extend-m365-copilot/bundle-e.md'
             - Custom Engine Agents:
               - Welcome : 'pages/custom-engine/index.md'
-              - Start with Microsoft Foundry:
+              - Path 1 - Start with Microsoft Foundry:
                 - Introduction : 'pages/custom-engine/agents-sdk/index.md'
-                - Lab BMA0 - Setup: 'pages/custom-engine/agents-sdk/00-prerequisites.md'
+                - Lab BMA0 - Prerequisites: 'pages/custom-engine/agents-sdk/00-prerequisites.md'
                 - Lab BMA1 - Prepare your agent in Microsoft Foundry: 'pages/custom-engine/agents-sdk/01-agent-in-foundry.md'
                 - Lab BMA2 - Build your first agent using M365 Agents SDK: 'pages/custom-engine/agents-sdk/02-agent-with-agents-sdk.md'
-                - Lab BMA3 - Configure agent properties and test on Teams: 'pages/custom-engine/agents-sdk/03-agent-configuration.md'
-                - Lab BMA4 - Bring your agent to Copilot Chat: 'pages/custom-engine/agents-sdk/04-bring-agent-to-copilot.md'
-              - Start with Agent Framework:
+                - Lab BMA3 - Connect your Foundry agent with Agent Framework: 'pages/custom-engine/agents-sdk/03-agent-configuration.md'
+                - Lab BMA4 - Bring your agent to Microsoft 365 Copilot: 'pages/custom-engine/agents-sdk/04-bring-agent-to-copilot.md'
+              - Path 2 - Start with Agent Framework:
                 - Introduction : 'pages/custom-engine/agent-framework/index.md'
                 - Lab BAF0 - Prerequisites: 'pages/custom-engine/agent-framework/00-prerequisites.md'
                 - Lab BAF1 - Build and Run Your First Agent: 'pages/custom-engine/agent-framework/01-build-and-run.md'
-                - Lab BAF2 - Add Document Search with Azure AI Search: 'pages/custom-engine/agent-framework/02-add-claim-search.md'
-                - Lab BAF3 - Add Vision Analysis with Mistral AI: 'pages/custom-engine/agent-framework/03-add-vision-analysis.md'
-                - Lab BAF4 - Add Policy Search: 'pages/custom-engine/agent-framework/04-add-policy-search.md'
-                - Lab BAF5 - Add Communication Capabilities: 'pages/custom-engine/agent-framework/05-add-communication.md'
-                - Lab BAF6 - Add Copilot Retrieval API Integration: 'pages/custom-engine/agent-framework/06-add-copilot-api.md'
-                - Lab BAF7 - Add MCP Tools Integration: 'pages/custom-engine/agent-framework/07-add-mcp-tools.md'
+                - Lab BAF2 - Ground your agent with Foundry IQ: 'pages/custom-engine/agent-framework/02-add-claim-search.md'
+                - Lab BAF3 - Ground your agent in Microsoft 365 with Work IQ: 'pages/custom-engine/agent-framework/03-add-copilot-retrieval.md'
             # - No-code/low-code agents:
             #   - Welcome: 'pages/make/index.md'
             #   - Lab MAB - Agent Builder: 'pages/make/agent-builder/index.md'

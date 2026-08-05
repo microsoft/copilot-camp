@@ -1,5 +1,13 @@
 # Lab BMA0 - Prerequisites
 
+<div data-widget="hero"
+     data-badge="Path 1 · Lab BMA0"
+     data-badge-color="amber"
+     data-icon="🔧"
+     data-subtitle="Set up your Microsoft 365 tenant, Visual Studio with the Agents Toolkit, and an Azure subscription before you build."
+     data-time="30-45 min"
+     data-requires="None — first lab in the path"></div>
+
 In this lab you will set up your development environment to build, test, and deploy the custom engine agent you will develop throughout the path.
 
 In this lab you will learn how to:
@@ -40,7 +48,7 @@ You can complete these labs on a Windows machine and you do need the ability to 
 
 ### Step 1: Install Agents Toolkit for Visual Studio
 
-1. You can download Visual Studio 2022 here: [Visual Studio 2022](https://code.visualstudio.com/download){target=_blank}.
+1. You can download Visual Studio 2022 here: [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/){target=_blank}.
 1. Select **Install**. If you've already installed Visual Studio, select **Modify**.
 1. Visual Studio installer shows all workloads.
     ![The Visual Studio installation UI with the list of components available for ASP.NET and web development and the Microsoft 365 Agents Toolkit highlighted.](../../../assets/images/agents-sdk/visual-studio-install.png)
