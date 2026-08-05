@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/02-add-claim-search/">
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/custom-engine/agent-framework/03-add-copilot-retrieval/">
       
       
-        <link rel="prev" href="../01-build-and-run/">
+        <link rel="prev" href="../02-add-claim-search/">
       
       
-        <link rel="next" href="../03-add-copilot-retrieval/">
+        <link rel="next" href="../../../sharepoint/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Lab BAF2 - Ground your agent with Foundry IQ - Copilot Developer Camp</title>
+        <title>Lab BAF3 - Ground your agent in Microsoft 365 with Work IQ - Copilot Developer Camp</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-baf2-ground-your-agent-with-foundry-iq" class="md-skip">
+        <a href="#lab-baf3-ground-your-agent-in-microsoft-365-content-with-work-iq" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab BAF2 - Ground your agent with Foundry IQ
+              Lab BAF3 - Ground your agent in Microsoft 365 with Work IQ
             
           </span>
         </div>
@@ -1633,6 +1633,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-add-claim-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab BAF2 - Ground your agent with Foundry IQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1652,7 +1680,7 @@
   <span class="md-ellipsis">
     
   
-    Lab BAF2 - Ground your agent with Foundry IQ
+    Lab BAF3 - Ground your agent in Microsoft 365 with Work IQ
   
 
     
@@ -1670,7 +1698,7 @@
   <span class="md-ellipsis">
     
   
-    Lab BAF2 - Ground your agent with Foundry IQ
+    Lab BAF3 - Ground your agent in Microsoft 365 with Work IQ
   
 
     
@@ -1707,10 +1735,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-1-create-the-foundry-iq-knowledge-base" class="md-nav__link">
+  <a href="#exercise-1-set-up-the-sharepoint-policy-library" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 1: Create the Foundry IQ knowledge base
+        Exercise 1: Set up the SharePoint policy library
       
     </span>
   </a>
@@ -1718,10 +1746,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-2-add-retrieval-to-the-agent" class="md-nav__link">
+  <a href="#exercise-2-authenticate-the-user-and-add-compliance-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 2: Add retrieval to the agent
+        Exercise 2: Authenticate the user and add compliance analysis
       
     </span>
   </a>
@@ -1729,10 +1757,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-3-run-and-validate-grounded-answers" class="md-nav__link">
+  <a href="#exercise-3-run-and-validate-compliance-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 3: Run and validate grounded answers
+        Exercise 3: Run and validate compliance analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-go-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to go next
       
     </span>
   </a>
@@ -1743,34 +1782,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-add-copilot-retrieval/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab BAF3 - Ground your agent in Microsoft 365 with Work IQ
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2634,236 +2645,249 @@
 
 
 
-<h1 id="lab-baf2-ground-your-agent-with-foundry-iq">Lab BAF2 - Ground your agent with Foundry IQ</h1>
+<h1 id="lab-baf3-ground-your-agent-in-microsoft-365-content-with-work-iq">Lab BAF3 - Ground your agent in Microsoft 365 content with Work IQ</h1>
 <div data-widget="hero"
-     data-badge="Path 2 · Lab BAF2"
-     data-badge-color="blue"
-     data-icon="🔎"
-     data-subtitle="Ground your Zava Insurance agent with a Foundry IQ knowledge base so it answers claims questions with real, cited data instead of guessing."
+     data-badge="Path 2 · Lab BAF3"
+     data-badge-color="purple"
+     data-icon="🏢"
+     data-subtitle="Ground your agent in real organizational knowledge with Work IQ, using the Microsoft 365 Copilot Retrieval API to analyze claim compliance against SharePoint policy documents — with permissions respected and no index to build."
      data-time="45-60 min"
-     data-requires="Lab BAF1 completed"></div>
+     data-requires="Lab BAF2 completed"></div>
 
-<p>In Lab BAF1 your agent could chat, but it had no knowledge of Zava Insurance's data. In this lab you give it a <strong>Foundry IQ knowledge base</strong>: Microsoft's reusable, permission-aware retrieval layer that returns grounded, citation-bearing answers. You'll build the knowledge base, wire it into a <code>KnowledgeBaseService</code>, and expose it to the agent through a <code>ClaimsPlugin</code> so it can search claims and return real details.</p>
+<p>In Lab BAF2 you grounded the agent in structured claims data with Foundry IQ. But an insurance adjuster also needs to know whether a claim actually <strong>complies with company policy</strong> — and those policies live as documents in Microsoft 365. In this lab you add <strong>Work IQ</strong> grounding: you connect the agent to your organization's real SharePoint content with the <strong>Microsoft 365 Copilot Retrieval API</strong>, so it can analyze a claim against the relevant policy documents while respecting each user's permissions.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you want to start directly from this lab without completing the previous ones, you can download the agent's complete source code (as it is at the end of the previous lab) <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF1-complete&amp;filename=BAF1-complete" target="_blank">from here</a>. However, remember to complete the pre-requisites described in lab <a href="../00-prerequisites">"Lab BAF0 - Prerequisites"</a>.</p>
+<p>If you want to start directly from this lab without completing the previous ones, you can download the agent's complete source code (as it is at the end of the previous lab) <a href="https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF2-complete&amp;filename=BAF2-complete" target="_blank">from here</a>. However, remember to complete the pre-requisites described in lab <a href="../00-prerequisites">"Lab BAF0 - Prerequisites"</a>.</p>
 </div>
 <details class="info" open="open">
-<summary>What is Foundry IQ?</summary>
-<p><strong>Foundry IQ</strong> is Microsoft's grounding layer for agents. A <strong>Foundry IQ knowledge base</strong> is a reusable, permission-aware retrieval resource that takes a natural-language query, searches your content, and returns grounded results <strong>with citations</strong> — so answers are traceable back to their source.</p>
-<p>Under the hood in this lab, the knowledge base is implemented with <strong>Azure AI Search</strong>, which provides the index, the semantic and vector search, and the agentic retrieval that synthesizes an answer from the matching documents. You'll create a <strong>claims index</strong>, connect it through a <strong>knowledge source</strong>, and expose it as a <strong>knowledge base</strong> your agent can query with one call.</p>
+<summary>What is Work IQ?</summary>
+<p><strong>Work IQ</strong> is grounding in your organization's actual work: the emails, chats, meetings, and documents that live across Microsoft 365. Instead of copying that content into a separate search index, you query it in place with the <strong>Microsoft 365 Copilot Retrieval API</strong> (part of Microsoft Graph).</p>
+<p>The <strong>Microsoft 365 Copilot Retrieval API</strong> performs Retrieval Augmented Generation (RAG) over Microsoft 365 content — SharePoint, OneDrive, and Copilot connectors — with <strong>no index to build, chunk, or secure yourself</strong>. It understands the user's intent, transforms the query, and returns the most relevant extracts <strong>while respecting the signed-in user's permissions</strong>.</p>
+</details>
+<details class="warning" open="open">
+<summary>Licensing requirements</summary>
+<p>The Microsoft 365 Copilot Retrieval API is available at no extra cost to users with a <strong>Microsoft 365 Copilot add-on license</strong>. Support for users without a Microsoft 365 Copilot add-on license isn't currently available.</p>
 </details>
 <h2 id="lab-objectives">Lab objectives</h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
-<li>Create a Foundry IQ knowledge base backed by Azure AI Search</li>
-<li>Index the Zava Insurance sample claims data for grounded retrieval</li>
-<li>Build a <code>KnowledgeBaseService</code> that performs agentic, citation-bearing retrieval</li>
-<li>Expose retrieval to the agent through a <code>ClaimsPlugin</code> with <code>[Description]</code>-annotated tools</li>
-<li>Validate that the agent answers claims questions with real, grounded data</li>
+<li>Stand up a SharePoint site holding Zava Insurance policy documents</li>
+<li>Add user authentication with the On-Behalf-Of (OBO) flow so the agent acts as the signed-in user</li>
+<li>Call the Microsoft 365 Copilot Retrieval API to ground answers in SharePoint content</li>
+<li>Analyze a claim's compliance against retrieved policies and return cited results</li>
+<li>Validate that the agent respects permissions and cites its sources</li>
 </ul>
 <hr />
-<h2 id="exercise-1-create-the-foundry-iq-knowledge-base">Exercise 1: Create the Foundry IQ knowledge base</h2>
-<p>Before adding any code, provision the Azure AI Search service that backs your Foundry IQ knowledge base and give the project its credentials.</p>
-<h3 id="step-1-create-the-azure-ai-search-service">Step 1: Create the Azure AI Search service</h3>
-<p>If you haven't created an Azure AI Search service yet (in Lab BAF0), create one now.</p>
+<h2 id="exercise-1-set-up-the-sharepoint-policy-library">Exercise 1: Set up the SharePoint policy library</h2>
+<p>The Microsoft 365 Copilot Retrieval API grounds answers in Microsoft 365 content, so first you need policy documents in SharePoint for it to find.</p>
+<h3 id="step-1-create-the-sharepoint-site">Step 1: Create the SharePoint site</h3>
 <ol>
-<li>Go to the <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.</li>
-<li>Select <strong>+ Create a resource</strong>, search for <strong>Azure AI Search</strong>, and select <strong>Create</strong>.</li>
-<li>Configure the service:<ul>
-<li><strong>Resource Group</strong>: use the same one as your Microsoft Foundry project</li>
-<li><strong>Service Name</strong>: a unique name (e.g. <code>zava-insurance-search</code>)</li>
-<li><strong>Region</strong>: any supported location (Central US, East US, West Europe, …)</li>
-<li><strong>Pricing Tier</strong>: Basic</li>
+<li>Go to <a href="https://www.office.com/launch/sharepoint" target="_blank">SharePoint</a> and sign in with your Microsoft 365 account.</li>
+<li>Select <strong>+ Create site</strong> → <strong>Team site</strong>, choose the <strong>Standard team</strong> template, and select <strong>Use template</strong>.</li>
+<li>Configure the site:<ul>
+<li><strong>Site name</strong>: <code>Zava Insurance Policy Documents</code></li>
+<li><strong>Description</strong>: <code>Insurance policy terms, coverage guides, and FAQs</code></li>
 </ul>
 </li>
-<li>Select <strong>Review + Create</strong>, then <strong>Create</strong> (takes 2-3 minutes).</li>
-<li>When the deployment finishes, open the resource <strong>Overview</strong> page and copy the <strong>URL</strong>, then go to <strong>Settings &gt; Keys</strong> and copy the <strong>Primary admin key</strong>.</li>
+<li>Select <strong>Next</strong>, set <strong>Privacy settings</strong> to <strong>Private</strong> and <strong>Language</strong> to <strong>English</strong>, then select <strong>Create site</strong>.</li>
+<li>When the site is ready, select <strong>Finish</strong> to open it, and copy the <strong>site URL</strong> for later.</li>
 </ol>
-<p><strong>Expected result:</strong> You have a running Azure AI Search service, and you've recorded its <strong>URL</strong> and <strong>Primary admin key</strong> — the two values that let your agent reach the Foundry IQ knowledge base.</p>
-<p><cc-end-step lab="baf2" exercise="1" step="1" /></p>
-<h3 id="step-2-review-the-sample-claims-data">Step 2: Review the sample claims data</h3>
-<p>Your project ships with the sample claims that will be indexed into the knowledge base.</p>
+<p><strong>Expected result:</strong> You have a private SharePoint team site ready to hold Zava Insurance's policy documents.</p>
+<p><cc-end-step lab="baf3" exercise="1" step="1" /></p>
+<h3 id="step-2-upload-the-policy-documents">Step 2: Upload the policy documents</h3>
 <ol>
-<li>In VS Code, open <code>infra/data/sample-data/claims.json</code>.</li>
-<li>Notice that each claim has fields such as <code>claimNumber</code> (e.g. <code>CLM-2025-001007</code>), <code>policyholderName</code>, <code>claimType</code> (Auto, Homeowners, Commercial), <code>status</code>, <code>severity</code>, <code>estimatedCost</code>, <code>fraudRiskScore</code>, and <code>region</code>.</li>
-<li>This data is indexed automatically into Azure AI Search the first time you run the agent — you don't need to upload anything manually.</li>
-</ol>
-<p><strong>Expected result:</strong> You understand the shape of the claims data that will ground your agent's answers.</p>
-<p><cc-end-step lab="baf2" exercise="1" step="2" /></p>
-<h3 id="step-3-configure-the-knowledge-base-credentials">Step 3: Configure the knowledge base credentials</h3>
-<p>Give the project the Azure AI Search endpoint and key you copied in Step 1.</p>
-<ol>
-<li>
-<p>Open <code>env/.env.local</code> and set the endpoint:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure AI Search</span>
-<span class="nv">AZURE_AI_SEARCH_ENDPOINT</span><span class="o">=</span>https://your-search.search.windows.net
-</code></pre></div>
+<li>In your VS Code workspace, open <code>src/agent-framework/BAF3-complete/infra/data/sample-documents/</code>. You should see:<ul>
+<li><code>Auto Insurance Claims Policies.docx</code></li>
+<li><code>Homeowners Insurance Claims Policies.docx</code></li>
+<li><code>Step-by-Step Guide - Creating an Insurance Quote.docx</code></li>
+<li><code>Zava Claims Insurance Policies.docx</code></li>
+</ul>
 </li>
-<li>
-<p>Open <code>env/.env.local.user</code> and set the admin key:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Azure AI Search</span>
-<span class="nv">SECRET_AZURE_AI_SEARCH_API_KEY</span><span class="o">=</span>your-primary-admin-key
-</code></pre></div>
-</li>
+<li>In your SharePoint site, select <strong>Documents</strong> in the left menu.</li>
+<li>Select <strong>+ Create or upload</strong> → <strong>Files upload</strong>, and upload all 4 documents.</li>
+<li><strong>Wait 10-15 minutes</strong> for SharePoint to index the documents — the Microsoft 365 Copilot Retrieval API needs them indexed before it can return them.</li>
 </ol>
 <div class="admonition tip">
-<p class="admonition-title">Finding your credentials</p>
-<ul>
-<li><strong>Endpoint</strong>: Azure Portal → your Search service → <strong>Overview</strong> → URL</li>
-<li><strong>API Key</strong>: Azure Portal → your Search service → <strong>Keys</strong> → Primary admin key</li>
-</ul>
+<p class="admonition-title">Verify indexing</p>
+<p>Open Microsoft 365 Copilot (copilot.microsoft.com) and ask <em>"What policy documents are in my SharePoint?"</em>. If the documents appear, they're ready to use with your agent.</p>
 </div>
-<p><strong>Expected result:</strong> The project is configured with the endpoint and key, so the <code>KnowledgeBaseService</code> you add next can connect to the knowledge base.</p>
-<p><cc-end-step lab="baf2" exercise="1" step="3" /></p>
+<p><strong>Expected result:</strong> All four policy documents are uploaded to the SharePoint library and (after indexing) discoverable by Microsoft 365 Copilot.</p>
+<p><cc-end-step lab="baf3" exercise="1" step="2" /></p>
 <hr />
-<h2 id="exercise-2-add-retrieval-to-the-agent">Exercise 2: Add retrieval to the agent</h2>
-<p>Now add the service that talks to the knowledge base, the plugin that exposes it as agent tools, and the registration that wires it all together.</p>
-<h3 id="step-1-create-the-knowledgebaseservice">Step 1: Create the KnowledgeBaseService</h3>
-<p>The <code>KnowledgeBaseService</code> connects to Azure AI Search, creates the index / knowledge source / knowledge base, indexes the sample claims, and performs <strong>agentic retrieval</strong> — where the LLM searches, ranks, and synthesizes a grounded answer.</p>
+<h2 id="exercise-2-authenticate-the-user-and-add-compliance-analysis">Exercise 2: Authenticate the user and add compliance analysis</h2>
+<p>The Microsoft 365 Copilot Retrieval API runs <strong>on behalf of the signed-in user</strong>, so it only returns content that user can see. You'll first enable the On-Behalf-Of (OBO) flow, then add the service and plugin that call the API.</p>
+<h3 id="step-1-configure-obo-settings">Step 1: Configure OBO settings</h3>
 <ol>
-<li>In VS Code, create a folder <code>src/Services</code> and add a file <code>src/Services/KnowledgeBaseService.cs</code>.</li>
+<li>In <code>m365agents.local.yml</code>, find the <code>file/createOrUpdateJsonFile</code> action (around line 47).</li>
 <li>
-<p>The heart of the service is the connection to Azure AI Search set up in the constructor:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Initialize Azure AI Search clients</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AzureKeyCredential</span><span class="p">(</span><span class="n">_searchApiKey</span><span class="p">);</span>
-<span class="n">_indexClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SearchIndexClient</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Uri</span><span class="p">(</span><span class="n">_searchEndpoint</span><span class="p">),</span><span class="w"> </span><span class="n">credential</span><span class="p">);</span>
-<span class="n">_retrievalClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseRetrievalClient</span><span class="p">(</span>
-<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="nf">Uri</span><span class="p">(</span><span class="n">_searchEndpoint</span><span class="p">),</span>
-<span class="w">    </span><span class="n">KnowledgeBaseName</span><span class="p">,</span>
-<span class="w">    </span><span class="n">credential</span>
-<span class="p">);</span>
+<p>Uncomment the <code>me</code> handler settings in the <code>UserAuthorization</code> group so <code>OBOConnectionName</code>, <code>OBOScopes</code>, <code>Title</code>, and <code>Text</code> are enabled. The block should look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="w">          </span><span class="nt">UserAuthorization</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">DefaultHandlerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">me</span>
+<span class="w">            </span><span class="nt">AutoSignin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">Handlers</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">me</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">Settings</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">AzureBotOAuthConnectionName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Microsoft</span><span class="nv"> </span><span class="s">Graph&quot;</span>
+<span class="w">                  </span><span class="nt">OBOConnectionName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;BotServiceConnection&quot;</span>
+<span class="w">                  </span><span class="nt">OBOScopes</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;https://graph.microsoft.com/.default&quot;</span>
+<span class="w">                  </span><span class="nt">Title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sign</span><span class="nv"> </span><span class="s">in&quot;</span>
+<span class="w">                  </span><span class="nt">Text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sign</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Microsoft</span><span class="nv"> </span><span class="s">Graph&quot;</span>
 </code></pre></div>
-</li>
-<li>
-<p>The grounded, citation-bearing answer comes from <code>RetrieveAsync</code>, which sends the query to the knowledge base and asks it to <strong>synthesize</strong> an answer from the matching claims:</p>
-<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RetrieveAsync</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="kt">string?</span><span class="w"> </span><span class="n">instructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">topResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">retrievalRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseRetrievalRequest</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">RetrievalReasoningEffort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeRetrievalLowReasoningEffort</span><span class="p">(),</span>
-<span class="w">        </span><span class="n">OutputMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KnowledgeRetrievalOutputMode</span><span class="p">.</span><span class="n">AnswerSynthesis</span><span class="w"> </span><span class="c1">// LLM generates a grounded answer</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="c1">// Optional formatting/grounding instructions, sent as an assistant message</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">instructions</span><span class="p">))</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">retrievalRequest</span><span class="p">.</span><span class="n">Messages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseMessage</span><span class="p">(</span>
-<span class="w">            </span><span class="n">content</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseMessageTextContent</span><span class="p">(</span><span class="n">instructions</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;assistant&quot;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// The user&#39;s natural-language query</span>
-<span class="w">    </span><span class="n">retrievalRequest</span><span class="p">.</span><span class="n">Messages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseMessage</span><span class="p">(</span>
-<span class="w">        </span><span class="n">content</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KnowledgeBaseMessageTextContent</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="w"> </span><span class="p">});</span>
-
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">retrievalResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_retrievalClient</span><span class="p">.</span><span class="n">RetrieveAsync</span><span class="p">(</span><span class="n">retrievalRequest</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// ... collect the synthesized text from retrievalResult.Value.Response ...</span>
-<span class="p">}</span>
-</code></pre></div>
-</li>
-<li>
-<p>The service also creates the index (<code>EnsureClaimsIndexAsync</code>, with semantic + vector search), the knowledge source and knowledge base, indexes the claims (<code>IndexSampleDataAsync</code>), and offers a direct <code>GetClaimByNumberAsync</code> lookup for structured detail. Copy the <strong>complete implementation</strong> into your file from the reference solution: <a href="https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF2-complete" target="_blank">KnowledgeBaseService.cs in BAF2-complete</a>.</p>
 </li>
 </ol>
-<p><strong>Expected result:</strong> <code>src/Services/KnowledgeBaseService.cs</code> compiles and exposes <code>EnsureClaimsIndexAsync</code>, <code>CreateKnowledgeSourcesAsync</code>, <code>CreateKnowledgeBaseAsync</code>, <code>IndexSampleDataAsync</code>, <code>RetrieveAsync</code>, and <code>GetClaimByNumberAsync</code>.</p>
-<p><cc-end-step lab="baf2" exercise="2" step="1" /></p>
-<h3 id="step-2-create-the-claimsplugin">Step 2: Create the ClaimsPlugin</h3>
-<p>The <code>ClaimsPlugin</code> turns the service into agent <strong>tools</strong>. Each method carries a <code>[Description]</code> attribute, which is how the agent decides when to call it.</p>
+<details class="note">
+<summary>What this does</summary>
+<p>These settings enable the On-Behalf-Of (OBO) flow for the Azure Bot backing the agent, so the agent can exchange the user's token for a Microsoft Graph token and call the Microsoft 365 Copilot Retrieval API as that user.</p>
+</details>
+<p><strong>Expected result:</strong> The OBO configuration is active, so the agent can obtain a Microsoft Graph token for the signed-in user.</p>
+<p><cc-end-step lab="baf3" exercise="2" step="1" /></p>
+<h3 id="step-2-implement-user-authentication-and-obo">Step 2: Implement user authentication and OBO</h3>
 <ol>
-<li>Create a file <code>src/Plugins/ClaimsPlugin.cs</code>.</li>
+<li>In <code>src/Agent/ZavaInsuranceAgent.cs</code>, find the <code>OnMessageAsync</code> method.</li>
 <li>
-<p><code>SearchClaims</code> builds a natural-language query from the user's filters and asks the knowledge base to return a grounded, cited summary:</p>
-<div class="highlight"><pre><span></span><code><span class="na">[Description(&quot;Searches for insurance claims based on region, type, severity, and status. Returns a summary of matching claims.&quot;)]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SearchClaims</span><span class="p">(</span>
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">claimType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">severity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">&quot;Searching claims database using AI Search...&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">queryParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;insurance claims&quot;</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">region</span><span class="p">))</span><span class="w">    </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;in {region} region&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">claimType</span><span class="p">))</span><span class="w"> </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;of type {claimType}&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">severity</span><span class="p">))</span><span class="w">  </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;with {severity} severity&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">status</span><span class="p">))</span><span class="w">    </span><span class="n">queryParts</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&quot;with status {status}&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queryParts</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Agentic retrieval with instructions for a structured, cited summary</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">instructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@&quot;You are an insurance claims specialist. Provide a clear, structured summary of matching claims.</span>
-<span class="s">        - Total number of claims found</span>
-<span class="s">        - For each claim: Claim Number, Policyholder, Claim Type, Amount, Status, Date Filed, Severity, Region</span>
-<span class="s">        - Cite sources using [ref_id:X] format&quot;</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">.</span><span class="n">RetrieveAsync</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="n">instructions</span><span class="p">,</span><span class="w"> </span><span class="n">topResults</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-</li>
-<li>
-<p><code>GetClaimDetails</code> retrieves one claim directly for structured, reliable detail:</p>
-<div class="highlight"><pre><span></span><code><span class="na">[Description(&quot;Retrieves detailed information for a specific claim by claim ID, including policyholder info, documentation, and history.&quot;)]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetClaimDetails</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">claimId</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Retrieving details for claim {claimId}...&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">claimDoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">.</span><span class="n">GetClaimByNumberAsync</span><span class="p">(</span><span class="n">claimId</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">claimDoc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Claim {claimId} not found in the system.&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// ... format the claim fields into a readable summary ...</span>
-<span class="p">}</span>
-</code></pre></div>
-</li>
-<li>
-<p>Copy the <strong>complete plugin</strong> (constructor, both tool methods, and the <code>NotifyUserAsync</code> / <code>GetFieldValue</code> helpers) from the reference solution: <a href="https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF2-complete" target="_blank">ClaimsPlugin.cs in BAF2-complete</a>.</p>
-</li>
-</ol>
-<p><strong>Expected result:</strong> <code>src/Plugins/ClaimsPlugin.cs</code> compiles and exposes two <code>[Description]</code>-annotated tools — <code>SearchClaims</code> and <code>GetClaimDetails</code>.</p>
-<p><cc-end-step lab="baf2" exercise="2" step="2" /></p>
-<h3 id="step-3-register-the-service-and-initialize-the-knowledge-base">Step 3: Register the service and initialize the knowledge base</h3>
-<p>Wire the service into dependency injection and build the knowledge base on startup.</p>
-<ol>
-<li>
-<p>Open <code>src/Program.cs</code> and add the using statement:</p>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">InsuranceAgent.Services</span><span class="p">;</span>
-</code></pre></div>
-</li>
-<li>
-<p>Find <code>builder.Services.AddSingleton&lt;IStorage, MemoryStorage&gt;();</code> and register the service right after:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Register Knowledge Base Service for Foundry IQ (Azure AI Search)</span>
-<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="o">&lt;</span><span class="n">KnowledgeBaseService</span><span class="o">&gt;</span><span class="p">();</span>
-</code></pre></div>
-</li>
-<li>
-<p>Find <code>var app = builder.Build();</code> and initialize the knowledge base right after — the order matters:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Initialize the Foundry IQ knowledge base (Azure AI Search)</span>
-<span class="k">using</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">CreateScope</span><span class="p">())</span>
+<p>Right after the first line of the method (<code>await turnContext.StreamingResponse.QueueInformativeUpdateAsync("Processing your request...", ...)</code>) add:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Check if user profile is already cached, if not fetch and cache it</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">userProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">GetCachedUserProfile</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">userProfile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">try</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">kbService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">KnowledgeBaseService</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;🔍 Initializing Foundry IQ knowledge base...&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">EnsureClaimsIndexAsync</span><span class="p">();</span><span class="w">      </span><span class="c1">// 1. Create claims index</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">CreateKnowledgeSourcesAsync</span><span class="p">();</span><span class="w"> </span><span class="c1">// 2. Create claims knowledge source</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">CreateKnowledgeBaseAsync</span><span class="p">();</span><span class="w">     </span><span class="c1">// 3. Create knowledge base</span>
-<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">kbService</span><span class="p">.</span><span class="n">IndexSampleDataAsync</span><span class="p">();</span><span class="w">         </span><span class="c1">// 4. Index sample claims data</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;✅ Knowledge base initialized successfully&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Get the access token and store it in the conversation state</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">accessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">UserAuthorization</span><span class="p">.</span><span class="n">ExchangeTurnTokenAsync</span><span class="p">(</span><span class="n">turnContext</span><span class="p">,</span><span class="w"> </span><span class="n">UserAuthorization</span><span class="p">.</span><span class="n">DefaultHandlerName</span><span class="p">,</span><span class="w"> </span><span class="n">exchangeScopes</span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;https://graph.microsoft.com/.default&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">:</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">        </span><span class="n">turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">SetCachedOBOAccessToken</span><span class="p">(</span><span class="n">accessToken</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Get the user profile and store it in the conversation state</span>
+<span class="w">        </span><span class="n">userProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">GetUserProfile</span><span class="p">(</span><span class="n">accessToken</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">);</span>
+<span class="w">        </span><span class="n">turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">SetCachedUserProfile</span><span class="p">(</span><span class="n">userProfile</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Show current user profile information to let clients that support streaming know that we are processing the request for the current user.</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="s">$&quot;⚒️ Working on your request {userProfile.DisplayName} ...&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">).</span><span class="n">ConfigureAwait</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidOperationException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;⚠️ Knowledge base initialization warning: {ex.Message}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Trace</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Exception occurred: {ex.Message}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// User is not signed in, proceed as anonymous and inform the user</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">turnContext</span><span class="p">.</span><span class="n">StreamingResponse</span><span class="p">.</span><span class="n">QueueInformativeUpdateAsync</span><span class="p">(</span><span class="s">&quot;⚠️ Please sign in if you want to use authenticated features.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cancellationToken</span><span class="p">).</span><span class="n">ConfigureAwait</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </li>
 </ol>
-<p><strong>Expected result:</strong> The service is registered, and on startup the app creates the index, knowledge source, and knowledge base, then indexes the sample claims.</p>
-<p><cc-end-step lab="baf2" exercise="2" step="3" /></p>
-<h3 id="step-4-give-the-agent-the-claimsplugin-tools">Step 4: Give the agent the ClaimsPlugin tools</h3>
-<p>Now tell the agent about the new tools and register them.</p>
+<details class="note">
+<summary>What this code does</summary>
+<ul>
+<li>Tries to read the cached user profile from the conversation.</li>
+<li>If it's missing, it exchanges the turn token for an OBO Microsoft Graph token, caches it, retrieves the user's profile via Microsoft Graph, and caches that too.</li>
+<li>If the exchange fails, the agent asks the user to sign in and continues anonymously.</li>
+</ul>
+<p>The <code>GetCachedOBOAccessToken</code> / <code>SetCachedOBOAccessToken</code> helpers and the <code>GetUserProfile</code> method are already part of your project from Lab BAF2.</p>
+</details>
+<p><strong>Expected result:</strong> On the first authenticated request the agent obtains and caches an OBO Microsoft Graph token and the user's profile — the token the Microsoft 365 Copilot Retrieval API will use.</p>
+<p><cc-end-step lab="baf3" exercise="2" step="2" /></p>
+<h3 id="step-3-add-the-languagemodelservice">Step 3: Add the LanguageModelService</h3>
+<p>The compliance analysis sends the retrieved policies and the claim to a language model. Add a small service that centralizes those chat completions.</p>
 <ol>
 <li>
-<p>Open <code>src/Agent/ZavaInsuranceAgent.cs</code> and add the using statement:</p>
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">InsuranceAgent.Services</span><span class="p">;</span>
+<p>Create a file <code>src/Services/LanguageModelService.cs</code>. Its core is a <code>ChatClient</code> built from your configured Azure OpenAI endpoint:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;AIModels:Endpoint&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;AIModels:Endpoint not configured&quot;</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">apiKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;AIModels:ApiKey&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;AIModels:ApiKey not configured&quot;</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configuration</span><span class="p">[</span><span class="s">&quot;LANGUAGE_MODEL_NAME&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="o">??</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidOperationException</span><span class="p">(</span><span class="s">&quot;LANGUAGE_MODEL_NAME not configured&quot;</span><span class="p">);</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">azureClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AzureOpenAIClient</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Uri</span><span class="p">(</span><span class="n">endpoint</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AzureKeyCredential</span><span class="p">(</span><span class="n">apiKey</span><span class="p">));</span>
+<span class="n">_chatClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">azureClient</span><span class="p">.</span><span class="n">GetChatClient</span><span class="p">(</span><span class="n">deployment</span><span class="p">);</span>
+</code></pre></div>
+<p>It exposes a single <code>CompleteChatAsync(messages, options)</code> method. Copy the <strong>complete implementation</strong> from the reference solution: <a href="https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF3-complete/src/Services" target="_blank">LanguageModelService.cs in BAF3-complete</a>.</p>
+</li>
+<li>
+<p>Register the service in <code>src/Program.cs</code>, right after <code>builder.Services.AddSingleton&lt;KnowledgeBaseService&gt;();</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Register LanguageModelService for AI-powered compliance analysis</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="o">&lt;</span><span class="n">LanguageModelService</span><span class="o">&gt;</span><span class="p">();</span>
 </code></pre></div>
 </li>
 <li>
-<p>Find the <code>AgentInstructions</code> property and replace it so the agent knows about the claims tools:</p>
+<p>In <code>env/.env.local</code>, make sure the language model deployment name is set:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Language Model (for compliance analysis)</span>
+<span class="nv">LANGUAGE_MODEL_NAME</span><span class="o">=</span>gpt-4.1
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Expected result:</strong> <code>LanguageModelService</code> compiles, is registered in dependency injection, and the language model deployment is configured.</p>
+<p><cc-end-step lab="baf3" exercise="2" step="3" /></p>
+<h3 id="step-4-create-the-claimspoliciesplugin">Step 4: Create the ClaimsPoliciesPlugin</h3>
+<p>This plugin retrieves the claim from your knowledge base, calls the Microsoft 365 Copilot Retrieval API for the matching SharePoint policies, and asks the model to score the claim's compliance.</p>
+<ol>
+<li>
+<p>Create a file <code>src/Plugins/ClaimsPoliciesPlugin.cs</code>. The single tool <code>AnalyzeClaimCompliance</code> first reads the cached OBO token, then calls the Microsoft 365 Copilot Retrieval API with it:</p>
+<div class="highlight"><pre><span></span><code><span class="na">[Description(&quot;Retrieves claims policies from SharePoint Online using Copilot Retrieval APIs and analyzes claim compliance&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AnalyzeClaimCompliance</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">claimId</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nf">NotifyUserAsync</span><span class="p">(</span><span class="s">$&quot;Retrieving policies for claim {claimId}...&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Read the user profile and OBO token from conversation state</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">userProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">GetCachedUserProfile</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">accessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_turnState</span><span class="p">.</span><span class="n">Conversation</span><span class="p">.</span><span class="n">GetCachedOBOAccessToken</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">claimDoc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_knowledgeBaseService</span><span class="p">.</span><span class="n">GetClaimByNumberAsync</span><span class="p">(</span><span class="n">claimId</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">claimDoc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">$&quot;❌ Claim {claimId} not found in the system.&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Build the Microsoft 365 Copilot Retrieval API request payload</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">retrievalPayload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">queryString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">$&quot;Retrieve the claims policies for claims of type &#39;{GetFieldValue(claimDoc, &quot;</span><span class="n">claimType</span><span class="s">&quot;)}&#39; in region &#39;{GetFieldValue(claimDoc, &quot;</span><span class="n">region</span><span class="s">&quot;)}&#39;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">dataSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SharePoint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">resourceMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;author&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">httpContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringContent</span><span class="p">(</span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">retrievalPayload</span><span class="p">),</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Configure HTTP client with the OBO token so results respect the user&#39;s permissions</span>
+<span class="w">    </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">$&quot;Bearer {accessToken}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Call the Microsoft 365 Copilot Retrieval API</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">_httpClient</span><span class="p">.</span><span class="n">PostAsync</span><span class="p">(</span><span class="s">&quot;https://graph.microsoft.com/v1.0/copilot/retrieval&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">httpContent</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">policiesContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// ... send the claim + policiesContent to the model and return a cited compliance report ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>The rest of the method builds a prompt combining the claim details and the retrieved <code>policiesContent</code>, calls <code>_languageModelService.CompleteChatAsync(...)</code> for a JSON compliance result, and adds each source as a citation via <code>_turnContext.StreamingResponse.AddCitation(...)</code>. Copy the <strong>complete plugin</strong> (and the <code>ComplianceAnalysisResult</code> class, plus the <code>GetFieldValue</code>, <code>GetCitationUrl</code>, and <code>NotifyUserAsync</code> helpers) from the reference solution: <a href="https://github.com/microsoft/copilot-camp/tree/main/src/agent-framework/BAF3-complete/src/Plugins" target="_blank">ClaimsPoliciesPlugin.cs in BAF3-complete</a>.</p>
+</li>
+</ol>
+<details class="info">
+<summary>How the API grounds the answer</summary>
+<p>The <code>queryString</code> should be a single, specific sentence. The API returns policy extracts from SharePoint that the signed-in user is allowed to see, and those extracts are sent to the model as grounding — so the compliance analysis is based on your organization's real policies, not the model's assumptions.</p>
+</details>
+<p><strong>Expected result:</strong> <code>src/Plugins/ClaimsPoliciesPlugin.cs</code> compiles and exposes the <code>AnalyzeClaimCompliance</code> tool that calls the Microsoft 365 Copilot Retrieval API with the user's OBO token.</p>
+<p><cc-end-step lab="baf3" exercise="2" step="4" /></p>
+<h3 id="step-5-register-the-plugin-and-update-instructions">Step 5: Register the plugin and update instructions</h3>
+<p>Wire the plugin into the agent, update its instructions, and refresh the welcome message.</p>
+<ol>
+<li>
+<p>In <code>src/Agent/ZavaInsuranceAgent.cs</code>, in the <code>GetClientAgent</code> method, find where <code>KnowledgeBaseService</code> is retrieved from the scope and get the language model service right after:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">languageModelService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">LanguageModelService</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
+</li>
+<li>
+<p>Find where <code>ClaimsPlugin claimsPlugin = ...</code> is instantiated and add the new plugin right after:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create ClaimsPoliciesPlugin with required dependencies</span>
+<span class="n">ClaimsPoliciesPlugin</span><span class="w"> </span><span class="n">claimsPoliciesPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">turnState</span><span class="p">,</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="p">,</span><span class="w"> </span><span class="n">languageModelService</span><span class="p">,</span><span class="w"> </span><span class="n">configuration</span><span class="p">,</span><span class="w"> </span><span class="n">_httpClient</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Find where the <code>ClaimsPlugin</code> tools are registered and add the compliance tool right after:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Register ClaimsPolicies tools (Microsoft 365 Copilot Retrieval API)</span>
+<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">claimsPoliciesPlugin</span><span class="p">.</span><span class="n">AnalyzeClaimCompliance</span><span class="p">));</span>
+</code></pre></div>
+</li>
+<li>
+<p>Replace the <code>AgentInstructions</code> field so it advertises <strong>only</strong> the tools that exist after this lab:</p>
 <div class="highlight"><pre><span></span><code><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">AgentInstructions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
 <span class="n">You</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="n">insurance</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">assistant</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Zava</span><span class="w"> </span><span class="n">Insurance</span><span class="p">.</span>
 
@@ -2872,6 +2896,9 @@
 <span class="o">**</span><span class="n">Available</span><span class="w"> </span><span class="n">Tools</span><span class="p">:</span><span class="o">**</span>
 <span class="n">Use</span><span class="w"> </span><span class="p">{{</span><span class="n">DateTimeFunctionTool</span><span class="p">.</span><span class="n">getDate</span><span class="p">}}</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">time</span><span class="p">.</span>
 <span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">search</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">SearchClaims</span><span class="p">}}</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPlugin</span><span class="p">.</span><span class="n">GetClaimDetails</span><span class="p">}}.</span>
+<span class="n">For</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="n">compliance</span><span class="w"> </span><span class="n">analysis</span><span class="p">,</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="p">{{</span><span class="n">ClaimsPoliciesPlugin</span><span class="p">.</span><span class="n">AnalyzeClaimCompliance</span><span class="p">}}.</span>
+
+<span class="o">**</span><span class="n">IMPORTANT</span><span class="o">**</span><span class="p">:</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">references</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="n">like</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">etc</span><span class="p">.,</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="n">those</span><span class="w"> </span><span class="n">citations</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">M365</span><span class="w"> </span><span class="n">Copilot</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">render</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="n">properly</span><span class="p">.</span>
 
 <span class="n">Stick</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">scenario</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tools</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">answering</span><span class="w"> </span><span class="n">questions</span><span class="p">.</span>
 <span class="n">Be</span><span class="w"> </span><span class="n">concise</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">responses</span><span class="p">.</span>
@@ -2879,113 +2906,82 @@
 </code></pre></div>
 </li>
 <li>
-<p>In the <code>GetClientAgent</code> method, find where <code>StartConversationPlugin</code> is created and instantiate the plugin right after:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_serviceProvider</span><span class="p">.</span><span class="n">CreateScope</span><span class="p">();</span>
-
-<span class="c1">// Get KnowledgeBaseService and IConfiguration from DI</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">KnowledgeBaseService</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">IConfiguration</span><span class="o">&gt;</span><span class="p">();</span>
-
-<span class="c1">// Create ClaimsPlugin with required dependencies</span>
-<span class="n">ClaimsPlugin</span><span class="w"> </span><span class="n">claimsPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">knowledgeBaseService</span><span class="p">,</span><span class="w"> </span><span class="n">configuration</span><span class="p">);</span>
-</code></pre></div>
-</li>
-<li>
-<p>Find where tools are registered and add the claims tools right after <code>toolOptions.Tools.Add(AIFunctionFactory.Create(startConversationPlugin.StartConversation))</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Register ClaimsPlugin tools</span>
-<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">claimsPlugin</span><span class="p">.</span><span class="n">SearchClaims</span><span class="p">));</span>
-<span class="n">toolOptions</span><span class="p">.</span><span class="n">Tools</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AIFunctionFactory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">claimsPlugin</span><span class="p">.</span><span class="n">GetClaimDetails</span><span class="p">));</span>
-</code></pre></div>
-</li>
-</ol>
-<p><strong>Expected result:</strong> The agent's instructions reference the claims tools, and both <code>SearchClaims</code> and <code>GetClaimDetails</code> are registered as callable tools.</p>
-<p><cc-end-step lab="baf2" exercise="2" step="4" /></p>
-<h3 id="step-5-update-the-welcome-message">Step 5: Update the welcome message</h3>
-<p>Update the welcome message so it advertises the new claims capabilities.</p>
-<ol>
-<li>Open <code>src/Plugins/StartConversationPlugin.cs</code>.</li>
-<li>
-<p>Find the <code>welcomeMessage</code> variable in the <code>StartConversation</code> method and replace it with:</p>
+<p>In <code>src/Plugins/StartConversationPlugin.cs</code>, replace the <code>welcomeMessage</code> so it advertises only claims lookup/search and policy-compliance analysis:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;👋 Welcome to Zava Insurance Claims Assistant!\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                    </span><span class="s">&quot;I&#39;m your AI-powered insurance claims specialist. I help adjusters and investigators streamline the claims process.\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                    </span><span class="s">&quot;**What I can do:**\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                    </span><span class="s">&quot;- Search and retrieve detailed claim information\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                    </span><span class="s">&quot;- Provide current date and time\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                    </span><span class="s">&quot;- Answer questions about claims\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">&quot;- Analyze a claim&#39;s compliance against company policies\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">&quot;- Provide current date and time\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                    </span><span class="s">&quot;🎯 Try these commands:\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                    </span><span class="s">&quot;1. \&quot;Search for claims with high severity\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                    </span><span class="s">&quot;2. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                    </span><span class="s">&quot;3. \&quot;Show me recent claims in the Northeast region\&quot;\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">&quot;1. \&quot;Get details for claim CLM-2025-001007\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">&quot;2. \&quot;Search for claims with high severity\&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                    </span><span class="s">&quot;3. \&quot;Check compliance for claim CLM-2025-001007\&quot;\n\n&quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                    </span><span class="s">&quot;Ready to help with your claims investigation. What would you like to start with?&quot;</span><span class="p">;</span>
 </code></pre></div>
 </li>
 </ol>
-<p><strong>Expected result:</strong> When the conversation starts, the agent greets the user and advertises claim search and claim details as its capabilities.</p>
-<p><cc-end-step lab="baf2" exercise="2" step="5" /></p>
+<p><strong>Expected result:</strong> The agent knows about the compliance tool, registers it, and greets users advertising claim search and policy-compliance analysis — with no references to vision, policy plugins, or email.</p>
+<p><cc-end-step lab="baf3" exercise="2" step="5" /></p>
 <hr />
-<h2 id="exercise-3-run-and-validate-grounded-answers">Exercise 3: Run and validate grounded answers</h2>
-<p>Time to see Foundry IQ grounding in action.</p>
-<h3 id="step-1-run-the-agent">Step 1: Run the agent</h3>
+<h2 id="exercise-3-run-and-validate-compliance-analysis">Exercise 3: Run and validate compliance analysis</h2>
+<p>Now test grounding against your real SharePoint policies.</p>
+<h3 id="step-1-run-and-sign-in">Step 1: Run and sign in</h3>
 <ol>
 <li>Press <strong>F5</strong> in VS Code to start debugging.</li>
 <li>Select <strong>(Preview) Debug in Copilot (Edge)</strong> if prompted.</li>
-<li>
-<p>Watch the terminal — you should see the knowledge base build itself:</p>
-<div class="highlight"><pre><span></span><code>🔍 Initializing Foundry IQ knowledge base...
-📝 Creating claims index &#39;claims-index&#39;...
-✅ Claims index &#39;claims-index&#39; created successfully
-✅ Knowledge source &#39;claims-knowledge-source&#39; created
-✅ Knowledge base &#39;zava-insurance-kb&#39; created with model &#39;gpt-4.1&#39;
-📝 Indexing sample claims...
-✅ Indexed 35 claims
-✅ Knowledge base initialized successfully
-</code></pre></div>
-</li>
-<li>
-<p>(Optional) In the <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, open your Search service → <strong>Indexes</strong> to see <code>claims-index</code>, and <strong>Agentic retrieval &gt; Knowledge Bases</strong> to see <code>zava-insurance-kb</code>.</p>
-</li>
+<li>When Microsoft 365 Copilot opens, send any message. On the first authenticated request the agent prompts you to <strong>sign in</strong> — complete the sign-in with your Microsoft 365 account.</li>
 </ol>
-<p><strong>Expected result:</strong> The agent starts, the knowledge base is created and populated with the indexed claims, and Microsoft 365 Copilot opens in the browser with your agent installed.</p>
-<p><cc-end-step lab="baf2" exercise="3" step="1" /></p>
-<h3 id="step-2-test-claim-search">Step 2: Test claim search</h3>
+<p><strong>Expected result:</strong> The agent signs you in, obtains an OBO Microsoft Graph token, and greets you by name (<code>⚒️ Working on your request &lt;name&gt; ...</code>).</p>
+<p><cc-end-step lab="baf3" exercise="3" step="1" /></p>
+<h3 id="step-2-test-claim-compliance-analysis">Step 2: Test claim compliance analysis</h3>
 <ol>
 <li>
-<p>In Microsoft 365 Copilot, ask:</p>
-<div class="highlight"><pre><span></span><code>Find claims in the South region
+<p>In Microsoft 365 Copilot, say:</p>
+<div class="highlight"><pre><span></span><code>Check compliance for claim CLM-2025-001007
 </code></pre></div>
+<p>The agent should retrieve the claim, call the Microsoft 365 Copilot Retrieval API to fetch the matching policies from SharePoint, run the AI analysis, and return a structured compliance report.</p>
 </li>
 <li>
-<p>Try a more specific search:</p>
-<div class="highlight"><pre><span></span><code>Show me auto claims with medium severity
-</code></pre></div>
+<p>Notice the numbered <strong>citations</strong> (like <code>[1]</code>, <code>[2]</code>) — they link back to the SharePoint policy documents used for the analysis.</p>
 </li>
 </ol>
-<p><strong>Expected result:</strong> The agent calls <code>SearchClaims</code>, and the answer is grounded in the indexed data — it lists real matching claims (claim number, policyholder, type, amount, status, severity, region) rather than inventing them.</p>
-<p><cc-end-step lab="baf2" exercise="3" step="2" /></p>
-<h3 id="step-3-test-claim-details">Step 3: Test claim details</h3>
+<p><strong>Expected result:</strong> You get a compliance report with a score, level, analysis, recommendations, and clickable citations pointing to your SharePoint policy documents.</p>
+<p><cc-end-step lab="baf3" exercise="3" step="2" /></p>
+<h3 id="step-3-test-with-another-claim">Step 3: Test with another claim</h3>
 <ol>
 <li>
-<p>Ask for a specific claim:</p>
-<div class="highlight"><pre><span></span><code>Get details for claim CLM-2025-001007
+<p>Try a different claim and phrasing:</p>
+<div class="highlight"><pre><span></span><code>Check if claim CLM-2025-001001 follows our policies
 </code></pre></div>
 </li>
 <li>
-<p>Try another claim:</p>
-<div class="highlight"><pre><span></span><code>Show me information about claim CLM-2025-001003
-</code></pre></div>
+<p>The agent should fetch the appropriate policies based on that claim's type (Auto, Homeowners, …) and region, and produce a fresh, cited analysis.</p>
 </li>
 </ol>
-<p><strong>Expected result:</strong> The agent calls <code>GetClaimDetails</code> and returns the real, structured details for that exact claim — proving the answer comes from the Foundry IQ knowledge base and not from the model's imagination.</p>
-<p><cc-end-step lab="baf2" exercise="3" step="3" /></p>
+<p><strong>Expected result:</strong> The compliance analysis reflects the second claim's own type and region, grounded in the relevant SharePoint policies and respecting your permissions.</p>
+<p><cc-end-step lab="baf3" exercise="3" step="3" /></p>
 <p><span style="font-size: large; font-weight: bold; color: #8d57c2;">CONGRATULATIONS!</span></p>
-<p>You have completed Lab BAF2 - Ground your agent with Foundry IQ!</p>
-<p>Your Zava Insurance agent is now grounded: it answers claims questions with real, cited data from a Foundry IQ knowledge base backed by Azure AI Search. In the next lab, you'll ground it in your organization's Microsoft 365 content with Work IQ.</p>
-<div class="admonition tip">
-<p class="admonition-title">Go deeper on Foundry IQ</p>
-<p>Want the full picture of how Foundry IQ builds knowledge bases from multiple sources? Watch the three Foundry IQ episodes of <a href="https://aka.ms/iq-series" target="_blank"><strong>The Microsoft IQ Series</strong></a> — each pairs a ~15 minute tech talk with a hands-on cookbook, and completing all three earns you the Foundry IQ community badge.</p>
-</div>
-<p><cc-next url="../03-add-copilot-retrieval" /></p>
-<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/02-add-claim-search" /></p>
+<p>You have completed Lab BAF3 - Ground your agent in Microsoft 365 content with Work IQ!</p>
+<p>🎉 <strong>Congratulations — you've finished the Agent Framework track!</strong> Across these labs you have:</p>
+<ul>
+<li><strong>BAF0</strong> — set up the prerequisites and tooling for building a custom engine agent</li>
+<li><strong>BAF1</strong> — built and ran the Zava Insurance agent on the Microsoft 365 Agents SDK with Microsoft Agent Framework</li>
+<li><strong>BAF2</strong> — grounded the agent in structured claims data with a <strong>Foundry IQ</strong> knowledge base backed by Azure AI Search</li>
+<li><strong>BAF3</strong> — grounded the agent in real Microsoft 365 content with <strong>Work IQ</strong>, using the Microsoft 365 Copilot Retrieval API to analyze claim compliance against SharePoint policies while respecting user permissions</li>
+</ul>
+<p>Your Zava Insurance agent now combines Foundry IQ and Work IQ grounding to answer with real, cited data from both your indexed claims and your organization's live policy documents. 🎊</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<p><strong>Microsoft IQ</strong> is Microsoft's unified intelligence layer, made up of <strong>Foundry IQ</strong>, <strong>Work IQ</strong>, and <strong>Fabric IQ</strong>. You've now used two of the three in a real agent — here's how to go further:</p>
+<ul>
+<li>📺 <a href="https://aka.ms/iq-series" target="_blank"><strong>The Microsoft IQ Series</strong></a> — expert-led episodes with hands-on cookbooks and labs for Foundry IQ and Work IQ, plus community badges for completing them</li>
+<li>🧪 <a href="../../../work-iq/">Work IQ labs in Copilot Developer Camp</a> — go deeper on Work IQ with the A2A, MCP, and REST protocols</li>
+<li>🔬 <a href="https://aka.ms/iqdeepdive" target="_blank">Microsoft IQ Deep Dive</a> — a three-day workshop spanning Foundry IQ, Work IQ, Fabric IQ, and Web IQ</li>
+<li>📡 <a href="https://aka.ms/MicrosoftIQLive" target="_blank">Microsoft IQ Live</a> — ongoing product updates, demos, and architecture guidance</li>
+</ul>
+<p><cc-next label="Home" url="/" /></p>
+<p><cc-award badgeId="CustomEngineRanger" badgeName="Custom Engine Ranger" /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/custom-engine/agent-framework/03-add-copilot-retrieval" /></p>
 
 
 
