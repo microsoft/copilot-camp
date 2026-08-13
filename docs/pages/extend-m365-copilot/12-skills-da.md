@@ -286,12 +286,6 @@ The wording can vary. Validate the structure, business relevance, intended users
 
 <cc-end-step lab="E12" exercise="3" step="3" />
 
-## How skill matching works
-
-When a user sends a prompt, the agent evaluates the request against its available capabilities. Copilot compares the user's intent with skill descriptions and loads the relevant skill instructions when there is a match. The agent then follows the selected `SKILL.md` workflow to produce its response.
-
-Keeping each skill focused makes its activation easier to predict and prevents specialized instructions from crowding the agent's general instructions.
-
 ## Congratulations
 
 You created a generic Declarative Agent with a custom skill and verified both positive and negative skill matching.
