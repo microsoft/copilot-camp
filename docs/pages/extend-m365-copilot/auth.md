@@ -2,7 +2,7 @@
 
 Do you already know how to build a declarative agent and API plugin, and want to learn how to secure your API? Well you've come to the right place! You can skip the regular labs (E1-E5) and jump right to your choice of DA Authentication lab!
 
-Begin by completing [Lab E0](../extend-m365-copilot/00-prerequisites.md) to get up your development environment.
+Begin with the [Bundle D prerequisites](../extend-m365-copilot/bundle-d.md) to set up your development environment.
 Then choose an auth lab from these choices:
 
 <hr />

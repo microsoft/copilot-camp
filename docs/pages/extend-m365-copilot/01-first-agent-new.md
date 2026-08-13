@@ -31,7 +31,7 @@ To keep each workflow clean and avoid mixed step confusion, foundation is split 
 - **Lab E1A — Declarative Agent Foundation with Agent Builder** (no-code path)
 - **Lab E1B — Declarative Agent Foundation with Agents Toolkit** (code-first path)
 
-Recommended progression: complete **E1A first, then E1B** to push your limits and build confidence before bundles. After E1B, complete **Prerequisites for Pro-code bundles**.
+Recommended progression: complete **E1A first, then E1B** to push your limits and build confidence before choosing a bundle. Each bundle lists its own prerequisites.
 
 <div data-widget="checklist"
   data-items="Start where you are::Choose the path that matches your current comfort level|Build confidence first::E1A helps you learn the Copilot Chat workflow quickly|Move into pro-code readiness::E1B prepares you for the majority of bundle labs"></div>
@@ -72,22 +72,16 @@ Best for learners ready for source files, provisioning, and code-first workflows
 
 ---
 
-## Next step after E1A or E1B
+## Choose what to do next
 
-Best path for most learners: **E1A -> E1B -> E0 -> bundles**.
-If you are already pro-code, you can go directly to **E1B**, then continue to **Prerequisites for Pro-code bundles**.
+After the foundation labs, choose the learning format that matches your goal:
 
-<div data-widget="callout"
-  data-type="tip"
-  data-title="Suggested progression"
-  data-body="To push your limits gradually, take E1A first, then jump to E1B. If you are already comfortable with source files and provisioning, start at E1B, then continue to E0."></div>
+- **Bundle-based labs:** follow a guided sequence that builds an end-to-end scenario. Complete E1B, choose Bundle A, B, D, or E, then prepare the prerequisites listed on that bundle's page.
+- **Standalone labs:** select an independent lab for one focused subject. Review that lab's requirements before starting; you do not need to complete a bundle.
 
----8<--- "e-congratulations.md"
-
-<div data-widget="labnav"
-  data-prev="../"
-  data-prev-label="Back to Welcome"
-  data-next="../00-prerequisites/"
-  data-next-label="Continue to Prerequisites"></div>
+<div data-widget="onramp"
+     data-title="Choose your next path"
+     data-sub="Follow a guided bundle or select an independent lab for one focused subject."
+    data-steps="Bundle based::bundle::Bundle-Based Learning::Choose an end-to-end scenario, prepare its prerequisites, and complete the guided lab sequence.::View Bundles::../bundles/|Standalone::lab::Standalone Labs::Choose an independent lab covering MCP Apps, TypeSpec, or instructions and knowledge.::View Standalone Labs::../standalone-labs/"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-new" />

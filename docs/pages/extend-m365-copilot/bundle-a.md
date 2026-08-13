@@ -16,18 +16,33 @@ title: "Bundle A — MCP Foundation: Build, Connect & Secure"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers new to MCP"
-     data-body="Complete &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish E1B), then the &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt;, then use this bundle if you want the cleanest end-to-end introduction to MCP + Declarative Agents."></div>
+     data-body="Complete &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first and finish E1B. Choose this bundle if you want the cleanest end-to-end introduction to MCP + Declarative Agents."></div>
 
 <div data-widget="checklist"
      data-items="A live MCP server connected to a Declarative Agent~You will run the base Zava integration first|OAuth 2.0 protection on the MCP surface~You will add Entra ID app registration and JWT validation|A strong foundation for the advanced MCP tracks~Bundle B builds naturally on this sequence"></div>
 
 
-## Prerequisites & key concepts
+## Before you start
 
-Complete the on-ramp first, then review these concepts before starting the sequence.
+Complete these requirements before starting Lab E8.
+
+<div data-widget="checklist"
+     data-title="Bundle A prerequisites"
+     data-variant="soft"
+     data-items="Complete E1B~Your first declarative agent should be provisioned and tested|Global Admin access in your Microsoft 365 tenant~Required for tenant-wide app and policy settings|VS Code with Microsoft 365 Agents Toolkit~Sign in with your Microsoft 365 developer account|Node.js 22 LTS and Git~Required for the MCP server and source workflow|GitHub account~Required when signing in to Dev Tunnels|Azurite and MCP Inspector~Required to run and inspect the local MCP server|Azure subscription~Free tier is sufficient for the Entra ID app registration in Lab E10"></div>
+
+<div data-widget="verify"
+     data-label="Verify Bundle A tools"
+     data-cmd="node --version\ngit --version\nnpm install -g azurite @modelcontextprotocol/inspector\nazurite --version\n# Expected: Node.js 22.x and Azurite 3.x"></div>
+
+### Verify Dev Tunnels
+
+In the VS Code **Ports** tab, forward port `3001`, set **Port Visibility** to **Public**, and sign in with your GitHub account if prompted. Confirm that you can copy an `https://...use.devtunnels.ms` address, then stop forwarding the port until the lab needs it.
+
+## Key concepts
 
 <div data-widget="concepts"
-      data-cards="Prerequisites::amber:: E1B completed::You should have tools installed, tenant settings configured, and your first declarative agent already provisioned and tested.||MCP server baseline::teal::Local tools exposed through MCP::Lab E8 establishes the core server runtime, tool schemas, and end-to-end tool invocation path from Copilot.||ai-plugin.json contract::green::Agent-to-tool bridge::The agent reads tool metadata from &lt;code&gt;ai-plugin.json&lt;/code&gt;. If tools change on the server, you fetch actions again to regenerate this contract.||OAuth hardening with DCR::purple::From local dev to protected API::Lab E10 adds Entra ID app registration, Dynamic Client Registration (RFC 7591), and JWT validation so only authorized calls reach the MCP server—ATK handles client registration automatically."></div>
+      data-cards="MCP server baseline::teal::Local tools exposed through MCP::Lab E8 establishes the core server runtime, tool schemas, and end-to-end tool invocation path from Copilot.||ai-plugin.json contract::green::Agent-to-tool bridge::The agent reads tool metadata from &lt;code&gt;ai-plugin.json&lt;/code&gt;. If tools change on the server, you fetch actions again to regenerate this contract.||OAuth hardening with DCR::purple::From local dev to protected API::Lab E10 adds Entra ID app registration, Dynamic Client Registration (RFC 7591), and JWT validation so only authorized calls reach the MCP server—ATK handles client registration automatically."></div>
 
 <div data-widget="bundleseq"
      data-bundle-key="a"

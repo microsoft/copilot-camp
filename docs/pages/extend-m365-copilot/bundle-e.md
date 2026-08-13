@@ -16,19 +16,32 @@ title: "Bundle E — Declarative Agents with Copilot Connectors"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers focused on grounded responses"
-     data-body="Complete &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish E1B), then the &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt;. Choose this bundle if you want the agent to answer from indexed data sources instead of relying only on API actions."></div>
+     data-body="Complete &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first and finish E1B. Choose this bundle if you want the agent to answer from indexed data sources instead of relying only on API actions."></div>
 
 <div data-widget="checklist"
      data-items="A solid API-backed Declarative Agent core~You will reuse the same fundamentals as Bundle D through E4|Connector-based grounding on top of that core~You will ingest and index data before testing grounded answers|A path tuned for enterprise knowledge scenarios~This is the bundle for search and grounding rather than MCP"></div>
 
 ---
 
-## Prerequisites & key concepts
+## Before you start
+
+Complete these requirements before starting Lab E2. Bundle E does not require additional tools beyond this common baseline.
+
+<div data-widget="checklist"
+     data-title="Bundle E prerequisites"
+     data-variant="soft"
+     data-items="Complete E1B~Your first declarative agent should be provisioned and tested|Global Admin access in your Microsoft 365 tenant~Required for tenant-wide app, connector, and policy settings|VS Code with Microsoft 365 Agents Toolkit~Sign in with your Microsoft 365 developer account|Node.js 22 LTS and Git~Required for the API, connector, and source workflow"></div>
+
+<div data-widget="verify"
+     data-label="Verify Bundle E command-line tools"
+     data-cmd="node --version\ngit --version\n# Expected: Node.js 22.x and a valid Git version"></div>
+
+## Key concepts
 
 This bundle shares the API core with Bundle D, then adds grounding through connectors.
 
 <div data-widget="concepts"
-     data-cards="Prerequisites::amber:: E1B completed::You should complete the on-ramp before beginning the API + connector grounding sequence.||Shared API core::blue::E2-E4 mirror Bundle D::You first establish a working API-backed declarative agent, including plugin action design and validation.||Grounding strategy::purple::Connector-backed response quality::Lab E7 introduces indexed enterprise content so answers are grounded in curated data instead of only API action outputs.||Enterprise retrieval mindset::teal::Search + context + trust::Connector-based grounding is best when responses must reference knowledge sources users can inspect and validate."></div>
+     data-cards="Shared API core::blue::E2-E4 mirror Bundle D::You first establish a working API-backed declarative agent, including plugin action design and validation.||Grounding strategy::purple::Connector-backed response quality::Lab E7 introduces indexed enterprise content so answers are grounded in curated data instead of only API action outputs.||Enterprise retrieval mindset::teal::Search + context + trust::Connector-based grounding is best when responses must reference knowledge sources users can inspect and validate."></div>
 
 <div data-widget="bundleseq"
      data-bundle-key="e"

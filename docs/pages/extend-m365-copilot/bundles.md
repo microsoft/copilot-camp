@@ -6,8 +6,8 @@ title: Declarative Agent Developer Bundles
      data-badge="🧩 Guided learning track"
      data-badge-color="blue"
      data-title="Declarative Agent Developer Bundles"
-     data-subtitle="Complete the mandatory on-ramp first, then choose a focused bundle path based on your goals."
-     data-path="0::Fundamentals|1::Bundle Prerequisites|*A::MCP Foundation|*B::Multi-Agent Workflows|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
+     data-subtitle="Complete E1B, then choose a focused bundle and prepare its requirements before starting the labs."
+     data-path="0::Fundamentals|*A::MCP Foundation|*B::Multi-Agent Workflows|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
 
 <div data-widget="sectionlabel" data-text="Learning bundles"></div>
 

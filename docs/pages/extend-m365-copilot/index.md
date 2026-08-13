@@ -16,7 +16,7 @@ title: Extend Microsoft 365 Copilot
 > This course takes you from first idea to production deployment — no matter your starting point.
 
 - **Path 1 — Fundamentals:** complete E1A and E1B
-- **Path 2 — Bundle-based learning:** complete the pro-code prerequisites, then choose Bundle A, B, D, or E
+- **Path 2 — Bundle-based learning:** complete E1B, then choose Bundle A, B, D, or E and follow its prerequisites
 - **Path 3 — Standalone labs:** choose a focused lab without committing to a complete bundle
 
 
@@ -78,7 +78,7 @@ Build the shared foundation for creating declarative agents. Complete both labs 
 
 ## Path 2 — Bundle-Based Learning
 
-Choose a guided sequence when you want to build an end-to-end scenario. Before starting a bundle, complete E1B and the **[Prerequisites for Pro-code bundles](00-prerequisites)** to confirm your tools, tenant, and development environment are ready.
+Choose a guided sequence when you want to build an end-to-end scenario. Complete E1B, then open your chosen bundle and follow its prerequisites to prepare the required tools, tenant, and development environment.
 
 ---
 
@@ -153,7 +153,7 @@ Your first production agent is closer than you think.
 <div data-widget="onramp"
      data-title="Choose your starting point"
      data-sub="Start with E1A and E1B, follow a guided bundle, or select a focused standalone lab."
-     data-steps="Path 1 - Fundamental::lab::Fundamentals — E1A and E1B::Build your first agent in Agent Builder, then move to Agents Toolkit in VS Code.::Start Fundamentals::01-first-agent-new|Path 2 - Bundle based::bundle::Bundle-Based Learning::Complete the pro-code prerequisites, then choose an end-to-end scenario from Bundles A, B, D, or E.::View Bundles::bundles|Path 3 - Single labs for focused learning::lab::Standalone Labs::Explore MCP Apps, TypeSpec, or an instructions-based game agent.::View Standalone Labs::standalone-labs"></div>
+     data-steps="Path 1 - Fundamental::lab::Fundamentals — E1A and E1B::Build your first agent in Agent Builder, then move to Agents Toolkit in VS Code.::Start Fundamentals::01-first-agent-new|Path 2 - Bundle based::bundle::Bundle-Based Learning::Complete E1B, then choose an end-to-end scenario and follow that bundle's prerequisites.::View Bundles::bundles|Path 3 - Single labs for focused learning::lab::Standalone Labs::Explore MCP Apps, TypeSpec, or an instructions-based game agent.::View Standalone Labs::standalone-labs"></div>
 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />

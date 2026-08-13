@@ -4,10 +4,11 @@
 <div data-widget="hero"
   data-badge="Bundle C/D Core · Lab E2"
   data-badge-color="blue"
-  data-icon="🛠️"
+  data-icon="🛠️"
+
   data-subtitle="Set up the Trey Research Azure Functions API and run it locally as the foundation for API-based Declarative Agent labs."
   data-time="45-60 min"
-  data-requires="E0 + E1A/E1B"
+  data-requires="E1B + Bundle D/E prerequisites"
   data-toolkit="Node.js 22 + Agents Toolkit"></div>
 
 <div data-widget="checklist"

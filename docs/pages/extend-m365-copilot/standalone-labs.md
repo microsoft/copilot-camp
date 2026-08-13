@@ -17,9 +17,9 @@ These labs are independent learning options rather than bundle sequences. Check 
 
 | Lab | Focus | What you need first |
 |---|---|---|
-| **[Lab E11 — MCP App with Interactive Widgets](11-mcp-app)** | Build React and Fluent UI widgets backed by MCP tools for interactive workflows in Copilot. | E1B and the prerequisites for pro-code labs |
-| **[Build a declarative agent with TypeSpec](01-typespec-declarative-agent)** | Define and build an API-backed declarative agent with TypeSpec and Agents Toolkit. | Agents Toolkit and access to Microsoft 365 Copilot |
-| **[Build an instructions-based Geo Locator agent](01a-geolocator)** | Create a game agent with instructions and file-based knowledge. | Agents Toolkit and access to Microsoft 365 Copilot |
+| **[Lab E11 — MCP App with Interactive Widgets](../11-mcp-app/)** | Build React and Fluent UI widgets backed by MCP tools for interactive workflows in Copilot. |  Node.js 22, Git, GitHub account, Azurite, MCP Inspector, and Azure Functions Core Tools v4 |
+| **[Build a declarative agent with TypeSpec](../01-typespec-declarative-agent/)** | Define and build an API-backed declarative agent with TypeSpec and Agents Toolkit. | Agents Toolkit and access to Microsoft 365 Copilot |
+| **[Build an instructions-based Geo Locator agent](../01a-geolocator/)** | Create a game agent with instructions and file-based knowledge. | Agents Toolkit and access to Microsoft 365 Copilot |
 
 <div data-widget="labnav"
      data-prev="../"

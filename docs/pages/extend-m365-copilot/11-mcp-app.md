@@ -6,7 +6,7 @@
   data-icon="🧪"
   data-subtitle="Pair MCP tools with rich UI resources so users can submit requests, approve actions, and track status directly in Copilot."
   data-time="90-120 min"
-  data-requires="Foundation built by E0 + E1A/E1B"
+  data-requires="E1B + tools listed on the Standalone Labs page"
   data-toolkit="MCP Apps SDK + React"></div>
 
 <div data-widget="checklist"
