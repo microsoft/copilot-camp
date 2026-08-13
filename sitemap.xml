@@ -643,16 +643,10 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/"/>
     </url>
     <url>
-        <loc>https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-da-cli-wiqd/</loc>
+        <loc>https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da/</loc>
         <lastmod>2026-08-13</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-da-cli-wiqd/"/>
-    </url>
-    <url>
-        <loc>https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/13-da-cli-evals/</loc>
-        <lastmod>2026-08-13</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/13-da-cli-evals/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da/"/>
     </url>
     <url>
         <loc>https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/auth/</loc>

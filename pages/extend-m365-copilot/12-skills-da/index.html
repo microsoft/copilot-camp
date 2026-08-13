@@ -6,9 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Build a generic Declarative Agent with a selectively invoked skill that generates realistic business scenarios for demos, workshops, and customer conversations.">
       
       
-        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-da-cli-wiqd/">
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da/">
       
       
       
@@ -21,7 +23,7 @@
     
     
       
-        <title>Lab E12 — DA CLI with WIQD Tooling (Placeholder) - Copilot Developer Camp</title>
+        <title>Build Agent with Skill using Microsoft 365 Agents Toolkit - Copilot Developer Camp</title>
       
     
     
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#planned-exercises" class="md-skip">
+        <a href="#lab-e12-build-agent-with-skill-using-microsoft-365-agents-toolkit" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lab E12 — DA CLI with WIQD Tooling (Placeholder)
+              Build Agent with Skill using Microsoft 365 Agents Toolkit
             
           </span>
         </div>
@@ -2400,45 +2402,229 @@
 
 
 
-  <h1>Lab E12 — DA CLI with WIQD Tooling (Placeholder)</h1>
+<h1 id="lab-e12-build-agent-with-skill-using-microsoft-365-agents-toolkit">Lab E12 - Build Agent with Skill using Microsoft 365 Agents Toolkit</h1>
+<!--
+<div class="lab-intro-video">
+        <div style="flex: 1; min-width: 0;">
+                <iframe src="//www.youtube.com/embed/<VIDEO_ID>" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">
+                </iframe>
+                <div>Get a quick overview of the lab in this video.</div>
+        </div>
+</div>
+-->
 
 <div data-widget="hero"
-     data-badge="Bundle F · Lab E12"
-     data-badge-color="gray"
-     data-icon="🧪"
-     data-subtitle="Placeholder lab: use CLI tooling to inspect Declarative Agent wiring, tool contracts, and runtime behavior."
-     data-time="45-60 min (placeholder)"
-     data-requires="E1B + required CLI tools"
-     data-toolkit="CLI tooling"></div>
+    data-badge="Standalone · Lab E12"
+    data-badge-color="green"
+    data-icon="🧩"
+    data-subtitle="Add skills to your Declarative agent using code"
+    data-time="20 min"
+    data-requires="VS Code + Microsoft 365 Agents Toolkit + Microsoft 365 Copilot"
+    ></div>
 
-<div data-widget="callout"
-     data-type="info"
-     data-title="Placeholder content"
-     data-body="This page is a placeholder for an upcoming CLI-focused lab. Use it to reserve navigation and bundle flow while detailed step-by-step content is being authored."></div>
+<p>In this lab, you'll create a generic <strong>Demo Planning Agent</strong> and extend it with a reusable skill. The skill generates realistic business scenarios for demos, workshops, hackathons, presentations, and customer conversations.</p>
+<h2 id="why-skills-in-an-agent">Why skills in an agent?</h2>
+<p>A skill is a focused capability that the agent loads when the user's task matches its description. This <strong>progressive disclosure</strong> keeps specialized guidance out of the agent's standing context until it is relevant.</p>
+<p>Skills provide several benefits:</p>
+<ul>
+<li><strong>Smaller always-on instructions:</strong> Keep the agent's core role, tone, and safety guidance concise instead of loading every task-specific procedure on every turn.</li>
+<li><strong>Focused behavior:</strong> Give each specialized task its own instructions, actions, and supporting knowledge without crowding the agent's general instructions.</li>
+<li><strong>Predictable activation:</strong> Use the skill description to define which requests should load the capability and which requests the agent should handle normally.</li>
+<li><strong>Easier maintenance and reuse:</strong> Update a focused skill independently and reuse the same capability across agents without duplicating long instruction blocks.</li>
+</ul>
+<p>Use agent-level instructions for behavior that applies to nearly every interaction. Use a skill for specialized guidance or knowledge needed only for matching tasks. If a procedure is deterministic and repeatable, implement it as a script, action, or connector rather than asking the model to reinterpret prose on every run.</p>
+<h2 id="scenario">Scenario</h2>
+<p>Compelling demos begin with a business challenge, not a list of technology features. You need a repeatable way to turn topics such as Microsoft 365 Copilot, Declarative Agents, Model Context Protocol (MCP), Microsoft Graph, Teams applications, and Power Platform into stories that an audience can understand and evaluate.</p>
+<p>The <strong>Demo Planning Agent</strong> will handle general planning requests. When a user asks for a demo idea, business scenario, use case, customer story, or workshop example, its <strong>Demo Scenario Generator</strong> skill will identify the requested topic, create a realistic business problem, describe the users and solution, and define measurable outcomes.</p>
+<h2 id="lab-objectives">Lab objectives</h2>
+<p>By the end of this lab, you'll be able to:</p>
+<ul>
+<li>Create a Declarative Agent with Microsoft 365 Agents Toolkit</li>
+<li>Keep the agent's core instructions generic</li>
+<li>Add a custom skill to a Declarative Agent</li>
+<li>Write focused skill activation guidance and instructions in <code>SKILL.md</code></li>
+<li>Explain how a skill is matched to a user's request</li>
+<li>Provision the agent and validate skill invocation in Microsoft 365 Copilot</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Visual Studio Code with <strong>Microsoft 365 Agents Toolkit</strong> installed</li>
+<li>A Microsoft 365 account with access to Microsoft 365 Copilot</li>
+<li>Permission to upload custom apps in your Microsoft 365 tenant</li>
+</ul>
+<hr />
+<h2 id="exercise-1-create-the-demo-planning-agent">Exercise 1: Create the Demo Planning Agent</h2>
+<p>In this exercise, you'll scaffold a Declarative Agent that you can extend with a skill.</p>
+<h3 id="step-1-create-a-declarative-agent-project">Step 1: Create a Declarative Agent project</h3>
+<ol>
+<li>Open Visual Studio Code.</li>
+<li>Open <strong>Microsoft 365 Agents Toolkit</strong> from the Activity Bar.</li>
+<li>Select <strong>Create a New Agent/App</strong>.</li>
+<li>Select <strong>Declarative Agent</strong>, and then select <strong>Add an Agent Skill</strong>.</li>
+<li>Enter <code>Demo Planning Agent</code> as the project name and choose a folder.</li>
+<li>Wait for the toolkit to create and open the project.</li>
+</ol>
+<p>The toolkit creates the Declarative Agent project and includes a sample skill as a starting point. In the next exercise, you'll replace the sample skill's placeholder name, activation description, and instructions with the <strong>Demo Scenario Generator</strong> skill.</p>
+<p><cc-end-step lab="E12" exercise="1" step="1" /></p>
+<h3 id="step-2-configure-generic-agent-instructions">Step 2: Configure generic agent instructions</h3>
+<p>In the VS Code Explorer, review the generated project structure. The <code>appPackage</code> folder contains the app manifest, Declarative Agent manifest, agent instructions, and two app icons. The <code>skills/hello-atk</code> folder contains the sample skill and its <code>SKILL.md</code> file. You'll customize that skill in Exercise 2; first, configure the agent's general instructions.</p>
+<p>Open <code>appPackage/instruction.txt</code> and replace its contents with:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Demo Planning Agent</span>
 
-<div data-widget="checklist"
-     data-variant="soft"
-     data-title="Planned outcomes"
-     data-items="Run WIQD-style inspection commands~Validate DA configuration and tool manifest wiring|Capture diagnostic output~Create a repeatable troubleshooting baseline|Document improvement actions~Prepare changes before evaluation in Lab E13"></div>
+<span class="gu">## Role</span>
 
-<h2 id="planned-exercises">Planned exercises</h2>
-<div data-widget="step" data-n="1" data-title="Set up CLI tooling and project context"></div>
+Help users plan professional demos, workshops, hackathons, presentations,
+and customer conversations.
 
-<p>Placeholder: verify required CLI installation, authenticate if needed, and point commands at the target Declarative Agent project.</p>
-<div data-widget="step" data-n="2" data-title="Run inspection and review diagnostics"></div>
+<span class="gu">## Skill routing</span>
 
-<p>Placeholder: execute WIQD-style inspection commands, review warnings/errors, and identify wiring or configuration issues.</p>
-<div data-widget="step" data-n="3" data-title="Capture baseline and next actions"></div>
+<span class="k">-</span><span class="w"> </span>Review the available skills for every request.
+<span class="k">-</span><span class="w"> </span>Use a skill when its description matches the user&#39;s intent.
+<span class="k">-</span><span class="w"> </span>Follow the selected skill&#39;s instructions and output format.
+<span class="k">-</span><span class="w"> </span>Do not apply a skill&#39;s specialized format to unrelated requests.
+<span class="k">-</span><span class="w"> </span>If no skill matches, respond using the general instructions or ask a concise
+    clarifying question.
 
-<p>Placeholder: save inspection outputs and define concrete changes to validate in the Evals lab.</p>
-<p><span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span></p>
-<div data-widget="labnav"
-     data-prev="../bundle-e/"
-     data-prev-label="Back to Bundle E"
-     data-next="../13-da-cli-evals/"
-     data-next-label="Lab E13 - DA CLI with Evals Tooling"></div>
+<span class="gu">## General behavior</span>
 
-<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/12-da-cli-wiqd" /></p>
+<span class="k">-</span><span class="w"> </span>Be concise, credible, and practical.
+<span class="k">-</span><span class="w"> </span>Do not invent product capabilities.
+<span class="k">-</span><span class="w"> </span>State important assumptions.
+</code></pre></div>
+<p>These instructions define general behavior and routing. Do not add scenario-generation steps or output headings here; those belong only in the skill.</p>
+<p><cc-end-step lab="E12" exercise="1" step="2" /></p>
+<hr />
+<h2 id="exercise-2-customize-the-sample-skill">Exercise 2: Customize the sample skill</h2>
+<p>In this exercise, you'll turn the generated sample skill into the <strong>Demo Scenario Generator</strong> and define the requests that should activate it.</p>
+<h3 id="step-1-locate-the-generated-sample-skill">Step 1: Locate the generated sample skill</h3>
+<ol>
+<li>In the VS Code Explorer, open the <code>skills/hello-atk</code> folder.</li>
+<li>Confirm that it contains a <code>SKILL.md</code> file.</li>
+<li>Rename the <code>hello-atk</code> folder to <code>demo-scenario-generator</code>.</li>
+<li>
+<p>Open <code>appPackage/declarativeAgent.json</code> and update the skill folder reference:</p>
+<div class="highlight"><pre><span></span><code>&quot;agent_skills&quot;: [
+<span class="w"> </span>   {
+<span class="gd">-   &quot;folder&quot;: &quot;skills/hello-atk&quot;</span>
+<span class="gi">+   &quot;folder&quot;: &quot;skills/demo-scenario-generator&quot;</span>
+<span class="w"> </span>   }
+]
+</code></pre></div>
+</li>
+</ol>
+<p><cc-end-step lab="E12" exercise="2" step="1" /></p>
+<h3 id="step-2-add-the-skill-instructions">Step 2: Add the skill instructions</h3>
+<p>Open the generated <code>SKILL.md</code> file and replace its contents with:</p>
+<div class="highlight"><pre><span></span><code>---
+name: demo-scenario-generator
+description: |
+    Creates realistic business scenarios for demos, workshops, hackathons, and
+    presentations. Use when users ask for demo ideas, business scenarios, use
+<span class="gu">    cases, customer stories, workshop examples, or sample projects.</span>
+<span class="gu">---</span>
+
+When activated:
+
+<span class="k">1.</span> Identify the technology or topic.
+<span class="k">2.</span> Pick the &quot;after&quot; metric first - the specific number or outcome the solution
+     produces (e.g. &quot;cart abandonment drops from 47% to 28%&quot;) - then build the
+     business problem backward from it, so the &quot;before&quot; state is exactly what
+     would produce that number. This is what makes a scenario survive a
+     follow-up question instead of collapsing into &quot;improves efficiency.&quot;
+<span class="k">3.</span> Create a realistic business problem consistent with that number.
+<span class="k">4.</span> Describe who the users are.
+<span class="k">5.</span> Explain how the solution helps.
+<span class="k">6.</span> Include measurable outcomes, stated as the same concrete numbers from step 2.
+
+Return results using the following format:
+
+<span class="gu">## Scenario</span>
+
+<span class="gu">## Users</span>
+
+<span class="gu">## Challenge</span>
+
+<span class="gu">## Solution</span>
+
+<span class="gu">## Success Criteria</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Tip:</strong> The YAML frontmatter at the top of <code>SKILL.md</code> controls skill discovery. The <code>name</code> identifies the skill and should match its folder name. The <code>description</code> is the activation guidance Copilot compares with the user's intent, so it should clearly state both what the skill does and when to use it.</p>
+</blockquote>
+<p>Save the file. Confirm that its <code>name</code> matches the skill folder and that all scenario-specific workflow and formatting rules are contained in <code>SKILL.md</code>, not in the agent's core instructions.</p>
+<p><cc-end-step lab="E12" exercise="2" step="2" /></p>
+<hr />
+<h2 id="exercise-3-provision-and-test-the-skill">Exercise 3: Provision and test the skill</h2>
+<p>In this exercise, you'll publish the updated app package and verify that Copilot invokes the skill for different request types.</p>
+<h3 id="step-1-provision-the-updated-agent">Step 1: Provision the updated agent</h3>
+<blockquote>
+<p><strong>Tip - provisioning workaround:</strong> Before provisioning, open <code>appPackage/declarativeAgent.json</code> and rename the <code>agent_skills</code> property to <code>x-agent_skills</code>. Leaving the property as <code>agent_skills</code> currently causes provisioning to fail.</p>
+<div class="highlight"><pre><span></span><code><span class="gd">- &quot;agent_skills&quot;: [</span>
+<span class="gi">+ &quot;x-agent_skills&quot;: [</span>
+</code></pre></div>
+<p>Change only the property name; keep the generated skill configuration inside the array unchanged.</p>
+</blockquote>
+<ol>
+<li>Open <strong>Microsoft 365 Agents Toolkit</strong>.</li>
+<li>Under <strong>Lifecycle</strong>, select <strong>Provision</strong>.</li>
+<li>Sign in if prompted and select the target Microsoft 365 environment.</li>
+<li>Wait for provisioning to complete without errors.</li>
+</ol>
+<p>Provision the agent again whenever you change its packaged skill files so the latest version is available for testing.</p>
+<p><cc-end-step lab="E12" exercise="3" step="1" /></p>
+<h3 id="step-2-test-skill-activation">Step 2: Test skill activation</h3>
+<p>Open <strong>Demo Planning Agent</strong> in Microsoft 365 Copilot and start a new conversation. Test each prompt separately:</p>
+<div class="highlight"><pre><span></span><code>Give me a customer story for a workshop about our vector search product, something for a technical audience
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a demo scenario for Declarative Agents.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Give me a workshop scenario for Microsoft 365 Copilot.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a customer story for an MCP-enabled agent.
+</code></pre></div>
+<p>For each response, confirm that the agent uses the five headings from <code>SKILL.md</code> and creates a scenario relevant to the requested topic.</p>
+<p>Then send a request that belongs to the agent's general demo-planning role but not to the scenario-generation skill:</p>
+<div class="highlight"><pre><span></span><code>Help me plan the rehearsal schedule and presenter handoffs for a customer demo next week.
+</code></pre></div>
+<p>Confirm that the agent provides practical rehearsal or handoff guidance without using the scenario skill's five-section format. The request is in the agent's scope, but it does not ask for a demo idea, business scenario, use case, customer story, or workshop example. This boundary test demonstrates that <code>SKILL.md</code> is loaded only when its description matches the request.</p>
+<p><cc-end-step lab="E12" exercise="3" step="2" /></p>
+<h3 id="step-3-compare-the-result-with-the-expected-structure">Step 3: Compare the result with the expected structure</h3>
+<p>A response to <code>Create a demo scenario for Declarative Agents.</code> should resemble this example:</p>
+<div class="highlight"><pre><span></span><code>## Scenario
+
+A customer support organization receives hundreds of repetitive policy questions every week.
+
+## Users
+
+Customer Support Specialists
+
+## Challenge
+
+Support staff spend significant time searching documentation and repeatedly answering the same questions.
+
+## Solution
+
+A Declarative Agent provides consistent answers, surfaces relevant knowledge, and guides employees through company policies and procedures.
+
+## Success Criteria
+
+- Reduce response times
+- Improve answer consistency
+- Decrease repetitive requests
+- Increase employee satisfaction
+</code></pre></div>
+<p>The wording can vary. Validate the structure, business relevance, intended users, solution value, and measurable outcomes rather than expecting an exact match.</p>
+<p><cc-end-step lab="E12" exercise="3" step="3" /></p>
+<h2 id="how-skill-matching-works">How skill matching works</h2>
+<p>When a user sends a prompt, the agent evaluates the request against its available capabilities. Copilot compares the user's intent with skill descriptions and loads the relevant skill instructions when there is a match. The agent then follows the selected <code>SKILL.md</code> workflow to produce its response.</p>
+<p>Keeping each skill focused makes its activation easier to predict and prevents specialized instructions from crowding the agent's general instructions.</p>
+<h2 id="congratulations">Congratulations</h2>
+<p>You created a generic Declarative Agent with a custom skill and verified both positive and negative skill matching.</p>
+<p><cc-next /></p>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/e12-skills-da" /></p>
+<!-- Badge pending. Add the approved award before publishing:
+<cc-award badgeId="TBD" badgeName="TBD" />
+-->
 
 
 
