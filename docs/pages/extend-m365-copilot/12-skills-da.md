@@ -34,6 +34,19 @@ last-edited-date: 2026-08-13
 
 In this lab, you'll create a generic **Demo Planning Agent** and extend it with a reusable skill. The skill generates realistic business scenarios for demos, workshops, hackathons, presentations, and customer conversations.
 
+## Why skills in an agent?
+
+A skill is a focused capability that the agent loads when the user's task matches its description. This **progressive disclosure** keeps specialized guidance out of the agent's standing context until it is relevant.
+
+Skills provide several benefits:
+
+- **Smaller always-on instructions:** Keep the agent's core role, tone, and safety guidance concise instead of loading every task-specific procedure on every turn.
+- **Focused behavior:** Give each specialized task its own instructions, actions, and supporting knowledge without crowding the agent's general instructions.
+- **Predictable activation:** Use the skill description to define which requests should load the capability and which requests the agent should handle normally.
+- **Easier maintenance and reuse:** Update a focused skill independently and reuse the same capability across agents without duplicating long instruction blocks.
+
+Use agent-level instructions for behavior that applies to nearly every interaction. Use a skill for specialized guidance or knowledge needed only for matching tasks. If a procedure is deterministic and repeatable, implement it as a script, action, or connector rather than asking the model to reinterpret prose on every run.
+
 ## Scenario
 
 Compelling demos begin with a business challenge, not a list of technology features. You need a repeatable way to turn topics such as Microsoft 365 Copilot, Declarative Agents, Model Context Protocol (MCP), Microsoft Graph, Teams applications, and Power Platform into stories that an audience can understand and evaluate.
