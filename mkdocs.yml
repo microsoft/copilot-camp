@@ -58,22 +58,21 @@ plugins:
             - Home: 'index.md'
             - Declarative Agents:
               - Welcome: 'pages/extend-m365-copilot/index.md'
-              - Bundle Overview: 'pages/extend-m365-copilot/bundles.md'
               - Mandatory On-ramp:
                 - Lab E1 - Choose Foundation Path: 'pages/extend-m365-copilot/01-first-agent-new.md'
                 - Lab E1A - Declarative Agent Foundation with Agent Builder: 'pages/extend-m365-copilot/01-first-agent-builder.md'
                 - Lab E1B - Declarative Agent Foundation with Agents Toolkit: 'pages/extend-m365-copilot/01-first-agent-toolkit.md'
-                - Prerequisites for Pro-code bundles: 'pages/extend-m365-copilot/00-prerequisites.md'
-              - Bundle A - MCP Foundation:
-                    - Start Bundle A: 'pages/extend-m365-copilot/bundle-a.md'
-              - Bundle B - Multi-Agent Workflows in Copilot:
-                    - Start Bundle B: 'pages/extend-m365-copilot/bundle-b.md'
-              - Bundle C - MCP App:
-                    - Start Bundle C: 'pages/extend-m365-copilot/bundle-c.md'
-              - Bundle D - API-Based Declarative Agent:
-                    - Start Bundle D: 'pages/extend-m365-copilot/bundle-d.md'
-              - Bundle E - Declarative Agents with Copilot Connectors:
-                    - Start Bundle E: 'pages/extend-m365-copilot/bundle-e.md'
+              - Bundle-Based Labs:
+                - Bundle Overview: 'pages/extend-m365-copilot/bundles.md'
+                - Bundle A - MCP Foundation: 'pages/extend-m365-copilot/bundle-a.md'
+                - Bundle B - Multi-Agent Workflows in Copilot: 'pages/extend-m365-copilot/bundle-b.md'
+                - Bundle D - API-Based Declarative Agent: 'pages/extend-m365-copilot/bundle-d.md'
+                - Bundle E - Declarative Agents with Copilot Connectors: 'pages/extend-m365-copilot/bundle-e.md'
+              - Standalone Labs:
+                - Overview: 'pages/extend-m365-copilot/standalone-labs.md'
+                - Lab E11 - MCP App with Interactive Widgets: 'pages/extend-m365-copilot/11-mcp-app.md'
+                - Build a Declarative Agent with TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
+                - Build an Instructions-Based Geo Locator Agent: 'pages/extend-m365-copilot/01a-geolocator.md'
             - Custom Engine Agents:
               - Welcome : 'pages/custom-engine/index.md'
               - Path 1 - Start with Microsoft Foundry:
