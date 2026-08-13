@@ -68,8 +68,9 @@ plugins:
                     - Start Bundle A: 'pages/extend-m365-copilot/bundle-a.md'
               - Bundle B - Multi-Agent Workflows in Copilot:
                     - Start Bundle B: 'pages/extend-m365-copilot/bundle-b.md'
-              - Bundle C - MCP App:
-                    - Start Bundle C: 'pages/extend-m365-copilot/bundle-c.md'
+              - Standalone Labs:
+                - Overview: 'pages/extend-m365-copilot/standalone-labs.md'
+                - Lab E11 - MCP App with Interactive Widgets: 'pages/extend-m365-copilot/11-mcp-app.md'
               - Bundle D - API-Based Declarative Agent:
                     - Start Bundle D: 'pages/extend-m365-copilot/bundle-d.md'
               - Bundle E - Declarative Agents with Copilot Connectors:

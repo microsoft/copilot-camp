@@ -627,13 +627,6 @@
         { url: "09-connected-agent/", label: "Lab E9 - Connected Agents Orchestration" },
       ],
     },
-    c: {
-      name: "Bundle C — MCP App",
-      color: "green",
-      labs: [
-        { url: "11-mcp-app/", label: "Lab E11 - MCP App with Interactive Widgets" },
-      ],
-    },
     d: {
       name: "Bundle D — API-Based Declarative Agent",
       color: "blue",
