@@ -48,16 +48,89 @@ No matter what technology you use to create agents or to extend Microsoft 365 Co
 ## 🧪 Where should I start to build agents?
 
 There are plenty of options for you to start from. To create Declarative Agents, you can dig into technologies like Agent Builder, Custom SharePoint Agents, or pro-code Declarative Agents with the Microsoft 365 Agents Toolkit.
+
 To create Custom Engine Agents, you can explore technologies like Microsoft Copilot Studio, Microsoft Foundry, or pro-code Custom Engine Agents with the Microsoft 365 Agents Toolkit.
 To create your own apps built on top of Microsoft 365 and Microsoft 365 Copilot you should explore the Work IQ area.
 
 No matter what kind of AI solution you are working on, you should always learn about Microsoft Agent 365 to manage agents via the agents registry, have access control and security, handle visualization and observability, and implement interoperability.
 
-In the following flowchart, you can find useful tips to learn where to start from.
+Use the following flowchart to find the learning path that best matches what you want to build.
 
-[![Flowchart to help you start your learning journey. Starting with Agent 365 (Lab AG) which applies to all solutions. The main decision asks What kind of AI solution are you working on? Building on the Microsoft 365 Copilot stack leads to Declarative Agents: end users choose between Agent Builder (Lab MAB) for Microsoft 365 content or Custom SharePoint Agent (Lab MSA) for SharePoint Online content only, while developers go to Declarative Agent (Lab E). Building for your own app leads to Work IQ (Lab WIQ). Building on your own AI stack leads to Custom Engine Agents: power users go to Copilot Studio via Agent Academy and Copilot Studio labs (Lab MCS), while developers build Custom Engine Agents with Microsoft Foundry, Agent Framework, and Microsoft 365 Agents SDK (Labs BMA and BAF).](./assets/images/CopilotCamp-Flow-Chart.png)](./assets/images/CopilotCamp-Flow-Chart.png){target="_blank"}
+<!-- ![Flowchart for choosing a Copilot Developer Camp learning path based on the solution and development approach.](./assets/images/CopilotCamp-Flow-Chart.png) -->
+
+```mermaid
+%%{init: {'flowchart': {'htmlLabels': true, 'curve': 'linear'}}}%%
+flowchart TD
+    Solution{"What kind of AI solution<br/>are you working on?"}
+
+    Solution -->|Build on the Microsoft 365 Copilot stack| DA["Declarative Agents"]
+    Solution -->|Build on your own AI stack| CEA["Custom Engine Agents"]
+    Solution -->|Build for your own app| WIQLabel["Work IQ"]
+    Solution -->|Extend Microsoft Copilot Cowork| CoworkLabel["Microsoft Copilot Cowork"]
+
+    DA --> DAUser{"What type of<br/>user are you?"}
+    DAUser -->|I am an end user| Content{"Where is your content?"}
+    DAUser -->|I am a developer| DALab["<span style='color:#0f766e'><b>Declarative Agent</b></span><br/><b>Go to Lab &quot;E&quot;</b>"]
+
+    Content -->|Microsoft 365 content| MAB["<span style='color:#0f766e'><b>Agent Builder</b></span><br/><b>Go to Lab &quot;MAB&quot;</b>"]
+    Content -->|SharePoint Online content only| MSA["<span style='color:#0f766e'><b>SharePoint Agent</b></span><br/><b>Go to Lab &quot;MSA&quot;</b>"]
+
+    CEA --> CEAUser{"What type of<br/>user are you?"}
+    CEAUser -->|I am a power user| MCS["<span style='color:#6d28d9'><b>Copilot Studio</b></span><br/><b>Go to Agent Academy + Lab &quot;MCS&quot;</b>"]
+    CEAUser -->|I am a developer| ProCode["<span style='color:#6d28d9'><b>Custom Engine Agent</b></span><br/>w/ Microsoft Foundry +<br/>Agent Framework + Microsoft<br/>365 Agents SDK<br/><b>Go to Lab &quot;BMA&quot; and &quot;BAF&quot;</b>"]
+
+    WIQLabel --> WIQ["<b>Go to Lab &quot;WIQ&quot;</b>"]
+    CoworkLabel --> Cowork["<b>Go to Labs &quot;CWRK&quot;</b>"]
+
+    AllSol["No matter what kind of<br/>solution you are working on"] -->|Applies to every solution| A365["<span style='color:#b45309'><b>Agent 365</b></span><br/><b>Go to Lab &quot;AG&quot;</b>"]
+
+    click DALab "pages/extend-m365-copilot/" "Open Declarative Agent labs"
+    click MAB "pages/make/agent-builder/" "Open Agent Builder labs"
+    click MSA "pages/sharepoint/sharepoint-agents/" "Open SharePoint Agent labs"
+    click MCS "pages/make/copilot-studio/" "Open Copilot Studio labs"
+    click ProCode "pages/custom-engine/" "Open Custom Engine Agent labs"
+    click WIQ "pages/work-iq/" "Open Work IQ labs"
+    click Cowork "pages/copilot-cowork/00-cowork-setup/" "Open Copilot Cowork labs"
+    click A365 "pages/agent-365/" "Open Agent 365 labs"
+
+    classDef decision fill:#f8fafc,stroke:#64748b,stroke-width:2.5px,color:#1e293b,font-weight:bold;
+    classDef pillTeal fill:transparent,stroke:#0d9488,stroke-width:2px,color:#0d9488,font-weight:bold;
+    classDef pillViolet fill:transparent,stroke:#7c3aed,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef labelAmber fill:transparent,stroke:none,color:#b45309,font-weight:bold;
+    classDef labelBlue fill:transparent,stroke:none,color:#0369a1,font-weight:bold;
+    classDef labBoxTeal fill:#ffffff,stroke:#5eead4,stroke-width:2px,color:#1e293b;
+    classDef labBoxViolet fill:#ffffff,stroke:#c4b5fd,stroke-width:2px,color:#1e293b;
+    classDef labBoxAmber fill:#ffffff,stroke:#f59e0b,stroke-width:2px,color:#1e293b;
+    classDef labBoxBlue fill:#ffffff,stroke:#38bdf8,stroke-width:2px,color:#1e293b;
+    classDef amberNote fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#78350f,font-weight:bold;
+
+    class Solution,DAUser,Content,CEAUser decision;
+    class DA pillTeal;
+    class CEA pillViolet;
+    class WIQLabel labelAmber;
+    class CoworkLabel labelBlue;
+    class DALab,MAB,MSA labBoxTeal;
+    class MCS,ProCode labBoxViolet;
+    class WIQ,A365 labBoxAmber;
+    class Cowork labBoxBlue;
+    class AllSol amberNote;
+
+    linkStyle default stroke:#94a3b8,stroke-width:1.6px;
+```
 
 ## 🆕 What's New?
+
+!!! example "Updated in August 2026"
+
+    We’ve added a new Copilot Cowork security lab and reorganized the Declarative Agent learning experience.
+
+    - **Add Entra SSO authentication to a Cowork plugin**:
+    Connect an Entra-secured MCP server to a Copilot Cowork plugin, configure single sign-on, and let users authenticate with their existing Microsoft 365 credentials without an extra sign-in prompt.
+    [🔗 Start the Copilot Cowork SSO lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/)
+
+    - **Choose a clearer Declarative Agent pathway**:
+    Start with the E1A and E1B fundamentals, follow a guided bundle for an end-to-end scenario, or choose an independent standalone lab for a focused skill. Bundle-specific prerequisites now appear directly on each bundle page.
+    [🔗 Explore the Declarative Agent pathways](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/)
 
 !!! example "Updated in July 2026"
 
@@ -67,29 +140,7 @@ In the following flowchart, you can find useful tips to learn where to start fro
     Scaffold an SPFx v1.24 Copilot Component with React, customize it, add custom tool parameters, test it locally in the Copilot Workbench, then package and deploy it so it renders as an interactive UX component inside Microsoft 365 Copilot.
     [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/sharepoint/sharepoint-copilot-apps/01-first-copilot-app/)
 
-!!! example "Updated in June 2026"
 
-    We’re happy to introduce **a brand new set of hands-on labs** designed to help you understand how to extend Copilot Cowork. 
-
-    - **Copilot Cowork setup and extensibility**:
-    Learn what Copilot Cowork is, how to prepare your tenant for Cowork, and which extensibility options are available to tailor Cowork to your organization's needs.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/00-cowork-setup/)
-
-    - **Build your first skill**:
-    Build custom Agent Skills that teach Cowork when and how to run a specific domain workflow, then manage and publish your own skills.    
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/01-cowork-skills/)
-
-    - **Build your first plugin**:
-    Package skills and connectors into a Cowork plugin as a Microsoft 365 app, then build and deploy your own plugin to extend Cowork.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/02-cowork-plugins/)
-
-<!-- !!! example "Updated in April 2026"
-
-    We’re excited to introduce **a brand new hands-on lab** designed to help you build powerful Copilot experiences. 
-
-    - **Build an MCP App with Interactive Widgets**:
-    Build an MCP app that powers an Access Request & Approval Workflow with interactive widgets rendered directly in the AI agent’s response, and integrate it with a Declarative Agent in Microsoft 365 Copilot.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/11-mcp-app/) -->
 
 ## 🧑‍💻 More
 
