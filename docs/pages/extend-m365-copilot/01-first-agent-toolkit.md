@@ -225,14 +225,12 @@ Expected result:
 
 ## Complete
 
-You can now choose a bundle and complete the prerequisites listed on that bundle's page.
 
 ---8<--- "e-congratulations.md"
 
-<div data-widget="labnav"
-  data-prev="../01-first-agent-new/"
-  data-prev-label="Back to E1 Path Choice"
-  data-next="../bundles/"
-  data-next-label="Choose a Bundle"></div>
+<div data-widget="onramp"
+     data-title="Choose your next path"
+     data-sub="Follow a guided bundle or select an independent lab for one focused subject."
+    data-steps="Bundle based::bundle::Bundle-Based Learning::Choose an end-to-end scenario, prepare its prerequisites, and complete the guided lab sequence.::View Bundles::../bundles/|Standalone::lab::Standalone Labs::Choose an independent lab covering MCP Apps, TypeSpec, or instructions and knowledge.::View Standalone Labs::../standalone-labs/"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-toolkit" />
