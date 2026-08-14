@@ -33,15 +33,17 @@ Because **skills are reusable packages of instructions and resources**, you can 
 
 ## 💪 How to use the skill in an agent
 
-The skill source code is located in this GitHub repo:
+The skill source code is located in another GitHub repo (so you probably want to open in a new browser tab!):
 
 - 📂 [kitty-explain](https://github.com/microsoft/m365-copilot-agents-playbook/tree/main/01-extend/demo-kitty-explain/kitty-explain)
 
-Basically, what you need to do is just dumping this `kitty-explain` folder into your agent, and add a few lines to the agent's instruction!
+Basically, all you need to do is just dumping this `kitty-explain` folder into your agent, and add a few lines to the agent's instruction.
 
 ### ⚙️ Add Skill to an agent built with M365 Agents Toolkit
 
-Let's say, you have built a declarative agent using **M365 Agents Toolkit**. Place the `kitty-explain` folder that include SKILL.md and references in your declarative agent package.
+In this article, I am not walking you through how to build a declarative agent using **M365 Agents Toolkit**, and assuming you know how to built one already. Give the agent a simple instruction that makes it summarize and explain given documents, articles, and URLs, and give clear explanations of the content.
+
+Place the `kitty-explain` folder that includes `SKILL.md` and `references` folder in your declarative agent package.
 
 ```bash
 📂 your-agent
@@ -73,11 +75,15 @@ Either the **Agent Builder** instruction field, or in the `instruction.text` if 
 - If the user doesn't ask to explain it with cats, use the guidance above directly.
 ```
 
-Modify your agent instruction to make it compatible with the skill, if you need.
+Modify your agent instruction to make it compatible with the skill if you need. 
+
+### 🥜 Go nuts with skills!
+
+Maybe you can swap the cat images to your headshot photos 😆
 
 
 ---
 
-I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents!
+I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. 
 
 🐈
