@@ -87,3 +87,5 @@ Maybe you can swap the cat images to your headshot photos 😆
 I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. 
 
 🐈
+
+<img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/kitty-explain-skill" />
