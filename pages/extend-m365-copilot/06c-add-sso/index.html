@@ -2428,8 +2428,8 @@
 </div>
 <p>In this lab, as you register your API, you'll need to save a few values from the Entra ID portal and Teams Developer Portal for use in later steps. Here's what you'll need to save:</p>
 <div class="highlight"><pre><span></span><code>API Base URL: 
-API&#39;s Entra ID application ID: 
-API&#39;s Tenant ID: 
+API's Entra ID application ID: 
+API's Tenant ID: 
 SSO Client registration: 
 API ID URI: 
 </code></pre></div>
@@ -2487,16 +2487,16 @@ devtunnel<span class="w"> </span>host<span class="w"> </span>mytunnel
 <h3 id="step-3-disable-the-dynamically-created-tunnel-in-your-project">Step 3: Disable the dynamically created tunnel in your project</h3>
 <p>If your project is running locally, stop it. Then edit <a href="https://github.com/microsoft/copilot-camp/blob/main/src/extend-m365-copilot/path-e-lab06-add-auth/trey-research-lab06-END/.vscode/tasks.json" target="_blank">.vscode\tasks.json</a> and locate the "Start Teams App Locally" task. Comment out the "Start local tunnel" dependency and add the "Start Azurite emulator" dependency instead. The resulting task should look like this:</p>
 <p><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start Teams App Locally&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;Validate prerequisites&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">//&quot;Start local tunnel&quot;,</span>
-<span class="w">        </span><span class="s2">&quot;Start Azurite emulator&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Create resources&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Build project&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Start application&quot;</span>
+<span class="w">    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Start Teams App Locally"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"dependsOn"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"Validate prerequisites"</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">//"Start local tunnel",</span>
+<span class="w">        </span><span class="s2">"Start Azurite emulator"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Create resources"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Build project"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Start application"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;dependsOrder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sequence&quot;</span>
+<span class="w">    </span><span class="nt">"dependsOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sequence"</span>
 <span class="p">},</span>
 </code></pre></div>
 <cc-end-step lab="e6c" exercise="1" step="3" /></p>
@@ -2565,9 +2565,9 @@ Copy them to a note, to configure the plugin manifest file to enable SSO.</p>
 <h3 id="step-1-update-the-plugin-file">Step 1: Update the Plugin file</h3>
 <p>Open your working folder in Visual Studio Code. In the <strong>appPackage</strong> folder, open the <strong>trey-plugin.json</strong> file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.</p>
 <p>Under <code>Runtimes</code> you will find an <code>auth</code> property with <code>type</code> of <code>"None"</code>, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the <strong>Microsoft Entra SSO registration ID</strong> you saved in the vault.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuthPluginVault&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;reference_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Microsoft Entra SSO registration ID&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OAuthPluginVault"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Microsoft Entra SSO registration ID&gt;"</span>
 <span class="p">},</span>
 </code></pre></div>
 <p><cc-end-step lab="e6c" exercise="4" step="1" /></p>
@@ -2670,7 +2670,7 @@ Construct the application ID URI using the second part of the decoded value (aft
 <p>At this point, Single Sign-on should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.</p>
 <p>In the <strong>src/services</strong> folder, open <strong>IdentityService.ts</strong>. 
 At the top of the file along with the other <code>import</code> statements, add this one:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">,</span><span class="w"> </span><span class="nx">ValidateTokenOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">getEntraJwksUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jwt-validate&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">,</span><span class="w"> </span><span class="nx">ValidateTokenOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">getEntraJwksUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'jwt-validate'</span><span class="p">;</span>
 </code></pre></div>
 <p>Then, right under the <code>class Identity</code> statement, add this line:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">validator</span><span class="o">:</span><span class="w"> </span><span class="kt">TokenValidator</span><span class="p">;</span>
@@ -2679,12 +2679,12 @@ At the top of the file along with the other <code>import</code> statements, add 
 <div class="highlight"><pre><span></span><code><span class="c1">// ** INSERT REQUEST VALIDATION HERE (see Lab E6) **</span>
 </code></pre></div>
 <p>Replace the comment with this code:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Try to validate the token and get user&#39;s basic information</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Try to validate the token and get user's basic information</span>
 <span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_ID_URI</span><span class="p">,</span><span class="w"> </span><span class="nx">API_TENANT_ID</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"Authorization"</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Authorization token not found&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">"Authorization token not found"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// create a new token validator for the Microsoft Entra common tenant</span>
@@ -2697,14 +2697,14 @@ At the top of the file along with the other <code>import</code> statements, add 
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">validator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">({</span>
 <span class="w">            </span><span class="nx">jwksUri</span><span class="o">:</span><span class="w"> </span><span class="kt">entraJwksUri</span>
 <span class="w">        </span><span class="p">});</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;Token validator created&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="s2">"Token validator created"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="kt">ValidateTokenOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nx">audience</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_ID_URI</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://sts.windows.net/</span><span class="si">${</span><span class="nx">API_TENANT_ID</span><span class="si">}</span><span class="sb">/`</span><span class="p">,</span><span class="w">              </span>
-<span class="w">                </span><span class="nx">scp</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nx">scp</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"access_as_user"</span><span class="p">],</span>
 
 <span class="w">            </span><span class="p">};</span>
 
@@ -2719,7 +2719,7 @@ At the top of the file along with the other <code>import</code> statements, add 
 <span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Token is missing or invalid - return a 401 error</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition note">
@@ -2765,12 +2765,12 @@ To work around the issue, edit the <strong>tsconfig.json</strong> file, found at
 <p>Locate the <code>version</code> field in the JSON file. It should look something like this: </p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span>
 </code></pre></div>
 <ol>
 <li>Increment the version number to a small increment. For example, change it to:  </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.1"</span>
 </code></pre></div>
 <ol>
 <li>Save the file after making the change.</li>

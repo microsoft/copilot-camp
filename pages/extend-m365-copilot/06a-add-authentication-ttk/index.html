@@ -2444,52 +2444,52 @@
 <h3 id="step-1-add-an-entra-id-app-manifest">Step 1: Add an Entra ID app manifest</h3>
 <p>Create a new file <strong>aad.manifest.json</strong> in the root of your working folder. Copy these lines into this file.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{AAD_APP_OBJECT_ID}}&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;appId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{AAD_APP_CLIENT_ID}}&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trey-Research-OAuth-aad&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;identifierUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;api://${{AAD_APP_CLIENT_ID}}&quot;</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{AAD_APP_OBJECT_ID}}"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{AAD_APP_CLIENT_ID}}"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trey-Research-OAuth-aad"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"identifierUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"api://${{AAD_APP_CLIENT_ID}}"</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;signInAudience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AzureADMyOrg&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;api&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;requestedAccessTokenVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;oauth2PermissionScopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"signInAudience"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AzureADMyOrg"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"api"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"requestedAccessTokenVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"oauth2PermissionScopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;adminConsentDescription&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allows Copilot to access the Trey Research API on the user&#39;s behalf.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;adminConsentDisplayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access Trey Research API&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;isEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;userConsentDescription&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allows Copilot to access the Trey Research API on your behalf.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;userConsentDisplayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access Trey Research API&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access_as_user&quot;</span>
+<span class="w">        </span><span class="nt">"adminConsentDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allows Copilot to access the Trey Research API on the user's behalf."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"adminConsentDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Access Trey Research API"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{AAD_APP_ACCESS_AS_USER_PERMISSION_ID}}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"isEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"userConsentDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allows Copilot to access the Trey Research API on your behalf."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"userConsentDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Access Trey Research API"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"access_as_user"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
-<span class="w">  </span><span class="nt">&quot;optionalClaims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;idToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">    </span><span class="nt">&quot;accessToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">"optionalClaims"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"idToken"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idtyp&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;essential&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;additionalProperties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idtyp"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"essential"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"additionalProperties"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;saml2Token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="nt">"saml2Token"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;publicClient&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;redirectUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nt">"publicClient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"redirectUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;web&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;redirectUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect&quot;</span>
+<span class="w">  </span><span class="nt">"web"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"redirectUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"https://teams.microsoft.com/api/platform/v1.0/oAuthRedirect"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;implicitGrantSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="nt">"implicitGrantSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;spa&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;redirectUris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nt">"spa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"redirectUris"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2518,14 +2518,14 @@ Insert the following yaml between these lines, directly under the <code>provisio
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aadApp/create</span>
 <span class="w">    </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># Note: when you run aadApp/update, the Microsoft Entra app name will be updated</span>
-<span class="w">      </span><span class="c1"># based on the definition in manifest. If you don&#39;t want to change the</span>
+<span class="w">      </span><span class="c1"># based on the definition in manifest. If you don't want to change the</span>
 <span class="w">      </span><span class="c1"># name, make sure the name in Microsoft Entra manifest is the same with the name</span>
 <span class="w">      </span><span class="c1"># defined here.</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trey-oauth-aad</span>
 <span class="w">      </span><span class="c1"># If the value is false, the action will not generate client secret for you</span>
 <span class="w">      </span><span class="nt">generateClientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="c1"># Authenticate users with a Microsoft work or school account in your</span>
-<span class="w">      </span><span class="c1"># organization&#39;s Microsoft Entra tenant (for example, single tenant).</span>
+<span class="w">      </span><span class="c1"># organization's Microsoft Entra tenant (for example, single tenant).</span>
 <span class="w">      </span><span class="nt">signInAudience</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AzureADMyOrg</span>
 <span class="w">    </span><span class="c1"># Write the information of created resources into environment file for the</span>
 <span class="w">    </span><span class="c1"># specified environment variable(s).</span>
@@ -2608,20 +2608,20 @@ Insert the following yaml between these lines, directly under the <code>provisio
 <p>Now that you've got Agents Toolkit setting up the Entra ID registrations, it's time to update the application package so Copilot knows about the authentication. In this exercise you'll update the necessary files.</p>
 <h3 id="step-1-update-the-open-api-specification-file">Step 1: Update the Open API Specification file</h3>
 <p>Open your working folder in Visual Studio Code. In the <strong>appPackag/apiSpecificationFile</strong> folder, open the <strong>trey-definition.json</strong> file. Locate the line:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </code></pre></div>
 <p>and insert the following JSON before it:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;securitySchemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;oAuth2AuthCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuth configuration for the Trey Research service&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;authorizationCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;authorizationUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/authorize&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;tokenUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/token&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;api://${{AAD_APP_CLIENT_ID}}/access_as_user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access Trey Research API as the user&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"components"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"securitySchemes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"oAuth2AuthCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oauth2"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OAuth configuration for the Trey Research service"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"flows"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"authorizationCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"authorizationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/authorize"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"tokenUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://login.microsoftonline.com/${{AAD_APP_TENANT_ID}}/oauth2/v2.0/token"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"api://${{AAD_APP_CLIENT_ID}}/access_as_user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Access Trey Research API as the user"</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
@@ -2631,13 +2631,13 @@ Insert the following yaml between these lines, directly under the <code>provisio
 </code></pre></div>
 <p>This sets up a new security scheme to be used when calling the API.</p>
 <p>Now you need to add this scheme to each API path. Find each instance of a path and look for the <code>responses</code> object:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;responses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="err">...</span>
 </code></pre></div>
 <p>Insert the following JSON before each of the <code>responses</code> (you will find 5 of them in the file; make sure you insert this before each one):</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;security&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"security"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;oAuth2AuthCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">            </span><span class="nt">"oAuth2AuthCode"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 </code></pre></div>
@@ -2646,9 +2646,9 @@ Insert the following yaml between these lines, directly under the <code>provisio
 <h3 id="step-2-update-the-plugin-file">Step 2: Update the Plugin file</h3>
 <p>In the <strong>appPackage/</strong> folder, open the <strong>trey-plugin.json</strong> file. This is where information is stored that Copilot needs, but is not already in the Open API Specification (OAS) file.</p>
 <p>Under <code>Runtimes</code> you will find an <code>auth</code> property with <code>type</code> of <code>"None"</code>, indicating the API is currently not authenticated. Change it as follows to tell Copilot to authenticate using the OAuth settings you saved in the vault.</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuthPluginVault&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;reference_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{OAUTH2AUTHCODE_CONFIGURATION_ID}}&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OAuthPluginVault"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{OAUTH2AUTHCODE_CONFIGURATION_ID}}"</span>
 <span class="w">  </span><span class="p">},</span>
 </code></pre></div>
 <p>In the next exercise you'll update the application code to check for a valid login and access the API as the actual Microsoft 365 user instead of "Avery Howard" (which is a name from Microsoft's fictitious name generator).</p>
@@ -2670,7 +2670,7 @@ Insert the following yaml between these lines, directly under the <code>provisio
 <p>At this point, OAuth login should work and provide a valid access token, but the solution isn't secure unless the code checks to make sure the token is valid. In this step, you'll add code to validate the is token and extract information such as the user's name and ID.</p>
 <p>In the <strong>src/services</strong> folder, open <strong>IdentityService.ts</strong>. 
 At the top of the file along with the other <code>import</code> statements, add this one:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">,</span><span class="w"> </span><span class="nx">ValidateTokenOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">getEntraJwksUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jwt-validate&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">,</span><span class="w"> </span><span class="nx">ValidateTokenOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">getEntraJwksUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'jwt-validate'</span><span class="p">;</span>
 </code></pre></div>
 <p>Then, right under the <code>class Identity</code> statement, add this line:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="nx">validator</span><span class="o">:</span><span class="w"> </span><span class="kt">TokenValidator</span><span class="p">;</span>
@@ -2679,12 +2679,12 @@ At the top of the file along with the other <code>import</code> statements, add 
 <div class="highlight"><pre><span></span><code><span class="c1">// ** INSERT REQUEST VALIDATION HERE (see Lab E6) **</span>
 </code></pre></div>
 <p>Replace the comment with this code:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="c1">// Try to validate the token and get user&#39;s basic information</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="c1">// Try to validate the token and get user's basic information</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AAD_APP_CLIENT_ID</span><span class="p">,</span><span class="w"> </span><span class="nx">AAD_APP_TENANT_ID</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"Authorization"</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Authorization token not found&quot;</span><span class="p">);</span>
+<span class="w">          </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">"Authorization token not found"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 
 <span class="w">      </span><span class="c1">// create a new token validator for the Microsoft Entra common tenant</span>
@@ -2697,14 +2697,14 @@ At the top of the file along with the other <code>import</code> statements, add 
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">validator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TokenValidator</span><span class="p">({</span>
 <span class="w">            </span><span class="nx">jwksUri</span><span class="o">:</span><span class="w"> </span><span class="kt">entraJwksUri</span>
 <span class="w">        </span><span class="p">});</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;Token validator created&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="w"> </span><span class="p">(</span><span class="s2">"Token validator created"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="kt">ValidateTokenOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nx">allowedTenants</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">AAD_APP_TENANT_ID</span><span class="p">],</span>
 <span class="w">          </span><span class="nx">audience</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">AAD_APP_CLIENT_ID</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">          </span><span class="nx">issuer</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://login.microsoftonline.com/</span><span class="si">${</span><span class="nx">AAD_APP_TENANT_ID</span><span class="si">}</span><span class="sb">/v2.0`</span><span class="p">,</span>
-<span class="w">          </span><span class="nx">scp</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;access_as_user&quot;</span><span class="p">]</span>
+<span class="w">          </span><span class="nx">scp</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"access_as_user"</span><span class="p">]</span>
 <span class="w">      </span><span class="p">};</span>
 
 <span class="w">      </span><span class="c1">// validate the token</span>
@@ -2718,7 +2718,7 @@ At the top of the file along with the other <code>import</code> statements, add 
 <span class="w">  </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// Token is missing or invalid - return a 401 error</span>
 <span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpError</span><span class="p">(</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 <div class="admonition note">
@@ -2751,12 +2751,12 @@ the appropriate error.</p>
 </li>
 <li>
 <p>Locate the <code>version</code> field in the JSON file. It should look something like this:<br />
-   <div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+   <div class="highlight"><pre><span></span><code><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>Increment the version number to a small increment. For example, change it to:<br />
-   <div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.1&quot;</span>
+   <div class="highlight"><pre><span></span><code><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.1"</span>
 </code></pre></div></p>
 </li>
 <li>

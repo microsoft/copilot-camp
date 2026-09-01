@@ -2694,9 +2694,9 @@ POST {{base_url}}/repairs
 Content-Type: application/json
 
 {
-  &quot;description&quot;: &quot;Repair broken screen&quot;,
-  &quot;date&quot;: &quot;2023-10-01T12:00:00Z&quot;,
-  &quot;image&quot;: &quot;https://example.com/image.png&quot;
+  "description": "Repair broken screen",
+  "date": "2023-10-01T12:00:00Z",
+  "image": "https://example.com/image.png"
 }
 
 ### Update an existing repair request
@@ -2704,10 +2704,10 @@ PATCH {{base_url}}/repairs/1
 Content-Type: application/json  
 
 {
-  &quot;id&quot;: 1,
-  &quot;description&quot;: &quot;Repair broken screen - updated&quot;,
-  &quot;date&quot;: &quot;2023-10-01T12:00:00Z&quot;,
-  &quot;image&quot;: &quot;https://example.com/image-updated.png&quot;
+  "id": 1,
+  "description": "Repair broken screen - updated",
+  "date": "2023-10-01T12:00:00Z",
+  "image": "https://example.com/image-updated.png"
 }
 
 
@@ -2716,7 +2716,7 @@ DELETE {{base_url}}/repairs/10
 Content-Type: application/json
 
 {
-  &quot;id&quot;: 10
+  "id": 10
 }
 </code></pre></div>
 <blockquote>
@@ -2791,26 +2791,26 @@ Observe the structure of requests and responses and use the response data to und
 <p><img alt="image of main.tsp file" src="https://github.com/user-attachments/assets/9924db6f-930b-453c-92ec-72ac7534c1cb" /></p>
 <p>Begin by defining your agent for the repair scenario. Replace the <strong>@agent</strong> metadata with below code snippet.</p>
 <div class="highlight"><pre><span></span><code>@agent(
-  &quot;RepairServiceAgent&quot;,
-  &quot;An agent for managing repair information&quot;
+  "RepairServiceAgent",
+  "An agent for managing repair information"
 )
 </code></pre></div>
 <p>Next, configure a conversation starter, the initial prompt that begins user-agent interaction. Uncomment the default template section and update the title and text fields to match the agent scenario.</p>
 <p><div class="highlight"><pre><span></span><code>// Uncomment this part to add a conversation starter to the agent.
 // This will be shown to the user when the agent is first created.
 @conversationStarter(#{
-  title: &quot;List repairs&quot;,
-  text: &quot;List all repairs&quot;
+  title: "List repairs",
+  text: "List all repairs"
 })
 </code></pre></div>
 This starter prompt needs to trigger a GET operation to retrieve all repairs from the service. To enable this behaviour in the agent, you' ll need to define the corresponding action. Proceed to the next step to do so.</p>
 <p>Next, go to <strong>prompts/instructions.tsp</strong> and update the instructions.
 Replace the entire code block in the file with below code:</p>
 <div class="highlight"><pre><span></span><code>namespace Prompts {
-  const INSTRUCTIONS = &quot;&quot;&quot;
+  const INSTRUCTIONS = """
     ## Purpose
     You will assist the user in finding car repair records based on the information provided by the user.
-  &quot;&quot;&quot;;
+  """;
 }
 </code></pre></div>
 <h4 id="define-the-action-for-the-agent">Define the action for the agent</h4>
@@ -2826,17 +2826,17 @@ namespace RepairsAPI{
    * Metadata for the API actions.
    */
   const ACTIONS_METADATA = #{
-    nameForHuman: &quot;Repair Service Agent&quot;,
-    descriptionForHuman: &quot;Manage your repairs and maintenance tasks.&quot;,
-    descriptionForModel: &quot;Plugin to add, update, remove, and view repair objects.&quot;,
-    legalInfoUrl: &quot;https://docs.github.com/en/site-policy/github-terms/github-terms-of-service&quot;,
-    privacyPolicyUrl: &quot;https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement&quot;
+    nameForHuman: "Repair Service Agent",
+    descriptionForHuman: "Manage your repairs and maintenance tasks.",
+    descriptionForModel: "Plugin to add, update, remove, and view repair objects.",
+    legalInfoUrl: "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    privacyPolicyUrl: "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
   };
 
   /**
    * The base URL for the  API.
    */
-  const SERVER_URL = &quot;https://repairshub.azurewebsites.net&quot;;
+  const SERVER_URL = "https://repairshub.azurewebsites.net";
 </code></pre></div>
 <p>Next, replace the operation in the template code from "searchIssues" to "listRepairs" to get the list of repairs.
 Replace the entire block of code starting just after the SERVER_URL definition and ending just <em>before</em> the final closing braces with the snippet below. Be sure to leave the closing braces intact. </p>
@@ -2846,11 +2846,11 @@ Replace the entire block of code starting just after the SERVER_URL definition a
    * @param assignedTo The user assigned to a repair item.
    */
 
-  @route(&quot;/repairs&quot;)
+  @route("/repairs")
   @get  op listRepairs(@query assignedTo?: string): string;
 </code></pre></div>
 <p>Now go back to <strong>main.tsp</strong> file and verify the import statement for actions. If it still references <em>./actions/github.tsp</em>, replace <em>import "./actions/github.tsp";</em> with the statement below:</p>
-<div class="highlight"><pre><span></span><code>import &quot;./actions/actions.tsp&quot;;
+<div class="highlight"><pre><span></span><code>import "./actions/actions.tsp";
 </code></pre></div>
 <p>Next, in the same file, add the action you just defined into the agent. After the conversation starters replace the entire "RepairServiceAgent" namespace with below snippet:</p>
 <div class="highlight"><pre><span></span><code>namespace RepairServiceAgent{  
@@ -2911,21 +2911,21 @@ If you are in the browser, go back to your project in VS Code.</p>
 <div class="highlight"><pre><span></span><code>/**
    * Create a new repair using the API. 
    * When creating a repair, the `id` field is optional and will be generated by the server.
-   * The `date` field should be in ISO 8601 format (e.g., &quot;2023-10-01T12:00:00Z&quot;).
+   * The `date` field should be in ISO 8601 format (e.g., "2023-10-01T12:00:00Z").
    * The `title` field based on what repair user wants to create
    * @param repair The repair to create.
    */
-  @route(&quot;/repairs&quot;)  
+  @route("/repairs")  
   @post  op createRepair(@body repair: Repair): Repair;
 
   /**
    * Update an existing repair.
    * The `id` field is required to identify the repair to update.
-   * The `date` field should be in ISO 8601 format (e.g., &quot;2023-10-01T12:00:00Z&quot;).
+   * The `date` field should be in ISO 8601 format (e.g., "2023-10-01T12:00:00Z").
    * The `image` field should be a valid URL pointing to the image associated with the repair.
    * @param repair The repair to update.
    */
-  @route(&quot;/repairs&quot;)  
+  @route("/repairs")  
   @patch(#{implicitOptionality: true})
   op updateRepair(@body repair: Repair): Repair;
 
@@ -2935,7 +2935,7 @@ If you are in the browser, go back to your project in VS Code.</p>
    * The `id` field is required to identify the repair to delete.
    * @param repair The repair to delete.
    */
-  @route(&quot;/repairs&quot;) 
+  @route("/repairs") 
   @delete  op deleteRepair(@body repair: Repair): Repair;
 
   /**
@@ -2965,13 +2965,13 @@ If you are in the browser, go back to your project in VS Code.</p>
     /**
      * The optional date and time when the repair is scheduled or completed.
      */
-    @format(&quot;date-time&quot;)
+    @format("date-time")
     date?: string;
 
     /**
      * The URL of the image associated with the repair.
      */
-    @format(&quot;uri&quot;)
+    @format("uri")
     image?: string;
   }
 </code></pre></div>
@@ -2984,8 +2984,8 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 </code></pre></div>
 - Also add a new conversation starter for creating a new repair item just after the first conversation starter definition.</p>
 <div class="highlight"><pre><span></span><code>@conversationStarter(#{
-  title: &quot;Create repair&quot;,
-  text: &quot;Create a new repair titled \&quot;[TO_REPLACE]\&quot; and assign it to me&quot;
+  title: "Create repair",
+  text: "Create a new repair titled \"[TO_REPLACE]\" and assign it to me"
 })
 </code></pre></div>
 <p><cc-end-step lab="e01" exercise="2" step="1" /></p>
@@ -2995,48 +2995,48 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 <li>In the project, go to the <strong>adaptiveCards</strong> folder under <strong>appPackage</strong> folder. Create a new file named <code>repair.json</code> and paste the provided code snippet. This will define a new adaptive card for the repair object. Ignore the default template card that is already present in this folder.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.5&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Container&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;$data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${$root}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Container"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"$data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${$root}"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Title: ${if(title, title, &#39;N/A&#39;)}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bolder&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title: ${if(title, title, 'N/A')}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bolder"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Description: ${if(description, description, &#39;N/A&#39;)}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Description: ${if(description, description, 'N/A')}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assigned To: ${if(assignedTo, assignedTo, &#39;N/A&#39;)}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assigned To: ${if(assignedTo, assignedTo, 'N/A')}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date: ${if(date, date, &#39;N/A&#39;)}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;wrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Date: ${if(date, date, 'N/A')}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"wrap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${image}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;$when&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${image != null}&quot;</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Image"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${image}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"$when"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${image != null}"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">],</span><span class="w">  </span>
-<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action.OpenUrl&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;View Image&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.howmuchisit.org/wp-content/uploads/2011/01/oil-change.jpg&quot;</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Action.OpenUrl"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"View Image"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.howmuchisit.org/wp-content/uploads/2011/01/oil-change.jpg"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
@@ -3044,7 +3044,7 @@ op deleteRepair is global.RepairsAPI.deleteRepair;
 <ul>
 <li>Next, go back to <strong>actions.tsp</strong> file and locate the listRepairs operation. Just above the operation definition <strong>@get  op listRepairs(@query assignedTo?: string): string;</strong>, paste the card definition using below snippet.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>@card(#{  dataPath: &quot;$&quot;, file: &quot;adaptiveCards/repair.json&quot;,    properties: #{ title: &quot;$.title&quot;, url: &quot;$.image&quot; } })
+<p><div class="highlight"><pre><span></span><code>@card(#{  dataPath: "$", file: "adaptiveCards/repair.json",    properties: #{ title: "$.title", url: "$.image" } })
 </code></pre></div>
 The above card response will be sent by the agent when you ask about a repair item or when agent brings a list of items as its reference.</p>
 <blockquote>
@@ -3054,22 +3054,22 @@ The above card response will be sent by the agent when you ask about a repair it
 <ul>
 <li>Copy paste below snippet just above the code <strong>@post  op createRepair(@body repair: Repair): Repair;</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>@card(#{  dataPath: &quot;$&quot;, file: &quot;adaptiveCards/repair.json&quot;,    properties: #{ title: &quot;$.title&quot;, url: &quot;$.image&quot; } })
+<div class="highlight"><pre><span></span><code>@card(#{  dataPath: "$", file: "adaptiveCards/repair.json",    properties: #{ title: "$.title", url: "$.image" } })
 </code></pre></div>
 <p><cc-end-step lab="e01" exercise="2" step="2" /></p>
 <h3 id="step-3-update-agent-instruction-for-new-operations">Step 3: Update agent instruction for new operations</h3>
 <p>In the <strong>prompts/instructions.tsp</strong> file, update instructions definition to have additional directives for the agent.
 Replace the <strong>INSTRUCTIONS</strong> constant with below code:</p>
-<div class="highlight"><pre><span></span><code>const INSTRUCTIONS =&quot;&quot;&quot;  
+<div class="highlight"><pre><span></span><code>const INSTRUCTIONS ="""  
     ## Purpose
     You will assist the user in finding car repair records based on the information provided by the user.
 
     ## Guidelines
     - You are a repair service agent.
     - You can use the actions to create, update, and delete repairs.
-    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today&#39;s date in the format YYYY-MM-DD.
+    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today's date in the format YYYY-MM-DD.
     - Do not use any technical jargon or complex terms.
-  &quot;&quot;&quot;;
+  """;
 </code></pre></div>
 <p><cc-end-step lab="e01" exercise="2" step="3" /></p>
 <h3 id="step-4-provision-and-test-the-agent">Step 4:  Provision and Test the Agent</h3>
@@ -3198,17 +3198,17 @@ Next, you will enhance the agent by adding code interpreter capability to it.</p
 <ul>
 <li>In the <strong>prompts/instructions.tsp</strong> file, update INSTRUCTIONS constant to have additional directives for the agent for new capability. Replace the const with below snippet:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>  const INSTRUCTIONS =&quot;&quot;&quot;
+<div class="highlight"><pre><span></span><code>  const INSTRUCTIONS ="""
    ## Purpose
     You will assist the user in finding car repair records based on the information provided by the user. You can generate charts based on data. Use python execution for charting/visualization.
 
     ## Guidelines
     - You are a repair service agent.
     - You can use the actions to create, update, and delete repairs.
-    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today&#39;s date in the format YYYY-MM-DD.
+    - When creating a repair item, if the user did not provide a description or date, use the title as the description and put today's date in the format YYYY-MM-DD.
     - when asked to generate report, generate charts using existing data.
     - Do not use any technical jargon or complex terms.
-&quot;&quot;&quot;;
+""";
 </code></pre></div>
 <p><cc-end-step lab="e01" exercise="3" step="1" /></p>
 <h3 id="step-2-test-your-agents-new-capability">Step 2: Test your agent's new capability</h3>

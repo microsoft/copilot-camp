@@ -2509,13 +2509,13 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <p>Check the console output. You should see:
 <div class="highlight"><pre><span></span><code>🚀 Starting data initialization...
 📋 Initializing table: claims
-✅ Table &#39;claims&#39; created or already exists
+✅ Table 'claims' created or already exists
 📄 Loaded 2 items from claims.json
 ✅ Upserted entity: CN202504990
 ✅ Upserted entity: CN202504991
 ✅ Completed initialization for table: claims
 📋 Initializing table: inspections
-✅ Table &#39;inspections&#39; created or already exists
+✅ Table 'inspections' created or already exists
 📄 Loaded 2 items from inspections.json
 ✅ Upserted entity: insp-001
 ✅ Upserted entity: insp-002
@@ -2550,7 +2550,7 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <div class="highlight"><pre><span></span><code>http://127.0.0.1:3001/health
 </code></pre></div></p>
 <p>You should see a JSON response confirming the server is healthy in the browser.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;healthy&quot;</span><span class="p">,</span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2025-11-11T01:46:11.618Z&quot;</span><span class="p">,</span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;zava-claims-mcp-server&quot;</span><span class="p">,</span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="s2">&quot;No authentication&quot;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"healthy"</span><span class="p">,</span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2025-11-11T01:46:11.618Z"</span><span class="p">,</span><span class="nt">"service"</span><span class="p">:</span><span class="s2">"zava-claims-mcp-server"</span><span class="p">,</span><span class="nt">"authentication"</span><span class="p">:</span><span class="s2">"No authentication"</span><span class="p">}</span>
 </code></pre></div>
 <p><cc-end-step lab="e8" exercise="3" step="2" /></p>
 <h3 id="step-3-explore-available-endpoints">Step 3: Explore Available Endpoints</h3>
@@ -2606,13 +2606,13 @@ Azurite Table service is starting at http://127.0.0.1:10002
 </ol>
 <p>You should see claims like:
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;claimNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CN202504990&quot;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">&quot;policyHolderName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John Smith&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;property&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Main St, Seattle, WA 98101&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Open - Claim is under investigation&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;damageTypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Roof damage - moderate severity&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Storm damage&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;estimatedLoss&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN202504990"</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">"policyHolderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Smith"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St, Seattle, WA 98101"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open - Claim is under investigation"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"damageTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Roof damage - moderate severity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Storm damage"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"estimatedLoss"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <p><img alt="image of mcp inspector tool interacting with zava mcp server" src="../../../assets/images/extend-m365-copilot-08/mcp-inspector.png" /></p>
@@ -2643,7 +2643,7 @@ Azurite Table service is starting at http://127.0.0.1:10002
 
 <h4 id="3-update-the-inspector-script-in-packagejson">3: Update the inspector script in package.json</h4>
 <p>Open <strong>package.json</strong> in the <code>zava-mcp-server</code> directory and update the <code>inspector</code> script:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;inspector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npx @modelcontextprotocol/inspector --transport http --server-url &lt;tunnel-url&gt;/mcp/messages&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"inspector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npx @modelcontextprotocol/inspector --transport http --server-url &lt;tunnel-url&gt;/mcp/messages"</span>
 </code></pre></div>
 <p>Replace <code>&lt;tunnel-url&gt;</code> with your actual tunnel address. Keep a copy of <code>&lt;tunnel-url&gt;/mcp/messages</code> — this is your public MCP endpoint for agent integration.</p>
 <p>If the inspector is running, stop it (<code>Ctrl+C</code>) and restart:</p>
@@ -2714,17 +2714,17 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <h3 id="step-2-understand-the-action-manifest-update-from-previous-step">Step 2: Understand the Action manifest update from previous step</h3>
 <p>Open <code>appPackage/ai-plugin.json</code> and examine the structure with your chosen tools and MCP server url pre-populated:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">     </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v2.4&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name_for_human&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims Assistant&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description_for_human&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims Assistant${{APP_NAME_SUFFIX}}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;contact_email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;publisher-email@example.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zavaclaimsassistant&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">     </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://aka.ms/json-schemas/copilot-extensions/v2.1/plugin.schema.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"schema_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v2.4"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name_for_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Claims Assistant"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description_for_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Claims Assistant${{APP_NAME_SUFFIX}}"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"contact_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"publisher-email@example.com"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zavaclaimsassistant"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"functions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;create_claim&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a new insurance claim&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create_claim"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create a new insurance claim"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="err">...</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2741,37 +2741,37 @@ Azurite Table service is starting at http://127.0.0.1:10002
 <h3 id="step-1-update-agent-configuration-and-description">Step 1: Update Agent Configuration and Description</h3>
 <p>Replace the content of <code>appPackage/declarativeAgent.json</code> with Zava's configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.7&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An intelligent insurance claims management assistant that leverages MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$[file(&#39;instruction.txt&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1.7"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Claims"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An intelligent insurance claims management assistant that leverages MCP server integration to streamline inspection workflows, analyze damage patterns, coordinate contractor services, and generate comprehensive operational reports for efficient claims processing"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$[file('instruction.txt')]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find Inspections by Claim Number&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find all inspections for claim number CN202504991&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find Inspections by Claim Number"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find all inspections for claim number CN202504991"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create Inspection &amp; Find Contractors&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create an urgent inspection for claim CN202504990 and recommend water damage contractors&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create Inspection &amp; Find Contractors"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create an urgent inspection for claim CN202504990 and recommend water damage contractors"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Analyze Claims Trends&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Show me all high-priority claims and their inspection status&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Analyze Claims Trends"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show me all high-priority claims and their inspection status"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find Emergency Contractors&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find preferred contractors specializing in storm damage for immediate deployment&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find Emergency Contractors"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find preferred contractors specializing in storm damage for immediate deployment"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Claims Operation Summary&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Generate a summary of all pending inspections and contractor assignments&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claims Operation Summary"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generate a summary of all pending inspections and contractor assignments"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;action_1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ai-plugin.json&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"action_1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ai-plugin.json"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -2799,7 +2799,7 @@ You are an intelligent insurance claims management assistant with access to the 
 - Create new inspection tasks with appropriate priority levels
 - Modify existing inspection details and assignments
 - Access inspector availability and specialties
-- Automatically determine priorities: safety hazards = &#39;urgent&#39;, water damage = &#39;high&#39;, routine = &#39;medium&#39;
+- Automatically determine priorities: safety hazards = 'urgent', water damage = 'high', routine = 'medium'
 
 ### Contractor Services
 - Find contractors by specialty, location, and preferred status
@@ -2811,7 +2811,7 @@ You are an intelligent insurance claims management assistant with access to the 
 
 ### For Inspections:
 1. Assess urgency based on damage type and safety requirements
-2. Select appropriate task type: &#39;initial&#39;, &#39;reinspection&#39;, &#39;emergency&#39;, &#39;final&#39;  
+2. Select appropriate task type: 'initial', 'reinspection', 'emergency', 'final'  
 3. Generate detailed instructions with specific focus areas
 4. Consider inspector specialties and contractor availability for scheduling
 
@@ -2849,13 +2849,13 @@ You are an intelligent insurance claims management assistant with access to the 
 <p><cc-end-step lab="e8" exercise="6" step="2" /></p>
 <h3 id="step-3-update-the-teams-app-manifest">Step 3: Update the Teams App Manifest</h3>
 <p>Open <code>appPackage/manifest.json</code> and update it with Zava's branding:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Claims&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zava Insurance Claims Assistant&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Claims"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Insurance Claims Assistant"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An intelligent insurance claims management assistant&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An AI-powered claims management assistant that leverages MCP server capabilities to streamline inspection workflows, coordinate contractors, and provide comprehensive operational insights for efficient claims processing.&quot;</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An intelligent insurance claims management assistant"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An AI-powered claims management assistant that leverages MCP server capabilities to streamline inspection workflows, coordinate contractors, and provide comprehensive operational insights for efficient claims processing."</span>
 <span class="w">    </span><span class="p">},</span>
 </code></pre></div>
 <p>Your agent now has a clear identity as Zava's claims assistant with comprehensive instructions.

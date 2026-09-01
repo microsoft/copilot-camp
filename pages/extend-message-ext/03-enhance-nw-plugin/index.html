@@ -2423,20 +2423,20 @@ If you ever need to reset your edits, you can clone again the repository and sta
 <p>In your working directory called <strong>Northwind</strong> from previous lab , open <strong>manifest.json</strong> in the  <strong>appPackage</strong> folder.
 Look for discountSearch in the commands array. After the closing braces of the discountSearch command, add a comma ,. Then, copy the companySearch command snippet and add it to the commands array.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;companySearch&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;compose&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;commandBox&quot;</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"companySearch"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"compose"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"commandBox"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Given a company name, search for products ordered by that company&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Customer&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Given a company name, search for products ordered by that company"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;companyName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Company name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The company name to find products ordered by that company&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"companyName"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The company name to find products ordered by that company"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -2480,7 +2480,7 @@ Use the Customer table to find the Customer Id with the Customer Name. Query the
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">TABLE_NAME</span><span class="p">,</span><span class="w"> </span><span class="nx">Product</span><span class="p">,</span><span class="w"> </span><span class="nx">ProductEx</span><span class="p">,</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">,</span><span class="w"> </span><span class="nx">Category</span><span class="p">,</span><span class="w"> </span><span class="nx">OrderDetail</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">Order</span><span class="p">,</span><span class="w"> </span><span class="nx">Customer</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./model&#39;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./model'</span><span class="p">;</span>
 </code></pre></div>
 Add the new function <code>searchProductsByCustomer()</code> as in the below snippet, right after the <code>import { getInventoryStatus } from '../adaptiveCards/utils';</code>import statement.</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">searchProductsByCustomer</span><span class="p">(</span><span class="nx">companyName</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ProductEx</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -2488,7 +2488,7 @@ Add the new function <code>searchProductsByCustomer()</code> as in the below sni
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getAllProductsEx</span><span class="p">();</span>
 
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">loadReferenceData</span><span class="o">&lt;</span><span class="nx">Customer</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TABLE_NAME</span><span class="p">.</span><span class="nx">CUSTOMER</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customerId</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">customerId</span><span class="o">=</span><span class="s2">""</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">customers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customers</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">CompanyName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">companyName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">customerId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">customers</span><span class="p">[</span><span class="nx">c</span><span class="p">].</span><span class="nx">CustomerID</span><span class="p">;</span>
@@ -2496,7 +2496,7 @@ Add the new function <code>searchProductsByCustomer()</code> as in the below sni
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customerId</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">customerId</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
 
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">loadReferenceData</span><span class="o">&lt;</span><span class="nx">Order</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">TABLE_NAME</span><span class="p">.</span><span class="nx">ORDER</span><span class="p">);</span>
@@ -2530,23 +2530,23 @@ Add the new function <code>searchProductsByCustomer()</code> as in the below sni
 <h3 id="step-3-create-a-handler-for-the-new-command">Step 3: Create a handler for the new command</h3>
 <p>In VS Code, duplicate the <strong>productSearchCommand.ts</strong> file located in the <strong>src/messageExtensions</strong> folder. Then, rename the copied file to "customerSearchCommand.ts"</p>
 <p>Change value of COMMAND_ID constant to:
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">COMMAND_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;companySearch&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">COMMAND_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"companySearch"</span><span class="p">;</span>
 </code></pre></div>
 Replace below import statement from: </p>
-<p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">searchProducts</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../northwindDB/products&quot;</span><span class="p">;</span><span class="sb">`</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">searchProducts</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../northwindDB/products"</span><span class="p">;</span><span class="sb">`</span>
 </code></pre></div>
 to </p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">searchProductsByCustomer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../northwindDB/products&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">searchProductsByCustomer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../northwindDB/products"</span><span class="p">;</span>
 </code></pre></div>
 <p>Inside the existing brackets of <strong>handleTeamsMessagingExtensionQuery</strong> , replace exisiting code with below snippet:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">companyName</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// Validate the incoming query, making sure it&#39;s the &#39;companySearch&#39; command</span>
-<span class="w">    </span><span class="c1">// The value of the &#39;companyName&#39; parameter is the company name to search for</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;companyName&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">[</span><span class="nx">companyName</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// Validate the incoming query, making sure it's the 'companySearch' command</span>
+<span class="w">    </span><span class="c1">// The value of the 'companyName' parameter is the company name to search for</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"companyName"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">[</span><span class="nx">companyName</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">','</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">        </span><span class="nx">companyName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cleanupParam</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;companyName&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">companyName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cleanupParam</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"companyName"</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`🍽️ Query #</span><span class="si">${</span><span class="o">++</span><span class="nx">queryCount</span><span class="si">}</span><span class="sb">:\ncompanyName=</span><span class="si">${</span><span class="nx">companyName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w">    </span>
 
@@ -2564,8 +2564,8 @@ to </p>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">composeExtension</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;result&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">attachmentLayout</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"result"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">attachmentLayout</span><span class="o">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">attachments</span><span class="o">:</span><span class="w"> </span><span class="nx">attachments</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">};</span>
@@ -2573,7 +2573,7 @@ to </p>
 <h3 id="step-4-update-the-command-routing">Step 4 - Update the command routing</h3>
 <p>In this step you will route the <code>companySearch</code> command to the handler you implemented in the previous step.</p>
 <p>Open <strong>searchApp.ts</strong> in the <strong>src</strong> folder and add the following import statement: </p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">customerSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/customerSearchCommand&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">customerSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./messageExtensions/customerSearchCommand"</span><span class="p">;</span>
 </code></pre></div>
 <p>In the switch statement of the handler function <code>handleTeamsMessagingExtensionQuery</code> add another case statement as below:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="nx">customerSearchCommand</span><span class="p">.</span><span class="nx">COMMAND_ID</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>

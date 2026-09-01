@@ -2828,14 +2828,14 @@
 <h3 id="step-3-analyze-the-email-message-schema">Step 3: Analyze the Email Message Schema</h3>
 <p>After running the tool, you should receive a detailed OpenAPI schema. Review the structure:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;microsoft.graph.messageCollectionResponse&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;$ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#/$defs/microsoft.graph.message&quot;</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://json-schema.org/draft/2020-12/schema"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microsoft.graph.messageCollectionResponse"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"$ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#/$defs/microsoft.graph.message"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
@@ -2888,32 +2888,32 @@
 - Selects only the fields: <code>id</code>, <code>subject</code>, <code>from</code>, <code>receivedDateTime</code>, <code>isRead</code>
 - Reduces response size by not fetching unnecessary fields</p>
 <p>If you like, you can also <strong>Switch to JSON</strong> and define the <strong>entityUrls</strong> field at low level, with a syntax like the following:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">&quot;/me/messages?$top=5&amp;$select=id,subject,from,receivedDateTime,isRead&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">"/me/messages?$top=5&amp;$select=id,subject,from,receivedDateTime,isRead"</span><span class="p">]</span>
 </code></pre></div>
 <p><cc-end-step lab="WIQ03" exercise="5" step="2" /></p>
 <h3 id="step-3-analyze-the-response">Step 3: Analyze the Response</h3>
 <p>The response should contain a <code>results</code> array with one object per <code>entityUrl</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AAMkADk0...&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your weekly PIM digest for Contoso&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;emailAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft Security&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MSSecurity-noreply@microsoft.com&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAMkADk0..."</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your weekly PIM digest for Contoso"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft Security"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MSSecurity-noreply@microsoft.com"</span>
 <span class="w">              </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;receivedDateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-05-31T15:40:44Z&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;isRead&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="nt">"receivedDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-05-31T15:40:44Z"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"isRead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="c1">// ... more messages</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span>
+<span class="w">      </span><span class="nt">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
@@ -2927,12 +2927,12 @@
    <div class="highlight"><pre><span></span><code>/me/messages?$top=10&amp;$select=id,subject,from&amp;$filter=isRead eq false
 </code></pre></div></li>
 <li><strong>Get emails from a specific sender</strong>:
-   <div class="highlight"><pre><span></span><code>/me/messages?$top=5&amp;$select=id,subject,from,receivedDateTime&amp;$filter=from/emailAddress/address eq &#39;user@example.com&#39;
+   <div class="highlight"><pre><span></span><code>/me/messages?$top=5&amp;$select=id,subject,from,receivedDateTime&amp;$filter=from/emailAddress/address eq 'user@example.com'
 </code></pre></div></li>
 <li><strong>Fetch multiple paths at once</strong> (array with multiple items):
    <div class="highlight"><pre><span></span><code><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;/me/messages?$top=3&amp;$select=id,subject&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;/me/events?$top=3&amp;$select=id,subject,start,end&quot;</span>
+<span class="w">  </span><span class="s2">"/me/messages?$top=3&amp;$select=id,subject"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"/me/events?$top=3&amp;$select=id,subject,start,end"</span>
 <span class="p">]</span>
 </code></pre></div></li>
 </ol>
@@ -2959,18 +2959,18 @@
 - <code>attendees</code> (optional): List of attendees</p>
 <p>Example event structure:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Team Standup - Work IQ MCP Lab&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;dateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-08-04T14:00:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;timeZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="w">  </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team Standup - Work IQ MCP Lab"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-04T14:00:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;dateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-08-04T14:30:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;timeZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="w">  </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-04T14:30:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;isReminderOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;reminderMinutesBeforeStart&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Work&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Lab&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nt">"isReminderOn"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"reminderMinutesBeforeStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Work"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Lab"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><cc-end-step lab="WIQ03" exercise="6" step="2" /></p>
@@ -2988,17 +2988,17 @@
 <h3 id="step-4-verify-the-event-creation">Step 4: Verify the Event Creation</h3>
 <p>After running the tool, you should see a <code>201 Created</code> response with the created event object:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AAMkADk0...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Team Standup - Work IQ MCP Lab&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;dateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-08-04T14:00:00.0000000&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;timeZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="w">  </span><span class="nt">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAMkADk0..."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Team Standup - Work IQ MCP Lab"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-04T14:00:00.0000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;dateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-08-04T14:30:00.0000000&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;timeZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="w">    </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-04T14:30:00.0000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="c1">// ... other fields</span>
 <span class="w">  </span><span class="p">}</span>
@@ -3009,26 +3009,26 @@
 <h3 id="step-5-try-creating-another-event-with-attendees">Step 5: Try Creating Another Event with Attendees</h3>
 <p>Now, create another event with attendees using the following JSON structure:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Project Planning Meeting&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;dateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-08-05T10:00:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;timeZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="w">    </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project Planning Meeting"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-05T10:00:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;dateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-08-05T11:00:00&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;timeZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span>
+<span class="w">    </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-05T11:00:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;attendees&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"attendees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;emailAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;colleague@contoso.com&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Colleague Name&quot;</span>
+<span class="w">        </span><span class="nt">"emailAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"colleague@contoso.com"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colleague Name"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required&quot;</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"required"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;isReminderOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;reminderMinutesBeforeStart&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nt">"isReminderOn"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"reminderMinutesBeforeStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Still use <code>create_entity</code> with the same parameters as Step 3, replacing the <code>jsonBody</code> with this new event.</p>

@@ -2479,9 +2479,9 @@ and customer conversations.
 <span class="gu">## Skill routing</span>
 
 <span class="k">-</span><span class="w"> </span>Review the available skills for every request.
-<span class="k">-</span><span class="w"> </span>Use a skill when its description matches the user&#39;s intent.
-<span class="k">-</span><span class="w"> </span>Follow the selected skill&#39;s instructions and output format.
-<span class="k">-</span><span class="w"> </span>Do not apply a skill&#39;s specialized format to unrelated requests.
+<span class="k">-</span><span class="w"> </span>Use a skill when its description matches the user's intent.
+<span class="k">-</span><span class="w"> </span>Follow the selected skill's instructions and output format.
+<span class="k">-</span><span class="w"> </span>Do not apply a skill's specialized format to unrelated requests.
 <span class="k">-</span><span class="w"> </span>If no skill matches, respond using the general instructions or ask a concise
     clarifying question.
 
@@ -2503,10 +2503,10 @@ and customer conversations.
 <li>Rename the <code>hello-atk</code> folder to <code>demo-scenario-generator</code>.</li>
 <li>
 <p>Open <code>appPackage/declarativeAgent.json</code> and update the skill folder reference:</p>
-<div class="highlight"><pre><span></span><code>&quot;agent_skills&quot;: [
+<div class="highlight"><pre><span></span><code>"agent_skills": [
 <span class="w"> </span>   {
-<span class="gd">-   &quot;folder&quot;: &quot;skills/hello-atk&quot;</span>
-<span class="gi">+   &quot;folder&quot;: &quot;skills/demo-scenario-generator&quot;</span>
+<span class="gd">-   "folder": "skills/hello-atk"</span>
+<span class="gi">+   "folder": "skills/demo-scenario-generator"</span>
 <span class="w"> </span>   }
 ]
 </code></pre></div>
@@ -2526,11 +2526,11 @@ description: |
 When activated:
 
 <span class="k">1.</span> Identify the technology or topic.
-<span class="k">2.</span> Pick the &quot;after&quot; metric first - the specific number or outcome the solution
-     produces (e.g. &quot;cart abandonment drops from 47% to 28%&quot;) - then build the
-     business problem backward from it, so the &quot;before&quot; state is exactly what
+<span class="k">2.</span> Pick the "after" metric first - the specific number or outcome the solution
+     produces (e.g. "cart abandonment drops from 47% to 28%") - then build the
+     business problem backward from it, so the "before" state is exactly what
      would produce that number. This is what makes a scenario survive a
-     follow-up question instead of collapsing into &quot;improves efficiency.&quot;
+     follow-up question instead of collapsing into "improves efficiency."
 <span class="k">3.</span> Create a realistic business problem consistent with that number.
 <span class="k">4.</span> Describe who the users are.
 <span class="k">5.</span> Explain how the solution helps.
@@ -2559,8 +2559,8 @@ Return results using the following format:
 <h3 id="step-1-provision-the-updated-agent">Step 1: Provision the updated agent</h3>
 <blockquote>
 <p><strong>Tip - provisioning workaround:</strong> Before provisioning, open <code>appPackage/declarativeAgent.json</code> and rename the <code>agent_skills</code> property to <code>x-agent_skills</code>. Leaving the property as <code>agent_skills</code> currently causes provisioning to fail.</p>
-<div class="highlight"><pre><span></span><code><span class="gd">- &quot;agent_skills&quot;: [</span>
-<span class="gi">+ &quot;x-agent_skills&quot;: [</span>
+<div class="highlight"><pre><span></span><code><span class="gd">- "agent_skills": [</span>
+<span class="gi">+ "x-agent_skills": [</span>
 </code></pre></div>
 <p>Change only the property name; keep the generated skill configuration inside the array unchanged.</p>
 </blockquote>

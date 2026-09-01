@@ -2653,26 +2653,26 @@
 </ul>
 <p>Open <code>src/copilotComponents/helloWorld/HelloWorldCopilotComponent.manifest.json</code> and note the <code>tools</code> array. The generator minted a tool named <code>HelloWorldTool</code>, together with a component <code>id</code> (a GUID) that is also referenced from <code>config/copilot-agent.json</code>. Keep these identifiers consistent whenever you hand-edit the project.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/spfx/client-side-component-manifest.schema.json&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3bc284b8-d7c7-4321-a1fd-4abaae7950c3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HelloWorldCopilotComponent&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;componentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CopilotComponent&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;copilotType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ux&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developer.microsoft.com/json-schemas/spfx/client-side-component-manifest.schema.json"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3bc284b8-d7c7-4321-a1fd-4abaae7950c3"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HelloWorldCopilotComponent"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"componentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CopilotComponent"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"copilotType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ux"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"manifestVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 
-<span class="w">  </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;availableDisplayModes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;inline&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fullscreen&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"availableDisplayModes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"inline"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fullscreen"</span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"tools"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HelloWorldTool&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HelloWorld description&quot;</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HelloWorldTool"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HelloWorld description"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;propertiesSchema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$../../../lib/copilotComponents/helloWorld/HelloWorldCopilotComponentProperties.js:default;&quot;</span>
+<span class="w">      </span><span class="nt">"propertiesSchema"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$../../../lib/copilotComponents/helloWorld/HelloWorldCopilotComponentProperties.js:default;"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
@@ -2711,7 +2711,7 @@
 <p><cc-end-step lab="sca1" exercise="3" step="1" /></p>
 <h3 id="step-2-customizing-the-greeting">Step 2: Customizing the greeting</h3>
 <p>Let's give the greeting a friendlier, more polished look. First, open <code>src/copilotComponents/helloWorld/loc/en-us.js</code> and update the <code>GreetingPrefix</code> string:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="s2">&quot;GreetingPrefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;👋 Hello&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="s2">"GreetingPrefix"</span><span class="o">:</span><span class="w"> </span><span class="s2">"👋 Hello"</span><span class="p">,</span>
 </code></pre></div>
 <p>Then open <code>components/HelloWorld.tsx</code> and locate the <code>&lt;CardHeader ... /&gt;</code> element in the returned JSX. Update it so the message is emphasized and the greeting reads more naturally:</p>
 <div class="highlight"><pre><span></span><code><span class="w">            </span><span class="p">&lt;</span><span class="nt">CardHeader</span>
@@ -2730,16 +2730,16 @@
 <h3 id="step-1-defining-the-properties-schema">Step 1: Defining the properties schema</h3>
 <p>Open <code>src/copilotComponents/helloWorld/HelloWorldCopilotComponentProperties.ts</code>. The properties are defined with <a href="https://zod.dev" target="_blank">Zod</a> and exported as a JSON Schema via <code>zod-to-json-schema</code>. Every field you add, together with its <code>.describe()</code> text, is surfaced to Copilot as a tool parameter. The generated schema declares a single <code>message</code> parameter:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">propertiesSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;A message to display.&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'A message to display.'</span><span class="p">)</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>Extend it with an <code>accentColor</code> parameter, so Copilot can pass an accent color extracted from the user's prompt:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">propertiesSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">z</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;A message to display.&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'A message to display.'</span><span class="p">),</span>
 <span class="w">  </span><span class="nx">accentColor</span><span class="o">:</span><span class="w"> </span><span class="kt">z</span>
 <span class="w">    </span><span class="p">.</span><span class="kt">string</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="nx">optional</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;An optional accent color for the greeting card, for example &quot;#0f6cbd&quot; or &quot;green&quot;.&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">describe</span><span class="p">(</span><span class="s1">'An optional accent color for the greeting card, for example "#0f6cbd" or "green".'</span><span class="p">)</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="admonition warning">
@@ -2785,7 +2785,7 @@
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">isExpanded</span><span class="p">,</span><span class="w"> </span><span class="nx">setIsExpanded</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">&lt;</span><span class="nt">boolean</span><span class="p">&gt;(</span><span class="kc">false</span><span class="p">);</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hostContext</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">webDarkTheme</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">webLightTheme</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hostContext</span><span class="p">.</span><span class="nx">theme</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'dark'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">webDarkTheme</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">webLightTheme</span><span class="p">;</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">accent</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">accentColor</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">tokens</span><span class="p">.</span><span class="nx">colorBrandBackground</span><span class="p">;</span>
 </code></pre></div>
 <p>Then apply the accent to the <code>Card</code> in the returned JSX:</p>
@@ -2796,10 +2796,10 @@
 <h3 id="step-3-updating-the-declarative-agent-instructions-and-conversation-starter">Step 3: Updating the declarative agent instructions and conversation starter</h3>
 <p>The <code>copilot/</code> folder defines the declarative agent that fronts your component. Let's tailor its instructions and its conversation starter so the agent knows about your tool and offers a ready-made prompt.</p>
 <p>First, open <code>copilot/declarativeAgent.json</code> and replace the default <code>conversation_starters</code> entry with a new one that invokes your tool:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HelloWorld Tool&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run the HelloWorldTool with the message \&quot;Welcome to Copilot Apps\&quot; using a green accent&quot;</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HelloWorld Tool"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Run the HelloWorldTool with the message \"Welcome to Copilot Apps\" using a green accent"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 </code></pre></div>
@@ -2851,8 +2851,8 @@ When the user asks you to perform an action, call the HelloWorldTool providing t
 <li>In the left panel you see a section with title <strong>ADD A TURN</strong> and you should be able to see your component available right after the <strong>Select a component</strong> text.</li>
 <li>Select your component and edit the component <strong>properties</strong> in the JSON editor to try your parameters, for example:
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Great to see SharePoint Copilot Apps in action!&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;accentColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#107c10&quot;</span>
+<span class="w">  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great to see SharePoint Copilot Apps in action!"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"accentColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#107c10"</span>
 <span class="p">}</span>
 </code></pre></div></li>
 <li>Select the command <strong>Fire turn</strong> to start rendering the component in the Workbench.</li>
@@ -2920,7 +2920,7 @@ When the user asks you to perform an action, call the HelloWorldTool providing t
 <li>Find your agent (for example <strong>HelloWorld Agent</strong>), open it, and select <strong>Open</strong>. If you cannot find the agent, you can search for it by name (for example <strong>HelloWorld Agent</strong>) in the search box at the top of the page.</li>
 <li>Invoke the tool with an explicit prompt that names it, so Copilot reliably routes the request to your component:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>Run the HelloWorldTool with the message &quot;Welcome to Copilot Apps&quot; using a green accent
+<div class="highlight"><pre><span></span><code>Run the HelloWorldTool with the message "Welcome to Copilot Apps" using a green accent
 </code></pre></div>
 <ol>
 <li>The first time you invoke the agent, Copilot asks for consent. Select <strong>Allow</strong>.</li>

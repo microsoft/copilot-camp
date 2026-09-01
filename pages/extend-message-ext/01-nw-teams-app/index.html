@@ -2423,48 +2423,48 @@
 <h3 id="step-1-examine-the-manifest">Step 1 - Examine the manifest</h3>
 <p>The core of any Microsoft 365 application is its application manifest. This is where you provide the information Microsoft 365 needs to access your application.</p>
 <p>In your working directory called <strong>Northwind</strong> from previous lab , open the <a href="https://github.com/microsoft/copilot-camp/tree/main/src/extend-message-ext/Lab01-Run-NW-Teams/Northwind/appPackage/manifest.json">manifest.json</a> file in the <strong>appPackage</strong> folder. This JSON file is placed in a zip archive with icon files to create the application package. The "icons" property includes paths to these icons.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind-Logo3-192-${{TEAMSFX_ENV}}.png&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;outline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind-Logo3-32.png&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Northwind-Logo3-192-${{TEAMSFX_ENV}}.png"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"outline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Northwind-Logo3-32.png"</span>
 <span class="p">},</span>
 </code></pre></div>
 <p>Notice the token <code>${{TEAMSFX_ENV}}</code> in one of the icon names. Agents Toolkit will replace this token with your environment name, such as "local" or "dev" (for an Azure deployment in development). Thus, the icon color will change depending on the environment.</p>
 <p>Now have a look at the "name" and "description". Notice that the description is quite long! This is important so both users and Copilot can learn what your application does and when to use it.</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind Inventory&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind Inventory App&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Northwind Inventory"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Northwind Inventory App"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;App allows you to find and update product inventory information&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Northwind Inventory is the ultimate tool for managing your product inventory. With its intuitive interface and powerful features, you&#39;ll be able to easily find your products by name, category, inventory status, and supplier city. You can also update inventory information with the app. \n\n **Why Choose Northwind Inventory:** \n\n Northwind Inventory is the perfect solution for businesses of all sizes that need to keep track of their inventory. Whether you&#39;re a small business owner or a large corporation, Northwind Inventory can help you stay on top of your inventory management needs. \n\n **Features and Benefits:** \n\n - Easy Product Search through Microsoft Copilot. Simply start by saying, &#39;Find northwind dairy products that are low on stock&#39; \r - Real-Time Inventory Updates: Keep track of inventory levels in real-time and update them as needed \r  - User-Friendly Interface: Northwind Inventory&#39;s intuitive interface makes it easy to navigate and use \n\n **Availability:** \n\n To use Northwind Inventory, you&#39;ll need an active Microsoft 365 account . Ensure that your administrator enables the app for your Microsoft 365 account.&quot;</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App allows you to find and update product inventory information"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Northwind Inventory is the ultimate tool for managing your product inventory. With its intuitive interface and powerful features, you'll be able to easily find your products by name, category, inventory status, and supplier city. You can also update inventory information with the app. \n\n **Why Choose Northwind Inventory:** \n\n Northwind Inventory is the perfect solution for businesses of all sizes that need to keep track of their inventory. Whether you're a small business owner or a large corporation, Northwind Inventory can help you stay on top of your inventory management needs. \n\n **Features and Benefits:** \n\n - Easy Product Search through Microsoft Copilot. Simply start by saying, 'Find northwind dairy products that are low on stock' \r - Real-Time Inventory Updates: Keep track of inventory levels in real-time and update them as needed \r  - User-Friendly Interface: Northwind Inventory's intuitive interface makes it easy to navigate and use \n\n **Availability:** \n\n To use Northwind Inventory, you'll need an active Microsoft 365 account . Ensure that your administrator enables the app for your Microsoft 365 account."</span>
 <span class="w">    </span><span class="p">},</span>
 </code></pre></div>
 <p>Scroll down a bit to "composeExtensions". Compose extension is the historical term for message extension; this is where the app's message extensions are defined.</p>
 <p>Within this is a bot, with the ID supplied by Agents Toolkit.</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;composeExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">"composeExtensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;botId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{BOT_ID}}&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">"botId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{BOT_ID}}"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="err">...</span>
 </code></pre></div>
 <p>Message extensions communicate using the Azure Bot Framework; this provides a fast and secure communication channel between Microsoft 365 and your application. When you first ran your project, Agents Toolkit registered a bot, and will place its bot ID here.</p>
 <p>This message extension has two commands, which are defined in the <code>commands</code> array. Let's pick one command and see the structure. </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discountSearch&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;compose&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;commandBox&quot;</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discountSearch"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"compose"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"commandBox"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search for discounted products by category&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Discounts&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Search for discounted products by category"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Discounts"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the category to find discounted products&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"categoryName"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Category name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter the category to find discounted products"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">},</span>
@@ -2472,44 +2472,44 @@
 <p>This allows user to search for discounted products within a Northwind category. This command accepts a single parameter, "categoryName". </p>
 <p>OK now let's move back to the first command, "inventorySearch". It has 5 parameters, which allows for much more sophisticated queries.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventorySearch&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;compose&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;commandBox&quot;</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventorySearch"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"compose"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"commandBox"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search products by name, category, inventory status, supplier location, stock level&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product inventory&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Search products by name, category, inventory status, supplier location, stock level"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product inventory"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;productName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a product name here&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"productName"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter a product name here"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the category of the product&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"categoryName"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Category name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter the category of the product"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventoryStatus&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inventory status&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter what status of the product inventory. Possible values are &#39;in stock&#39;, &#39;low stock&#39;, &#39;on order&#39;, or &#39;out of stock&#39;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventoryStatus"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory status"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;supplierCity&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Supplier city&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the supplier city of product&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"supplierCity"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supplier city"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter the supplier city of product"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stockQuery&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stock level&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stockQuery"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stock level"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range."</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">},</span>
@@ -2550,11 +2550,11 @@
 <span class="w">  </span><span class="nx">MessagingExtensionQuery</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">MessagingExtensionResponse</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">InvokeResponse</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;botbuilder&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/productSearchCommand&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/discountSearchCommand&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">revenueSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./messageExtensions/revenueSearchCommand&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">actionHandler</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./adaptiveCards/cardHandler&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"botbuilder"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">productSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./messageExtensions/productSearchCommand"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">discountedSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./messageExtensions/discountSearchCommand"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">revenueSearchCommand</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./messageExtensions/revenueSearchCommand"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">actionHandler</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./adaptiveCards/cardHandler"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">SearchApp</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">TeamsActivityHandler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -2583,15 +2583,15 @@
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">runEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// console.log (`🎬 Invoke activity received: ${context.activity.name}`);</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">name</span><span class="o">===</span><span class="s1">&#39;adaptiveCard/action&#39;</span><span class="p">){</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">name</span><span class="o">===</span><span class="s1">'adaptiveCard/action'</span><span class="p">){</span>
 <span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">activity</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">action</span><span class="p">.</span><span class="nx">verb</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;ok&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'ok'</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">actionHandler</span><span class="p">.</span><span class="nx">handleTeamsCardActionUpdateStock</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
 <span class="w">          </span><span class="p">}</span>
-<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;restock&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'restock'</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">actionHandler</span><span class="p">.</span><span class="nx">handleTeamsCardActionRestock</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
 <span class="w">          </span><span class="p">}</span>
-<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;cancel&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'cancel'</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">actionHandler</span><span class="p">.</span><span class="nx">handleTeamsCardActionCancelRestock</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">          </span><span class="nx">default</span><span class="o">:</span>
@@ -2613,8 +2613,8 @@
 <span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="nx">MessagingExtensionQuery</span>
 <span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MessagingExtensionResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// Seek the parameter by name, don&#39;t assume it&#39;s in element 0 of the array</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">categoryName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cleanupParam</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Seek the parameter by name, don't assume it's in element 0 of the array</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">categoryName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cleanupParam</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"categoryName"</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`💰 Discount query #</span><span class="si">${</span><span class="o">++</span><span class="nx">queryCount</span><span class="si">}</span><span class="sb">: Discounted products with categoryName=</span><span class="si">${</span><span class="nx">categoryName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getDiscountedProductsByCategory</span><span class="p">(</span><span class="nx">categoryName</span><span class="p">);</span>
@@ -2632,8 +2632,8 @@
 <span class="w">    </span><span class="p">});</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">composeExtension</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;result&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">attachmentLayout</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"result"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">attachmentLayout</span><span class="o">:</span><span class="w"> </span><span class="s2">"list"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">attachments</span><span class="o">:</span><span class="w"> </span><span class="nx">attachments</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">};</span>
@@ -2756,25 +2756,25 @@ Continue searching for a product, type in "Chai" which is a product available in
 <p>Scroll down a bit to <code>composeExtensions:</code>.
 Compose extensions is the historical name for a message extension; the Northwind Inventory message extension is defined here.</p>
 <p>Here's an abbreviated version of that JSON for easy reference.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;composeExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"composeExtensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;botId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{BOT_ID}}&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nt">"botId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{BOT_ID}}"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventorySearch&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventorySearch"</span><span class="p">,</span>
 <span class="w">                </span><span class="err">...</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search products by name, category, inventory status, supplier location, stock level&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product inventory&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Search products by name, category, inventory status, supplier location, stock level"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product inventory"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discountSearch&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"discountSearch"</span><span class="p">,</span>
 <span class="w">                </span><span class="err">...</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Search for discounted products by category&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Discounts&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="p">]</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Search for discounted products by category"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Discounts"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="p">]</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2786,36 +2786,36 @@ Compose extensions is the historical name for a message extension; the Northwind
 <p>Enter "Beverages", "Dairy", or "Produce" into the "Discounts" tab, and you'll see the products within those categories that are discounted. Copilot will use this to answer questions about discounted products.</p>
 <p><img alt="Searching for beverages under the discount tab" src="../../../assets/images/extend-message-ext-01/02-03-Test-Multi-02.png" /></p>
 <p>Now examine the first command again. You'll notice it has 5 parameters!</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;productName&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Product name&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a product name here&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"productName"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product name"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter a product name here"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;categoryName&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Category name&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the category of the product&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"categoryName"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Category name"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter the category of the product"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inventoryStatus&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Inventory status&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter what status of the product inventory. Possible values are &#39;in stock&#39;, &#39;low stock&#39;, &#39;on order&#39;, or &#39;out of stock&#39;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventoryStatus"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory status"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;supplierCity&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Supplier city&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter the supplier city of product&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"supplierCity"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Supplier city"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter the supplier city of product"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stockQuery&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stock level&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;inputType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stockQuery"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stock level"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter a range of integers such as 0-42 or 100- (for &gt;100 items). Only use if you need an exact numeric range."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>

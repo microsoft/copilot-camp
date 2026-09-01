@@ -2539,48 +2539,48 @@
 </div>
 <h3 id="step-1-update-the-manifest-schema">Step 1: Update the manifest schema</h3>
 <p>Open <strong>M365Agent/appPackage/manifest.json</strong> and update the schema and version:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json&quot;</span><span class="p">,</span>
-<span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.22&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developer.microsoft.com/en-us/json-schemas/teams/v1.22/MicrosoftTeams.schema.json"</span><span class="p">,</span>
+<span class="nt">"manifestVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.22"</span><span class="p">,</span>
 </code></pre></div>
 <p><cc-end-step lab="bma4" exercise="1" step="1" /></p>
 <h3 id="step-2-add-conversation-starters-and-the-copilotagents-block">Step 2: Add conversation starters and the copilotAgents block</h3>
 <p>Replace the <code>bots</code> section with the following, which adds a command list and the <code>copilotAgents</code> declaration:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;bots&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"bots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;botId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{BOT_ID}}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;personal&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;team&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;groupChat&quot;</span>
+<span class="w">    </span><span class="nt">"botId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{BOT_ID}}"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"personal"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"team"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"groupChat"</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;supportsFiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;isNotificationOnly&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;commandLists&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"supportsFiles"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"isNotificationOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"commandLists"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;personal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;team&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;groupChat&quot;</span><span class="w"> </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"personal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"team"</span><span class="p">,</span><span class="w"> </span><span class="s2">"groupChat"</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"commands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emergency and Mental Health&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What&#39;s the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emergency and Mental Health"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What's the difference between Northwind Standard and Health Plus when it comes to emergency and mental health coverage?"</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PerksPlus Details&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PerksPlus Details"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can I use PerksPlus to pay for both a rock climbing class and a virtual fitness program?"</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Contoso Electronics Values&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What values guide behavior and decision making at Contoso Electronics?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contoso Electronics Values"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What values guide behavior and decision making at Contoso Electronics?"</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">],</span>
-<span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;customEngineAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="nt">"copilotAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"customEngineAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{BOT_ID}}&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bot&quot;</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{BOT_ID}}"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bot"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">},</span>

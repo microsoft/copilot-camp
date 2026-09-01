@@ -2784,10 +2784,10 @@ Building ui/request-form.html...
 </ol>
 <div class="highlight"><pre><span></span><code><span class="nx">registerToolWithUI</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">server</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;request-access&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// tool name</span>
-<span class="w">  </span><span class="s2">&quot;Request Access&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// title</span>
-<span class="w">  </span><span class="s2">&quot;Shows an access request form...&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// description</span>
-<span class="w">  </span><span class="s2">&quot;request-form.html&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// UI resource file</span>
+<span class="w">  </span><span class="s2">"request-access"</span><span class="p">,</span><span class="w">       </span><span class="c1">// tool name</span>
+<span class="w">  </span><span class="s2">"Request Access"</span><span class="p">,</span><span class="w">       </span><span class="c1">// title</span>
+<span class="w">  </span><span class="s2">"Shows an access request form..."</span><span class="p">,</span><span class="w">  </span><span class="c1">// description</span>
+<span class="w">  </span><span class="s2">"request-form.html"</span><span class="p">,</span><span class="w">   </span><span class="c1">// UI resource file</span>
 <span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="cm">/* input schema */</span><span class="w"> </span><span class="p">},</span>
 <span class="w">  </span><span class="p">(</span><span class="nx">args</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* handler returning structured data */</span><span class="w"> </span><span class="p">},</span>
 <span class="p">);</span>
@@ -2856,7 +2856,7 @@ Building ui/request-form.html...
 </code></pre></div>
 <p>Create the file <code>src/status-timeline/App.tsx</code> with the following content:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// src/status-timeline/App.tsx — Status Timeline Widget</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@modelcontextprotocol/ext-apps&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@modelcontextprotocol/ext-apps"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">FluentProvider</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">webLightTheme</span><span class="p">,</span>
@@ -2870,7 +2870,7 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="nx">Divider</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">makeStyles</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">tokens</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@fluentui/react-components&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@fluentui/react-components"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">CheckmarkCircle20Filled</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">Circle20Regular</span><span class="p">,</span>
@@ -2880,14 +2880,14 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="nx">Timeline20Regular</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">FullScreenMaximize24Regular</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">FullScreenMinimize24Regular</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@fluentui/react-icons&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-dom/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useCallback</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@fluentui/react-icons"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react-dom/client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useCallback</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
 
 <span class="c1">// ─── Types ───────────────────────────────────────────────────────────</span>
 <span class="kd">interface</span><span class="w"> </span><span class="nx">TimelineEntry</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">stage</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;completed&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;current&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;pending&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;rejected&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"current"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"pending"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"rejected"</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">actor?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">comment?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -2915,12 +2915,12 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="nx">root</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalL</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorNeutralBackground1</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">minHeight</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;100%&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">overflowY</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">minHeight</span><span class="o">:</span><span class="w"> </span><span class="s2">"100%"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">overflowY</span><span class="o">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">header</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">"flex"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">gap</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingHorizontalS</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">marginBottom</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalL</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
@@ -2929,41 +2929,41 @@ Building ui/request-form.html...
 <span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalM</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">requestSummary</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">flexWrap</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;wrap&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">"flex"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">flexWrap</span><span class="o">:</span><span class="w"> </span><span class="s2">"wrap"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">gap</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingHorizontalS</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">marginBottom</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalS</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">timeline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;relative&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">paddingLeft</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;28px&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">"relative"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">paddingLeft</span><span class="o">:</span><span class="w"> </span><span class="s2">"28px"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">marginTop</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalM</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">timelineTrack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;absolute&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;9px&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2px&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">"absolute"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="s2">"9px"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s2">"2px"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorNeutralStroke2</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">timelineItem</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;relative&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">"relative"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">paddingBottom</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalM</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;&amp;:last-child&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">paddingBottom</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"&amp;:last-child"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">paddingBottom</span><span class="o">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">timelineIcon</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;absolute&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;-28px&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20px&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20px&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">justifyContent</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">"absolute"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="s2">"-28px"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s2">"20px"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s2">"20px"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">"flex"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">justifyContent</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorNeutralBackground1</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
@@ -2971,8 +2971,8 @@ Building ui/request-form.html...
 <span class="w">    </span><span class="nx">paddingLeft</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingHorizontalS</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">timelineRow</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">"flex"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">gap</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingHorizontalXS</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">actorComment</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -2980,43 +2980,43 @@ Building ui/request-form.html...
 <span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorNeutralForeground3</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">empty</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">flexDirection</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;column&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">"flex"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">flexDirection</span><span class="o">:</span><span class="w"> </span><span class="s2">"column"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">gap</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalM</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.spacingVerticalXXL</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorNeutralForeground3</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nx">loading</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;flex&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">justifyContent</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;200px&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="s2">"flex"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">justifyContent</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">alignItems</span><span class="o">:</span><span class="w"> </span><span class="s2">"center"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s2">"200px"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 
 <span class="c1">// ─── Timeline Step Icon ──────────────────────────────────────────────</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">StepIcon</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">TimelineEntry</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">StepIcon</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">TimelineEntry</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"completed"</span><span class="o">:</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">CheckmarkCircle20Filled</span>
 <span class="w">          </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorPaletteGreenForeground1</span><span class="w"> </span><span class="p">}}</span>
 <span class="w">        </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;current&quot;</span><span class="o">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"current"</span><span class="o">:</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">Clock20Regular</span>
 <span class="w">          </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorPaletteBlueForeground2</span><span class="w"> </span><span class="p">}}</span>
 <span class="w">        </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;rejected&quot;</span><span class="o">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"rejected"</span><span class="o">:</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">DismissCircle20Filled</span>
 <span class="w">          </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorPaletteRedForeground1</span><span class="w"> </span><span class="p">}}</span>
 <span class="w">        </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;pending&quot;</span><span class="o">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"pending"</span><span class="o">:</span>
 <span class="w">    </span><span class="nx">default</span><span class="o">:</span>
 <span class="w">      </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">Circle20Regular</span><span class="w"> </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">tokens.colorNeutralStroke2</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="p">/&gt;</span>
@@ -3030,28 +3030,28 @@ Building ui/request-form.html...
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">overallStatusColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;Granted&quot;</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;Rejected&quot;</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;danger&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;Manager Review&quot;</span><span class="o">:</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;IT Review&quot;</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;warning&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"Granted"</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"success"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"danger"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"Manager Review"</span><span class="o">:</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"IT Review"</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"warning"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
 <span class="w">      </span><span class="nx">default</span><span class="o">:</span>
-<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="s2">&quot;brand&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="s2">"brand"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stepBadgeColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">TimelineEntry</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">stepBadgeColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">TimelineEntry</span><span class="p">[</span><span class="s2">"status"</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;completed&quot;</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;current&quot;</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;informative&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;rejected&quot;</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;danger&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"completed"</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"success"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"current"</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"informative"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"rejected"</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s2">"danger"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
 <span class="w">      </span><span class="nx">default</span><span class="o">:</span>
-<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="s2">&quot;subtle&quot;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="s2">"subtle"</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">};</span>
 
@@ -3059,22 +3059,22 @@ Building ui/request-form.html...
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">Card</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">card</span><span class="p">}&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">CardHeader</span>
 <span class="w">        </span><span class="na">header</span><span class="o">=</span><span class="p">{</span>
-<span class="w">          </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">&quot;bold&quot;</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">400</span><span class="p">}&gt;</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">"bold"</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">400</span><span class="p">}&gt;</span>
 <span class="w">            </span><span class="p">{</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
 <span class="w">          </span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="na">description</span><span class="o">=</span><span class="p">{</span>
 <span class="w">          </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">requestSummary</span><span class="p">}&gt;</span>
 <span class="w">            </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}&gt;{</span><span class="nx">request</span><span class="p">.</span><span class="nx">employeeName</span><span class="p">}&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
-<span class="w">            </span><span class="p">&lt;</span><span class="nt">ArrowRight20Regular</span><span class="w"> </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12px&quot;</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">            </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">&quot;semibold&quot;</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="p">&lt;</span><span class="nt">ArrowRight20Regular</span><span class="w"> </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">"12px"</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">            </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">"semibold"</span><span class="p">&gt;</span>
 <span class="w">              </span><span class="p">{</span><span class="nx">request</span><span class="p">.</span><span class="nx">system</span><span class="p">}</span>
 <span class="w">            </span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
-<span class="w">            </span><span class="p">&lt;</span><span class="nt">Badge</span><span class="w"> </span><span class="na">appearance</span><span class="o">=</span><span class="s">&quot;outline&quot;</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="s">&quot;small&quot;</span><span class="p">&gt;</span>
+<span class="w">            </span><span class="p">&lt;</span><span class="nt">Badge</span><span class="w"> </span><span class="na">appearance</span><span class="o">=</span><span class="s">"outline"</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="s">"small"</span><span class="p">&gt;</span>
 <span class="w">              </span><span class="p">{</span><span class="nx">request</span><span class="p">.</span><span class="nx">role</span><span class="p">}</span>
 <span class="w">            </span><span class="p">&lt;/</span><span class="nt">Badge</span><span class="p">&gt;</span>
 <span class="w">            </span><span class="p">&lt;</span><span class="nt">Badge</span>
-<span class="w">              </span><span class="na">appearance</span><span class="o">=</span><span class="s">&quot;filled&quot;</span>
+<span class="w">              </span><span class="na">appearance</span><span class="o">=</span><span class="s">"filled"</span>
 <span class="w">              </span><span class="na">color</span><span class="o">=</span><span class="p">{</span><span class="nx">overallStatusColor</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">status</span><span class="p">)}</span>
 <span class="w">            </span><span class="p">&gt;</span>
 <span class="w">              </span><span class="p">{</span><span class="nx">request</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span>
@@ -3094,12 +3094,12 @@ Building ui/request-form.html...
 <span class="w">            </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="w">            </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">timelineContent</span><span class="p">}&gt;</span>
 <span class="w">              </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">timelineRow</span><span class="p">}&gt;</span>
-<span class="w">                </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">&quot;semibold&quot;</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">300</span><span class="p">}&gt;</span>
+<span class="w">                </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">"semibold"</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">300</span><span class="p">}&gt;</span>
 <span class="w">                  </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">stage</span><span class="p">}</span>
 <span class="w">                </span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
 <span class="w">                </span><span class="p">&lt;</span><span class="nt">Badge</span>
-<span class="w">                  </span><span class="na">appearance</span><span class="o">=</span><span class="s">&quot;tint&quot;</span>
-<span class="w">                  </span><span class="na">size</span><span class="o">=</span><span class="s">&quot;small&quot;</span>
+<span class="w">                  </span><span class="na">appearance</span><span class="o">=</span><span class="s">"tint"</span>
+<span class="w">                  </span><span class="na">size</span><span class="o">=</span><span class="s">"small"</span>
 <span class="w">                  </span><span class="na">color</span><span class="o">=</span><span class="p">{</span><span class="nx">stepBadgeColor</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">status</span><span class="p">)}</span>
 <span class="w">                </span><span class="p">&gt;</span>
 <span class="w">                  </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span>
@@ -3108,7 +3108,7 @@ Building ui/request-form.html...
 <span class="w">              </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">actor</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
 <span class="w">                </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">actorComment</span><span class="p">}</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}&gt;</span>
 <span class="w">                  </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">actor</span><span class="p">}</span>
-<span class="w">                  </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">comment</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">` — </span><span class="si">${</span><span class="nx">entry</span><span class="p">.</span><span class="nx">comment</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">}</span>
+<span class="w">                  </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">comment</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sb">` — </span><span class="si">${</span><span class="nx">entry</span><span class="p">.</span><span class="nx">comment</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">}</span>
 <span class="w">                </span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
 <span class="w">              </span><span class="p">)}</span>
 <span class="w">              </span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">timestamp</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
@@ -3131,7 +3131,7 @@ Building ui/request-form.html...
 <span class="kd">function</span><span class="w"> </span><span class="nx">StatusTimelineWidget</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">styles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useStyles</span><span class="p">();</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">appInstance</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span>
-<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">App</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Access Status Timeline&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">App</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Access Status Timeline"</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="o">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w"> </span><span class="p">}),</span>
 <span class="w">  </span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">setData</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">&lt;</span><span class="nt">StatusData</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="na">null</span><span class="p">&gt;(</span><span class="kc">null</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">isFullscreen</span><span class="p">,</span><span class="w"> </span><span class="nx">setIsFullscreen</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
@@ -3139,15 +3139,15 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="c1">// Track browser fullscreen changes (fallback path)</span>
 <span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setIsFullscreen</span><span class="p">(</span><span class="o">!!</span><span class="nb">document</span><span class="p">.</span><span class="nx">fullscreenElement</span><span class="p">);</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;fullscreenchange&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">&quot;fullscreenchange&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"fullscreenchange"</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">"fullscreenchange"</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
 <span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">toggleFullscreen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">appInstance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">appInstance</span><span class="p">.</span><span class="nx">requestDisplayMode</span><span class="p">({</span>
-<span class="w">          </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="kt">isFullscreen</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;inline&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fullscreen&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="kt">isFullscreen</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"inline"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"fullscreen"</span><span class="p">,</span>
 <span class="w">        </span><span class="p">});</span>
 <span class="w">        </span><span class="nx">setIsFullscreen</span><span class="p">(</span><span class="o">!</span><span class="nx">isFullscreen</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
@@ -3181,12 +3181,12 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">loading</span><span class="p">}&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Spinner</span><span class="w"> </span><span class="na">label</span><span class="o">=</span><span class="s">&quot;Loading status...&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Spinner</span><span class="w"> </span><span class="na">label</span><span class="o">=</span><span class="s">"Loading status..."</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;not_found&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"not_found"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">empty</span><span class="p">}&gt;</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">400</span><span class="p">}&gt;</span><span class="nx">Request</span><span class="w"> </span><span class="nx">not</span><span class="w"> </span><span class="nx">found</span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
@@ -3197,8 +3197,8 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">requests</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">empty</span><span class="p">}&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Timeline20Regular</span><span class="w"> </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;32px&quot;</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">400</span><span class="p">}</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">&quot;semibold&quot;</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Timeline20Regular</span><span class="w"> </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s2">"32px"</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">400</span><span class="p">}</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">"semibold"</span><span class="p">&gt;</span>
 <span class="w">          </span><span class="nx">No</span><span class="w"> </span><span class="nx">requests</span><span class="w"> </span><span class="nx">found</span>
 <span class="w">        </span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -3211,27 +3211,27 @@ Building ui/request-form.html...
 <span class="w">      </span><span class="na">style</span><span class="o">=</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">isFullscreen</span>
 <span class="w">          </span><span class="o">?</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span>
 <span class="w">              </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
 <span class="w">              </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
 <span class="w">              </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
 <span class="w">              </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">,</span>
 <span class="w">              </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="kt">9999</span><span class="p">,</span>
-<span class="w">              </span><span class="nx">overflowY</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">overflowY</span><span class="o">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">&gt;</span>
 <span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">header</span><span class="p">}&gt;</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">Timeline20Regular</span><span class="w"> </span><span class="p">/&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">500</span><span class="p">}</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">&quot;bold&quot;</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Text</span><span class="w"> </span><span class="na">size</span><span class="o">=</span><span class="p">{</span><span class="mf">500</span><span class="p">}</span><span class="w"> </span><span class="na">weight</span><span class="o">=</span><span class="s">"bold"</span><span class="p">&gt;</span>
 <span class="w">          </span><span class="nx">Access</span><span class="w"> </span><span class="nx">Request</span><span class="w"> </span><span class="nx">Status</span>
 <span class="w">        </span><span class="p">&lt;/</span><span class="nt">Text</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">Badge</span><span class="w"> </span><span class="na">appearance</span><span class="o">=</span><span class="s">&quot;filled&quot;</span><span class="w"> </span><span class="na">color</span><span class="o">=</span><span class="s">&quot;brand&quot;</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Badge</span><span class="w"> </span><span class="na">appearance</span><span class="o">=</span><span class="s">"filled"</span><span class="w"> </span><span class="na">color</span><span class="o">=</span><span class="s">"brand"</span><span class="p">&gt;</span>
 <span class="w">          </span><span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
 <span class="w">        </span><span class="p">&lt;/</span><span class="nt">Badge</span><span class="p">&gt;</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">Button</span>
-<span class="w">          </span><span class="na">appearance</span><span class="o">=</span><span class="s">&quot;subtle&quot;</span>
+<span class="w">          </span><span class="na">appearance</span><span class="o">=</span><span class="s">"subtle"</span>
 <span class="w">          </span><span class="na">icon</span><span class="o">=</span><span class="p">{</span>
 <span class="w">            </span><span class="nx">isFullscreen</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span>
 <span class="w">              </span><span class="p">&lt;</span><span class="nt">FullScreenMinimize24Regular</span><span class="w"> </span><span class="p">/&gt;</span>
@@ -3240,8 +3240,8 @@ Building ui/request-form.html...
 <span class="w">            </span><span class="p">)</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">          </span><span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleFullscreen</span><span class="p">}</span>
-<span class="w">          </span><span class="na">title</span><span class="o">=</span><span class="p">{</span><span class="nx">isFullscreen</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;Exit fullscreen&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Fullscreen&quot;</span><span class="p">}</span>
-<span class="w">          </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">marginLeft</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">          </span><span class="na">title</span><span class="o">=</span><span class="p">{</span><span class="nx">isFullscreen</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"Exit fullscreen"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"Fullscreen"</span><span class="p">}</span>
+<span class="w">          </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">marginLeft</span><span class="o">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="w"> </span><span class="p">}}</span>
 <span class="w">        </span><span class="p">/&gt;</span>
 <span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
@@ -3255,14 +3255,14 @@ Building ui/request-form.html...
 <span class="c1">// ─── Theme Detection &amp; Render ────────────────────────────────────────</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">Root</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">isDark</span><span class="p">,</span><span class="w"> </span><span class="nx">setIsDark</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="o">?</span><span class="p">.(</span><span class="s2">&quot;(prefers-color-scheme: dark)&quot;</span><span class="p">).</span><span class="nx">matches</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="o">?</span><span class="p">.(</span><span class="s2">"(prefers-color-scheme: dark)"</span><span class="p">).</span><span class="nx">matches</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">  </span><span class="p">);</span>
 
 <span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="s2">&quot;(prefers-color-scheme: dark)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="s2">"(prefers-color-scheme: dark)"</span><span class="p">);</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="o">:</span><span class="w"> </span><span class="kt">MediaQueryListEvent</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setIsDark</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">matches</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">mq</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">mq</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">mq</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"change"</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">mq</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">"change"</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
 <span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
 
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
@@ -3272,22 +3272,22 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nt">Root</span><span class="w"> </span><span class="p">/&gt;);</span>
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"root"</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nt">Root</span><span class="w"> </span><span class="p">/&gt;);</span>
 </code></pre></div>
 <p><cc-end-step lab="e11" exercise="3" step="1" /></p>
 <h3 id="step-2-create-the-html-entry-point">Step 2: Create the HTML Entry Point</h3>
 <p>Create the HTML entry point for the widget. Create a new file <code>ui/status-timeline.html</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"en"</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Status Timeline<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../global.css&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"../global.css"</span> <span class="p">/&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../src/status-timeline/App.tsx&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"root"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span> <span class="na">src</span><span class="o">=</span><span class="s">"../src/status-timeline/App.tsx"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -3297,31 +3297,31 @@ Building ui/request-form.html...
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="c1">// ─── Tool 3: Status Timeline ─────────────────────────────────────</span>
 <span class="w">  </span><span class="nx">registerToolWithUI</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">server</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;access-status&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;Access Request Status&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;Shows the status timeline for an access request, tracking progress through Requested → Manager Review → IT Review → Granted/Rejected stages. Pass a request ID, or leave blank to see all requests.&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;status-timeline.html&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"access-status"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Access Request Status"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Shows the status timeline for an access request, tracking progress through Requested → Manager Review → IT Review → Granted/Rejected stages. Pass a request ID, or leave blank to see all requests."</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"status-timeline.html"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">optional</span><span class="p">().</span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Request ID — accepts any format: REQ-001, 001, or 1&quot;</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="kt">z.string</span><span class="p">().</span><span class="nx">optional</span><span class="p">().</span><span class="nx">describe</span><span class="p">(</span><span class="s2">"Request ID — accepts any format: REQ-001, 001, or 1"</span><span class="p">),</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">args</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">CallToolResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">requestId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getRequest</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">requestId</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`Request </span><span class="si">${</span><span class="nx">args</span><span class="p">.</span><span class="nx">requestId</span><span class="si">}</span><span class="sb"> not found.`</span><span class="w"> </span><span class="p">}],</span>
-<span class="w">            </span><span class="nx">structuredContent</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;not_found&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="kt">args.requestId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`Request </span><span class="si">${</span><span class="nx">args</span><span class="p">.</span><span class="nx">requestId</span><span class="si">}</span><span class="sb"> not found.`</span><span class="w"> </span><span class="p">}],</span>
+<span class="w">            </span><span class="nx">structuredContent</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">"not_found"</span><span class="p">,</span><span class="w"> </span><span class="nx">requestId</span><span class="o">:</span><span class="w"> </span><span class="kt">args.requestId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">          </span><span class="p">};</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`Status for </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">}],</span>
+<span class="w">          </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`Status for </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">}],</span>
 <span class="w">          </span><span class="nx">structuredContent</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">requests</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">request</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">        </span><span class="p">};</span>
 <span class="w">      </span><span class="p">}</span>
 
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getAllRequests</span><span class="p">();</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`Showing status for </span><span class="si">${</span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> request(s).`</span><span class="w"> </span><span class="p">}],</span>
+<span class="w">        </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`Showing status for </span><span class="si">${</span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> request(s).`</span><span class="w"> </span><span class="p">}],</span>
 <span class="w">        </span><span class="nx">structuredContent</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">requests</span><span class="o">:</span><span class="w"> </span><span class="kt">all</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
@@ -3333,7 +3333,7 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="nx">getPendingApprovals</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">createRequest</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">recordDecision</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./mock-data/requests.js&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./mock-data/requests.js"</span><span class="p">;</span>
 </code></pre></div>
 <p>And update it to include <code>getAllRequests</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
@@ -3342,7 +3342,7 @@ Building ui/request-form.html...
 <span class="w">  </span><span class="nx">getPendingApprovals</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">createRequest</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">recordDecision</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./mock-data/requests.js&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./mock-data/requests.js"</span><span class="p">;</span>
 </code></pre></div>
 <p><cc-end-step lab="e11" exercise="3" step="3" /></p>
 <h3 id="step-4-rebuild-and-restart-the-server">Step 4: Rebuild and Restart the Server</h3>
@@ -3444,32 +3444,32 @@ Building ui/status-timeline.html...
 <h3 id="step-4-set-up-the-agent-configuration">Step 4: Set up the Agent configuration</h3>
 <p>Replace the content of <code>appPackage/declarativeAgent.json</code> with:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.6&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access Request Assistant&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An intelligent access request and approval assistant that helps employees request system access, managers review and approve requests, and everyone track request status through interactive widgets.&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$[file(&#39;instruction.txt&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1.6"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Access Request Assistant"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An intelligent access request and approval assistant that helps employees request system access, managers review and approve requests, and everyone track request status through interactive widgets."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$[file('instruction.txt')]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Request Access&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I need to request access to a system&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request Access"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I need to request access to a system"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Review Pending Approvals&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Show me all pending access requests for approval&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Review Pending Approvals"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show me all pending access requests for approval"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Request Status&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is the status of request REQ-001?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check Request Status"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What is the status of request REQ-001?"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;View All Requests&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Show me the status of all access requests&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"View All Requests"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show me the status of all access requests"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;action_1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ai-plugin.json&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"action_1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ai-plugin.json"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>

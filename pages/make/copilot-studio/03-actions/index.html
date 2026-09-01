@@ -2575,7 +2575,7 @@ Configure the new flow action in order to target the Excel spreadsheet with the 
 <p>Select the <strong>Save</strong> button and the new tool based on the Agent flow will be ready.
 Now let's trigger the tool with a prompt like the following one:</p>
 <div class="highlight"><pre><span></span><code>Insert a new candidate into the Excel spreadsheet of HR. The candidate firstname is John, 
-the lastname is White, the role is &quot;HR Administrator&quot;, and the expertise is &quot;Compliance&quot;.
+the lastname is White, the role is "HR Administrator", and the expertise is "Compliance".
 </code></pre></div>
 <p>As like as it was with the previous Step, the first time you use the tool you need to connect to Excel Online in order to consume the connector. If that is the case, select the <strong>Connect</strong> button and once you will be connected, select the <strong>Retry</strong> button to execute the actual tool.</p>
 <p><img alt="The Activity map while invoking the new tool. The agent is prompting the user to connect and then retry invoking the tool." src="../../../../assets/images/make/copilot-studio-03/create-action-flow-connector-06.png" /></p>
@@ -2596,43 +2596,43 @@ Triggering sentences can be: add a new a new row to the persistence storage.
 <p>For the sake of simplicy, we are not going to cover all of the steps here. However, you can simply refer to Lab MCS2 for additional details. </p>
 <p>Here follows the JSON of the adaptive card that you can use to collect the input arguments about the candidate through an action of type <strong>Ask with adaptive card</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TextBlock&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Medium&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bolder&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New HR Candidate Information&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TextBlock"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medium"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bolder"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New HR Candidate Information"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firstname&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Input.Text"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstname"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First Name"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lastname&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Last Name&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Input.Text"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastname"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Name"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;current_role&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Current Role&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Input.Text"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_role"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current Role"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Input.Text&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expertise&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;placeholder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Expertise&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Input.Text"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expertise"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expertise"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action.Submit&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Submit&quot;</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Action.Submit"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Submit"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://adaptivecards.io/schemas/adaptive-card.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.5&quot;</span>
+<span class="w">    </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://adaptivecards.io/schemas/adaptive-card.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Then add a new tool from the group <strong>Add an tool</strong>, select the tab <strong>Tool</strong>, and select the tool that you just created in <a href="#step-3-consuming-a-power-automate-flow">Exercise 1 - Step 3</a>.</p>

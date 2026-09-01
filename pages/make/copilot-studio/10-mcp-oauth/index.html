@@ -2722,12 +2722,12 @@
 <p>Now configure the MCP server with your Entra ID settings.</p>
 <p>Copy the <code>appsettings.json.sample</code> file into a new file with name <code>appsettings.json</code>. Now edit the new file and update the <code>AzureAd</code> section with your values:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;AzureAd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Instance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;TenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_TENANT_ID]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;ClientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_APPLICATION_ID_URI]/HR.Manage&quot;</span>
+<span class="w">  </span><span class="nt">"AzureAd"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://login.microsoftonline.com/"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"TenantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_TENANT_ID]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_HR_MCP_SERVER_CLIENT_ID]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Audience"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_HR_MCP_SERVER_CLIENT_ID]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Scopes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_APPLICATION_ID_URI]/HR.Manage"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2783,24 +2783,24 @@
 <h4 id="update-the-appsettingsjson-configuration">Update the appsettings.json Configuration</h4>
 <p>Now update your <code>appsettings.json</code> file to use the dev tunnel URL in the <code>Scopes</code> properties:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;AzureAd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Instance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;TenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_TENANT_ID]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;ClientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_HR_MCP_SERVER_CLIENT_ID]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[YOUR_DEVTUNNEL_URL]/HR.Manage&quot;</span>
+<span class="w">  </span><span class="nt">"AzureAd"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://login.microsoftonline.com/"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"TenantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_TENANT_ID]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_HR_MCP_SERVER_CLIENT_ID]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Audience"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_HR_MCP_SERVER_CLIENT_ID]"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Scopes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[YOUR_DEVTUNNEL_URL]/HR.Manage"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Replace <code>[YOUR_DEVTUNNEL_URL]</code> with the same dev tunnel URL you configured in Entra ID (e.g., <code>https://hr-mcp-secured.devtunnels.ms</code>).</p>
 <p>Your final configuration should look similar to:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;AzureAd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Instance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;TenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;ClientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Audience&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://hr-mcp-secured.devtunnels.ms/HR.Manage&quot;</span>
+<span class="w">  </span><span class="nt">"AzureAd"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://login.microsoftonline.com/"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"TenantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ClientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Audience"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Scopes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://hr-mcp-secured.devtunnels.ms/HR.Manage"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

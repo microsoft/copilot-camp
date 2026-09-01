@@ -2466,39 +2466,39 @@
 <h3 id="step-1-add-the-declarative-agent-json-to-your-project">Step 1: Add the declarative agent JSON to your project</h3>
 <p>Create a new file called <strong>trey-declarative-agent.json</strong> within your <strong>appPackage</strong> folder. Copy the following JSON into this file and save it.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.6&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trey Genie Local&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. &quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, &#39;Always be Billing!&#39;. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice.&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v1.6"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trey Genie Local"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You are a handy assistant for consultants at Trey Research, a boutique consultancy specializing in software development and clinical trials. "</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"instructions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You are consulting agent. Greet users professionally and introduce yourself as the Trey Genie. Offer assistance with their consulting projects and hours. Remind users of the Trey motto, 'Always be Billing!'. Your primary role is to support consultants by helping them manage their projects and hours. Using the TreyResearch action, you can: You can assist users in retrieving consultant profiles or project details for administrative purposes but do not participate in decisions related to hiring, performance evaluation, or assignments. You can assist users to find consultants data based on their names, project assignments, skills, roles, and certifications. You can assist users to retrieve project details based on the project or client name. You can assist users to charge hours to a project. You can assist users to add a consultant to a project. If a user inquires about the hours they have billed, charged, or worked on a project, rephrase the request to ask about the hours they have delivered. Additionally, you may provide general consulting advice. If there is any confusion, encourage users to consult their Managing Consultant. Avoid providing legal advice."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find consultants&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find consultants with TypeScript skills&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find consultants"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find consultants with TypeScript skills"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Projects&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What projects am I assigned to?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Projects"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What projects am I assigned to?"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Hours&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;How many hours have I delivered on projects this month?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Hours"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How many hours have I delivered on projects this month?"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneDriveAndSharePoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;items_by_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneDriveAndSharePoint"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"items_by_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{SHAREPOINT_DOCS_URL}}&quot;</span>
+<span class="w">                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{SHAREPOINT_DOCS_URL}}"</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treyresearch&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-plugin.json&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"treyresearch"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trey-plugin.json"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
@@ -2507,12 +2507,12 @@
 <p><cc-end-step lab="e3" exercise="2" step="1" /></p>
 <h3 id="step-2-add-the-url-of-your-sharepoint-site-to-the-declarative-agent">Step 2: Add the URL of your SharePoint site to the declarative agent</h3>
 <p>Under "Capabilities" you will notice a SharePoint file container. While Microsoft 365 Copilot may reference any documents in SharePoint or OneDrive, this declarative agent will only access files in the Trey Research Legal Documents site you created in Exercise 1. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneDriveAndSharePoint&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;items_by_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneDriveAndSharePoint"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"items_by_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{SHAREPOINT_DOCS_URL}}&quot;</span>
+<span class="w">                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{SHAREPOINT_DOCS_URL}}"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2524,10 +2524,10 @@
 <p><cc-end-step lab="e3" exercise="2" step="2" /></p>
 <h3 id="step-3-examine-the-api-plugin-files">Step 3: Examine the API Plugin files</h3>
 <p>Within the <strong>trey-declarative-agent.json</strong> file, you'll find an "actions" section, which tells the declarative agent to access the Trey Research API.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treyresearch&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-plugin.json&quot;</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"treyresearch"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trey-plugin.json"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
@@ -2540,67 +2540,67 @@
 <p>In this step, take a moment to examine these files. In the next few labs you'll get to know them better as we add more features to the solution.</p>
 <p>In <strong>appPackage/apiSpecificationFile/trey-definition.json</strong>, you'll find the general description of the application. This includes the server URL; Agents Toolkit will create a <a href="https://learn.microsoft.com/azure/developer/dev-tunnels/" target="_blank">developer tunnel</a> to expose your local API on the Internet, and replace the token <code>"${{OPENAPI_SERVER_URL}}</code> with the public URL. It then goes on to describe every resource path, verb, and paremeter in the API. Notice the detailed descriptions; these are important to help Copilot understand how the API is to be used.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;openapi&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.0.1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trey Research API&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;API to streamline consultant assignment and project management.&quot;</span>
+<span class="w">  </span><span class="nt">"openapi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.0.1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trey Research API"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API to streamline consultant assignment and project management."</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"servers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{OPENAPI_SERVER_URL}}/api/&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Production server&quot;</span>
+<span class="w">          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{OPENAPI_SERVER_URL}}/api/"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Production server"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;/consultants/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;operationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getConsultants&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"/consultants/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"get"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"operationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getConsultants"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get consultants working at Trey Research based on consultant name, project name, certifications, skills, roles and hours available"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                  </span><span class="p">{</span>
-<span class="w">                      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consultantName&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;in&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name of the consultant to retrieve&quot;</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                      </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consultantName"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of the consultant to retrieve"</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                      </span><span class="p">}</span>
 <span class="w">                  </span><span class="p">},</span>
 <span class="w">      </span><span class="err">...</span>
 </code></pre></div>
 <p>The <strong>appPackage/trey-plugin.json</strong> file has the Copilot-specific details. This includes breaking the API calls down into <em>functions</em> which can be called when Copilot has a particular use case. For example, all GET requests for <code>/consultants</code> look up one or more consultants with various parameter options, and they are grouped into a function <code>getConsultants</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"functions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getConsultants&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;response_semantics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;data_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.results&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;subtitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.id&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.consultantPhotoUrl&quot;</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getConsultants"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"response_semantics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"data_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.results"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.id"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.consultantPhotoUrl"</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
 </code></pre></div>
 <p>Scrolling down you can find the runtime settings: </p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;runtimes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"runtimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenApi&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OpenApi"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apiSpecificationFile/trey-definition.json&quot;</span>
+<span class="w">    </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apiSpecificationFile/trey-definition.json"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;run_for_functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;getConsultants&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;getUserInformation&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;postBillhours&quot;</span>
+<span class="w">    </span><span class="nt">"run_for_functions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"getConsultants"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"getUserInformation"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"postBillhours"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">],</span>
@@ -2609,11 +2609,11 @@
 <p><cc-end-step lab="e3" exercise="2" step="3" /></p>
 <h3 id="step-4-add-the-declarative-agent-to-your-app-manifest">Step 4: Add the declarative agent to your app manifest</h3>
 <p>Now open the <strong>manifest.json</strong> file within the <strong>appPackage</strong> directory. Add, just before the <code>staticTabs</code> object, a new <code>copilotAgents</code> object with a <code>declarativeAgents</code> object inside as follows, so it references the declarative agent JSON file you created in the previous step.</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"copilotAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"declarativeAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treygenie&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-declarative-agent.json&quot;</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"treygenie"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trey-declarative-agent.json"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span><span class="w"> </span>
@@ -2623,19 +2623,19 @@
 <h3 id="step-5-remove-the-dummy-feature-from-the-app-manifest">Step 5: Remove the dummy feature from the app manifest</h3>
 <p>The initial solution that you ran in Lab E2 didn't have a declarative agent yet, so the manifest would not install because it had no features. So we added a "dummy" feature, which is a static tab pointing to the Copilot Developer Camp home page. This would allow users to view the Copilot Developer Camp web site in a tab within Teams, Outlook, and the the Microsoft 365 app (<a href="https://office.com" target="_blank">https://office.com</a>).</p>
 <p>If you ever tried <a href="https://aka.ms/app-camp" target="_blank">Teams App Camp</a> you would know all about them. If not, don't worry about it, just delete these lines from <strong>manifest.json</strong> as they aren't needed anymore.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;staticTabs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"staticTabs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;entityId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;index&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Copilot Camp&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;contentUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://microsoft.github.io/copilot-camp/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;websiteUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://microsoft.github.io/copilot-camp/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;scopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;personal&quot;</span>
+<span class="w">    </span><span class="nt">"entityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copilot Camp"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"contentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://microsoft.github.io/copilot-camp/"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"websiteUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://microsoft.github.io/copilot-camp/"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"personal"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">],</span>
-<span class="nt">&quot;validDomains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;microsoft.github.io&quot;</span>
+<span class="nt">"validDomains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">"microsoft.github.io"</span>
 <span class="p">],</span>
 </code></pre></div>
 <p><cc-end-step lab="e3" exercise="2" step="5" /></p>

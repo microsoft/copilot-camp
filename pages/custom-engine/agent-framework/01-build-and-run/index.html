@@ -2563,7 +2563,7 @@
 │   │   └── DateTimeFunctionTool.cs     # Date/time utility
 ├── appPackage/                         # Teams app manifest and icons
 ├── env/                                # Environment configuration files
-├── infra/                              # Scripts, data and templates for the agent&#39;s infrastructure
+├── infra/                              # Scripts, data and templates for the agent's infrastructure
 ├── Program.cs                          # Application entry point
 ├── InsuranceAgent.csproj               # Project file
 └── m365agents.local.yml                # M365 Agents provisioning config
@@ -2596,10 +2596,10 @@
 <p>Now open <code>src/Plugins/StartConversationPlugin.cs</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">StartConversationPlugin</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="na">[Description(&quot;Starts a new conversation suggesting a conversation flow.&quot;)]</span>
+<span class="w">    </span><span class="na">[Description("Starts a new conversation suggesting a conversation flow.")]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">StartConversation</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;👋 Welcome to Zava Insurance Claims Assistant!...&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"👋 Welcome to Zava Insurance Claims Assistant!..."</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">welcomeMessage</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>

@@ -2644,50 +2644,50 @@
 <p>Then exchange the authorization code for an access token.</p>
 <p><strong>PowerShell (Windows):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># Replace the placeholders before running</span>
-<span class="nv">$TENANT_ID</span> <span class="p">=</span> <span class="s2">&quot;{your-tenant-id}&quot;</span>
-<span class="nv">$CLIENT_ID</span> <span class="p">=</span> <span class="s2">&quot;{your-client-id}&quot;</span>
-<span class="nv">$CLIENT_SECRET</span> <span class="p">=</span> <span class="s2">&quot;{your-client-secret}&quot;</span>
-<span class="nv">$AUTH_CODE</span> <span class="p">=</span> <span class="s2">&quot;{code-from-redirect-url}&quot;</span>
+<span class="nv">$TENANT_ID</span> <span class="p">=</span> <span class="s2">"{your-tenant-id}"</span>
+<span class="nv">$CLIENT_ID</span> <span class="p">=</span> <span class="s2">"{your-client-id}"</span>
+<span class="nv">$CLIENT_SECRET</span> <span class="p">=</span> <span class="s2">"{your-client-secret}"</span>
+<span class="nv">$AUTH_CODE</span> <span class="p">=</span> <span class="s2">"{code-from-redirect-url}"</span>
 
 <span class="nv">$body</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="n">grant_type</span>    <span class="p">=</span> <span class="s2">&quot;authorization_code&quot;</span>
+    <span class="n">grant_type</span>    <span class="p">=</span> <span class="s2">"authorization_code"</span>
     <span class="n">client_id</span>     <span class="p">=</span> <span class="nv">$CLIENT_ID</span>
     <span class="n">client_secret</span> <span class="p">=</span> <span class="nv">$CLIENT_SECRET</span>
     <span class="n">code</span>          <span class="p">=</span> <span class="nv">$AUTH_CODE</span>
-    <span class="n">redirect_uri</span>  <span class="p">=</span> <span class="s2">&quot;https://microsoft.github.io/copilot-camp/&quot;</span>
-    <span class="n">scope</span>         <span class="p">=</span> <span class="s2">&quot;api://workiq.svc.cloud.microsoft/WorkIQAgent.Ask offline_access&quot;</span>
+    <span class="n">redirect_uri</span>  <span class="p">=</span> <span class="s2">"https://microsoft.github.io/copilot-camp/"</span>
+    <span class="n">scope</span>         <span class="p">=</span> <span class="s2">"api://workiq.svc.cloud.microsoft/WorkIQAgent.Ask offline_access"</span>
 <span class="p">}</span>
 
 <span class="nv">$response</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="p">`</span>
     <span class="n">-Method</span> <span class="n">Post</span> <span class="p">`</span>
-    <span class="n">-Uri</span> <span class="s2">&quot;https://login.microsoftonline.com/$TENANT_ID/oauth2/v2.0/token&quot;</span> <span class="p">`</span>
-    <span class="n">-ContentType</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span> <span class="p">`</span>
+    <span class="n">-Uri</span> <span class="s2">"https://login.microsoftonline.com/$TENANT_ID/oauth2/v2.0/token"</span> <span class="p">`</span>
+    <span class="n">-ContentType</span> <span class="s2">"application/x-www-form-urlencoded"</span> <span class="p">`</span>
     <span class="n">-Body</span> <span class="nv">$body</span>
 
 <span class="nv">$ACCESS_TOKEN</span> <span class="p">=</span> <span class="nv">$response</span><span class="p">.</span><span class="n">access_token</span>
 
-<span class="nb">Write-Host</span> <span class="s2">&quot;Access token stored in </span><span class="se">`$</span><span class="s2">ACCESS_TOKEN&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">"Access token stored in </span><span class="se">`$</span><span class="s2">ACCESS_TOKEN"</span>
 </code></pre></div>
 <p><strong>Bash (macOS/Linux):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Replace the placeholders before running</span>
-<span class="nv">TENANT_ID</span><span class="o">=</span><span class="s2">&quot;{your-tenant-id}&quot;</span>
-<span class="nv">CLIENT_ID</span><span class="o">=</span><span class="s2">&quot;{your-client-id}&quot;</span>
-<span class="nv">CLIENT_SECRET</span><span class="o">=</span><span class="s2">&quot;{your-client-secret}&quot;</span>
-<span class="nv">AUTH_CODE</span><span class="o">=</span><span class="s2">&quot;{code-from-redirect-url}&quot;</span>
+<span class="nv">TENANT_ID</span><span class="o">=</span><span class="s2">"{your-tenant-id}"</span>
+<span class="nv">CLIENT_ID</span><span class="o">=</span><span class="s2">"{your-client-id}"</span>
+<span class="nv">CLIENT_SECRET</span><span class="o">=</span><span class="s2">"{your-client-secret}"</span>
+<span class="nv">AUTH_CODE</span><span class="o">=</span><span class="s2">"{code-from-redirect-url}"</span>
 
 <span class="nv">RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;https://login.microsoftonline.com/</span><span class="si">${</span><span class="nv">TENANT_ID</span><span class="si">}</span><span class="s2">/oauth2/v2.0/token&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/x-www-form-urlencoded&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;grant_type=authorization_code&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;client_id=</span><span class="si">${</span><span class="nv">CLIENT_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;client_secret=</span><span class="si">${</span><span class="nv">CLIENT_SECRET</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;code=</span><span class="si">${</span><span class="nv">AUTH_CODE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;redirect_uri=https://microsoft.github.io/copilot-camp/&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;scope=api://workiq.svc.cloud.microsoft/WorkIQAgent.Ask+offline_access&quot;</span><span class="k">)</span>
+<span class="w">  </span><span class="s2">"https://login.microsoftonline.com/</span><span class="si">${</span><span class="nv">TENANT_ID</span><span class="si">}</span><span class="s2">/oauth2/v2.0/token"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/x-www-form-urlencoded"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"grant_type=authorization_code"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"client_id=</span><span class="si">${</span><span class="nv">CLIENT_ID</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"client_secret=</span><span class="si">${</span><span class="nv">CLIENT_SECRET</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"code=</span><span class="si">${</span><span class="nv">AUTH_CODE</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"redirect_uri=https://microsoft.github.io/copilot-camp/"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"scope=api://workiq.svc.cloud.microsoft/WorkIQAgent.Ask+offline_access"</span><span class="k">)</span>
 
-<span class="nv">ACCESS_TOKEN</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys,json; print(json.load(sys.stdin)[&#39;access_token&#39;])&quot;</span><span class="k">)</span>
+<span class="nv">ACCESS_TOKEN</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['access_token'])"</span><span class="k">)</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Access token stored in \$ACCESS_TOKEN&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Access token stored in \$ACCESS_TOKEN"</span>
 </code></pre></div>
 <p>The <code>ACCESS_TOKEN</code> variable is now available in your shell session and will be reused in the REST calls that follow.</p>
 <p><cc-end-step lab="WIQ04" exercise="2" step="1" /></p>
@@ -2696,51 +2696,51 @@
 First of all, create a conversation session:</p>
 <p><strong>PowerShell (Windows):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># Create conversation</span>
-<span class="nv">$conversationUrl</span> <span class="p">=</span> <span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations&quot;</span>
+<span class="nv">$conversationUrl</span> <span class="p">=</span> <span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations"</span>
 <span class="nv">$headers</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="s2">&quot;Authorization&quot;</span> <span class="p">=</span> <span class="s2">&quot;Bearer $ACCESS_TOKEN&quot;</span>
-    <span class="s2">&quot;Content-Type&quot;</span>  <span class="p">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="s2">"Authorization"</span> <span class="p">=</span> <span class="s2">"Bearer $ACCESS_TOKEN"</span>
+    <span class="s2">"Content-Type"</span>  <span class="p">=</span> <span class="s2">"application/json"</span>
 <span class="p">}</span>
 
-<span class="nv">$response</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$conversationUrl</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Headers</span> <span class="nv">$headers</span> <span class="n">-Body</span> <span class="s2">&quot;{}&quot;</span>
+<span class="nv">$response</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$conversationUrl</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Headers</span> <span class="nv">$headers</span> <span class="n">-Body</span> <span class="s2">"{}"</span>
 
 <span class="c"># Display conversation details</span>
 <span class="nv">$conversationId</span> <span class="p">=</span> <span class="nv">$response</span><span class="p">.</span><span class="n">id</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Conversation created successfully!&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Conversation ID: $conversationId&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Created: </span><span class="p">$(</span><span class="nv">$response</span><span class="p">.</span><span class="n">createdDateTime</span><span class="p">)</span><span class="s2">&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Status: </span><span class="p">$(</span><span class="nv">$response</span><span class="p">.</span><span class="n">status</span><span class="p">)</span><span class="s2">&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Turn Count: </span><span class="p">$(</span><span class="nv">$response</span><span class="p">.</span><span class="n">turnCount</span><span class="p">)</span><span class="s2">&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">"Conversation created successfully!"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Conversation ID: $conversationId"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Created: </span><span class="p">$(</span><span class="nv">$response</span><span class="p">.</span><span class="n">createdDateTime</span><span class="p">)</span><span class="s2">"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Status: </span><span class="p">$(</span><span class="nv">$response</span><span class="p">.</span><span class="n">status</span><span class="p">)</span><span class="s2">"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Turn Count: </span><span class="p">$(</span><span class="nv">$response</span><span class="p">.</span><span class="n">turnCount</span><span class="p">)</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>Bash (MasOS / Linux):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create conversation</span>
-<span class="nv">CONVERSATION_URL</span><span class="o">=</span><span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations&quot;</span>
+<span class="nv">CONVERSATION_URL</span><span class="o">=</span><span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations"</span>
 
-<span class="nv">CONVERSATION_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONVERSATION_URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="k">)</span>
+<span class="nv">CONVERSATION_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"</span><span class="nv">$CONVERSATION_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"{}"</span><span class="k">)</span>
 
 <span class="c1"># Extract conversation ID</span>
-<span class="nv">CONVERSATION_ID</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.id&#39;</span><span class="k">)</span>
-<span class="nv">CREATED_TIME</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.createdDateTime&#39;</span><span class="k">)</span>
-<span class="nv">STATUS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.status&#39;</span><span class="k">)</span>
-<span class="nv">TURN_COUNT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.turnCount&#39;</span><span class="k">)</span>
+<span class="nv">CONVERSATION_ID</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.id'</span><span class="k">)</span>
+<span class="nv">CREATED_TIME</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.createdDateTime'</span><span class="k">)</span>
+<span class="nv">STATUS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.status'</span><span class="k">)</span>
+<span class="nv">TURN_COUNT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CONVERSATION_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.turnCount'</span><span class="k">)</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Conversation created successfully!&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Conversation ID: </span><span class="nv">$CONVERSATION_ID</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Created: </span><span class="nv">$CREATED_TIME</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Status: </span><span class="nv">$STATUS</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Turn Count: </span><span class="nv">$TURN_COUNT</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Conversation created successfully!"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Conversation ID: </span><span class="nv">$CONVERSATION_ID</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Created: </span><span class="nv">$CREATED_TIME</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Status: </span><span class="nv">$STATUS</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Turn Count: </span><span class="nv">$TURN_COUNT</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>Expected response:</strong></p>
 <p>Here you can see how the expected response should look like:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0d110e7e-2b7e-4270-a899-fd2af6fde333&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;createdDateTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-30T15:28:46.1560062Z&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;turnCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0d110e7e-2b7e-4270-a899-fd2af6fde333"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"createdDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-30T15:28:46.1560062Z"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"turnCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><cc-end-step lab="WIQ04" exercise="2" step="2" /></p>
@@ -2748,69 +2748,69 @@ First of all, create a conversation session:</p>
 <p>Now send your first message to the conversation. This message will be grounded in both enterprise search and web search (default behavior).</p>
 <p><strong>PowerShell (Windows):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># Chat message</span>
-<span class="nv">$chatUrl</span> <span class="p">=</span> <span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations/$conversationId/chat&quot;</span>
+<span class="nv">$chatUrl</span> <span class="p">=</span> <span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations/$conversationId/chat"</span>
 <span class="nv">$headers</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="s2">&quot;Authorization&quot;</span> <span class="p">=</span> <span class="s2">&quot;Bearer $ACCESS_TOKEN&quot;</span>
-    <span class="s2">&quot;Content-Type&quot;</span>  <span class="p">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="s2">"Authorization"</span> <span class="p">=</span> <span class="s2">"Bearer $ACCESS_TOKEN"</span>
+    <span class="s2">"Content-Type"</span>  <span class="p">=</span> <span class="s2">"application/json"</span>
 <span class="p">}</span>
 
 <span class="c"># Define the message</span>
 <span class="nv">$chatBody</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="n">message</span>      <span class="p">=</span> <span class="p">@{</span> <span class="n">text</span> <span class="p">=</span> <span class="s2">&quot;Who am I? What is my role in the company?&quot;</span> <span class="p">}</span>
-    <span class="n">locationHint</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">timeZone</span> <span class="p">=</span> <span class="s2">&quot;America/New_York&quot;</span> <span class="p">}</span>
+    <span class="n">message</span>      <span class="p">=</span> <span class="p">@{</span> <span class="n">text</span> <span class="p">=</span> <span class="s2">"Who am I? What is my role in the company?"</span> <span class="p">}</span>
+    <span class="n">locationHint</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">timeZone</span> <span class="p">=</span> <span class="s2">"America/New_York"</span> <span class="p">}</span>
 <span class="p">}</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="n">-Depth</span> <span class="n">3</span>
 
 <span class="c"># Send message</span>
 <span class="nv">$chatResponse</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$chatUrl</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Headers</span> <span class="nv">$headers</span> <span class="n">-Body</span> <span class="nv">$chatBody</span>
 
 <span class="c"># Display response</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Message sent successfully!&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Response: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">messages</span><span class="p">[-</span><span class="n">1</span><span class="p">].</span><span class="n">text</span><span class="p">)</span><span class="s2">&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Turn Count: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">turnCount</span><span class="p">)</span><span class="s2">&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">"Message sent successfully!"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Response: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">messages</span><span class="p">[-</span><span class="n">1</span><span class="p">].</span><span class="n">text</span><span class="p">)</span><span class="s2">"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Turn Count: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">turnCount</span><span class="p">)</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>Bash (MacOS / Linux):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Chat endpoint</span>
-<span class="nv">CHAT_URL</span><span class="o">=</span><span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations/</span><span class="si">${</span><span class="nv">CONVERSATION_ID</span><span class="si">}</span><span class="s2">/chat&quot;</span>
+<span class="nv">CHAT_URL</span><span class="o">=</span><span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations/</span><span class="si">${</span><span class="nv">CONVERSATION_ID</span><span class="si">}</span><span class="s2">/chat"</span>
 
 <span class="c1"># Define the message</span>
-<span class="nv">CHAT_BODY</span><span class="o">=</span><span class="s1">&#39;{</span>
-<span class="s1">    &quot;message&quot;: {</span>
-<span class="s1">      &quot;text&quot;: &quot;Who am I? What is my role in the company?&quot;</span>
+<span class="nv">CHAT_BODY</span><span class="o">=</span><span class="s1">'{</span>
+<span class="s1">    "message": {</span>
+<span class="s1">      "text": "Who am I? What is my role in the company?"</span>
 <span class="s1">    },</span>
-<span class="s1">    &quot;locationHint&quot;: {</span>
-<span class="s1">      &quot;timeZone&quot;: &quot;America/New_York&quot;</span>
+<span class="s1">    "locationHint": {</span>
+<span class="s1">      "timeZone": "America/New_York"</span>
 <span class="s1">    }</span>
-<span class="s1">  }&#39;</span>
+<span class="s1">  }'</span>
 
 <span class="c1"># Send message</span>
-<span class="nv">CHAT_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_BODY</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="nv">CHAT_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_BODY</span><span class="s2">"</span><span class="k">)</span>
 
 <span class="c1"># Display response</span>
-<span class="nv">LAST_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.messages[-1].text&#39;</span><span class="k">)</span>
-<span class="nv">TURN_COUNT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.turnCount&#39;</span><span class="k">)</span>
+<span class="nv">LAST_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.messages[-1].text'</span><span class="k">)</span>
+<span class="nv">TURN_COUNT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.turnCount'</span><span class="k">)</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Message sent successfully!&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Response: </span><span class="nv">$LAST_MESSAGE</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Turn Count: </span><span class="nv">$TURN_COUNT</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Message sent successfully!"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Response: </span><span class="nv">$LAST_MESSAGE</span><span class="s2">"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Turn Count: </span><span class="nv">$TURN_COUNT</span><span class="s2">"</span>
 </code></pre></div>
 <p><cc-end-step lab="WIQ04" exercise="2" step="3" /></p>
 <h2 id="exercise-3-chat-with-different-grounding-strategies">Exercise 3: Chat with different grounding strategies</h2>
 <h3 id="step-1-chat-with-enterprise-search-only-web-grounding-disabled">Step 1: Chat with enterprise search only (web grounding disabled)</h3>
 <p>By default, Work IQ uses both enterprise and web search grounding. To focus on your organization's data only, disable web grounding:</p>
 <p><strong>PowerShell (Windows):</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nv">$chatUrl</span> <span class="p">=</span> <span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations/$conversationId/chat&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$chatUrl</span> <span class="p">=</span> <span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations/$conversationId/chat"</span>
 <span class="nv">$headers</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="s2">&quot;Authorization&quot;</span> <span class="p">=</span> <span class="s2">&quot;Bearer $ACCESS_TOKEN&quot;</span>
-    <span class="s2">&quot;Content-Type&quot;</span>  <span class="p">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="s2">"Authorization"</span> <span class="p">=</span> <span class="s2">"Bearer $ACCESS_TOKEN"</span>
+    <span class="s2">"Content-Type"</span>  <span class="p">=</span> <span class="s2">"application/json"</span>
 <span class="p">}</span>
 
 <span class="c"># Message with web grounding disabled</span>
 <span class="nv">$chatBody</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="n">message</span>      <span class="p">=</span> <span class="p">@{</span> <span class="n">text</span> <span class="p">=</span> <span class="s2">&quot;What are our company policies on remote work?&quot;</span> <span class="p">}</span>
-    <span class="n">locationHint</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">timeZone</span> <span class="p">=</span> <span class="s2">&quot;America/New_York&quot;</span> <span class="p">}</span>
+    <span class="n">message</span>      <span class="p">=</span> <span class="p">@{</span> <span class="n">text</span> <span class="p">=</span> <span class="s2">"What are our company policies on remote work?"</span> <span class="p">}</span>
+    <span class="n">locationHint</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">timeZone</span> <span class="p">=</span> <span class="s2">"America/New_York"</span> <span class="p">}</span>
     <span class="n">contextualResources</span> <span class="p">=</span> <span class="p">@{</span>
         <span class="n">webContext</span> <span class="p">=</span> <span class="p">@{</span>
             <span class="n">isWebEnabled</span> <span class="p">=</span> <span class="nv">$false</span>
@@ -2820,33 +2820,33 @@ First of all, create a conversation session:</p>
 
 <span class="nv">$chatResponse</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$chatUrl</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Headers</span> <span class="nv">$headers</span> <span class="n">-Body</span> <span class="nv">$chatBody</span>
 
-<span class="nb">Write-Host</span> <span class="s2">&quot;Enterprise-only message sent!&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Response: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">messages</span><span class="p">[-</span><span class="n">1</span><span class="p">].</span><span class="n">text</span><span class="p">)</span><span class="s2">&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">"Enterprise-only message sent!"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Response: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">messages</span><span class="p">[-</span><span class="n">1</span><span class="p">].</span><span class="n">text</span><span class="p">)</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>Bash (MacOS / Linux):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nv">ACCESS_TOKEN</span><span class="o">=</span><span class="k">$(</span>get_access_token<span class="k">)</span>
-<span class="nv">CHAT_URL</span><span class="o">=</span><span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations/</span><span class="si">${</span><span class="nv">CONVERSATION_ID</span><span class="si">}</span><span class="s2">/chat&quot;</span>
+<span class="nv">CHAT_URL</span><span class="o">=</span><span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations/</span><span class="si">${</span><span class="nv">CONVERSATION_ID</span><span class="si">}</span><span class="s2">/chat"</span>
 
 <span class="c1"># Message with web grounding disabled</span>
-<span class="nv">CHAT_BODY</span><span class="o">=</span><span class="s1">&#39;{</span>
-<span class="s1">  &quot;message&quot;: &quot;What are our company policies on remote work?&quot;,</span>
-<span class="s1">  &quot;locationHint&quot;: &quot;America/New_York&quot;,</span>
-<span class="s1">  &quot;contextualResources&quot;: {</span>
-<span class="s1">    &quot;webContext&quot;: {</span>
-<span class="s1">        &quot;isWebEnabled&quot;: false</span>
+<span class="nv">CHAT_BODY</span><span class="o">=</span><span class="s1">'{</span>
+<span class="s1">  "message": "What are our company policies on remote work?",</span>
+<span class="s1">  "locationHint": "America/New_York",</span>
+<span class="s1">  "contextualResources": {</span>
+<span class="s1">    "webContext": {</span>
+<span class="s1">        "isWebEnabled": false</span>
 <span class="s1">    }</span>
 <span class="s1">  }</span>
-<span class="s1">}&#39;</span>
+<span class="s1">}'</span>
 
-<span class="nv">CHAT_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_BODY</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="nv">CHAT_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_BODY</span><span class="s2">"</span><span class="k">)</span>
 
-<span class="nv">LAST_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.messages[-1].text&#39;</span><span class="k">)</span>
+<span class="nv">LAST_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.messages[-1].text'</span><span class="k">)</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Enterprise-only message sent!&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Response: </span><span class="nv">$LAST_MESSAGE</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Enterprise-only message sent!"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Response: </span><span class="nv">$LAST_MESSAGE</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>Note:</strong> Web grounding is toggled per message. If you want it enabled again on the next message, you must omit the <code>contextualResources.webContext.isWebEnabled</code> parameter (default is <code>true</code>).</p>
 <p><cc-end-step lab="WIQ04" exercise="3" step="1" /></p>
@@ -2877,24 +2877,24 @@ First of all, create a conversation session:</p>
 <h3 id="step-3-chat-with-sharepoint-context-after-semantic-index-is-ready">Step 3: Chat with SharePoint context (after Semantic Index is ready)</h3>
 <p>Once documents are indexed, provide SharePoint file URLs as context:</p>
 <p><strong>PowerShell (Windows):</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nv">$chatUrl</span> <span class="p">=</span> <span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations/$conversationId/chat&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">$chatUrl</span> <span class="p">=</span> <span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations/$conversationId/chat"</span>
 <span class="nv">$headers</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="s2">&quot;Authorization&quot;</span> <span class="p">=</span> <span class="s2">&quot;Bearer $ACCESS_TOKEN&quot;</span>
-    <span class="s2">&quot;Content-Type&quot;</span>  <span class="p">=</span> <span class="s2">&quot;application/json&quot;</span>
+    <span class="s2">"Authorization"</span> <span class="p">=</span> <span class="s2">"Bearer $ACCESS_TOKEN"</span>
+    <span class="s2">"Content-Type"</span>  <span class="p">=</span> <span class="s2">"application/json"</span>
 <span class="p">}</span>
 
 <span class="c"># Message with SharePoint file context</span>
 <span class="c"># Note: Replace with your actual SharePoint site and document URLs</span>
 <span class="nv">$chatBody</span> <span class="p">=</span> <span class="p">@{</span>
-    <span class="n">message</span>      <span class="p">=</span> <span class="p">@{</span> <span class="n">text</span> <span class="p">=</span> <span class="s2">&quot;Based on the HR documents, how can I improve my career?&quot;</span> <span class="p">}</span>
-    <span class="n">locationHint</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">timeZone</span> <span class="p">=</span> <span class="s2">&quot;America/New_York&quot;</span> <span class="p">}</span>
+    <span class="n">message</span>      <span class="p">=</span> <span class="p">@{</span> <span class="n">text</span> <span class="p">=</span> <span class="s2">"Based on the HR documents, how can I improve my career?"</span> <span class="p">}</span>
+    <span class="n">locationHint</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">timeZone</span> <span class="p">=</span> <span class="s2">"America/New_York"</span> <span class="p">}</span>
     <span class="n">contextualResources</span> <span class="p">=</span> <span class="p">@{</span>
         <span class="n">files</span> <span class="p">=</span> <span class="p">@(</span>
             <span class="p">@{</span>
-                <span class="n">uri</span> <span class="p">=</span> <span class="s2">&quot;https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options.docx&quot;</span>
+                <span class="n">uri</span> <span class="p">=</span> <span class="s2">"https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options.docx"</span>
             <span class="p">},</span>
             <span class="p">@{</span>
-                <span class="n">uri</span> <span class="p">=</span> <span class="s2">&quot;https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options in the USA.pptx&quot;</span>
+                <span class="n">uri</span> <span class="p">=</span> <span class="s2">"https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options in the USA.pptx"</span>
             <span class="p">}</span>
         <span class="p">)</span>
     <span class="p">}</span>
@@ -2902,37 +2902,37 @@ First of all, create a conversation session:</p>
 
 <span class="nv">$chatResponse</span> <span class="p">=</span> <span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$chatUrl</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-Headers</span> <span class="nv">$headers</span> <span class="n">-Body</span> <span class="nv">$chatBody</span>
 
-<span class="nb">Write-Host</span> <span class="s2">&quot;SharePoint-grounded message sent!&quot;</span>
-<span class="nb">Write-Host</span> <span class="s2">&quot;Response: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">messages</span><span class="p">[-</span><span class="n">1</span><span class="p">].</span><span class="n">text</span><span class="p">)</span><span class="s2">&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">"SharePoint-grounded message sent!"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Response: </span><span class="p">$(</span><span class="nv">$chatResponse</span><span class="p">.</span><span class="n">messages</span><span class="p">[-</span><span class="n">1</span><span class="p">].</span><span class="n">text</span><span class="p">)</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>Bash (MacOS / Linux):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nv">ACCESS_TOKEN</span><span class="o">=</span><span class="k">$(</span>get_access_token<span class="k">)</span>
-<span class="nv">CHAT_URL</span><span class="o">=</span><span class="s2">&quot;https://workiq.svc.cloud.microsoft/rest/conversations/</span><span class="si">${</span><span class="nv">CONVERSATION_ID</span><span class="si">}</span><span class="s2">/chat&quot;</span>
+<span class="nv">CHAT_URL</span><span class="o">=</span><span class="s2">"https://workiq.svc.cloud.microsoft/rest/conversations/</span><span class="si">${</span><span class="nv">CONVERSATION_ID</span><span class="si">}</span><span class="s2">/chat"</span>
 
 <span class="c1"># Message with SharePoint file context</span>
-<span class="nv">CHAT_BODY</span><span class="o">=</span><span class="s1">&#39;{</span>
-<span class="s1">  &quot;message&quot;: &quot;Based on the HR documents, what are the steps to request paid time off?&quot;,</span>
-<span class="s1">  &quot;contextualResources&quot;: {</span>
-<span class="s1">    &quot;files&quot;: [</span>
+<span class="nv">CHAT_BODY</span><span class="o">=</span><span class="s1">'{</span>
+<span class="s1">  "message": "Based on the HR documents, what are the steps to request paid time off?",</span>
+<span class="s1">  "contextualResources": {</span>
+<span class="s1">    "files": [</span>
 <span class="s1">        {</span>
-<span class="s1">            &quot;uri&quot;: &quot;https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options.docx&quot;</span>
+<span class="s1">            "uri": "https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options.docx"</span>
 <span class="s1">        },</span>
 <span class="s1">        {</span>
-<span class="s1">            &quot;uri&quot;: &quot;https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options in the USA.pptx&quot;</span>
+<span class="s1">            "uri": "https://tenant.sharepoint.com/sites/knowledge-base/Documents/Career Path Options in the USA.pptx"</span>
 <span class="s1">        }</span>
 <span class="s1">    ]</span>
 <span class="s1">  }</span>
-<span class="s1">}&#39;</span>
+<span class="s1">}'</span>
 
-<span class="nv">CHAT_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_URL</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_BODY</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="nv">CHAT_RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_URL</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_BODY</span><span class="s2">"</span><span class="k">)</span>
 
-<span class="nv">LAST_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.messages[-1].content&#39;</span><span class="k">)</span>
+<span class="nv">LAST_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$CHAT_RESPONSE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.messages[-1].content'</span><span class="k">)</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SharePoint-grounded message sent!&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Response: </span><span class="nv">$LAST_MESSAGE</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"SharePoint-grounded message sent!"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Response: </span><span class="nv">$LAST_MESSAGE</span><span class="s2">"</span>
 </code></pre></div>
 <p><cc-end-step lab="WIQ04" exercise="3" step="3" /></p>
 <h2 id="lab-completion">Lab completion</h2>

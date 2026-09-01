@@ -2541,14 +2541,14 @@ On the right side of the screen you will see the output of the request, providin
 <p><img alt="The page to edit the manifest of the Entra application. There is the editor with highlighted the property requestedAccessTokenVersion and value of &quot;2&quot;." src="../../../../assets/images/make/copilot-studio-05/custom-connector-07.png" /></p>
 <p>Now you can go back to Visual Studio Code and configure the <code>local.settings.json</code> file accordingly to the settings of the just registered application. Replace the <code>&lt;Client-ID&gt;</code> and the <code>&lt;Tenant-ID&gt;</code> placeholders with the actual values and turn the <code>UseOAuth</code> property to <code>true</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;IsEncrypted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;Values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;AzureWebJobsStorage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UseDevelopmentStorage=true&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;FUNCTIONS_WORKER_RUNTIME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;AAD_APP_CLIENT_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Client-ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;AAD_APP_TENANT_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Tenant-ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;AAD_APP_OAUTH_AUTHORITY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://login.microsoftonline.com/&lt;Tenant-ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;UseOAuth&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">"IsEncrypted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"AzureWebJobsStorage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UseDevelopmentStorage=true"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"FUNCTIONS_WORKER_RUNTIME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"AAD_APP_CLIENT_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Client-ID&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"AAD_APP_TENANT_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Tenant-ID&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"AAD_APP_OAUTH_AUTHORITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://login.microsoftonline.com/&lt;Tenant-ID&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"UseOAuth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

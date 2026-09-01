@@ -2685,44 +2685,44 @@ for (const div of toc) {
 <p>Create a <code>manifest.json</code> file in your plugin root. Use a schema compatible with Cowork plugin packaging and include <code>agentSkills</code> and <code>agentConnectors</code> sections, like illustrated in the following excerpt.</p>
 <p>Use the following model:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;devPreview&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.5.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4-e5f6-7890-abcd-ef1234567890&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;developer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Paolo Pialorsi&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;websiteUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/PaoloPia&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;privacyUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/PaoloPia&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;termsOfUseUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/PaoloPia&quot;</span>
+<span class="w">    </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"manifestVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"devPreview"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1b2c3d4-e5f6-7890-abcd-ef1234567890"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"developer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paolo Pialorsi"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"websiteUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/PaoloPia"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"privacyUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/PaoloPia"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"termsOfUseUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/PaoloPia"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Copilot Dev Camp&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Copilot Dev Camp for Cowork - Copilot Dev Camp and Microsoft Foundry Content Creation &amp; Research&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copilot Dev Camp"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copilot Dev Camp for Cowork - Copilot Dev Camp and Microsoft Foundry Content Creation &amp; Research"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;short&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Copilot Dev Camp and Microsoft Foundry presentations and documentation&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;full&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Comprehensive Cowork plugin for Copilot Dev Camp with skills to research Microsoft Foundry documentation, create professional PowerPoint presentations on Dev Camp topics, and author Word documents with technical guides and one-pagers. Powered by the Microsoft Learn MCP Server.&quot;</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copilot Dev Camp and Microsoft Foundry presentations and documentation"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comprehensive Cowork plugin for Copilot Dev Camp with skills to research Microsoft Foundry documentation, create professional PowerPoint presentations on Dev Camp topics, and author Word documents with technical guides and one-pagers. Powered by the Microsoft Learn MCP Server."</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;icons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;color.png&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;outline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;outline.png&quot;</span>
+<span class="w">    </span><span class="nt">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color.png"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"outline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outline.png"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;accentColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;agentSkills&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./skills/foundry-research&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./skills/dev-camp-deck&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./skills/dev-camp-document&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"accentColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"agentSkills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"folder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./skills/foundry-research"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"folder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./skills/dev-camp-deck"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"folder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./skills/dev-camp-document"</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;agentConnectors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"agentConnectors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;microsoft-learn-mcp&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft Learn MCP Server&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Access to Microsoft&#39;s official documentation for research and content generation. Provides search and fetch capabilities for Microsoft Learn articles and code samples.&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;toolSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;remoteMcpServer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;mcpServerUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://learn.microsoft.com/api/mcp&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"microsoft-learn-mcp"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft Learn MCP Server"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Access to Microsoft's official documentation for research and content generation. Provides search and fetch capabilities for Microsoft Learn articles and code samples."</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"toolSource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"remoteMcpServer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"mcpServerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://learn.microsoft.com/api/mcp"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
@@ -2782,15 +2782,15 @@ The <code>agentConnectors</code> section defines the MCP servers, including thei
 <h3 id="step-1-add-packaging-scripts-in-packagejson">Step 1: Add packaging scripts in <code>package.json</code></h3>
 <p>Add a <code>package.json</code> file in the plugin root folder and define scripts like the following:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;copilot-dev-camp-cowork-plugin&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Copilot Dev Camp plugin for Cowork - Research Microsoft Foundry, create presentations and documentation&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;manifest.json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PowerShell -Command \&quot;Compress-Archive -Path manifest.json, color.png, outline.png, skills -DestinationPath copilot-dev-camp.zip -Force; Write-Host &#39;Plugin packaged: copilot-dev-camp.zip&#39;\&quot;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;package:unix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zip -r copilot-dev-camp.zip manifest.json color.png outline.png skills/&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"copilot-dev-camp-cowork-plugin"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copilot Dev Camp plugin for Cowork - Research Microsoft Foundry, create presentations and documentation"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manifest.json"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"package"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PowerShell -Command \"Compress-Archive -Path manifest.json, color.png, outline.png, skills -DestinationPath copilot-dev-camp.zip -Force; Write-Host 'Plugin packaged: copilot-dev-camp.zip'\""</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"package:unix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zip -r copilot-dev-camp.zip manifest.json color.png outline.png skills/"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span>
+<span class="w">    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>This gives you consistent, repeatable packaging across environments.</p>
@@ -2920,7 +2920,7 @@ Add a concise section with:
 ### Execution mode
 
 Proceed autonomously: inspect, implement, run packaging command, verify outputs, then summarize.
-If a required file is missing, create it following this repo&#39;s conventions.
+If a required file is missing, create it following this repo's conventions.
 If assumptions are required, choose sensible defaults and document them in README.
 </code></pre></div>
 <p>After generation, review <code>manifest.json</code>, validate each <code>SKILL.md</code> frontmatter, and run packaging to produce the final plugin ZIP before upload.</p>

@@ -2420,15 +2420,15 @@ Then insert the <code>&lt;cc-end-step&gt;</code> control at the end of the step.
 
 ... (all the instructions go here)
 
-<span class="p">&lt;</span><span class="nt">cc-end-step</span> <span class="na">lab</span><span class="o">=</span><span class="s">&quot;t1&quot;</span> <span class="na">exercise</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="na">step</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">cc-end-step</span> <span class="na">lab</span><span class="o">=</span><span class="s">"t1"</span> <span class="na">exercise</span><span class="o">=</span><span class="s">"1"</span> <span class="na">step</span><span class="o">=</span><span class="s">"1"</span> <span class="p">/&gt;</span>
 </code></pre></div>
 <p>The control needs your lab, exercise, and step so it can store the checkbox state uniquely across page refreshes.</p>
 <p>For a Table of Contents, use
-<div class="highlight"><pre><span></span><code>!!! abstract &quot;Table of Contents&quot;
+<div class="highlight"><pre><span></span><code>!!! abstract "Table of Contents"
     <span class="p">&lt;</span><span class="nt">cc-table-of-contents</span> <span class="p">/&gt;</span>
 </code></pre></div></p>
 <p>To show the most recent step completed use
-<div class="highlight"><pre><span></span><code>!!! abstract &quot;Where did I leave off?&quot;
+<div class="highlight"><pre><span></span><code>!!! abstract "Where did I leave off?"
     <span class="p">&lt;</span><span class="nt">cc-last-completed-step</span> <span class="p">/&gt;</span>
 </code></pre></div></p>
 <p>Notice the checkbox at the bottom of each step. When users check it, several things happen:</p>

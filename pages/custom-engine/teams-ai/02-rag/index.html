@@ -2622,16 +2622,16 @@
 <p>For this exercise, ensure that you obtain Azure OpenAI text embedding deployment name and Azure AI Search key and endpoint.</p>
 <h3 id="step-1-configure-environment-variables">Step 1: Configure environment variables</h3>
 <p>In your Career Genie project, navigate to <code>env/.env.local.user</code> and paste the following environment variables:</p>
-<div class="highlight"><pre><span></span><code><span class="err">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME=&#39;&lt;Your</span><span class="mi">-</span><span class="err">Tex</span><span class="kc">t</span><span class="mf">-E</span><span class="err">mbeddi</span><span class="kc">n</span><span class="err">g</span><span class="mi">-</span><span class="err">Model</span><span class="mi">-</span><span class="err">Name&gt;&#39;</span>
-<span class="err">SECRET_AZURE_SEARCH_KEY=&#39;&lt;Your</span><span class="mi">-</span><span class="err">Azure</span><span class="mi">-</span><span class="err">AI</span><span class="mi">-</span><span class="err">Search</span><span class="mi">-</span><span class="err">Key&gt;&#39;</span>
-<span class="err">AZURE_SEARCH_ENDPOINT=&#39;&lt;Your</span><span class="mi">-</span><span class="err">Azure</span><span class="mi">-</span><span class="err">AI</span><span class="mi">-</span><span class="err">Search</span><span class="mf">-E</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="err">&gt;&#39;</span>
-<span class="err">INDEX_NAME=&#39;&lt;Your</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">na</span><span class="err">me&gt;&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="err">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME='&lt;Your</span><span class="mi">-</span><span class="err">Tex</span><span class="kc">t</span><span class="mf">-E</span><span class="err">mbeddi</span><span class="kc">n</span><span class="err">g</span><span class="mi">-</span><span class="err">Model</span><span class="mi">-</span><span class="err">Name&gt;'</span>
+<span class="err">SECRET_AZURE_SEARCH_KEY='&lt;Your</span><span class="mi">-</span><span class="err">Azure</span><span class="mi">-</span><span class="err">AI</span><span class="mi">-</span><span class="err">Search</span><span class="mi">-</span><span class="err">Key&gt;'</span>
+<span class="err">AZURE_SEARCH_ENDPOINT='&lt;Your</span><span class="mi">-</span><span class="err">Azure</span><span class="mi">-</span><span class="err">AI</span><span class="mi">-</span><span class="err">Search</span><span class="mf">-E</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="err">&gt;'</span>
+<span class="err">INDEX_NAME='&lt;Your</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">na</span><span class="err">me&gt;'</span>
 </code></pre></div>
 <p>Open <code>teamsapp.local.yml</code> and add the following snippet at the bottom of the file, under <code>uses: file/createOrUpdateEnvironmentFile</code>:</p>
-<div class="highlight"><pre><span></span><code>AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME: ${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}}
-AZURE_SEARCH_KEY: ${{SECRET_AZURE_SEARCH_KEY}}
-AZURE_SEARCH_ENDPOINT: ${{AZURE_SEARCH_ENDPOINT}}
-INDEX_NAME: ${{INDEX_NAME}}
+<div class="highlight"><pre><span></span><code><span class="nt">AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME}}</span>
+<span class="nt">AZURE_SEARCH_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{SECRET_AZURE_SEARCH_KEY}}</span>
+<span class="nt">AZURE_SEARCH_ENDPOINT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{AZURE_SEARCH_ENDPOINT}}</span>
+<span class="nt">INDEX_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{INDEX_NAME}}</span>
 </code></pre></div>
 <p>Navigate to <code>src/config.ts</code> and add the following snippet inside <code>config</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nx">azureOpenAIEmbeddingDeploymentName</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.AZURE_OPENAI_EMBEDDING_DEPLOYMENT_NAME</span><span class="p">,</span>
@@ -2642,30 +2642,30 @@ INDEX_NAME: ${{INDEX_NAME}}
 <p><cc-end-step lab="bta2" exercise="3" step="1" /></p>
 <h3 id="step-2-configure-azure-ai-search-as-a-data-source">Step 2: Configure Azure AI Search as a data source</h3>
 <p>Open <code>src/prompts/chat/config.json</code> in your project, then add <code>data_sources</code> inside the <code>completion</code> brackets:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;data_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"data_sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;azure_search&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$searchEndpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;index_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$indexName&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;api_key&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$searchApiKey&quot;</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"azure_search"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$searchEndpoint"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"index_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$indexName"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api_key"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$searchApiKey"</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;query_type&quot;</span><span class="p">:</span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;in_scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;strictness&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;top_n_documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;embedding_dependency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deployment_name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;deployment_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$azureOpenAIEmbeddingDeploymentName&quot;</span>
+<span class="w">            </span><span class="nt">"query_type"</span><span class="p">:</span><span class="s2">"vector"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"in_scope"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"strictness"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"top_n_documents"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"embedding_dependency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deployment_name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"deployment_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$azureOpenAIEmbeddingDeploymentName"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
 <p>Open <code>src/prompts/chat/skprompt.txt</code> and update the prompt as the following:</p>
-<div class="highlight"><pre><span></span><code>You are a career specialist named &quot;Career Genie&quot; that helps Human Resources team for finding the right candidate for the jobs. 
+<div class="highlight"><pre><span></span><code>You are a career specialist named "Career Genie" that helps Human Resources team for finding the right candidate for the jobs. 
 You are friendly and professional.
 You always greet users with excitement and introduce yourself first.
 You like using emojis where appropriate.
@@ -2675,26 +2675,26 @@ Always mention all citations in your content.
 <div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">install</span> <span class="n">fs</span>
 </code></pre></div>
 <p>Go to <code>src/app/app.ts</code> and add the following parameter in your  <code>OpenAIModel</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">azureApiVersion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2024-02-15-preview&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nx">azureApiVersion</span><span class="o">:</span><span class="w"> </span><span class="s1">'2024-02-15-preview'</span>
 </code></pre></div>
 <p>Add the following import on top of the <code>src/app/app.ts</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fs&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'fs'</span><span class="p">;</span>
 </code></pre></div>
 <p>In <code>src/app/app.ts</code>, replace the <code>defaultPrompt</code> inside the <code>ActionPlanner</code> with the following code snippet:</p>
 <div class="highlight"><pre><span></span><code><span class="nx">defaultPrompt</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prompts</span><span class="p">.</span><span class="nx">getPrompt</span><span class="p">(</span><span class="s1">&#39;chat&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">skprompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;prompts&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;chat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;skprompt.txt&#39;</span><span class="p">));</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prompts</span><span class="p">.</span><span class="nx">getPrompt</span><span class="p">(</span><span class="s1">'chat'</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">skprompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">'..'</span><span class="p">,</span><span class="w"> </span><span class="s1">'prompts'</span><span class="p">,</span><span class="w"> </span><span class="s1">'chat'</span><span class="p">,</span><span class="w"> </span><span class="s1">'skprompt.txt'</span><span class="p">));</span>
 
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dataSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">completion</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">)[</span><span class="s1">&#39;data_sources&#39;</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dataSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">completion</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">)[</span><span class="s1">'data_sources'</span><span class="p">];</span>
 
 <span class="w">    </span><span class="nx">dataSources</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">dataSource</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">dataSource</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;azure_search&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">dataSource</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'azure_search'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">authentication</span><span class="p">.</span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureSearchKey</span><span class="p">;</span>
 <span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureSearchEndpoint</span><span class="p">;</span>
 <span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">indexName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">indexName</span><span class="p">;</span>
 <span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">embedding_dependency</span><span class="p">.</span><span class="nx">deployment_name</span><span class="w"> </span><span class="o">=</span>
 <span class="w">          </span><span class="nx">config</span><span class="p">.</span><span class="nx">azureOpenAIEmbeddingDeploymentName</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">role_information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">skprompt</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">dataSource</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">role_information</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">skprompt</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">});</span>
 

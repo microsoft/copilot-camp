@@ -2607,7 +2607,7 @@
 <span class="nv">ADDITIONAL_ALLOWED_ORIGINS</span><span class="o">=</span>http://localhost:6274,https://&lt;YOUR_DEVTUNNEL_OR_DOMAIN&gt;
 
 <span class="c1"># Azure Table Storage (Azurite for local dev)</span>
-<span class="nv">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s2">&quot;UseDevelopmentStorage=true&quot;</span>
+<span class="nv">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s2">"UseDevelopmentStorage=true"</span>
 </code></pre></div>
 <p>Replace the placeholders:</p>
 <ul>
@@ -2670,10 +2670,10 @@ Security: OAuth 2.0 authentication enabled
 </code></pre></div></p>
 <p>You should see a JSON response confirming OAuth is enabled:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;healthy&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-01-21T10:00:00.000Z&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zava-claims-mcp-server&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuth enabled&quot;</span>
+<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"healthy"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-21T10:00:00.000Z"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zava-claims-mcp-server"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OAuth enabled"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Notice the <code>"authentication": "OAuth enabled"</code> - this confirms the server is running in authenticated mode and reachable via your public tunnel URL.</p>
@@ -2695,16 +2695,16 @@ Security: OAuth 2.0 authentication enabled
 <p><cc-end-step lab="e10" exercise="4" step="3" /></p>
 <h3 id="step-4-verify-authentication-is-required">Step 4: Verify Authentication is Required</h3>
 <p>Try accessing the MCP tools without authentication:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:3001/mcp/tools/call&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;get_claims&quot;,&quot;arguments&quot;:{}}&#39;</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">"http://127.0.0.1:3001/mcp/tools/call"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"name":"get_claims","arguments":{}}'</span>
 </code></pre></div>
 <p>You should receive a 401 Unauthorized response with a <code>WWW-Authenticate</code> header:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Missing Authorization header&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Please include Bearer token in Authorization header&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;auth_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-tunnel-url/oauth/authorize&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;resource_metadata_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-tunnel-url/.well-known/oauth-authorization-server&quot;</span>
+<span class="w">  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing Authorization header"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please include Bearer token in Authorization header"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"auth_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-tunnel-url/oauth/authorize"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"resource_metadata_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-tunnel-url/.well-known/oauth-authorization-server"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>This confirms that authentication is working correctly.</p>

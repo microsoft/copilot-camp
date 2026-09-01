@@ -2404,18 +2404,18 @@
 <p>If you began any of the "Extend" path labs prior to October 27, 2024, you may be using a developer preview schema. A new, supported schema, v1.19, is now available and all preview applications need to update. The new schema also reflects the new Copilot agent naming.</p>
 <p>To update your project, open the <strong>appPackage/manifest.json</strong> file.</p>
 <p>First, replace the first two lines with these:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;manifestVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.19&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"manifestVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.19"</span><span class="p">,</span>
 </code></pre></div>
 <p>If you see a <code>packageName</code> property like this one in your <strong>manifest.json</strong> file, remove it as it is no longer necessary or supported.</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;packageName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.microsoft.teams.extension&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"packageName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.microsoft.teams.extension"</span><span class="p">,</span>
 </code></pre></div>
 <p>Then replace the <code>copilotExtensions</code> property with this:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">"copilotAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"declarativeAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;treygenie&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-declarative-agent.json&quot;</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"treygenie"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trey-declarative-agent.json"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span><span class="w">   </span>
 <span class="w">  </span><span class="p">},</span><span class="w"> </span>

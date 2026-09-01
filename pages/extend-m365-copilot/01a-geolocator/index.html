@@ -2653,11 +2653,11 @@ It's a plain text file and you can write natural language instructions in it. </
 <li>The <code>instructions</code> provides the path to the <strong>instructions.txt</strong> file which holds directives which will determine the operational behavior. You can also put your instructions as plain text as a value here. But for this lab we will use the <strong>instructions.txt</strong> file.</li>
 </ul>
 <p>Another important file is the <code>appPackage/manifest.json</code> file, which contains crucial metadata, including the package name, the developer’s name, and references to the agents utilised by the application. The following excerpt from the manifest.json file illustrates these details:</p>
-<p><div class="highlight"><pre><span></span><code><span class="nt">&quot;copilotAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;declarativeAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">            </span>
+<p><div class="highlight"><pre><span></span><code><span class="nt">"copilotAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"declarativeAgents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">            </span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;declarativeAgent.json&quot;</span>
+<span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"declarativeAgent"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"declarativeAgent.json"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">},</span>
@@ -2701,10 +2701,10 @@ That’s correct! You’ve guessed the city in [number of clues] clues and earne
 If the guess is wrong, say:
 Nice try! [followed by more clues]
 PDF-Based Scenario
-For special rounds, use a PDF file to provide clues from a historical document, traveler&#39;s diary, or ancient map:
+For special rounds, use a PDF file to provide clues from a historical document, traveler's diary, or ancient map:
 This round is different! I’ve got a secret document to help us. I’ll read clues from this [historical map/traveler’s diary] and guide you to guess the city. Here’s the first clue:
 Reference the specific PDF to extract details: Do not provide the citations and also link to the document since its a secret document for generating the questions.
-Traveler&#39;s Diary PDF,Historical Map PDF. Do not provide the citations and also link to the document since its a secret document for generating the questions.
+Traveler's Diary PDF,Historical Map PDF. Do not provide the citations and also link to the document since its a secret document for generating the questions.
 Use emojis where necessary to have friendly tone. 
 Scorekeeping System
 Track how many clues the player uses and calculate points:
@@ -2743,19 +2743,19 @@ Follow the next step to make sure our agent can help user engage with it by givi
 </li>
 </ul>
 <p>Open file <code>declarativeAgent.json</code> and right after the <code>instructions</code> node add a comma <code>,</code> and paste below code.</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Getting Started&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot;I am ready to play the Geo Location Game! Give me a city to guess, and start with the first clue.&quot;</span><span class="w">          </span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Getting Started"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"I am ready to play the Geo Location Game! Give me a city to guess, and start with the first clue."</span><span class="w">          </span>
 
 <span class="w">         </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ready for a Challenge&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Let us try something different. Can we play a round using the travelers diary?&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready for a Challenge"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Let us try something different. Can we play a round using the travelers diary?"</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feeling More Adventurous&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I am in the mood for a challenge! Can we play the game using the historical map? I want to see if I can figure out the city from those ancient clues.&quot;</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feeling More Adventurous"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am in the mood for a challenge! Can we play the game using the historical map? I want to see if I can figure out the city from those ancient clues."</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 </code></pre></div>
@@ -2791,13 +2791,13 @@ To get the full path of a file or folder, you can use the "Copy direct link" opt
 <h3 id="step-2-update-declarative-agent-manifest">Step 2: Update declarative agent manifest</h3>
 <p>Go to the environment file called <strong>.env.dev</strong> and create a new variable called "SP_SITE_URL" and paste the absolute url of the SharePoint site as its value.</p>
 <p>Next, go to the agent manifest <strong>appPackage/declarativeAgent.json</strong> and add a comma <code>,</code> after conversation_starters array and paste the below new array object for extending the agent's capability to refer to SharePoint data of a particular site.</p>
-<p><div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<p><div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OneDriveAndSharePoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;items_by_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OneDriveAndSharePoint"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"items_by_url"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${{SP_SITE_URL}}&quot;</span>
+<span class="w">                </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${{SP_SITE_URL}}"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>

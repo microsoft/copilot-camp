@@ -2711,7 +2711,7 @@ code<span class="w"> </span>.
 <p><cc-end-step lab="cwrk03" exercise="1" step="3" /></p>
 <h3 id="step-4-update-the-mcp-server-url-in-the-plugin">Step 4: Update the MCP server URL in the plugin</h3>
 <p>Open <code>manifest.json</code> and find the <code>agentConnectors</code> section. Replace the <code>mcpServerUrl</code> value with your Dev Tunnel URL + <code>/mcp/messages</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;mcpServerUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms/mcp/messages&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"mcpServerUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms/mcp/messages"</span>
 </code></pre></div>
 <p>Don't touch the <code>authorization</code> section yet — that's coming in Exercise 3.</p>
 <p><cc-end-step lab="cwrk03" exercise="1" step="4" /></p>
@@ -2799,9 +2799,9 @@ code<span class="w"> </span>.
 <p>Three moves from anonymous to authenticated. You have the reference ID — now plug it in.</p>
 <h3 id="step-1-update-manifestjson-with-the-reference-id">Step 1: Update manifest.json with the reference ID</h3>
 <p>Open <code>manifest.json</code> in the <code>zava-claims-sso</code> folder. Find the <code>authorization</code> section in <code>agentConnectors</code> and replace the placeholder:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OAuthPluginVault&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;referenceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;YOUR_SSO_REGISTRATION_ID&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OAuthPluginVault"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"referenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;YOUR_SSO_REGISTRATION_ID&gt;"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Paste your real Microsoft Entra SSO registration ID where you see the placeholder. That's it — the <code>type</code> is already <code>OAuthPluginVault</code>, you're just filling in the reference.</p>
@@ -2847,7 +2847,7 @@ code<span class="w"> </span>.
 <span class="na">ADDITIONAL_ALLOWED_ORIGINS</span><span class="o">=</span><span class="s">http://localhost:6274,https://&lt;YOUR_DEVTUNNEL&gt;.devtunnels.ms</span>
 
 <span class="c1"># Azure Table Storage (Azurite for local dev)</span>
-<span class="na">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s">&quot;UseDevelopmentStorage=true&quot;</span>
+<span class="na">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span><span class="s">"UseDevelopmentStorage=true"</span>
 </code></pre></div>
 <p>Replace the placeholders:</p>
 <table>

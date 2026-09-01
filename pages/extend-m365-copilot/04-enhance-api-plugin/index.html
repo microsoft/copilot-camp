@@ -2453,10 +2453,10 @@
 <span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span><span class="s2">&quot;projects&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">],</span>
-<span class="w">    </span><span class="nx">authLevel</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;anonymous&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">route</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;projects/{*id}&quot;</span><span class="p">,</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">http</span><span class="p">(</span><span class="s2">"projects"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"GET"</span><span class="p">,</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">authLevel</span><span class="o">:</span><span class="w"> </span><span class="s2">"anonymous"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">route</span><span class="o">:</span><span class="w"> </span><span class="s2">"projects/{*id}"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">handler</span><span class="o">:</span><span class="w"> </span><span class="kt">projects</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2483,10 +2483,10 @@ POST {{base_url}}/projects/assignConsultant
 Content-Type: application/json
 
 {
-    &quot;projectName&quot;: &quot;contoso&quot;,
-    &quot;consultantName&quot;: &quot;sanjay&quot;,
-    &quot;role&quot;: &quot;architect&quot;,
-    &quot;forecast&quot;: 30
+    "projectName": "contoso",
+    "consultantName": "sanjay",
+    "role": "architect",
+    "forecast": 30
 }
 </code></pre></div>
 <p><cc-end-step lab="e4" exercise="1" step="3" /></p>
@@ -2506,108 +2506,108 @@ Since editing large JSON files can be tricky, please just <a href="https://githu
 <h3 id="step-2-review-the-updates-optional">Step 2: Review the updates (optional)</h3>
 <p>The first update was to add the <code>/projects/</code> path to the <code>paths</code> collection in the JSON. 
 As you can see, this includes all the available query strings when retrieving the <code>/projects/</code> resource, along with data types and required fields. It also includes the data that will be returned in API responses, including different payloads for status 200 (successful) and 400 (failed) responses.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;/projects/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;get&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;operationId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getProjects&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Get projects matching a specified project name and/or consultant name&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Returns detailed information about projects matching the specified project name and/or consultant name&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"/projects/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"get"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"operationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getProjects"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get projects matching a specified project name and/or consultant name"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Returns detailed information about projects matching the specified project name and/or consultant name"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;consultantName&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;in&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the consultant assigned to the project&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consultantName"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The name of the consultant assigned to the project"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;projectName&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;in&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the project or name of the client&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"projectName"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"query"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The name of the project or name of the client"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;responses&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Successful response&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;application/json&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
-<span class="w">                                    </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">                                        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">        </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"200"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful response"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"application/json"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
-<span class="w">                                                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                    </span><span class="nt">&quot;street&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object"</span><span class="p">,</span>
+<span class="w">                                                </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                    </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                                    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                                    </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                                    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;postalCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                                    </span><span class="nt">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">                                                    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;number&quot;</span>
+<span class="w">                                                    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span>
 <span class="w">                                                    </span><span class="p">},</span>
-<span class="w">                                                    </span><span class="nt">&quot;mapUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">                                                        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uri&quot;</span>
+<span class="w">                                                    </span><span class="nt">"mapUrl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span>
+<span class="w">                                                        </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uri"</span>
 <span class="w">                                                    </span><span class="p">}</span>
 <span class="w">                                                </span><span class="p">}</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                                            </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;forecastThisMonth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">                                            </span><span class="nt">"forecastThisMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;forecastNextMonth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">                                            </span><span class="nt">"forecastNextMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;deliveredLastMonth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">                                            </span><span class="nt">"deliveredLastMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
 <span class="w">                                            </span><span class="p">},</span>
-<span class="w">                                            </span><span class="nt">&quot;deliveredThisMonth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">                                            </span><span class="nt">"deliveredThisMonth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                                </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
 <span class="w">                                            </span><span class="p">}</span>
 <span class="w">                                        </span><span class="p">}</span>
 <span class="w">                                    </span><span class="p">}</span>
 <span class="w">                                </span><span class="p">},</span>
-<span class="w">                                </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span>
+<span class="w">                                </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span>
 <span class="w">                                </span><span class="p">}</span>
 <span class="w">                            </span><span class="p">}</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;404&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Project not found&quot;</span>
+<span class="w">            </span><span class="nt">"404"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project not found"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2628,14 +2628,14 @@ your API by using descriptive names and descriptions in this and all the applica
 <p>The plugin JSON file contains a collection of <em>functions</em>, each of which corresponds to a type of API call. Copilot will choose among these functions when utilizing your plugin at runtime.</p>
 <p>The new <strong>trey-plugin.json</strong> file includes new functions <code>getProjects</code> and <code>postAssignConsultant</code>. For example, here is <code>getProjects</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getProjects&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Returns detailed information about projects matching the specified project name and/or consultant name&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;response_semantics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;data_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.results&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;subtitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.description&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getProjects"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Returns detailed information about projects matching the specified project name and/or consultant name"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"response_semantics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"data_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.results"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.description"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2643,17 +2643,17 @@ your API by using descriptive names and descriptions in this and all the applica
 </code></pre></div>
 <p>Notice that it includes some <code>response_semantics</code> which instruct Copilot's orchestrator how to interpret the response payload. It defines the mapping of structured data in a response payload to specific properties required by the function. It enables the orchestrator to interpret and transform raw response data into meaningful content for rendering or further processing.
 For e.g. look at the response semantics below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"functions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getConsultants&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;response_semantics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;data_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.results&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;subtitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.id&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.consultantPhotoUrl&quot;</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getConsultants"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"response_semantics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"data_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.results"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.name"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.id"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.consultantPhotoUrl"</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
@@ -2661,69 +2661,69 @@ For e.g. look at the response semantics below:</p>
 </code></pre></div>
 <p>Here <code>data_path</code> is : <code>$.results</code> in the <code>response_semantics</code> of function <code>getConsultants</code>. It means the main data resides under the <code>results</code> key in the JSON, which ensures the system extracts data starting at that path. It also defines mappings of specific fields from the raw data to corresponding semantic properties under <code>properties</code> field to readily use it for rendering.</p>
 <p>e.g. </p>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.name&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;subtitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.id&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.consultantPhotoUrl&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.name"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.id"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.consultantPhotoUrl"</span>
 </code></pre></div>
 <p>The POST request has a similar function:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postAssignConsultant&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assign (add) consultant to a project when name, role and project name is specified.&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;response_semantics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;data_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.results.clientName&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;subtitle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$.results.status&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postAssignConsultant"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assign (add) consultant to a project when name, role and project name is specified."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"response_semantics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"data_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.results.clientName"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.results.status"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;confirmation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AdaptiveCard&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assign consultant to a project when name, role and project name is specified.&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;**ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}&quot;</span>
+<span class="w">    </span><span class="nt">"confirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AdaptiveCard"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assign consultant to a project when name, role and project name is specified."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"**ProjectName**: {{function.parameters.projectName}}\n* **ConsultantName**: {{function.parameters.consultantName}}\n* **Role**: {{function.parameters.role}}\n* **Forecast**: {{function.parameters.forecast}}"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>It includes an <a href="https://adaptivecards.io" target="_blank">adaptive card</a> to be used in the confirmation card, which is shown to users to confirm an action prior to issuing a POST request.</p>
 <p>Scrolling down, you can see the <code>runtimes</code> object which defines the type of plugin, the OAS definition file location, and a list of functions. The new functions have been added to the list.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;runtimes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"runtimes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenApi&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;auth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;None&quot;</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OpenApi"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trey-definition.json&quot;</span>
+<span class="w">    </span><span class="nt">"spec"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trey-definition.json"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;run_for_functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;getConsultants&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;getUserInformation&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;getProjects&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;postBillhours&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;postAssignConsultant&quot;</span>
+<span class="w">    </span><span class="nt">"run_for_functions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"getConsultants"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"getUserInformation"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"getProjects"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"postBillhours"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"postAssignConsultant"</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 <span class="p">],</span>
 </code></pre></div>
 <p>Finally, it includes some conversation starters which are prompt suggestions shown to users; the new file has a conversation starter relating to projects.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
-<span class="nt">&quot;conversation_starters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="nt">"localization"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What Trey projects am i assigned to?&quot;</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"What Trey projects am i assigned to?"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Charge 5 hours to the Contoso project for Trey Research&quot;</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Charge 5 hours to the Contoso project for Trey Research"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Which Trey consultants are Azure certified?&quot;</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Which Trey consultants are Azure certified?"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find a Trey consultant who is available now and has Python skills&quot;</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Find a Trey consultant who is available now and has Python skills"</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Add Avery as a developer on the Contoso project for Trey&quot;</span>
+<span class="w">    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add Avery as a developer on the Contoso project for Trey"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">]</span>
 <span class="p">}</span>
@@ -2737,12 +2737,12 @@ For e.g. look at the response semantics below:</p>
 </li>
 <li>
 <p>Locate the <code>version</code> field in the JSON file. It should look something like this:<br />
-   <div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+   <div class="highlight"><pre><span></span><code><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>Increment the version number to a small increment. For example, change it to:<br />
-   <div class="highlight"><pre><span></span><code><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.1&quot;</span>
+   <div class="highlight"><pre><span></span><code><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.1"</span>
 </code></pre></div></p>
 </li>
 <li>
