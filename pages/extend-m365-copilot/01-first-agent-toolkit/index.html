@@ -2644,14 +2644,14 @@ m365agents.yml
 <hr />
 <h2 id="exercise-3-configure-core-files">Exercise 3: Configure core files</h2>
 <ol>
-<li>Open <code>appPackage/declarativeAgent.json</code> and copy/paste this branding baseline (then keep/add your instructions and conversation starters):</li>
-</ol>
+<li>
+<p>Open <code>appPackage/declarativeAgent.json</code> and copy/paste this branding baseline (then keep/add your instructions and conversation starters):</p>
 <div class="highlight"><pre><span></span><code><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Onboarding Agent"</span><span class="p">,</span>
 <span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Helps new Zava Insurance employees find answers to common HR and IT onboarding questions"</span><span class="p">,</span>
 </code></pre></div>
-<ol>
-<li>Open <code>appPackage/manifest.json</code> and copy/paste this branding block:</li>
-</ol>
+</li>
+<li>
+<p>Open <code>appPackage/manifest.json</code> and copy/paste this branding block:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nt">"short"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Onboarding Agent"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zava Insurance Onboarding Agent"</span>
@@ -2661,9 +2661,9 @@ m365agents.yml
 <span class="w">  </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A friendly onboarding agent that helps new Zava Insurance employees with office access, helpdesk support, annual leave, benefits, and mandatory onboarding tasks."</span>
 <span class="p">},</span>
 </code></pre></div>
-<ol>
-<li>Open <code>appPackage/instruction.txt</code> and copy this block exactly as-is:</li>
-</ol>
+</li>
+<li>
+<p>Open <code>appPackage/instruction.txt</code> and copy this block exactly as-is:</p>
 <div class="highlight"><pre><span></span><code># Zava Onboarding Assistant
 
 ## Role
@@ -2681,8 +2681,10 @@ You are a friendly HR and IT onboarding assistant for new employees at Zava Insu
 ## Tone
 - Warm, concise, practical.
 </code></pre></div>
-<ol>
-<li>Save all files.</li>
+</li>
+<li>
+<p>Save all files.</p>
+</li>
 </ol>
 <hr />
 <h2 id="exercise-4-add-grounding-via-embedded-knowledge-capability">Exercise 4: Add grounding via Embedded Knowledge capability</h2>
@@ -2698,8 +2700,15 @@ You are a friendly HR and IT onboarding assistant for new employees at Zava Insu
 <hr />
 <h2 id="exercise-5-test-your-agent">Exercise 5: Test your agent</h2>
 <ol>
-<li>Provision from <strong>Lifecycle -&gt; Provision</strong>.</li>
-<li>Open your agent <strong>Zava Onboarding Agent</strong> in Copilot Chat.</li>
+<li>
+<p>Provision from <strong>Lifecycle -&gt; Provision</strong>.</p>
+<blockquote>
+<p><strong>Tip:</strong> If prompted to choose between <strong>Dev</strong> and <strong>Local</strong>, select <strong>Dev</strong> and proceed.</p>
+</blockquote>
+</li>
+<li>
+<p>Open your agent <strong>Zava Onboarding Agent</strong> in Copilot Chat.</p>
+</li>
 <li>Ask:<ul>
 <li>"Where is the badge pickup desk and what time does it open?"</li>
 <li>"If a new hire is locked out, what fallback should they use?"</li>
@@ -2711,24 +2720,29 @@ You are a friendly HR and IT onboarding assistant for new employees at Zava Insu
 <li>Response includes <strong>Floor 1, Reception B</strong> and <strong>8:15 AM</strong> opening time.</li>
 <li>Response includes <strong>+1-800-ZAVA-ITS</strong> and <strong>Badge Assist</strong> fallback.</li>
 </ul>
+<p><img alt="image of response" src="../../../assets/images/01-first-agent-toolkit/demo-e1b.png" /></p>
 <hr />
 <h2 id="exercise-6-enable-code-interpreter-in-code-and-validate-charts">Exercise 6: Enable Code Interpreter in code and validate charts</h2>
 <ol>
 <li>Open <code>appPackage/declarativeAgent.json</code>.</li>
-<li>In the existing <code>capabilities</code> array, add <code>CodeInterpreter</code> as a new item after the <code>EmbeddedKnowledge</code> entry. Make sure the previous item ends with a comma.</li>
-</ol>
+<li>
+<p>In the existing <code>capabilities</code> array, add <code>CodeInterpreter</code> as a new item after the <code>EmbeddedKnowledge</code> entry. Make sure the previous item ends with a comma.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CodeInterpreter"</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>Save the file.</li>
+</li>
+<li>
+<p>Save the file.</p>
+</li>
 <li>Open <code>appPackage/manifest.json</code> file. Increase version from <code>"version": "1.0.0",</code> to <code>"version": "1.0.1",</code></li>
 <li>Provision from <strong>Lifecycle -&gt; Provision</strong>.</li>
 </ol>
-<blockquote>
-<p>For your agent changes to take effect, increment the manifest version before provisioning.</p>
-</blockquote>
+<div data-widget="callout"
+  data-type="warn"
+  data-title="Increment the manifest version"
+  data-body="For your agent changes to take effect, increment the manifest version before provisioning."></div>
+
 <p>Run these prompts in Copilot Chat for your provisioned agent:</p>
 <ul>
 <li>"Given 20 annual leave days and 260 working days per year, calculate leave percentage and show the result in a 2-row table."</li>
@@ -2745,12 +2759,14 @@ You are a friendly HR and IT onboarding assistant for new employees at Zava Insu
 <h2 id="exercise-7-debug-your-agent-with-developer-mode">Exercise 7: Debug your agent with developer mode</h2>
 <ol>
 <li>Open your provisioned agent in Microsoft 365 Copilot Chat.</li>
-<li>Send this message to the agent:</li>
-</ol>
+<li>
+<p>Send this message to the agent:</p>
 <div class="highlight"><pre><span></span><code>-developer on
 </code></pre></div>
-<ol>
-<li>Run a few prompts from Exercises 5 and 6 again.</li>
+</li>
+<li>
+<p>Run a few prompts from Exercises 5 and 6 again.</p>
+</li>
 <li>Review the debug information shown after each response:</li>
 <li>Which tools/capabilities were used</li>
 <li>What grounding context was applied</li>
