@@ -19,7 +19,7 @@
     "dependencies": {
         "@azure/data-tables": "^13.2.2",
         "@azure/functions": "^4.3.0",
-        "azurite": "^3.26.0",
+        "azurite": "^3.37.0",
         "jwt-validate": "^0.5.1"
     },
     "devDependencies": {
