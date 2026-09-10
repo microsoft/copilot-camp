@@ -6,29 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Build a generic Declarative Agent in Agent Builder and add a packaged skill that generates realistic business scenarios for demos, workshops, and customer conversations.">
       
       
-        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/includes/m-path-links/">
+      
+        <link rel="canonical" href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da-agent-builder/">
       
       
+        <link rel="prev" href="../standalone-labs/">
+      
+      
+        <link rel="next" href="../11-mcp-app/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>M path links - Copilot Developer Camp</title>
+        <title>Build Agent with Skill using Agent Builder - Copilot Developer Camp</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,11 +53,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/labStyles.css">
+      <link rel="stylesheet" href="../../../stylesheets/labStyles.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#lab-e12-build-agent-with-skill-using-agent-builder" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -85,9 +96,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+    <a href="../../.." title="Copilot Developer Camp" class="md-header__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
       
-  <img src="../../assets/images/tent-small.png" alt="logo">
+  <img src="../../../assets/images/tent-small.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              M path links
+              Build Agent with Skill using Agent Builder
             
           </span>
         </div>
@@ -183,7 +194,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -200,11 +211,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../pages/extend-m365-copilot/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -224,7 +237,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../pages/custom-engine/" class="md-tabs__link">
+        <a href="../../custom-engine/" class="md-tabs__link">
           
   
   
@@ -244,7 +257,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../pages/sharepoint/" class="md-tabs__link">
+        <a href="../../sharepoint/" class="md-tabs__link">
           
   
   
@@ -264,7 +277,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../pages/copilot-cowork/00-cowork-setup/" class="md-tabs__link">
+        <a href="../../copilot-cowork/00-cowork-setup/" class="md-tabs__link">
           
   
   
@@ -284,7 +297,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../pages/work-iq/" class="md-tabs__link">
+        <a href="../../work-iq/" class="md-tabs__link">
           
   
   
@@ -304,7 +317,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../pages/agent-365/" class="md-tabs__link">
+        <a href="../../agent-365/" class="md-tabs__link">
           
   
   
@@ -324,7 +337,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../pages/beyond-labs/" class="md-tabs__link">
+        <a href="../../beyond-labs/" class="md-tabs__link">
           
   
   
@@ -342,7 +355,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../awards/" class="md-tabs__link">
+      <a href="../../../awards/" class="md-tabs__link">
         
   
   
@@ -385,9 +398,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
+    <a href="../../.." title="Copilot Developer Camp" class="md-nav__button md-logo" aria-label="Copilot Developer Camp" data-md-component="logo">
       
-  <img src="../../assets/images/tent-small.png" alt="logo">
+  <img src="../../../assets/images/tent-small.png" alt="logo">
 
     </a>
     Copilot Developer Camp
@@ -414,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -438,26 +451,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -475,7 +493,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -493,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -527,17 +545,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -573,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/01-first-agent-new/" class="md-nav__link">
+      <a href="../01-first-agent-new/" class="md-nav__link">
         
   
   
@@ -601,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/01-first-agent-builder/" class="md-nav__link">
+      <a href="../01-first-agent-builder/" class="md-nav__link">
         
   
   
@@ -629,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/01-first-agent-toolkit/" class="md-nav__link">
+      <a href="../01-first-agent-toolkit/" class="md-nav__link">
         
   
   
@@ -671,17 +692,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   
@@ -717,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/bundles/" class="md-nav__link">
+      <a href="../bundles/" class="md-nav__link">
         
   
   
@@ -745,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/bundle-a/" class="md-nav__link">
+      <a href="../bundle-a/" class="md-nav__link">
         
   
   
@@ -773,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/bundle-b/" class="md-nav__link">
+      <a href="../bundle-b/" class="md-nav__link">
         
   
   
@@ -801,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/bundle-d/" class="md-nav__link">
+      <a href="../bundle-d/" class="md-nav__link">
         
   
   
@@ -829,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/bundle-e/" class="md-nav__link">
+      <a href="../bundle-e/" class="md-nav__link">
         
   
   
@@ -862,26 +886,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
             
   
   
@@ -899,7 +928,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -917,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/standalone-labs/" class="md-nav__link">
+      <a href="../standalone-labs/" class="md-nav__link">
         
   
   
@@ -942,10 +971,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/12-skills-da-agent-builder/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab E12 - Build Agent with Skill using Agent Builder
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -961,6 +1017,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-skills-in-an-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why skills in an agent?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-create-the-skill-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Create the skill package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-build-the-agent-in-agent-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Build the agent in Agent Builder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-publish-and-test-the-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: Publish and test the skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Congratulations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -973,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/11-mcp-app/" class="md-nav__link">
+      <a href="../11-mcp-app/" class="md-nav__link">
         
   
   
@@ -1001,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/01-typespec-declarative-agent/" class="md-nav__link">
+      <a href="../01-typespec-declarative-agent/" class="md-nav__link">
         
   
   
@@ -1029,7 +1193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/extend-m365-copilot/01a-geolocator/" class="md-nav__link">
+      <a href="../01a-geolocator/" class="md-nav__link">
         
   
   
@@ -1124,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/" class="md-nav__link">
+      <a href="../../custom-engine/" class="md-nav__link">
         
   
   
@@ -1204,7 +1368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agents-sdk/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/" class="md-nav__link">
         
   
   
@@ -1232,7 +1396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/00-prerequisites/" class="md-nav__link">
         
   
   
@@ -1260,7 +1424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/01-agent-in-foundry/" class="md-nav__link">
         
   
   
@@ -1288,7 +1452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/02-agent-with-agents-sdk/" class="md-nav__link">
         
   
   
@@ -1316,7 +1480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/03-agent-configuration/" class="md-nav__link">
         
   
   
@@ -1344,7 +1508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
+      <a href="../../custom-engine/agents-sdk/04-bring-agent-to-copilot/" class="md-nav__link">
         
   
   
@@ -1432,7 +1596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agent-framework/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/" class="md-nav__link">
         
   
   
@@ -1460,7 +1624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agent-framework/00-prerequisites/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/00-prerequisites/" class="md-nav__link">
         
   
   
@@ -1488,7 +1652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/01-build-and-run/" class="md-nav__link">
         
   
   
@@ -1516,7 +1680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/02-add-claim-search/" class="md-nav__link">
         
   
   
@@ -1544,7 +1708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/custom-engine/agent-framework/03-add-copilot-retrieval/" class="md-nav__link">
+      <a href="../../custom-engine/agent-framework/03-add-copilot-retrieval/" class="md-nav__link">
         
   
   
@@ -1639,7 +1803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/sharepoint/" class="md-nav__link">
+      <a href="../../sharepoint/" class="md-nav__link">
         
   
   
@@ -1667,7 +1831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/sharepoint/sharepoint-copilot-apps/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-copilot-apps/" class="md-nav__link">
         
   
   
@@ -1695,7 +1859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/sharepoint/sharepoint-copilot-apps/01-first-copilot-app/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-copilot-apps/01-first-copilot-app/" class="md-nav__link">
         
   
   
@@ -1723,7 +1887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/sharepoint/sharepoint-agents/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-agents/" class="md-nav__link">
         
   
   
@@ -1751,7 +1915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/sharepoint/sharepoint-agents/01-first-agent/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-agents/01-first-agent/" class="md-nav__link">
         
   
   
@@ -1779,7 +1943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/sharepoint/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
+      <a href="../../sharepoint/sharepoint-agents/02-sharing-agents/" class="md-nav__link">
         
   
   
@@ -1866,7 +2030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/copilot-cowork/00-cowork-setup/" class="md-nav__link">
+      <a href="../../copilot-cowork/00-cowork-setup/" class="md-nav__link">
         
   
   
@@ -1894,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/copilot-cowork/01-cowork-skills/" class="md-nav__link">
+      <a href="../../copilot-cowork/01-cowork-skills/" class="md-nav__link">
         
   
   
@@ -1922,7 +2086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/copilot-cowork/02-cowork-plugins/" class="md-nav__link">
+      <a href="../../copilot-cowork/02-cowork-plugins/" class="md-nav__link">
         
   
   
@@ -1950,7 +2114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/copilot-cowork/03-cowork-plugins-sso/" class="md-nav__link">
+      <a href="../../copilot-cowork/03-cowork-plugins-sso/" class="md-nav__link">
         
   
   
@@ -2037,7 +2201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/work-iq/" class="md-nav__link">
+      <a href="../../work-iq/" class="md-nav__link">
         
   
   
@@ -2065,7 +2229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/work-iq/01-work-iq-setup-and-cli/" class="md-nav__link">
+      <a href="../../work-iq/01-work-iq-setup-and-cli/" class="md-nav__link">
         
   
   
@@ -2093,7 +2257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/work-iq/02-work-iq-a2a/" class="md-nav__link">
+      <a href="../../work-iq/02-work-iq-a2a/" class="md-nav__link">
         
   
   
@@ -2121,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/work-iq/03-work-iq-mcp/" class="md-nav__link">
+      <a href="../../work-iq/03-work-iq-mcp/" class="md-nav__link">
         
   
   
@@ -2149,7 +2313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/work-iq/04-work-iq-rest/" class="md-nav__link">
+      <a href="../../work-iq/04-work-iq-rest/" class="md-nav__link">
         
   
   
@@ -2236,7 +2400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/agent-365/" class="md-nav__link">
+      <a href="../../agent-365/" class="md-nav__link">
         
   
   
@@ -2323,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/beyond-labs/" class="md-nav__link">
+      <a href="../../beyond-labs/" class="md-nav__link">
         
   
   
@@ -2351,7 +2515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pages/beyond-labs/blogs/context-and-viral-prompt-impact/" class="md-nav__link">
+      <a href="../../beyond-labs/blogs/context-and-viral-prompt-impact/" class="md-nav__link">
         
   
   
@@ -2386,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../awards/" class="md-nav__link">
+      <a href="../../../awards/" class="md-nav__link">
         
   
   
@@ -2423,22 +2587,303 @@
 
 
 
-  <h1>M path links</h1>
+<h1 id="lab-e12-build-agent-with-skill-using-agent-builder">Lab E12 - Build Agent with Skill using Agent Builder</h1>
+<div class="lab-intro-video">
+    <div style="flex: 1; min-width: 0;">
+        <iframe src="//www.youtube.com/embed/JKeNgEYv63k?si=C766yHTi0bGSGfd3>" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9;">
+        </iframe>
+        <div>Deep dive on Skills from the product team behind the feature</div>
+    </div>
+</div>
 
+<div data-widget="hero"
+    data-badge="Standalone · Lab E12"
+    data-badge-color="green"
+    data-icon="🧩"
+    data-subtitle="Add a reusable skill to a Declarative Agent without writing application code"
+    data-time="20 min"
+    data-requires="Microsoft 365 Copilot + Frontier Program access"
+    ></div>
+
+<p>In this lab, you'll create a generic <strong>Demo Planning Agent</strong> in Agent Builder and extend it with a reusable skill. The skill generates realistic business scenarios for demos, workshops, hackathons, presentations, and customer conversations.</p>
+<h2 id="why-skills-in-an-agent">Why skills in an agent?</h2>
+<p>A skill is a focused capability that the agent loads when the user's task matches its description. This <strong>progressive disclosure</strong> keeps specialized guidance out of the agent's standing context until it is relevant.</p>
+<p>Skills provide several benefits:</p>
 <ul>
-<li><a href="/copilot-camp/pages/extend-message-ext/00-prerequisites">Lab M0 - Prerequisites</a> READY FOR TESTING</li>
-<li><a href="/copilot-camp/pages/extend-message-ext/01-nw-teams-app">Lab M1 - Get to know Northwind message extension</a> READY FOR TESTING</li>
-<li><a href="/copilot-camp/pages/extend-message-ext/02-nw-plugin">Lab M2 - Run app in Microsoft 365 Copilot</a> READY FOR TESTINGSOON</li>
-<li><a href="/copilot-camp/pages/extend-message-ext/03-enhance-nw-plugin">Lab M3 - Enhance plugin with new search command</a> READY FOR TESTING</li>
-<li><a href="/copilot-camp/pages/extend-message-ext/04-add-authentication">Lab M4 - Add authentication</a> READY FOR TESTING</li>
-<li><a href="/copilot-camp/pages/extend-message-ext/05-add-action">Lab M5 - Enhance plugin with an action command</a> COMING SOON</li>
+<li><strong>Smaller always-on instructions:</strong> Keep the agent's core role, tone, and safety guidance concise instead of loading every task-specific procedure on every turn.</li>
+<li><strong>Focused behavior:</strong> Give each specialized task its own instructions and supporting resources without crowding the agent's general instructions.</li>
+<li><strong>Predictable activation:</strong> Use the skill description to define which requests should load the capability and which requests the agent should handle normally.</li>
+<li><strong>Easier maintenance and reuse:</strong> Update a focused skill independently and reuse the same package across agents.</li>
 </ul>
+<p>Use agent-level instructions for behavior that applies to nearly every interaction. Use a skill for specialized guidance or knowledge needed only for matching tasks.</p>
+<h2 id="scenario">Scenario</h2>
+<p>Compelling demos begin with a business challenge, not a list of technology features. You need a repeatable way to turn topics such as Microsoft 365 Copilot, Declarative Agents, Model Context Protocol (MCP), Microsoft Graph, Teams applications, and Power Platform into stories that an audience can understand and evaluate.</p>
+<p>The <strong>Demo Planning Agent</strong> will handle general planning requests. When a user asks for a demo idea, business scenario, use case, customer story, or workshop example, its <strong>Demo Scenario Generator</strong> skill will identify the requested topic, create a realistic business problem, describe the users and solution, and define measurable outcomes.</p>
+<h2 id="lab-objectives">Lab objectives</h2>
+<p>By the end of this lab, you'll be able to:</p>
+<ul>
+<li>Create and package a custom <code>SKILL.md</code> file</li>
+<li>Create a Declarative Agent in Agent Builder</li>
+<li>Keep the agent's core instructions generic</li>
+<li>Upload a custom skill package and add suggested prompts</li>
+<li>Publish the agent and validate selective skill invocation</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>A plain-text editor, such as Notepad on Windows, TextEdit on macOS, or Visual Studio Code</li>
+<li>A Microsoft 365 account with a qualifying Microsoft 365 Copilot license or pay-as-you-go access</li>
+<li>An organization enrolled in the Microsoft Frontier Program</li>
+<li>Permission to create agents in your tenant</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> Custom skills in Declarative Agents are currently available in preview through the Microsoft Frontier Program, with general availability planned soon. Agent Builder supports up to eight skills per agent, and each compressed skill package can be up to 50 MB.</p>
+</blockquote>
+<hr />
+<h2 id="exercise-1-create-the-skill-package">Exercise 1: Create the skill package</h2>
+<p>In this exercise, you'll create the <strong>Demo Scenario Generator</strong> skill and package it as a ZIP file that Agent Builder can upload.</p>
+<h3 id="step-1-create-the-skill-file">Step 1: Create the skill file</h3>
+<ol>
+<li>Create a folder named <code>demo-scenario-generator</code> in a location you can easily find.</li>
+<li>
+<p>Create a new <strong>plain-text</strong> document using the instructions for your operating system:</p>
+<ul>
+<li><strong>Windows with Notepad:</strong> Open Notepad and create a new document.</li>
+<li><strong>macOS with TextEdit:</strong> Open TextEdit and create a new document. Before entering or pasting any content, select <strong>Format</strong> &gt; <strong>Make Plain Text</strong>, or press <strong>Shift+Command+T</strong>. Open the <strong>Format</strong> menu again and confirm that it now shows <strong>Make Rich Text</strong>. This confirms that the current document is in plain-text mode.</li>
+<li><strong>Another editor:</strong> Create a new plain-text document. Do not use a rich-text or word-processing document.</li>
+</ul>
+<blockquote>
+<p><strong>Important for TextEdit:</strong> TextEdit creates rich-text documents by default. Renaming a rich-text document to <code>SKILL.md</code> does not convert it to Markdown. You must select <strong>Make Plain Text</strong> before pasting the skill content.</p>
+</blockquote>
+</li>
+<li>
+<p>Paste the following content into the plain-text document:</p>
+<div class="highlight"><pre><span></span><code>---
+name: demo-scenario-generator
+description: |
+    Creates realistic business scenarios for demos, workshops, hackathons, and
+    presentations. Use when users ask for demo ideas, business scenarios, use
+<span class="gu">    cases, customer stories, workshop examples, or sample projects.</span>
+<span class="gu">---</span>
+
+When activated:
+
+<span class="k">1.</span> Identify the technology or topic.
+<span class="k">2.</span> Pick the "after" metric first - the specific number or outcome the solution
+     produces (e.g. "cart abandonment drops from 47% to 28%") - then build the
+     business problem backward from it, so the "before" state is exactly what
+     would produce that number. This is what makes a scenario survive a
+     follow-up question instead of collapsing into "improves efficiency."
+<span class="k">3.</span> Create a realistic business problem consistent with that number.
+<span class="k">4.</span> Describe who the users are.
+<span class="k">5.</span> Explain how the solution helps.
+<span class="k">6.</span> Include measurable outcomes, stated as the same concrete numbers from step 2.
+
+Return results using the following format:
+
+<span class="gu">## Scenario</span>
+
+<span class="gu">## Users</span>
+
+<span class="gu">## Challenge</span>
+
+<span class="gu">## Solution</span>
+
+<span class="gu">## Success Criteria</span>
+</code></pre></div>
+</li>
+<li>
+<p>Save the document inside the <code>demo-scenario-generator</code> folder:</p>
+<ul>
+<li><strong>Windows with Notepad:</strong> Select <strong>File</strong> &gt; <strong>Save As</strong>. Enter <code>"SKILL.md"</code> in <strong>File name</strong>, select <strong>All files</strong> for <strong>Save as type</strong>, select <strong>UTF-8</strong> for <strong>Encoding</strong>, and then select <strong>Save</strong>. Quotation marks prevent Notepad from adding <code>.txt</code> to the file name.</li>
+<li><strong>macOS with TextEdit:</strong> Select <strong>File</strong> &gt; <strong>Save</strong>, enter <code>SKILL.md</code>, choose the <code>demo-scenario-generator</code> folder, and then select <strong>Save</strong>. If TextEdit asks whether to use <code>.md</code> or <code>.txt</code>, select <strong>Use .md</strong>.</li>
+<li><strong>Another editor:</strong> Save the document as a UTF-8 plain-text file named exactly <code>SKILL.md</code>. Do not save it as rich text or as <code>SKILL.md.txt</code>.</li>
+</ul>
+</li>
+<li>
+<p>Reopen <code>SKILL.md</code> in your editor and confirm:</p>
+<ul>
+<li>The first line is <code>---</code>.</li>
+<li>The content appears exactly as shown, without formatting codes.</li>
+<li>The file does not begin with <code>{\rtf1</code>. If it does, it is still a rich-text file. Create a new document, convert it to plain text, and paste the skill content again.</li>
+<li>The file name is exactly <code>SKILL.md</code>, not <code>SKILL.md.txt</code>.</li>
+</ul>
+</li>
+</ol>
+<p>The YAML frontmatter controls skill discovery. The <code>name</code> identifies the skill, and the <code>description</code> tells Copilot which requests should activate it.</p>
+<p><cc-end-step lab="E12" exercise="1" step="1" /></p>
+<h3 id="step-2-create-the-zip-package">Step 2: Create the ZIP package</h3>
+<p>Follow the instructions for your operating system.</p>
+<h4 id="macos">macOS</h4>
+<ol>
+<li>In Finder, open the <code>demo-scenario-generator</code> folder.</li>
+<li>Control-click <code>SKILL.md</code>, and then select <strong>Compress "SKILL.md"</strong>.</li>
+<li>Rename the resulting archive from <code>SKILL.md.zip</code> to <code>demo-scenario-generator.zip</code>.</li>
+<li>Move <code>demo-scenario-generator.zip</code> beside the <code>demo-scenario-generator</code> folder so it is easy to locate for upload.</li>
+</ol>
+<h4 id="windows">Windows</h4>
+<ol>
+<li>In File Explorer, open the <code>demo-scenario-generator</code> folder.</li>
+<li>Right-click <code>SKILL.md</code>, select <strong>Compress to ZIP file</strong>, and name the archive <code>demo-scenario-generator.zip</code>.</li>
+<li>If <strong>Compress to ZIP file</strong> isn't available, select <strong>Send to</strong> &gt; <strong>Compressed (zipped) folder</strong>, and then rename the archive to <code>demo-scenario-generator.zip</code>.</li>
+<li>Move <code>demo-scenario-generator.zip</code> beside the <code>demo-scenario-generator</code> folder so it is easy to locate for upload.</li>
+</ol>
+<p>The archive must contain <code>SKILL.md</code> at its root, not inside an additional folder.</p>
+<p><cc-end-step lab="E12" exercise="1" step="2" /></p>
+<h3 id="step-3-verify-the-package">Step 3: Verify the package</h3>
+<ol>
+<li>Open <code>demo-scenario-generator.zip</code> with the archive viewer for your operating system.</li>
+<li>Confirm that <code>SKILL.md</code> is visible at the root of the archive.</li>
+<li>Confirm that the archive does not contain a nested <code>demo-scenario-generator</code> folder.</li>
+</ol>
+<p>Agent Builder requires the complete ZIP package. Do not upload the Markdown file by itself.</p>
+<p><cc-end-step lab="E12" exercise="1" step="3" /></p>
+<hr />
+<h2 id="exercise-2-build-the-agent-in-agent-builder">Exercise 2: Build the agent in Agent Builder</h2>
+<p>In this exercise, you'll configure the agent's general behavior, upload the skill, and add suggested prompts.</p>
+<h3 id="step-1-start-a-new-agent">Step 1: Start a new agent</h3>
+<ol>
+<li>Open <a href="https://m365.cloud.microsoft/chat" target="_blank">Microsoft 365 Copilot Chat</a> and sign in.</li>
+<li>In the left navigation, under <strong>Agents</strong>, select the <strong>+ New agent</strong> icon.</li>
+<li>Select <strong>Skip</strong> to bypass the conversational builder experience and open the configuration experience for a new agent.</li>
+</ol>
+<p><cc-end-step lab="E12" exercise="2" step="1" /></p>
+<h3 id="step-2-configure-the-agent">Step 2: Configure the agent</h3>
+<ol>
+<li>Enter <code>Demo Planning Agent</code> for the name.</li>
+<li>Enter the following description:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>Helps users plan professional demos, workshops, hackathons, presentations, and customer conversations.
+</code></pre></div>
+<ol>
+<li>Add the following instructions:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="gh"># Demo Planning Agent</span>
+
+<span class="gu">## Role</span>
+
+Help users plan professional demos, workshops, hackathons, presentations,
+and customer conversations.
+
+<span class="gu">## Skill routing</span>
+
+<span class="k">-</span><span class="w"> </span>Review the available skills for every request.
+<span class="k">-</span><span class="w"> </span>Use a skill when its description matches the user's intent.
+<span class="k">-</span><span class="w"> </span>Follow the selected skill's instructions and output format.
+<span class="k">-</span><span class="w"> </span>Do not apply a skill's specialized format to unrelated requests.
+<span class="k">-</span><span class="w"> </span>If no skill matches, respond using the general instructions or ask a concise
+    clarifying question.
+
+<span class="gu">## General behavior</span>
+
+<span class="k">-</span><span class="w"> </span>Be concise, credible, and practical.
+<span class="k">-</span><span class="w"> </span>Do not invent product capabilities.
+<span class="k">-</span><span class="w"> </span>State important assumptions.
+</code></pre></div>
+<p>These instructions define behavior that applies to the whole agent. Keep the scenario-generation workflow and output format in <code>SKILL.md</code> so they are loaded only for matching requests.</p>
+<p><cc-end-step lab="E12" exercise="2" step="2" /></p>
+<h3 id="step-3-upload-the-skill-package">Step 3: Upload the skill package</h3>
+<ol>
+<li>In the configuration experience, expand <strong>Skills</strong> and select <strong>Add</strong>.</li>
+<li>Upload <code>demo-scenario-generator.zip</code>.</li>
+<li>Review the skill details and confirm that the name is <strong>demo-scenario-generator</strong>.</li>
+<li>Confirm that the description mentions demo ideas, business scenarios, use cases, customer stories, workshop examples, and sample projects.</li>
+</ol>
+<p>If Agent Builder reports a package error, reopen the ZIP and verify that <code>SKILL.md</code> is at its root and includes valid YAML frontmatter.</p>
+<p><cc-end-step lab="E12" exercise="2" step="3" /></p>
+<h3 id="step-4-add-suggested-prompts-and-create-the-agent">Step 4: Add suggested prompts and create the agent</h3>
+<p>Add the following suggested prompts:</p>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Declarative Agent demo</td>
+<td>Create a demo scenario for Declarative Agents.</td>
+</tr>
+<tr>
+<td>Copilot workshop</td>
+<td>Give me a workshop scenario for Microsoft 365 Copilot.</td>
+</tr>
+<tr>
+<td>MCP customer story</td>
+<td>Create a customer story for an MCP-enabled agent.</td>
+</tr>
+<tr>
+<td>Plan a rehearsal</td>
+<td>Help me plan the rehearsal schedule and presenter handoffs for a customer demo next week.</td>
+</tr>
+</tbody>
+</table>
+<p>Review the configuration, and then select <strong>Create</strong>.</p>
+<p><cc-end-step lab="E12" exercise="2" step="4" /></p>
+<hr />
+<h2 id="exercise-3-publish-and-test-the-skill">Exercise 3: Publish and test the skill</h2>
+<p>In this exercise, you'll publish the agent and verify both positive and negative skill matching.</p>
+<h3 id="step-1-publish-the-agent">Step 1: Publish the agent</h3>
+<ol>
+<li>When agent creation is complete, select <strong>Publish</strong>.</li>
+<li>Review the agent details and confirm the publish action.</li>
+<li>Wait for publishing to finish, and then open <strong>Demo Planning Agent</strong> in Microsoft 365 Copilot.</li>
+</ol>
+<p>Publishing and sharing options can vary by tenant policy. Use the audience permitted by your organization for this lab.</p>
+<p><cc-end-step lab="E12" exercise="3" step="1" /></p>
+<h3 id="step-2-test-skill-activation">Step 2: Test skill activation</h3>
+<p>Start a new conversation for each prompt:</p>
+<div class="highlight"><pre><span></span><code>Give me a customer story for a workshop about our vector search product, something for a technical audience.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a demo scenario for Declarative Agents.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Give me a workshop scenario for Microsoft 365 Copilot.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a customer story for an MCP-enabled agent.
+</code></pre></div>
+<p>For each response, confirm that the agent uses the five headings ✅ from <code>SKILL.md</code>, creates a scenario relevant to the requested topic, and uses consistent concrete numbers in the challenge and success criteria.</p>
+<p><img alt="image of demo" src="../../../assets/images/extend-m365-copilot-12/demo.png" /></p>
+<p><cc-end-step lab="E12" exercise="3" step="2" /></p>
+<h3 id="step-3-test-the-skill-boundary">Step 3: Test the skill boundary</h3>
+<p>Send this request:</p>
+<div class="highlight"><pre><span></span><code>Help me plan the rehearsal schedule and presenter handoffs for a customer demo next week.
+</code></pre></div>
+<p>Confirm that the agent provides practical rehearsal or handoff guidance without using the scenario skill's five-section format. The request is in the agent's general scope, but it does not ask for a demo idea, business scenario, use case, customer story, workshop example, or sample project.</p>
+<p>This boundary test demonstrates that the skill is loaded only when its description matches the request.</p>
+<p><cc-end-step lab="E12" exercise="3" step="3" /></p>
+<h3 id="step-4-compare-the-result-with-the-expected-structure">Step 4: Compare the result with the expected structure</h3>
+<p>A response to <code>Create a demo scenario for Declarative Agents.</code> should use this structure:</p>
+<div class="highlight"><pre><span></span><code>## Scenario
+
+## Users
+
+## Challenge
+
+## Solution
+
+## Success Criteria
+</code></pre></div>
+<p>The wording can vary. Validate the structure, business relevance, intended users, solution value, and measurable outcomes rather than expecting an exact response.</p>
+<p><cc-end-step lab="E12" exercise="3" step="4" /></p>
+<h2 id="congratulations">Congratulations</h2>
+<p>You created a generic Declarative Agent in Agent Builder, added a packaged custom skill, and verified both positive and negative skill matching.</p>
+<div data-widget="labnav"
+    data-prev="../standalone-labs/"
+    data-prev-label="Explore More Standalone Labs"></div>
+
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/e12-skills-da-agent-builder" /></p>
+<!-- No completion badge is assigned to this lab yet.
+<cc-award badgeId="TBD" badgeName="TBD" />
+-->
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -2484,24 +2929,24 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       
-        <script src="../../javascripts/mermaid-init.js"></script>
+        <script src="../../../javascripts/mermaid-init.js"></script>
       
-        <script src="../../javascripts/cc-award.js"></script>
+        <script src="../../../javascripts/cc-award.js"></script>
       
-        <script src="../../javascripts/cc-next.js"></script>
+        <script src="../../../javascripts/cc-next.js"></script>
       
-        <script src="../../javascripts/cc-lab-step.js"></script>
+        <script src="../../../javascripts/cc-lab-step.js"></script>
       
-        <script src="../../javascripts/cc-card.js"></script>
+        <script src="../../../javascripts/cc-card.js"></script>
       
-        <script src="../../javascripts/cc-widgets.js"></script>
+        <script src="../../../javascripts/cc-widgets.js"></script>
       
     
   </body>
