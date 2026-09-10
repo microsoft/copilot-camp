@@ -44,7 +44,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "joi": "^17.9.2",
+    "joi": "^17.13.6",
     "jsonwebtoken": "^9.0.2",
     "jwt-validate": "^0.5.1",
     "passport": "^0.7.0",
