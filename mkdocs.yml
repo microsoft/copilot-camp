@@ -72,6 +72,7 @@ plugins:
                 - Bundle E - Declarative Agents with Copilot Connectors: 'pages/extend-m365-copilot/bundle-e.md'
               - Standalone Labs:
                 - Overview: 'pages/extend-m365-copilot/standalone-labs.md'
+                - Lab E12 - Build Agent with Skill using Agent Builder: 'pages/extend-m365-copilot/12-skills-da-agent-builder.md'
                 - Lab E11 - MCP App with Interactive Widgets: 'pages/extend-m365-copilot/11-mcp-app.md'
                 - Build a Declarative Agent with TypeSpec: 'pages/extend-m365-copilot/01-typespec-declarative-agent.md'
                 - Build an Instructions-Based Geo Locator Agent: 'pages/extend-m365-copilot/01a-geolocator.md'

@@ -120,6 +120,14 @@ flowchart TD
 
 ## 🆕 What's New?
 
+!!! example "Updated in September 2026"
+
+    We’ve added a new standalone lab to the Declarative Agent pathway for building an agent with a reusable skill in Agent Builder.
+
+    - **Build an agent with a custom skill in Agent Builder**:
+    Create and package a reusable `SKILL.md` file, add it to a Declarative Agent without writing application code, and test that the skill is invoked only for matching requests.
+    [🔗 Start Lab E12](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da-agent-builder/)
+
 !!! example "Updated in August 2026"
 
     We’ve added a new Copilot Cowork security lab and reorganized the Declarative Agent learning experience.
@@ -131,16 +139,6 @@ flowchart TD
     - **Choose a clearer Declarative Agent pathway**:
     Start with the E1A and E1B fundamentals, follow a guided bundle for an end-to-end scenario, or choose an independent standalone lab for a focused skill. Bundle-specific prerequisites now appear directly on each bundle page.
     [🔗 Explore the Declarative Agent pathways](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/)
-
-!!! example "Updated in July 2026"
-
-    We’re excited to announce **a brand new set of hands-on labs** about extending Microsoft 365 Copilot with the new SharePoint Copilot Apps. 
-
-    - **Build your first SharePoint Copilot App**:
-    Scaffold an SPFx v1.24 Copilot Component with React, customize it, add custom tool parameters, test it locally in the Copilot Workbench, then package and deploy it so it renders as an interactive UX component inside Microsoft 365 Copilot.
-    [🔗 Start this lab](https://microsoft.github.io/copilot-camp/pages/sharepoint/sharepoint-copilot-apps/01-first-copilot-app/)
-
-
 
 ## 🧑‍💻 More
 

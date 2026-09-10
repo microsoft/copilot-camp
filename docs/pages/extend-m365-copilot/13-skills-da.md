@@ -1,5 +1,5 @@
 ---
-code: E12
+code: E13
 title: Build Agent with Skill using Microsoft 365 Agents Toolkit
 description: Build a generic Declarative Agent with a selectively invoked skill that generates realistic business scenarios for demos, workshops, and customer conversations.
 tags: [agents, skills, copilot, declarative-agent]
@@ -11,7 +11,7 @@ created-date: 2026-08-13
 last-edited-date: 2026-08-13
 ---
 
-# Lab E12 - Build Agent with Skill using Microsoft 365 Agents Toolkit
+# Lab E13 - Build Agent with Skill using Microsoft 365 Agents Toolkit
 
 <!--
 <div class="lab-intro-video">
