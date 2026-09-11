@@ -75,17 +75,17 @@ Place the `kitty-explain` folder that includes `SKILL.md` and `references` folde
            └── 📂 references/
 ```
 
-Make sure your `declarativeAgent.json` version is above `1.8`, and in the file, specify the skill path. 
+In the unified `manifest.json`, specify the skill path:
 
 ```json
-"x-agent_skills": [
+"agentSkills": [
     {
       "folder": "skills/kitty-explain"
     }
   ],
 ```
 
-Also, add some custom `converastion starter`. For example,
+In `declarativeAgent.json`, it's a good idea to add some custom `converastion starter`. For example,
 
 ```json
 "conversation_starters": [
@@ -122,6 +122,11 @@ Modify your agent instruction to make it compatible with the skill if you need.
 
 Try creating your own skills! Maybe you can just swap cats to your headshot photos 😆
 
+---
+
+I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. 
+
+🐈
 
 ## 📓 Learn More
 
@@ -130,8 +135,3 @@ Try creating your own skills! Maybe you can just swap cats to your headshot phot
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/kitty-explain-skill" />
 
----
-
-I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. 
-
-🐈
