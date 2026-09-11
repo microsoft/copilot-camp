@@ -2480,14 +2480,14 @@
 <span class="w">           </span>├──<span class="w"> </span>📄<span class="w"> </span>SKILL.md
 <span class="w">           </span>└──<span class="w"> </span>📂<span class="w"> </span>references/
 </code></pre></div>
-<p>Make sure your <code>declarativeAgent.json</code> version is above <code>1.8</code>, and in the file, specify the skill path. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">"x-agent_skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<p>In the unified <code>manifest.json</code>, specify the skill path:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"agentSkills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"folder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skills/kitty-explain"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 </code></pre></div>
-<p>Also, add some custom <code>converastion starter</code>. For example,</p>
+<p>In <code>declarativeAgent.json</code>, it's a good idea to add some custom <code>converastion starter</code>. For example,</p>
 <div class="highlight"><pre><span></span><code><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain [concept] in simple language"</span><span class="p">,</span>
@@ -2512,15 +2512,15 @@
 <p>Modify your agent instruction to make it compatible with the skill if you need. </p>
 <h3 id="go-nuts-with-skills">🥜 Go nuts with skills!</h3>
 <p>Try creating your own skills! Maybe you can just swap cats to your headshot photos 😆</p>
+<hr />
+<p>I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. </p>
+<p>🐈</p>
 <h2 id="learn-more">📓 Learn More</h2>
 <ul>
 <li>🧪 Lab E12: <a href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da-agent-builder/">Build Agent with Skill using Agent Builder</a></li>
 <li>📖 Learn Doc: <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-skills">Custom skills in declarative agents</a></li>
 </ul>
 <p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/kitty-explain-skill" /></p>
-<hr />
-<p>I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. </p>
-<p>🐈</p>
 
 
 
