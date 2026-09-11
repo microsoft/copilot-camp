@@ -2452,7 +2452,17 @@
 <li>📂 <a href="https://github.com/microsoft/m365-copilot-agents-playbook/tree/main/01-extend/demo-kitty-explain/kitty-explain">kitty-explain</a></li>
 </ul>
 <p>Basically, all you need to do is just dumping this <code>kitty-explain</code> folder into your agent, and add a few lines to the agent's instruction.</p>
-<h3 id="add-skill-to-an-agent-built-with-m365-agents-toolkit">⚙️ Add Skill to an agent built with M365 Agents Toolkit</h3>
+<h3 id="add-skill-to-an-agent-built-with-agent-builder-no-code">🎨 Add Skill to an agent built with Agent Builder (No-Code)</h3>
+<p>First, compress the entire kitty-explain folder that include <code>SKILL.md</code> and references to create <code>kitty-explain.zip</code>.</p>
+<ol>
+<li>Go to https://m365.cloud.microsoft/ and from the left menu, click <strong>Agents</strong> and create a new agent.</li>
+<li>Choose your agent or create a simple agent that summarizes a given content.</li>
+<li>In the agent instruction, include a "Use skill" instruction (See below)</li>
+<li>Add a sample prompt under <strong>Suggested prompts:</strong> Title: "Kitty Explain visual" and Message should be something similar to "Explain [content] by cats.". Make this fit to what the agent does.</li>
+<li>Under <strong>Skills</strong>, upload a zipped kitty-explain skill.</li>
+<li>Voilà! Test your agent now!</li>
+</ol>
+<h3 id="add-skill-to-an-agent-built-with-m365-agents-toolkit-sneak-preview">⚙️ Add Skill to an agent built with M365 Agents Toolkit (Sneak preview)</h3>
 <p>In this article, I am not walking you through how to build a declarative agent using <strong>M365 Agents Toolkit</strong>, and assuming you know how to built one already. Give the agent a simple instruction that makes it summarize and explain given documents, articles, and URLs, and give clear explanations of the content.</p>
 <p>Place the <code>kitty-explain</code> folder that includes <code>SKILL.md</code> and <code>references</code> folder in your declarative agent package.</p>
 <div class="highlight"><pre><span></span><code>📂<span class="w"> </span>your-agent
