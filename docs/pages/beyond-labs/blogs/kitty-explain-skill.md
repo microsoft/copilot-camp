@@ -39,7 +39,18 @@ The skill source code is located in another GitHub repo (so you probably want to
 
 Basically, all you need to do is just dumping this `kitty-explain` folder into your agent, and add a few lines to the agent's instruction.
 
-### ⚙️ Add Skill to an agent built with M365 Agents Toolkit
+### 🎨 Add Skill to an agent built with Agent Builder (No-Code)
+
+First, compress the entire kitty-explain folder that include `SKILL.md` and references to create `kitty-explain.zip`.
+
+1. Go to https://m365.cloud.microsoft/ and from the left menu, click **Agents** and create a new agent.
+1. Choose your agent or create a simple agent that summarizes a given content.
+1. In the agent instruction, include a "Use skill" instruction (See below)
+1. Add a sample prompt under **Suggested prompts:** Title: "Kitty Explain visual" and Message should be something similar to "Explain [content] by cats.". Make this fit to what the agent does.
+1. Under **Skills**, upload a zipped kitty-explain skill.
+1. Voilà! Test your agent now!
+
+### ⚙️ Add Skill to an agent built with M365 Agents Toolkit (Sneak preview)
 
 In this article, I am not walking you through how to build a declarative agent using **M365 Agents Toolkit**, and assuming you know how to built one already. Give the agent a simple instruction that makes it summarize and explain given documents, articles, and URLs, and give clear explanations of the content.
 
