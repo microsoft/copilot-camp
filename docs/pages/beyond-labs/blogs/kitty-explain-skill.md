@@ -1,7 +1,7 @@
 # A Fun Way to Learn with Kitty-Explain Skill for Agents
 
 
-<cc-blog-meta author="Tomomi Imura" date="August 18, 2026" image="../../../../assets/authors/tomomi-imura.jpg"></cc-blog-meta>
+<cc-blog-meta author="Tomomi Imura" date="September 10, 2026" image="../../../../assets/authors/tomomi-imura.jpg"></cc-blog-meta>
 
 ![Kitty explain](https://raw.githubusercontent.com/microsoft/m365-copilot-agents-playbook/main/01-extend/images/screenshot-skill.png)
 
