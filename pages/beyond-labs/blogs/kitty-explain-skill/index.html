@@ -2430,6 +2430,7 @@
 
 <h1 id="a-fun-way-to-learn-with-kitty-explain-skill-for-agents">A Fun Way to Learn with Kitty-Explain Skill for Agents</h1>
 <p><cc-blog-meta author="Tomomi Imura" date="September 10, 2026" image="../../../../assets/authors/tomomi-imura.jpg"></cc-blog-meta></p>
+<p>Custom skills in declarative agents are now in public preview 🎉</p>
 <p><img alt="Kitty explain" src="https://raw.githubusercontent.com/microsoft/m365-copilot-agents-playbook/main/01-extend/images/screenshot-skill.png" /></p>
 <p>I hope you joined <a href="https://aka.ms/M365AgentsPlaybook">The Microsoft 365 Copilot Agent's Playbook | Microsoft Reactor</a> Livecast. If not, it's not too late to catch up, because this article walks you through the demo from the episode 1. Let's explore how the Kitty Explain skill brings a playful, visual twist to learning with agents.</p>
 <h2 id="kitty-explain-skill">🐱 Kitty Explain Skill</h2>
@@ -2462,8 +2463,10 @@
 <li>Under <strong>Skills</strong>, upload a zipped kitty-explain skill.</li>
 <li>Voilà! Test your agent now!</li>
 </ol>
-<h3 id="add-skill-to-an-agent-built-with-m365-agents-toolkit-sneak-preview">⚙️ Add Skill to an agent built with M365 Agents Toolkit (Sneak preview)</h3>
-<p>In this article, I am not walking you through how to build a declarative agent using <strong>M365 Agents Toolkit</strong>, and assuming you know how to built one already. Give the agent a simple instruction that makes it summarize and explain given documents, articles, and URLs, and give clear explanations of the content.</p>
+<h3 id="add-skill-to-an-agent-built-with-m365-agents-toolkit-sneak-peak">⚙️ Add Skill to an agent built with M365 Agents Toolkit - Sneak Peak</h3>
+<p><em>The feature to add skills will be available in the toolkit when the feature goes GA. So stay tuned!</em></p>
+<p>Here I'm not walking you through how to build a declarative agent using <strong>M365 Agents Toolkit</strong>, and assuming you know how to built one already! </p>
+<p>Make sure you have the latest M365 Agent Toolkit, and create an agent that summarizes given documents, articles, or URLs, and gives clear explanations of the content. </p>
 <p>Place the <code>kitty-explain</code> folder that includes <code>SKILL.md</code> and <code>references</code> folder in your declarative agent package.</p>
 <div class="highlight"><pre><span></span><code>📂<span class="w"> </span>your-agent
 <span class="w">   </span>├──<span class="w"> </span>ai-plugin.json
@@ -2477,6 +2480,25 @@
 <span class="w">           </span>├──<span class="w"> </span>📄<span class="w"> </span>SKILL.md
 <span class="w">           </span>└──<span class="w"> </span>📂<span class="w"> </span>references/
 </code></pre></div>
+<p>Make sure your <code>declarativeAgent.json</code> version is above <code>1.8</code>, and in the file, specify the skill path. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">"x-agent_skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"folder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skills/kitty-explain"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+</code></pre></div>
+<p>Also, add some custom <code>converastion starter</code>. For example,</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain [concept] in simple language"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain the technology"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain [concept] by cats"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kitty Explain visual"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+</code></pre></div>
 <p>Then, add the "Use Skill" instruction (see below) in <code>instruction.txt</code>.</p>
 <h3 id="use-skill-instruction-example">📜 "Use Skill" instruction example</h3>
 <p>You should add this instruction to your agent's instruction.</p>
@@ -2489,11 +2511,16 @@
 </code></pre></div>
 <p>Modify your agent instruction to make it compatible with the skill if you need. </p>
 <h3 id="go-nuts-with-skills">🥜 Go nuts with skills!</h3>
-<p>Maybe you can swap the cat images to your headshot photos 😆</p>
+<p>Try creating your own skills! Maybe you can just swap cats to your headshot photos 😆</p>
+<h2 id="learn-more">📓 Learn More</h2>
+<ul>
+<li>🧪 Lab E12: <a href="https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da-agent-builder/">Build Agent with Skill using Agent Builder</a></li>
+<li>📖 Learn Doc: <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-skills">Custom skills in declarative agents</a></li>
+</ul>
+<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/kitty-explain-skill" /></p>
 <hr />
 <p>I hope this gave you a better understanding of how skills work and inspired you to create your own skills for declarative agents. </p>
 <p>🐈</p>
-<p><img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/kitty-explain-skill" /></p>
 
 
 
