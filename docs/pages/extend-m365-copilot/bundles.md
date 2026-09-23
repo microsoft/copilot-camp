@@ -6,8 +6,8 @@ title: Declarative Agent Developer Bundles
      data-badge="🧩 Guided learning track"
      data-badge-color="blue"
      data-title="Declarative Agent Developer Bundles"
-     data-subtitle="Complete the mandatory on-ramp first, then choose a focused bundle path based on your goals."
-     data-path="0::Fundamentals|1::Bundle Prerequisites|*A::MCP Foundation|*B::Multi-Agent Workflows|*C::MCP App|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
+     data-subtitle="Complete E1B, then choose a focused bundle and prepare its requirements before starting the labs."
+     data-path="0::Fundamentals|*A::MCP Foundation|*B::Multi-Agent Workflows|*D::API-Based Declarative Agent|*E::DA with Connectors"></div>
 
 <div data-widget="sectionlabel" data-text="Learning bundles"></div>
 
@@ -50,26 +50,6 @@ title: Declarative Agent Developer Bundles
      data-lab2-items="Create Zava Procurement agent with embedded knowledge|Build ZavaCare orchestrator agent|Connect worker agents via Title IDs|Validate multi-agent routing"
      data-arc="Labs: E8 + E9"
      data-start-url="../bundle-b/"></div>
-
-<div data-widget="bundle"
-     data-icon="🖼️"
-     data-label="Bundle C"
-     data-bundle-key="c"
-     data-label-color="green"
-     data-title="MCP App: Interactive Widgets"
-     data-tagline="Extend a working MCP server with React + Fluent UI widgets that render tool results as interactive UI inside Copilot."
-     data-time="~2 hrs"
-     data-lab1-badge="Lab E11"
-     data-lab1-badge-color="green"
-     data-lab1-title="MCP App and Tools"
-     data-lab1-items="Run MCP app scaffold|Build React + Fluent UI widget|Register tool-to-widget mapping|Test interactive rendering in Copilot"
-     data-transition=""
-     data-lab2-badge=""
-     data-lab2-badge-color=""
-     data-lab2-title=""
-     data-lab2-items=""
-     data-arc="Lab: E11"
-     data-start-url="../bundle-c/"></div>
 
 <div data-widget="bundle"
      data-icon="🧭"

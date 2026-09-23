@@ -6,18 +6,18 @@ title: Extend Microsoft 365 Copilot
      data-badge="🤖 Developer path"
      data-badge-color="blue"
      data-title="Extend Microsoft 365 Copilot"
-     data-subtitle="Build customized assistants with Declarative Agents. From fundamentals to production-grade security and rich interactive UI — all in one coherent narrative."
-     data-path="0::Fundamentals|1::Prerequisites|2::Build &amp; Integrate|3::Authentication|4::Integration"></div>
+     data-subtitle="Build customized assistants with Declarative Agents. Start with the fundamentals, follow a guided bundle, or choose a focused standalone lab."
+     data-path="1::Fundamentals|2::Bundle-based learning|3::Standalone labs"></div>
 # Build Declarative Agents in Microsoft 365 Copilot
-### From your first agent in a browser to production-grade deployment in VS Code
+### Choose the learning path that matches your goal
 
 > **Microsoft 365 Copilot is powerful — but it answers everything.**
 > Declarative agents make it answer only what matters to you.
 > This course takes you from first idea to production deployment — no matter your starting point.
 
-- **✓ No-code soft launch: E1A -> E1B -> Prerequisites -> choose a bundle**
-- **✓ Pro-code jump: start at E1B -> Prerequisites -> choose a bundle**
-- **✓ Then choose your bundle: A, B, C, D, or E based on scenario**
+- **Path 1 — Fundamentals:** complete E1A and E1B
+- **Path 2 — Bundle-based learning:** complete E1B, then choose Bundle A, B, D, or E and follow its prerequisites
+- **Path 3 — Standalone labs:** choose a focused lab without committing to a complete bundle
 
 
 ---
@@ -55,27 +55,30 @@ The declarative model sits at the most accessible point on the entire agent-buil
 
 ---
 
-## Who This Is For
+## Choose Your Path
 
-### One course. One on-ramp. Multiple bundles.
+### Three ways to learn
 
-Whether you've never opened a code editor **or** you live in VS Code, this course meets you where you are.
+Whether you've never opened a code editor **or** you live in VS Code, choose the path that fits what you want to learn now.
 
 The non-developer discovers that natural language *is* the interface, and that agents can generate code on their behalf when they need to go further. The developer can quickly validate how fast and capable the declarative model is in a setup where Microsoft 365 Copilot access and licensing are already in place.
 
 ---
 
-### Mandatory On-ramp — Fundamentals + Prerequisites for Pro-code bundles
+## Path 1 — Fundamentals
 
-**Start here, no exceptions.**
+Build the shared foundation for creating declarative agents. Complete both labs in order if you are new to agent development; experienced developers can start with E1B.
 
-Before any bundle, follow one of these jump patterns, then complete the Prerequisites for Pro-code bundles -  bundle-readiness gate:
+- **[Lab E1A — Declarative Agent Foundation with Agent Builder](01-first-agent-builder):** create your first agent with a no-code experience.
+- **[Lab E1B — Declarative Agent Foundation with Agents Toolkit](01-first-agent-toolkit):** move into a pro-code workflow in VS Code.
 
-- **No-code learners:** E1A (Agent Builder) -> E1B (Agents Toolkit)
-- **Pro-code learners:** E1B directly
-- **Prerequisites for Pro-code bundles:** tools, versions, and mental model (MCP, Dev Tunnels, Azurite, declarative agents)
+**Recommended progression:** E1A -> E1B.
 
-This gives every learner a shared baseline before specializing.
+---
+
+## Path 2 — Bundle-Based Learning
+
+Choose a guided sequence when you want to build an end-to-end scenario. Complete E1B, then open your chosen bundle and follow its prerequisites to prepare the required tools, tenant, and development environment.
 
 ---
 
@@ -105,21 +108,6 @@ Compose connected agents and orchestrate multi-agent workflows inside Copilot fo
 
 ---
 
-### Bundle C — MCP App
-
-**"I want richer, interactive experiences on top of MCP."**
-
-Extend an MCP server with React + Fluent UI interactive widgets so users can review, confirm, and act with richer UX. This is a build-once, work-anywhere pattern: MCP apps and tools can also be used across other compatible clients, including Claude and ChatGPT.
-
-**You will build:**
-
-- Interactive UI widgets backed by MCP tools
-- Fluent UI components for actionable responses
-- A polished app-style user experience inside Copilot flows
-- A portable MCP-based agent surface you can reuse across compatible hosts
-
----
-
 ### Bundle D — API-Based Declarative Agent
 
 **"I need my agent to call a custom API, not MCP."**
@@ -146,27 +134,26 @@ Ground your declarative agent using connectors so responses are anchored in orga
 
 ---
 
+## Path 3 — Standalone Labs
+
+Use these focused labs when you want to explore a specific technique without following a complete bundle. Choose from MCP Apps with interactive widgets, TypeSpec, or instructions and knowledge.
+
+[View Standalone Labs](standalone-labs)
+
 <div data-widget="callout"
      data-type="tip"
-     data-title="Optional fast path for no-code learners"
-     data-body="Start with E1A to build confidence in Agent Builder, then jump to E1B for gradual pro-code exposure, then complete Prerequisites for Pro-code bundles,  before choosing a bundle."></div>
+     data-title="Not sure where to begin?"
+     data-body="Start with Path 1. After E1B, choose a complete bundle for guided progression or a standalone lab for one focused skill."></div>
 
 ---
 
-## Start Here: On-ramp Or Bundles
+## Start Here
 Your first production agent is closer than you think.
 
 <div data-widget="onramp"
      data-title="Choose your starting point"
-     data-sub="No-code path: E1A -> E1B -> Prerequisites for Pro-code bundles -> bundles. Pro-code path: E1B -> Prerequisites for Pro-code bundles -> bundles."
-     data-steps="Fundamentals::lab::Lab E1 — Choose Foundation Path::No-code learners should take E1A then E1B. Pro-code learners can jump straight to E1B.::Choose E1 Path::01-first-agent-new|Bundle Readiness::preq::Prerequisites for Pro-code bundles::Confirm tenant setup, tools, and bundle-specific prerequisites before starting bundle labs.::Complete Prerequisites::00-prerequisites|Choose Bundle::bundle::Bundles A-E::Pick the implementation path that matches your scenario and continue from the bundle guide page.::View Bundles::bundles"></div>
+     data-sub="Start with E1A and E1B, follow a guided bundle, or select a focused standalone lab."
+     data-steps="Path 1 - Fundamental::lab::Fundamentals — E1A and E1B::Build your first agent in Agent Builder, then move to Agents Toolkit in VS Code.::Start Fundamentals::01-first-agent-new|Path 2 - Bundle based::bundle::Bundle-Based Learning::Complete E1B, then choose an end-to-end scenario and follow that bundle's prerequisites.::View Bundles::bundles|Path 3 - Single labs for focused learning::lab::Standalone Labs::Explore MCP Apps, TypeSpec, or an instructions-based game agent.::View Standalone Labs::standalone-labs"></div>
 
-### Bundle Pages
-
-- [Bundle A — MCP Foundation](bundle-a)
-- [Bundle B — Multi-Agent Workflows](bundle-b)
-- [Bundle C — MCP App](bundle-c)
-- [Bundle D — API-Based Declarative Agent](bundle-d)
-- [Bundle E — Declarative Agents with Copilot Connectors](bundle-e)
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/index" />

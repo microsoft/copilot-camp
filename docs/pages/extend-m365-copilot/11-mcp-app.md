@@ -1,12 +1,12 @@
 # Lab 11: Build an MCP App with Interactive Widgets
 
 <div data-widget="hero"
-  data-badge="Bundle B · Lab E11"
+  data-badge="Standalone · Lab E11"
   data-badge-color="green"
   data-icon="🧪"
   data-subtitle="Pair MCP tools with rich UI resources so users can submit requests, approve actions, and track status directly in Copilot."
   data-time="90-120 min"
-  data-requires="Foundation built by E0 + E1A/E1B"
+  data-requires="E1B + tools listed on the Standalone Labs page"
   data-toolkit="MCP Apps SDK + React"></div>
 
 <div data-widget="checklist"
@@ -1044,7 +1044,9 @@ This panel shows which tools were called, the parameters passed, and the respons
 
 ---8<--- "e-congratulations.md"
 
-<div data-widget="labnav"></div>
+<div data-widget="labnav"
+  data-prev="../standalone-labs/"
+  data-prev-label="Back to Standalone Labs"></div>
 
 ## Learn More
 

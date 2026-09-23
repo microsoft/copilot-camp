@@ -23,13 +23,13 @@
  *
  * Hero:
  *   <div data-widget="hero"
- *        data-badge="Prerequisites · Lab E0+"
+ *        data-badge="Bundle A · MCP Foundation"
  *        data-badge-color="amber"
  *        data-icon="🔧"
- *        data-title="Prerequisites & Concepts"
- *        data-subtitle="Install every tool…"
+ *        data-title="Before you start"
+ *        data-subtitle="Install the tools required by this bundle."
  *        data-time="45–60 min"
- *        data-requires="None — first lab"
+ *        data-requires="E1B"
  *        data-toolkit="Windows / Mac / Linux"></div>
  *
  * Checklist ("What you'll have by the end"):
@@ -627,13 +627,6 @@
         { url: "09-connected-agent/", label: "Lab E9 - Connected Agents Orchestration" },
       ],
     },
-    c: {
-      name: "Bundle C — MCP App",
-      color: "green",
-      labs: [
-        { url: "11-mcp-app/", label: "Lab E11 - MCP App with Interactive Widgets" },
-      ],
-    },
     d: {
       name: "Bundle D — API-Based Declarative Agent",
       color: "blue",
@@ -878,7 +871,6 @@
                   <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-new`, key))}">Lab E1 - Choose Foundation Path</a>${youAreHere("01-first-agent-new/")}</li>
                   <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-builder`, key))}">Lab E1A - Declarative Agent Foundation with Agent Builder</a>${youAreHere("01-first-agent-builder/")}</li>
                   <li><a href="${esc(withBundleQuery(`${extendBase}01-first-agent-toolkit`, key))}">Lab E1B - Declarative Agent Foundation with Agents Toolkit</a>${youAreHere("01-first-agent-toolkit/")}</li>
-                  <li><a href="${esc(withBundleQuery(`${extendBase}00-prerequisites`, key))}">Prerequisites for Pro-code bundles</a>${youAreHere("00-prerequisites/")}</li>
                 </ul>
               </li>
               <li><strong>${esc(bundle.name)}</strong>

@@ -16,7 +16,7 @@ title: "Bundle C — MCP App: Interactive Widgets"
 <div data-widget="callout"
      data-type="info"
      data-title="Best for developers who want a richer MCP conversation surface"
-     data-body="Complete &lt;a href='../01-first-agent-new/'&gt;Lab E1 — Choose Foundation Path&lt;/a&gt; first (then finish E1B), then the &lt;a href='../00-prerequisites/'&gt;Prerequisites for Pro-code bundles&lt;/a&gt;. Choose this bundle if you want to move beyond text responses and surface tool results as interactive UI widgets inside Copilot."></div>
+     data-body="This retired bundle page is retained for future reuse. Lab E11 is now available from the Standalone Labs page."></div>
 
 <div data-widget="checklist"
      data-items="React + Fluent UI widget built and registered~You will build an interactive widget component and map it to an MCP tool|Live widget rendering validated in Copilot conversation~You will see tool results rendered as interactive UI instead of plain text"></div>

@@ -101,44 +101,44 @@ m365agents.yml
 
 1. Open `appPackage/declarativeAgent.json` and copy/paste this branding baseline (then keep/add your instructions and conversation starters):
 
-  ```json
-  "name": "Zava Onboarding Agent",
-  "description": "Helps new Zava Insurance employees find answers to common HR and IT onboarding questions",
-  ```
+    ```json
+    "name": "Zava Onboarding Agent",
+    "description": "Helps new Zava Insurance employees find answers to common HR and IT onboarding questions",
+    ```
 
 2. Open `appPackage/manifest.json` and copy/paste this branding block:
 
-  ```json
-  "name": {
-    "short": "Zava Onboarding Agent",
-    "full": "Zava Insurance Onboarding Agent"
-  },
-  "description": {
-    "short": "HR and IT onboarding help for new Zava employees",
-    "full": "A friendly onboarding agent that helps new Zava Insurance employees with office access, helpdesk support, annual leave, benefits, and mandatory onboarding tasks."
-  },
-  ```
+    ```json
+    "name": {
+      "short": "Zava Onboarding Agent",
+      "full": "Zava Insurance Onboarding Agent"
+    },
+    "description": {
+      "short": "HR and IT onboarding help for new Zava employees",
+      "full": "A friendly onboarding agent that helps new Zava Insurance employees with office access, helpdesk support, annual leave, benefits, and mandatory onboarding tasks."
+    },
+    ```
 
 3. Open `appPackage/instruction.txt` and copy this block exactly as-is:
 
-  ```text
-  # Zava Onboarding Assistant
+    ```text
+    # Zava Onboarding Assistant
 
-  ## Role
-  You are a friendly HR and IT onboarding assistant for new employees at Zava Insurance.
+    ## Role
+    You are a friendly HR and IT onboarding assistant for new employees at Zava Insurance.
 
-  ## Scope
-  - Office locations and access
-  - IT helpdesk process and hours
-  - Leave, benefits, and onboarding tasks
+    ## Scope
+    - Office locations and access
+    - IT helpdesk process and hours
+    - Leave, benefits, and onboarding tasks
 
-  ## Guardrails
-  - Do not invent policy details.
-  - If information is missing, say what is unknown and provide a safe next contact.
+    ## Guardrails
+    - Do not invent policy details.
+    - If information is missing, say what is unknown and provide a safe next contact.
 
-  ## Tone
-  - Warm, concise, practical.
-  ```
+    ## Tone
+    - Warm, concise, practical.
+    ```
 
 4. Save all files.
 
@@ -161,6 +161,9 @@ m365agents.yml
 ## Exercise 5: Test your agent
 
 1. Provision from **Lifecycle -> Provision**.
+
+    > **Tip:** If prompted to choose between **Dev** and **Local**, select **Dev** and proceed.
+
 2. Open your agent **Zava Onboarding Agent** in Copilot Chat.
 3. Ask:
     - "Where is the badge pickup desk and what time does it open?"
@@ -171,6 +174,8 @@ Expected result:
 - Response includes **Floor 1, Reception B** and **8:15 AM** opening time.
 - Response includes **+1-800-ZAVA-ITS** and **Badge Assist** fallback.
 
+![image of response](../../assets/images/01-first-agent-toolkit/demo-e1b.png)
+
 ---
 
 ## Exercise 6: Enable Code Interpreter in code and validate charts
@@ -178,17 +183,20 @@ Expected result:
 1. Open `appPackage/declarativeAgent.json`.
 2. In the existing `capabilities` array, add `CodeInterpreter` as a new item after the `EmbeddedKnowledge` entry. Make sure the previous item ends with a comma.
 
-   ```json
-   {
-     "name": "CodeInterpreter"
-   }
-   ```
+    ```json
+    {
+      "name": "CodeInterpreter"
+    }
+    ```
    
 3. Save the file.
 4. Open `appPackage/manifest.json` file. Increase version from `"version": "1.0.0",` to `"version": "1.0.1",`
 5. Provision from **Lifecycle -> Provision**.
 
-> For your agent changes to take effect, increment the manifest version before provisioning.
+<div data-widget="callout"
+  data-type="warn"
+  data-title="Increment the manifest version"
+  data-body="For your agent changes to take effect, increment the manifest version before provisioning."></div>
 
 Run these prompts in Copilot Chat for your provisioned agent:
 
@@ -210,29 +218,27 @@ Expected result:
 1. Open your provisioned agent in Microsoft 365 Copilot Chat.
 2. Send this message to the agent:
 
-```text
--developer on
-```
+    ```text
+    -developer on
+    ```
 
 3. Run a few prompts from Exercises 5 and 6 again.
 4. Review the debug information shown after each response:
-   - Which tools/capabilities were used
-   - What grounding context was applied
-   - Whether output matched your expected behavior
+  - Which tools/capabilities were used
+  - What grounding context was applied
+  - Whether output matched your expected behavior
 5. Capture at least one improvement you want to make before wider rollout.
 
 ---
 
 ## Complete
 
-You can now continue to **Prerequisites for Pro-code bundles** before selecting a bundle.
 
 ---8<--- "e-congratulations.md"
 
-<div data-widget="labnav"
-  data-prev="../01-first-agent-new/"
-  data-prev-label="Back to E1 Path Choice"
-  data-next="../00-prerequisites/"
-  data-next-label="Continue to Prerequisites for Pro-code bundles"></div>
+<div data-widget="onramp"
+     data-title="Choose your next path"
+     data-sub="Follow a guided bundle or select an independent lab for one focused subject."
+    data-steps="Bundle based::bundle::Bundle-Based Learning::Choose an end-to-end scenario, prepare its prerequisites, and complete the guided lab sequence.::View Bundles::../bundles/|Standalone::lab::Standalone Labs::Choose an independent lab covering MCP Apps, TypeSpec, or instructions and knowledge.::View Standalone Labs::../standalone-labs/"></div>
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/extend-m365-copilot/01-first-agent-toolkit" />

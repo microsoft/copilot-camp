@@ -87,12 +87,9 @@ Expected result:
 
 ---
 
-## Exercise 4: Enable Code Interpreter and test charts
+## Exercise 4: Test charts
 
-1. Open your agent in **Edit** mode.
-2. Go to **Capabilities**.
-3. Ensure **Create documents, charts, and code** is enabled.
-4. Select **Save** or **Update**.
+> **Note:** Earlier versions of Agent Builder required you to enable **Code Interpreter** and **Image Generation** in the **Capabilities** section. This step is now obsolete: the updated UI no longer includes this section, and both capabilities are enabled automatically.
 
 Run these prompts:
 

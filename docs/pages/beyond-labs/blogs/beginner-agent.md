@@ -66,7 +66,7 @@ So, let's start off with the basic prompt below:
 You are an agent to help user with recommendation for shows that are streaming on online streaming platforms 
 ```
 
-Now to build ShowExpert, you can use any tool of your choice like Agents Toolkit, Agent Builder or Copilot Studio. In this lab we have used Agents Toolkit. Check out our [prerequisites lab](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/00-prerequisites/) to understand how to set up your environment for testing using Agents Toolkit. 
+Now to build ShowExpert, you can use any tool of your choice like Agents Toolkit, Agent Builder or Copilot Studio. In this lab we have used Agents Toolkit. Complete [Lab E1B — Declarative Agent Foundation with Agents Toolkit](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/01-first-agent-toolkit/) to set up your environment for testing with Agents Toolkit.
 
 ### Declarative agent using Agents Toolkit
 
