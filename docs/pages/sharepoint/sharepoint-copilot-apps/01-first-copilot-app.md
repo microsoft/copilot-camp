@@ -1,9 +1,9 @@
-# Lab SCA1 - Build your first SharePoint Copilot App
+# Lab SCA1 - Build your first Copilot UX component
 
-In this lab, you are going to build your first **SharePoint Copilot App**: an interactive UX component that renders directly inside the Microsoft 365 Copilot canvas. You will use the [SharePoint Framework](https://aka.ms/spfx){target=_blank} (SPFx) v1.24 public preview and the new **Copilot Component** project type, build the user experience with **React**, add custom parameters, test everything locally in the **Copilot Workbench**, and finally package and deploy the solution so you can use it from **Microsoft 365 Copilot**.
+In this lab, you are going to build your first **Copilot UX component**: an interactive UX component that renders directly inside the Microsoft 365 Copilot canvas. You will use the [SharePoint Framework](https://aka.ms/spfx){target=_blank} (SPFx) v1.24 public preview and the new **Copilot Component** project type, build the user experience with **React**, add custom parameters, test everything locally in the **Copilot Workbench**, and finally package and deploy the solution so you can use it from **Microsoft 365 Copilot**.
 
 !!! warning
-    SharePoint Copilot Apps and SharePoint Framework v1.24 are in **public preview**. The generator output, the Copilot Workbench, the app-catalog **Add to Teams** flow, and the admin-center surfaces may still change before General Availability.
+    Copilot UX components and SharePoint Framework v1.24 are in **public preview**. The generator output, the Copilot Workbench, the app-catalog **Add to Teams** flow, and the admin-center surfaces may still change before General Availability.
 
 !!! note
     This lab builds on general SPFx knowledge. You do not need previous SPFx experience, but familiarity with Node.js, TypeScript, and React will be helpful.
@@ -11,7 +11,7 @@ In this lab, you are going to build your first **SharePoint Copilot App**: an in
 In this lab you will learn:
 
 - How to set up a SharePoint Framework development environment and install the SPFx v1.24 public preview
-- How to scaffold a SharePoint Copilot App using React
+- How to scaffold a Copilot UX component using React
 - How to explore and customize the scaffolded React component
 - How to add custom parameters that Copilot passes to your component
 - How to test a Copilot Component locally with the Copilot Workbench
@@ -19,11 +19,11 @@ In this lab you will learn:
 
 ## Exercise 1 : Setting up the SharePoint Framework development environment
 
-In this exercise you are going to prepare your machine to build SharePoint Copilot Apps and install the SPFx v1.24 public preview toolchain.
+In this exercise you are going to prepare your machine to build Copilot UX components and install the SPFx v1.24 public preview toolchain.
 
 ### Step 1: Installing the base prerequisites
 
-SharePoint Copilot Apps are built with the SharePoint Framework, so you first need a standard SPFx development environment. Follow the official documentation to [set up your SharePoint Framework development environment](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment){target=_blank}.
+Copilot UX components are built with the SharePoint Framework, so you first need a standard SPFx development environment. Follow the official documentation to [set up your SharePoint Framework development environment](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment){target=_blank}.
 
 At minimum, make sure you have:
 
@@ -32,7 +32,7 @@ At minimum, make sure you have:
 - A Microsoft 365 tenant with a **SharePoint App Catalog** site and Microsoft 365 Copilot enabled
 
 !!! important
-    In order to use the SharePoint Copilot Apps in Microsoft 365 Copilot, you don't need a Microsoft 365 Copilot license.
+    In order to use the Copilot UX components in Microsoft 365 Copilot, you don't need a Microsoft 365 Copilot license.
 
 You can verify your Node.js version with the following command:
 
@@ -70,9 +70,9 @@ You should see a version similar to `@microsoft/generator-sharepoint@1.24.0-beta
 
 <cc-end-step lab="sca1" exercise="1" step="2" />
 
-## Exercise 2 : Scaffolding your first SharePoint Copilot App
+## Exercise 2 : Scaffolding your first Copilot UX component
 
-In this exercise you are going to scaffold a new SharePoint Copilot App using the SPFx generator, selecting React as the UI framework.
+In this exercise you are going to scaffold a new Copilot UX component using the SPFx generator, selecting React as the UI framework.
 
 ### Step 1: Running the generator
 
@@ -113,7 +113,7 @@ Take a moment to explore the generated project. The most relevant elements are:
     - `package-solution.json`: the `.sppkg` package definition (solution id, feature, package version, etc.).
     - `copilot-agent.json`: the Copilot-specific file that declares the agent and lists the component GUIDs it exposes.
 - `copilot/`: the declarative agent and Teams app seed that gets packaged into the deployable agent. If you have already built pro-code declarative agents with the Microsoft 365 Agents Toolkit, these files will look familiar, as they follow the same declarative agent authoring model.
-    - `manifest.json`: the **Microsoft 365 app manifest**. It describes the app metadata (id, name, version, developer information, icons) and, through its `copilotAgents.declarativeAgents` section, points to the `declarativeAgent.json` file. This is the entry point that Microsoft 365 uses to register and surface the declarative agent that sits behind the scenes of your SharePoint Copilot App.
+    - `manifest.json`: the **Microsoft 365 app manifest**. It describes the app metadata (id, name, version, developer information, icons) and, through its `copilotAgents.declarativeAgents` section, points to the `declarativeAgent.json` file. This is the entry point that Microsoft 365 uses to register and surface the declarative agent that sits behind the scenes of your Copilot UX component.
     - `declarativeAgent.json`: the **declarative agent manifest**. It defines the agent itself, including its display name, description, the instructions it follows, the conversation starters, and the capabilities and actions it exposes. Here it references the `instruction.txt` file for the system prompt and the `ai-plugin.json` file for the actions (tools) the agent can invoke.
     - `instruction.txt`: the **system prompt** (also known as the instructions) for the declarative agent. It steers the tone, behavior, and boundaries of the agent, telling the orchestrator how to respond and when to call the available tools. Keeping the instructions in a dedicated file makes them easier to iterate on.
     - `ai-plugin.json`: the **API plugin manifest** that declares the functions (tools) the agent can call, together with their parameters and descriptions. You don't need to edit this file.
@@ -375,7 +375,7 @@ Then:
 2. Select your component and edit the component **properties** in the JSON editor to try your parameters, for example:
 ```json
 {
-  "message": "Great to see SharePoint Copilot Apps in action!",
+  "message": "Great to see Copilot UX components in action!",
   "accentColor": "#107c10"
 }
 ```
@@ -480,12 +480,12 @@ This is the **same component and the same MCP contract** you debugged in the Wor
 
 <span style="font-size: large; font-weight: bold; color: #1c8fd2;">CONGRATULATIONS!</span>
 
-You have completed Lab SCA1 - Build your first SharePoint Copilot App!
+You have completed Lab SCA1 - Build your first Copilot UX component!
 
 In this lab, you learned how to:
 
 - Set up a SharePoint Framework development environment and install the SPFx v1.24 public preview
-- Scaffold a SharePoint Copilot App using React
+- Scaffold a Copilot UX component using React
 - Explore and customize the scaffolded React component
 - Add custom parameters that Copilot passes to your component as tool arguments
 - Test a Copilot Component locally with the Copilot Workbench
@@ -493,6 +493,6 @@ In this lab, you learned how to:
 
 You now have the foundation to build rich, interactive experiences that live directly in the Copilot canvas, reusing the SPFx skills and components your organization already knows.
 
-<cc-award badgeId="SPFxCopilot" badgeName="SharePoint Copilot App Learner" />
+<cc-award badgeId="SPFxCopilot" badgeName="Copilot UX component Learner" />
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/sharepoint/sharepoint-copilot-apps/01-first-copilot-app" />
