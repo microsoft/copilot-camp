@@ -100,7 +100,7 @@ code .
 ```
 
 !!! note
-    Selecting **React** wires up React 17 and Fluent UI v9 as dependencies and scaffolds the component with a React entry point instead of the plain TypeScript template. This is the recommended choice for building rich UX components.
+    Selecting **React** wires up React 18 and Fluent UI v9 as dependencies and scaffolds the component with a React entry point instead of the plain TypeScript template. This is the recommended choice for building rich UX components.
 
 <cc-end-step lab="sca1" exercise="2" step="1" />
 
@@ -167,7 +167,7 @@ In this exercise you are going to explore the React component that the generator
 
 ### Step 1: Understanding the generated component
 
-Open `src/copilotComponents/helloWorld/HelloWorldCopilotComponent.tsx`. This is the component class that the Copilot host loads, and it acts as a thin host adapter. In `onInit()` it fetches the signed-in user from Microsoft Graph (`/me`) and the site title from the SharePoint REST API (`/_api/web`), both through **brokered SSO** with no token code required. In `render()` it mounts the React tree, passing down the tool `message`, the fetched data, the `hostContext`, and the host `bridge`:
+Open `src/copilotComponents/helloWorld/HelloWorldCopilotComponent.tsx`. This is the component class that the Copilot host loads, and it acts as a thin host adapter. In `onInit()` it fetches the signed-in user from Microsoft Graph (`/me`) and the site title from the SharePoint REST API (`/_api/web`), both through **brokered SSO** with no token code required. In `render()` it mounts the React tree, passing down the tool `message`, the fetched data, the `hostContext`, the host `bridge`, and two callbacks that forward display mode and resize requests to the host. The React 18 root is created once and kept on the class, so `onTeardown()` can unmount it before the host disposes of the iframe:
 
 ```tsx
   protected render(): void {
@@ -178,11 +178,21 @@ Open `src/copilotComponents/helloWorld/HelloWorldCopilotComponent.tsx`. This is 
       siteUrl: this._siteUrl,
       hostContext: this.hostContext,
       bridge: this.context.copilotBridge,
+      onRequestDisplayMode: async (mode: SPCopilotDisplayMode) => {
+        await this.requestDisplayModeAsync(mode);
+      },
+      onRequestSizeChange: async (width: number, height: number) => {
+        await this.requestSizeChangeAsync(width, height);
+      },
       targetDocument: this.context.domElement.ownerDocument,
       strings
     };
 
-    ReactDOM.render(React.createElement(HelloWorld, props), this.context.domElement);
+    if (!this._root) {
+      this._root = createRoot(this.context.domElement);
+    }
+
+    this._root.render(React.createElement(HelloWorld, props));
   }
 ```
 
@@ -265,7 +275,7 @@ First, add the new parameter to the props contract in `components/IHelloWorldPro
 Then pass it down in the `render()` method of `HelloWorldCopilotComponent.tsx`, alongside the other properties:
 
 ```tsx
-    const props: IHelloWorldLabProps = {
+    const props: IHelloWorldProps = {
       message: this.properties.message,
       accentColor: this.properties.accentColor,
       userDisplayName: this._userDisplayName,
