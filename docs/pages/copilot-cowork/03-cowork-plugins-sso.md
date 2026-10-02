@@ -110,7 +110,7 @@ In your MCP server VS Code window, you need the server accessible over a public 
     npm run start:mcp-http
     ```
 
-Verify it's running by visiting `http://127.0.0.1:3001/health` — you should see `"authentication": "OAuth enabled"` in the response.
+Verify it's running by visiting `http://127.0.0.1:3001/health`. You should see `"status": "healthy"` in the response. The `authentication` field reads `No authentication` for now. The server only turns OAuth on once the `OAUTH_*` values are set, which you do in `env/.env.dev` in Exercise 4.
 
 !!! note "Save your tunnel URL"
     You'll use this URL multiple times in the following exercises. Keep it handy — for example: `https://abc123def456.use.devtunnels.ms`
@@ -283,7 +283,7 @@ Time to see it work. You need the MCP server configured to accept the SSO tokens
 
 ### Step 1: Update the MCP server environment for SSO
 
-Go to your Zava MCP server directory and update the `env/.env.dev` file with the SSO-specific values:
+Go to your Zava MCP server directory and create or update the `env/.env.dev` file with the SSO-specific values. A fresh clone does not have this file, because it is excluded from source control:
 
 ```ini
 # OAuth 2.0 Resource Server
@@ -330,6 +330,8 @@ Restart the MCP server after updating:
 npm run build
 npm run start:mcp-http
 ```
+
+Visit `http://127.0.0.1:3001/health` again. It should now show `"authentication": "OAuth enabled"`.
 
 <cc-end-step lab="cwrk03" exercise="4" step="1" />
 
