@@ -33,7 +33,7 @@
     "devDependencies": {
         "@types/node": "^16.0.0",
         "@types/restify": "^8.5.5",
-        "azurite": "^3.29.0",
+        "azurite": "^3.36.0",
         "env-cmd": "^10.1.0",
         "nodemon": "^2.0.7",
         "shx": "^0.3.3",
