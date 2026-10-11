@@ -19,7 +19,7 @@
     "dependencies": {
         "@azure/functions": "^4.3.0",
         "@azure/data-tables": "^13.2.2",
-        "azurite": "^3.26.0"
+        "azurite": "^3.36.0"
     },
     "devDependencies": {
         "env-cmd": "^10.1.0",
