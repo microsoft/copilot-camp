@@ -7,6 +7,7 @@
       <li><a href="/copilot-camp/pages/copilot-cowork/01-cowork-skills/">CWRK1 - Build your first Skill</a></li>
       <li><a href="/copilot-camp/pages/copilot-cowork/02-cowork-plugins/">CWRK2 - Build your first Plugin</a></li>
        <li><a href="/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/">CWRK3 - Add Entra SSO Authentication to a Cowork Plugin</a></li>
+       <li><a href="/copilot-camp/pages/copilot-cowork/04-cowork-plugins-wiqd/">CWRK4 - Create plugins using Work IQ Dev Tools with GitHub Copilot</a></li>
        </ul>
   </div>
 </div>
@@ -29,4 +30,3 @@ for (const div of toc) {
 }
 })();
 </script>
-

@@ -48,4 +48,9 @@ You don't have to build all primitives. **Start with the one your problem needs*
      data-sub="Explore Copilot Cowork first, or start building and securing a plugin."
      data-steps="Explore Copilot Cowork::lab::Copilot Cowork setup and extensibility — CWRK0::Learn how Cowork works, prepare your tenant, and explore its extensibility options.::Explore Cowork::00-cowork-setup|Build plugin::lab::Plugin pathway — CWRK2 and CWRK3::Build your first plugin, then add Microsoft Entra SSO authentication.::Start the plugin pathway::02-cowork-plugins"></div>
 
+## Standalone Lab
 
+<div data-widget="onramp"
+     data-title="Build a plugin in one shot"
+     data-sub="A self-contained, 45-minute lab. No need to complete the plugin pathway first."
+     data-steps="Standalone lab::lab::Create plugins using Work IQ Dev Tools with GitHub Copilot — CWRK04::Use the WIQD agent to build, validate, and provision a Microsoft Learn MCP plugin, then test it in Copilot Cowork.::Start the standalone lab::04-cowork-plugins-wiqd"></div>
