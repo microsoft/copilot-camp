@@ -8,7 +8,7 @@ time: 45
 badge: CWRK04
 products: [Microsoft 365 Copilot, Copilot Cowork, GitHub Copilot, Work IQ Dev Tools]
 created-date: 2026-10-19
-last-edited-date: 2026-10-19
+last-edited-date: 2026-10-21
 ---
 # Lab CWRK04 - Create plugins using Work IQ Dev Tools with GitHub Copilot
 
@@ -63,7 +63,7 @@ By the end of this lab, you will:
 
 In this exercise, you'll install the tools, select the WIQD agent, and confirm that you're working in the intended tenant.
 
-### Step 1: Install Node.js and WIQD
+### Step 1: Install Node.js, GitHub Copilot, and WIQD
 
 Check your Node.js version:
 
@@ -85,7 +85,27 @@ If it is older than 24, install Node.js 24 or later using your preferred method.
     fnm install 24 && fnm use 24
     ```
 
-Install WIQD using the command for your operating system from the installation guide. Review the installer before running it, according to your organization's policy.
+Before installing WIQD, set up the GitHub Copilot experience you'll use:
+
+=== "GitHub Copilot app"
+
+    Install and open the GitHub Copilot app if you haven't already. You don't need to install the standalone Copilot CLI for this route.
+
+=== "GitHub Copilot CLI"
+
+    Install the standalone CLI if it isn't already installed:
+
+    ```bash
+    npm install -g @github/copilot
+    copilot --help
+    ```
+
+    Confirm that help lists the `--agent` option. If it doesn't, check which `copilot` executable your shell resolves and reinstall the standalone CLI following the [Copilot CLI installation guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli){target=_blank}.
+
+!!! important "Install GitHub Copilot before WIQD"
+    The WIQD installer registers the WIQD agent with your installed GitHub Copilot experience. If you install GitHub Copilot after WIQD, rerun the WIQD installer below so it can register the agent. The `--agent` option confirms CLI support for custom agents, not that the WIQD agent is installed.
+
+Once GitHub Copilot is installed, install WIQD using the command for your operating system from the installation guide. Review the installer before running it, according to your organization's policy.
 
 === "macOS / Linux"
 
@@ -105,7 +125,7 @@ Verify the installed version:
 wiqd --version
 ```
 
-**Checkpoint:** Node.js reports version 24 or later, and WIQD reports version 0.13.1 or later.
+**Checkpoint:** Node.js reports version 24 or later, your chosen GitHub Copilot experience was installed before running the WIQD installer, and WIQD reports version 0.13.1 or later.
 
 <cc-end-step lab="cwrk04" exercise="1" step="1" />
 
@@ -145,20 +165,14 @@ Choose one of the GitHub Copilot experiences:
 
 === "GitHub Copilot CLI"
 
-    Install the standalone CLI if it isn't already installed:
-
-    ```bash
-    npm install -g @github/copilot
-    copilot --help
-    ```
-
-    Confirm that help lists the `--agent` option. From a working directory for your new project, start:
+    From a working directory for your new project, start:
 
     ```bash
     copilot --agent wiqd:wiqd
     ```
 
-    If `--agent` is missing, check which `copilot` executable your shell resolves and reinstall the standalone CLI following the [Copilot CLI installation guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli){target=_blank}.
+!!! tip "WIQD agent missing?"
+    If **wiqd** isn't in the app's agent selector, or the CLI supports `--agent` but can't find `wiqd:wiqd`, rerun the WIQD installer for your operating system from Step 1 now that GitHub Copilot is installed. Then reopen your GitHub Copilot session and select **wiqd** or retry `copilot --agent wiqd:wiqd`. Reinstalling the Copilot CLI alone doesn't register the WIQD agent.
 
 Enter this prompt:
 
@@ -354,5 +368,4 @@ You now have a repeatable pattern: describe the plugin to the WIQD agent, review
 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-cowork/04-cowork-plugins-wiqd" />
-
 
