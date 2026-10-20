@@ -2517,7 +2517,7 @@
 </div>
 <h2 id="exercise-1-prepare-wiqd-and-github-copilot">Exercise 1: Prepare WIQD and GitHub Copilot</h2>
 <p>In this exercise, you'll install the tools, select the WIQD agent, and confirm that you're working in the intended tenant.</p>
-<h3 id="step-1-install-nodejs-and-wiqd">Step 1: Install Node.js and WIQD</h3>
+<h3 id="step-1-install-nodejs-github-copilot-and-wiqd">Step 1: Install Node.js, GitHub Copilot, and WIQD</h3>
 <p>Check your Node.js version:</p>
 <div class="highlight"><pre><span></span><code>node<span class="w"> </span>--version
 </code></pre></div>
@@ -2534,8 +2534,27 @@
 </div>
 </div>
 </div>
-<p>Install WIQD using the command for your operating system from the installation guide. Review the installer before running it, according to your organization's policy.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">macOS / Linux</label><label for="__tabbed_2_2">Windows (PowerShell)</label></div>
+<p>Before installing WIQD, set up the GitHub Copilot experience you'll use:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">GitHub Copilot app</label><label for="__tabbed_2_2">GitHub Copilot CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Install and open the GitHub Copilot app if you haven't already. You don't need to install the standalone Copilot CLI for this route.</p>
+</div>
+<div class="tabbed-block">
+<p>Install the standalone CLI if it isn't already installed:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@github/copilot
+copilot<span class="w"> </span>--help
+</code></pre></div>
+<p>Confirm that help lists the <code>--agent</code> option. If it doesn't, check which <code>copilot</code> executable your shell resolves and reinstall the standalone CLI following the <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli" target="_blank">Copilot CLI installation guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Install GitHub Copilot before WIQD</p>
+<p>The WIQD installer registers the WIQD agent with your installed GitHub Copilot experience. If you install GitHub Copilot after WIQD, rerun the WIQD installer below so it can register the agent. The <code>--agent</code> option confirms CLI support for custom agents, not that the WIQD agent is installed.</p>
+</div>
+<p>Once GitHub Copilot is installed, install WIQD using the command for your operating system from the installation guide. Review the installer before running it, according to your organization's policy.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">macOS / Linux</label><label for="__tabbed_3_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://aka.ms/wiqd/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
@@ -2550,7 +2569,7 @@
 <p>Verify the installed version:</p>
 <div class="highlight"><pre><span></span><code>wiqd<span class="w"> </span>--version
 </code></pre></div>
-<p><strong>Checkpoint:</strong> Node.js reports version 24 or later, and WIQD reports version 0.13.1 or later.</p>
+<p><strong>Checkpoint:</strong> Node.js reports version 24 or later, your chosen GitHub Copilot experience was installed before running the WIQD installer, and WIQD reports version 0.13.1 or later.</p>
 <p><cc-end-step lab="cwrk04" exercise="1" step="1" /></p>
 <h3 id="step-2-sign-in-and-check-the-environment">Step 2: Sign in and check the environment</h3>
 <p>Run these commands in your terminal:</p>
@@ -2569,22 +2588,21 @@ wiqd<span class="w"> </span>auth<span class="w"> </span>status
 <p><cc-end-step lab="cwrk04" exercise="1" step="2" /></p>
 <h3 id="step-3-start-the-wiqd-agent-in-github-copilot">Step 3: Start the WIQD agent in GitHub Copilot</h3>
 <p>Choose one of the GitHub Copilot experiences:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">GitHub Copilot app</label><label for="__tabbed_3_2">GitHub Copilot CLI</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">GitHub Copilot app</label><label for="__tabbed_4_2">GitHub Copilot CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Open a working folder for the new project in the GitHub Copilot app. Open the <strong>Default agent</strong> selector and choose <strong>wiqd</strong>. You don't need to install the standalone Copilot CLI for this route.</p>
 </div>
 <div class="tabbed-block">
-<p>Install the standalone CLI if it isn't already installed:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@github/copilot
-copilot<span class="w"> </span>--help
-</code></pre></div>
-<p>Confirm that help lists the <code>--agent</code> option. From a working directory for your new project, start:</p>
+<p>From a working directory for your new project, start:</p>
 <div class="highlight"><pre><span></span><code>copilot<span class="w"> </span>--agent<span class="w"> </span>wiqd:wiqd
 </code></pre></div>
-<p>If <code>--agent</code> is missing, check which <code>copilot</code> executable your shell resolves and reinstall the standalone CLI following the <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli" target="_blank">Copilot CLI installation guide</a>.</p>
 </div>
 </div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">WIQD agent missing?</p>
+<p>If <strong>wiqd</strong> isn't in the app's agent selector, or the CLI supports <code>--agent</code> but can't find <code>wiqd:wiqd</code>, rerun the WIQD installer for your operating system from Step 1 now that GitHub Copilot is installed. Then reopen your GitHub Copilot session and select <strong>wiqd</strong> or retry <code>copilot --agent wiqd:wiqd</code>. Reinstalling the Copilot CLI alone doesn't register the WIQD agent.</p>
 </div>
 <p>Enter this prompt:</p>
 <div class="highlight"><pre><span></span><code>Check my WIQD plugin development environment before making changes.
