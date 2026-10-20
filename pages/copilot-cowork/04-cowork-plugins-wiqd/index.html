@@ -2505,7 +2505,6 @@
 <div class="admonition tip">
 <p class="admonition-title">Prerequisites</p>
 <ul>
-<li>Access to GitHub Copilot through the GitHub Copilot app or standalone GitHub Copilot CLI.</li>
 <li>Access to Copilot Cowork with a work or school account.</li>
 <li>Permission to provision and share an app in your Microsoft 365 development tenant.</li>
 <li>Node.js 24 or later and WIQD 0.13.1 or later; you'll check these in Exercise 1.</li>
@@ -2538,7 +2537,27 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">GitHub Copilot app</label><label for="__tabbed_2_2">GitHub Copilot CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Install and open the GitHub Copilot app if you haven't already. You don't need to install the standalone Copilot CLI for this route.</p>
+<p>Install the desktop app using the command for your operating system. You don't need to install the standalone Copilot CLI for this route.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">macOS</label><label for="__tabbed_3_2">Windows (PowerShell)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>With <a href="https://brew.sh/" target="_blank">Homebrew</a> installed, run:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>github-copilot-app
+</code></pre></div>
+<p>After installation completes successfully, open the app:</p>
+<div class="highlight"><pre><span></span><code>open<span class="w"> </span>-a<span class="w"> </span><span class="s2">"GitHub Copilot"</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>With <a href="https://learn.microsoft.com/windows/package-manager/winget/" target="_blank">WinGet</a> installed, run:</p>
+<div class="highlight"><pre><span></span><code><span class="n">winget</span> <span class="n">install</span> <span class="p">-</span><span class="o">-exact</span> <span class="p">-</span><span class="n">-id</span> <span class="n">GitHub</span><span class="p">.</span><span class="n">CopilotApp</span> <span class="p">-</span><span class="n">-source</span> <span class="n">winget</span>
+</code></pre></div>
+<p>After installation completes successfully, open <strong>GitHub Copilot</strong> from the Start menu.</p>
+</div>
+</div>
+</div>
+<p>If you don't have Homebrew or WinGet, download and run the installer for your operating system from the <a href="https://github.com/features/ai/github-app" target="_blank">official GitHub Copilot app download page</a>.</p>
+<p>Sign in with your GitHub account and complete onboarding before installing WIQD. For prerequisites and setup details, see <a href="https://docs.github.com/en/copilot/get-started/quickstart-copilot-app" target="_blank">Getting started with the GitHub Copilot app</a>.</p>
 </div>
 <div class="tabbed-block">
 <p>Install the standalone CLI if it isn't already installed:</p>
@@ -2554,7 +2573,7 @@ copilot<span class="w"> </span>--help
 <p>The WIQD installer registers the WIQD agent with your installed GitHub Copilot experience. If you install GitHub Copilot after WIQD, rerun the WIQD installer below so it can register the agent. The <code>--agent</code> option confirms CLI support for custom agents, not that the WIQD agent is installed.</p>
 </div>
 <p>Once GitHub Copilot is installed, install WIQD using the command for your operating system from the installation guide. Review the installer before running it, according to your organization's policy.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">macOS / Linux</label><label for="__tabbed_3_2">Windows (PowerShell)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">macOS / Linux</label><label for="__tabbed_4_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://aka.ms/wiqd/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
@@ -2588,7 +2607,7 @@ wiqd<span class="w"> </span>auth<span class="w"> </span>status
 <p><cc-end-step lab="cwrk04" exercise="1" step="2" /></p>
 <h3 id="step-3-start-the-wiqd-agent-in-github-copilot">Step 3: Start the WIQD agent in GitHub Copilot</h3>
 <p>Choose one of the GitHub Copilot experiences:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">GitHub Copilot app</label><label for="__tabbed_4_2">GitHub Copilot CLI</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">GitHub Copilot app</label><label for="__tabbed_5_2">GitHub Copilot CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Open a working folder for the new project in the GitHub Copilot app. Open the <strong>Default agent</strong> selector and choose <strong>wiqd</strong>. You don't need to install the standalone Copilot CLI for this route.</p>
