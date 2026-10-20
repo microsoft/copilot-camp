@@ -51,7 +51,6 @@ By the end of this lab, you will:
 - Test documentation search, code sample search, and page retrieval in Cowork.
 
 !!! tip "Prerequisites"
-    - Access to GitHub Copilot through the GitHub Copilot app or standalone GitHub Copilot CLI.
     - Access to Copilot Cowork with a work or school account.
     - Permission to provision and share an app in your Microsoft 365 development tenant.
     - Node.js 24 or later and WIQD 0.13.1 or later; you'll check these in Exercise 1.
@@ -89,7 +88,35 @@ Before installing WIQD, set up the GitHub Copilot experience you'll use:
 
 === "GitHub Copilot app"
 
-    Install and open the GitHub Copilot app if you haven't already. You don't need to install the standalone Copilot CLI for this route.
+    Install the desktop app using the command for your operating system. You don't need to install the standalone Copilot CLI for this route.
+
+    === "macOS"
+
+        With [Homebrew](https://brew.sh/){target=_blank} installed, run:
+
+        ```bash
+        brew install --cask github-copilot-app
+        ```
+
+        After installation completes successfully, open the app:
+
+        ```bash
+        open -a "GitHub Copilot"
+        ```
+
+    === "Windows (PowerShell)"
+
+        With [WinGet](https://learn.microsoft.com/windows/package-manager/winget/){target=_blank} installed, run:
+
+        ```powershell
+        winget install --exact --id GitHub.CopilotApp --source winget
+        ```
+
+        After installation completes successfully, open **GitHub Copilot** from the Start menu.
+
+    If you don't have Homebrew or WinGet, download and run the installer for your operating system from the [official GitHub Copilot app download page](https://github.com/features/ai/github-app){target=_blank}.
+
+    Sign in with your GitHub account and complete onboarding before installing WIQD. For prerequisites and setup details, see [Getting started with the GitHub Copilot app](https://docs.github.com/en/copilot/get-started/quickstart-copilot-app){target=_blank}.
 
 === "GitHub Copilot CLI"
 
@@ -368,4 +395,3 @@ You now have a repeatable pattern: describe the plugin to the WIQD agent, review
 
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/copilot-cowork/04-cowork-plugins-wiqd" />
-
