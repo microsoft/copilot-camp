@@ -64,6 +64,7 @@ plugins:
               - Build your first skill: 'pages/copilot-cowork/01-cowork-skills.md'
               - Build your first plugin: 'pages/copilot-cowork/02-cowork-plugins.md'
               - Add Entra SSO Authentication to a Cowork Plugin: 'pages/copilot-cowork/03-cowork-plugins-sso.md'     
+              - Create plugins using Work IQ Dev Tools with GitHub Copilot: 'pages/copilot-cowork/04-cowork-plugins-wiqd.md'
             - SharePoint Extensibility:
               - Welcome: 'pages/sharepoint/index.md'
               - Lab SCA - SharePoint Copilot Apps: 'pages/sharepoint/sharepoint-copilot-apps/index.md'
