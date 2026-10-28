@@ -1753,10 +1753,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercise-3-publish-and-test-the-skill" class="md-nav__link">
+  <a href="#exercise-3-open-and-test-the-skill" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exercise 3: Publish and test the skill
+        Exercise 3: Open and test the skill
       
     </span>
   </a>
@@ -2658,7 +2658,7 @@
     data-icon="🧩"
     data-subtitle="Add a reusable skill to a Declarative Agent without writing application code"
     data-time="20 min"
-    data-requires="Microsoft 365 Copilot + Frontier Program access"
+    data-requires="Qualifying Microsoft 365 Copilot license or pay-as-you-go access"
     ></div>
 
 <p>In this lab, you'll create a generic <strong>Demo Planning Agent</strong> in Agent Builder and extend it with a reusable skill. The skill generates realistic business scenarios for demos, workshops, hackathons, presentations, and customer conversations.</p>
@@ -2669,7 +2669,7 @@
 <li><strong>Smaller always-on instructions:</strong> Keep the agent's core role, tone, and safety guidance concise instead of loading every task-specific procedure on every turn.</li>
 <li><strong>Focused behavior:</strong> Give each specialized task its own instructions and supporting resources without crowding the agent's general instructions.</li>
 <li><strong>Predictable activation:</strong> Use the skill description to define which requests should load the capability and which requests the agent should handle normally.</li>
-<li><strong>Easier maintenance and reuse:</strong> Update a focused skill independently and reuse the same package across agents.</li>
+<li><strong>Easier maintenance:</strong> Keep each task's instructions and resources together in a focused package. Shared skill reuse across agents isn't currently supported; don't assume that updating one agent's skill updates another agent.</li>
 </ul>
 <p>Use agent-level instructions for behavior that applies to nearly every interaction. Use a skill for specialized guidance or knowledge needed only for matching tasks.</p>
 <h2 id="scenario">Scenario</h2>
@@ -2682,18 +2682,28 @@
 <li>Create a Declarative Agent in Agent Builder</li>
 <li>Keep the agent's core instructions generic</li>
 <li>Upload a custom skill package and add suggested prompts</li>
-<li>Publish the agent and validate selective skill invocation</li>
+<li>Create the agent and validate selective skill invocation</li>
 </ul>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>A plain-text editor, such as Notepad on Windows, TextEdit on macOS, or Visual Studio Code</li>
 <li>A Microsoft 365 account with a qualifying Microsoft 365 Copilot license or pay-as-you-go access</li>
-<li>An organization enrolled in the Microsoft Frontier Program</li>
 <li>Permission to create agents in your tenant</li>
 </ul>
+<p>Skills in Declarative Agents are generally available; Microsoft Frontier Program enrollment is not required.</p>
 <blockquote>
-<p><strong>Tip:</strong> Custom skills in Declarative Agents are currently available in preview through the Microsoft Frontier Program, with general availability planned soon. Agent Builder supports up to eight skills per agent, and each compressed skill package can be up to 50 MB.</p>
+<p><strong>Important:</strong> In tenants that use Microsoft Purview Information Barriers, end users can't add skills to agents they create, although admins can deploy agents with skills. This lab requires a tenant where you can add skills.</p>
 </blockquote>
+<h3 id="skill-package-limits">Skill package limits</h3>
+<p>Agent Builder supports:</p>
+<ul>
+<li>Up to eight skills per agent</li>
+<li>A compressed ZIP package of up to 50 MB, with a maximum of 25 MB per file</li>
+<li>Up to 350 files across all skills and a maximum directory depth of three</li>
+<li>Skill instructions under 20,000 characters, with a name and description in YAML frontmatter</li>
+</ul>
+<p>A skill can also include supported resource files and scripts. This lab only needs <code>SKILL.md</code>. If you add scripts later, they run in a sandbox without network access or runtime package installation.</p>
+<p>See <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-skills" target="_blank">Add skills in Agent Builder</a> and <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/declarative-agent-skills" target="_blank">Skills in declarative agents</a> for supported file types, limits, and governance. Publishing agents with skills through Partner Center isn't supported yet.</p>
 <hr />
 <h2 id="exercise-1-create-the-skill-package">Exercise 1: Create the skill package</h2>
 <p>In this exercise, you'll create the <strong>Demo Scenario Generator</strong> skill and package it as a ZIP file that Agent Builder can upload.</p>
@@ -2799,9 +2809,10 @@ Return results using the following format:
 <h3 id="step-1-start-a-new-agent">Step 1: Start a new agent</h3>
 <ol>
 <li>Open <a href="https://m365.cloud.microsoft/chat" target="_blank">Microsoft 365 Copilot Chat</a> and sign in.</li>
-<li>In the left navigation, under <strong>Agents</strong>, select the <strong>+ New agent</strong> icon.</li>
-<li>Select <strong>Skip</strong> to bypass the conversational builder experience and open the configuration experience for a new agent.</li>
+<li>In the left navigation, select <strong>Agents &amp; Skills</strong>, and then select <strong>New agent</strong>.</li>
+<li>Select <strong>Skip to configure</strong> to bypass the conversational builder experience and open the <strong>Configure</strong> tab for a new agent.</li>
 </ol>
+<p>Agent Builder can also create a skill from a natural-language description in <strong>Message Agent Builder</strong>. This lab uses a manually created ZIP package so you can inspect and control its contents.</p>
 <p><cc-end-step lab="E12" exercise="2" step="1" /></p>
 <h3 id="step-2-configure-the-agent">Step 2: Configure the agent</h3>
 <ol>
@@ -2839,9 +2850,9 @@ and customer conversations.
 <p><cc-end-step lab="E12" exercise="2" step="2" /></p>
 <h3 id="step-3-upload-the-skill-package">Step 3: Upload the skill package</h3>
 <ol>
-<li>In the configuration experience, expand <strong>Skills</strong> and select <strong>Add</strong>.</li>
+<li>On the <strong>Configure</strong> tab, expand <strong>Skills</strong> and select <strong>Add</strong>.</li>
 <li>Upload <code>demo-scenario-generator.zip</code>.</li>
-<li>Review the skill details and confirm that the name is <strong>demo-scenario-generator</strong>.</li>
+<li>Review the skill name, instructions, and included files. Confirm that the name is <strong>demo-scenario-generator</strong> and that <code>SKILL.md</code> contains the workflow from Exercise 1.</li>
 <li>Confirm that the description mentions demo ideas, business scenarios, use cases, customer stories, workshop examples, and sample projects.</li>
 </ol>
 <p>If Agent Builder reports a package error, reopen the ZIP and verify that <code>SKILL.md</code> is at its root and includes valid YAML frontmatter.</p>
@@ -2874,18 +2885,18 @@ and customer conversations.
 </tr>
 </tbody>
 </table>
-<p>Review the configuration, and then select <strong>Create</strong>.</p>
+<p>On the <strong>Try it</strong> tab, try a prompt such as <code>Create a demo scenario for Declarative Agents.</code> and confirm that the response follows the skill's five-section format. Review the configuration, and then select <strong>Create</strong>.</p>
 <p><cc-end-step lab="E12" exercise="2" step="4" /></p>
 <hr />
-<h2 id="exercise-3-publish-and-test-the-skill">Exercise 3: Publish and test the skill</h2>
-<p>In this exercise, you'll publish the agent and verify both positive and negative skill matching.</p>
-<h3 id="step-1-publish-the-agent">Step 1: Publish the agent</h3>
+<h2 id="exercise-3-open-and-test-the-skill">Exercise 3: Open and test the skill</h2>
+<p>In this exercise, you'll open the created agent and verify both positive and negative skill matching.</p>
+<h3 id="step-1-open-the-created-agent">Step 1: Open the created agent</h3>
 <ol>
-<li>When agent creation is complete, select <strong>Publish</strong>.</li>
-<li>Review the agent details and confirm the publish action.</li>
-<li>Wait for publishing to finish, and then open <strong>Demo Planning Agent</strong> in Microsoft 365 Copilot.</li>
+<li>When agent creation is complete, confirm that <strong>Demo Planning Agent</strong> is available to you. New agents are private by default.</li>
+<li>Open <strong>Demo Planning Agent</strong> in Microsoft 365 Copilot.</li>
+<li>Optionally, select <strong>Share</strong> to grant access to others using the audience permitted by your organization.</li>
 </ol>
-<p>Publishing and sharing options can vary by tenant policy. Use the audience permitted by your organization for this lab.</p>
+<p>You don't need a separate <strong>Publish</strong> action to use an agent created in Agent Builder. See <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents" target="_blank">Share and manage agents</a> for sharing options and tenant policies.</p>
 <p><cc-end-step lab="E12" exercise="3" step="1" /></p>
 <h3 id="step-2-test-skill-activation">Step 2: Test skill activation</h3>
 <p>Start a new conversation for each prompt:</p>
@@ -2905,7 +2916,7 @@ and customer conversations.
 <div class="highlight"><pre><span></span><code>Help me plan the rehearsal schedule and presenter handoffs for a customer demo next week.
 </code></pre></div>
 <p>Confirm that the agent provides practical rehearsal or handoff guidance without using the scenario skill's five-section format. The request is in the agent's general scope, but it does not ask for a demo idea, business scenario, use case, customer story, workshop example, or sample project.</p>
-<p>This boundary test demonstrates that the skill is loaded only when its description matches the request.</p>
+<p>This boundary test checks selective skill behavior. Output formatting alone doesn't prove whether the skill was loaded internally; repeat the tests and refine the skill description if unrelated requests use its specialized format.</p>
 <p><cc-end-step lab="E12" exercise="3" step="3" /></p>
 <h3 id="step-4-compare-the-result-with-the-expected-structure">Step 4: Compare the result with the expected structure</h3>
 <p>A response to <code>Create a demo scenario for Declarative Agents.</code> should use this structure:</p>

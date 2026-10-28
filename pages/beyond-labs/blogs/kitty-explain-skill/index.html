@@ -2486,14 +2486,15 @@
 
 <h1 id="a-fun-way-to-learn-with-kitty-explain-skill-for-agents">A Fun Way to Learn with Kitty-Explain Skill for Agents</h1>
 <p><cc-blog-meta author="Tomomi Imura" date="September 10, 2026" image="../../../../assets/authors/tomomi-imura.jpg"></cc-blog-meta></p>
-<p>Custom skills in declarative agents are now in public preview 🎉</p>
+<p>Custom skills in declarative agents are now generally available 🎉</p>
+<p><em>Updated October 28, 2026 for general availability.</em></p>
 <p><img alt="Kitty explain" src="https://raw.githubusercontent.com/microsoft/m365-copilot-agents-playbook/main/01-extend/images/screenshot-skill.png" /></p>
 <p>I hope you joined <a href="https://aka.ms/M365AgentsPlaybook">The Microsoft 365 Copilot Agent's Playbook | Microsoft Reactor</a> Livecast. If not, it's not too late to catch up, because this article walks you through the demo from the episode 1. Let's explore how the Kitty Explain skill brings a playful, visual twist to learning with agents.</p>
 <h2 id="kitty-explain-skill">🐱 Kitty Explain Skill</h2>
 <p><strong>Kitty Explain</strong> is a skill that generates a "Kitty Explain" meme-style cat visual explainer that makes complex ideas feel more approachable.</p>
 <p><a href="https://youtu.be/173fx_0X7gg">📺 Watch the demo on YouTube</a></p>
 <p>In this demo, the skill is used with the <em>Simple Learn</em> agent, which uses Microsoft Learn documentation to summarize complex topics and explain them in simple language.</p>
-<p>Because <strong>skills are reusable packages of instructions and resources</strong>, you can also use the <strong>Kitty Explain</strong> skill with other agents whenever it suits the use case. Let's say I have another agent called <em>Explain-to-Me</em>, who explains content from a given URL. This skill works well with the agent.</p>
+<p>Because <strong>skills package instructions and resources</strong>, you can also add a separate copy of <strong>Kitty Explain</strong> to another agent whenever it suits the use case. Let's say I have another agent called <em>Explain-to-Me</em>, who explains content from a given URL. This skill works well with the agent. Shared skill reuse across agents isn't currently supported, so updating one copy doesn't update other agents.</p>
 <p><img alt="skill" src="https://raw.githubusercontent.com/microsoft/m365-copilot-agents-playbook/main/01-extend/images/skill.png" /></p>
 <p><strong>kitty-explain</strong> skill contains a <code>SKILL.md</code> file (instructions in plain markdown, with YAML metadata up top) plus reference folder with cat meme images to be references.</p>
 <div class="highlight"><pre><span></span><code>📂<span class="w"> </span>kitty-explain
@@ -2510,52 +2511,26 @@
 </ul>
 <p>Basically, all you need to do is just dumping this <code>kitty-explain</code> folder into your agent, and add a few lines to the agent's instruction.</p>
 <h3 id="add-skill-to-an-agent-built-with-agent-builder-no-code">🎨 Add Skill to an agent built with Agent Builder (No-Code)</h3>
-<p>First, compress the entire kitty-explain folder that include <code>SKILL.md</code> and references to create <code>kitty-explain.zip</code>.</p>
+<p>First, compress the contents of the kitty-explain folder, including <code>SKILL.md</code> and <code>references</code>, to create <code>kitty-explain.zip</code>. Keep <code>SKILL.md</code> at the root of the ZIP, not inside an extra folder.</p>
 <ol>
-<li>Go to https://m365.cloud.microsoft/ and from the left menu, click <strong>Agents</strong> and create a new agent.</li>
+<li>Go to https://m365.cloud.microsoft/ and from the left menu, select <strong>Agents &amp; Skills</strong>, then <strong>New agent</strong>.</li>
 <li>Choose your agent or create a simple agent that summarizes a given content.</li>
 <li>In the agent instruction, include a "Use skill" instruction (See below)</li>
 <li>Add a sample prompt under <strong>Suggested prompts:</strong> Title: "Kitty Explain visual" and Message should be something similar to "Explain [content] by cats.". Make this fit to what the agent does.</li>
-<li>Under <strong>Skills</strong>, upload a zipped kitty-explain skill.</li>
-<li>Voilà! Test your agent now!</li>
+<li>On the <strong>Configure</strong> tab, expand <strong>Skills</strong>, select <strong>Add</strong>, and upload the complete kitty-explain ZIP package.</li>
+<li>Voilà! Test your agent on the <strong>Try it</strong> tab, then select <strong>Create</strong>.</li>
 </ol>
-<h3 id="add-skill-to-an-agent-built-with-m365-agents-toolkit-sneak-peak">⚙️ Add Skill to an agent built with M365 Agents Toolkit - Sneak Peak</h3>
-<p><em>The feature to add skills will be available in the toolkit when the feature goes GA. So stay tuned!</em></p>
-<p>Here I'm not walking you through how to build a declarative agent using <strong>M365 Agents Toolkit</strong>, and assuming you know how to built one already! </p>
-<p>Make sure you have the latest M365 Agent Toolkit, and create an agent that summarizes given documents, articles, or URLs, and gives clear explanations of the content. </p>
-<p>Place the <code>kitty-explain</code> folder that includes <code>SKILL.md</code> and <code>references</code> folder in your declarative agent package.</p>
-<div class="highlight"><pre><span></span><code>📂<span class="w"> </span>your-agent
-<span class="w">   </span>├──<span class="w"> </span>ai-plugin.json
-<span class="w">   </span>├──<span class="w"> </span>color.png
-<span class="w">   </span>├──<span class="w"> </span>declarativeAgent.json
-<span class="w">   </span>├──<span class="w"> </span>instruction.txt
-<span class="w">   </span>├──<span class="w"> </span>manifest.json
-<span class="w">   </span>├──<span class="w"> </span>outline.png
-<span class="w">   </span>└──<span class="w"> </span>📂<span class="w"> </span>skills/
-<span class="w">       </span>└──<span class="w"> </span>📂<span class="w"> </span>kitty-explain/
-<span class="w">           </span>├──<span class="w"> </span>📄<span class="w"> </span>SKILL.md
-<span class="w">           </span>└──<span class="w"> </span>📂<span class="w"> </span>references/
-</code></pre></div>
-<p>In the unified <code>manifest.json</code>, specify the skill path:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">"agentSkills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"folder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skills/kitty-explain"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-</code></pre></div>
-<p>In <code>declarativeAgent.json</code>, it's a good idea to add some custom <code>converastion starter</code>. For example,</p>
-<div class="highlight"><pre><span></span><code><span class="nt">"conversation_starters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain [concept] in simple language"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain the technology"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explain [concept] by cats"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kitty Explain visual"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-</code></pre></div>
-<p>Then, add the "Use Skill" instruction (see below) in <code>instruction.txt</code>.</p>
+<p>You need a qualifying Microsoft 365 Copilot license or pay-as-you-go access, but Frontier Program enrollment is no longer required. In tenants using Microsoft Purview Information Barriers, end users can't add skills to agents they create; admins can still deploy agents with skills.</p>
+<h3 id="add-skill-to-an-agent-built-with-microsoft-365-agents-toolkit">⚙️ Add Skill to an agent built with Microsoft 365 Agents Toolkit</h3>
+<p>Skills are also supported in <strong>Microsoft 365 Agents Toolkit</strong>. Use an existing declarative agent project with declarative agent manifest version <strong>1.9</strong>.</p>
+<ol>
+<li>Follow the <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills">Toolkit skills setup guide</a> to enable <code>TEAMSFX_AGENT_SKILLS</code> before launching Visual Studio Code, then restart VS Code completely if it was already running.</li>
+<li>In the <strong>Microsoft 365 Agents Toolkit</strong> pane, select <strong>Add Skill</strong> and create a skill named <code>kitty-explain</code>.</li>
+<li>Copy the Kitty Explain instructions and resources into the generated skill directory under <code>appPackage/skills/kitty-explain</code>.</li>
+<li>Add the "Use Skill" instruction below to your agent's instructions and add a suggested prompt such as "Explain [concept] by cats".</li>
+<li>Select <strong>Provision</strong>, then test the agent in Microsoft 365 Copilot.</li>
+</ol>
+<p>Unlike Agent Builder, Toolkit takes a skill directory, not a ZIP. The complete app package is limited to 10 MB. Publishing agents with skills through Partner Center isn't supported yet.</p>
 <h3 id="use-skill-instruction-example">📜 "Use Skill" instruction example</h3>
 <p>You should add this instruction to your agent's instruction.</p>
 <p>Either the <strong>Agent Builder</strong> instruction field, or in the <code>instruction.text</code> if you're using <strong>M365 Agents Toolkit</strong>, add this extra instruction to have the agent use the skill:</p>
