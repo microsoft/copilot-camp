@@ -2,7 +2,9 @@
 
 <cc-blog-meta author="Tomomi Imura" date="September 10, 2026" image="../../../../assets/authors/tomomi-imura.jpg"></cc-blog-meta>
 
-Custom skills in declarative agents are now in public preview 🎉
+Custom skills in declarative agents are now generally available 🎉
+
+*Updated October 28, 2026 for general availability.*
 
 ![Kitty explain](https://raw.githubusercontent.com/microsoft/m365-copilot-agents-playbook/main/01-extend/images/screenshot-skill.png)
 
@@ -16,7 +18,7 @@ I hope you joined [The Microsoft 365 Copilot Agent's Playbook | Microsoft Reacto
 
 In this demo, the skill is used with the *Simple Learn* agent, which uses Microsoft Learn documentation to summarize complex topics and explain them in simple language.
 
-Because **skills are reusable packages of instructions and resources**, you can also use the **Kitty Explain** skill with other agents whenever it suits the use case. Let's say I have another agent called *Explain-to-Me*, who explains content from a given URL. This skill works well with the agent.
+Because **skills package instructions and resources**, you can also add a separate copy of **Kitty Explain** to another agent whenever it suits the use case. Let's say I have another agent called *Explain-to-Me*, who explains content from a given URL. This skill works well with the agent. Shared skill reuse across agents isn't currently supported, so updating one copy doesn't update other agents.
 
 ![skill](https://raw.githubusercontent.com/microsoft/m365-copilot-agents-playbook/main/01-extend/images/skill.png)
 
@@ -42,65 +44,28 @@ Basically, all you need to do is just dumping this `kitty-explain` folder into y
 
 ### 🎨 Add Skill to an agent built with Agent Builder (No-Code)
 
-First, compress the entire kitty-explain folder that include `SKILL.md` and references to create `kitty-explain.zip`.
+First, compress the contents of the kitty-explain folder, including `SKILL.md` and `references`, to create `kitty-explain.zip`. Keep `SKILL.md` at the root of the ZIP, not inside an extra folder.
 
-1. Go to https://m365.cloud.microsoft/ and from the left menu, click **Agents** and create a new agent.
+1. Go to https://m365.cloud.microsoft/ and from the left menu, select **Agents & Skills**, then **New agent**.
 1. Choose your agent or create a simple agent that summarizes a given content.
 1. In the agent instruction, include a "Use skill" instruction (See below)
 1. Add a sample prompt under **Suggested prompts:** Title: "Kitty Explain visual" and Message should be something similar to "Explain [content] by cats.". Make this fit to what the agent does.
-1. Under **Skills**, upload a zipped kitty-explain skill.
-1. Voilà! Test your agent now!
+1. On the **Configure** tab, expand **Skills**, select **Add**, and upload the complete kitty-explain ZIP package.
+1. Voilà! Test your agent on the **Try it** tab, then select **Create**.
 
-### ⚙️ Add Skill to an agent built with M365 Agents Toolkit - Sneak Peak
+You need a qualifying Microsoft 365 Copilot license or pay-as-you-go access, but Frontier Program enrollment is no longer required. In tenants using Microsoft Purview Information Barriers, end users can't add skills to agents they create; admins can still deploy agents with skills.
 
-*The feature to add skills will be available in the toolkit when the feature goes GA. So stay tuned!*
+### ⚙️ Add Skill to an agent built with Microsoft 365 Agents Toolkit
 
-Here I'm not walking you through how to build a declarative agent using **M365 Agents Toolkit**, and assuming you know how to built one already! 
+Skills are also supported in **Microsoft 365 Agents Toolkit**. Use an existing declarative agent project with declarative agent manifest version **1.9**.
 
-Make sure you have the latest M365 Agent Toolkit, and create an agent that summarizes given documents, articles, or URLs, and gives clear explanations of the content. 
+1. Follow the [Toolkit skills setup guide](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills) to enable `TEAMSFX_AGENT_SKILLS` before launching Visual Studio Code, then restart VS Code completely if it was already running.
+1. In the **Microsoft 365 Agents Toolkit** pane, select **Add Skill** and create a skill named `kitty-explain`.
+1. Copy the Kitty Explain instructions and resources into the generated skill directory under `appPackage/skills/kitty-explain`.
+1. Add the "Use Skill" instruction below to your agent's instructions and add a suggested prompt such as "Explain [concept] by cats".
+1. Select **Provision**, then test the agent in Microsoft 365 Copilot.
 
-Place the `kitty-explain` folder that includes `SKILL.md` and `references` folder in your declarative agent package.
-
-```bash
-📂 your-agent
-   ├── ai-plugin.json
-   ├── color.png
-   ├── declarativeAgent.json
-   ├── instruction.txt
-   ├── manifest.json
-   ├── outline.png
-   └── 📂 skills/
-       └── 📂 kitty-explain/
-           ├── 📄 SKILL.md
-           └── 📂 references/
-```
-
-In the unified `manifest.json`, specify the skill path:
-
-```json
-"agentSkills": [
-    {
-      "folder": "skills/kitty-explain"
-    }
-  ],
-```
-
-In `declarativeAgent.json`, it's a good idea to add some custom `converastion starter`. For example,
-
-```json
-"conversation_starters": [
-    {
-      "text": "Explain [concept] in simple language",
-      "title": "Explain the technology"
-    },
-    {
-      "text": "Explain [concept] by cats",
-      "title": "Kitty Explain visual"
-    }
-  ],
-```
-
-Then, add the "Use Skill" instruction (see below) in `instruction.txt`.
+Unlike Agent Builder, Toolkit takes a skill directory, not a ZIP. The complete app package is limited to 10 MB. Publishing agents with skills through Partner Center isn't supported yet.
 
 ### 📜 "Use Skill" instruction example
 
@@ -134,4 +99,3 @@ I hope this gave you a better understanding of how skills work and inspired you 
 - 📖 Learn Doc: [Custom skills in declarative agents](https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-skills)
 
 <img src="https://m365-visitor-stats.azurewebsites.net/copilot-camp/blogs/kitty-explain-skill" />
-

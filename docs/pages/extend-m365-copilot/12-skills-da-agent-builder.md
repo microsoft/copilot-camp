@@ -8,7 +8,7 @@ time: 20
 badge: TBD
 products: [Microsoft 365 Copilot, Agent Builder]
 created-date: 2026-09-10
-last-edited-date: 2026-09-10
+last-edited-date: 2026-10-28
 ---
 
 # Lab E12 - Build Agent with Skill using Agent Builder
@@ -29,7 +29,7 @@ last-edited-date: 2026-09-10
 	data-icon="🧩"
 	data-subtitle="Add a reusable skill to a Declarative Agent without writing application code"
 	data-time="20 min"
-	data-requires="Microsoft 365 Copilot + Frontier Program access"
+	data-requires="Qualifying Microsoft 365 Copilot license or pay-as-you-go access"
 	></div>
 
 In this lab, you'll create a generic **Demo Planning Agent** in Agent Builder and extend it with a reusable skill. The skill generates realistic business scenarios for demos, workshops, hackathons, presentations, and customer conversations.
@@ -43,7 +43,7 @@ Skills provide several benefits:
 - **Smaller always-on instructions:** Keep the agent's core role, tone, and safety guidance concise instead of loading every task-specific procedure on every turn.
 - **Focused behavior:** Give each specialized task its own instructions and supporting resources without crowding the agent's general instructions.
 - **Predictable activation:** Use the skill description to define which requests should load the capability and which requests the agent should handle normally.
-- **Easier maintenance and reuse:** Update a focused skill independently and reuse the same package across agents.
+- **Easier maintenance:** Keep each task's instructions and resources together in a focused package. Shared skill reuse across agents isn't currently supported; don't assume that updating one agent's skill updates another agent.
 
 Use agent-level instructions for behavior that applies to nearly every interaction. Use a skill for specialized guidance or knowledge needed only for matching tasks.
 
@@ -61,16 +61,30 @@ By the end of this lab, you'll be able to:
 - Create a Declarative Agent in Agent Builder
 - Keep the agent's core instructions generic
 - Upload a custom skill package and add suggested prompts
-- Publish the agent and validate selective skill invocation
+- Create the agent and validate selective skill invocation
 
 ## Prerequisites
 
 - A plain-text editor, such as Notepad on Windows, TextEdit on macOS, or Visual Studio Code
 - A Microsoft 365 account with a qualifying Microsoft 365 Copilot license or pay-as-you-go access
-- An organization enrolled in the Microsoft Frontier Program
 - Permission to create agents in your tenant
 
-> **Tip:** Custom skills in Declarative Agents are currently available in preview through the Microsoft Frontier Program, with general availability planned soon. Agent Builder supports up to eight skills per agent, and each compressed skill package can be up to 50 MB.
+Skills in Declarative Agents are generally available; Microsoft Frontier Program enrollment is not required.
+
+> **Important:** In tenants that use Microsoft Purview Information Barriers, end users can't add skills to agents they create, although admins can deploy agents with skills. This lab requires a tenant where you can add skills.
+
+### Skill package limits
+
+Agent Builder supports:
+
+- Up to eight skills per agent
+- A compressed ZIP package of up to 50 MB, with a maximum of 25 MB per file
+- Up to 350 files across all skills and a maximum directory depth of three
+- Skill instructions under 20,000 characters, with a name and description in YAML frontmatter
+
+A skill can also include supported resource files and scripts. This lab only needs `SKILL.md`. If you add scripts later, they run in a sandbox without network access or runtime package installation.
+
+See [Add skills in Agent Builder](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-add-skills){target=_blank} and [Skills in declarative agents](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/declarative-agent-skills){target=_blank} for supported file types, limits, and governance. Publishing agents with skills through Partner Center isn't supported yet.
 
 ---
 
@@ -184,8 +198,10 @@ In this exercise, you'll configure the agent's general behavior, upload the skil
 ### Step 1: Start a new agent
 
 1. Open [Microsoft 365 Copilot Chat](https://m365.cloud.microsoft/chat){target=_blank} and sign in.
-2. In the left navigation, under **Agents**, select the **+ New agent** icon.
-3. Select **Skip** to bypass the conversational builder experience and open the configuration experience for a new agent.
+2. In the left navigation, select **Agents & Skills**, and then select **New agent**.
+3. Select **Skip to configure** to bypass the conversational builder experience and open the **Configure** tab for a new agent.
+
+Agent Builder can also create a skill from a natural-language description in **Message Agent Builder**. This lab uses a manually created ZIP package so you can inspect and control its contents.
 
 <cc-end-step lab="E12" exercise="2" step="1" />
 
@@ -230,9 +246,9 @@ These instructions define behavior that applies to the whole agent. Keep the sce
 
 ### Step 3: Upload the skill package
 
-1. In the configuration experience, expand **Skills** and select **Add**.
+1. On the **Configure** tab, expand **Skills** and select **Add**.
 2. Upload `demo-scenario-generator.zip`.
-3. Review the skill details and confirm that the name is **demo-scenario-generator**.
+3. Review the skill name, instructions, and included files. Confirm that the name is **demo-scenario-generator** and that `SKILL.md` contains the workflow from Exercise 1.
 4. Confirm that the description mentions demo ideas, business scenarios, use cases, customer stories, workshop examples, and sample projects.
 
 If Agent Builder reports a package error, reopen the ZIP and verify that `SKILL.md` is at its root and includes valid YAML frontmatter.
@@ -250,23 +266,23 @@ Add the following suggested prompts:
 | MCP customer story | Create a customer story for an MCP-enabled agent. |
 | Plan a rehearsal | Help me plan the rehearsal schedule and presenter handoffs for a customer demo next week. |
 
-Review the configuration, and then select **Create**.
+On the **Try it** tab, try a prompt such as `Create a demo scenario for Declarative Agents.` and confirm that the response follows the skill's five-section format. Review the configuration, and then select **Create**.
 
 <cc-end-step lab="E12" exercise="2" step="4" />
 
 ---
 
-## Exercise 3: Publish and test the skill
+## Exercise 3: Open and test the skill
 
-In this exercise, you'll publish the agent and verify both positive and negative skill matching.
+In this exercise, you'll open the created agent and verify both positive and negative skill matching.
 
-### Step 1: Publish the agent
+### Step 1: Open the created agent
 
-1. When agent creation is complete, select **Publish**.
-2. Review the agent details and confirm the publish action.
-3. Wait for publishing to finish, and then open **Demo Planning Agent** in Microsoft 365 Copilot.
+1. When agent creation is complete, confirm that **Demo Planning Agent** is available to you. New agents are private by default.
+2. Open **Demo Planning Agent** in Microsoft 365 Copilot.
+3. Optionally, select **Share** to grant access to others using the audience permitted by your organization.
 
-Publishing and sharing options can vary by tenant policy. Use the audience permitted by your organization for this lab.
+You don't need a separate **Publish** action to use an agent created in Agent Builder. See [Share and manage agents](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents){target=_blank} for sharing options and tenant policies.
 
 <cc-end-step lab="E12" exercise="3" step="1" />
 
@@ -306,7 +322,7 @@ Help me plan the rehearsal schedule and presenter handoffs for a customer demo n
 
 Confirm that the agent provides practical rehearsal or handoff guidance without using the scenario skill's five-section format. The request is in the agent's general scope, but it does not ask for a demo idea, business scenario, use case, customer story, workshop example, or sample project.
 
-This boundary test demonstrates that the skill is loaded only when its description matches the request.
+This boundary test checks selective skill behavior. Output formatting alone doesn't prove whether the skill was loaded internally; repeat the tests and refine the skill description if unrelated requests use its specialized format.
 
 <cc-end-step lab="E12" exercise="3" step="3" />
 
