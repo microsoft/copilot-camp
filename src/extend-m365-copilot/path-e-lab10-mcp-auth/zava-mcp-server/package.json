@@ -37,7 +37,7 @@
   "dependencies": {
       "@azure/data-tables": "^13.2.2",
     "@azure/functions": "^4.0.0",
-    "@modelcontextprotocol/sdk": "^1.20.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "cors": "^2.8.5",
