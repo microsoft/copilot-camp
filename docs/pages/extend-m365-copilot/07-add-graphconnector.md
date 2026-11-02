@@ -92,6 +92,9 @@ CONNECTOR_BASE_URL=https://localhost:3000/
 
 Now that your data is loaded into Microsoft 365 tenant, let's test if a regular search is picking up the contents in Microsoft365.com.
 
+!!! note "Include the new connection in the All vertical first"
+    A custom Copilot connector is not included in the **All** vertical until an admin enables it, so search finds nothing until you do. Go to [Verticals](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/verticals){target=_blank} in the Microsoft 365 admin center, select the **All** vertical, and in the **Manage connection results** panel select **Trey Feedback Connector**. See [Why aren't results displayed in Microsoft Search?](https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions#why-aren-t-results-displayed-in-microsoft-search){target=_blank} and [Manage connector results in All vertical](https://learn.microsoft.com/microsoftsearch/connectors-in-all-vertical){target=_blank}.
+
 Go to [https://m365.cloud.microsoft/search](https://m365.cloud.microsoft/search){target=_blank} and in the search box above, type `thanks Avery`.
 
 You will see the results as below from the external connection which are basically the clients' feedback for consultant Avery Howard.
