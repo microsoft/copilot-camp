@@ -120,6 +120,18 @@ flowchart TD
 
 ## 🆕 What's New?
 
+!!! example "Updated in October 2026"
+
+    Explore a new Copilot Cowork plugin lab and updated guidance for generally available Agent Builder skills.
+
+    - **Build a Copilot Cowork plugin with WIQD and GitHub Copilot**:
+    Use Work IQ Dev Tools (WIQD) and its GitHub Copilot agent to create, validate, provision, and test a plugin backed by the public Microsoft Learn MCP server, without hosting your own server or configuring connector credentials.
+    [Start Lab CWRK04](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/04-cowork-plugins-wiqd/)
+
+    - **Explore generally available skills in Agent Builder**:
+    Lab E12 now follows the generally available skills experience, with no Frontier Program enrollment required. Follow the updated steps to add a custom skill, with current package limits and guidance on testing and sharing your agent.
+    [Explore the updated Lab E12](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da-agent-builder/)
+
 !!! example "Updated in September 2026"
 
     We’ve added a new standalone lab to the Declarative Agent pathway for building an agent with a reusable skill in Agent Builder.
@@ -128,17 +140,6 @@ flowchart TD
     Create and package a reusable `SKILL.md` file, add it to a Declarative Agent without writing application code, and test that the skill is invoked only for matching requests.
     [🔗 Start Lab E12](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/12-skills-da-agent-builder/)
 
-!!! example "Updated in August 2026"
-
-    We’ve added a new Copilot Cowork security lab and reorganized the Declarative Agent learning experience.
-
-    - **Add Entra SSO authentication to a Cowork plugin**:
-    Connect an Entra-secured MCP server to a Copilot Cowork plugin, configure single sign-on, and let users authenticate with their existing Microsoft 365 credentials without an extra sign-in prompt.
-    [🔗 Start the Copilot Cowork SSO lab](https://microsoft.github.io/copilot-camp/pages/copilot-cowork/03-cowork-plugins-sso/)
-
-    - **Choose a clearer Declarative Agent pathway**:
-    Start with the E1A and E1B fundamentals, follow a guided bundle for an end-to-end scenario, or choose an independent standalone lab for a focused skill. Bundle-specific prerequisites now appear directly on each bundle page.
-    [🔗 Explore the Declarative Agent pathways](https://microsoft.github.io/copilot-camp/pages/extend-m365-copilot/)
 
 ## 🧑‍💻 More
 
