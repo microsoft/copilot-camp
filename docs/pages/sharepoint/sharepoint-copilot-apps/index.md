@@ -2,7 +2,7 @@
 
 Microsoft 365 Copilot excels at language, yet plenty of daily work goes beyond text. Approving an expense, reviewing your remaining leave, or reserving a desk are all tasks you would rather complete visually than explain through a chat exchange. **Copilot UX components** make this possible by surfacing rich, interactive UX components inside the Copilot canvas, exactly when and where you need them.
 
-Copilot UX components are built with the [SharePoint Framework](https://aka.ms/spfx){target=_blank} (SPFx) as a new kind of client-side component, the **Copilot Component**, introduced with the public preview of SPFx v1.24. They implement the [MCP apps model](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/plugin-mcp-apps){target=_blank}, so you build on an open, interoperable foundation. The key difference from the typical MCP apps model is that **hosting and tool routing are automatic**: your UX component is hosted in your Microsoft 365 tenant and requests are routed to the right tool for you. You bring the component, the platform handles the rest.
+Copilot UX components are built with the [SharePoint Framework](https://aka.ms/spfx){target=_blank} (SPFx) as a new kind of client-side component, the **Copilot Component**, introduced with SPFx v1.24. They implement the [MCP apps model](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/plugin-mcp-apps){target=_blank}, so you build on an open, interoperable foundation. The key difference from the typical MCP apps model is that **hosting and tool routing are automatic**: your UX component is hosted in your Microsoft 365 tenant and requests are routed to the right tool for you. You bring the component, the platform handles the rest.
 
 For developers, the value is that you only have to focus on one thing: **building your UX component** with the JavaScript stack you already know. SPFx supports any library or framework you choose, such as React, Angular, Vue, Svelte, or plain TypeScript, with React being the most common choice. There is no proprietary platform to learn, no infrastructure to stand up on Azure, and the enterprise-grade security, compliance, and governance of the SharePoint platform come built in. Even better, the same component is not tied to a single surface: write it once and reuse it across Microsoft 365, in Copilot, in SharePoint, and in Microsoft Teams, and more.
 
@@ -13,9 +13,6 @@ The scenarios you can address are almost anything you have previously surfaced i
 - **Management and Governance agents**: streamline admin work such as site provisioning, policy enforcement, and governance dashboards.
 
 In this path you will learn how to design, build, test, and deploy your Copilot UX components, from scaffolding the SPFx Copilot Component to using it inside Microsoft 365 Copilot.
-
-!!! note
-    Copilot UX components are available in **public preview**, alongside the public preview of SharePoint Framework (SPFx) v1.24. Some tooling, packaging, and admin surfaces may still change before General Availability.
 
 <hr />
 

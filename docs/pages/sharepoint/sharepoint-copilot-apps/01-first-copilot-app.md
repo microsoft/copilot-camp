@@ -1,16 +1,13 @@
 # Lab SCA1 - Build your first Copilot UX component
 
-In this lab, you are going to build your first **Copilot UX component**: an interactive UX component that renders directly inside the Microsoft 365 Copilot canvas. You will use the [SharePoint Framework](https://aka.ms/spfx){target=_blank} (SPFx) v1.24 public preview and the new **Copilot Component** project type, build the user experience with **React**, add custom parameters, test everything locally in the **Copilot Workbench**, and finally package and deploy the solution so you can use it from **Microsoft 365 Copilot**.
-
-!!! warning
-    Copilot UX components and SharePoint Framework v1.24 are in **public preview**. The generator output, the Copilot Workbench, the app-catalog **Add to Teams** flow, and the admin-center surfaces may still change before General Availability.
+In this lab, you are going to build your first **Copilot UX component**: an interactive UX component that renders directly inside the Microsoft 365 Copilot canvas. You will use the [SharePoint Framework](https://aka.ms/spfx){target=_blank} (SPFx) v1.24 and the new **Copilot Component** project type, build the user experience with **React**, add custom parameters, test everything locally in the **Copilot Workbench**, and finally package and deploy the solution so you can use it from **Microsoft 365 Copilot**.
 
 !!! note
     This lab builds on general SPFx knowledge. You do not need previous SPFx experience, but familiarity with Node.js, TypeScript, and React will be helpful.
 
 In this lab you will learn:
 
-- How to set up a SharePoint Framework development environment and install the SPFx v1.24 public preview
+- How to set up a SharePoint Framework development environment and install SPFx v1.24
 - How to scaffold a Copilot UX component using React
 - How to explore and customize the scaffolded React component
 - How to add custom parameters that Copilot passes to your component
@@ -19,7 +16,7 @@ In this lab you will learn:
 
 ## Exercise 1 : Setting up the SharePoint Framework development environment
 
-In this exercise you are going to prepare your machine to build Copilot UX components and install the SPFx v1.24 public preview toolchain.
+In this exercise you are going to prepare your machine to build Copilot UX components and install the SPFx v1.24 toolchain.
 
 ### Step 1: Installing the base prerequisites
 
@@ -27,7 +24,7 @@ Copilot UX components are built with the SharePoint Framework, so you first need
 
 At minimum, make sure you have:
 
-- [Node.js v22 LTS](https://nodejs.org/en){target=_blank} (SPFx v1.24 requires Node.js `>=22.14.0 <23.0.0`)
+- [Node.js v22 LTS](https://nodejs.org/en){target=_blank} (SPFx v1.24 supports Node.js `>=22.14.0 <23.0.0`, v24 and v26)
 - [Visual Studio Code](https://code.visualstudio.com/){target=_blank}
 - A Microsoft 365 tenant with a **SharePoint App Catalog** site and Microsoft 365 Copilot enabled
 
@@ -40,33 +37,33 @@ You can verify your Node.js version with the following command:
 node --version
 ```
 
-The output should be a `v22.x.x` value.
+The output should be `v22.14.0` or later, or a v24 or v26 version.
 
 !!! tip "Get a free development tenant"
     If you don't have a tenant, you can get a free Microsoft 365 development tenant by joining the [Microsoft 365 developer program](https://aka.ms/o365devprogram){target=_blank}.
 
 <cc-end-step lab="sca1" exercise="1" step="1" />
 
-### Step 2: Installing the SPFx v1.24 public preview toolchain
+### Step 2: Installing the SPFx v1.24 toolchain
 
-SPFx v1.24 uses the **Heft** build system and ships the new Copilot Component project type. Install Yeoman, the Heft CLI, and the SPFx generator from the `@next` tag, which points to the public preview build.
+SPFx v1.24 uses the **Heft** build system and ships the new Copilot Component project type. Install Yeoman, the Heft CLI, and the SPFx generator.
 
 ```console
 npm install -g yo
 npm install -g @rushstack/heft
-npm install -g @microsoft/generator-sharepoint@next
+npm install -g @microsoft/generator-sharepoint@latest
 ```
 
-Verify that the generator resolved to a `1.24.x` preview version:
+Verify that the generator resolved to version `1.24.0` or later:
 
 ```console
 npm list -g @microsoft/generator-sharepoint
 ```
 
-You should see a version similar to `@microsoft/generator-sharepoint@1.24.0-beta.2`.
+You should see a version similar to `@microsoft/generator-sharepoint@1.24.0`.
 
-!!! info "Why the `@next` tag"
-    The **Copilot Component** project type only exists in the SPFx v1.24 preview. Installing the plain `@microsoft/generator-sharepoint` (latest) tag would give you an older generator that does not offer the Copilot Component option. Always use `@next` while the feature is in preview.
+!!! info "Why version 1.24 or later"
+    The **Copilot Component** project type was introduced in SPFx v1.24. An older generator does not offer the Copilot Component option, so check the version before you continue.
 
 <cc-end-step lab="sca1" exercise="1" step="2" />
 
@@ -76,12 +73,12 @@ In this exercise you are going to scaffold a new Copilot UX component using the 
 
 ### Step 1: Running the generator
 
-Create a new folder for your solution and run the SPFx generator from the `@next` tag:
+Create a new folder for your solution and run the SPFx generator:
 
 ```console
 md hello-copilot-app
 cd hello-copilot-app
-yo @microsoft/sharepoint@next
+yo @microsoft/sharepoint
 ```
 
 Answer the interactive prompts as follows:
@@ -484,7 +481,7 @@ You have completed Lab SCA1 - Build your first Copilot UX component!
 
 In this lab, you learned how to:
 
-- Set up a SharePoint Framework development environment and install the SPFx v1.24 public preview
+- Set up a SharePoint Framework development environment and install SPFx v1.24
 - Scaffold a Copilot UX component using React
 - Explore and customize the scaffolded React component
 - Add custom parameters that Copilot passes to your component as tool arguments
