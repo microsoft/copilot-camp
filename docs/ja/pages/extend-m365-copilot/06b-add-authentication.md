@@ -326,7 +326,7 @@ npm i jwt-validate
 これは Entra ID 認証トークンを検証するライブラリをインストールします。
 
 !!! warning
-    Microsoft は NodeJS 向けの Entra ID トークン検証ライブラリを公式には提供していません。その代わり、[詳細ドキュメント](https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens){target=_blank} で独自に実装する方法が説明されています。また、[Microsoft MVP Andrew Connell](https://www.voitanos.io/pages/about/#whos-behind-voitanos){target=_blank} の [記事](https://www.voitanos.io/blog/validating-entra-id-generated-oauth-tokens/){target=_blank} も参考になります。  
+    Microsoft は NodeJS 向けの Entra ID トークン検証ライブラリを公式には提供していません。その代わり、[詳細ドキュメント](https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-tokens){target=_blank} で独自に実装する方法が説明されています。また、[Microsoft MVP Andrew Connell](https://www.andrewconnell.com/pages/voitanos/){target=_blank} の [記事](https://www.andrewconnell.com/articles/entra-id-validating-generated-oauth-tokens/){target=_blank} も参考になります。  
 
     **本ラボでは、[Waldek Mastykarz](https://github.com/waldekmastykarz){target=_blank} 氏が提供する [コミュニティ ライブラリ](https://www.npmjs.com/package/jwt-validate){target=_blank} を使用します。MIT License で提供され、Microsoft のサポート対象外です。使用は自己責任で行ってください。**  
 
